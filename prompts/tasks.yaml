@@ -1,0 +1,145 @@
+# 资产生成任务清单
+# gen_assets.py 会读取本文件，对每个 task 加载对应模板，渲染变量，调用 GPT Image 2 生成
+#
+# task 字段说明：
+#   id          : 唯一标识，用于输出文件名（落到 assets/raw/{category}/{id}.png）
+#   template    : 模板文件名（不带 .yaml 后缀）
+#   category    : 子目录分类（character / sprite / ui / scene / tileset 等）
+#   vars        : 注入模板 variables 的具体值
+#   priority    : 1=必跑，2=次要（可用 --priority=1 过滤）
+#   skip        : true 临时跳过
+
+# ============================================================
+# 共享角色身份锚点（避免在每个 task 重复写）
+# ============================================================
+character_anchors:
+  bujingyun: &bujingyun
+    character_name: "步惊云"
+    character_appearance: |
+      二十出头黑发男子，长直发束于脑后，脸型清瘦轮廓分明，
+      剑眉星目神色冷峻，身着黑色长袍外披深色披风，
+      腰悬绝世好剑，体格修长矫健
+
+  niefeng: &niefeng
+    character_name: "聂风"
+    character_appearance: |
+      二十出头长发男子，黑色长发自然飘落，眉目俊朗带笑意，
+      身着浅灰色武服外罩深蓝色短披风，
+      赤手空拳但姿态从容，体格匀称矫健
+
+# ============================================================
+# 任务列表
+# ============================================================
+tasks:
+
+  # --- 主角立绘（高优先级，作为后续 sprite 的视觉锚点验证）---
+  - id: portrait_bujingyun_neutral
+    template: character_portrait
+    category: character
+    priority: 1
+    vars:
+      <<: *bujingyun
+      pose: "抱臂凝视前方，身姿挺拔"
+      expression: "冷峻平静，眼神锐利"
+      background_desc: "苍茫天空，云气翻涌"
+
+  - id: portrait_bujingyun_angry
+    template: character_portrait
+    category: character
+    priority: 1
+    vars:
+      <<: *bujingyun
+      pose: "右手按剑，身体微前倾"
+      expression: "怒目圆睁，杀意浓烈"
+      background_desc: "暮色沉沉，乌云压顶"
+
+  # --- 同伴立绘 ---
+  - id: portrait_niefeng_neutral
+    template: character_portrait
+    category: character
+    priority: 1
+    vars:
+      <<: *niefeng
+      pose: "右手叉腰，左手自然下垂"
+      expression: "微笑从容，眼含笑意"
+      background_desc: "翠竹林间，光影斑驳"
+
+  # --- 战斗 sprite 序列示例 ---
+  - id: sprite_bujingyun_idle_south
+    template: sprite_idle
+    category: sprite/bujingyun
+    priority: 1
+    vars:
+      <<: *bujingyun
+      idle_variant: "重心微偏右脚，披风自然下垂"
+      facing: "south"
+
+  - id: sprite_bujingyun_attack_paiyun_1
+    template: sprite_attack
+    category: sprite/bujingyun
+    priority: 1
+    vars:
+      <<: *bujingyun
+      skill_name: "排云掌"
+      skill_desc: "双掌平推，气劲外放"
+      frame_index: 1
+      frame_total: 3
+      vfx_desc: "前方涌出半透明云形掌劲，蓝白色调"
+      facing: "east"
+
+  # --- UI 套件 ---
+  - id: ui_button_normal_start
+    template: ui_button
+    category: ui/button
+    priority: 1
+    vars:
+      state: "normal"
+      label: "开始游戏"
+
+  - id: ui_button_hover_start
+    template: ui_button
+    category: ui/button
+    priority: 1
+    vars:
+      state: "hover"
+      label: "开始游戏"
+
+  - id: ui_dialog_main
+    template: ui_dialog_box
+    category: ui/dialog
+    priority: 1
+    vars:
+      has_pointer: "true"
+
+  # --- 武功 / 道具图标 ---
+  - id: icon_skill_paiyunzhang
+    template: ui_icon_skill
+    category: ui/icon/skill
+    priority: 1
+    vars:
+      shape: "circle"
+      skill_name: "排云掌"
+      element_desc: "手掌劈出云形气劲，掌心发光"
+      color_scheme: "金红"
+
+  - id: icon_item_juesihaojian
+    template: ui_icon_item
+    category: ui/icon/item
+    priority: 1
+    vars:
+      category: "weapon"
+      item_name: "绝世好剑"
+      item_desc: "形制奇特的长剑，剑身淡蓝寒光，剑柄缠金线"
+      rarity: "legendary"
+
+  # --- 场景背景示例 ---
+  - id: scene_tianxiahui_main_hall
+    template: scene_background_45deg
+    category: scene
+    priority: 1
+    vars:
+      scene_name: "天下会大殿"
+      scene_desc: "气派宏伟的武林帮派议事大殿，立柱粗壮，正中王座空置"
+      time_of_day: "noon"
+      weather: "overcast"
+      key_elements: "立柱、王座、兵器架、燃烧的火盆"

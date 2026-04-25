@@ -1,0 +1,36 @@
+id: character_portrait
+description: 角色立绘（漫画大图，对话/菜单显示）
+quality: high
+size: "1024x1536"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官比例、发型、服装。
+
+reference_images:
+  - "assets/_style_bible/02_protagonist_face_sheet.png"
+
+prompt_template: |
+  {style_anchor}
+
+  角色立绘：{identity_anchor}
+
+  姿态：{{pose}}
+  表情：{{expression}}
+  构图：半身像，居中，留出对话框上方空间
+  背景：{{background_desc}}，弱化处理不抢角色
+
+  画面要求：
+  - 1024×1536 竖版海报构图
+  - 港漫风格分明的墨线轮廓
+  - 厚涂上色，金属/丝绸高光突出
+  - 不要文字、签名、水印
+
+  反向：{negative}
+
+variables:
+  character_name: "必填，如：步惊云"
+  character_appearance: "必填，外貌描述句，固定不变"
+  pose: "本张唯一变量，如：抱臂凝视前方"
+  expression: "本张唯一变量，如：冷峻无怒"
+  background_desc: "可选，默认：苍茫天空"

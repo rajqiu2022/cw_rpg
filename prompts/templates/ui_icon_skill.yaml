@@ -1,0 +1,39 @@
+id: ui_icon_skill
+description: 武功招式图标（含中文招式名）
+quality: medium
+size: "1024x1024"
+
+identity_anchor: |
+  武侠风武功图标，圆形或方形深色底 + 金色描边，
+  内含具象化的招式意象，与 UI Kit 风格一致。
+
+reference_images:
+  - "assets/_style_bible/04_ui_kit_sample.png"
+
+prompt_template: |
+  {style_anchor}
+
+  武功招式图标。
+
+  规格：
+  - 1024×1024 正方形画布
+  - 图标本体居中占 80%，边长比例 1:1
+  - 形状：{{shape}}（circle 圆形 / square 方角矩形 / hexagon 六边形）
+  - 主元素：{{element_desc}}（如手掌劈出云形气劲 / 风刃旋转 / 剑光斩月）
+  - 中央/底部展示中文招式名「{{skill_name}}」，
+    字形端正（楷书/行楷），字号清晰可读
+  - 配色：{{color_scheme}}（如金红 / 青蓝 / 玄黑金）
+  - 纯白色画布背景，rembg 抠图标本体
+
+  画面要求：
+  - 单一图标焦点，不要多元素并列
+  - 中文字必须正确，不要乱码
+  - 适合作为 64×64 ~ 128×128 缩略图清晰展示
+
+  反向：{negative}
+
+variables:
+  shape: "circle | square | hexagon"
+  skill_name: "如：排云掌 / 风神腿 / 莫名剑法"
+  element_desc: "本张唯一变量，描述招式意象"
+  color_scheme: "如：金红 / 青蓝 / 玄黑金"

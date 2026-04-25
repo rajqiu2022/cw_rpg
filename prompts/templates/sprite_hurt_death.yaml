@@ -1,0 +1,37 @@
+id: sprite_hurt_death
+description: 角色受击 / 倒地 sprite
+quality: medium
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官比例、发型、服装。
+
+reference_images:
+  - "assets/_style_bible/01_protagonist_full.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏 sprite，斜向 45° 视角俯视。
+
+  角色：{identity_anchor}
+  状态：{{state}}（hurt 受击踉跄 / down 跪倒 / death 仰卧倒地）
+  细节：{{detail_desc}}（如左肩中招血染衣襟 / 右膝跪地手撑剑）
+  朝向：{{facing}}
+
+  画面要求：
+  - 1024×1024，角色完整入画
+  - 纯白色背景
+  - 与该角色其它 sprite 保持比例与服装一致
+  - 受伤效果（血迹、撕裂）可见但克制，不血腥
+  - 不要文字
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  state: "hurt | down | death"
+  detail_desc: "本张唯一变量"
+  facing: "south | north | east | west"

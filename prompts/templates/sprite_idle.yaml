@@ -1,0 +1,35 @@
+id: sprite_idle
+description: 角色待机 sprite（45° 视角，4 方向 × 2 帧）
+quality: medium
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官比例、发型、服装。
+
+reference_images:
+  - "assets/_style_bible/01_protagonist_full.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏内 sprite，斜向 45° 视角俯视，纯色背景便于后期抠图。
+
+  角色：{identity_anchor}
+  动作：待机姿态，{{idle_variant}}（如轻微呼吸起伏 / 重心偏左）
+  朝向：{{facing}}（南/北/东/西，对应 45° 等距视角的四个方向）
+
+  画面要求：
+  - 1024×1024，角色占据中央 60%
+  - 纯白色背景（rembg 后处理需要）
+  - 单一动作帧，无动态模糊
+  - 港漫线稿质感但简化细节，适合作为游戏 sprite
+  - 不要透视变形，保持等距视角
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  idle_variant: "本张唯一变量"
+  facing: "south | north | east | west"

@@ -1,0 +1,51 @@
+# 环境变量与密钥
+.env
+.env.local
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# AI 出图原图（数据量大，按需推送或转 LFS）
+assets/raw/
+assets/processed/_tmp/
+*.failed.log
+
+# 后处理临时
+*.tmp
+*.bak
+
+# Godot
+.godot/
+.import/
+export.cfg
+export_presets.cfg
+*.translation
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# 日志
+logs/
+*.log
+
+# 操作系统
+desktop.ini
+$RECYCLE.BIN/

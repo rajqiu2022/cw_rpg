@@ -1,0 +1,36 @@
+id: tileset_45deg
+description: 45° 等距瓦片集（用于 Godot TileMap 拼装地图）
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  港漫风武侠瓦片，严格 45° 等距视角，
+  瓦片之间可无缝拼接。
+
+reference_images:
+  - "assets/_style_bible/05_scene_sample_isometric.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏 TileMap 瓦片集，{{tile_theme}} 主题。
+
+  规格：
+  - 1024×1024 画布，4×4 网格分布 16 个瓦片
+  - 每个瓦片 256×256，严格 45° 等距视角
+  - 瓦片类型：{{tile_types}}（如地砖 / 草地 / 石阶 / 水面 / 墙基 / 屋顶）
+  - 相邻瓦片**边缘必须无缝**（同色调、同纹理过渡）
+  - 包含至少 2 种变体（避免拼接重复感）
+  - 不要文字、不要标号、不要边框线
+  - 纯白色画布缝隙（便于后处理切片）
+
+  画面要求：
+  - 港漫厚涂质感
+  - 顶面 / 侧面光照统一（默认从右上角来光）
+  - 不要透视变形
+
+  反向：{negative}
+
+variables:
+  tile_theme: "如：天下会石质地砖 / 凤溪村泥土路 / 大殿木地板"
+  tile_types: "本张主要变量"

@@ -1,0 +1,42 @@
+id: sprite_attack
+description: 角色战斗招式 sprite（含武功特效）
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官比例、发型、服装。
+
+reference_images:
+  - "assets/_style_bible/01_protagonist_full.png"
+  - "assets/_style_bible/06_combat_pose_reference.png"
+
+prompt_template: |
+  {style_anchor}
+
+  战斗招式 sprite，斜向 45° 视角俯视，单帧关键动作。
+
+  角色：{identity_anchor}
+  招式：{{skill_name}}（{{skill_desc}}），
+       动作幅度大、有力量感，第 {{frame_index}} / {{frame_total}} 帧
+  朝向：{{facing}}（攻击方向）
+  特效：{{vfx_desc}}（如剑气光弧 / 掌风涟漪 / 飞溅墨色）
+
+  画面要求：
+  - 1024×1024，角色 + 特效共同居中
+  - 纯白色背景（特效本身允许有色调）
+  - 港漫战斗分镜质感，但保留 sprite 必要的视角一致性
+  - 武器、特效色彩需突出，便于游戏中识别
+  - 不要文字、招式名
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  skill_name: "如：排云掌"
+  skill_desc: "如：双掌平推，气劲外放"
+  frame_index: "1, 2, 3"
+  frame_total: "3 或 5"
+  vfx_desc: "本张唯一变量"
+  facing: "south | north | east | west"

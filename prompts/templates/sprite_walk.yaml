@@ -1,0 +1,38 @@
+id: sprite_walk
+description: 角色行走 sprite（4 方向 × N 帧动画序列）
+quality: medium
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官比例、发型、服装。
+
+reference_images:
+  - "assets/_style_bible/01_protagonist_full.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏内 sprite 行走帧，斜向 45° 视角俯视。
+
+  角色：{identity_anchor}
+  动作：行走中，第 {{frame_index}} 帧（共 {{frame_total}} 帧），
+       {{leg_phase}}（如左脚抬起 / 右脚落地）
+  朝向：{{facing}}
+
+  画面要求：
+  - 1024×1024，角色居中
+  - 纯白色背景
+  - 与同序列其它帧保持完全一致的角色比例与服装细节
+  - 仅腿部姿态变化，上半身保持稳定
+  - 衣摆 / 披风可有轻微飘动
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  frame_index: "1, 2, 3, 4"
+  frame_total: "4 或 6"
+  leg_phase: "left_up | right_up | both_pass | left_down | right_down"
+  facing: "south | north | east | west"

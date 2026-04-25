@@ -1,0 +1,22 @@
+# OpenAI SDK（gpt-image-2 支持）
+openai>=1.55.0
+
+# 异步 HTTP（OpenAI SDK 已内置 httpx，但流水线工具脚本可能直接用）
+aiohttp>=3.9.0
+
+# YAML 模板与任务清单
+PyYAML>=6.0.1
+
+# 图像处理（切片、对齐、sprite sheet 拼装）
+Pillow>=10.4.0
+
+# 透明背景抠图（GPT Image 2 不支持透明，必须本地兜底）
+# rembg 体积较大（拉 onnx 模型），首次运行会下载
+rembg>=2.0.59
+onnxruntime>=1.18.0
+
+# .env 文件加载
+python-dotenv>=1.0.1
+
+# CLI 美化输出（进度条、表格）
+rich>=13.7.0

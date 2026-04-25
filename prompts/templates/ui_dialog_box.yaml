@@ -1,0 +1,35 @@
+id: ui_dialog_box
+description: UI 对话框 / 信息框（9-slice 友好）
+quality: high
+size: "1536x1024"
+
+identity_anchor: |
+  港漫风武侠 UI 对话框，深棕色羊皮纸底 + 金色花纹边框，
+  与 Style Bible 中 UI Kit 完全一致。
+
+reference_images:
+  - "assets/_style_bible/04_ui_kit_sample.png"
+
+prompt_template: |
+  {style_anchor}
+
+  武侠风游戏对话框 UI 元素。
+
+  规格：
+  - 1536×1024 横版
+  - 对话框居中，长宽比约 4:1，占据画面 80%
+  - 边框：金色花纹（云纹 / 龙纹），四角对称
+  - 底色：深色羊皮纸质感（半透明感即可，alpha 后期 rembg 处理）
+  - 内部留白：足以容纳 3-4 行文字
+  - **不要在画面内填充任何文字**（游戏运行时再叠文字）
+  - 左下角小三角指示符（指向说话角色）：{{has_pointer}}
+  - 纯白色画布背景
+
+  画面要求：
+  - 9-slice 友好：四角和四边纹饰对称、可拉伸
+  - 不要装饰性图案叠加在留白区域
+
+  反向：{negative}
+
+variables:
+  has_pointer: "true | false"

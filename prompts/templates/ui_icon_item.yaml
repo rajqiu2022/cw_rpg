@@ -1,0 +1,38 @@
+id: ui_icon_item
+description: 道具图标（武器/丹药/材料/任务物品）
+quality: medium
+size: "1024x1024"
+
+identity_anchor: |
+  武侠风游戏道具图标，方形深色底 + 金色描边，
+  内含写实道具立绘，与 UI Kit 风格一致。
+
+reference_images:
+  - "assets/_style_bible/04_ui_kit_sample.png"
+
+prompt_template: |
+  {style_anchor}
+
+  武侠风游戏道具图标，{{category}} 类。
+
+  规格：
+  - 1024×1024 正方形画布
+  - 道具本体居中占 70%，4:5 角度俯视立绘
+  - 道具：{{item_name}}，{{item_desc}}
+  - 品质：{{rarity}}（影响外发光颜色：白 普通 / 蓝 精良 / 紫 史诗 / 橙 传说）
+  - 边框：金色描边 + 品质色辉光
+  - 中文道具名「{{item_name}}」于图标底部窄条显示（字形端正）
+  - 纯白色画布背景，rembg 抠取图标本体
+
+  画面要求：
+  - 单一道具焦点
+  - 写实质感（金属反光 / 丹药晶莹 / 草药纹理）
+  - 中文字清晰可读
+
+  反向：{negative}
+
+variables:
+  category: "weapon | pill | material | quest"
+  item_name: "如：绝世好剑 / 雪饮狂刀 / 回春丹"
+  item_desc: "本张唯一变量"
+  rarity: "common | rare | epic | legendary"

@@ -1,0 +1,40 @@
+id: scene_background_45deg
+description: 45° 视角场景背景（地图整图）
+quality: high
+size: "1536x1024"
+
+identity_anchor: |
+  港漫风武侠场景，斜向 45° 等距视角俯视，
+  与 Style Bible 中 isometric 场景示例一致。
+
+reference_images:
+  - "assets/_style_bible/05_scene_sample_isometric.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏地图场景，斜向 45° 等距视角俯视。
+
+  场景：{{scene_name}}
+  描述：{{scene_desc}}
+  时辰：{{time_of_day}}（黎明 / 正午 / 黄昏 / 子夜）
+  天气：{{weather}}（晴 / 阴 / 雨 / 雾 / 雪）
+  关键元素：{{key_elements}}（如石阶 / 旗帜 / 大殿入口 / 兵器架）
+
+  画面要求：
+  - 1536×1024 横版
+  - 严格 45° 等距视角，**不要透视变形**
+  - 厚涂港漫质感，墨线分明
+  - 角色立绘大小约占场景 1/12（玩家可识别站位）
+  - 留出可通行区域，不要被装饰物挤占
+  - 画面边缘可适度暗角，引导视线
+  - 不要文字、地名标签
+
+  反向：{negative}
+
+variables:
+  scene_name: "如：天下会大殿 / 凤溪村口 / 凌云窟"
+  scene_desc: "本张唯一变量，1-2 句"
+  time_of_day: "dawn | noon | dusk | night"
+  weather: "clear | overcast | rainy | foggy | snowy"
+  key_elements: "可选，强调必出现的元素"
