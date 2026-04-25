@@ -32,6 +32,17 @@ RPG_GAME/
 
 ---
 
+## 环境冒烟测试（不烧钱）
+
+装完依赖第一时间跑这个，验证整条流水线骨架是否健康：
+
+```powershell
+pip install -r scripts/requirements.txt
+python scripts/smoke_test.py
+```
+
+期望看到 `[PASS] smoke test all green`。整个过程不调任何 API、不需要 OPENAI_API_KEY。
+
 ## 快速开始
 
 ### 1. 安装依赖

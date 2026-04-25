@@ -23,6 +23,15 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Iterable
 
+# Force UTF-8 stdout / stderr on Windows (default cp936/GBK can't encode
+# Chinese + symbols used by Rich).
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
 from dotenv import load_dotenv
 from PIL import Image
 from rich.console import Console
@@ -218,7 +227,7 @@ def main() -> int:
     summary.add_row("失败", str(len(failed)))
     console.print(summary)
     for r in failed:
-        console.print(f"  [red]✗ {r['src']}: {r.get('error', r['status'])}[/red]")
+        console.print(f"  [red][x] {r['src']}: {r.get('error', r['status'])}[/red]")
 
     # 拼 sprite sheet
     if args.pack_sheets:

@@ -285,6 +285,31 @@ python scripts\verify.py --strict   # warn 也视为 fail
 
 ---
 
+## Windows 环境特别提示
+
+> 在 Windows + PowerShell 下首次跑这套流水线，有两个固定坑：
+
+1. **`pip install` 失败 `'gbk' codec can't decode`**  
+   原因：`requirements.txt` 里如果有中文注释，pip 会用系统默认 GBK 读取。  
+   修复：本仓库已把 `scripts/requirements.txt` 注释全部改为英文。
+
+2. **rich 库输出 emoji / 中文崩溃 `UnicodeEncodeError`**  
+   原因：PowerShell 默认 codepage 是 936（GBK），rich 想打印 `⚠` `⚙` 等符号会炸。  
+   修复方案（已内置）：`gen_assets.py` / `postprocess.py` / `verify.py` 顶部都做了
+   `sys.stdout.reconfigure(encoding="utf-8")`，把进程内输出强制切到 UTF-8。  
+   如果中文还是显示乱码，再额外执行：  
+   ```powershell
+   chcp 65001
+   [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+   ```
+
+3. **不烧钱的环境检查（推荐每次开机先跑一次）**  
+   ```powershell
+   python scripts\smoke_test.py
+   ```
+   它会跑 `gen_assets --dry-run` + `verify` + `postprocess --help`，
+   **不调任何 API**，全绿就说明环境干净。
+
 ## 经验记录（持续更新）
 
 > 用户规则要求：每次出现问题修复后做经验记录，避免反复出错。

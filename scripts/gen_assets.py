@@ -25,6 +25,17 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+# On Windows the default console codepage is often GBK / cp936 which cannot
+# encode many of the characters Rich uses (Chinese text + the occasional
+# Unicode symbol). Force stdout/stderr to UTF-8 so the script runs cleanly
+# in any PowerShell / cmd / Cursor terminal.
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
 import yaml
 from dotenv import load_dotenv
 from openai import AsyncOpenAI, APIError, BadRequestError, RateLimitError
@@ -143,7 +154,7 @@ def render_template(template_name: str, vars_: dict, shared: dict) -> dict:
             refs.append(p)
         else:
             console.print(
-                f"  [yellow]⚠ 参考图缺失：{p}（跳过该参考）[/yellow]"
+                f"  [yellow][warn] 参考图缺失：{p}（跳过该参考）[/yellow]"
             )
 
     return {
@@ -350,7 +361,7 @@ async def process_task(
             except BadRequestError as e:
                 last_err = e
                 console.print(
-                    f"  [red]✗ {task_id} 请求被拒（不重试）：{e}[/red]"
+                    f"  [red][x] {task_id} 请求被拒（不重试）：{e}[/red]"
                 )
                 break
             except Exception as e:
@@ -403,7 +414,7 @@ async def main_async(args: argparse.Namespace) -> int:
 
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key or api_key.startswith("sk-..."):
-        console.print("[red]✗ 未配置 OPENAI_API_KEY，请先复制 .env.example 为 .env 并填入[/red]")
+        console.print("[red][x] 未配置 OPENAI_API_KEY，请先复制 .env.example 为 .env 并填入[/red]")
         return 2
 
     budget_limit = args.budget or float(os.getenv("BUDGET_LIMIT_USD", "80.0"))
@@ -478,7 +489,7 @@ async def main_async(args: argparse.Namespace) -> int:
         try:
             results = await asyncio.gather(*coros, return_exceptions=False)
         except BudgetExceeded as e:
-            console.print(f"[red]✗ {e}[/red]")
+            console.print(f"[red][x] {e}[/red]")
 
     elapsed = time.time() - started
 

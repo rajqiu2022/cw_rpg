@@ -25,6 +25,15 @@ from collections import Counter
 from datetime import datetime
 from pathlib import Path
 
+# Force UTF-8 stdout / stderr on Windows (default cp936/GBK can't encode
+# Chinese + symbols used by Rich).
+for _stream in (sys.stdout, sys.stderr):
+    if hasattr(_stream, "reconfigure"):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
+
 from dotenv import load_dotenv
 from PIL import Image
 from rich.console import Console
