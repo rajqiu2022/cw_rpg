@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"bandit_mountain"
+display_name = "山贼"
+portrait_path = "res://art/characters/enemy_thug_angry.png"
+level = 2
+max_hp = 95
+max_mp = 0
+attack = 16
+defense = 6
+speed = 9
+skill_ids = Array[StringName]([&"basic_attack", &"heavy_swing"])
+aggression = 0.6
+drop_gold_min = 25
+drop_gold_max = 45
+drop_exp = 35
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{ "item_id": "healing_pill_minor", "chance": 0.4, "count": 1 }])

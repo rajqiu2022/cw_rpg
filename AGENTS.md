@@ -8,7 +8,18 @@
 
 ## 📍 一句话现状
 
-漫画 2.5D 武侠 RPG（致敬《风云之天下会》1998），**程序框架已搭好**（Godot 4 + GDScript），**美术管线已成型**（DMXAPI/OpenAI 双后端），下一步等用户在 Godot 编辑器里 F5 验收 demo 闭环。
+漫画 2.5D 武侠 AVG-RPG（致敬《风云之天下会》1998 玩法），**v0.2.0-m1 编码完成**（数据驱动战斗 + EventBus + Inventory），等用户跑 `docs/mvp-m1-checklist.md` 验收 → 进 M2（探索场景 + 对话）。
+
+### 🎯 v0.2.0 总目标（用户拍板 2026-04-26）
+
+完成"开场到第一章结束"的端到端 5-8 分钟可玩 MVP，包含：
+- AVG 式点击场景（不做顶视角自由走，更适配 GPT Image 美术）
+- 1v1 回合制战斗（已有，本期数据驱动化）
+- 背包/装备/任务/对话/商店各一个最小但端到端可用的版本
+- 占位剧本：武当弟子沈不归追凶（角色名/世界观可后续完全替换）
+- 7 个 milestone（M1-M7），合计约 10 小时编码
+
+详见 `docs/design-mvp-chapter1.md`（决策依据 + 系统模块图 + 数据模型）。
 
 ---
 
@@ -69,35 +80,37 @@ RPG_GAME/
 - `1777180910974.png`（场景）`task_1494656_1.png` `task_1494976_1.png`（人物）
 - 已复制改名进 `game/art/` 作 demo 占位
 
-### 4. Godot 4 程序骨架（game/）
-完整可跑的最小闭环：**主菜单 → 战斗 → 胜利/失败 → 存档**
+### 4. Godot 4 程序骨架（game/）— v0.1.0
+完整可跑的最小闭环：**主菜单 → 战斗 → 胜利/失败 → 存档**（2026-04-27 实机验收通过）
 
-| 文件 | 作用 |
-|---|---|
-| `project.godot` | 入口，3 个 autoload 已配置 |
-| `scripts/autoload/game_state.gd` | 全局玩家/队伍/金钱 |
-| `scripts/autoload/scene_router.gd` | 场景跳转中枢 |
-| `scripts/autoload/save_manager.gd` | JSON 存档（user://save_0.json）|
-| `scripts/domain/character_stats.gd` | 角色面板 Resource（class_name）|
-| `scripts/domain/skill.gd` | 技能 Resource |
-| `scripts/battle/battle_controller.gd` | 回合制核心，speed 决先后手 |
-| `scripts/ui/main_menu.gd` | 主菜单脚本 |
-| `scripts/ui/result_victory.gd` | 胜利结算 |
-| `scripts/ui/result_defeat.gd` | 失败结算 |
-| `scenes/main_menu.tscn` | Lovart 主界面图作背景 |
-| `scenes/battle.tscn` | 双方立绘 + 血条 + 4 按钮（攻击/排云掌/防御/逃跑）|
-| `scenes/result_victory.tscn` | 胜利画面 |
-| `scenes/result_defeat.tscn` | 失败画面 |
+### 5. v0.2.0-M1 数据驱动重构（2026-04-26）
+- 5 个 autoload：`EventBus` / `GameState` / `Inventory` / `SceneRouter` / `SaveManager`
+- 8 个 domain Resource 类：`CharacterStats` / `Skill` / `Item` / `Equipment` / `EnemyDef` / `DialogNode` / `DialogScript` / `SceneScript` / `QuestDef` / `ShopDef`
+- 14 个 .tres 数据文件：4 技能 + 3 敌人 + 4 物品 + 2 装备 + 1 商店
+- BattleController 重构为数据驱动：
+  - 敌人/技能从 .tres 加载，新增敌人/技能 = 加文件不改代码
+  - 装备加成自动叠加到攻击/防御/速度
+  - 战利品按 EnemyDef.drop_*（必掉 + 概率掉）自动入背包
+  - 关键事件广播 EventBus（QuestManager 将订阅）
+- 主角更名：主角 → 沈不归（占位，可后续完全替换）
+
+> 👉 等用户跑 `docs/mvp-m1-checklist.md` 7 项验收，全 ✓ 后 M1 关闭，进入 M2。
 
 ---
 
-## 🚧 待办（按优先级）
+## 🚧 待办（v0.2.0 路线 — 按 milestone 推进）
 
-1. **[人工]** 装 Godot 4.3 → 打开 `game/project.godot` → F5 跑通验收
-2. 加多敌人：`_build_enemy()` 改为读 `res://data/enemies/<id>.tres`
-3. 加多技能：硬编码"排云掌"改为读 `res://data/skills/*.tres`，UI 显示当前装备的 4 个
-4. 加章节流程：场景列表 → 选关 → 战斗
-5. **才**回到 AI 出图：双引擎策略（Lovart 网页版手工做风格 + DMXAPI/OpenAI 量产）
+| M | 时长 | 内容 | 状态 |
+|---|---|---|---|
+| **M1** | 1.5h | 数据驱动重构 + EventBus + Inventory | ✅ **代码完成**，等验收 |
+| **M2** | 2h | 探索场景 Field + 互动热点 + 对话系统 | ⏳ 下一步 |
+| **M3** | 1.5h | Quest 系统 + 主线任务 1 | ⏸ |
+| **M4** | 1.5h | 多场景跳转 + NPC 对话 + 商店 | ⏸ |
+| **M5** | 1h | 背包/装备 UI + 物品使用 | ⏸ |
+| **M6** | 1.5h | 章末 Boss + 状态异常 + 章节结算 | ⏸ |
+| **M7** | 1h | 5 槽存档 + 加载/继续游戏 | ⏸ |
+
+> 全程不做：动画特效 / BGM / 多人队伍战 / 第二章 / 多语言 / 打包发布。详见 `docs/design-mvp-chapter1.md` §11。
 
 ---
 
@@ -159,4 +172,4 @@ Cursor 把所有对话以 JSONL 存在本地：
 
 ---
 
-_最后更新：2026-04-26 · 维护者：每完成一个里程碑追加"已完成"+ 调整"待办"_
+_最后更新：2026-04-27（v0.2.0-m1 编码完成）· 维护者：每完成一个里程碑追加"已完成"+ 调整"待办"_

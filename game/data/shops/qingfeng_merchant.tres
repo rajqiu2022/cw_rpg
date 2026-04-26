@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/shop_def.gd" id="1_shop"]
+
+[resource]
+script = ExtResource("1_shop")
+shop_id = &"qingfeng_merchant"
+display_name = "清风商铺"
+greeting = "客官，远道而来，看看小店有什么需要？"
+stock = Array[StringName]([&"healing_pill_minor", &"healing_pill_major", &"mana_pill", &"cloth_armor", &"iron_sword"])
+sell_back_ratio = 0.5

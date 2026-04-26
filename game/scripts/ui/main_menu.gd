@@ -10,15 +10,16 @@ func _ready() -> void:
 	btn_continue.pressed.connect(_on_continue_pressed)
 	btn_quit.pressed.connect(_on_quit_pressed)
 	btn_continue.disabled = not SaveManager.has_save(0)
-	version_label.text = "v0.1.0  ·  framework only"
+	version_label.text = "v0.2.0-m1  ·  data-driven battle"
 
 func _on_new_game_pressed() -> void:
 	GameState.reset_for_new_game()
-	SceneRouter.start_battle("default_thug")
+	# M1 仍走 main_menu → battle 直跳，M2 起会接 Field 探索场景
+	SceneRouter.start_battle("thug_lone")
 
 func _on_continue_pressed() -> void:
 	if SaveManager.load_from_slot(0):
-		SceneRouter.start_battle("default_thug")
+		SceneRouter.start_battle("thug_lone")
 
 func _on_quit_pressed() -> void:
 	SceneRouter.quit_game()

@@ -19,7 +19,7 @@ func _ready() -> void:
 func _init_default_player() -> void:
 	var stats := CharacterStats.new()
 	stats.character_id = "protagonist"
-	stats.display_name = "主角"
+	stats.display_name = "沈不归"
 	stats.portrait_path = "res://art/characters/protagonist_neutral.png"
 	stats.level = 1
 	stats.max_hp = 120
@@ -29,12 +29,15 @@ func _init_default_player() -> void:
 	stats.attack = 18
 	stats.defense = 10
 	stats.speed = 12
+	var skill_ids: Array[StringName] = [&"basic_attack", &"palm_strike", &"defend"]
+	stats.skills = skill_ids
 	player = stats
-	party = [stats]
+	party = [stats] as Array[CharacterStats]
 
 func add_gold(amount: int) -> void:
 	gold = max(0, gold + amount)
 	emit_signal("gold_changed", gold)
+	EventBus.gold_changed.emit(gold)
 
 func reset_for_new_game() -> void:
 	flags.clear()

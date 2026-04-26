@@ -202,12 +202,89 @@ f:\Code\RPG_GAME\
 
 ---
 
-## 6. 下一步路线图（轻量级）
+## 6. 下一步路线图（v0.2.0 — MVP 第一章）
 
-按优先级递减：
+详见 `docs/design-mvp-chapter1.md`，7 个 milestone 推进：
 
-1. **跑通 Godot demo 闭环**：主菜单 → 战斗 → 胜利 → 主菜单（你刚到这步）
-2. **加多个敌人**：把 `_build_enemy` 改为从 `res://data/enemies/<id>.tres` 加载
-3. **加多个技能**：把硬编码的"排云掌"改为读 `res://data/skills/*.tres`，UI 显示当前装备的 4 个技能
-4. **加地图/章节流程**：先简单的 `Scene 列表 → 选关 → 战斗`
-5. **才回到 AI 出图**：补充新角色立绘、新场景，按双引擎策略（Lovart 风格 + DMXAPI/OpenAI 量产）
+```
+M1 数据驱动重构  ──→ M2 探索场景+对话  ──→ M3 任务系统
+M4 多场景+商店    ──→ M5 背包/装备 UI   ──→ M6 章末 Boss+结算
+M7 5 槽存档
+```
+
+每个 M 完成都跟一份验收清单（如 `docs/mvp-m1-checklist.md`），用户 F5 跑一遍点完所有 ✓ 才进下一个 M。
+
+---
+
+## 7. v0.2.0-M1 阶段经验记录（2026-04-27）
+
+### 7.1 Godot 4 类型化数组在 .tres 里的写法
+
+**坑**：直接写 `drop_random = [{...}]` 给类型化字段 `Array[Dictionary]` 赋值，Godot 4 加载时会报 type mismatch 警告，运行时字段可能为空。
+
+**修复**：必须显式包装类型构造器：
+```
+drop_random = Array[Dictionary]([{ "item_id": "...", "chance": 0.5 }])
+skill_ids = Array[StringName]([&"basic_attack", &"palm_strike"])
+drop_items = Array[StringName]([])         # 空数组也得包
+```
+
+`StringName` 字面量用 `&"name"` 前缀（`@""` 是 unique node path，不通用）。
+
+### 7.2 typed array 字段的 GDScript 赋值
+
+**坑**：`stats.skills = [&"a", &"b"]` 给 `Array[StringName]` 字段赋 untyped array literal 在 Godot 4 会触发 implicit conversion warning。
+
+**修复**：先建好类型化局部变量再赋：
+```gdscript
+var skill_ids: Array[StringName] = [&"basic_attack", &"palm_strike"]
+stats.skills = skill_ids
+party = [stats] as Array[CharacterStats]    # 或用 as 强制 cast
+```
+
+### 7.3 函数命名要避开 Godot 内置方法
+
+**坑**：在 `DialogScript`（继承 Resource）里写 `func get_node(id)` 起初不报错，但若未来改继承 Node 就立即与 `Node.get_node()` 冲突；同理 `Inventory.has()` 与 Dictionary/Array 内置 `has` 在某些上下文有歧义。
+
+**修复**：用更具体的方法名：
+- `DialogScript.get_node()` → `find_node_by_id()`
+- `Inventory.has()` → `has_item()`
+
+通用规则：autoload / Resource 子类的公开方法**避开** `get_node` / `has` / `clear` / `add_child` 等节点/容器内置名。
+
+### 7.4 全局信号枢纽 EventBus 模式
+
+**架构选择**：所有"游戏事件"统一从 `EventBus` 发出（`enemy_defeated` / `item_picked_up` / `scene_entered` 等），任务/成就/统计系统都订阅 EventBus 而不是直接跨模块连接信号。
+
+**好处**：
+- 任务系统不需要知道谁触发了"杀敌"——只看 `enemy_defeated.emit(id)`
+- 战斗/场景代码不需要 import 任务系统
+- 加新订阅者（成就/统计/录像）零侵入
+
+**autoload 顺序**：`EventBus` 必须排在所有依赖它的 autoload **之前**，因为 GameState/Inventory 在 `_ready()` 里就可能 `EventBus.xxx.emit()`。
+
+```
+EventBus → GameState → Inventory → SceneRouter → SaveManager
+```
+
+### 7.5 装备加成不能写进 CharacterStats.attack 字段
+
+**坑**：很容易把"装备 +5 攻"直接累加进 `_player.attack`，但脱装备时复原会算错（已经升级过的话）。
+
+**正确做法**：`CharacterStats.attack` 永远只代表"裸值"，装备加成在战斗运行时即查即算：
+
+```gdscript
+func _player_effective_attack() -> int:
+    return _player.attack + Inventory.get_atk_bonus()
+```
+
+`Inventory.get_atk_bonus()` 遍历当前 equipped_weapon / equipped_armor 求和。脱装备只需 `Inventory.unequip(slot)`，不动 stats 字段。
+
+### 7.6 .tres 单文件多 Resource 引用
+
+`@export var on_enter_dialog: DialogScript = null` 这种 Resource 字段，在 .tres 编辑器里可以"内嵌"或"引用外部 .tres"。
+
+**约定**：`SceneScript` 的对话引用统一用外部 .tres（`res://data/dialogs/<id>.tres`），便于：
+- 单独编辑对话不动场景
+- 多个场景复用同一段对话
+- diff 友好（一个文件一个改动）

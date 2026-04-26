@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"thug_lone"
+display_name = "落单匪徒"
+portrait_path = "res://art/characters/enemy_thug_angry.png"
+level = 1
+max_hp = 60
+max_mp = 0
+attack = 12
+defense = 4
+speed = 7
+skill_ids = Array[StringName]([&"basic_attack"])
+aggression = 0.4
+drop_gold_min = 10
+drop_gold_max = 25
+drop_exp = 20
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{ "item_id": "healing_pill_minor", "chance": 0.5, "count": 1 }])
