@@ -36,6 +36,7 @@ for _stream in (sys.stdout, sys.stderr):
         except Exception:
             pass
 
+import httpx
 import yaml
 from dotenv import load_dotenv
 from openai import AsyncOpenAI, APIError, BadRequestError, RateLimitError
@@ -521,9 +522,18 @@ async def main_async(args: argparse.Namespace) -> int:
     )
 
     if not args.dry_run:
+        # 关键修复（经验记录）：
+        # OpenAI SDK 默认 connect timeout = 5s，DMXAPI 中转的 TLS 握手 + 图像
+        # 生成首字节响应往往需要 30-60s。必须显式设长超时，否则所有请求会
+        # 在 ~16s 内失败重试 3 次。
+        connect_timeout = float(os.getenv("HTTP_CONNECT_TIMEOUT", "30"))
+        total_timeout = float(os.getenv("HTTP_TOTAL_TIMEOUT", "300"))
+        http_timeout = httpx.Timeout(total_timeout, connect=connect_timeout)
         client = AsyncOpenAI(
             api_key=api_key,
             base_url=base_url,
+            timeout=http_timeout,
+            max_retries=0,  # 自己实现重试逻辑（带退避），关掉 SDK 内置的
         )
     else:
         client = None  # type: ignore

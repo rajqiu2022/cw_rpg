@@ -176,3 +176,23 @@ DMXAPI 后台支持自助开票（增值税普票），充值即可开。
 - **币种切换**：如果 `BUDGET_LIMIT_USD` 设了 80，但用户切到 DMXAPI，会被当 ¥80 用——`gen_assets.py` 已处理，DMXAPI 模式优先读 `BUDGET_LIMIT_CNY`
 - **.com vs .cn 域名**：`https://www.dmxapi.cn` 和 `https://www.dmxapi.com` 是**两个独立账户系统**（人民币 vs 美元计价），令牌不通用，注册时选好不要混
 - **API key 防泄露**：聊天工具、Cursor、IDE 历史都是泄露源。最稳的做法：`.env` 文件 + `.gitignore` + 永远不复制粘贴
+- **🔥 OpenAI SDK connect timeout 默认 5s 太短**：DMXAPI 中转的 TLS 握手 + 图像生成首字节响应需要 30-90s。**必须显式传 `httpx.Timeout(300, connect=30)`**，否则所有请求会在 16s 左右连续失败重试。`gen_assets.py` 已通过 `HTTP_CONNECT_TIMEOUT` / `HTTP_TOTAL_TIMEOUT` 环境变量可配置，默认 30/300s
+- **🔥 DMXAPI 模型 ID 与文档不完全一致**（实测时间 2026-04-26）：
+  - ✅ `gpt-image-1`、`gpt-image-2`、`gpt-image-1.5`、`dall-e-3`、`imagen4` —— 文档与实际一致
+  - ❌ `seedream-3.0` —— **不存在**，真名 `doubao-seedream-3-0-t2i-250415`（也有 4-0/4-5/5-0）
+  - ❌ `flux-kontext-pro` —— 已被替换为 `flux-2-pro` / `flux-2-flex`
+  - 🆕 `gemini-3-pro-image-preview` —— 新增，未在文档高亮
+  - 🆕 `qwen-image-2.0-pro` —— 国产通义万相，便宜
+  - **排查方式**：`python scripts/check_dmxapi.py --no-image` 列出全部 771 个模型，搜关键词
+- **诊断脚本 `check_dmxapi.py`**：连通性 / 余额 / 出图分别测试，¥0.08-1 成本，避免在 700 张正式批量前才发现配置问题
+
+### 当前已验证可用模型（2026-04-26 实测）
+
+| 模型 ID | 单价 | 实测耗时 | 备注 |
+|---|---|---|---|
+| `gpt-image-1` | ¥1.0 | 32-65s | ✅ 成功，质量好 |
+| `gpt-image-2` | 估 ¥1.5 | 待测 | DMXAPI 已上架 OpenAI 最新 |
+| `dall-e-3` | 估 ¥0.6 | 待测 | 老款，便宜 |
+| `flux-2-pro` | 估 ¥0.4 | 待测 | 替代 flux-kontext-pro |
+| `doubao-seedream-3-0-t2i-250415` | ¥0.08 | 待测 | 字节即梦 3.0 |
+| `qwen-image-2.0-pro` | 估 ¥0.3 | 待测 | 国产兜底 |
