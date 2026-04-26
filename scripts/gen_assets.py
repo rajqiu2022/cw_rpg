@@ -367,12 +367,15 @@ async def process_task(
                 await budget.add(actual_cost)
 
                 out_png.write_bytes(img_bytes)
+                cur = currency_for(backend)
                 out_meta.write_text(
                     json.dumps(
                         {
                             "id": task_id,
                             "template": template,
                             "category": category,
+                            "model": meta["model"],
+                            "backend": backend,
                             "vars": vars_,
                             "prompt": spec["prompt"],
                             "size": spec["size"],
@@ -380,7 +383,8 @@ async def process_task(
                             "background": spec["background"],
                             "reference_images": meta["reference_images"],
                             "usage": meta["usage"],
-                            "cost_usd": round(actual_cost, 6),
+                            "cost": round(actual_cost, 6),
+                            "currency": cur,
                             "generated_at": datetime.now(timezone.utc).isoformat(),
                             "attempt": attempt + 1,
                         },
