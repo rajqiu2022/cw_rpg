@@ -9,10 +9,13 @@ style_anchor: |
   整体氛围古风武侠、苍凉壮阔。
 
 # 通用反向词：避免常见翻车
+# 注：GPT Image 倾向输出繁体中文，必须显式禁止；详见 docs/dmxapi-setup.md 经验记录
 negative: |
   现代服装，3D CG 渲染感，照片级写实，
   网络红人脸，二次元萌系，迪士尼风，
-  畸形手指，多余四肢，水印，签名，文字乱码
+  畸形手指，多余四肢，水印，签名，文字乱码，
+  繁体中文，繁体字，traditional chinese characters，
+  错字，简化字写错
 
 # 默认参数（具体模板可覆盖）
 defaults:
