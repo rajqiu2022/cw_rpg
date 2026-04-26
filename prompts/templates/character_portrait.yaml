@@ -1,13 +1,17 @@
 id: character_portrait
 description: 角色立绘（漫画大图，对话/菜单显示）
 quality: high
-size: "1024x1536"
+# 实测 GPT Image 2 在中国题材会自然倾向正方形构图，且效果优秀。
+# 1024x1024 比 1024x1536 便宜约 50%，且更适合作为 UI 中通用头像 / 立绘双用。
+size: "1024x1024"
 
 identity_anchor: |
   {{character_name}}，{{character_appearance}}，
   与参考图保持完全一致的脸型、五官比例、发型、服装。
 
+# 同时引用全身锚点（01）+ 表情参考（02），双重保险锁脸
 reference_images:
+  - "assets/_style_bible/01_protagonist_full.png"
   - "assets/_style_bible/02_protagonist_face_sheet.png"
 
 prompt_template: |
@@ -17,13 +21,14 @@ prompt_template: |
 
   姿态：{{pose}}
   表情：{{expression}}
-  构图：半身像，居中，留出对话框上方空间
+  构图：半身像或全身像，居中，留出对话框上方空间
   背景：{{background_desc}}，弱化处理不抢角色
 
   画面要求：
-  - 1024×1536 竖版海报构图
+  - 1024×1024 正方形构图
   - 港漫风格分明的墨线轮廓
   - 厚涂上色，金属/丝绸高光突出
+  - 披风暗红内衬必须保留（与参考图一致）
   - 不要文字、签名、水印
 
   反向：{negative}

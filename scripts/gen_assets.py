@@ -59,11 +59,13 @@ console = Console()
 
 
 # ---------------------------------------------------------------------------
-# GPT Image 2 价格（USD），来自 OpenAI 官方 2026-04-21 发布信息
-# 1024x1024 价格作为默认估算依据；其它尺寸用 token 公式更准
+# 价格表 —— 区分官方直连（USD）和 DMXAPI 中转（CNY）
+# OpenAI 官方价格：2026-04-21 发布的 gpt-image-2 token-based 计费
+# DMXAPI 价格：来自 https://www.dmxapi.cn 集采 7 折后单图价
 # ---------------------------------------------------------------------------
-PRICE_PER_IMAGE = {
-    # (size, quality) -> usd
+
+# OpenAI 官方：(size, quality) -> usd
+PRICE_OPENAI_USD = {
     ("1024x1024", "low"): 0.006,
     ("1024x1024", "medium"): 0.053,
     ("1024x1024", "high"): 0.211,
@@ -75,19 +77,57 @@ PRICE_PER_IMAGE = {
     ("1536x1024", "high"): 0.165,
 }
 
-# Token 单价（USD per 1M）— 当响应包含 usage 时优先用此换算
+# OpenAI token 单价（USD per 1M）— 响应带 usage 时换算
 TEXT_INPUT_PER_M = 5.0
 IMAGE_INPUT_PER_M = 8.0
 IMAGE_OUTPUT_PER_M = 30.0
 
+# DMXAPI 中转：单价 (CNY) — 不区分 size/quality，整体按"模型"计费
+# 来源：https://www.dmxapi.cn 模型定价页（2026-04 数据）
+PRICE_DMXAPI_CNY = {
+    "gpt-image-1": 1.0,           # OpenAI gpt-image，¥1+/张
+    "gpt-image-2": 1.0,           # 假定 alias 同价
+    "flux-kontext-pro": 0.2,
+    "flux-kontext-max": 0.4,
+    "seedream-3.0": 0.08,
+    "imagen4": 0.5,               # 估算值，实测后再校准
+}
 
-def estimate_cost_from_size_quality(size: str, quality: str) -> float:
-    """根据 size + quality 估算单张成本（fallback）"""
-    return PRICE_PER_IMAGE.get((size, quality), 0.053)
+
+def detect_backend(base_url: str | None) -> str:
+    """根据 base_url 判断 backend，决定价格表和币种"""
+    if not base_url:
+        return "openai"
+    u = base_url.lower()
+    if "dmxapi" in u:
+        return "dmxapi"
+    return "openai_compat"  # 其他兼容站点，用 OpenAI 计价做估算
 
 
-def cost_from_usage(usage: Any | None) -> float:
-    """如果响应带 usage，更准确换算"""
+def currency_for(backend: str) -> str:
+    return "CNY" if backend == "dmxapi" else "USD"
+
+
+def currency_symbol(backend: str) -> str:
+    return "¥" if backend == "dmxapi" else "$"
+
+
+def estimate_cost_from_size_quality(
+    size: str, quality: str, backend: str = "openai", model: str = "gpt-image-2"
+) -> float:
+    """根据 backend + size + quality + model 估算单张成本（fallback）。
+    返回值的币种由 backend 决定（openai=USD，dmxapi=CNY）。"""
+    if backend == "dmxapi":
+        # DMXAPI 是 per-image 计费，与 size/quality 无关
+        return PRICE_DMXAPI_CNY.get(model, 1.0)
+    return PRICE_OPENAI_USD.get((size, quality), 0.053)
+
+
+def cost_from_usage(usage: Any | None, backend: str = "openai") -> float:
+    """如果响应带 usage 信息，按 token 换算（仅 OpenAI 官方端点适用）"""
+    if backend == "dmxapi":
+        # DMXAPI 不返回可信 usage，直接 fallback 到 per-image 价
+        return 0.0
     if not usage:
         return 0.0
     try:
@@ -207,16 +247,17 @@ class Budget:
         return self.limit - self.spent
 
 
-async def call_gpt_image_2(
+async def call_image_model(
     client: AsyncOpenAI,
     spec: dict,
+    model: str,
 ) -> tuple[bytes, dict]:
     """
-    调 gpt-image-2，返回 (PNG bytes, response 元数据 dict)
+    调用图像模型（OpenAI gpt-image-2 / DMXAPI gpt-image-1 / flux 等都走同协议）
     有 reference_images 走 edits，否则走 generations
     """
     common_kwargs: dict[str, Any] = {
-        "model": "gpt-image-2",
+        "model": model,
         "prompt": spec["prompt"],
         "size": spec["size"],
         "quality": spec["quality"],
@@ -239,7 +280,7 @@ async def call_gpt_image_2(
 
     img_bytes = base64.b64decode(response.data[0].b64_json)
     meta = {
-        "model": "gpt-image-2",
+        "model": model,
         "size": spec["size"],
         "quality": spec["quality"],
         "background": spec["background"],
@@ -265,6 +306,8 @@ async def process_task(
     dry_run: bool,
     progress: Progress,
     task_pb_id: int,
+    backend: str,
+    default_model: str,
 ) -> dict:
     """处理单个任务，返回 result dict"""
     task_id = task["id"]
@@ -288,8 +331,11 @@ async def process_task(
         progress.update(task_pb_id, advance=1)
         return {"id": task_id, "status": "template_error", "error": str(e), "cost": 0.0}
 
+    # 任务可以指定模型，否则用环境默认
+    model = task.get("model") or default_model
+
     # 预算预检
-    est = estimate_cost_from_size_quality(spec["size"], spec["quality"])
+    est = estimate_cost_from_size_quality(spec["size"], spec["quality"], backend, model)
     if budget.remaining < est:
         progress.update(task_pb_id, advance=1)
         return {
@@ -315,8 +361,8 @@ async def process_task(
     for attempt in range(max_retries + 1):
         async with sem:
             try:
-                img_bytes, meta = await call_gpt_image_2(client, spec)
-                actual_cost = cost_from_usage(meta.get("usage")) or est
+                img_bytes, meta = await call_image_model(client, spec, model)
+                actual_cost = cost_from_usage(meta.get("usage"), backend) or est
                 await budget.add(actual_cost)
 
                 out_png.write_bytes(img_bytes)
@@ -417,7 +463,25 @@ async def main_async(args: argparse.Namespace) -> int:
         console.print("[red][x] 未配置 OPENAI_API_KEY，请先复制 .env.example 为 .env 并填入[/red]")
         return 2
 
-    budget_limit = args.budget or float(os.getenv("BUDGET_LIMIT_USD", "80.0"))
+    base_url = os.getenv("OPENAI_BASE_URL") or None
+    backend = detect_backend(base_url)
+    cur_sym = currency_symbol(backend)
+
+    # 默认模型：DMXAPI 用 gpt-image-1（OpenAI 同款，DMXAPI 现行命名）
+    # OpenAI 官方用 gpt-image-2（2026-04 最新）
+    default_model = os.getenv(
+        "OPENAI_IMAGE_MODEL",
+        "gpt-image-1" if backend == "dmxapi" else "gpt-image-2",
+    )
+
+    # 预算上限：OpenAI 模式下读 BUDGET_LIMIT_USD（USD），DMXAPI 模式下读 BUDGET_LIMIT_CNY（CNY）
+    if backend == "dmxapi":
+        budget_limit = args.budget or float(
+            os.getenv("BUDGET_LIMIT_CNY", os.getenv("BUDGET_LIMIT_USD", "100.0"))
+        )
+    else:
+        budget_limit = args.budget or float(os.getenv("BUDGET_LIMIT_USD", "80.0"))
+
     concurrency = args.concurrency or int(os.getenv("GEN_CONCURRENCY", "4"))
     max_retries = int(os.getenv("MAX_RETRIES", "2"))
     raw_dir = PROJECT_ROOT / os.getenv("RAW_DIR", "assets/raw")
@@ -443,8 +507,15 @@ async def main_async(args: argparse.Namespace) -> int:
     for t in tasks:
         table.add_row(t["id"], t["template"], t.get("category", "-"), str(t.get("priority", "-")))
     console.print(table)
+    backend_label = {
+        "openai": "OpenAI 官方",
+        "dmxapi": "DMXAPI 中转",
+        "openai_compat": f"OpenAI 兼容 ({base_url})",
+    }.get(backend, backend)
     console.print(
-        f"[bold]预算上限[/bold]：${budget_limit:.2f} | "
+        f"[bold]后端[/bold]：{backend_label} | "
+        f"[bold]模型[/bold]：{default_model} | "
+        f"[bold]预算上限[/bold]：{cur_sym}{budget_limit:.2f} | "
         f"[bold]并发[/bold]：{concurrency} | "
         f"[bold]Dry-Run[/bold]：{args.dry_run}"
     )
@@ -452,7 +523,7 @@ async def main_async(args: argparse.Namespace) -> int:
     if not args.dry_run:
         client = AsyncOpenAI(
             api_key=api_key,
-            base_url=os.getenv("OPENAI_BASE_URL") or None,
+            base_url=base_url,
         )
     else:
         client = None  # type: ignore
@@ -483,6 +554,8 @@ async def main_async(args: argparse.Namespace) -> int:
                 args.dry_run,
                 progress,
                 pb_id,
+                backend,
+                default_model,
             )
             for t in tasks
         ]
@@ -504,8 +577,8 @@ async def main_async(args: argparse.Namespace) -> int:
     summary.add_row("成功", str(len(ok)))
     summary.add_row("跳过 / Dry-Run", str(len(skipped)))
     summary.add_row("失败", str(len(failed)))
-    summary.add_row("总花费", f"${budget.spent:.4f}")
-    summary.add_row("剩余预算", f"${budget.remaining:.4f}")
+    summary.add_row("总花费", f"{cur_sym}{budget.spent:.4f}")
+    summary.add_row("剩余预算", f"{cur_sym}{budget.remaining:.4f}")
     summary.add_row("耗时", f"{elapsed:.1f}s")
     console.print(summary)
 

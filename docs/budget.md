@@ -1,12 +1,25 @@
 # 美术资产成本预算
 
-> 模型：OpenAI **GPT Image 2**（`gpt-image-2`，2026-04-21 发布）
-> 数据来源：OpenAI 官方定价（April 2026）+ buildfastwithai 实测
-> 上次更新：2026-04-25
+> 默认 backend：OpenAI **GPT Image 2** (`gpt-image-2`, 2026-04-21 发布)
+> 中国大陆推荐：**DMXAPI 中转**（详见 [dmxapi-setup.md](./dmxapi-setup.md)）
+> 数据来源：OpenAI 官方定价（April 2026）+ DMXAPI 公开价目 + buildfastwithai 实测
+> 上次更新：2026-04-26
 
 ---
 
-## 一、单价表（USD）
+## 零、Backend 选择速查表
+
+| Backend | 单价 | 币种 | 中国直连 | 模型覆盖 | 推荐场景 |
+|---|---|---|---|---|---|
+| OpenAI 官方 | $0.053 / 张 (medium 1024) | USD | ❌ 需 VPN | OpenAI 全套 | 海外开发者 / 极致质量 |
+| **DMXAPI 中转** | **¥1 / 张** (gpt-image-1) | **CNY** | ✅ | OpenAI + Flux + 即梦 + Imagen | **🇨🇳 中国推荐** |
+| API易 (apiyi) | ~$0.04 / 张 | USD/CNY | ✅ | OpenAI + Flux | Flux 全网最低价 |
+
+> **¥1 ≈ $0.14**（按 7:1 估算）。DMXAPI 中转价相当于 OpenAI 原价 ×1.3，但**省去 VPN + 海外卡 + 封号风险**。
+
+---
+
+## 一、OpenAI 官方单价表（USD）
 
 ### 按尺寸 × 质量（OpenAI 官方计算器）
 
@@ -122,3 +135,51 @@ BUDGET_LIMIT_USD=120
 3. **复用已生成资产**：脚本默认跳过已存在的输出（`out_png.exists()`），改 prompt 后只需删除目标 PNG 重跑
 4. **medium 优先于 high**：sprite 类（最终降到 256×256）用 medium 完全够用，high 仅用于立绘 / 大场景
 5. **Style Bible 反复打磨**：前期 $10 投入换取后续 $70 成功率，性价比最高
+6. **混合 backend**（DMXAPI 用户）：UI/含中文 → `gpt-image-1`（¥1）、icon → `flux-kontext-pro`（¥0.2）、tile → `seedream-3.0`（¥0.08），整体省 70%
+
+---
+
+## 七、DMXAPI 价目表（CNY）
+
+来源：[DMXAPI 模型定价](https://rmb.dmxapi.cn/) — 集采 7 折后 per-image 计费，**与 size/quality 无关**。
+
+| 模型 ID | ¥/张 | USD 等值 | OpenAI 同质量价对比 | 适合 |
+|---|---|---|---|---|
+| `gpt-image-1` | ¥1.0 | ~$0.14 | $0.053-0.211 | UI、中文文字、关键立绘 |
+| `flux-kontext-pro` | ¥0.2 | ~$0.03 | — | 道具/技能图标批量 |
+| `flux-kontext-max` | ¥0.4 | ~$0.06 | — | 高质量场景背景 |
+| `seedream-3.0` | ¥0.08 | ~$0.011 | — | 中国题材兜底（含 10 万张免费额度） |
+| `imagen4` | ~¥0.5 | ~$0.07 | — | 备用，未实测 |
+
+### 700 张资产混合策略实测
+
+| 分配方案 | UI(50) | 角色(80) | sprite(240) | icon(150) | scene(80) | tile(100) | **总价** |
+|---|---|---|---|---|---|---|---|
+| 全 `gpt-image-1` | ¥50 | ¥80 | ¥240 | ¥150 | ¥80 | ¥100 | **¥700** |
+| **混合（推荐）** | ¥50 (gpt) | ¥80 (gpt) | ¥48 (flux 0.2) | ¥30 (flux) | ¥32 (flux 0.4) | ¥8 (seed) | **¥248** |
+| 全 `seedream-3.0` | ¥4 | ¥6.4 | ¥19.2 | ¥12 | ¥6.4 | ¥8 | **¥56** |
+
+> **混合方案性价比最高**：UI 中文/角色一致性用最强模型，简单 sprite/icon/tile 用便宜模型，省 65% 不损质量。
+> 在 `tasks.yaml` 里给每个任务加 `model:` 字段即可分流，详见 [dmxapi-setup.md §6](./dmxapi-setup.md)。
+
+---
+
+## 八、如何切换 backend
+
+只改 `.env` 一个文件，代码零改动：
+
+```dotenv
+# 切换到 DMXAPI（中国推荐）
+OPENAI_API_KEY=sk-你的DMXAPI令牌
+OPENAI_BASE_URL=https://www.dmxapi.cn/v1
+OPENAI_IMAGE_MODEL=gpt-image-1
+BUDGET_LIMIT_CNY=50.0
+
+# 切换到 OpenAI 官方
+OPENAI_API_KEY=sk-proj-xxx
+OPENAI_BASE_URL=https://api.openai.com/v1
+OPENAI_IMAGE_MODEL=gpt-image-2
+BUDGET_LIMIT_USD=80.0
+```
+
+`gen_assets.py` 通过检测 `OPENAI_BASE_URL` 自动切换价格表与币种，无需手动指定 `--backend`。
