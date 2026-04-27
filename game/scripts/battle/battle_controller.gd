@@ -274,6 +274,10 @@ func _end_battle(victory: bool, fled: bool) -> void:
 	await get_tree().create_timer(1.2).timeout
 	if victory:
 		var loot := _settle_drops(_enemy_def)
+		# 自动写入 "defeated_<enemy_id>" flag，便于 hotspot 自动隐藏
+		var flag_key := "defeated_%s" % String(_enemy_def.enemy_id)
+		GameState.flags[flag_key] = true
+		EventBus.flag_set.emit(StringName(flag_key), true)
 		EventBus.enemy_defeated.emit(_enemy_def.enemy_id)
 		EventBus.battle_ended.emit(true, false)
 		_player.gain_exp(loot.exp)

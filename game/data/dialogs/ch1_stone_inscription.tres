@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_a"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]路边石碑刻字：「清风镇 十里」[/i]\n下方有人新刻的小字：[color=#e07b7b]「莫问黑教」[/color]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:b"
+
+[sub_resource type="Resource" id="node_b"]
+script = ExtResource("2_dnode")
+node_id = &"b"
+speaker = "沈不归"
+portrait_path = "res://art/characters/protagonist_neutral.png"
+text = "黑教……果然在这里。\n（我用衣袖抹去刻字，免得吓走旁人。）"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "saw_stone_warning", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_stone_inscription"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b")])
