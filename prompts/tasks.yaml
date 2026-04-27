@@ -6,19 +6,30 @@
 #   template    : 模板文件名（不带 .yaml 后缀）
 #   category    : 子目录分类（character / sprite / ui / scene / tileset 等）
 #   vars        : 注入模板 variables 的具体值
-#   priority    : 1=必跑，2=次要（可用 --priority=1 过滤）
+#   priority    : 1=必跑（MVP 第一章必产），2=次要，0=一致性测试（已完成）
 #   skip        : true 临时跳过
+#
+# ============================================================
+# 修订记录
+# ============================================================
+# v0.1 (2026-04 早期):  旧 IP 角色（步惊云 / 聂风 / 排云掌 / 绝世好剑 / 天下会大殿）
+# v0.2 (2026-04-27)   :  对齐 docs/world-bible.md v0.3 + design-mvp-chapter1.md v0.2
+#                        - 旧 IP 任务全部 skip:true（保留作历史追溯）
+#                        - 新增 v0.2 第一章必产任务：6 立绘 + 3 场景 + 物品图标
+#                        - 新角色锚点：冷孤云 / 刑樊天 / 沈半盏 / 杜青衫 / 悦无姮 / 蒙面杀手首领
 
 # ============================================================
-# 共享角色身份锚点（避免在每个 task 重复写）
+# 共享角色身份锚点
 # ============================================================
 character_anchors:
+
+  # --- v0.1 旧锚点（已弃用，仅保留以追溯一致性测试历史任务）---
   bujingyun: &bujingyun
     character_name: "步惊云"
     character_appearance: |
-      二十出头黑发男子，长直发束于脑后，脸型清瘦轮廓分明，
-      剑眉星目神色冷峻，身着黑色长袍外披深色披风，
-      腰悬绝世好剑，体格修长矫健
+      二十出头年轻男子，黑色长直发束于脑后，脸型清瘦轮廓分明，
+      眉目俊朗神色沉稳，身着黑色长袍外披深紫色披风，
+      腰间束带，体格修长矫健
 
   niefeng: &niefeng
     character_name: "聂风"
@@ -27,16 +38,88 @@ character_anchors:
       身着浅灰色武服外罩深蓝色短披风，
       赤手空拳但姿态从容，体格匀称矫健
 
+  # ============================================================
+  # v0.2 新锚点（基于 world-bible.md v0.3）
+  # 项目级命名禁区：避免蜘蛛 / 蛛丝 / 蛛网（详见 docs/world-bible.md §5.7）
+  # ============================================================
+
+  # --- 主角 ---
+  lengguyun: &lengguyun
+    character_name: "冷孤云"
+    character_appearance: |
+      二十岁青年男子，黑发束于脑后系一条简素深色发带，几缕刘海略显不羁，
+      面庞清瘦俊朗，眉目英挺、嘴角常带一丝不羁的笑意，
+      眼神锐利却含玩世不恭之意，
+      身着深灰色布袍内衬白色中衣，腰间束带悬一柄长剑，腰侧挂一只青瓷酒葫芦，
+      体格修长矫健，武者身板但不威猛粗壮，
+      整体气质放荡不羁、行侠仗义
+
+  # --- 武师（主角师傅） ---
+  xingfantian: &xingfantian
+    character_name: "刑樊天"
+    character_appearance: |
+      五十出头中年男子，黑发已夹银丝、束于脑后，胡须浓重未刮净，
+      面容方正坚毅、左眉骨有一道淡淡旧疤暗示江湖经历，
+      神色严肃中藏温和，凝重时眉头深锁，
+      身材高大健硕、体格粗壮，武者身板，
+      身着深褐色厚布短衣外罩青灰色对襟长衣，腰间束粗皮带，
+      气息内敛，武者退隐山林之态
+
+  # --- 林西村酒馆老板（兼商店NPC，套用 art_validation_v2 已通过的客栈老板风格）---
+  shenbanzhan: &shenbanzhan
+    character_name: "沈半盏"
+    character_appearance: |
+      五十出头中年男子，微胖红润，国字脸络腮胡，
+      头戴黑色软帽，神情和善但眼神精明，
+      身着深褐色粗布短袍外罩米色围裙，
+      酒馆掌柜世故气息
+
+  # --- 林西村铁匠（送主角第一把铁剑）---
+  duqingshan: &duqingshan
+    character_name: "杜青衫"
+    character_appearance: |
+      四十多岁壮汉，黝黑肤色，束发简陋，
+      着无袖粗布短衣袒露胸膛，肌肉鼓胀，双臂粗壮有力，
+      腰间围着皮制围裙、身上多处淡淡铁锈痕迹，
+      神色憨厚直爽，眼神坚定有力，
+      铁匠世家出身的真挚气质
+
+  # --- 女主 1：凌月派大师姐 ---
+  yuewuxing: &yuewuxing
+    character_name: "悦无姮"
+    character_appearance: |
+      二十二岁年轻女子，乌黑长发束于脑后留几缕散于颊侧，
+      容貌清丽冷艳、气质独立坚毅（绝非萌系，参照成熟侠女风），
+      眉目英气带一丝忧愁，神色坚毅,
+      身着凌月派标志性月白色武服外罩淡紫色飘逸披帛，
+      腰悬长剑、剑鞘玄黑，
+      体格纤细但矫健，练武女子的英气，
+      整体气质独立侠女
+
+  # --- 章末战 boss：蒙面杀手首领（茗雾派伪装烈云盟）---
+  killer_leader: &killer_leader
+    character_name: "蒙面杀手首领"
+    character_appearance: |
+      三十多岁男子，全身黑色紧身夜行衣，黑色蒙面巾仅露一双锐利眼睛，
+      胸前挂着烈云盟令牌（伪装道具，明显），袖口与腰带处隐约可见茗雾派独有暗器（暗示真实出处），
+      右手持单手匕首，左手暗器袋鼓鼓囊囊，
+      体格精瘦灵活，潜伏蓄势姿态，
+      眼神冷酷无情、毫无温度
+
 # ============================================================
 # 任务列表
 # ============================================================
 tasks:
 
-  # --- 主角立绘（高优先级，作为后续 sprite 的视觉锚点验证）---
+  # ============================================================
+  # === [v0.1 旧任务] 全部 skip:true，仅保留供历史追溯 ===
+  # ============================================================
+
   - id: portrait_bujingyun_neutral
     template: character_portrait
     category: character
     priority: 1
+    skip: true   # v0.1 deprecated, 用旧 IP 步惊云
     vars:
       <<: *bujingyun
       pose: "抱臂凝视前方，身姿挺拔"
@@ -47,28 +130,29 @@ tasks:
     template: character_portrait
     category: character
     priority: 1
+    skip: true   # v0.1 deprecated
     vars:
       <<: *bujingyun
       pose: "右手按剑，身体微前倾"
       expression: "怒目圆睁，杀意浓烈"
       background_desc: "暮色沉沉，乌云压顶"
 
-  # --- 同伴立绘 ---
   - id: portrait_niefeng_neutral
     template: character_portrait
     category: character
     priority: 1
+    skip: true   # v0.1 deprecated
     vars:
       <<: *niefeng
       pose: "右手叉腰，左手自然下垂"
       expression: "微笑从容，眼含笑意"
       background_desc: "翠竹林间，光影斑驳"
 
-  # --- 战斗 sprite 序列示例 ---
   - id: sprite_bujingyun_idle_south
     template: sprite_idle
     category: sprite/bujingyun
     priority: 1
+    skip: true   # v0.1 deprecated, sprite 路线已弃，转 AVG 立绘
     vars:
       <<: *bujingyun
       idle_variant: "重心微偏右脚，披风自然下垂"
@@ -78,6 +162,7 @@ tasks:
     template: sprite_attack
     category: sprite/bujingyun
     priority: 1
+    skip: true   # v0.1 deprecated（招式名"排云掌"是旧 IP）
     vars:
       <<: *bujingyun
       skill_name: "排云掌"
@@ -87,35 +172,11 @@ tasks:
       vfx_desc: "前方涌出半透明云形掌劲，蓝白色调"
       facing: "east"
 
-  # --- UI 套件 ---
-  - id: ui_button_normal_start
-    template: ui_button
-    category: ui/button
-    priority: 1
-    vars:
-      state: "normal"
-      label: "开始游戏"
-
-  - id: ui_button_hover_start
-    template: ui_button
-    category: ui/button
-    priority: 1
-    vars:
-      state: "hover"
-      label: "开始游戏"
-
-  - id: ui_dialog_main
-    template: ui_dialog_box
-    category: ui/dialog
-    priority: 1
-    vars:
-      has_pointer: "true"
-
-  # --- 武功 / 道具图标 ---
   - id: icon_skill_paiyunzhang
     template: ui_icon_skill
     category: ui/icon/skill
     priority: 1
+    skip: true   # v0.1 deprecated（"排云掌"是旧 IP）
     vars:
       shape: "circle"
       skill_name: "排云掌"
@@ -126,20 +187,363 @@ tasks:
     template: ui_icon_item
     category: ui/icon/item
     priority: 1
+    skip: true   # v0.1 deprecated（"绝世好剑"是旧 IP）
     vars:
       category: "weapon"
       item_name: "绝世好剑"
       item_desc: "形制奇特的长剑，剑身淡蓝寒光，剑柄缠金线"
       rarity: "legendary"
 
-  # --- 场景背景示例 ---
   - id: scene_tianxiahui_main_hall
     template: scene_background_45deg
     category: scene
     priority: 1
+    skip: true   # v0.1 deprecated（"天下会大殿"是旧 IP）
     vars:
       scene_name: "天下会大殿"
       scene_desc: "气派宏伟的武林帮派议事大殿，立柱粗壮，正中王座空置"
       time_of_day: "noon"
       weather: "overcast"
       key_elements: "立柱、王座、兵器架、燃烧的火盆"
+
+  # ============================================================
+  # === [一致性测试任务] priority=0/2，已完成 → skip:true 保留作记录 ===
+  # ============================================================
+
+  - id: consist_v2_neutral
+    template: character_portrait_textonly
+    category: consistency_test/v2
+    priority: 0
+    skip: true   # 已完成，作为 art_validation v1 stage 1 输出
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      pose: "抱臂凝视前方，身姿挺拔"
+      expression: "冷峻平静，眼神锐利"
+      background_desc: "苍茫天空，云气翻涌"
+
+  - id: consist_v2_combat
+    template: character_portrait_textonly
+    category: consistency_test/v2
+    priority: 0
+    skip: true
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      pose: "扎马步双掌平推前方，发出排云掌"
+      expression: "专注眯眼，气势凝聚"
+      background_desc: "练武场尘烟弥漫，冷色调"
+
+  - id: consist_v2_grief
+    template: character_portrait_textonly
+    category: consistency_test/v2
+    priority: 0
+    skip: true
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      pose: "单膝跪地低头，右手按地"
+      expression: "神情凝重，眉头微皱"
+      background_desc: "暮色山野，夕阳橙红"
+
+  - id: consist_v15_neutral
+    template: character_portrait_textonly
+    category: consistency_test/v15
+    priority: 0
+    skip: true
+    model: gpt-image-1.5
+    vars:
+      <<: *bujingyun
+      pose: "抱臂凝视前方，身姿挺拔"
+      expression: "冷峻平静，眼神锐利"
+      background_desc: "苍茫天空，云气翻涌"
+
+  - id: consist_v15_combat
+    template: character_portrait_textonly
+    category: consistency_test/v15
+    priority: 0
+    skip: true
+    model: gpt-image-1.5
+    vars:
+      <<: *bujingyun
+      pose: "扎马步双掌平推前方，发出排云掌"
+      expression: "专注眯眼，气势凝聚"
+      background_desc: "练武场尘烟弥漫，冷色调"
+
+  - id: consist_v1_neutral
+    template: character_portrait_textonly
+    category: consistency_test/v1
+    priority: 0
+    skip: true
+    model: gpt-image-1
+    vars:
+      <<: *bujingyun
+      pose: "抱臂凝视前方，身姿挺拔"
+      expression: "冷峻平静，眼神锐利"
+      background_desc: "苍茫天空，云气翻涌"
+
+  - id: consist_v1_combat
+    template: character_portrait_textonly
+    category: consistency_test/v1
+    priority: 0
+    skip: true
+    model: gpt-image-1
+    vars:
+      <<: *bujingyun
+      pose: "扎马步双掌平推前方，发出排云掌"
+      expression: "专注眯眼，气势凝聚"
+      background_desc: "练武场尘烟弥漫，冷色调"
+
+  - id: scale_v2_walk
+    template: character_portrait_textonly
+    category: consistency_test/scale
+    priority: 2
+    skip: true   # 一致性测试已结案
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      pose: "行走中，左脚向前迈出，右臂自然摆动"
+      expression: "目光平视前方，神色平静"
+      background_desc: "山间小径，远处青山起伏"
+
+  - id: scale_v2_thinking
+    template: character_portrait_textonly
+    category: consistency_test/scale
+    priority: 2
+    skip: true
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      pose: "侧身远眺，右手负于身后"
+      expression: "目光深远，神色沉思"
+      background_desc: "山崖之上，云海翻腾"
+
+  - id: scale_v2_smile
+    template: character_portrait_textonly
+    category: consistency_test/scale
+    priority: 2
+    skip: true
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      pose: "正面对镜头，双手交叠于身前"
+      expression: "嘴角微扬，淡然微笑"
+      background_desc: "客栈内堂，暖色烛光"
+
+  - id: scale_v2_back
+    template: character_portrait_textonly
+    category: consistency_test/scale
+    priority: 2
+    skip: true
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      pose: "背对镜头，回首微侧脸，长发披风自然飘动"
+      expression: "回眸侧目"
+      background_desc: "夕阳西下，金色光晕"
+
+  - id: scale_v2_portrait_with_ref_neutral
+    template: character_portrait
+    category: consistency_test/scale
+    priority: 2
+    skip: true
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      pose: "抱臂凝视前方，身姿挺拔"
+      expression: "冷峻平静，眼神锐利"
+      background_desc: "苍茫天空，云气翻涌"
+
+  - id: scale_v2_sprite_idle_south
+    template: sprite_idle
+    category: consistency_test/scale
+    priority: 2
+    skip: true
+    model: gpt-image-2
+    vars:
+      <<: *bujingyun
+      idle_variant: "重心微偏右脚，长袍自然下垂"
+      facing: "south"
+
+  # ============================================================
+  # === [v0.2 第一章必产 - 立绘 6 张] priority=1 ===
+  # ============================================================
+
+  # --- 主角 立绘（中性表情，作为对话用通用立绘）---
+  - id: portrait_lengguyun_neutral
+    template: character_portrait_textonly
+    category: character/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      pose: "正面胸像 3/4 侧身，左手扶剑柄、右手自然下垂"
+      expression: "嘴角微扬带不羁的笑意，眼神锐利却含玩世不恭"
+      background_desc: "山林深处青翠竹影，远景虚化"
+
+  # --- 武师刑樊天 立绘（章一送行场景用）---
+  - id: portrait_xingfantian_serious
+    template: character_portrait_textonly
+    category: character/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      <<: *xingfantian
+      pose: "正面胸像，3/4 侧身，双臂自然下垂略带凝重"
+      expression: "目光深沉望向远方，眉头微锁，似有难言之事"
+      background_desc: "林西村清晨薄雾，木屋远景虚化"
+
+  # --- 沈半盏酒馆老板 立绘（沿用 art-validation v2 已验证的客栈老板风格）---
+  - id: portrait_shenbanzhan_friendly
+    template: character_portrait_textonly
+    category: character/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      <<: *shenbanzhan
+      pose: "胸像 3/4 侧身，双手抱拳作迎客状"
+      expression: "笑容和善但眼神精明世故"
+      background_desc: "酒馆内堂木质暖色虚化，隐约可见酒幡红灯笼"
+
+  # --- 杜青衫铁匠 立绘（送铁剑场景用）---
+  - id: portrait_duqingshan_steady
+    template: character_portrait_textonly
+    category: character/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      <<: *duqingshan
+      pose: "正面胸像 3/4 侧身，左手叉腰右手按住身前一柄铁剑"
+      expression: "憨厚微笑，眼神坚定有力"
+      background_desc: "铁匠铺内炉火红光、铁砧上余温散开，背景虚化"
+
+  # --- 女主 1 悦无姮 立绘（章末密林初遇场景用）---
+  - id: portrait_yuewuxing_meeting
+    template: character_portrait_textonly
+    category: character/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      <<: *yuewuxing
+      pose: "胸像正面 3/4 侧身，右手按剑柄略带防备，左手自然垂下"
+      expression: "气息略乱但眼神坚毅，眉目英气、对镜头略带审视"
+      background_desc: "竹尾村密林深处，绿光斑驳从竹叶间洒下"
+
+  # --- 章末战 boss 蒙面杀手首领 立绘（战斗用）---
+  - id: portrait_killer_leader_combat
+    template: character_portrait_textonly
+    category: character/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      <<: *killer_leader
+      pose: "潜伏蹲踞姿态，右手匕首横于胸前，左手暗器袋微张"
+      expression: "蒙面只露双眼，眼神冷酷无情"
+      background_desc: "竹林深处暗影斑驳，月光从枝叶间透下"
+
+  # ============================================================
+  # === [v0.2 第一章必产 - 场景背景 3 张] priority=1 ===
+  # ============================================================
+
+  # --- 场景 1：林西村主街 ---
+  - id: scene_linxi_main_street
+    template: scene_background_45deg
+    category: scene/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "林西村主街"
+      scene_desc: |
+        清晨时分的山中小村集市，竹林环抱，黄土村道平整向远处延伸。
+        左侧木结构酒馆飘着 "沈记" 酒幡，门口悬一对红灯笼；
+        中央村道延伸至画面深处的村口；
+        右侧铁匠铺敞口炉火微透，铁砧露出半边；
+        村道尽头隐约可见武师院的青瓦顶。
+        鸡犬鸣声、炊烟袅袅，透出"二十年未有大事"的安宁感。
+      time_of_day: "morning"
+      weather: "clear"
+      key_elements: "酒馆酒幡、红灯笼、铁匠铺炉火、武师院青瓦、竹林、黄土村道"
+
+  # --- 场景 2：林西村外山道 ---
+  - id: scene_linxi_road
+    template: scene_background_45deg
+    category: scene/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "林西村外山道"
+      scene_desc: |
+        村外蜿蜒山道，左右翠竹夹道，道旁一块斑驳石碑写着"竹尾村五十里"，
+        道路向远处山脊蜿蜒消失，远景青山起伏、薄雾缭绕。
+        天空淡蓝、几缕白云，
+        透出"主角踏出第一步"的开阔与不确定感。
+      time_of_day: "midday"
+      weather: "clear"
+      key_elements: "石碑、翠竹夹道、远山起伏、薄雾、蜿蜒山道"
+
+  # --- 场景 3：竹尾村·村外密林（章末战发生地）---
+  - id: scene_zhuwei_forest
+    template: scene_background_45deg
+    category: scene/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "竹尾村外密林"
+      scene_desc: |
+        傍晚时分的竹尾村外深林，翠竹林立、暗影深沉，
+        画面中央一块空地有古朴石坛半埋于地，
+        竹叶从枝头零星飘落，
+        光线从竹叶间斜洒下、明暗对比强烈，
+        氛围紧张、暗藏杀机，适合伏击与决战。
+      time_of_day: "dusk"
+      weather: "overcast"
+      key_elements: "深沉竹林、古朴石坛、斜光、暗影、暗中杀机感"
+
+  # ============================================================
+  # === [v0.2 第一章必产 - 物品 / 武功 图标] priority=2 ===
+  # 这一批可以等立绘 + 场景跑完再补，不阻塞主流程
+  # ============================================================
+
+  - id: icon_item_linxi_jiu
+    template: ui_icon_item
+    category: ui/icon/item/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      category: "consumable"
+      item_name: "林西酒"
+      item_desc: "青瓷酒葫芦盛着林西村特酿，酒液微黄、上有酒香气流绕"
+      rarity: "rare"
+
+  - id: icon_item_antidote_pill
+    template: ui_icon_item
+    category: ui/icon/item/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      category: "consumable"
+      item_name: "解毒丹"
+      item_desc: 白瓷小瓶外贴朱砂"解"字符，瓶口红绳系紧
+      rarity: "common"
+
+  - id: icon_item_zhuwei_map
+    template: ui_icon_item
+    category: ui/icon/item/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      category: "key_item"
+      item_name: "竹尾村地图"
+      item_desc: "陈旧黄褐色羊皮卷半展开，墨笔绘有蜿蜒山道与村庄标记"
+      rarity: "uncommon"
+
+  - id: icon_skill_linxi_sword_one
+    template: ui_icon_skill
+    category: ui/icon/skill/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      shape: "circle"
+      skill_name: "林西基础剑法·一式"
+      element_desc: "一柄朴素长剑斜挑出，剑尖带一抹素白剑芒"
+      color_scheme: "素白银"
