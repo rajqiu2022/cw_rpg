@@ -295,6 +295,17 @@ def classify_error(e: Exception) -> str:
     """根据异常返回错误分类，决定退避策略"""
     msg = str(e).lower()
 
+    # 余额不足 / 账户欠费：永久错误，立刻停（不浪费重试和 fallback）
+    # DMXAPI 表现为 403 PermissionDeniedError + insufficient_user_quota
+    # OpenAI 官方表现为 InsufficientQuotaError
+    if (
+        "insufficient_user_quota" in msg
+        or "用户额度不足" in msg
+        or "insufficient_quota" in msg
+        or "billing" in msg and "insufficient" in msg
+    ):
+        return ERR_FATAL
+
     # BadRequest（400）：moderation 或不可恢复
     if isinstance(e, BadRequestError):
         if "moderation" in msg or "blocked" in msg or "safety" in msg:
@@ -572,7 +583,7 @@ async def process_task(
     out_png = out_dir / f"{task_id}.png"
     out_meta = out_dir / f"{task_id}.meta.json"
 
-    if out_png.exists() and not getattr(task, "_force", False):
+    if out_png.exists() and not task.get("_force", False):
         progress.update(task_pb_id, advance=1)
         return {"id": task_id, "status": "skipped_exists", "cost": 0.0}
 

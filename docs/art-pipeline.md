@@ -1,7 +1,26 @@
 # AI 美术资产流水线 — 上手手册
 
-> 目标：把"自然语言描述"稳定地变成**符合《风云》漫画 2.5D 风格、可直接拖进 Godot 的游戏资产**。
+> 目标：把"自然语言描述"稳定地变成**符合港式漫画 2.5D 风格、可直接拖进 Godot 的游戏资产**。
 > 工具栈：OpenAI **GPT Image 2** + `rembg` + `Pillow` + Python 异步脚本。
+
+---
+
+## ⚠ 阅读本文档前先看 [ADR-001 美术资产流水线策略](decisions/ADR-001-art-pipeline-strategy.md)
+
+**关键决策（2026-04-27）**：DMXAPI 已确认**不适合开发期实时迭代**（4 类不稳定模式：IP 风控 / Azure moderation / 503 渠道熔断 / 空响应）。
+
+| 阶段 | 出图主力 | 何时用 |
+|---|---|---|
+| 开发期（M4–M7） | **现有 5 张 v2 高质量图当 placeholder + ChatGPT Plus 网页手动** | 默认 |
+| 单角色批量（6+ 张） | **ChatGPT Plus 网页**（手贴 prompt） | 程序需要补具体图时 |
+| 工业批量（30+ 张） | **OpenAI 官方 gpt-image-2 直连**（等 ≈2026-05 GA） | M7+ 阶段 |
+| 极致一致性 | **本地 LoRA**（用现有 v2 图训练） | 后期主角专属 sprite |
+
+**本文档下面的"批量生成（gen_assets.py）"流程**只在 L2/L3 阶段才用，且**跑批前必须先**：
+
+```powershell
+python scripts/ping_dmx.py   # 探活，0 = 渠道存活；非 0 = 等几分钟或换通道
+```
 
 ---
 

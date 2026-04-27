@@ -1,0 +1,42 @@
+id: character_portrait_textonly
+description: |
+  角色立绘（纯文本身份锚定，不依赖 _style_bible 参考图）。
+  专门用于 Style Bible 还没建好之前的"纯 prompt 一致性基线测试"，
+  也用于横评不同模型在相同 prompt 下的输出差异。
+quality: medium
+size: "1024x1024"
+
+# 与 character_portrait.yaml 的关键差异：
+#   1. 没有 reference_images（不依赖 Style Bible）
+#   2. 身份锚定全部靠文字描述，把外貌细节冗余写进 prompt 强约束
+identity_anchor: |
+  {{character_name}}（角色姓名固定不变）。
+  外貌（每张图必须严格一致）：
+  {{character_appearance}}
+
+prompt_template: |
+  {style_anchor}
+
+  这是同一名角色的角色立绘集中的一张。
+  {identity_anchor}
+
+  本张特定参数（仅以下参数会变，其他必须与上一张完全一致）：
+  - 姿态：{{pose}}
+  - 表情：{{expression}}
+  - 背景：{{background_desc}}（弱化处理，不抢角色）
+
+  画面要求：
+  - 1024×1024 正方形构图，居中半身像或全身像
+  - 港式漫画风格的厚涂质感、墨线分明
+  - 五官、发型、服装、配饰、体格、色调：严格遵循上方"外貌（每张图必须严格一致）"段所述，不可偏离
+  - 不要文字、签名、水印
+  - 不要二次元萌系、不要 3D CG 渲染、不要照片写实
+
+  反向词：{negative}
+
+variables:
+  character_name: "必填，如：步惊云"
+  character_appearance: "必填，外貌固定描述，所有图共用"
+  pose: "本张唯一变量"
+  expression: "本张唯一变量"
+  background_desc: "本张唯一变量，建议弱化的环境描述"

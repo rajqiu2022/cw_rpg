@@ -4,11 +4,11 @@ quality: high
 size: "1536x1024"
 
 identity_anchor: |
-  港漫风武侠场景，斜向 45° 等距视角俯视，
-  与 Style Bible 中 isometric 场景示例一致。
+  90 年代港漫风武侠场景，斜向 45° 等距视角俯视。
 
-reference_images:
-  - "assets/_style_bible/05_scene_sample_isometric.png"
+# 注：原 Style Bible 的 isometric 场景参考图（05_scene_sample_isometric.png）
+# 是 v0.1 残留、文件不存在；v0.2 起场景图改为纯 prompt 锚定。
+reference_images: []
 
 prompt_template: |
   {style_anchor}
@@ -17,25 +17,27 @@ prompt_template: |
 
   场景：{{scene_name}}
   描述：{{scene_desc}}
-  时辰：{{time_of_day}}（黎明 / 正午 / 黄昏 / 子夜）
-  天气：{{weather}}（晴 / 阴 / 雨 / 雾 / 雪）
-  关键元素：{{key_elements}}（如石阶 / 旗帜 / 大殿入口 / 兵器架）
+  时辰：{{time_of_day}}（默认建议 morning / noon，保持明亮；
+    仅洞穴 / 密林深处 / 墓地 / 夜战 等阴暗特例场景才用 dusk / night）
+  天气：{{weather}}（默认建议 clear；overcast / foggy 容易导致灰暗，
+    谨慎使用，仅在剧情需要时才选）
+  关键元素：{{key_elements}}（如石阶 / 旗帜 / 村口牌坊 / 兵器架 / 炉火 / 灯笼）
 
   画面要求：
   - 1536×1024 横版
   - 严格 45° 等距视角，**不要透视变形**
-  - 厚涂港漫质感，墨线分明
+  - 厚涂港漫质感，墨线分明、色彩饱和鲜艳
+  - 默认场景：明亮通透、阳光感强、暖色调主导（除非已声明为洞穴 / 夜战）
   - **画面中绝对不要任何人物 / 角色 / NPC / 玩家**（场景图是空背景，
     人物由游戏引擎运行时叠加；这一条最重要！）
   - 留出明显可通行区域，不要被装饰物挤占
-  - 画面边缘可适度暗角，引导视线
   - 不要文字、地名标签、招牌中文字
 
   反向：{negative}
 
 variables:
-  scene_name: "如：天下会大殿 / 凤溪村口 / 凌云窟"
+  scene_name: "如：林西村主街 / 凌月山门 / 茗雾山地下密窟"
   scene_desc: "本张唯一变量，1-2 句"
-  time_of_day: "dawn | noon | dusk | night"
-  weather: "clear | overcast | rainy | foggy | snowy"
+  time_of_day: "morning | noon | dusk | night（默认 morning/noon，仅暗调场景才用后两个）"
+  weather: "clear | overcast | rainy | foggy | snowy（默认 clear）"
   key_elements: "可选，强调必出现的元素"
