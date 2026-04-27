@@ -83,15 +83,30 @@ TEXT_INPUT_PER_M = 5.0
 IMAGE_INPUT_PER_M = 8.0
 IMAGE_OUTPUT_PER_M = 30.0
 
-# DMXAPI 中转：单价 (CNY) — 不区分 size/quality，整体按"模型"计费
-# 来源：https://www.dmxapi.cn 模型定价页（2026-04 数据）
+# DMXAPI 中转：单价 (CNY)
+# 来源：https://www.dmxapi.cn/pricing（2026-04-27 核实）
+# 重要：gpt-image 系列在 DMXAPI 现行定价是 token-based（¥/M tokens），
+#       响应带 usage 时走 cost_from_usage()，否则 fallback 到此处估值（保守 medium quality）
 PRICE_DMXAPI_CNY = {
-    "gpt-image-1": 1.0,           # OpenAI gpt-image，¥1+/张
-    "gpt-image-2": 1.0,           # 假定 alias 同价
+    "gpt-image-1": 1.0,           # ¥25 in / ¥200 out per M tokens, ≈ ¥1/张 medium
+    "gpt-image-1-mini": 0.5,      # ¥12.5 in / ¥40 out per M tokens
+    "gpt-image-1.5": 1.0,         # ¥25 in / ¥160 out per M tokens
+    "gpt-image-1.5-ssvip": 2.5,   # OpenAI 直连版，更贵
+    "gpt-image-2": 1.2,           # ¥24.82 in / ¥148.92 out per M tokens（2026-04 上线）
+    "dall-e-3": 0.5,
     "flux-kontext-pro": 0.2,
     "flux-kontext-max": 0.4,
     "seedream-3.0": 0.08,
-    "imagen4": 0.5,               # 估算值，实测后再校准
+    "imagen4": 0.5,
+}
+
+# DMXAPI gpt-image 系列 token 单价（CNY per 1M tokens）— 响应带 usage 时换算
+DMX_IMAGE_TOKEN_PRICES_CNY = {
+    "gpt-image-1":          {"text_in": 25.0, "image_in": 25.0, "image_out": 200.0},
+    "gpt-image-1-mini":     {"text_in": 12.5, "image_in": 12.5, "image_out": 40.0},
+    "gpt-image-1.5":        {"text_in": 25.0, "image_in": 25.0, "image_out": 160.0},
+    "gpt-image-1.5-ssvip":  {"text_in": 58.4, "image_in": 58.4, "image_out": 233.6},
+    "gpt-image-2":          {"text_in": 24.82, "image_in": 24.82, "image_out": 148.92},
 }
 
 
@@ -124,20 +139,33 @@ def estimate_cost_from_size_quality(
     return PRICE_OPENAI_USD.get((size, quality), 0.053)
 
 
-def cost_from_usage(usage: Any | None, backend: str = "openai") -> float:
-    """如果响应带 usage 信息，按 token 换算（仅 OpenAI 官方端点适用）"""
-    if backend == "dmxapi":
-        # DMXAPI 不返回可信 usage，直接 fallback 到 per-image 价
-        return 0.0
+def cost_from_usage(
+    usage: Any | None, backend: str = "openai", model: str = "gpt-image-2"
+) -> float:
+    """如果响应带 usage 信息，按 token 换算。
+    OpenAI 官方端点用 USD 价格表，DMXAPI 用 CNY 价格表（同接口字段）。"""
     if not usage:
         return 0.0
     try:
         usage_dict = usage if isinstance(usage, dict) else usage.model_dump()
     except AttributeError:
         return 0.0
-    text_in = usage_dict.get("input_tokens_details", {}).get("text_tokens", 0)
-    image_in = usage_dict.get("input_tokens_details", {}).get("image_tokens", 0)
-    image_out = usage_dict.get("output_tokens", 0)
+    # DMXAPI 实测某些字段可能存在但值为 None，必须 or 0 兜底
+    details = usage_dict.get("input_tokens_details") or {}
+    text_in = details.get("text_tokens") or 0
+    image_in = details.get("image_tokens") or 0
+    image_out = usage_dict.get("output_tokens") or 0
+
+    if backend == "dmxapi":
+        prices = DMX_IMAGE_TOKEN_PRICES_CNY.get(model)
+        if not prices:
+            return 0.0  # 非 token 计费的模型，fallback 到 per-image 价
+        return (
+            text_in * prices["text_in"] / 1_000_000
+            + image_in * prices["image_in"] / 1_000_000
+            + image_out * prices["image_out"] / 1_000_000
+        )
+
     return (
         text_in * TEXT_INPUT_PER_M / 1_000_000
         + image_in * IMAGE_INPUT_PER_M / 1_000_000
@@ -248,10 +276,153 @@ class Budget:
         return self.limit - self.spent
 
 
+# ---------------------------------------------------------------------------
+# 容错：错误分类 + 全局 IP-block pause + 退避策略
+# 对应 ADR-001 §6.4 L2 容错工程清单
+# ---------------------------------------------------------------------------
+
+# 错误分类
+ERR_MODERATION = "moderation"     # Azure 内容审核拒绝，不重试
+ERR_FATAL = "fatal"               # 4xx 不可重试
+ERR_CHANNEL_503 = "channel_503"   # 上游渠道熔断 / 502 / 504，长退避
+ERR_IP_BLOCK = "ip_block"         # TLS / connection 失败，疑似 IP 封禁，触发全局 pause
+ERR_RATE_LIMIT = "rate_limit"     # 显式 429
+ERR_EMPTY = "empty"               # HTTP 200 但响应空数据，3 次内 retry
+ERR_TRANSIENT = "transient"       # 默认可重试
+
+
+def classify_error(e: Exception) -> str:
+    """根据异常返回错误分类，决定退避策略"""
+    msg = str(e).lower()
+
+    # BadRequest（400）：moderation 或不可恢复
+    if isinstance(e, BadRequestError):
+        if "moderation" in msg or "blocked" in msg or "safety" in msg:
+            return ERR_MODERATION
+        return ERR_FATAL
+
+    if isinstance(e, RateLimitError):
+        return ERR_RATE_LIMIT
+
+    # 503 / 502 / 504 渠道熔断
+    if isinstance(e, APIError):
+        sc = getattr(e, "status_code", None)
+        if sc in (502, 503, 504):
+            return ERR_CHANNEL_503
+        if "no available channels" in msg or "无可用渠道" in msg or "上游" in msg:
+            return ERR_CHANNEL_503
+
+    # 200 但空数据（call_image_model 抛的 RuntimeError）
+    if isinstance(e, RuntimeError) and ("未返回图像数据" in str(e) or "no image data" in msg):
+        return ERR_EMPTY
+
+    # TLS / Connection 错误：疑似 IP 风控
+    if isinstance(e, (httpx.ConnectError, httpx.ReadTimeout, httpx.ConnectTimeout,
+                      httpx.RemoteProtocolError, httpx.WriteTimeout)):
+        return ERR_IP_BLOCK
+    if any(s in msg for s in ("schannel", "sec_e_invalid_token", "ssl", "handshake",
+                              "remotedisconnected", "connection reset")):
+        return ERR_IP_BLOCK
+
+    return ERR_TRANSIENT
+
+
+class IPBlockGate:
+    """全局放行信号——检测到疑似 IP 封禁时，所有 task 暂停 N 分钟。
+
+    重复触发不叠加：第一个发现的 task 进入 pause，后续 task 直接 await 同一个事件。
+    pause 到期后自动恢复，所有等待的 task 一起放行。
+    """
+
+    def __init__(self, pause_seconds: float = 1800.0) -> None:
+        self._event = asyncio.Event()
+        self._event.set()  # 初始放行
+        self._lock = asyncio.Lock()
+        self.pause_seconds = pause_seconds
+
+    async def wait(self) -> None:
+        await self._event.wait()
+
+    async def trigger_pause(self) -> None:
+        """疑似 IP 风控，全局暂停。被多个 task 同时调用是安全的。"""
+        async with self._lock:
+            if self._event.is_set():
+                self._event.clear()
+                console.print(
+                    f"[bold red]>>> 检测到疑似 IP 风控 / TLS 错误，"
+                    f"全局暂停 {int(self.pause_seconds)}s ({int(self.pause_seconds // 60)} 分钟) <<<[/bold red]"
+                )
+                asyncio.create_task(self._resume_after(self.pause_seconds))
+        await self._event.wait()
+
+    async def _resume_after(self, seconds: float) -> None:
+        await asyncio.sleep(seconds)
+        async with self._lock:
+            self._event.set()
+            console.print("[bold green]>>> IP 风控暂停结束，恢复跑批 <<<[/bold green]")
+
+
+async def backoff_for(category: str, attempt: int, gate: IPBlockGate) -> bool:
+    """按错误分类做退避。返回 True=可重试，False=放弃。"""
+    if category in (ERR_MODERATION, ERR_FATAL):
+        return False
+
+    if category == ERR_IP_BLOCK:
+        # 全局暂停 30 分钟，所有 task 一起等
+        await gate.trigger_pause()
+        return True
+
+    if category == ERR_CHANNEL_503:
+        # 5 / 10 / 20 分钟
+        wait = min(300 * (2 ** attempt), 1800)
+        console.print(f"  [yellow]渠道熔断 503，退避 {wait}s 后重试[/yellow]")
+        await asyncio.sleep(wait)
+        return True
+
+    if category == ERR_RATE_LIMIT:
+        wait = min(30 * (2 ** attempt), 600)
+        console.print(f"  [yellow]rate limit 429，退避 {wait}s 后重试[/yellow]")
+        await asyncio.sleep(wait)
+        return True
+
+    if category == ERR_EMPTY:
+        wait = 5 * (2 ** attempt)
+        console.print(f"  [yellow]200 空响应，{wait}s 后重试[/yellow]")
+        await asyncio.sleep(wait)
+        return True
+
+    # transient
+    wait = 5 * (2 ** attempt)
+    await asyncio.sleep(wait)
+    return True
+
+
+async def startup_ping(client: AsyncOpenAI, model: str, timeout: float = 60.0) -> tuple[bool, str]:
+    """跑批前最小调用探活：单张极简图请求，确认渠道可用。"""
+    try:
+        rsp = await asyncio.wait_for(
+            client.images.generate(
+                model=model,
+                prompt="a single white circle on plain background",
+                size="1024x1024",
+                n=1,
+            ),
+            timeout=timeout,
+        )
+        if rsp.data and rsp.data[0].b64_json:
+            return True, f"ok (b64_len={len(rsp.data[0].b64_json)})"
+        return False, "200 但 data[] 为空（渠道熔断前过渡态）"
+    except asyncio.TimeoutError:
+        return False, f"探活超时（>{int(timeout)}s）"
+    except Exception as e:
+        return False, f"{type(e).__name__}: {e}"
+
+
 async def call_image_model(
     client: AsyncOpenAI,
     spec: dict,
     model: str,
+    backend: str = "openai",
 ) -> tuple[bytes, dict]:
     """
     调用图像模型（OpenAI gpt-image-2 / DMXAPI gpt-image-1 / flux 等都走同协议）
@@ -265,16 +436,27 @@ async def call_image_model(
         "n": 1,
     }
 
+    # DMXAPI 后端接 Azure OpenAI，moderation 默认偏严，
+    # 武侠/写实题材的中文 prompt 容易被误判（"剑"、"暗红"、"畸形"等）。
+    # 通过 extra_body 透传 moderation=low 给 DMXAPI（文档支持）。
+    extra_body: dict[str, Any] = {}
+    if backend == "dmxapi" and model.startswith("gpt-image"):
+        extra_body["moderation"] = "low"
+
     if spec["reference_images"]:
         # edits 端点需要传文件
         files = [open(p, "rb") for p in spec["reference_images"]]
         try:
-            response = await client.images.edit(image=files, **common_kwargs)
+            response = await client.images.edit(
+                image=files, extra_body=extra_body or None, **common_kwargs
+            )
         finally:
             for f in files:
                 f.close()
     else:
-        response = await client.images.generate(**common_kwargs)
+        response = await client.images.generate(
+            extra_body=extra_body or None, **common_kwargs
+        )
 
     if not response.data or not response.data[0].b64_json:
         raise RuntimeError("API 未返回图像数据")
@@ -296,6 +478,67 @@ async def call_image_model(
     return img_bytes, meta
 
 
+async def _try_one_model(
+    client: AsyncOpenAI,
+    task_id: str,
+    spec: dict,
+    model: str,
+    backend: str,
+    budget: Budget,
+    sem: asyncio.Semaphore,
+    max_retries: int,
+    gate: IPBlockGate,
+    est: float,
+) -> tuple[bool, dict | None, dict | None, Exception | None, str | None]:
+    """用单个 model 跑一个 task，做 max_retries+1 次重试。
+
+    返回 (ok, img_meta, save_payload, last_err, last_category)
+        ok=True  → save_payload 可以 .write_bytes() 入磁盘
+        ok=False → last_err / last_category 解释为何放弃
+    """
+    last_err: Exception | None = None
+    last_cat: str | None = None
+
+    for attempt in range(max_retries + 1):
+        # 全局放行检查（IP 风控期间所有 task 等同一个 event）
+        await gate.wait()
+
+        async with sem:
+            try:
+                img_bytes, meta = await call_image_model(client, spec, model, backend)
+                actual_cost = cost_from_usage(meta.get("usage"), backend, model) or est
+                await budget.add(actual_cost)
+                payload = {
+                    "img_bytes": img_bytes,
+                    "meta": meta,
+                    "actual_cost": actual_cost,
+                    "attempt": attempt + 1,
+                    "model_used": model,
+                }
+                return True, meta, payload, None, None
+            except BudgetExceeded:
+                raise
+            except Exception as e:
+                last_err = e
+                last_cat = classify_error(e)
+                # 仅在非致命情况下尝试退避并重试
+                if last_cat in (ERR_MODERATION, ERR_FATAL):
+                    console.print(
+                        f"  [red][x] {task_id} ({model}) {last_cat}：{type(e).__name__}: {e}[/red]"
+                    )
+                    return False, None, None, last_err, last_cat
+                console.print(
+                    f"  [yellow]{task_id} ({model}) attempt {attempt + 1}/{max_retries + 1} "
+                    f"failed [{last_cat}]: {type(e).__name__}: {e}[/yellow]"
+                )
+        # 退避在锁外做，避免独占信号量
+        can_retry = await backoff_for(last_cat, attempt, gate)
+        if not can_retry:
+            break
+
+    return False, None, None, last_err, last_cat
+
+
 async def process_task(
     client: AsyncOpenAI,
     task: dict,
@@ -309,8 +552,16 @@ async def process_task(
     task_pb_id: int,
     backend: str,
     default_model: str,
+    fallback_model: str | None,
+    gate: IPBlockGate,
 ) -> dict:
-    """处理单个任务，返回 result dict"""
+    """处理单个任务，返回 result dict。
+
+    重试策略（ADR-001 §6.4）：
+        1. 主 model 跑 max_retries+1 次，每次按 classify_error 退避
+        2. 全部失败且不是 moderation/fatal → 切 fallback_model 再跑 1 次
+        3. 仍失败 → 写 failed.log
+    """
     task_id = task["id"]
     template = task["template"]
     category = task.get("category", "misc")
@@ -321,7 +572,6 @@ async def process_task(
     out_png = out_dir / f"{task_id}.png"
     out_meta = out_dir / f"{task_id}.meta.json"
 
-    # 已存在就跳过（除非显式 --force）
     if out_png.exists() and not getattr(task, "_force", False):
         progress.update(task_pb_id, advance=1)
         return {"id": task_id, "status": "skipped_exists", "cost": 0.0}
@@ -332,17 +582,15 @@ async def process_task(
         progress.update(task_pb_id, advance=1)
         return {"id": task_id, "status": "template_error", "error": str(e), "cost": 0.0}
 
-    # 任务可以指定模型，否则用环境默认
-    model = task.get("model") or default_model
+    primary_model = task.get("model") or default_model
 
-    # 预算预检
-    est = estimate_cost_from_size_quality(spec["size"], spec["quality"], backend, model)
+    est = estimate_cost_from_size_quality(spec["size"], spec["quality"], backend, primary_model)
     if budget.remaining < est:
         progress.update(task_pb_id, advance=1)
         return {
             "id": task_id,
             "status": "budget_skip",
-            "error": f"预算余额不足（需 ~${est:.4f}，余 ${budget.remaining:.4f}）",
+            "error": f"预算余额不足（需 ~{est:.4f}，余 {budget.remaining:.4f}）",
             "cost": 0.0,
         }
 
@@ -358,74 +606,69 @@ async def process_task(
         )
         return {"id": task_id, "status": "dry_run", "cost": 0.0}
 
-    last_err: Exception | None = None
-    for attempt in range(max_retries + 1):
-        async with sem:
-            try:
-                img_bytes, meta = await call_image_model(client, spec, model)
-                actual_cost = cost_from_usage(meta.get("usage"), backend) or est
-                await budget.add(actual_cost)
+    # 主 model
+    ok, _meta, payload, last_err, last_cat = await _try_one_model(
+        client, task_id, spec, primary_model, backend,
+        budget, sem, max_retries, gate, est,
+    )
 
-                out_png.write_bytes(img_bytes)
-                cur = currency_for(backend)
-                out_meta.write_text(
-                    json.dumps(
-                        {
-                            "id": task_id,
-                            "template": template,
-                            "category": category,
-                            "model": meta["model"],
-                            "backend": backend,
-                            "vars": vars_,
-                            "prompt": spec["prompt"],
-                            "size": spec["size"],
-                            "quality": spec["quality"],
-                            "background": spec["background"],
-                            "reference_images": meta["reference_images"],
-                            "usage": meta["usage"],
-                            "cost": round(actual_cost, 6),
-                            "currency": cur,
-                            "generated_at": datetime.now(timezone.utc).isoformat(),
-                            "attempt": attempt + 1,
-                        },
-                        ensure_ascii=False,
-                        indent=2,
-                    ),
-                    encoding="utf-8",
-                )
-                progress.update(task_pb_id, advance=1)
-                return {
-                    "id": task_id,
-                    "status": "ok",
-                    "cost": actual_cost,
-                    "attempt": attempt + 1,
-                }
-            except BudgetExceeded:
-                raise
-            except (RateLimitError, APIError) as e:
-                last_err = e
-                wait = 2 ** attempt * 5
-                console.print(
-                    f"  [yellow]限流/API 错误，{task_id} 第 {attempt + 1} 次失败，{wait}s 后重试[/yellow]"
-                )
-                await asyncio.sleep(wait)
-            except BadRequestError as e:
-                last_err = e
-                console.print(
-                    f"  [red][x] {task_id} 请求被拒（不重试）：{e}[/red]"
-                )
-                break
-            except Exception as e:
-                last_err = e
-                console.print(
-                    f"  [yellow]异常，{task_id} 第 {attempt + 1} 次失败：{e}[/yellow]"
-                )
-                await asyncio.sleep(3)
+    # fallback model（moderation/fatal 不降级；预算余额不足也不降级）
+    if not ok and fallback_model and fallback_model != primary_model \
+            and last_cat not in (ERR_MODERATION, ERR_FATAL) \
+            and budget.remaining > 0:
+        console.print(
+            f"  [cyan]{task_id} 主模型 {primary_model} 全部失败，"
+            f"切 fallback {fallback_model} 再试 1 次[/cyan]"
+        )
+        ok, _meta, payload, last_err, last_cat = await _try_one_model(
+            client, task_id, spec, fallback_model, backend,
+            budget, sem, 0, gate, est,
+        )
 
     progress.update(task_pb_id, advance=1)
+
+    if ok and payload:
+        meta = payload["meta"]
+        cur = currency_for(backend)
+        out_png.write_bytes(payload["img_bytes"])
+        out_meta.write_text(
+            json.dumps(
+                {
+                    "id": task_id,
+                    "template": template,
+                    "category": category,
+                    "model": payload["model_used"],
+                    "backend": backend,
+                    "vars": vars_,
+                    "prompt": spec["prompt"],
+                    "size": spec["size"],
+                    "quality": spec["quality"],
+                    "background": spec["background"],
+                    "reference_images": meta["reference_images"],
+                    "usage": meta["usage"],
+                    "cost": round(payload["actual_cost"], 6),
+                    "currency": cur,
+                    "generated_at": datetime.now(timezone.utc).isoformat(),
+                    "attempt": payload["attempt"],
+                    "fallback_used": payload["model_used"] != primary_model,
+                },
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+        return {
+            "id": task_id,
+            "status": "ok",
+            "cost": payload["actual_cost"],
+            "attempt": payload["attempt"],
+            "model": payload["model_used"],
+        }
+
     return {
         "id": task_id,
         "status": "failed",
+        "category": last_cat or "unknown",
         "error": str(last_err) if last_err else "unknown",
         "cost": 0.0,
     }
@@ -439,22 +682,68 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--task", action="append", help="只跑指定 task id（可多次）")
     p.add_argument("--priority", type=int, help="只跑优先级 <= N 的任务")
     p.add_argument("--budget", type=float, help="覆盖 .env 中的预算上限")
-    p.add_argument("--concurrency", type=int, help="覆盖 .env 中的并发数")
+    p.add_argument("--concurrency", type=int, help="覆盖 .env 中的并发数（默认 1）")
     p.add_argument("--dry-run", action="store_true", help="只渲染 prompt 不调 API")
     p.add_argument("--force", action="store_true", help="覆盖已存在的资产")
+    p.add_argument(
+        "--retry-failed",
+        action="store_true",
+        help="只重跑 logs/failed.log 里出现过的 task id",
+    )
+    p.add_argument(
+        "--skip-ping",
+        action="store_true",
+        help="跳过启动时的渠道存活探测（不推荐）",
+    )
+    p.add_argument(
+        "--fallback-model",
+        type=str,
+        help="主模型重试用尽后切到此模型再试 1 次（默认读 FALLBACK_MODEL，否则 gpt-image-1.5）",
+    )
+    p.add_argument(
+        "--ip-pause-seconds",
+        type=float,
+        help="IP 风控触发后全局暂停秒数（默认 1800=30 分钟）",
+    )
     return p.parse_args()
 
 
-def filter_tasks(all_tasks: list[dict], args: argparse.Namespace) -> list[dict]:
+def load_retry_failed_ids() -> set[str]:
+    """从 logs/failed.log 读出曾经失败过的 task id 集合（用于 --retry-failed）"""
+    if not FAILED_LOG.exists():
+        return set()
+    ids: set[str] = set()
+    for line in FAILED_LOG.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        try:
+            obj = json.loads(line)
+            if obj.get("id"):
+                ids.add(str(obj["id"]))
+        except Exception:
+            continue
+    return ids
+
+
+def filter_tasks(all_tasks: list[dict], args: argparse.Namespace,
+                 retry_failed_ids: set[str] | None = None) -> list[dict]:
     out = []
+    explicit_ids: set[str] | None = None
+    if args.task:
+        explicit_ids = set(args.task)
+    if retry_failed_ids:
+        explicit_ids = (explicit_ids or set()) | retry_failed_ids
+
     for t in all_tasks:
         if t.get("skip"):
             continue
-        if args.task and t["id"] not in args.task:
+        if explicit_ids is not None and t["id"] not in explicit_ids:
             continue
         if args.priority is not None and t.get("priority", 99) > args.priority:
             continue
-        if args.force:
+        if args.force or retry_failed_ids:
+            # --retry-failed 隐含 force（重跑必须覆盖已存在的失败留档）
             t["_force"] = True
         out.append(t)
     return out
@@ -472,11 +761,13 @@ async def main_async(args: argparse.Namespace) -> int:
     backend = detect_backend(base_url)
     cur_sym = currency_symbol(backend)
 
-    # 默认模型：DMXAPI 用 gpt-image-1（OpenAI 同款，DMXAPI 现行命名）
-    # OpenAI 官方用 gpt-image-2（2026-04 最新）
+    # 默认模型：
+    #   - DMXAPI：gpt-image-2（2026-04 上线，最新）；
+    #     如需更便宜可改 gpt-image-1.5 / gpt-image-1
+    #   - OpenAI 官方：gpt-image-2
     default_model = os.getenv(
         "OPENAI_IMAGE_MODEL",
-        "gpt-image-1" if backend == "dmxapi" else "gpt-image-2",
+        "gpt-image-2" if backend == "dmxapi" else "gpt-image-2",
     )
 
     # 预算上限：OpenAI 模式下读 BUDGET_LIMIT_USD（USD），DMXAPI 模式下读 BUDGET_LIMIT_CNY（CNY）
@@ -487,17 +778,36 @@ async def main_async(args: argparse.Namespace) -> int:
     else:
         budget_limit = args.budget or float(os.getenv("BUDGET_LIMIT_USD", "80.0"))
 
-    concurrency = args.concurrency or int(os.getenv("GEN_CONCURRENCY", "4"))
+    concurrency = args.concurrency or int(os.getenv("GEN_CONCURRENCY", "1"))
     max_retries = int(os.getenv("MAX_RETRIES", "2"))
     raw_dir = PROJECT_ROOT / os.getenv("RAW_DIR", "assets/raw")
     raw_dir.mkdir(parents=True, exist_ok=True)
     FAILED_LOG.parent.mkdir(parents=True, exist_ok=True)
 
+    # Fallback model：主 model 重试用尽后再试 1 次
+    fallback_model = (
+        args.fallback_model
+        or os.getenv("FALLBACK_MODEL")
+        or ("gpt-image-1.5" if backend == "dmxapi" else None)
+    )
+
+    # IP 风控暂停时长（默认 30 分钟）
+    ip_pause = args.ip_pause_seconds or float(os.getenv("IP_PAUSE_SECONDS", "1800"))
+
     # 加载 shared + tasks
     shared = load_yaml(SHARED_FILE)
     tasks_doc = load_yaml(TASKS_FILE)
     all_tasks = tasks_doc.get("tasks", [])
-    tasks = filter_tasks(all_tasks, args)
+
+    retry_ids: set[str] | None = None
+    if args.retry_failed:
+        retry_ids = load_retry_failed_ids()
+        if not retry_ids:
+            console.print("[yellow]--retry-failed 指定但 logs/failed.log 没有可重跑的失败记录[/yellow]")
+            return 0
+        console.print(f"[cyan]--retry-failed: 从 logs/failed.log 读到 {len(retry_ids)} 个失败 task[/cyan]")
+
+    tasks = filter_tasks(all_tasks, args, retry_ids)
 
     if not tasks:
         console.print("[yellow]没有匹配的任务[/yellow]")
@@ -519,7 +829,8 @@ async def main_async(args: argparse.Namespace) -> int:
     }.get(backend, backend)
     console.print(
         f"[bold]后端[/bold]：{backend_label} | "
-        f"[bold]模型[/bold]：{default_model} | "
+        f"[bold]主模型[/bold]：{default_model} | "
+        f"[bold]Fallback[/bold]：{fallback_model or '（无）'} | "
         f"[bold]预算上限[/bold]：{cur_sym}{budget_limit:.2f} | "
         f"[bold]并发[/bold]：{concurrency} | "
         f"[bold]Dry-Run[/bold]：{args.dry_run}"
@@ -539,11 +850,40 @@ async def main_async(args: argparse.Namespace) -> int:
             timeout=http_timeout,
             max_retries=0,  # 自己实现重试逻辑（带退避），关掉 SDK 内置的
         )
+
+        # 启动探活：跑批前确认渠道可用，避免浪费 token + 时间
+        if not args.skip_ping:
+            console.print(f"[cyan]>>> 启动探活 ({default_model}) ...[/cyan]")
+            ok, info = await startup_ping(client, default_model)
+            if ok:
+                console.print(f"[green]>>> 渠道存活：{info}[/green]")
+            else:
+                console.print(f"[red]>>> 渠道不可用：{info}[/red]")
+                if fallback_model and fallback_model != default_model:
+                    console.print(f"[yellow]>>> 尝试 fallback {fallback_model} 探活 ...[/yellow]")
+                    ok2, info2 = await startup_ping(client, fallback_model)
+                    if ok2:
+                        console.print(
+                            f"[green]>>> Fallback 渠道存活（{fallback_model}）：{info2}[/green]"
+                        )
+                        console.print(
+                            f"[yellow]>>> 主模型不可用，本次跑批会大量 fallback。"
+                            f"建议过几小时后再跑。继续？继续 = 5s 后开始[/yellow]"
+                        )
+                        await asyncio.sleep(5)
+                    else:
+                        console.print(f"[red]>>> Fallback 也不可用：{info2}[/red]")
+                        console.print("[red]>>> 终止跑批。建议稍后重试或换 backend。[/red]")
+                        return 3
+                else:
+                    console.print("[red]>>> 终止跑批。建议稍后重试或换 backend。[/red]")
+                    return 3
     else:
         client = None  # type: ignore
 
     budget = Budget(budget_limit)
     sem = asyncio.Semaphore(concurrency)
+    gate = IPBlockGate(pause_seconds=ip_pause)
     results: list[dict] = []
 
     started = time.time()
@@ -570,6 +910,8 @@ async def main_async(args: argparse.Namespace) -> int:
                 pb_id,
                 backend,
                 default_model,
+                fallback_model,
+                gate,
             )
             for t in tasks
         ]
