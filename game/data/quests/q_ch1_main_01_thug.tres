@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_01_thug"
+title = "风波再起"
+kind = 0
+desc_not_started = "回到清风镇外，似乎不大太平。"
+desc_in_progress = "击退埋伏在路边的黑教徒。"
+desc_completed = "击退了独行黑教徒。看来线索没错，黑教的人确实在清风镇一带活动。"
+completion_triggers = Array[String](["enemy_defeated:thug_lone"])
+reward_gold = 12
+reward_exp = 10
+reward_items = Array[Dictionary]([])

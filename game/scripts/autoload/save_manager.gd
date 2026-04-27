@@ -14,12 +14,14 @@ func has_save(slot: int) -> bool:
 
 func save_to_slot(slot: int) -> bool:
 	var data := {
-		"version": 1,
+		"version": 2,
 		"timestamp": Time.get_unix_time_from_system(),
 		"chapter": GameState.current_chapter,
 		"gold": GameState.gold,
 		"flags": GameState.flags,
 		"player": _serialize_stats(GameState.player),
+		"quests": QuestManager.to_dict(),
+		"current_field": String(SceneRouter.get_current_field_id()),
 	}
 	var f := FileAccess.open(slot_path(slot), FileAccess.WRITE)
 	if f == null:
@@ -46,9 +48,24 @@ func load_from_slot(slot: int) -> bool:
 	GameState.gold = int(data.get("gold", 0))
 	GameState.flags = data.get("flags", {})
 	_apply_stats(GameState.player, data.get("player", {}))
+	QuestManager.from_dict(data.get("quests", {}))
 	GameState.emit_signal("player_changed")
 	GameState.emit_signal("gold_changed", GameState.gold)
 	return true
+
+
+func get_save_field_id(slot: int) -> StringName:
+	## 给 main_menu「继续游戏」用：先读存档但不应用，仅看应回到哪个场景。
+	if not has_save(slot):
+		return &""
+	var f := FileAccess.open(slot_path(slot), FileAccess.READ)
+	if f == null:
+		return &""
+	var parsed: Variant = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return &""
+	return StringName(parsed.get("current_field", "ch1_s1_road"))
 
 func _serialize_stats(s: CharacterStats) -> Dictionary:
 	if s == null:

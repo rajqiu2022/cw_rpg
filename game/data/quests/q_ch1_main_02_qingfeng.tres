@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_02_qingfeng"
+title = "打探清风镇"
+kind = 0
+desc_not_started = "顺着尸体身上的地图，前方便是清风镇。"
+desc_in_progress = "进入清风镇，向当地人打听黑教的消息。"
+desc_completed = "在清风镇打听到了黑教的踪迹。"
+completion_triggers = Array[String](["scene_entered:ch1_s2_qingfeng"])
+reward_gold = 0
+reward_exp = 0
+reward_items = Array[Dictionary]([])
