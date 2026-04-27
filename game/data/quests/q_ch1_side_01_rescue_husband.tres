@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_01_rescue_husband"
+title = "营救丈夫"
+kind = 1
+desc_not_started = "清风镇主街上一名女子哭诉丈夫被掳。"
+desc_in_progress = "前往城西废宅救出被掳的男子。"
+desc_completed = "你救出了被绑男子，他正是哭泣女子的丈夫。"
+completion_triggers = Array[String](["flag_set:rescued_husband"])
+reward_gold = 50
+reward_exp = 5
+reward_items = Array[Dictionary]([])

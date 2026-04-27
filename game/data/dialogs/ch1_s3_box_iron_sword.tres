@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_a"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]旧木箱锁已锈坏。\n你撬开箱盖，里面竟有一柄铁剑——刃口尚利。[/i]"
+choices = []
+give_items = Array[Dictionary]([{"id": "iron_sword", "count": 1}])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "looted_west_ruin_box", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:b"
+
+[sub_resource type="Resource" id="node_b"]
+script = ExtResource("2_dnode")
+node_id = &"b"
+speaker = "沈不归"
+portrait_path = "res://art/characters/protagonist_neutral.png"
+text = "[color=#7fbcff]【铁剑】[/color]入手。\n比徒手要好。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s3_box_iron_sword"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b")])

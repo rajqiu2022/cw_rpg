@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_a"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "客栈老板"
+portrait_path = ""
+text = "客官从外面来？\n这阵子可不太平，少在城外多走动。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:b"
+
+[sub_resource type="Resource" id="node_b"]
+script = ExtResource("2_dnode")
+node_id = &"b"
+speaker = "客栈老板"
+portrait_path = ""
+text = "尤其[color=#e3a64a]城西的那处废宅[/color]——\n半月内已经死了三波路人，连衙门都不敢往里钻。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:c"
+
+[sub_resource type="Resource" id="node_c"]
+script = ExtResource("2_dnode")
+node_id = &"c"
+speaker = "沈不归"
+portrait_path = "res://art/characters/protagonist_neutral.png"
+text = "[i]（黑教的踪迹？看来要往城西走一趟。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "rumour_west_ruin", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s2_inn_keeper"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b"), SubResource("node_c")])

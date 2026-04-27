@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_a"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "守城兵丁"
+portrait_path = ""
+text = "外乡人？\n这年月小心些，黑教的人最近总来打探消息。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:b"
+
+[sub_resource type="Resource" id="node_b"]
+script = ExtResource("2_dnode")
+node_id = &"b"
+speaker = "守城兵丁"
+portrait_path = ""
+text = "听说五年前他们血洗了流云山——\n三个月前，掌门长子无声无息消失了。\n这世道啊……"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:c"
+
+[sub_resource type="Resource" id="node_c"]
+script = ExtResource("2_dnode")
+node_id = &"c"
+speaker = "沈不归"
+portrait_path = "res://art/characters/protagonist_neutral.png"
+text = "[i]（流云山……正是师父和我五年前最后一战之地。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s2_guard"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b"), SubResource("node_c")])

@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/dialogs/ch1_s3_intro.tres" id="2_intro"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch1_s3_west_ruin"
+display_name = "清风镇 · 城西废宅"
+background_path = "res://art/backgrounds/bg_equipment.png"
+bgm_path = ""
+on_enter_dialog = ExtResource("2_intro")
+hotspots = [
+	{
+		"label": "旧木箱",
+		"pos_x": 0.22,
+		"pos_y": 0.7,
+		"action": "dialog:ch1_s3_box_iron_sword",
+		"hide_flag": "looted_west_ruin_box"
+	},
+	{
+		"label": "被绑男子",
+		"pos_x": 0.5,
+		"pos_y": 0.55,
+		"action": "dialog:ch1_s3_bound_man",
+		"require_flag": "accepted_rescue_husband",
+		"hide_flag": "rescued_husband"
+	},
+	{
+		"label": "[内堂] 推开大门 →",
+		"pos_x": 0.84,
+		"pos_y": 0.6,
+		"action": "dialog:ch1_s3_door_to_boss"
+	},
+	{
+		"label": "← 返回主街",
+		"pos_x": 0.12,
+		"pos_y": 0.88,
+		"action": "scene:ch1_s2_qingfeng"
+	}
+]

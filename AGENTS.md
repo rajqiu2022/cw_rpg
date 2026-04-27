@@ -8,7 +8,10 @@
 
 ## 📍 一句话现状
 
-漫画 2.5D 武侠 AVG-RPG（致敬《风云之天下会》1998 玩法），**v0.2.0-m1 编码完成**（数据驱动战斗 + EventBus + Inventory），等用户跑 `docs/mvp-m1-checklist.md` 验收 → 进 M2（探索场景 + 对话）。
+漫画 2.5D 武侠 AVG-RPG（致敬《风云之天下会》1998 玩法），**v0.2.0-m3 编码完成**（Quest 系统 + 主线任务 1 + 任务面板 UI + 存档持久化），等用户跑 `docs/mvp-m3-checklist.md` 验收 → 进 M4（多场景 + NPC + 商店）。
+
+**当前可玩闭环（M3 验收路径）**：
+主菜单 → 官道 → 进场对话 → **自动接 q1「风波再起」** → 看石碑/查尸体 → 战斗 → **q1 自动完成（+12 金 +10 exp）** → 回官道 → 战后剧情 → **接 q2「打探清风镇」** → 任务面板右下角实时显示 → 存档 → 重启「继续游戏」回到原场景，q1 仍 completed、q2 仍 in_progress。
 
 ### 🎯 v0.2.0 总目标（用户拍板 2026-04-26）
 
@@ -94,7 +97,46 @@ RPG_GAME/
   - 关键事件广播 EventBus（QuestManager 将订阅）
 - 主角更名：主角 → 沈不归（占位，可后续完全替换）
 
-> 👉 等用户跑 `docs/mvp-m1-checklist.md` 7 项验收，全 ✓ 后 M1 关闭，进入 M2。
+### 6. v0.2.0-M2 探索场景 + 对话系统（2026-04-26）
+
+新增 6 个 autoload（含 EventBus / DialogPlayer）+ Field 场景 + 全局 DialogBox：
+
+- `EventBus` 信号枢纽（已 M1 完成，M2 加 `flag_set` / `dialog_started` / `dialog_ended` / `hotspot_triggered`）
+- `DialogPlayer` autoload：playstateful 对话流；自动 instantiate `dialog_box.tscn` 加到 root；管理 node 推进、choices、副作用、结束动作
+- `DialogBox` UI（`scenes/ui/dialog_box.tscn` + `ui/dialog_box.gd`）：底部立绘 + 名字 + 富文本 + 选项按钮
+- `FieldController`（`scenes/field.tscn` + `field/field_controller.gd`）：背景 + 浮动 hotspot 按钮（按 0~1 浮点比例定位）+ HUD 金币
+- `SceneRouter` 加 **action 字符串解析中枢** `resolve_action(s)`：支持 `dialog:` / `battle:` / `scene:` / `give_item:` / `give_gold:` / `set_flag:` / `accept_quest:` / `complete_quest:` / `open_inventory` / `open_quest_log`
+- DialogNode 拆 **副作用**（give_items / give_gold / set_flags / accept_quest / complete_quest）和 **结束动作**（on_end="next:id" / "battle:id" / "scene:id" / "end"），同节点可叠加多个副作用 + 一条导航
+- BattleController 胜利时自动写入 `defeated_<enemy_id>` flag → hotspot 用 `hide_flag` 自动隐藏打过的怪
+- `start_battle` → `go_victory` → `go_field` 闭环带 `return_scene`，胜利后回原场景而非主菜单
+- 5 个新 .tres 数据：场景 1 `ch1_s1_road` + 4 段对话（进场 / 石碑 / 尸体 / 战后剧情）
+- 主菜单从直跳战斗改为 `SceneRouter.go_field("ch1_s1_road")`
+
+**M2 完整闭环**：主菜单 → 官道 → 进场对话（3 节）→ 点石碑（2 节，set_flag）→ 点尸体（2 节，触发战斗）→ 战斗胜利 → 回官道（尸体按钮消失，"继续前行"按钮出现）→ 看战后剧情（拿地图+麻衣+8 金）。
+
+### 7. v0.2.0-M3 Quest 系统（2026-04-26）
+
+第 7 个 autoload `QuestManager` + 任务面板 UI + 2 个主线任务 + 存档持久化：
+
+- `QuestManager` autoload：
+  - 状态机（NOT_STARTED / IN_PROGRESS / COMPLETED / FAILED），单一 source of truth
+  - 订阅 EventBus 5 类事件信号（enemy_defeated / scene_entered / item_picked_up / flag_set / npc_talked_to）
+  - Trigger 字符串语法：`enemy_defeated:<id>` / `scene_entered:<id>` / `flag_set:<key>` / ...
+  - accept(qid) / complete(qid) 唯一对外 API；外部禁止直接 emit `EventBus.quest_accepted`（避免重入循环）
+  - complete 时自动通过 `GameState.add_gold` / `player.gain_exp` / `Inventory.add_item` 发奖
+- DialogPlayer 改：节点副作用里 `accept_quest` / `complete_quest` 字段直接调 `QuestManager.accept/complete`
+- SceneRouter.resolve_action：`accept_quest:<id>` / `complete_quest:<id>` 命令也走 QuestManager
+- FieldController 加任务面板：右下角 RichTextLabel 显示当前任务列表，主线任务橙点 ●，实时刷新；右上 HUD 加 「任务 (J)」按钮 / J 键切换面板
+- 2 个 quest .tres：
+  - `q_ch1_main_01_thug`「风波再起」trigger=`enemy_defeated:thug_lone`，奖励 12 金 + 10 exp
+  - `q_ch1_main_02_qingfeng`「打探清风镇」trigger=`scene_entered:ch1_s2_qingfeng`（M4 完成）
+- 任务接受时机：`ch1_road_intro` 第 3 节自动接 q1；`ch1_road_after_thug` 第 2 节自动接 q2
+- SaveManager 升级 schema 到 version=2：新增 `quests`（QuestManager.to_dict）和 `current_field` 字段
+- 主菜单「继续游戏」改为读取存档里的 `current_field` 跳回原场景（不再硬编码回官道）
+
+**M3 完整闭环**：主菜单 → 官道（自动接 q1）→ 战斗（自动完成 q1 + 发奖）→ 回官道 → 战后剧情（自动接 q2）→ 存档 → 重启「继续」回原场景，q1 仍 completed、q2 仍 in_progress。
+
+> 👉 等用户跑 `docs/mvp-m3-checklist.md` 8 大节验收，全 ✓ 后 M3 关闭，进入 M4（多场景 + NPC + 商店）。
 
 ---
 
@@ -102,10 +144,10 @@ RPG_GAME/
 
 | M | 时长 | 内容 | 状态 |
 |---|---|---|---|
-| **M1** | 1.5h | 数据驱动重构 + EventBus + Inventory | ✅ **代码完成**，等验收 |
-| **M2** | 2h | 探索场景 Field + 互动热点 + 对话系统 | ⏳ 下一步 |
-| **M3** | 1.5h | Quest 系统 + 主线任务 1 | ⏸ |
-| **M4** | 1.5h | 多场景跳转 + NPC 对话 + 商店 | ⏸ |
+| **M1** | 1.5h | 数据驱动重构 + EventBus + Inventory | ✅ 已完成 |
+| **M2** | 2h | 探索场景 Field + 互动热点 + 对话系统 | ✅ 已完成（待用户验收） |
+| **M3** | 1.5h | Quest 系统 + 主线任务 1 | ✅ **代码完成**，等用户验收 `docs/mvp-m3-checklist.md` |
+| **M4** | 1.5h | 多场景跳转 + NPC 对话 + 商店 | ⏳ 下一步 |
 | **M5** | 1h | 背包/装备 UI + 物品使用 | ⏸ |
 | **M6** | 1.5h | 章末 Boss + 状态异常 + 章节结算 | ⏸ |
 | **M7** | 1h | 5 槽存档 + 加载/继续游戏 | ⏸ |
@@ -172,4 +214,4 @@ Cursor 把所有对话以 JSONL 存在本地：
 
 ---
 
-_最后更新：2026-04-27（v0.2.0-m1 编码完成）· 维护者：每完成一个里程碑追加"已完成"+ 调整"待办"_
+_最后更新：2026-04-26（v0.2.0-m3 编码完成）· 维护者：每完成一个里程碑追加"已完成"+ 调整"待办"_

@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3shop_qingfeng"]
+
+[ext_resource type="Script" path="res://scripts/ui/shop_ui.gd" id="1_shop"]
+
+[node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_shop")
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.06, 0.05, 0.92)
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -340.0
+offset_right = 500.0
+offset_bottom = 340.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Body" type="VBoxContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="HeaderRow" type="HBoxContainer" parent="Panel/Body"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="ShopName" type="Label" parent="Panel/Body/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "—"
+theme_override_font_sizes/font_size = 26
+
+[node name="GoldLabel" type="Label" parent="Panel/Body/HeaderRow"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "金 0"
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 2
+
+[node name="Greeting" type="Label" parent="Panel/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "—"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 16
+
+[node name="Tabs" type="TabContainer" parent="Panel/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 18
+
+[node name="买入" type="ScrollContainer" parent="Panel/Body/Tabs"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="BuyList" type="VBoxContainer" parent="Panel/Body/Tabs/买入"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="卖出" type="ScrollContainer" parent="Panel/Body/Tabs"]
+visible = false
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="SellList" type="VBoxContainer" parent="Panel/Body/Tabs/卖出"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Footer" type="HBoxContainer" parent="Panel/Body"]
+layout_mode = 2
+alignment = 2
+
+[node name="CloseBtn" type="Button" parent="Panel/Body/Footer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 44)
+layout_mode = 2
+text = "关闭 (Esc)"
+theme_override_font_sizes/font_size = 18

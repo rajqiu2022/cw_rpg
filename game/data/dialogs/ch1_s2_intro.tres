@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_a"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]主街上行人匆匆，茶馆酒肆挂着褪了色的幡旗。\n空气里隐隐有股不安的气味。[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:b"
+
+[sub_resource type="Resource" id="node_b"]
+script = ExtResource("2_dnode")
+node_id = &"b"
+speaker = "沈不归"
+portrait_path = "res://art/characters/protagonist_neutral.png"
+text = "先在镇上转一圈，看看能问出什么风声。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s2_intro"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b")])

@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/dialogs/ch1_s2_intro.tres" id="2_intro"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch1_s2_qingfeng"
+display_name = "清风镇 · 主街"
+background_path = "res://art/backgrounds/bg_main_menu.png"
+bgm_path = ""
+on_enter_dialog = ExtResource("2_intro")
+hotspots = [
+	{
+		"label": "客栈老板",
+		"pos_x": 0.18,
+		"pos_y": 0.5,
+		"action": "dialog:ch1_s2_inn_keeper"
+	},
+	{
+		"label": "神秘商人",
+		"pos_x": 0.4,
+		"pos_y": 0.6,
+		"action": "dialog:ch1_s2_merchant"
+	},
+	{
+		"label": "哭泣女子",
+		"pos_x": 0.62,
+		"pos_y": 0.55,
+		"action": "dialog:ch1_s2_crying_woman",
+		"hide_flag": "accepted_rescue_husband"
+	},
+	{
+		"label": "哭泣女子",
+		"pos_x": 0.62,
+		"pos_y": 0.55,
+		"action": "dialog:ch1_s2_crying_woman_waiting",
+		"require_flag": "accepted_rescue_husband",
+		"hide_flag": "rescued_husband"
+	},
+	{
+		"label": "守城兵丁",
+		"pos_x": 0.85,
+		"pos_y": 0.62,
+		"action": "dialog:ch1_s2_guard"
+	},
+	{
+		"label": "[出口] 前往城西 →",
+		"pos_x": 0.88,
+		"pos_y": 0.85,
+		"action": "scene:ch1_s3_west_ruin",
+		"require_flag": "rumour_west_ruin"
+	}
+]

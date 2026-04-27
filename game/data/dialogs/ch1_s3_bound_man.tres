@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_a"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "被绑男子"
+portrait_path = ""
+text = "壮士……壮士救命！\n是我浑家请你来的吧？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:b"
+
+[sub_resource type="Resource" id="node_b"]
+script = ExtResource("2_dnode")
+node_id = &"b"
+speaker = "沈不归"
+portrait_path = "res://art/characters/protagonist_neutral.png"
+text = "[i]（一剑斩断绳索。）[/i]\n趁里面那位还没回来，赶紧出去。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:c"
+
+[sub_resource type="Resource" id="node_c"]
+script = ExtResource("2_dnode")
+node_id = &"c"
+speaker = "被绑男子"
+portrait_path = ""
+text = "壮士大恩……\n那带头的姓赵，似乎与黑教什么 [color=#e3a64a]玄机谷[/color] 有关——\n小的这就走！"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "rescued_husband", "value": true}, {"key": "lead_xuanji_valley", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s3_bound_man"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b"), SubResource("node_c")])
