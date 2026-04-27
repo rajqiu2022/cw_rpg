@@ -815,6 +815,8 @@ if (
 
 **改进方向（待补 todo）**：`scripts/ping_dmx.py` 调用余额查询接口（DMXAPI 应该有 `/v1/dashboard/billing/credit_grants` 类似 endpoint），跑批前先打印当前余额 + 估算本次跑批成本 + 是否够。
 
+> **⏩ 已完成于 commit `ac2fded`**：DMXAPI 实际接口是 `GET /api/user/self`（不是 OpenAI 兼容的），需要 `system_token` + `user_id` 两个新认证字段（不同于 OpenAI 兼容的 sk- 密钥）。详见 §13.2。
+
 **临时人工流程**：登录 DMXAPI 控制台首页，记下当前余额。按 ¥0.13-0.15/张（gpt-image-1.5 medium）估算这次需要的总额，余额至少 1.5 倍才放心跑批。
 
 ### 12.5 美术总基调：用户审美 vs prompt 写实（2026-04-27）
@@ -856,4 +858,118 @@ if out_png.exists() and not getattr(task, "_force", False):
 **修复**：`getattr(task, "_force", False)` → `task.get("_force", False)`
 
 **经验**：dict 取值用 `.get()` / `.[ ]`，对象取属性用 `getattr` / `.x`。Python 这两个 API 容易眼瞎写错——尤其是当对象同时支持两种访问时（比如某些 ORM 模型）。**code review 时遇到 dict 看见 getattr 必停 0.5 秒检查**。
+
+---
+
+## 13. stage 2 完整批跑复盘（2026-04-27 22:17 ~ 23:30）
+
+### 13.1 实测数据：9 任务 100% 成功，单图均价 ¥0.49
+
+**任务清单**：6 张主线角色立绘（v0.3 阵营，character_portrait_textonly 模板）+ 3 张场景背景（45° 等距，scene_background_45deg 模板）。
+
+| 阶段 | 时间 | 结果 |
+|---|---|---|
+| 第一波（充值前） | 22:09 ~ 22:13 | 3 张立绘成功（冷孤云 / 刑樊天 / 沈半盏），余额耗尽，3 张 fatal 失败 |
+| 充值 + B2 跑批 | 23:17 ~ 23:30 | 9 任务全部处理：3 跳过 + 6 成功 + 0 失败 |
+
+**第二波关键指标**：
+
+| 指标 | 实测值 | 预估值 | 偏差 |
+|---|---|---|---|
+| 总耗时 | 757.5s（12'37") | ~10 min | 准 |
+| 总花费 | ¥2.9337 | ~¥7.2（按 ¥1.2/张 × 6） | **超预期：仅花 41%** |
+| 单图均价 | ¥0.489 | ¥1.20 | **比预估便宜 60%** |
+| 成功率 | 100%（6/6） | ≥ 80% | 超预期 |
+| 单张耗时 | 立绘 ~110s / 场景 ~150s | – | – |
+
+**便宜的原因推测**：`gpt-image-2 medium` 实际消耗的 token 比 `gpt-image-1.5 medium` 低，DMXAPI 价格表（¥24.82 / ¥148.92 per M tokens）对 medium 质量产生约 ¥0.4-0.5/张实际成本。我们之前 ¥1.2/张的预估是**按 high 质量算的**，没区分质量档。
+
+**结论**：M5-M7 阶段（约 30-50 张资产）总成本 ≈ **¥15-25**，比之前预估的 ¥36-60 大幅下调。
+
+### 13.2 ping_dmx 实现：DMXAPI 余额查询接口非 OpenAI 标准
+
+**接口确认（doc.dmxapi.cn/yuer.html）**：
+
+```
+GET https://www.dmxapi.cn/api/user/self
+Headers:
+  Authorization: <system_token>     ← 不是 sk-... API 密钥！
+  Rix-Api-User: <user_id>
+  Accept: application/json
+Response:
+  data.quota                        ← 整数，单位需 / 500000 得人民币
+```
+
+**关键认知陷阱**：DMXAPI 的"系统令牌"和"API 密钥（sk-...）"是**两个独立凭证**：
+
+| 凭证 | 用途 | 入口 |
+|---|---|---|
+| **API 密钥** sk-... | OpenAI 兼容接口（图像、对话） | DMXAPI → 创建令牌 |
+| **系统令牌** 32 字符 | DMXAPI 自有 API（余额、日志、统计） | DMXAPI → 个人设置 → 系统访问令牌 |
+| **用户 ID** 数字 | 配合系统令牌使用 | DMXAPI → 个人设置 → 用户 ID |
+
+我曾以为 sk- 密钥就能查余额，会节省一次配置步骤——错了。**这是中转商常见模式**：自有 API（订单 / 配额 / 日志）需要 system_token；OpenAI 兼容 API（业务调用）用 sk-。
+
+**ping_dmx.py v0.2 设计**（commit `ac2fded`）：
+
+- `query_balance()` 三档告警：< ¥0.5 critical / < ¥5 low / ≥ ¥5 ok
+- 优雅降级：未配置 system_token 时跳过余额、仍执行 ping
+- 余额接口走 DMXAPI 自有 API（不上游 OpenAI），**IP 风控期间仍能查**——这反而是个意外收获，下一次 IP 风控时可以先看余额避免误判
+- 退出码 0 / 1 / 2 / 3 分别表示 ok / connection-fail / empty-data / quota-exhausted，方便上层脚本编排
+
+### 13.3 ping 失败 ≠ 跑批失败：--skip-ping 反而稳
+
+**反直觉现象**：22:57 / 23:06 两次 `python scripts/ping_dmx.py` 分别报 `APIConnectionError`（30s）和 `APITimeoutError`（90s = OpenAI SDK 默认 max_retries=2，30s × 3）；但 23:17 立刻用 `--skip-ping` 跑 9 任务批，**0 失败一次过**。
+
+**可能解释**：
+
+1. **ping 路径自身瞬时拥塞**：探活调用次数极低（一次一张图），渠道分配可能命中"冷"通道；批跑过程中 SDK 可能复用 connection pool 命中"热"通道。
+2. **重试机制差异**：ping_dmx.py 简单调用没有 backoff/重试；gen_assets.py 内有 transient 类错误的指数退避，能扛过短暂抖动。
+3. **DMXAPI 渠道队列动态变化**：1 分钟内的可用通道可能不一样。
+
+**新流程建议**（写入工作流）：
+
+| ping 结果 | 行动 |
+|---|---|
+| OK ✅ | 直接跑 |
+| 1 次失败（transient） | 立刻试 `--skip-ping` 跑 1 个任务验证 |
+| 连续 2 次失败（30 分钟内） | 等 30 分钟再试；或转 ChatGPT Plus 网页 |
+| 余额 critical | 充值后再跑（不必 retry） |
+
+**教训**：这次差点因为两次 ping 失败劝退用户改用 ChatGPT Plus 手贴 30 分钟，实际**直接 --skip-ping 12 分钟全搞定**，省了不少工。下次类似情况要更激进一点。
+
+### 13.4 美术基调 v0.2 验证：场景"明亮 / 暗调特例"双轨制可行
+
+stage 2 的 3 张场景是**v0.2 美术基调拍板后第一次实测**：
+
+| 场景 | 设计意图 | prompt 关键词 | 验收 |
+|---|---|---|---|
+| 林西村主街 | 明亮鲜艳（默认） | morning + clear + 鲜艳明亮 + 阳光感 | 待用户审 |
+| 林西村外山道 | 明亮鲜艳（默认） | morning + clear + 蓝天 + 翠绿竹林 | 待用户审 |
+| 竹尾村外密林 | 暗调特例 | dusk + foggy + **高饱和、不灰暗** | 待用户审 |
+
+如果 3 张场景都通过，说明**"_shared.yaml 全局明亮 + 单 task 暗调反向覆盖"** 双轨制可推广到 M5-M7 后续场景；如果竹尾密林仍偏灰暗压抑，则需要在场景任务级补更激进的反向词。
+
+> 用户最终验收：**全部合格**（2026-04-27 23:37）。归档到 `assets/art_validation_v2/character_v2/` 和 `scene_v2/`。双轨制确认可行。
+
+### 13.5 存档约定：通过的 PNG 必须从 raw/ 拷到 art_validation_v2/
+
+**问题**：`assets/raw/` 在 `.gitignore` 里被排除（避免巨量草图入库），但 stage 2 的 6 张通过立绘 + 3 张场景默认输出到 `assets/raw/character/v2/` 和 `raw/scene/v2/`，**git 看不到**——意味着磁盘故障会丢这 ¥6.5 的成果。
+
+**约定（沿用 stage 1 模式）**：
+
+```
+assets/
+├── raw/                          # gitignore，工作区，gen_assets.py 默认输出
+│   ├── character/v2/*.png        # 工作中 / 草稿 / 待审
+│   └── scene/v2/*.png
+└── art_validation_v2/            # 进 git，已通过的归档
+    ├── npc/                      # stage 1 通过：5 NPC（commit 1559978）
+    ├── character_v2/             # stage 2 通过：6 主线立绘
+    └── scene_v2/                 # stage 2 通过：3 场景背景
+```
+
+**操作**：用户审阅通过 → `Copy-Item raw/.../X.png art_validation_v2/X_v2/` → `git add` 进归档 commit。**meta.json 不入库**（包含的是工作区状态，归档版本不需要追踪 prompt 漂移）。
+
+**未来改进**：可以加个 `scripts/archive_passed.py`，参数 `--task <id>` 一键拷贝到归档区，并写一份 archive_log（哪张图哪天通过、谁审的）。当前 ≤ 10 张手工拷贝够用。
 
