@@ -1,17 +1,17 @@
 # AGENTS.md · AI 助手项目记忆
 
 > 这是 Cursor / Claude Code / Codex 等 AI agent 工具的**自动加载文件**。  
-> 新对话开启时 AI 应当先读完本文件，再读 `docs/experience-log.md`，然后才回应用户。  
+> 新对话开启时 AI 应当依次读：本文件 → **`docs/current-progress.md`**（快照）→ `docs/ai-rules.md`（AI 开发硬规则）→ `docs/ui-style-guide.md`（当前 UI 规范）→ `docs/agent-workflow.md`（多 Agent 协作规则）→ `docs/module-owners.md`（模块归属）→ `docs/agents/README.md`（角色记忆索引）→ `docs/agents/producer-memory.md`（主控记忆）→ `docs/experience-log.md`→ **`docs/game-design-skills/README.md`**（游戏设计技能参考），然后才回应用户。  
 > 维护者（人或 AI）：每完成一个里程碑，更新"已完成"和"待办"。
 
 ---
 
 ## 📍 一句话现状
 
-漫画 2.5D 武侠 AVG-RPG（致敬《风云之天下会》1998 玩法），**v0.2.0-m3 编码完成**（Quest 系统 + 主线任务 1 + 任务面板 UI + 存档持久化），等用户跑 `docs/mvp-m3-checklist.md` 验收 → 进 M4（多场景 + NPC + 商店）。
+漫画 2.5D 武侠 AVG-RPG（玩法致敬《风云之天下会》1998），叙事与设计以 **`docs/world-bible.md` v0.3** 为准。**M1–M5 编码已在工作区落地**；M5 与兜底 UI、SceneRouter 商店接口等详见 **`docs/current-progress.md`（2026-04-28 快照）**。
 
-**当前可玩闭环（M3 验收路径）**：
-主菜单 → 官道 → 进场对话 → **自动接 q1「风波再起」** → 看石碑/查尸体 → 战斗 → **q1 自动完成（+12 金 +10 exp）** → 回官道 → 战后剧情 → **接 q2「打探清风镇」** → 任务面板右下角实时显示 → 存档 → 重启「继续游戏」回到原场景，q1 仍 completed、q2 仍 in_progress。
+**当前可玩闭环（偏工程验收）**：
+主菜单 → Field 多场景（含商店 `shop:`）→ 对话 / 任务 / 战斗 → **I 背包 · E 装备 · J 任务** → 存档 **v3**（含 `inventory`）。若仓库内无 `game/art/**/*.png`，背景为 **FallbackBg + HintBar**，不再「一片空」。
 
 ### 🎯 v0.2.0 总目标（用户拍板 2026-04-26）
 
@@ -19,7 +19,7 @@
 - AVG 式点击场景（不做顶视角自由走，更适配 GPT Image 美术）
 - 1v1 回合制战斗（已有，本期数据驱动化）
 - 背包/装备/任务/对话/商店各一个最小但端到端可用的版本
-- 占位剧本：武当弟子沈不归追凶（角色名/世界观可后续完全替换）
+- 叙事主设定：**冷孤云 / 林西村下山**（`world-bible` v0.3）；`game/data/dialogs/` 中「沈不归」「清风镇」「黑教」已批量替换为「冷孤云」「竹尾村」「茗雾山庄」
 - 7 个 milestone（M1-M7），合计约 10 小时编码
 
 详见 `docs/design-mvp-chapter1.md`（决策依据 + 系统模块图 + 数据模型）。
@@ -55,6 +55,14 @@ RPG_GAME/
 │   ├── dmxapi-setup.md
 │   ├── style-bible-prompts.md
 │   ├── godot-demo-howto.md       ← Godot demo 运行手册
+│   ├── current-progress.md       ← 当前进展快照（建议每次里程碑后更新）
+│   ├── sprite-prompt-playbook.md ← 主角 sprite 分段提示词 + 跑图命令
+│   ├── sprite-cost-optimization-plan.md ← sprite 未解决前的低成本优化纪律
+│   ├── agent-workflow.md         ← 多 Agent 协作工作流（角色 / 交接 / 验收）
+│   ├── module-owners.md          ← 模块写权归属表（避免互相覆盖）
+│   ├── agents/                   ← 角色独立长期记忆（producer/lore/system/battle/art/qa/review）
+│   ├── game-design-skills/       ← 游戏设计参考技能（基于《游戏设计的100个原理》，7 篇）
+│   ├── acceptance-checklists/    ← 各角色验收清单（lore/system/battle/art/qa）
 │   └── experience-log.md         ← 所有踩坑记录（必读）
 ├── .env              ← 本地 API Key（gitignored，新机器需重建）
 └── AGENTS.md          ← 本文件（AI 自动读取）
@@ -81,7 +89,7 @@ RPG_GAME/
 ### 3. 已收 Lovart 6 张高质量参考图（images/）
 - `游戏主界面UI.png` `装备界面UI.png` `角色创建界面UI.png`
 - `1777180910974.png`（场景）`task_1494656_1.png` `task_1494976_1.png`（人物）
-- 已复制改名进 `game/art/` 作 demo 占位
+- 历史上曾复制进 `game/art/` 作占位；**若 git 未跟踪实际 `.png`，运行时只有 `.import` 不够**，需用 v2 归档图补库或依赖 `FallbackBg`（见 `docs/experience-log.md` §14.4）
 
 ### 4. Godot 4 程序骨架（game/）— v0.1.0
 完整可跑的最小闭环：**主菜单 → 战斗 → 胜利/失败 → 存档**（2026-04-27 实机验收通过）
@@ -95,7 +103,7 @@ RPG_GAME/
   - 装备加成自动叠加到攻击/防御/速度
   - 战利品按 EnemyDef.drop_*（必掉 + 概率掉）自动入背包
   - 关键事件广播 EventBus（QuestManager 将订阅）
-- 主角更名：主角 → 沈不归（占位，可后续完全替换）
+- 默认主角显示名：`GameState` 已为 **冷孤云**（旧对话 `.tres` 里 speaker「沈不归」已批量替换完成）
 
 ### 6. v0.2.0-M2 探索场景 + 对话系统（2026-04-26）
 
@@ -136,7 +144,73 @@ RPG_GAME/
 
 **M3 完整闭环**：主菜单 → 官道（自动接 q1）→ 战斗（自动完成 q1 + 发奖）→ 回官道 → 战后剧情（自动接 q2）→ 存档 → 重启「继续」回原场景，q1 仍 completed、q2 仍 in_progress。
 
-> 👉 等用户跑 `docs/mvp-m3-checklist.md` 8 大节验收，全 ✓ 后 M3 关闭，进入 M4（多场景 + NPC + 商店）。
+### 8. v0.2.0-M4 多场景 + NPC + 商店（2026-04）
+
+- 多 `SceneScript` 场景（如清风镇主街 / 城西废宅）、NPC 热点、`ShopDef` + `shop.tscn` 买卖闭环
+- **`SceneRouter` 必须同时提供** `go_shop()`、`get_shop_payload()`（曾漏 `go_shop` 导致解析期报错，已修）
+
+### 9. v0.3.0-M5 背包 / 装备 + 存档 v3（2026-04-28）
+
+- Field HUD：**背包 (I) / 装备 (E) / 任务 (J)**；`Inventory.use_item`、**6 装备槽**、`SaveManager` **version 3** 写入 `inventory`
+- 主菜单 **新游戏** 调 `Inventory.reset_for_new_game()` 给少量 starter 物品
+- **无 PNG 时的 UI 兜底**：`FallbackBg`、野外底部 **HintBar**、热点按钮半透明样式（见 `docs/experience-log.md` §14.4）
+
+### 10. 资产目录重组（2026-05-08）
+
+#### 10.1 新目录结构
+
+```
+assets/
+├── raw/                  # AI 生成原始输出
+│   ├── ui_button/
+│   ├── ui_dialog/
+│   ├── ui_icon/
+│   ├── ui_frame/
+│   ├── scene_background/
+│   ├── character_portrait/
+│   └── sprite_sheet/
+├── library/              # 资产库（整理后，含 meta.json）
+│   ├── ui_button/ / ui_dialog/ / ui_icon/ / ui_frame/
+│   ├── scene_background/ / character_portrait/ / sprite_sheet/
+│   └── audio/
+├── adopted/              # 游戏实际采用的（从 library 复制进来）
+├── previews/             # GIF 预览动画（保留）
+├── _style_bible/        # 风格参考（暂留）
+└── _archive/             # 已淘汰/废弃（移入这里，不删除）
+```
+
+`game/art/` 同步对齐：
+```
+game/art/
+├── ui/button/、ui/dialog/、ui/icon/、ui/frame/、ui/cursor/
+├── backgrounds/、characters/、sprites/、audio/
+```
+
+#### 10.2 调度台改动
+
+- `artifacts` 表新增字段：`category`、`adopted_status`（adopted/candidate/rejected）
+- `scanner.py` 新增 `_category_for_asset()` + `_adopted_status_for_path()`
+- `app.py` `/artifacts` 路由支持 `category` + `adopted_status` 筛选
+- 前端新增"采用/拒绝/重置"操作按钮，自动复制到 `game/art/` 对应目录
+
+#### 10.3 已迁移文件
+
+| 原路径 | 新路径 |
+|---------|---------|
+| `assets/raw/character/*` | `assets/_archive/raw_character_old/` |
+| `assets/raw/ui/button/main_menu/*` | `assets/raw/ui_button/` |
+| `assets/raw/sprite/*` | `assets/raw/sprite_sheet/` |
+| `assets/raw/ui/cold_wuxia/**` | 按类型分发到 `raw/` 各分类目录 |
+| `game/art/ui/buttons/*` | `game/art/ui/button/`（规范用单数）|
+| `game/art/ui/cursors/*` | `game/art/ui/cursor/` |
+| `game/art/ui/cold_wuxia/v1/*` | 按类型迁入 `game/art/ui/icon/` 或 `game/art/ui/frame/` |
+
+### 11. 游戏设计技能参考引入（2026-05-08）
+
+- 从 [OrangeViolin/Game Design Skill](https://gist.github.com/OrangeViolin/53ad898cdbc8734d8bb5c6a6ddf5cec4) 下载 7 篇关键技能文件到 `docs/game-design-skills/`
+- 每篇均含「对本项目的应用」章节，直接映射到 M6/M7 开发
+- 覆盖：动态难度调整、角色属性平衡、心流设计、叙事节奏、环境叙事、加倍减半数值法、奖励反馈循环
+- 后续 M6（章末 Boss）开发时需优先阅读 `dynamic-difficulty-adjustment.md` + `doubling-halving-balance.md`
 
 ---
 
@@ -145,14 +219,28 @@ RPG_GAME/
 | M | 时长 | 内容 | 状态 |
 |---|---|---|---|
 | **M1** | 1.5h | 数据驱动重构 + EventBus + Inventory | ✅ 已完成 |
-| **M2** | 2h | 探索场景 Field + 互动热点 + 对话系统 | ✅ 已完成（待用户验收） |
-| **M3** | 1.5h | Quest 系统 + 主线任务 1 | ✅ **代码完成**，等用户验收 `docs/mvp-m3-checklist.md` |
-| **M4** | 1.5h | 多场景跳转 + NPC 对话 + 商店 | ⏳ 下一步 |
-| **M5** | 1h | 背包/装备 UI + 物品使用 | ⏸ |
-| **M6** | 1.5h | 章末 Boss + 状态异常 + 章节结算 | ⏸ |
+| **M2** | 2h | 探索场景 Field + 互动热点 + 对话系统 | ✅ 已完成 |
+| **M3** | 1.5h | Quest 系统 + 主线任务 1 | ✅ 已完成 |
+| **M4** | 1.5h | 多场景跳转 + NPC 对话 + 商店 | ✅ 已完成 |
+| **M5** | 1h | 背包/装备 UI + 物品使用 | ✅ **已验收** |
+| **M6** | 1.5h | 章末 Boss + 状态异常 + 章节结算 | ⏳ 下一步 |
 | **M7** | 1h | 5 槽存档 + 加载/继续游戏 | ⏸ |
 
 > 全程不做：动画特效 / BGM / 多人队伍战 / 第二章 / 多语言 / 打包发布。详见 `docs/design-mvp-chapter1.md` §11。
+
+---
+
+## 🤝 多 Agent 协作（v0.1，2026-04-30）
+
+> 详见 `docs/agent-workflow.md`、`docs/module-owners.md`、`docs/agents/README.md`。本节是给 AI 的速查。
+
+- **8 个固定角色**：`producer`（主控）/ `lore`（剧情）/ `system`（Godot 系统）/ `battle`（战斗数值）/ `art`（美术管线）/ `art-review`（UI 美术审核）/ `qa`（测试）/ `review`（代码审查）。
+- **独立角色记忆**：每个角色都有 `docs/agents/<role>-memory.md`。领取任务前必须读取自己的 memory；完成后只把角色相关经验写回自己的 memory。跨角色决策写入 `producer-memory.md`，耐久踩坑仍写 `docs/experience-log.md`。
+- **写权归属**：见 `docs/module-owners.md`，**同一模块同时只允许一个 agent 写改**。其他角色只读，发现需改要走 producer 排队。
+- **每次开口先声明角色**：`[handoff] from: ... to: ... memory_files: ... goal: ... acceptance: ...`，缺 `memory_files` 或 acceptance 不开工。
+- **复杂任务必走流程**：producer 拆 2~4 子任务 → 探索 agents 并行调研 → 实现 agents 串行落地 → qa 跑回归 → review 跨模块审 → producer 汇总验收。
+- **新坑必写**：任何角色发现新踩坑都要追加 `docs/experience-log.md`；越界场景也写。
+- **模型分层**（建议非强制）：producer / review 用强推理；system / battle 用代码型；lore / 文档归档用快模型；art prompt 设计用强推理，实际出图由 `scripts/gen_assets.py` 控制图像模型。
 
 ---
 
@@ -196,8 +284,8 @@ python scripts/smoke_test.py   # 不烧钱的冒烟测试
 复制粘贴这段给新会话的 AI：
 
 ```
-请先完整读 AGENTS.md 和 docs/experience-log.md，
-然后按 AGENTS.md 里的"待办"清单继续。
+请先完整读 AGENTS.md、docs/current-progress.md、docs/agent-workflow.md、docs/module-owners.md、docs/agents/README.md、docs/agents/producer-memory.md 和 docs/experience-log.md，
+然后按 AGENTS.md 里的"待办"清单继续。具体任务确定后，再读取对应角色的 docs/agents/<role>-memory.md。
 我现在想做的是：[填你具体想做啥]
 ```
 
@@ -210,8 +298,8 @@ Cursor 把所有对话以 JSONL 存在本地：
 - 当前会话：`%USERPROFILE%\.cursor\projects\f-Code-RPG-GAME\agent-transcripts\<uuid>\<uuid>.jsonl`
 - 想 100% 还原历史可以拷贝整个 `agent-transcripts` 文件夹到新机器对应位置
 
-但**新会话其实不需要这个**——AI 启动时会自动读 `AGENTS.md` + `docs/experience-log.md`。
+但**新会话其实不需要这个**——AI 启动时会自动读 `AGENTS.md` + `docs/current-progress.md` + `docs/agents/` 下对应角色记忆 + `docs/experience-log.md`。
 
 ---
 
-_最后更新：2026-04-26（v0.2.0-m3 编码完成）· 维护者：每完成一个里程碑追加"已完成"+ 调整"待办"_
+_最后更新：2026-04-30（新增多 Agent 独立角色记忆：`docs/agents/`；协作 v0.1：`docs/agent-workflow.md` + `docs/module-owners.md` + `docs/acceptance-checklists/`）· 维护者：每完成一个里程碑更新 `docs/current-progress.md` + 本文件「现状 / 待办表」_
