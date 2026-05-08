@@ -1,0 +1,194 @@
+{% extends "base.html" %}
+{% block title %}产出库 · 协作调度台{% endblock %}
+{% block content %}
+<section class="page-head">
+  <p class="eyebrow">产出索引</p>
+  <h1>产出库</h1>
+  <p>从仓库扫描文档、脚本、Godot 数据、图片、预览和元数据，按角色归档。</p>
+</section>
+<section class="card">
+  <form class="filters" method="get" action="/artifacts">
+    <label>负责角色
+      <select name="owner_agent">
+        <option value="">全部</option>
+        {% for agent in agents %}
+        <option value="{{ agent.id }}" {% if owner_agent == agent.id %}selected{% endif %}>{{ agent.id|agent_label }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>类型
+      <select name="kind">
+        <option value="">全部</option>
+        {% for item in kinds %}
+        <option value="{{ item.kind }}" {% if kind == item.kind %}selected{% endif %}>{{ item.kind|kind_label }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>资产分类
+      <select name="category">
+        <option value="">全部</option>
+        {% for item in categories %}
+        <option value="{{ item.category }}" {% if category == item.category %}selected{% endif %}>{{ item.category|category_label }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>采用状态
+      <select name="adopted_status">
+        <option value="">全部</option>
+        {% for item in adopted_statuses %}
+        <option value="{{ item.adopted_status }}" {% if adopted_status == item.adopted_status %}selected{% endif %}>{{ item.adopted_status|adopted_status_label }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>每页显示
+      <select name="per_page">
+        {% for option in per_page_options %}
+        <option value="{{ option }}" {% if per_page == option %}selected{% endif %}>{{ "全部" if option == "all" else option }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <button>筛选</button>
+  </form>
+</section>
+
+<section class="card">
+  <div class="table-toolbar">
+    <p class="muted">
+      共 {{ total_count }} 个产出
+      {% if total_count %}
+      · 当前显示 {{ showing_from }}-{{ showing_to }}
+      {% endif %}
+    </p>
+    {% if per_page != "all" %}
+    <nav class="pager" aria-label="产出分页">
+      {% if prev_url %}
+      <a href="{{ prev_url }}">上一页</a>
+      {% else %}
+      <span>上一页</span>
+      {% endif %}
+      {% for item_page, item_url in page_links %}
+      <a class="{% if item_page == page %}active{% endif %}" href="{{ item_url }}">{{ item_page }}</a>
+      {% endfor %}
+      {% if next_url %}
+      <a href="{{ next_url }}">下一页</a>
+      {% else %}
+      <span>下一页</span>
+      {% endif %}
+    </nav>
+    {% endif %}
+  </div>
+  <table>
+    <thead><tr><th>类型</th><th>资产分类</th><th>采用状态</th><th>负责角色</th><th>路径</th><th>预览</th><th>时间</th></tr></thead>
+    <tbody>
+      {% for artifact in artifacts %}
+      <tr>
+        <td>{{ artifact.kind|kind_label }}</td>
+        <td>{{ artifact.category|category_label }}</td>
+        <td>{{ artifact.adopted_status|adopted_status_label }}</td>
+        <td>{{ artifact.owner_agent|agent_label }}</td>
+        <td><a href="/repo/{{ artifact.path }}">{{ artifact.path }}</a></td>
+        <td>
+          {% if artifact.kind == "image" %}
+          <button
+            type="button"
+            class="thumb-btn"
+            data-preview-src="/repo/{{ artifact.path }}"
+            data-preview-alt="{{ artifact.path }}"
+            aria-label="预览图片 {{ artifact.path }}"
+            title="点击放大预览"
+          >
+            <img class="thumb" src="/repo/{{ artifact.path }}" alt="{{ artifact.path }}">
+          </button>
+          {% endif %}
+        </td>
+
+        <td>{{ artifact.mtime }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="7">暂无产出</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if per_page != "all" and total_pages > 1 %}
+  <div class="table-toolbar bottom">
+    <p class="muted">第 {{ page }} / {{ total_pages }} 页</p>
+    <nav class="pager" aria-label="产出分页">
+      {% if prev_url %}
+      <a href="{{ prev_url }}">上一页</a>
+      {% else %}
+      <span>上一页</span>
+      {% endif %}
+      {% if next_url %}
+      <a href="{{ next_url }}">下一页</a>
+      {% else %}
+      <span>下一页</span>
+      {% endif %}
+    </nav>
+  </div>
+  {% endif %}
+</section>
+
+<div id="image-preview-modal" class="image-preview-modal" aria-hidden="true">
+  <div class="image-preview-dialog" role="dialog" aria-modal="true" aria-label="图片预览">
+    <button type="button" class="image-preview-close-top" id="image-preview-close-top" aria-label="关闭预览">×</button>
+    <img id="image-preview-img" src="" alt="预览图">
+    <div class="image-preview-actions">
+      <button type="button" id="image-preview-close-bottom">关闭</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const modal = document.getElementById('image-preview-modal');
+    const modalImage = document.getElementById('image-preview-img');
+    const closeTop = document.getElementById('image-preview-close-top');
+    const closeBottom = document.getElementById('image-preview-close-bottom');
+    const triggers = document.querySelectorAll('.thumb-btn[data-preview-src]');
+
+    if (!modal || !modalImage || triggers.length === 0) {
+      return;
+    }
+
+    const openPreview = (src, alt) => {
+      modalImage.src = src;
+      modalImage.alt = alt || '预览图';
+      modal.classList.add('show');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closePreview = () => {
+      modal.classList.remove('show');
+      modal.setAttribute('aria-hidden', 'true');
+      modalImage.removeAttribute('src');
+      document.body.style.overflow = '';
+    };
+
+    triggers.forEach((el) => {
+      el.addEventListener('click', () => {
+        openPreview(el.dataset.previewSrc || '', el.dataset.previewAlt || '');
+      });
+    });
+
+    [closeTop, closeBottom].forEach((el) => {
+      if (el) {
+        el.addEventListener('click', closePreview);
+      }
+    });
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closePreview();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('show')) {
+        closePreview();
+      }
+    });
+  })();
+</script>
+{% endblock %}
+

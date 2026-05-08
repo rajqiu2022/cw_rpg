@@ -20,7 +20,12 @@ ENV/
 
 # AI 出图原图（数据量大，按需推送或转 LFS）
 assets/raw/
-assets/processed/_tmp/
+assets/processed/
+assets/library/
+assets/adopted/
+assets/_archive/
+assets/_style_bible/
+assets/previews/
 *.failed.log
 
 # 跑批 / 探活临时输出
@@ -49,6 +54,9 @@ Thumbs.db
 # 日志
 logs/
 *.log
+
+# Local Agent Hub state
+tools/agent_hub/*.sqlite3
 
 # 操作系统
 desktop.ini
