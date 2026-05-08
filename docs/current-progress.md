@@ -188,10 +188,10 @@ assets/
 
 ### 6.4 待处理
 
-- [ ] `assets/raw/ui/cold_wuxia/` 剩余文件需手工确认分类
-- [ ] `game/art/` 中现有文件需按新子目录分类移动
-- [ ] 调度台页面：`/artifacts` 分类筛选后分页链接需验证
-- [ ] `assets/adopted/` 流程：标记某个 asset 为"已采用"时自动复制到 `game/art/` 对应目录
+- [x] `assets/raw/ui/cold_wuxia/` 剩余文件需手工确认分类（已完成：`cold_wuxia/` 已不存在，文件已迁移）
+- [x] `game/art/` 中现有文件需按新子目录分类移动（已完成：`button/`、`cursor/` 统一单数，`cold_wuxia/` 已清理）
+- [x] 调度台页面：`/artifacts` 分类筛选后分页链接需验证（已完成：`artifact_url` 正确包含 category + adopted_status 参数）
+- [x] `assets/adopted/` 流程：标记某个 asset 为"已采用"时自动复制到 `game/art/` 对应目录（已完成：后端 API + 前端按钮 + 自动复制逻辑）
 
 > 任意 agent 在新会话开始时必须先读 `agent-workflow.md`、`module-owners.md`、`agents/README.md` 与自己的 `docs/agents/<role>-memory.md`，再按任务领取角色。
 

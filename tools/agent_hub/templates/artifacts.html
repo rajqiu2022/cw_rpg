@@ -1,6 +1,58 @@
 {% extends "base.html" %}
 {% block title %}产出库 · 协作调度台{% endblock %}
 {% block content %}
+<style>
+  .status-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .status-badge.adopted {
+    background: #d4edda;
+    color: #155724;
+  }
+  .status-badge.rejected {
+    background: #f8d7da;
+    color: #721c24;
+  }
+  .actions-cell {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+  .btn-adopt {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .btn-adopt:hover { background: #218838; }
+  .btn-reject {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .btn-reject:hover { background: #c82333; }
+  .btn-reset {
+    background: #6c757d;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  .btn-reset:hover { background: #5a6268; }
+</style>
 <section class="page-head">
   <p class="eyebrow">产出索引</p>
   <h1>产出库</h1>
@@ -78,13 +130,13 @@
     {% endif %}
   </div>
   <table>
-    <thead><tr><th>类型</th><th>资产分类</th><th>采用状态</th><th>负责角色</th><th>路径</th><th>预览</th><th>时间</th></tr></thead>
+    <thead><tr><th>类型</th><th>资产分类</th><th>采用状态</th><th>负责角色</th><th>路径</th><th>预览</th><th>时间</th><th>操作</th></tr></thead>
     <tbody>
       {% for artifact in artifacts %}
-      <tr>
+      <tr data-artifact-id="{{ artifact.id }}">
         <td>{{ artifact.kind|kind_label }}</td>
         <td>{{ artifact.category|category_label }}</td>
-        <td>{{ artifact.adopted_status|adopted_status_label }}</td>
+        <td class="adopted-status-cell">{{ artifact.adopted_status|adopted_status_label }}</td>
         <td>{{ artifact.owner_agent|agent_label }}</td>
         <td><a href="/repo/{{ artifact.path }}">{{ artifact.path }}</a></td>
         <td>
@@ -103,9 +155,21 @@
         </td>
 
         <td>{{ artifact.mtime }}</td>
+        <td class="actions-cell">
+          {% if artifact.adopted_status == "candidate" %}
+          <button class="btn-adopt" data-artifact-id="{{ artifact.id }}" title="标记为已采用">采用</button>
+          <button class="btn-reject" data-artifact-id="{{ artifact.id }}" title="标记为已淘汰">拒绝</button>
+          {% elif artifact.adopted_status == "adopted" %}
+          <span class="status-badge adopted">已采用</span>
+          <button class="btn-reset" data-artifact-id="{{ artifact.id }}" title="重置为候选">重置</button>
+          {% elif artifact.adopted_status == "rjected" %}
+          <span class="status-badge rejected">已淘汰</span>
+          <button class="btn-reset" data-artifact-id="{{ artifact.id }}" title="重置为候选">重置</button>
+          {% endif %}
+        </td>
       </tr>
       {% else %}
-      <tr><td colspan="7">暂无产出</td></tr>
+      <tr><td colspan="8">暂无产出</td></tr>
       {% endfor %}
     </tbody>
   </table>
@@ -187,6 +251,46 @@
       if (event.key === 'Escape' && modal.classList.contains('show')) {
         closePreview();
       }
+    });
+  })();
+
+  /* Adopt / Reject / Reset actions */
+  (function () {
+    const post = async (url) => {
+      const resp = await fetch(url, { method: 'POST' });
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        alert('操作失败: ' + (err.detail || resp.status));
+        return false;
+      }
+      return await resp.json();
+    };
+
+    document.querySelectorAll('.btn-adopt').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const id = btn.dataset.artifactId;
+        if (!confirm('确认标记为"已采用"？文件将自动复制到 game/art/ 对应目录。')) return;
+        const result = await post('/api/artifacts/' + id + '/adopt');
+        if (result) location.reload();
+      });
+    });
+
+    document.querySelectorAll('.btn-reject').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const id = btn.dataset.artifactId;
+        if (!confirm('确认标记为"已淘汰"？')) return;
+        const result = await post('/api/artifacts/' + id + '/reject');
+        if (result) location.reload();
+      });
+    });
+
+    document.querySelectorAll('.btn-reset').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const id = btn.dataset.artifactId;
+        if (!confirm('确认重置为"候选"状态？')) return;
+        const result = await post('/api/artifacts/' + id + '/reset');
+        if (result) location.reload();
+      });
     });
   })();
 </script>

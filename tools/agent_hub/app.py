@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import html
 import re
+import shutil
 from pathlib import Path
 from urllib.parse import urlencode
 from uuid import uuid4
@@ -744,6 +745,93 @@ def artifacts(
         },
     )
 
+
+# ---------------------------------------------------------------------------
+# Adopt API helpers
+# ---------------------------------------------------------------------------
+CATEGORY_TO_GAME_ART_DIR = {
+    "ui_button": "ui/button",
+    "ui_dialog": "ui/dialog",
+    "ui_icon": "ui/icon",
+    "ui_frame": "ui/frame",
+    "ui_cursor": "ui/cursor",
+    "scene_background": "backgrounds",
+    "character_portrait": "characters",
+    "sprite_sheet": "sprites",
+    "audio": "audio",
+}
+
+
+def _copy_to_game_art(artifact_path: str, category: str) -> str | None:
+    """Copy an adopted artifact into game/art/<subdir>/ and return dst relative path."""
+    src = ROOT / artifact_path
+    if not src.exists() or not src.is_file():
+        return None
+    subdir = CATEGORY_TO_GAME_ART_DIR.get(category)
+    if not subdir:
+        return None
+    dst_dir = ROOT / "game" / "art" / subdir
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    dst = dst_dir / src.name
+    shutil.copy2(src, dst)
+    return str(dst.relative_to(ROOT).as_posix())
+
+
+@app.post("/api/artifacts/{artifact_id:int}/adopt")
+def adopt_artifact(artifact_id: int):
+    with _db() as conn:
+        row = row(conn, "SELECT path, category, adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
+        if not row:
+            raise HTTPException(status_code=404, detail="artifact not found")
+        if row["adopted_status"] == "adopted":
+            return {"status": "already_adopted", "path": row["path"]}
+        # Copy file to game/art/ if applicable
+        copied_path = None
+        if row["category"]:
+            copied_path = _copy_to_game_art(row["path"], row["category"])
+        conn.execute(
+            "UPDATE artifacts SET adopted_status = 'adopted' WHERE id = ?",
+            (artifact_id,),
+        )
+        conn.commit()
+    return {
+        "status": "adopted",
+        "path": row["path"],
+        "copied_to": copied_path,
+    }
+
+
+@app.post("/api/artifacts/{artifact_id:int}/reject")
+def reject_artifact(artifact_id: int):
+    with _db() as conn:
+        row = row(conn, "SELECT adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
+        if not row:
+            raise HTTPException(status_code=404, detail="artifact not found")
+        conn.execute(
+            "UPDATE artifacts SET adopted_status = 'rejected' WHERE id = ?",
+            (artifact_id,),
+        )
+        conn.commit()
+    return {"status": "rejected"}
+
+
+@app.post("/api/artifacts/{artifact_id:int}/reset")
+def reset_artifact_status(artifact_id: int):
+    with _db() as conn:
+        row = row(conn, "SELECT adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
+        if not row:
+            raise HTTPException(status_code=404, detail="artifact not found")
+        conn.execute(
+            "UPDATE artifacts SET adopted_status = 'candidate' WHERE id = ?",
+            (artifact_id,),
+        )
+        conn.commit()
+    return {"status": "reset"}
+
+
+# ---------------------------------------------------------------------------
+# QA & Costs & Repo (original routes continue below)
+# ---------------------------------------------------------------------------
 
 @app.get("/qa")
 def qa(request: Request):
