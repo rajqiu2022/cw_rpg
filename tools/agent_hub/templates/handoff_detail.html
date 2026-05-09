@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}交接 #{{ handoff.id }} · 协作调度台{% endblock %}
+{% block content %}
+<section class="page-head">
+  <p class="eyebrow">复制到 Cursor</p>
+  <h1>交接 #{{ handoff.id }}</h1>
+</section>
+<section class="card">
+  <h2>复制给 Cursor</h2>
+  <textarea class="handoff-text" readonly>{{ handoff_text }}</textarea>
+  <p class="muted">执行完成后，回到 Web 点击“重新扫描”查看产出和 QA 记录。</p>
+</section>
+{% endblock %}

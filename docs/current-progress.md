@@ -193,5 +193,32 @@ assets/
 - [x] 调度台页面：`/artifacts` 分类筛选后分页链接需验证（已完成：`artifact_url` 正确包含 category + adopted_status 参数）
 - [x] `assets/adopted/` 流程：标记某个 asset 为"已采用"时自动复制到 `game/art/` 对应目录（已完成：后端 API + 前端按钮 + 自动复制逻辑）
 
-> 任意 agent 在新会话开始时必须先读 `agent-workflow.md`、`module-owners.md`、`agents/README.md` 与自己的 `docs/agents/<role>-memory.md`，再按任务领取角色。
+### 6.5 正式场景/UI 进入生产（2026-05-08）
+
+已完成准备工作：
+- [x] `prompts/tasks.yaml` 新增 4 个生产任务：`scene_zhuwei_main_street`（竹尾村主街）、`scene_west_ruin`（城西废宅）、`scene_battle_bamboo_road`（竹林战斗场）、`ui_cold_wuxia_dialog_box_v1`（冷色对话框）
+- [x] `ui_cold_wuxia_common_kit_v1` 从 `skip: true` 改为 `skip: false`
+- [x] 场景 `.tres` 文件 `background_path` 已更新为正式文件名（不再使用占位图）：
+  - `ch1_s1_road.tres` → `res://art/backgrounds/bg_ch1_s1_road.png`
+  - `ch1_s2_qingfeng.tres` → `res://art/backgrounds/bg_zhuwei_main_street.png`
+  - `ch1_s3_west_ruin.tres` → `res://art/backgrounds/bg_west_ruin.png`
+- [x] `prompts/templates/ui_cold_wuxia_kit.yaml` 参考图路径已清理（原图已归档）
+- [x] dry-run 验证通过（5 任务全部正确解析）
+
+**阻塞项**：DMXAPI 账户欠费（-$0.20），需充值后方可执行。
+
+充值后一键生成命令：
+```bash
+cd f:\Code\RPG_GAME
+python scripts/gen_assets.py --task scene_ch1_s1_road --task scene_zhuwei_main_street --task scene_west_ruin --task scene_battle_bamboo_road --task ui_cold_wuxia_dialog_box_v1 --task ui_cold_wuxia_common_kit_v1 --skip-ping
+```
+
+生成后还需：
+1. 复制场景背景到 `game/art/backgrounds/`：
+   - `scene_ch1_s1_road.png` → `bg_ch1_s1_road.png`
+   - `scene_zhuwei_main_street.png` → `bg_zhuwei_main_street.png`
+   - `scene_west_ruin.png` → `bg_west_ruin.png`
+   - `scene_battle_bamboo_road.png` → `bg_battle_default.png`（覆盖占位）
+2. 对话框 UI 切图并接入 `dialog_box.tscn`
+3. 通用 UI kit 切图接入 WuxiaTheme
 

@@ -1,6 +1,7 @@
 # Style Bible 生成手册（ChatGPT 网页版）
 
 > Style Bible = 风格圣经。所有后续 700+ 张资产都通过 `reference_images` 引用它，决定整个游戏视觉是否统一。
+> **注意（2026-04-30）**：本文件仍保留早期“步惊云 / 风云”版历史 prompt，不可直接用于当前世界观的新图生成。当前正式设定以 `docs/world-bible.md`、`docs/agents/art-memory.md` 与 `prompts/templates/_shared.yaml` 为准；后续需要另开 v0.3 冷孤云版 Style Bible prompt。
 > **这一步建议在 ChatGPT Plus 网页版交互式生成**（GPT Image 2 Instant/Thinking 模式），而不是直接走 API：
 > - 网页版可以反复对话微调，比 API 调试快 5-10 倍
 > - 满意后另存原图（避免压缩）放到 `assets/_style_bible/` 即可
@@ -260,6 +261,8 @@
 
 这张完成后，整套 Style Bible 就全了。
 ```
+
+**（2026-04 补充）**：Field 上角色小贴图已统一为 **侧向正交略俯视**（`Sprite2D` + `flip_h`，见 `prompts/templates/sprite_protagonist_*.yaml`）。上表「与游戏内 sprite 一致：斜向 45°」为 v0.1 旧案；**场景插画仍可 45° 等距**，与行走小图镜头分开约定即可。
 
 ---
 

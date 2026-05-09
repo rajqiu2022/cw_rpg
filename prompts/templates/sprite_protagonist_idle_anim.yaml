@@ -1,0 +1,40 @@
+# 主角 / 同锚点 · 待机呼吸循环单帧（纯文身份，无参考图）
+# 与 sprite_protagonist_idle 同一尺度，用 frame_index 区分微动，便于 2 帧循环。
+
+id: sprite_protagonist_idle_anim
+description: 待机微动循环中的一帧，白底
+quality: medium
+size: "896x896"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}
+  与 idle 单张一致；本循环仅允许胸肩轻微起伏、发丝与袍缘微摆。
+
+prompt_template: |
+  {style_anchor}
+
+  【序列一致性】
+  - 待机呼吸循环第 **{{frame_index}} / {{frame_total}}** 帧，朝向 **{{facing}}**。
+  - 两帧之间变化要**小**：禁止大幅转身、换脚、换武器持法。
+
+  【整体与构图】
+  - 与 idle 同一镜头：**正交侧向略俯视**（Field Sprite2D + flip_h），腰以上为主可至大腿，角色高度约占画面 55%～65%；禁止改成 45° 等距地砖透视。
+  - 纯白背景 #FFFFFF；单帧静态，无动态模糊。
+
+  【本帧微动】
+  {{micro_motion}}
+
+  【角色身份】
+  {identity_anchor}
+
+  【禁忌】蜘蛛与蛛网意象；繁体中文；水印。
+
+  【反向】{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  frame_index: "1 或 2"
+  frame_total: "2"
+  micro_motion: "本帧相对另一帧的差异描述"
+  facing: "tasks 内一句侧向/略俯视说明"

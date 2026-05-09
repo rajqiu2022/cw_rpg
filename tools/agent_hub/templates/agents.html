@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}协作角色 · 协作调度台{% endblock %}
+{% block content %}
+<section class="page-head">
+  <p class="eyebrow">角色记忆</p>
+  <h1>协作角色</h1>
+  <p>按职责查看各智能体的记忆文件、负责范围与近期产出。</p>
+</section>
+<section class="cards">
+  {% for agent in agents %}
+  <a class="card link-card" href="/agents/{{ agent.id }}">
+    <h2>{{ agent.name }}</h2>
+    <p class="muted">角色 ID：{{ agent.id }}</p>
+    <p>{{ agent.scope or "未记录职责范围" }}</p>
+    <p class="path">{{ agent.memory_path }}</p>
+  </a>
+  {% endfor %}
+</section>
+{% endblock %}

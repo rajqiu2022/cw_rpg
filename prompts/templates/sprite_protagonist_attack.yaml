@@ -1,0 +1,53 @@
+# 主角 / 同锚点 · 战斗招式单帧（纯文身份，无参考图）
+# 用于「林西基础剑法」等轻量挥砍 2～4 帧序列。
+
+id: sprite_protagonist_attack
+description: Field 侧向招式单帧（正交略俯视），白底，可有简洁剑气
+quality: medium
+size: "896x896"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}
+  以上外貌为唯一权威；本招式序列各帧须保持同一角色与装备，仅改变挥剑相位与特效强弱。
+
+prompt_template: |
+  {style_anchor}
+
+  【序列一致性】
+  - 本张为招式「{{attack_name}}」第 **{{frame_index}} / {{frame_total}}** 帧，攻击朝向 **{{facing}}**。
+  - 各帧间武器须为同一柄长剑，酒葫芦仍在腰侧；禁止帧间换装或换武器。
+
+  【镜头与游戏用途】
+  - 与 idle / walk 一致：**侧向正交略俯视**（非 45° 地砖等距）；身体主轴朝画幅左侧，全身入镜，角色高度约占画面 60%～70%。
+
+  【整体要求】
+  - 港漫战斗分镜感，头身比与 walk 连贯。
+  - 纯白色背景 #FFFFFF；剑气 / 光效可使用淡青白或墨色，**不得**大面积盖满角色轮廓以致无法抠图。
+
+  【角色身份】
+  {identity_anchor}
+
+  【招式与特效】
+  - 招式：{{attack_name}} — {{attack_desc}}
+  - 本帧动作与特效：{{frame_action}}
+  - 特效强度：{{vfx_intensity}}（弱 / 中 / 强，本帧唯一）
+
+  【画面】
+  - 896×896，单帧静态，无动态模糊。
+
+  【禁忌】
+  - 禁止蜘蛛、蛛丝、蛛网；禁止繁体中文、水印、招式名称浮字。
+
+  【反向】
+  {negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  attack_name: "如：林西基础剑法"
+  attack_desc: "一句概括整套动作"
+  frame_index: "1..N"
+  frame_total: "N"
+  frame_action: "本帧具体姿势与剑路"
+  vfx_intensity: "弱 | 中 | 强"
+  facing: "tasks 内一句侧向/略俯视说明"

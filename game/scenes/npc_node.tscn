@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/field/npc_node.gd" id="1_npc"]
+
+[sub_resource type="Gradient" id="Grad_NPC"]
+interpolation_mode = 1
+colors = PackedColorArray(0.8, 0.5, 0.3, 1, 0.8, 0.5, 0.3, 1)
+
+[sub_resource type="GradientTexture2D" id="Tex_NPC"]
+gradient = SubResource("Grad_NPC")
+width = 64
+height = 64
+
+[sub_resource type="RectangleShape2D" id="RectShape_NPC"]
+size = Vector2(80, 80)
+
+[node name="NPCNode" type="Node2D"]
+script = ExtResource("1_npc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("Tex_NPC")
+
+[node name="InteractArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("RectShape_NPC")
+
+[node name="Prompt" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -60.0
+offset_right = 40.0
+offset_bottom = -36.0
+theme_override_colors/font_color = Color(1, 0.95, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 14
+text = "[空格]"
+horizontal_alignment = 1

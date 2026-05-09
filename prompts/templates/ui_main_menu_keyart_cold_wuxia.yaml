@@ -1,0 +1,46 @@
+id: ui_main_menu_keyart_cold_wuxia
+description: 冷色武侠主界面 Key Art（原创构图，含标题与角色）
+quality: high
+size: "1536x1024"
+
+identity_anchor: |
+  《云影侠传》主界面正式 key art，冷色武侠江湖气质，
+  深墨蓝、玄铁蓝黑、冷钢蓝边、霜蓝高光，
+  港漫厚涂，墨线分明，云雾与竹影形成层次。
+
+reference_images:
+  - "assets/raw/character/v2/portrait_lengguyun_neutral.png"
+  - "assets/raw/character/v2/portrait_yuewuxing_meeting.png"
+  - "assets/raw/character/v2/portrait_killer_leader_combat.png"
+  - "assets/raw/ui/cold_wuxia/v1/ui_cold_wuxia_common_kit_v1.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  生成一张“游戏主界面背景 + UI 视觉稿融合图”，用于 RPG《云影侠传》主菜单展示。
+
+  核心要求：
+  - 冷色调武侠江湖氛围：深墨蓝、冷钢蓝、雾青、少量寒玉高光。
+  - 必须是原创构图，不得照抄参考图的分区与排版。
+  - 画面顶部中心清晰展示简体中文标题：{{game_title}}。
+  - 画面中展示 3 位角色（主角居中偏右，女主偏左后景，蒙面敌手偏右后景），形成前中后层次。
+  - 角色神态：主角冷峻不羁、女主坚毅清冷、敌手压迫感强。
+  - 左侧预留“主菜单操作区”视觉空间（无具体按钮文字，只留框体与层级）。
+  - 右侧预留“公告/情报区”视觉空间（无具体正文，仅留标题条与信息块）。
+  - 中下部可有轻雾、竹林、石阶、江湖路标等元素，体现江湖感。
+
+  设计规范：
+  - 1536×1024 横版。
+  - 不是现代网页风，不是科幻 UI，不是西幻。
+  - 不要橙黄暖色主导，不要喜庆红绸。
+  - 中文必须为简体中文，标题仅 {{game_title}} 四字，字形清晰可读。
+  - 除标题外，避免其他可读文字，避免乱码与错字。
+  - UI 框体采用玄铁/冷钢材质与云纹暗刻，写实与漫画融合质感。
+
+  反向：
+  英文文字，Latin letters，繁体字，乱码，错字，水印，签名，
+  暖金色主色，大红喜庆，赛博霓虹，现代扁平化网页 UI，
+  西幻盔甲，魔法阵，怪物脸，Q版卡通，3D 游戏截图感。
+
+variables:
+  game_title: "云影侠传"

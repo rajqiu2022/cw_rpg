@@ -1,0 +1,37 @@
+id: ui_menu_buttons_3states
+category: ui
+description: "主菜单按钮三态 sprite sheet (normal/hover/pressed)，武侠深色风格"
+backend: dmxapi
+model: gpt-image-1
+size: "1536x512"
+quality: high
+prompt: |
+  A horizontal sprite sheet showing 3 versions of the SAME ornate Chinese wuxia-style button frame,
+  arranged in a single row (3 columns, 1 row), with equal spacing.
+  Each button frame is approximately 480x140 pixels.
+
+  TRANSPARENT background (alpha channel, no solid bg).
+
+  Style: dark Gothic Chinese martial arts aesthetic, iron and jade ornamental frame,
+  cloud/wave motifs at corners, subtle bamboo leaf silhouettes inside the dark panel,
+  thin metallic border with slight glow.
+
+  The 3 states from LEFT to RIGHT:
+  1. NORMAL: Dark slate-blue interior, silver-grey metallic border, jade/teal gemstone accent on top center, muted tones.
+  2. HOVER: Same frame but border glows brighter cyan/teal, interior slightly lighter with faint luminous mist, teal gemstone glows.
+  3. PRESSED: Same frame but border turns warm gold/amber, interior darkens further, gemstone glows gold, slight inward shadow effect.
+
+  NO text on the buttons. Pure decorative frame only.
+  The frames should look identical in shape and size, differing only in color/glow treatment.
+  High detail, game UI asset quality, crisp edges suitable for sprite slicing.
+
+notes: |
+  切割方法：
+    python tools/sprite_slicer.py grid <output_file>.png --cols 3 --rows 1 --trim -o game/art/ui/buttons/ -p btn_menu_
+
+  切出后文件：
+    btn_menu_000.png → normal
+    btn_menu_001.png → hover
+    btn_menu_002.png → pressed
+
+  在 Godot 中使用 TextureButton 或 Button + StyleBoxTexture

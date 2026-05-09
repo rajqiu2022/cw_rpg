@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import base64
+import io
 import json
 import os
 import sys
@@ -38,6 +39,7 @@ for _stream in (sys.stdout, sys.stderr):
 
 import httpx
 import yaml
+from PIL import Image
 from dotenv import load_dotenv
 from openai import AsyncOpenAI, APIError, BadRequestError, RateLimitError
 from rich.console import Console
@@ -55,6 +57,7 @@ TEMPLATES_DIR = PROJECT_ROOT / "prompts" / "templates"
 TASKS_FILE = PROJECT_ROOT / "prompts" / "tasks.yaml"
 SHARED_FILE = TEMPLATES_DIR / "_shared.yaml"
 FAILED_LOG = PROJECT_ROOT / "logs" / "failed.log"
+DRY_RUN_DIR = PROJECT_ROOT / "logs" / "dry_run"
 
 console = Console()
 
@@ -67,6 +70,10 @@ console = Console()
 
 # OpenAI 官方：(size, quality) -> usd
 PRICE_OPENAI_USD = {
+    # 896² 约 0.77×1024²，token 计价下为粗估（无 usage 时 fallback）
+    ("896x896", "low"): 0.005,
+    ("896x896", "medium"): 0.042,
+    ("896x896", "high"): 0.165,
     ("1024x1024", "low"): 0.006,
     ("1024x1024", "medium"): 0.053,
     ("1024x1024", "high"): 0.211,
@@ -117,15 +124,17 @@ def detect_backend(base_url: str | None) -> str:
     u = base_url.lower()
     if "dmxapi" in u:
         return "dmxapi"
+    if "alapi.cn" in u:
+        return "alapi"
     return "openai_compat"  # 其他兼容站点，用 OpenAI 计价做估算
 
 
 def currency_for(backend: str) -> str:
-    return "CNY" if backend == "dmxapi" else "USD"
+    return "CNY" if backend in ("dmxapi", "alapi") else "USD"
 
 
 def currency_symbol(backend: str) -> str:
-    return "¥" if backend == "dmxapi" else "$"
+    return "¥" if backend in ("dmxapi", "alapi") else "$"
 
 
 def estimate_cost_from_size_quality(
@@ -135,6 +144,9 @@ def estimate_cost_from_size_quality(
     返回值的币种由 backend 决定（openai=USD，dmxapi=CNY）。"""
     if backend == "dmxapi":
         # DMXAPI 是 per-image 计费，与 size/quality 无关
+        return PRICE_DMXAPI_CNY.get(model, 1.0)
+    if backend == "alapi":
+        # alapi 当前按兼容站处理，先用 RMB 估算，后续可按实测修正
         return PRICE_DMXAPI_CNY.get(model, 1.0)
     return PRICE_OPENAI_USD.get((size, quality), 0.053)
 
@@ -217,7 +229,8 @@ def render_template(template_name: str, vars_: dict, shared: dict) -> dict:
 
     # 解析 reference 图片为绝对路径
     refs: list[Path] = []
-    for r in tpl.get("reference_images", []) or []:
+    declared_refs = tpl.get("reference_images", []) or []
+    for r in declared_refs:
         p = (PROJECT_ROOT / r).resolve()
         if p.exists():
             refs.append(p)
@@ -225,6 +238,18 @@ def render_template(template_name: str, vars_: dict, shared: dict) -> dict:
             console.print(
                 f"  [yellow][warn] 参考图缺失：{p}（跳过该参考）[/yellow]"
             )
+
+    # 续帧类模板：声明 require_reference_images 时必须齐套，否则 edits 会静默退回 generations，外观漂移。
+    if tpl.get("require_reference_images") and declared_refs and len(refs) != len(declared_refs):
+        missing = [
+            str((PROJECT_ROOT / r).resolve())
+            for r in declared_refs
+            if not (PROJECT_ROOT / r).resolve().exists()
+        ]
+        raise FileNotFoundError(
+            f"模板 {template_name} 要求参考图齐套，但文件不存在：{missing}。"
+            " 请先产出关键帧 PNG 再跑续帧任务。"
+        )
 
     return {
         "prompt": prompt.strip(),
@@ -291,7 +316,7 @@ ERR_EMPTY = "empty"               # HTTP 200 但响应空数据，3 次内 retry
 ERR_TRANSIENT = "transient"       # 默认可重试
 
 
-def classify_error(e: Exception) -> str:
+def classify_error(e: Exception, backend: str = "openai") -> str:
     """根据异常返回错误分类，决定退避策略"""
     msg = str(e).lower()
 
@@ -323,6 +348,16 @@ def classify_error(e: Exception) -> str:
         if "no available channels" in msg or "无可用渠道" in msg or "上游" in msg:
             return ERR_CHANNEL_503
 
+    if isinstance(e, httpx.HTTPStatusError):
+        if e.response.status_code in (502, 503, 504):
+            if backend == "alapi":
+                return ERR_TRANSIENT
+            return ERR_CHANNEL_503
+        if e.response.status_code == 429:
+            return ERR_RATE_LIMIT
+        if 400 <= e.response.status_code < 500:
+            return ERR_FATAL
+
     # 200 但空数据（call_image_model 抛的 RuntimeError）
     if isinstance(e, RuntimeError) and ("未返回图像数据" in str(e) or "no image data" in msg):
         return ERR_EMPTY
@@ -330,9 +365,13 @@ def classify_error(e: Exception) -> str:
     # TLS / Connection 错误：疑似 IP 风控
     if isinstance(e, (httpx.ConnectError, httpx.ReadTimeout, httpx.ConnectTimeout,
                       httpx.RemoteProtocolError, httpx.WriteTimeout)):
+        if backend == "alapi":
+            return ERR_TRANSIENT
         return ERR_IP_BLOCK
     if any(s in msg for s in ("schannel", "sec_e_invalid_token", "ssl", "handshake",
                               "remotedisconnected", "connection reset")):
+        if backend == "alapi":
+            return ERR_TRANSIENT
         return ERR_IP_BLOCK
 
     return ERR_TRANSIENT
@@ -408,21 +447,192 @@ async def backoff_for(category: str, attempt: int, gate: IPBlockGate) -> bool:
     return True
 
 
-async def startup_ping(client: AsyncOpenAI, model: str, timeout: float = 60.0) -> tuple[bool, str]:
+async def _extract_first_image_bytes(response: Any) -> tuple[bytes, str]:
+    """兼容多种 OpenAI-compatible 返回格式，提取首张图二进制。"""
+    data_field = getattr(response, "data", None)
+
+    items: list[Any] = []
+    if isinstance(data_field, list):
+        items = data_field
+    elif isinstance(data_field, dict):
+        nested = data_field.get("data")
+        if isinstance(nested, list):
+            items = nested
+
+    if not items:
+        code = getattr(response, "code", None)
+        message = getattr(response, "message", None)
+        success = getattr(response, "success", None)
+        detail = f"success={success}, code={code}, message={message}" if (success is not None or code is not None or message is not None) else "无详细错误字段"
+        raise RuntimeError(f"API 未返回可用图像列表（{detail}）")
+
+    first = items[0]
+    if hasattr(first, "model_dump"):
+        first = first.model_dump()
+
+    b64_val = None
+    url_val = None
+    if isinstance(first, dict):
+        b64_val = first.get("b64_json")
+        url_val = first.get("url")
+    else:
+        b64_val = getattr(first, "b64_json", None)
+        url_val = getattr(first, "url", None)
+
+    if b64_val:
+        return base64.b64decode(b64_val), "b64"
+
+    if url_val:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(120.0, connect=20.0)) as hc:
+            r = await hc.get(str(url_val))
+            r.raise_for_status()
+            return r.content, f"url:{url_val}"
+
+    raise RuntimeError("API 返回中既无 b64_json 也无 url")
+
+
+def _alapi_generations_url(base_url: str | None) -> str:
+    """Return ALAPI's images/generations endpoint.
+
+    ALAPI is not fully OpenAI-SDK compatible: auth uses a `token` header and
+    the caller may configure either the API root or the full endpoint.
+    """
+    root = (base_url or "https://v3.alapi.cn/api/ai").rstrip("/")
+    if root.endswith("/images/generations"):
+        return root
+    return f"{root}/images/generations"
+
+
+def _alapi_reference_base64(path: Path, max_side: int = 1280, quality: int = 88) -> str:
+    """Compress reference images before sending to ALAPI.
+
+    The ALAPI generations endpoint may close chunked responses when the JSON
+    payload is too large. Existing ALAPI scripts in this repo compress refs
+    first, so keep the shared generator consistent with that behavior.
+    """
+    image = Image.open(path).convert("RGB")
+    image.thumbnail((max_side, max_side), Image.LANCZOS)
+    buffer = io.BytesIO()
+    image.save(buffer, format="JPEG", quality=quality, optimize=True)
+    return base64.b64encode(buffer.getvalue()).decode("ascii")
+
+
+async def _call_alapi_generation(
+    api_key: str,
+    base_url: str | None,
+    spec: dict,
+    model: str,
+) -> tuple[bytes, dict]:
+    image_refs: list[dict[str, str]] = []
+    for path in spec["reference_images"]:
+        image_refs.append(
+            {
+                "type": "base64",
+                "data": _alapi_reference_base64(path),
+            }
+        )
+
+    payload: dict[str, Any] = {
+        "model": model,
+        "prompt": spec["prompt"],
+        "n": 1,
+        "size": spec["size"],
+        "quality": spec["quality"],
+    }
+    if image_refs:
+        payload["image"] = image_refs
+
+    async with httpx.AsyncClient(timeout=httpx.Timeout(300.0, connect=30.0)) as hc:
+        response = await hc.post(
+            _alapi_generations_url(base_url),
+            headers={"token": api_key, "Content-Type": "application/json"},
+            json=payload,
+        )
+        response.raise_for_status()
+        data = response.json()
+
+    if data.get("code") not in (None, 200):
+        raise RuntimeError(f"ALAPI error code={data.get('code')} message={data.get('message')}")
+
+    items: list[Any] = []
+    data_field = data.get("data")
+    if isinstance(data_field, dict) and isinstance(data_field.get("data"), list):
+        items = data_field["data"]
+    elif isinstance(data_field, list):
+        items = data_field
+    elif isinstance(data_field, dict):
+        items = [data_field]
+
+    if not items:
+        raise RuntimeError(f"ALAPI 未返回可用图像列表：{str(data)[:500]}")
+
+    first = items[0]
+    b64_val = first.get("b64_json") if isinstance(first, dict) else None
+    url_val = first.get("url") if isinstance(first, dict) else None
+    if b64_val:
+        img_bytes = base64.b64decode(b64_val)
+        image_source = "b64"
+    elif url_val:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(120.0, connect=20.0)) as hc:
+            img_response = await hc.get(str(url_val))
+            img_response.raise_for_status()
+            img_bytes = img_response.content
+            image_source = f"url:{url_val}"
+    else:
+        raise RuntimeError("ALAPI 返回中既无 b64_json 也无 url")
+
+    meta = {
+        "model": model,
+        "size": spec["size"],
+        "quality": spec["quality"],
+        "background": spec["background"],
+        "image_source": image_source,
+        "n_reference_images": len(spec["reference_images"]),
+        "reference_images": [str(p) for p in spec["reference_images"]],
+        "usage": data.get("usage"),
+    }
+    return img_bytes, meta
+
+
+async def startup_ping(
+    client: Any,
+    model: str,
+    timeout: float = 60.0,
+    backend: str = "openai",
+    api_key: str = "",
+    base_url: str | None = None,
+) -> tuple[bool, str]:
     """跑批前最小调用探活：单张极简图请求，确认渠道可用。"""
     try:
-        rsp = await asyncio.wait_for(
-            client.images.generate(
-                model=model,
-                prompt="a single white circle on plain background",
-                size="1024x1024",
-                n=1,
-            ),
-            timeout=timeout,
-        )
-        if rsp.data and rsp.data[0].b64_json:
-            return True, f"ok (b64_len={len(rsp.data[0].b64_json)})"
-        return False, "200 但 data[] 为空（渠道熔断前过渡态）"
+        if backend == "alapi":
+            img_bytes, meta = await asyncio.wait_for(
+                _call_alapi_generation(
+                    api_key,
+                    base_url,
+                    {
+                        "prompt": "a single white circle on plain background",
+                        "size": "1024x1024",
+                        "quality": "high",
+                        "background": "opaque",
+                        "reference_images": [],
+                    },
+                    model,
+                ),
+                timeout=timeout,
+            )
+            source = meta["image_source"]
+        else:
+            rsp = await asyncio.wait_for(
+                client.images.generate(
+                    model=model,
+                    prompt="a single white circle on plain background",
+                    size="1024x1024",
+                    n=1,
+                ),
+                timeout=timeout,
+            )
+            img_bytes, source = await _extract_first_image_bytes(rsp)
+        return True, f"ok ({source}, bytes={len(img_bytes)})"
     except asyncio.TimeoutError:
         return False, f"探活超时（>{int(timeout)}s）"
     except Exception as e:
@@ -430,7 +640,7 @@ async def startup_ping(client: AsyncOpenAI, model: str, timeout: float = 60.0) -
 
 
 async def call_image_model(
-    client: AsyncOpenAI,
+    client: Any,
     spec: dict,
     model: str,
     backend: str = "openai",
@@ -454,8 +664,16 @@ async def call_image_model(
     if backend == "dmxapi" and model.startswith("gpt-image"):
         extra_body["moderation"] = "low"
 
+    if backend == "alapi":
+        return await _call_alapi_generation(
+            client["api_key"],
+            client["base_url"],
+            spec,
+            model,
+        )
+
     if spec["reference_images"]:
-        # edits 端点需要传文件
+        # edits 端点需要传文件；alapi 当前只走 generations 接口
         files = [open(p, "rb") for p in spec["reference_images"]]
         try:
             response = await client.images.edit(
@@ -469,28 +687,32 @@ async def call_image_model(
             extra_body=extra_body or None, **common_kwargs
         )
 
-    if not response.data or not response.data[0].b64_json:
-        raise RuntimeError("API 未返回图像数据")
+    img_bytes, image_source = await _extract_first_image_bytes(response)
+    usage_raw = getattr(response, "usage", None)
+    if isinstance(usage_raw, dict):
+        usage_value: Any = usage_raw
+    elif hasattr(usage_raw, "model_dump"):
+        usage_value = usage_raw.model_dump()
+    elif usage_raw is not None:
+        usage_value = {"raw": usage_raw}
+    else:
+        usage_value = None
 
-    img_bytes = base64.b64decode(response.data[0].b64_json)
     meta = {
         "model": model,
         "size": spec["size"],
         "quality": spec["quality"],
         "background": spec["background"],
+        "image_source": image_source,
         "n_reference_images": len(spec["reference_images"]),
         "reference_images": [str(p) for p in spec["reference_images"]],
-        "usage": (
-            response.usage.model_dump()
-            if hasattr(response, "usage") and response.usage
-            else None
-        ),
+        "usage": usage_value,
     }
     return img_bytes, meta
 
 
 async def _try_one_model(
-    client: AsyncOpenAI,
+    client: Any,
     task_id: str,
     spec: dict,
     model: str,
@@ -531,7 +753,7 @@ async def _try_one_model(
                 raise
             except Exception as e:
                 last_err = e
-                last_cat = classify_error(e)
+                last_cat = classify_error(e, backend)
                 # 仅在非致命情况下尝试退避并重试
                 if last_cat in (ERR_MODERATION, ERR_FATAL):
                     console.print(
@@ -551,7 +773,7 @@ async def _try_one_model(
 
 
 async def process_task(
-    client: AsyncOpenAI,
+    client: Any,
     task: dict,
     shared: dict,
     raw_dir: Path,
@@ -607,7 +829,9 @@ async def process_task(
 
     if dry_run:
         progress.update(task_pb_id, advance=1)
-        out_meta.write_text(
+        DRY_RUN_DIR.mkdir(parents=True, exist_ok=True)
+        dry_run_meta = DRY_RUN_DIR / f"{task_id}.meta.json"
+        dry_run_meta.write_text(
             json.dumps(
                 {"id": task_id, "dry_run": True, "spec": {**spec, "reference_images": [str(p) for p in spec["reference_images"]]}},
                 ensure_ascii=False,
@@ -615,7 +839,7 @@ async def process_task(
             ),
             encoding="utf-8",
         )
-        return {"id": task_id, "status": "dry_run", "cost": 0.0}
+        return {"id": task_id, "status": "dry_run", "cost": 0.0, "meta": str(dry_run_meta)}
 
     # 主 model
     ok, _meta, payload, last_err, last_cat = await _try_one_model(
@@ -762,6 +986,7 @@ def filter_tasks(all_tasks: list[dict], args: argparse.Namespace,
 
 async def main_async(args: argparse.Namespace) -> int:
     load_dotenv(PROJECT_ROOT / ".env")
+    load_dotenv(PROJECT_ROOT / ".env.local", override=True)
 
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key or api_key.startswith("sk-..."):
@@ -836,6 +1061,7 @@ async def main_async(args: argparse.Namespace) -> int:
     backend_label = {
         "openai": "OpenAI 官方",
         "dmxapi": "DMXAPI 中转",
+        "alapi": f"ALAPI 兼容 ({base_url})",
         "openai_compat": f"OpenAI 兼容 ({base_url})",
     }.get(backend, backend)
     console.print(
@@ -855,24 +1081,39 @@ async def main_async(args: argparse.Namespace) -> int:
         connect_timeout = float(os.getenv("HTTP_CONNECT_TIMEOUT", "30"))
         total_timeout = float(os.getenv("HTTP_TOTAL_TIMEOUT", "300"))
         http_timeout = httpx.Timeout(total_timeout, connect=connect_timeout)
-        client = AsyncOpenAI(
-            api_key=api_key,
-            base_url=base_url,
-            timeout=http_timeout,
-            max_retries=0,  # 自己实现重试逻辑（带退避），关掉 SDK 内置的
-        )
+        if backend == "alapi":
+            client = {"api_key": api_key, "base_url": base_url}
+        else:
+            client = AsyncOpenAI(
+                api_key=api_key,
+                base_url=base_url,
+                timeout=http_timeout,
+                max_retries=0,  # 自己实现重试逻辑（带退避），关掉 SDK 内置的
+            )
 
         # 启动探活：跑批前确认渠道可用，避免浪费 token + 时间
         if not args.skip_ping:
             console.print(f"[cyan]>>> 启动探活 ({default_model}) ...[/cyan]")
-            ok, info = await startup_ping(client, default_model)
+            ok, info = await startup_ping(
+                client,
+                default_model,
+                backend=backend,
+                api_key=api_key,
+                base_url=base_url,
+            )
             if ok:
                 console.print(f"[green]>>> 渠道存活：{info}[/green]")
             else:
                 console.print(f"[red]>>> 渠道不可用：{info}[/red]")
                 if fallback_model and fallback_model != default_model:
                     console.print(f"[yellow]>>> 尝试 fallback {fallback_model} 探活 ...[/yellow]")
-                    ok2, info2 = await startup_ping(client, fallback_model)
+                    ok2, info2 = await startup_ping(
+                        client,
+                        fallback_model,
+                        backend=backend,
+                        api_key=api_key,
+                        base_url=base_url,
+                    )
                     if ok2:
                         console.print(
                             f"[green]>>> Fallback 渠道存活（{fallback_model}）：{info2}[/green]"

@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}项目驾驶舱 · 协作调度台{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">第一章制作中枢</p>
+    <h1>项目驾驶舱</h1>
+    <p>第一版聚焦调度、交接文本、产出扫描和验收追踪；实际执行仍由 Cursor 中的智能体完成。</p>
+  </div>
+  <div class="stat">
+    <strong>{{ agents|length }}</strong>
+    <span>协作角色</span>
+  </div>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h2>任务状态</h2>
+    <table>
+      <tbody>
+        {% for item in task_counts %}
+        <tr><td>{{ item.status|status_label }}</td><td class="num">{{ item.count }}</td></tr>
+        {% else %}
+        <tr><td colspan="2">暂无任务</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </article>
+
+  <article class="card">
+    <h2>产出归属</h2>
+    <table>
+      <tbody>
+        {% for item in artifact_counts %}
+        <tr><td>{{ item.owner_agent|agent_label }}</td><td class="num">{{ item.count }}</td></tr>
+        {% else %}
+        <tr><td colspan="2">暂无产出索引</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </article>
+
+  <article class="card">
+    <h2>成本记录</h2>
+    <table>
+      <tbody>
+        {% for item in cost_summary %}
+        <tr>
+          <td>{{ item.currency }}</td>
+          <td class="num">{{ "%.4f"|format(item.paid_cost or 0) }}</td>
+          <td class="num">{{ item.records }} 条</td>
+        </tr>
+        {% else %}
+        <tr><td>暂无成本记录</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p>按币种分组展示，试运行不计入付费成本。</p>
+  </article>
+</section>
+
+<section class="card">
+  <h2>当前需求</h2>
+  <table>
+    <thead><tr><th>ID</th><th>标题</th><th>负责角色</th><th>阶段</th><th>状态</th><th>优先级</th></tr></thead>
+    <tbody>
+      {% for req in active_requirements %}
+      <tr>
+        <td>{{ req.id }}</td>
+        <td>{{ req.title }}</td>
+        <td>{{ req.owner_agent|agent_label }}</td>
+        <td>{{ req.phase }}</td>
+        <td><span class="pill status-{{ req.status }}">{{ req.status|status_label }}</span></td>
+        <td>{{ req.priority }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">暂无活跃需求</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+
+<section class="card">
+  <h2>最近 QA</h2>
+  <table>
+    <thead><tr><th>状态</th><th>报告</th><th>检出</th><th>基线</th><th>高度</th></tr></thead>
+    <tbody>
+      {% for qa in qa_recent %}
+      <tr>
+        <td><span class="pill {{ qa.status|lower }}">{{ qa.status|status_label }}</span></td>
+        <td><a href="/repo/{{ qa.report_path }}">{{ qa.report_path }}</a></td>
+        <td>{{ qa.detected_cells }}/{{ qa.expected_cells }}</td>
+        <td>{{ qa.baseline_spread }}</td>
+        <td>{{ qa.height_spread }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5">暂无 QA 报告</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

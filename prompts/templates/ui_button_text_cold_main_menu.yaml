@@ -1,0 +1,33 @@
+id: ui_button_text_cold_main_menu
+description: 主菜单按钮美术字（无底框，统一字体）
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  冷色武侠风主菜单按钮美术字，仅输出文字，不包含底框。
+
+reference_images:
+  - "assets/raw/scene_background/ui_main_menu_full_v5.png"
+
+prompt_template: |
+  {style_anchor}
+
+  基于参考图 `ui_main_menu_full_v5.png` 中右侧按钮的金色中文字体风格，
+  生成主菜单按钮美术字资产，文字内容：{{label}}。
+
+  资产规则（必须严格执行）：
+  - 画布 1024×1024。
+  - 只保留文字，不要按钮底框，不要装饰边框，不要图标。
+  - 字体风格：参考图按钮上的金色武侠楷意书法字，笔锋清晰、厚重、可读性高。
+  - 颜色：金色主体、暖金高光、深棕阴影描边，适配深绿/玄铁按钮底框。
+  - 背景纯白（#FFFFFF）。
+  - 必须是简体中文，字符必须严格等于「{{label}}」，不能替换、不能错字。
+
+  一致性要求：
+  - 三个词条必须使用同一字体家族与同一字重风格。
+  - 文字水平居中，留有足够上下边距，方便后续组装。
+
+  反向：{negative}
+
+variables:
+  label: "新游戏 | 读取存档 | 离开"

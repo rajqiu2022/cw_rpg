@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block title %}需求列表 · 协作调度台{% endblock %}
+{% block content %}
+{% set done_count = requirements|selectattr("status", "equalto", "done")|list|length %}
+{% set total_count = requirements|length %}
+
+<section class="page-head requirements-hero">
+  <div>
+    <p class="eyebrow">需求池</p>
+    <h1>需求列表</h1>
+    <p>按“大模块 → 子模块 → 功能需求”跟踪进度，并直接生成交接给对应 agent 执行。</p>
+
+  </div>
+  <div class="requirements-hero-stats">
+    <div class="mini-stat">
+      <strong>{{ total_count }}</strong>
+      <span>总需求</span>
+    </div>
+    <div class="mini-stat">
+      <strong>{{ done_count }}</strong>
+      <span>已完成</span>
+    </div>
+  </div>
+</section>
+
+<section class="requirements-layout">
+  <article class="card requirements-create-panel">
+    <h2 class="card-title-row">新增需求</h2>
+    <form class="requirements-form-v2" method="post" action="/requirements">
+      <div class="row-2">
+        <label>大模块<input name="module_title" required placeholder="如：角色成长系统"></label>
+        <label>子模块<input name="submodule_title" required placeholder="如：装备系统"></label>
+      </div>
+      <label>需求标题<input name="title" required placeholder="如：装备页功能与布局定稿"></label>
+      <div class="row-3">
+        <label>负责角色
+          <select name="owner_agent">
+            {% for agent in agents %}
+            <option value="{{ agent.id }}">{{ agent.id|agent_label }}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <label>阶段
+          <select name="phase">
+            <option value="功能设计">功能设计</option>
+            <option value="美术UI">美术 UI</option>
+            <option value="程序实现">程序实现</option>
+            <option value="QA验收">QA 验收</option>
+          </select>
+        </label>
+        <label>状态
+          <select name="status">
+            <option value="planned">待规划</option>
+            <option value="in_progress">进行中</option>
+            <option value="qa">测试中</option>
+            <option value="review">审查中</option>
+            <option value="blocked">阻塞</option>
+            <option value="done">完成</option>
+          </select>
+        </label>
+      </div>
+      <label>优先级<input name="priority" type="number" value="2" min="1" max="5"></label>
+      <label>需求说明<textarea name="description" placeholder="说明功能目标、范围和上下游影响"></textarea></label>
+      <label>验收条件<textarea name="acceptance" placeholder="每行一个验收条件"></textarea></label>
+      <label>关联文件<textarea name="links" placeholder="每行一个路径，如 docs/xxx.md"></textarea></label>
+      <button type="submit" class="req-btn">添加需求</button>
+    </form>
+  </article>
+
+  <article class="card requirements-list-panel">
+    <h2 class="card-title-row">需求总览</h2>
+    {% if error %}
+    <p class="feedback error">{{ error }}</p>
+    {% endif %}
+    {% if success %}
+    <p class="feedback success">{{ success }}</p>
+    {% endif %}
+
+    <div class="req-list">
+      {% for req in requirements %}
+      <article class="req-card">
+        <div class="req-card-main">
+          <h3>{{ req.title }}</h3>
+          <p class="muted">{{ req.description or "（暂无需求说明）" }}</p>
+          <div class="req-tags">
+            <span class="pill">{{ req.module_title }}</span>
+            <span class="pill">{{ req.submodule_title }}</span>
+            <span class="pill">{{ req.phase }}</span>
+            <span class="pill">{{ req.owner_agent|agent_label }}</span>
+          </div>
+        </div>
+
+        <div class="req-card-actions">
+          <span class="pill status-{{ req.status }}">{{ req.status|status_label }}</span>
+          <form method="post" action="/requirements/{{ req.id }}/status" class="req-action-inline">
+            <select name="status">
+              {% for status in ["planned", "in_progress", "qa", "review", "blocked", "done"] %}
+              <option value="{{ status }}" {% if req.status == status %}selected{% endif %}>{{ status|status_label }}</option>
+              {% endfor %}
+            </select>
+            <button class="req-btn">更新</button>
+          </form>
+
+          <form method="post" action="/requirements/{{ req.id }}/create-handoff" class="req-single-action">
+            <button class="req-btn">生成交接</button>
+          </form>
+
+        </div>
+      </article>
+      {% else %}
+      <p class="muted">暂无需求</p>
+      {% endfor %}
+    </div>
+  </article>
+</section>
+
+<section class="card requirements-module-panel">
+  <h2 class="card-title-row">按模块查看（折叠）</h2>
+  {% for module in modules %}
+  <details class="doc-preview">
+    <summary><span>{{ module.title }}</span><span class="pill">{{ module.done }} / {{ module.total }} 完成</span></summary>
+    {% for submodule in module.submodules %}
+    <details class="doc-preview nested-module">
+      <summary><span>{{ submodule.title }}</span></summary>
+      <table>
+        <thead><tr><th>需求</th><th>阶段</th><th>状态</th><th>验收</th><th>关联</th></tr></thead>
+        <tbody>
+          {% for req in submodule.requirements %}
+          <tr>
+            <td><strong>{{ req.title }}</strong><p class="muted">{{ req.description }}</p></td>
+            <td>{{ req.phase }}</td>
+            <td><span class="pill status-{{ req.status }}">{{ req.status|status_label }}</span></td>
+            <td><pre class="compact-pre">{{ req.acceptance }}</pre></td>
+            <td><pre class="compact-pre">{{ req.links }}</pre></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </details>
+    {% endfor %}
+  </details>
+  {% endfor %}
+</section>
+{% endblock %}
+

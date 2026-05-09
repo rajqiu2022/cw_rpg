@@ -150,7 +150,8 @@ func _resolve_action(action: String) -> void:
 
 
 func _end_dialog() -> void:
-	var id := _current_script.dialog_id if _current_script != null else &""
+	var id: StringName = _current_script.dialog_id if _current_script != null else &""
+
 	_current_script = null
 	_current_node = null
 	_is_playing = false

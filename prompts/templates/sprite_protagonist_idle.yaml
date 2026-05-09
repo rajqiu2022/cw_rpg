@@ -1,0 +1,51 @@
+# 主角 sprite · 待机单帧（纯文身份锚点，无参考图）
+# 思路参考：微信公众号「游戏元素拆分 gpt-image2」一文的分段结构化描述，
+# 适配本项目：港漫厚涂 2.5D（非像素块），与 prompts/templates/_shared.yaml 的 style_anchor 一致。
+
+id: sprite_protagonist_idle
+description: 冷孤云（或同锚点）Field 用侧向待机单帧（正交略俯视），白底便于抠图
+quality: medium
+size: "896x896"
+
+# 故意不写 reference_images → gen_assets 走 generations，避免 style_bible 缺图
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}
+  以上外貌为唯一权威描述，本张输出必须与之一致，不得增删服饰、发型、酒葫芦与剑。
+
+prompt_template: |
+  {style_anchor}
+
+  【镜头与游戏用途 — Field Sprite】
+  - 用于 **Godot Sprite2D**：引擎用 **水平镜像（flip_h）** 表示左右走，**不要**画成经典 **45° 等距地砖假三维**（不要角色强朝画框右下、不要格网透视）。
+  - 摄像机 **正交侧向**：身体主轴 **朝画幅左侧** 的略俯视 **¾ 侧身**（像 AVG 场景里缩小后的全身/半身立绘），纵深感极弱、双脚落在同一水平地面线上。
+  - 画面中仅一名角色，无 UI、无地砖格线；港漫厚涂 2.5D、墨线清晰（非像素块、非 Q 版）。
+
+  【整体要求】
+  - 用途：腰以上为主可带到大腿，便于后期从纯白底抠透明。
+  - 统一光源：明亮通透的顶光 + 略偏侧逆光，饱和鲜艳。
+
+  【角色身份】
+  {identity_anchor}
+
+  【动作与朝向】
+  - 动作：待机站姿，{{idle_variant}}
+  - 朝向：{{facing}}
+
+  【画面与构图】
+  - 画幅 896×896；角色约占画面高度 55%～65%，水平居中。
+  - 背景必须为纯白色 #FFFFFF，无地面投影条、无渐变灰底、无 vignette 压暗四角。
+  - 单帧静态，无动态模糊、无多重曝光、无残影。
+
+  【项目禁忌】
+  - 禁止蜘蛛、蛛丝、蛛网及相关隐喻造型。
+  - 禁止繁体中文、水印、签名、乱码文字。
+
+  【反向】
+  {negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  idle_variant: "如：轻微呼吸、重心微移、左手扶剑鞘"
+  facing: "tasks 内一句侧向/略俯视说明（勿 45° 地砖等距）"

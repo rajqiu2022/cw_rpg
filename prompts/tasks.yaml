@@ -17,6 +17,11 @@
 #                        - 旧 IP 任务全部 skip:true（保留作历史追溯）
 #                        - 新增 v0.2 第一章必产任务：6 立绘 + 3 场景 + 物品图标
 #                        - 新角色锚点：冷孤云 / 刑樊天 / 沈半盏 / 杜青衫 / 悦无姮 / 蒙面杀手首领
+# v0.3 (2026-04-28)   :  主角 sprite 试验（参考「游戏元素拆分 gpt-image2」分段提示词）
+#                        - sprite_lengguyun_idle_south：待机单帧（id 中 south 为历史名，实际侧向 Field）
+#                        - sprite_lengguyun_parts_sheet：拆件总图（默认 skip，避免误跑烧钱）
+# v0.3.1 (2026-04-28) :  冷孤云 sprite 动画帧：待机 2 帧 + 行走 4 帧 + 基础剑招 3 帧
+# v0.3.2 (2026-04-28) :  Field 镜头对齐：侧向正交略俯视（非 45° 地砖等距）；行走 f02～f04 用 walk_ref + f01 参考
 
 # ============================================================
 # 共享角色身份锚点
@@ -503,6 +508,318 @@ tasks:
       key_elements: "翠竹林、斜阳光柱、古朴石坛、明暗对比、绿光斑驳、橙黄夕阳"
 
   # ============================================================
+  # === [v0.3 主角 sprite 试验] priority=2 · 模板见 prompts/templates/sprite_protagonist_*.yaml ===
+  # 说明：与「像素拆件」不同，本项目为港漫 2.5D；分段结构仍可参考该文。
+  # ============================================================
+
+  - id: sprite_lengguyun_idle_south
+    template: sprite_protagonist_idle
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      idle_variant: "轻微呼吸感，左手自然扶于剑柄，右手放松；酒葫芦在腰侧微微外摆"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_parts_sheet
+    template: sprite_protagonist_parts_sheet
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    skip: true
+    vars:
+      <<: *lengguyun
+      sheet_note: "实验总图：部件宁少勿糊，通过后人工裁切"
+
+  - id: sprite_lengguyun_walk_4dir_sheet
+    template: sprite_protagonist_walk_4dir_sheet
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_right_8f_strip
+    template: sprite_protagonist_walk_right_8f_strip
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_right_8f_loop_strip
+    template: sprite_protagonist_walk_right_8f_loop_strip
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_8f_loop_strip
+    template: sprite_protagonist_walk_down_8f_loop_strip
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_8f_loop_strip
+    template: sprite_protagonist_walk_up_8f_loop_strip
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_right_4f_stable_strip
+    template: sprite_protagonist_walk_right_4f_stable_strip
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_right_8f_stable_from_4f
+    template: sprite_protagonist_walk_right_8f_stable_from_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_right_8f_polish_from_8f
+    template: sprite_protagonist_walk_right_8f_polish_from_8f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_8f_stable_from_4f
+    template: sprite_protagonist_walk_down_8f_stable_from_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_8f_stable_from_4f
+    template: sprite_protagonist_walk_up_8f_stable_from_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_4f_strong_keypose
+    template: sprite_protagonist_walk_down_4f_strong_keypose
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_4f_strong_keypose
+    template: sprite_protagonist_walk_up_4f_strong_keypose
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_4f_locked_axis
+    template: sprite_protagonist_walk_down_4f_locked_axis
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_4f_locked_axis
+    template: sprite_protagonist_walk_up_4f_locked_axis
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_4f_balanced
+    template: sprite_protagonist_walk_down_4f_balanced
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_4f_balanced
+    template: sprite_protagonist_walk_up_4f_balanced
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_8f_balanced_from_4f
+    template: sprite_protagonist_walk_down_8f_balanced_from_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_8f_balanced_from_4f
+    template: sprite_protagonist_walk_up_8f_balanced_from_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_8f_strict_phase
+    template: sprite_protagonist_walk_down_8f_strict_phase
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_8f_strict_phase
+    template: sprite_protagonist_walk_up_8f_strict_phase
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  # --- 冷孤云 · 待机呼吸 2 帧（南）---
+  - id: sprite_lengguyun_idle_anim_south_f01
+    template: sprite_protagonist_idle_anim
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      frame_total: "2"
+      micro_motion: "呼气末：双肩略沉，剑柄护手略低于胸口中线，袍领微垂"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_idle_anim_south_f02
+    template: sprite_protagonist_idle_anim
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      frame_total: "2"
+      micro_motion: "吸气中：胸肩微抬约半指宽，左肩略向前送，酒葫芦随腰带略外摆，袍缘微扬"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  # --- 冷孤云 · 行走 4 帧（南）---
+  - id: sprite_lengguyun_walk_south_f01
+    template: sprite_protagonist_walk
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      frame_total: "4"
+      leg_phase: "【接触】行进朝画幅左侧：左脚在左前侧全掌踏地、膝微屈主承重；右脚在右后侧脚跟明显抬起、仅脚尖点地；两踝水平错开约肩宽的 1.0～1.3 倍，肉眼能分清前后脚。"
+      frame_pose_hint: "右臂略前摆、左臂后摆；躯干微前倾；袍摆随步前短后长。"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_walk_south_f02
+    template: sprite_protagonist_walk_ref
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      frame_total: "4"
+      leg_phase: "【过渡/经过】换步中点：左脚蹬离、前掌将离未离；右脚摆至身体下方、膝屈曲抬高、整鞋底仍离地约半小腿高；两腿在画面上呈明显交叉，与 f01 前后关系不同。"
+      frame_pose_hint: "双臂收近躯干防剪到；袍摆两侧略扬；骨盆略升体现离地感。"
+      color_stability_hint: "【色】外衣灰度与参考 f01 一致，勿因交叉提浅。"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_walk_south_f03
+    template: sprite_protagonist_walk_ref
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+      frame_total: "4"
+      leg_phase: "【接触·镜像 f01】右脚已到画幅左前侧全掌踏地承重；左脚在右后方整脚抬离地面约一拳高度（鞋底须可见离地），与 f01 前后脚对调，禁止双脚仍呈 f01 同款落点。"
+      frame_pose_hint: "左臂略前、右臂后摆，与 f01 手臂摆动对称呼应。"
+      color_stability_hint: "【本帧严禁变浅】外衣须与参考 **同一深灰明度与冷灰色相**；禁止整袍提浅；高光仅小褶边。"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_walk_south_f04
+    template: sprite_protagonist_walk_ref
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+      frame_total: "4"
+      leg_phase: "【过渡回环】左脚从后向前摆、膝抬起、脚底将落向画幅左侧（尚未全掌压实）；右脚仍撑地但膝略弯身体略下沉；两踝间距仍大于站立，准备接回第 1 帧相位。"
+      frame_pose_hint: "袍摆回落；肩胯略回中；仍须看出与 f03 不同的脚位。"
+      color_stability_hint: "【色】与参考 f01 同灰阶色温，勿偏浅偏暖。"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  # --- 冷孤云 · 林西基础剑法 纵斩 3 帧（南）---
+  - id: sprite_lengguyun_attack_slash_south_f01
+    template: sprite_protagonist_attack
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      attack_name: "林西基础剑法·纵斩"
+      attack_desc: "一步踏前、腰腿合一的简洁斜下斩，剑气短促"
+      frame_index: "1"
+      frame_total: "3"
+      frame_action: "蓄劲：长剑收于腰右侧，剑尖斜指后下方，左足微屈蓄力，眼神紧盯前方"
+      vfx_intensity: "弱"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_attack_slash_south_f02
+    template: sprite_protagonist_attack
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      attack_name: "林西基础剑法·纵斩"
+      attack_desc: "一步踏前、腰腿合一的简洁斜下斩，剑气短促"
+      frame_index: "2"
+      frame_total: "3"
+      frame_action: "斩出：剑身自右上向左下挥出至水平略下，腕为轴；剑尖拖出一道窄长青白色剑气弧，弧长不超过肩宽两倍"
+      vfx_intensity: "中"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_attack_slash_south_f03
+    template: sprite_protagonist_attack
+    category: sprite/v2
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      attack_name: "林西基础剑法·纵斩"
+      attack_desc: "一步踏前、腰腿合一的简洁斜下斩，剑气短促"
+      frame_index: "3"
+      frame_total: "3"
+      frame_action: "收势：剑尖回指前下方，双臂肘略收，剑气消散为细碎光点；站姿回到可衔接 idle"
+      vfx_intensity: "弱"
+      facing: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  # ============================================================
   # === [v0.2 第一章必产 - 物品 / 武功 图标] priority=2 ===
   # 这一批可以等立绘 + 场景跑完再补，不阻塞主流程
   # ============================================================
@@ -550,3 +867,419 @@ tasks:
       skill_name: "林西基础剑法·一式"
       element_desc: "一柄朴素长剑斜挑出，剑尖带一抹素白剑芒"
       color_scheme: "素白银"
+
+  # ============================================================
+  # === [v0.4 模块化场景 kit] 默认 skip，先做 dry-run / 审稿 ===
+  # ============================================================
+
+  - id: scene_kit_linxi_buildings_v1
+    template: scene_module_atlas
+    category: scene/modules/v1
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      kit_theme: "林西村 / 竹尾村可复用民居建筑模块"
+      module_list: |
+        - 灰瓦屋顶左中右模块
+        - 土墙 / 木墙墙体模块
+        - 木门、纸窗、屋檐、木柱
+        - 院墙、篱笆、招牌底板（不要文字）
+        - 酒馆门面、普通民居门面、破旧小屋门面
+
+  # ============================================================
+  # === [v0.5 正式场景生产] 补齐占位图场景 + 对话框 + 战斗背景 ===
+  # ============================================================
+
+  # --- 林西村外官道（ch1_s1_road 用，取代占位的 bg_battle_default.png）---
+  - id: scene_ch1_s1_road
+    template: scene_background_45deg
+    category: scene_background
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "林西村外 · 竹林官道"
+      scene_desc: |
+        蜿蜒山间的石板官道，两侧翠竹高耸如壁，
+        竹叶轻摇、光影斑驳；道路左侧有一块古旧石碑半隐于竹丛中，
+        石碑青苔斑驳、刻字模糊；
+        道路中段地面可见一些散落杂物、断裂兵器暗示刚发生过搏斗。
+        前方道路延伸消失于竹林深处。
+        清晨薄雾未散，空气清冷。
+      time_of_day: "morning"
+      weather: "clear"
+      key_elements: "翠竹如壁、石板官道、古旧石碑、散落兵器、薄雾、远处竹林"
+
+  # --- 竹尾村主街（ch1_s2_qingfeng 用，取代占位的 bg_main_menu.png）---
+  - id: scene_zhuwei_main_street
+    template: scene_background_45deg
+    category: scene_background
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "竹尾村主街"
+      scene_desc: |
+        宁静小镇主街，翠竹环抱，街道两旁木结构店铺鳞次栉比。
+        左侧客栈门前红灯笼高挂，门廊木质温润；
+        右侧杂货铺、药材铺依次排开；
+        街道中央铺着青石板，远处可见竹林围绕的镇门牌坊。
+        午后阳光温暖，街上行人稀少但生气盎然，飘荡着淡淡饭菜香。
+        整体氛围宁静祥和但暗藏不安。
+      time_of_day: "afternoon"
+      weather: "clear"
+      key_elements: "红灯笼、木质客栈、青石板路、翠竹、镇门牌坊、杂货铺"
+
+  # --- 城西废宅（ch1_s3_west_ruin 用，取代占位的 bg_equipment.png）---
+  - id: scene_west_ruin
+    template: scene_background_45deg
+    category: scene_background
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "城西废宅"
+      scene_desc: |
+        镇西偏僻角落的荒废宅院，围墙半坍、杂草丛生，
+        正门木板朽烂半开，门框歪斜；
+        院内散落旧木箱、破酒坛、断木梁；
+        后院有一间较完整的内堂，门窗紧闭透出微弱烛光暗示有人活动。
+        黄昏光线从破洞屋顶斜射入，尘埃飘浮，氛围阴森诡异。
+      time_of_day: "dusk"
+      weather: "overcast"
+      key_elements: "坍塌围墙、破旧木门、杂草、旧木箱、破酒坛、断梁、微弱烛光、尘埃"
+
+  # --- 战斗默认背景（当前 bg_battle_default.png 太大且是占位）---
+  - id: scene_battle_bamboo_road
+    template: scene_background_45deg
+    category: scene_background
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "竹林官道 · 战斗场"
+      scene_desc: |
+        翠竹林间的一段宽阔官道开阔地，
+        两侧密竹如墙、竹叶青翠；道中央空旷无障碍，
+        地面黄土略有脚印痕迹；
+        远处山峦层叠、天空明朗。
+        适合作为近身格斗对峙的开阔场地，
+        光影通透、绿色主调。
+      time_of_day: "noon"
+      weather: "clear"
+      key_elements: "翠竹如墙、黄土道路、开阔空地、远山、明朗天空"
+
+  # --- 冷色武侠对话框（用于正式对话 UI 背景 nine-patch）---
+  - id: ui_cold_wuxia_dialog_box_v1
+    template: ui_cold_wuxia_kit
+    category: ui_frame
+    priority: 1
+    model: gpt-image-2
+    vars:
+      kit_name: "对话框组件"
+      component_list: |
+        - 横向对话框，长宽比约 5:1，无字，内部大面积深蓝留白
+        - 四角对称的玄铁云纹角花
+        - 对话框边框冷钢蓝，外缘有薄薄寒光
+        - 左下方小三角话语指示符
+        - 对话框底色半透明深墨蓝
+        - 姓名牌：小型横匾，无字，寒玉质感外框
+        - 选项按钮：3 个竖排小条按钮，无字，玄铁底 + 霜蓝边
+
+  - id: scene_kit_roads_plants_v1
+    template: scene_module_atlas
+    category: scene/modules/v1
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      kit_theme: "林西村外官道与竹尾村植物道路模块"
+      module_list: |
+        - 土路直段、弯道、岔路口、碎石边缘
+        - 青石小路、台阶、草地过渡边
+        - 竹子单株、竹丛、灌木、杂草、路边石
+        - 前景树枝遮挡、低矮木桥、石碑空白底板
+
+  - id: scene_kit_west_ruin_props_v1
+    template: scene_module_atlas
+    category: scene/modules/v1
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      kit_theme: "城西废宅破败装饰与障碍模块"
+      module_list: |
+        - 破墙、断梁、旧门板、塌落屋檐
+        - 木箱、酒坛、绳索、草席、破桌
+        - 枯树、杂草、碎砖、石灯、阴影前景
+        - 可作为碰撞障碍的摊位 / 残垣 / 堆箱
+
+  # ============================================================
+  # === [v0.4 冷色武侠 UI 美术资产] 默认 skip，先审 prompt ===
+  # ============================================================
+
+  - id: ui_cold_wuxia_common_kit_v1
+    template: ui_cold_wuxia_kit
+    category: ui/cold_wuxia/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      kit_name: "通用 UI 框架组件"
+      component_list: |
+        - 主标题玄铁匾额，无字
+        - 顶部横梁、底部横梁、冷钢蓝边
+        - 大面板框、小面板框，九宫格拉伸友好
+        - 玄铁按钮 normal、hover、pressed 三态，全部无字
+        - tab 选中、未选中，两态无字
+        - 对话框长条，无字，内部大面积留白
+        - 冷灰宣纸详情卡，无字
+        - 装备槽空框、装备槽选中框
+        - buff 图标外框、物品图标外框
+        - 角花、云纹暗刻、竹影分隔线
+
+  - id: ui_cold_wuxia_attribute_icons_v1
+    template: ui_cold_wuxia_icon_atlas
+    category: ui/cold_wuxia/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      kit_name: "基础属性图标"
+      icon_list: |
+        - 筋骨：玄铁护腕、山石纹、筋脉线
+        - 机敏：疾风步、燕影、短靴残影
+        - 内劲：丹田气旋、掌心寒蓝气劲
+        - 悟性：竹简、棋子、寒光一笔
+        - 生命：青玉葫芦、心脉光、药草露珠
+        - 内力：湖面波纹、丹田寒光、气海
+        - 防御：玄铁护心镜、岩纹屏障、护腕
+        - 备用空图标框一
+        - 备用空图标框二
+
+  - id: ui_cold_wuxia_battle_hud_v1
+    template: ui_cold_wuxia_kit
+    category: ui/cold_wuxia/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      kit_name: "战斗 HUD 与状态组件"
+      component_list: |
+        - 生命条外框，暗血红填充示例，无字
+        - 内力条外框，寒蓝填充示例，无字
+        - 经验条外框，雾白冷钢蓝填充示例，无字
+        - 玩家状态牌框，无字
+        - 敌人状态牌框，无字
+        - 战斗日志框，无字，横向长条
+        - 战斗命令按钮四枚，无字
+        - 增益 buff 外框，寒玉冷光
+        - 减益 debuff 外框，暗血冷光
+        - 中性状态外框，冷钢蓝光
+
+  - id: ui_cold_wuxia_main_menu_keyart_v2
+    template: ui_main_menu_keyart_cold_wuxia
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      game_title: "云影侠传"
+
+  - id: ui_cold_wuxia_main_menu_screen_gpt_v4
+    template: ui_main_menu_screen_cold_wuxia
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      game_title: "云影侠传"
+
+  - id: ui_cold_wuxia_main_menu_screen_gpt_v5
+    template: ui_main_menu_screen_cold_wuxia_v5
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      game_title: "云影侠传"
+
+  - id: ui_cold_wuxia_main_menu_bg_clean_v7
+    template: ui_main_menu_bg_clean_from_v6
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      game_title: "云影侠传"
+
+  - id: ui_cold_wuxia_main_menu_hover_new_gpt_v1
+    template: ui_main_menu_hover_state_v6
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      game_title: "云影侠传"
+      hover_button: "新游戏"
+
+  - id: ui_cold_wuxia_main_menu_hover_load_gpt_v1
+    template: ui_main_menu_hover_state_v6
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      game_title: "云影侠传"
+      hover_button: "读取存档"
+
+  - id: ui_cold_wuxia_main_menu_hover_quit_gpt_v1
+    template: ui_main_menu_hover_state_v6
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      game_title: "云影侠传"
+      hover_button: "离开"
+
+  - id: ui_cold_wuxia_field_hud_screen_gpt_v1
+    template: ui_module_screen_cold_wuxia_v5
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      module_name: "游戏探索 HUD"
+      module_purpose: |
+        场景探索时显示左上角角色信息、金钱、当前场景名、当前任务摘要、右侧系统按钮。
+      required_elements: |
+        - 左上角角色信息：冷孤云、生命、内力、等级
+        - 顶部或右上角当前场景名
+        - 右侧竖向系统按钮：背包、装备、武学、任务、系统
+        - 右下角当前任务摘要
+        - 底部操作提示条：移动、交互、背包、装备、武学、任务
+
+  - id: ui_cold_wuxia_inventory_screen_gpt_v1
+    template: ui_module_screen_cold_wuxia_v5
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      module_name: "背包界面"
+      module_purpose: |
+        查看行囊物品、使用药品、装备武器防具、查看物品描述。
+      required_elements: |
+        - 标题：行囊
+        - 左侧物品分类：全部、消耗、装备、剧情
+        - 中央物品格列表
+        - 右侧物品详情区
+        - 操作按钮：使用、装备、丢弃、关闭
+        - 顶部角色状态：生命、内力、金钱
+
+  - id: ui_cold_wuxia_equipment_screen_gpt_v1
+    template: ui_module_screen_cold_wuxia_v5
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      module_name: "装备界面"
+      module_purpose: |
+        查看角色装备、六个装备槽、装备属性加成和角色核心属性。
+      required_elements: |
+        - 标题：武备
+        - 中央角色半身剪影或立绘展示区
+        - 六个装备槽：武器、头部、护甲、手部、鞋子、饰品
+        - 右侧属性：筋骨、机敏、内劲、悟性、生命、内力、防御
+        - 底部按钮：卸下、整理、关闭
+
+  - id: ui_cold_wuxia_quest_screen_gpt_v1
+    template: ui_module_screen_cold_wuxia_v5
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      module_name: "任务界面"
+      module_purpose: |
+        查看主线和支线任务、任务详情、完成条件和奖励。
+      required_elements: |
+        - 标题：任务卷宗
+        - 左侧任务列表：主线、支线、已完成
+        - 右侧任务详情：目标、进度、奖励
+        - 当前追踪任务标记
+        - 按钮：追踪、关闭
+
+  - id: ui_cold_wuxia_skill_screen_gpt_v1
+    template: ui_module_screen_cold_wuxia_v5
+    category: ui/cold_wuxia/v2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      module_name: "武学技能界面"
+      module_purpose: |
+        查看已学武学、技能消耗、威力、类型和描述。
+      required_elements: |
+        - 标题：武学
+        - 左侧技能列表：基础剑法、掌法、身法、防御
+        - 中央技能图标和招式说明
+        - 右侧技能属性：类型、目标、内力消耗、威力、段数
+        - 底部按钮：设为快捷、查看详情、关闭
+
+  # ============================================================
+  # === [v0.4 主菜单按钮模块化资产] 底框三态 + 美术字（可组装复用）===
+  # ============================================================
+
+  - id: ui_btn_main_frame_normal_v1
+    template: ui_button_frame_cold_main_menu
+    category: ui/button/main_menu/frame/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      state: "normal"
+
+  - id: ui_btn_main_frame_hover_v1
+    template: ui_button_frame_cold_main_menu
+    category: ui/button/main_menu/frame/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      state: "hover"
+
+  - id: ui_btn_main_frame_pressed_v1
+    template: ui_button_frame_cold_main_menu
+    category: ui/button/main_menu/frame/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      state: "pressed"
+
+  - id: ui_btn_main_text_new_game_v1
+    template: ui_button_text_cold_main_menu
+    category: ui/button/main_menu/text/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      label: "新游戏"
+
+  - id: ui_btn_main_text_load_v1
+    template: ui_button_text_cold_main_menu
+    category: ui/button/main_menu/text/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      label: "读取存档"
+
+  - id: ui_btn_main_text_quit_v1
+    template: ui_button_text_cold_main_menu
+    category: ui/button/main_menu/text/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      label: "离开"

@@ -20,13 +20,13 @@ on_end = "next:b"
 [sub_resource type="Resource" id="node_b"]
 script = ExtResource("2_dnode")
 node_id = &"b"
-speaker = "沈不归"
+speaker = "冷孤云"
 portrait_path = "res://art/characters/protagonist_neutral.png"
-text = "地图上标着清风镇就在前方。\n这里看着不像久留之地，先入城打听消息。"
+text = "地图上标着竹尾村就在前方。\n这里看着不像久留之地，先入村打听消息。"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
-set_flags = Array[Dictionary]([{"key": "ready_to_qingfeng", "value": true}])
+set_flags = Array[Dictionary]([{"key": "ready_to_zhuwei", "value": true}])
 accept_quest = &"q_ch1_main_02_qingfeng"
 complete_quest = &""
 on_end = "next:c"
@@ -36,14 +36,14 @@ script = ExtResource("2_dnode")
 node_id = &"c"
 speaker = ""
 portrait_path = ""
-text = "[i]（前方城门隐约可见——清风镇到了。）[/i]"
+text = "[i]（前方村舍隐约可见——竹尾村到了。）[/i]"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
 set_flags = Array[Dictionary]([])
 accept_quest = &""
 complete_quest = &""
-on_end = "scene:ch1_s2_qingfeng"
+on_end = "scene:ch1_s2_qingfeng_walkable"
 
 [resource]
 script = ExtResource("1_dscr")

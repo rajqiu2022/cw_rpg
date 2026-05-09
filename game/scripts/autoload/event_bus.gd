@@ -38,4 +38,6 @@ signal player_leveled_up(new_level: int)
 signal dialog_started(dialog_id: StringName)
 signal dialog_ended(dialog_id: StringName)
 
+signal ui_requested(panel_id: StringName)
+
 signal chapter_completed(chapter: int)

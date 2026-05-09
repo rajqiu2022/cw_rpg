@@ -9,6 +9,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_field")
 
+[node name="FallbackBg" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3, 0.36, 0.46, 1)
+
 [node name="Background" type="TextureRect" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -41,6 +52,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.45)
 mouse_filter = 2
+
+[node name="PlayerInfo" type="Label" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -22.0
+offset_right = 520.0
+offset_bottom = 22.0
+text = "冷孤云  Lv.1  HP 0/0  MP 0/0"
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 18
 
 [node name="SceneTitle" type="Label" parent="HUD"]
 unique_name_in_owner = true
@@ -75,6 +100,51 @@ vertical_alignment = 1
 theme_override_colors/font_color = Color(0.95, 0.83, 0.4, 1)
 theme_override_font_sizes/font_size = 20
 
+[node name="InventoryBtn" type="Button" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -616.0
+offset_top = -22.0
+offset_right = -480.0
+offset_bottom = 22.0
+text = "背包 (I)"
+theme_override_font_sizes/font_size = 18
+
+[node name="EquipmentBtn" type="Button" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -468.0
+offset_top = -22.0
+offset_right = -332.0
+offset_bottom = 22.0
+text = "装备 (E)"
+theme_override_font_sizes/font_size = 18
+
+[node name="SkillBtn" type="Button" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -22.0
+offset_right = -184.0
+offset_bottom = 22.0
+text = "武学 (K)"
+theme_override_font_sizes/font_size = 18
+
 [node name="QuestLogBtn" type="Button" parent="HUD"]
 unique_name_in_owner = true
 layout_mode = 1
@@ -83,7 +153,7 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -160.0
+offset_left = -172.0
 offset_top = -22.0
 offset_right = -24.0
 offset_bottom = 22.0
@@ -145,3 +215,43 @@ text = "[i]暂无任务[/i]"
 theme_override_colors/default_color = Color(0.92, 0.92, 0.92, 1)
 theme_override_font_sizes/normal_font_size = 14
 mouse_filter = 2
+
+[node name="HintBar" type="Control" parent="."]
+unique_name_in_owner = true
+z_index = 8
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HintBg" type="ColorRect" parent="HintBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.08, 0.82)
+
+[node name="HintLabel" type="Label" parent="HintBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "提示：点击场景上的按钮推进剧情  ·  I 背包  ·  E 装备  ·  K 武学  ·  J 任务  ·  Esc 关闭面板"
+theme_override_colors/font_color = Color(0.92, 0.9, 0.82, 1)
+theme_override_font_sizes/font_size = 16
+vertical_alignment = 1

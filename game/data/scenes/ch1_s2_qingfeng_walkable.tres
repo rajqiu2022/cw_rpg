@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch1_s2_qingfeng_walkable"
+display_name = "临溪镇"
+background_path = "res://art/backgrounds/bg_linxi_main.png"
+bgm_path = ""
+is_walkable = true
+player_spawn = Vector2(0.5, 0.85)
+hotspots = []
+
+npcs = [
+{
+  "npc_id": "innkeeper",
+  "npc_name": "客栈老板",
+  "pos": Vector2(0.22, 0.42),
+  "portrait_path": "res://art/characters/portrait_shenbanzhan_friendly.png",
+  "sprite_path": "res://art/characters/protagonist_neutral.png",
+  "dialog_id": "ch1_s2_inn_keeper",
+  "scale": 0.08
+},
+{
+  "npc_id": "guard",
+  "npc_name": "镇守卫",
+  "pos": Vector2(0.78, 0.48),
+  "portrait_path": "res://art/characters/portrait_duqingshan_steady.png",
+  "sprite_path": "res://art/characters/protagonist_neutral.png",
+  "dialog_id": "ch1_s2_guard",
+  "scale": 0.08
+},
+{
+  "npc_id": "merchant",
+  "npc_name": "货郎",
+  "pos": Vector2(0.72, 0.72),
+  "portrait_path": "res://art/characters/portrait_xingfantian_serious.png",
+  "sprite_path": "res://art/characters/protagonist_neutral.png",
+  "dialog_id": "ch1_s2_merchant",
+  "scale": 0.08
+},
+{
+  "npc_id": "crying_woman",
+  "npc_name": "哭泣的女子",
+  "pos": Vector2(0.45, 0.55),
+  "portrait_path": "res://art/characters/portrait_yuewuxing_meeting.png",
+  "sprite_path": "res://art/characters/protagonist_neutral.png",
+  "dialog_id": "ch1_s2_crying_woman",
+  "scale": 0.08,
+  "hide_flag": "q_rescue_completed"
+}
+]
+
+exits = [
+{
+  "label": "前往竹林",
+  "pos": Vector2(0.95, 0.5),
+  "size": Vector2(0.08, 0.8),
+  "target_scene": "ch1_s1_road",
+  "target_pos": Vector2(0.1, 0.5)
+}
+]
+
+collision_rects = [
+{
+  "id": "inn_table_block",
+  "pos": Vector2(0.22, 0.50),
+  "size": Vector2(0.16, 0.10)
+},
+{
+  "id": "street_cart_block",
+  "pos": Vector2(0.70, 0.62),
+  "size": Vector2(0.14, 0.09)
+}
+]
+
+trigger_zones = [
+{
+  "id": "town_gate_notice",
+  "pos": Vector2(0.08, 0.50),
+  "size": Vector2(0.06, 0.40),
+  "action": "set_flag:visited_linxi_gate:true",
+  "hide_flag": "visited_linxi_gate"
+}
+]

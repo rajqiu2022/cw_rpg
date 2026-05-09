@@ -19,16 +19,20 @@ func _ready() -> void:
 func _init_default_player() -> void:
 	var stats := CharacterStats.new()
 	stats.character_id = "protagonist"
-	stats.display_name = "沈不归"
+	stats.display_name = "冷孤云"
 	stats.portrait_path = "res://art/characters/protagonist_neutral.png"
 	stats.level = 1
-	stats.max_hp = 120
-	stats.hp = 120
-	stats.max_mp = 40
-	stats.mp = 40
-	stats.attack = 18
-	stats.defense = 10
-	stats.speed = 12
+
+	## 七项核心属性默认值（v1）
+	stats.strength = 8
+	stats.agility = 7
+	stats.inner_power = 8
+	stats.insight = 6
+	stats.vitality = 8
+	stats.inner_pool = 8
+	stats.guard = 7
+	stats.refresh_derived_stats(true)
+
 	var skill_ids: Array[StringName] = [&"basic_attack", &"palm_strike", &"defend"]
 	stats.skills = skill_ids
 	player = stats

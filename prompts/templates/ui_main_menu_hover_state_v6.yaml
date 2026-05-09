@@ -1,0 +1,41 @@
+id: ui_main_menu_hover_state_v6
+description: 基于已认可主菜单 v6 生成单个按钮 hover 状态整图
+quality: high
+size: "1536x1024"
+require_reference_images: true
+
+reference_images:
+  - "assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_main_menu_screen_gpt_v6.png"
+
+identity_anchor: |
+  《云影侠传》正式主菜单 v6 的同构 hover 状态图。
+  必须严格保持参考图的构图、角色、背景、标题、三个按钮位置、文字内容、色彩亮度和 UI 风格。
+  当前风格为较明亮的冷色玄铁武侠界面：深墨蓝、冷钢蓝、霜蓝高光，深竹绿和暗酒红点缀。
+
+prompt_template: |
+  {{identity_anchor}}
+
+  请基于参考图生成同一张主菜单的 hover 状态整图。
+  绝对不要重新设计版式，绝对不要改变角色、标题、按钮位置和文字。
+
+  需要高亮的按钮：{{hover_button}}
+
+  hover 效果要求：
+  - 只有“{{hover_button}}”这个按钮进入鼠标悬停状态。
+  - 该按钮出现自然的冷色玄铁 UI hover 效果：深竹绿冷光、寒玉边缘反光、轻微内发光、边框更亮。
+  - 如果是“离开”按钮，可额外有少量暗酒红边缘光，但仍保持冷色武侠风。
+  - 其他两个按钮保持普通状态，不要同时高亮。
+  - 整体亮度不能比参考图更暗。
+  - 输出必须仍是一张完整主菜单界面图，不是按钮组件图，不是白底 atlas。
+
+  文字要求：
+  - 保留标题“{{game_title}}”。
+  - 保留三个按钮文字：新游戏、读取存档、离开。
+  - 不要新增任何其他文字。
+  - 中文必须清晰正确，不要乱码、繁体、错字。
+
+  反向：重新构图，按钮错位，文字变化，新增文字，乱码，繁体，英文，白底组件，低保真 mockup，网页 UI，过暗，霓虹，科幻。
+
+variables:
+  game_title: "云影侠传"
+  hover_button: "新游戏"

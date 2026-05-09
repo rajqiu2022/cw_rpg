@@ -1,0 +1,179 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/field/field_walkable_controller.gd" id="1_ctrl"]
+
+[node name="FieldWalkable" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctrl")
+
+[node name="Background" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 5
+stretch_mode = 6
+
+[node name="WorldContainer" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="HotspotsContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 24.0
+offset_right = -16.0
+offset_bottom = 400.0
+grow_horizontal = 0
+
+[node name="SceneTitle" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -300.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 52.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.95, 0.92, 0.84, 1)
+theme_override_colors/font_shadow_color = Color(0.05, 0.05, 0.05, 0.8)
+theme_override_font_sizes/font_size = 22
+text = "临溪镇"
+horizontal_alignment = 2
+
+[node name="PlayerInfo" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 560.0
+offset_bottom = 58.0
+text = "冷孤云  Lv.1  HP 0/0  MP 0/0"
+theme_override_font_sizes/font_size = 18
+vertical_alignment = 1
+
+[node name="HUD" type="HBoxContainer" parent="."]
+layout_mode = 1
+
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -68.0
+offset_right = 760.0
+offset_bottom = -20.0
+grow_vertical = 0
+alignment = 1
+
+
+[node name="QuestLogBtn" type="Button" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "[ J ] 任务日志"
+
+[node name="InventoryBtn" type="Button" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "[ I ] 背包"
+
+[node name="EquipmentBtn" type="Button" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "[ E ] 装备"
+
+[node name="SkillBtn" type="Button" parent="HUD"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "[ K ] 武学"
+
+[node name="GoldLabel" type="Label" parent="HUD"]
+
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_colors/font_color = Color(0.9, 0.86, 0.6, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_font_sizes/font_size = 18
+text = "金 0"
+horizontal_alignment = 2
+
+[node name="QuestPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 72.0
+offset_right = 336.0
+offset_bottom = -80.0
+grow_vertical = 2
+
+[node name="QuestTitle" type="Label" parent="QuestPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.94, 0.9, 0.8, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7)
+theme_override_font_sizes/font_size = 16
+text = "当前任务"
+horizontal_alignment = 1
+
+[node name="QuestList" type="RichTextLabel" parent="QuestPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
+[node name="HintBar" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -560.0
+offset_top = -24.0
+offset_right = 560.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HintLabel" type="Label" parent="HintBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.78, 0.78, 0.78, 0.6)
+theme_override_font_sizes/font_size = 12
+text = "WASD 移动 · 空格交互"
+horizontal_alignment = 1

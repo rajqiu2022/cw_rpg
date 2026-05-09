@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}故事剧情 · 协作调度台{% endblock %}
+{% block content %}
+<section class="story-hero">
+  <div>
+    <p class="eyebrow">故事剧情总览</p>
+    <h1>冷孤云江湖卷宗</h1>
+    <p class="lead">{{ overview.tagline }}</p>
+    <div class="source-row">
+      {% for file in overview.source_files %}
+      <a href="/repo/{{ file }}">{{ file }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <aside class="story-seal">
+    <strong>8</strong>
+    <span>章主线</span>
+  </aside>
+</section>
+
+<section class="card story-mystery">
+  <div>
+    <p class="eyebrow">核心悬念</p>
+    <h2>烈云蒙冤，茗雾藏锋</h2>
+  </div>
+  <div class="mystery-steps">
+    {% for item in overview.mystery %}
+    <div class="mystery-step">
+      <span>{{ loop.index }}</span>
+      <p>{{ item }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section-title">
+  <p class="eyebrow">人物名帖</p>
+  <h2>主要角色</h2>
+  <p>聚焦会影响主线、感情线、门派分支和最终反转的核心人物。</p>
+</section>
+<section class="character-grid">
+  {% for character in characters %}
+  <article class="character-card">
+    <div class="card-head">
+      <div>
+        <h3>{{ character.name }}</h3>
+        <p>{{ character.role }}</p>
+      </div>
+      <span>{{ character.faction }}</span>
+    </div>
+    <p>{{ character.summary }}</p>
+    <p class="arc">{{ character.arc }}</p>
+    <div class="tag-row">
+      {% for tag in character.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<section class="section-title">
+  <p class="eyebrow">江湖势力榜</p>
+  <h2>门派与势力</h2>
+  <p>七大门派与核心组织的表面定位、可加入状态和真实剧情作用。</p>
+</section>
+<section class="faction-grid">
+  {% for faction in factions %}
+  <article class="faction-card">
+    <div class="faction-top">
+      <h3>{{ faction.name }}</h3>
+      <span class="pill">{{ faction.joinable }}</span>
+    </div>
+    <dl>
+      <div><dt>据点</dt><dd>{{ faction.base }}</dd></div>
+      <div><dt>风格</dt><dd>{{ faction.style }}</dd></div>
+      <div><dt>剧情作用</dt><dd>{{ faction.truth }}</dd></div>
+    </dl>
+    <div class="tag-row">
+      {% for tag in faction.tags %}
+      <span class="tag">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<section class="section-title">
+  <p class="eyebrow">八章主线</p>
+  <h2>剧情概要</h2>
+  <p>按章节展示场景、关键事件与章末钩子，便于后续拆剧情任务和验收。</p>
+</section>
+<section class="chapter-timeline">
+  {% for chapter in chapters %}
+  <article class="chapter-item">
+    <div class="chapter-index">卷 {{ loop.index }}</div>
+    <div class="chapter-body">
+      <div class="chapter-title-row">
+        <h3>{{ chapter.title }}</h3>
+        <span>{{ chapter.duration }}</span>
+      </div>
+      <p>{{ chapter.summary }}</p>
+      <div class="location-row">
+        {% for location in chapter.locations %}
+        <span>{{ location }}</span>
+        {% endfor %}
+      </div>
+      <ul>
+        {% for beat in chapter.beats %}
+        <li>{{ beat }}</li>
+        {% endfor %}
+      </ul>
+      <p class="chapter-hook">章末钩子：{{ chapter.hook }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</section>
+
+<section class="section-title">
+  <p class="eyebrow">终局分歧</p>
+  <h2>四个结局路线</h2>
+  <p>结局由前七章心向累积与章八最终选择共同决定。</p>
+</section>
+<section class="ending-grid">
+  {% for ending in endings %}
+  <article class="ending-card">
+    <span class="ending-code">{{ ending.code }}</span>
+    <h3>{{ ending.title }}</h3>
+    <p class="route">{{ ending.route }}</p>
+    <p>{{ ending.summary }}</p>
+    <p class="trigger">触发：{{ ending.trigger }}</p>
+  </article>
+  {% endfor %}
+</section>
+{% endblock %}

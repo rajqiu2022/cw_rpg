@@ -1,0 +1,51 @@
+# 主角 / 同锚点 · 行走循环第 2～N 帧（以第 1 帧 PNG 为参考 → API edits）
+# 参考图路径：须已存在 `assets/raw/sprite/v2/sprite_lengguyun_walk_south_f01.png`（先跑 walk f01）。
+
+id: sprite_protagonist_walk_ref
+description: 行走循环续帧，严格锁定第 1 帧外观，仅改肢体相位
+quality: medium
+size: "896x896"
+# 见 gen_assets.render_template：缺失参考图时禁止静默退回纯文生成
+require_reference_images: true
+
+reference_images:
+  - "assets/raw/sprite/v2/sprite_lengguyun_walk_south_f01.png"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}
+
+prompt_template: |
+  {style_anchor}
+
+  【参考图编辑模式 — 最高优先级】
+  - 以上传的参考图为 **唯一服装与配色基准**。外衣灰阶、内白中衣、腰带与剑鞘、青瓷酒葫芦、裤脚露色、短靴形制、肤色与发色，必须与参考图 **一致**，禁止重画成另一套衣服或另一肤色。
+  - **色阶 / 明度 / 色温**：外衣须与参考 **同冷灰色相**（偏冷石板灰，勿偏褐、勿偏紫灰、勿整体发蓝发青另一套色）；**整体明度与饱和度** 与参考一致，禁止单帧提浅；内白与外袍的 **对比** 不得弱于参考。
+  - **必须落实行走**：在保持脸与衣纹样的前提下，**须按文字明显改变双脚前后位置、承重脚与抬起脚**；若续帧脚底落点与参考几乎相同、仅幌手臂 → **错误**。允许躯干连带整体 **小幅水平平移**（约 3%～10% 画宽）以表现跨步。
+  - 仅允许改变：肩/肘/腕/胯/膝/踝、双脚支撑与步幅、袍摆与发带；**不得**改变镜头远近、头脸身份、发型款式、衣袍配色与剑葫芦款式。
+  - **透视与朝向**须与参考一致：保持 **侧向正交略俯视**（Field sprite），**禁止**把续帧改成 45° 等距地砖视角。
+  - 背景保持 **纯白 #FFFFFF**，与参考图一致。
+
+  【序列标注】
+  - 行走循环第 **{{frame_index}} / {{frame_total}}** 帧，朝向 **{{facing}}**。
+
+  【角色身份（文字备忘，不得覆盖参考图已锁定的外观）】
+  {identity_anchor}
+
+  【本帧仅改动作 — 脚一定要动】
+  {{leg_phase}}
+  {{frame_pose_hint}}
+  {{color_stability_hint}}
+
+  【禁忌】蜘蛛与蛛网；繁体中文；水印；新增配饰；**站桩行走**（脚不换前后、仅幌上身）。
+
+  【反向】{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  frame_index: "2..N"
+  frame_total: "N"
+  leg_phase: "本帧腿部与重心文字描述"
+  frame_pose_hint: "手臂、袍摆动态"
+  color_stability_hint: "可选；易变浅帧写一句强化，否则留空"
+  facing: "与 walk f01 同一句侧向说明"

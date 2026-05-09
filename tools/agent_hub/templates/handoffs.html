@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}交接记录 · 协作调度台{% endblock %}
+{% block content %}
+<section class="page-head">
+  <p class="eyebrow">交接生成器</p>
+  <h1>交接记录</h1>
+  <p>第一版只生成标准交接文本，由用户复制给 Cursor 中的智能体执行。</p>
+</section>
+
+<section class="card">
+  <h2>交接生成入口</h2>
+  <p>请在 <a href="/requirements">需求页</a> 点击“生成交接”，这里用于查看和复制已生成的交接记录。</p>
+</section>
+
+
+<section class="card">
+  <h2>最近交接</h2>
+  <table>
+    <thead><tr><th>ID</th><th>发起</th><th>接收</th><th>目标</th><th>状态</th></tr></thead>
+    <tbody>
+      {% for handoff in handoffs %}
+      <tr>
+        <td><a href="/handoffs/{{ handoff.id }}">#{{ handoff.id }}</a></td>
+        <td>{{ handoff.from_agent|agent_label }}</td>
+        <td>{{ handoff.to_agent|agent_label }}</td>
+        <td>{{ handoff.goal }}</td>
+        <td><span class="pill status-{{ handoff.status }}">{{ handoff.status|status_label }}</span></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5">暂无交接记录</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}任务看板 · 协作调度台{% endblock %}
+{% block content %}
+<section class="page-head">
+  <p class="eyebrow">任务布告</p>
+  <h1>任务看板</h1>
+  <p>把复杂工作拆成可交接、可验收、可写回经验的任务。</p>
+</section>
+
+<section class="card">
+  <h2>创建任务</h2>
+  <form class="form-grid" method="post" action="/tasks">
+    <label>标题<input name="title" required></label>
+    <label>负责角色
+      <select name="owner_agent">
+        {% for agent in agents %}
+        <option value="{{ agent.id }}">{{ agent.id|agent_label }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>状态
+      <select name="status">
+        <option value="planned">待规划</option>
+        <option value="in_progress">进行中</option>
+        <option value="qa">测试中</option>
+        <option value="review">审查中</option>
+        <option value="blocked">阻塞</option>
+        <option value="done">完成</option>
+      </select>
+    </label>
+    <label>优先级<input name="priority" type="number" value="2" min="1" max="5"></label>
+    <label class="wide">目标<textarea name="goal"></textarea></label>
+    <label class="wide">上下文文件<textarea name="context_files" placeholder="每行一个路径"></textarea></label>
+    <label class="wide">验收条件<textarea name="acceptance" placeholder="每行一个验收条件"></textarea></label>
+    <label class="wide">限制条件<textarea name="constraints" placeholder="每行一个限制"></textarea></label>
+    <label>里程碑<input name="milestone"></label>
+    <button type="submit">创建</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>任务列表</h2>
+  {% if error %}
+  <p class="feedback error">{{ error }}</p>
+  {% endif %}
+  {% if success %}
+  <p class="feedback success">{{ success }}</p>
+  {% endif %}
+  <table>
+    <thead><tr><th>ID</th><th>标题</th><th>负责角色</th><th>状态</th><th>工作证明</th><th>操作</th></tr></thead>
+    <tbody>
+      {% for task in tasks %}
+      <tr>
+        <td>{{ task.id }}</td>
+        <td>
+          <strong>{{ task.title }}</strong>
+          <p class="muted">{{ task.goal }}</p>
+        </td>
+        <td>{{ task.owner_agent|agent_label }}</td>
+        <td><span class="pill status-{{ task.status }}">{{ task.status|status_label }}</span></td>
+        <td>
+          {% if task.proof_summary and task.proof_links %}
+          <span class="pill pass">已齐全</span>
+          {% else %}
+          <span class="pill fail">未齐全</span>
+          {% endif %}
+          <form method="post" action="/tasks/{{ task.id }}/proof" class="proof-form">
+            <textarea name="proof_summary" placeholder="工作证明摘要：实现内容 + 验证结果">{{ task.proof_summary }}</textarea>
+            <textarea name="proof_links" placeholder="关联证据：提交/PR/报告/截图路径，每行一个">{{ task.proof_links }}</textarea>
+            <button type="submit">保存证明</button>
+          </form>
+        </td>
+        <td>
+          <form method="post" action="/tasks/{{ task.id }}/status" class="inline">
+            <select name="status">
+              {% for status in ["planned", "in_progress", "qa", "review", "blocked", "done"] %}
+              <option value="{{ status }}" {% if task.status == status %}selected{% endif %}>{{ status|status_label }}</option>
+              {% endfor %}
+            </select>
+            <button>更新</button>
+          </form>
+          <form method="post" action="/handoffs/from-task/{{ task.id }}" class="inline">
+            <input type="hidden" name="expected_output" value="改动摘要&#10;验证结果&#10;需要写回的经验">
+            <button>生成交接</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">暂无任务</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+{% endblock %}

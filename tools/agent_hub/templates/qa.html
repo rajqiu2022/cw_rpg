@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}QA 报告 · 协作调度台{% endblock %}
+{% block content %}
+<section class="page-head">
+  <p class="eyebrow">质量闸口</p>
+  <h1>QA 报告</h1>
+  <p>集中查看自动验收结果，优先发现 sprite 基线、帧数和高度漂移问题。</p>
+</section>
+<section class="card">
+  <table>
+    <thead><tr><th>状态</th><th>报告</th><th>源文件</th><th>检出</th><th>基线</th><th>高度</th></tr></thead>
+    <tbody>
+      {% for qa in qa_runs %}
+      <tr>
+        <td><span class="pill {{ qa.status|lower }}">{{ qa.status|status_label }}</span></td>
+        <td><a href="/repo/{{ qa.report_path }}">{{ qa.report_path }}</a></td>
+        <td>{{ qa.source_path }}</td>
+        <td>{{ qa.detected_cells }}/{{ qa.expected_cells }}</td>
+        <td>{{ qa.baseline_spread }}</td>
+        <td>{{ qa.height_spread }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">暂无 QA 报告</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

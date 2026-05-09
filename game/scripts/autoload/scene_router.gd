@@ -16,8 +16,10 @@ extends Node
 ##   "set_flag:<key>:<v>"   置 flag（v="true"/"false"/数字）
 ##   "accept_quest:<id>"    接受任务（→ QuestManager）
 ##   "complete_quest:<id>"  完成任务（→ QuestManager）
-##   "open_inventory"       打开背包（M5）
-##   "open_quest_log"       打开任务日志（M3）
+##   "open_inventory"       请求当前 Field 打开背包 UI（M5）
+##   "open_equipment"       请求当前 Field 打开装备 UI（M5）
+##   "open_quest_log"       请求当前 Field 打开任务面板（M3）
+##   "chapter_end:<chapter>"进入章节结算（M6）
 ##   "end" 或 ""            空操作
 
 const SCENE_MAIN_MENU := "res://scenes/main_menu.tscn"
@@ -25,6 +27,7 @@ const SCENE_BATTLE := "res://scenes/battle.tscn"
 const SCENE_VICTORY := "res://scenes/result_victory.tscn"
 const SCENE_DEFEAT := "res://scenes/result_defeat.tscn"
 const SCENE_FIELD := "res://scenes/field.tscn"
+const SCENE_FIELD_WALKABLE := "res://scenes/field_walkable.tscn"
 const SCENE_SHOP := "res://scenes/shop.tscn"
 const SCENE_CHAPTER_END := "res://scenes/chapter_end.tscn"
 
@@ -80,12 +83,51 @@ func go_field(scene_id: StringName) -> void:
 	get_tree().change_scene_to_file(SCENE_FIELD)
 
 
+func go_field_smart(scene_id: StringName, player_spawn: Variant = null) -> void:
+	var target_scene := get_field_scene_path(scene_id)
+	if target_scene == SCENE_FIELD_WALKABLE:
+		var spawn := _scene_default_spawn(scene_id)
+		if player_spawn is Vector2:
+			spawn = player_spawn
+		_field_payload = {"scene_id": scene_id, "player_spawn": spawn}
+	else:
+		_field_payload = {"scene_id": scene_id}
+	_current_field_id = scene_id
+	get_tree().change_scene_to_file(target_scene)
+
+
+func go_field_walkable(scene_id: StringName, player_spawn: Vector2 = Vector2(0.5, 0.8)) -> void:
+	if not ResourceLoader.exists(SCENE_FIELD_WALKABLE):
+		push_warning("[SceneRouter] walkable field scene not found, falling back to classic")
+		go_field(scene_id)
+		return
+	_field_payload = {"scene_id": scene_id, "player_spawn": player_spawn}
+	_current_field_id = scene_id
+	get_tree().change_scene_to_file(SCENE_FIELD_WALKABLE)
+
+
 func get_field_payload() -> Dictionary:
 	return _field_payload
 
 
 func get_current_field_id() -> StringName:
 	return _current_field_id
+
+
+func get_field_scene_path(scene_id: StringName) -> String:
+	var scene_def := _load_field_scene_def(scene_id)
+	if scene_def != null and scene_def.is_walkable and ResourceLoader.exists(SCENE_FIELD_WALKABLE):
+		return SCENE_FIELD_WALKABLE
+	return SCENE_FIELD
+
+
+func go_shop(shop_id: StringName) -> void:
+	_shop_payload = {"shop_id": shop_id}
+	get_tree().change_scene_to_file(SCENE_SHOP)
+
+
+func get_shop_payload() -> Dictionary:
+	return _shop_payload
 
 
 func go_chapter_end(chapter: int) -> void:
@@ -112,7 +154,9 @@ func resolve_action(action: String) -> void:
 		"battle":
 			start_battle(_arg(parts, 1))
 		"scene":
-			go_field(StringName(_arg(parts, 1)))
+			var scene_id := _arg(parts, 1)
+			if scene_id != "":
+				go_field_smart(StringName(scene_id))
 		"shop":
 			var sid := _arg(parts, 1)
 			if sid != "":
@@ -140,9 +184,15 @@ func resolve_action(action: String) -> void:
 			if qid != "":
 				QuestManager.complete(StringName(qid))
 		"open_inventory":
-			push_warning("[SceneRouter] inventory UI not implemented yet (M5)")
+			EventBus.ui_requested.emit(&"inventory")
+		"open_equipment":
+			EventBus.ui_requested.emit(&"equipment")
+		"open_skills":
+			EventBus.ui_requested.emit(&"skills")
 		"open_quest_log":
-			push_warning("[SceneRouter] quest log UI not implemented yet (M3)")
+			EventBus.ui_requested.emit(&"quest_log")
+		"chapter_end":
+			go_chapter_end(int(_arg(parts, 1, "1")))
 		_:
 			push_warning("[SceneRouter] unknown action: %s" % action)
 
@@ -171,3 +221,20 @@ func _action_dialog(dialog_id: String) -> void:
 	var script: Resource = load(path)
 	if script is DialogScript:
 		DialogPlayer.play(script)
+
+
+func _load_field_scene_def(scene_id: StringName) -> SceneScript:
+	var path := "%s%s.tres" % [FIELD_SCENE_DIR, String(scene_id)]
+	if not ResourceLoader.exists(path):
+		return null
+	var res: Resource = load(path)
+	if res is SceneScript:
+		return res
+	return null
+
+
+func _scene_default_spawn(scene_id: StringName) -> Vector2:
+	var scene_def := _load_field_scene_def(scene_id)
+	if scene_def != null:
+		return scene_def.player_spawn
+	return Vector2(0.5, 0.8)

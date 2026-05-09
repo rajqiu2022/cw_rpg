@@ -1,0 +1,181 @@
+# 《云影侠传》需求列表
+# 用于 Agent Hub `/requirements` 页面展示：大模块 -> 子模块 -> 需求。
+# Web 页面可新增本地需求；本文件是仓库内可追踪的初始需求源。
+
+modules:
+  - id: character-growth
+    title: 角色成长系统
+    description: 先定属性与装备公式，再影响背包、战斗和 UI。
+    submodules:
+      - id: attributes
+        title: 基础属性
+        requirements:
+          - id: req-character-attributes-v1
+            title: 定义七项核心属性
+            description: 定义筋骨、机敏、内劲、悟性、生命、内力、防御的含义、默认值、成长方式和显示规则。
+            status: planned
+            phase: 功能设计
+            priority: 1
+            owner_agent: battle
+            acceptance: |
+              - 文档说明七项属性的含义和互相关系
+              - 不再使用 ATK/DEF/SPD 作为玩家面板主显示
+              - 战斗和装备设计能引用这些属性
+            links: |
+              docs/design-character-attributes-v1.md
+              docs/ui-style-v1.md
+              docs/art-ui-asset-kit-v1.md
+
+      - id: equipment
+        title: 装备系统
+        requirements:
+          - id: req-equipment-panel-v1
+            title: 装备页功能与布局定稿
+            description: 按角色展示、装备槽、详情卡、属性汇总的结构设计装备页，并明确装备加成字段。
+            status: planned
+            phase: 功能设计
+            priority: 1
+            owner_agent: system
+            acceptance: |
+              - 装备槽与现有 6 槽兼容
+              - 装备加成支持筋骨、机敏、内劲、悟性、生命、内力、防御
+              - 装备页不出现英文属性名
+            links: |
+              images/装备界面UI.png
+              game/scripts/ui/equipment_panel.gd
+
+  - id: ui-art
+    title: 冷色武侠 UI 美术
+    description: 以已确认的寒山玄铁 UI atlas 为基准，生成可接入 Godot 的正式 UI 资产。
+    submodules:
+      - id: common-kit
+        title: 通用 UI 组件
+        requirements:
+          - id: req-ui-common-kit-v1
+            title: 通用 UI atlas 风格确认
+            description: 使用已生成的 ui_cold_wuxia_common_kit_v1 作为后续 UI 美术基准。
+            status: done
+            phase: 美术UI
+            priority: 1
+            owner_agent: art
+            acceptance: |
+              - 用户确认风格可用
+              - 后续 UI prompt 均引用该图
+              - 生成任务默认 skip，避免误跑
+            links: |
+              assets/raw/ui/cold_wuxia/v1/ui_cold_wuxia_common_kit_v1.png
+              prompts/templates/ui_cold_wuxia_kit.yaml
+      - id: attribute-icons
+        title: 属性图标
+        requirements:
+          - id: req-ui-attribute-icons-v1
+            title: 生成七项属性图标 atlas
+            description: 生成筋骨、机敏、内劲、悟性、生命、内力、防御的无字图标，并保持寒山玄铁风格一致。
+            status: planned
+            phase: 美术UI
+            priority: 1
+            owner_agent: art
+            acceptance: |
+              - 图标内无英文、无拉丁字母、无伪文字
+              - 七项属性意象清晰可区分
+              - 64×64 缩略图仍可读
+            links: |
+              prompts/templates/ui_cold_wuxia_icon_atlas.yaml
+              docs/art-ui-asset-kit-v1.md
+      - id: battle-hud
+        title: 战斗 HUD
+        requirements:
+          - id: req-ui-battle-hud-v1
+            title: 生成战斗 HUD atlas
+            description: 生成生命条、内力条、经验条、Buff/Debuff 外框、战斗命令按钮和战斗日志框。
+            status: planned
+            phase: 美术UI
+            priority: 2
+            owner_agent: art
+            acceptance: |
+              - 生命为暗血红，内力为寒蓝，经验为雾白/冷钢蓝
+              - 所有按钮与面板无字
+              - 风格贴近已确认 UI atlas
+            links: |
+              prompts/tasks.yaml
+              game/scripts/battle/battle_controller.gd
+
+  - id: battle-system
+    title: 战斗系统
+    description: 在属性系统明确后，推进战斗公式、状态异常和章末 Boss。
+    submodules:
+      - id: formula
+        title: 战斗公式
+        requirements:
+          - id: req-battle-formula-v1
+            title: 抽出战斗公式层
+            description: 将普攻、武学、防御减伤、先手/速度逻辑从控制器中抽出，接入七项核心属性。
+            status: planned
+            phase: 程序实现
+            priority: 2
+            owner_agent: battle
+            acceptance: |
+              - 有独立公式脚本或清晰函数边界
+              - 使用筋骨、机敏、内劲、防御影响战斗
+              - 现有战斗闭环不回退
+            links: |
+              game/scripts/battle/battle_controller.gd
+              docs/system-technical-design-v0.1.md
+      - id: status-effects
+        title: 状态异常
+        requirements:
+          - id: req-status-effects-v1
+            title: 最小 Buff/Debuff 系统
+            description: 先实现可显示、可持续回合、可影响数值的最小状态系统。
+            status: planned
+            phase: 功能设计
+            priority: 3
+            owner_agent: battle
+            acceptance: |
+              - 支持增益、减益、中性状态分类
+              - 战斗 UI 可显示状态图标
+              - 至少支持防御、毒、内力回复或等价样例
+
+  - id: inventory-system
+    title: 背包与道具
+    description: 背包功能已能用，下一步做正式分类、详情和道具接入。
+    submodules:
+      - id: inventory-ui
+        title: 背包 UI
+        requirements:
+          - id: req-inventory-ui-v1
+            title: 背包正式 UI 布局
+            description: 按全部、药品、装备、剧情分类展示物品，右侧显示详情，底部显示金钱和角色状态。
+            status: planned
+            phase: 功能设计
+            priority: 2
+            owner_agent: system
+            acceptance: |
+              - 分类过滤可用
+              - 详情卡显示物品说明和可用操作
+              - 不使用浏览器/系统原生弹窗
+            links: |
+              game/scripts/ui/inventory_panel.gd
+              docs/art-ui-asset-kit-v1.md
+
+  - id: scene-world
+    title: 场景与地图
+    description: 从 loading 图转向模块化场景，并继续完善可行走地图。
+    submodules:
+      - id: modular-scene
+        title: 模块化场景 Kit
+        requirements:
+          - id: req-scene-module-kit-v1
+            title: 第一批模块化场景资产
+            description: 生成道路、建筑、植物、装饰物等可复用模块，供 Godot 数据化摆放。
+            status: planned
+            phase: 美术UI
+            priority: 2
+            owner_agent: art
+            acceptance: |
+              - 不再生成整张 loading 式场景图
+              - 模块无字、无人物、可切分
+              - 可支持碰撞矩形和触发区配置
+            links: |
+              docs/art-modular-scene-kit-v1.md
+              prompts/templates/scene_module_atlas.yaml

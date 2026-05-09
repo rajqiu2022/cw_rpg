@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}协作调度台{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+  </head>
+  <body>
+    <div class="shell-glow" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <span class="brand-mark">令</span>
+        <span>
+          <strong>冷孤云 协作调度台</strong>
+          <small>RPG_GAME 本地协作驾驶舱</small>
+        </span>
+      </a>
+      <nav>
+        <a href="/story">故事</a>
+        <a href="/agents">角色</a>
+        <a href="/requirements">需求</a>
+        <a href="/handoffs">交接</a>
+
+        <a href="/artifacts">产出</a>
+        <a href="/qa">QA</a>
+        <a href="/costs">成本</a>
+      </nav>
+      <form method="post" action="/scan">
+        <button type="submit">重新扫描</button>
+      </form>
+    </header>
+    <main class="container">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

@@ -4,13 +4,15 @@ extends Node
 ##
 ## - 物品和装备共用 Item 基类，统一存放在 slots 数组。
 ## - stackable 物品按 item_id 合并；不可堆叠物品独占一格。
-## - 装备穿戴后 *仍占* 一格，由 equipped_weapon/equipped_armor 引用同一 Item。
+## - 装备穿戴后 *仍占* 一格，由 equipped 字典引用同一 Item。
+## - equipped_weapon/equipped_armor 仅保留给旧战斗代码兼容。
 ##   （这样卸下装备无需"还格子"，逻辑更简单。）
 ##
 ## 路径约定：所有 Item .tres 必须放在 res://data/items/<id>.tres 或 res://data/equipment/<id>.tres。
 ## load_item_by_id() 会按顺序查找。
 
 signal slots_changed
+signal equipped_changed(slot: int, item: Equipment)
 signal weapon_changed(item: Item)
 signal armor_changed(item: Item)
 
@@ -25,6 +27,7 @@ var slots: Array[Dictionary] = []
 
 var equipped_weapon: Equipment = null
 var equipped_armor: Equipment = null
+var equipped: Dictionary = {}
 
 ## item_id -> 已加载的 Item 缓存
 var _item_cache: Dictionary = {}
@@ -32,6 +35,13 @@ var _item_cache: Dictionary = {}
 
 func _ready() -> void:
 	pass
+
+
+func reset_for_new_game() -> void:
+	from_dict({})
+	add_item(&"healing_pill_minor", 2)
+	add_item(&"linxi_rice_wine", 1)
+	add_item(&"straw_sandals", 1)
 
 
 # --- 加载与查询 ---
@@ -120,55 +130,172 @@ func remove_item(item_id: StringName, count: int = 1) -> bool:
 	return true
 
 
+# --- 使用 ---
+
+func use_item(item_id: StringName, in_battle: bool = false) -> bool:
+	if not has_item(item_id, 1):
+		return false
+	var item := load_item_by_id(item_id)
+	if item == null or not item.can_use(in_battle):
+		return false
+	var player := GameState.player
+	if player == null:
+		return false
+
+	var new_hp: int = min(player.max_hp, player.hp + item.heal_hp)
+	var new_mp: int = min(player.max_mp, player.mp + item.heal_mp)
+	var changed := new_hp != player.hp or new_mp != player.mp
+	if not changed:
+		return false
+
+	player.hp = new_hp
+	player.mp = new_mp
+	_consume_item(item_id, 1)
+	EventBus.item_used.emit(item_id)
+	GameState.emit_signal("player_changed")
+	return true
+
+
+func _consume_item(item_id: StringName, count: int) -> bool:
+	if count <= 0: return false
+	if count_of(item_id) < count: return false
+
+	var remaining := count
+	for i in range(slots.size() - 1, -1, -1):
+		if remaining <= 0: break
+		var s: Dictionary = slots[i]
+		var it: Item = s.get("item")
+		if it != null and it.item_id == item_id:
+			var c: int = s.get("count", 0)
+			var take: int = min(c, remaining)
+			s["count"] = c - take
+			remaining -= take
+			if s["count"] <= 0:
+				slots.remove_at(i)
+	emit_signal("slots_changed")
+	return true
+
+
 # --- 装备 ---
 
 func equip(item_id: StringName) -> bool:
+	if not has_item(item_id, 1):
+		return false
 	var item := load_item_by_id(item_id)
 	if not (item is Equipment): return false
 	var eq: Equipment = item
-	match eq.slot:
-		Equipment.Slot.WEAPON:
-			equipped_weapon = eq
-			EventBus.equipment_changed.emit(eq.slot, item_id)
-			emit_signal("weapon_changed", eq)
-		Equipment.Slot.ARMOR:
-			equipped_armor = eq
-			EventBus.equipment_changed.emit(eq.slot, item_id)
-			emit_signal("armor_changed", eq)
+	equipped[eq.slot] = eq
+	_sync_legacy_equipped(eq.slot)
+	EventBus.equipment_changed.emit(eq.slot, item_id)
+	emit_signal("equipped_changed", eq.slot, eq)
 	return true
 
 
 func unequip(slot: int) -> void:
+	equipped.erase(slot)
+	_sync_legacy_equipped(slot)
+	EventBus.equipment_changed.emit(slot, &"")
+	emit_signal("equipped_changed", slot, null)
+
+
+func get_equipped(slot: int) -> Equipment:
+	return equipped.get(slot, null)
+
+
+func get_equipped_id(slot: int) -> StringName:
+	var eq := get_equipped(slot)
+	return eq.item_id if eq != null else &""
+
+
+func slot_key(slot: int) -> String:
 	match slot:
-		Equipment.Slot.WEAPON:
-			equipped_weapon = null
-			EventBus.equipment_changed.emit(slot, &"")
-			emit_signal("weapon_changed", null)
-		Equipment.Slot.ARMOR:
-			equipped_armor = null
-			EventBus.equipment_changed.emit(slot, &"")
-			emit_signal("armor_changed", null)
+		Equipment.Slot.WEAPON: return "weapon"
+		Equipment.Slot.HEAD: return "head"
+		Equipment.Slot.ARMOR: return "armor"
+		Equipment.Slot.HANDS: return "hands"
+		Equipment.Slot.SHOES: return "shoes"
+		Equipment.Slot.ACCESSORY: return "accessory"
+		_: return "unknown"
+
+
+func slot_display_name(slot: int) -> String:
+	match slot:
+		Equipment.Slot.WEAPON: return "武器"
+		Equipment.Slot.HEAD: return "头部"
+		Equipment.Slot.ARMOR: return "护甲"
+		Equipment.Slot.HANDS: return "手部"
+		Equipment.Slot.SHOES: return "鞋子"
+		Equipment.Slot.ACCESSORY: return "饰品"
+		_: return "未知"
+
+
+func all_slots() -> Array[int]:
+	return [
+		Equipment.Slot.WEAPON,
+		Equipment.Slot.HEAD,
+		Equipment.Slot.ARMOR,
+		Equipment.Slot.HANDS,
+		Equipment.Slot.SHOES,
+		Equipment.Slot.ACCESSORY,
+	]
+
+
+func _sync_legacy_equipped(slot: int) -> void:
+	if slot == Equipment.Slot.WEAPON:
+		equipped_weapon = equipped.get(slot, null)
+		emit_signal("weapon_changed", equipped_weapon)
+	elif slot == Equipment.Slot.ARMOR:
+		equipped_armor = equipped.get(slot, null)
+		emit_signal("armor_changed", equipped_armor)
+
+
+func _sum_equipped_bonus(method_name: StringName) -> int:
+	var total := 0
+	for eq in equipped.values():
+		var e := eq as Equipment
+		if e != null and e.has_method(method_name):
+			total += int(e.call(method_name))
+	return total
 
 
 func get_atk_bonus() -> int:
-	var b := 0
-	if equipped_weapon: b += equipped_weapon.atk_bonus
-	if equipped_armor:  b += equipped_armor.atk_bonus
-	return b
+	return _sum_equipped_bonus(&"get_attack_bonus")
 
 
 func get_def_bonus() -> int:
-	var b := 0
-	if equipped_weapon: b += equipped_weapon.def_bonus
-	if equipped_armor:  b += equipped_armor.def_bonus
-	return b
+	return _sum_equipped_bonus(&"get_defense_bonus")
 
 
 func get_speed_bonus() -> int:
-	var b := 0
-	if equipped_weapon: b += equipped_weapon.speed_bonus
-	if equipped_armor:  b += equipped_armor.speed_bonus
-	return b
+	return _sum_equipped_bonus(&"get_speed_bonus")
+
+
+func get_strength_bonus() -> int:
+	return _sum_equipped_bonus(&"get_strength_bonus")
+
+
+func get_agility_bonus() -> int:
+	return _sum_equipped_bonus(&"get_agility_bonus")
+
+
+func get_inner_power_bonus() -> int:
+	return _sum_equipped_bonus(&"get_inner_power_bonus")
+
+
+func get_insight_bonus() -> int:
+	return _sum_equipped_bonus(&"get_insight_bonus")
+
+
+func get_vitality_bonus() -> int:
+	return _sum_equipped_bonus(&"get_vitality_bonus")
+
+
+func get_inner_pool_bonus() -> int:
+	return _sum_equipped_bonus(&"get_inner_pool_bonus")
+
+
+func get_guard_bonus() -> int:
+	return _sum_equipped_bonus(&"get_guard_bonus")
 
 
 # --- 序列化（给 SaveManager 用）---
@@ -182,8 +309,14 @@ func to_dict() -> Dictionary:
 			"item_id": String(it.item_id),
 			"count": int(s.get("count", 0)),
 		})
+	var equipped_out := {}
+	for slot in all_slots():
+		var eq := get_equipped(slot)
+		if eq != null:
+			equipped_out[slot_key(slot)] = String(eq.item_id)
 	return {
 		"slots": out_slots,
+		"equipped": equipped_out,
 		"weapon_id": String(equipped_weapon.item_id) if equipped_weapon else "",
 		"armor_id":  String(equipped_armor.item_id)  if equipped_armor  else "",
 	}
@@ -191,17 +324,23 @@ func to_dict() -> Dictionary:
 
 func from_dict(d: Dictionary) -> void:
 	slots.clear()
+	equipped.clear()
 	equipped_weapon = null
 	equipped_armor = null
 	var raw_slots: Array = d.get("slots", [])
 	for entry in raw_slots:
-		var item_id := StringName(entry.get("item_id", ""))
+		var item_id: StringName = StringName(entry.get("item_id", ""))
 		var count: int = int(entry.get("count", 0))
 		if String(item_id) == "" or count <= 0: continue
 		add_item(item_id, count)
-	var w_id := StringName(d.get("weapon_id", ""))
-	if String(w_id) != "":
-		equip(w_id)
-	var a_id := StringName(d.get("armor_id", ""))
-	if String(a_id) != "":
-		equip(a_id)
+	var raw_equipped: Dictionary = d.get("equipped", {})
+	if raw_equipped.is_empty():
+		raw_equipped = {
+			"weapon": d.get("weapon_id", ""),
+			"armor": d.get("armor_id", ""),
+		}
+	for key in raw_equipped.keys():
+		var item_id: StringName = StringName(raw_equipped[key])
+		if String(item_id) != "":
+			equip(item_id)
+	emit_signal("slots_changed")

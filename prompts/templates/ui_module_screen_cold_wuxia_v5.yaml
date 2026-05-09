@@ -1,0 +1,48 @@
+id: ui_module_screen_cold_wuxia_v5
+description: 云影侠传 UI 模块完整界面设计图，继承 v5 主菜单冷色玄铁风格
+quality: high
+size: "1536x1024"
+
+identity_anchor: |
+  《云影侠传》正式 UI 模块界面，继承主菜单 v5 的冷色玄铁武侠风格，
+  深墨蓝、玄铁黑、冷钢蓝、霜蓝高光为主，
+  深竹绿、墨玉绿、暗酒红、旧血红作小面积点缀，
+  港漫厚涂质感，墨线清晰，云纹暗刻、竹影、山雨寒雾。
+
+reference_images:
+  - "assets/raw/ui/cold_wuxia/v1/ui_cold_wuxia_battle_hud_v1.png"
+  - "assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_main_menu_screen_gpt_v5.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  生成一张完整的游戏 UI 模块界面设计图，用于 RPG《云影侠传》的 {{module_name}}。
+  必须是可发布游戏界面，不是白底组件 atlas，不是 wireframe，不是临时拼图。
+
+  模块用途：
+  {{module_purpose}}
+
+  必须包含的区域和文字：
+  {{required_elements}}
+
+  视觉要求：
+  - 1536×1024 横版完整界面。
+  - 整体亮度比当前 v1 方向提高约 20%，保留冷色玄铁质感但避免过暗。
+  - 风格参考冷色玄铁 UI atlas 和主菜单 v5：玄铁边框、冷钢蓝描边、寒玉扣、云纹角花、竹影暗纹。
+  - 主色为深墨蓝、玄铁黑、冷钢蓝；小面积加入深竹绿、墨玉绿、暗酒红点缀。
+
+  - 界面层级清晰，按钮、信息框、列表、详情区都像正式游戏 UI。
+  - 中文尽量使用简体中文，要求清晰可读。
+  - 按钮和面板应有 hover/pressed 的视觉层次暗示，但不用做动画。
+
+  严格限制：
+  - 不要现代网页 UI，不要科幻霓虹，不要西幻魔法阵，不要暖金主色，不要喜庆大红。
+  - 不要白底组件图，不要把控件散放在白色背景上。
+  - 不要英文、不要拉丁字母、不要水印、不要签名、不要乱码。
+
+  反向：英文文字，Latin letters，繁体字，乱码，错字，水印，签名，现代网页，扁平化商务 UI，赛博霓虹，西幻，魔法阵，白底组件图，临时 wireframe，低保真 mockup，橙黄色主色，喜庆红色，鲜艳大红，亮绿色霓虹。
+
+variables:
+  module_name: "模块名称"
+  module_purpose: "模块用途"
+  required_elements: "界面必须包含的区域和文字"

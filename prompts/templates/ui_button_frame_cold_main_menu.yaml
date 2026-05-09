@@ -1,0 +1,37 @@
+id: ui_button_frame_cold_main_menu
+description: 主菜单按钮底框（无文字，normal / hover / pressed）
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  冷色武侠风主菜单按钮底框资产，仅输出按钮底框，不包含任何文字。
+
+reference_images:
+  - "assets/raw/scene_background/ui_main_menu_full_v5.png"
+
+prompt_template: |
+  {style_anchor}
+
+  基于参考图 `ui_main_menu_full_v5.png` 中右侧菜单按钮的造型，
+  生成一个武侠 RPG 主菜单按钮底框切图资产（无文字），状态为：{{state}}。
+
+  资产规则（必须严格执行）：
+  - 仅一个按钮底框，居中摆放。
+  - 画布 1024×1024，按钮主体占宽约 74%、占高约 22%。
+  - 形制必须贴近参考图右侧按钮：暗色玄铁雕花外框、圆形金属铆钉、翡翠/蓝宝石角饰、略弧形矩形牌匾。
+  - 必须没有任何文字、logo、图标、数字。
+  - 背景纯白（#FFFFFF），只保留按钮本体。
+
+  三态差异：
+  - normal：深绿青色牌匾内底，玄铁边框，金属高光稳定。
+  - hover：边框和宝石明显提亮，寒玉青/金色辉光增强，但不过曝。
+  - pressed：整体略下沉，内底更深，辉光减弱，表现按压反馈。
+
+  一致性要求：
+  - 三态必须是同一按钮同一视角同一尺寸，仅材质光效变化。
+  - 不允许透视变化，不允许形变拉伸。
+
+  反向：{negative}
+
+variables:
+  state: "normal | hover | pressed"

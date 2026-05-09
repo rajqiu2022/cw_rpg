@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}成本记录 · 协作调度台{% endblock %}
+{% block content %}
+<section class="page-head">
+  <p class="eyebrow">成本台账</p>
+  <h1>成本记录</h1>
+  <p>区分真实付费生成与试运行记录，便于控制美术 API 消耗。</p>
+</section>
+<section class="card">
+  <table>
+    <thead><tr><th>任务</th><th>模型</th><th>成本</th><th>试运行</th><th>尺寸</th><th>元数据</th></tr></thead>
+    <tbody>
+      {% for cost in costs %}
+      <tr>
+        <td>{{ cost.task_id }}</td>
+        <td>{{ cost.model or "-" }}</td>
+        <td>{{ "%.4f"|format(cost.cost or 0) }} {{ cost.currency }}</td>
+        <td>{{ cost.dry_run|yes_no }}</td>
+        <td>{{ cost.size }} {{ cost.quality }}</td>
+        <td><a href="/repo/{{ cost.meta_path }}">{{ cost.meta_path }}</a></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="6">暂无成本记录</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

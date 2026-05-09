@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}{{ agent.name }} · 协作调度台{% endblock %}
+{% block content %}
+<section class="hero compact">
+  <div>
+    <h1>{{ agent.name }}</h1>
+    <p class="eyebrow">角色记忆</p>
+    <p class="muted">角色 ID：{{ agent.id }} · <a href="/repo/{{ agent.memory_path }}">{{ agent.memory_path }}</a></p>
+    <p>{{ agent.scope }}</p>
+  </div>
+</section>
+
+<section class="grid">
+  <article class="card">
+    <h2>记忆摘要</h2>
+    <p>{{ agent.owner_summary or "暂无摘要" }}</p>
+  </article>
+  <article class="card">
+    <h2>最近任务</h2>
+    <ul class="list">
+      {% for task in tasks %}
+      <li><span class="pill status-{{ task.status }}">{{ task.status|status_label }}</span> {{ task.title }}</li>
+      {% else %}
+      <li>暂无任务</li>
+      {% endfor %}
+    </ul>
+  </article>
+</section>
+
+<section class="card markdown-preview">
+  <div class="section-heading">
+    <h2>角色记忆预览</h2>
+    <a class="button-link muted-button" href="/repo/{{ agent.memory_path }}?raw=1">查看源码</a>
+  </div>
+  {% if memory_html %}
+  {{ memory_html|safe }}
+  {% else %}
+  <p class="muted">暂无可预览的文档记忆。</p>
+  {% endif %}
+</section>
+
+<section class="card">
+  <h2>重要文档</h2>
+  <table>
+    <thead><tr><th>类型</th><th>路径</th><th>时间</th></tr></thead>
+    <tbody>
+      {% for artifact in doc_artifacts %}
+      <tr>
+        <td>{{ artifact.kind|kind_label }}</td>
+        <td><a href="/repo/{{ artifact.path }}">{{ artifact.path }}</a></td>
+        <td>{{ artifact.mtime }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="3">暂无文档产出</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="card">
+  <h2>重要文档预览</h2>
+  {% for doc in doc_previews %}
+  <details class="doc-preview" {% if loop.first %}open{% endif %}>
+    <summary>
+      <span>{{ doc.path }}</span>
+      <a class="button-link muted-button" href="/repo/{{ doc.path }}?raw=1">查看源码</a>
+    </summary>
+    <div class="markdown-preview embedded-preview">
+      {{ doc.html|safe }}
+    </div>
+  </details>
+  {% else %}
+  <p class="muted">暂无可预览的重要文档。</p>
+  {% endfor %}
+</section>
+
+<section class="card">
+  <h2>最近产出</h2>
+  <table>
+    <thead><tr><th>类型</th><th>路径</th><th>时间</th></tr></thead>
+    <tbody>
+      {% for artifact in artifacts %}
+      <tr>
+        <td>{{ artifact.kind|kind_label }}</td>
+        <td><a href="/repo/{{ artifact.path }}">{{ artifact.path }}</a></td>
+        <td>{{ artifact.mtime }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="3">暂无产出</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

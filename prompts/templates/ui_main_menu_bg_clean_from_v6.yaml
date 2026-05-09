@@ -1,0 +1,33 @@
+id: ui_main_menu_bg_clean_from_v6
+description: 基于已认可主菜单 v6 生成无按钮背景图（保留同构构图）
+quality: high
+size: "1536x1024"
+require_reference_images: true
+
+reference_images:
+  - "assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_main_menu_screen_gpt_v6.png"
+
+identity_anchor: |
+  《云影侠传》主菜单 v6 的同构无按钮背景图。
+  必须严格保持参考图的构图、角色、背景、标题、光影、色彩和整体风格。
+
+prompt_template: |
+  {{identity_anchor}}
+
+  请基于参考图生成“仅背景可用”的主菜单底图：
+  - 删除三枚主菜单按钮及其按钮文字（新游戏、读取存档、离开）。
+  - 删除按钮发光/描边等与按钮相关的一切视觉元素。
+  - 按钮所在区域应被自然补全为可放置独立按钮的背景（地面/雾气/环境纹理连续且自然）。
+  - 绝对不要改动标题“{{game_title}}”、角色、场景透视与整体色调。
+  - 绝对不要新增任何文字、图标或按钮。
+  - 输出仍是完整主菜单场景图，不是组件拆分图。
+
+  质量要求：
+  - 保持冷色玄铁武侠质感，与 v6 一致。
+  - 亮度与清晰度不低于参考图。
+  - 去除按钮后的中部区域必须干净，便于后续程序叠加按钮三态。
+
+  反向：重新构图、角色位置变化、标题变化、出现按钮、出现按钮文字、额外 UI、乱码、过暗、网页风、科幻霓虹。
+
+variables:
+  game_title: "云影侠传"

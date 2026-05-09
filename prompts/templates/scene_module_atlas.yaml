@@ -1,0 +1,35 @@
+id: scene_module_atlas
+description: 模块化 2D RPG 场景资产 atlas（透明背景，可复用拼场景）
+quality: high
+size: "1536x1024"
+
+identity_anchor: |
+  港漫厚涂武侠 2D RPG 场景模块，正交略俯视视角，适合 Godot Sprite2D 拼装。
+
+reference_images: []
+
+prompt_template: |
+  {style_anchor}
+
+  生成一张“模块化游戏场景资产 atlas”，主题：{{kit_theme}}。
+  这些资产会被切分成独立 PNG，在 Godot 中作为 Sprite2D 摆放。
+  这不是完整背景图，不是宣传插画，不是 loading 图。
+
+  模块清单：
+  {{module_list}}
+
+  规格：
+  - 1536×1024 横版画布
+  - 12 到 20 个独立模块，整齐分布，模块之间留足空白方便切分
+  - 每个模块完整、无遮挡、不互相重叠
+  - 透明背景优先；如果无法透明，则纯白背景且边缘干净
+  - 不要人物、NPC、中文字、编号、水印
+  - 同一光源方向：右上方暖光
+  - 色彩明亮鲜艳，墨线清晰，港漫厚涂质感
+  - 建筑、植物、道路、装饰要能重复利用，可通过缩放、换色、镜像组合成多个场景
+
+  反向：完整场景背景、电影概念图、loading screen、单张大插画、人物、文字标签、UI 按钮、模糊边缘、低清像素风、3D 渲染感、白底粘连、阴暗泥灰色、蜘蛛/蛛网意象。{negative}
+
+variables:
+  kit_theme: "如：林西村民居建筑 / 竹尾村道路植物 / 城西废宅破败装饰"
+  module_list: "列出要生成的模块"
