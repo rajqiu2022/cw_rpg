@@ -248,7 +248,7 @@ game/art/
 
 1. **引擎**：Godot 4 + GDScript（不切换）
 2. **美术风格**：以 Lovart 那 6 张为 Style Bible
-3. **量产 AI**：用 OpenAI 兼容中转（DMXAPI 主，API易备），**不**买 ChatGPT Plus / Pro（订阅与 API 不通用）
+3. **量产 AI**：批量出图以 `scripts/gen_assets.py` 为准，可配置 **ALAPI**（`v3.alapi.cn`，`token` 头，见 `docs/alapi-image-api.md`）或 **DMXAPI** / OpenAI 直连 / API易等 OpenAI 兼容站；**不**买 ChatGPT Plus / Pro 当 API 用（订阅与 API 不通用）
 4. **Lovart**：只用网页版手工出关键图，**不**信任何 lovart.pro / lovart.info 自称的 API（仿冒站）
 5. **预算**：当前阶段单次 ¥20-50 实验，量产期总盘 ¥300-500 控顶
 

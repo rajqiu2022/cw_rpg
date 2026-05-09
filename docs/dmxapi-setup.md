@@ -1,6 +1,8 @@
 # DMXAPI 中转接入指南
 
-> 中国大陆开发者首选方案。国内直连、支付宝充值、一个 key 通 GPT/Flux/即梦/Imagen 全套，无需 VPN，无封号风险。
+> 若项目当前批量出图改用 **ALAPI**（非 OpenAI SDK、使用 `token` 头），请先读 **`docs/alapi-image-api.md`**，不要按本文配置 Bearer。
+
+> 中国大陆开发者可选用 DMXAPI：国内直连、支付宝充值、一个 key 通 GPT/Flux/即梦/Imagen 全套，无需 VPN，无封号风险。
 
 ---
 

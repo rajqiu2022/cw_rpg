@@ -1,8 +1,11 @@
 """
 gen_assets.py — GPT Image 2 批量异步生成器
 
-读取 prompts/tasks.yaml，对每个任务加载模板、渲染变量、调 OpenAI gpt-image-2，
+读取 prompts/tasks.yaml，对每个任务加载模板、渲染变量、调图像模型，
 落盘原图 + 元数据。内置预算硬上限、并发限流、失败重试。
+
+后端：OpenAI 兼容（DMXAPI 等）走 AsyncOpenAI；若 OPENAI_BASE_URL 含 alapi.cn
+则走 ALAPI 直连（HTTP 头 token，见 docs/alapi-image-api.md）。
 
 用法：
     python scripts/gen_assets.py                 # 跑全部任务

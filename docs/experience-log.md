@@ -3098,6 +3098,34 @@ Godot --headless --path game --script res://tests/test_scene_router_field_smart.
 - **Skill 不能过度绑定一次案例**：可以保留主菜单作为例子，但脚本名、按钮名、mask 检查必须提示按目标 UI 替换。
 - **写 Skill 也要验证**：用一个非主菜单场景复测，能及时发现模板硬编码问题。
 
+### 19.56 图像批量接口需单独成文：ALAPI 非 DMXAPI（2026-05-09）
+
+现象：
+
+- 协作者仍默认「量产图 = DMXAPI + OpenAI SDK」，不知道当前 `gen_assets.py` 已支持 **ALAPI**（`v3.alapi.cn`），且认证为 **`token` 头** 而非 `Authorization: Bearer`。
+- `AGENTS.md`、美术流水线文档多处仍写「DMXAPI 主」，与仓库实际可选后端不一致。
+- §19.49 已记录 ALAPI 踩坑，但缺少一页「端点 + 环境变量 + 与 DMX 差异」的速查。
+
+原因：
+
+- 接口分散在 `gen_assets.py` 实现与 `.env.example` 注释中，没有独立规范文档。
+- DMXAPI 与 ALAPI 的 URL、鉴权、SDK 用法不同，仅靠「改 base_url」容易配错。
+
+修复：
+
+- 新增 `docs/alapi-image-api.md`：端点、`.env` 示例、`token` 头、与 DMXAPI 对照、相关脚本入口。
+- 更新 `AGENTS.md` 关键决策第 3 条：明确多后端含 ALAPI，并指向上述文档。
+- 更新 `docs/art-pipeline.md`、`docs/dmxapi-setup.md` 文首交叉引用；修正 `.env.example` 选项 D 的 `OPENAI_BASE_URL` 写法说明（根路径与完整 path 均可）。
+
+验证：
+
+- 文档内链接路径与 `scripts/gen_assets.py` 中 `_alapi_generations_url` 行为一致。
+
+经验：
+
+- **一种后端一页规范**：OpenAI 兼容站与 ALAPI 这种「半兼容」要分开写，避免把 DMX 经验套到 ALAPI。
+- **决策文档要与 .env 同步**：新人先看 `AGENTS.md` + `alapi-image-api.md` 再配环境。
+
 
 
 

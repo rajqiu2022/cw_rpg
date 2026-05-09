@@ -16,7 +16,9 @@
 | 工业批量（30+ 张） | **OpenAI 官方 gpt-image-2 直连**（等 ≈2026-05 GA） | M7+ 阶段 |
 | 极致一致性 | **本地 LoRA**（用现有 v2 图训练） | 后期主角专属 sprite |
 
-**本文档下面的"批量生成（gen_assets.py）"流程**只在 L2/L3 阶段才用，且**跑批前必须先**：
+**批量生成（`gen_assets.py`）** 支持多后端；若 `.env` 里 `OPENAI_BASE_URL` 指向 **ALAPI**（含 `alapi.cn`），则走 `token` 头直连 `images/generations`，规范见 **`docs/alapi-image-api.md`**（当前与 DMXAPI 不是同一套认证）。
+
+若仍使用 **DMXAPI**，跑批前可先：
 
 ```powershell
 python scripts/ping_dmx.py   # 探活，0 = 渠道存活；非 0 = 等几分钟或换通道
