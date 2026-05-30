@@ -1,73 +1,203 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://chlf0yl3haj7l"]
 
-[ext_resource type="Script" path="res://scripts/ui/inventory_panel.gd" id="1_inventory"]
+[ext_resource type="Script" uid="uid://iq5fitxtyg0v" path="res://scripts/ui/inventory_panel.gd" id="1_inv"]
+[ext_resource type="Texture2D" uid="uid://cryavusw425b0" path="res://art/ui/inventory/panel_bg.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://sjrlnqaxwjcy" path="res://art/ui/inventory/tabs/tab_all_normal.png" id="tab_all_n"]
+[ext_resource type="Texture2D" uid="uid://j8248wfvy0f3" path="res://art/ui/inventory/tabs/tab_all_selected.png" id="tab_all_s"]
+[ext_resource type="Texture2D" uid="uid://1lur0bskpk1u" path="res://art/ui/inventory/tabs/tab_consumable_normal.png" id="tab_con_n"]
+[ext_resource type="Texture2D" uid="uid://cotsho66nojio" path="res://art/ui/inventory/tabs/tab_consumable_selected.png" id="tab_con_s"]
+[ext_resource type="Texture2D" uid="uid://cbwislm4edb1" path="res://art/ui/inventory/tabs/tab_equipment_normal.png" id="tab_eq_n"]
+[ext_resource type="Texture2D" uid="uid://cvbf8rqwf7aol" path="res://art/ui/inventory/tabs/tab_equipment_selected.png" id="tab_eq_s"]
+[ext_resource type="Texture2D" uid="uid://ctgpwujqfoaid" path="res://art/ui/inventory/tabs/tab_key_normal.png" id="tab_key_n"]
+[ext_resource type="Texture2D" uid="uid://cggdlvjohx5sd" path="res://art/ui/inventory/tabs/tab_key_selected.png" id="tab_key_s"]
+[ext_resource type="Texture2D" uid="uid://renjogg6jv7q" path="res://art/ui/inventory/tabs/tab_material_normal.png" id="tab_mat_n"]
+[ext_resource type="Texture2D" uid="uid://cw82s4wm7a3ss" path="res://art/ui/inventory/tabs/tab_material_selected.png" id="tab_mat_s"]
 
-[node name="InventoryPanel" type="Control"]
-visible = false
+[node name="InventoryPanel" type="Control" unique_id=1069831149]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_inventory")
+script = ExtResource("1_inv")
 
-[node name="Dim" type="ColorRect" parent="."]
+[node name="Dim" type="ColorRect" parent="." unique_id=1100703914]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.42)
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="MainPanel" type="Control" parent="." unique_id=1022032267]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -520.0
-offset_top = -330.0
-offset_right = 520.0
-offset_bottom = 330.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Body" type="VBoxContainer" parent="Panel"]
-layout_mode = 2
-theme_override_constants/separation = 14
+[node name="PanelBg" type="TextureRect" parent="MainPanel" unique_id=1150262907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Header" type="HBoxContainer" parent="Panel/Body"]
-layout_mode = 2
-theme_override_constants/separation = 16
+[node name="Hotspots" type="Control" parent="MainPanel" unique_id=1550146510]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
-[node name="Title" type="Label" parent="Panel/Body/Header"]
+[node name="CloseBtn" type="TextureButton" parent="MainPanel/Hotspots" unique_id=148098325]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1089.0
+offset_top = 662.0
+offset_right = 1243.0
+offset_bottom = 703.0
+stretch_mode = 0
+
+[node name="TabPanel" type="VBoxContainer" parent="MainPanel/Hotspots" unique_id=1608035344]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 110.0
+offset_right = 223.0
+offset_bottom = 400.0
+theme_override_constants/separation = 5
+
+[node name="TabAll" type="TextureButton" parent="MainPanel/Hotspots/TabPanel" unique_id=63440636]
 layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("tab_all_n")
+texture_pressed = ExtResource("tab_all_s")
+texture_hover = ExtResource("tab_all_s")
+stretch_mode = 0
+
+[node name="TabConsumable" type="TextureButton" parent="MainPanel/Hotspots/TabPanel" unique_id=1354158934]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("tab_con_n")
+texture_pressed = ExtResource("tab_con_s")
+texture_hover = ExtResource("tab_con_s")
+stretch_mode = 0
+
+[node name="TabEquipment" type="TextureButton" parent="MainPanel/Hotspots/TabPanel" unique_id=872082106]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("tab_eq_n")
+texture_pressed = ExtResource("tab_eq_s")
+texture_hover = ExtResource("tab_eq_s")
+stretch_mode = 0
+
+[node name="TabKey" type="TextureButton" parent="MainPanel/Hotspots/TabPanel" unique_id=1918473530]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("tab_key_n")
+texture_pressed = ExtResource("tab_key_s")
+texture_hover = ExtResource("tab_key_s")
+stretch_mode = 0
+
+[node name="TabMaterial" type="TextureButton" parent="MainPanel/Hotspots/TabPanel" unique_id=1583623181]
+layout_mode = 2
+size_flags_horizontal = 0
+texture_normal = ExtResource("tab_mat_n")
+texture_pressed = ExtResource("tab_mat_s")
+texture_hover = ExtResource("tab_mat_s")
+stretch_mode = 0
+
+[node name="SlotGrid" type="GridContainer" parent="MainPanel/Hotspots" unique_id=1904853223]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 258.0
+offset_top = 111.0
+offset_right = 801.0
+offset_bottom = 639.0
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 6
+
+[node name="DetailArea" type="Control" parent="MainPanel/Hotspots" unique_id=449935066]
+anchors_preset = 0
+offset_left = 833.0
+offset_top = 102.0
+offset_right = 1199.0
+offset_bottom = 623.0
+
+[node name="DetailIcon" type="TextureRect" parent="MainPanel/Hotspots/DetailArea" unique_id=1930780664]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 5.0
+offset_right = 393.0
+offset_bottom = 218.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DetailLabel" type="RichTextLabel" parent="MainPanel/Hotspots/DetailArea" unique_id=367202250]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 22.0
+offset_top = 286.0
+offset_right = 28.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
-text = "背包"
-theme_override_colors/font_color = Color(0.95, 0.85, 0.55, 1)
-theme_override_font_sizes/font_size = 28
-
-[node name="CloseBtn" type="Button" parent="Panel/Body/Header"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 42)
-layout_mode = 2
-text = "关闭 (Esc)"
-theme_override_font_sizes/font_size = 16
-
-[node name="StatsLabel" type="Label" parent="Panel/Body"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "冷孤云  HP 0/0  MP 0/0  金 0"
-theme_override_font_sizes/font_size = 18
-
-[node name="Scroll" type="ScrollContainer" parent="Panel/Body"]
-layout_mode = 2
 size_flags_vertical = 3
-horizontal_scroll_mode = 0
+bbcode_enabled = true
 
-[node name="SlotList" type="VBoxContainer" parent="Panel/Body/Scroll"]
+[node name="BtnUse" type="TextureButton" parent="MainPanel/Hotspots" unique_id=124351800]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 8
+layout_mode = 0
+offset_left = 537.0
+offset_top = 665.0
+offset_right = 702.0
+offset_bottom = 702.0
+
+[node name="BtnEquip" type="TextureButton" parent="MainPanel/Hotspots" unique_id=1510205617]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 722.0
+offset_top = 664.0
+offset_right = 881.0
+offset_bottom = 705.0
+
+[node name="BtnDrop" type="TextureButton" parent="MainPanel/Hotspots" unique_id=618779586]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 901.0
+offset_top = 665.0
+offset_right = 1064.0
+offset_bottom = 705.0
+
+[node name="CapacityLabel" type="Label" parent="MainPanel/Hotspots" unique_id=1294892220]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 668.0
+offset_right = 469.0
+offset_bottom = 702.0
+theme_override_font_sizes/font_size = 20
+text = "容量 25/80"
+horizontal_alignment = 1
+
+[node name="ContextMenu" type="PopupMenu" parent="." unique_id=129690322]

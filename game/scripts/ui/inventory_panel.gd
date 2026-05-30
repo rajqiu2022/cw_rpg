@@ -1,160 +1,98 @@
 extends Control
-
+## 背包面板
 signal closed
 
-const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
-const ATTR_ICON_ATLAS_PATH := "res://art/ui/cold_wuxia/v1/ui_cold_wuxia_attribute_icons_v1.png"
-const ATTR_ICON_REGIONS := {
-	"筋骨": Rect2(37, 55, 203, 204),
-	"机敏": Rect2(290, 55, 201, 204),
-	"内劲": Rect2(544, 55, 200, 204),
-	"悟性": Rect2(794, 55, 195, 203),
-	"生命": Rect2(1033, 55, 197, 204),
-	"内力": Rect2(1281, 55, 196, 204),
-	"防御": Rect2(38, 293, 202, 207),
+# -- 格子贴图 --
+const CELL_DEFAULT := preload("res://art/ui/inventory/cells/cell_default.png")
+const CELL_SELECTED := preload("res://art/ui/inventory/cells/cell_selected.png")
+const CELL_EMPTY := preload("res://art/ui/inventory/cells/cell_empty.png")
+
+# -- 回退图标 --
+const ICON_WEAPON := preload("res://art/ui/inventory/icons/icon_sword.png")
+const ICON_ARMOR := preload("res://art/ui/inventory/icons/icon_armor.png")
+const ICON_POTION := preload("res://art/ui/inventory/icons/icon_potion.png")
+const ICON_ORE := preload("res://art/ui/inventory/icons/icon_ore.png")
+const ICON_SCROLL := preload("res://art/ui/inventory/icons/icon_scroll.png")
+const ICON_KEY := preload("res://art/ui/inventory/icons/icon_key.png")
+const ICON_RING := preload("res://art/ui/inventory/icons/icon_ring.png")
+const ICON_SHOES := preload("res://art/ui/inventory/icons/icon_shoes.png")
+
+# -- 场景节点 --
+@onready var _close_btn: TextureButton = %CloseBtn
+@onready var _slot_grid: GridContainer = %SlotGrid
+@onready var _detail_label: RichTextLabel = $MainPanel/Hotspots/DetailArea/DetailLabel
+@onready var _detail_icon: TextureRect = $MainPanel/Hotspots/DetailArea/DetailIcon
+@onready var _tab_all: TextureButton = $MainPanel/Hotspots/TabPanel/TabAll
+@onready var _tab_consumable: TextureButton = $MainPanel/Hotspots/TabPanel/TabConsumable
+@onready var _tab_equipment: TextureButton = $MainPanel/Hotspots/TabPanel/TabEquipment
+@onready var _tab_key: TextureButton = $MainPanel/Hotspots/TabPanel/TabKey
+@onready var _tab_material: TextureButton = $MainPanel/Hotspots/TabPanel/TabMaterial
+@onready var _btn_use: TextureButton = %BtnUse
+@onready var _btn_equip: TextureButton = %BtnEquip
+@onready var _btn_drop: TextureButton = %BtnDrop
+
+const TAB_TEX := {
+	"all": {"n": preload("res://art/ui/inventory/tabs/tab_all_normal.png"), "s": preload("res://art/ui/inventory/tabs/tab_all_selected.png"), "p": preload("res://art/ui/inventory/tabs/tab_all_pressed.png")},
+	"consumable": {"n": preload("res://art/ui/inventory/tabs/tab_consumable_normal.png"), "s": preload("res://art/ui/inventory/tabs/tab_consumable_selected.png"), "p": preload("res://art/ui/inventory/tabs/tab_consumable_pressed.png")},
+	"equipment": {"n": preload("res://art/ui/inventory/tabs/tab_equipment_normal.png"), "s": preload("res://art/ui/inventory/tabs/tab_equipment_selected.png"), "p": preload("res://art/ui/inventory/tabs/tab_equipment_pressed.png")},
+	"key": {"n": preload("res://art/ui/inventory/tabs/tab_key_normal.png"), "s": preload("res://art/ui/inventory/tabs/tab_key_selected.png"), "p": preload("res://art/ui/inventory/tabs/tab_key_pressed.png")},
+	"material": {"n": preload("res://art/ui/inventory/tabs/tab_material_normal.png"), "s": preload("res://art/ui/inventory/tabs/tab_material_selected.png"), "p": preload("res://art/ui/inventory/tabs/tab_material_pressed.png")},
 }
 
-@onready var stats_label: Label = %StatsLabel
-@onready var slot_list: VBoxContainer = %SlotList
-@onready var close_btn: Button = %CloseBtn
+# -- 品质颜色 --
+const QUALITY_COLORS := {
+	Item.Quality.COMMON: "#c0c8d0", Item.Quality.UNCOMMON: "#1eff00",
+	Item.Quality.RARE: "#0070dd", Item.Quality.EPIC: "#a335ee", Item.Quality.LEGENDARY: "#ff8000",
+}
+const QUALITY_NAMES := {
+	Item.Quality.COMMON: "普通", Item.Quality.UNCOMMON: "精良",
+	Item.Quality.RARE: "稀有", Item.Quality.EPIC: "史诗", Item.Quality.LEGENDARY: "传说",
+}
+const STAT_COLORS := {
+	"筋骨": "#ff8a80", "机敏": "#b9f6ca", "内劲": "#82b1ff", "悟性": "#b388ff",
+	"生命": "#ff5252", "内力": "#448aff", "防御": "#b0bec5",
+}
 
-var _attr_icon_atlas: Texture2D = null
-var _category_bar: VBoxContainer = null
-var _detail_label: RichTextLabel = null
-var _content_root: HBoxContainer = null
 var _current_filter: String = "all"
 var _selected_item: Item = null
 var _selected_count: int = 0
+var _context_menu: PopupMenu = null
+var _context_slot_index: int = -1
+var _highlighted_cell: TextureRect = null
 
 
 func _ready() -> void:
-	if ResourceLoader.exists(ATTR_ICON_ATLAS_PATH):
-		_attr_icon_atlas = load(ATTR_ICON_ATLAS_PATH)
-	_build_formal_layout()
-	_apply_visual_style()
-	close_btn.pressed.connect(close)
+	visible = false
+	_setup_button_textures()
+	_close_btn.pressed.connect(close)
+	_setup_tabs()
+	_create_context_menu()
+	_btn_use.pressed.connect(func(): _on_use_selected())
+	_btn_equip.pressed.connect(func(): _on_equip_selected())
+	_btn_drop.pressed.connect(func(): _on_drop_selected())
 	Inventory.slots_changed.connect(_refresh)
 	GameState.player_changed.connect(_refresh)
 	_refresh()
 
 
-func _build_formal_layout() -> void:
-	var body: VBoxContainer = get_node_or_null("Panel/Body") as VBoxContainer
-	if body == null or body.get_node_or_null("InventoryShowcase") != null:
-		return
-
-	var old_scroll: Control = get_node_or_null("Panel/Body/Scroll") as Control
-	if old_scroll != null:
-		old_scroll.visible = false
-	if stats_label != null:
-		stats_label.visible = false
-
-	_content_root = HBoxContainer.new()
-	_content_root.name = "InventoryShowcase"
-	_content_root.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	_content_root.add_theme_constant_override("separation", 16)
-	body.add_child(_content_root)
-
-	var side_panel := PanelContainer.new()
-	side_panel.custom_minimum_size = Vector2(230, 0)
-	side_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.020, 0.034, 0.046, 0.92), UI_THEME.BLUE_STEEL, 14, 2))
-	_content_root.add_child(side_panel)
-
-	var side_box := VBoxContainer.new()
-	side_box.add_theme_constant_override("separation", 12)
-	side_panel.add_child(side_box)
-
-	var stat_title := Label.new()
-	stat_title.text = "冷孤云"
-	UI_THEME.style_label(stat_title, 22, UI_THEME.GOLD_LIGHT)
-	side_box.add_child(stat_title)
-
-	stats_label.visible = true
-	stats_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	side_box.add_child(stats_label)
-
-	var filter_title := Label.new()
-	filter_title.text = "物品分类"
-	UI_THEME.style_label(filter_title, 18, UI_THEME.JADE, false)
-	side_box.add_child(filter_title)
-
-	_category_bar = VBoxContainer.new()
-	_category_bar.add_theme_constant_override("separation", 8)
-	side_box.add_child(_category_bar)
-	_add_filter_button("全部", "all")
-	_add_filter_button("消耗", "consumable")
-	_add_filter_button("装备", "equipment")
-	_add_filter_button("剧情", "key")
-	_add_filter_button("材料", "material")
-
-	var list_panel := PanelContainer.new()
-	list_panel.custom_minimum_size = Vector2(520, 0)
-	list_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	list_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.018, 0.030, 0.040, 0.82), Color(0.16, 0.30, 0.38, 0.88), 14, 1))
-	_content_root.add_child(list_panel)
-
-	var scroll := ScrollContainer.new()
-	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
-	scroll.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	list_panel.add_child(scroll)
-
-	slot_list = VBoxContainer.new()
-	slot_list.add_theme_constant_override("separation", 10)
-	slot_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	scroll.add_child(slot_list)
-
-	var detail_panel := PanelContainer.new()
-	detail_panel.custom_minimum_size = Vector2(330, 0)
-	detail_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.022, 0.038, 0.050, 0.92), Color(0.20, 0.52, 0.48, 0.94), 14, 2))
-	_content_root.add_child(detail_panel)
-
-	_detail_label = RichTextLabel.new()
-	_detail_label.bbcode_enabled = true
-	_detail_label.fit_content = false
-	_detail_label.scroll_active = false
-	UI_THEME.style_rich_text(_detail_label, 18)
-	detail_panel.add_child(_detail_label)
-
-
-func _add_filter_button(label: String, filter_key: String) -> void:
-	if _category_bar == null:
-		return
-	var btn := Button.new()
-	btn.text = label
-	btn.custom_minimum_size = Vector2(0, 42)
-	UI_THEME.style_button(btn, 16, UI_THEME.JADE if filter_key == _current_filter else UI_THEME.BLUE_STEEL)
-	btn.pressed.connect(func(): _set_filter(filter_key))
-	_category_bar.add_child(btn)
-
-
-func _set_filter(filter_key: String) -> void:
-	_current_filter = filter_key
-	_refresh()
-
-
-func _apply_visual_style() -> void:
-	var dim: ColorRect = get_node_or_null("Dim") as ColorRect
-	if dim != null:
-		dim.color = Color(0.004, 0.010, 0.016, 0.74)
-	var panel: PanelContainer = get_node_or_null("Panel") as PanelContainer
-	if panel != null:
-		panel.offset_left = -650
-		panel.offset_top = -360
-		panel.offset_right = 650
-		panel.offset_bottom = 360
-		panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.020, 0.034, 0.046, 0.98), UI_THEME.BLUE_STEEL, 18, 3))
-	var title: Label = get_node_or_null("Panel/Body/Header/Title") as Label
-	if title != null:
-		title.text = "行囊"
-		UI_THEME.style_label(title, 34, UI_THEME.GOLD_LIGHT)
-	UI_THEME.style_button(close_btn, 16, UI_THEME.CRIMSON)
-	UI_THEME.style_label(stats_label, 16, UI_THEME.TEXT, false)
+func _setup_button_textures() -> void:
+	_close_btn.texture_normal = load("res://art/ui/inventory/buttons/btn_close_normal.png")
+	_close_btn.texture_hover = load("res://art/ui/inventory/buttons/btn_close_hover.png")
+	_close_btn.texture_pressed = load("res://art/ui/inventory/buttons/btn_close_pressed.png")
+	_btn_use.texture_normal = load("res://art/ui/inventory/buttons/btn_use_normal.png")
+	_btn_use.texture_hover = load("res://art/ui/inventory/buttons/btn_use_hover.png")
+	_btn_use.texture_pressed = load("res://art/ui/inventory/buttons/btn_use_pressed.png")
+	_btn_equip.texture_normal = load("res://art/ui/inventory/buttons/btn_equip_normal.png")
+	_btn_equip.texture_hover = load("res://art/ui/inventory/buttons/btn_equip_hover.png")
+	_btn_equip.texture_pressed = load("res://art/ui/inventory/buttons/btn_equip_pressed.png")
+	_btn_drop.texture_normal = load("res://art/ui/inventory/buttons/btn_drop_normal.png")
+	_btn_drop.texture_hover = load("res://art/ui/inventory/buttons/btn_drop_hover.png")
+	_btn_drop.texture_pressed = load("res://art/ui/inventory/buttons/btn_drop_pressed.png")
 
 
 func open() -> void:
 	visible = true
 	_refresh()
-	close_btn.grab_focus()
 
 
 func close() -> void:
@@ -162,70 +100,93 @@ func close() -> void:
 	emit_signal("closed")
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if visible and event.is_action_pressed("ui_cancel"):
+		close()
+		get_viewport().set_input_as_handled()
+
+
+const TAB_LABELS := {"all": "全部", "consumable": "消耗", "equipment": "装备", "key": "剧情", "material": "材料"}
+
+
+func _tab_btn(key: String) -> TextureButton:
+	match key:
+		"all": return _tab_all
+		"consumable": return _tab_consumable
+		"equipment": return _tab_equipment
+		"key": return _tab_key
+		"material": return _tab_material
+	return _tab_all
+
+
+func _setup_tabs() -> void:
+	for key in TAB_LABELS:
+		var btn: TextureButton = _tab_btn(key)
+		btn.custom_minimum_size = Vector2(160, 52)
+		btn.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
+		btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+		btn.pressed.connect(func(): _set_filter(key))
+	_update_tab_highlights()
+
+
+func _set_filter(key: String) -> void:
+	_current_filter = key
+	_refresh()
+
+
+func _update_tab_highlights() -> void:
+	for key in TAB_TEX:
+		var btn: TextureButton = _tab_btn(key)
+		var t: Dictionary = TAB_TEX[key]
+		if key == _current_filter:
+			btn.texture_normal = t["s"]
+			btn.texture_hover = t["s"]
+			btn.texture_pressed = t["p"]
+		else:
+			btn.texture_normal = t["n"]
+			btn.texture_hover = t["s"]
+			btn.texture_pressed = t["p"]
+
+
 func _refresh() -> void:
-	_update_stats_text()
-	_refresh_filter_buttons()
-	for c in slot_list.get_children():
+	_update_tab_highlights()
+	if _slot_grid == null: return
+	for c in _slot_grid.get_children():
 		c.queue_free()
 
-	var shown_items: Array[Dictionary] = []
-	for s in Inventory.slots:
-		var item: Item = s.get("item")
-		var count: int = int(s.get("count", 0))
-		if item == null or count <= 0:
-			continue
-		if not _passes_filter(item):
-			continue
-		shown_items.append({"item": item, "count": count})
-
-	if shown_items.is_empty():
+	var shown := _filtered_slots()
+	if shown.is_empty():
 		var empty := Label.new()
-		empty.text = "此类行囊空空如也"
-		UI_THEME.style_label(empty, 18, UI_THEME.MUTED, false)
-		slot_list.add_child(empty)
-		_show_empty_detail()
+		empty.text = "暂无物品"
+		empty.add_theme_color_override("font_color", Color(0.48, 0.58, 0.64, 1))
+		empty.add_theme_font_size_override("font_size", 16)
+		_slot_grid.add_child(empty)
+		if _detail_label != null: _detail_label.text = ""
 		return
 
-	for entry in shown_items:
-		var item: Item = entry.get("item")
-		var count: int = int(entry.get("count", 0))
-		slot_list.add_child(_make_slot_row(item, count))
+	for i in shown.size():
+		var entry: Dictionary = shown[i]
+		_slot_grid.add_child(_make_slot_cell(entry["item"], entry["count"], i))
+
+	var total_slots := 36
+	for i in range(shown.size(), total_slots):
+		_slot_grid.add_child(_make_empty_cell())
 
 	if _selected_item == null or not _passes_filter(_selected_item):
-		var first: Dictionary = shown_items[0]
-		_show_item_detail(first.get("item"), int(first.get("count", 0)))
+		var first: Dictionary = shown[0]
+		_show_detail(first["item"], first["count"])
 	else:
-		_show_item_detail(_selected_item, _selected_count)
+		_show_detail(_selected_item, _selected_count)
 
 
-func _update_stats_text() -> void:
-	var player: CharacterStats = GameState.player
-	if player != null:
-		stats_label.text = "Lv.%d\n生命  %d / %d\n内力  %d / %d\n金钱  %d" % [
-			player.level,
-			player.hp,
-			player.max_hp,
-			player.mp,
-			player.max_mp,
-			GameState.gold,
-		]
-
-
-func _refresh_filter_buttons() -> void:
-	if _category_bar == null:
-		return
-	for c in _category_bar.get_children():
-		var btn: Button = c as Button
-		if btn == null:
-			continue
-		var is_active: bool = false
-		match btn.text:
-			"全部": is_active = _current_filter == "all"
-			"消耗": is_active = _current_filter == "consumable"
-			"装备": is_active = _current_filter == "equipment"
-			"剧情": is_active = _current_filter == "key"
-			"材料": is_active = _current_filter == "material"
-		UI_THEME.style_button(btn, 16, UI_THEME.JADE if is_active else UI_THEME.BLUE_STEEL)
+func _filtered_slots() -> Array[Dictionary]:
+	var out: Array[Dictionary] = []
+	for s in Inventory.slots:
+		var item: Item = s.get("item")
+		if item == null: continue
+		if not _passes_filter(item): continue
+		out.append(s)
+	return out
 
 
 func _passes_filter(item: Item) -> bool:
@@ -234,190 +195,215 @@ func _passes_filter(item: Item) -> bool:
 		"equipment": return item is Equipment
 		"key": return item.is_key_item()
 		"material": return item.category == Item.Category.MATERIAL
-		_: return true
+	return true
 
 
-func _make_slot_row(item: Item, count: int) -> Control:
-	var row_panel := PanelContainer.new()
-	row_panel.custom_minimum_size = Vector2(0, 82)
-	row_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.064, 0.078, 0.88), Color(0.18, 0.34, 0.40, 0.86), 12, 1))
+func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
+	var cell := TextureRect.new()
+	cell.custom_minimum_size = Vector2(85, 83)
+	cell.texture = CELL_DEFAULT
+	cell.expand_mode = 1
+	cell.stretch_mode = 5
+	cell.mouse_filter = Control.MOUSE_FILTER_STOP
+	cell.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
-	var row := HBoxContainer.new()
-	row.add_theme_constant_override("separation", 12)
-	row_panel.add_child(row)
-
-	var icon := _make_item_icon(_icon_key_for_item(item))
-	if icon != null:
-		row.add_child(icon)
-
-	var text_box := VBoxContainer.new()
-	text_box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	row.add_child(text_box)
+	var icon_tex := _resolve_icon(item)
+	if icon_tex != null:
+		var icon := TextureRect.new()
+		icon.texture = icon_tex
+		icon.custom_minimum_size = Vector2(60, 44)
+		icon.position = Vector2(12, 3)
+		icon.expand_mode = 1
+		icon.stretch_mode = 5
+		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		cell.add_child(icon)
 
 	var name_lbl := Label.new()
-	name_lbl.text = "%s ×%d" % [item.display_name, count]
-	UI_THEME.style_label(name_lbl, 19, UI_THEME.GOLD_LIGHT, false)
-	text_box.add_child(name_lbl)
+	name_lbl.text = item.display_name
+	name_lbl.position = Vector2(2, 48)
+	name_lbl.size = Vector2(81, 32)
+	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	name_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	name_lbl.clip_text = true
+	name_lbl.add_theme_font_size_override("font_size", 10)
+	name_lbl.add_theme_color_override("font_color", Color(0.8, 0.88, 0.94))
+	cell.add_child(name_lbl)
 
-	var desc_lbl := Label.new()
-	desc_lbl.text = "%s  ·  %s" % [_category_text(item), item.description]
-	desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	UI_THEME.style_label(desc_lbl, 14, Color(0.68, 0.82, 0.84, 1.0), false)
-	text_box.add_child(desc_lbl)
+	if item.stackable and count > 1:
+		var lbl := Label.new()
+		lbl.text = str(count)
+		lbl.position = Vector2(55, 1)
+		lbl.add_theme_font_size_override("font_size", 11)
+		lbl.add_theme_color_override("font_color", Color.WHITE)
+		cell.add_child(lbl)
 
-	var detail_btn := Button.new()
-	detail_btn.text = "详情"
-	detail_btn.custom_minimum_size = Vector2(78, 42)
-	UI_THEME.style_button(detail_btn, 15, UI_THEME.BLUE_STEEL)
-	detail_btn.pressed.connect(func(): _show_item_detail(item, count))
-	row.add_child(detail_btn)
+	cell.set_meta("slot_index", slot_index)
+	cell.gui_input.connect(func(ev: InputEvent): _on_cell_input(ev, item, count, slot_index, cell))
+	return cell
 
+
+func _resolve_icon(item: Item) -> Texture2D:
+	if item.icon_path != "" and ResourceLoader.exists(item.icon_path):
+		return load(item.icon_path)
 	if item is Equipment:
-		var eq: Equipment = item
-		var btn := Button.new()
-		var already_equipped: bool = Inventory.get_equipped_id(eq.slot) == eq.item_id
-		if already_equipped:
-			btn.text = "已装备"
-		else:
-			btn.text = "装备"
-		btn.disabled = already_equipped
-
-		btn.custom_minimum_size = Vector2(92, 42)
-		UI_THEME.style_button(btn, 16, UI_THEME.JADE)
-		btn.pressed.connect(func(): _on_equip(eq.item_id))
-		row.add_child(btn)
-	elif item.category == Item.Category.CONSUMABLE and item.can_use(false):
-		var btn := Button.new()
-		btn.text = "使用"
-		btn.disabled = not _would_item_have_effect(item)
-		btn.custom_minimum_size = Vector2(92, 42)
-		UI_THEME.style_button(btn, 16, UI_THEME.JADE)
-		btn.pressed.connect(func(): _on_use(item.item_id))
-		row.add_child(btn)
-	else:
-		var tag := Label.new()
-		if item.is_key_item():
-			tag.text = "剧情"
-		else:
-			tag.text = "不可用"
-		tag.custom_minimum_size = Vector2(92, 42)
-
-		tag.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		tag.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		UI_THEME.style_label(tag, 15, UI_THEME.MUTED, false)
-		row.add_child(tag)
-
-	return row_panel
+		match (item as Equipment).slot:
+			Equipment.Slot.WEAPON: return ICON_WEAPON
+			Equipment.Slot.HEAD, Equipment.Slot.ARMOR, Equipment.Slot.HANDS: return ICON_ARMOR
+			Equipment.Slot.SHOES: return ICON_SHOES
+			Equipment.Slot.ACCESSORY: return ICON_RING
+	match item.category:
+		Item.Category.CONSUMABLE: return ICON_POTION
+		Item.Category.MATERIAL: return ICON_ORE
+		Item.Category.KEY_ITEM: return ICON_KEY
+	return ICON_SCROLL
 
 
-func _show_item_detail(item: Item, count: int) -> void:
-	if item == null or _detail_label == null:
-		return
+func _make_empty_cell() -> Control:
+	var cell := TextureRect.new()
+	cell.custom_minimum_size = Vector2(85, 83)
+	cell.texture = CELL_EMPTY
+	cell.expand_mode = 1
+	cell.stretch_mode = 5
+	cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	return cell
+
+
+func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cell: TextureRect) -> void:
+	if ev is InputEventMouseButton:
+		var mb := ev as InputEventMouseButton
+		if mb.button_index == MOUSE_BUTTON_LEFT and mb.pressed:
+			_highlight_cell(cell)
+			_show_detail(item, count)
+		elif mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed:
+			_context_slot_index = slot_index
+			var entry := _get_slot(slot_index)
+			var it: Item = entry.get("item")
+			for i in 4: _context_menu.set_item_disabled(i, it == null)
+			if it != null:
+				_context_menu.set_item_disabled(1, it.category != Item.Category.CONSUMABLE)
+				_context_menu.set_item_disabled(2, not it is Equipment)
+			_context_menu.position = Vector2i(int(get_global_mouse_position().x), int(get_global_mouse_position().y))
+			_context_menu.popup()
+
+
+func _highlight_cell(cell: TextureRect) -> void:
+	if _highlighted_cell != null:
+		_highlighted_cell.texture = CELL_DEFAULT
+	cell.texture = CELL_SELECTED
+	_highlighted_cell = cell
+
+
+func _on_use_selected() -> void:
+	if _selected_item != null and _selected_item.category == Item.Category.CONSUMABLE:
+		_on_use(_selected_item.item_id)
+
+
+func _on_equip_selected() -> void:
+	if _selected_item != null and _selected_item is Equipment:
+		_on_equip(_selected_item.item_id)
+
+
+func _on_drop_selected() -> void:
+	if _selected_item != null:
+		Inventory.remove_item(_selected_item.item_id, 1)
+		_selected_item = null
+		_refresh()
+
+
+func _show_detail(item: Item, count: int) -> void:
 	_selected_item = item
 	_selected_count = count
-	var extra: String = ""
+	var icon_tex := _resolve_icon(item)
+	if _detail_icon != null:
+		_detail_icon.texture = icon_tex
+		_detail_icon.visible = icon_tex != null
+
+	var qc: String = QUALITY_COLORS.get(item.quality, "#c0c8d0")
+	var qn: String = QUALITY_NAMES.get(item.quality, "")
+
+	var lines: Array[String] = []
+	lines.append("[font_size=16][color=%s]%s[/color][/font_size]  [font_size=11][color=#667788]%s[/color][/font_size]" % [qc, item.display_name, qn])
+	lines.append("[font_size=13][color=#6a8a9a]%s ×%d[/color][/font_size]" % [_cat_text(item), count])
+	lines.append("")
+	lines.append("[font_size=13]%s[/font_size]" % item.description)
+
 	if item is Equipment:
-		extra = "\n[b]装备槽[/b]：%s\n[b]属性[/b]：%s" % [Inventory.slot_display_name((item as Equipment).slot), _bonus_text(item as Equipment)]
+		var eq := item as Equipment
+		lines.append("")
+		lines.append("[font_size=12][color=#7a8a9a]装备槽：%s[/color][/font_size]" % Inventory.slot_display_name(eq.slot))
+		var bonus := _bonus_text(eq)
+		if bonus != "":
+			lines.append("[font_size=13][b]属性加成[/b][/font_size]")
+			lines.append(bonus)
 	elif item.category == Item.Category.CONSUMABLE:
-		extra = "\n[b]效果[/b]：生命 +%d / 内力 +%d" % [item.heal_hp, item.heal_mp]
-	_detail_label.text = "[b]%s[/b]\n[color=#8eb8ca]%s ×%d[/color]\n\n%s%s\n\n[b]价格[/b]\n买入 %d · 卖出 %d" % [
-		item.display_name,
-		_category_text(item),
-		count,
-		item.description,
-		extra,
-		item.buy_price,
-		item.sell_price,
-	]
+		lines.append("")
+		if item.heal_hp > 0:
+			lines.append("[font_size=13][color=#ff5252]生命 +%d[/color][/font_size]" % item.heal_hp)
+		if item.heal_mp > 0:
+			lines.append("[font_size=13][color=#448aff]内力 +%d[/color][/font_size]" % item.heal_mp)
+
+	lines.append("")
+	lines.append("[font_size=12][color=#7a8a9a]买 %d  卖 %d[/color][/font_size]" % [item.buy_price, item.sell_price])
+	_detail_label.text = "\n".join(lines)
 
 
-func _show_empty_detail() -> void:
-	_selected_item = null
-	_selected_count = 0
-	if _detail_label != null:
-		_detail_label.text = "[b]行囊[/b]\n当前分类没有物品。"
+func _bonus_text(eq: Equipment) -> String:
+	var lines: Array[String] = []
+	if eq.get_strength_bonus() != 0: lines.append("  [color=%s]筋骨 %+d[/color]" % [STAT_COLORS["筋骨"], eq.get_strength_bonus()])
+	if eq.get_agility_bonus() != 0: lines.append("  [color=%s]机敏 %+d[/color]" % [STAT_COLORS["机敏"], eq.get_agility_bonus()])
+	if eq.get_inner_power_bonus() != 0: lines.append("  [color=%s]内劲 %+d[/color]" % [STAT_COLORS["内劲"], eq.get_inner_power_bonus()])
+	if eq.get_insight_bonus() != 0: lines.append("  [color=%s]悟性 %+d[/color]" % [STAT_COLORS["悟性"], eq.get_insight_bonus()])
+	if eq.get_vitality_bonus() != 0: lines.append("  [color=%s]生命 %+d[/color]" % [STAT_COLORS["生命"], eq.get_vitality_bonus()])
+	if eq.get_inner_pool_bonus() != 0: lines.append("  [color=%s]内力 %+d[/color]" % [STAT_COLORS["内力"], eq.get_inner_pool_bonus()])
+	if eq.get_guard_bonus() != 0: lines.append("  [color=%s]防御 %+d[/color]" % [STAT_COLORS["防御"], eq.get_guard_bonus()])
+	return "\n".join(lines) if not lines.is_empty() else ""
 
 
-func _category_text(item: Item) -> String:
-	if item is Equipment:
-		return "装备"
+func _cat_text(item: Item) -> String:
+	if item is Equipment: return "装备"
 	match item.category:
 		Item.Category.CONSUMABLE: return "消耗"
 		Item.Category.MATERIAL: return "材料"
 		Item.Category.KEY_ITEM: return "剧情"
-		_: return "物品"
+	return "物品"
 
 
-func _bonus_text(eq: Equipment) -> String:
-	var parts: Array[String] = []
-	if eq.get_strength_bonus() != 0: parts.append("筋骨 %+d" % eq.get_strength_bonus())
-	if eq.get_agility_bonus() != 0: parts.append("机敏 %+d" % eq.get_agility_bonus())
-	if eq.get_inner_power_bonus() != 0: parts.append("内劲 %+d" % eq.get_inner_power_bonus())
-	if eq.get_insight_bonus() != 0: parts.append("悟性 %+d" % eq.get_insight_bonus())
-	if eq.get_vitality_bonus() != 0: parts.append("生命 %+d" % eq.get_vitality_bonus())
-	if eq.get_inner_pool_bonus() != 0: parts.append("内力 %+d" % eq.get_inner_pool_bonus())
-	if eq.get_guard_bonus() != 0: parts.append("防御 %+d" % eq.get_guard_bonus())
-	return " / ".join(parts) if not parts.is_empty() else "无属性加成"
+func _on_use(id: StringName) -> void:
+	if Inventory.use_item(id): _refresh()
 
 
-func _icon_key_for_item(item: Item) -> String:
-	if item is Equipment:
-		return "防御"
-	if item.is_key_item():
-		return "悟性"
-	if item.category == Item.Category.MATERIAL:
-		return "内力"
-	if item.category == Item.Category.CONSUMABLE:
-		if item.heal_hp > 0:
-			return "生命"
-		if item.heal_mp > 0:
-			return "内劲"
-		return "机敏"
-	return "筋骨"
+func _on_equip(id: StringName) -> void:
+	if Inventory.equip(id): _refresh()
 
 
-func _make_item_icon(icon_key: String) -> TextureRect:
-	if _attr_icon_atlas == null:
-		return null
-	var region: Rect2 = ATTR_ICON_REGIONS.get(icon_key, Rect2())
-	if region.size.x <= 0 or region.size.y <= 0:
-		return null
-	var tex := AtlasTexture.new()
-	tex.atlas = _attr_icon_atlas
-	tex.region = region
-	var icon := TextureRect.new()
-	icon.custom_minimum_size = Vector2(46, 46)
-	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	icon.texture = tex
-	icon.tooltip_text = icon_key
-	return icon
+func _create_context_menu() -> void:
+	_context_menu = $ContextMenu
+	if _context_menu == null:
+		_context_menu = PopupMenu.new()
+		_context_menu.name = "ContextMenu"
+		add_child(_context_menu)
+	_context_menu.clear()
+	_context_menu.add_item("详情", 0)
+	_context_menu.add_item("使用", 1)
+	_context_menu.add_item("装备", 2)
+	_context_menu.add_item("丢弃", 3)
+	_context_menu.id_pressed.connect(_on_context)
 
 
-func _would_item_have_effect(item: Item) -> bool:
-	var player: CharacterStats = GameState.player
-	if player == null:
-		return false
-	if item.heal_hp > 0 and player.hp < player.max_hp:
-		return true
-	if item.heal_mp > 0 and player.mp < player.max_mp:
-		return true
-	return false
+func _on_context(id: int) -> void:
+	if _context_slot_index < 0: return
+	var entry := _get_slot(_context_slot_index)
+	var item: Item = entry.get("item")
+	if item == null: return
+	_context_slot_index = -1
+	match id:
+		0: _show_detail(item, entry.get("count", 1))
+		1: _on_use(item.item_id)
+		2: _on_equip(item.item_id)
+		3: Inventory.remove_item(item.item_id, 1); _refresh()
 
 
-func _on_use(item_id: StringName) -> void:
-	if Inventory.use_item(item_id):
-		print("[InventoryUI] used: %s" % item_id)
-	_refresh()
-
-
-func _on_equip(item_id: StringName) -> void:
-	if Inventory.equip(item_id):
-		print("[InventoryUI] equipped: %s" % item_id)
-	_refresh()
-
-
-func _unhandled_input(event: InputEvent) -> void:
-	if visible and event.is_action_pressed("ui_cancel"):
-		close()
-		get_viewport().set_input_as_handled()
+func _get_slot(idx: int) -> Dictionary:
+	var shown := _filtered_slots()
+	if idx >= 0 and idx < shown.size(): return shown[idx]
+	return {}

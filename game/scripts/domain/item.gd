@@ -11,6 +11,14 @@ enum Category {
 	EQUIPMENT,    ## 装备（实际类型由 Equipment 子类覆写 category）
 }
 
+enum Quality {
+	COMMON,       ## 白品
+	UNCOMMON,     ## 绿品
+	RARE,         ## 蓝品
+	EPIC,         ## 紫品
+	LEGENDARY,    ## 橙品
+}
+
 @export var item_id: StringName = ""
 @export var display_name: String = ""
 @export var description: String = ""
@@ -25,6 +33,8 @@ enum Category {
 
 @export var usable_in_battle: bool = false
 @export var usable_in_field: bool = true
+
+@export var quality: Quality = Quality.COMMON
 
 ## 消耗品效果（简化为统一字段，进阶时再做 effect 列表）
 @export var heal_hp: int = 0
