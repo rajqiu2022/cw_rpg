@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_main_02_rescue_yue"
+title = "密林救美"
+kind = 0
+desc_not_started = "竹尾村外密林中有打斗声——凌月派弟子被蒙面杀手围攻。"
+desc_in_progress = "与悦无姮并肩击退蒙面杀手。杀手佩戴烈云盟令牌（章七揭示实为栽赃）。"
+desc_completed = "击退了蒙面杀手，救下凌月派大师姐悦无姮。她邀你同行去凌月山。"
+completion_triggers = Array[String](["enemy_defeated:masked_ambushers"])
+reward_gold = 30
+reward_exp = 25
+reward_items = Array[Dictionary]([{"item_id": "lingyue_token", "count": 1}])

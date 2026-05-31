@@ -97,7 +97,7 @@ def _owner_for_path(path: str) -> str:
         return "system"
     if normalized.startswith("docs/system-"):
         return "system"
-    if normalized.startswith(("prompts/", "assets/", "docs/sprite", "docs/style", "docs/art")):
+    if normalized.startswith(("prompts/", "assets/", "docs/sprite", "docs/style", "docs/art", "tools/")):
         return "art"
     if normalized.startswith(("logs/qa", "game/tests", "docs/mvp-")):
         return "qa"
@@ -139,6 +139,25 @@ def _category_for_asset(path: Path) -> str:
                 "scene_background", "character_portrait", "sprite_sheet", "audio"]:
         if key in normalized:
             return key
+    # assets/processed/ 子目录映射
+    if "assets/processed" in normalized:
+        if "scene" in normalized or "background" in normalized:
+            return "scene_background"
+        if "character" in normalized or "portrait" in normalized or "avatar" in normalized:
+            return "character_portrait"
+        if "sprite" in normalized:
+            return "sprite_sheet"
+        if "icon" in normalized:
+            return "ui_icon"
+        if "ui" in normalized or "field_hud" in normalized or "hud" in normalized:
+            return "ui_frame"
+        if "audio" in normalized:
+            return "audio"
+        if "button" in normalized or "btn" in normalized:
+            return "ui_button"
+        if "dialog" in normalized:
+            return "ui_dialog"
+        return "unknown"
     # game/art/ 子目录映射
     if "game/art" in normalized:
         if "background" in normalized:
@@ -161,6 +180,8 @@ def _adopted_status_for_path(path: Path) -> str:
     normalized = rel(path).lower()
     if "/adopted/" in normalized:
         return "adopted"
+    if "/processed/" in normalized:
+        return "adopted"
     if "/library/" in normalized:
         return "candidate"
     # raw/ 或 game/art/ 中的文件默认是候选
@@ -174,12 +195,14 @@ def scan_artifacts(conn: sqlite3.Connection) -> None:
         "prompts/**/*.yaml",
 
         "assets/raw/**/*",
+        "assets/processed/**/*",
         "assets/library/**/*",
         "assets/adopted/**/*",
         "assets/previews/**/*",
         "assets/_style_bible/**/*",
         "assets/_archive/**/*",
         "game/art/**/*",
+        "tools/**/*",
         "logs/qa/*.json",
         "logs/dry_run/*.json",
         "game/tests/**/*.gd",
@@ -192,6 +215,14 @@ def scan_artifacts(conn: sqlite3.Connection) -> None:
             relative = rel(path)
             if relative in seen:
                 continue
+            
+            # 排除 agent_hub 自身运行时文件
+            if "tools/agent_hub/" in relative:
+                continue
+            # 排除 Python 脚本、数据库、pycache、Godot import 元数据
+            if relative.endswith((".py", ".sqlite3", ".pyc", ".db", ".import")):
+                continue
+            
             seen.add(relative)
             category = _category_for_asset(path)
             adopted = _adopted_status_for_path(path)
@@ -202,7 +233,7 @@ def scan_artifacts(conn: sqlite3.Connection) -> None:
                 ON CONFLICT(path) DO UPDATE SET
                   kind=excluded.kind,
                   category=excluded.category,
-                  adopted_status=excluded.adopted_status,
+                  adopted_status=artifacts.adopted_status,
                   owner_agent=excluded.owner_agent,
                   mtime=excluded.mtime
                 """,

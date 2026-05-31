@@ -25,6 +25,11 @@ enum Slot { WEAPON, HEAD, ARMOR, HANDS, SHOES, ACCESSORY }
 @export var inner_pool_bonus: int = 0  ## 内力
 @export var guard_bonus: int = 0       ## 防御
 
+## 武功加成（v1 新增）—— 装备可增强特定门派/特定技能的效果
+@export var skill_bonus_school: String = ""  ## 增强哪个门派（如 "huashan"），"" = 不增强
+@export var skill_bonus_power: int = 0       ## power 加值
+@export var skill_bonus_crit_mult: float = 0.0  ## 暴击倍率加成（如 0.3 表示 crit 从 1.5x → 1.8x）
+
 
 func _init() -> void:
 	category = Category.EQUIPMENT

@@ -3,7 +3,7 @@ from __future__ import annotations
 from fastapi.testclient import TestClient
 
 from tools.agent_hub.app import app
-from tools.agent_hub.db import connect, init_db, rows
+from tools.agent_hub.db import connect, init_db, row, rows
 from tools.agent_hub.scanner import scan_all
 
 
@@ -70,6 +70,30 @@ def main() -> int:
     if requirements_page.status_code != 200 or "需求列表" not in requirements_page.text or "角色成长系统" not in requirements_page.text:
         print("Requirements page did not render seeded module requirements")
         return 1
+    if "confirmOk.addEventListener" not in client.get("/artifacts").text:
+        print("Artifacts page did not render adoption controls script")
+        return 1
+    with connect() as conn:
+        candidate = row(
+            conn,
+            "SELECT id FROM artifacts WHERE adopted_status = 'candidate' AND category = 'unknown' LIMIT 1",
+        )
+    if candidate:
+        artifact_id = int(candidate["id"])
+        adopted = client.post(f"/api/artifacts/{artifact_id}/adopt")
+        if adopted.status_code != 200:
+            print("Artifact adopt API failed")
+            return 1
+        with connect() as conn:
+            scan_all(conn)
+            status = row(conn, "SELECT adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
+        if not status or status["adopted_status"] != "adopted":
+            print("Artifact adopted status did not persist across scan")
+            return 1
+        reset = client.post(f"/api/artifacts/{artifact_id}/reset")
+        if reset.status_code != 200:
+            print("Artifact reset API failed")
+            return 1
     return 0
 
 

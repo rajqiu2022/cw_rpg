@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "杜青衫"
+portrait_path = "res://art/characters/portrait_duqingshan_steady.png"
+text = "剑拿了？好。记住——剑刃钝了可以磨，人心钝了就磨不出来了。走吧，你师傅等着你出村呢。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_main_street_duqingshan"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])

@@ -162,7 +162,7 @@
           {% elif artifact.adopted_status == "adopted" %}
           <span class="status-badge adopted">已采用</span>
           <button class="btn-reset" data-artifact-id="{{ artifact.id }}" title="重置为候选">重置</button>
-          {% elif artifact.adopted_status == "rjected" %}
+          {% elif artifact.adopted_status == "rejected" %}
           <span class="status-badge rejected">已淘汰</span>
           <button class="btn-reset" data-artifact-id="{{ artifact.id }}" title="重置为候选">重置</button>
           {% endif %}
@@ -195,8 +195,11 @@
 <div id="image-preview-modal" class="image-preview-modal" aria-hidden="true">
   <div class="image-preview-dialog" role="dialog" aria-modal="true" aria-label="图片预览">
     <button type="button" class="image-preview-close-top" id="image-preview-close-top" aria-label="关闭预览">×</button>
+    <button type="button" class="image-preview-arrow image-preview-prev" id="image-preview-prev" aria-label="上一张" title="上一张">◂</button>
     <img id="image-preview-img" src="" alt="预览图">
+    <button type="button" class="image-preview-arrow image-preview-next" id="image-preview-next" aria-label="下一张" title="下一张">▸</button>
     <div class="image-preview-actions">
+      <span class="image-preview-counter" id="image-preview-counter"></span>
       <button type="button" id="image-preview-close-bottom">关闭</button>
     </div>
   </div>
@@ -208,89 +211,164 @@
     const modalImage = document.getElementById('image-preview-img');
     const closeTop = document.getElementById('image-preview-close-top');
     const closeBottom = document.getElementById('image-preview-close-bottom');
+    const prevBtn = document.getElementById('image-preview-prev');
+    const nextBtn = document.getElementById('image-preview-next');
+    const counter = document.getElementById('image-preview-counter');
     const triggers = document.querySelectorAll('.thumb-btn[data-preview-src]');
 
     if (!modal || !modalImage || triggers.length === 0) {
       return;
     }
 
-    const openPreview = (src, alt) => {
-      modalImage.src = src;
-      modalImage.alt = alt || '预览图';
+    const images = Array.from(triggers).map(function(el) {
+      return { src: el.dataset.previewSrc || '', alt: el.dataset.previewAlt || '' };
+    });
+    let currentIndex = -1;
+
+    const showImage = function(index) {
+      if (index < 0 || index >= images.length) return;
+      currentIndex = index;
+      modalImage.src = images[index].src;
+      modalImage.alt = images[index].alt;
+      if (counter) {
+        counter.textContent = (index + 1) + ' / ' + images.length;
+      }
+      prevBtn.style.visibility = index > 0 ? 'visible' : 'hidden';
+      nextBtn.style.visibility = index < images.length - 1 ? 'visible' : 'hidden';
+    };
+
+    const openPreview = function(src, alt) {
+      var idx = -1;
+      for (var i = 0; i < images.length; i++) {
+        if (images[i].src === src) { idx = i; break; }
+      }
+      if (idx < 0) {
+        images.push({ src: src, alt: alt || '' });
+        idx = images.length - 1;
+      }
+      showImage(idx);
       modal.classList.add('show');
       modal.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
     };
 
-    const closePreview = () => {
+    const closePreview = function() {
       modal.classList.remove('show');
       modal.setAttribute('aria-hidden', 'true');
       modalImage.removeAttribute('src');
       document.body.style.overflow = '';
     };
 
-    triggers.forEach((el) => {
-      el.addEventListener('click', () => {
+    const prevImage = function() {
+      if (currentIndex > 0) showImage(currentIndex - 1);
+    };
+
+    const nextImage = function() {
+      if (currentIndex < images.length - 1) showImage(currentIndex + 1);
+    };
+
+    triggers.forEach(function(el) {
+      el.addEventListener('click', function() {
         openPreview(el.dataset.previewSrc || '', el.dataset.previewAlt || '');
       });
     });
 
-    [closeTop, closeBottom].forEach((el) => {
-      if (el) {
-        el.addEventListener('click', closePreview);
-      }
+    [closeTop, closeBottom].forEach(function(el) {
+      if (el) el.addEventListener('click', closePreview);
     });
 
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closePreview();
-      }
+    if (prevBtn) prevBtn.addEventListener('click', prevImage);
+    if (nextBtn) nextBtn.addEventListener('click', nextImage);
+
+    modal.addEventListener('click', function(event) {
+      if (event.target === modal) closePreview();
     });
 
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && modal.classList.contains('show')) {
-        closePreview();
-      }
+    document.addEventListener('keydown', function(event) {
+      if (!modal.classList.contains('show')) return;
+      if (event.key === 'Escape') { closePreview(); }
+      else if (event.key === 'ArrowLeft') { event.preventDefault(); prevImage(); }
+      else if (event.key === 'ArrowRight') { event.preventDefault(); nextImage(); }
     });
   })();
 
   /* Adopt / Reject / Reset actions */
   (function () {
-    const post = async (url) => {
-      const resp = await fetch(url, { method: 'POST' });
+    // Build confirm modal dynamically
+    var overlay = document.createElement('div');
+    overlay.id = 'confirm-overlay';
+    overlay.style.cssText = 'display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.62);align-items:center;justify-content:center';
+    overlay.innerHTML = '<div style="background:rgba(34,32,28,0.95);border:1px solid rgba(222,184,104,0.42);border-radius:10px;padding:28px 32px;min-width:360px;max-width:480px;box-shadow:0 8px 32px rgba(0,0,0,0.42)">' +
+      '<p id="confirm-text" style="margin:0 0 24px;color:#f4ead4;font-size:15px"></p>' +
+      '<div style="display:flex;justify-content:flex-end;gap:10px">' +
+      '<button id="confirm-no" style="padding:8px 22px;border-radius:6px;border:1px solid rgba(222,184,104,0.22);background:rgba(255,248,225,0.055);color:#f4ead4;font-size:14px;cursor:pointer">取消</button>' +
+      '<button id="confirm-yes" style="padding:8px 22px;border-radius:6px;border:1px solid #b84a38;background:#b84a38;color:#fff;font-size:14px;cursor:pointer">确定</button>' +
+      '</div></div>';
+    document.body.appendChild(overlay);
+
+    var toastEl = document.createElement('div');
+    toastEl.id = 'toast';
+    toastEl.style.cssText = 'position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:rgba(34,32,28,0.95);border:1px solid #76b79b;color:#f4ead4;padding:12px 28px;border-radius:8px;font-size:14px;z-index:3000;opacity:0;pointer-events:none;transition:opacity 0.3s';
+    document.body.appendChild(toastEl);
+
+    var confirmText = document.getElementById('confirm-text');
+    var confirmYes = document.getElementById('confirm-yes');
+    var confirmNo = document.getElementById('confirm-no');
+
+    function showConfirm(msg) {
+      return new Promise(function(resolve) {
+        confirmText.textContent = msg;
+        overlay.style.display = 'flex';
+        confirmYes.onclick = function() { overlay.style.display = 'none'; resolve(true); };
+        confirmNo.onclick = function() { overlay.style.display = 'none'; resolve(false); };
+        overlay.onclick = function(e) { if (e.target === overlay) { overlay.style.display = 'none'; resolve(false); } };
+      });
+    }
+
+    function showToast(msg, isErr) {
+      toastEl.textContent = msg;
+      toastEl.style.borderColor = isErr ? '#de7865' : '#76b79b';
+      toastEl.style.opacity = '1';
+      clearTimeout(toastEl._t);
+      toastEl._t = setTimeout(function() { toastEl.style.opacity = '0'; }, 3000);
+    }
+
+    async function post(url) {
+      var resp = await fetch(url, { method: 'POST' });
       if (!resp.ok) {
-        const err = await resp.json().catch(() => ({}));
-        alert('操作失败: ' + (err.detail || resp.status));
-        return false;
+        var err = {};
+        try { err = await resp.json(); } catch(e) {}
+        showToast('操作失败: ' + (err.detail || 'HTTP ' + resp.status), true);
+        return null;
       }
       return await resp.json();
-    };
+    }
 
-    document.querySelectorAll('.btn-adopt').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const id = btn.dataset.artifactId;
-        if (!confirm('确认标记为"已采用"？文件将自动复制到 game/art/ 对应目录。')) return;
-        const result = await post('/api/artifacts/' + id + '/adopt');
-        if (result) location.reload();
-      });
+    document.querySelectorAll('.btn-adopt').forEach(function(btn) {
+      btn.onclick = async function() {
+        var ok = await showConfirm('确认标记为"已采用"？文件将复制到 game/art/ 。');
+        if (!ok) return;
+        var r = await post('/api/artifacts/' + btn.dataset.artifactId + '/adopt');
+        if (r) location.reload();
+      };
     });
 
-    document.querySelectorAll('.btn-reject').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const id = btn.dataset.artifactId;
-        if (!confirm('确认标记为"已淘汰"？')) return;
-        const result = await post('/api/artifacts/' + id + '/reject');
-        if (result) location.reload();
-      });
+    document.querySelectorAll('.btn-reject').forEach(function(btn) {
+      btn.onclick = async function() {
+        var ok = await showConfirm('确认标记为"已淘汰"？');
+        if (!ok) return;
+        var r = await post('/api/artifacts/' + btn.dataset.artifactId + '/reject');
+        if (r) location.reload();
+      };
     });
 
-    document.querySelectorAll('.btn-reset').forEach((btn) => {
-      btn.addEventListener('click', async () => {
-        const id = btn.dataset.artifactId;
-        if (!confirm('确认重置为"候选"状态？')) return;
-        const result = await post('/api/artifacts/' + id + '/reset');
-        if (result) location.reload();
-      });
+    document.querySelectorAll('.btn-reset').forEach(function(btn) {
+      btn.onclick = async function() {
+        var ok = await showConfirm('确认重置为"候选"状态？');
+        if (!ok) return;
+        var r = await post('/api/artifacts/' + btn.dataset.artifactId + '/reset');
+        if (r) location.reload();
+      };
     });
   })();
 </script>

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_main_02_meet_linghu"
+title = "浪子令狐封"
+kind = 0
+desc_not_started = "在古月峰救援战中遇见一位浪荡公子——自称令狐封。言行有些奇怪。"
+desc_in_progress = "与令狐封交谈，观察他的一举一动。他说是来'凑热闹'的，但身手极好。"
+desc_completed = "令狐封与你惺惺相惜——但你隐约觉得他藏了些什么没说。"
+completion_triggers = Array[String](["flag_set:met_linghu_feng"])
+reward_gold = 0
+reward_exp = 20
+reward_items = Array[Dictionary]([])

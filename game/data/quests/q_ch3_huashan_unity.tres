@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_huashan_unity"
+title = "华山·剑宗气宗"
+kind = 0
+desc_not_started = "华山内部剑宗与气宗纷争已久，掌门霍长空请你调解两派矛盾。"
+desc_in_progress = "与剑宗和气宗传人分别切磋，寻找双方都能接受的折中方案。"
+desc_completed = "你以实战证明剑法需以气运之、气功需以剑发之，两派暂时和解。"
+completion_triggers = Array[String](["flag_set:huashan_reconciled"])
+reward_gold = 40
+reward_exp = 50
+reward_items = Array[Dictionary]([{"item_id": "huashan_sword", "count": 1}])

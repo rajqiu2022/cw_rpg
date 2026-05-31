@@ -66,11 +66,19 @@ var _enemy: CharacterStats
 var _enemy_def: EnemyDef
 var _player_defending: bool = false
 var _player_poison_turns: int = 0
+var _player_weak_turns: int = 0
+var _enemy_poison_turns: int = 0
+var _enemy_weak_turns: int = 0
+var _player_burst_turns: int = 0  ## 爆发：暴击率+50%
+var _enemy_burst_turns: int = 0
 
-# 已加载技能缓存
-var _skill_attack: Skill
-var _skill_palm: Skill
-var _skill_defend: Skill
+# 互补系统临时状态
+var _complement_poison_boost: bool = false  ## 凌月互补：本轮中毒伤害+50%
+var _complement_reflect_active: bool = false  ## 武当互补：受击时反射 15%
+
+# 动态技能列表
+var _player_skills: Array[Skill] = []
+var _current_skill_index: int = 1
 var _action_icon_atlas: Texture2D = null
 
 
@@ -82,25 +90,26 @@ func _ready() -> void:
 	_enemy_def = _load_enemy(enemy_id)
 	_enemy = _enemy_def.to_runtime_stats()
 
-	_skill_attack = _load_skill(&"basic_attack")
-	_skill_palm = _load_skill(&"palm_strike")
-	_skill_defend = _load_skill(&"defend")
+	# 动态加载玩家所有技能
+	for sid in _player.skills:
+		var sk := _load_skill(sid)
+		if sk != null:
+			_player_skills.append(sk)
 
 	_bind_portraits()
 	_apply_visual_style()
 	_apply_hud_art_overlays()
 	_apply_action_button_icons()
 	_refresh_hud()
+	_refresh_skill_button()
 
-	if _skill_palm != null:
-		btn_skill.text = "%s (-%d MP)" % [_skill_palm.display_name, _skill_palm.mp_cost]
-
-	btn_attack.pressed.connect(func(): _player_action_skill_use(_skill_attack))
-	btn_skill.pressed.connect(func(): _player_action_skill_use(_skill_palm))
+	btn_attack.pressed.connect(func(): _player_action_skill_use(0))
+	btn_skill.pressed.connect(func(): _player_action_skill_use(_current_skill_index))
 	btn_defend.pressed.connect(func(): _player_action_defend())
 	btn_flee.pressed.connect(func(): _player_action_flee())
 
 	EventBus.battle_started.emit(StringName(enemy_id))
+	EventBus.status_cured.connect(_on_status_cured)
 
 	_log("[b]遭遇战开始[/b]  ——  %s vs %s" % [_player.display_name, _enemy.display_name])
 	_log("（提示：已装备 %d 件，攻 +%d 防 +%d）" % [
@@ -121,7 +130,7 @@ func _load_enemy(enemy_id: String) -> EnemyDef:
 		if res is EnemyDef:
 			return res
 	push_warning("[Battle] enemy not found: %s, using fallback" % enemy_id)
-	var fallback := EnemyDef.new()
+	var fallback: EnemyDef = EnemyDef.new()
 	fallback.enemy_id = StringName(enemy_id)
 	fallback.display_name = "未知之敌"
 	fallback.portrait_path = "res://art/characters/enemy_thug_angry.png"
@@ -250,14 +259,27 @@ func _refresh_hud() -> void:
 	player_hp_bar.max_value = _player.max_hp
 	player_hp_bar.value = _player.hp
 	player_hp_label.text = "%d / %d" % [_player.hp, _player.max_hp]
-	if _player_poison_turns > 0:
-		player_hp_label.text += "  [中毒 %d]" % _player_poison_turns
+	var status_texts: Array[String] = []
+	if _player_poison_turns > 0: status_texts.append("中毒%d" % _player_poison_turns)
+	if _player_stun_turns > 0: status_texts.append("眩晕")
+	if _player_freeze_turns > 0: status_texts.append("冰冻")
+	if _player_weak_turns > 0: status_texts.append("虚弱%d" % _player_weak_turns)
+	if _player_defending: status_texts.append("防御")
+	if status_texts.size() > 0:
+		player_hp_label.text += "  [%s]" % ", ".join(status_texts)
 	player_mp_bar.max_value = _player.max_mp
 	player_mp_bar.value = _player.mp
 	enemy_hp_bar.max_value = _enemy.max_hp
 	enemy_hp_bar.value = _enemy.hp
 	enemy_hp_label.text = "%d / %d" % [_enemy.hp, _enemy.max_hp]
-	btn_skill.disabled = _skill_palm == null or _player.mp < _skill_palm.mp_cost
+	var enemy_status: Array[String] = []
+	if _enemy_poison_turns > 0: enemy_status.append("中毒")
+	if _enemy_stun_turns > 0: enemy_status.append("眩晕")
+	if _enemy_freeze_turns > 0: enemy_status.append("冰冻")
+	if _enemy_weak_turns > 0: enemy_status.append("虚弱")
+	if enemy_status.size() > 0:
+		enemy_hp_label.text += "  [%s]" % ", ".join(enemy_status)
+	btn_skill.disabled = _player_skills.size() <= 1 or _player.mp < _player_skills[_current_skill_index].mp_cost
 
 
 func _apply_hud_art_overlays() -> void:
@@ -283,7 +305,7 @@ func _attach_hud_overlay(name: String, atlas: Texture2D, region: Rect2, target: 
 		overlay.stretch_mode = TextureRect.STRETCH_SCALE
 		overlay.z_index = -5
 		add_child(overlay)
-	var tex := AtlasTexture.new()
+	var tex: AtlasTexture = AtlasTexture.new()
 	tex.atlas = atlas
 	tex.region = region
 	overlay.texture = tex
@@ -315,7 +337,6 @@ func _apply_button_icon(btn: Button, icon_key: String, accent: Color) -> void:
 		return
 	UI_THEME.style_button(btn, 22, accent)
 	btn.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	btn.expand_icon = true
 	var icon := _build_button_icon_texture(icon_key, 26)
 	if icon != null:
 		btn.icon = icon
@@ -351,7 +372,8 @@ func _begin_round() -> void:
 func _enter_player_turn() -> void:
 	_state = State.PLAYER_TURN
 	_player_defending = false
-	if _apply_player_status_at_turn_start():
+	_complement_reflect_active = false  # 重置上回合的互补状态
+	if await _apply_player_status_at_turn_start():
 		return
 	action_panel.visible = true
 	_log("\n[color=#c8a04a]——你的回合——[/color]")
@@ -362,32 +384,96 @@ func _set_buttons_enabled(enabled: bool) -> void:
 	for b in [btn_attack, btn_skill, btn_defend, btn_flee]:
 		b.disabled = not enabled
 	if enabled:
-		btn_skill.disabled = _skill_palm == null or _player.mp < _skill_palm.mp_cost
+		btn_skill.disabled = _player_skills.size() <= 1 or _player.mp < _player_skills[_current_skill_index].mp_cost
 
 
 # --- 玩家动作 ---
 
-func _player_action_skill_use(skill: Skill) -> void:
+func _player_action_skill_use(skill_idx: int) -> void:
 	if _state != State.PLAYER_TURN: return
-	if skill == null: return
+	if skill_idx < 0 or skill_idx >= _player_skills.size(): return
+	var skill: Skill = _player_skills[skill_idx]
 	if _player.mp < skill.mp_cost: return
 
 	_set_buttons_enabled(false)
 	_state = State.EXECUTE
 	_player.mp = max(0, _player.mp - skill.mp_cost)
 
+	# ── 内功互补 + 装备加成 ──
+	var extra_power: int = 0
+	var complement_active: bool = false
+	var crit_mult_bonus: float = 0.0
+
+	if skill.school != "" and skill.school != "generic":
+		# 装备技能加成
+		var gear_bonus := Inventory.get_equipped_skill_bonus(skill.school)
+		extra_power += gear_bonus["power"]
+		crit_mult_bonus += gear_bonus["crit_mult"]
+
+		# 内功互补检测
+		if skill.complemented_by != "":
+			for sid in _player.skills:
+				if sid == skill.complemented_by:
+					complement_active = true
+					extra_power += skill.complement_bonus_power
+					break
+
+	var power_mult: float = (skill.power + extra_power) / 100.0
+
+	# 华山互补：暴击倍率加成
+	if complement_active and skill.school == "huashan":
+		crit_mult_bonus += 0.3
+
+	# 凌月互补：中毒伤害 +50%（在敌人回合中毒结算时生效）
+	_complement_poison_boost = complement_active and skill.school == "lingyue"
+
+	# 茗雾互补：对残血敌人额外伤害
+	var mingwu_bonus_applied := false
+	if complement_active and skill.school == "mingwu":
+		var enemy_hp_ratio: float = float(_enemy.hp) / max(1, _enemy.max_hp)
+		if enemy_hp_ratio < 0.5:
+			power_mult *= 1.2
+			mingwu_bonus_applied = true
+
+	# 武当互补：反射标记（在 _post_action 中处理）
+	_complement_reflect_active = complement_active and skill.school == "wudang"
+
+	# 互补效果日志
+	if complement_active and skill.complement_bonus_desc != "":
+		_log("  [color=#c8a04a][互补] %s[/color]" % skill.complement_bonus_desc)
+	if mingwu_bonus_applied:
+		_log("  [color=#c8a04a][影杀] 敌人HP<50%，伤害+20%[/color]")
+
+	# BUFF 型技能：不造成伤害，施加爆发/防御等自身效果
+	if skill.kind == Skill.Kind.BUFF:
+		_apply_player_buff(skill)
+		_refresh_hud()
+		_current_skill_index = skill_idx
+		await _post_action()
+		return
+
 	var atk: int = _player_effective_attack()
-	var raw: int = _roll_damage(int(atk * skill.power / 100.0))
+	# 使用修正后的 power_mult 和 crit_mult_bonus 计算伤害
+	var raw: int = _calc_damage_ext(atk, power_mult, _enemy.defense, true, crit_mult_bonus)
 	var dmg: int = _enemy.take_damage(raw)
 
 	if skill.skill_id == &"basic_attack":
-		_log("→ 你出拳，对 %s 造成 [color=#ff6e6e]%d[/color] 伤害" % [_enemy.display_name, dmg])
+		_log("→ 你出招，对 %s 造成 [color=#ff6e6e]%d[/color] 伤害" % [_enemy.display_name, dmg])
 	else:
 		_log("→ 你施展 [b]%s[/b]，对 %s 造成 [color=#ffb14a]%d[/color] 伤害" % [
 			skill.display_name, _enemy.display_name, dmg
 		])
 
+	_try_apply_player_debuff(skill.skill_id)
+
+	# 自 buff 型攻击技（造成伤害 + 自身爆发）
+	match String(skill.skill_id):
+		"mingwu_saofeng", "mingwu_wuyin_sanshi":
+			_player_burst_turns = max(_player_burst_turns, 1)
+			_log("  [color=#ffb14a][爆发] 暴击率 +50%%，持续 1 回合[/color]")
+
 	_refresh_hud()
+	_current_skill_index = skill_idx
 	await _post_action()
 
 
@@ -430,28 +516,61 @@ func _do_enemy_turn() -> void:
 	if _turn_label != null:
 		_turn_label.text = "敌方回合"
 	_log("\n[color=#88aaff]——敌人的回合——[/color]")
+
+	# 敌人状态检查
+	if _enemy_weak_turns > 0:
+		_enemy_weak_turns -= 1
+		if _enemy_weak_turns <= 0:
+			_log("  %s 虚弱状态已解除。" % _enemy.display_name)
+
+	if _enemy_burst_turns > 0:
+		_enemy_burst_turns -= 1
+
+	# 敌人中毒伤害
+	if _enemy_poison_turns > 0:
+		var dot: int = maxi(3, int(round(float(_enemy.max_hp) * 0.05)))
+		# 凌月互补：中毒伤害 +50%
+		if _complement_poison_boost:
+			dot = int(dot * 1.5)
+		_enemy.hp = max(0, _enemy.hp - dot)
+		_enemy_poison_turns -= 1
+		_log("  %s 中毒发作，损失 %d 点生命。" % [_enemy.display_name, dot])
+		if _enemy.is_dead():
+			_refresh_hud()
+			_end_battle(true, false)
+			return
+
 	await get_tree().create_timer(0.5).timeout
 
-	# M1 暂用最简策略：80% 普攻、20% 选另一招
 	var skill_id := _enemy_choose_skill()
 	var skill := _load_skill(skill_id)
-	var raw_atk: int = _enemy.attack
-	var skill_power: float = (skill.power if skill != null else 100) / 100.0
-	var raw: int = _roll_damage(int(raw_atk * skill_power))
+	var atk: int = _enemy.attack
+	var power_mult: float = (skill.power if skill != null else 100) / 100.0
+	var dmg: int = _calc_damage(atk, power_mult, _player.defense + Inventory.get_def_bonus(), false)
 
 	if _player_defending:
-		raw = int(raw * 0.5)
+		dmg = int(dmg * 0.5)
 
-	var def_total: int = _player.defense + Inventory.get_def_bonus()
-	var dealt: int = max(1, raw - def_total / 2)
-	_player.hp = max(0, _player.hp - dealt)
+	# 武当互补：玄武心经护体反射 15%
+	if _complement_reflect_active:
+		var reflect: int = int(dmg * 0.15)
+		if reflect > 0:
+			_enemy.hp = max(0, _enemy.hp - reflect)
+			_log("  [color=#88aaff][玄武护体] 反弹 %d 伤害[/color]" % reflect)
+			if _enemy.is_dead():
+				_refresh_hud()
+				_end_battle(true, false)
+				return
+		_complement_reflect_active = false
+
+	_player.hp = max(0, _player.hp - dmg)
 
 	if skill != null and skill.skill_id != &"basic_attack":
 		_log("← %s 使出 [b]%s[/b]，对你造成 [color=#ff6e6e]%d[/color] 伤害" % [
-			_enemy.display_name, skill.display_name, dealt
+			_enemy.display_name, skill.display_name, dmg
 		])
 	else:
-		_log("← %s 反击，对你造成 [color=#ff6e6e]%d[/color] 伤害" % [_enemy.display_name, dealt])
+		_log("← %s 攻击，对你造成 [color=#ff6e6e]%d[/color] 伤害" % [_enemy.display_name, dmg])
 
 	_try_apply_enemy_debuff(skill_id)
 	_refresh_hud()
@@ -473,22 +592,41 @@ func _enemy_choose_skill() -> StringName:
 
 
 func _try_apply_enemy_debuff(skill_id: StringName) -> void:
-	if skill_id == &"toxic_needle" and randf() < 0.55:
-		_player_poison_turns = max(_player_poison_turns, 3)
-		_log("[color=#72d2a6]你中了毒针！3 回合持续掉血。[/color]")
+	match String(skill_id):
+		"toxic_needle":
+			if randf() < 0.55:
+				_player_poison_turns = max(_player_poison_turns, 3)
+				_log("[color=#72d2a6]你中了毒针！中毒，3 回合持续掉血。[/color]")
+		"heavy_swing":
+			if randf() < 0.3:
+				_player_weak_turns = max(_player_weak_turns, 2)
+				_log("[color=#cc8844]你被重击震伤！虚弱，攻防降低 2 回合。[/color]")
 
 
 func _apply_player_status_at_turn_start() -> bool:
-	if _player_poison_turns <= 0:
-		return false
-	var dot: int = maxi(4, int(round(float(_player.max_hp) * 0.06)))
-	_player.hp = max(0, _player.hp - dot)
-	_player_poison_turns -= 1
-	_log("[color=#72d2a6]中毒发作，损失 %d 点生命。[/color]" % dot)
-	_refresh_hud()
-	if _player.is_dead():
-		_end_battle(false, false)
-		return true
+	# 虚弱：倒计时
+	if _player_weak_turns > 0:
+		_player_weak_turns -= 1
+		if _player_weak_turns <= 0:
+			_log("[color=#aaffaa]虚弱状态已解除。[/color]")
+
+	# 爆发：倒计时
+	if _player_burst_turns > 0:
+		_player_burst_turns -= 1
+		if _player_burst_turns <= 0:
+			_log("[color=#ffb14a]爆发状态结束。[/color]")
+
+	# 中毒：扣血
+	if _player_poison_turns > 0:
+		var dot: int = maxi(4, int(round(float(_player.max_hp) * 0.05)))
+		_player.hp = max(0, _player.hp - dot)
+		_player_poison_turns -= 1
+		_log("[color=#72d2a6]中毒发作，损失 %d 点生命。[/color]" % dot)
+		_refresh_hud()
+		if _player.is_dead():
+			_end_battle(false, false)
+			return true
+
 	return false
 
 
@@ -574,8 +712,157 @@ func _player_effective_speed() -> int:
 	return max(legacy_spd, core_spd)
 
 
+func _calc_damage(base_atk: int, power_mult: float, target_def: int, is_player: bool) -> int:
+	return _calc_damage_ext(base_atk, power_mult, target_def, is_player, 0.0)
+
+
+## 扩展伤害计算，支持暴击倍率加成（用于互补/装备加成系统）。
+func _calc_damage_ext(base_atk: int, power_mult: float, target_def: int, is_player: bool, crit_mult_bonus: float) -> int:
+	## 统一伤害计算：浮动 + 暴击 + 防御减免 + 虚弱系数
+	var raw: int = int(base_atk * power_mult * randf_range(0.85, 1.15))
+
+	# 暴击判定 (5% + 悟性加成 + 爆发 +50%)
+	var crit_chance: float = 0.05
+	if is_player:
+		crit_chance += _player.insight * 0.005
+		if _player_burst_turns > 0:
+			crit_chance += 0.50
+	elif _enemy_burst_turns > 0:
+		crit_chance += 0.50
+	if randf() < crit_chance:
+		var crit_mult: float = 1.5 + crit_mult_bonus
+		raw = int(raw * crit_mult)
+		if crit_mult_bonus > 0.01:
+			_log("  [color=#ffb14a][b]暴击！(×%.1f)[/b][/color]" % crit_mult)
+		else:
+			_log("  [color=#ffb14a][b]暴击！[/b][/color]")
+
+	# 防御减免（虚弱时防御降为 50%）
+	var effective_def: int = target_def
+	if not is_player and _enemy_weak_turns > 0:
+		effective_def = int(target_def * 0.5)
+	elif is_player and _player_weak_turns > 0:
+		effective_def = int(target_def * 0.5)
+	var dealt: int = max(1, raw - effective_def)
+
+	# 虚弱状态：输出伤害降低 30%
+	if is_player and _player_weak_turns > 0:
+		dealt = int(dealt * 0.7)
+	elif not is_player and _enemy_weak_turns > 0:
+		dealt = int(dealt * 0.7)
+
+	# 受伤虚弱系数（双向）
+	var source_hp_ratio: float
+	if is_player:
+		source_hp_ratio = float(_player.hp) / max(1, _player.max_hp)
+	else:
+		source_hp_ratio = float(_enemy.hp) / max(1, _enemy.max_hp)
+
+	var weakness: float = 1.0
+	if source_hp_ratio < 0.7: weakness = 0.85
+	if source_hp_ratio < 0.5: weakness = 0.65
+	if source_hp_ratio < 0.3: weakness = 0.45
+	if source_hp_ratio < 0.1: weakness = 0.25
+
+	return int(dealt * weakness)
+
+
+func _try_apply_player_debuff(skill_id: StringName) -> void:
+	## 玩家技能附加状态效果（中毒/虚弱/爆发）
+	match String(skill_id):
+		# ── 虚弱类 ──
+		"gufeng_fuhu":
+			if randf() < 0.25:
+				_enemy_weak_turns = max(_enemy_weak_turns, 2)
+				_log("  [color=#cc8844]敌人虚弱！攻防降低，持续 2 回合。[/color]")
+		"gufeng_liedi":
+			if randf() < 0.50:
+				_enemy_weak_turns = max(_enemy_weak_turns, 2)
+				_log("  [color=#cc8844]裂地震伤！敌人虚弱，攻防降低 2 回合。[/color]")
+		"huashan_poyun":
+			if randf() < 0.30:
+				_enemy_weak_turns = max(_enemy_weak_turns, 2)
+				_log("  [color=#cc8844]破云穿空！敌人虚弱，攻防降低 2 回合。[/color]")
+
+		# ── 中毒类 ──
+		"lingyue_hanshuang_zhen":
+			if randf() < 0.30:
+				_enemy_poison_turns = max(_enemy_poison_turns, 3)
+				_log("  [color=#72d2a6]寒霜淬毒！敌人中毒，持续 3 回合。[/color]")
+		"lingyue_hanshuang_wan_zhen":
+			_enemy_poison_turns = max(_enemy_poison_turns, 3)
+			_enemy_weak_turns = max(_enemy_weak_turns, 2)
+			_log("  [color=#72d2a6]万针淬毒！敌人中毒 3 回合 + 虚弱 2 回合。[/color]")
+
+		# ── 装备触发中毒 ──
+		"apply_poison_from_gear":
+			if randf() < 0.15:
+				_enemy_poison_turns = max(_enemy_poison_turns, 3)
+				_log("  [color=#72d2a6]淬毒！敌人中毒，持续 3 回合。[/color]")
+		"apply_weak_from_gear":
+			if randf() < 0.25:
+				_enemy_weak_turns = max(_enemy_weak_turns, 2)
+				_log("  [color=#cc8844]重击震伤！敌人虚弱，持续 2 回合。[/color]")
+
+		_:
+			pass
+
+	# 重置互补临时状态
+	_complement_poison_boost = false
+
+
+func _on_status_cured(cure_type: StringName) -> void:
+	## 战斗中使用了状态解除物品
+	match String(cure_type):
+		"poison":
+			_player_poison_turns = 0
+			_log("[color=#aaffaa]中毒已解除！[/color]")
+		"weak":
+			_player_weak_turns = 0
+			_log("[color=#aaffaa]虚弱已解除！[/color]")
+		"all":
+			_player_poison_turns = 0
+			_player_weak_turns = 0
+			_log("[color=#aaffaa]所有负面状态已清除！[/color]")
+	_refresh_hud()
+
+
+func _apply_player_buff(skill: Skill) -> void:
+	## 执行 BUFF 型技能：施加爆发或防御姿态
+	var sid := String(skill.skill_id)
+	match sid:
+		"defend":
+			_player_defending = true
+			_log("→ 你摆出防御姿态，本回合受到伤害减半")
+			return
+		"huashan_zixia_shengong", "huashan_zixia_ninggang", "lingyue_tayue_lingbo":
+			_player_burst_turns = max(_player_burst_turns, 3)
+			_log("→ 你施展 [b]%s[/b]！暴击率 +50%%，持续 3 回合。[color=#ffb14a][爆发][/color]" % skill.display_name)
+		"gufeng_jingang_buhuai", "wudang_xuanwu_ge":
+			_player_weak_turns = 0
+			_player_defending = true
+			_log("→ 你施展 [b]%s[/b]！虚弱清除 + 本回合防御。[color=#88aaff][守御][/color]" % skill.display_name)
+		"mingwu_mingwu_bu":
+			_player_burst_turns = max(_player_burst_turns, 1)
+			_log("→ 你施展 [b]%s[/b]！本回合暴击率 +50%%。[color=#ffb14a][爆发][/color]" % skill.display_name)
+		"mingwu_saofeng", "mingwu_wuyin_sanshi":
+			_player_burst_turns = max(_player_burst_turns, 1)
+			_log("→ 你施展 [b]%s[/b]！暴击率 +50%%，持续 1 回合。[color=#ffb14a][爆发][/color]" % skill.display_name)
+		_:
+			_log("→ 你施展 [b]%s[/b]" % skill.display_name)
+
+
+func _refresh_skill_button() -> void:
+	## 更新技能按钮显示当前可切换的技能
+	if _player_skills.size() > 1:
+		var sk: Skill = _player_skills[_current_skill_index]
+		btn_skill.text = "%s (-%d MP)" % [sk.display_name, sk.mp_cost]
+	else:
+		btn_skill.text = "(无可用技能)"
+
+
 func _roll_damage(base_attack: int) -> int:
-	## 80% - 120% 浮动
+	## 80% - 120% 浮动（保留兼容旧代码）
 	return int(base_attack * randf_range(0.8, 1.2))
 
 

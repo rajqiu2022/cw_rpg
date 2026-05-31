@@ -1,0 +1,44 @@
+id: ui_field_hud_button_feedback_fix
+description: 基于用户反馈小批量重绘 HUD 右侧按钮修正版
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  《云影侠传》游戏主界面右侧 HUD 功能按钮修正版。
+  目标不是重新发明风格，而是贴近已经确认的“背包”和“武学”按钮：
+  手绘厚涂、蓝灰玄铁底框、轻微磨损边、左侧功能图标、右侧米白书法中文。
+
+reference_images:
+  - "game/art/ui/field_hud/v1/hud_btn_inventory_normal.png"
+  - "game/art/ui/field_hud/v1/hud_btn_skill_normal.png"
+  - "assets/raw/ui/field_hud/reference/hud_inventory_button_closeup_ref.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  请重新绘制一枚同系列 HUD 功能按钮：
+  - 按钮文字：{{button_label}}
+  - 左侧图标：{{icon_desc}}
+  - 修正重点：{{fix_focus}}
+  - 候选编号：{{variant}}
+
+  必须严格遵守：
+  - 单枚横向按钮，居中摆放，宽高比例接近参考，外轮廓接近背包/武学按钮。
+  - 底框是蓝灰黑玄铁牌，边缘有手绘厚涂与磨损，不能变成平直科幻金属框。
+  - 左侧图标有体积和阴影，但不要压过文字。
+  - 右侧文字只允许简体中文“{{button_label}}”，米白色书法/毛笔感，带深色柔影。
+  - 文字大小必须接近“背包”和“武学”，不能比参考显著更大；颜色不能过黑。
+  - 背景可以是纯黑、纯白或透明感单色背景，方便后处理抠透明；不要场景背景、不要多枚按钮。
+
+  严格禁止：
+  - 禁止英文、拉丁字母、乱码、错字、繁体字、水印、签名。
+  - 禁止首界面按钮风格，禁止硬边矢量图，禁止现代网页按钮，禁止科幻发光边框。
+  - 禁止把“{{button_label}}”写成其他字。
+
+  反向：{negative}
+
+variables:
+  button_label: "系统"
+  icon_desc: "机关齿轮/铜轮图标，冷色金属质感，和同系列按钮统一"
+  fix_focus: "系统按钮要改掉当前过于硬直、科幻、银边规整的问题，必须回到背包/武学的手绘蓝灰玄铁质感"
+  variant: "A"

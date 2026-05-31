@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch8_main_01_mingwu_siege"
+title = "围攻茗雾"
+kind = 0
+desc_not_started = "联军围攻茗雾山庄外围，你孤身深入山庄腹地——师傅刑樊天在里面。"
+desc_in_progress = "穿过茗雾山庄的层层机关和守卫，朝主厅推进。苏雾笙以刑樊天为人质要挟。"
+desc_completed = "突破外围防线，进入茗雾山庄主厅。苏雾笙正在等着你——刑樊天被他控制在侧。"
+completion_triggers = Array[String](["flag_set:reached_mingwu_main_hall"])
+reward_gold = 200
+reward_exp = 150
+reward_items = Array[Dictionary]([])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch7_main_01_infiltrate_lieyun"
+title = "深入烈云"
+kind = 0
+desc_not_started = "根据戚云笙留书和章四活口口供——追踪烈云盟分舵。"
+desc_in_progress = "闯入烈云盟分舵，与赤焰、冥光长老短暂交手。戚云笙现身阻止：'都退下，他是我请来的客人。'"
+desc_completed = "与戚云笙正式相识。她坦承前两次暗助和留信是她所为。烈云盟大门首次向你敞开。"
+completion_triggers = Array[String](["flag_set:met_qi_yunsheng"])
+reward_gold = 0
+reward_exp = 40
+reward_items = Array[Dictionary]([])

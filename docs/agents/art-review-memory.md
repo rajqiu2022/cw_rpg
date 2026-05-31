@@ -1,8 +1,46 @@
 # Art Review Memory
 
 > Role: `art-review` / UI 美术审核 agent.
-> Scope: 审核所有 UI 设计产出（按钮、面板、弹窗、HUD 等）的视觉质量、风格一致性、可读性、交互合理性。在 art agent 产出资产后、system agent 接入代码前执行审核。
-> Canonical docs: `docs/ui-style-guide.md`, `docs/agents/art-memory.md`（§UI Style Direction）, `images/游戏主界面UI.png`, `images/装备界面UI.png`.
+> Scope: 审核所有项目视觉产出（场景元素 atlas、UI 资产、立绘、背景等）的视觉质量、风格一致性、可读性。
+> Canonical docs: `docs/ui-style-guide.md`, `docs/scene-element-kit-spec.md`, `docs/agents/art-memory.md`.
+
+## 自动化 Vision 审核（2026-05-09 新增）
+
+本角色可通过 `scripts/qa/review_image.py` 调用 **OkRouter Gemini Vision** 做自动化图片分析：
+
+```bash
+# 通用审核
+python scripts/qa/review_image.py <image.png> --json
+
+# Atlas 专项审核（按 scene-element-kit-spec.md 逐项检查）
+python scripts/qa/review_module_atlas.py <atlas.png> --category building --json
+```
+
+### Vision 审核能做的
+
+| 检查项 | 方式 |
+|---|---|
+| 元素是否独立无重叠 | Gemini 视觉判断 |
+| 是否有违禁项（人物/文字/水印） | Gemini 视觉判断 |
+| 透视/光源一致性 | Gemini 视觉判断 |
+| 风格是否港漫厚涂 | Gemini 视觉判断 |
+| 背景是否透明/干净 | Gemini 视觉判断 |
+| 元素数量估算 | Gemini 视觉判断 |
+
+### Vision 审核不能做的
+
+| 限制 | 原因 |
+|---|---|
+| 逐像素 alpha 通道检查 | 模型"看"压缩 JPEG，非原始 RGBA |
+| 精确颜色值比对 | 色域压缩损失 |
+| 边缘像素级白底残留 | 建议用 PIL 脚本辅助 |
+
+### 工作流
+
+1. `gen_assets.py` 出图
+2. `review_image.py` / `review_module_atlas.py` 跑 vision 审核 → JSON 报告
+3. art-review agent 读报告做 PASS/FAIL 判定
+4. 人类最终确认风格
 
 ## 核心审核原则
 

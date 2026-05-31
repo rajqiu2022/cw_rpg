@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"dragon_vein_serpent"
+display_name = "龙脉巨蟒"
+portrait_path = ""
+level = 28
+max_hp = 650
+max_mp = 0
+attack = 55
+defense = 22
+speed = 18
+skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle", &"heavy_swing"])
+aggression = 0.8
+drop_gold_min = 300
+drop_gold_max = 600
+drop_exp = 350
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([])

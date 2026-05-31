@@ -1,0 +1,26 @@
+You are reviewing a composited game scene for "Linxi Village Main Street" - a wuxia RPG starting area.
+
+This scene was assembled from modular elements sliced from 4 atlases. Please evaluate:
+
+1. Does this look like a coherent village street scene?
+2. Are there obvious gaps, misplaced elements, or weird overlaps?
+3. Is the road/path clearly visible through the center?
+4. Are buildings visible on the left and right sides?
+5. Is there vegetation (bamboo, shrubs) on the edges?
+6. Are there props (lanterns, barrels, signboards) visible?
+7. Overall, does this work as a game scene background?
+
+Reply in JSON:
+{
+  "verdict": "PASS"|"FAIL"|"WARN",
+  "summary": "<one sentence>",
+  "scene_quality": {
+    "coherence": "OK"|"POOR",
+    "road_visible": "YES"|"NO"|"PARTIAL",
+    "buildings_present": "YES"|"NO"|"PARTIAL",
+    "vegetation_present": "YES"|"NO"|"PARTIAL",
+    "props_present": "YES"|"NO"|"PARTIAL"
+  },
+  "issues": ["<list any obvious problems>"],
+  "suggestions": ["<list any improvement suggestions>"]
+}

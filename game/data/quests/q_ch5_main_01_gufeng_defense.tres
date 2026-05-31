@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_main_01_gufeng_defense"
+title = "驰援古峰"
+kind = 0
+desc_not_started = "古峰派遭袭！掌门古疆雷飞鸽求援——袭击者自称烈云盟。"
+desc_in_progress = "与流行追月驰援古月峰，协助古疆雷抵御来犯之敌。"
+desc_completed = "击退了伪装为烈云盟的茗雾刺客。古疆雷重伤，临终前交代了另一卷天书的线索。你第一次心生疑问：凶手真是烈云盟吗？"
+completion_triggers = Array[String](["enemy_defeated:mingwu_assassin_squad"])
+reward_gold = 60
+reward_exp = 80
+reward_items = Array[Dictionary]([])

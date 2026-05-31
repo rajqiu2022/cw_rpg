@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_mingwu_shadow"
+title = "茗雾·暗影身法"
+kind = 0
+desc_not_started = "茗雾山庄庄主苏雾笙亲自收你入门，传授暗影身法——你不知这是张精心编织的网。"
+desc_in_progress = "跟随苏雾笙学习隐影诀身法，参与山庄日常事务（暗地观察山庄布局和人员）。"
+desc_completed = "你学会了隐影诀入门。苏雾笙微笑赞许——但你隐隐感觉山庄深处藏着什么不可告人的秘密。"
+completion_triggers = Array[String](["flag_set:joined_mingwu"])
+reward_gold = 40
+reward_exp = 50
+reward_items = Array[Dictionary]([{"item_id": "mingwu_dagger", "count": 1}])

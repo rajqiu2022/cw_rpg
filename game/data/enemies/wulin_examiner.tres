@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"wulin_examiner"
+display_name = "武林大会考官"
+portrait_path = ""
+level = 4
+max_hp = 130
+max_mp = 0
+attack = 15
+defense = 8
+speed = 10
+skill_ids = Array[StringName]([&"basic_attack", &"huashan_yijian"])
+aggression = 0.5
+drop_gold_min = 20
+drop_gold_max = 40
+drop_exp = 30
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{ "item_id": "healing_pill_minor", "chance": 0.5, "count": 1 }])

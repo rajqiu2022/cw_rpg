@@ -74,7 +74,7 @@ func get_save_field_id(slot: int) -> StringName:
 	var data := _read_slot_data(slot)
 	if data.is_empty():
 		return &""
-	return StringName(data.get("current_field", "ch1_s1_road"))
+	return StringName(data.get("current_field", SceneRouter.START_FIELD_SCENE))
 
 
 func get_slot_meta(slot: int) -> Dictionary:

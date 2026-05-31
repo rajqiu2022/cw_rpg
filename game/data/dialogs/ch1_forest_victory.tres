@@ -1,0 +1,136 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]（最后一个小兵倒下时，林间突然安静了。你喘着粗气，铁剑撑在地上——剑刃上全是血。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "蒙面杀手首领"
+portrait_path = ""
+text = "（重伤倒地，面罩掉落——露出一张你从未见过的脸。他死死盯着你，嘴唇嗫嚅）……你知不知道你惹了谁……"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "（剑尖抵在他喉前）说。你是谁的人？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "蒙面杀手首领"
+portrait_path = ""
+text = "（咧嘴笑了一下——血从他牙缝里渗出来）茗……茗雾……\n（他的眼睛突然瞪大了——像是看见了什么极恐怖的东西。他的笑容凝固了。）"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = ""
+portrait_path = ""
+text = "[i]（他死了。但不是因为你剑下的伤。他的脖子上多了一枚黑色细针——从你身后飞来的。那根针比杀手们的毒针细得多，也快得多——你根本没看到它是从哪来的。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n6"
+
+[sub_resource type="Resource" id="node_6"]
+script = ExtResource("2_dnode")
+node_id = &"n6"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "（猛地转身，铁剑横在身前）什么人？！"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n7"
+
+[sub_resource type="Resource" id="node_7"]
+script = ExtResource("2_dnode")
+node_id = &"n7"
+speaker = ""
+portrait_path = ""
+text = "[i]（树冠一阵轻微摇晃。然后——什么都没有。没有人影，没有脚步，没有余音。只有一片竹叶从树上飘下来，落在首领的尸体上。竹叶背面，烙着一簇极淡的火焰纹。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n8"
+
+[sub_resource type="Resource" id="node_8"]
+script = ExtResource("2_dnode")
+node_id = &"n8"
+speaker = ""
+portrait_path = ""
+text = "[i]（你从没见过这个标记。但它跟黑衣人胸口的烈云盟令一模一样——只是更小、更旧、更精致。像是同一个图案的更高版本。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n9"
+
+[sub_resource type="Resource" id="node_9"]
+script = ExtResource("2_dnode")
+node_id = &"n9"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "（收剑入鞘，低声对着空无一人的树冠）……我欠你一条命。不管你是什么人——以后我会还。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "masked_killer_defeated", "value": true}, {"key": "saw_flame_leaf", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "dialog:ch1_forest_yuewuxing_talk"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_forest_victory"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5"), SubResource("node_6"), SubResource("node_7"), SubResource("node_8"), SubResource("node_9")])

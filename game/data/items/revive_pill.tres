@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/item.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = &"revive_pill"
+display_name = "活络丹"
+description = "活血通络的寻常丹药。HP+50。"
+icon_path = "res://art/ui/inventory/icons/icon_revive_pill.png"
+category = 0
+stackable = true
+max_stack = 10
+sell_price = 24
+buy_price = 60
+usable_in_battle = true
+usable_in_field = true
+heal_hp = 50
+heal_mp = 0

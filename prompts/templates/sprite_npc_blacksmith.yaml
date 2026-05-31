@@ -1,0 +1,31 @@
+id: sprite_npc_blacksmith
+description: 铁匠打铁 sprite，单帧，抡锤打铁动作
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}。
+
+prompt_template: |
+  {style_anchor}
+
+  游戏 NPC 精灵图，铁匠正在打铁。
+
+  角色：{identity_anchor}
+
+  动作：{{pose}}
+
+  构图：
+  - 1024×1024
+  - 角色高度占画布 55%~65%，水平居中
+  - 朝画幅右侧
+  - 纯白背景 #FFFFFF
+  - 角色身前有一方铁砧，右手抡铁锤高举过头
+  - 铁锤和铁砧有金属质感
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  pose: "必填"

@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "杜青衫"
+portrait_path = "res://art/characters/portrait_duqingshan_steady.png"
+text = "哈哈，冷小子！你师傅三天前就让我把剑打好。今天我一看——这小子还没来拿？再不来，我就把它卖了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "杜叔，你什么时候跟我师傅商量的？我怎么不知道。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "杜青衫"
+portrait_path = "res://art/characters/portrait_duqingshan_steady.png"
+text = "（手上动作不停，铁锤在砧上哐哐响）你师傅那人，什么时候商量过？他半夜敲我家门，就一句"给孤云打把好剑"——然后就走了。\n一句话值三百两。老子打了三天。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = ""
+portrait_path = ""
+text = "[i]（杜青衫从锻炉旁取出一柄铁剑。剑身尚有余温，剑刃在晨光下泛着冷光。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = "杜青衫"
+portrait_path = "res://art/characters/portrait_duqingshan_steady.png"
+text = "拿着。不是宝剑——但林西村的铁，竹尾村的水，淬出来的刃比你张嘴快。\n（他咧嘴一笑）你看人家铁匠刘——他就从来不废话，我只管打铁。"
+choices = []
+give_items = Array[Dictionary]([{"id": "linxi_iron_sword", "count": 1}])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "got_sword", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_tutorial_duqingshan"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5")])

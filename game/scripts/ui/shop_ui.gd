@@ -69,7 +69,7 @@ func _build_formal_layout() -> void:
 	if body == null:
 		return
 	if body.get_node_or_null("ShopInfoBar") == null:
-		var info_bar := HBoxContainer.new()
+		var info_bar: HBoxContainer = HBoxContainer.new()
 		info_bar.name = "ShopInfoBar"
 		info_bar.add_theme_constant_override("separation", 12)
 		body.add_child(info_bar)
@@ -117,10 +117,10 @@ func _refresh_buy() -> void:
 		var item: Item = Inventory.load_item_by_id(iid)
 		if item == null:
 			continue
-		var row_panel := PanelContainer.new()
+		var row_panel: PanelContainer = PanelContainer.new()
 		row_panel.custom_minimum_size = Vector2(0, 62)
 		row_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.060, 0.078, 0.86), Color(0.20, 0.32, 0.40, 0.84), 10, 1))
-		var row := HBoxContainer.new()
+		var row: HBoxContainer = HBoxContainer.new()
 		row.add_theme_constant_override("separation", 12)
 		row_panel.add_child(row)
 
@@ -128,20 +128,20 @@ func _refresh_buy() -> void:
 		if icon != null:
 			row.add_child(icon)
 
-		var name_lbl := Label.new()
+		var name_lbl: Label = Label.new()
 		name_lbl.text = "%s   ¥%d" % [item.display_name, item.buy_price]
 		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		UI_THEME.style_label(name_lbl, 18, UI_THEME.GOLD_LIGHT, false)
 		row.add_child(name_lbl)
 
-		var desc_lbl := Label.new()
+		var desc_lbl: Label = Label.new()
 		desc_lbl.text = item.description
 		desc_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		desc_lbl.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		UI_THEME.style_label(desc_lbl, 14, Color(0.68, 0.78, 0.82, 1.0), false)
 		row.add_child(desc_lbl)
 
-		var btn := Button.new()
+		var btn: Button = Button.new()
 		btn.text = "买入"
 		btn.disabled = (GameState.gold < item.buy_price)
 		btn.custom_minimum_size = Vector2(92, 42)
@@ -171,10 +171,10 @@ func _refresh_sell() -> void:
 		any_sellable = true
 
 		var sell_each: int = int(floor(float(it.sell_price) * _shop.sell_back_ratio))
-		var row_panel := PanelContainer.new()
+		var row_panel: PanelContainer = PanelContainer.new()
 		row_panel.custom_minimum_size = Vector2(0, 78)
 		row_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.050, 0.072, 0.084, 0.90), Color(0.30, 0.42, 0.50, 0.88), 10, 1))
-		var row := HBoxContainer.new()
+		var row: HBoxContainer = HBoxContainer.new()
 		row.add_theme_constant_override("separation", 12)
 		row_panel.add_child(row)
 
@@ -182,13 +182,13 @@ func _refresh_sell() -> void:
 		if icon != null:
 			row.add_child(icon)
 
-		var name_lbl := Label.new()
+		var name_lbl: Label = Label.new()
 		name_lbl.text = "%s ×%d   卖 ¥%d/件" % [it.display_name, cnt, sell_each]
 		name_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		UI_THEME.style_label(name_lbl, 18, UI_THEME.GOLD_LIGHT, false)
 		row.add_child(name_lbl)
 
-		var btn := Button.new()
+		var btn: Button = Button.new()
 		btn.text = "卖出"
 		btn.custom_minimum_size = Vector2(92, 42)
 		UI_THEME.style_button(btn, 16, UI_THEME.BLUE_STEEL)
@@ -200,7 +200,7 @@ func _refresh_sell() -> void:
 		sell_list.add_child(row_panel)
 
 	if not any_sellable:
-		var lab := Label.new()
+		var lab: Label = Label.new()
 		lab.text = "（背包空空如也）"
 		UI_THEME.style_label(lab, 16, UI_THEME.MUTED, false)
 		sell_list.add_child(lab)
@@ -254,10 +254,10 @@ func _make_item_icon(icon_key: String, icon_size: int = 34) -> TextureRect:
 	var region: Rect2 = ATTR_ICON_REGIONS.get(icon_key, Rect2())
 	if region.size.x <= 0 or region.size.y <= 0:
 		return null
-	var tex := AtlasTexture.new()
+	var tex: AtlasTexture = AtlasTexture.new()
 	tex.atlas = _attr_icon_atlas
 	tex.region = region
-	var icon := TextureRect.new()
+	var icon: TextureRect = TextureRect.new()
 	icon.custom_minimum_size = Vector2(icon_size, icon_size)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
@@ -307,7 +307,7 @@ func _on_gold_changed(_n: int) -> void:
 func _return_to_field() -> void:
 	var sid: StringName = SceneRouter.get_current_field_id()
 	if String(sid) == "":
-		sid = &"ch1_s1_road"
+		sid = SceneRouter.START_FIELD_SCENE
 	SceneRouter.go_field_smart(sid)
 
 

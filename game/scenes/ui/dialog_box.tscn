@@ -1,114 +1,117 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://g7oj1nmdtaxi"]
 
-[ext_resource type="Script" path="res://scripts/ui/dialog_box.gd" id="1_dlg"]
+[ext_resource type="Script" uid="uid://blgn5gu3jj33e" path="res://scripts/ui/dialog_box.gd" id="1_dlg"]
+[ext_resource type="Texture2D" uid="uid://rcdu11tiojsd" path="res://art/ui/field_hud/v2/hud_dialog_frame_v8.png" id="2_frame_art"]
 
-[node name="DialogBox" type="Control"]
+[node name="DialogBox" type="Control" unique_id=1215468645]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dlg")
 
-[node name="Backdrop" type="ColorRect" parent="."]
-unique_name_in_owner = true
+[node name="Frame" type="Control" parent="." unique_id=1112625441]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.45)
+anchor_left = 0.031
+anchor_top = 0.694
+anchor_right = 0.969
+anchor_bottom = 0.972
 mouse_filter = 1
 
-[node name="Frame" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.04
-anchor_top = 0.65
-anchor_right = 0.96
-anchor_bottom = 0.96
-mouse_filter = 1
-
-[node name="FrameBg" type="ColorRect" parent="Frame"]
+[node name="FrameArt" type="TextureRect" parent="Frame" unique_id=1668055748]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.08, 0.06, 0.05, 0.92)
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-
-[node name="FrameBorder" type="ColorRect" parent="Frame"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = -4.0
-color = Color(0.18, 0.14, 0.10, 0.0)
-mouse_filter = 2
-
-[node name="Content" type="HBoxContainer" parent="Frame"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 18.0
-offset_right = -24.0
-offset_bottom = -18.0
-theme_override_constants/separation = 18
-
-[node name="Portrait" type="TextureRect" parent="Frame/Content"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(180, 220)
-layout_mode = 2
+texture = ExtResource("2_frame_art")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="PortraitPlaceholder" type="ColorRect" parent="Frame" unique_id=2126609157]
+layout_mode = 0
+offset_left = 277.47998
+offset_top = 53.47998
+offset_right = 509.47998
+offset_bottom = 258.47998
+mouse_filter = 2
+color = Color(1, 0.5, 0.2, 0.15)
+
+[node name="Portrait" type="TextureRect" parent="Frame" unique_id=1431671877]
+unique_name_in_owner = true
 visible = false
+layout_mode = 0
+offset_left = 281.0
+offset_top = 57.0
+offset_right = 505.0
+offset_bottom = 254.0
+expand_mode = 1
+stretch_mode = 5
 
-[node name="TextSection" type="VBoxContainer" parent="Frame/Content"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 8
+[node name="TextPlaceholder" type="ColorRect" parent="Frame" unique_id=1713067711]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 80.0
+offset_right = 1350.0
+offset_bottom = 255.0
+mouse_filter = 2
+color = Color(0.2, 0.8, 1, 0.12)
 
-[node name="SpeakerLabel" type="Label" parent="Frame/Content/TextSection"]
+[node name="SpeakerLabel" type="Label" parent="Frame" unique_id=1639375759]
 unique_name_in_owner = true
-layout_mode = 2
-text = "Speaker"
-theme_override_colors/font_color = Color(0.86, 0.66, 0.32, 1)
-theme_override_font_sizes/font_size = 24
+layout_mode = 0
+offset_left = 312.48
+offset_top = 230.47998
+offset_right = 482.48
+offset_bottom = 266.47998
+theme_override_colors/font_color = Color(0.86, 0.76, 0.52, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.6)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 25
+text = "说话人"
+horizontal_alignment = 1
 
-[node name="TextLabel" type="RichTextLabel" parent="Frame/Content/TextSection"]
+[node name="TextLabel" type="RichTextLabel" parent="Frame" unique_id=455653199]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "..."
-fit_content = false
-scroll_active = false
-theme_override_font_sizes/normal_font_size = 20
+layout_mode = 0
+offset_left = 587.48
+offset_top = 69.47998
+offset_right = 1463.48
+offset_bottom = 250.47998
 theme_override_colors/default_color = Color(0.94, 0.92, 0.86, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "对话正文在这里显示..."
+scroll_active = false
 
-[node name="ContinueHint" type="Label" parent="Frame/Content/TextSection"]
+[node name="ContinueHint" type="Label" parent="Frame" unique_id=1192064030]
 unique_name_in_owner = true
-layout_mode = 2
-horizontal_alignment = 2
-text = "按 空格 / 点击 继续  >"
+layout_mode = 0
+offset_left = 1319.48
+offset_top = 240.47998
+offset_right = 1479.48
+offset_bottom = 261.47998
 theme_override_colors/font_color = Color(0.55, 0.5, 0.42, 1)
 theme_override_font_sizes/font_size = 14
+text = "按空格继续 >"
+horizontal_alignment = 2
 
-[node name="ChoicesContainer" type="VBoxContainer" parent="Frame"]
+[node name="ChoicesContainer" type="VBoxContainer" parent="Frame" unique_id=2016257726]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_left = 0.55
-anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 24.0
-offset_top = 18.0
-offset_right = -24.0
-offset_bottom = -18.0
+offset_left = -150.04803
+offset_top = 75.47998
+offset_right = -345.47998
+offset_bottom = -60.76001
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 8
-visible = false

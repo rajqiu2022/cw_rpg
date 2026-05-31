@@ -40,8 +40,13 @@ func _ready() -> void:
 func reset_for_new_game() -> void:
 	from_dict({})
 	add_item(&"healing_pill_minor", 2)
-	add_item(&"linxi_rice_wine", 1)
-	add_item(&"straw_sandals", 1)
+	add_item(&"linxi_jiu", 1)
+	# 各品质装备测试
+	add_item(&"straw_sandals", 1)       # 凡品
+	add_item(&"cloth_armor", 1)         # 优质
+	add_item(&"iron_sword", 1)          # 高品
+	add_item(&"battle_helmet", 1)       # 稀有
+	add_item(&"crimson_jade_pendant", 1) # 尚品
 
 
 # --- 加载与查询 ---
@@ -130,6 +135,17 @@ func remove_item(item_id: StringName, count: int = 1) -> bool:
 	return true
 
 
+func swap_slots(from_idx: int, to_idx: int) -> bool:
+	if from_idx < 0 or from_idx >= slots.size(): return false
+	if to_idx < 0 or to_idx >= slots.size(): return false
+	if from_idx == to_idx: return false
+	var tmp: Dictionary = slots[from_idx]
+	slots[from_idx] = slots[to_idx]
+	slots[to_idx] = tmp
+	emit_signal("slots_changed")
+	return true
+
+
 # --- 使用 ---
 
 func use_item(item_id: StringName, in_battle: bool = false) -> bool:
@@ -142,10 +158,35 @@ func use_item(item_id: StringName, in_battle: bool = false) -> bool:
 	if player == null:
 		return false
 
+	# 状态解除物品（战斗中）
+	var sid := String(item_id)
+	match sid:
+		"antidote_pill":
+			EventBus.status_cured.emit(&"poison")
+			_consume_item(item_id, 1)
+			EventBus.item_used.emit(item_id)
+			return true
+		"anti_weak_powder":
+			EventBus.status_cured.emit(&"weak")
+			_consume_item(item_id, 1)
+			EventBus.item_used.emit(item_id)
+			return true
+		"clarity_dew":
+			EventBus.status_cured.emit(&"all")
+			_consume_item(item_id, 1)
+			EventBus.item_used.emit(item_id)
+			return true
+
 	var new_hp: int = min(player.max_hp, player.hp + item.heal_hp)
 	var new_mp: int = min(player.max_mp, player.mp + item.heal_mp)
 	var changed := new_hp != player.hp or new_mp != player.mp
 	if not changed:
+		# 回春散同时解中毒
+		if sid == "thaw_warm_pill":
+			EventBus.status_cured.emit(&"poison")
+			_consume_item(item_id, 1)
+			EventBus.item_used.emit(item_id)
+			return true
 		return false
 
 	player.hp = new_hp
@@ -221,9 +262,9 @@ func slot_key(slot: int) -> String:
 func slot_display_name(slot: int) -> String:
 	match slot:
 		Equipment.Slot.WEAPON: return "武器"
-		Equipment.Slot.HEAD: return "头部"
+		Equipment.Slot.HEAD: return "头盔"
 		Equipment.Slot.ARMOR: return "护甲"
-		Equipment.Slot.HANDS: return "手部"
+		Equipment.Slot.HANDS: return "护腕"
 		Equipment.Slot.SHOES: return "鞋子"
 		Equipment.Slot.ACCESSORY: return "饰品"
 		_: return "未知"
@@ -298,6 +339,34 @@ func get_guard_bonus() -> int:
 	return _sum_equipped_bonus(&"get_guard_bonus")
 
 
+## 查询已装备武器的技能加成。
+## 返回 {power: int, crit_mult: float}。
+## "all" 门派武器对所有门派生效，但优先级低于专属门派加成（取较大值）。
+func get_equipped_skill_bonus(school: String) -> Dictionary:
+	var result := {"power": 0, "crit_mult": 0.0}
+	if school == "" or school == "generic":
+		return result
+
+	for eq in equipped.values():
+		var e := eq as Equipment
+		if e == null:
+			continue
+		if e.skill_bonus_school == "":
+			continue
+
+		# 同门派加成直接累加
+		if e.skill_bonus_school == school:
+			result["power"] += e.skill_bonus_power
+			result["crit_mult"] += e.skill_bonus_crit_mult
+
+		# "all" 通用加成，取最大值
+		elif e.skill_bonus_school == "all":
+			result["power"] = max(result["power"], e.skill_bonus_power)
+			result["crit_mult"] = max(result["crit_mult"], e.skill_bonus_crit_mult)
+
+	return result
+
+
 # --- 序列化（给 SaveManager 用）---
 
 func to_dict() -> Dictionary:
@@ -339,7 +408,8 @@ func from_dict(d: Dictionary) -> void:
 			"weapon": d.get("weapon_id", ""),
 			"armor": d.get("armor_id", ""),
 		}
-	for key in raw_equipped.keys():
+	@warning_ignore("untyped_declaration")
+	for key in raw_equipped:
 		var item_id: StringName = StringName(raw_equipped[key])
 		if String(item_id) != "":
 			equip(item_id)

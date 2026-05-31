@@ -92,17 +92,20 @@ func _apply_levelup() -> void:
 	refresh_derived_stats(true)
 
 func _calc_max_hp() -> int:
-	return 60 + vitality * 5 + strength * 2
+	return 80 + vitality * 8 + strength * 3
 
 func _calc_max_mp() -> int:
-	return 12 + inner_pool * 2 + inner_power + int(round(float(insight) / 2.0))
+	return 20 + inner_pool * 6 + inner_power * 2 + insight
 
 func _calc_attack() -> int:
-	return max(1, strength * 2 + int(round(float(inner_power) / 2.0)))
+	## 有效攻击 = 筋骨×2 + 内劲×1（不含装备加成，装备在战斗层叠加）
+	return max(1, strength * 2 + inner_power)
 
 func _calc_defense() -> int:
-	return max(1, guard + int(round(float(strength) / 2.0)))
+	## 有效防御 = 防御×2 + 筋骨×1
+	return max(1, guard * 2 + strength)
 
 func _calc_speed() -> int:
-	return max(1, agility + int(round(float(insight) / 2.0)) + 2)
+	## 有效速度 = 机敏×2 + 悟性×1
+	return max(1, agility * 2 + insight)
 

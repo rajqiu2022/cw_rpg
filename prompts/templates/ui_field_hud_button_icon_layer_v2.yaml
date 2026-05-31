@@ -1,0 +1,39 @@
+id: ui_field_hud_button_icon_layer_v2
+description: 生成 HUD 按钮左侧高质量独立图标层
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  《云影侠传》游戏主界面右侧 HUD 功能按钮的独立图标层。
+  图标会被程序放入统一底框左侧槽位，所以只需要生成单个完整图标，不要生成按钮。
+
+reference_images:
+  - "assets/raw/ui/field_hud/reference/hud_button_accepted_icon_style_ref.png"
+  - "tools/ui_field_hud_v1/right_buttons_redraw_v1_preview.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  请生成一个完整的手绘厚涂图标：
+  - 图标内容：{{icon_desc}}
+  - 对应按钮：{{button_label}}
+  - 候选编号：{{variant}}
+
+  必须严格贴近参考：
+  - 只生成单个图标，不要按钮底框，不要中文，不要英文。
+  - 图标居中，完整不裁切，边缘清楚，没有缺角、断裂、像素洞。
+  - 质感为武侠 RPG 手绘厚涂，带体积、柔和阴影、旧物磨损。
+  - 图标方向和体量接近参考中左侧图标，适合缩放到 HUD 按钮左槽。
+  - 背景用纯黑、纯白或透明感单色，方便后处理抠透明。
+
+  严格禁止：
+  - 禁止按钮框、面板、场景背景、文字、水印、签名。
+  - 禁止现代扁平图标、emoji、像素风、低清晰度、缺块。
+  - 禁止多个图标堆叠。
+
+  反向：{negative}
+
+variables:
+  button_label: "武学"
+  icon_desc: "古书/武学秘籍图标，蓝灰封面和米黄书页"
+  variant: "A"

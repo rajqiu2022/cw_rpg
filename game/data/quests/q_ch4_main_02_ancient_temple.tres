@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_main_02_ancient_temple"
+title = "古寺密谋"
+kind = 0
+desc_not_started = "线索指向洛阳城外古寺——据称有烈云盟密谋集会。"
+desc_in_progress = "与赵思颖、流行追月三人合力查探古寺，发现大量栽赃布置。"
+desc_completed = "古寺中的烈云盟令和密信全是伪造的栽赃道具。你生擒一名杀手——他将成为章七洗冤的关键证人。"
+completion_triggers = Array[String](["enemy_defeated:fake_lieyun_killer"])
+reward_gold = 50
+reward_exp = 60
+reward_items = Array[Dictionary]([{"item_id": "qingming_fragment", "count": 1}, {"item_id": "luoyang_clue_note", "count": 1}])

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]（一个半埋在落叶中的旧木箱。锁已生锈，轻轻一碰就开了。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = ""
+portrait_path = ""
+text = "[i]（箱内有两颗小还丹和一张泛黄的纸条，上面写着：）[/i]\n[color=#7fbcff]「茗雾之水，不可饮。」[/color]"
+choices = []
+give_items = Array[Dictionary]([{"id": "healing_pill_minor", "count": 2}])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "found_forest_box", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_forest_wooden_box"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2")])

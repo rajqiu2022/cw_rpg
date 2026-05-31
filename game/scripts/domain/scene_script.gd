@@ -34,6 +34,33 @@ extends Resource
 ## 玩家进入时的初始位置（归一化坐标，0~1 范围，(0.5, 0.8)=中下）
 @export var player_spawn: Vector2 = Vector2(0.5, 0.8)
 
+## Tiled / 模块化场景元素。每项格式：
+## {
+##   "id": "build_linxi_inn_storefront",
+##   "texture": "res://art/modules/building/build_linxi_inn_storefront.png",
+##   "pos": Vector2(0.30, 0.48),          # 归一化坐标，以 Tiled 对象中心 / tile 中心导入
+##   "scale": Vector2(1.0, 1.0),
+##   "z_index": 12,
+##   "centered": true,
+##   "require_flag": "",
+##   "hide_flag": ""
+## }
+@export var scene_objects: Array[Dictionary] = []
+
+## 程序化动态氛围物件。用于整图背景上的小动画叠加，不参与碰撞。
+## {
+##   "id": "inn_banner",
+##   "type": "banner" | "smoke" | "glow",
+##   "pos": Vector2(0.25, 0.30),
+##   "size": Vector2(0.05, 0.10),
+##   "color": "#b73328",
+##   "z_index": 25,
+##   "speed": 1.0,
+##   "require_flag": "",
+##   "hide_flag": ""
+## }
+@export var animated_props: Array[Dictionary] = []
+
 ## 场景中的 NPC 列表。每项格式：
 ## {
 ##   "npc_id": "innkeeper",

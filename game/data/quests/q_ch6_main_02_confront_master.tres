@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch6_main_02_confront_master"
+title = "师徒误会"
+kind = 0
+desc_not_started = "刑樊天击退来人后拒不交代——你逼问之下，他透露自己是茗雾山庄当年大弟子。"
+desc_in_progress = "你误以为师傅就是幕后推手——二人争执，你愤而离去。"
+desc_completed = "刑樊天在你离去前硬塞给你家传秘笈《玄霜诀》。他望着你的背影低声：'等你看清真相再回来。'"
+completion_triggers = Array[String](["flag_set:confronted_fanxuan"])
+reward_gold = 0
+reward_exp = 50
+reward_items = Array[Dictionary]([{"item_id": "xuanshuang_script", "count": 1}, {"item_id": "fanxuan_letter", "count": 1}])

@@ -1,0 +1,33 @@
+id: sprite_walk_v9
+description: 主角行走/待机帧 v9，角色高度50%-55%（比v8矮），动作连贯
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官、发型、服装、武器、酒葫芦。
+
+reference_images:
+  - "assets/_style_bible/00_protagonist_portrait_ref.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏角色精灵单帧，用于 2D RPG。
+
+  角色：{identity_anchor}
+
+  动作：{{action_desc}}
+
+  构图：
+  - 1024×1024，纯白背景 #FFFFFF
+  - 角色头顶到脚底高度占画布 50%~55%（角色要偏小，留出上下空间）
+  - 角色水平居中，双脚在画布底部 12%~18% 处
+  - 所有同序列帧保持完全一致的角色比例、体型、脚底位置
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  action_desc: "必填"

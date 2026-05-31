@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/shop_def.gd" id="1_shop"]
+
+[resource]
+script = ExtResource("1_shop")
+shop_id = &"luoyang_armory"
+display_name = "洛阳军械铺"
+greeting = "朝廷官造兵器，童叟无欺。"
+stock = Array[StringName]([&"healing_pill_minor", &"mana_pill", &"antidote_pill", &"revive_pill", &"cloth_boots", &"iron_knuckles"])
+sell_back_ratio = 0.4

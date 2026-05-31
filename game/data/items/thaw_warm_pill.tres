@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/item.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = &"thaw_warm_pill"
+display_name = "回春散"
+description = "温养经脉的回春药散。HP+30 并解除中毒状态。"
+heal_hp = 30
+heal_mp = 0
+icon_path = "res://art/ui/inventory/icons/icon_thaw_warm_pill.png"
+category = 0
+stackable = true
+max_stack = 10
+sell_price = 20
+buy_price = 50
+usable_in_battle = true
+usable_in_field = true
+heal_hp = 0
+heal_mp = 0

@@ -1063,11 +1063,10 @@ func _on_ui_requested(panel_id: StringName) -> void:
 	if not _panels_ready:
 		return
 	match panel_id:
-		&"close_all":
-			_on_close_all()
-			return
 		&"inventory":
 			_open_inventory_panel()
+		&"close_equipment":
+			if _equipment_panel: _equipment_panel.close()
 		&"equipment":
 			_open_equipment_panel()
 		&"skills":
@@ -1195,11 +1194,10 @@ func _on_system_panel_opened() -> void:
 		_player.set_can_move(false)
 
 
-func _on_close_all() -> void:
-	if _inventory_panel != null: _inventory_panel.close()
-	if _equipment_panel != null: _equipment_panel.close()
 
 func _on_system_panel_closed() -> void:
+	if _player != null:
+		_player.can_move = true
 	_system_panel_open = false
 	if _primary_hud != null:
 		_primary_hud.show_after_system_ui()

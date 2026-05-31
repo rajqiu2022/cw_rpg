@@ -1,0 +1,209 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]（林深处传来兵刃交击的声音——快、密、狠。不是比武，是在搏命。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = ""
+portrait_path = ""
+text = "[i]（你拨开最后一片灌木，看见了她——一个红衣女子，背靠古树，手中短剑翻飞如月华。她面前是五个蒙面黑衣人，每人胸口都佩着烈云盟的火焰令。但她已经受伤了——肩头一片黑紫，是毒。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "蒙面杀手甲"
+portrait_path = ""
+text = "（冷笑着逼近）悦姑娘，这天底下还没有人能逃过我们兄弟五个的围杀。放下剑，留你全尸。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "（咬牙强忍毒发，声音冷得像霜）……五个人杀一个中了毒的，居然还在说话。你们烈云盟的杀手，什么时候这么客气了？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = "蒙面杀手甲"
+portrait_path = ""
+text = "牙尖嘴利。等毒走到心脉——你连嘴都动不了。上！"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n6"
+
+[sub_resource type="Resource" id="node_6"]
+script = ExtResource("2_dnode")
+node_id = &"n6"
+speaker = ""
+portrait_path = ""
+text = "[i]（五人同时扑上。女子深吸一口气——左手按住肩上的毒伤，右手剑尖微抬。她知道这一剑挡不住五个人。但她没有闭眼。）[/i]"
+choices = Array[Dictionary]([
+	{"text": ""住手！"（拔剑冲出）", "next": "fight", "set_flag": {"chose_fight": true}},
+	{"text": "先观察一下战况", "next": "observe", "set_flag": {"chose_observe": true}}
+])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[sub_resource type="Resource" id="node_fight"]
+script = ExtResource("2_dnode")
+node_id = &"fight"
+speaker = ""
+portrait_path = ""
+text = "[i]（你从灌木后一跃而出，铁剑在手。平生第一次——你在五个陌生人面前拔剑。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:fight2"
+
+[sub_resource type="Resource" id="node_fight2"]
+script = ExtResource("2_dnode")
+node_id = &"fight2"
+speaker = "蒙面杀手乙"
+portrait_path = ""
+text = "什么人？！"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:fight3"
+
+[sub_resource type="Resource" id="node_fight3"]
+script = ExtResource("2_dnode")
+node_id = &"fight3"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "路过的。\n——五个打一个，还下毒。你们连路边那个拦路打劫的散兵都不如。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:fight4"
+
+[sub_resource type="Resource" id="node_fight4"]
+script = ExtResource("2_dnode")
+node_id = &"fight4"
+speaker = ""
+portrait_path = ""
+text = "[i]（红衣女子看了你一眼。只是一瞬——但她那双被毒血染得模糊的眼睛里，闪过一道极亮的光。然后她重新抬起了剑。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:fight5"
+
+[sub_resource type="Resource" id="node_fight5"]
+script = ExtResource("2_dnode")
+node_id = &"fight5"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "（声音仍然冷，但气息中多了一点暖意）……小心他们的毒针。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &"q_ch1_side_yuewuxing"
+complete_quest = &""
+on_end = "battle:masked_killer_ambush"
+
+[sub_resource type="Resource" id="node_observe"]
+script = ExtResource("2_dnode")
+node_id = &"observe"
+speaker = ""
+portrait_path = ""
+text = "[i]（你隐在树后，扫过五个蒙面人的站位。两人在前、三人在侧——典型的围杀阵。但有一个破绽：右后方的那个黑衣人，在不时回头望向一棵老树的树冠——他在戒备什么。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:obs2"
+
+[sub_resource type="Resource" id="node_obs2"]
+script = ExtResource("2_dnode")
+node_id = &"obs2"
+speaker = ""
+portrait_path = ""
+text = "[i]（树冠？你顺着他的目光看去——那里空无一人。但地上有一截被踩断的树枝。新鲜的断口。有人刚刚从树上跃下过。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:obs3"
+
+[sub_resource type="Resource" id="node_obs3"]
+script = ExtResource("2_dnode")
+node_id = &"obs3"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "他们不是在围猎她——是在把她赶到那棵树下。树上还有一个人。\n（你拔出了铁剑）但现在不是想这个的时候。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &"q_ch1_side_yuewuxing"
+complete_quest = &""
+on_end = "battle:masked_killer_ambush"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_forest_yuewuxing"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5"), SubResource("node_6"), SubResource("node_fight"), SubResource("node_fight2"), SubResource("node_fight3"), SubResource("node_fight4"), SubResource("node_fight5"), SubResource("node_observe"), SubResource("node_obs2"), SubResource("node_obs3")])

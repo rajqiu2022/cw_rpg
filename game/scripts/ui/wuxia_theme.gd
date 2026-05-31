@@ -17,7 +17,7 @@ const MUTED := Color(0.48, 0.58, 0.64, 1.0)
 
 
 static func panel(bg: Color = INK_SOFT, border: Color = GOLD, radius: int = 14, border_width: int = 2) -> StyleBoxFlat:
-	var s := StyleBoxFlat.new()
+	var s: StyleBoxFlat = StyleBoxFlat.new()
 	s.bg_color = bg
 	s.border_color = border
 	s.set_border_width_all(border_width)
@@ -48,7 +48,7 @@ static func style_button(btn: Button, font_size: int = 22, accent: Color = GOLD)
 	btn.add_theme_stylebox_override("disabled", button_style(Color(0.045, 0.055, 0.062, 0.66), Color(0.22, 0.28, 0.32, 0.80), 8))
 	btn.add_theme_color_override("font_color", TEXT)
 
-	btn.add_theme_color_override("font_hover_color", GOLD_LIGHT)
+	btn.add_theme_color_override("font_hover_color", Color(0.90, 0.78, 0.42, 1.0))
 	btn.add_theme_color_override("font_pressed_color", Color(0.90, 0.98, 1.0, 1.0))
 	btn.add_theme_color_override("font_disabled_color", Color(0.34, 0.40, 0.43, 1.0))
 	btn.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.03, 0.95))

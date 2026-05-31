@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch6_main_01_return_home"
+title = "回乡探师"
+kind = 0
+desc_not_started = "古峰血战后心生疑窦——决定回林西村探望师傅刑樊天。"
+desc_in_progress = "回到林西村，寻找刑樊天。村里气氛不对——有陌生人在暗中监视。"
+desc_completed = "撞见刑樊天被茗雾山庄的人围困！你援手击退——但刑樊天拒绝说明来由。"
+completion_triggers = Array[String](["enemy_defeated:mingwu_thugs_fanxuan"])
+reward_gold = 0
+reward_exp = 30
+reward_items = Array[Dictionary]([])

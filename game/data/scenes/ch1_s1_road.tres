@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
-[ext_resource type="Resource" path="res://data/dialogs/ch1_road_intro.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/dialogs/ch1_road_enter.tres" id="2_intro"]
 
 [resource]
 script = ExtResource("1_scn")
 scene_id = &"ch1_s1_road"
-display_name = "林西村外 · 官道"
+display_name = "林西村外 · 山道"
 background_path = "res://art/backgrounds/bg_ch1_s1_road.png"
 bgm_path = ""
 on_enter_dialog = ExtResource("2_intro")
@@ -15,20 +15,20 @@ hotspots = [
 		"label": "查看石碑",
 		"pos_x": 0.2,
 		"pos_y": 0.62,
-		"action": "dialog:ch1_stone_inscription"
+		"action": "dialog:ch1_road_stone"
 	},
 	{
 		"label": "路边尸体",
 		"pos_x": 0.5,
 		"pos_y": 0.74,
-		"action": "dialog:ch1_corpse_examine",
+		"action": "dialog:ch1_road_corpse",
 		"hide_flag": "defeated_thug_lone"
 	},
 	{
-		"label": "继续前行 →",
+		"label": "→ 沿山道继续前行，前往竹尾村",
 		"pos_x": 0.84,
 		"pos_y": 0.55,
-		"action": "dialog:ch1_road_after_thug",
+		"action": "dialog:ch1_road_after_battle",
 		"require_flag": "defeated_thug_lone"
 	}
 ]

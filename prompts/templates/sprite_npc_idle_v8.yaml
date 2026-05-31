@@ -1,0 +1,30 @@
+id: sprite_npc_idle_v8
+description: NPC 待机动画帧，4帧微动，不加参考图避免审核拦截
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}。
+
+prompt_template: |
+  {style_anchor}
+
+  游戏 NPC 待机单帧，第 {{frame_index}} 帧（共 4 帧连贯循环）。
+
+  角色：{identity_anchor}
+
+  动作：{{motion}}
+
+  要求：
+  - 1024×1024，纯白背景
+  - 朝右侧站立
+  - 角色高度占画布 50%~55%
+  - 与同序列其他帧保持完全一致的长相和服装
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  frame_index: "1"
+  motion: "必填"

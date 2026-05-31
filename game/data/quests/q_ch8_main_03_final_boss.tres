@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch8_main_03_final_boss"
+title = "最终决战·苏雾笙"
+kind = 0
+desc_not_started = "主厅中苏雾笙以刑樊天为人质——你即将拼死一战时，刑樊天的内息悄然渡入你剑中。"
+desc_in_progress = "师徒联手对决苏雾笙。茗雾千年阴谋的终局——千年宿怨、天书三卷、渊冥子血脉，全在这一战清算。"
+desc_completed = "苏雾笙身死，茗雾千年宿怨终结。烈云盟洗清污名，武林之谜揭晓。天书三卷归于各派守护——江湖重归安宁。"
+completion_triggers = Array[String](["enemy_defeated:suwusheng"])
+reward_gold = 500
+reward_exp = 500
+reward_items = Array[Dictionary]([{"item_id": "yuanming_jade", "count": 1}, {"item_id": "mingwu_confession", "count": 1}])

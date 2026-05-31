@@ -3,7 +3,9 @@ extends Control
 signal closed
 
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
+const UI_DISPLAY_ART := preload("res://scripts/ui/ui_display_art.gd")
 const SKILL_DIR := "res://data/skills/"
+const DISPLAY_ART_PATH := "res://art/ui/cold_wuxia/v2/ui_display_skill_bright.png"
 const ATTR_ICON_ATLAS_PATH := "res://art/ui/cold_wuxia/v1/ui_cold_wuxia_attribute_icons_v1.png"
 const ATTR_ICON_REGIONS := {
 	"筋骨": Rect2(37, 55, 203, 204),
@@ -32,6 +34,7 @@ func _ready() -> void:
 		_attr_icon_atlas = load(ATTR_ICON_ATLAS_PATH)
 	_build_formal_layout()
 	_apply_visual_style()
+	UI_DISPLAY_ART.install_fullscreen_panel(self, DISPLAY_ART_PATH, close)
 	close_btn.pressed.connect(close)
 	_load_skills()
 	_refresh_list()
@@ -53,7 +56,7 @@ func _build_formal_layout() -> void:
 	if body == null:
 		return
 	if body.get_node_or_null("SkillToolbar") == null:
-		var toolbar := HBoxContainer.new()
+		var toolbar: HBoxContainer = HBoxContainer.new()
 		toolbar.name = "SkillToolbar"
 		toolbar.add_theme_constant_override("separation", 10)
 		body.add_child(toolbar)
@@ -77,7 +80,7 @@ func _build_formal_layout() -> void:
 	detail.custom_minimum_size = Vector2(610, 0)
 	detail.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	if body.get_node_or_null("SkillActions") == null:
-		var actions := HBoxContainer.new()
+		var actions: HBoxContainer = HBoxContainer.new()
 		actions.name = "SkillActions"
 		actions.alignment = BoxContainer.ALIGNMENT_CENTER
 		actions.add_theme_constant_override("separation", 12)
@@ -102,7 +105,7 @@ func _build_formal_layout() -> void:
 
 
 func _add_filter_button(parent: HBoxContainer, label: String, mode: String) -> void:
-	var btn := Button.new()
+	var btn: Button = Button.new()
 	btn.text = label
 	btn.custom_minimum_size = Vector2(96, 38)
 	UI_THEME.style_button(btn, 15, UI_THEME.BLUE_STEEL)
@@ -181,19 +184,19 @@ func _skill_visible(skill: Skill) -> bool:
 
 
 func _make_skill_row(skill: Skill) -> Control:
-	var row_panel := PanelContainer.new()
+	var row_panel: PanelContainer = PanelContainer.new()
 	row_panel.custom_minimum_size = Vector2(0, 96)
 	var border := _kind_accent(skill)
 	if skill.skill_id == _selected_skill_id:
 		border = UI_THEME.GOLD_LIGHT
 	row_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.038, 0.060, 0.072, 0.90), border, 12, 1))
-	var row := HBoxContainer.new()
+	var row: HBoxContainer = HBoxContainer.new()
 	row.add_theme_constant_override("separation", 10)
 	row_panel.add_child(row)
 	var icon := _make_skill_icon(skill)
 	if icon != null:
 		row.add_child(icon)
-	var btn := Button.new()
+	var btn: Button = Button.new()
 	btn.text = "%s  ·  %s\n消耗 %d · 威力 %d%% · %d 段" % [skill.display_name, _kind_text(skill.kind), skill.mp_cost, skill.power, skill.hit_count]
 	btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -371,13 +374,13 @@ func _make_skill_icon(skill: Skill) -> TextureRect:
 			icon_key = "机敏"
 		var region: Rect2 = ATTR_ICON_REGIONS.get(icon_key, Rect2())
 		if region.size.x > 0 and region.size.y > 0:
-			var atlas_tex := AtlasTexture.new()
+			var atlas_tex: AtlasTexture = AtlasTexture.new()
 			atlas_tex.atlas = _attr_icon_atlas
 			atlas_tex.region = region
 			tex = atlas_tex
 	if tex == null:
 		return null
-	var icon := TextureRect.new()
+	var icon: TextureRect = TextureRect.new()
 	icon.custom_minimum_size = Vector2(52, 52)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED

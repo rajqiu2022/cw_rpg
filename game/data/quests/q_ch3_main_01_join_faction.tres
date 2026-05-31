@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_main_01_join_faction"
+title = "入派抉择"
+kind = 0
+desc_not_started = "武林大会召开，五派齐聚商议大弟子被杀事件。茗雾山庄以"也是受害者"身份出席。"
+desc_in_progress = "各派当场考校江湖晚辈——你需要在五派中选择其一加入。"
+desc_completed = "你已选择门派。从此，你的武功、师承、江湖关系都将围绕这一选择展开。"
+completion_triggers = Array[String](["flag_set:joined_faction"])
+reward_gold = 50
+reward_exp = 40
+reward_items = Array[Dictionary]([{"item_id": "faction_token", "count": 1}])

@@ -1,0 +1,43 @@
+id: ui_field_hud_button_cold_wuxia
+description: 游戏主 HUD 右侧功能按钮 normal 母版（含图标和简体中文）
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  《云影侠传》游戏主界面右侧功能按钮，寒山玄铁冷色武侠风，
+  深墨蓝玄铁底、冷钢蓝外框、寒玉青高光、暗纹雕花、金属铆钉，
+  港漫厚涂质感，适合 Godot TextureButton 三态派生。
+
+reference_images:
+  - "assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_field_hud_screen_gpt_v1.png"
+  - "game/art/backgrounds/bg_main_menu_gpt_v6.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  生成一个独立 HUD 功能按钮 normal 母版。
+
+  按钮内容：
+  - 中文标题：{{button_label}}
+  - 图标主题：{{icon_desc}}
+
+  资产规则（必须严格执行）：
+  - 只输出一个横向功能按钮，居中摆放，不要完整界面截图。
+  - 背景必须纯白（#FFFFFF）或透明感白底，不能包含场景背景、人物、建筑、竹林。
+  - 按钮比例约 2.7:1，类似参考 HUD 右侧按钮。
+  - 需要包含一个清晰小图标和简体中文标题“{{button_label}}”。
+  - 字体必须清晰可读，不能错字、乱码、繁体字、英文。
+  - normal 状态：深墨蓝内底，玄铁边框，冷钢蓝与寒玉高光稳定，不过曝。
+  - 之后 hover / pressed 会由程序从这张 normal 母版派生，所以不要生成多状态图。
+  - 边缘干净，轮廓完整，便于抠透明；不要阴影连到白底外太远。
+
+  严格限制：
+  - 不要现代网页按钮，不要扁平商务 UI。
+  - 不要暖金主色、不要喜庆大红、不要霓虹绿。
+  - 不要英文、不要拉丁字母、不要水印、不要签名。
+
+  反向：{negative}
+
+variables:
+  button_label: "背包"
+  icon_desc: "布袋图标"

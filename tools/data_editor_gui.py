@@ -61,7 +61,7 @@ ALL_TYPES = ["Item", "Equipment", "EnemyDef", "Skill", "QuestDef", "ShopDef"]
 
 # 表格中显示的列（每种类型不同）
 LIST_COLUMNS = {
-    "Item":         ("display_name", "icon_path", "heal_hp", "heal_mp", "buy_price", "sell_price"),
+    "Item":         ("display_name", "icon_path", "quality", "heal_hp", "heal_mp", "buy_price", "sell_price"),
     "Equipment":    ("display_name", "icon_path", "quality", "slot", "atk_bonus", "def_bonus"),
     "EnemyDef":     ("display_name", "portrait_path", "level", "max_hp", "attack", "defense"),
     "Skill":        ("display_name", "icon_path", "kind", "mp_cost", "power"),
@@ -71,7 +71,7 @@ LIST_COLUMNS = {
 
 # 列标题中文
 COL_HEADERS = {
-    "display_name": "名称", "title": "名称", "icon_path": "图标", "portrait_path": "立绘",
+    "display_name": "名称", "title": "名称", "icon_path": "图标", "portrait_path": "立绘", "quality": "品质",
     "heal_hp": "回复HP", "heal_mp": "回复MP", "buy_price": "买价", "sell_price": "卖价",
     "slot": "槽位", "atk_bonus": "攻击", "def_bonus": "防御", "speed_bonus": "速度",
     "level": "等级", "max_hp": "HP", "attack": "攻击", "defense": "防御",
@@ -84,7 +84,7 @@ COL_HEADERS = {
 FIELD_CN = {
     "item_id": "道具ID", "enemy_id": "敌人ID", "skill_id": "技能ID",
     "quest_id": "任务ID", "shop_id": "商店ID",
-    "display_name": "名称", "title": "名称", "icon_path": "图标", "portrait_path": "立绘",
+    "display_name": "名称", "title": "名称", "icon_path": "图标", "portrait_path": "立绘", "quality": "品质",
     "description": "描述", "icon_path": "图标路径",
     "portrait_path": "立绘路径",
     "category": "类别", "stackable": "可堆叠", "max_stack": "最大堆叠",
@@ -112,7 +112,7 @@ FIELD_CN = {
 }
 
 SLOT_NAMES = ["武器", "头盔", "衣甲", "手套", "鞋子", "饰品"]
-QUALITY_NAMES = ["白品", "绿品", "蓝品", "紫品", "橙品"]
+QUALITY_NAMES = ["凡品", "优质", "高品", "稀有", "尚品"]
 QUALITY_COLORS = ["#cccccc", "#44cc44", "#4488ff", "#cc44ff", "#ff8822"]
 KIND_NAMES_QUEST = ["主线", "支线"]
 KIND_NAMES_SKILL = ["攻击", "治疗", "增益", "减益"]
@@ -327,7 +327,7 @@ class DataEditorApp:
             values = [rid]
             for col in columns:
                 val = data.get(col, "")
-                if col == "quality" and cls == "Equipment":
+                if col == "quality" and cls in ("Item", "Equipment"):
                     q = int(val) if val else 0
                     val = QUALITY_NAMES[q] if 0 <= q < 5 else str(val)
                 if col in ("icon_path", "portrait_path") and val:
@@ -337,9 +337,9 @@ class DataEditorApp:
                     val = "-"
                 values.append(_fmt(val))
             self._tree.insert("", END, values=values, iid=rid,
-                tags=(str(data.get("quality", 0)),) if cls == "Equipment" else ())
+                tags=(str(data.get("quality", 0)),) if cls in ("Item", "Equipment") else ())
         # 品质着色
-        if cls == "Equipment":
+        if cls in ("Item", "Equipment"):
             for q_idx in range(5):
                 self._tree.tag_configure(str(q_idx), foreground=QUALITY_COLORS[q_idx])
 

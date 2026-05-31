@@ -15,6 +15,14 @@
   --jade: #76b79b;
   --bad: #de7865;
   --shadow: rgba(0, 0, 0, 0.42);
+  /* 编辑器扩展变量 */
+  --accent: #d7b46a;
+  --accent-bg: rgba(215, 180, 106, 0.12);
+  --bg-hover: rgba(215, 180, 106, 0.06);
+  --bg-input: rgba(255, 248, 225, 0.055);
+  --text-secondary: #b8ad98;
+  --text-tertiary: #8a8070;
+  --border-color: rgba(222, 184, 104, 0.22);
 }
 
 * { box-sizing: border-box; }
@@ -860,6 +868,46 @@ a.req-btn {
   bottom: 12px;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.image-preview-counter {
+  color: var(--muted);
+  font-size: 13px;
+  user-select: none;
+}
+
+.image-preview-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 72px;
+  padding: 0;
+  border: none;
+  background: rgba(0, 0, 0, 0.50);
+  color: rgba(244, 234, 212, 0.85);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+  z-index: 10;
+  transition: background 0.15s, color 0.15s;
+  user-select: none;
+}
+
+.image-preview-arrow:hover {
+  background: rgba(0, 0, 0, 0.72);
+  color: var(--gold-2);
+}
+
+.image-preview-prev {
+  left: 10px;
+}
+
+.image-preview-next {
+  right: 10px;
 }
 
 .image-preview-actions button {
@@ -1157,6 +1205,95 @@ a.req-btn {
   width: 34px;
   height: 34px;
   place-items: center;
+
+/* ---- Confirm Modal ---- */
+.confirm-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.62);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-modal.show {
+  display: flex;
+}
+
+.confirm-dialog {
+  background: var(--panel-strong);
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  padding: 28px 32px;
+  min-width: 360px;
+  max-width: 480px;
+  box-shadow: 0 8px 32px var(--shadow);
+}
+
+.confirm-dialog p {
+  margin: 0 0 24px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.confirm-actions button {
+  padding: 8px 22px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: var(--field);
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.confirm-actions button:hover {
+  background: var(--line);
+}
+
+.confirm-actions .btn-primary {
+  background: var(--cinnabar);
+  border-color: var(--cinnabar);
+  color: #fff;
+}
+
+.confirm-actions .btn-primary:hover {
+  background: #d45a48;
+}
+
+/* ---- Toast ---- */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel-strong);
+  border: 1px solid var(--jade);
+  color: var(--text);
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 3000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.toast.show {
+  opacity: 1;
+}
+
+.toast-error {
+  border-color: var(--bad);
+}
   color: #2c160b;
   font-weight: 900;
   background: var(--gold);

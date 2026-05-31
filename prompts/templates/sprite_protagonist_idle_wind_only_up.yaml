@@ -1,0 +1,48 @@
+# 主角 idle 待机 6 帧 strip（仅风动版）
+# 不改变参考图的任何东西——姿势、腿位、衣服、脸全部保持。
+# 只在 6 帧之间加入发带和衣袍的风吹微动。
+
+id: sprite_protagonist_idle_wind_only_up
+description: idle 6 帧 strip，不改参考图，仅加风动
+quality: medium
+size: "1536x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/assets/raw/sprite/v3/sprite_lengguyun_walk_up_8f_v2_frame3.png"
+require_reference_images: true
+
+prompt_template: |
+  {style_anchor}
+
+  The uploaded reference image is a game character sprite. Your task is to create a 6-frame idle animation strip.
+
+  **CRITICAL: Do NOT change the character.**
+  Keep the exact same character — same pose, same leg position, same face, same hair, same gray robe color, same white inner shirt, same sword, same green wine gourd, same boots, same proportions, same height on canvas.
+  Do NOT redesign, recolor, or reinterpret anything about the character.
+
+  **The ONLY thing that changes across 6 frames:**
+  - Hair ribbon at the back of the head sways slightly left and right (gentle breeze)
+  - Robe hem at the bottom flutters up and down slightly
+  - Sleeve edges move subtly
+
+  **Output:**
+  - Single-row 6-frame sprite strip, canvas 1536x1024, white background #FFFFFF
+  - 6 equal columns, each ~256x1024
+  - Character centered in each column
+  - Character height on canvas same as reference (~80-96 px)
+
+  **6-frame breeze cycle:**
+  Frame 1: calm
+  Frame 2: breeze picking up, ribbon lifting
+  Frame 3: breeze strongest, ribbon highest, robe hem lifted
+  Frame 4: breeze calming, ribbon falling
+  Frame 5: nearly calm
+  Frame 6: calm, similar to frame 1
+
+  Back view, character facing away from camera.
+  NO text, NO watermark, NO grid, NO spiders.
+  NO headband or red ribbons — only a thin dark hair tie.
+
+  {negative}
+
+variables: {}

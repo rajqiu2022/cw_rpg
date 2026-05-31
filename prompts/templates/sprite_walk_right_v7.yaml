@@ -1,0 +1,40 @@
+id: sprite_walk_right_v7
+description: 主角右向行走帧 v7，角色高度50%-55%，动作连贯验证
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官、发型、服装、武器、酒葫芦。
+
+reference_images:
+  - "assets/_style_bible/00_protagonist_portrait_ref.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏角色行走动画单帧，用于 2D RPG 精灵图。
+
+  角色：{identity_anchor}
+
+  姿态：朝右侧行走，第 {{frame_index}} 帧（共 8 帧循环）
+  - {{leg_phase}}
+  - 武侠轻快步伐，手臂自然摆动，左手扶剑鞘
+  - 衣摆和披风随步伐轻微飘动
+
+  构图（极其重要）：
+  - 1024×1024 画布
+  - 角色从头顶到脚底高度约占画布高度的 50%~55%（不能再高）
+  - 角色水平居中，双脚在画布底部约 10%~15% 处
+  - 纯白背景 #FFFFFF
+  - 所有 8 帧必须保持完全一致的角色比例和脚底位置
+
+  反向：{negative}
+  - 禁止角色过高超过画布 60%
+  - 禁止脚底位置每帧变化
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  frame_index: "1|2|3|4|5|6|7|8"
+  leg_phase: "必填"

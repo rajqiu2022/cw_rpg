@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "沈半盏"
+portrait_path = "res://art/characters/portrait_shenbanzhan_friendly.png"
+text = "哟！冷小子！你师傅跟我说了——今天下山？来来来，坐。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = ""
+portrait_path = ""
+text = "[i]（沈半盏从柜台上摸出一个粗瓷碗，倒了一碗酒推到你面前。碗沿上有一道旧缺口——这碗你用了十年。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "沈半盏"
+portrait_path = "res://art/characters/portrait_shenbanzhan_friendly.png"
+text = "你七岁那年第一次偷喝我的酒，醉倒在柜台底下。你师傅把你提回去，一路骂，骂了一路也没松手。\n（他呵呵一笑）转眼二十岁了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "沈叔，你听说了外面的事吗？各派大弟子——"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = "沈半盏"
+portrait_path = "res://art/characters/portrait_shenbanzhan_friendly.png"
+text = "（笑容淡了几分）听说了。\n这江湖啊，太平了二十年，我以为是老天爷开了眼。现在看来——老天爷只是在憋着一口气。\n（他沉默片刻，又恢复笑脸）行了，别愁眉苦脸的。我这有些路上用得着的东西，来看看？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "shop:linxi_shenbanzhan"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_main_street_shenbanzhan"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5")])

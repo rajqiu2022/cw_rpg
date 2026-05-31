@@ -1,0 +1,35 @@
+id: sprite_npc_idle
+description: 通用 NPC 待机 sprite，高品，纯白背景
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  以上外貌为唯一权威描述，本张输出必须与之一致。
+
+prompt_template: |
+  {style_anchor}
+
+  游戏 NPC 待机站姿，用于 2D RPG 精灵图（sprite）。
+
+  角色：{identity_anchor}
+
+  姿态：{{pose}}，朝画幅右侧
+
+  关键要求 —— 必须是 SPRITE 精灵图格式：
+  - 角色孤立站立，必须完全没有背景场景（无地面、无墙壁、无道具）
+  - 背景必须是纯白色 #FFFFFF，没有任何纹理、渐变或阴影
+  - 角色从白色背景中清晰分离
+  - 1024×1024 正方形画布，角色高度占画布 55%~65%，水平居中
+  - 双脚在画布底部约 10% 处
+  - 角色下方可以有极淡的黑色落地阴影（帮助定位脚底），但不能有地面线
+
+  反向：{negative}
+  - 禁止任何背景场景、室内环境、地面纹理
+  - 禁止背景渐变色
+  - 禁止灰色背景、米色背景
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  pose: "必填"

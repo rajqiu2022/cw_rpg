@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"wudang_taiji_sixiang"
+display_name = "太极剑法·四象"
+icon_path = ""
+description = "武当进阶剑法，分四象方位攻敌。攻击 +50%，命中 +20。"
+kind = 0
+target = 0
+mp_cost = 12
+power = 150
+hit_count = 1
+animation_id = &"default"
+school = "wudang"
+is_passive = false
+complemented_by = "wudang_xuanwu_xinjing"
+complement_bonus_power = 0
+complement_bonus_desc = "玄武心经护体，受击时反射15%伤害"

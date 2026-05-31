@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"gufeng_fuhu"
+display_name = "开山十八刀·伏虎"
+icon_path = ""
+description = "古峰进阶刀法，如伏虎之势劈下。攻击 +60%，25% 概率虚弱（攻防-30%，2回合）。"
+kind = 0
+target = 0
+mp_cost = 12
+power = 160
+hit_count = 1
+animation_id = &"default"
+school = "gufeng"
+is_passive = false
+complemented_by = "gufeng_jingang_li"
+complement_bonus_power = 15
+complement_bonus_desc = "金刚力淬炼筋骨，刀势更沉（power+15）"

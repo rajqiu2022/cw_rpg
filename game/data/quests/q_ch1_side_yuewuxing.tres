@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_yuewuxing"
+title = "援手救人"
+kind = 1
+desc_not_started = "密林深处一名红衣女子被五名蒙面杀手围攻。她中了毒——但她没有求饶。"
+desc_in_progress = "五个打一个还下毒——冷孤云看不过去了。帮助悦无姮击退蒙面杀手。"
+desc_completed = "你与悦无姮并肩击退了杀手。她给了你凌月派的信物——三天后，凌月山武林大会再见。"
+completion_triggers = Array[String](["flag_set:chapter1_complete"])
+reward_gold = 30
+reward_exp = 30
+reward_items = Array[Dictionary]([])

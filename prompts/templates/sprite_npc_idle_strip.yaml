@@ -1,0 +1,38 @@
+id: sprite_npc_idle_strip
+description: NPC 8帧站立休息动画条，单图生成保证帧间一致
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}。
+
+prompt_template: |
+  生成一个游戏 NPC 的 8 帧待机动画精灵条（sprite strip）。
+
+  角色：{identity_anchor}
+
+  精灵条布局：
+  - 8 个帧从左到右水平排列在一个画布上
+  - 每个帧是相同尺寸的独立格子，格子之间有 2px 灰色分隔线
+  - 所有 8 个格子的角色比例、体型、五官、服装完全一致（同一个角色）
+  - 每一格内角色高度约占格子高度的 55%~65%
+  - 纯白背景
+
+  8 帧动作（连贯的站立休息循环）：
+  - 帧 1：正常站立
+  - 帧 2：轻微吸气，胸口微提
+  - 帧 3：同帧 1
+  - 帧 4：轻微呼气，重心微移
+  - 帧 5：头微侧
+  - 帧 6：同帧 1
+  - 帧 7：微调整姿态
+  - 帧 8：回到帧 1，完整循环
+
+  反向：{negative}
+  - 禁止每帧角色长相不同
+  - 禁止服装颜色变化
+  - 禁止水印签名
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"

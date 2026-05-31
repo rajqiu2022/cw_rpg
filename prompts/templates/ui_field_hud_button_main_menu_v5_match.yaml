@@ -1,0 +1,41 @@
+id: ui_field_hud_button_main_menu_v5_match
+description: 严格匹配首界面 v5 三按钮风格的单个 HUD 按钮候选
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  《云影侠传》首界面 v5 菜单按钮同款 UI 按钮资产。
+  必须严格继承参考图中“新游戏 / 读取存档 / 离开”三枚按钮的视觉语言：
+  金色立体书法中文、玄铁雕花边框、两侧宝石圆扣、内底深色玉石牌匾、厚涂质感。
+
+reference_images:
+  - "game/art/ui/button/btn_menu_v5_new_game_normal.png"
+  - "game/art/ui/button/btn_menu_v5_load_normal.png"
+  - "game/art/ui/button/btn_menu_v5_quit_normal.png"
+  - "assets/raw/ui/field_hud/candidates/system_text_reference.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  请生成一个单独的按钮，按钮文字为：{{button_label}}
+
+  必须严格执行：
+  - 只生成一个横向按钮，居中摆放。
+  - 外形、比例、边框结构、金属雕花、两侧宝石、内底材质，必须贴近参考图三枚主菜单按钮。
+  - 不要图标，不要额外装饰图案，不要小物件；只需要和主菜单按钮一样的文字按钮。
+  - 文字必须是简体中文“{{button_label}}”，金色立体书法字，风格接近参考图“离开”的字体厚度和描边。
+  - 最后一张参考图只用于确认两个汉字的正确写法，最终风格仍必须跟前三张主菜单按钮一致。
+  - 按钮内底使用深青蓝/墨玉色，适合“系统”功能，但不能变成网页蓝按钮。
+  - 背景必须纯黑或透明感黑底，方便后续按主菜单按钮管线抠出 alpha；不能有场景、人物、图标、HUD 面板。
+  - 画面内不能出现除“{{button_label}}”以外的任何文字。
+
+  严格禁止：
+  - 禁止图标、齿轮、背包、卷轴、武器。
+  - 禁止现代网页 UI、扁平按钮、蓝色发光科幻按钮。
+  - 禁止英文、拉丁字母、乱码、错字、繁体字、水印、签名。
+  - 禁止把文字写成“系統”“统系”“糸统”等错误字形。
+
+  反向：{negative}
+
+variables:
+  button_label: "系统"

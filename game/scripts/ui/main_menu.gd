@@ -129,28 +129,28 @@ func _apply_frame_text_button(btn: Button, key: String) -> void:
 	btn.text = ""
 	
 	# 底框三态 StyleBoxTexture
-	var style_normal := StyleBoxTexture.new()
+	var style_normal: StyleBoxTexture = StyleBoxTexture.new()
 	style_normal.texture = tex_frame_n
 	style_normal.content_margin_left = 0
 	style_normal.content_margin_right = 0
 	style_normal.content_margin_top = 0
 	style_normal.content_margin_bottom = 0
 	
-	var style_hover := StyleBoxTexture.new()
+	var style_hover: StyleBoxTexture = StyleBoxTexture.new()
 	style_hover.texture = tex_frame_h if tex_frame_h else tex_frame_n
 	style_hover.content_margin_left = 0
 	style_hover.content_margin_right = 0
 	style_hover.content_margin_top = 0
 	style_hover.content_margin_bottom = 0
 	
-	var style_pressed := StyleBoxTexture.new()
+	var style_pressed: StyleBoxTexture = StyleBoxTexture.new()
 	style_pressed.texture = tex_frame_p if tex_frame_p else tex_frame_n
 	style_pressed.content_margin_left = 0
 	style_pressed.content_margin_right = 0
 	style_pressed.content_margin_top = 0
 	style_pressed.content_margin_bottom = 0
 	
-	var style_empty := StyleBoxEmpty.new()
+	var style_empty: StyleBoxEmpty = StyleBoxEmpty.new()
 	
 	btn.add_theme_stylebox_override("normal", style_normal)
 	btn.add_theme_stylebox_override("hover", style_hover)
@@ -177,7 +177,7 @@ func _apply_frame_text_button(btn: Button, key: String) -> void:
 	if text_file != "":
 		var tex_text := _load_tex_path(BTN_TEXT_DIR + text_file)
 		if tex_text != null:
-			var text_rect := TextureRect.new()
+			var text_rect: TextureRect = TextureRect.new()
 			text_rect.texture = tex_text
 			text_rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			text_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -217,7 +217,7 @@ func _style_button_fallback(btn: Button, key: String) -> void:
 	btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	btn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	
-	var style_normal := StyleBoxFlat.new()
+	var style_normal: StyleBoxFlat = StyleBoxFlat.new()
 	style_normal.bg_color = Color(0.1, 0.13, 0.18, 0.95)
 	style_normal.border_color = Color(0.4, 0.5, 0.6, 1.0)
 	style_normal.set_border_width_all(2)
@@ -227,7 +227,7 @@ func _style_button_fallback(btn: Button, key: String) -> void:
 	style_normal.content_margin_top = 12
 	style_normal.content_margin_bottom = 12
 	
-	var style_hover := StyleBoxFlat.new()
+	var style_hover: StyleBoxFlat = StyleBoxFlat.new()
 	style_hover.bg_color = Color(0.13, 0.18, 0.25, 0.98)
 	style_hover.border_color = Color(0.3, 0.75, 0.85, 1.0)
 	style_hover.set_border_width_all(2)
@@ -313,7 +313,7 @@ func _on_new_game() -> void:
 	if get_node_or_null("/root/QuestManager") != null:
 		QuestManager.reset_for_new_game()
 	if get_node_or_null("/root/SceneRouter") != null:
-		SceneRouter.go_field_smart(&"ch1_s1_road")
+		SceneRouter.go_field_smart(SceneRouter.START_FIELD_SCENE)
 
 
 func _on_continue() -> void:
@@ -322,7 +322,7 @@ func _on_continue() -> void:
 		if SaveManager.load_from_slot(0):
 			var sid: StringName = SaveManager.get_save_field_id(0)
 			if String(sid) == "":
-				sid = &"ch1_s1_road"
+				sid = SceneRouter.START_FIELD_SCENE
 			if get_node_or_null("/root/SceneRouter") != null:
 				SceneRouter.go_field_smart(sid)
 

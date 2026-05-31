@@ -1,0 +1,769 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch1_s0_linxi_main_walkable"
+display_name = "林西村 · 主街"
+background_path = "res://art/backgrounds/bg_linxi_main_street_full.png"
+bgm_path = ""
+is_walkable = true
+player_spawn = Vector2(0.5, 0.88)
+scene_objects = [
+{
+"id": "veg_bamboo_cluster_a",
+"texture": "res://art/modules/veg/veg_bamboo_cluster_a.png",
+"pos": Vector2(0.1042, 0.2222),
+"z_index": 2,
+"scale": 2.5
+},
+{
+"id": "veg_bamboo_single_a",
+"texture": "res://art/modules/veg/veg_bamboo_single_a.png",
+"pos": Vector2(0.3542, 0.2222),
+"z_index": 2,
+"scale": 2.5
+},
+{
+"id": "veg_bamboo_top_canopy",
+"texture": "res://art/modules/veg/veg_bamboo_top_canopy.png",
+"pos": Vector2(0.6042, 0.2222),
+"z_index": 2,
+"scale": 2.5
+},
+{
+"id": "veg_bamboo_single_b",
+"texture": "res://art/modules/veg/veg_bamboo_single_b.png",
+"pos": Vector2(0.8542, 0.2222),
+"z_index": 2,
+"scale": 2.5
+},
+{
+"id": "road_dirt_linxi_straight_a",
+"texture": "res://art/modules/ground/road_dirt_linxi_straight_a.png",
+"pos": Vector2(0.0, 0.5741),
+"z_index": 5,
+"scale": 1.5
+},
+{
+"id": "road_stone_zhuwei_straight_a",
+"texture": "res://art/modules/ground/road_stone_zhuwei_straight_a.png",
+"pos": Vector2(0.1562, 0.5741),
+"z_index": 5,
+"scale": 1.5
+},
+{
+"id": "road_dirt_linxi_straight_a",
+"texture": "res://art/modules/ground/road_dirt_linxi_straight_a.png",
+"pos": Vector2(0.3125, 0.5741),
+"z_index": 5,
+"scale": 1.5
+},
+{
+"id": "road_stone_zhuwei_straight_a",
+"texture": "res://art/modules/ground/road_stone_zhuwei_straight_a.png",
+"pos": Vector2(0.4688, 0.5741),
+"z_index": 5,
+"scale": 1.5
+},
+{
+"id": "road_dirt_linxi_straight_a",
+"texture": "res://art/modules/ground/road_dirt_linxi_straight_a.png",
+"pos": Vector2(0.625, 0.5741),
+"z_index": 5,
+"scale": 1.5
+},
+{
+"id": "road_stone_zhuwei_straight_a",
+"texture": "res://art/modules/ground/road_stone_zhuwei_straight_a.png",
+"pos": Vector2(0.7812, 0.5741),
+"z_index": 5,
+"scale": 1.5
+},
+{
+"id": "road_dirt_linxi_straight_a",
+"texture": "res://art/modules/ground/road_dirt_linxi_straight_a.png",
+"pos": Vector2(0.9375, 0.5741),
+"z_index": 5,
+"scale": 1.5
+},
+{
+"id": "road_stone_zhuwei_straight_a",
+"texture": "res://art/modules/ground/road_stone_zhuwei_straight_a.png",
+"pos": Vector2(1.0938, 0.5741),
+"z_index": 5,
+"scale": 1.5
+},
+{
+"id": "road_dirt_grass_edge",
+"texture": "res://art/modules/ground/road_dirt_grass_edge.png",
+"pos": Vector2(0.0, 0.463),
+"z_index": 4,
+"scale": 1.2
+},
+{
+"id": "road_dirt_grass_edge",
+"texture": "res://art/modules/ground/road_dirt_grass_edge.png",
+"pos": Vector2(0.1823, 0.463),
+"z_index": 4,
+"scale": 1.2
+},
+{
+"id": "road_dirt_grass_edge",
+"texture": "res://art/modules/ground/road_dirt_grass_edge.png",
+"pos": Vector2(0.3646, 0.463),
+"z_index": 4,
+"scale": 1.2
+},
+{
+"id": "road_dirt_grass_edge",
+"texture": "res://art/modules/ground/road_dirt_grass_edge.png",
+"pos": Vector2(0.5469, 0.463),
+"z_index": 4,
+"scale": 1.2
+},
+{
+"id": "road_dirt_grass_edge",
+"texture": "res://art/modules/ground/road_dirt_grass_edge.png",
+"pos": Vector2(0.7292, 0.463),
+"z_index": 4,
+"scale": 1.2
+},
+{
+"id": "road_dirt_grass_edge",
+"texture": "res://art/modules/ground/road_dirt_grass_edge.png",
+"pos": Vector2(0.9115, 0.463),
+"z_index": 4,
+"scale": 1.2
+},
+{
+"id": "road_dirt_grass_edge",
+"texture": "res://art/modules/ground/road_dirt_grass_edge.png",
+"pos": Vector2(1.0938, 0.463),
+"z_index": 4,
+"scale": 1.2
+},
+{
+"id": "road_dirt_slope_up",
+"texture": "res://art/modules/ground/road_dirt_slope_up.png",
+"pos": Vector2(0.0312, 0.7407),
+"z_index": 6,
+"scale": 1.4
+},
+{
+"id": "road_stone_zhuwei_straight_a",
+"texture": "res://art/modules/ground/road_stone_zhuwei_straight_a.png",
+"pos": Vector2(0.1771, 0.7407),
+"z_index": 6,
+"scale": 1.4
+},
+{
+"id": "road_stone_zhuwei_corner_L",
+"texture": "res://art/modules/ground/road_stone_zhuwei_corner_L.png",
+"pos": Vector2(0.3229, 0.7407),
+"z_index": 6,
+"scale": 1.4
+},
+{
+"id": "road_gravel_scatter_a",
+"texture": "res://art/modules/ground/road_gravel_scatter_a.png",
+"pos": Vector2(0.4688, 0.7407),
+"z_index": 6,
+"scale": 1.4
+},
+{
+"id": "road_gravel_scatter_b",
+"texture": "res://art/modules/ground/road_gravel_scatter_b.png",
+"pos": Vector2(0.6146, 0.7407),
+"z_index": 6,
+"scale": 1.4
+},
+{
+"id": "road_grass_patch_a",
+"texture": "res://art/modules/ground/road_grass_patch_a.png",
+"pos": Vector2(0.7604, 0.7407),
+"z_index": 6,
+"scale": 1.4
+},
+{
+"id": "road_dirt_grass_edge",
+"texture": "res://art/modules/ground/road_dirt_grass_edge.png",
+"pos": Vector2(0.9062, 0.7407),
+"z_index": 6,
+"scale": 1.4
+},
+{
+"id": "road_grass_patch_b",
+"texture": "res://art/modules/ground/road_grass_patch_b.png",
+"pos": Vector2(1.0521, 0.7407),
+"z_index": 6,
+"scale": 1.4
+},
+{
+"id": "build_linxi_house_wall_M",
+"texture": "res://art/modules/building/build_linxi_house_wall_M.png",
+"pos": Vector2(0.0938, 0.4537),
+"z_index": 10,
+"scale": 0.9
+},
+{
+"id": "build_linxi_house_wall_R",
+"texture": "res://art/modules/building/build_linxi_house_wall_R.png",
+"pos": Vector2(0.1354, 0.4537),
+"z_index": 10,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_L",
+"texture": "res://art/modules/building/build_linxi_roof_gray_L.png",
+"pos": Vector2(0.0521, 0.3611),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_M",
+"texture": "res://art/modules/building/build_linxi_roof_gray_M.png",
+"pos": Vector2(0.0938, 0.3611),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_L",
+"texture": "res://art/modules/building/build_linxi_roof_gray_L.png",
+"pos": Vector2(0.1354, 0.3611),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_door_wood_a",
+"texture": "res://art/modules/building/build_linxi_door_wood_a.png",
+"pos": Vector2(0.1146, 0.4907),
+"z_index": 12,
+"scale": 0.6
+},
+{
+"id": "build_linxi_inn_storefront",
+"texture": "res://art/modules/building/build_linxi_inn_storefront.png",
+"pos": Vector2(0.0729, 0.4259),
+"z_index": 11,
+"scale": 1.0
+},
+{
+"id": "build_linxi_house_wall_L",
+"texture": "res://art/modules/building/build_linxi_house_wall_L.png",
+"pos": Vector2(0.3125, 0.463),
+"z_index": 10,
+"scale": 0.9
+},
+{
+"id": "build_linxi_house_wall_M",
+"texture": "res://art/modules/building/build_linxi_house_wall_M.png",
+"pos": Vector2(0.3542, 0.463),
+"z_index": 10,
+"scale": 0.9
+},
+{
+"id": "build_linxi_house_wall_R",
+"texture": "res://art/modules/building/build_linxi_house_wall_R.png",
+"pos": Vector2(0.3958, 0.463),
+"z_index": 10,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_L",
+"texture": "res://art/modules/building/build_linxi_roof_gray_L.png",
+"pos": Vector2(0.3125, 0.3704),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_M",
+"texture": "res://art/modules/building/build_linxi_roof_gray_M.png",
+"pos": Vector2(0.3542, 0.3704),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_L",
+"texture": "res://art/modules/building/build_linxi_roof_gray_L.png",
+"pos": Vector2(0.3958, 0.3704),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_door_wood_a",
+"texture": "res://art/modules/building/build_linxi_door_wood_a.png",
+"pos": Vector2(0.375, 0.5),
+"z_index": 12,
+"scale": 0.6
+},
+{
+"id": "build_linxi_house_wall_L",
+"texture": "res://art/modules/building/build_linxi_house_wall_L.png",
+"pos": Vector2(0.651, 0.4537),
+"z_index": 10,
+"scale": 0.9
+},
+{
+"id": "build_linxi_house_wall_M",
+"texture": "res://art/modules/building/build_linxi_house_wall_M.png",
+"pos": Vector2(0.6927, 0.4537),
+"z_index": 10,
+"scale": 0.9
+},
+{
+"id": "build_linxi_house_wall_R",
+"texture": "res://art/modules/building/build_linxi_house_wall_R.png",
+"pos": Vector2(0.7344, 0.4537),
+"z_index": 10,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_L",
+"texture": "res://art/modules/building/build_linxi_roof_gray_L.png",
+"pos": Vector2(0.651, 0.3611),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_M",
+"texture": "res://art/modules/building/build_linxi_roof_gray_M.png",
+"pos": Vector2(0.6927, 0.3611),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_roof_gray_L",
+"texture": "res://art/modules/building/build_linxi_roof_gray_L.png",
+"pos": Vector2(0.7344, 0.3611),
+"z_index": 18,
+"scale": 0.9
+},
+{
+"id": "build_linxi_door_wood_a",
+"texture": "res://art/modules/building/build_linxi_door_wood_a.png",
+"pos": Vector2(0.7135, 0.4907),
+"z_index": 12,
+"scale": 0.6
+},
+{
+"id": "build_linxi_smithy_front",
+"texture": "res://art/modules/building/build_linxi_smithy_front.png",
+"pos": Vector2(0.6719, 0.4259),
+"z_index": 11,
+"scale": 1.0
+},
+{
+"id": "build_linxi_column_wood",
+"texture": "res://art/modules/building/build_linxi_column_wood.png",
+"pos": Vector2(0.0781, 0.463),
+"z_index": 9,
+"scale": 0.7
+},
+{
+"id": "build_linxi_column_wood",
+"texture": "res://art/modules/building/build_linxi_column_wood.png",
+"pos": Vector2(0.3542, 0.4722),
+"z_index": 9,
+"scale": 0.7
+},
+{
+"id": "build_linxi_column_wood",
+"texture": "res://art/modules/building/build_linxi_column_wood.png",
+"pos": Vector2(0.6875, 0.463),
+"z_index": 9,
+"scale": 0.7
+},
+{
+"id": "build_linxi_eaves_straight",
+"texture": "res://art/modules/building/build_linxi_eaves_straight.png",
+"pos": Vector2(0.0625, 0.3889),
+"z_index": 25,
+"scale": 0.9,
+"modulate": Color(1, 1, 1, 0.45)
+},
+{
+"id": "build_linxi_eaves_straight",
+"texture": "res://art/modules/building/build_linxi_eaves_straight.png",
+"pos": Vector2(0.3021, 0.3981),
+"z_index": 25,
+"scale": 0.9,
+"modulate": Color(1, 1, 1, 0.45)
+},
+{
+"id": "build_linxi_eaves_straight",
+"texture": "res://art/modules/building/build_linxi_eaves_straight.png",
+"pos": Vector2(0.6667, 0.3889),
+"z_index": 25,
+"scale": 0.9,
+"modulate": Color(1, 1, 1, 0.45)
+},
+{
+"id": "veg_bamboo_edge_L",
+"texture": "res://art/modules/veg/veg_bamboo_edge_L.png",
+"pos": Vector2(0.0052, 0.1667),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_cluster_a",
+"texture": "res://art/modules/veg/veg_bamboo_cluster_a.png",
+"pos": Vector2(0.0052, 0.3241),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_cluster_b",
+"texture": "res://art/modules/veg/veg_bamboo_cluster_b.png",
+"pos": Vector2(0.0052, 0.4815),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_single_a",
+"texture": "res://art/modules/veg/veg_bamboo_single_a.png",
+"pos": Vector2(0.0052, 0.6389),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_single_b",
+"texture": "res://art/modules/veg/veg_bamboo_single_b.png",
+"pos": Vector2(0.0052, 0.7963),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_edge_R",
+"texture": "res://art/modules/veg/veg_bamboo_edge_R.png",
+"pos": Vector2(0.9792, 0.1667),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_cluster_a",
+"texture": "res://art/modules/veg/veg_bamboo_cluster_a.png",
+"pos": Vector2(0.9792, 0.3241),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_cluster_b",
+"texture": "res://art/modules/veg/veg_bamboo_cluster_b.png",
+"pos": Vector2(0.9792, 0.4815),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_single_a",
+"texture": "res://art/modules/veg/veg_bamboo_single_a.png",
+"pos": Vector2(0.9792, 0.6389),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bamboo_single_b",
+"texture": "res://art/modules/veg/veg_bamboo_single_b.png",
+"pos": Vector2(0.9792, 0.7963),
+"z_index": 15,
+"scale": 1.3
+},
+{
+"id": "veg_bush_green_a",
+"texture": "res://art/modules/veg/veg_bush_green_a.png",
+"pos": Vector2(0.1667, 0.6111),
+"z_index": 16,
+"scale": 0.55
+},
+{
+"id": "veg_bush_green_b",
+"texture": "res://art/modules/veg/veg_bush_green_b.png",
+"pos": Vector2(0.25, 0.6111),
+"z_index": 16,
+"scale": 0.55
+},
+{
+"id": "veg_bamboo_cluster_a",
+"texture": "res://art/modules/veg/veg_bamboo_cluster_a.png",
+"pos": Vector2(0.4583, 0.6111),
+"z_index": 16,
+"scale": 0.55
+},
+{
+"id": "veg_bamboo_single_a",
+"texture": "res://art/modules/veg/veg_bamboo_single_a.png",
+"pos": Vector2(0.5417, 0.6111),
+"z_index": 16,
+"scale": 0.55
+},
+{
+"id": "veg_bamboo_top_canopy",
+"texture": "res://art/modules/veg/veg_bamboo_top_canopy.png",
+"pos": Vector2(0.7708, 0.6111),
+"z_index": 16,
+"scale": 0.55
+},
+{
+"id": "veg_bamboo_single_b",
+"texture": "res://art/modules/veg/veg_bamboo_single_b.png",
+"pos": Vector2(0.8542, 0.6111),
+"z_index": 16,
+"scale": 0.55
+},
+{
+"id": "veg_bush_green_b",
+"texture": "res://art/modules/veg/veg_bush_green_b.png",
+"pos": Vector2(0.0938, 0.6667),
+"z_index": 8,
+"scale": 0.45
+},
+{
+"id": "veg_09",
+"texture": "res://art/modules/veg/veg_09.png",
+"pos": Vector2(0.2031, 0.6667),
+"z_index": 8,
+"scale": 0.45
+},
+{
+"id": "veg_foliage_fg_R",
+"texture": "res://art/modules/veg/veg_foliage_fg_R.png",
+"pos": Vector2(0.3125, 0.6667),
+"z_index": 8,
+"scale": 0.45
+},
+{
+"id": "veg_bamboo_edge_R",
+"texture": "res://art/modules/veg/veg_bamboo_edge_R.png",
+"pos": Vector2(0.4219, 0.6667),
+"z_index": 8,
+"scale": 0.45
+},
+{
+"id": "veg_grass_tuft_a",
+"texture": "res://art/modules/veg/veg_grass_tuft_a.png",
+"pos": Vector2(0.5312, 0.6667),
+"z_index": 8,
+"scale": 0.45
+},
+{
+"id": "veg_leaves_scatter",
+"texture": "res://art/modules/veg/veg_leaves_scatter.png",
+"pos": Vector2(0.6406, 0.6667),
+"z_index": 8,
+"scale": 0.45
+},
+{
+"id": "veg_grass_tuft_b",
+"texture": "res://art/modules/veg/veg_grass_tuft_b.png",
+"pos": Vector2(0.75, 0.6667),
+"z_index": 8,
+"scale": 0.45
+},
+{
+"id": "veg_15",
+"texture": "res://art/modules/veg/veg_15.png",
+"pos": Vector2(0.8594, 0.6667),
+"z_index": 8,
+"scale": 0.45
+},
+{
+"id": "prop_linxi_lantern_red_a",
+"texture": "res://art/modules/prop/prop_linxi_lantern_red_a.png",
+"pos": Vector2(0.1042, 0.537),
+"z_index": 20,
+"scale": 0.6
+},
+{
+"id": "prop_linxi_lantern_red_a",
+"texture": "res://art/modules/prop/prop_linxi_lantern_red_a.png",
+"pos": Vector2(0.1354, 0.537),
+"z_index": 20,
+"scale": 0.6
+},
+{
+"id": "prop_linxi_barrel_wood_a",
+"texture": "res://art/modules/prop/prop_linxi_barrel_wood_a.png",
+"pos": Vector2(0.1042, 0.5556),
+"z_index": 20,
+"scale": 0.55
+},
+{
+"id": "prop_linxi_lantern_red_a",
+"texture": "res://art/modules/prop/prop_linxi_lantern_red_a.png",
+"pos": Vector2(0.3542, 0.5463),
+"z_index": 20,
+"scale": 0.6
+},
+{
+"id": "prop_linxi_barrel_wood_a",
+"texture": "res://art/modules/prop/prop_linxi_barrel_wood_a.png",
+"pos": Vector2(0.3542, 0.5648),
+"z_index": 20,
+"scale": 0.55
+},
+{
+"id": "prop_linxi_lantern_red_a",
+"texture": "res://art/modules/prop/prop_linxi_lantern_red_a.png",
+"pos": Vector2(0.6979, 0.537),
+"z_index": 20,
+"scale": 0.6
+},
+{
+"id": "prop_linxi_lantern_red_a",
+"texture": "res://art/modules/prop/prop_linxi_lantern_red_a.png",
+"pos": Vector2(0.7292, 0.537),
+"z_index": 20,
+"scale": 0.6
+},
+{
+"id": "prop_linxi_barrel_wood_a",
+"texture": "res://art/modules/prop/prop_linxi_barrel_wood_a.png",
+"pos": Vector2(0.6979, 0.5556),
+"z_index": 20,
+"scale": 0.55
+},
+{
+"id": "prop_linxi_box_wood_a",
+"texture": "res://art/modules/prop/prop_linxi_box_wood_a.png",
+"pos": Vector2(0.2083, 0.5741),
+"z_index": 20,
+"scale": 0.5
+},
+{
+"id": "prop_linxi_wine_jar_a",
+"texture": "res://art/modules/prop/prop_linxi_wine_jar_a.png",
+"pos": Vector2(0.4688, 0.5648),
+"z_index": 20,
+"scale": 0.5
+},
+{
+"id": "prop_linxi_cart_wood",
+"texture": "res://art/modules/prop/prop_linxi_cart_wood.png",
+"pos": Vector2(0.3906, 0.5926),
+"z_index": 20,
+"scale": 0.7
+},
+{
+"id": "veg_bamboo_top_canopy",
+"texture": "res://art/modules/veg/veg_bamboo_top_canopy.png",
+"pos": Vector2(0.2083, 0.1667),
+"z_index": 32,
+"scale": 2.5,
+"modulate": Color(1, 1, 1, 0.4)
+},
+{
+"id": "veg_bamboo_top_canopy",
+"texture": "res://art/modules/veg/veg_bamboo_top_canopy.png",
+"pos": Vector2(0.5208, 0.1667),
+"z_index": 32,
+"scale": 2.5,
+"modulate": Color(1, 1, 1, 0.4)
+},
+{
+"id": "veg_foliage_fg_R",
+"texture": "res://art/modules/veg/veg_foliage_fg_R.png",
+"pos": Vector2(-0.0052, 0.4815),
+"z_index": 35,
+"scale": 2.0
+}
+]
+npcs = [
+{
+  "npc_id": "shenbanzhan",
+  "npc_name": "沈半盏",
+  "pos": Vector2(0.1, 0.52),
+  "portrait_path": "res://art/characters/portrait_shenbanzhan_friendly.png",
+  "sprite_path": "res://art/characters/npc_shenbanzhan_idle_8f.png",
+  "dialog_id": "ch1_main_street_shenbanzhan",
+  "scale": 0.31,
+},
+{
+  "npc_id": "duqingshan",
+  "npc_name": "杜青衫",
+  "pos": Vector2(0.69, 0.52),
+  "portrait_path": "res://art/characters/portrait_duqingshan_steady.png",
+  "sprite_path": "res://art/characters/npc_duqingshan_v4.png",
+  "dialog_id": "ch1_main_street_duqingshan",
+  "scale": 0.16,
+},
+{
+  "npc_id": "vendor",
+  "npc_name": "走货郎",
+  "pos": Vector2(0.48, 0.6),
+  "portrait_path": "res://art/characters/npc_vendor_neutral.png",
+  "sprite_path": "res://art/characters/npc_vendor_neutral.png",
+  "dialog_id": "ch1_main_street_vendor",
+  "scale": 0.25,
+}
+]
+exits = [
+{
+"label": "前往村外官道 →",
+"pos": Vector2(0.9583, 0.5093),
+"size": Vector2(0.0833, 0.2778),
+"target_scene": "ch1_s1_road",
+"target_pos": Vector2(0.1, 0.5)
+},
+{
+"label": "← 返回主街",
+"pos": Vector2(0.0156, 0.8333),
+"size": Vector2(0.0833, 0.0556),
+"target_scene": "ch1_s2_qingfeng",
+"target_pos": Vector2(0.5, 0.85)
+}
+]
+collision_rects = [
+{
+"id": "inn_wall",
+"pos": Vector2(0.0417, 0.4074),
+"size": Vector2(0.1354, 0.0741)
+},
+{
+"id": "house_wall",
+"pos": Vector2(0.2917, 0.4167),
+"size": Vector2(0.1354, 0.0741)
+},
+{
+"id": "smithy_wall",
+"pos": Vector2(0.6354, 0.4074),
+"size": Vector2(0.1354, 0.0741)
+},
+{
+"id": "left_bamboo",
+"pos": Vector2(0.0, 0.1481),
+"size": Vector2(0.0312, 0.6481)
+},
+{
+"id": "right_bamboo",
+"pos": Vector2(0.9688, 0.1481),
+"size": Vector2(0.0312, 0.6481)
+}
+]
+trigger_zones = [
+{
+"id": "innkeeper_talk",
+"pos": Vector2(0.0677, 0.4352),
+"size": Vector2(0.0833, 0.0926),
+"action": "dialog:ch1_main_street_shenbanzhan"
+},
+{
+"id": "smith_talk",
+"pos": Vector2(0.6667, 0.4352),
+"size": Vector2(0.0833, 0.0926),
+"action": "dialog:ch1_main_street_duqingshan"
+},
+{
+"id": "stone_read",
+"pos": Vector2(0.5573, 0.5463),
+"size": Vector2(0.0417, 0.0556),
+"action": "dialog:ch1_main_street_stone"
+},
+{
+"id": "vendor_talk",
+"pos": Vector2(0.4375, 0.5648),
+"size": Vector2(0.0833, 0.0741),
+"action": "dialog:ch1_main_street_vendor"
+}
+]
+hotspots = []

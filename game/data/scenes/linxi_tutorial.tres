@@ -1,0 +1,194 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"linxi_tutorial"
+display_name = "林西村 · 新手关"
+background_path = "res://art/backgrounds/bg_linxi_tutorial_full.png"
+bgm_path = ""
+is_walkable = true
+player_spawn = Vector2(0.489583, 0.685185)
+hotspots = []
+
+scene_objects = []
+
+animated_props = [
+{
+  "id": "inn_banner_wave",
+  "pos": Vector2(0.523958, 0.279630),
+  "size": Vector2(0.050000, 0.066667),
+  "type": "texture_sway",
+  "texture": "res://art/props/linxi_red_banner.png",
+  "z_index": 16,
+  "speed": 0.9,
+},
+{
+  "id": "rear_house_cooking_smoke",
+  "pos": Vector2(0.622396, 0.076389),
+  "size": Vector2(0.030000, 0.070000),
+  "type": "smoke",
+  "color": "#d8d3c8",
+  "z_index": 28,
+  "speed": 0.75,
+},
+{
+  "id": "smithy_chimney_smoke",
+  "pos": Vector2(0.942708, 0.143519),
+  "size": Vector2(0.032000, 0.072000),
+  "type": "smoke",
+  "color": "#cec8bb",
+  "z_index": 28,
+  "speed": 0.9,
+},
+{
+  "id": "smithy_forge_glow",
+  "pos": Vector2(0.846354, 0.393519),
+  "size": Vector2(0.114583, 0.138889),
+  "type": "glow",
+  "color": "#ff7a1f",
+  "z_index": 19,
+  "speed": 1.35,
+},
+
+]
+
+npcs = [
+{
+  "npc_id": "xingfantian",
+  "npc_name": "刑樊天",
+  "pos": Vector2(0.404687, 0.613889),
+  "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_master.png",
+  "dialog_id": "ch1_tutorial_xingfantian",
+  "scale": 0.15,
+},
+{
+  "npc_id": "duqingshan",
+  "npc_name": "杜青衫",
+  "pos": Vector2(0.750000, 0.680000),
+  "portrait_path": "res://art/characters/portrait_duqingshan_steady.png",
+  "sprite_path": "res://art/characters/npc_duqingshan_v4.png",
+  "dialog_id": "ch1_tutorial_duqingshan",
+  "scale": 0.16,
+}
+]
+
+exits = [
+{
+  "id": "exit_to_road",
+  "pos": Vector2(0.856771, 0.120370),
+  "size": Vector2(0.135417, 0.240741),
+  "label": "前往村外山道",
+  "target_scene": "ch1_s1_road",
+  "target_pos": Vector2(0.15, 0.65),
+}
+]
+
+collision_rects = [
+{
+  "id": "inn_roof_block",
+  "pos": Vector2(0.182292, 0.148148),
+  "size": Vector2(0.364583, 0.296296),
+},
+{
+  "id": "inn_left_wall",
+  "pos": Vector2(0.026042, 0.296296),
+  "size": Vector2(0.104167, 0.287037),
+},
+{
+  "id": "inn_steps_block",
+  "pos": Vector2(0.182292, 0.398148),
+  "size": Vector2(0.218750, 0.092593),
+},
+{
+  "id": "inn_front_props_block",
+  "pos": Vector2(0.109375, 0.476852),
+  "size": Vector2(0.156250, 0.120370),
+},
+{
+  "id": "inn_barrels_left",
+  "pos": Vector2(0.057292, 0.555556),
+  "size": Vector2(0.078125, 0.120370),
+},
+{
+  "id": "rear_house_block",
+  "pos": Vector2(0.514323, 0.055556),
+  "size": Vector2(0.236979, 0.231481),
+},
+{
+  "id": "rear_house_steps",
+  "pos": Vector2(0.520833, 0.268519),
+  "size": Vector2(0.125000, 0.055556),
+},
+{
+  "id": "smithy_roof_block",
+  "pos": Vector2(0.828125, 0.231481),
+  "size": Vector2(0.270833, 0.194444),
+},
+{
+  "id": "smithy_platform_block",
+  "pos": Vector2(0.804688, 0.412037),
+  "size": Vector2(0.317708, 0.175926),
+},
+{
+  "id": "smithy_anvil_block",
+  "pos": Vector2(0.848958, 0.574074),
+  "size": Vector2(0.104167, 0.083333),
+},
+{
+  "id": "top_forest_block",
+  "pos": Vector2(0.500000, 0.027778),
+  "size": Vector2(1.000000, 0.055556),
+},
+{
+  "id": "top_left_cliff",
+  "pos": Vector2(0.039062, 0.148148),
+  "size": Vector2(0.078125, 0.231481),
+},
+{
+  "id": "bottom_left_vegetation_block",
+  "pos": Vector2(0.083333, 0.824074),
+  "size": Vector2(0.166667, 0.351852),
+},
+{
+  "id": "bottom_right_vegetation_block",
+  "pos": Vector2(0.880208, 0.824074),
+  "size": Vector2(0.239583, 0.351852),
+},
+{
+  "id": "bottom_fence_block",
+  "pos": Vector2(0.395833, 0.898148),
+  "size": Vector2(0.343750, 0.203704),
+},
+{
+  "id": "right_edge_fence_block",
+  "pos": Vector2(0.953125, 0.509259),
+  "size": Vector2(0.093750, 0.259259),
+},
+{
+  "id": "left_edge_tree_block",
+  "pos": Vector2(0.026042, 0.555556),
+  "size": Vector2(0.052083, 0.231481),
+},
+{
+  "id": "center_path_stones",
+  "pos": Vector2(0.406250, 0.453704),
+  "size": Vector2(0.083333, 0.064815),
+},
+{
+  "id": "right_fence_lower",
+  "pos": Vector2(0.942708, 0.759259),
+  "size": Vector2(0.114583, 0.120370),
+}
+]
+
+trigger_zones = [
+{
+  "id": "stone_altar_read",
+  "pos": Vector2(0.463542, 0.509259),
+  "size": Vector2(0.197917, 0.240741),
+  "action": "dialog:ch1_tutorial_stone_altar",
+}
+]

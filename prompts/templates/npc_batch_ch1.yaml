@@ -1,0 +1,85 @@
+# 第一章 NPC sprite 批量生成清单
+# 每个 NPC 生成 4 张图（4方向idle），用 sprite_npc_idle_4f_v1 模板
+# 铁匠刘额外需要一张打铁动作图
+
+npcs:
+  # ========== 沈半盏 - 客栈老板 ==========
+  - npc_id: shenbanzhan
+    character_name: 沈半盏
+    character_appearance: >
+      中年男子，约45岁。客栈掌柜。
+      方圆脸，留短须，面容和善但眼神精明。头发用布巾束起。
+      身着棕灰色粗布长袍，外罩深蓝半臂短褂，腰间系一条深色围布。
+      体型微胖，身高中等偏矮。
+      站立时双手习惯交叠于袖中。
+    height_offset: -5  # 比主角略矮
+    directions:
+      - { label: "右侧", dir: right }
+      - { label: "左侧", dir: left }
+      - { label: "下方（正面）", dir: down }
+      - { label: "上方（背面）", dir: up }
+
+  # ========== 杜青衫 - 行商 ==========
+  - npc_id: duqingshan
+    character_name: 杜青衫
+    character_appearance: >
+      青年男子，约28岁。江湖行商。
+      瘦长脸，眉眼灵活，常带三分笑意。长发半束，留一缕鬓发。
+      身着青绿色长衫，袖口收紧便于行路。腰间挂一个皮革钱袋和一把短刀。
+      身后背一个竹编货箱，隐约可见各色货物。
+      体型瘦高，行动轻快。
+    height_offset: 0  # 和主角差不多
+    directions:
+      - { label: "右侧", dir: right }
+      - { label: "左侧", dir: left }
+      - { label: "下方（正面）", dir: down }
+      - { label: "上方（背面）", dir: up }
+
+  # ========== 刑樊天 - 侠客 ==========
+  - npc_id: xingfantian
+    character_name: 刑樊天
+    character_appearance: >
+      青年男子，约26岁。江湖侠客，气质冷峻。
+      剑眉星目，面容棱角分明，不苟言笑。黑发高束，用银冠固定。
+      身着深蓝色劲装，外披玄色短氅。腰间佩一柄长剑，剑鞘古朴无华。
+      体型精壮，双肩宽阔，站立如松。
+    height_offset: 5  # 比主角略高
+    directions:
+      - { label: "右侧", dir: right }
+      - { label: "左侧", dir: left }
+      - { label: "下方（正面）", dir: down }
+      - { label: "上方（背面）", dir: up }
+
+  # ========== 铁匠刘 - 铁匠 ==========
+  - npc_id: blacksmith_liu
+    character_name: 铁匠刘
+    character_appearance: >
+      中年壮汉，约42岁。村中铁匠。
+      方脸膛，络腮胡，皮肤被炉火映成古铜色。头发用布带随意扎在脑后。
+      上身一件无袖麻布短衫，外罩厚牛皮围裙，双臂肌肉结实。
+      右手握一柄大铁锤。下身着深色粗布长裤，足蹬厚底布鞋。
+      体型矮壮敦实，肩膀极宽。
+    height_offset: -10  # 明显比主角矮
+    directions:
+      - { label: "右侧", dir: right }
+      - { label: "左侧", dir: left }
+      - { label: "下方（正面）", dir: down }
+      - { label: "上方（背面）", dir: up }
+    extra: smith_pose
+
+# ========== 铁匠打铁特写 ==========
+smith_special:
+  npc_id: blacksmith_liu
+  pose_name: smith_hammer
+  frame_count: 4
+  character_appearance: >
+    中年壮汉铁匠，方脸膛络腮胡，古铜色皮肤。麻布短衫，厚牛皮围裙，双臂肌肉结实。
+  prompt: >
+    生成铁匠打铁的4帧循环动画。
+    角色：铁匠刘，金庸武侠风格，中年壮汉铁匠，站在铁砧前。
+    动作：4帧抡锤打铁循环。第1帧：铁锤高举过头。第2帧：铁锤下落到半空。第3帧：铁锤砸在铁砧上。第4帧：铁锤反弹抬起到胸前。
+    角色身前有一方铁砧，左手用铁钳夹住一块烧红的铁块放在砧上。
+    打铁动作有力而不僵硬，上半身随锤起伏。
+    布局和比例同idle模板（4格横向排列，1024x256）。
+    配饰：厚牛皮围裙，铁锤和铁砧有金属质感。
+    背景全透明。

@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}{{ type_label }}编辑器 · 协作调度台{% endblock %}
+{% block content %}
+
+<style>
+.editor-wrap { display: flex; gap: 24px; min-height: 80vh; }
+.editor-nav { width: 180px; flex-shrink: 0; }
+.editor-nav a { display: block; padding: 10px 14px; border-radius: 6px; color: var(--text-secondary); text-decoration: none; font-size: 14px; margin-bottom: 4px; }
+.editor-nav a:hover { background: var(--bg-hover); color: var(--text-primary); }
+.editor-nav a.active { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+.editor-main { flex: 1; min-width: 0; }
+.toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+.toolbar h2 { margin: 0; font-size: 22px; }
+.btn { display: inline-block; padding: 8px 18px; border-radius: 6px; border: none; cursor: pointer; font-size: 14px; text-decoration: none; font-weight: 500; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-danger { background: #c0392b; color: #fff; }
+.btn-sm { padding: 4px 12px; font-size: 12px; }
+.resource-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.resource-table th, .resource-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border-color); }
+.resource-table th { font-weight: 600; color: var(--text-secondary); font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+.resource-table tr:hover { background: var(--bg-hover); }
+.resource-table .actions { white-space: nowrap; }
+.resource-table .actions a, .resource-table .actions button { margin-right: 6px; }
+.inline-form { display: inline; }
+.feedback { padding: 10px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 14px; }
+.feedback-success { background: #1a3a2a; color: #5ad88b; }
+.feedback-error { background: #3a1a1a; color: #e05b5b; }
+.id-cell { font-family: monospace; font-size: 12px; color: var(--accent); }
+</style>
+
+<div class="editor-wrap">
+  <nav class="editor-nav">
+    {% for item in nav %}
+    <a href="/editor/{{ item.key }}" class="{% if item.active %}active{% endif %}">{{ item.label }}</a>
+    {% endfor %}
+  </nav>
+
+  <div class="editor-main">
+    {% if error %}
+    <div class="feedback feedback-error">{{ error }}</div>
+    {% endif %}
+    {% if success %}
+    <div class="feedback feedback-success">{{ success }}</div>
+    {% endif %}
+
+    <div class="toolbar">
+      <h2>{{ type_label }} ({{ resources|length }})</h2>
+      <a href="/editor/{{ script_class }}/new" class="btn btn-primary">+ 新建{{ type_label }}</a>
+    </div>
+
+    {% if resources %}
+    <table class="resource-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名称</th>
+          <th>关键属性</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for res in resources %}
+        <tr>
+          <td class="id-cell">{{ res.id }}</td>
+          <td>
+            {% if res.data.display_name %}
+            {{ res.data.display_name }}
+            {% elif res.data.title %}
+            {{ res.data.title }}
+            {% else %}
+            —
+            {% endif %}
+          </td>
+          <td class="id-cell">
+            {% if script_class == "Item" %}
+              {% if res.data.heal_hp %}HP+{{ res.data.heal_hp }} {% endif %}
+              {% if res.data.heal_mp %}MP+{{ res.data.heal_mp }} {% endif %}
+              买{{ res.data.buy_price }} 卖{{ res.data.sell_price }}
+            {% elif script_class == "Equipment" %}
+              槽{{ res.data.slot }} ATK+{{ res.data.atk_bonus }} DEF+{{ res.data.def_bonus }}
+            {% elif script_class == "EnemyDef" %}
+              Lv{{ res.data.level }} HP{{ res.data.max_hp }} ATK{{ res.data.attack }}
+            {% elif script_class == "Skill" %}
+              MP{{ res.data.mp_cost }} Power{{ res.data.power }}
+            {% elif script_class == "QuestDef" %}
+              类型{{ '主线' if res.data.get("kind") == 0 else '支线' }}
+            {% elif script_class == "ShopDef" %}
+              在售 {{ res.data.get("stock", [])|length }} 件
+            {% endif %}
+          </td>
+          <td class="actions">
+            <a href="/editor/{{ script_class }}/{{ res.id }}/edit" class="btn btn-sm btn-primary">编辑</a>
+            <form method="post" action="/editor/{{ script_class }}/{{ res.id }}/delete" class="inline-form" onsubmit="return confirm('确定删除 {{ res.id }}？')">
+              <button type="submit" class="btn btn-sm btn-danger">删除</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p style="color: var(--text-secondary);">暂无{{ type_label }}数据。点击右上角按钮创建。</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

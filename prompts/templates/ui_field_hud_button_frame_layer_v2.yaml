@@ -1,0 +1,36 @@
+id: ui_field_hud_button_frame_layer_v2
+description: 以已采用 HUD 按钮为标本，生成高质量无图标无文字按钮底框层
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  《云影侠传》游戏主界面右侧 HUD 功能按钮的可复用底框层。
+  目标是复刻已采用“背包 / 武学”按钮的蓝灰玄铁厚涂质感，而不是设计新按钮。
+
+reference_images:
+  - "tools/ui_field_hud_v1/right_buttons_redraw_v1/hud_btn_skill_normal.png"
+  - "tools/ui_field_hud_v1/closeup_redraw_candidate_a/hud_btn_inventory_redraw_a_normal.png"
+  - "tools/ui_field_hud_v1/right_buttons_redraw_v1_preview.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  请生成一枚“无图标、无文字”的按钮底框母版，候选编号：{{variant}}。
+
+  必须严格贴近参考：
+  - 外轮廓、比例、边框厚度、透明边距要接近已采用的“武学”按钮。
+  - 质感必须是深色蓝灰玄铁、手绘厚涂、磨损边缘、内板暗部渐变。
+  - 右侧仍是尖角牌形，左侧保留斜切与卷角装饰，不要变成简化扁平框。
+  - 中央内板为空白但不能廉价、不能浅色纸面、不能光滑塑料，要保留细腻金属/石质纹理。
+  - 单枚横向按钮居中，背景使用纯黑、纯白或透明感单色，方便后处理抠透明。
+
+  严格禁止：
+  - 禁止任何文字、中文、英文、假字、水印、签名。
+  - 禁止任何图标、书本、袋子、护甲、卷轴、齿轮。
+  - 禁止浅色羊皮纸底框，禁止科幻硬边，禁止网页按钮，禁止金色主菜单风格。
+  - 禁止改变按钮比例和轮廓方向。
+
+  反向：{negative}
+
+variables:
+  variant: "A"

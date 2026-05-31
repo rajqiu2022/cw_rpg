@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_1"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "大乾朝中期，江湖已二十年未起大风波。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = ""
+portrait_path = ""
+text = "武当掌剑、华山争雄、少林守佛、古峰雄霸、凌月飘逸、茗雾隐世——七派分立中原，互不相犯。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = ""
+portrait_path = ""
+text = "直到一日，各大派的大弟子相继离奇身亡。武林震动。传言是百年来被各派排挤的[color=#cc6644]烈云盟[/color]所为。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = ""
+portrait_path = ""
+text = "林西村，一个竹林环绕的偏远小村。这里住着一个不为人知的少年——[color=#7fbcff]冷孤云[/color]，二十岁，自小由武师[color=#7fbcff]刑樊天[/color]抚养长大。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = ""
+portrait_path = ""
+text = "这天清晨，村里来了消息。冷孤云站在师傅的院中，望着远处山道上的晨雾——他知道，今天是他下山的日子。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary](["key": "intro_narration_done", "value": true])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_intro_narration"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_1"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5")])

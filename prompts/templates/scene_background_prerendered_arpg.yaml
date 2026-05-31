@@ -1,0 +1,55 @@
+id: scene_background_prerendered_arpg
+description: 老式 2.5D ARPG 预渲染可行走场景背景
+quality: high
+size: "1536x1024"
+
+identity_anchor: |
+  Pre-rendered isometric ARPG environment, old-school 2.5D game background,
+  solid occluding village buildings, readable playable ground plane.
+
+reference_images:
+  - "assets/_style_bible/scene_reference/ref_prerendered_arpg_village.png"
+
+prompt_template: |
+  Use the reference image for spatial language only: camera angle, building volume,
+  roof overhang, wall height, contact shadows, occlusion, courtyard ground plane,
+  clutter scale, fences, barrels, drying racks, and strong separation between
+  buildings and walkable ground.
+
+  Create a complete pre-rendered isometric ARPG environment background for a playable scene.
+  This is a game level screenshot style background, not concept art, not a flat illustration.
+
+  Scene: {{scene_name}}
+  Description: {{scene_desc}}
+  Time: {{time_of_day}}
+  Weather: {{weather}}
+  Key elements: {{key_elements}}
+
+  Hard gameplay composition rules:
+  - 1536x1024 landscape. Keep all important playable content inside the central 16:9 safe area.
+  - Fixed isometric / three-quarter top-down camera like an old 2.5D action RPG.
+  - Buildings must be solid occluding volumes standing on the ground plane, not painted flat onto the floor.
+  - Every building must show visible vertical walls, roof thickness, roof overhangs, beams/posts, stairs, and a dark contact shadow where it meets the ground.
+  - Leave a clear walkable courtyard / dirt road network through the center, wide enough for a player character to walk.
+  - Use fences, barrels, jars, baskets, drying cloth, grass tufts, stone slabs, and small props to show scale, but keep paths readable.
+  - Put larger buildings along the top/left/right edges so they can naturally block movement and cast shadows into the courtyard.
+  - No characters, no NPCs, no animals, no cursor, no UI, no text, no logo, no watermark.
+
+  Visual target:
+  - Pre-rendered 3D diorama feeling with hand-painted wuxia textures.
+  - Strong depth cues: occlusion, cast shadows, wall thickness, raised steps, object silhouettes.
+  - Muted realistic ground material with stone, dirt, weeds, and worn paths, closer to a game level than a poster.
+  - Chinese mountain village architecture, wooden beams, tile / thatch roofs, old fences, rural clutter.
+  - Keep a subtle wuxia mood and painterly finish, but do not make it a flat Hong Kong comic background.
+
+  Negative: flat concept art, poster illustration, buildings merged with ground,
+  no contact shadows, no vertical walls, flat roofs painted on floor, clean empty plaza,
+  top-down 2D tilemap, tileset, atlas, sprite sheet, characters, NPCs, animals, UI,
+  text, watermark, logo, photo-realistic modern 3D, low-poly cartoon, {negative}
+
+variables:
+  scene_name: "林西村新手关 · 预渲染 ARPG 版"
+  scene_desc: "1-2 句描述可行走新手关场景"
+  time_of_day: "morning | noon"
+  weather: "clear"
+  key_elements: "可遮挡建筑体块、庭院地面、围栏、杂物、炊烟/旗子位置"

@@ -1,0 +1,42 @@
+id: sprite_walk_v8
+description: 主角行走帧 v8，4方向，角色高度55%-60%，动作连贯
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官、发型、服装、武器、酒葫芦。
+
+reference_images:
+  - "assets/_style_bible/00_protagonist_portrait_ref.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏角色行走动画单帧，用于 2D RPG 精灵图。
+
+  角色：{identity_anchor}
+
+  动作：{{facing}}方向行走，第 {{frame_index}} 帧（共 {{frame_total}} 帧循环）
+  - {{leg_phase}}
+  - 武侠轻快步伐，手臂自然摆动
+  - {{facing_extra}}
+
+  构图：
+  - 1024×1024 画布，纯白背景 #FFFFFF
+  - 角色从头顶到脚底高度约占画布高度的 {{height_pct}}
+  - 角色水平居中，双脚在画布底部 {{foot_bottom}} 处
+  - 所有帧保持完全一致的角色比例、体型、脚底位置
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  frame_index: "1"
+  frame_total: "8"
+  leg_phase: "必填"
+  facing: "右"
+  facing_extra: "角色身体朝右侧"
+  height_pct: "55%~60%"
+  foot_bottom: "10%~15%"

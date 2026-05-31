@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/shop_def.gd" id="1_shop"]
+
+[resource]
+script = ExtResource("1_shop")
+shop_id = &"zhuwei_apothecary"
+display_name = "竹尾药铺"
+greeting = "疗伤解毒，童叟无欺。"
+stock = Array[StringName]([&"healing_salve", &"healing_pill_minor", &"antidote_pill", &"revive_pill", &"inner_breath_pill"])
+sell_back_ratio = 0.4

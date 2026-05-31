@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_zhuwei"
+title = "前往竹尾村"
+kind = 0
+desc_not_started = "地图指向竹尾村。村外的密林里藏着答案。"
+desc_in_progress = "竹尾村外密林中发现被击杀的黑衣人尸体。林深处有打斗声——有人正在被围攻。"
+desc_completed = "救下了凌月派悦无姮，击退了伪装成烈云盟的蒙面杀手。她邀请你前往凌月山参加武林大会。"
+completion_triggers = Array[String](["flag_set:chapter1_complete"])
+reward_gold = 50
+reward_exp = 50
+reward_items = Array[Dictionary]([])

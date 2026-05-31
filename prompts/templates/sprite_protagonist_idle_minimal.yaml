@@ -1,0 +1,39 @@
+# 主角 idle 待机 6 帧 strip（极简版）
+# 最少文字，最少约束，让模型专注"复制参考图角色 + 站立 + 轻风"。
+
+id: sprite_protagonist_idle_minimal
+description: 极简 idle 6 帧 strip
+quality: medium
+size: "1536x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/assets/raw/sprite/v3/ref_walk_right_v2_frame2.png"
+require_reference_images: true
+
+prompt_template: |
+  {style_anchor}
+
+  Reference image shows a game character sprite in side view.
+
+  Make a SINGLE-ROW 6-frame sprite strip, canvas 1536x1024, 6 columns x 1 row, white background.
+  Character height on canvas: same as reference (~80-96 px).
+
+  **Copy the reference character exactly.** Same face, hair, hair ribbon, gray robe, white inner shirt, sword, green wine gourd, boots. Do NOT change colors, face, hair style, or any equipment.
+
+  **Only two changes from reference:**
+  1. Legs: change from walking stride to standing still (feet close together)
+  2. Add gentle breeze: hair ribbon sways slightly, robe hem flutters a little, sleeves move subtly
+
+  6 frames show the breeze cycle: calm → breeze rising → strongest → calming → calm.
+
+  View: {{facing}}
+
+  NO text, NO watermark, NO grid lines, NO spiders or webs.
+  NO headband/headscarf/red ribbon on head — only a simple dark hair tie at the back.
+  NO blue or red clothes.
+  Feet must NOT move between frames.
+
+  {negative}
+
+variables:
+  facing: "side view, body facing left"

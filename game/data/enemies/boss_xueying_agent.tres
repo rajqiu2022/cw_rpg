@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"boss_xueying_agent"
+display_name = "薛影手下"
+portrait_path = ""
+level = 9
+max_hp = 260
+max_mp = 0
+attack = 26
+defense = 9
+speed = 13
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_saofeng", &"mingwu_wuyin_sanshi"])
+aggression = 0.65
+drop_gold_min = 100
+drop_gold_max = 180
+drop_exp = 100
+drop_items = Array[StringName]([&"healing_pill_major"])
+drop_random = Array[Dictionary]([{ "item_id": "iron_knuckles", "chance": 0.5, "count": 1 }])

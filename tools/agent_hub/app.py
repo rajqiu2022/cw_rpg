@@ -28,6 +28,7 @@ APP_DIR = Path(__file__).resolve().parent
 app = FastAPI(title="RPG_GAME Agent Hub")
 app.mount("/static", StaticFiles(directory=APP_DIR / "static"), name="static")
 templates = Jinja2Templates(directory=APP_DIR / "templates")
+templates.env.auto_reload = True
 
 
 STATUS_LABELS = {
@@ -763,70 +764,103 @@ CATEGORY_TO_GAME_ART_DIR = {
 
 
 def _copy_to_game_art(artifact_path: str, category: str) -> str | None:
-    """Copy an adopted artifact into game/art/<subdir>/ and return dst relative path."""
+    """Copy an adopted artifact into game/art/<subdir>/ and return dst relative path.
+    
+    Returns:
+        str: destination relative path on success
+        None: skip (no matching game art dir)
+        Raises on copy error.
+    """
     src = ROOT / artifact_path
     if not src.exists() or not src.is_file():
         return None
+    # Already a game art file — skip copy
+    rel_src = src.resolve().relative_to(ROOT.resolve())
+    if rel_src.as_posix().startswith("game/art/"):
+        return str(rel_src.as_posix())
     subdir = CATEGORY_TO_GAME_ART_DIR.get(category)
     if not subdir:
         return None
     dst_dir = ROOT / "game" / "art" / subdir
     dst_dir.mkdir(parents=True, exist_ok=True)
     dst = dst_dir / src.name
+    
+    # Skip if identical content already exists
+    if dst.exists() and dst.stat().st_size == src.stat().st_size:
+        return str(dst.relative_to(ROOT).as_posix())
+    
     shutil.copy2(src, dst)
     return str(dst.relative_to(ROOT).as_posix())
 
 
 @app.post("/api/artifacts/{artifact_id:int}/adopt")
 def adopt_artifact(artifact_id: int):
-    with _db() as conn:
-        row = row(conn, "SELECT path, category, adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
-        if not row:
-            raise HTTPException(status_code=404, detail="artifact not found")
-        if row["adopted_status"] == "adopted":
-            return {"status": "already_adopted", "path": row["path"]}
-        # Copy file to game/art/ if applicable
-        copied_path = None
-        if row["category"]:
-            copied_path = _copy_to_game_art(row["path"], row["category"])
-        conn.execute(
-            "UPDATE artifacts SET adopted_status = 'adopted' WHERE id = ?",
-            (artifact_id,),
-        )
-        conn.commit()
-    return {
-        "status": "adopted",
-        "path": row["path"],
-        "copied_to": copied_path,
-    }
+    try:
+        with _db() as conn:
+            artifact = row(conn, "SELECT path, category, adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
+            if not artifact:
+                raise HTTPException(status_code=404, detail="产出不存在")
+            if artifact["adopted_status"] == "adopted":
+                return {"status": "already_adopted", "path": artifact["path"]}
+            # Copy file to game/art/ if applicable
+            copied_path = None
+            if artifact["category"] and artifact["category"] != "unknown":
+                try:
+                    copied_path = _copy_to_game_art(artifact["path"], artifact["category"])
+                except Exception as copy_err:
+                    raise HTTPException(status_code=500, detail=f"文件复制失败: {copy_err}")
+            conn.execute(
+                "UPDATE artifacts SET adopted_status = 'adopted' WHERE id = ?",
+                (artifact_id,),
+            )
+            conn.commit()
+        return {
+            "status": "adopted",
+            "path": artifact["path"],
+            "copied_to": copied_path,
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/api/artifacts/{artifact_id:int}/reject")
 def reject_artifact(artifact_id: int):
-    with _db() as conn:
-        row = row(conn, "SELECT adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
-        if not row:
-            raise HTTPException(status_code=404, detail="artifact not found")
-        conn.execute(
-            "UPDATE artifacts SET adopted_status = 'rejected' WHERE id = ?",
-            (artifact_id,),
-        )
-        conn.commit()
-    return {"status": "rejected"}
+    try:
+        with _db() as conn:
+            r = row(conn, "SELECT adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
+            if not r:
+                raise HTTPException(status_code=404, detail="产出不存在")
+            conn.execute(
+                "UPDATE artifacts SET adopted_status = 'rejected' WHERE id = ?",
+                (artifact_id,),
+            )
+            conn.commit()
+        return {"status": "rejected"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 @app.post("/api/artifacts/{artifact_id:int}/reset")
 def reset_artifact_status(artifact_id: int):
-    with _db() as conn:
-        row = row(conn, "SELECT adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
-        if not row:
-            raise HTTPException(status_code=404, detail="artifact not found")
-        conn.execute(
-            "UPDATE artifacts SET adopted_status = 'candidate' WHERE id = ?",
-            (artifact_id,),
-        )
-        conn.commit()
-    return {"status": "reset"}
+    try:
+        with _db() as conn:
+            r = row(conn, "SELECT adopted_status FROM artifacts WHERE id = ?", (artifact_id,))
+            if not r:
+                raise HTTPException(status_code=404, detail="产出不存在")
+            conn.execute(
+                "UPDATE artifacts SET adopted_status = 'candidate' WHERE id = ?",
+                (artifact_id,),
+            )
+            conn.commit()
+        return {"status": "reset"}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # ---------------------------------------------------------------------------

@@ -30,6 +30,7 @@ const SCENE_FIELD := "res://scenes/field.tscn"
 const SCENE_FIELD_WALKABLE := "res://scenes/field_walkable.tscn"
 const SCENE_SHOP := "res://scenes/shop.tscn"
 const SCENE_CHAPTER_END := "res://scenes/chapter_end.tscn"
+const START_FIELD_SCENE := &"linxi_tutorial"
 
 const DIALOG_DIR := "res://data/dialogs/"
 const FIELD_SCENE_DIR := "res://data/scenes/"

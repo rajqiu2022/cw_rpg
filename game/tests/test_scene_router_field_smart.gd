@@ -9,6 +9,16 @@ func _init() -> void:
 
 func _run() -> void:
 	_expect_eq(
+		SceneRouter.START_FIELD_SCENE,
+		&"linxi_tutorial",
+		"new game starts from Linxi tutorial scene"
+	)
+	_expect_eq(
+		SceneRouter.get_field_scene_path(SceneRouter.START_FIELD_SCENE),
+		"res://scenes/field_walkable.tscn",
+		"Linxi tutorial opens field_walkable.tscn"
+	)
+	_expect_eq(
 		SceneRouter.get_field_scene_path(&"ch1_s2_qingfeng_walkable"),
 		"res://scenes/field_walkable.tscn",
 		"walkable SceneScript opens field_walkable.tscn"

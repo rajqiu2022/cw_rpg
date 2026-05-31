@@ -3,22 +3,38 @@ extends Control
 signal closed
 
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
+const UI_DISPLAY_ART := preload("res://scripts/ui/ui_display_art.gd")
+const DISPLAY_ART_PATH := "res://art/ui/cold_wuxia/v2/ui_display_quest_bright.png"
 
 @onready var quest_list: VBoxContainer = %QuestList
 @onready var detail: RichTextLabel = %Detail
 @onready var close_btn: Button = %CloseBtn
 
 var _filter_mode := "all"
+var _chapter_filter := "all"
 var _selected_qid: StringName = &""
 var _filter_row: HBoxContainer = null
+var _chapter_filter_btn: OptionButton = null
 var _summary_label: Label = null
 var _track_btn: Button = null
 var _tracked_qid: StringName = &""
+
+const CHAPTER_NAMES := {
+	"ch1": "第一章 · 林西村下山",
+	"ch2": "第二章 · 竹尾风波",
+	"ch3": "第三章 · 入派抉择",
+	"ch4": "第四章 · 洛阳奇遇",
+	"ch5": "第五章 · 古月峰之围",
+	"ch6": "第六章 · 师承之谜",
+	"ch7": "第七章 · 烈云盟真相",
+	"ch8": "第八章 · 茗雾决战",
+}
 
 
 func _ready() -> void:
 	_build_formal_layout()
 	_apply_visual_style()
+	UI_DISPLAY_ART.install_fullscreen_panel(self, DISPLAY_ART_PATH, close)
 	close_btn.pressed.connect(close)
 	QuestManager.active_quests_changed.connect(_refresh)
 	_refresh()
@@ -40,7 +56,7 @@ func _build_formal_layout() -> void:
 	if body == null:
 		return
 	if body.get_node_or_null("QuestToolbar") == null:
-		var toolbar := HBoxContainer.new()
+		var toolbar: HBoxContainer = HBoxContainer.new()
 		toolbar.name = "QuestToolbar"
 		toolbar.add_theme_constant_override("separation", 10)
 		body.add_child(toolbar)
@@ -50,6 +66,18 @@ func _build_formal_layout() -> void:
 		_add_filter_button("进行中", "active")
 		_add_filter_button("主线", "main")
 		_add_filter_button("已完成", "done")
+
+		# 章节筛选下拉
+		_chapter_filter_btn = OptionButton.new()
+		_chapter_filter_btn.add_item("全部章节", 0)
+		_chapter_filter_btn.set_item_metadata(0, "all")
+		var chap_idx := 1
+		for ch_key in ["ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7", "ch8"]:
+			_chapter_filter_btn.add_item(CHAPTER_NAMES[ch_key], chap_idx)
+			_chapter_filter_btn.set_item_metadata(chap_idx, ch_key)
+			chap_idx += 1
+		_chapter_filter_btn.item_selected.connect(_on_chapter_filter_changed)
+		toolbar.add_child(_chapter_filter_btn)
 		_summary_label = Label.new()
 		_summary_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		_summary_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
@@ -68,7 +96,7 @@ func _build_formal_layout() -> void:
 	if detail_parent != null:
 		detail_parent.custom_minimum_size = Vector2(610, 0)
 	if body.get_node_or_null("QuestActions") == null:
-		var actions := HBoxContainer.new()
+		var actions: HBoxContainer = HBoxContainer.new()
 		actions.name = "QuestActions"
 		actions.alignment = BoxContainer.ALIGNMENT_CENTER
 		actions.add_theme_constant_override("separation", 12)
@@ -88,7 +116,7 @@ func _build_formal_layout() -> void:
 func _add_filter_button(label: String, mode: String) -> void:
 	if _filter_row == null:
 		return
-	var btn := Button.new()
+	var btn: Button = Button.new()
 	btn.text = label
 	btn.custom_minimum_size = Vector2(96, 38)
 	UI_THEME.style_button(btn, 15, UI_THEME.BLUE_STEEL)
@@ -99,6 +127,22 @@ func _add_filter_button(label: String, mode: String) -> void:
 func _set_filter(mode: String) -> void:
 	_filter_mode = mode
 	_refresh()
+
+
+func _on_chapter_filter_changed(idx: int) -> void:
+	if _chapter_filter_btn != null:
+		_chapter_filter = String(_chapter_filter_btn.get_item_metadata(idx))
+	else:
+		_chapter_filter = "all"
+	_refresh()
+
+
+func _extract_chapter(qid: StringName) -> String:
+	var s := String(qid)
+	for ch_key in CHAPTER_NAMES:
+		if s.begins_with("q_" + ch_key + "_"):
+			return ch_key
+	return ""
 
 
 func _apply_visual_style() -> void:
@@ -123,9 +167,11 @@ func _apply_visual_style() -> void:
 func _refresh() -> void:
 	for child in quest_list.get_children():
 		child.queue_free()
-	var visible_qids: Array[StringName] = []
-	var all_keys: Array = QuestManager.states.keys()
-	for key in all_keys:
+
+	# 收集并按章节分组
+	var chapters: Dictionary = {}  ## ch_key → Array[{qid, def, status}]
+	@warning_ignore("untyped_declaration")
+	for key in QuestManager.states:
 		var qid := StringName(key)
 		var q: QuestDef = QuestManager.load_def(qid)
 		if q == null:
@@ -133,14 +179,58 @@ func _refresh() -> void:
 		var status := QuestManager.get_status(qid)
 		if not _quest_visible(q, status):
 			continue
-		visible_qids.append(qid)
-		quest_list.add_child(_make_quest_row(qid, q, status))
+		var ch := _extract_chapter(qid)
+		if ch == "":
+			ch = "unknown"
+		if not chapters.has(ch):
+			chapters[ch] = []
+		chapters[ch].append({"qid": qid, "def": q, "status": status})
+
+	# 章节排序
+	var sorted_chapters: Array[String] = []
+	for ch_key in ["ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7", "ch8", "unknown"]:
+		if chapters.has(ch_key):
+			sorted_chapters.append(ch_key)
+
+	var visible_qids: Array[StringName] = []
+	var _first_visible_qid: StringName = &""
+
+	for ch_key in sorted_chapters:
+		# 章节筛选
+		if _chapter_filter != "all" and ch_key != _chapter_filter:
+			continue
+
+		var entries: Array = chapters[ch_key]
+		# 章内按 quest_id 排序
+		entries.sort_custom(func(a, b): return String(a.qid) < String(b.qid))
+
+		# 章节标题
+		if sorted_chapters.size() > 1 or _chapter_filter != "all":
+			var ch_name: String = CHAPTER_NAMES.get(ch_key, "其他")
+			var ch_label: Label = Label.new()
+			ch_label.text = "—— %s ——" % ch_name
+			ch_label.add_theme_font_size_override("font_size", 15)
+			ch_label.add_theme_color_override("font_color", UI_THEME.GOLD_LIGHT)
+			ch_label.add_theme_constant_override("margin_top", 8)
+			ch_label.add_theme_constant_override("margin_bottom", 4)
+			ch_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+			quest_list.add_child(ch_label)
+
+		for entry in entries:
+			var qid: StringName = entry.qid
+			var q: QuestDef = entry["def"]
+			var status: int = entry.status
+			visible_qids.append(qid)
+			if _first_visible_qid == &"":
+				_first_visible_qid = qid
+			quest_list.add_child(_make_quest_row(qid, q, status))
+
 	_update_summary()
 	if visible_qids.is_empty():
 		_show_empty()
 		return
 	if _selected_qid == &"" or not visible_qids.has(_selected_qid):
-		_selected_qid = visible_qids[0]
+		_selected_qid = _first_visible_qid
 	_show_selected()
 
 
@@ -157,13 +247,13 @@ func _quest_visible(q: QuestDef, status: int) -> bool:
 
 
 func _make_quest_row(qid: StringName, q: QuestDef, status: int) -> Control:
-	var row_panel := PanelContainer.new()
+	var row_panel: PanelContainer = PanelContainer.new()
 	row_panel.custom_minimum_size = Vector2(0, 96)
 	var border := _status_color(status)
 	if qid == _selected_qid:
 		border = UI_THEME.GOLD_LIGHT
 	row_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.038, 0.060, 0.072, 0.90), border, 12, 1))
-	var btn := Button.new()
+	var btn: Button = Button.new()
 	btn.custom_minimum_size = Vector2(0, 84)
 	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -202,8 +292,15 @@ func _show_quest(q: QuestDef, status: int) -> void:
 		else:
 			_track_btn.text = "追踪当前任务"
 
-	detail.text = "[b]%s[/b]\n[color=#9fd3d0]%s · %s[/color]\n\n[b]当前记述[/b]\n%s\n\n[b]完成条件[/b]\n%s\n\n[b]奖励[/b]\n%s\n\n[b]卷宗备注[/b]\n%s" % [
+	var ch_key := _extract_chapter(q.quest_id)
+	var ch_name: String = CHAPTER_NAMES.get(ch_key, "")
+	var ch_line := ""
+	if ch_name != "":
+		ch_line = "[color=#b8a060]%s · [/color]" % ch_name
+
+	detail.text = "[b]%s[/b]\n[color=#9fd3d0]%s%s · %s[/color]\n\n[b]当前记述[/b]\n%s\n\n[b]完成条件[/b]\n%s\n\n[b]奖励[/b]\n%s\n\n[b]卷宗备注[/b]\n%s" % [
 		q.title,
+		ch_line,
 		_kind_text(q),
 		_status_text(status),
 		q.get_description(status),
@@ -229,7 +326,8 @@ func _update_summary() -> void:
 	var active := 0
 	var done := 0
 	var total := 0
-	for key in QuestManager.states.keys():
+	@warning_ignore("untyped_declaration")
+	for key in QuestManager.states:
 		total += 1
 		var status := QuestManager.get_status(StringName(key))
 		if status == QuestDef.Status.IN_PROGRESS:

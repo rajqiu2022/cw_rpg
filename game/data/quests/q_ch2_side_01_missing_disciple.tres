@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_side_01_missing_disciple"
+title = "失踪弟子"
+kind = 1
+desc_not_started = "竹尾村客栈老板说近日有凌月派弟子在附近失踪。"
+desc_in_progress = "调查竹尾村周边，寻找凌月派失踪弟子的下落。"
+desc_completed = "在密林深处找到了失踪弟子的遗物和一枚茗雾暗器。"
+completion_triggers = Array[String](["flag_set:found_missing_disciple_clue"])
+reward_gold = 20
+reward_exp = 15
+reward_items = Array[Dictionary]([{"item_id": "broken_mask", "count": 1}])

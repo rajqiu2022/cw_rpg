@@ -2849,6 +2849,7 @@ Godot --headless --path game --script res://tests/test_scene_router_field_smart.
 
 原因：
 
+
 - ALAPI 的 generations 接口使用 `token` header，不是标准 `Authorization: Bearer`。
 - ALAPI 可传 `image` base64 参考图，但原始 PNG 直接 base64 后 payload 偏大，容易断流。
 - ALAPI 的 502 / incomplete chunked read 更像临时网络 / payload 问题，应短退避重试，不应进入 DMXAPI 的 30 分钟风控暂停。
@@ -3126,9 +3127,979 @@ Godot --headless --path game --script res://tests/test_scene_router_field_smart.
 - **一种后端一页规范**：OpenAI 兼容站与 ALAPI 这种「半兼容」要分开写，避免把 DMX 经验套到 ALAPI。
 - **决策文档要与 .env 同步**：新人先看 `AGENTS.md` + `alapi-image-api.md` 再配环境。
 
+---
+
+## 20. 后端切换：DMXAPI → ALAPI 永久化（2026-05-09）
+
+### 20.1 决策
+
+用户指定 ALAPI（`v3.alapi.cn/api/ai/images/generations`，`token` 头）为唯一后端，不再使用 DMXAPI。
+
+### 20.2 已执行
+
+- `.env` 已清理旧 DMXAPI key，仅保留 ALAPI 配置
+- `.env.example` 已更新，ALAPI 为唯一推荐选项
+- `AGENTS.md` 已更新后端引用
+- `docs/current-progress.md` 已移除 DMXAPI 欠费阻塞项
+- `scripts/gen_assets.py` 已完整支持 ALAPI（`_call_alapi_generation()` + `_alapi_reference_base64()`）
+
+### 20.3 注意事项
+
+- ALAPI 使用 `token` 头而非 `Authorization: Bearer`
+- POST endpoint: `{base_url}/images/generations`
+- 参考图需先压缩为 JPEG base64（`_alapi_reference_base64()`）避免 payload 过大
+- 后续所有出图操作统一走 `gen_assets.py`，不再提 DMXAPI
+
+---
+
+## 21. OkRouter Gemini Vision 接入（2026-05-09）
+
+### 21.1 背景
+
+ALAPI 只提供图像生成，不提供 chat/vision 接口。无法用已有后端做图片分析。
+用户提供 OkRouter + Gemini 3.1 Pro Preview 作为 vision 后端。
+
+### 21.2 配置
+
+```env
+OKROUTER_API_KEY=sk-...
+OKROUTER_BASE_URL=https://api.okrouter.com/v1
+OKROUTER_VISION_MODEL=gemini-3.1-pro-preview-customtools
+```
+
+### 21.3 已落地的两个脚本
+
+| 脚本 | 用途 |
+|---|---|
+| `scripts/qa/review_image.py` | 通用图片分析：传任意图 + 自定义检查项 → JSON 报告 |
+| `scripts/qa/review_module_atlas.py` | Atlas 专项：按 `scene-element-kit-spec.md` 逐项检查 + 元素数校验 |
+
+### 21.4 注意事项
+
+- 图片需先压缩为 JPEG（`MAX_IMAGE_SIDE=1568, QUALITY=75`），否则 7MB PNG 会超时
+- Gemini 返回的 JSON 可能被 markdown 包裹，脚本做了 ```json 剥离
+- Vision 输出是"视觉判断"，非像素级精确——适合风格/内容/违禁项检查，不适合 alpha 通道检查
+- `gen_assets.py` 仍用 ALAPI 出图，Vision 用 OkRouter 审核
 
 
 
+
+## 20. 后端切换：DMXAPI → ALAPI 永久化（2026-05-09）
+
+### 20.1 决策
+
+用户指定 ALAPI（`v3.alapi.cn/api/ai/images/generations`，`token` 头）为唯一后端，不再使用 DMXAPI。
+
+### 20.2 已执行
+
+- `.env` 已清理旧 DMXAPI key，仅保留 ALAPI 配置
+- `.env.example` 已更新，ALAPI 为唯一推荐选项
+- `AGENTS.md` 已更新后端引用
+- `docs/current-progress.md` 已移除 DMXAPI 欠费阻塞项
+- `scripts/gen_assets.py` 已完整支持 ALAPI（`_call_alapi_generation()` + `_alapi_reference_base64()`）
+
+### 20.3 注意事项
+
+- ALAPI 使用 `token` 头而非 `Authorization: Bearer`
+- POST endpoint: `{base_url}/images/generations`
+- 参考图需先压缩为 JPEG base64（`_alapi_reference_base64()`）避免 payload 过大
+- 后续所有出图操作统一走 `gen_assets.py`，不再提 DMXAPI
+
+---
+
+## 22. Tiled 才是模块化场景拼装编辑器（2026-05-10）
+
+### 22.1 现象
+
+- 场景元素 atlas / 66 个 PNG 已经形成素材库后，继续用 Python PIL 按坐标盲排完整场景不可控。
+- PIL 盲排无法直观看到可行走路面、建筑遮挡、碰撞边界、NPC 站位和交互触发区。
+
+### 22.2 决策
+
+- Tiled 作为模块化 2.5D 场景拼装的 source of truth。
+- Python 只负责导入和校验，不再作为正式布局编辑器。
+- Godot 继续使用现有可行走 Field，不重写探索系统；Tiled 数据导入到 `SceneScript`。
+
+### 22.3 已落地
+
+- 新增 `docs/tiled-godot-scene-pipeline.md`：
+  - Tiled 地图设置、层命名、自定义属性、对象层规范、导入命令、当前限制。
+- `SceneScript` 新增 `scene_objects: Array[Dictionary]`。
+- `field_walkable_controller.gd` 新增 `_spawn_scene_objects()`：
+  - 按 `texture`、`pos`、`scale`、`rotation`、`z_index` 渲染 `Sprite2D`。
+  - 支持 `require_flag` / `hide_flag` 条件显示。
+- 新增 `scripts/import_tiled_scene.py`：
+  - 支持 Tiled `.tmj/.json`。
+  - 支持内嵌 image collection tileset，也支持外部 `.tsj/.json/.tsx` image collection tileset。
+  - 导入 `scene_objects`、`player_spawn`、`npcs`、`exits`、`collision_rects`、`trigger_zones`。
+- 新增 `scripts/create_tiled_tileset.py`：
+  - 从 `game/art/modules/{ground,building,veg,prop}/` 扫描 PNG。
+  - 自动生成 Tiled image collection `.tsx`。
+  - 写入 `id`、`category`、`z_index` 自定义属性。
+  - 使用相对图片路径，避免 `.tsx` 绑定本机绝对路径。
+- 新增 `scripts/generate_linxi_tutorial_tiled.py`：
+  - 读取 `scene_elements.tsx`，按类别 / 文件名提示选择素材。
+  - 用固定构图模板生成 `linxi_tutorial.tmj`，不是让大模型自由拼图。
+  - 同时输出 PNG 预览，用户只做审核和微调。
+- 新增 `maps/tiled/sample_scene.tmj` 与导入样例 `game/data/scenes/sample_tiled_import.tres`。
+- 新增 `game/art/modules/` 与 `maps/tiled/tilesets/` 目录骨架。
+
+### 22.4 验证
+
+- `python scripts/import_tiled_scene.py maps/tiled/sample_scene.tmj --out game/data/scenes/sample_tiled_import.tres --scene-id sample_tiled_import --display-name "Tiled 导入样例"` 通过。
+- `python scripts/create_tiled_tileset.py game/art/backgrounds/bg_linxi_main.png --out maps/tiled/tilesets/sample_backgrounds.tsx --name sample_backgrounds` 通过。
+- `sample_scene.tmj` 改用外部 `sample_backgrounds.tsx` 后，导入器仍能解析并生成 `res://art/backgrounds/bg_linxi_main.png`。
+- `python scripts/generate_linxi_tutorial_tiled.py --tileset maps/tiled/tilesets/sample_backgrounds.tsx --out maps/tiled/linxi_tutorial_sample.tmj --preview tools/linxi_tutorial_tiled_preview_sample.png` 通过。
+- `linxi_tutorial_sample.tmj` 可继续由 `import_tiled_scene.py` 导入为 `linxi_tutorial_sample.tres`。
+- `python -m py_compile scripts/import_tiled_scene.py scripts/create_tiled_tileset.py scripts/generate_linxi_tutorial_tiled.py` 通过。
+- `ReadLints` 检查 `scene_script.gd`、`field_walkable_controller.gd`、`import_tiled_scene.py`、`create_tiled_tileset.py`、`generate_linxi_tutorial_tiled.py` 无新增错误。
+
+### 22.5 经验
+
+- **可视化布局交给 Tiled**：路、建筑、植物、交互物、碰撞和触发区必须人眼可调，不能再靠 PIL 盲排。
+- **Tiled 不是传统 TileMap 限定**：本项目把它当 Sprite2D 模块摆放器，用 image collection tileset 承载厚涂 PNG。
+- **导入器输出数据，不输出逻辑**：系统行为仍走 `SceneScript` + `SceneRouter.resolve_action()`，保持内容和代码边界清晰。
+- **`.tsx` 必须用相对路径**：绝对路径会把 Tiled 项目锁死在当前电脑盘符，生成器要统一输出相对路径。
+- **首版布局必须模板化生成**：不要让大模型“自由摆图块”；用固定构图 + 文件名规则生成可审核初稿，Tiled 只负责可视化校准。
+- **不能用完整背景图当 sample tile**：这会生成“几张原图堆一起”的假场景，误导审核；没有真实模块 PNG / `scene_elements.tsx` 时生成器必须直接失败。
+
+### 22.6 模块 PNG 不是无缝 tile，必须先做语义清单（2026-05-10）
+
+现象：
+
+- `linxi_tutorial.tmj` 虽然已经不再把完整背景图当素材堆叠，但整体仍显得凌乱。
+- 根因不是 Tiled 工具本身，而是生成器只知道 `ground/building/veg/prop` 粗分类和文件名提示，不能判断每个 PNG 是否是：
+  - 可连续拼的路面；
+  - 完整建筑；
+  - 建筑零件；
+  - 前景遮挡；
+  - 低可见度 / 空白污染素材；
+  - 不适合当前场景首版的混合素材。
+- 典型例子：`road_dirt_linxi_straight_a` 同时包含土路与石板条，盲放后会在画面底部露出不相关石板，造成“拼错图块”的观感。
+
+修复：
+
+- 生成 `tools/scene_module_contact_sheets/{ground,building,veg,prop}_contact_sheet.png`，先用带编号联系表看清每个素材。
+- 新增 `maps/tiled/scene_elements_manifest.json`：
+  - 记录素材 `purpose`、`recommended`、`z_index`。
+  - 把插画式模块与真正适合当前首版布局的模块区分开。
+- `scripts/generate_linxi_tutorial_tiled.py` 改为读取 manifest，并点名使用少量确定素材：
+  - 主路：曲线路 / 岔路模块；
+  - 建筑：完整客栈、完整铁匠铺、完整房屋墙体；
+  - 植被：边缘竹林、灌木、草簇；
+  - 交互物：路牌、石坛、车、木桶。
+- 移除预览图里的额外黄褐色引导线，避免误判为真实地形。
+- 将 `road_dirt_linxi_straight_a` 标记为不推荐用于当前首版，避免混合素材污染路面。
+
+验证：
+
+- `python -m py_compile scripts/generate_linxi_tutorial_tiled.py scripts/import_tiled_scene.py` 通过。
+- `python scripts/generate_linxi_tutorial_tiled.py` 通过，重新生成 `maps/tiled/linxi_tutorial.tmj` 与 `tools/linxi_tutorial_tiled_preview.png`。
+- `python scripts/import_tiled_scene.py maps/tiled/linxi_tutorial.tmj --out game/data/scenes/linxi_tutorial.tres --scene-id linxi_tutorial --display-name "林西村 · 新手关"` 通过。
+- `ReadLints` 检查 `scripts/generate_linxi_tutorial_tiled.py`、`maps/tiled/scene_elements_manifest.json`、`game/data/scenes/linxi_tutorial.tres` 无新增错误。
+
+经验：
+
+- **厚涂模块不是无缝 tile**：不要按 TileMap 思路密集铺满；应按“少量大模块 + 明确层级 + 留白路径”拼场景。
+- **生成器必须读语义清单**：文件名只能做初筛，不能代替 `purpose/recommended/z_index`。
+- **预览图不能混入调试引导层**：额外画线会误导审核，真实元素和调试辅助必须分离。
+- **Windows PowerShell 不要套 Bash 写法**：`python - <<'PY'` 和部分环境中的 `&&` 都会失败；复杂 Python 片段用 PowerShell here-string 管道，串联命令用 `; if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }`。
+
+### 22.7 新手关改用整图背景，Tiled 只负责隐形玩法层（2026-05-10）
+
+现象：
+
+- 即使加了素材联系表和 manifest，厚涂 PNG 模块仍然像插画碎片，建筑和植物有“七零八碎”的拼图感。
+- 对本项目当前资产质量来说，继续做模块拼接会把精力消耗在识别和摆放碎片上，难以达到完整场景美术效果。
+
+决策：
+
+- 新手关采用“完整背景图 + 隐形玩法层”：
+  - 背景图负责视觉完整性；
+  - Tiled 只维护 `spawn`、`collisions`、`triggers`、`exits`、`npcs`；
+  - Godot 继续用 `SceneScript.background_path` + `FieldWalkableController` 渲染和交互。
+- 这条路线更符合 GPT Image 场景出图能力，也符合项目早期“AVG/RPG 背景整图 + 运行时角色叠加”的方向。
+
+修复：
+
+- 新增 `prompts/templates/scene_background_walkable_full.yaml`：
+  - 明确要求完整场景图，不是 tileset / atlas / 拼图；
+  - 要求中央 16:9 安全区、清晰宽阔可行走主路、无人物 / NPC / 动物。
+- `prompts/tasks.yaml` 新增 `scene_linxi_tutorial_full_bg`。
+- 通过 ALAPI + `gpt-image-2` 生成：
+  - `assets/raw/scene/v2/scene_linxi_tutorial_full_bg.png`
+  - `assets/raw/scene/v2/scene_linxi_tutorial_full_bg.meta.json`
+- 将 1536×1024 原图中间 16:9 安全区裁切并缩放为：
+  - `game/art/backgrounds/bg_linxi_tutorial_full.png`（1920×1080）
+  - `tools/linxi_tutorial_full_bg_1920_preview.png`
+- 新增 `maps/tiled/linxi_tutorial_full_bg.tmj`：
+  - 无 tileset；
+  - 无 scene object；
+  - 只包含隐形矩形碰撞、触发区、出口、NPC、出生点。
+- 用 `import_tiled_scene.py` 导入为 `game/data/scenes/linxi_tutorial.tres`，并传入：
+  - `--background-path res://art/backgrounds/bg_linxi_tutorial_full.png`
+- 新增碰撞审核预览：
+  - `tools/linxi_tutorial_full_bg_collision_overlay.png`
+- 新增 `SceneRouter.START_FIELD_SCENE = &"linxi_tutorial"`，主菜单新游戏和空存档默认入口改走新手关。
+
+验证：
+
+- `python scripts/gen_assets.py --task scene_linxi_tutorial_full_bg --dry-run` 通过。
+- `python scripts/gen_assets.py --task scene_linxi_tutorial_full_bg --budget 5` 通过，`fallback_used=false`，成本约 ¥1.2。
+- `python scripts/import_tiled_scene.py maps/tiled/linxi_tutorial_full_bg.tmj --out game/data/scenes/linxi_tutorial.tres --scene-id linxi_tutorial --display-name "林西村 · 新手关" --background-path res://art/backgrounds/bg_linxi_tutorial_full.png` 通过。
+- `ReadLints` 检查 `scene_router.gd`、`main_menu.gd`、`save_manager.gd`、`test_scene_router_field_smart.gd`、`linxi_tutorial.tres` 无新增错误。
+- 当前终端没有 `Godot` / `GODOT_BIN`，未能执行 `Godot --headless --path game --script res://tests/test_scene_router_field_smart.gd`；需在本机配置 Godot CLI 后补跑。
+
+经验：
+
+- **厚涂场景优先整图，不要强行模块拼图**：除非素材天然是规则 tile / 明确组件，否则完整背景图的视觉一致性远高于拼接。
+- **碰撞层与视觉层分离**：背景图可以是完整插画，玩法数据仍可由 Tiled 隐形对象层维护，程序完全能实现。
+- **最终游戏背景尽量 16:9**：本项目 Field 以 1920×1080 归一化坐标管理碰撞，出图后应裁成 16:9，避免 TextureRect 裁切/缩放导致坐标偏移。
+- **入口场景要集中成常量**：新手关成为真实入口后，不要在主菜单、存档、商店返回等处散落 `"ch1_s1_road"` 默认值。
+
+### 22.8 整图背景要强调 2.5D 体块感，动态物件用程序化叠加层（2026-05-10）
+
+现象：
+
+- 第一张完整新手关背景已经比碎 PNG 拼图稳定，但建筑仍偏“原画插画”，体块、台阶、屋檐厚度和接地阴影不够像可走的 2.5D 游戏场景。
+- 用户提出希望有一些 3D 感，并询问旗子、炊烟等动态物件能否实现。
+
+决策：
+
+- 背景图继续保持整图路线，但 prompt 从“厚涂插画”推进到“2.5D 预渲染 3D 场景 + 手绘武侠贴图”：
+  - 强调厚屋檐、侧墙、台阶高度、墙根投影、接地阴影；
+  - 禁止照片级 3D / 低多边形卡通，避免偏离项目港漫武侠风。
+- 动态物件不画进背景图，而作为运行时叠加层：
+  - `banner`：程序化布旗摆动；
+  - `smoke`：程序化烟雾粒子 / puff；
+  - `glow`：炉火 / 灯笼光晕闪烁。
+
+修复：
+
+- `prompts/templates/scene_background_walkable_full.yaml` 增加 2.5D 预渲染体块感要求。
+- `prompts/tasks.yaml` 新增 `scene_linxi_tutorial_3d_bg`。
+- 通过 ALAPI + `gpt-image-2` 生成：
+  - `assets/raw/scene/v2/scene_linxi_tutorial_3d_bg.png`
+  - `assets/raw/scene/v2/scene_linxi_tutorial_3d_bg.meta.json`
+- 将 3D 体块感版本裁切为游戏背景：
+  - `game/art/backgrounds/bg_linxi_tutorial_full.png`
+  - `tools/linxi_tutorial_3d_bg_1920_preview.png`
+- `SceneScript` 新增 `animated_props: Array[Dictionary]`。
+- `scripts/import_tiled_scene.py` 支持读取 Tiled `animated_props` / `animated` / `atmosphere` 对象层。
+- `field_walkable_controller.gd` 新增 `_spawn_animated_props()`：
+  - `banner`：`Line2D` + `Polygon2D` + Tween 循环；
+  - `smoke`：多个 radial puff `Sprite2D` 循环上升淡出；
+  - `glow`：radial `ImageTexture` + Tween alpha 闪烁。
+- `maps/tiled/linxi_tutorial_full_bg.tmj` 新增 `animated_props` 层，配置：
+  - 酒馆旗子摆动；
+  - 民居炊烟；
+  - 铁匠铺烟囱烟；
+  - 铁匠铺炉火光；
+  - 酒馆灯笼光。
+- 重新导入 `game/data/scenes/linxi_tutorial.tres`，包含 `animated_props` 数据。
+- 新增审核图：
+  - `tools/linxi_tutorial_3d_collision_animation_overlay.png`
+
+验证：
+
+- `python scripts/gen_assets.py --task scene_linxi_tutorial_3d_bg --dry-run` 通过。
+- `python scripts/gen_assets.py --task scene_linxi_tutorial_3d_bg --budget 5` 通过，`fallback_used=false`，成本约 ¥1.2。
+- `python -m py_compile scripts/import_tiled_scene.py` 通过。
+- `python scripts/import_tiled_scene.py maps/tiled/linxi_tutorial_full_bg.tmj --out game/data/scenes/linxi_tutorial.tres --scene-id linxi_tutorial --display-name "林西村 · 新手关" --background-path res://art/backgrounds/bg_linxi_tutorial_full.png` 通过。
+- Python 资源校验确认：
+  - `bg_linxi_tutorial_full.png` 为 1920×1080；
+  - `linxi_tutorial.tres` 含 `animated_props`；
+  - 5 个动态物件 id 均已写入。
+- `ReadLints` 检查 `scene_script.gd`、`field_walkable_controller.gd`、`import_tiled_scene.py`、`linxi_tutorial.tres`、prompt 文件无新增错误。
+
+经验：
+
+- **3D 感优先写成“预渲染 2.5D + 手绘贴图”**：直接说 3D 容易走向照片级 / CG；必须同时约束港漫武侠贴图和明亮色彩。
+- **小动画适合程序化叠加，不适合烘进背景**：旗子、烟、火光这类循环氛围物件应独立于背景，方便调位置、速度和显隐条件。
+- **Tiled 可以继续做隐形 source of truth**：即使视觉是整图，`animated_props` 也可作为对象层维护，不必写死在 GDScript。
+
+### 22.9 参考图要约束“空间语言”，不是只说 3D 感（2026-05-10）
+
+现象：
+
+- 仅在 prompt 中写“2.5D 预渲染体块感”仍不够，生成图虽然更立体，但建筑还是偏漂亮插画，和地面分离感不足。
+- 用户提供一张老式 2.5D ARPG 村落截图后，关键差异变清楚：
+  - 建筑有立面、屋檐厚度、柱子、台阶；
+  - 建筑与地面之间有强接地阴影；
+  - 建筑会自然遮挡玩家和地面；
+  - 地面有石板、杂草、围栏、桶、晾衣架等尺度物；
+  - 画面更像“可玩的关卡截图”，不是“场景原画”。
+
+修复：
+
+- 将用户参考图归档：
+  - `assets/_style_bible/scene_reference/ref_prerendered_arpg_village.png`
+- 新增模板 `prompts/templates/scene_background_prerendered_arpg.yaml`：
+  - 引用该参考图；
+  - 明确写“Use the reference image for spatial language only”；
+  - 强调 `solid occluding volumes`、`contact shadows`、`wall height`、`roof overhang`、`courtyard ground plane`。
+- `prompts/tasks.yaml` 新增 `scene_linxi_tutorial_prerendered_bg`。
+- 通过 ALAPI + `gpt-image-2` 生成：
+  - `assets/raw/scene/v2/scene_linxi_tutorial_prerendered_bg.png`
+  - `assets/raw/scene/v2/scene_linxi_tutorial_prerendered_bg.meta.json`
+- 将生成图裁切接入：
+  - `game/art/backgrounds/bg_linxi_tutorial_full.png`
+  - `tools/linxi_tutorial_prerendered_bg_1920_preview.png`
+- 按新画面重新对齐 `maps/tiled/linxi_tutorial_full_bg.tmj` 中的碰撞、出口、NPC 和 `animated_props` 坐标。
+- 重新导入 `game/data/scenes/linxi_tutorial.tres`。
+- 新增审核图：
+  - `tools/linxi_tutorial_prerendered_collision_animation_overlay.png`
+
+验证：
+
+- `python scripts/gen_assets.py --task scene_linxi_tutorial_prerendered_bg --dry-run` 通过。
+- `python scripts/gen_assets.py --task scene_linxi_tutorial_prerendered_bg --budget 5` 通过，`fallback_used=false`，成本约 ¥1.2。
+- `python scripts/import_tiled_scene.py maps/tiled/linxi_tutorial_full_bg.tmj --out game/data/scenes/linxi_tutorial.tres --scene-id linxi_tutorial --display-name "林西村 · 新手关" --background-path res://art/backgrounds/bg_linxi_tutorial_full.png` 通过。
+- Python 校验确认：
+  - `bg_linxi_tutorial_full.png` 为 1920×1080；
+  - `linxi_tutorial.tres` 含 `animated_props`；
+  - `scene_objects = []`，没有回到碎图拼接路线。
+- `python -m py_compile scripts/import_tiled_scene.py` 通过。
+- `ReadLints` 检查 prompt、Tiled map、`linxi_tutorial.tres` 无新增错误。
+
+经验：
+
+- **不要只说“更 3D”**：模型容易理解成光影更漂亮，但仍是原画；要说“老式 2.5D ARPG 预渲染关卡截图”。
+- **参考图用途要写清楚**：使用参考图的 camera / occlusion / contact shadow / clutter scale / ground plane，不照搬人物、UI、水印和具体内容。
+- **建筑要被描述为会遮挡玩家的 solid volume**：这比“建筑有立体感”更能逼出墙体、屋檐、柱子和接地阴影。
+
+### 22.10 白天版要拆分参考图职责：暗版管体块，亮版管色彩（2026-05-10）
+
+现象：
+
+- `scene_linxi_tutorial_prerendered_bg` 的建筑体块、屋檐、台阶、接地阴影已经更接近老式 2.5D ARPG，但整体明显偏暗，像傍晚 / 阴天。
+- 用户希望保留新版建筑的突出感，同时把道路、植物和整体光照拉回之前明亮清晨版本。
+
+修复：
+
+- 新增模板 `prompts/templates/scene_background_prerendered_daylight_mix.yaml`。
+- 模板使用三张参考图，并明确拆分职责：
+  - `ref_prerendered_arpg_village.png`：只管空间语言、镜头、遮挡、尺度；
+  - `scene_linxi_tutorial_prerendered_bg.png`：只管建筑体块、立面、屋檐、接地阴影；
+  - `scene_linxi_tutorial_3d_bg.png`：只管白天色彩、黄土路、绿色植物、明亮清晨氛围。
+- `prompts/tasks.yaml` 新增 `scene_linxi_tutorial_prerendered_day_bg`。
+- 通过 ALAPI + `gpt-image-2` 生成：
+  - `assets/raw/scene/v2/scene_linxi_tutorial_prerendered_day_bg.png`
+  - `assets/raw/scene/v2/scene_linxi_tutorial_prerendered_day_bg.meta.json`
+- 裁切并接入：
+  - `game/art/backgrounds/bg_linxi_tutorial_full.png`
+  - `tools/linxi_tutorial_prerendered_day_bg_1920_preview.png`
+- 重新对齐 `maps/tiled/linxi_tutorial_full_bg.tmj` 中的碰撞、出口、NPC 和 `animated_props` 坐标。
+- 重新导入 `game/data/scenes/linxi_tutorial.tres`。
+- 新增审核图：
+  - `tools/linxi_tutorial_prerendered_day_collision_animation_overlay.png`
+
+验证：
+
+- `python scripts/gen_assets.py --task scene_linxi_tutorial_prerendered_day_bg --dry-run` 通过。
+- `python scripts/gen_assets.py --task scene_linxi_tutorial_prerendered_day_bg --budget 5` 通过，`fallback_used=false`，成本约 ¥1.2。
+- Python 校验确认：
+  - `bg_linxi_tutorial_full.png` 为 1920×1080；
+  - `linxi_tutorial.tres` 含 `animated_props`；
+  - `scene_objects = []`，仍保持整图 + 隐形玩法层路线。
+- `python -m py_compile scripts/import_tiled_scene.py` 通过。
+- `ReadLints` 检查 `scene_background_prerendered_daylight_mix.yaml`、`tasks.yaml`、`linxi_tutorial_full_bg.tmj`、`linxi_tutorial.tres` 无新增错误。
+
+经验：
+
+- **多参考图必须指定角色**：不要让模型平均融合；要明确“这张管结构，那张管颜色”。
+- **白天版要显式否定 dusk/evening/night/gloomy**：否则参考图中的暗调会把生成结果拉回傍晚。
+- **先选定视觉，再重贴隐形层**：同一个 `linxi_tutorial.tres` 可复用玩法合同，但每次背景构图变化后都要重新对齐碰撞和动画坐标。
+
+### 22.11 试玩入口必须确认走新手关 SceneScript（2026-05-10）
+
+现象：
+
+- 新手关背景、动画层、碰撞盒已经写入 `linxi_tutorial.tres`，但检查发现 `SceneRouter.START_FIELD_SCENE` 一度指向 `ch1_s0_linxi_main_walkable`。
+- 这会导致用户点击“新游戏”时进不到刚接好的 `linxi_tutorial`，误以为场景没有接入游戏。
+
+修复：
+
+- 将 `game/scripts/autoload/scene_router.gd` 的 `START_FIELD_SCENE` 改回：
+  - `&"linxi_tutorial"`
+- 主菜单仍通过 `SceneRouter.go_field_smart(SceneRouter.START_FIELD_SCENE)` 进入，不散落硬编码。
+- `linxi_tutorial.tres` 当前包含：
+  - `background_path = "res://art/backgrounds/bg_linxi_tutorial_full.png"`
+  - `is_walkable = true`
+  - `animated_props`
+  - `collision_rects`
+  - `trigger_zones`
+  - `exits`
+  - `npcs`
+
+验证：
+
+- Python 静态校验通过：
+  - 背景存在且为 1920×1080；
+  - `linxi_tutorial.tres` 含背景、碰撞、触发、出口、NPC、动画物件；
+  - `SceneRouter.START_FIELD_SCENE == &"linxi_tutorial"`；
+  - `main_menu.gd` 使用 `SceneRouter.START_FIELD_SCENE`。
+- `ReadLints` 检查 `scene_router.gd`、`main_menu.gd`、`field_walkable_controller.gd`、`linxi_tutorial.tres` 无新增错误。
+- 当前环境仍未配置 `GODOT_BIN`，`Godot --headless` 自动化测试跳过；需要在 Godot 编辑器内实机走动验收。
+
+经验：
+
+- **接入游戏不等于资源生成完成**：必须确认入口路由、SceneScript、背景、碰撞、动画层全部连上。
+- **试玩入口要用常量集中控制**：切换新手关 / 主街时，只改 `START_FIELD_SCENE`，不要改多处硬编码。
+
+### 22.12 新手关动态物件要分清“世界层”和“UI层”（2026-05-10）
+
+现象：
+
+- 新手关红旗使用 `Line2D` + `Polygon2D` 程序绘制，视觉像调试占位，不像正式资产。
+- 红旗、炊烟等 `animated_props` 的 `z_index` 较高，打开背包 UI 时可能盖在 UI 上。
+- 屋顶黄色闪烁来自 `inn_lantern_glow`，位置不像灯笼，误读为“屋顶发光”。
+
+修复：
+
+- 新增正式贴图资源：
+  - `game/art/props/linxi_red_banner.png`
+  - `game/art/props/blacksmith_hammer.png`
+  - `game/art/characters/npc_blacksmith_idle.png`
+- `field_walkable_controller.gd` 新增：
+  - `texture_sway`：用 PNG 旗帜贴图做轻微摆动，不再画多边形红旗。
+  - `hammer`：用锤子 PNG 做循环敲打动作。
+- `field_walkable.tscn` 设置：
+  - `Background.z_index = -200`
+  - `WorldContainer.z_index = -100`
+  - UI 控件仍保持默认层级，确保世界物件不盖住背包 / 装备 / 任务面板。
+- 从 `maps/tiled/linxi_tutorial_full_bg.tmj` 移除 `inn_lantern_glow`，只保留：
+  - `rear_house_cooking_smoke`
+  - `smithy_chimney_smoke`
+  - `smithy_forge_glow`
+- 修正 `scripts/import_tiled_scene.py`，让 Tiled `animated_props` 可导入 `texture` / `texture_path` 属性。
+
+验证：
+
+- `linxi_tutorial.tres` 已重新导入，`animated_props` 中红旗类型为 `texture_sway`，不再有 `inn_lantern_glow`。
+- `linxi_tutorial.tres` 新增铁匠铺 `blacksmith_hammer_loop`，贴图路径为 `res://art/props/blacksmith_hammer.png`。
+
+经验：
+
+- **世界动画不要靠高 z_index 压 UI**：探索场景里世界层整体应低于 HUD / 面板层，局部排序只在世界层内部解决。
+- **调试动画和正式资产要分阶段**：程序画旗子适合验证数据管线，正式接入时应换成贴图或 sprite sheet，再用轻量 tween 做动态。
+- **炊烟方案可以复用**：用径向透明纹理 + 多个 `Sprite2D` puff + 位置/缩放/alpha tween，成本低、效果稳定，适合烟、雾、灰尘等氛围物件。
+- **Tiled 导入命令要用当前参数格式**：`python scripts/import_tiled_scene.py <map> --out <tres> --scene-id <id> --display-name "<name>" --background-path <res_path>`，不要使用旧的位置参数格式。
+
+### 22.13 新手关角色比例要让场景数据 scale 真正生效（2026-05-10）
+
+现象：
+
+- 用户反馈主角 / NPC 相对房子太小。
+- `linxi_tutorial.tres` 里 NPC 已有 `scale` 字段，但 `npc_node.gd` 和 `field_walkable_controller.gd` 仍按固定 `96 / origin_size` 缩放，导致 Tiled 数据里的比例调节无效。
+
+修复：
+
+- `player.gd` 新增 `VISUAL_SCALE = 1.35`，主角行走 sprite 在新手关里更接近建筑尺度。
+- `npc_node.gd` 改为优先使用 `sprite_scale`。
+- `field_walkable_controller.gd` 加载 NPC 贴图后使用 `npc.sprite_scale`，不再覆盖为固定 96px。
+- `linxi_tutorial_full_bg.tmj` 中：
+  - 刑樊天 `scale` 从 `0.08` 调到 `0.15`。
+  - 新增铁匠铺老板 `blacksmith_liu`，使用 `npc_blacksmith_idle.png`，`scale = 0.62`。
+- 新增 `game/data/dialogs/ch1_tutorial_blacksmith.tres`，铁匠可交互对话。
+
+经验：
+
+- **数据字段必须被运行时代码消费**：只在 `.tres` / Tiled 里写 `scale` 不够，导入和实例化路径都要确认不会被硬编码覆盖。
+- **大背景场景里的角色尺度要按视觉审核调**：1920×1080 整图背景不是 tilemap，角色比例更依赖实际建筑体量，不能只沿用旧野外 demo 的 96px NPC 标准。
+
+### 22.14 第一场景 UI 可先接展示稿，不急着重做功能图（2026-05-11）
+
+现象：
+
+- 用户确认以下 UI 设计稿质量已经可用，只需要整体调亮：
+  - `assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_field_hud_screen_gpt_v1.png`
+  - `assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_inventory_screen_gpt_v1.png`
+  - `assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_equipment_screen_gpt_v1.png`
+  - `assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_quest_screen_gpt_v1.png`
+  - `assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_skill_screen_gpt_v1.png`
+- 当前阶段目标是“第一场景正式观感展示”，不是补完背包 / 装备 / 任务 / 武学的完整交互。
+
+修复：
+
+- 从上述 5 张源图生成调亮后的展示资源：
+  - `game/art/ui/cold_wuxia/v2/ui_display_field_hud_bright.png`
+  - `game/art/ui/cold_wuxia/v2/ui_display_inventory_bright.png`
+  - `game/art/ui/cold_wuxia/v2/ui_display_equipment_bright.png`
+  - `game/art/ui/cold_wuxia/v2/ui_display_quest_bright.png`
+  - `game/art/ui/cold_wuxia/v2/ui_display_skill_bright.png`
+- 同步接入已有对话框图：
+  - 源图：`assets/raw/ui_frame/ui_cold_wuxia_dialog_box_v1.png`
+  - 输出：`game/art/ui/cold_wuxia/v2/ui_display_dialog_box_bright.png`
+- 新增 `game/scripts/ui/ui_display_art.gd`：
+  - 面板打开时用全屏展示稿作为主视觉。
+  - 保留透明关闭热区和 Esc 关闭。
+  - 原有功能控件暂时隐藏，避免默认控件破坏展示稿观感。
+- `field_walkable_controller.gd` 接入 HUD 展示图：
+  - HUD 图中间做透明窗口，避免完全盖住场景和玩家。
+  - 原有 I/E/K/J 按钮保持可点击但视觉透明。
+
+验证：
+
+- Python 校验确认 6 张展示资源存在，尺寸分别为 1920×1080（面板 / HUD）和 1760×400（对话框）。
+- 校验确认 4 个面板脚本、对话框脚本、可行走场景脚本均引用了对应展示资源。
+- `ReadLints` 检查 UI 脚本和 `field_walkable_controller.gd` 无新增错误。
+
+经验：
+
+- **展示稿阶段不要急着拆功能层**：当目标是验证整体正式观感时，先全屏加载已认可设计稿，保留关闭和快捷键即可。
+- **全屏 UI 源图接游戏要先统一尺寸**：1536×1024 的设计图接到 1920×1080 时，用模糊背景 + contain 前景比强行拉伸或裁切更稳。
+- **HUD 展示稿不能整张压住玩法画面**：如果源图是 RGB 全屏稿，接入时要给玩法中心区域做透明窗口，保留玩家和场景可见。
+
+### 22.15 主 HUD 要从整图展示升级为可程序调用部件（2026-05-11）
+
+现象：
+
+- `ui_display_field_hud_bright.png` 作为整图展示能快速提升观感，但它仍是“一张图盖上去”：
+  - 右侧按钮不能有真正的独立 hover / pressed；
+  - 金币、场景名、任务内容会被源图示例文字干扰；
+  - 后续背包 / 装备 / 任务 / 武学界面无法复用这套调用方式。
+
+修复：
+
+- 新增 `scripts/process_field_hud_assets.py`，从已认可源图：
+  - `assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_field_hud_screen_gpt_v1.png`
+  裁出主 HUD 部件：
+  - `game/art/ui/field_hud/v1/hud_player_panel.png`
+  - `game/art/ui/field_hud/v1/hud_gold_panel.png`
+  - `game/art/ui/field_hud/v1/hud_scene_title.png`
+  - `game/art/ui/field_hud/v1/hud_quest_panel.png`
+  - `game/art/ui/field_hud/v1/hud_bottom_bar.png`
+  - `hud_btn_{inventory,equipment,skill,quest,system}_{normal,hover,pressed}.png`
+- 对需要运行时写字的区域做“底框化”：
+  - 场景名；
+  - 金币数字；
+  - 任务详情正文。
+- 新增 `game/scripts/ui/ui_texture_skin.gd`，作为正式 UI 资源调用模块：
+  - `load_texture()`
+  - `place_texture()`
+  - `make_texture_button()`
+  - `stylebox_texture()`
+  - `label()` / `rich_text()`
+- `field_walkable_controller.gd` 改为初始化 `FormalFieldHud`：
+  - 使用独立贴图部件绘制主 HUD；
+  - 右侧 I/E/K/J/System 使用 `TextureButton` 三态；
+  - 金币、场景名、任务摘要由程序写入；
+  - 原默认 HUD 控件隐藏，但键盘快捷键仍保留。
+
+验证：
+
+- `python scripts/process_field_hud_assets.py` 通过，并生成 `tools/ui_field_hud_v1/field_hud_v1_preview.png`。
+- `python -m py_compile scripts/process_field_hud_assets.py` 通过。
+- Python 校验确认 20 个主 HUD 部件均存在且为 RGBA。
+- `ReadLints` 检查 `ui_texture_skin.gd`、`field_walkable_controller.gd`、`process_field_hud_assets.py` 无新增错误。
+
+经验：
+
+- **UI 正式化要从“展示图”进入“部件图”**：整图适合快速验收风格，真正可复用必须裁成按钮、面板、底栏、信息框。
+- **按钮三态必须从同一底图派生**：保持 alpha mask 和轮廓一致，避免重蹈主菜单三态轮廓跳动的问题。
+- **源图里的示例文案要主动遮掉**：金币、任务、场景名这类运行时文本必须交给程序写，否则换场景或换任务时会出现双重文字。
+- **资源调用模块要先小后大**：先服务主 HUD 的 TextureRect / TextureButton / StyleBoxTexture，后续再扩展到背包道具框、数量角标、拖动 ghost、删除确认等复杂控件。
+
+### 22.16 调度台产出页采用按钮没反应要先查前端事件绑定（2026-05-11）
+
+现象：
+
+- 调度台 `/artifacts` 产出页面点击“采用”按钮没有可见反馈。
+- 用户无法把候选产出标记为已采用。
+
+原因：
+
+- `artifacts.html` 的采用 / 拒绝 / 重置脚本会动态创建确认弹窗 DOM，但创建后没有重新获取：
+  - `confirmModal`
+  - `confirmMsg`
+  - `confirmOk`
+  - `confirmCancel`
+  - `toast`
+- 脚本随后直接调用 `confirmOk.addEventListener(...)`，浏览器会抛 `ReferenceError`，导致后续按钮监听器没有绑定。
+- 同页还有一个状态分支拼写错误：`rjected`，会导致已淘汰产出不显示重置按钮。
+- 另一个隐患：`scanner.py` 每次刷新索引时会把 `artifacts.adopted_status` 覆盖为路径推断值，手动点击 adopted / rejected 后可能在刷新页面时被重置。
+
+修复：
+
+- `tools/agent_hub/templates/artifacts.html`：
+  - `ensureConfirmUI()` 后显式 `document.getElementById(...)` 获取确认弹窗和 toast 元素。
+  - 初始化失败时直接 `return` 并输出错误，避免静默失败。
+  - 修正 `rjected` 为 `rejected`。
+- `tools/agent_hub/scanner.py`：
+  - 扫描更新已有 artifact 时保留数据库中的 `adopted_status`，不再覆盖手动状态。
+- `tools/agent_hub/verify_agent_hub.py`：
+  - 增加 adopted API 验证：调用 adopt 后再跑 `scan_all()`，确认 adopted 状态不会被扫描器重置。
+
+验证：
+
+- `python -m py_compile tools/agent_hub/scanner.py tools/agent_hub/app.py tools/agent_hub/verify_agent_hub.py` 通过。
+- `ReadLints` 检查 `artifacts.html`、`scanner.py`、`verify_agent_hub.py` 无新增错误。
+- 直接运行 `python tools/agent_hub/verify_agent_hub.py` 会因包路径报 `ModuleNotFoundError: No module named 'tools'`，正确命令是：
+  - `python -m tools.agent_hub.verify_agent_hub`
+- `python -m tools.agent_hub.verify_agent_hub` 通过。
+
+经验：
+
+- **页面按钮没反应先查 JS 初始化错误**：不是只看后端 API；如果脚本中途 ReferenceError，事件监听器根本不会绑定。
+- **动态创建 DOM 后必须重新取引用**：不要依赖浏览器把 id 自动暴露成全局变量，尤其带连字符的 id 不可靠。
+- **扫描器不能覆盖人工状态**：产出库这种“自动扫描 + 人工采用”的模型，扫描器只应更新路径、分类、mtime 等客观字段，不能重置用户决策。
+- **调度台验证脚本要用模块方式运行**：从仓库根目录使用 `python -m tools.agent_hub.verify_agent_hub`，不要直接运行文件路径。
+
+### 22.17 主 HUD 资源不能从整图裁切，要走独立母版生成（2026-05-11）
+
+现象：
+
+- 第一版 `game/art/ui/field_hud/v1/` 资源来自 HUD 展示稿局部裁切，角色框、金币框、场景名框、任务框、底栏和右侧按钮都存在位置不准、错位、带背景的问题。
+- 用户明确要求全部删除，按首界面 3 个菜单按钮的生产规范重做，不怕出图成本。
+
+原因：
+
+- HUD 展示稿是完整界面设计图，不是可直接程序调用的部件 atlas；从整图盲裁会把背景、示例文字、局部阴影和错位边缘一起带进最终资源。
+- 右侧按钮如果让 AI 直接生成中文，容易出现错字/伪字；按钮三态如果分别出图，也会导致轮廓跳变。
+
+修复：
+
+- 删除上一版错误 PNG、预览和 `scripts/process_field_hud_assets.py`。
+- 新增正式模板：
+  - `prompts/templates/ui_field_hud_component_cold_wuxia.yaml`
+  - `prompts/templates/ui_field_hud_button_cold_wuxia.yaml`
+- 在 `prompts/tasks.yaml` 新增 10 个 HUD 母版任务，通过 `scripts/gen_assets.py` 走 ALAPI/gpt-image-2 生成独立透明底资源。
+- 新增 `scripts/process_formal_field_hud_assets.py`：
+  - 对独立母版做 alpha bbox、统一目标尺寸、透明像素清理。
+  - 按固定尺寸输出 5 个面板 PNG。
+  - 右侧 5 个按钮保留正式图形和图标，清掉 AI 伪字区域，用本地中文字体重新渲染“背包 / 装备 / 武学 / 任务 / 系统”。
+  - hover / pressed 从同一 normal 派生，保持 alpha mask 完全一致。
+- `field_walkable_controller.gd` 中任务文字颜色改为深色，适配新任务面板的浅色正文纸面。
+
+验证：
+
+- `python scripts/gen_assets.py --task ... --dry-run` 通过，参考图路径有效。
+- `python scripts/gen_assets.py --task ... --budget 20` 成功生成 10 张，花费约 ¥12。
+- `python scripts/process_formal_field_hud_assets.py` 成功输出 20 个 PNG 和预览 `tools/ui_field_hud_v1/field_hud_formal_v1_preview.png`。
+- 尺寸与数量校验通过：5 个面板 + 5 个按钮 × 3 状态，共 20 个资源；所有按钮 normal/hover/pressed alpha mask 一致。
+
+经验：
+
+- **展示稿不能直接当程序部件裁**：完整 UI mockup 适合定方向，不适合产出 runtime 资源；正式 UI 部件要独立生成母版。
+- **中文按钮不要依赖 AI 写字**：AI 可做底框和图标，最终标题由后处理脚本用本地字体渲染，避免错字和乱码。
+- **按钮三态必须同源派生**：只生成 normal 母版，hover/pressed 用程序调亮/压暗，且最后强制恢复同一 alpha mask。
+- **HUD 面板要按运行时目标矩形归一化**：透明边距过大会造成 Godot 里看起来错位；UI 切图允许受控缩放到目标画布。
+
+### 22.18 HUD 右侧按钮参考不能误用首界面，AI 小字直出不可靠（2026-05-11）
+
+现象：
+
+- 用户要求 HUD 右侧按钮必须参考新提供的设计图：左侧图标 + 右侧白色书法字 + 蓝灰玄铁牌匾，而不是首界面 3 个菜单按钮。
+- 继续让 AI 直接生成“系统 / 背包”等小尺寸中文字时，出现错字、伪字或字体不一致。
+- 在 PowerShell 下使用 bash 风格 `python - <<'PY'` 会失败。
+
+原因：
+
+- “首界面按钮规范”只代表三态派生、alpha、尺寸稳定等生产流程，不代表所有 HUD 按钮都要照首界面视觉风格。
+- 小按钮里的中文对图像模型非常不稳定，即便加文字参考图也可能写错。
+- Windows PowerShell 不支持 bash heredoc 语法。
+
+修复：
+
+- 将用户上传图保存为 `assets/raw/ui/field_hud/reference/hud_right_buttons_design_ref.png`，作为 HUD 右侧按钮唯一视觉参考。
+- 新增 `prompts/templates/ui_field_hud_button_right_stack_match.yaml` 和单按钮候选任务，只用于尝试生成参考风格，不直接批量采用。
+- AI 直出中文字失败后，改为 `scripts/make_hud_right_button_sample.py` 程序重绘一枚“背包”样例按钮：不裁参考图，不加文字背景块，normal 母版再派生 hover/pressed。
+- Windows 临时 Python 脚本使用 `@' ... '@ | python -`，不要用 bash heredoc。
+
+验证：
+
+- `python scripts/gen_assets.py --task ui_field_hud_btn_inventory_right_stack_candidate_v1 --dry-run` 通过。
+- ALAPI 单张生成成功但中文字错误，因此未作为候选。
+- `python scripts/make_hud_right_button_sample.py` 输出三态样例到 `tools/ui_field_hud_v1/right_button_sample/`。
+- 三态校验：尺寸 `241x93`，normal / hover / pressed alpha mask 完全一致。
+
+经验：
+
+- **同一“生产规范”不等于同一“视觉风格”**：先确认用户给的是流程规范还是美术参考。
+- **HUD 右侧按钮以用户上传设计图为准**：不要再自动回退到首界面按钮。
+- **AI 不适合直接写小号中文按钮字**：若必须正确，需文字层单独管控，并尽量让字形风格贴近参考。
+- **PowerShell 执行多行 Python 用 here-string 管道**：`@' ... '@ | python -`。
+
+### 22.19 HUD 右侧按钮最终采用 image-to-image 候选筛选，不再用 PIL 手画质感（2026-05-11）
+
+现象：
+
+- PIL 手绘的背包样例虽然布局接近，但用户指出整体质感差，底框、左侧图标、字体都不像参考图。
+- 继续调线条、颜色、阴影仍然像硬边矢量图，无法达到参考图的厚涂手绘质感。
+
+原因：
+
+- 参考图的质量来自手绘材质、暗部渐变、边框磨损、图标体积和柔化笔触；这些不是简单多边形、字体和渐变能稳定复现的。
+- 对 HUD 美术部件，PIL 更适合作三态派生、alpha 清理、尺寸归一化，不适合作主视觉绘制。
+
+修复：
+
+- 保存用户最新近景参考为 `assets/raw/ui/field_hud/reference/hud_inventory_button_closeup_ref.png`。
+- 新增：
+  - `prompts/templates/ui_field_hud_inventory_button_closeup_redraw.yaml`
+  - `prompts/templates/ui_field_hud_button_closeup_redraw_generic.yaml`
+  - `scripts/process_hud_right_buttons_redraw.py`
+- 先对背包跑 3 张 image-to-image 候选，筛出 A：`tools/ui_field_hud_v1/closeup_redraw_candidate_a/`。
+- 用户确认 A 方向后，对装备 / 武学 / 任务 / 系统各跑 3 张候选，筛选：
+  - 装备：A
+  - 武学：C
+  - 任务：C
+  - 系统：本轮 3 张文字均不合格，未纳入最终，避免错字进游戏。
+- 将背包 / 装备 / 武学 / 任务四个按钮输出到 `game/art/ui/field_hud/v1/`，每个生成 normal / hover / pressed。
+- 预览输出：`tools/ui_field_hud_v1/right_buttons_redraw_v1_preview.png`。
+
+验证：
+
+- 12 张候选生成成功，花费约 ¥14.4。
+- `python scripts/process_hud_right_buttons_redraw.py` 成功输出四个按钮三态。
+- 校验通过：背包 / 装备 / 武学 / 任务均为 `241x93`，normal / hover / pressed alpha mask 完全一致。
+- `python -m py_compile scripts/process_hud_right_buttons_redraw.py` 通过。
+- `ReadLints` 检查新脚本和模板无新增错误。
+
+经验：
+
+- **PIL 不负责主视觉质感**：它适合后处理，不适合复刻厚涂 UI。
+- **候选必须人工筛字**：即使 image-to-image 质感对了，中文仍可能错；错字候选必须淘汰。
+- **先做用户确认的最小集合**：参考图只有背包 / 装备 / 武学 / 任务，系统没有可靠参考时不要强行塞进最终。
+- **最终采用流程**：image-to-image 出 normal 母版 → 人工筛选 → 程序抠背景/归一尺寸 → 程序派生 hover/pressed。
+
+### 22.20 一级 HUD 剩余 UI 补齐：系统按钮、角色框、底部栏（2026-05-11）
+
+现象：
+
+- 右侧 4 个按钮方向确认后，一级 HUD 仍有三块不统一：
+  - 系统按钮缺失。
+  - 左上角角色信息框仍是旧质感。
+  - 底部操作栏仍是旧质感，且正式 HUD 层没有承接旧 `HintLabel` 信息。
+- ALAPI 批量生成 7 张候选时，启动探活曾超时，随后 `--skip-ping` 大批次也连续 `ReadTimeout`，没有新 PNG 落盘。
+
+原因：
+
+- 系统按钮没有参考图里的原始按钮，AI 直接写“系统”仍容易错字。
+- 旧 `field_walkable_controller.gd` 隐藏了 `PlayerInfo` / `HintBar`，但正式 HUD 层只接了场景名、金币、任务，没有角色信息和底部提示文字。
+- ALAPI 当前通道偶发超时，大批次串行会被多个 timeout 拖住。
+
+修复：
+
+- 新增：
+  - `prompts/templates/ui_field_hud_system_button_closeup_redraw.yaml`
+  - `prompts/templates/ui_field_hud_panel_closeup_redraw.yaml`
+  - `scripts/process_hud_primary_ui_redraw.py`
+- 系统按钮：
+  - image-to-image 生成系统按钮底框/齿轮候选。
+  - AI 文字仍不合格，因此脚本只保留底框和图标，清除错字区域，再用本地书法字体叠加正确“系统”，不加背景块。
+  - 从 normal 派生 hover / pressed。
+- 左上角角色框：
+  - 采用 `ui_field_hud_player_panel_closeup_candidate_a_v1.png`，后处理到 `650x188`。
+- 底部操作栏：
+  - 采用 `ui_field_hud_bottom_bar_closeup_candidate_a_v1.png`，后处理到 `1920x143`。
+- `field_walkable_controller.gd`：
+  - 新增 `_formal_player_label`，显示角色名、等级、HP/MP。
+  - 新增 `_formal_hint_label`，显示底部操作提示。
+  - 继续隐藏旧 `PlayerInfo` / `HintBar`，但信息转移到正式 HUD 层。
+
+验证：
+
+- `python scripts/process_hud_primary_ui_redraw.py` 成功输出：
+  - `hud_player_panel.png`
+  - `hud_bottom_bar.png`
+  - `hud_btn_system_normal/hover/pressed.png`
+- 预览输出：`tools/ui_field_hud_v1/primary_ui_redraw_v1_preview.png`。
+- 资源校验通过：
+  - 角色框 `650x188`
+  - 底部栏 `1920x143`
+  - 5 个右侧按钮均为 `241x93`
+  - 5 个按钮 normal / hover / pressed alpha mask 一致。
+- `python -m py_compile scripts/process_hud_primary_ui_redraw.py scripts/process_hud_right_buttons_redraw.py` 通过。
+- `ReadLints` 检查 `field_walkable_controller.gd` 与新脚本无新增错误。
+
+经验：
+
+- **ALAPI 大批次超时时先缩小批次**：探活超时可 `--skip-ping`，但连续 `ReadTimeout` 时要拆成单张/小批次，不要让整批一直挂住。
+- **AI 字错但底框可用时可做混合方案**：保留 AI 厚涂底框和图标，清掉错字后叠加正确文字；关键是不能加明显文字背景块。
+- **正式 HUD 隐藏旧控件后要迁移信息**：隐藏 `PlayerInfo` / `HintBar` 前，必须在新 HUD 层创建对应 label，否则 UI 信息丢失。
+
+### 22.21 HUD 右侧按钮反馈修正：系统风格、装备字重、任务亮度（2026-05-11）
+
+现象：
+
+- 用户确认背包、武学匹配，但指出：
+  - 系统按钮与其他按钮风格不一致。
+  - 装备按钮字体过大、颜色偏深。
+  - 任务按钮整体偏暗。
+- 第一次尝试用 PIL 清文字区、补齿轮和重绘字，结果装备/系统出现明显糊块和方形贴片痕迹，不适合进正式资源。
+- 调试时又误用 bash heredoc `python - <<'PY'` 和 `&&` 串联命令，PowerShell 下直接解析失败。
+
+原因：
+
+- 系统按钮不能靠“错字清除 + 本地字体补字”硬拼；只要文字区域修补不自然，就会破坏厚涂质感。
+- 装备文字问题不适合用模糊覆盖修，覆盖区域会变成灰色补丁。
+- PowerShell 不支持 bash heredoc；当前 shell 也不能依赖 `&&`，复杂 Python 片段应使用 `@' ... '@ | python -`，多命令用 `;` 或单独执行。
+
+修复：
+
+- 新增 `prompts/templates/ui_field_hud_button_feedback_fix.yaml`，只锚定已确认的背包/武学按钮，生成系统、装备、任务的小批次修正版候选。
+- 新增 `scripts/adjust_hud_button_feedback.py`：
+  - 背包、武学保持不动。
+  - 装备采用 `ui_field_hud_btn_equipment_feedback_fix_candidate_a_v1.png`，并按宽度归一，解决字过大/偏暗且避免视觉尺寸缩水。
+  - 任务保留原任务候选 C 的造型，只做亮度/色彩轻微提升，避免为“提亮”引入新造型。
+  - 系统改用 `ui_field_hud_btn_system_closeup_ref_candidate_c_v1.png`，比上一版更接近右尖角 HUD 按钮形。
+  - hover / pressed 仍从 normal 程序派生，保持 alpha mask 不跳。
+- `docs/current-progress.md` 更新 HUD 部件化状态，记录该反馈修正版脚本。
+
+验证：
+
+- `python scripts/gen_assets.py --skip-ping --force --task ...` 成功生成 6 张反馈候选。
+- `python scripts/adjust_hud_button_feedback.py` 成功输出装备 / 任务 / 系统三态到 `game/art/ui/field_hud/v1/`。
+- 预览输出：`tools/ui_field_hud_v1/feedback_adjusted_buttons_preview.png`。
+- `python -m py_compile scripts/adjust_hud_button_feedback.py` 通过。
+- 校验通过：装备 / 任务 / 系统均为 `241x93`，normal / hover / pressed alpha mask 完全一致。
+- `ReadLints` 检查 `adjust_hud_button_feedback.py`、新模板、`tasks.yaml` 无新增错误。
+
+经验：
+
+- **用户只指出局部问题时，优先保持已确认资产不动**：背包、武学不重写，任务只提亮不换造型。
+- **不要用模糊覆盖修主视觉文字**：厚涂 UI 的文字和底框是融合质感，模糊补丁会比原问题更显眼。
+- **系统按钮缺原始参考时要多筛候选**：宁可小批次重跑，也不要把混合补字版强行部署。
+- **PowerShell 片段固定写法**：多行 Python 用 `@' ... '@ | python -`；不要再用 bash heredoc，命令串联优先 `;` 或拆开跑。
+
+### 22.22 HUD 右侧按钮标准化：底框复用、图标层、文字层（2026-05-11）
+
+现象：
+
+- 用户复核后指出上一版仍不合格：底框、图标、字体尺寸都有偏差。
+- 根本偏差来自“每枚完整按钮各自生成 / 各自归一化”，这违背了此前主菜单按钮已定的规范：底框和文字分层，底框复用。
+- 第一次尝试直接从“武学”按钮用 `cv2.inpaint` 拆空底框，出现大块灰色补丁，不可采用。
+
+原因：
+
+- 完整按钮候选天然会带来外轮廓、内板、边框厚度、图标大小、字重和字距漂移。
+- 用算法硬抠除已有图标/文字，难以补回自然厚涂纹理；UI 主视觉底框不应靠后处理修补。
+- 图标层必须从原始候选中分离，不能把旧按钮底框纹理一起贴进统一底框，否则会出现小方块/旧底框残影。
+
+修复：
+
+- 新增 `prompts/templates/ui_field_hud_skill_frame_textless.yaml`，以已确认“武学”按钮为标本，生成“无图标、无文字”的可复用底框候选。
+- `scripts/adjust_hud_button_feedback.py` 改为标准分层管线：
+  - 采用 `ui_field_hud_skill_frame_textless_candidate_b_v1.png` 作为唯一底框源。
+  - 程序统一重映射为武学方向的冷蓝灰玄铁色，输出 `tools/ui_field_hud_v1/skill_frame_recomposed_buttons/shared_frame_normal.png`。
+  - 五个按钮共享同一底框、同一图标中心/最大尺寸、同一文字中心/字号。
+  - 图标从各自原始候选分离为 `icon_<key>.png`；文字输出为 `text_<key>.png`；最终合成为 normal，再派生 hover / pressed。
+  - 输出预览：`tools/ui_field_hud_v1/skill_frame_recomposed_buttons_preview.png`。
+- `docs/current-progress.md` 更新 HUD 部件化状态：记录当前脚本已回到“底框复用 + 图标层 + 文字层”的标准管线。
+
+验证：
+
+- `python scripts/gen_assets.py --skip-ping --force --task ui_field_hud_skill_frame_textless_candidate_a_v1 --task ui_field_hud_skill_frame_textless_candidate_b_v1` 成功。
+- `python scripts/adjust_hud_button_feedback.py` 成功重组五个右侧按钮。
+- `python -m py_compile scripts/adjust_hud_button_feedback.py` 通过。
+- 校验通过：背包 / 装备 / 武学 / 任务 / 系统均为 `241x93`，各自 normal / hover / pressed alpha mask 完全一致。
+- `ReadLints` 检查 `adjust_hud_button_feedback.py`、`ui_field_hud_skill_frame_textless.yaml`、`tasks.yaml` 无新增错误。
+
+经验：
+
+- **HUD 同组按钮不能再整枚独立归一化**：必须是“同一底框层 + 固定图标槽 + 固定文字层”，否则肉眼一定会看出偏差。
+- **底框缺失时应先生成 textless base**：不要从带图标/文字的成品按钮硬抠底框。
+- **所有中间层必须留预览和文件**：`shared_frame_normal.png`、`icon_*`、`text_*` 是后续排查偏差的证据。
+- **图标层抠取要避免旧底框残影**：按图标类型固定裁剪框，只保留高亮/高饱和图标笔触，避免把旧按钮纹理贴回新底框。
+
+### 22.23 UI 按钮三态生产 Skill 固化（2026-05-11）
+
+现象：
+
+- HUD 右侧按钮几轮返工后，问题反复出现在同一类决策上：整枚按钮独立生成、独立归一化，导致底框、图标、字体和三态动画漂移。
+- 仅靠 `docs/experience-log.md` 记录不够，后续新 UI 或新会话仍可能忘记“底框 + 图标 + 文字分层”的三态规范。
+
+修复：
+
+- 新增项目级 skill：`.cursor/skills/producing-ui-button-states/SKILL.md`。
+- Skill 明确适用场景：创建或修复 normal / hover / pressed / click / selected / disabled 等 UI 按钮状态，尤其是匹配已确认样本、复用底框、分离图标/文字层、部署到 Godot 时。
+- Skill 核心规范：
+  - 同组按钮使用一个 approved specimen。
+  - 先做可复用 textless/iconless base frame。
+  - 图标层与文字层分开生产和保存。
+  - normal 合成后，hover / pressed 从 normal 程序派生。
+  - 校验尺寸、alpha mask、预览和 Godot 加载。
+
+验证：
+
+- 读取并检查 `.cursor/skills/producing-ui-button-states/SKILL.md`：
+  - frontmatter 包含合法 `name` / `description`。
+  - 文件路径使用仓库相对路径和正斜杠。
+  - 内容聚焦三态按钮生产流程，没有把一次性返工叙事当作 skill 主体。
+
+经验：
+
+- **流程型失误要写成 skill，而不是只写经验日志**：经验日志适合追溯，skill 适合下一次自动触发。
+- **三态按钮 skill 必须强调禁止项**：禁止整枚按钮各自生成、禁止独立生成 hover/pressed、禁止用 inpaint 硬补底框。
+
+### 22.24 HUD 按钮分层素材质量返工：先预览不覆盖（2026-05-11）
+
+现象：
+
+- 标准合成管线结构正确，但用户继续指出三层素材质量不达标：
+  - 底框质感比已采用样板差很多。
+  - 图标质量差，有缺块。
+  - 程序绘制文字丑，系统文字尤其不匹配。
+
+原因：
+
+- 分层结构不能弥补低质量素材层；底框、图标、文字必须各自先达到可采用质量。
+- 当前 `adjust_hud_button_feedback.py` 使用低质 textless 底框、从完整按钮里抠图标、用本地字体画系统字，导致质感和完整度都不够。
+- AI 生成中文“系统”仍会把“系”写成近似“禾”，不能直接采用。
+
+修复：
+
+- 新增参考 sheet：
+  - `assets/raw/ui/field_hud/reference/hud_button_accepted_text_style_ref.png`
+  - `assets/raw/ui/field_hud/reference/hud_button_accepted_icon_style_ref.png`
+- 新增分层生成模板：
+  - `prompts/templates/ui_field_hud_button_frame_layer_v2.yaml`
+  - `prompts/templates/ui_field_hud_button_icon_layer_v2.yaml`
+  - `prompts/templates/ui_field_hud_button_text_layer_v2.yaml`
+- 新增 `scripts/preview_hud_layered_buttons_v2.py`，只输出候选预览，不覆盖 `game/art`：
+  - 采用高质量图标层候选。
+  - 文字层：背包 / 装备 / 武学 / 任务先从已采用旧按钮提取，系统字用程序保证字形正确并套近似厚边/阴影。
+  - 底框使用新候选 A 预览，暂不部署。
+- 预览输出：`tools/ui_field_hud_v1/layered_v2_candidates_preview.png`。
+
+验证：
+
+- `python scripts/gen_assets.py --skip-ping --force --task ...` 成功生成底框 / 图标 / 系统文字分层候选。
+- `python scripts/preview_hud_layered_buttons_v2.py` 成功生成 v2 分层预览。
+- `python -m py_compile scripts/preview_hud_layered_buttons_v2.py` 通过。
+- 候选预览中五个按钮均为 `241x93`，normal / hover / pressed alpha mask 完全一致。
+- `ReadLints` 检查新脚本、三份新模板、`tasks.yaml` 无新增错误。
+
+经验：
+
+- **分层合成前必须先看层质量**：结构正确不代表美术可用；底框、图标、文字要分别预览。
+- **AI 中文不能做唯一真相**：系统字必须有人类可读性校验，错字候选直接淘汰。
+- **不确定可采用时不要覆盖游戏资源**：先输出到 `tools/` 做候选预览，通过后再部署到 `game/art`。
+- **程序文字的描边会改变观感颜色**：即使填充色是米白，过重灰黑描边和二次灰色叠字也会让最终缩放后的字面发灰。修正时要同时减弱描边、移除压灰叠色，并在最终按钮预览里看颜色，而不是只看 RGB 参数。
+- **单枚按钮确认后可单独部署**：当用户只确认“系统”按钮时，只覆盖 `game/art/ui/field_hud/v1/hud_btn_system_normal.png`、`hud_btn_system_hover.png`、`hud_btn_system_pressed.png`，不要重新生成或覆盖整组按钮。部署后检查目标 PNG 尺寸和三态 alpha mask 一致。
+- **恢复已采用按钮时要查“最终采用记录”，不能看当前 game 目录倒推**：本次 `game/art/ui/field_hud/v1` 中背包 / 装备 / 武学 / 任务被后续低质重组版覆盖，当前游戏资源不是已采用真相。正确来源应回查 `docs/experience-log.md` 的采用记录：背包 / 装备 / 武学 / 任务来自 `tools/ui_field_hud_v1/right_buttons_redraw_v1/`，系统来自用户单独确认的 `tools/ui_field_hud_v1/system_button_v2/`。恢复后生成 `tools/ui_field_hud_v1/game_current_restored_buttons_preview.png` 并验证五个按钮三态尺寸与 alpha mask。
+- **HUD 右侧按钮最终仍必须走单底框分层，不应停留在五张完整按钮**：用户再次指出五个完整按钮的底框、字号、字色都不同。新增 `scripts/compose_hud_buttons_single_frame_v3.py`，强制使用一个共享底框、同一图标槽位、同一程序文字配方，再派生三态；预览输出 `tools/ui_field_hud_v1/single_frame_v3_preview.png`，对比输出 `tools/ui_field_hud_v1/single_frame_v3_vs_game_preview.png`。验证五个按钮 normal / hover / pressed 均为 `241x93`，alpha mask 完全一致，且每个按钮 mask 面积相同，说明共享底框真正生效。
+- **统一文字色要参考最终状态图，不只看 normal 层**：用户要求 v3 文字颜色参考 `tools/ui_field_hud_v1/layered_v2_candidates/hud_btn_quest_hover.png`，因此在 `compose_hud_buttons_single_frame_v3.py` 中把 normal 文字填充压深到灰米色，让 hover 派生后接近参考状态。调色后重新生成 `single_frame_v3_preview.png`，验证五个按钮三态尺寸与 alpha mask 仍一致。
+- **字体“看起来没变深”通常是高光层在抵消**：本次继续反馈 v3 文字太浅，根因是主填充虽然压深，但浅色高光层仍叠在字面上，hover 派生后继续显浅。修正时同时降低主填充、加深描边、把高光层改为低透明深米色；重新生成 `tools/ui_field_hud_v1/single_frame_v3_preview.png` 并验证 mask 不变。
+- **“字体颜色不对”要区分实体字面和阴影**：继续调暗后用户指出文字像阴影，真正需要的是实体笔画的奶白色。修正时不能只压暗整体，而要让主填充回到奶白、收窄描边、降低投影占比；`compose_hud_buttons_single_frame_v3.py` 将 `TEXT_STROKE` 从 2 调为 1，并使用奶白填充 + 轻描边，重新生成 `single_frame_v3_preview.png`。
+- **匹配字体颜色要采样参考按钮，不要凭感觉调**：用户指定 `tools/ui_field_hud_v1/layered_v2_candidates/hud_btn_inventory_normal.png` 后，采样“背包”字面得到实体色约 `(228,218,196)`、边缘灰约 `(108,110,113)`。修正 `compose_hud_buttons_single_frame_v3.py` 在文字层缩放后统一重映射 RGB；不要强行提高 alpha，否则会把字体内部笔刷纹理变成白色刮痕。
+- **特殊按钮文字不要强行套统一字体**：`系统` 两个字用 `STXINGKA` 重绘后会显得碎、瘦、行草感过强，和其他按钮不一致；正确做法是只对系统按钮复用已采用的 raster 字层 `tools/ui_field_hud_v1/layered_v2_candidates/text_system.png`，只做缩放定位，不再套统一 RGB 归一化，避免把原始光影纹理抹平成色块。
+- **PowerShell 下不要使用 Bash heredoc**：Windows/PowerShell 执行内联 Python 时，`python - <<'PY'` 会解析失败；继续使用 `@' ... '@ | python -`，尤其在快速做资产采样或预览脚本时不要切错 shell 语法。
+- **系统字层颜色要以 `text_equipment.png` 为风格参考重建**：旧 `text_system.png` 字形可用但颜色偏灰，直接复用会和装备/其他按钮不一致。修正 `compose_hud_buttons_single_frame_v3.py`：系统按钮使用正确字形 mask，但从 `tools/ui_field_hud_v1/layered_v2_candidates/text_equipment.png` 采样实体、暗部、边缘三段颜色后重新映射，生成新的 `single_frame_v3/text_system.png` 和系统三态；避免把系统文字继续套旧灰色或全局灰白归一化。
+- **外部 docx 方案参考要先转 UTF-8 文本再读**：读取 `F:/Code/vision_auto_test/DeepFlow2.0/output/.../AI游戏UI开发效率提升方案.docx` 时，`ReadFile` 不支持 docx，PowerShell 直接打印中文会乱码；用 Python `ZipFile` 抽取 `word/document.xml`，写入 `tools/ai_game_ui_efficiency_plan_extracted.txt` 后再读取。该方案对本项目的关键启发：UI 实现困难的根因是让 AI 猜布局，应建立精确坐标/组件模板/Design Token/Animation Preset，并把 Figma 或结构化规格作为布局真值源。
+- **Godot MCP 只能执行规格，不能替代规格**：本次检查 `C:/Users/rajqiu/.cursor/projects/f-Code-RPG-GAME/mcps` 时只看到 Figma MCP，尚无 Godot MCP tool descriptor，因此不能直接调用 Godot MCP 操作场景。一级 HUD 先落地 `ai-specs/ui/field-primary-hud.md`，固定 1920x1080 坐标、节点职责、资源路径、右侧按钮冻结规则；等 Godot MCP 可用后，也应按该规格创建/检查 Control 节点，而不是让 MCP 临场决定布局和风格。
+- **Cursor 使用 Godot MCP 需项目级 `.cursor/mcp.json`**：Claude 已通过项目配置使用旧版 `@coding-solo/godot-mcp` 细粒度工具，正确 Godot 项目路径是 `F:/Code/RPG_GAME/game`，不是仓库根目录；Godot 可执行路径为 `F:/文件下载/编程工具/Godot_v4.6.2-stable_win64.exe`。已新增 `.cursor/mcp.json` 镜像该 stdio MCP 配置，但当前 Cursor 会话的 MCP descriptor 目录尚未刷新出 `godot`，需要在 Cursor MCP 面板刷新/重载后才能在本会话工具列表中调用。
+- **半透明整屏概念图不能直接裁成正式 UI 资源**：`assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_field_hud_screen_gpt_v1.png` 的一级 HUD 效果可作为布局/风格真值，但面板是叠在背景上的半透明效果，直接裁 `PlayerInfo/MapInfo/Quest/HintBar` 会把竹林、屋檐、人物头发一起带入资源。正确流程是先用概念图定布局，再复用或重生成干净透明面板；本次脚本 `scripts/process_field_primary_hud_v2.py` 输出 `tools/field_primary_hud_v2_preview.png`，并以已导入的干净 v1 面板重组为 v2 第一版结构素材。
+- **新 Godot `class_name` 不一定能被同轮预加载脚本立刻解析**：新增 `FieldPrimaryHud` 后，`field_walkable_controller.gd` 若直接声明 `var _primary_hud: FieldPrimaryHud`，Godot MCP 运行 `field_walkable.tscn` 会报 `Parser Error: Could not find type "FieldPrimaryHud" in the current scope`。在同轮新增场景/脚本并接入旧控制器时，先用弱类型实例引用通过解析；等 Godot 导入/类型缓存稳定后，再考虑恢复显式类型标注。
+- **Godot 新 PNG 资源验证要区分文件存在与导入缓存存在**：脚本生成的 `game/art/ui/field_hud/v2/*.png` 可被文件系统读取，但 Godot `ResourceLoader.exists()` 只有在 `.import` 生成后才稳定。小素材若尚未导入会触发 `UITextureSkin texture missing`。本次头像框和金币框直接复用已导入的 v1 资源，避免 UI 接入阶段被导入缓存阻塞。
+- **对话框纹理底框要保留旧 DialogPlayer 协议**：替换 `dialog_box.tscn` 时只调整 `Frame` 锚点和底框纹理，不改 `DialogPlayer.text_displayed / choices_displayed / dialog_ended` 信号协议。正式底框由 `scripts/process_field_primary_hud_v2.py` 生成 `game/art/ui/field_hud/v2/hud_dialog_frame.png`，`dialog_box.gd` 在 `_ready()` 注入 `DisplayFrameArt`，并把旧 `ColorRect` 背景改成透明 fallback。
+- **运行时生成 PNG 可用 ImageTexture 兜底绕过导入缓存**：`hud_dialog_frame.png` 文件存在但 `.import` 尚未生成时，`ResourceLoader.exists()` 会返回 false。对话框这类运行期 UI 可以先尝试 `load()`，再用 `Image.load(ProjectSettings.globalize_path(path))` + `ImageTexture.create_from_image()` 兜底，避免因为导入缓存未刷新导致底框缺失。
+- **一级 HUD 不能只“风格相似”，必须先标注设计稿元素坐标**：上一版问题是把 v1 干净面板硬套到 `ui_cold_wuxia_field_hud_screen_gpt_v1.png` 的大概位置，导致左上头像、姓名、生命/内力、数值、等级、金币槽完全错位。修正时在 `scripts/process_field_primary_hud_v2.py` 中固定 `REF_RECTS`，输出 `tools/field_primary_hud_reference_measure.png` 做坐标标注，再把坐标映射到 1920x1080 的 `FieldPrimaryHud`。以后用户给 UI 整屏设计稿时，必须先产出标注预览和对比图，不能直接凭肉眼重排。
+- **参考图半透明面板要重做完整底框，不要截一段旧图**：右上地图和右下任务面板上一版来自旧资源拉伸，视觉上像“一截框”。本次改为生成完整半透明冷钢蓝底框，避免遮挡场景内容，同时保留完整四边和内框；输出 `game/art/ui/field_hud/v2/hud_map_info_panel.png`、`hud_quest_summary_panel.png`，对比图为 `tools/field_primary_hud_design_compare.png`。
+- **底部按键说明不是正式一级 UI 常驻项**：设计稿里的底部条是快捷栏风格，不是当前要做的按键说明文字。用户明确要求去掉后，`FieldPrimaryHud` 不再构建 `HintBar`，`set_hint_text()` 改为空安全，避免旧控制器继续传提示文案时报空。
+- **对话框需要图像模型质感时不要用程序画框顶替**：用户指出底部对话框像程序画的。新增 `scripts/generate_field_dialog_frame_gpt2.py`，使用 `gpt-image-2` 生成原图 `assets/raw/ui/field_hud/dialog_frame_gpt2_v1.png`，再后处理成 `game/art/ui/field_hud/v2/hud_dialog_frame.png`。白底抠透明时要额外清理低饱和高亮残留，否则四角会留下白雾边。
 
 
 

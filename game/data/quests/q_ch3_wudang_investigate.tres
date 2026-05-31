@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_wudang_investigate"
+title = "武当·陆青云之死"
+kind = 0
+desc_not_started = "武当大弟子陆青云离奇身亡，掌门玄真道长命你调查真相。"
+desc_in_progress = "调查陆青云遇害现场，追查凶手留下的蛛丝马迹。"
+desc_completed = "你发现陆青云死于茗雾隐影诀——但此时江湖尚不知茗雾真面目。"
+completion_triggers = Array[String](["flag_set:wudang_case_solved"])
+reward_gold = 40
+reward_exp = 50
+reward_items = Array[Dictionary]([{"item_id": "wudang_sword", "count": 1}])

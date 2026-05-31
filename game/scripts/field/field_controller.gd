@@ -331,6 +331,8 @@ func _on_ui_requested(panel_id: StringName) -> void:
 	match panel_id:
 		&"inventory":
 			_open_inventory_panel()
+		&"close_equipment":
+			if _equipment_panel: _equipment_panel.close()
 		&"equipment":
 			_open_equipment_panel()
 		&"skills":

@@ -14,12 +14,12 @@ func _run() -> void:
 	_expect(player.uses_directional_walk_sprites(), "player uses directional walk sprites")
 
 	player.set_walk_direction(Vector2.RIGHT, true)
-	_expect_eq(player.sprite.hframes, 8, "right walk uses 8 frames")
-	_expect_eq(player.sprite.texture.resource_path, "res://art/characters/lengguyun_walk_right_8f.png", "right texture selected")
+	_expect_eq(player.sprite.hframes, 9, "right walk uses 9 frames")
+	_expect_eq(player.sprite.texture.resource_path, "res://art/characters/hero_walk_right_9f.png", "right texture selected")
 
 	player.set_walk_direction(Vector2.DOWN, true)
-	_expect_eq(player.sprite.hframes, 4, "down walk uses 4 frames")
-	_expect_eq(player.sprite.texture.resource_path, "res://art/characters/lengguyun_walk_down_4f.png", "down texture selected")
+	_expect_eq(player.sprite.hframes, 9, "down walk uses 9 frames")
+	_expect_eq(player.sprite.texture.resource_path, "res://art/characters/hero_walk_down_9f.png", "down texture selected")
 
 	player.queue_free()
 	if _failures > 0:

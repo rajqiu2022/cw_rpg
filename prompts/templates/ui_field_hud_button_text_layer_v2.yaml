@@ -1,0 +1,38 @@
+id: ui_field_hud_button_text_layer_v2
+description: 生成 HUD 按钮右侧高质量中文书法文字层
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  《云影侠传》游戏主界面右侧 HUD 功能按钮的独立中文文字层。
+  文字会被程序放入统一底框右侧槽位，所以只需要生成指定汉字，不要生成按钮。
+
+reference_images:
+  - "assets/raw/ui/field_hud/reference/hud_button_accepted_text_style_ref.png"
+  - "assets/raw/ui/field_hud/candidates/system_text_reference.png"
+  - "tools/ui_field_hud_v1/right_buttons_redraw_v1_preview.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  请生成一组独立文字层：
+  - 文字内容：只允许“{{button_label}}”
+  - 候选编号：{{variant}}
+
+  必须严格贴近参考：
+  - 只生成两个简体中文汉字“{{button_label}}”，不要按钮底框，不要图标。
+  - 字形必须正确，特别是“系统”两个字不能变成“禾统”“系绕”“紊统”或其他近似错字。
+  - 字形、笔触、米白色填充、深色柔影、厚涂边缘要接近参考中“背包 / 装备 / 武学 / 任务”的文字。
+  - 两个字横向排列，居中，完整不裁切，适合缩放到 HUD 按钮右侧。
+  - 背景用纯黑、纯白或透明感单色，方便后处理抠透明。
+
+  严格禁止：
+  - 禁止把“{{button_label}}”写成其他字、繁体字、错字、假字、英文。
+  - 禁止按钮框、图标、场景、水印、签名。
+  - 禁止硬边字体、宋体印刷体、现代 UI 字体、发光霓虹字。
+
+  反向：{negative}
+
+variables:
+  button_label: "系统"
+  variant: "A"

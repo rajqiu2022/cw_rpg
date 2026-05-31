@@ -1,6 +1,6 @@
 # 当前工作进展（快照）
 
-> **更新日期：2026-05-04**  
+> **更新日期：2026-05-28**  
 > 用途：给协作者 / 新会话 AI 快速对齐「做到哪、卡在哪、下一步是什么」。  
 > 详细决策仍以 `docs/world-bible.md`、`docs/design-mvp-chapter1.md`、`docs/experience-log.md` 为准。
 > 协作规则：详见 `docs/agent-workflow.md`、`docs/module-owners.md`、`docs/agents/README.md`。
@@ -30,6 +30,21 @@
 | **M6** | 章末演出、状态异常、章节结算 UI | ⏳ 未开始 |
 | **M7** | 多槽存档 UI、加载流程打磨 | ⏳ 未开始（当前仍为单槽逻辑为主） |
 
+### 2.5 背包 UI 整改（2026-05-28）
+
+| 项目 | 状态 |
+|------|------|
+| 底图 | 替换为新生成面板底图，四周黑边已裁剪 |
+| 格子 | **6×6**（36格），85×83px，填满容器 543×528。蓝黑底色+钢蓝边框，选中态青色光晕，空位深暗色（PIL 生成） |
+| Tab 页签 | 5 类 × 3 态，140×48。底框来自 ssets/raw/ui/cold_wuxia/v2/inventory/tabs/ AI 原版 + PIL 文字叠加 |
+| 功能按钮 | 使用/装备/丢弃/关闭，120×50 × 3 态。底框来自 ssets/raw/ui/cold_wuxia/v2/inventory/buttons/ AI 原版 + 16px PIL 文字 |
+| 道具图标 | 8 个分类图标升级到 128×128（原版 AI 缩放），右侧详情区不模糊 |
+| 详情区 | 新增 DetailIcon TextureRect，选中道具时显示大图标 |
+| 区域框 | 程序画的 _setup_zone_panels() / _setup_detail_frame() 已移除，改用底图自身设计 |
+| 资产来源 | ssets/raw/ui/cold_wuxia/v2/inventory/（2026-05-13 AI 原版），ALAPI 当前不可用（返回 400） |
+
+
+
 ### 2.2 主菜单与版本号
 
 - 主菜单版本文案：**v0.3.0-m5 · inventory + equipment**（见 `main_menu.gd`）
@@ -42,7 +57,7 @@
 | `Parser Error: go_shop() not found` | `SceneRouter` 已补 `go_shop()` + `get_shop_payload()` |
 | 「跑完几乎没 UI、很抽象」 | 根因：`game/art/**/*.png` **未进仓库**（仅 `.import`），背景 `TextureRect` 为空。已加 **FallbackBg**、野外 **HintBar**、热点按钮 **StyleBox** 兜底；主菜单运行时检测资源再加载 |
 | 经典 Field / 可行走 Field 返回路径不统一 | ✅ 已新增 `SceneRouter.go_field_smart()`；主菜单新游戏/读档、战后继续、战斗逃跑、商店返回、对话 `scene:`、可行走出口均统一按 `SceneScript.is_walkable` 选择容器 |
-| q2 任务资源与战后跳转断链 | ✅ 已修复 `q_ch1_main_02_qingfeng.tres` 字段粘连；战后对话从不存在的 `ch1_s2_linxi_road` 改跳 `ch1_s2_qingfeng_walkable`；新游戏恢复从 `ch1_s1_road` 开始 |
+| q2 任务资源与战后跳转断链 | ✅ 已修复 `q_ch1_main_02_qingfeng.tres` 字段粘连；战后对话从不存在的 `ch1_s2_linxi_road` 改跳 `ch1_s2_qingfeng_walkable` |
 | 可行走地图缺少障碍/触发区数据合同 | ✅ `SceneScript` 已新增 `collision_rects` / `trigger_zones`，`field_walkable_controller.gd` 已按数据生成静态碰撞和进入式触发区 |
 | `open_inventory` / `open_quest_log` action 仍 warning | ✅ 已新增 `EventBus.ui_requested(panel_id)`；`SceneRouter` 支持 `open_inventory` / `open_equipment` / `open_quest_log`，classic/walkable Field 复用现有 UI 打开逻辑 |
 | 主角行走 sprite 白底 | ✅ 新增 `scripts/make_sprite_bg_transparent.py`，已将四张 `lengguyun_walk_*.png` 的边缘连通白底转为 alpha 透明 |
@@ -50,6 +65,10 @@
 | 主菜单文字白底/消失/风格不对 | ✅ 2026-05-08 修复：从 `assets/raw/ui/button/main_menu/text/v1` 原始图差分提取文字层，输出透明底 PNG 到 `game/art/ui/main_menu/buttons/text/v1`（420x120）；`main_menu.gd` 文字缩放比例调为 `0.38/0.33`；新增 `_update_continue_button_state()`，无存档时"读取存档"按钮+美术字一起灰化 |
 | 主菜单按钮文字与底框不匹配 | ✅ 2026-05-08 处理：移除 `BLEND_MODE_MUL`（导致文字消失）；文字贴图按按钮尺寸动态缩放；lint 检查通过 |
 | 前期场景图像 loading 图 | ✅ 新增 `docs/art-modular-scene-kit-v1.md` 与 `scene_module_atlas` 模板；`tasks.yaml` 增加 3 个模块化 kit 任务（默认 skip，需 dry-run 审稿后再出图） |
+| 新手关碎 PNG 拼图凌乱 | ✅ 已切换为“整张场景图 + Tiled 隐形碰撞/触发层”：当前采用 `scene_linxi_tutorial_prerendered_day_bg`，综合暗版建筑体块和亮版道路植物，裁为 `game/art/backgrounds/bg_linxi_tutorial_full.png`；`linxi_tutorial.tres` 只保留 `background_path`、碰撞、NPC、出口、触发区和 `animated_props`；新游戏入口改为 `SceneRouter.START_FIELD_SCENE = &"linxi_tutorial"` |
+| 新手关动态氛围物件 | ✅ `SceneScript.animated_props` + Tiled `animated_props` 对象层已落地；`field_walkable_controller.gd` 支持贴图旗帜 `texture_sway`、程序化 `smoke` / `glow`、铁匠 `hammer` 动作。屋顶灯笼误光已移除，仅保留铁匠铺炉火和两处炊烟 |
+| 第一场景 UI 展示稿接入 | ✅ 已将已认可的 HUD / 背包 / 装备 / 任务 / 武学设计稿整体调亮并部署到 `game/art/ui/cold_wuxia/v2/ui_display_*_bright.png`；当前打开 I/E/K/J 时先展示正式视觉稿，功能控件后续真正做功能时再按稿重构 |
+| 游戏主 HUD 部件化 | ✅ 已转为用户确认的右侧 HUD 按钮厚涂风格：`process_hud_right_buttons_redraw.py` 输出背包/装备/武学/任务四个按钮三态；`process_hud_primary_ui_redraw.py` 补齐系统按钮、左上角色信息框、底部操作栏；`adjust_hud_button_feedback.py` 已改为标准分层管线：以“武学”按钮方向生成单一无字底框，五个按钮共享底框 + 固定图标槽 + 固定文字规格，再派生三态。`field_walkable_controller.gd` 已用 `UITextureSkin` 调用正式资源，并新增正式 HUD 层的角色信息与底部操作提示文字 |
 
 ### 2.4 自动化测试
 
@@ -66,7 +85,7 @@
 ### 3.1 策略
 
 - **L1**：ChatGPT Plus 网页小批量定风格  
-- **L2**：`scripts/gen_assets.py` + DMXAPI，含余额探测 `scripts/ping_dmx.py`、`--skip-ping` 等工程化说明见 `docs/experience-log.md` §12–13
+- **L2**：`scripts/gen_assets.py` + **ALAPI**（`v3.alapi.cn`，`token` 头，见 `docs/alapi-image-api.md`）
 
 ### 3.2 Stage 2（v0.3 角色 + 场景）
 
@@ -80,7 +99,7 @@
 - **最新出图**（2026-04-29）：按老式武侠 RPG 侧向移动观感，使用 `gpt-image-2`（禁 fallback 到 1.5）重跑主角 sprite 10 张：idle 1、idle_anim 2、walk 4、attack 3；输出在 `assets/raw/sprite/v2/`。
 - **四向行走 sheet**（2026-04-30）：新增 `sprite_protagonist_walk_4dir_sheet` / `sprite_lengguyun_walk_4dir_sheet`，参考用户提供的武侠 sprite sheet，一次生成 **4 方向 × 4 帧**；输出在 `assets/raw/sprite/v3/`。
 - **低成本优化规则**（2026-04-30）：sprite 尚未最终解决，新增 `docs/sprite-cost-optimization-plan.md`；付费出图前必须先跑 QA / 固定锚点 GIF / dry-run，避免盲目消耗 API。
-- **主角 walk 状态更新**（2026-05-04）：Seedance 视频方案因 DMXAPI 无通道、火山方舟模型未开通/成本偏高而暂停；MVP 改为 image 方式混合帧数接入：右 / 左 8 帧 `stable_from_4f`，上 / 下 4 帧 `balanced_slow`。已复制到 `game/art/characters/lengguyun_walk_*.png` 并接入 `player.gd`。详见 `docs/sprite-prompt-playbook.md` 与 `docs/experience-log.md` §19.24-§19.33。
+- **主角 walk 状态更新**（2026-05-04）：Seedance 视频方案因后端不支持而暂停；MVP 改为 image 方式混合帧数接入：右 / 左 8 帧 `stable_from_4f`，上 / 下 4 帧 `balanced_slow`。已复制到 `game/art/characters/lengguyun_walk_*.png` 并接入 `player.gd`。详见 `docs/sprite-prompt-playbook.md` 与 `docs/experience-log.md` §19.24-§19.33。
 - 默认任务：`sprite_lengguyun_idle_south`（priority 2）；拆件总图 `sprite_lengguyun_parts_sheet` 默认 **`skip: true`**。
 - 操作说明：`docs/sprite-prompt-playbook.md`。
 
@@ -196,7 +215,7 @@ assets/
 ### 6.5 正式场景/UI 进入生产（2026-05-08）
 
 已完成准备工作：
-- [x] `prompts/tasks.yaml` 新增 4 个生产任务：`scene_zhuwei_main_street`（竹尾村主街）、`scene_west_ruin`（城西废宅）、`scene_battle_bamboo_road`（竹林战斗场）、`ui_cold_wuxia_dialog_box_v1`（冷色对话框）
+- [x] `prompts/tasks.yaml` 场景/UI 生产任务已更新为 **4 张模块化 atlas**（见 `docs/scene-element-kit-spec.md`）：地面/道路、建筑、植物、可交互道具，舍弃旧 3 张占位 kit 任务
 - [x] `ui_cold_wuxia_common_kit_v1` 从 `skip: true` 改为 `skip: false`
 - [x] 场景 `.tres` 文件 `background_path` 已更新为正式文件名（不再使用占位图）：
   - `ch1_s1_road.tres` → `res://art/backgrounds/bg_ch1_s1_road.png`
@@ -205,20 +224,28 @@ assets/
 - [x] `prompts/templates/ui_cold_wuxia_kit.yaml` 参考图路径已清理（原图已归档）
 - [x] dry-run 验证通过（5 任务全部正确解析）
 
-**阻塞项**：DMXAPI 账户欠费（-$0.20），需充值后方可执行。
+**出图后端**：ALAPI（`v3.alapi.cn`），token 已配置。
 
-充值后一键生成命令：
+首批 4 张 atlas 一键生成命令：
 ```bash
 cd f:\Code\RPG_GAME
-python scripts/gen_assets.py --task scene_ch1_s1_road --task scene_zhuwei_main_street --task scene_west_ruin --task scene_battle_bamboo_road --task ui_cold_wuxia_dialog_box_v1 --task ui_cold_wuxia_common_kit_v1 --skip-ping
+python scripts/gen_assets.py --task scene_kit_ground_road_linxi_v1 --task scene_kit_building_linxi_v1 --task scene_kit_veg_linxi_v1 --task scene_kit_prop_linxi_v1 --skip-ping
 ```
 
 生成后还需：
-1. 复制场景背景到 `game/art/backgrounds/`：
-   - `scene_ch1_s1_road.png` → `bg_ch1_s1_road.png`
-   - `scene_zhuwei_main_street.png` → `bg_zhuwei_main_street.png`
-   - `scene_west_ruin.png` → `bg_west_ruin.png`
-   - `scene_battle_bamboo_road.png` → `bg_battle_default.png`（覆盖占位）
-2. 对话框 UI 切图并接入 `dialog_box.tscn`
-3. 通用 UI kit 切图接入 WuxiaTheme
+1. 按 `docs/scene-element-kit-spec.md` §5 将各 atlas 切分为独立 PNG
+2. 放入 `game/art/modules/ground/` / `building/` / `veg/` / `prop/`
+3. 使用 Tiled 作为可视化场景拼装编辑器，规范见 `docs/tiled-godot-scene-pipeline.md`
+4. 通过 `scripts/import_tiled_scene.py` 将 `.tmj/.json` 导入 `SceneScript.scene_objects` / `collision_rects` / `trigger_zones` / `npcs` / `exits`
+
+### 6.6 Tiled + Godot 场景导入（2026-05-10）
+
+- [x] `SceneScript` 新增 `scene_objects`，作为模块化 PNG 的摆放数据合同。
+- [x] `field_walkable_controller.gd` 新增 `Sprite2D` 场景元素渲染，支持 `texture` / `pos` / `scale` / `rotation` / `z_index` / `require_flag` / `hide_flag`。
+- [x] 新增 `scripts/import_tiled_scene.py`，支持 Tiled `.tmj/.json` 与 image collection tileset（含外部 `.tsx/.tsj`）。
+- [x] 新增 `maps/tiled/sample_scene.tmj` 与导入样例 `game/data/scenes/sample_tiled_import.tres`。
+- [x] 新增 `scripts/create_tiled_tileset.py`，可从 `game/art/modules/{ground,building,veg,prop}/` 自动生成 Tiled image collection `.tsx`。
+- [x] 新增 `game/art/modules/` 与 `maps/tiled/tilesets/` 目录骨架；样例 `sample_backgrounds.tsx` 已验证外部 tileset 导入链路。
+- [x] 新增 `scripts/generate_linxi_tutorial_tiled.py`，按确定性构图模板生成 `linxi_tutorial.tmj` 初版与 PNG 预览，避免用户从零手拼。
+- [ ] 下一步：把 66 个 PNG 复制/整理到 `game/art/modules/`，生成 `scene_elements.tsx`，运行 `generate_linxi_tutorial_tiled.py` 产出首版 `linxi_tutorial.tmj` 和预览，再导入 Godot 实机验收可走路线、碰撞、触发与 NPC 交互。
 

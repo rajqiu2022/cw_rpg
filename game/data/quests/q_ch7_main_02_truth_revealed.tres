@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch7_main_02_truth_revealed"
+title = "烈云真相"
+kind = 0
+desc_not_started = "戚云笙带你面见盟主戚云上——他将出示烈云盟二十年来被栽赃的全部证据。"
+desc_in_progress = "云上君展示关键证据：古寺栽赃道具出处、薛影诈死证词、千年旧档。"
+desc_completed = "真相大白——真凶是茗雾山庄！烈云盟洗清污名。联军筹备：五派+烈云盟+少林俗家，兵分两路扑向茗雾山。"
+completion_triggers = Array[String](["flag_set:lieyun_evidence_shown"])
+reward_gold = 100
+reward_exp = 100
+reward_items = Array[Dictionary]([{"item_id": "lieyun_evidence", "count": 1}])

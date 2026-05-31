@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_side_01_qi_incense"
+title = "暗香之谜"
+kind = 1
+desc_not_started = "激战后你重伤昏迷于古月峰山涧——醒来时伤口已被人封住毒素。身边一缕奇异的冷香，施救者已离去。"
+desc_in_progress = "追踪这缕冷香的来源——它到底是谁留下的？"
+desc_completed = "冷香来自烈云盟独有的药香——你捡到一只精致的香囊。戚云笙首次在你生命中留下痕迹。"
+completion_triggers = Array[String](["flag_set:found_qi_incense_clue"])
+reward_gold = 0
+reward_exp = 30
+reward_items = Array[Dictionary]([{"item_id": "qiyun_incense_pouch", "count": 1}])

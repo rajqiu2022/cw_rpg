@@ -17,7 +17,7 @@ func _ready() -> void:
 	_init_default_player()
 
 func _init_default_player() -> void:
-	var stats := CharacterStats.new()
+	var stats: CharacterStats = CharacterStats.new()
 	stats.character_id = "protagonist"
 	stats.display_name = "冷孤云"
 	stats.portrait_path = "res://art/characters/protagonist_neutral.png"
@@ -28,12 +28,12 @@ func _init_default_player() -> void:
 	stats.agility = 7
 	stats.inner_power = 8
 	stats.insight = 6
-	stats.vitality = 8
+	stats.vitality = 10
 	stats.inner_pool = 8
 	stats.guard = 7
 	stats.refresh_derived_stats(true)
 
-	var skill_ids: Array[StringName] = [&"basic_attack", &"palm_strike", &"defend"]
+	var skill_ids: Array[StringName] = [&"basic_attack", &"linxi_basic_sword_one", &"defend"]
 	stats.skills = skill_ids
 	player = stats
 	party = [stats] as Array[CharacterStats]

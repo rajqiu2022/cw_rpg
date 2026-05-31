@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/item.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = &"antidote_pill"
+display_name = "解毒丹"
+description = "江湖常见的解毒丹药。解除中毒状态。"
+icon_path = "res://art/ui/inventory/icons/icon_antidote_pill.png"
+category = 0
+stackable = true
+max_stack = 10
+sell_price = 20
+buy_price = 50
+usable_in_battle = true
+usable_in_field = true
+heal_hp = 0
+heal_mp = 0

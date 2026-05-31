@@ -1,0 +1,154 @@
+AI 游戏 UI 开发效率提升方案
+针对"布局+动效"环节的工具链与工程实践指南
+一、问题背景与核心卡点
+用AI辅助游戏开发，需求文案生成、代码编写、图片生成都已有较成熟方案，但将生成素材"放到程序里合适位置"并添加动效，仍是当前AI能力的薄弱环节。
+典型场景举例：角色信息框（底框 + 头像 + 血条 + 程序文字 + 图标）需要精确的空间布局、层级控制、动效（hover/点击/折叠）。
+根因分析
+问题现象
+根本原因
+图片位置对不准
+缺乏锚点/pivot/分辨率自适应的上下文输入
+动效实现差
+引擎特定API繁多，AI幻觉率高
+多元素对齐错误
+AI没有"视觉坐标"输入，全靠猜测
+底框+文字+图标叠层混乱
+Z-order / Canvas层级概念理解不稳定
+不同页面风格不一致
+缺乏全局UI规范文件约束
+二、按引擎分类的成熟方案
+2.1 Unity（工具链最完整）
+推荐工作流：Figma 设计稿 → Figma MCP → Unity AI Assistant → 游戏内 HUD
+Unity AI Assistant 2.7+（官方）
+内置 Figma-to-UI Agent，可连接 Figma MCP Server
+自动将 Figma 设计稿控件、尺寸、坐标导入为 UI Toolkit 组件
+已基本解决"位置对不准"的核心问题
+入口：Unity Editor → Edit > Project Settings > AI > UI
+MCP-Unity（开源）
+通过 MCP 协议让 Claude/GPT 直接操作 Unity Editor
+可编程方式移动、锚定、设置 RectTransform，无需手动调
+GitHub: TSavo/Unity-MCP
+Layer.ai + Figma
+AI 生成美术资产直接进 Figma，再通过 Figma→Unity 流水线
+2.2 Godot
+godot-mcp（MCP 服务）
+AI 可直接操作 Godot 场景树：创建 Control 节点、设置 anchors、添加 AnimationPlayer 动效
+适合自动化批量生成 UI 结构
+Godot UI Designer Skill（LobeHub/SkillHub）
+专门针对 Godot UI 的 Skill，从自然语言生成完整 UI 场景 + 脚本
+支持 Godot 4.2+，优化了 Control 节点和 UI 布局推理
+2.3 Web 技术栈游戏（H5 / Cocos Creator / Laya / PIXI.js）
+这是当前 AI 效果最好的路径。CSS/HTML 对 AI 是强项，布局准确率远超游戏引擎原生 UI 场景。
+Cursor + Claude：写 HTML/CSS UI，hover/点击动效、折叠效果几乎零错误
+血条用 <div> + CSS transition，角色信息框用 flex/grid 布局，AI 一次成功率极高
+v0.dev / Bolt.new：面向 Web 游戏 UI，从 prompt 直接生成带交互的完整组件
+三、提升 AI 准确度的工程实践
+工具是辅助，方法论才是核心。以下实践可将 AI 布局准确率从"50% 靠运气"提升到"90% 一次成功"。
+3.1 给 AI 提供精确坐标上下文（最关键）
+❌ 错误方式：
+把头像放在左边合适的位置，血条在头像右边
+✅ 正确方式：
+画布 1920x1080，角色信息框左上角坐标 (20, 20)，宽 380 高 120
+头像：圆形遮罩，直径 80px，距左边距 16px，垂直居中
+名字：TextMeshPro，锚点左上，偏移 (112, 16)，字号 18
+HP 条：Image 填充，锚点左上，偏移 (112, 40)，尺寸 220x12
+HP 数字：右对齐，跟随 HP 条右端
+来源：Figma Inspect 面板可直接导出以上所有数字，无需手动量。
+3.2 建立 UI 组件 Prompt 模板库
+为项目中常用的 UI 元件建立固定 Prompt 模板文件，AI 每次直接引用，不靠猜：
+[角色信息框模板]
+底框: 9-slice sprite "ui_frame_char", size 380x120
+头像: 圆形 mask, anchor 左中, pos (16, 0.5)
+名字: TextMeshPro, anchor 左上, offset (112, 16), font-size 18
+HP 条: Image 填充, anchor 左上, offset (112, 40), size (220, 12)
+HP 数字: 右对齐, 跟随 HP 条右端
+建议将模板文件放入项目根目录的 .cursorrules 或 ai-specs/ 文件夹，AI 每次对话自动读取。
+3.3 用 Figma 作为布局"真值源"
+在 Figma 里完成精确设计（可用 AI 辅助生成初稿）
+通过 Figma Inspect 面板导出坐标数据，喂给 AI 作为布局依据
+AI 写代码时有精确数字，不靠猜测 → 准确率质变
+最终目标：Figma MCP → 引擎 AI Assistant → 自动导入（零手调）
+3.4 分层任务，不要一次全做
+步骤
+任务
+说明
+Step 1
+结构层
+生成节点树和相对位置关系，只处理父子层级
+Step 2
+样式层
+绑定图片资源、颜色、字体、9-slice 设置
+Step 3
+动效层
+Hover/Click/Tween，给出具体缓动参数（时间、曲线）
+把"一次做完"拆成三步，每步 AI 的上下文精简、目标清晰，成功率显著提升。
+四、一致性问题的系统化解决
+出图一致性与 UI 布局一致性是同一根因：缺乏"规范文件"作为约束。
+一致性类型
+解决方案
+美术风格一致
+ControlNet / 角色 LoRA / 固定 seed + prompt 模板
+UI 尺寸一致
+建 Figma 组件库，所有元件从组件库拖，禁止手绘
+代码结构一致
+给 AI 提供"UI架构规范.md"，每次对话作为 system prompt 带入
+动效参数一致
+建 animation preset 库（缓动曲线、时长），AI 只选用不创造
+颜色/字体一致
+Design Token 文件（JSON/CSS 变量），AI 引用 token 名而非数值
+五、推荐整体工作流（适合商业项目团队）
+适用于天美等规模的游戏团队，兼顾效率和质量管控：
+【美术】Midjourney / SD 出图 + LoRA 保风格一致性
+【设计】Figma 组件库组装 UI 设计稿（AI 辅助生成初版，设计师修正）
+【导入】Figma MCP → Unity AI Assistant 自动导入布局（携带精确坐标）
+【开发】AI 只写逻辑绑定 + 动效代码（有坐标后成功率极高）
+【规范】.cursorrules / ai-specs/ 目录统一管理 UI 规范、组件模板、动效预设
+关键链路示意
+美术出图（LoRA 保一致）
+↓
+Figma 精确设计稿（组件库）
+↓  Figma MCP Server
+Unity AI Assistant 自动导入布局
+↓  精确坐标 + 资源绑定
+AI 编写动效逻辑（Hover / Click / Tween）
+↓
+可玩 HUD / 界面
+六、值得重点关注的工具清单
+工具
+类型
+核心价值
+Unity AI Assistant 2.7+
+官方插件
+Figma→Unity 布局自动导入，已相当成熟
+MCP-Unity
+开源 MCP
+AI 直接操控 Unity Editor，编程级精度
+godot-mcp
+开源 MCP
+Godot 场景树 AI 操控，Control 节点生成
+Figma MCP Server
+MCP 服务
+将设计稿作为精确布局数据源输入给 AI
+Layer.ai
+SaaS
+美术资产生成直接进 Figma 流水线
+Cursor + .cursorrules
+编辑器规范
+把引擎版本、UI 框架、坐标约定固化为约束
+v0.dev / Bolt.new
+Web UI 工具
+Web 技术栈游戏 UI，AI 布局准确率最高
+LobeHub Godot UI Skill
+AI Skill
+Godot 自然语言→完整 UI 场景，开箱即用
+七、核心结论
+与其等 AI 变聪明，不如把"布局意图"结构化成 AI 能读懂的数字。
+Figma 精确设计稿 + MCP 自动导入，是目前工程上最可靠的路径。
+动效和交互实现上，Web 技术栈游戏当前 AI 成功率远高于原生引擎场景。
+短期：在现有引擎中建立 UI 规范文件 + Prompt 模板库，立竿见影
+中期：引入 Figma 作为布局真值源，打通 Figma→引擎 MCP 自动导入流程
+长期：标准化 Design Token + Animation Preset，让 AI 在规范边界内生成，告别一致性问题
+
+--- word/footnotes.xml ---
+
+--- word/endnotes.xml ---

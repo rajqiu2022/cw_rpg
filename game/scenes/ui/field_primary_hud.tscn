@@ -1,0 +1,340 @@
+[gd_scene format=3 uid="uid://cqpwg523p5pko"]
+
+[ext_resource type="Script" uid="uid://dpf5scv1im5t3" path="res://scripts/ui/field_primary_hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" uid="uid://cewneieelyuk3" path="res://art/ui/field_hud/v2/hud_player_panel.png" id="2_panel"]
+[ext_resource type="Texture2D" uid="uid://cjlhvgbrkh5fa" path="res://art/characters/protagonist_neutral.png" id="3_portrait"]
+[ext_resource type="Texture2D" uid="uid://b4bdvlxann05i" path="res://art/ui/field_hud/v2/hud_bar_bg.png" id="5_barbg"]
+[ext_resource type="Texture2D" uid="uid://c2n8aq015fvl7" path="res://art/ui/field_hud/v2/hud_hp_fill.png" id="6_hpfill"]
+[ext_resource type="Texture2D" uid="uid://c0ug744imm8o" path="res://art/ui/field_hud/v2/hud_mp_fill.png" id="7_mpfill"]
+[ext_resource type="Texture2D" uid="uid://cy7l7w5c8us0s" path="res://art/ui/field_hud/v2/hud_map_info_panel.png" id="8_map"]
+[ext_resource type="Texture2D" uid="uid://bu311whq67hbr" path="res://art/ui/field_hud/v2/hud_quest_summary_panel.png" id="9_quest"]
+[ext_resource type="Texture2D" uid="uid://6o322kkj72d3" path="res://art/ui/field_hud/v1/hud_btn_inventory_hover.png" id="10_inv_h"]
+[ext_resource type="Texture2D" uid="uid://2hhpd8c48vj5" path="res://art/ui/field_hud/v1/hud_btn_inventory_normal.png" id="10_inv_n"]
+[ext_resource type="Texture2D" uid="uid://cke6miq3g4arp" path="res://art/ui/field_hud/v1/hud_btn_inventory_pressed.png" id="10_inv_p"]
+[ext_resource type="Texture2D" uid="uid://biaaa1bcs6jmw" path="res://art/ui/field_hud/v1/hud_btn_equipment_hover.png" id="11_equip_h"]
+[ext_resource type="Texture2D" uid="uid://dovx1v46pi0hn" path="res://art/ui/field_hud/v1/hud_btn_equipment_normal.png" id="11_equip_n"]
+[ext_resource type="Texture2D" uid="uid://bn25xnq8xk3cr" path="res://art/ui/field_hud/v1/hud_btn_equipment_pressed.png" id="11_equip_p"]
+[ext_resource type="Texture2D" uid="uid://bqg1paeoeyf72" path="res://art/ui/field_hud/v1/hud_btn_skill_hover.png" id="12_skill_h"]
+[ext_resource type="Texture2D" uid="uid://dvu36m15rtfva" path="res://art/ui/field_hud/v1/hud_btn_skill_normal.png" id="12_skill_n"]
+[ext_resource type="Texture2D" uid="uid://dypefvwodm3vl" path="res://art/ui/field_hud/v1/hud_btn_skill_pressed.png" id="12_skill_p"]
+[ext_resource type="Texture2D" uid="uid://bjb2lca0s0nd6" path="res://art/ui/field_hud/v1/hud_btn_quest_hover.png" id="13_quest_h"]
+[ext_resource type="Texture2D" uid="uid://b3wcaycoybhw2" path="res://art/ui/field_hud/v1/hud_btn_quest_normal.png" id="13_quest_n"]
+[ext_resource type="Texture2D" uid="uid://cm8rqrcerym2l" path="res://art/ui/field_hud/v1/hud_btn_quest_pressed.png" id="13_quest_p"]
+[ext_resource type="Texture2D" uid="uid://b2431bfk03cs2" path="res://art/ui/field_hud/v1/hud_btn_system_hover.png" id="14_sys_h"]
+[ext_resource type="Texture2D" uid="uid://cx1so48cxjxk5" path="res://art/ui/field_hud/v1/hud_btn_system_normal.png" id="14_sys_n"]
+[ext_resource type="Texture2D" uid="uid://b16b23l1qtlus" path="res://art/ui/field_hud/v1/hud_btn_system_pressed.png" id="14_sys_p"]
+
+[node name="FieldPrimaryHud" type="Control" unique_id=965654629]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 62.0
+offset_top = 127.0
+offset_right = 62.0
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+
+[node name="PlayerInfoPanel" type="Control" parent="." unique_id=345329073]
+modulate = Color(1, 1, 1, 0.88)
+layout_mode = 1
+anchor_left = -0.044000003
+anchor_top = 0.029000001
+anchor_right = -0.044000003
+anchor_bottom = 0.029000001
+offset_left = 16.480003
+offset_top = -153.31999
+offset_right = 358.48
+offset_bottom = -7.319994
+mouse_filter = 2
+
+[node name="Portrait" type="TextureRect" parent="PlayerInfoPanel" unique_id=506922859]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 17.999992
+offset_right = 120.0
+offset_bottom = 104.97436
+mouse_filter = 2
+texture = ExtResource("3_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelArt" type="TextureRect" parent="PlayerInfoPanel" unique_id=87373237]
+layout_mode = 0
+offset_right = 401.0
+offset_bottom = 150.0
+mouse_filter = 2
+texture = ExtResource("2_panel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="PlayerInfoPanel" unique_id=1197192280]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 109.99999
+offset_right = 113.0
+offset_bottom = 133.0
+theme_override_colors/font_color = Color(0.92, 0.92, 0.84, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 16
+text = "冷孤云"
+horizontal_alignment = 1
+
+[node name="HpBg" type="TextureRect" parent="PlayerInfoPanel" unique_id=1706841479]
+layout_mode = 0
+offset_left = 268.0
+offset_top = 96.99999
+offset_right = 369.0
+offset_bottom = 105.99999
+mouse_filter = 2
+texture = ExtResource("5_barbg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HpClip" type="Control" parent="PlayerInfoPanel" unique_id=2077964783]
+clip_contents = true
+anchors_preset = 0
+offset_left = 266.0
+offset_top = 94.99999
+offset_right = 370.0
+offset_bottom = 107.99999
+mouse_filter = 2
+
+[node name="HpFill" type="TextureRect" parent="PlayerInfoPanel/HpClip" unique_id=1582435295]
+layout_mode = 0
+offset_left = -5.0
+offset_right = 104.0
+offset_bottom = 12.0
+mouse_filter = 2
+texture = ExtResource("6_hpfill")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="HpText" type="Label" parent="PlayerInfoPanel" unique_id=491271235]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 92.99999
+offset_right = 372.0
+offset_bottom = 108.99999
+theme_override_colors/font_color = Color(0.95, 0.96, 0.9, 0.95)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 11
+text = "1500 / 1500"
+horizontal_alignment = 1
+
+[node name="MpBg" type="TextureRect" parent="PlayerInfoPanel" unique_id=1384121472]
+layout_mode = 0
+offset_left = 269.0
+offset_top = 116.99999
+offset_right = 373.0
+offset_bottom = 131.0
+mouse_filter = 2
+texture = ExtResource("5_barbg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MpClip" type="Control" parent="PlayerInfoPanel" unique_id=916949910]
+clip_contents = true
+anchors_preset = 0
+offset_left = 265.0
+offset_top = 118.99999
+offset_right = 372.0
+offset_bottom = 131.0
+mouse_filter = 2
+
+[node name="MpFill" type="TextureRect" parent="PlayerInfoPanel/MpClip" unique_id=1141341261]
+layout_mode = 0
+offset_right = 106.0
+offset_bottom = 11.0
+mouse_filter = 2
+texture = ExtResource("7_mpfill")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MpText" type="Label" parent="PlayerInfoPanel" unique_id=342535667]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 115.99999
+offset_right = 372.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0.95, 0.96, 0.9, 0.95)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 11
+text = "800 / 800"
+horizontal_alignment = 1
+
+[node name="menpai" type="Label" parent="PlayerInfoPanel" unique_id=1767191596]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 54.999992
+offset_right = 277.0
+offset_bottom = 71.99999
+theme_override_colors/font_color = Color(0.82, 0.78, 0.56, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 12
+text = "无门派"
+horizontal_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="PlayerInfoPanel" unique_id=1116670393]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 24.999992
+offset_right = 261.0
+offset_bottom = 41.999992
+theme_override_colors/font_color = Color(0.82, 0.78, 0.56, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 12
+text = "38"
+horizontal_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="PlayerInfoPanel" unique_id=1614108572]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 108.99999
+offset_right = 221.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.88, 0.8, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 12
+text = "9999999"
+horizontal_alignment = 1
+
+[node name="MapInfoPanel" type="Control" parent="." unique_id=1152449518]
+anchors_preset = 0
+offset_left = 1271.0
+offset_top = 35.0
+offset_right = 1793.0
+offset_bottom = 97.0
+mouse_filter = 2
+
+[node name="MapPanelArt" type="TextureRect" parent="MapInfoPanel" unique_id=799162380]
+layout_mode = 0
+offset_left = 169.0
+offset_top = -121.0
+offset_right = 691.0
+offset_bottom = -59.0
+mouse_filter = 2
+texture = ExtResource("8_map")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SceneLabel" type="Label" parent="MapInfoPanel" unique_id=1799063214]
+layout_mode = 0
+offset_left = 387.0
+offset_top = -100.0
+offset_right = 510.0
+offset_bottom = -74.0
+theme_override_colors/font_color = Color(0.88, 0.9, 0.84, 0.92)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 15
+text = "当前场景"
+
+[node name="QuestSummaryPanel" type="Control" parent="." unique_id=858656735]
+anchors_preset = 0
+offset_left = 1364.0
+offset_top = 808.0
+offset_right = 1900.0
+offset_bottom = 1060.0
+mouse_filter = 2
+
+[node name="QuestPanelArt" type="TextureRect" parent="QuestSummaryPanel" unique_id=1786538562]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -3.0
+offset_right = 560.0
+offset_bottom = 249.0
+mouse_filter = 2
+texture = ExtResource("9_quest")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="QuestSummary" type="RichTextLabel" parent="QuestSummaryPanel" unique_id=155400379]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 25.0
+offset_right = 531.0
+offset_bottom = 175.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.9, 0.9, 0.85, 0.95)
+theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/bold_font_size = 20
+bbcode_enabled = true
+text = "[color=#8fa7ad]暂无追踪任务[/color]"
+scroll_active = false
+
+[node name="BtnInventory" type="TextureButton" parent="." unique_id=368952323]
+layout_mode = 0
+offset_left = 1650.0
+offset_top = 154.0
+offset_right = 1650.0
+offset_bottom = 154.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("10_inv_n")
+texture_pressed = ExtResource("10_inv_p")
+texture_hover = ExtResource("10_inv_h")
+
+[node name="BtnEquipment" type="TextureButton" parent="." unique_id=1259637016]
+layout_mode = 0
+offset_left = 1650.0
+offset_top = 252.0
+offset_right = 1650.0
+offset_bottom = 252.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("11_equip_n")
+texture_pressed = ExtResource("11_equip_p")
+texture_hover = ExtResource("11_equip_h")
+
+[node name="BtnSkill" type="TextureButton" parent="." unique_id=9767750]
+layout_mode = 0
+offset_left = 1650.0
+offset_top = 350.0
+offset_right = 1650.0
+offset_bottom = 350.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("12_skill_n")
+texture_pressed = ExtResource("12_skill_p")
+texture_hover = ExtResource("12_skill_h")
+
+[node name="BtnQuest" type="TextureButton" parent="." unique_id=734051311]
+layout_mode = 0
+offset_left = 1650.0
+offset_top = 448.0
+offset_right = 1650.0
+offset_bottom = 448.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_quest_n")
+texture_pressed = ExtResource("13_quest_p")
+texture_hover = ExtResource("13_quest_h")
+
+[node name="BtnSystem" type="TextureButton" parent="." unique_id=1875200866]
+layout_mode = 0
+offset_left = 1650.0
+offset_top = 546.0
+offset_right = 1650.0
+offset_bottom = 546.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_sys_n")
+texture_pressed = ExtResource("14_sys_p")
+texture_hover = ExtResource("14_sys_h")

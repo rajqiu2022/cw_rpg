@@ -52,7 +52,9 @@ RPG_GAME/
 │   ├── tech-selection.md
 │   ├── art-pipeline.md
 │   ├── budget.md
-│   ├── dmxapi-setup.md
+│   ├── alapi-image-api.md
+│   ├── art-modular-scene-kit-v1.md
+│   ├── scene-element-kit-spec.md   ← 4 类场景元素 atlas 规范
 │   ├── style-bible-prompts.md
 │   ├── godot-demo-howto.md       ← Godot demo 运行手册
 │   ├── current-progress.md       ← 当前进展快照（建议每次里程碑后更新）
@@ -73,10 +75,9 @@ RPG_GAME/
 ## ✅ 已完成
 
 ### 1. AI 资产管线（scripts/ + prompts/）
-- `gen_assets.py` 异步批量调图，支持多 backend：DMXAPI / OpenAI 官方 / API易
+- `gen_assets.py` 异步批量调图，唯一后端：ALAPI（`v3.alapi.cn`，`token` 头）
 - 自动重试、预算限流、`meta.json` 完整记录（model/backend/cost/currency）
-- 通过 `OPENAI_BASE_URL` + `OPENAI_IMAGE_MODEL` 切后端
-- DMXAPI 需要显式 `httpx.Timeout(300, connect=30)` 否则 5s connect 超时
+- ALAPI 使用 `token` 头认证（非 `Authorization: Bearer`），走 POST `.../images/generations`
 
 ### 2. 已实测产出（assets/raw/）
 - ✅ `portrait_bujingyun_neutral.png` — 主角立绘（已升为 Style Bible）
@@ -248,7 +249,7 @@ game/art/
 
 1. **引擎**：Godot 4 + GDScript（不切换）
 2. **美术风格**：以 Lovart 那 6 张为 Style Bible
-3. **量产 AI**：批量出图以 `scripts/gen_assets.py` 为准，可配置 **ALAPI**（`v3.alapi.cn`，`token` 头，见 `docs/alapi-image-api.md`）或 **DMXAPI** / OpenAI 直连 / API易等 OpenAI 兼容站；**不**买 ChatGPT Plus / Pro 当 API 用（订阅与 API 不通用）
+3. **量产 AI**：批量出图以 `scripts/gen_assets.py` 为准，**唯一后端 ALAPI**（`v3.alapi.cn`，`token` 头，见 `docs/alapi-image-api.md`）；**不**买 ChatGPT Plus / Pro 当 API 用（订阅与 API 不通用）
 4. **Lovart**：只用网页版手工出关键图，**不**信任何 lovart.pro / lovart.info 自称的 API（仿冒站）
 5. **预算**：当前阶段单次 ¥20-50 实验，量产期总盘 ¥300-500 控顶
 

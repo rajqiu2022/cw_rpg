@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch6_side_01_qi_letter"
+title = "古道留书"
+kind = 1
+desc_not_started = "离村后在古道客栈停留——发现桌上一枚烈云盟玉佩和一封手书。"
+desc_in_progress = "打开手书，抬头'放剑山中人'，内容只有一句：'真凶不在江湖之表，请君上烈云盟一行。'你追出去时远山只剩一抹红衣绝尘而去。"
+desc_completed = "戚云笙第二次在你生命中留下痕迹——这次是字迹和玉佩。你带着她的指引，朝烈云盟分舵而去。"
+completion_triggers = Array[String](["flag_set:found_qi_letter"])
+reward_gold = 0
+reward_exp = 20
+reward_items = Array[Dictionary]([{"item_id": "qiyun_jade", "count": 1}])

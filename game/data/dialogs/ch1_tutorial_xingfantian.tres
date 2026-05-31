@@ -1,0 +1,321 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=16 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "醒了？过来，把昨天那套剑法再走一遍。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = ""
+portrait_path = ""
+text = "[i]（你抽出木剑，摆开起手式。师傅站在三步外，双臂抱胸，下巴微抬。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "第三招"扫叶式"，你手腕总是多转半圈。少转半圈，剑尖能快三分。快了三分，你的命就多三分。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "师傅，今天村里来人了？我在后院听见马蹄声。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = ""
+portrait_path = ""
+text = "[i]（刑樊天的动作停了一瞬。很短的停顿，但你注意到了。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n6"
+
+[sub_resource type="Resource" id="node_6"]
+script = ExtResource("2_dnode")
+node_id = &"n6"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "……先练剑。"
+choices = Array[Dictionary]([
+	{"text": "到底出了什么事？", "next": "ask", "set_flag": {"asked_master": true}},
+	{"text": "好，我把这一趟走完。", "next": "train", "set_flag": {}}
+])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[sub_resource type="Resource" id="node_ask"]
+script = ExtResource("2_dnode")
+node_id = &"ask"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "（沉默良久）……上个月，武当大弟子陆青云死了。这个月，华山顾凌雪、古峰雷彻、凌月白晚晴、少林圆觉——全死了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:ask2"
+
+[sub_resource type="Resource" id="node_ask2"]
+script = ExtResource("2_dnode")
+node_id = &"ask2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "五个大派的大弟子……同一个月？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:ask3"
+
+[sub_resource type="Resource" id="node_ask3"]
+script = ExtResource("2_dnode")
+node_id = &"ask3"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "江湖传言是烈云盟干的。\n（他的语气很平，但你知道——师傅从不"传言"任何事。他说出来的，都是确认过的。）"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:ask4"
+
+[sub_resource type="Resource" id="node_ask4"]
+script = ExtResource("2_dnode")
+node_id = &"ask4"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "师傅，你认识这些大弟子？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:ask5"
+
+[sub_resource type="Resource" id="node_ask5"]
+script = ExtResource("2_dnode")
+node_id = &"ask5"
+speaker = ""
+portrait_path = ""
+text = "[i]（刑樊天没有回答。他转身望向竹林深处，背对着你。那个背影，你看了二十年——今天第一次觉得他像是在藏什么东西。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge"
+
+[sub_resource type="Resource" id="node_train"]
+script = ExtResource("2_dnode")
+node_id = &"train"
+speaker = ""
+portrait_path = ""
+text = "[i]（你凝神静气，将"林西基础剑法"从头到尾舞了一遍。刑樊天一言不发地看着你，目光从你的手腕扫到你的脚后跟——每一个细节都被他盯过了。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:train2"
+
+[sub_resource type="Resource" id="node_train2"]
+script = ExtResource("2_dnode")
+node_id = &"train2"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "……嗯。勉强及格。你那招"扫叶"还是多了半圈，不过——\n（他顿了顿）\n今天不纠了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:train3"
+
+[sub_resource type="Resource" id="node_train3"]
+script = ExtResource("2_dnode")
+node_id = &"train3"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "师傅，你今天不对劲。平时你至少让我重走五遍。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge"
+
+[sub_resource type="Resource" id="node_merge"]
+script = ExtResource("2_dnode")
+node_id = &"merge"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "（长叹一声）……孤云。你今年二十了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge2"
+
+[sub_resource type="Resource" id="node_merge2"]
+script = ExtResource("2_dnode")
+node_id = &"merge2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "师傅？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge3"
+
+[sub_resource type="Resource" id="node_merge3"]
+script = ExtResource("2_dnode")
+node_id = &"merge3"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "我知道你想下山。你从小就想——每次有货郎进村，你都追着问外面的消息。今天，我不拦你。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge4"
+
+[sub_resource type="Resource" id="node_merge4"]
+script = ExtResource("2_dnode")
+node_id = &"merge4"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "师傅……你怎么突然——"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge5"
+
+[sub_resource type="Resource" id="node_merge5"]
+script = ExtResource("2_dnode")
+node_id = &"merge5"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "（打断）不是突然。是时候了。\n（他从怀中掏出一个青色酒葫芦，递给你）\n带着。——林西的酒，你在外面喝不到。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge6"
+
+[sub_resource type="Resource" id="node_merge6"]
+script = ExtResource("2_dnode")
+node_id = &"merge6"
+speaker = ""
+portrait_path = ""
+text = "[i]（你接过酒葫芦。葫芦沉甸甸的，比一壶酒应该有的分量重得多——壶底似乎有夹层。你不知道里面是什么，师傅也不打算告诉你。）[/i]"
+choices = []
+give_items = Array[Dictionary]([{"id": "linxi_jiu", "count": 1}])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge7"
+
+[sub_resource type="Resource" id="node_merge7"]
+script = ExtResource("2_dnode")
+node_id = &"merge7"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "师傅，下山之前，我该知道什么？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:merge8"
+
+[sub_resource type="Resource" id="node_merge8"]
+script = ExtResource("2_dnode")
+node_id = &"merge8"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "（一字一顿）江湖上，不是每个对你笑的人都可信。不是每个骂你的人都是敌人。酒可以多喝，但话要少说。\n（他转过身去，不再看你）先去铁匠铺拿你的剑。杜青衫已经等了两天了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "master_farewell_done", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_tutorial_xingfantian"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5"), SubResource("node_6"), SubResource("node_ask"), SubResource("node_ask2"), SubResource("node_ask3"), SubResource("node_ask4"), SubResource("node_ask5"), SubResource("node_train"), SubResource("node_train2"), SubResource("node_train3"), SubResource("node_merge"), SubResource("node_merge2"), SubResource("node_merge3"), SubResource("node_merge4"), SubResource("node_merge5"), SubResource("node_merge6"), SubResource("node_merge7"), SubResource("node_merge8")])

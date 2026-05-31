@@ -1,0 +1,38 @@
+id: character_portrait_avatar_v7
+description: 主角正方形头像，背景虚化，脸部突出，高品质
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官、发型、服装。
+
+reference_images:
+  - "assets/_style_bible/00_protagonist_portrait_ref.png"
+
+prompt_template: |
+  {style_anchor}
+
+  角色头像特写，用于游戏 UI 头像显示。
+
+  角色：{identity_anchor}
+
+  构图：
+  - 1024×1024 正方形
+  - 头像特写，肩部以上，脸部占画面 60% 以上
+  - 角色居中偏上，正面微侧
+  - 背景：自然场景虚化（例如竹林/天空 bokeh 散景），不能是纯色
+  - 背景虚化要柔和自然，突出前景角色
+  - 角色脖子以下自然过渡到虚化背景
+
+  风格要求：
+  - 港式漫画厚涂，墨线分明，脸型清瘦俊朗
+  - 光源：柔和正面光+侧逆光，脸部立体
+  - {{expression}}
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  expression: "神色淡然，嘴角微扬带一丝不羁笑意"

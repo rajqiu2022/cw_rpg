@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/dialogs/ch1_forest_enter.tres" id="2_intro"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch1_s3_zhuwei_forest"
+display_name = "竹尾村外 · 密林深处"
+background_path = "res://art/backgrounds/bg_zhuwei_forest.png"
+bgm_path = ""
+on_enter_dialog = ExtResource("2_intro")
+hotspots = [
+	{
+		"label": "前方有打斗声——",
+		"pos_x": 0.55,
+		"pos_y": 0.42,
+		"action": "dialog:ch1_forest_yuewuxing",
+		"hide_flag": "masked_killer_defeated"
+	},
+	{
+		"label": "旧木箱",
+		"pos_x": 0.18,
+		"pos_y": 0.68,
+		"action": "dialog:ch1_forest_wooden_box",
+		"hide_flag": "found_forest_box"
+	},
+	{
+		"label": "与悦无姮交谈",
+		"pos_x": 0.55,
+		"pos_y": 0.42,
+		"action": "dialog:ch1_forest_victory",
+		"require_flag": "masked_killer_defeated",
+		"hide_flag": "chapter1_complete"
+	}
+]

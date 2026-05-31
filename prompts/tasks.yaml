@@ -44,7 +44,7 @@ character_anchors:
       赤手空拳但姿态从容，体格匀称矫健
 
   # ============================================================
-  # v0.2 新锚点（基于 world-bible.md v0.3）
+  # v0.4 新锚点（基于 world-bible.md v0.4 完整角色谱，2026-05-24）
   # 项目级命名禁区：避免蜘蛛 / 蛛丝 / 蛛网（详见 docs/world-bible.md §5.7）
   # ============================================================
 
@@ -52,54 +52,112 @@ character_anchors:
   lengguyun: &lengguyun
     character_name: "冷孤云"
     character_appearance: |
-      二十岁青年男子，黑发束于脑后系一条简素深色发带，几缕刘海略显不羁，
-      面庞清瘦俊朗，眉目英挺、嘴角常带一丝不羁的笑意，
-      眼神锐利却含玩世不恭之意，
-      身着深灰色布袍内衬白色中衣，腰间束带悬一柄长剑，腰侧挂一只青瓷酒葫芦，
-      体格修长矫健，武者身板但不威猛粗壮，
-      整体气质放荡不羁、行侠仗义
+      二十岁青年，剑眉入鬓星目狭长，眼神中自带三分慵懒七分锐利，
+      鼻梁挺直如削，薄唇微抿嘴角天生微微上扬带一抹玩世不恭的笑意，
+      下颌线条利落，黑色长发及肩上半束于脑后以暗色布带扎成低马尾，额前几缕碎发，
+      修长精瘦宽肩窄腰，站姿随意懒散，
+      外层冷灰色粗布长袍交领右衽略有做旧褪色，内衬白色交领内衫领口微敞露出锁骨一线，
+      深灰近黑色布质腰带紧束腰间，右侧挂无鞘饰林西铁剑，
+      左侧腰间挂一只青灰色酒葫芦葫芦上有一道旧裂痕补过的痕迹，
+      深灰收口长裤深色短靴，冷灰+白+深灰+青灰整体灰冷色调
 
   # --- 武师（主角师傅） ---
   xingfantian: &xingfantian
     character_name: "刑樊天"
     character_appearance: |
-      五十出头中年男子，黑发已夹银丝、束于脑后，胡须浓重未刮净，
-      面容方正坚毅、左眉骨有一道淡淡旧疤暗示江湖经历，
-      神色严肃中藏温和，凝重时眉头深锁，
-      身材高大健硕、体格粗壮，武者身板，
-      身着深褐色厚布短衣外罩青灰色对襟长衣，腰间束粗皮带，
-      气息内敛，武者退隐山林之态
+      五十二岁，国字方脸额头宽阔浓眉如刀裁眉尾微垂，眼窝略深目光沉稳如古井，
+      鼻梁粗直嘴唇厚实紧抿，两鬓至耳后已有白霜眼角三道深纹，
+      黑发夹杂灰白约五五开束成简单顶髻以旧木簪固定，胡子刮得干净，
+      虎背熊腰肩膀极宽手臂粗壮有力，腰背挺直如松，
+      深灰近黑粗布长袍肘部和膝盖有补丁，灰色交领内衫布质粗糙，
+      宽布腰带无任何挂饰无武器无玉佩，深色长裤黑色粗布鞋，
+      全身深灰+黑+灰白没有任何鲜亮颜色，跟名字一样沉重
 
   # --- 林西村酒馆老板（兼商店NPC，套用 art_validation_v2 已通过的客栈老板风格）---
   shenbanzhan: &shenbanzhan
     character_name: "沈半盏"
     character_appearance: |
-      五十出头中年男子，微胖红润，国字脸络腮胡，
-      头戴黑色软帽，神情和善但眼神精明，
-      身着深褐色粗布短袍外罩米色围裙，
-      酒馆掌柜世故气息
+      五十五岁矮胖圆脸男子，秃顶周围一圈白发，
+      围裙上全是酒渍永远笑眯眯，深褐色粗布短袍外罩米色围裙，
+      酒馆掌柜世故气息，眼神精明但面容和善
 
   # --- 林西村铁匠（送主角第一把铁剑）---
   duqingshan: &duqingshan
     character_name: "杜青衫"
     character_appearance: |
-      四十多岁壮汉，黝黑肤色，束发简陋，
-      着无袖粗布短衣袒露胸膛，肌肉鼓胀，双臂粗壮有力，
-      腰间围着皮制围裙、身上多处淡淡铁锈痕迹，
-      神色憨厚直爽，眼神坚定有力，
-      铁匠世家出身的真挚气质
+      四十八岁铁匠，中等身材偏壮光膀子围皮围裙，
+      双臂全是烫痕和肌肉，国字脸络腮胡，
+      神色憨厚直爽眼神坚定有力，铁匠世家出身的真挚气质
 
   # --- 女主 1：凌月派大师姐 ---
   yuewuxing: &yuewuxing
     character_name: "悦无姮"
     character_appearance: |
-      二十二岁年轻女子，乌黑长发束于脑后留几缕散于颊侧，
-      容貌清丽冷艳、气质独立坚毅（绝非萌系，参照成熟侠女风），
-      眉目英气带一丝忧愁，神色坚毅,
-      身着凌月派标志性月白色武服外罩淡紫色飘逸披帛，
-      腰悬长剑、剑鞘玄黑，
-      体格纤细但矫健，练武女子的英气，
-      整体气质独立侠女
+      二十二岁女子，精致瓜子脸下颌线条柔和但干脆，丹凤眼微挑眼角自带三分冷意，
+      瞳孔深褐色，鼻梁秀挺薄唇嘴角自然平直，肤色白皙不过分，
+      乌黑长发及腰上半以两支银簪交叉挽成凌云髻下半披散于背，
+      两鬓各留一缕碎发垂于耳侧，修长纤细但手臂和腰腹有习武之人肌肉线条，
+      月白色长裙交领右衽裙摆开叉至膝侧外罩一层淡紫色薄纱对襟长褙子绣银色月纹暗花，
+      纯白交领内衫银灰色丝质束腰左侧挂凌月派短剑右侧挂暗器囊，
+      白色收腿裤浅灰软底短靴，右腕一只细银镯月白+淡紫+银灰整体冷调素雅
+
+  # --- 女主 2：赵思颖（§4.4）---
+  zhaosiying: &zhaosiying
+    character_name: "赵思颖"
+    character_appearance: |
+      二十一岁女子，鹅蛋圆脸轮廓柔和饱满，杏眼圆润眼尾微垂瞳孔浅褐色，
+      目光温润如玉鼻梁小巧挺直，唇色偏淡淡樱色嘴角自然微翘，
+      肤色白里透红，黑发梳成垂挂髻额前薄薄空气刘海发髻上白玉簪固定，
+      娇小匀称温润型线条，淡青色交领长袍袖口宽大腰间系白色围裳绣淡绿草药纹，
+      左肩挎淡棕色药箱烫有颖字，背后斜背细身华山佩剑剑柄朝下
+
+  # --- 女主 3：戚云笙（§4.5）---
+  qiyunsheng: &qiyunsheng
+    character_name: "戚云笙"
+    character_appearance: |
+      二十一岁女子，标准瓜子脸颧骨微高冷艳感，狭长狐狸眼眼角上挑瞳孔极深黑褐色，
+      鼻梁高挺唇形饱满唇色偏艳，乌黑长发及臀上半以红玉簪挽成半髻下半散落，
+      额前不留刘海整张脸完全露出，高挑曼妙肩线平直，
+      暗红酒红交领劲装肩肘有火焰纹暗绣，纯黑交领内衫领口立起，
+      黑色宽皮革束腰暗红丝线交叉系紧，黑色紧身长裤黑色过踝皮靴
+
+  # --- 男配 1：流行追月（§4.6）---
+  liuxingzhuiyue: &liuxingzhuiyue
+    character_name: "流行追月"
+    character_appearance: |
+      二十八岁男子，长脸偏瘦颧骨略高下巴方而有力有风霜的脸，
+      剑眉斜飞入鬓眼窝微凹瞳色浅灰，唇角有一道极淡旧剑伤疤，
+      黑发留到肩下不束不冠，高大挺拔偏瘦肩宽腰细，
+      青灰色棉麻长衫交领至膝微微发白边角磨破，灰白交领内衫领口微敞，
+      深蓝色旧布带系得极松右侧佩流星剑剑身窄，深灰色粗布长斗篷连帽
+
+  # --- 男配 2：令狐封（§4.7）---
+  linghufeng: &linghufeng
+    character_name: "令狐封"
+    character_appearance: |
+      二十四岁男子，清秀偏俊世家公子脸，额头饱满眉清目秀皮肤白皙，
+      剑眉星目眼角微垂带无辜感，鼻梁挺直唇形薄精致，
+      黑发整齐束于头顶以玉冠固定，中等身高偏瘦，
+      月白色锦缎长袍有隐暗云纹提花，白色丝绸交领内衫，
+      深蓝色锦缎束腰以银扣固定，手中持白色折扇腰间挂玉佩
+
+  # --- 最终Boss：苏雾笙（§4.8）---
+  suwusheng: &suwusheng
+    character_name: "苏雾笙"
+    character_appearance: |
+      四十八岁男子，长脸偏瘦轮廓清癯儒雅像读书人，
+      眉形纤细微弯文人眉眼睛细长目光温和含笑，中年留三缕清须，
+      黑发间有稀疏灰丝整齐束于头顶以青玉簪固定，颀长清瘦站姿如松，
+      藏青色绸质长袍绣同色竹叶暗纹，暗灰交领内衫墨青色绸带束腰，
+      手中常持紫砂茶壶，腰间挂古玉佩右手无名指黑色石戒
+
+  # --- 走货郎 NPC（林西村主街，卖杂货+传世界观消息）---
+  vendor: &vendor
+    character_name: "走货郎"
+    character_appearance: |
+      三十多岁中年男子，瘦长脸精明相，头戴四方巾帽，
+      身穿灰蓝色布质短袍肩挎一个鼓鼓囊囊的布货袋，
+      手中常拿着一个小秤砣，眼神精明世故但面带善意微笑
 
   # --- 章末战 boss：蒙面杀手首领（茗雾派伪装烈云盟）---
   killer_leader: &killer_leader
@@ -376,7 +434,7 @@ tasks:
 
   # --- 主角 立绘（中性表情，作为对话用通用立绘）---
   - id: portrait_lengguyun_neutral
-    template: character_portrait_textonly
+    template: character_portrait
     category: character/v2
     priority: 1
     model: gpt-image-2
@@ -388,7 +446,7 @@ tasks:
 
   # --- 武师刑樊天 立绘（章一送行场景用）---
   - id: portrait_xingfantian_serious
-    template: character_portrait_textonly
+    template: character_portrait
     category: character/v2
     priority: 1
     model: gpt-image-2
@@ -400,7 +458,7 @@ tasks:
 
   # --- 沈半盏酒馆老板 立绘（沿用 art-validation v2 已验证的客栈老板风格）---
   - id: portrait_shenbanzhan_friendly
-    template: character_portrait_textonly
+    template: character_portrait
     category: character/v2
     priority: 1
     model: gpt-image-2
@@ -412,7 +470,7 @@ tasks:
 
   # --- 杜青衫铁匠 立绘（送铁剑场景用）---
   - id: portrait_duqingshan_steady
-    template: character_portrait_textonly
+    template: character_portrait
     category: character/v2
     priority: 1
     model: gpt-image-2
@@ -424,7 +482,7 @@ tasks:
 
   # --- 女主 1 悦无姮 立绘（章末密林初遇场景用）---
   - id: portrait_yuewuxing_meeting
-    template: character_portrait_textonly
+    template: character_portrait
     category: character/v2
     priority: 1
     model: gpt-image-2
@@ -436,7 +494,7 @@ tasks:
 
   # --- 章末战 boss 蒙面杀手首领 立绘（战斗用）---
   - id: portrait_killer_leader_combat
-    template: character_portrait_textonly
+    template: character_portrait
     category: character/v2
     priority: 1
     model: gpt-image-2
@@ -445,6 +503,127 @@ tasks:
       pose: "潜伏蹲踞姿态，右手匕首横于胸前，左手暗器袋微张"
       expression: "蒙面只露双眼，眼神冷酷无情"
       background_desc: "竹林深处暗影斑驳，月光从枝叶间透下"
+
+  # --- 走货郎 立绘（林西村主街场景用）---
+  - id: portrait_vendor_neutral
+    template: character_portrait
+    category: character/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      <<: *vendor
+      pose: "正面胸像 3/4 侧身，肩挎布货袋，手中拿小秤砣"
+      expression: "面带精明友善的微笑，眼神活络"
+      background_desc: "林西村主街竹影斑驳，远山薄雾虚化"
+
+  # ============================================================
+  # === [v0.4 新增角色立绘] priority=2（后续章节需要）===
+  # ============================================================
+
+  # --- 女主 2 赵思颖 立绘 ---
+  - id: portrait_zhaosiying_neutral
+    template: character_portrait
+    category: character/v4
+    priority: 2
+    model: gpt-image-2
+    skip: true
+    vars:
+      <<: *zhaosiying
+      pose: "正面胸像，右手轻抚胸前，左手自然垂下，背后可见剑柄"
+      expression: "温婉微笑，杏眼柔和，神色关切"
+      background_desc: "洛阳医馆内木质药柜暖光虚化"
+
+  # --- 女主 3 戚云笙 立绘 ---
+  - id: portrait_qiyunsheng_neutral
+    template: character_portrait
+    category: character/v4
+    priority: 2
+    model: gpt-image-2
+    skip: true
+    vars:
+      <<: *qiyunsheng
+      pose: "正面胸像微侧，右手轻按左腕黑玉镯，面纱半摘"
+      expression: "冷艳中眼尾微挑，嘴角似笑非笑，审视中带一丝好奇"
+      background_desc: "烈云盟分舵暗红光影虚化，火把暖光"
+
+  # --- 男配 1 流行追月 立绘 ---
+  - id: portrait_liuxingzhuiyue_neutral
+    template: character_portrait
+    category: character/v4
+    priority: 2
+    model: gpt-image-2
+    skip: true
+    vars:
+      <<: *liuxingzhuiyue
+      pose: "斜靠姿势单肩微倾，右手拇指摩擦剑柄，斗篷半披"
+      expression: "似笑非笑漫不经心，眼神却暗中审视"
+      background_desc: "洛阳街市夜景虚化，灯笼暖光点点"
+
+  # --- 男配 2 令狐封 立绘 ---
+  - id: portrait_linghufeng_neutral
+    template: character_portrait
+    category: character/v4
+    priority: 2
+    model: gpt-image-2
+    skip: true
+    vars:
+      <<: *linghufeng
+      pose: "正面胸像微侧，手持展开折扇半遮面，玉冠端正"
+      expression: "笑容温和无害，但眼神深处有一丝疲惫"
+      background_desc: "酒馆内暖色虚化，木桌油灯光"
+
+  # --- 最终Boss 苏雾笙 立绘 ---
+  - id: portrait_suwusheng_neutral
+    template: character_portrait
+    category: character/v4
+    priority: 2
+    model: gpt-image-2
+    skip: true
+    vars:
+      <<: *suwusheng
+      pose: "正坐品茶姿态，一手托紫砂壶一手轻拂袖，三缕清须"
+      expression: "温和微笑目光淡远，看似慈祥文人实则深藏不露"
+      background_desc: "茗雾山庄雅致茶室内景虚化"
+
+  # --- 杜青衫铁匠 对话头像立绘 ---
+  - id: portrait_duqingshan_steady
+    template: character_portrait
+    category: character/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      <<: *duqingshan
+      pose: "正面胸像 3/4 侧身，左手叉腰右手按住身前一柄铁剑"
+      expression: "憨厚微笑，眼神坚定有力"
+      background_desc: "铁匠铺内炉火红光、铁砧上余温散开，背景虚化"
+
+  # --- 杜青衫铁匠 锤打动画精灵条（8帧）---
+  - id: sprite_duqingshan_hammer_8f
+    template: sprite_npc_idle_strip
+    category: sprite_sheet
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      character_name: "杜青衫"
+      character_appearance: |
+        四十八岁壮汉铁匠，国字脸络腮胡，肤色黝黑，光膀子裸露结实胸膛和粗壮手臂，
+        手臂上有烫痕和肌肉线条，腰间围着深棕色皮制围裙，下身深色粗布长裤，
+        右手握一柄大铁锤扛在肩上，站姿粗犷有力，神色憨厚直爽
+
+  # --- 杜青衫铁匠 单帧sprite（纯白背景，强调）---
+  - id: sprite_duqingshan_white_bg
+    template: sprite_npc_idle
+    category: sprite_sheet
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "杜青衫"
+      character_appearance: |
+        四十八岁壮汉铁匠，国字脸络腮胡，肤色黝黑，光膀子裸露结实胸膛和粗壮手臂，
+        手臂上有烫痕和肌肉线条，腰间围着深棕色皮制围裙，下身深色粗布长裤，
+        右手握一柄大铁锤扛在肩上，站姿粗犷有力，神色憨厚直爽
+      pose: "正面站立，右手扛铁锤于肩，左手叉腰，双脚分开与肩同宽，面向右侧"
 
   # ============================================================
   # === [v0.2 第一章必产 - 场景背景 3 张] priority=1 ===
@@ -469,6 +648,89 @@ tasks:
       time_of_day: "morning"
       weather: "clear"
       key_elements: "鲜红酒幡、鲜红灯笼、橙红炉火、青瓦顶、翠竹、黄土村道、明亮阳光"
+
+  # --- 新手关：整图背景 + 隐形碰撞层（替代碎 PNG 拼图）---
+  - id: scene_linxi_tutorial_full_bg
+    template: scene_background_walkable_full
+    category: scene/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "林西村新手关"
+      scene_desc: |
+        清晨阳光下的山中小村入口，画面是一张完整自然的可行走场景插画。
+        左上是一栋完整木结构小酒馆，门前有红灯笼和酒幡但没有文字；
+        右上是一栋完整铁匠铺，炉火从敞口透出橙色光；
+        中上有一栋小民居作为背景层次。
+        下半部是一条宽阔连续的黄土主路，从左下进入，经过中央空地和石坛，通向右侧村外山道出口。
+        翠竹、灌木和草丛只沿画面边缘布置，形成村口框景，不遮挡主路。
+        整体明亮通透、完整统一、适合玩家在道路和中央空地自由行走。
+      time_of_day: "morning"
+      weather: "clear"
+      key_elements: "宽阔连续黄土主路、完整酒馆、完整铁匠铺、小民居、边缘翠竹、中央石坛、右侧出口"
+
+  # --- 新手关：更强 2.5D 预渲染体块感版本 ---
+  - id: scene_linxi_tutorial_3d_bg
+    template: scene_background_walkable_full
+    category: scene/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "林西村新手关 · 2.5D 预渲染版"
+      scene_desc: |
+        清晨阳光下的山中小村入口，画面是一张完整自然的可行走 RPG 场景。
+        整体像老式 2.5D RPG 的预渲染场景：建筑有厚实体块、侧墙、屋檐阴影、台阶高度和接地投影，
+        但表面仍是手绘武侠贴图和港漫色彩。
+        左上是一栋完整木结构小酒馆，门前有红灯笼和可动酒幡但没有文字；
+        右上是一栋完整铁匠铺，炉火从敞口透出橙色光，屋檐和烟囱有体积；
+        中上有一栋小民居，烟囱位置清楚，便于后续叠加炊烟动画。
+        下半部是一条宽阔连续的黄土主路，从左下进入，经过中央石坛空地，通向右侧村外山道出口。
+        翠竹、灌木和草丛只沿画面边缘布置，形成村口框景，不遮挡主路。
+      time_of_day: "morning"
+      weather: "clear"
+      key_elements: "预渲染 2.5D 体块感、厚屋檐、侧墙、接地阴影、宽阔黄土主路、酒馆旗子、烟囱、铁匠铺炉火、中央石坛"
+
+  # --- 新手关：参考图约束的老式 2.5D ARPG 预渲染场景 ---
+  - id: scene_linxi_tutorial_prerendered_bg
+    template: scene_background_prerendered_arpg
+    category: scene/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "林西村新手关 · 预渲染 ARPG 版"
+      scene_desc: |
+        山中小村的可行走院落入口，整体像老式 2.5D ARPG 的预渲染关卡截图。
+        建筑沿画面上方、左侧、右侧围合出一个可行走庭院：左侧是木结构小酒馆，
+        右侧是铁匠铺，后方有小民居和围栏。建筑必须像真实体块站在地上，
+        有立面、屋檐厚度、柱子、台阶、强接地阴影和遮挡关系。
+        中央是石土混合庭院与黄土路，地面有石板、杂草、木桶、陶罐、晾衣架、竹篱笆等小物件建立尺度。
+        预留酒馆旗子、烟囱炊烟和铁匠铺炉火位置，方便运行时叠加动画。
+        画面不要任何人物、动物、UI 或文字。
+      time_of_day: "morning"
+      weather: "clear"
+      key_elements: "可遮挡建筑体块、强接地阴影、屋檐厚度、墙体立面、台阶、庭院地面、围栏、木桶陶罐、晾衣架、铁匠铺炉火、烟囱"
+
+  # --- 新手关：保留预渲染建筑体块 + 恢复白天明亮道路植物 ---
+  - id: scene_linxi_tutorial_prerendered_day_bg
+    template: scene_background_prerendered_daylight_mix
+    category: scene/v2
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "林西村新手关 · 白天预渲染 ARPG 版"
+      scene_desc: |
+        清晨阳光明亮的山中小村可行走院落。保留上一张预渲染版的建筑体块感：
+        左侧酒馆、右侧铁匠铺、后方民居都像真实建筑站在地上，
+        有立面、屋檐厚度、柱子、台阶、接地阴影和遮挡关系。
+        但整体色彩和光照要回到白天：黄土路更明亮，庭院地面更清楚，
+        绿色植物更鲜活，天空光更通透，不能像傍晚或阴暗场景。
+        中央保持宽阔可行走庭院与道路网络，周围有围栏、木桶、陶罐、
+        晾衣架、草丛、石板等尺度物，但不要堵住行走路线。
+        预留酒馆旗子、烟囱炊烟和铁匠铺炉火位置，方便运行时叠加动画。
+        画面不要任何人物、动物、UI 或文字。
+      time_of_day: "morning"
+      weather: "clear"
+      key_elements: "白天清晨阳光、突出建筑体块、强接地阴影、明亮黄土路、绿色植物、庭院地面、围栏杂物、铁匠铺炉火、烟囱"
 
   # --- 场景 2：林西村外山道（明亮基调）---
   - id: scene_linxi_road
@@ -595,6 +857,294 @@ tasks:
     model: gpt-image-2
     vars:
       <<: *lengguyun
+
+  # --- 冷孤云 · 四方向行走 + idle v2 统一版（2026-05-18）---
+  # 注意：右走 v2 必须先跑，下/上走和 idle 都依赖它作为外观参考
+  - id: sprite_lengguyun_walk_right_8f_v2
+    template: sprite_protagonist_walk_right_8f_v2
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_8f_v2
+    template: sprite_protagonist_walk_down_8f_v2
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_8f_v2
+    template: sprite_protagonist_walk_up_8f_v2
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_idle_right_4f_wind_v2
+    template: sprite_protagonist_idle_wind_4f_v2
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正交侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D 标准视角）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_idle_down_4f_wind_v2
+    template: sprite_protagonist_idle_wind_4f_v2
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正面朝向镜头，能看到脸、胸口白衣、腰带正面、剑柄和青瓷酒葫芦"
+
+  - id: sprite_lengguyun_idle_up_4f_wind_v2
+    template: sprite_protagonist_idle_wind_4f_v2
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "背面朝向镜头，只能看到后脑、束发、背部、腰带后侧、剑和青瓷酒葫芦；禁止画脸"
+
+  # --- 冷孤云 · idle v3 强风动版（2026-05-19）---
+  - id: sprite_lengguyun_idle_right_6f_wind_v3
+    template: sprite_protagonist_idle_wind_6f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正交侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D 标准视角）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_idle_down_6f_wind_v3
+    template: sprite_protagonist_idle_wind_6f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正面朝向镜头，能看到脸、胸口白衣、腰带正面、剑柄和青瓷酒葫芦；禁止侧向或背向"
+
+  - id: sprite_lengguyun_idle_up_6f_wind_v3
+    template: sprite_protagonist_idle_wind_6f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "背面朝向镜头，只能看到后脑、束发、背部、腰带后侧、剑和青瓷酒葫芦；禁止画脸"
+
+  # --- 冷孤云 · idle v4 单帧参考强风动版（2026-05-19）---
+  # 用右走 v2 的 frame2(passing A) 单帧作为外观直接参考
+  - id: sprite_lengguyun_idle_right_6f_wind_v4
+    template: sprite_protagonist_idle_wind_6f_v4
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正交侧向略俯视，身体主轴朝画幅左侧（与参考图同一视角）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_idle_down_6f_wind_v4
+    template: sprite_protagonist_idle_wind_6f_v4
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正面朝向镜头，能看到脸、胸口白衣、腰带正面、剑柄和青瓷酒葫芦；禁止侧向或背向"
+
+  - id: sprite_lengguyun_idle_up_6f_wind_v4
+    template: sprite_protagonist_idle_wind_6f_v4
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "背面朝向镜头，只能看到后脑、束发、背部、腰带后侧、剑和青瓷酒葫芦；禁止画脸"
+
+  # --- 冷孤云 · idle v5 单帧参考轻风吹版（2026-05-19）---
+  - id: sprite_lengguyun_idle_right_6f_wind_v5
+    template: sprite_protagonist_idle_wind_6f_v5
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正交侧向略俯视（与参考图同一视角），身体主轴朝画幅左侧；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_idle_down_6f_wind_v5
+    template: sprite_protagonist_idle_wind_6f_v5
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正面朝向镜头，能看到脸、胸口白衣、腰带正面、剑柄和青瓷酒葫芦；禁止侧向或背向"
+
+  # ============================================================
+  # 冷孤云 · 四方向行走 + idle v3 统一批次（2026-05-19）
+  # 全部参考右走 v3，与走路同一流水线，确保全局一致。
+  # 分两批跑：batch1=右走v3，batch2=其余5个（参考右走v3）
+  # ============================================================
+  - id: sprite_lengguyun_walk_right_8f_v3
+    template: sprite_protagonist_walk_right_8f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_down_8f_v3
+    template: sprite_protagonist_walk_down_8f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_8f_v3
+    template: sprite_protagonist_walk_up_8f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  # --- 冷孤云 · idle 极简风动（2026-05-19）---
+  # 不改参考图姿势，仅加风动。先试右 idle，对了再扩展。
+  - id: sprite_lengguyun_idle_down_wind_only
+    template: sprite_protagonist_idle_wind_only_down
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+
+  - id: sprite_lengguyun_idle_up_wind_only
+    template: sprite_protagonist_idle_wind_only_up
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+
+  - id: sprite_lengguyun_idle_right_wind_only_a
+    template: sprite_protagonist_idle_wind_only
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+
+  - id: sprite_lengguyun_idle_right_6f_v3
+    template: sprite_protagonist_idle_6f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正交侧向略俯视（与参考图同一视角），身体主轴朝画幅左侧"
+
+  - id: sprite_lengguyun_idle_down_6f_v3
+    template: sprite_protagonist_idle_6f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正面朝向镜头，能看到脸、胸口白衣、腰带正面、剑柄和青瓷酒葫芦"
+
+  - id: sprite_lengguyun_idle_up_6f_v3
+    template: sprite_protagonist_idle_6f_v3
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "背面朝向镜头，只能看到后脑、束发、背部、腰带后侧、剑和青瓷酒葫芦；禁止画脸"
+
+  # --- 冷孤云 · idle 站立单帧（2026-05-19）---
+  # 先生成站姿单帧，确认外观一致后再用图像处理加风动。
+  - id: sprite_lengguyun_idle_right_stand_1f
+    template: sprite_protagonist_idle_stand_1f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正交侧向略俯视（与参考图同一视角），身体主轴朝画幅左侧"
+
+  - id: sprite_lengguyun_idle_down_stand_1f
+    template: sprite_protagonist_idle_stand_1f_down
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正面朝向镜头，能看到脸、胸口白衣、腰带正面、剑柄和青瓷酒葫芦"
+
+  - id: sprite_lengguyun_idle_up_stand_1f
+    template: sprite_protagonist_idle_stand_1f_up
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "背面朝向镜头，只能看到后脑、束发、背部、腰带后侧、剑和青瓷酒葫芦；禁止画脸"
+
+  - id: sprite_lengguyun_idle_up_6f_wind_v5
+    template: sprite_protagonist_idle_wind_6f_v5
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "背面朝向镜头，只能看到后脑、束发、背部、腰带后侧、剑和青瓷酒葫芦；禁止画脸"
+
+  # --- 冷孤云 · 上/下行走 polish（2026-05-18）---
+  - id: sprite_lengguyun_walk_down_8f_polish_from_4f
+    template: sprite_protagonist_walk_down_8f_polish_from_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  - id: sprite_lengguyun_walk_up_8f_polish_from_4f
+    template: sprite_protagonist_walk_up_8f_polish_from_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+
+  # --- 冷孤云 · idle 待机风吹 4 帧 ---
+  - id: sprite_lengguyun_idle_right_4f_wind
+    template: sprite_protagonist_idle_wind_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "侧向略俯视，身体主轴朝画幅左侧（Field Sprite2D+flip_h）；禁止 45° 等距地砖透视"
+
+  - id: sprite_lengguyun_idle_down_4f_wind
+    template: sprite_protagonist_idle_wind_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "正面朝向镜头，能看到脸、胸口白衣、腰带正面、剑柄和青瓷酒葫芦"
+
+  - id: sprite_lengguyun_idle_up_4f_wind
+    template: sprite_protagonist_idle_wind_4f
+    category: sprite/v3
+    priority: 2
+    model: gpt-image-2
+    vars:
+      <<: *lengguyun
+      facing_desc: "背面朝向镜头，只能看到后脑、束发、背部、腰带后侧、剑和青瓷酒葫芦；禁止画脸"
 
   - id: sprite_lengguyun_walk_down_8f_stable_from_4f
     template: sprite_protagonist_walk_down_8f_stable_from_4f
@@ -869,46 +1419,88 @@ tasks:
       color_scheme: "素白银"
 
   # ============================================================
-  # === [v0.4 模块化场景 kit] 默认 skip，先做 dry-run / 审稿 ===
+  # === [v1 模块化场景元素 kit] 4 张 atlas，按 docs/scene-element-kit-spec.md ===
+  # 四类：地面/道路、建筑、植物、可交互道具
+  # 每张 12-20 个元素，透明底、同视角、同光源、可切分复用
+  # 覆盖林西村三场景：主街/官道/密林
   # ============================================================
 
-  - id: scene_kit_linxi_buildings_v1
+  # --- Atlas 1：地面 / 道路 ---
+  - id: scene_kit_ground_road_linxi_v1
     template: scene_module_atlas
-    category: scene/modules/v1
+    category: scene_background
     priority: 1
     model: gpt-image-2
-    skip: true
     vars:
-      kit_theme: "林西村 / 竹尾村可复用民居建筑模块"
+      kit_theme: "林西村 / 竹尾村 地面与道路模块"
       module_list: |
-        - 灰瓦屋顶左中右模块
-        - 土墙 / 木墙墙体模块
-        - 木门、纸窗、屋檐、木柱
-        - 院墙、篱笆、招牌底板（不要文字）
-        - 酒馆门面、普通民居门面、破旧小屋门面
+        - 黄土路直段（road_dirt_linxi_straight_a，约 256×128）
+        - 黄土路左弯道（road_dirt_linxi_curve_L）
+        - 黄土路右弯道（road_dirt_linxi_curve_R）
+        - 黄土路三岔口（road_dirt_linxi_cross）
+        - 青石板直段（road_stone_zhuwei_straight_a）
+        - 青石板破损直段（road_stone_zhuwei_straight_b）
+        - 青石板转角（road_stone_zhuwei_corner_L）
+        - 土路→草地过渡边（road_dirt_grass_edge）
+        - 石板→草地过渡边（road_stone_grass_edge）
+        - 碎石散落（road_gravel_scatter_a）
+        - 碎石大块（road_gravel_scatter_b）
+        - 土路脚印/车辙痕（road_dirt_footprint_trail）
+        - 草地斑块（road_grass_patch_a）
+        - 草地斑块B（road_grass_patch_b）
+        - 上坡土路（road_dirt_slope_up）
+
+  # --- Atlas 2：建筑 ---
+  - id: scene_kit_building_linxi_v1
+    template: scene_module_atlas
+    category: scene_background
+    priority: 1
+    model: gpt-image-2
+    vars:
+      kit_theme: "林西村 / 竹尾村 民居与商店建筑模块"
+      module_list: |
+        - 民居木墙左块含左檐（build_linxi_house_wall_L）
+        - 民居木墙中块可重复拉伸（build_linxi_house_wall_M）
+        - 民居木墙右块含右檐（build_linxi_house_wall_R）
+        - 灰瓦屋顶左块（build_linxi_roof_gray_L）
+        - 灰瓦屋顶中块（build_linxi_roof_gray_M）
+        - 灰瓦屋顶右块（build_linxi_roof_gray_R）
+        - 木门闭合（build_linxi_door_wood_a）
+        - 木门半开（build_linxi_door_wood_open）
+        - 纸窗（build_linxi_window_paper_a）
+        - 木柱立（build_linxi_column_wood）
+        - 屋檐直段（build_linxi_eaves_straight）
+        - 院墙/篱笆段（build_linxi_wall_courtyard_a）
+        - 酒馆门面含酒幡挂架无文字（build_linxi_inn_storefront）
+        - 铁匠铺门面炉口可见无人（build_linxi_smithy_front）
+        - 横匾招牌底板无字（build_linxi_signboard_blank_a）
+        - 竖匾招牌底板无字（build_linxi_signboard_blank_b）
 
   # ============================================================
   # === [v0.5 正式场景生产] 补齐占位图场景 + 对话框 + 战斗背景 ===
   # ============================================================
 
-  # --- 林西村外官道（ch1_s1_road 用，取代占位的 bg_battle_default.png）---
-  - id: scene_ch1_s1_road
-    template: scene_background_45deg
+  # --- 林西村主街 完整实机场景（取代模块化 atlas 拼接方案）---
+  - id: scene_linxi_main_street_full
+    template: scene_background_walkable_full
     category: scene_background
     priority: 1
     model: gpt-image-2
     vars:
-      scene_name: "林西村外 · 竹林官道"
+      scene_name: "林西村主街 · 2.5D 预渲染版"
       scene_desc: |
-        蜿蜒山间的石板官道，两侧翠竹高耸如壁，
-        竹叶轻摇、光影斑驳；道路左侧有一块古旧石碑半隐于竹丛中，
-        石碑青苔斑驳、刻字模糊；
-        道路中段地面可见一些散落杂物、断裂兵器暗示刚发生过搏斗。
-        前方道路延伸消失于竹林深处。
-        清晨薄雾未散，空气清冷。
+        清晨阳光下的山中村庄主街，画面是一张完整自然的可行走 RPG 场景。
+        整体像老式 2.5D RPG 的预渲染场景：建筑有厚实体块、侧墙、屋檐阴影、台阶高度和接地投影，
+        但表面仍是手绘武侠贴图和港漫色彩。
+        左上是完整木结构小酒馆，门前亮着红灯笼和可动酒幡但没有文字；
+        右上是完整铁匠铺，炉火从敞口透出橙色光，屋檐和烟囱有体积；
+        中上有一栋民居，烟囱位置清楚。
+        下半部是宽阔连续的黄土主路，从左下进入，经过中央石坛空地，通向右侧村口出口。
+        翠竹、灌木和草丛只沿画面边缘布置形成框景，不遮挡主路和建筑。
+        酒馆屋顶上面预留炊烟位置，铁匠铺预留炉火光晕位置，方便后期叠加动画粒子。
       time_of_day: "morning"
       weather: "clear"
-      key_elements: "翠竹如壁、石板官道、古旧石碑、散落兵器、薄雾、远处竹林"
+      key_elements: "预渲染 2.5D 体块感、厚屋檐、侧墙、接地阴影、宽阔黄土主路、酒馆灯笼酒幡、烟囱、铁匠铺炉火、中央石坛、边缘翠竹框景"
 
   # --- 竹尾村主街（ch1_s2_qingfeng 用，取代占位的 bg_main_menu.png）---
   - id: scene_zhuwei_main_street
@@ -983,33 +1575,61 @@ tasks:
         - 姓名牌：小型横匾，无字，寒玉质感外框
         - 选项按钮：3 个竖排小条按钮，无字，玄铁底 + 霜蓝边
 
-  - id: scene_kit_roads_plants_v1
+  # --- Atlas 3：植物 ---
+  - id: scene_kit_veg_linxi_v1
     template: scene_module_atlas
-    category: scene/modules/v1
+    category: scene_background
     priority: 1
     model: gpt-image-2
-    skip: true
     vars:
-      kit_theme: "林西村外官道与竹尾村植物道路模块"
+      kit_theme: "林西村 / 竹尾村 植物与树木模块"
       module_list: |
-        - 土路直段、弯道、岔路口、碎石边缘
-        - 青石小路、台阶、草地过渡边
-        - 竹子单株、竹丛、灌木、杂草、路边石
-        - 前景树枝遮挡、低矮木桥、石碑空白底板
+        - 竹子单株A（veg_bamboo_single_a，高约300px）
+        - 竹子单株B形态微变（veg_bamboo_single_b）
+        - 竹丛3-5株一组（veg_bamboo_cluster_a）
+        - 竹丛B密集（veg_bamboo_cluster_b）
+        - 竹林左边缘（veg_bamboo_edge_L）
+        - 竹林右边缘（veg_bamboo_edge_R）
+        - 竹冠蓬前景遮挡用水平走向（veg_bamboo_top_canopy）
+        - 灌木丛A高约80px（veg_bush_green_a）
+        - 灌木丛B（veg_bush_green_b）
+        - 草簇地面点缀（veg_grass_tuft_a）
+        - 草簇B（veg_grass_tuft_b）
+        - 路边野花小撮（veg_flower_wild_a）
+        - 竹叶散落地面装饰（veg_leaves_scatter）
+        - 远景松树远山背景用（veg_tree_pine_a）
+        - 前景竹叶遮挡左失焦感（veg_foliage_fg_L）
+        - 前景竹叶遮挡右（veg_foliage_fg_R）
 
-  - id: scene_kit_west_ruin_props_v1
+  # --- Atlas 4：可交互道具 ---
+  - id: scene_kit_prop_linxi_v1
     template: scene_module_atlas
-    category: scene/modules/v1
+    category: scene_background
     priority: 1
     model: gpt-image-2
-    skip: true
     vars:
-      kit_theme: "城西废宅破败装饰与障碍模块"
+      kit_theme: "林西村 / 竹尾村 / 城西废宅 道具与装饰模块"
       module_list: |
-        - 破墙、断梁、旧门板、塌落屋檐
-        - 木箱、酒坛、绳索、草席、破桌
-        - 枯树、杂草、碎砖、石灯、阴影前景
-        - 可作为碰撞障碍的摊位 / 残垣 / 堆箱
+        - 木桶竖放（prop_linxi_barrel_wood_a）
+        - 木桶横放（prop_linxi_barrel_wood_b）
+        - 旧木箱闭合（prop_linxi_box_wood_a）
+        - 旧木箱开盖（prop_linxi_box_wood_open）
+        - 酒坛（prop_linxi_wine_jar_a）
+        - 酒坛叠放2坛（prop_linxi_wine_jar_stack）
+        - 红灯笼挂式（prop_linxi_lantern_red_a）
+        - 红灯笼立杆式（prop_linxi_lantern_red_b）
+        - 酒幡红布条无字（prop_linxi_wine_banner）
+        - 石碑路边指路青苔斑驳（prop_zhuwei_stone_tablet）
+        - 木路牌立杆无字（prop_zhuwei_road_sign）
+        - 散落兵器断剑枪杆（prop_linxi_weapon_scatter）
+        - 铁匠铺炉火盆含火光（prop_linxi_fire_pot）
+        - 古旧石坛密林战场（prop_zhuwei_stone_altar）
+        - 破墙左块（prop_ruin_wall_crack_L）
+        - 破墙右块（prop_ruin_wall_crack_R）
+        - 破旧木门半坍（prop_ruin_door_broken）
+        - 断木梁（prop_ruin_beam_broken）
+        - 瓦砾堆（prop_ruin_rubble_pile）
+        - 木推车街边障碍（prop_linxi_cart_wood）
 
   # ============================================================
   # === [v0.4 冷色武侠 UI 美术资产] 默认 skip，先审 prompt ===
@@ -1283,3 +1903,2018 @@ tasks:
     skip: false
     vars:
       label: "离开"
+
+  # ============================================================
+  # === [v0.5 游戏主 HUD 正式部件] 重新生成，禁止截图裁切 ===
+  # ============================================================
+
+  - id: ui_field_hud_player_panel_v1
+    template: ui_field_hud_component_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "左上角角色状态框"
+      component_purpose: |
+        显示角色头像、生命、内力、等级等信息；程序会叠加数值和文字。
+      component_shape: "宽横向角色状态面板，左侧头像框，右侧两条横向状态条区域，约 3.4:1"
+
+  - id: ui_field_hud_gold_panel_v1
+    template: ui_field_hud_component_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "金币小框"
+      component_purpose: |
+        显示铜钱/金币图标和金钱数字；程序会叠加数字。
+      component_shape: "小型横向牌匾框，左侧圆形钱币图标位，右侧数字留白，约 3:1"
+
+  - id: ui_field_hud_scene_title_v1
+    template: ui_field_hud_component_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "当前场景名牌"
+      component_purpose: |
+        显示当前场景名称；程序会叠加场景文字。
+      component_shape: "细长横向玄铁名牌，两端有寒玉扣和云纹角饰，约 6:1"
+
+  - id: ui_field_hud_quest_panel_v1
+    template: ui_field_hud_component_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "右下角当前任务摘要框"
+      component_purpose: |
+        显示当前任务标题、类型、目标和进度；程序会叠加任务文字。
+      component_shape: "中型竖向信息面板，顶部标题牌，正文留白，约 1.55:1"
+
+  - id: ui_field_hud_bottom_bar_v1
+    template: ui_field_hud_component_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "底部操作提示栏"
+      component_purpose: |
+        放置移动、交互、背包、装备、武学、任务等快捷入口提示。
+      component_shape: "超宽横向底栏，两端有立柱装饰，中间分隔槽位，约 13:1"
+
+  - id: ui_field_hud_btn_inventory_v1
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "背包"
+      icon_desc: "布袋、行囊、小钱袋图标"
+
+  - id: ui_field_hud_btn_equipment_v1
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "装备"
+      icon_desc: "护甲、皮甲、武备图标"
+
+  - id: ui_field_hud_btn_skill_v1
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "武学"
+      icon_desc: "古书、武学秘籍、竹简图标"
+
+  - id: ui_field_hud_btn_quest_v1
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "任务"
+      icon_desc: "卷宗、告示、红点提醒图标"
+
+  - id: ui_field_hud_btn_system_v1
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/v1
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      icon_desc: "齿轮、机关铜轮图标"
+
+  # 单按钮候选：先给用户确认风格，确认后再扩展右侧 HUD 其他按钮。
+  - id: ui_field_hud_btn_system_mainmenu_style_candidate_v1
+    template: ui_field_hud_button_main_menu_v5_match
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+
+  # 单按钮候选：用户新提供的右侧 HUD 按钮设计图，先只做“背包”三态确认风格。
+  - id: ui_field_hud_btn_inventory_right_stack_candidate_v1
+    template: ui_field_hud_button_right_stack_match
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "背包"
+      icon_desc: "白色布袋/行囊图标，布袋上方系绳，和参考图第一枚按钮一致"
+
+  # 近景参考重绘候选：针对用户指出的质感、底框、图标、字体问题，先生成 3 个背包 normal 候选。
+  - id: ui_field_hud_btn_inventory_closeup_redraw_candidate_a_v1
+    template: ui_field_hud_inventory_button_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      variant: "A"
+
+  - id: ui_field_hud_btn_inventory_closeup_redraw_candidate_b_v1
+    template: ui_field_hud_inventory_button_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      variant: "B"
+
+  - id: ui_field_hud_btn_inventory_closeup_redraw_candidate_c_v1
+    template: ui_field_hud_inventory_button_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      variant: "C"
+
+  # 右侧 HUD 其他按钮候选：沿用已确认背包 closeup redraw A 的方向，每个按钮先出 3 张筛选。
+  - id: ui_field_hud_btn_equipment_closeup_redraw_candidate_a_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "装备"
+      icon_desc: "古代皮甲/护甲图标，青铜和皮革质感，接近原设计图第二枚按钮"
+      variant: "A"
+
+  - id: ui_field_hud_btn_equipment_closeup_redraw_candidate_b_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "装备"
+      icon_desc: "古代皮甲/护甲图标，青铜和皮革质感，接近原设计图第二枚按钮"
+      variant: "B"
+
+  - id: ui_field_hud_btn_equipment_closeup_redraw_candidate_c_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "装备"
+      icon_desc: "古代皮甲/护甲图标，青铜和皮革质感，接近原设计图第二枚按钮"
+      variant: "C"
+
+  - id: ui_field_hud_btn_skill_closeup_redraw_candidate_a_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "武学"
+      icon_desc: "古书/武学秘籍图标，蓝灰封面和米黄书页，接近原设计图第三枚按钮"
+      variant: "A"
+
+  - id: ui_field_hud_btn_skill_closeup_redraw_candidate_b_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "武学"
+      icon_desc: "古书/武学秘籍图标，蓝灰封面和米黄书页，接近原设计图第三枚按钮"
+      variant: "B"
+
+  - id: ui_field_hud_btn_skill_closeup_redraw_candidate_c_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "武学"
+      icon_desc: "古书/武学秘籍图标，蓝灰封面和米黄书页，接近原设计图第三枚按钮"
+      variant: "C"
+
+  - id: ui_field_hud_btn_quest_closeup_redraw_candidate_a_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "任务"
+      icon_desc: "卷轴/告示图标，纸卷和红色绑绳，接近原设计图第四枚按钮，但不要红点提醒"
+      variant: "A"
+
+  - id: ui_field_hud_btn_quest_closeup_redraw_candidate_b_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "任务"
+      icon_desc: "卷轴/告示图标，纸卷和红色绑绳，接近原设计图第四枚按钮，但不要红点提醒"
+      variant: "B"
+
+  - id: ui_field_hud_btn_quest_closeup_redraw_candidate_c_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "任务"
+      icon_desc: "卷轴/告示图标，纸卷和红色绑绳，接近原设计图第四枚按钮，但不要红点提醒"
+      variant: "C"
+
+  - id: ui_field_hud_btn_system_closeup_redraw_candidate_a_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      icon_desc: "机关齿轮/铜轮图标，冷色金属质感，和同系列按钮统一"
+      variant: "A"
+
+  - id: ui_field_hud_btn_system_closeup_redraw_candidate_b_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      icon_desc: "机关齿轮/铜轮图标，冷色金属质感，和同系列按钮统一"
+      variant: "B"
+
+  - id: ui_field_hud_btn_system_closeup_redraw_candidate_c_v1
+    template: ui_field_hud_button_closeup_redraw_generic
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      icon_desc: "机关齿轮/铜轮图标，冷色金属质感，和同系列按钮统一"
+      variant: "C"
+
+  # 系统按钮重跑：加入“系统”字形参考，单独筛选，避免错字进入游戏。
+  - id: ui_field_hud_btn_system_closeup_ref_candidate_a_v1
+    template: ui_field_hud_system_button_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      icon_desc: "机关齿轮/铜轮图标，冷色金属质感，和同系列按钮统一"
+      variant: "A"
+
+  - id: ui_field_hud_btn_system_closeup_ref_candidate_b_v1
+    template: ui_field_hud_system_button_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      icon_desc: "机关齿轮/机关铜盘图标，冷色金属质感，和同系列按钮统一"
+      variant: "B"
+
+  - id: ui_field_hud_btn_system_closeup_ref_candidate_c_v1
+    template: ui_field_hud_system_button_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      icon_desc: "小型机关轮/设置铜轮图标，冷色金属质感，和同系列按钮统一"
+      variant: "C"
+
+  # 用户反馈修正版：背包/武学已确认不动，只重绘系统、装备、任务的小批次候选。
+  - id: ui_field_hud_btn_system_feedback_fix_candidate_a_v1
+    template: ui_field_hud_button_feedback_fix
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      icon_desc: "小型机关齿轮/铜轮图标，青铜偏冷色，左侧图标不能过大"
+      fix_focus: "系统按钮必须改掉当前过于硬直、科幻、银边规整的问题，外轮廓和厚涂质感贴近背包与武学"
+      variant: "A"
+
+  - id: ui_field_hud_btn_system_feedback_fix_candidate_b_v1
+    template: ui_field_hud_button_feedback_fix
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      icon_desc: "机关齿轮/设置铜轮图标，手绘旧铜质感，和武学按钮图标体量接近"
+      fix_focus: "系统按钮要与背包、武学成为同一套，不要对称科幻框，不要硬亮银边"
+      variant: "B"
+
+  - id: ui_field_hud_btn_equipment_feedback_fix_candidate_a_v1
+    template: ui_field_hud_button_feedback_fix
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "装备"
+      icon_desc: "古代皮甲/护甲图标，青铜和皮革质感，图标体量接近背包布袋"
+      fix_focus: "保留装备按钮方向，但文字要比上一版小 15%，颜色更接近背包/武学的米白色，不能发黑"
+      variant: "A"
+
+  - id: ui_field_hud_btn_equipment_feedback_fix_candidate_b_v1
+    template: ui_field_hud_button_feedback_fix
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "装备"
+      icon_desc: "护甲胸甲图标，旧铜、皮革、布料混合，手绘厚涂"
+      fix_focus: "重点修正文字过大、过深：字形比旧装备按钮收小，颜色变亮为米白，底框不变成黑色硬块"
+      variant: "B"
+
+  - id: ui_field_hud_btn_quest_feedback_fix_candidate_a_v1
+    template: ui_field_hud_button_feedback_fix
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "任务"
+      icon_desc: "卷轴/告示图标，纸卷和红色绑绳，不要红点提醒"
+      fix_focus: "任务按钮方向基本可用，但整体颜色偏深，这版底框与文字都提亮一点，仍保持蓝灰玄铁质感"
+      variant: "A"
+
+  - id: ui_field_hud_btn_quest_feedback_fix_candidate_b_v1
+    template: ui_field_hud_button_feedback_fix
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "任务"
+      icon_desc: "卷宗/羊皮卷轴图标，浅纸色，红色绑绳，手绘阴影"
+      fix_focus: "任务按钮要比上一版更亮、更通透，但不要变成高饱和或金色，文字米白清晰"
+      variant: "B"
+
+  # 标准化按钮底框：以用户确认的“武学”按钮为唯一标本，生成无图标无文字底图，后续统一复用。
+  - id: ui_field_hud_skill_frame_textless_candidate_a_v1
+    template: ui_field_hud_skill_frame_textless
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      variant: "A"
+
+  - id: ui_field_hud_skill_frame_textless_candidate_b_v1
+    template: ui_field_hud_skill_frame_textless
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      variant: "B"
+
+  # 分层重生 v2：先把底框、图标、系统文字作为独立母素材候选生成，再统一合成三态。
+  - id: ui_field_hud_frame_layer_v2_candidate_a
+    template: ui_field_hud_button_frame_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      variant: "A"
+
+  - id: ui_field_hud_frame_layer_v2_candidate_b
+    template: ui_field_hud_button_frame_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      variant: "B"
+
+  - id: ui_field_hud_icon_inventory_layer_v2_candidate_a
+    template: ui_field_hud_button_icon_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "背包"
+      icon_desc: "布袋、行囊、小钱袋图标，米白布料、棕色束口绳，旧物手绘厚涂"
+      variant: "A"
+
+  - id: ui_field_hud_icon_equipment_layer_v2_candidate_a
+    template: ui_field_hud_button_icon_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "装备"
+      icon_desc: "古代皮甲/护甲胸甲图标，青铜、皮革、布料混合，武侠旧物质感"
+      variant: "A"
+
+  - id: ui_field_hud_icon_skill_layer_v2_candidate_a
+    template: ui_field_hud_button_icon_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "武学"
+      icon_desc: "古书/武学秘籍图标，蓝灰封面、米黄书页、旧纸边缘"
+      variant: "A"
+
+  - id: ui_field_hud_icon_quest_layer_v2_candidate_a
+    template: ui_field_hud_button_icon_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "任务"
+      icon_desc: "卷轴/告示图标，浅纸色卷轴和红色绑绳，完整不裁切"
+      variant: "A"
+
+  - id: ui_field_hud_icon_system_layer_v2_candidate_a
+    template: ui_field_hud_button_icon_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      icon_desc: "机关齿轮/设置铜轮图标，旧铜冷色金属，手绘厚涂，完整不裁切"
+      variant: "A"
+
+  - id: ui_field_hud_text_system_layer_v2_candidate_a
+    template: ui_field_hud_button_text_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      variant: "A"
+
+  - id: ui_field_hud_text_system_layer_v2_candidate_b
+    template: ui_field_hud_button_text_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      variant: "B"
+
+  - id: ui_field_hud_text_system_layer_v2_candidate_c
+    template: ui_field_hud_button_text_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      variant: "C"
+
+  - id: ui_field_hud_text_system_layer_v2_candidate_d
+    template: ui_field_hud_button_text_layer_v2
+    category: ui/field_hud/layers
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      button_label: "系统"
+      variant: "D"
+
+  - id: ui_field_hud_player_panel_closeup_candidate_a_v1
+    template: ui_field_hud_panel_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "左上角角色信息框"
+      component_purpose: "显示头像、角色名、生命/内力等状态条"
+      component_shape: "横向状态面板，左侧圆形头像框，右侧两条横向状态槽，约 3.5:1"
+
+  - id: ui_field_hud_player_panel_closeup_candidate_b_v1
+    template: ui_field_hud_panel_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "左上角角色信息框"
+      component_purpose: "显示头像、角色名、生命/内力等状态条"
+      component_shape: "横向状态面板，左侧圆形头像框，右侧两条横向状态槽，整体比右侧按钮更宽，但材质完全同系列"
+
+  - id: ui_field_hud_bottom_bar_closeup_candidate_a_v1
+    template: ui_field_hud_panel_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "底部操作栏信息框"
+      component_purpose: "显示移动、交互、快捷键等操作提示"
+      component_shape: "超宽横向底部栏，多个低调分隔槽位，约 12:1，不要文字"
+
+  - id: ui_field_hud_bottom_bar_closeup_candidate_b_v1
+    template: ui_field_hud_panel_closeup_redraw
+    category: ui/field_hud/candidates
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      component_name: "底部操作栏信息框"
+      component_purpose: "显示移动、交互、快捷键等操作提示"
+      component_shape: "超宽横向底部栏，左右有厚涂玄铁端饰，中间是多个蓝灰信息槽位，约 12:1，不要文字"
+
+  # ============================================================
+  # === [v0.6 像素精确 HUD 面板] 坐标硬编码，1024×1024 生成后裁切 ===
+  # ============================================================
+
+  - id: ui_field_hud_player_panel_pixelperfect_v1
+    template: ui_field_hud_player_panel_pixelperfect
+    category: ui/field_hud/pixelperfect
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  # ============================================================
+  # === [v0.6 主角头像] 冷孤云，以 protagonist_portrait 为参考 ===
+  # ============================================================
+
+  - id: portrait_protagonist_avatar_v2
+    template: character_portrait
+    category: character
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      <<: *lengguyun
+      pose: "正面头像特写，肩部以上"
+      expression: "神色淡然，嘴角微扬带一丝不羁笑意"
+      background_desc: "简洁纯色背景，弱化不抢角色"
+
+  # ============================================================
+  # === [v0.7 主角 2.5D Sprite] 待机 idle + 右向行走 ===
+  # ============================================================
+
+  - id: sprite_lengguyun_idle_v2_f1
+    template: sprite_protagonist_idle_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+
+  - id: sprite_lengguyun_idle_v2_f2
+    template: sprite_protagonist_idle_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+
+  - id: sprite_lengguyun_idle_v2_f3
+    template: sprite_protagonist_idle_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+
+  - id: sprite_lengguyun_idle_v2_f4
+    template: sprite_protagonist_idle_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+
+  - id: sprite_lengguyun_walk_right_v2_f1
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      leg_phase: "左脚抬起迈步，右脚着地"
+
+  - id: sprite_lengguyun_walk_right_v2_f2
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      leg_phase: "右脚落地支撑，左脚前伸"
+
+  - id: sprite_lengguyun_walk_right_v2_f3
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+      leg_phase: "过渡帧，双脚交错，重心居中"
+
+  - id: sprite_lengguyun_walk_right_v2_f4
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+      leg_phase: "右脚抬起迈步，左脚着地支撑"
+
+  - id: sprite_lengguyun_walk_right_v2_f5
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "5"
+      leg_phase: "左脚落地支撑，右脚前伸"
+
+  - id: sprite_lengguyun_walk_right_v2_f6
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "6"
+      leg_phase: "过渡帧，双脚交错，重心居中"
+
+  - id: sprite_lengguyun_walk_right_v2_f7
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "7"
+      leg_phase: "左脚再次抬起，步幅稍大"
+
+  - id: sprite_lengguyun_walk_right_v2_f8
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "8"
+      leg_phase: "右脚再次落地，循环回到起始姿态"
+
+  # ============================================================
+  # === [v0.7 NPC Sprite] 林西村 NPC 角色立绘 ===
+  # ============================================================
+
+  - id: sprite_shenbanzhan_idle_v1
+    template: sprite_npc_idle
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      pose: "站立待机，双手交叠于围裙前，神情和善"
+      facing: "侧向略俯视，身体朝画幅右侧"
+
+  - id: sprite_duqingshan_idle_v1
+    template: sprite_npc_idle
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      pose: "站立待机，一手提铁锤搁于肩头，神色憨厚"
+      facing: "侧向略俯视，身体朝画幅右侧"
+
+  # ============================================================
+  # === [v0.7 场景道具] 红色酒旗/幌子 ===
+  # ============================================================
+
+  - id: prop_linxi_red_banner_v2
+    template: prop_red_banner
+    category: props
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars: {}
+
+  # ============================================================
+  # === [v0.8 2.5D 精灵条] 单图生成整条 walk/idle strip ===
+  # ============================================================
+
+  - id: sprite_lengguyun_walk_right_strip_v3
+    template: sprite_strip_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      <<: *lengguyun
+
+  # ============================================================
+  # === [v0.9 全量重出] quality=high，精简 prompt ===
+  # ============================================================
+
+  - id: ui_field_hud_player_panel_v6
+    template: ui_field_hud_player_panel_v6
+    category: ui/field_hud
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: portrait_protagonist_avatar_v3
+    template: character_portrait
+    category: character
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      pose: "正面头像特写，肩部以上"
+      expression: "神色淡然，嘴角微扬带一丝不羁笑意"
+      background_desc: "纯色背景"
+
+  - id: sprite_lengguyun_idle_v3_f1
+    template: sprite_protagonist_idle_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+
+  - id: sprite_lengguyun_idle_v3_f2
+    template: sprite_protagonist_idle_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+
+  - id: sprite_lengguyun_idle_v3_f3
+    template: sprite_protagonist_idle_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+
+  - id: sprite_lengguyun_idle_v3_f4
+    template: sprite_protagonist_idle_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+
+  - id: sprite_lengguyun_walk_right_v3_f1
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      leg_phase: "左脚抬起迈步，右脚着地"
+
+  - id: sprite_lengguyun_walk_right_v3_f2
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      leg_phase: "右脚落地支撑，左脚前伸"
+
+  - id: sprite_lengguyun_walk_right_v3_f3
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+      leg_phase: "过渡帧，双脚交错，重心居中"
+
+  - id: sprite_lengguyun_walk_right_v3_f4
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+      leg_phase: "右脚抬起迈步，左脚着地支撑"
+
+  - id: sprite_lengguyun_walk_right_v3_f5
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "5"
+      leg_phase: "左脚落地支撑，右脚前伸"
+
+  - id: sprite_lengguyun_walk_right_v3_f6
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "6"
+      leg_phase: "过渡帧，双脚交错，重心居中"
+
+  - id: sprite_lengguyun_walk_right_v3_f7
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "7"
+      leg_phase: "左脚再次抬起，步幅稍大"
+
+  - id: sprite_lengguyun_walk_right_v3_f8
+    template: sprite_protagonist_walk_right_25d
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "8"
+      leg_phase: "右脚再次落地，循环回到起始姿态"
+
+  - id: sprite_shenbanzhan_idle_v2
+    template: sprite_npc_idle
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      pose: "站立待机，双手交叠于围裙前，神情和善"
+
+  - id: sprite_duqingshan_idle_v2
+    template: sprite_npc_idle
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      pose: "站立待机，一手提铁锤搁于肩头，神色憨厚直爽"
+
+  # ============================================================
+  # === [v0.9 UI 全套] 首场景全部 UI 元素，quality=high ===
+  # ============================================================
+
+  - id: ui_btn_inventory_v2
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/buttons
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      button_label: "背包"
+      icon_desc: "布袋图标"
+
+  - id: ui_btn_equipment_v2
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/buttons
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      button_label: "装备"
+      icon_desc: "铁剑图标"
+
+  - id: ui_btn_skill_v2
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/buttons
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      button_label: "武功"
+      icon_desc: "拳掌图标"
+
+  - id: ui_btn_quest_v2
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/buttons
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      button_label: "任务"
+      icon_desc: "卷轴图标"
+
+  - id: ui_btn_system_v2
+    template: ui_field_hud_button_cold_wuxia
+    category: ui/field_hud/buttons
+    priority: 1
+    model: gpt-image-2
+    skip: true
+    vars:
+      button_label: "系统"
+      icon_desc: "齿轮图标"
+
+  - id: ui_scene_name_panel_v6
+    template: ui_field_hud_scene_name_panel
+    category: ui/field_hud
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: ui_quest_panel_v6
+    template: ui_field_hud_quest_panel
+    category: ui/field_hud
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: ui_dialog_frame_v6
+    template: ui_dialog_frame_v6
+    category: ui/field_hud
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  # ============================================================
+  # === [v0.10 头像+精灵+NPC+尸体] quality=high, 自我验证 ===
+  # ============================================================
+
+  - id: portrait_protagonist_avatar_v7
+    template: character_portrait_avatar_v7
+    category: character
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      expression: "神色淡然，嘴角微扬带一丝不羁笑意"
+
+  - id: sprite_lengguyun_walk_right_v7_f1
+    template: sprite_walk_right_v7
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      leg_phase: "左脚抬起迈步，右脚着地支撑"
+
+  - id: sprite_lengguyun_walk_right_v7_f2
+    template: sprite_walk_right_v7
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      leg_phase: "右脚落地支撑，左脚前伸迈出"
+
+  - id: sprite_lengguyun_walk_right_v7_f3
+    template: sprite_walk_right_v7
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+      leg_phase: "过渡帧，双脚交错，重心居中"
+
+  - id: sprite_lengguyun_walk_right_v7_f4
+    template: sprite_walk_right_v7
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+      leg_phase: "右脚抬起迈步，左脚着地支撑"
+
+  - id: sprite_lengguyun_walk_right_v7_f5
+    template: sprite_walk_right_v7
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "5"
+      leg_phase: "右脚前伸迈出，左脚落地支撑"
+
+  - id: sprite_lengguyun_walk_right_v7_f6
+    template: sprite_walk_right_v7
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "6"
+      leg_phase: "过渡帧，双脚交错，重心居中"
+
+  - id: sprite_lengguyun_walk_right_v7_f7
+    template: sprite_walk_right_v7
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "7"
+      leg_phase: "左脚再次抬起迈步，步幅稍大"
+
+  - id: sprite_lengguyun_walk_right_v7_f8
+    template: sprite_walk_right_v7
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "8"
+      leg_phase: "右脚再次落地，回到起始姿态形成循环"
+
+  - id: sprite_shenbanzhan_idle_v3
+    template: sprite_npc_idle
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      pose: "站立待机，双手交叠于围裙前，神情和善"
+
+  - id: sprite_duqingshan_blacksmith_v1
+    template: sprite_npc_blacksmith
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      pose: "抡铁锤高举过头，砸向身前铁砧上的通红铁块，火花溅射，神色专注坚毅"
+
+  - id: prop_corpse_v1
+    template: prop_corpse
+    category: props
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  # ============================================================
+  # === [v0.11 全方向精灵+头像+NPC] 角色更硬气，高度55%-60% ===
+  # ============================================================
+
+  - id: portrait_protagonist_avatar_v8
+    template: character_portrait_avatar_v7
+    category: character
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      expression: "神色冷峻坚毅，眼神锐利含杀气，嘴角微沉"
+
+  - id: sprite_lengguyun_walk_right_v8_f1
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      frame_total: "8"
+      leg_phase: "左脚抬起迈步，右脚着地"
+      facing: "右"
+      facing_extra: "角色身体朝右侧"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_right_v8_f2
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      frame_total: "8"
+      leg_phase: "左脚前伸，右脚支撑"
+      facing: "右"
+      facing_extra: "角色身体朝右侧"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_right_v8_f3
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+      frame_total: "8"
+      leg_phase: "过渡帧，双脚交错"
+      facing: "右"
+      facing_extra: "角色身体朝右侧"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_right_v8_f4
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+      frame_total: "8"
+      leg_phase: "右脚抬起迈步，左脚着地"
+      facing: "右"
+      facing_extra: "角色身体朝右侧"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_right_v8_f5
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "5"
+      frame_total: "8"
+      leg_phase: "右脚前伸，左脚支撑"
+      facing: "右"
+      facing_extra: "角色身体朝右侧"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_right_v8_f6
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "6"
+      frame_total: "8"
+      leg_phase: "过渡帧，双脚交错"
+      facing: "右"
+      facing_extra: "角色身体朝右侧"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_right_v8_f7
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "7"
+      frame_total: "8"
+      leg_phase: "左脚再次抬起，步幅稍大"
+      facing: "右"
+      facing_extra: "角色身体朝右侧"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_right_v8_f8
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "8"
+      frame_total: "8"
+      leg_phase: "右脚落地，回起始姿态"
+      facing: "右"
+      facing_extra: "角色身体朝右侧"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_down_v8_f1
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      frame_total: "4"
+      leg_phase: "左脚迈步向前"
+      facing: "下"
+      facing_extra: "角色身体朝画幅下方，正面略俯视"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_down_v8_f2
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      frame_total: "4"
+      leg_phase: "过渡帧，双脚交错"
+      facing: "下"
+      facing_extra: "角色身体朝画幅下方，正面略俯视"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_down_v8_f3
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+      frame_total: "4"
+      leg_phase: "右脚迈步向前"
+      facing: "下"
+      facing_extra: "角色身体朝画幅下方，正面略俯视"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_down_v8_f4
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+      frame_total: "4"
+      leg_phase: "回起始姿态"
+      facing: "下"
+      facing_extra: "角色身体朝画幅下方，正面略俯视"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_up_v8_f1
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      frame_total: "4"
+      leg_phase: "左脚迈步，背影朝上"
+      facing: "上"
+      facing_extra: "角色背面朝画幅上方，背面略俯视，看到后脑勺和背部披风"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_up_v8_f2
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      frame_total: "4"
+      leg_phase: "过渡帧，双脚交错"
+      facing: "上"
+      facing_extra: "角色背面朝画幅上方，背面略俯视，看到后脑勺和背部披风"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_up_v8_f3
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+      frame_total: "4"
+      leg_phase: "右脚迈步，背影朝上"
+      facing: "上"
+      facing_extra: "角色背面朝画幅上方，背面略俯视，看到后脑勺和背部披风"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_walk_up_v8_f4
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+      frame_total: "4"
+      leg_phase: "回起始姿态"
+      facing: "上"
+      facing_extra: "角色背面朝画幅上方，背面略俯视，看到后脑勺和背部披风"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_idle_v8_f1
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "1"
+      frame_total: "4"
+      leg_phase: "待机站姿，重心在右脚"
+      facing: "右"
+      facing_extra: "角色身体朝右侧，待机站立"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_idle_v8_f2
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "2"
+      frame_total: "4"
+      leg_phase: "轻微吸气，胸口微提"
+      facing: "右"
+      facing_extra: "角色身体朝右侧，待机呼吸"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_idle_v8_f3
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "3"
+      frame_total: "4"
+      leg_phase: "回正常站姿"
+      facing: "右"
+      facing_extra: "角色身体朝右侧，待机站立"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_lengguyun_idle_v8_f4
+    template: sprite_walk_v8
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      frame_index: "4"
+      frame_total: "4"
+      leg_phase: "轻微呼气，重心微移左脚"
+      facing: "右"
+      facing_extra: "角色身体朝右侧，待机呼吸"
+      height_pct: "55%~60%"
+      foot_bottom: "10%~15%"
+
+  - id: sprite_shenbanzhan_idle_v8
+    template: sprite_npc_idle
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      pose: "站立待机，双手交叠于围裙前，神情和善但眼神精明"
+
+  - id: sprite_duqingshan_idle_v8
+    template: sprite_npc_idle
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      pose: "站立待机，一手提铁锤搁于肩头，神色憨厚直爽"
+
+  # --- NPC 4帧 idle 动画 ---
+
+  - id: sprite_shenbanzhan_idle_v8_f1
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "1"
+      extra_motion: "无"
+
+  - id: sprite_shenbanzhan_idle_v8_f2
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "2"
+      extra_motion: "无"
+
+  - id: sprite_shenbanzhan_idle_v8_f3
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "3"
+      extra_motion: "无"
+
+  - id: sprite_shenbanzhan_idle_v8_f4
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "4"
+      extra_motion: "围裙微摆"
+
+  - id: sprite_duqingshan_idle_v8_f1
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "1"
+      extra_motion: "无"
+
+  - id: sprite_duqingshan_idle_v8_f2
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "2"
+      extra_motion: "无"
+
+  - id: sprite_duqingshan_idle_v8_f3
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "3"
+      extra_motion: "无"
+
+  - id: sprite_duqingshan_idle_v8_f4
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "4"
+      extra_motion: "铁锤微动"
+
+  - id: sprite_xingfantian_idle_v8_f1
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *xingfantian
+      frame_index: "1"
+      extra_motion: "无"
+
+  - id: sprite_xingfantian_idle_v8_f2
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *xingfantian
+      frame_index: "2"
+      extra_motion: "无"
+
+  - id: sprite_xingfantian_idle_v8_f3
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *xingfantian
+      frame_index: "3"
+      extra_motion: "无"
+
+  - id: sprite_xingfantian_idle_v8_f4
+    template: sprite_npc_idle_v8
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *xingfantian
+      frame_index: "4"
+      extra_motion: "长衣微摆"
+
+  # ============================================================
+  # === [v0.12 修正高度+8帧NPC idle+红旗] ===
+  # ============================================================
+
+  - id: sprite_lengguyun_walk_down_v9_f1
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "朝画幅下方行走，正面略俯视，左脚迈步向前（共4帧循环之第1帧）"
+
+  - id: sprite_lengguyun_walk_down_v9_f2
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "朝画幅下方行走，正面略俯视，过渡帧双脚交错（共4帧循环之第2帧）"
+
+  - id: sprite_lengguyun_walk_down_v9_f3
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "朝画幅下方行走，正面略俯视，右脚迈步向前（共4帧循环之第3帧）"
+
+  - id: sprite_lengguyun_walk_down_v9_f4
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "朝画幅下方行走，正面略俯视，回起始姿态（共4帧循环之第4帧）"
+
+  - id: sprite_lengguyun_walk_up_v9_f1
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "朝画幅上方行走，背面视角看到后脑勺和披风，左脚迈步向前（共4帧循环之第1帧）"
+
+  - id: sprite_lengguyun_walk_up_v9_f2
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "朝画幅上方行走，背面视角，过渡帧双脚交错（共4帧循环之第2帧）"
+
+  - id: sprite_lengguyun_walk_up_v9_f3
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "朝画幅上方行走，背面视角，右脚迈步向前（共4帧循环之第3帧）"
+
+  - id: sprite_lengguyun_walk_up_v9_f4
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "朝画幅上方行走，背面视角，回起始姿态（共4帧循环之第4帧）"
+
+  - id: sprite_lengguyun_idle_v9_f1
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "待机站姿，朝右，重心在右脚，正常站立（共4帧循环之第1帧）"
+
+  - id: sprite_lengguyun_idle_v9_f2
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "待机站姿，朝右，轻微吸气胸口微提（共4帧循环之第2帧）"
+
+  - id: sprite_lengguyun_idle_v9_f3
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "待机站姿，朝右，回正常站姿同第1帧（共4帧循环之第3帧）"
+
+  - id: sprite_lengguyun_idle_v9_f4
+    template: sprite_walk_v9
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *lengguyun
+      action_desc: "待机站姿，朝右，轻微呼气重心微移左脚（共4帧循环之第4帧）"
+
+  - id: sprite_shenbanzhan_idle_v9_f1
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "1"
+      frame_desc: "正常站立，双手交叠围裙前，重心在右脚"
+
+  - id: sprite_shenbanzhan_idle_v9_f2
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "2"
+      frame_desc: "轻微吸气，胸口微提"
+
+  - id: sprite_shenbanzhan_idle_v9_f3
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "3"
+      frame_desc: "回正常站姿"
+
+  - id: sprite_shenbanzhan_idle_v9_f4
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "4"
+      frame_desc: "轻微呼气，重心微移左脚"
+
+  - id: sprite_shenbanzhan_idle_v9_f5
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "5"
+      frame_desc: "重心回到右脚，头微向右偏"
+
+  - id: sprite_shenbanzhan_idle_v9_f6
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "6"
+      frame_desc: "围裙微摆，手微调位置"
+
+  - id: sprite_shenbanzhan_idle_v9_f7
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "7"
+      frame_desc: "同第1帧，回正常站姿"
+
+  - id: sprite_shenbanzhan_idle_v9_f8
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *shenbanzhan
+      frame_index: "8"
+      frame_desc: "微抬头看一眼，再回正常站姿完成循环"
+
+  - id: sprite_duqingshan_idle_v9_f1
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "1"
+      frame_desc: "正常站立，铁锤搁于肩头，重心在右脚"
+
+  - id: sprite_duqingshan_idle_v9_f2
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "2"
+      frame_desc: "轻微吸气，肩膀微耸"
+
+  - id: sprite_duqingshan_idle_v9_f3
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "3"
+      frame_desc: "回正常站姿"
+
+  - id: sprite_duqingshan_idle_v9_f4
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "4"
+      frame_desc: "铁锤从肩头放下拄地，轻微呼气"
+
+  - id: sprite_duqingshan_idle_v9_f5
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "5"
+      frame_desc: "铁锤重新搁上肩头"
+
+  - id: sprite_duqingshan_idle_v9_f6
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "6"
+      frame_desc: "重心微移左脚，头微转"
+
+  - id: sprite_duqingshan_idle_v9_f7
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "7"
+      frame_desc: "同第1帧，回正常站姿"
+
+  - id: sprite_duqingshan_idle_v9_f8
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *duqingshan
+      frame_index: "8"
+      frame_desc: "擦一把汗，回正常站姿完成循环"
+
+  - id: sprite_lengguyun_walk_right_purple_v1
+    template: sprite_strip_walk_right_purple
+    category: sprite/lengguyun
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: ui_dialog_frame_v7
+    template: ui_dialog_frame_v7
+    category: ui/dialog
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: sticker_bunny_hongbao
+    template: sticker_bunny_hongbao
+    category: sticker
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: ui_dialog_frame_v8
+    template: ui_dialog_frame_v8
+    category: ui/dialog
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: portrait_xingfantian_master_v1
+    template: portrait_xingfantian_master_v1
+    category: character/portrait
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: sprite_xingfantian_master_v1_f1
+    template: sprite_npc_idle_v9
+    category: sprite/npc
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      <<: *xingfantian
+      frame_index: "1"
+      frame_desc: "初始站立姿态，双手自然垂于身侧，微微呼吸起伏"
+
+  - id: portrait_blacksmith_liu_v1
+    template: portrait_blacksmith_liu_v1
+    category: character/portrait
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}

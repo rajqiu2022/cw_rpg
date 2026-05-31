@@ -1,0 +1,80 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "走货郎"
+portrait_path = "res://art/characters/npc_vendor_neutral.png"
+text = "少侠，要看看货吗？我这有从洛阳城走来的缎子、武当山来的茶叶——\n（他压低声音）还有江湖上的消息。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "什么消息？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "走货郎"
+portrait_path = "res://art/characters/npc_vendor_neutral.png"
+text = "（左右看看，凑近）上个月我路过武当山——整座山都戒严了。道士们黑着脸，谁也不跟外人说话。\n这个月更邪乎——我听说华山、古峰、凌月，连少林都死了大弟子！\n江湖上都在传——是烈云盟干的。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "烈云盟？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = "走货郎"
+portrait_path = "res://art/characters/npc_vendor_neutral.png"
+text = "少侠你不知道？那可是一群用毒、使暗器、修邪功的家伙。各派排挤了他们几百年。\n——不过我说句不该说的话：这二十年，我从没听过烈云盟伤一个平头百姓。\n（他摆摆手）当然这都是生意人随口说的，少侠别放心上。要不要看看货？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "heard_liuyun_rumour", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "shop:linxi_vendor"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_main_street_vendor"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5")])

@@ -1,0 +1,500 @@
+{
+  "compressionlevel": -1,
+  "height": 36,
+  "infinite": false,
+  "layers": [
+    {
+      "draworder": "topdown",
+      "id": 1,
+      "name": "spawn",
+      "objects": [
+        {
+          "height": 48,
+          "id": 1,
+          "name": "player_start",
+          "rotation": 0,
+          "visible": true,
+          "width": 48,
+          "x": 916,
+          "y": 716
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 2,
+      "name": "collisions",
+      "objects": [
+        {
+          "height": 470,
+          "id": 1,
+          "name": "inn_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 700,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 170,
+          "id": 2,
+          "name": "inn_front_props_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 420,
+          "x": 110,
+          "y": 390
+        },
+        {
+          "height": 205,
+          "id": 3,
+          "name": "rear_house_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 455,
+          "x": 760,
+          "y": 0
+        },
+        {
+          "height": 430,
+          "id": 4,
+          "name": "smithy_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 610,
+          "x": 1240,
+          "y": 135
+        },
+        {
+          "height": 80,
+          "id": 5,
+          "name": "top_forest_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 1920,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 320,
+          "id": 6,
+          "name": "bottom_left_vegetation_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 360,
+          "x": 0,
+          "y": 760
+        },
+        {
+          "height": 360,
+          "id": 7,
+          "name": "bottom_right_vegetation_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 520,
+          "x": 1400,
+          "y": 720
+        },
+        {
+          "height": 175,
+          "id": 8,
+          "name": "bottom_fence_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 660,
+          "x": 430,
+          "y": 855
+        },
+        {
+          "height": 230,
+          "id": 9,
+          "name": "right_edge_fence_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 245,
+          "x": 1675,
+          "y": 465
+        },
+        {
+          "height": 210,
+          "id": 10,
+          "name": "left_edge_tree_block",
+          "rotation": 0,
+          "visible": true,
+          "width": 150,
+          "x": 0,
+          "y": 470
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 3,
+      "name": "triggers",
+      "objects": [
+        {
+          "height": 260,
+          "id": 1,
+          "name": "stone_altar_notice",
+          "properties": [
+            {
+              "name": "action",
+              "type": "string",
+              "value": "dialog:ch1_stone_inscription"
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 380,
+          "x": 700,
+          "y": 420
+        },
+        {
+          "height": 230,
+          "id": 2,
+          "name": "tutorial_battle_entry",
+          "properties": [
+            {
+              "name": "action",
+              "type": "string",
+              "value": "battle:thug_lone"
+            },
+            {
+              "name": "hide_flag",
+              "type": "string",
+              "value": "defeated_thug_lone"
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 280,
+          "x": 1170,
+          "y": 500
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 4,
+      "name": "exits",
+      "objects": [
+        {
+          "height": 260,
+          "id": 1,
+          "name": "exit_to_road",
+          "properties": [
+            {
+              "name": "label",
+              "type": "string",
+              "value": "前往村外山道"
+            },
+            {
+              "name": "target_scene",
+              "type": "string",
+              "value": "ch1_s1_road"
+            },
+            {
+              "name": "target_pos",
+              "type": "string",
+              "value": "Vector2(0.15, 0.65)"
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 260,
+          "x": 1515,
+          "y": 0
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 5,
+      "name": "npcs",
+      "objects": [
+        {
+          "height": 96,
+          "id": 1,
+          "name": "npc_master",
+          "properties": [
+            {
+              "name": "npc_id",
+              "type": "string",
+              "value": "xingfantian"
+            },
+            {
+              "name": "npc_name",
+              "type": "string",
+              "value": "刑樊天"
+            },
+            {
+              "name": "dialog_id",
+              "type": "string",
+              "value": "ch1_road_intro"
+            },
+            {
+              "name": "sprite_path",
+              "type": "string",
+              "value": "res://art/characters/protagonist_neutral.png"
+            },
+            {
+              "name": "scale",
+              "type": "float",
+              "value": 0.15
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 64,
+          "x": 745,
+          "y": 615
+        },
+        {
+          "height": 120,
+          "id": 17,
+          "name": "npc_blacksmith",
+          "properties": [
+            {
+              "name": "npc_id",
+              "type": "string",
+              "value": "blacksmith_liu"
+            },
+            {
+              "name": "npc_name",
+              "type": "string",
+              "value": "铁匠刘"
+            },
+            {
+              "name": "dialog_id",
+              "type": "string",
+              "value": "ch1_tutorial_blacksmith"
+            },
+            {
+              "name": "sprite_path",
+              "type": "string",
+              "value": "res://art/characters/npc_blacksmith_idle.png"
+            },
+            {
+              "name": "scale",
+              "type": "float",
+              "value": 0.62
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 80,
+          "x": 1535,
+          "y": 560
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "draworder": "topdown",
+      "id": 6,
+      "name": "animated_props",
+      "objects": [
+        {
+          "height": 72,
+          "id": 1,
+          "name": "inn_banner_wave",
+          "properties": [
+            {
+              "name": "type",
+              "type": "string",
+              "value": "texture_sway"
+            },
+            {
+              "name": "texture",
+              "type": "string",
+              "value": "res://art/props/linxi_red_banner.png"
+            },
+            {
+              "name": "z_index",
+              "type": "int",
+              "value": 16
+            },
+            {
+              "name": "speed",
+              "type": "float",
+              "value": 0.9
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 96,
+          "x": 958,
+          "y": 266
+        },
+        {
+          "height": 165,
+          "id": 2,
+          "name": "rear_house_cooking_smoke",
+          "properties": [
+            {
+              "name": "type",
+              "type": "string",
+              "value": "smoke"
+            },
+            {
+              "name": "color",
+              "type": "string",
+              "value": "#d8d3c8"
+            },
+            {
+              "name": "z_index",
+              "type": "int",
+              "value": 28
+            },
+            {
+              "name": "speed",
+              "type": "float",
+              "value": 0.75
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 120,
+          "x": 1135,
+          "y": 0
+        },
+        {
+          "height": 170,
+          "id": 3,
+          "name": "smithy_chimney_smoke",
+          "properties": [
+            {
+              "name": "type",
+              "type": "string",
+              "value": "smoke"
+            },
+            {
+              "name": "color",
+              "type": "string",
+              "value": "#cec8bb"
+            },
+            {
+              "name": "z_index",
+              "type": "int",
+              "value": 28
+            },
+            {
+              "name": "speed",
+              "type": "float",
+              "value": 0.9
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 130,
+          "x": 1745,
+          "y": 70
+        },
+        {
+          "height": 150,
+          "id": 4,
+          "name": "smithy_forge_glow",
+          "properties": [
+            {
+              "name": "type",
+              "type": "string",
+              "value": "glow"
+            },
+            {
+              "name": "color",
+              "type": "string",
+              "value": "#ff7a1f"
+            },
+            {
+              "name": "z_index",
+              "type": "int",
+              "value": 19
+            },
+            {
+              "name": "speed",
+              "type": "float",
+              "value": 1.35
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 220,
+          "x": 1515,
+          "y": 350
+        },
+        {
+          "height": 96,
+          "id": 18,
+          "name": "blacksmith_hammer_loop",
+          "properties": [
+            {
+              "name": "type",
+              "type": "string",
+              "value": "hammer"
+            },
+            {
+              "name": "texture",
+              "type": "string",
+              "value": "res://art/props/blacksmith_hammer.png"
+            },
+            {
+              "name": "z_index",
+              "type": "int",
+              "value": 18
+            },
+            {
+              "name": "speed",
+              "type": "float",
+              "value": 1.2
+            }
+          ],
+          "rotation": 0,
+          "visible": true,
+          "width": 76,
+          "x": 1610,
+          "y": 552
+        }
+      ],
+      "opacity": 1,
+      "type": "objectgroup",
+      "visible": true,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "nextlayerid": 7,
+  "nextobjectid": 19,
+  "orientation": "orthogonal",
+  "renderorder": "right-down",
+  "tiledversion": "1.11.0",
+  "tileheight": 30,
+  "tilesets": [],
+  "tilewidth": 32,
+  "type": "map",
+  "version": "1.10",
+  "width": 60
+}

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"zhuwei_bandit"
+display_name = "竹尾村山贼"
+portrait_path = ""
+level = 2
+max_hp = 60
+max_mp = 0
+attack = 10
+defense = 4
+speed = 7
+skill_ids = Array[StringName]([&"basic_attack"])
+aggression = 0.45
+drop_gold_min = 10
+drop_gold_max = 30
+drop_exp = 18
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{ "item_id": "healing_salve", "chance": 0.4, "count": 1 }])

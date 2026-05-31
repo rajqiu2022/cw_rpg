@@ -1,0 +1,45 @@
+id: ui_field_hud_panel_closeup_redraw
+description: 沿用 HUD 右侧按钮风格，生成一级界面面板母版
+quality: high
+size: "1536x1024"
+
+identity_anchor: |
+  《云影侠传》游戏一级界面 HUD 面板母版。
+  视觉目标：沿用已确认 HUD 右侧按钮方向，蓝灰玄铁、手绘厚涂、柔边双层描边、
+  暗部渐变、边框磨损、低饱和冷色武侠 RPG UI。
+
+reference_images:
+  - "assets/raw/ui/field_hud/reference/hud_right_buttons_design_ref.png"
+  - "tools/ui_field_hud_v1/closeup_redraw_candidate_a/hud_btn_inventory_redraw_a_normal.png"
+  - "tools/ui_field_hud_v1/right_buttons_redraw_v1_preview.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  生成一个独立 HUD 面板母版：{{component_name}}。
+
+  用途：
+  {{component_purpose}}
+
+  形状要求：
+  {{component_shape}}
+
+  必须严格执行：
+  - 只输出一个独立 UI 面板，居中摆放，不要完整游戏截图。
+  - 视觉语言必须和参考按钮统一：蓝灰玄铁底、柔边双层描边、手绘厚涂纹理、边框磨损。
+  - 面板内部不要任何文字、数字、图标说明、logo；运行时由 Godot 叠加文字。
+  - 内部要预留干净信息区，适合显示角色数值或底部操作提示。
+  - 背景必须纯白、纯黑或透明感单色背景，便于后处理抠透明；不能有场景背景。
+  - 不要首界面按钮风格，不要金色大字，不要宝石主菜单边框。
+
+  严格禁止：
+  - 禁止现代网页 UI、硬边矢量图、扁平商务 UI、科幻霓虹。
+  - 禁止英文、拉丁字母、乱码、文字、水印、签名。
+  - 禁止红色喜庆主色、暖金主色。
+
+  反向：{negative}
+
+variables:
+  component_name: "左上角角色信息框"
+  component_purpose: "显示头像、角色名、生命/内力等状态条"
+  component_shape: "横向状态面板，左侧圆形头像框，右侧两条横向状态槽，约 3.5:1"

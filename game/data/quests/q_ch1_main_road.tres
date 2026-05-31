@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_road"
+title = "山道疑云"
+kind = 0
+desc_not_started = "山道上有新鲜的马蹄印和血迹——有人刚从这里逃命经过。"
+desc_in_progress = "山道上发现了尸体和拦路散兵。沿着血迹追查，看看能发现什么。"
+desc_completed = "击退了拦路的江湖散兵。从他身上找到了竹尾村的地图——上面有人匆忙写了「快走」两个字。竹尾村外一定有事发生。"
+completion_triggers = Array[String](["enemy_defeated:thug_lone"])
+reward_gold = 12
+reward_exp = 15
+reward_items = Array[Dictionary]([])

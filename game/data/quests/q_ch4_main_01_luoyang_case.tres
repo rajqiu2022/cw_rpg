@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_main_01_luoyang_case"
+title = "洛阳奇案"
+kind = 0
+desc_not_started = "奉师门之命前往洛阳查案，城中连发数起离奇命案。"
+desc_in_progress = "调查洛阳命案线索——你重伤倒在医馆门口，赵思颖救了你。"
+desc_completed = "案情初现端倪：命案手法与烈云盟无关，有人在刻意栽赃陷害。赵思颖决定同行相助。"
+completion_triggers = Array[String](["flag_set:luoyang_case_found_clue"])
+reward_gold = 35
+reward_exp = 40
+reward_items = Array[Dictionary]([])

@@ -1,0 +1,36 @@
+id: sprite_protagonist_idle_25d
+description: 主角待机动画帧，4帧微动循环，高品
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}，
+  与参考图保持完全一致的脸型、五官、发型、服装、武器、酒葫芦。
+
+reference_images:
+  - "assets/_style_bible/00_protagonist_portrait_ref.png"
+
+prompt_template: |
+  {style_anchor}
+
+  游戏角色待机动画帧（idle frame），用于 2D RPG 精灵图。
+
+  角色：{identity_anchor}
+
+  姿态：待机站姿，第 {{frame_index}} 帧（共 4 帧微动循环）
+  - frame 1：正常站姿，重心在右脚
+  - frame 2：轻微吸气，胸口微提
+  - frame 3：正常站姿，同 frame 1
+  - frame 4：轻微呼气，重心微移左脚，手微调剑鞘
+
+  构图：
+  - 1024×1024，角色高度占画布 50%~55%，水平居中
+  - 朝画幅右侧，纯白背景 #FFFFFF
+  - 双脚在画布底部约 10% 处
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  frame_index: "1|2|3|4"

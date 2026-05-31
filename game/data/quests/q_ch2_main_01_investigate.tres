@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_main_01_investigate"
+title = "竹尾调查"
+kind = 0
+desc_not_started = "进入竹尾村打听消息，听说凌月派弟子失踪了。"
+desc_in_progress = "在竹尾村集市打听凌月派弟子失踪的线索。"
+desc_completed = "打听到了关键线索：凌月派弟子在村外密林失踪，蒙面杀手出没。"
+completion_triggers = Array[String](["flag_set:heard_about_missing_lingyue"])
+reward_gold = 8
+reward_exp = 10
+reward_items = Array[Dictionary]([])

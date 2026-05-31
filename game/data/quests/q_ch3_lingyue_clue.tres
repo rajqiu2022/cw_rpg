@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_lingyue_clue"
+title = "凌月·白晚晴案"
+kind = 0
+desc_not_started = "凌月派大弟子白晚晴被害，掌门凌霜女侠命你和悦无姮联手调查。"
+desc_in_progress = "与悦无姮追查白晚晴遇害真相，发现凶手手法与凌月武功如出一辙。"
+desc_completed = "凶手使用的竟是茗雾模仿凌月的招式——第一个指向茗雾的线索。"
+completion_triggers = Array[String](["flag_set:lingyue_case_solved"])
+reward_gold = 40
+reward_exp = 50
+reward_items = Array[Dictionary]([{"item_id": "lingyue_dagger", "count": 1}])

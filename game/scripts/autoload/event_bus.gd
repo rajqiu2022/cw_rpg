@@ -18,6 +18,7 @@ signal battle_ended(victory: bool, fled: bool)
 signal item_picked_up(item_id: StringName, count: int)
 signal item_used(item_id: StringName)
 signal item_dropped(item_id: StringName, count: int)
+signal status_cured(cure_type: StringName)  ## "poison" / "weak" / "all" — 战斗中解除状态
 signal gold_changed(new_amount: int)
 
 signal equipment_changed(slot: int, item_id: StringName)

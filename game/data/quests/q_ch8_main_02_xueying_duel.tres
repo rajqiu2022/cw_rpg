@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch8_main_02_xueying_duel"
+title = "雾林决战·薛影"
+kind = 0
+desc_not_started = "茗雾大弟子薛影——那个江湖以为已死的人——在雾林中拦住了你的去路。"
+desc_in_progress = "与薛影决战。他是茗雾身法第一人，隐影诀在他手上是真正的杀招。"
+desc_completed = "薛影败——茗雾山庄最强剑客身死。他临死前留下一句话：'你以为你师父……是好人？'——你来不及追问。"
+completion_triggers = Array[String](["enemy_defeated:xueying"])
+reward_gold = 0
+reward_exp = 200
+reward_items = Array[Dictionary]([])

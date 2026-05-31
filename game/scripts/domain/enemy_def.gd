@@ -33,7 +33,7 @@ extends Resource
 
 func to_runtime_stats() -> CharacterStats:
 	## 把模板"实例化"成战斗用的 CharacterStats。
-	var s := CharacterStats.new()
+	var s: CharacterStats = CharacterStats.new()
 	s.character_id = String(enemy_id)
 	s.display_name = display_name
 	s.portrait_path = portrait_path

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_gufeng_drink"
+title = "古峰·豪侠试炼"
+kind = 0
+desc_not_started = "古峰派掌门古疆雷豪爽不拘，入派试炼是——先喝三碗，再打一场。"
+desc_in_progress = "与古疆雷比酒比武，证明你有资格成为古峰派弟子。"
+desc_completed = "古疆雷拍着你的肩膀大笑：'好小子！够豪气！古峰派收你了！'"
+completion_triggers = Array[String](["flag_set:joined_gufeng"])
+reward_gold = 40
+reward_exp = 50
+reward_items = Array[Dictionary]([{"item_id": "gufeng_blade", "count": 1}])

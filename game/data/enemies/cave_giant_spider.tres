@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"cave_giant_spider"
+display_name = "洞穴巨蛛"
+portrait_path = ""
+level = 18
+max_hp = 350
+max_mp = 0
+attack = 36
+defense = 14
+speed = 16
+skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle"])
+aggression = 0.7
+drop_gold_min = 100
+drop_gold_max = 200
+drop_exp = 120
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([])

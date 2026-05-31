@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/item.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+item_id = &"inner_breath_pill"
+display_name = "内息丸"
+description = "行走江湖的常备丹药。回复 20 点 MP。"
+icon_path = "res://art/ui/inventory/icons/icon_inner_breath_pill.png"
+category = 0
+stackable = true
+max_stack = 99
+sell_price = 16
+buy_price = 40
+usable_in_battle = true
+usable_in_field = true
+heal_hp = 0
+heal_mp = 20

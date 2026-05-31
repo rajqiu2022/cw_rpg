@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_01_heal_veteran"
+title = "救治老卒"
+kind = 1
+desc_not_started = "洛阳城外有一位受伤的退伍老兵，赵思颖想去救治但没有药材。"
+desc_in_progress = "帮赵思颖收集药材，救治退伍老兵。"
+desc_completed = "老兵伤愈，赠你一枚他从战场上带回的护身符作为答谢。"
+completion_triggers = Array[String](["flag_set:healed_veteran"])
+reward_gold = 15
+reward_exp = 10
+reward_items = Array[Dictionary]([{"item_id": "thunder_amulet", "count": 1}])

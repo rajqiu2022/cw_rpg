@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/shop_def.gd" id="1_shop"]
+
+[resource]
+script = ExtResource("1_shop")
+shop_id = &"wulin_trade_hall"
+display_name = "武林商会"
+greeting = "五派齐聚，四方珍品皆在此处。"
+stock = Array[StringName]([&"healing_pill_minor", &"healing_pill_major", &"mana_pill", &"strength_pill", &"cloth_boots", &"leather_armor", &"iron_helmet"])
+sell_back_ratio = 0.4

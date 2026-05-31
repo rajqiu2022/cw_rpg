@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"mingwu_spy"
+display_name = "茗雾密探"
+portrait_path = ""
+level = 5
+max_hp = 120
+max_mp = 0
+attack = 18
+defense = 6
+speed = 12
+skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle", &"mingwu_saofeng"])
+aggression = 0.55
+drop_gold_min = 30
+drop_gold_max = 60
+drop_exp = 35
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([])

@@ -1,0 +1,43 @@
+id: ui_field_hud_component_cold_wuxia
+description: 游戏主 HUD 独立部件资产（透明/白底，运行时叠字）
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  《云影侠传》游戏主界面 HUD 独立美术部件，寒山玄铁冷色武侠风格，
+  深墨蓝、玄铁黑、冷钢蓝边、霜蓝高光、寒玉扣、竹影暗纹、云纹角花，
+  港漫厚涂质感，适合 Godot UI 切图和 9-slice / TextureRect 使用。
+
+reference_images:
+  - "assets/raw/ui/cold_wuxia/v2/ui_cold_wuxia_field_hud_screen_gpt_v1.png"
+  - "game/art/backgrounds/bg_main_menu_gpt_v6.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  生成一个独立游戏 HUD 部件：{{component_name}}。
+
+  用途：
+  {{component_purpose}}
+
+  资产规则（必须严格执行）：
+  - 只输出一个 UI 部件，居中摆放，不要完整界面截图。
+  - 部件必须是独立 PNG 素材思路：边缘干净、轮廓完整、方便抠透明。
+  - 背景必须纯白（#FFFFFF）或透明感白底，不能包含任何场景背景、人物、建筑、竹林、道路。
+  - 不要任何文字、数字、图标、logo、水印、签名。
+  - 运行时会由程序叠加场景名、金币、任务文字、角色数值；因此内部留出干净文本区域。
+  - 画面比例参考：{{component_shape}}。
+  - 视觉必须贴近参考 HUD：玄铁边框、冷钢蓝描边、寒玉扣、暗纹、细节高光。
+  - 整体亮度比参考 HUD 略亮 15%，但仍保持冷色玄铁质感。
+
+  严格限制：
+  - 不要截图裁切感，不要带背景画面，不要错位边缘。
+  - 不要英文、不要拉丁字母、不要繁体字、不要乱码。
+  - 不要现代网页 UI、不要赛博霓虹、不要西幻魔法阵、不要暖金主色、不要喜庆大红。
+
+  反向：{negative}
+
+variables:
+  component_name: "部件名称"
+  component_purpose: "部件用途"
+  component_shape: "长条 / 面板 / 小框等"

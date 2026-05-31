@@ -1,0 +1,32 @@
+id: sprite_npc_idle_v9
+description: NPC 8帧站立休息动画，连贯微动
+quality: high
+size: "1024x1024"
+
+identity_anchor: |
+  {{character_name}}，{{character_appearance}}。
+
+prompt_template: |
+  {style_anchor}
+
+  游戏 NPC 站立休息动画帧，用于 2D RPG。
+
+  角色：{identity_anchor}
+
+  动作：站立休息姿态，第 {{frame_index}} 帧（共 8 帧连贯循环）
+  - {{frame_desc}}
+  - 全身动作自然连贯，像真实的人站着休息时的小动作
+
+  构图：
+  - 1024×1024，朝画幅右侧，纯白背景 #FFFFFF
+  - 角色头顶到脚底高度严格占画布 28%~35%（关键：角色周围留大量空白，不要撑满画布）
+  - 双脚在画布底部约 10% 处
+  - 所有帧保持完全一致的角色比例和位置
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  frame_index: "1"
+  frame_desc: "必填"

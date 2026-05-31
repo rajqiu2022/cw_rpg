@@ -1,13 +1,10 @@
 extends Node
 
 ## 全局对话播放器。
-##
 ## 用法：
 ##   var script = load("res://data/dialogs/ch1_road_intro.tres")
 ##   DialogPlayer.play(script)
-##   await DialogPlayer.dialog_ended  # 等用户点完整段对话
-##
-## 信号广播给 DialogBox（UI 层），UI 不持有状态。
+##   await DialogPlayer.dialog_ended
 
 signal text_displayed(speaker: String, text: String, has_choices: bool, portrait_path: String)
 signal choices_displayed(choices: Array)
@@ -18,13 +15,13 @@ const DIALOG_BOX_SCENE_PATH := "res://scenes/ui/dialog_box.tscn"
 var _current_script: DialogScript = null
 var _current_node: DialogNode = null
 var _is_playing: bool = false
+var _default_portrait: String = ""
+var _default_speaker: String = ""
 
-var _box: Node = null   # 实例化的 DialogBox UI
+var _box: Node = null
 
 
 func _ready() -> void:
-	# 全局对话框：autoload 启动时挂载到根。
-	# 因 autoload 子节点常驻，所有场景都能复用同一个对话框实例。
 	if ResourceLoader.exists(DIALOG_BOX_SCENE_PATH):
 		var scn: PackedScene = load(DIALOG_BOX_SCENE_PATH)
 		_box = scn.instantiate()
@@ -35,6 +32,14 @@ func _ready() -> void:
 
 func is_playing() -> bool:
 	return _is_playing
+
+
+func set_default_portrait(path: String) -> void:
+	_default_portrait = path
+
+
+func set_default_speaker(npc_name: String) -> void:
+	_default_speaker = npc_name
 
 
 func play(script: DialogScript) -> void:
@@ -56,7 +61,6 @@ func play_at(script: DialogScript, node_id: StringName) -> void:
 
 
 func advance() -> void:
-	## 玩家按"继续"。仅在当前节点无 choices 时有效。
 	if _current_node == null: return
 	if _current_node.has_choices():
 		return
@@ -65,16 +69,15 @@ func advance() -> void:
 
 
 func choose(idx: int) -> void:
-	## 玩家点了第 idx 个选项。
 	if _current_node == null: return
 	if not _current_node.has_choices(): return
 	if idx < 0 or idx >= _current_node.choices.size(): return
 
 	var c: Dictionary = _current_node.choices[idx]
-	# 选项本身的 set_flag 副作用
 	if c.has("set_flag"):
 		var flag_dict: Dictionary = c.get("set_flag", {})
-		for key in flag_dict.keys():
+		@warning_ignore("untyped_declaration")
+		for key in flag_dict:
 			GameState.flags[key] = flag_dict[key]
 			EventBus.flag_set.emit(StringName(key), flag_dict[key])
 
@@ -92,19 +95,23 @@ func _show_node(node: DialogNode) -> void:
 		_end_dialog()
 		return
 	_current_node = node
+	var spk: String = node.speaker
+	if spk == "" and _default_speaker != "":
+		spk = _default_speaker
+	var pp: String = node.portrait_path
+	if pp == "" and _default_portrait != "":
+		pp = _default_portrait
 	text_displayed.emit(
-		node.speaker,
+		spk,
 		node.text,
 		node.has_choices(),
-		node.portrait_path
+		pp
 	)
 	if node.has_choices():
 		choices_displayed.emit(node.choices)
 
 
 func _apply_node_side_effects(node: DialogNode) -> void:
-	## 节点级副作用：give_items / give_gold / set_flags / quest 操作。
-	## 选项级副作用在 choose() 里单独处理。
 	for entry in node.give_items:
 		var iid: StringName = StringName(entry.get("id", ""))
 		var cnt: int = int(entry.get("count", 1))
@@ -121,8 +128,6 @@ func _apply_node_side_effects(node: DialogNode) -> void:
 			GameState.flags[key] = value
 			EventBus.flag_set.emit(StringName(key), value)
 
-	# Quest 命令必须经过 QuestManager（它是 source of truth），
-	# 避免直接 emit EventBus.quest_accepted 造成 QuestManager 重入循环。
 	if String(node.accept_quest) != "":
 		QuestManager.accept(node.accept_quest)
 
@@ -131,7 +136,6 @@ func _apply_node_side_effects(node: DialogNode) -> void:
 
 
 func _resolve_action(action: String) -> void:
-	## "next:<id>" 是 DialogPlayer 自有动作（节点内跳转），其他全转交 SceneRouter。
 	if action == "" or action == "end":
 		_end_dialog()
 		return
@@ -144,7 +148,6 @@ func _resolve_action(action: String) -> void:
 		_show_node(_current_script.find_node_by_id(StringName(arg)))
 		return
 
-	# 其余动作都 = 结束本对话 + 让 SceneRouter 处理（可能切场景）
 	_end_dialog()
 	SceneRouter.resolve_action(action)
 
@@ -155,5 +158,7 @@ func _end_dialog() -> void:
 	_current_script = null
 	_current_node = null
 	_is_playing = false
+	_default_portrait = ""
+	_default_speaker = ""
 	dialog_ended.emit(id)
 	EventBus.dialog_ended.emit(id)

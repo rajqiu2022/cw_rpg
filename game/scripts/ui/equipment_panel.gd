@@ -30,7 +30,7 @@ func open() -> void:
 
 
 func _on_close() -> void:
-	EventBus.ui_requested.emit(&"close_all")
+	close()
 	emit_signal("closed")
 
 func close() -> void:

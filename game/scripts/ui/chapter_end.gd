@@ -40,12 +40,11 @@ func _apply_button_icon(btn: Button, icon_key: String) -> void:
 	var region: Rect2 = ATTR_ICON_REGIONS.get(icon_key, Rect2())
 	if region.size.x <= 0 or region.size.y <= 0:
 		return
-	var tex := AtlasTexture.new()
+	var tex: AtlasTexture = AtlasTexture.new()
 	tex.atlas = _attr_icon_atlas
 	tex.region = region
 	btn.icon = tex
 	btn.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	btn.expand_icon = true
 
 func _fill_summary() -> void:
 	var payload: Dictionary = SceneRouter.get_result_payload()

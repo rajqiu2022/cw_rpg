@@ -1,0 +1,108 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]（路边草丛里趴着一个人。不——是一具尸体。衣衫褴褛，后背上有一道极深的剑伤。胸前衣襟被扯开——似乎在找什么东西。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "……这人的手——虎口全是老茧。是个练剑的。但不是正经门派的剑——茧的位置不对。\n（冷孤云半蹲下，用手指沾了一点血迹）还温热。凶手没走远。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = ""
+portrait_path = ""
+text = "[i]（身后竹林突然传出一声脆响——竹子被踩断的声音。你猛地转身，一个身影从林中走了出来。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "江湖散兵"
+portrait_path = ""
+text = "（嗓音沙哑）又来一个送死的。这条路今天归老子管——把你身上所有东西留下，老子不杀你。否则——（他抬了抬下巴，指向地上的尸体）你看见他了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "你杀了他？"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n6"
+
+[sub_resource type="Resource" id="node_6"]
+script = ExtResource("2_dnode")
+node_id = &"n6"
+speaker = "江湖散兵"
+portrait_path = ""
+text = "他想跑。我不喜欢有人跑。\n（他慢慢拔出腰间的刀）最后给你三息——三、二——"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n7"
+
+[sub_resource type="Resource" id="node_7"]
+script = ExtResource("2_dnode")
+node_id = &"n7"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "（你拔出了铁剑。剑刃在晨光中泛着冷光。）\n——"一"。我替你数了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "battle:thug_lone"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_road_corpse"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5"), SubResource("node_6"), SubResource("node_7")])

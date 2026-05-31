@@ -65,7 +65,7 @@ var _highlighted_cell: TextureRect = null
 func _ready() -> void:
 	visible = false
 	_setup_button_textures()
-	# if _equip_panel != null: _equip_panel.visible = false  # DEBUG
+	if _equip_panel != null: _equip_panel.visible = false
 	_close_btn.pressed.connect(close)
 	_setup_tabs()
 	_create_context_menu()
@@ -139,9 +139,9 @@ func _set_filter(key: String) -> void:
 	_current_filter = key
 	_refresh()
 	if key == "equipment":
-		_show_equipment()
+		EventBus.ui_requested.emit(&"equipment")
 	else:
-		_hide_equipment()
+		EventBus.ui_requested.emit(&"close_equipment")
 
 
 func _update_tab_highlights() -> void:

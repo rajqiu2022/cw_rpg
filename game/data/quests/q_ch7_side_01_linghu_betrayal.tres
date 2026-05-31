@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch7_side_01_linghu_betrayal"
+title = "令狐倒戈"
+kind = 1
+desc_not_started = "联军议事时令狐封被识破是茗雾山庄外门弟子——但他没有逃跑。"
+desc_in_progress = "令狐封坦承是被茗雾挟持家族才做卧底——他问你是否还愿意把他当兄弟。"
+desc_completed = "令狐封倒戈加入联军。他愿意为茗雾山庄内部带路——这是他用命在还欠你的信任。"
+completion_triggers = Array[String](["flag_set:linghu_defected"])
+reward_gold = 0
+reward_exp = 50
+reward_items = Array[Dictionary]([])

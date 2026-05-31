@@ -1,0 +1,68 @@
+id: scene_background_prerendered_daylight_mix
+description: 老式 2.5D ARPG 预渲染场景白天明亮混合版
+quality: high
+size: "1536x1024"
+
+identity_anchor: |
+  Bright daytime pre-rendered isometric ARPG environment,
+  solid occluding village buildings, readable playable ground plane,
+  sunny wuxia village colors.
+
+reference_images:
+  - "assets/_style_bible/scene_reference/ref_prerendered_arpg_village.png"
+  - "assets/raw/scene/v2/scene_linxi_tutorial_prerendered_bg.png"
+  - "assets/raw/scene/v2/scene_linxi_tutorial_3d_bg.png"
+
+prompt_template: |
+  Use the references with strict roles:
+  - Reference 1: spatial language only: isometric ARPG camera, building volume,
+    roof overhang, vertical wall height, contact shadows, occlusion, clutter scale.
+  - Reference 2: preserve the stronger building separation, solid occluding volumes,
+    stairs, walls, roof thickness and courtyard composition.
+  - Reference 3: borrow the bright daytime palette, clear yellow dirt road, greener
+    plants, sunny village atmosphere, and warmer high-saturation wuxia mood.
+
+  Create a complete bright daytime pre-rendered isometric ARPG environment background.
+  This is a playable game level screenshot style background, not flat concept art.
+
+  Scene: {{scene_name}}
+  Description: {{scene_desc}}
+  Time: {{time_of_day}}
+  Weather: {{weather}}
+  Key elements: {{key_elements}}
+
+  Hard composition rules:
+  - 1536x1024 landscape. Keep important playable content inside the central 16:9 safe area.
+  - Fixed isometric / three-quarter top-down camera like an old 2.5D action RPG.
+  - Buildings must remain solid occluding volumes standing above the ground plane.
+  - Keep visible vertical walls, roof thickness, roof overhangs, beams/posts, stairs,
+    and clear contact shadows under buildings.
+  - The scene must be daytime and visibly brighter than the dark reference:
+    clear morning sunlight, bright readable ground, warm yellow dirt road,
+    green plants, no dusk / evening / night mood.
+  - Preserve the readable courtyard / road network through the center, wide enough
+    for player movement.
+  - Use rural scale details: fences, barrels, jars, baskets, drying cloth,
+    weeds, stone slabs, worn paths, but do not clutter the walkable route.
+  - No characters, no NPCs, no animals, no cursor, no UI, no text, no logo, no watermark.
+
+  Visual target:
+  - Old-school 2.5D ARPG pre-rendered diorama, but bright clear morning.
+  - Building depth from the darker prerendered image, colors and road/vegetation
+    from the brighter village image.
+  - Chinese mountain village architecture with hand-painted wuxia texture.
+  - Strong separation between buildings and ground, but not a gloomy sunset scene.
+
+  Negative: dusk, evening, night, gloomy, dark vignette, low exposure, desaturated,
+  flat concept art, poster illustration, buildings merged with ground,
+  no contact shadows, no vertical walls, flat roofs painted on floor,
+  clean empty plaza, top-down 2D tilemap, tileset, atlas, sprite sheet,
+  characters, NPCs, animals, UI, text, watermark, logo,
+  photo-realistic modern 3D, low-poly cartoon, {negative}
+
+variables:
+  scene_name: "林西村新手关 · 白天预渲染 ARPG 版"
+  scene_desc: "1-2 句描述可行走新手关场景"
+  time_of_day: "morning"
+  weather: "clear"
+  key_elements: "突出建筑体块、明亮黄土路、绿色植物、清晨阳光、庭院地面"

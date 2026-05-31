@@ -1,0 +1,170 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]（红衣女子靠在古树上，撕下一截袖口，正用牙齿和单手给自己的肩伤包扎。她的手法极快——像一个做过无数次这种事的人。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "（头也不抬）叫什么名字。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "冷孤云。林西村来的。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "冷孤云。\n（她终于抬起头。面纱不知道什么时候已经掉了——一张瓜子脸，丹凤眼里的冷正在慢慢融化。）\n……你刚才为什么要救我？我们不认识。"
+choices = Array[Dictionary]([
+	{"text": ""五个打一个还下毒——看不过去。"", "next": "n5a", "set_flag": {"yue_impression": 0}},
+	{"text": ""你剑使得好。死了可惜。"", "next": "n5b", "set_flag": {"yue_impression": 1}}
+])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[sub_resource type="Resource" id="node_5a"]
+script = ExtResource("2_dnode")
+node_id = &"n5a"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "（嘴角微微动了一下——可能是笑，也可能只是忍痛。）看不过去。三个字。江湖上为了看不过去送命的人，比你见过的都多。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n6"
+
+[sub_resource type="Resource" id="node_5b"]
+script = ExtResource("2_dnode")
+node_id = &"n5b"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "……你注意到我的剑法了。在那种局面下。\n（她沉默了一息）你不是普通村民。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n6"
+
+[sub_resource type="Resource" id="node_6"]
+script = ExtResource("2_dnode")
+node_id = &"n6"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "我叫悦无姮。凌月派。这些人是冲我来的——他们杀了我师姐白晚晴，下一个就是我。\n我一路被他们追了三天，从凌月山追到这片密林。路上我在一块石碑上留了两个字——你应该看见了。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n7"
+
+[sub_resource type="Resource" id="node_7"]
+script = ExtResource("2_dnode")
+node_id = &"n7"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "（想起石碑上那个用剑刻的"小心"）……是你刻的。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n8"
+
+[sub_resource type="Resource" id="node_8"]
+script = ExtResource("2_dnode")
+node_id = &"n8"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "那本来是想警告后头的村民别进林。结果等到的是五个杀手。和一个路过的酒鬼。\n（她顿了顿，语气突然正式）冷孤云。三天后凌月山上有一场武林大会——各派掌门齐聚，商议大弟子被杀和烈云盟的事。你若想知道今天这一切到底为什么——\n跟我一起去凌月山。"
+choices = Array[Dictionary]([
+	{"text": "好。我跟你去。", "next": "n9", "set_flag": {"agreed_lingyue": true}},
+	{"text": "容我先去一趟竹尾村打听消息。", "next": "n9", "set_flag": {"agreed_lingyue": true}}
+])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[sub_resource type="Resource" id="node_9"]
+script = ExtResource("2_dnode")
+node_id = &"n9"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+text = "（点了点头，从怀中取出一枚银月形玉坠，递给你）这是我的信物。三天后，拿这个来凌月山——守卫不会拦你。\n（她站起来，拾起地上的剑，走了两步，又停住——没有回头）\n……冷孤云。谢谢。"
+choices = []
+give_items = Array[Dictionary]([{"id": "lingyue_token", "count": 1}])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "yuewuxing_met", "value": true}, {"key": "yuewuxing_affection", "value": 1}])
+accept_quest = &""
+complete_quest = &"q_ch1_main_zhuwei"
+on_end = "next:n10"
+
+[sub_resource type="Resource" id="node_10"]
+script = ExtResource("2_dnode")
+node_id = &"n10"
+speaker = ""
+portrait_path = ""
+text = "[i]（她走入林间的暮色中。月白色的裙摆边缘染了一圈淡紫——是黄昏的光。你没追上去。但你知道——你们会再见面。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "chapter1_complete", "value": true}])
+accept_quest = &""
+complete_quest = &"q_ch1_side_yuewuxing"
+on_end = "chapter_end:1"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_forest_yuewuxing_talk"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5a"), SubResource("node_5b"), SubResource("node_6"), SubResource("node_7"), SubResource("node_8"), SubResource("node_9"), SubResource("node_10")])

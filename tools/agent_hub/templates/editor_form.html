@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% block title %}{{ '新建' if is_new else '编辑' }}{{ type_label }} · 调度台{% endblock %}
+{% block content %}
+
+<style>
+.editor-wrap { display: flex; gap: 24px; min-height: 80vh; }
+.editor-nav { width: 180px; flex-shrink: 0; }
+.editor-nav a { display: block; padding: 10px 14px; border-radius: 6px; color: var(--text-secondary); text-decoration: none; font-size: 14px; margin-bottom: 4px; }
+.editor-nav a:hover { background: var(--bg-hover); color: var(--text-primary); }
+.editor-nav a.active { background: var(--accent-bg); color: var(--accent); font-weight: 600; }
+.editor-main { flex: 1; min-width: 0; }
+.editor-main h2 { margin-top: 0; margin-bottom: 20px; font-size: 22px; }
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+.form-group label .field-type { font-weight: 400; color: var(--accent); margin-left: 8px; font-size: 10px; }
+.form-group input, .form-group textarea, .form-group select { width: 100%; padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; background: var(--bg-input); color: var(--text-primary); font-size: 14px; font-family: inherit; }
+.form-group textarea { min-height: 60px; resize: vertical; }
+.form-group .hint { font-size: 11px; color: var(--text-tertiary); margin-top: 2px; }
+.form-actions { display: flex; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-color); }
+.btn { display: inline-block; padding: 10px 24px; border-radius: 6px; border: none; cursor: pointer; font-size: 14px; text-decoration: none; font-weight: 500; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-secondary { background: var(--bg-hover); color: var(--text-primary); }
+.id-readonly { font-family: monospace; color: var(--accent); background: var(--bg-hover); padding: 8px 12px; border-radius: 6px; }
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+</style>
+
+<div class="editor-wrap">
+  <nav class="editor-nav">
+    {% for item in nav %}
+    <a href="/editor/{{ item.key }}" class="{% if item.active %}active{% endif %}">{{ item.label }}</a>
+    {% endfor %}
+  </nav>
+
+  <div class="editor-main">
+    <h2>{{ '新建' if is_new else '编辑' }}{{ type_label }} {% if not is_new %}<code style="font-size:14px;color:var(--accent);">({{ resource_id }})</code>{% endif %}</h2>
+
+    <form method="post" action="/editor/{{ script_class }}/save">
+      {% for field_name, field_type in fields %}
+      <div class="form-group">
+        <label>
+          {{ field_name }}
+          <span class="field-type">{{ field_type }}</span>
+        </label>
+
+        {% if not is_new and field_name in ("item_id", "enemy_id", "skill_id", "quest_id", "shop_id") %}
+        <div class="id-readonly">{{ data.get(field_name, '') }}</div>
+        <input type="hidden" name="{{ field_name }}" value="{{ data.get(field_name, '') }}">
+        {% elif field_type == "bool" %}
+        <select name="{{ field_name }}">
+          <option value="false" {% if not data.get(field_name, False) %}selected{% endif %}>false</option>
+          <option value="true" {% if data.get(field_name, False) %}selected{% endif %}>true</option>
+        </select>
+        {% elif field_type == "int" and field_name == "category" %}
+        <select name="{{ field_name }}">
+          <option value="0" {% if data.get(field_name, 0) == 0 %}selected{% endif %}>0 — CONSUMABLE</option>
+          <option value="1" {% if data.get(field_name, 0) == 1 %}selected{% endif %}>1 — MATERIAL</option>
+          <option value="2" {% if data.get(field_name, 0) == 2 %}selected{% endif %}>2 — KEY_ITEM</option>
+          <option value="3" {% if data.get(field_name, 0) == 3 %}selected{% endif %}>3 — EQUIPMENT</option>
+        </select>
+        {% elif field_type == "int" and field_name == "slot" %}
+        <select name="{{ field_name }}">
+          <option value="0" {% if data.get(field_name, 0) == 0 %}selected{% endif %}>0 — WEAPON (武器)</option>
+          <option value="1" {% if data.get(field_name, 0) == 1 %}selected{% endif %}>1 — HEAD (头盔)</option>
+          <option value="2" {% if data.get(field_name, 0) == 2 %}selected{% endif %}>2 — ARMOR (衣甲)</option>
+          <option value="3" {% if data.get(field_name, 0) == 3 %}selected{% endif %}>3 — HANDS (手套)</option>
+          <option value="4" {% if data.get(field_name, 0) == 4 %}selected{% endif %}>4 — SHOES (鞋子)</option>
+          <option value="5" {% if data.get(field_name, 0) == 5 %}selected{% endif %}>5 — ACCESSORY (饰品)</option>
+        </select>
+        {% elif field_type == "int" and field_name == "kind" and script_class == "QuestDef" %}
+        <select name="{{ field_name }}">
+          <option value="0" {% if data.get(field_name, 0) == 0 %}selected{% endif %}>0 — MAIN (主线)</option>
+          <option value="1" {% if data.get(field_name, 0) == 1 %}selected{% endif %}>1 — SIDE (支线)</option>
+        </select>
+        {% elif field_type == "int" and field_name == "kind" and script_class == "Skill" %}
+        <select name="{{ field_name }}">
+          <option value="0" {% if data.get(field_name, 0) == 0 %}selected{% endif %}>0 — ATTACK</option>
+          <option value="1" {% if data.get(field_name, 0) == 1 %}selected{% endif %}>1 — HEAL</option>
+          <option value="2" {% if data.get(field_name, 0) == 2 %}selected{% endif %}>2 — BUFF</option>
+          <option value="3" {% if data.get(field_name, 0) == 3 %}selected{% endif %}>3 — DEBUFF</option>
+        </select>
+        {% elif field_type == "int" and field_name == "target" %}
+        <select name="{{ field_name }}">
+          <option value="0" {% if data.get(field_name, 0) == 0 %}selected{% endif %}>0 — ENEMY_SINGLE</option>
+          <option value="1" {% if data.get(field_name, 0) == 1 %}selected{% endif %}>1 — ENEMY_ALL</option>
+          <option value="2" {% if data.get(field_name, 0) == 2 %}selected{% endif %}>2 — ALLY_SINGLE</option>
+          <option value="3" {% if data.get(field_name, 0) == 3 %}selected{% endif %}>3 — ALLY_ALL</option>
+          <option value="4" {% if data.get(field_name, 0) == 4 %}selected{% endif %}>4 — SELF</option>
+        </select>
+        {% elif field_type.startswith("Array") %}
+        <input type="text" name="{{ field_name }}" value="{% if data.get(field_name) %}{{ data[field_name]|join(', ') }}{% endif %}" placeholder="用逗号分隔，如: a, b, c">
+        <div class="hint">用英文逗号分隔多个值</div>
+        {% elif field_type == "String" %}
+        <textarea name="{{ field_name }}" rows="2">{{ data.get(field_name, '') }}</textarea>
+        {% else %}
+        <input type="text" name="{{ field_name }}" value="{{ data.get(field_name, '') }}">
+        {% endif %}
+      </div>
+      {% endfor %}
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">保存</button>
+        <a href="/editor/{{ script_class }}" class="btn btn-secondary">取消</a>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
