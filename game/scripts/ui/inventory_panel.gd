@@ -30,6 +30,7 @@ const ICON_SHOES := preload("res://art/ui/inventory/icons/icon_shoes.png")
 @onready var _btn_use: TextureButton = %BtnUse
 @onready var _btn_equip: TextureButton = %BtnEquip
 @onready var _btn_drop: TextureButton = %BtnDrop
+@onready var _equip_panel: Control = $EquipmentPanel
 
 const TAB_TEX := {
 	"all": {"n": preload("res://art/ui/inventory/tabs/tab_all_normal.png"), "s": preload("res://art/ui/inventory/tabs/tab_all_selected.png"), "p": preload("res://art/ui/inventory/tabs/tab_all_pressed.png")},
@@ -45,8 +46,8 @@ const QUALITY_COLORS := {
 	Item.Quality.RARE: "#0070dd", Item.Quality.EPIC: "#a335ee", Item.Quality.LEGENDARY: "#ff8000",
 }
 const QUALITY_NAMES := {
-	Item.Quality.COMMON: "普通", Item.Quality.UNCOMMON: "精良",
-	Item.Quality.RARE: "稀有", Item.Quality.EPIC: "史诗", Item.Quality.LEGENDARY: "传说",
+	Item.Quality.COMMON: "凡品", Item.Quality.UNCOMMON: "优质",
+	Item.Quality.RARE: "高品", Item.Quality.EPIC: "稀有", Item.Quality.LEGENDARY: "尚品",
 }
 const STAT_COLORS := {
 	"筋骨": "#ff8a80", "机敏": "#b9f6ca", "内劲": "#82b1ff", "悟性": "#b388ff",
@@ -64,6 +65,7 @@ var _highlighted_cell: TextureRect = null
 func _ready() -> void:
 	visible = false
 	_setup_button_textures()
+	# if _equip_panel != null: _equip_panel.visible = false  # DEBUG
 	_close_btn.pressed.connect(close)
 	_setup_tabs()
 	_create_context_menu()
@@ -97,12 +99,16 @@ func open() -> void:
 
 func close() -> void:
 	visible = false
+	_hide_equipment()
 	emit_signal("closed")
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_cancel"):
 		close()
+		get_viewport().set_input_as_handled()
+	if visible and event is InputEventKey and event.keycode == KEY_E and event.pressed:
+		_toggle_equipment()
 		get_viewport().set_input_as_handled()
 
 
@@ -132,6 +138,10 @@ func _setup_tabs() -> void:
 func _set_filter(key: String) -> void:
 	_current_filter = key
 	_refresh()
+	if key == "equipment":
+		_show_equipment()
+	else:
+		_hide_equipment()
 
 
 func _update_tab_highlights() -> void:
@@ -154,9 +164,9 @@ func _refresh() -> void:
 	for c in _slot_grid.get_children():
 		c.queue_free()
 
-	var shown := _filtered_slots()
+	var shown: Array[Dictionary] = _filtered_slots()
 	if shown.is_empty():
-		var empty := Label.new()
+		var empty: Label = Label.new()
 		empty.text = "暂无物品"
 		empty.add_theme_color_override("font_color", Color(0.48, 0.58, 0.64, 1))
 		empty.add_theme_font_size_override("font_size", 16)
@@ -168,7 +178,7 @@ func _refresh() -> void:
 		var entry: Dictionary = shown[i]
 		_slot_grid.add_child(_make_slot_cell(entry["item"], entry["count"], i))
 
-	var total_slots := 36
+	var total_slots: int = 36
 	for i in range(shown.size(), total_slots):
 		_slot_grid.add_child(_make_empty_cell())
 
@@ -199,7 +209,7 @@ func _passes_filter(item: Item) -> bool:
 
 
 func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
-	var cell := TextureRect.new()
+	var cell: TextureRect = TextureRect.new()
 	cell.custom_minimum_size = Vector2(85, 83)
 	cell.texture = CELL_DEFAULT
 	cell.expand_mode = 1
@@ -207,18 +217,18 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 	cell.mouse_filter = Control.MOUSE_FILTER_STOP
 	cell.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
-	var icon_tex := _resolve_icon(item)
+	var icon_tex: Texture2D = _resolve_icon(item)
 	if icon_tex != null:
-		var icon := TextureRect.new()
+		var icon: TextureRect = TextureRect.new()
 		icon.texture = icon_tex
 		icon.custom_minimum_size = Vector2(60, 44)
-		icon.position = Vector2(12, 3)
+		icon.position = Vector2(12, 4)
 		icon.expand_mode = 1
-		icon.stretch_mode = 5
+		icon.stretch_mode = 4
 		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		cell.add_child(icon)
 
-	var name_lbl := Label.new()
+	var name_lbl: Label = Label.new()
 	name_lbl.text = item.display_name
 	name_lbl.position = Vector2(2, 48)
 	name_lbl.size = Vector2(81, 32)
@@ -230,7 +240,7 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 	cell.add_child(name_lbl)
 
 	if item.stackable and count > 1:
-		var lbl := Label.new()
+		var lbl: Label = Label.new()
 		lbl.text = str(count)
 		lbl.position = Vector2(55, 1)
 		lbl.add_theme_font_size_override("font_size", 11)
@@ -259,7 +269,7 @@ func _resolve_icon(item: Item) -> Texture2D:
 
 
 func _make_empty_cell() -> Control:
-	var cell := TextureRect.new()
+	var cell: TextureRect = TextureRect.new()
 	cell.custom_minimum_size = Vector2(85, 83)
 	cell.texture = CELL_EMPTY
 	cell.expand_mode = 1
@@ -276,7 +286,7 @@ func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cel
 			_show_detail(item, count)
 		elif mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed:
 			_context_slot_index = slot_index
-			var entry := _get_slot(slot_index)
+			var entry: Dictionary = _get_slot(slot_index)
 			var it: Item = entry.get("item")
 			for i in 4: _context_menu.set_item_disabled(i, it == null)
 			if it != null:
@@ -303,6 +313,21 @@ func _on_equip_selected() -> void:
 		_on_equip(_selected_item.item_id)
 
 
+func _show_equipment() -> void:
+	if _equip_panel == null: return
+	_equip_panel.visible = true
+
+func _hide_equipment() -> void:
+	if _equip_panel == null: return
+	_equip_panel.visible = false
+
+func _toggle_equipment() -> void:
+	if _equip_panel == null: return
+	if _equip_panel.visible:
+		_hide_equipment()
+	else:
+		_set_filter("equipment")
+
 func _on_drop_selected() -> void:
 	if _selected_item != null:
 		Inventory.remove_item(_selected_item.item_id, 1)
@@ -313,7 +338,7 @@ func _on_drop_selected() -> void:
 func _show_detail(item: Item, count: int) -> void:
 	_selected_item = item
 	_selected_count = count
-	var icon_tex := _resolve_icon(item)
+	var icon_tex: Texture2D = _resolve_icon(item)
 	if _detail_icon != null:
 		_detail_icon.texture = icon_tex
 		_detail_icon.visible = icon_tex != null
@@ -322,40 +347,45 @@ func _show_detail(item: Item, count: int) -> void:
 	var qn: String = QUALITY_NAMES.get(item.quality, "")
 
 	var lines: Array[String] = []
-	lines.append("[font_size=16][color=%s]%s[/color][/font_size]  [font_size=11][color=#667788]%s[/color][/font_size]" % [qc, item.display_name, qn])
-	lines.append("[font_size=13][color=#6a8a9a]%s ×%d[/color][/font_size]" % [_cat_text(item), count])
-	lines.append("")
-	lines.append("[font_size=13]%s[/font_size]" % item.description)
+	lines.append("[font_size=19][color=%s]%s[/color][/font_size]" % [qc, item.display_name])
+	lines.append("[font_size=13][color=#667788]%s · ×%d[/color][/font_size]" % [_cat_text(item), count])
+	lines.append("[font_size=15][color=#bcc8cc]%s[/color][/font_size]" % item.description)
 
 	if item is Equipment:
 		var eq := item as Equipment
-		lines.append("")
-		lines.append("[font_size=12][color=#7a8a9a]装备槽：%s[/color][/font_size]" % Inventory.slot_display_name(eq.slot))
-		var bonus := _bonus_text(eq)
+		lines.append("[font_size=13][color=#778899]—— %s ——[/color][/font_size]" % Inventory.slot_display_name(eq.slot))
+		var bonus: String = _bonus_text(eq)
 		if bonus != "":
-			lines.append("[font_size=13][b]属性加成[/b][/font_size]")
 			lines.append(bonus)
 	elif item.category == Item.Category.CONSUMABLE:
-		lines.append("")
-		if item.heal_hp > 0:
-			lines.append("[font_size=13][color=#ff5252]生命 +%d[/color][/font_size]" % item.heal_hp)
-		if item.heal_mp > 0:
-			lines.append("[font_size=13][color=#448aff]内力 +%d[/color][/font_size]" % item.heal_mp)
+		var fx: Array[String] = []
+		if item.heal_hp > 0: fx.append("[color=#ff6b6b]生命+%d[/color]" % item.heal_hp)
+		if item.heal_mp > 0: fx.append("[color=#64b5f6]内力+%d[/color]" % item.heal_mp)
+		if not fx.is_empty():
+			lines.append("[font_size=13]%s[/font_size]" % "  ".join(fx))
 
-	lines.append("")
-	lines.append("[font_size=12][color=#7a8a9a]买 %d  卖 %d[/color][/font_size]" % [item.buy_price, item.sell_price])
+	lines.append("[font_size=12][color=#778899]买 %d · 卖 %d[/color][/font_size]" % [item.buy_price, item.sell_price])
 	_detail_label.text = "\n".join(lines)
 
 
 func _bonus_text(eq: Equipment) -> String:
+	var parts: Array[String] = []
+	if eq.get_strength_bonus() != 0: parts.append("[color=%s]筋骨%+d[/color]" % [STAT_COLORS["筋骨"], eq.get_strength_bonus()])
+	if eq.get_agility_bonus() != 0: parts.append("[color=%s]机敏%+d[/color]" % [STAT_COLORS["机敏"], eq.get_agility_bonus()])
+	if eq.get_inner_power_bonus() != 0: parts.append("[color=%s]内劲%+d[/color]" % [STAT_COLORS["内劲"], eq.get_inner_power_bonus()])
+	if eq.get_insight_bonus() != 0: parts.append("[color=%s]悟性%+d[/color]" % [STAT_COLORS["悟性"], eq.get_insight_bonus()])
+	if eq.get_vitality_bonus() != 0: parts.append("[color=%s]生命%+d[/color]" % [STAT_COLORS["生命"], eq.get_vitality_bonus()])
+	if eq.get_inner_pool_bonus() != 0: parts.append("[color=%s]内力%+d[/color]" % [STAT_COLORS["内力"], eq.get_inner_pool_bonus()])
+	if eq.get_guard_bonus() != 0: parts.append("[color=%s]防御%+d[/color]" % [STAT_COLORS["防御"], eq.get_guard_bonus()])
 	var lines: Array[String] = []
-	if eq.get_strength_bonus() != 0: lines.append("  [color=%s]筋骨 %+d[/color]" % [STAT_COLORS["筋骨"], eq.get_strength_bonus()])
-	if eq.get_agility_bonus() != 0: lines.append("  [color=%s]机敏 %+d[/color]" % [STAT_COLORS["机敏"], eq.get_agility_bonus()])
-	if eq.get_inner_power_bonus() != 0: lines.append("  [color=%s]内劲 %+d[/color]" % [STAT_COLORS["内劲"], eq.get_inner_power_bonus()])
-	if eq.get_insight_bonus() != 0: lines.append("  [color=%s]悟性 %+d[/color]" % [STAT_COLORS["悟性"], eq.get_insight_bonus()])
-	if eq.get_vitality_bonus() != 0: lines.append("  [color=%s]生命 %+d[/color]" % [STAT_COLORS["生命"], eq.get_vitality_bonus()])
-	if eq.get_inner_pool_bonus() != 0: lines.append("  [color=%s]内力 %+d[/color]" % [STAT_COLORS["内力"], eq.get_inner_pool_bonus()])
-	if eq.get_guard_bonus() != 0: lines.append("  [color=%s]防御 %+d[/color]" % [STAT_COLORS["防御"], eq.get_guard_bonus()])
+	var row: Array[String] = []
+	for p in parts:
+		row.append(p)
+		if row.size() >= 3:
+			lines.append("[font_size=13]%s[/font_size]" % "  ".join(row))
+			row.clear()
+	if not row.is_empty():
+		lines.append("[font_size=13]%s[/font_size]" % "  ".join(row))
 	return "\n".join(lines) if not lines.is_empty() else ""
 
 
@@ -392,7 +422,7 @@ func _create_context_menu() -> void:
 
 func _on_context(id: int) -> void:
 	if _context_slot_index < 0: return
-	var entry := _get_slot(_context_slot_index)
+	var entry: Dictionary = _get_slot(_context_slot_index)
 	var item: Item = entry.get("item")
 	if item == null: return
 	_context_slot_index = -1
@@ -404,6 +434,6 @@ func _on_context(id: int) -> void:
 
 
 func _get_slot(idx: int) -> Dictionary:
-	var shown := _filtered_slots()
+	var shown: Array[Dictionary] = _filtered_slots()
 	if idx >= 0 and idx < shown.size(): return shown[idx]
 	return {}

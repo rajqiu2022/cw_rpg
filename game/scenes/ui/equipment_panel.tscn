@@ -1,73 +1,137 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://dequippanel01"]
 
-[ext_resource type="Script" path="res://scripts/ui/equipment_panel.gd" id="1_equipment"]
+[ext_resource type="Script" uid="uid://7i0tqn3x1amo" path="res://scripts/ui/equipment_panel.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dxxe4kn12u17g" path="res://art/ui/equipment/panel_bg.png" id="2_bg"]
 
-[node name="EquipmentPanel" type="Control"]
-visible = false
+[node name="EquipmentPanel" type="Control" unique_id=1820654276]
+custom_minimum_size = Vector2(640, 720)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 1
-script = ExtResource("1_equipment")
+anchors_preset = 0
+script = ExtResource("1_script")
 
-[node name="Dim" type="ColorRect" parent="."]
+[node name="PanelBg" type="TextureRect" parent="." unique_id=900042666]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.42)
-
-[node name="Panel" type="PanelContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -460.0
-offset_top = -280.0
-offset_right = 460.0
-offset_bottom = 280.0
+offset_left = 1314.0
+offset_top = 288.0
+offset_right = 1314.0
+offset_bottom = 288.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Body" type="VBoxContainer" parent="Panel"]
-layout_mode = 2
-theme_override_constants/separation = 14
+[node name="InventorySlot" type="Control" parent="." unique_id=328334491]
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 290.0
+offset_right = 1310.0
+offset_bottom = 1010.0
 
-[node name="Header" type="HBoxContainer" parent="Panel/Body"]
-layout_mode = 2
-theme_override_constants/separation = 16
+[node name="BtnClose" type="TextureButton" parent="." unique_id=1579846776]
+layout_mode = 0
+offset_left = 1923.0
+offset_top = 302.0
+offset_right = 1965.0
+offset_bottom = 344.0
+stretch_mode = 0
 
-[node name="Title" type="Label" parent="Panel/Body/Header"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "装备"
-theme_override_colors/font_color = Color(0.95, 0.85, 0.55, 1)
-theme_override_font_sizes/font_size = 28
+[node name="AttrGroup" type="Control" parent="." unique_id=116380650]
+anchors_preset = 0
+offset_left = 1739.0
+offset_top = 420.0
+offset_right = 1887.0
+offset_bottom = 844.0
 
-[node name="CloseBtn" type="Button" parent="Panel/Body/Header"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 42)
-layout_mode = 2
-text = "关闭 (Esc)"
-theme_override_font_sizes/font_size = 16
+[node name="Attr_筋骨" type="Label" parent="AttrGroup" unique_id=1878598260]
+layout_mode = 0
+offset_right = 148.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
 
-[node name="Hint" type="Label" parent="Panel/Body"]
-layout_mode = 2
-text = "在背包中选择装备即可穿戴；这里可查看 6 槽状态并卸下。"
-modulate = Color(0.82, 0.82, 0.78, 1)
-theme_override_font_sizes/font_size = 16
+[node name="Attr_机敏" type="Label" parent="AttrGroup" unique_id=1043838242]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 148.0
+offset_bottom = 74.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
 
-[node name="Scroll" type="ScrollContainer" parent="Panel/Body"]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
+[node name="Attr_内劲" type="Label" parent="AttrGroup" unique_id=2084264152]
+layout_mode = 0
+offset_top = 97.0
+offset_right = 148.0
+offset_bottom = 123.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
 
-[node name="SlotList" type="VBoxContainer" parent="Panel/Body/Scroll"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 8
+[node name="Attr_悟性" type="Label" parent="AttrGroup" unique_id=616459234]
+layout_mode = 0
+offset_top = 146.0
+offset_right = 148.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Attr_生命" type="Label" parent="AttrGroup" unique_id=2117429150]
+layout_mode = 0
+offset_top = 209.0
+offset_right = 148.0
+offset_bottom = 235.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Attr_内力" type="Label" parent="AttrGroup" unique_id=875375079]
+layout_mode = 0
+offset_top = 257.0
+offset_right = 148.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Attr_攻击" type="Label" parent="AttrGroup" unique_id=432315681]
+layout_mode = 0
+offset_top = 304.0
+offset_right = 148.0
+offset_bottom = 330.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Attr_防御" type="Label" parent="AttrGroup" unique_id=1626789871]
+layout_mode = 0
+offset_top = 351.0
+offset_right = 148.0
+offset_bottom = 377.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1
+
+[node name="Attr_速度" type="Label" parent="AttrGroup" unique_id=1674789588]
+layout_mode = 0
+offset_top = 398.0
+offset_right = 148.0
+offset_bottom = 424.0
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
+theme_override_font_sizes/font_size = 18
+text = "0"
+horizontal_alignment = 1

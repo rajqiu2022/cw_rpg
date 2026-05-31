@@ -47,6 +47,7 @@ const ATTR_ICON_REGIONS := {
 var _current_scene: SceneScript = null
 var _inventory_panel = null
 var _equipment_panel = null
+var _panels_ready: bool = false
 var _skill_panel = null
 var _quest_panel_full = null
 
@@ -116,7 +117,8 @@ func _render_scene(scene: SceneScript) -> void:
 		if String(bp) != "":
 			push_warning("[Field] background missing (仓库里常只有 .import 无 PNG): %s" % bp)
 		fallback_bg.visible = true
-	scene_title.text = scene.display_name
+	if scene_title != null:
+		scene_title.text = scene.display_name
 	_spawn_hotspots(scene.hotspots)
 
 
@@ -134,7 +136,7 @@ func _spawn_hotspots(hotspots: Array) -> void:
 		if hide_flag != "" and _flag_truthy(hide_flag):
 			continue
 
-		var btn := Button.new()
+		var btn: Button = Button.new()
 		btn.text = String(h.get("label", "?"))
 		btn.custom_minimum_size = Vector2(220, 60)
 		btn.add_theme_font_size_override("font_size", 18)
@@ -198,7 +200,6 @@ func _style_hud_button(btn: Button, icon_key: String, accent: Color) -> void:
 	btn.add_theme_stylebox_override("pressed", _hud_btn_hover)
 	btn.add_theme_stylebox_override("focus", _hud_btn_hover)
 	btn.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	btn.expand_icon = true
 	var icon := _make_hud_icon(icon_key, 22)
 	if icon != null:
 		btn.icon = icon
@@ -270,10 +271,13 @@ func _refresh_gold() -> void:
 	var p: CharacterStats = GameState.player
 	if p != null and player_info != null:
 		player_info.text = "%s  Lv.%d  HP %d/%d  MP %d/%d" % [p.display_name, p.level, p.hp, p.max_hp, p.mp, p.max_mp]
-	hud_gold.text = "金 %d" % GameState.gold
+	if hud_gold != null:
+		hud_gold.text = "金 %d" % GameState.gold
 
 
 func _refresh_quest_panel() -> void:
+	if quest_list == null:
+		return
 	var actives := QuestManager.get_active_quests()
 	if actives.is_empty():
 		quest_list.text = "[i]暂无任务[/i]"
@@ -321,6 +325,8 @@ func _toggle_quest_log_panel() -> void:
 
 func _on_ui_requested(panel_id: StringName) -> void:
 	if DialogPlayer.is_playing():
+		return
+	if not _panels_ready:
 		return
 	match panel_id:
 		&"inventory":
