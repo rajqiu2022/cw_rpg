@@ -1,137 +1,135 @@
-[gd_scene format=3 uid="uid://dequippanel01"]
+[gd_scene load_steps=3 format=3 uid="uid://dequippanel01"]
 
-[ext_resource type="Script" uid="uid://7i0tqn3x1amo" path="res://scripts/ui/equipment_panel.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://dxxe4kn12u17g" path="res://art/ui/equipment/panel_bg.png" id="2_bg"]
+[ext_resource type="Script" path="res://scripts/ui/equipment_panel.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://art/ui/equipment/panel_bg.png" id="2_bg"]
 
-[node name="EquipmentPanel" type="Control" unique_id=1820654276]
-custom_minimum_size = Vector2(640, 720)
+[node name="EquipmentPanel" type="Control"]
+visible = false
 layout_mode = 3
-anchors_preset = 0
+custom_minimum_size = Vector2(640, 720)
 script = ExtResource("1_script")
 
-[node name="PanelBg" type="TextureRect" parent="." unique_id=900042666]
+[node name="PanelBg" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1314.0
-offset_top = 288.0
-offset_right = 1314.0
-offset_bottom = 288.0
-grow_horizontal = 2
-grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_bg")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="InventorySlot" type="Control" parent="." unique_id=328334491]
-anchors_preset = 0
-offset_left = 30.0
-offset_top = 290.0
-offset_right = 1310.0
-offset_bottom = 1010.0
-
-[node name="BtnClose" type="TextureButton" parent="." unique_id=1579846776]
+[node name="BtnClose" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 1923.0
-offset_top = 302.0
-offset_right = 1965.0
-offset_bottom = 344.0
+offset_left = 590.0
+offset_top = 10.0
+offset_right = 632.0
+offset_bottom = 52.0
 stretch_mode = 0
 
-[node name="AttrGroup" type="Control" parent="." unique_id=116380650]
-anchors_preset = 0
-offset_left = 1739.0
-offset_top = 420.0
-offset_right = 1887.0
-offset_bottom = 844.0
-
-[node name="Attr_筋骨" type="Label" parent="AttrGroup" unique_id=1878598260]
+[node name="AttrGroup" type="Control" parent="."]
 layout_mode = 0
+offset_left = 1772.0
+offset_top = 419.0
+offset_right = 1920.0
+offset_bottom = 843.0
+mouse_filter = 2
+
+[node name="Attr_筋骨" type="Label" parent="AttrGroup"]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
 offset_right = 148.0
 offset_bottom = 26.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
 
-[node name="Attr_机敏" type="Label" parent="AttrGroup" unique_id=1043838242]
+[node name="Attr_机敏" type="Label" parent="AttrGroup"]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 48.0
 offset_right = 148.0
 offset_bottom = 74.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
 
-[node name="Attr_内劲" type="Label" parent="AttrGroup" unique_id=2084264152]
+[node name="Attr_内劲" type="Label" parent="AttrGroup"]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 97.0
 offset_right = 148.0
 offset_bottom = 123.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
 
-[node name="Attr_悟性" type="Label" parent="AttrGroup" unique_id=616459234]
+[node name="Attr_悟性" type="Label" parent="AttrGroup"]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 146.0
 offset_right = 148.0
 offset_bottom = 172.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
 
-[node name="Attr_生命" type="Label" parent="AttrGroup" unique_id=2117429150]
+[node name="Attr_生命" type="Label" parent="AttrGroup"]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 209.0
 offset_right = 148.0
 offset_bottom = 235.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
 
-[node name="Attr_内力" type="Label" parent="AttrGroup" unique_id=875375079]
+[node name="Attr_内力" type="Label" parent="AttrGroup"]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 257.0
 offset_right = 148.0
 offset_bottom = 283.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
 
-[node name="Attr_攻击" type="Label" parent="AttrGroup" unique_id=432315681]
+[node name="Attr_攻击" type="Label" parent="AttrGroup"]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 304.0
 offset_right = 148.0
 offset_bottom = 330.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
 
-[node name="Attr_防御" type="Label" parent="AttrGroup" unique_id=1626789871]
+[node name="Attr_防御" type="Label" parent="AttrGroup"]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 351.0
 offset_right = 148.0
 offset_bottom = 377.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
 
-[node name="Attr_速度" type="Label" parent="AttrGroup" unique_id=1674789588]
+[node name="Attr_速度" type="Label" parent="AttrGroup"]
 layout_mode = 0
+offset_left = 0.0
 offset_top = 398.0
 offset_right = 148.0
 offset_bottom = 424.0
-theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)
-theme_override_font_sizes/font_size = 18
 text = "0"
 horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.85, 0.92, 0.98, 1)

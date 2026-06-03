@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cggdlvjohx5sd" path="res://art/ui/inventory/tabs/tab_key_selected.png" id="tab_key_s"]
 [ext_resource type="Texture2D" uid="uid://renjogg6jv7q" path="res://art/ui/inventory/tabs/tab_material_normal.png" id="tab_mat_n"]
 [ext_resource type="Texture2D" uid="uid://cw82s4wm7a3ss" path="res://art/ui/inventory/tabs/tab_material_selected.png" id="tab_mat_s"]
-[ext_resource type="PackedScene" path="res://scenes/ui/equipment_panel.tscn" id="3_eqpanel"]
 
 [node name="InventoryPanel" type="Control" unique_id=1069831149]
 layout_mode = 3
@@ -200,12 +199,5 @@ offset_bottom = 702.0
 theme_override_font_sizes/font_size = 20
 text = "容量 25/80"
 horizontal_alignment = 1
-
-[node name="EquipmentPanel" parent="." instance=ExtResource("3_eqpanel")]
-visible = false
-offset_left = 640.0
-offset_top = -360.0
-offset_right = 1280.0
-offset_bottom = 360.0
 
 [node name="ContextMenu" type="PopupMenu" parent="." unique_id=129690322]

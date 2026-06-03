@@ -30,7 +30,6 @@ const ICON_SHOES := preload("res://art/ui/inventory/icons/icon_shoes.png")
 @onready var _btn_use: TextureButton = %BtnUse
 @onready var _btn_equip: TextureButton = %BtnEquip
 @onready var _btn_drop: TextureButton = %BtnDrop
-@onready var _equip_panel: Control = $EquipmentPanel
 
 const TAB_TEX := {
 	"all": {"n": preload("res://art/ui/inventory/tabs/tab_all_normal.png"), "s": preload("res://art/ui/inventory/tabs/tab_all_selected.png"), "p": preload("res://art/ui/inventory/tabs/tab_all_pressed.png")},
@@ -65,7 +64,7 @@ var _highlighted_cell: TextureRect = null
 func _ready() -> void:
 	visible = false
 	_setup_button_textures()
-	if _equip_panel != null: _equip_panel.visible = false
+
 	_close_btn.pressed.connect(close)
 	_setup_tabs()
 	_create_context_menu()
@@ -99,7 +98,7 @@ func open() -> void:
 
 func close() -> void:
 	visible = false
-	_hide_equipment()
+
 	emit_signal("closed")
 
 
@@ -108,7 +107,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		close()
 		get_viewport().set_input_as_handled()
 	if visible and event is InputEventKey and event.keycode == KEY_E and event.pressed:
-		_toggle_equipment()
+		# E key reserved for equipment view
 		get_viewport().set_input_as_handled()
 
 
@@ -138,10 +137,6 @@ func _setup_tabs() -> void:
 func _set_filter(key: String) -> void:
 	_current_filter = key
 	_refresh()
-	if key == "equipment":
-		EventBus.ui_requested.emit(&"equipment")
-	else:
-		EventBus.ui_requested.emit(&"close_equipment")
 
 
 func _update_tab_highlights() -> void:
@@ -178,7 +173,7 @@ func _refresh() -> void:
 		var entry: Dictionary = shown[i]
 		_slot_grid.add_child(_make_slot_cell(entry["item"], entry["count"], i))
 
-	var total_slots: int = 36
+	var total_slots: int = 24
 	for i in range(shown.size(), total_slots):
 		_slot_grid.add_child(_make_empty_cell())
 
@@ -313,20 +308,10 @@ func _on_equip_selected() -> void:
 		_on_equip(_selected_item.item_id)
 
 
-func _show_equipment() -> void:
-	if _equip_panel == null: return
-	_equip_panel.visible = true
 
-func _hide_equipment() -> void:
-	if _equip_panel == null: return
-	_equip_panel.visible = false
 
-func _toggle_equipment() -> void:
-	if _equip_panel == null: return
-	if _equip_panel.visible:
-		_hide_equipment()
-	else:
-		_set_filter("equipment")
+
+
 
 func _on_drop_selected() -> void:
 	if _selected_item != null:

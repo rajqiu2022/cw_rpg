@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://game_ui_scene/region_001.png" id="1"]
+[ext_resource type="Texture2D" path="res://game_ui_scene/region_002.png" id="2"]
+[ext_resource type="Texture2D" path="res://game_ui_scene/region_003.png" id="3"]
+
+[node name="game_ui_scene" type="Control"]
+layout_mode = 0
+anchors_preset = 0
+size = Vector2(2110, 1445)
+mouse_filter = 2
+
+[node name="region_001" type="TextureRect" parent="."]
+layout_mode = 0
+position = Vector2(2, 2)
+size = Vector2(2106, 1441)
+texture = ExtResource("1")
+expand_mode = 0
+stretch_mode = 0
+mouse_filter = 1
+
+[node name="region_002" type="TextureRect" parent="."]
+layout_mode = 0
+position = Vector2(2, 915)
+size = Vector2(43, 75)
+texture = ExtResource("2")
+expand_mode = 0
+stretch_mode = 0
+mouse_filter = 1
+
+[node name="region_003" type="TextureRect" parent="."]
+layout_mode = 0
+position = Vector2(2, 965)
+size = Vector2(15, 22)
+texture = ExtResource("3")
+expand_mode = 0
+stretch_mode = 0
+mouse_filter = 1

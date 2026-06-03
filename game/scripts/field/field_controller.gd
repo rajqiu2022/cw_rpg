@@ -348,6 +348,7 @@ func _init_m5_panels() -> void:
 	_quest_panel_full = QUEST_PANEL_SCENE.instantiate()
 	add_child(_inventory_panel)
 	add_child(_equipment_panel)
+	_equipment_panel.visible = false
 	add_child(_skill_panel)
 	add_child(_quest_panel_full)
 
@@ -375,13 +376,12 @@ func _toggle_inventory_panel() -> void:
 
 func _open_equipment_panel() -> void:
 	if _equipment_panel == null:
+		_init_m5_panels()
+	if _equipment_panel == null:
 		return
-	if _inventory_panel != null:
-		_inventory_panel.visible = false
-	if _skill_panel != null:
-		_skill_panel.visible = false
-	if _quest_panel_full != null:
-		_quest_panel_full.visible = false
+	_equipment_panel.position = Vector2(640, 0)
+	if _inventory_panel != null and not _inventory_panel.visible:
+		_inventory_panel.open()
 	_equipment_panel.open()
 
 
