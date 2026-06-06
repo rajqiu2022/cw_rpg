@@ -379,7 +379,6 @@ func _open_equipment_panel() -> void:
 		_init_m5_panels()
 	if _equipment_panel == null:
 		return
-	_equipment_panel.position = Vector2(640, 0)
 	if _inventory_panel != null and not _inventory_panel.visible:
 		_inventory_panel.open()
 	_equipment_panel.open()

@@ -1122,15 +1122,8 @@ func _open_equipment_panel() -> void:
 		_init_m5_panels()
 	if _equipment_panel == null:
 		return
-	_equipment_panel.position = Vector2(640, 0)
-	if _inventory_panel != null:
-		if not _inventory_panel.visible:
-			_inventory_panel.open()
-		# Shift inventory left to make room
-		var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
-		if mp:
-			mp.offset_left = -960
-			mp.offset_right = -320
+	if _inventory_panel != null and not _inventory_panel.visible:
+		_inventory_panel.open()
 	_equipment_panel.open()
 	_on_system_panel_opened()
 
@@ -1205,12 +1198,6 @@ func _on_system_panel_opened() -> void:
 func _on_system_panel_closed() -> void:
 	if _player != null:
 		_player.can_move = true
-	# Restore inventory position
-	if _inventory_panel != null:
-		var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
-		if mp:
-			mp.offset_left = -640
-			mp.offset_right = 640
 	_system_panel_open = false
 	if _primary_hud != null:
 		_primary_hud.show_after_system_ui()
