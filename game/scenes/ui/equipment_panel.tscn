@@ -9,26 +9,43 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_script")
 
-[node name="Container" type="Container" parent="." unique_id=1034291134]
-layout_mode = 0
-offset_left = 1067.0
-offset_top = 119.0
-offset_right = 1699.0
-offset_bottom = 837.0
+[node name="Container" type="Control" parent="." unique_id=259700239]
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 720.0
 
-[node name="PanelBg" type="TextureRect" parent="Container" unique_id=1703671638]
-layout_mode = 2
+[node name="PanelBg" type="TextureRect" parent="Container" unique_id=1589716732]
+layout_mode = 0
+offset_left = 1279.0
+offset_top = 127.0
+offset_right = 1919.0
+offset_bottom = 847.0
 mouse_filter = 2
 texture = ExtResource("2_bg")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="InventorySlot" type="Control" parent="Container" unique_id=827264082]
+anchors_preset = 0
+offset_left = -11.0
+offset_top = 117.0
+offset_right = 1269.0
+offset_bottom = 837.0
+
 [node name="BtnClose" type="TextureButton" parent="Container" unique_id=1452359234]
-layout_mode = 2
+layout_mode = 0
+offset_left = 1851.0
+offset_top = 142.0
+offset_right = 1893.0
+offset_bottom = 190.0
 stretch_mode = 0
 
 [node name="AttrGroup" type="Control" parent="Container" unique_id=566313876]
-layout_mode = 2
+anchors_preset = 0
+offset_left = 1706.0
+offset_top = 260.0
+offset_right = 1854.0
+offset_bottom = 684.0
 mouse_filter = 2
 
 [node name="Attr_筋骨" type="Label" parent="Container/AttrGroup" unique_id=1899709160]

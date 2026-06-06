@@ -1124,6 +1124,11 @@ func _open_equipment_panel() -> void:
 		return
 	if _inventory_panel != null and not _inventory_panel.visible:
 		_inventory_panel.open()
+	# Move inventory into equipment's InventorySlot
+	var slot: Control = _equipment_panel.get_node_or_null("Container/InventorySlot")
+	var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
+	if slot and mp and mp.get_parent() != slot:
+		mp.reparent(slot, false)
 	_equipment_panel.open()
 	_on_system_panel_opened()
 
@@ -1198,6 +1203,12 @@ func _on_system_panel_opened() -> void:
 func _on_system_panel_closed() -> void:
 	if _player != null:
 		_player.can_move = true
+	# Restore inventory
+	if _inventory_panel != null:
+		var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
+		var slot: Control = _equipment_panel.get_node_or_null("Container/InventorySlot") if _equipment_panel else null
+		if mp and slot and mp.get_parent() == slot:
+			mp.reparent(_inventory_panel, false)
 	_system_panel_open = false
 	if _primary_hud != null:
 		_primary_hud.show_after_system_ui()

@@ -381,6 +381,10 @@ func _open_equipment_panel() -> void:
 		return
 	if _inventory_panel != null and not _inventory_panel.visible:
 		_inventory_panel.open()
+	var slot: Control = _equipment_panel.get_node_or_null("Container/InventorySlot")
+	var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
+	if slot and mp and mp.get_parent() != slot:
+		mp.reparent(slot, false)
 	_equipment_panel.open()
 
 

@@ -1,0 +1,692 @@
+nvidia/LocateAnything-3B · Hugging Face
+https://huggingface.co/nvidia/LocateAnything-3B
+
+<!doctype html>
+
+nvidia/LocateAnything-3B · Hugging Face
+
+Hugging Face 
+
+nvidia 
+/
+
+LocateAnything-3B 
+
+like 1.39k
+
+Follow
+NVIDIA 59.2k
+
+Image-Text-to-Text 
+
+Transformers 
+
+Safetensors 
+
+English 
+
+locateanything 
+
+feature-extraction 
+
+nvidia 
+
+eagle 
+
+vision 
+
+object-detection 
+
+grounding 
+
+conversational 
+
+custom_code 
+
+arxiv: 8 papers 
+
+License: nvidia-license 
+
+Model card Files Files and versions 
+xet
+Community 
+14
+
+Deploy 
+
+Copy to bucket new 
+
+Use this model 
+
+LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding
+
+🔗 Quick Links
+
+🚀 Online Demo: LocateAnything (Hugging Face Spaces)
+
+💻 GitHub Code: NVlabs/Eagle/Embodied
+
+📄 Paper: arXiv:2605.27365
+
+Model Overview
+
+Description:
+
+LocateAnything is a vision-language model for fast and high-quality visual grounding, enabling precise object localization, dense detection, and point-based localization across diverse domains in both Enterprise Intelligence and Physical AI. The model adopts a generalist design, supporting tasks such as referring expression grounding, multi-object detection, GUI element grounding, and text localization, with strong performance in complex and cluttered scenes.
+
+Its core innovation, Parallel Box Decoding (PBD), predicts complete bounding box coordinates in a single parallel step rather than autoregressive token-by-token decoding, improving efficiency while preserving geometric consistency. This enables up to 2.5× higher throughput compared to prior approaches.
+
+The model is trained on a large-scale multi-domain dataset (12M images, 138M+ queries, 785M bounding boxes) spanning natural scenes, robotics, driving, GUI interaction, and document understanding. It serves as a foundation for generalist multimodal perception and has been integrated into NVIDIA’s frontier production-grade vision-language models, such as Nemotron 3 Nano Omni, supporting grounding, GUI understanding, and multimodal agentic capabilities.
+
+LocateAnything is developed as part of the Eagle VLM model family. This model is for research and development only.
+
+Demo Videos
+
+Your browser does not support the video tag.
+
+Your browser does not support the video tag.
+
+License/Terms of Use:
+
+This model is released under the NVIDIA License for non-commercial use, which permits use, reproduction, and modification for academic and non-profit research purposes only. Commercial use is not permitted, except by NVIDIA and its affiliates. Redistribution must retain the license and all applicable copyright and attribution notices. The model is provided “as is” without warranty of any kind, and users assume all associated risks.
+
+This model is built using components from third-party models with their respective licenses:
+
+Language model: Qwen2.5-3B-Instruct (Qwen Research License)
+
+Vision encoder: MoonViT-SO-400M (MIT License)
+
+Models are improved using Qwen.
+
+Deployment Geography:
+
+Global
+
+Use Case:
+
+LocateAnything-3B is intended for developers and researchers building vision-language models and applications that require fast and precise visual localization from natural language instructions.
+
+Supported use cases include:
+
+Open-set, common, and long-tail object detection
+
+Dense multi-object detection in cluttered scenes
+
+Phrase and referring-expression grounding
+
+Automated dataset labeling and annotation (e.g., detection, grounding, pointing)
+
+GUI element grounding for interactive and agentic systems
+
+Robotics and autonomous driving perception
+
+Document understanding, layout grounding, and OCR localization
+
+Industrial inspection, surveillance, and remote sensing applications
+
+Point-based localization and fine-grained spatial reasoning
+
+Release Date [Insert the expected release date below]:
+
+Github [05/26/2026] via https://github.com/NVlabs/Eagle/tree/main/Embodied.
+
+Hugging Face [05/26/2026] via https://huggingface.co/nvidia/LocateAnything-3B.
+
+Demo [05/26/2026] via https://huggingface.co/spaces/nvidia/LocateAnything.
+
+Webpage [05/26/2026] via https://research.nvidia.com/labs/lpr/locate-anything/.
+
+Tech Report [05/26/2026] via https://research.nvidia.com/labs/lpr/locate-anything/LocateAnything.pdf
+
+References(s):
+
+Wang et al., LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding, NVIDIA Tech Report, 2026
+
+Kimi Team, Kimi-VL Technical Report, arXiv:2504.07491, 2025.
+
+Qwen Team, Qwen2.5: A Party of Foundation Models, Qwen Blog, 2024.
+
+Chen et al., Pix2Seq: A Language Modeling Framework for Object Detection, ICLR, 2022.
+
+Jiang et al., Detect Anything via Next Point Prediction, arXiv:2510.12798, 2025.
+
+Liu et al., Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set Object Detection, arXiv:2303.05499, 2023.
+
+Lin et al., Microsoft COCO: Common Objects in Context, ECCV, 2014.
+
+Gupta et al., LVIS: A Dataset for Large Vocabulary Instance Segmentation, CVPR, 2019.
+
+Li et al., ScreenSpot-Pro: GUI Grounding for Professional High-Resolution Computer Use, ACM MM, 2025.
+
+Model Architecture:
+
+Architecture Type: Transformer-based vision-language model (VLM). 
+
+Network Architecture: Native-resolution VLM with the following components:
+
+Vision encoder: MoonViT
+
+Language model: Qwen2.5-3B-Instruct
+
+Multimodal projector: MLP projector
+
+Output formulation: Block-based structure for visual grounding
+
+Number of model parameters: 3B.
+
+LocateAnything extends a vision-language model with Parallel Box Decoding (PBD), a block-wise multi-token prediction framework for efficient visual grounding. Instead of autoregressive coordinate generation, the model predicts complete bounding boxes and points in parallel structured units, improving decoding efficiency while preserving geometric consistency. The architecture jointly optimizes next-token prediction and multi-token prediction to balance reasoning ability and parallel inference. Training follows a four-stage pipeline: initial multimodal knowledge adaptation using captioning, VQA, OCR, and related data, followed by grounding and dense-scene localization fine-tuning.
+
+Input(s):
+
+Input Type(s): Image and Text.
+
+Input Format(s):
+
+Image: RGB image input with original source resolution.
+
+Text: Natural-language prompt or task template, such as object categories, referring expressions, GUI instructions, OCR/layout requests, or pointing queries.
+
+Input Parameters:
+
+Image: Two-Dimensional (2D)
+
+Text: One-Dimensional (1D)
+
+Other Properties Related to Input:
+
+Production image resolution supports up to 2.5K.
+
+Prompt length supports up to 24K tokens.
+
+Training detection and grounding stages use a maximum sequence length of 25,600 tokens.
+
+Inference supports up to 8,192 newly generated tokens.
+
+Output(s):
+
+Output Type(s): Text.
+
+Output Format(s):
+
+Text: Model-generated token sequence containing semantic labels and structured coordinate tokens, such as bounding boxes (<box> x1, y1, x2, y2 </box>) and points (<box> x, y </box>).
+
+Output Parameters:
+
+Text: One-Dimensional (1D)
+
+Bounding boxes/points: Two-Dimensional (2D) spatial coordinates
+
+Other Properties Related to Output:
+
+Outputs are organized into fixed-length blocks (length 6), including Semantic, Box, Negative, and End blocks.
+
+A Box block encodes quantized spatial coordinates with structural tokens; unused positions are padded with <null>.
+
+Fast Mode predicts box-aligned blocks in parallel; Slow Mode uses autoregressive decoding; Hybrid Mode defaults to parallel decoding with fallback to autoregressive decoding for format irregularity or spatial ambiguity.
+
+Our AI models are designed and optimized to run on NVIDIA GPU-accelerated systems. By leveraging NVIDIA hardware (e.g., GPU cores) and software frameworks (e.g., CUDA libraries), the model achieves improved training and inference performance compared to CPU-only solutions.
+
+Software Integration:
+
+Runtime Engine(s): 
+
+Transformers. The inference setup uses standard VLM generation with BF16 precision and KV cache. TensorRT, TensorRT-LLM, and Triton are not yet supported.
+
+Supported Hardware Microarchitecture Compatibility:
+
+NVIDIA Ampere (e.g., A100)
+
+NVIDIA Blackwell
+
+NVIDIA Hopper (e.g., H100)
+
+NVIDIA Lovelace (e.g., L40, RTX 4090)
+
+Deployment on embedded platforms such as NVIDIA Thor is possible with additional model optimization, including quantization, compression, or distillation. Other architectures may be supported depending on available memory, precision support, and software configuration.
+
+Supported Operating System(s):
+
+Linux
+
+The integration of foundation and fine-tuned models into AI systems requires additional testing using use-case-specific data to ensure safe and effective deployment. Following the V-model methodology, iterative testing and validation at both unit and system levels are essential to mitigate risks, meet technical and functional requirements, and ensure compliance with safety and ethical standards before deployment.
+
+Model Version(s):
+
+LocateAnything-3B: 3B-parameter research model variant evaluated in Hybrid Mode by default. Fast, Hybrid, and Slow inference modes are supported by the same model formulation.
+
+LocateAnything-3B can be integrated into systems that require spatial grounding from natural language, such as GUI agents, robotics/embodied agents, document-understanding pipelines, OCR/text localization, and open-world detection workflows.
+
+Training, Testing, and Evaluation Datasets:
+
+Data Modality:
+
+Image and Text. 
+
+Image 
+
+Text 
+
+Training Data Size:
+
+Image Training Data Size: 
+
+1 Million to 1 Billion Images - 12M unique images. 
+
+Text Training Data Size: 
+
+1 Billion to 10 Trillion Tokens - Derived from approximately 140M natural-language queries. 
+
+Data Collection Method by dataset: 
+
+Hybrid: Human, Automated 
+
+Data is collected from human-curated and open-source datasets, as well as automated ingestion of publicly available data sources.
+
+Labeling Method by dataset: 
+
+Hybrid: Human, Synthetic, Automated 
+
+Labeling includes original human or open-source annotations, along with model-assisted and synthetic annotation generation using Qwen3-VL, Molmo, SAM 3, and Rex-Omni, with automated post-verification.
+
+Properties: The training data consists of supervised fine-tuning (SFT) datasets with multimodal inputs, primarily image-text pairs and structured annotations such as bounding boxes, points, and negative samples.
+
+The data spans multiple domains, including grounding, open-world grounding, general and dense object detection, scene text detection, GUI understanding and grounding, document layout understanding, and OCR.
+
+Modalities include visual inputs (images) and natural-language queries or instructions. The dataset is derived from a mixture of publicly available academic datasets, along with model-assisted and synthetic annotations. It may include publicly available and potentially copyrighted content; users are responsible for ensuring compliance with applicable usage rights.
+
+The linguistic content primarily consists of short, task-oriented natural-language expressions, such as object categories, referring expressions, GUI instructions, OCR queries, and grounding prompts, typically in English.
+
+Evaluation Dataset:
+
+Data Collection Method by dataset:
+
+Hybrid: Human, Automated
+
+Labeling Method by dataset:
+
+Hybrid: Human, Synthetic, Automated
+
+Properties: The evaluation datasets consist of publicly available benchmarks spanning visual grounding, object detection, document understanding, scene text detection, and GUI-related tasks. Modalities include image inputs paired with natural-language queries and structured annotations such as bounding boxes and points.
+
+The evaluation suite covers both box-level and point-level grounding tasks, with approximately 48K images for box evaluation and 35K images for point evaluation across multiple datasets. These datasets span diverse domains including natural scenes, documents, aerial imagery, and human-centric interactions, enabling comprehensive assessment of localization accuracy and robustness.
+
+Evaluation queries are typically short, task-oriented natural-language expressions such as referring phrases, object categories, and grounding prompts.
+
+Performance is measured using box-based F1 at IoU thresholds of 0.5 and 0.95, as well as mean IoU for detection, layout, and OCR tasks. Point-based localization is evaluated based on whether predicted points fall within ground-truth segmentation masks or bounding boxes. Inference efficiency is reported in boxes per second (BPS) on a single NVIDIA H100 GPU with batch size 1.
+
+Quantitative Evaluation Benchmarks
+
+General Object Detection
+
+Dense Object Detection
+
+GUI Understanding
+
+Layout Grounding and OCR
+
+Referring Expression Grounding
+
+Pointing
+
+Inference:
+
+Test Hardware: H100
+
+We suggest using max_new_tokens=8192 and generation_mode="hybrid" to avoid truncated response and balance speed with accuracy.
+
+Installation
+
+<code class="language-bash">pip install opencv-python-headless==4.11.0.86 transformers==4.57.1 numpy==1.25.0 Pillow==11.1.0 peft torchvision decord==0.6.0 lmdb==1.7.5
+</code>
+
+PyTorch (torch) must be installed separately according to your CUDA version. See pytorch.org/get-started.
+
+Optional — MagiAttention (Hopper / Blackwell GPUs only, recommended for faster MTP inference):
+
+<code class="language-bash">git <span class="hljs-built_in">clone</span> https://github.com/SandAI-org/MagiAttention.git
+<span class="hljs-built_in">cd</span> MagiAttention
+git checkout v1.0.5
+git submodule update --init --recursive
+pip install -r requirements.txt
+pip install --no-build-isolation .
+</code>
+
+If MagiAttention is installed, the model will automatically use it for efficient MTP block-diffusion attention. If not installed, it will fall back to PyTorch SDPA — fully functional but slower for MTP decoding.
+
+Worker (recommended)
+
+Below is a self-contained worker that loads the model once and serves perception queries via a unified predict() plus task-specific convenience methods. You can drop this class into any FastAPI / gRPC / Triton serving framework.
+
+<code class="language-python"><span class="hljs-keyword">import</span> re
+<span class="hljs-keyword">import</span> torch
+<span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image
+<span class="hljs-keyword">from</span> transformers <span class="hljs-keyword">import</span> AutoModel, AutoTokenizer, AutoProcessor
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">LocateAnythingWorker</span>:
+<span class="hljs-string">"""Stateful worker that loads the model once and serves perception queries."""</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, model_path: <span class="hljs-built_in">str</span>, device: <span class="hljs-built_in">str</span> = <span class="hljs-string">"cuda"</span>, dtype=torch.bfloat16</span>):
+self.device = device
+self.dtype = dtype
+
+self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=<span class="hljs-literal">True</span>)
+self.processor = AutoProcessor.from_pretrained(model_path, trust_remote_code=<span class="hljs-literal">True</span>)
+self.model = AutoModel.from_pretrained(
+model_path,
+torch_dtype=dtype,
+trust_remote_code=<span class="hljs-literal">True</span>,
+).to(device).<span class="hljs-built_in">eval</span>()
+
+<span class="hljs-meta"> @torch.no_grad()</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">predict</span>(<span class="hljs-params"></span>
+<span class="hljs-params"> self,</span>
+<span class="hljs-params"> image: Image.Image,</span>
+<span class="hljs-params"> question: <span class="hljs-built_in">str</span>,</span>
+<span class="hljs-params"> generation_mode: <span class="hljs-built_in">str</span> = <span class="hljs-string">"hybrid"</span>, <span class="hljs-comment"># "fast" (MTP) | "slow" (NTP/AR) | "hybrid"</span></span>
+<span class="hljs-params"> max_new_tokens: <span class="hljs-built_in">int</span> = <span class="hljs-number">2048</span>,</span>
+<span class="hljs-params"> temperature: <span class="hljs-built_in">float</span> = <span class="hljs-number">0.7</span>,</span>
+<span class="hljs-params"> verbose: <span class="hljs-built_in">bool</span> = <span class="hljs-literal">True</span>,</span>
+<span class="hljs-params"> </span>) -> <span class="hljs-built_in">dict</span>:
+messages = [
+{<span class="hljs-string">"role"</span>: <span class="hljs-string">"user"</span>, <span class="hljs-string">"content"</span>: [
+{<span class="hljs-string">"type"</span>: <span class="hljs-string">"image"</span>, <span class="hljs-string">"image"</span>: image},
+{<span class="hljs-string">"type"</span>: <span class="hljs-string">"text"</span>, <span class="hljs-string">"text"</span>: question},
+]}
+]
+
+text = self.processor.py_apply_chat_template(
+messages, tokenize=<span class="hljs-literal">False</span>, add_generation_prompt=<span class="hljs-literal">True</span>
+)
+images, videos = self.processor.process_vision_info(messages)
+inputs = self.processor(
+text=[text], images=images, videos=videos, return_tensors=<span class="hljs-string">"pt"</span>
+).to(self.device)
+
+pixel_values = inputs[<span class="hljs-string">"pixel_values"</span>].to(self.dtype)
+input_ids = inputs[<span class="hljs-string">"input_ids"</span>]
+image_grid_hws = inputs.get(<span class="hljs-string">"image_grid_hws"</span>, <span class="hljs-literal">None</span>)
+
+response = self.model.generate(
+pixel_values=pixel_values,
+input_ids=input_ids,
+attention_mask=inputs[<span class="hljs-string">"attention_mask"</span>],
+image_grid_hws=image_grid_hws,
+tokenizer=self.tokenizer,
+max_new_tokens=max_new_tokens,
+use_cache=<span class="hljs-literal">True</span>,
+generation_mode=generation_mode,
+temperature=temperature,
+do_sample=<span class="hljs-literal">True</span>,
+top_p=<span class="hljs-number">0.9</span>,
+repetition_penalty=<span class="hljs-number">1.1</span>,
+verbose=verbose,
+)
+
+result = {<span class="hljs-string">"answer"</span>: response[<span class="hljs-number">0</span>] <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(response, <span class="hljs-built_in">tuple</span>) <span class="hljs-keyword">else</span> response}
+<span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(response, <span class="hljs-built_in">tuple</span>) <span class="hljs-keyword">and</span> <span class="hljs-built_in">len</span>(response) >= <span class="hljs-number">3</span>:
+result[<span class="hljs-string">"history"</span>] = response[<span class="hljs-number">1</span>]
+result[<span class="hljs-string">"stats"</span>] = response[<span class="hljs-number">2</span>]
+<span class="hljs-keyword">return</span> result
+
+<span class="hljs-comment"># ---- Convenience methods for each task ----</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">detect</span>(<span class="hljs-params">self, image: Image.Image, categories: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">str</span>], **kwargs</span>) -> <span class="hljs-built_in">dict</span>:
+<span class="hljs-string">"""Object detection / document layout analysis."""</span>
+cats = <span class="hljs-string">"</c>"</span>.join(categories)
+prompt = <span class="hljs-string">f"Locate all the instances that matches the following description: <span class="hljs-subst">{cats}</span>."</span>
+<span class="hljs-keyword">return</span> self.predict(image, prompt, **kwargs)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">ground_single</span>(<span class="hljs-params">self, image: Image.Image, phrase: <span class="hljs-built_in">str</span>, **kwargs</span>) -> <span class="hljs-built_in">dict</span>:
+<span class="hljs-string">"""Phrase grounding — single instance."""</span>
+prompt = <span class="hljs-string">f"Locate a single instance that matches the following description: <span class="hljs-subst">{phrase}</span>."</span>
+<span class="hljs-keyword">return</span> self.predict(image, prompt, **kwargs)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">ground_multi</span>(<span class="hljs-params">self, image: Image.Image, phrase: <span class="hljs-built_in">str</span>, **kwargs</span>) -> <span class="hljs-built_in">dict</span>:
+<span class="hljs-string">"""Phrase grounding — multiple instances."""</span>
+prompt = <span class="hljs-string">f"Locate all the instances that match the following description: <span class="hljs-subst">{phrase}</span>."</span>
+<span class="hljs-keyword">return</span> self.predict(image, prompt, **kwargs)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">ground_text</span>(<span class="hljs-params">self, image: Image.Image, phrase: <span class="hljs-built_in">str</span>, **kwargs</span>) -> <span class="hljs-built_in">dict</span>:
+<span class="hljs-string">"""Text grounding."""</span>
+prompt = <span class="hljs-string">f"Please locate the text referred as <span class="hljs-subst">{phrase}</span>."</span>
+<span class="hljs-keyword">return</span> self.predict(image, prompt, **kwargs)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">detect_text</span>(<span class="hljs-params">self, image: Image.Image, **kwargs</span>) -> <span class="hljs-built_in">dict</span>:
+<span class="hljs-string">"""Scene text detection."""</span>
+prompt = <span class="hljs-string">"Detect all the text in box format."</span>
+<span class="hljs-keyword">return</span> self.predict(image, prompt, **kwargs)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">ground_gui</span>(<span class="hljs-params">self, image: Image.Image, phrase: <span class="hljs-built_in">str</span>, output_type: <span class="hljs-built_in">str</span> = <span class="hljs-string">"box"</span>, **kwargs</span>) -> <span class="hljs-built_in">dict</span>:
+<span class="hljs-string">"""GUI grounding (box or point)."""</span>
+<span class="hljs-keyword">if</span> output_type == <span class="hljs-string">"point"</span>:
+prompt = <span class="hljs-string">f"Point to: <span class="hljs-subst">{phrase}</span>."</span>
+<span class="hljs-keyword">else</span>:
+prompt = <span class="hljs-string">f"Locate the region that matches the following description: <span class="hljs-subst">{phrase}</span>."</span>
+<span class="hljs-keyword">return</span> self.predict(image, prompt, **kwargs)
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">point</span>(<span class="hljs-params">self, image: Image.Image, phrase: <span class="hljs-built_in">str</span>, **kwargs</span>) -> <span class="hljs-built_in">dict</span>:
+<span class="hljs-string">"""Pointing."""</span>
+prompt = <span class="hljs-string">f"Point to: <span class="hljs-subst">{phrase}</span>."</span>
+<span class="hljs-keyword">return</span> self.predict(image, prompt, **kwargs)
+
+<span class="hljs-comment"># ---- Utility: parse model output ----</span>
+
+<span class="hljs-meta"> @staticmethod</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_boxes</span>(<span class="hljs-params">answer: <span class="hljs-built_in">str</span>, image_width: <span class="hljs-built_in">int</span>, image_height: <span class="hljs-built_in">int</span></span>) -> <span class="hljs-built_in">list</span>[<span class="hljs-built_in">dict</span>]:
+<span class="hljs-string">"""Parse model output into pixel-coordinate bounding boxes.</span>
+<span class="hljs-string"></span>
+<span class="hljs-string"> Coordinates in model output are normalized integers in [0, 1000].</span>
+<span class="hljs-string"> """</span>
+boxes = []
+<span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> re.finditer(<span class="hljs-string">r"<box><(\d+)><(\d+)><(\d+)><(\d+)></box>"</span>, answer):
+x1, y1, x2, y2 = [<span class="hljs-built_in">int</span>(g) <span class="hljs-keyword">for</span> g <span class="hljs-keyword">in</span> m.groups()]
+boxes.append({
+<span class="hljs-string">"x1"</span>: x1 / <span class="hljs-number">1000</span> * image_width,
+<span class="hljs-string">"y1"</span>: y1 / <span class="hljs-number">1000</span> * image_height,
+<span class="hljs-string">"x2"</span>: x2 / <span class="hljs-number">1000</span> * image_width,
+<span class="hljs-string">"y2"</span>: y2 / <span class="hljs-number">1000</span> * image_height,
+})
+<span class="hljs-keyword">return</span> boxes
+
+<span class="hljs-meta"> @staticmethod</span>
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">parse_points</span>(<span class="hljs-params">answer: <span class="hljs-built_in">str</span>, image_width: <span class="hljs-built_in">int</span>, image_height: <span class="hljs-built_in">int</span></span>) -> <span class="hljs-built_in">list</span>[<span class="hljs-built_in">dict</span>]:
+<span class="hljs-string">"""Parse model output into pixel-coordinate points."""</span>
+points = []
+<span class="hljs-keyword">for</span> m <span class="hljs-keyword">in</span> re.finditer(<span class="hljs-string">r"<box><(\d+)><(\d+)></box>"</span>, answer):
+x, y = <span class="hljs-built_in">int</span>(m.group(<span class="hljs-number">1</span>)), <span class="hljs-built_in">int</span>(m.group(<span class="hljs-number">2</span>))
+points.append({
+<span class="hljs-string">"x"</span>: x / <span class="hljs-number">1000</span> * image_width,
+<span class="hljs-string">"y"</span>: y / <span class="hljs-number">1000</span> * image_height,
+})
+<span class="hljs-keyword">return</span> points
+</code>
+
+Usage Example
+
+<code class="language-python">worker = LocateAnythingWorker(<span class="hljs-string">"nvidia/LocateAnything-3B"</span>)
+img = Image.<span class="hljs-built_in">open</span>(<span class="hljs-string">"example.jpg"</span>).convert(<span class="hljs-string">"RGB"</span>)
+
+<span class="hljs-comment"># Object Detection</span>
+result = worker.detect(img, [<span class="hljs-string">"person"</span>, <span class="hljs-string">"car"</span>, <span class="hljs-string">"bicycle"</span>])
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"Detection:"</span>, result[<span class="hljs-string">"answer"</span>])
+
+<span class="hljs-comment"># Phrase Grounding (multiple)</span>
+result = worker.ground_multi(img, <span class="hljs-string">"people wearing red shirts"</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"Grounding:"</span>, result[<span class="hljs-string">"answer"</span>])
+
+<span class="hljs-comment"># Scene Text Detection</span>
+result = worker.detect_text(img)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"Text Detection:"</span>, result[<span class="hljs-string">"answer"</span>])
+
+<span class="hljs-comment"># Pointing</span>
+result = worker.point(img, <span class="hljs-string">"the traffic light"</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"Pointing:"</span>, result[<span class="hljs-string">"answer"</span>])
+
+<span class="hljs-comment"># GUI Grounding (point)</span>
+result = worker.ground_gui(img, <span class="hljs-string">"the search button"</span>, output_type=<span class="hljs-string">"point"</span>)
+<span class="hljs-built_in">print</span>(<span class="hljs-string">"GUI Point:"</span>, result[<span class="hljs-string">"answer"</span>])
+
+<span class="hljs-comment"># Parse structured output into pixel coordinates</span>
+w, h = img.size
+boxes = LocateAnythingWorker.parse_boxes(result[<span class="hljs-string">"answer"</span>], w, h)
+points = LocateAnythingWorker.parse_points(result[<span class="hljs-string">"answer"</span>], w, h)
+</code>
+
+Supported Tasks & Prompt Templates
+
+Task
+Worker Method
+Output
+Prompt Template
+
+Object Detection
+worker.detect(img, [...])
+Box
+Locate all the instances that matches the following description: [CATEGORIES].
+
+Phrase Grounding (single)
+worker.ground_single(img, phrase)
+Single Box
+Locate a single instance that matches the following description: [PHRASE].
+
+Phrase Grounding (multi)
+worker.ground_multi(img, phrase)
+Multiple Boxes
+Locate all the instances that match the following description: [PHRASE].
+
+Text Grounding
+worker.ground_text(img, phrase)
+Box
+Please locate the text referred as [PHRASE].
+
+Scene Text Detection
+worker.detect_text(img)
+Box
+Detect all the text in box format.
+
+Document Layout Analysis
+worker.detect(img, [...])
+Box
+Locate all the instances that matches the following description: [CATEGORIES].
+
+GUI Grounding (box)
+worker.ground_gui(img, phrase, "box")
+Box
+Locate the region that matches the following description: [PHRASE].
+
+GUI Grounding (point) / Pointing
+worker.ground_gui(img, phrase, "point") / worker.point(img, phrase)
+Point
+Point to: [PHRASE].
+
+[PHRASE] is a free-form natural-language description; [CATEGORIES] is a comma-separated list (multiple categories may also be joined with </c>).
+
+Generation Modes
+
+Mode
+Description
+Speed
+Accuracy
+
+fast
+MTP only, never falls back to AR
+Fastest
+Good for simple scenes
+
+slow
+Pure auto-regressive decoding
+Slowest
+Most robust
+
+hybrid (default)
+MTP first, falls back to AR on uncertain boxes, switches back after box boundary
+Balanced
+Best overall
+
+Ethical Considerations:
+
+NVIDIA believes Trustworthy AI is a shared responsibility and we have established policies and practices to enable development for a wide array of AI applications. When downloaded or used in accordance with our terms of service, developers should work with their internal model team to ensure this model meets requirements for the relevant industry and use case and addresses unforeseen product misuse.
+
+Please make sure you have proper rights and permissions for all input image and video content; if image or video includes people, personal health information, or intellectual property, the image or video generated will not blur or maintain proportions of image subjects included.
+
+Please report model quality, risk, security vulnerabilities or NVIDIA AI Concerns here.
+
+Downloads last month 101,823 
+
+Safetensors
+
+Model size
+
+4B params
+
+Tensor type
+
+BF16 
+·
+
+Chat template
+
+Files info
+
+Inference Providers NEW
+
+Image-Text-to-Text
+
+This model isn't deployed by any Inference Provider. 🙋 13 Ask for provider support
+
+Model tree for nvidia/LocateAnything-3B 
+
+Base model
+
+Qwen/Qwen2.5-3B
+
+Finetuned
+
+Qwen/Qwen2.5-3B-Instruct
+
+Finetuned
+(1324) 
+
+this model
+
+Finetunes
+
+2 models
+
+Quantizations
+
+10 models
+
+Spaces using nvidia/LocateAnything-3B 12
+
+Collection including nvidia/LocateAnything-3B
+
+Eagle
+
+Collection
+
+Eagle is a family of frontier vision-language models with data-centric strategies. The model supports both HD image and long-context video input. • 17 items • Updated 2 days ago • 46
+
+Papers for nvidia/LocateAnything-3B
+
+LocateAnything: Fast and High-Quality Vision-Language Grounding with Parallel Box Decoding
+
+Paper • 2605.27365 • Published 11 days ago • 138 
+
+Detect Anything via Next Point Prediction
+
+Paper • 2510.12798 • Published Oct 14, 2025 • 53 
+
+Kimi-VL Technical Report
+
+Paper • 2504.07491 • Published Apr 10, 2025 • 142 
+
+ScreenSpot-Pro: GUI Grounding for Professional High-Resolution Computer
+Use
+
+Paper • 2504.07981 • Published Apr 4, 2025 • 7 
+
+Grounding DINO: Marrying DINO with Grounded Pre-Training for Open-Set
+Object Detection
+
+Paper • 2303.05499 • Published Mar 9, 2023 • 7

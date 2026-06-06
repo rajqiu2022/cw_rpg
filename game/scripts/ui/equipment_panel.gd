@@ -4,8 +4,8 @@ extends Control
 
 signal closed
 
-@onready var _close_btn: TextureButton = $BtnClose
-@onready var _panel_bg: TextureRect = $PanelBg
+@onready var _close_btn: TextureButton = $Container/BtnClose
+@onready var _panel_bg: TextureRect = $Container/PanelBg
 
 const SLOT_POSITIONS := [
 	Vector2(130, 290),  # 武器
@@ -18,8 +18,8 @@ const SLOT_POSITIONS := [
 const SLOT_SIZE := Vector2(80, 70)
 
 @onready var _attr_labels: Array[Label] = [
-	$AttrGroup/Attr_筋骨, $AttrGroup/Attr_机敏, $AttrGroup/Attr_内劲, $AttrGroup/Attr_悟性,
-	$AttrGroup/Attr_生命, $AttrGroup/Attr_内力, $AttrGroup/Attr_攻击, $AttrGroup/Attr_防御, $AttrGroup/Attr_速度,
+	$Container/AttrGroup/Attr_筋骨, $Container/AttrGroup/Attr_机敏, $Container/AttrGroup/Attr_内劲, $Container/AttrGroup/Attr_悟性,
+	$Container/AttrGroup/Attr_生命, $Container/AttrGroup/Attr_内力, $Container/AttrGroup/Attr_攻击, $Container/AttrGroup/Attr_防御, $Container/AttrGroup/Attr_速度,
 ]
 var _slot_labels: Array[Label] = []
 
