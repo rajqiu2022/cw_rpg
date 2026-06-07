@@ -3,8 +3,7 @@ extends Control
 signal closed
 
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
-const UI_DISPLAY_ART := preload("res://scripts/ui/ui_display_art.gd")
-const DISPLAY_ART_PATH := "res://art/ui/quest/ui_quest_panel_bright.png"
+const ART_DIR := "res://art/ui/quest/"
 
 @onready var quest_list: VBoxContainer = %QuestList
 @onready var detail: RichTextLabel = %Detail
@@ -34,7 +33,6 @@ const CHAPTER_NAMES := {
 func _ready() -> void:
 	_build_formal_layout()
 	_apply_visual_style()
-	UI_DISPLAY_ART.install_fullscreen_panel(self, DISPLAY_ART_PATH, close)
 	close_btn.pressed.connect(close)
 	QuestManager.active_quests_changed.connect(_refresh)
 	_refresh()
@@ -103,8 +101,13 @@ func _build_formal_layout() -> void:
 		body.add_child(actions)
 		_track_btn = Button.new()
 		_track_btn.text = "追踪当前任务"
-		_track_btn.custom_minimum_size = Vector2(180, 42)
+		_track_btn.custom_minimum_size = Vector2(190, 50)
+		_track_btn.tooltip_text = "追踪当前任务"
 		UI_THEME.style_button(_track_btn, 16, UI_THEME.JADE)
+		_apply_btn_textures(_track_btn, "btn_track")
+		var tl := _track_btn.get_child(_track_btn.get_child_count() - 1) as Label
+		if tl != null:
+			tl.text = "追踪当前任务"
 		_track_btn.pressed.connect(_track_selected)
 		actions.add_child(_track_btn)
 	else:
@@ -118,8 +121,15 @@ func _add_filter_button(label: String, mode: String) -> void:
 		return
 	var btn: Button = Button.new()
 	btn.text = label
-	btn.custom_minimum_size = Vector2(96, 38)
+	btn.custom_minimum_size = Vector2(105, 42)
+	btn.tooltip_text = label
 	UI_THEME.style_button(btn, 15, UI_THEME.BLUE_STEEL)
+	# 使用 tab 贴图
+	_apply_btn_textures(btn, "tab")
+	# 覆盖文字（_apply_btn_textures 清空了 text）
+	var lbl := btn.get_child(btn.get_child_count() - 1) as Label
+	if lbl != null:
+		lbl.text = label
 	btn.pressed.connect(func(): _set_filter(mode))
 	_filter_row.add_child(btn)
 
@@ -149,18 +159,49 @@ func _apply_visual_style() -> void:
 	var dim: ColorRect = get_node_or_null("Dim") as ColorRect
 	if dim != null:
 		dim.color = Color(0.005, 0.010, 0.016, 0.58)
+
+	# 面板背景贴图
 	var panel: PanelContainer = get_node_or_null("Panel") as PanelContainer
 	if panel != null:
 		panel.offset_left = -640
 		panel.offset_top = -350
 		panel.offset_right = 640
 		panel.offset_bottom = 350
-		panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.060, 0.075, 0.98), UI_THEME.BLUE_STEEL, 18, 3))
+		var panel_tex = _try_load("panel_bg.png")
+		if panel_tex != null:
+			var sb := StyleBoxTexture.new()
+			sb.texture = panel_tex
+			sb.modulate_color = Color(1, 1, 1, 0.97)
+			panel.add_theme_stylebox_override("panel", sb)
+		else:
+			panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.060, 0.075, 0.98), UI_THEME.BLUE_STEEL, 18, 3))
+
 	var title: Label = get_node_or_null("Panel/Body/Header/Title") as Label
 	if title != null:
 		title.text = "任务卷宗"
 		UI_THEME.style_label(title, 34, UI_THEME.GOLD_LIGHT)
-	UI_THEME.style_button(close_btn, 16, UI_THEME.CRIMSON)
+
+	# 关闭按钮贴图
+	close_btn.tooltip_text = "关闭"
+	_apply_btn_textures(close_btn, "btn_close")
+	# 覆盖文字
+	var cl := close_btn.get_child(close_btn.get_child_count() - 1) as Label
+	if cl != null:
+		cl.text = "✕"
+
+	# 详情区贴图
+	var detail_tex := _try_load("detail_panel.png")
+	var detail_parent := detail.get_parent() as Control
+	if detail_parent != null and detail_tex != null:
+		var dt := TextureRect.new()
+		dt.texture = detail_tex
+		dt.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		dt.stretch_mode = TextureRect.STRETCH_SCALE
+		dt.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		dt.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		detail_parent.add_child(dt)
+		detail_parent.move_child(dt, 0)
+
 	UI_THEME.style_rich_text(detail, 18)
 
 
@@ -247,12 +288,21 @@ func _quest_visible(q: QuestDef, status: int) -> bool:
 
 
 func _make_quest_row(qid: StringName, q: QuestDef, status: int) -> Control:
+	var is_sel := qid == _selected_qid
+	var tex_name := "quest_row_selected.png" if is_sel else "quest_row_normal.png"
+	var row_tex := _try_load(tex_name)
+
 	var row_panel: PanelContainer = PanelContainer.new()
-	row_panel.custom_minimum_size = Vector2(0, 96)
-	var border := _status_color(status)
-	if qid == _selected_qid:
-		border = UI_THEME.GOLD_LIGHT
-	row_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.038, 0.060, 0.072, 0.90), border, 12, 1))
+	row_panel.custom_minimum_size = Vector2(0, 100)
+
+	if row_tex != null:
+		var sb := StyleBoxTexture.new()
+		sb.texture = row_tex
+		row_panel.add_theme_stylebox_override("panel", sb)
+	else:
+		var border := UI_THEME.GOLD_LIGHT if is_sel else _status_color(status)
+		row_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.038, 0.060, 0.072, 0.90), border, 12, 1))
+
 	var btn: Button = Button.new()
 	btn.custom_minimum_size = Vector2(0, 84)
 	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -408,6 +458,45 @@ func _status_color(status: int) -> Color:
 			return UI_THEME.CRIMSON
 		_:
 			return UI_THEME.GOLD
+
+
+func _try_load(name: String) -> Texture2D:
+	var path := ART_DIR + name
+	if ResourceLoader.exists(path):
+		return load(path)
+	return null
+
+
+func _apply_btn_textures(btn: Button, base_name: String) -> void:
+	var t_n := _try_load(base_name + "_normal.png")
+	var t_h := _try_load(base_name + "_hover.png")
+	var t_p := _try_load(base_name + "_pressed.png")
+	if t_n == null:
+		return
+	btn.flat = true
+	btn.text = ""
+	btn.custom_minimum_size = Vector2(t_n.get_width(), t_n.get_height())
+	btn.add_theme_stylebox_override("normal", _make_texture_stylebox(t_n))
+	if t_h != null:
+		btn.add_theme_stylebox_override("hover", _make_texture_stylebox(t_h))
+	if t_p != null:
+		btn.add_theme_stylebox_override("pressed", _make_texture_stylebox(t_p))
+	# 文字叠在按钮上
+	var lbl := Label.new()
+	lbl.text = btn.tooltip_text if btn.tooltip_text != "" else ""
+	lbl.add_theme_font_size_override("font_size", 16)
+	lbl.add_theme_color_override("font_color", Color(0.85, 0.92, 0.98))
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	lbl.anchors_preset = Control.PRESET_FULL_RECT
+	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	btn.add_child(lbl)
+
+
+func _make_texture_stylebox(tex: Texture2D) -> StyleBoxTexture:
+	var sb := StyleBoxTexture.new()
+	sb.texture = tex
+	return sb
 
 
 func _unhandled_input(event: InputEvent) -> void:
