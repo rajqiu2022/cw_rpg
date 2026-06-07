@@ -4,7 +4,7 @@ signal closed
 
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
 const UI_DISPLAY_ART := preload("res://scripts/ui/ui_display_art.gd")
-const DISPLAY_ART_PATH := "res://art/ui/cold_wuxia/v2/ui_display_quest_bright.png"
+const DISPLAY_ART_PATH := "res://art/ui/quest/ui_quest_panel_bright.png"
 
 @onready var quest_list: VBoxContainer = %QuestList
 @onready var detail: RichTextLabel = %Detail
