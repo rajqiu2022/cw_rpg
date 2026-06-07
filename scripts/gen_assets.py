@@ -259,6 +259,7 @@ def render_template(template_name: str, vars_: dict, shared: dict) -> dict:
         "size": tpl.get("size") or defaults.get("size", "1024x1024"),
         "quality": tpl.get("quality") or defaults.get("quality", "medium"),
         "background": tpl.get("background") or defaults.get("background", "opaque"),
+        "resolution": tpl.get("resolution") or defaults.get("resolution", "1k"),
         "reference_images": refs,
     }
 
@@ -541,6 +542,7 @@ async def _call_alapi_generation(
         "n": 1,
         "size": spec["size"],
         "quality": spec["quality"],
+        "resolution": spec.get("resolution", "1k"),
     }
     if image_refs:
         payload["image"] = image_refs
