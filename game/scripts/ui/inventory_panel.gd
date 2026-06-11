@@ -48,10 +48,6 @@ const QUALITY_NAMES := {
 	Item.Quality.COMMON: "凡品", Item.Quality.UNCOMMON: "优质",
 	Item.Quality.RARE: "高品", Item.Quality.EPIC: "稀有", Item.Quality.LEGENDARY: "尚品",
 }
-const STAT_COLORS := {
-	"筋骨": "#ff8a80", "机敏": "#b9f6ca", "内劲": "#82b1ff", "悟性": "#b388ff",
-	"生命": "#ff5252", "内力": "#448aff", "防御": "#b0bec5",
-}
 
 var _current_filter: String = "all"
 var _selected_item: Item = null
@@ -135,7 +131,17 @@ func _setup_tabs() -> void:
 
 
 func _set_filter(key: String) -> void:
+	_set_filter_internal(key, true)
+
+func _set_filter_internal(key: String, emit_events: bool) -> void:
 	_current_filter = key
+	_selected_item = null
+	_selected_count = 0
+	if emit_events:
+		if key == "equipment":
+			EventBus.ui_requested.emit(&"equipment")
+			return
+		
 	_refresh()
 
 
@@ -164,7 +170,7 @@ func _refresh() -> void:
 		var empty: Label = Label.new()
 		empty.text = "暂无物品"
 		empty.add_theme_color_override("font_color", Color(0.48, 0.58, 0.64, 1))
-		empty.add_theme_font_size_override("font_size", 16)
+		empty.add_theme_font_size_override("font_size", 18)
 		_slot_grid.add_child(empty)
 		if _detail_label != null: _detail_label.text = ""
 		return
@@ -230,7 +236,7 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	name_lbl.clip_text = true
-	name_lbl.add_theme_font_size_override("font_size", 10)
+	name_lbl.add_theme_font_size_override("font_size", 12)
 	name_lbl.add_theme_color_override("font_color", Color(0.8, 0.88, 0.94))
 	cell.add_child(name_lbl)
 
@@ -238,11 +244,19 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 		var lbl: Label = Label.new()
 		lbl.text = str(count)
 		lbl.position = Vector2(55, 1)
-		lbl.add_theme_font_size_override("font_size", 11)
+		lbl.add_theme_font_size_override("font_size", 13)
 		lbl.add_theme_color_override("font_color", Color.WHITE)
 		cell.add_child(lbl)
 
 	cell.set_meta("slot_index", slot_index)
+	# Equipped indicator
+	if item is Equipment and Inventory.get_equipped_id((item as Equipment).slot) == item.item_id:
+		var check := Label.new()
+		check.text = "✓"
+		check.position = Vector2(56, 48)
+		check.add_theme_font_size_override("font_size", 30)
+		check.add_theme_color_override("font_color", Color(1, 0.2, 0.2))
+		cell.add_child(check)
 	cell.gui_input.connect(func(ev: InputEvent): _on_cell_input(ev, item, count, slot_index, cell))
 	return cell
 
@@ -280,15 +294,36 @@ func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cel
 			_highlight_cell(cell)
 			_show_detail(item, count)
 		elif mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed:
-			_context_slot_index = slot_index
-			var entry: Dictionary = _get_slot(slot_index)
-			var it: Item = entry.get("item")
-			for i in 4: _context_menu.set_item_disabled(i, it == null)
-			if it != null:
-				_context_menu.set_item_disabled(1, it.category != Item.Category.CONSUMABLE)
-				_context_menu.set_item_disabled(2, not it is Equipment)
-			_context_menu.position = Vector2i(int(get_global_mouse_position().x), int(get_global_mouse_position().y))
-			_context_menu.popup()
+			if item is Equipment:
+				if Inventory.get_equipped_id((item as Equipment).slot) == item.item_id:
+					Inventory.unequip((item as Equipment).slot)
+				else:
+					Inventory.equip(item.item_id)
+				# If not already in equipment mode, switch to it
+				if _current_filter != "equipment":
+					EventBus.ui_requested.emit(&"equipment")
+				else:
+					_refresh()
+			elif item.category == Item.Category.CONSUMABLE:
+				var p: CharacterStats = GameState.player
+				if p == null: return
+				if item.heal_hp > 0 and p.hp >= p.max_hp and item.heal_mp == 0:
+					_show_tip("当前已满血")
+				elif item.heal_mp > 0 and p.mp >= p.max_mp and item.heal_hp == 0:
+					_show_tip("当前已满内力")
+				else:
+					var old_hp := p.hp
+					var old_mp := p.mp
+					if Inventory.use_item(item.item_id):
+						var tip := ""
+						if p.hp > old_hp: tip += "HP +%d " % (p.hp - old_hp)
+						if p.mp > old_mp: tip += "MP +%d" % (p.mp - old_mp)
+						if tip != "": _show_tip(tip)
+						_refresh()
+			else:
+				_context_slot_index = slot_index
+				_context_menu.position = Vector2i(int(get_global_mouse_position().x), int(get_global_mouse_position().y))
+				_context_menu.popup()
 
 
 func _highlight_cell(cell: TextureRect) -> void:
@@ -297,6 +332,31 @@ func _highlight_cell(cell: TextureRect) -> void:
 	cell.texture = CELL_SELECTED
 	_highlighted_cell = cell
 
+
+func _show_tip(text: String) -> void:
+	var panel := PanelContainer.new()
+	panel.add_theme_stylebox_override("panel", StyleBoxFlat.new())
+	var style: StyleBoxFlat = panel.get_theme_stylebox("panel")
+	style.bg_color = Color(0, 0, 0, 0.75)
+	style.corner_radius_top_left = 6
+	style.corner_radius_top_right = 6
+	style.corner_radius_bottom_left = 6
+	style.corner_radius_bottom_right = 6
+	style.content_margin_left = 10
+	style.content_margin_right = 10
+	style.content_margin_top = 4
+	style.content_margin_bottom = 4
+	var lbl := Label.new()
+	lbl.text = text
+	lbl.add_theme_font_size_override("font_size", 17)
+	lbl.add_theme_color_override("font_color", Color(0.3, 1, 0.4))
+	panel.add_child(lbl)
+	panel.position = get_global_mouse_position() - global_position + Vector2(10, -40)
+	add_child(panel)
+	var tween := create_tween()
+	tween.tween_property(panel, "position", panel.position + Vector2(0, -50), 1.2)
+	tween.parallel().tween_property(panel, "modulate", Color(1,1,1,0), 1.2)
+	tween.tween_callback(panel.queue_free)
 
 func _on_use_selected() -> void:
 	if _selected_item != null and _selected_item.category == Item.Category.CONSUMABLE:
@@ -332,46 +392,46 @@ func _show_detail(item: Item, count: int) -> void:
 	var qn: String = QUALITY_NAMES.get(item.quality, "")
 
 	var lines: Array[String] = []
-	lines.append("[font_size=19][color=%s]%s[/color][/font_size]" % [qc, item.display_name])
-	lines.append("[font_size=13][color=#667788]%s · ×%d[/color][/font_size]" % [_cat_text(item), count])
+	lines.append("[font_size=21][color=%s]%s[/color][/font_size]" % [qc, item.display_name])
+	lines.append("[font_size=15][color=#667788]%s · ×%d[/color][/font_size]" % [_cat_text(item), count])
 	lines.append("[font_size=15][color=#bcc8cc]%s[/color][/font_size]" % item.description)
 
-	if item is Equipment:
-		var eq := item as Equipment
-		lines.append("[font_size=13][color=#778899]—— %s ——[/color][/font_size]" % Inventory.slot_display_name(eq.slot))
-		var bonus: String = _bonus_text(eq)
-		if bonus != "":
-			lines.append(bonus)
-	elif item.category == Item.Category.CONSUMABLE:
+	# Consumable effects
+	if item.category == Item.Category.CONSUMABLE:
 		var fx: Array[String] = []
 		if item.heal_hp > 0: fx.append("[color=#ff6b6b]生命+%d[/color]" % item.heal_hp)
 		if item.heal_mp > 0: fx.append("[color=#64b5f6]内力+%d[/color]" % item.heal_mp)
 		if not fx.is_empty():
-			lines.append("[font_size=13]%s[/font_size]" % "  ".join(fx))
+			lines.append("[font_size=15]%s[/font_size]" % "  ".join(fx))
 
-	lines.append("[font_size=12][color=#778899]买 %d · 卖 %d[/color][/font_size]" % [item.buy_price, item.sell_price])
+	# Equipment stat bonuses — larger, separate section
+	if item is Equipment:
+		var eq := item as Equipment
+		lines.append("")
+		lines.append("[font_size=13][color=#667788]—— %s ——[/color][/font_size]" % Inventory.slot_display_name(eq.slot))
+		var bonus_lines: Array[String] = []
+		var stat_bonuses: Array[Dictionary] = [
+			{"name": "筋骨", "val": eq.get_strength_bonus(), "standout": false},
+			{"name": "机敏", "val": eq.get_agility_bonus(), "standout": false},
+			{"name": "内劲", "val": eq.get_inner_power_bonus(), "standout": false},
+			{"name": "悟性", "val": eq.get_insight_bonus(), "standout": false},
+			{"name": "生命", "val": eq.get_vitality_bonus(), "standout": true},
+			{"name": "内力", "val": eq.get_inner_pool_bonus(), "standout": true},
+			{"name": "防御", "val": eq.get_guard_bonus(), "standout": true},
+		]
+		var row: Array[String] = []
+		for s in stat_bonuses:
+			if s["val"] != 0:
+				var color: String = "#ff8c42" if s["standout"] else "#e8e8e8"
+				row.append("[color=%s]%s%+d[/color]" % [color, s["name"], s["val"]])
+		if not row.is_empty():
+			bonus_lines.append("[font_size=18]%s[/font_size]" % "  ".join(row))
+		var bonus: String = "\n".join(bonus_lines)
+		if bonus != "":
+			lines.append(bonus)
+
+	lines.append("[font_size=14][color=#889999]卖出 %d[/color][/font_size]" % item.sell_price)
 	_detail_label.text = "\n".join(lines)
-
-
-func _bonus_text(eq: Equipment) -> String:
-	var parts: Array[String] = []
-	if eq.get_strength_bonus() != 0: parts.append("[color=%s]筋骨%+d[/color]" % [STAT_COLORS["筋骨"], eq.get_strength_bonus()])
-	if eq.get_agility_bonus() != 0: parts.append("[color=%s]机敏%+d[/color]" % [STAT_COLORS["机敏"], eq.get_agility_bonus()])
-	if eq.get_inner_power_bonus() != 0: parts.append("[color=%s]内劲%+d[/color]" % [STAT_COLORS["内劲"], eq.get_inner_power_bonus()])
-	if eq.get_insight_bonus() != 0: parts.append("[color=%s]悟性%+d[/color]" % [STAT_COLORS["悟性"], eq.get_insight_bonus()])
-	if eq.get_vitality_bonus() != 0: parts.append("[color=%s]生命%+d[/color]" % [STAT_COLORS["生命"], eq.get_vitality_bonus()])
-	if eq.get_inner_pool_bonus() != 0: parts.append("[color=%s]内力%+d[/color]" % [STAT_COLORS["内力"], eq.get_inner_pool_bonus()])
-	if eq.get_guard_bonus() != 0: parts.append("[color=%s]防御%+d[/color]" % [STAT_COLORS["防御"], eq.get_guard_bonus()])
-	var lines: Array[String] = []
-	var row: Array[String] = []
-	for p in parts:
-		row.append(p)
-		if row.size() >= 3:
-			lines.append("[font_size=13]%s[/font_size]" % "  ".join(row))
-			row.clear()
-	if not row.is_empty():
-		lines.append("[font_size=13]%s[/font_size]" % "  ".join(row))
-	return "\n".join(lines) if not lines.is_empty() else ""
 
 
 func _cat_text(item: Item) -> String:

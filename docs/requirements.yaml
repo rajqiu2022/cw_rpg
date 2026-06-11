@@ -28,21 +28,48 @@ modules:
 
       - id: equipment
         title: 装备系统
-        requirements:
-          - id: req-equipment-panel-v1
-            title: 装备页功能与布局定稿
-            description: 按角色展示、装备槽、详情卡、属性汇总的结构设计装备页，并明确装备加成字段。
-            status: planned
-            phase: 功能设计
-            priority: 1
-            owner_agent: system
-            acceptance: |
-              - 装备槽与现有 6 槽兼容
-              - 装备加成支持筋骨、机敏、内劲、悟性、生命、内力、防御
-              - 装备页不出现英文属性名
-            links: |
-              images/装备界面UI.png
-              game/scripts/ui/equipment_panel.gd
+        description: 6槽纸娃娃布局，背包联动即时装卸，hover Tips 显示属性
+        submodules:
+          - id: equipment-entry
+            title: 进入方式
+            requirements:
+              - id: req-equip-entry-v1
+                title: 多入口打开装备界面
+                description: E键/装备页签/HUD按钮打开，左侧背包(装备分类)左移+右侧装备面板(6槽+9属性)
+                status: done
+          - id: equipment-layout
+            title: 界面布局
+            requirements:
+              - id: req-equip-layout-left
+                title: 左侧背包左移对齐槽位
+                status: done
+              - id: req-equip-layout-right
+                title: 右侧6槽+9属性实时更新
+                status: done
+          - id: equipment-actions
+            title: 装备操作
+            requirements:
+              - id: req-equip-equip-v1
+                title: 点击装备道具自动装备
+                status: done
+              - id: req-equip-unequip-v1
+                title: 点击槽位卸下
+                status: done
+              - id: req-equip-rightclick-v1
+                title: 右键快捷装卸+自动切装备页签
+                status: done
+          - id: equipment-tooltip
+            title: 槽位 Tips
+            requirements:
+              - id: req-equip-tooltip-v1
+                title: 鼠标移上槽位显示属性tips(半透明AI底框)
+                status: done
+          - id: equipment-close
+            title: 关闭行为
+            requirements:
+              - id: req-equip-close-v1
+                title: ESC/切页签/按I关闭装备
+                status: done
 
   - id: ui-art
     title: 冷色武侠 UI 美术

@@ -733,6 +733,7 @@ func _init_formal_hud() -> void:
 func _apply_formal_hud_mode() -> void:
 	if scene_title != null:
 		scene_title.visible = false
+		_equipment_panel.anchors_preset = 0
 	if player_info != null:
 		player_info.visible = false
 	if hud_gold != null:
@@ -1040,6 +1041,8 @@ func _open_quest_log_panel() -> void:
 	if _quest_panel_full == null:
 		return
 	if _inventory_panel != null:
+		var d: ColorRect = _inventory_panel.get_node_or_null("Dim")
+		if d: d.visible = true
 		_inventory_panel.visible = false
 	if _equipment_panel != null:
 		_equipment_panel.visible = false
@@ -1066,7 +1069,8 @@ func _on_ui_requested(panel_id: StringName) -> void:
 		&"inventory":
 			_open_inventory_panel()
 		&"close_equipment":
-			if _equipment_panel: _equipment_panel.close()
+			if _equipment_panel:
+				_equipment_panel.visible = false
 		&"equipment":
 			_open_equipment_panel()
 		&"skills":
@@ -1096,9 +1100,20 @@ func _init_m5_panels() -> void:
 
 
 func _open_inventory_panel() -> void:
-
 	if _inventory_panel == null:
 		return
+	# Restore MainPanel center
+	var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
+	if mp:
+		mp.offset_left = -640
+		mp.offset_right = 640
+		mp.offset_top = -360
+		mp.offset_bottom = 360
+	var dim: ColorRect = _inventory_panel.get_node_or_null("Dim")
+	if dim:
+		dim.visible = true
+	# Reset to "all" tab when opening via I (not via equipment)
+	_inventory_panel.call("_set_filter_internal", "all", false)
 	if _equipment_panel != null:
 		_equipment_panel.visible = false
 	if _skill_panel != null:
@@ -1111,6 +1126,10 @@ func _open_inventory_panel() -> void:
 func _toggle_inventory_panel() -> void:
 	if _inventory_panel == null:
 		return
+	# If equipment is open, close both
+	if _equipment_panel != null and _equipment_panel.visible:
+		_close_all_system_panels()
+		return
 	if _inventory_panel.visible:
 		_inventory_panel.close()
 	else:
@@ -1122,14 +1141,29 @@ func _open_equipment_panel() -> void:
 		_init_m5_panels()
 	if _equipment_panel == null:
 		return
-	if _inventory_panel != null and not _inventory_panel.visible:
-		_inventory_panel.open()
-	# Move inventory into equipment's InventorySlot
-	var slot: Control = _equipment_panel.get_node_or_null("Container/InventorySlot")
-	var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
-	if slot and mp and mp.get_parent() != slot:
-		mp.reparent(slot, false)
+	if _inventory_panel != null:
+		if not _inventory_panel.visible:
+			_inventory_panel.open()
+		_inventory_panel.call("_set_filter_internal", "equipment", false)
+		# Hide Dim so clicks pass through to inventory
+		var dim: ColorRect = _inventory_panel.get_node_or_null("Dim")
+		if dim:
+			dim.visible = false
+		# Shift MainPanel to align with equipment's InventorySlot
+		var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
+		if mp:
+			mp.offset_left = -961
+			mp.offset_right = 319
+			mp.offset_top = -419
+			mp.offset_bottom = 301
 	_equipment_panel.open()
+	# Shift EquipmentPanel to right half so it doesn't overlap inventory
+	_equipment_panel.offset_left = 1280
+	_equipment_panel.offset_right = 1920
+	for child in _equipment_panel.get_children():
+		if child is Control and child.offset_left >= 1280:
+			child.offset_left -= 1280
+			child.offset_right -= 1280
 	_on_system_panel_opened()
 
 func _toggle_equipment_panel() -> void:
@@ -1145,6 +1179,8 @@ func _open_skill_panel() -> void:
 	if _skill_panel == null:
 		return
 	if _inventory_panel != null:
+		var d: ColorRect = _inventory_panel.get_node_or_null("Dim")
+		if d: d.visible = true
 		_inventory_panel.visible = false
 	if _equipment_panel != null:
 		_equipment_panel.visible = false
@@ -1201,14 +1237,30 @@ func _on_system_panel_opened() -> void:
 
 
 func _on_system_panel_closed() -> void:
-	if _player != null:
-		_player.can_move = true
-	# Restore inventory
 	if _inventory_panel != null:
+		# Restore MainPanel center
 		var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
-		var slot: Control = _equipment_panel.get_node_or_null("Container/InventorySlot") if _equipment_panel else null
-		if mp and slot and mp.get_parent() == slot:
-			mp.reparent(_inventory_panel, false)
+		if mp:
+			mp.offset_left = -640
+			mp.offset_right = 640
+			mp.offset_top = -360
+			mp.offset_bottom = 360
+		var dim: ColorRect = _inventory_panel.get_node_or_null("Dim")
+		if dim:
+			dim.visible = true
+		_inventory_panel.visible = false
+	if _equipment_panel != null and _equipment_panel.visible:
+		_equipment_panel.visible = false
+		_equipment_panel.mouse_filter = Control.MOUSE_FILTER_STOP
+		# Restore Container position
+		var ctr: Control = _equipment_panel.get_node_or_null("Container")
+		if ctr and ctr.offset_left != 0:
+			for child in ctr.get_children():
+				if child is Control:
+					child.offset_left += 1280
+					child.offset_right += 1280
+			ctr.offset_left = 0
+			ctr.offset_right = 640
 	_system_panel_open = false
 	if _primary_hud != null:
 		_primary_hud.show_after_system_ui()

@@ -4101,6 +4101,30 @@ OKROUTER_VISION_MODEL=gemini-3.1-pro-preview-customtools
 - **底部按键说明不是正式一级 UI 常驻项**：设计稿里的底部条是快捷栏风格，不是当前要做的按键说明文字。用户明确要求去掉后，`FieldPrimaryHud` 不再构建 `HintBar`，`set_hint_text()` 改为空安全，避免旧控制器继续传提示文案时报空。
 - **对话框需要图像模型质感时不要用程序画框顶替**：用户指出底部对话框像程序画的。新增 `scripts/generate_field_dialog_frame_gpt2.py`，使用 `gpt-image-2` 生成原图 `assets/raw/ui/field_hud/dialog_frame_gpt2_v1.png`，再后处理成 `game/art/ui/field_hud/v2/hud_dialog_frame.png`。白底抠透明时要额外清理低饱和高亮残留，否则四角会留下白雾边。
 
+---
+
+## 23. Godot 双面板叠加：兄弟控件无法传递鼠标事件（20+ 次反复调试）
+
+### 23.1 问题
+装备界面打开时，装备面板（后添加的 child）覆盖背包面板（先添加的 child），导致背包页签/格子无法点击。
+
+### 23.2 踩过的坑
+
+| 尝试 | 方法 | 结果 |
+|---|---|---|
+| MOUSE_FILTER_PASS / IGNORE | 在装备根节点上设 PASS，希望事件穿透到背包 | ❌ PASS 只传给 parent，不传给 sibling 身后 |
+| move_child 调换顺序 | 把背包 `move_child` 到最前面渲染 | ❌ 装备被挡，X 按钮和槽位点不了 |
+| 装备根节点 `anchors_preset = PRESET_RIGHT_WIDE` | 让装备锚定到右半区 | ❌ 子控件绝对坐标跟着错了 |
+| 只移 Container | Container 右移 + 子控件补偿 | ❌ Container 移除后整个方案崩塌 |
+| **最终方案** | EquipmentPanel 根节点右移 1280px + 所有子控件 `offset -= 1280`，背包 MainPanel 左移对齐 InventorySlot。零重叠 + 关面板时全还原 | ✅ |
+
+### 23.3 核心教训
+1. **Godot 4 兄弟 Control 节点之间没有事件穿透机制**。不管你设什么 mouse_filter，上层永远拦截。唯一解：物理不重叠。
+2. **绝对偏移 + compensate 子控件** 是可靠的移位方案。用 `offset_left/right` 不碰 `anchors_preset`，避免锚点带来的二次计算。
+3. **开/关成对操作必须带 guard**。打开时判断 `offset_left >= 1280` 才移（防止重复移），关闭时判断 `offset_left < 1280` 才还原（防止重复还原）。
+4. **复杂节点层级（Container 套子控件）增大了移位复杂度**。移除 Container 后，根节点 + 直接子控件的两层结构一次就修通。
+5. **Dim 蒙版必须显式隐藏**。装备模式下背包 Dim 覆盖全屏，阻挡所有点击。`_open_equipment_panel` 中 `dim.visible = false`，`_on_system_panel_closed` 中恢复。
+
 
 
 

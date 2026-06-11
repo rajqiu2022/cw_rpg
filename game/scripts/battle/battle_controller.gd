@@ -53,6 +53,8 @@ const ATTR_ICON_REGIONS := {
 @onready var btn_skill: Button = %BtnSkill
 @onready var btn_defend: Button = %BtnDefend
 @onready var btn_flee: Button = %BtnFlee
+@onready var btn_item: Button = %BtnItem
+var _item_popup: PopupMenu = null
 
 var _player_mp_label: Label = null
 var _turn_label: Label = null
@@ -107,6 +109,8 @@ func _ready() -> void:
 	btn_skill.pressed.connect(func(): _player_action_skill_use(_current_skill_index))
 	btn_defend.pressed.connect(func(): _player_action_defend())
 	btn_flee.pressed.connect(func(): _player_action_flee())
+	btn_item.pressed.connect(_show_item_popup)
+	_create_item_popup()
 
 	EventBus.battle_started.emit(StringName(enemy_id))
 	EventBus.status_cured.connect(_on_status_cured)
@@ -381,7 +385,7 @@ func _enter_player_turn() -> void:
 
 
 func _set_buttons_enabled(enabled: bool) -> void:
-	for b in [btn_attack, btn_skill, btn_defend, btn_flee]:
+	for b in [btn_attack, btn_skill, btn_defend, btn_flee, btn_item]:
 		b.disabled = not enabled
 	if enabled:
 		btn_skill.disabled = _player_skills.size() <= 1 or _player.mp < _player_skills[_current_skill_index].mp_cost
@@ -868,6 +872,74 @@ func _roll_damage(base_attack: int) -> int:
 
 func _is_chapter_boss(enemy_id: StringName) -> bool:
 	return String(enemy_id).begins_with("boss_")
+
+
+func _create_item_popup() -> void:
+	_item_popup = PopupMenu.new()
+	_item_popup.name = "ItemPopup"
+	add_child(_item_popup)
+	_item_popup.id_pressed.connect(_on_item_selected)
+
+
+func _show_item_popup() -> void:
+	if _state != State.PLAYER_TURN:
+		return
+	_item_popup.clear()
+	var consumables: Array[Dictionary] = []
+	for s in Inventory.slots:
+		var item: Item = s.get("item")
+		if item == null or item.category != Item.Category.CONSUMABLE:
+			continue
+		consumables.append(s)
+	if consumables.is_empty():
+		_log("[color=#888]没有可用道具[/color]")
+		return
+	for i in consumables.size():
+		var entry: Dictionary = consumables[i]
+		var it: Item = entry["item"]
+		var cnt: int = entry["count"]
+		var label: String = "%s x%d" % [it.display_name, cnt]
+		_item_popup.add_item(label, i)
+	_item_popup.position = get_global_mouse_position()
+	_item_popup.popup()
+
+
+func _on_item_selected(id: int) -> void:
+	if _state != State.PLAYER_TURN:
+		return
+	var consumables: Array[Dictionary] = []
+	for s in Inventory.slots:
+		var item: Item = s.get("item")
+		if item == null or item.category != Item.Category.CONSUMABLE:
+			continue
+		consumables.append(s)
+	if id < 0 or id >= consumables.size():
+		return
+	var entry: Dictionary = consumables[id]
+	var it: Item = entry["item"]
+	if entry["count"] <= 0:
+		return
+	_set_buttons_enabled(false)
+	_state = State.EXECUTE
+	Inventory.remove_item(it.item_id, 1)
+	var hp_healed := 0
+	var mp_healed := 0
+	if it.heal_hp > 0:
+		var before: int = _player.hp
+		_player.hp = min(_player.max_hp, _player.hp + it.heal_hp)
+		hp_healed = _player.hp - before
+	if it.heal_mp > 0:
+		var before: int = _player.mp
+		_player.mp = min(_player.max_mp, _player.mp + it.heal_mp)
+		mp_healed = _player.mp - before
+	var parts: Array[String] = []
+	if hp_healed > 0:
+		parts.append("[color=#ff6b6b]HP +%d[/color]" % hp_healed)
+	if mp_healed > 0:
+		parts.append("[color=#64b5f6]MP +%d[/color]" % mp_healed)
+	_log("-> 使用 [b]%s[/b] %s" % [it.display_name, " ".join(parts)])
+	_refresh_hud()
+	await _post_action()
 
 
 func _log(line: String) -> void:
