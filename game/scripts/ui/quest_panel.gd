@@ -21,6 +21,7 @@ var _chapter_filter_btn: OptionButton = null
 var _summary_label: Label = null
 var _track_btn: Button = null
 var _tracked_qid: StringName = &""
+var _filter_btns: Dictionary = {}
 
 const CHAPTER_NAMES := {
 	"ch1": "第一章 · 林西村下山",
@@ -97,17 +98,21 @@ func _build_formal_layout() -> void:
 
 
 func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
-	var filter_pairs: Array = [["BtnAll", "all"], ["BtnActive", "active"], ["BtnMain", "main"], ["BtnDone", "done"]]
-	for pair in filter_pairs:
-		var btn: Button = toolbar.get_node_or_null(str(pair[0])) as Button
+	_filter_btns.clear()
+	var data := {
+		"BtnAll": ["all", "tab_all"],
+		"BtnActive": ["active", "tab"],
+		"BtnMain": ["main", "tab_main"],
+		"BtnDone": ["done", "tab_done"],
+	}
+	for btn_name in data:
+		var d: Array = data[btn_name]
+		var mode: String = str(d[0])
+		var tex_base: String = str(d[1])
+		var btn: Button = toolbar.get_node_or_null(str(btn_name)) as Button
 		if btn == null: continue
-		var mode: String = str(pair[1])
-		# all/main/done 有专属贴图; active 回退到通用 tab
-		var tex_base: String = "tab_" + mode if mode in ["all", "main", "done"] else "tab"
-		_apply_btn_textures(btn, tex_base)
-		btn.tooltip_text = {"all": "全部", "active": "进行中", "main": "主线", "done": "已完成"}[mode]
-		var lbl := btn.get_child(btn.get_child_count() - 1) as Label
-		if lbl != null: lbl.text = btn.tooltip_text
+		_filter_btns[mode] = btn
+		_setup_texture_button(btn, tex_base, {"all": "全部", "active": "进行中", "main": "主线", "done": "已完成"}[mode])
 		btn.pressed.connect(func(): _set_filter(mode))
 
 	_chapter_filter_btn = toolbar.get_node_or_null("ChapterFilter") as OptionButton
@@ -128,17 +133,39 @@ func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
 	_update_filter_highlights()
 
 
+func _setup_texture_button(btn: Button, tex_base: String, label_text: String) -> void:
+	var t_n: Texture2D = load("res://art/ui/quest/" + tex_base + "_normal.png") as Texture2D
+	if t_n == null: return
+	btn.flat = true
+	btn.text = ""
+	btn.custom_minimum_size = Vector2(t_n.get_width(), t_n.get_height())
+	btn.add_theme_stylebox_override("normal", _make_texture_stylebox(t_n))
+	var t_h: Texture2D = load("res://art/ui/quest/" + tex_base + "_hover.png") as Texture2D
+	if t_h != null: btn.add_theme_stylebox_override("hover", _make_texture_stylebox(t_h))
+	var t_p: Texture2D = load("res://art/ui/quest/" + tex_base + "_pressed.png") as Texture2D
+	if t_p != null: btn.add_theme_stylebox_override("pressed", _make_texture_stylebox(t_p))
+	var lbl: Label = Label.new()
+	lbl.text = label_text
+	lbl.add_theme_font_size_override("font_size", 16)
+	lbl.add_theme_color_override("font_color", Color(0.85, 0.92, 0.98))
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	lbl.anchors_preset = Control.PRESET_FULL_RECT
+	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	btn.add_child(lbl)
+
+
 func _update_filter_highlights() -> void:
-	var toolbar: HBoxContainer = get_node_or_null("Content/Body/Toolbar") as HBoxContainer
-	if toolbar == null: return
-	var mode_map := {"BtnAll": "all", "BtnActive": "active", "BtnMain": "main", "BtnDone": "done"}
-	for btn_name in mode_map:
-		var btn: Button = toolbar.get_node_or_null(str(btn_name)) as Button
+	for mode in _filter_btns:
+		var btn: Button = _filter_btns[mode] as Button
 		if btn == null: continue
-		var mode: String = str(mode_map[btn_name])
-		var tex_base: String = "tab_" + mode if mode in ["all", "main", "done"] else "tab"
-		var is_sel: bool = _filter_mode == mode
-		var tex: Texture2D = _try_load(tex_base + ("_selected.png" if is_sel else "_normal.png"))
+		var tex_base: String
+		match mode:
+			"all": tex_base = "tab_all"
+			"main": tex_base = "tab_main"
+			"done": tex_base = "tab_done"
+			_: tex_base = "tab"
+		var tex: Texture2D = load("res://art/ui/quest/" + tex_base + ("_selected.png" if _filter_mode == mode else "_normal.png")) as Texture2D
 		if tex != null:
 			btn.add_theme_stylebox_override("normal", _make_texture_stylebox(tex))
 
