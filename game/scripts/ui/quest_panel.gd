@@ -235,11 +235,6 @@ func _apply_visual_style() -> void:
 	# 底框由 PanelBg TextureRect 承载，Content 保持透明
 	var panel: PanelContainer = get_node_or_null("Content") as PanelContainer
 	if panel != null:
-		panel.offset_left = -590
-		panel.offset_top = -350
-		panel.offset_right = 590
-		panel.offset_bottom = 350
-		# 透明背景，不覆盖 PanelBg/TitlePlaque/DetailBg
 		panel.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
 
 	var title: Label = get_node_or_null("Content/Body/Header/Title") as Label
