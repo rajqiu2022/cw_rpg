@@ -318,13 +318,41 @@ func _on_new_game() -> void:
 
 func _on_continue() -> void:
 	print("[MainMenu] Continue pressed")
-	if get_node_or_null("/root/SaveManager") != null:
+	var sm = get_node_or_null("/root/SaveManager")
+	if sm == null:
+		return
+	# Count available saves
+	var slots: Array[int] = []
+	for i in range(SaveManager.SLOT_COUNT):
+		if SaveManager.has_save(i):
+			slots.append(i)
+	if slots.is_empty():
+		return
+	# If only slot 0 has save, load directly (backward compatible)
+	if slots.size() == 1 and slots[0] == 0:
 		if SaveManager.load_from_slot(0):
-			var sid: StringName = SaveManager.get_save_field_id(0)
+			var sid := SaveManager.get_save_field_id(0)
 			if String(sid) == "":
 				sid = SceneRouter.START_FIELD_SCENE
-			if get_node_or_null("/root/SceneRouter") != null:
-				SceneRouter.go_field_smart(sid)
+			SceneRouter.go_field_smart(sid)
+		return
+	# Show slot selection popup
+	var popup := PopupMenu.new()
+	popup.name = "SaveSlotSelect"
+	add_child(popup)
+	for slot in slots:
+		var meta := SaveManager.get_slot_meta(slot)
+		var label := "存档 %d - %s" % [slot + 1, SaveManager.format_timestamp(int(meta.get("timestamp", 0)))]
+		popup.add_item(label, slot)
+	popup.id_pressed.connect(func(id: int):
+		if SaveManager.load_from_slot(id):
+			var sid := SaveManager.get_save_field_id(id)
+			if String(sid) == "":
+				sid = SceneRouter.START_FIELD_SCENE
+			SceneRouter.go_field_smart(sid)
+	)
+	popup.position = get_global_mouse_position()
+	popup.popup()
 
 
 func _on_quit() -> void:

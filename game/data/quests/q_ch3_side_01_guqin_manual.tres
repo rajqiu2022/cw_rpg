@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_side_01_guqin_manual"
+title = "古琴遗谱"
+kind = 1
+desc_not_started = "凌月派后山月华洞中发现一卷残谱，不是武功秘籍——而是一首失传的古琴曲《广陵止息》工尺谱。凌霜掌门说这是百年前一位精通音律的前辈所留，但无人能解。"
+desc_in_progress = "你需要找到一位懂古谱的人来翻译这份工尺谱。江湖传闻苏州琴隐楚老爷子（已故）有一名关门弟子在华山脚下的无名琴馆隐居。"
+desc_completed = "你在华山脚下一间破败琴馆找到了传人——一个盲眼琴师。他指抚残谱逐句哼唱，声音苍老却含着金石之气。他说此曲分五章，奏完全曲需一炷香，内力不济者会呕血。他将琴谱抄录成简谱赠你，外加一句话：'曲中藏着一套剑法，年轻人，别只用耳朵听。'"
+completion_triggers = Array[String](["flag_set:guqin_manual_translated"])
+reward_gold = 15
+reward_exp = 30
+reward_items = Array[Dictionary]([{"item_id": "clarity_dew", "count": 2}, {"item_id": "soul_return_dew", "count": 1}])

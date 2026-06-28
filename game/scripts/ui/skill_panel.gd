@@ -22,6 +22,7 @@ const ATTR_ICON_REGIONS := {
 var _skills: Array[Skill] = []
 var _attr_icon_atlas: Texture2D = null
 var _filter_mode := "all"
+var _school_filter: String = "all"
 var _selected_skill_id: StringName = &""
 var _quick_skill_id: StringName = &""
 var _summary_label: Label = null
@@ -55,21 +56,12 @@ func _build_formal_layout() -> void:
 	var body: VBoxContainer = get_node_or_null("Panel/Body") as VBoxContainer
 	if body == null:
 		return
-	if body.get_node_or_null("SkillToolbar") == null:
-		var toolbar: HBoxContainer = HBoxContainer.new()
-		toolbar.name = "SkillToolbar"
-		toolbar.add_theme_constant_override("separation", 10)
-		body.add_child(toolbar)
-		body.move_child(toolbar, 1)
-		_add_filter_button(toolbar, "全部", "all")
-		_add_filter_button(toolbar, "攻击", "attack")
-		_add_filter_button(toolbar, "辅助", "support")
-		_add_filter_button(toolbar, "防御", "defense")
-		_summary_label = Label.new()
-		_summary_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		_summary_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
-		toolbar.add_child(_summary_label)
+
+	var toolbar: HBoxContainer = body.get_node_or_null("SkillToolbar") as HBoxContainer
+	if toolbar != null:
+		_apply_toolbar_style(toolbar)
+	else:
+		_build_toolbar_in_code(body)
 
 	var content: HBoxContainer = get_node_or_null("Panel/Body/Content") as HBoxContainer
 	if content != null:
@@ -79,29 +71,83 @@ func _build_formal_layout() -> void:
 		list_scroll.custom_minimum_size = Vector2(430, 0)
 	detail.custom_minimum_size = Vector2(610, 0)
 	detail.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	if body.get_node_or_null("SkillActions") == null:
-		var actions: HBoxContainer = HBoxContainer.new()
-		actions.name = "SkillActions"
-		actions.alignment = BoxContainer.ALIGNMENT_CENTER
-		actions.add_theme_constant_override("separation", 12)
-		body.add_child(actions)
-		_quick_btn = Button.new()
-		_quick_btn.text = "设为快捷招式"
-		_quick_btn.custom_minimum_size = Vector2(170, 42)
-		UI_THEME.style_button(_quick_btn, 16, UI_THEME.JADE)
-		_quick_btn.pressed.connect(_set_quick_skill)
-		actions.add_child(_quick_btn)
-		_practice_btn = Button.new()
-		_practice_btn.text = "研读招式"
-		_practice_btn.custom_minimum_size = Vector2(140, 42)
-		UI_THEME.style_button(_practice_btn, 16, UI_THEME.BLUE_STEEL)
-		_practice_btn.pressed.connect(_practice_selected)
-		actions.add_child(_practice_btn)
+
+	var actions: HBoxContainer = body.get_node_or_null("SkillActions") as HBoxContainer
+	if actions != null:
+		if _quick_btn == null:
+			_quick_btn = actions.get_node_or_null("QuickBtn") as Button
+			if _quick_btn != null:
+				UI_THEME.style_button(_quick_btn, 16, UI_THEME.JADE)
+				_quick_btn.pressed.connect(_set_quick_skill)
+		if _practice_btn == null:
+			_practice_btn = actions.get_node_or_null("PracticeBtn") as Button
+			if _practice_btn != null:
+				UI_THEME.style_button(_practice_btn, 16, UI_THEME.BLUE_STEEL)
+				_practice_btn.pressed.connect(_practice_selected)
 	else:
-		var existing_actions: HBoxContainer = body.get_node_or_null("SkillActions") as HBoxContainer
-		if existing_actions != null and existing_actions.get_child_count() >= 2:
-			_quick_btn = existing_actions.get_child(0) as Button
-			_practice_btn = existing_actions.get_child(1) as Button
+		_build_actions_in_code(body)
+
+
+func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
+	_attach_filter_button(toolbar, "BtnAll", "all", "全部")
+	_attach_filter_button(toolbar, "BtnAttack", "attack", "攻击")
+	_attach_filter_button(toolbar, "BtnSupport", "support", "辅助")
+	_attach_filter_button(toolbar, "BtnDefense", "defense", "防御")
+
+	var sf: OptionButton = toolbar.get_node_or_null("SchoolFilter") as OptionButton
+	if sf != null:
+		sf.add_item("全部流派", 0)
+		sf.set_item_metadata(0, "all")
+		var idx: int = 1
+		for school in ["linxi", "gufeng", "huashan", "lingyue", "mingwu", "wudang", "generic"]:
+			sf.add_item(school, idx)
+			sf.set_item_metadata(idx, school)
+			idx += 1
+		sf.item_selected.connect(func(i: int):
+			_school_filter = str(sf.get_item_metadata(i))
+			_refresh_list()
+		)
+
+	_summary_label = toolbar.get_node_or_null("Summary") as Label
+	if _summary_label != null:
+		UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
+
+
+func _build_toolbar_in_code(body: VBoxContainer) -> void:
+	var toolbar: HBoxContainer = HBoxContainer.new()
+	toolbar.name = "SkillToolbar"
+	toolbar.add_theme_constant_override("separation", 10)
+	body.add_child(toolbar)
+	body.move_child(toolbar, 1)
+	_add_filter_button(toolbar, "全部", "all")
+	_add_filter_button(toolbar, "攻击", "attack")
+	_add_filter_button(toolbar, "辅助", "support")
+	_add_filter_button(toolbar, "防御", "defense")
+	_summary_label = Label.new()
+	_summary_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_summary_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
+	toolbar.add_child(_summary_label)
+
+
+func _build_actions_in_code(body: VBoxContainer) -> void:
+	var actions: HBoxContainer = HBoxContainer.new()
+	actions.name = "SkillActions"
+	actions.alignment = BoxContainer.ALIGNMENT_CENTER
+	actions.add_theme_constant_override("separation", 12)
+	body.add_child(actions)
+	_quick_btn = Button.new()
+	_quick_btn.text = "设为快捷招式"
+	_quick_btn.custom_minimum_size = Vector2(170, 42)
+	UI_THEME.style_button(_quick_btn, 16, UI_THEME.JADE)
+	_quick_btn.pressed.connect(_set_quick_skill)
+	actions.add_child(_quick_btn)
+	_practice_btn = Button.new()
+	_practice_btn.text = "研读招式"
+	_practice_btn.custom_minimum_size = Vector2(140, 42)
+	UI_THEME.style_button(_practice_btn, 16, UI_THEME.BLUE_STEEL)
+	_practice_btn.pressed.connect(_practice_selected)
+	actions.add_child(_practice_btn)
 
 
 func _add_filter_button(parent: HBoxContainer, label: String, mode: String) -> void:
@@ -111,6 +157,15 @@ func _add_filter_button(parent: HBoxContainer, label: String, mode: String) -> v
 	UI_THEME.style_button(btn, 15, UI_THEME.BLUE_STEEL)
 	btn.pressed.connect(func(): _set_filter(mode))
 	parent.add_child(btn)
+
+
+func _attach_filter_button(toolbar: HBoxContainer, node_name: String, mode: String, label: String) -> void:
+	var btn: Button = toolbar.get_node_or_null(node_name) as Button
+	if btn == null:
+		_add_filter_button(toolbar, label, mode)
+		return
+	UI_THEME.style_button(btn, 15, UI_THEME.BLUE_STEEL)
+	btn.pressed.connect(func(): _set_filter(mode))
 
 
 func _set_filter(mode: String) -> void:
@@ -172,6 +227,8 @@ func _refresh_list() -> void:
 
 
 func _skill_visible(skill: Skill) -> bool:
+	if _school_filter != "all" and skill.school != _school_filter:
+		return false
 	match _filter_mode:
 		"attack":
 			return skill.kind == Skill.Kind.ATTACK and not _is_defense_skill(skill)

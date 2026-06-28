@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch8_side_03_master_legacy"
+title = "师门遗训"
+kind = 1
+desc_not_started = "茗雾山庄主厅之外，刑樊天被苏雾笙以铁链锁在柱上。他看见你冲进来，用口型说了三个字：「玄霜——诀。」——那是他给你的那本秘笈。"
+desc_in_progress = "你翻开玄霜诀——封面之下，夹层中藏着一页你没有见过的文字。那是刑樊天用血写的遗言，交代了他与苏雾笙的真正关系：他们是同门师兄妹，师从一位早已失踪的隐世高人。苏雾笙叛出师门后，刑樊天一直在暗中收集证据。"
+desc_completed = "血书上写明了苏雾笙的武功命门——「玄霜诀第七式·雪拥蓝关，可破隐影诀之根本」。刑樊天牺牲自己把这条信息传给了你。他做了二十年沉默的猎人，最终用命把猎物的弱点送到了你手上。你将血书收入怀中——这不仅是一页武功破解之法，更是师傅用命换来的遗言。"
+completion_triggers = Array[String](["flag_set:master_legacy_read"])
+reward_gold = 0
+reward_exp = 100
+reward_items = Array[Dictionary]([{"item_id": "xuanshuang_script", "count": 1}, {"item_id": "soul_return_dew", "count": 1}])

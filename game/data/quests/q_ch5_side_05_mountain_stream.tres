@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_side_05_mountain_stream"
+title = "山涧奇遇"
+kind = 1
+desc_not_started = "古月峰下一条无名山涧旁，你遇到一个正在钓鱼的白发老翁。三月的山溪水冷刺骨，但老人赤足坐在水中，鱼篓是空的，他却笑呵呵的。"
+desc_in_progress = "老人说他在钓『不存在的鱼』。你问他为什么，他说：『鱼在不在水里不重要，我在不在水里才重要。』你意识到这可能是一位隐世高人——或者只是一个疯老头。你决定坐下来和他聊一聊。"
+desc_completed = "你和老人聊了一下午。他没教你任何武功，但他说了一句让你记了一辈子的话：『你挥剑的样子我远远看过——太用力了。剑不是手臂的延长，是你呼吸的延长。回去试试，出剑的时候少想一寸，多呼一口气。』临走时他从鱼篓里拿出一条鱼——『我说了没有鱼，但我说谎了。这是给你的晚饭。』鱼腹中藏着一枚小小的铜环——刻着华山派的标志。后来你才知道，他是三十年前失踪的华山剑圣——游天鸿。"
+completion_triggers = Array[String](["flag_set:mountain_stream_encounter"])
+reward_gold = 0
+reward_exp = 60
+reward_items = Array[Dictionary]([{"item_id": "heaven_element_pill", "count": 2}, {"item_id": "spirit_gathering_dust", "count": 2}])

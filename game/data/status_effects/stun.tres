@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatusEffectDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/status_effect_def.gd" id="1_se"]
+
+[resource]
+script = ExtResource("1_se")
+status_id = &"stun"
+display_name = "眩晕"
+kind = 3
+default_duration = 1
+is_debuff = true
+skip_turn = true
+stack_rule = 0
+effect_value = 0.0
+remove_by_duration = true
+ui_label = "晕"
+persist_across_save = false

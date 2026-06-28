@@ -4125,6 +4125,46 @@ OKROUTER_VISION_MODEL=gemini-3.1-pro-preview-customtools
 4. **复杂节点层级（Container 套子控件）增大了移位复杂度**。移除 Container 后，根节点 + 直接子控件的两层结构一次就修通。
 5. **Dim 蒙版必须显式隐藏**。装备模式下背包 Dim 覆盖全屏，阻挡所有点击。`_open_equipment_panel` 中 `dim.visible = false`，`_on_system_panel_closed` 中恢复。
 
+---
+
+## 24. GDScript 严格模式踩坑（2026-06-28）
+
+### 24.1 Godot 4 的 "Treat Warnings as Errors"
+
+本项目的 Godot 编辑器开启了将警告视为错误的严格模式。以下模式会导致解析失败：
+
+| 错误模式 | 正确写法 |
+|----------|----------|
+| `var mode := key[1]`（从无类型数组取元素） | `var mode: String = str(pair[1])` |
+| `for key in [[...], ...]:` | 用命名数组 `var pairs: Array = [...]` |
+| `if cond == &: action` | `if cond == &"": action` |
+| `if cond == &"" action`（缺冒号） | `if cond == &"": action` |
+| `connect(func(i: int): ...)` | `connect(_on_xxx_changed)` 命名函数 |
+
+### 24.2 核心教训
+1. GDScript 不是 Python——`if cond action` 必须写成 `if cond: action`。
+2. 严格模式下所有 `:=` 都必须能从右侧明确推断类型；遍历 Dictionary 或无类型 Array 返回的全是 Variant，必须显式声明。
+3. 批量写 UI 代码时优先用显式类型（`var x: Type = value`），不省 `:=` 那一行。
+
+---
+
+## 25. godogen 调研与误解（2026-06-28）
+
+### 25.1 godogen 的核心思路
+- 用 C# Scene Builder 脚本在 headless 模式下 **代码生成 .tscn**，跑引擎截图，AI 对比视觉差异后迭代修复
+- UI 元素用 Godot Container（VBox/HBox/GridContainer）自动排版，不是手调 offset
+- **关键**：美术图先生成 → 贴到面板上，不是代码画 UI
+
+### 25.2 我们踩的坑
+- 错误地把 "程序化画 UI"（Label.new + StyleBoxFlat + 彩色徽章）当成改进——应该保持现有贴图风格，只优化布局骨架
+- godogen 的 C#/GDScript 差异决定了不能直接复制它的 Scene Builder 模式
+- 正确的借鉴方向：① AI 先生成 UI mockup 图 → ② 写代码匹配 → ③ 截图对比 → ④ 修复。不是纯文本改代码。
+
+### 25.3 对现有项目的启发
+- 任务/技能面板的 toolbar/actions 应从代码生成改为 .tscn 预建（已完成 2026-06-28）
+- 如果有新的美术图资源，可以直接替换 `art/ui/quest/` / `art/ui/skill/` 下的贴图
+- 后续 UI 迭代应以「先出图 → 再写代码 → 截图验证」为流程
+
 
 
 

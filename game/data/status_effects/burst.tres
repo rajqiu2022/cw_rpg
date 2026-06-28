@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatusEffectDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/status_effect_def.gd" id="1_se"]
+
+[resource]
+script = ExtResource("1_se")
+status_id = &"burst"
+display_name = "爆发"
+kind = 2
+default_duration = 3
+is_debuff = false
+skip_turn = false
+stack_rule = 0
+effect_value = 0.0
+remove_by_duration = true
+ui_label = "暴"
+persist_across_save = false

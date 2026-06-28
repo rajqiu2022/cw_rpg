@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_side_01_cliff_immortal_herb"
+title = "绝壁仙草"
+kind = 1
+desc_not_started = "在古月峰血战的间隙，一名受伤的古峰派弟子挣扎着告诉你：古疆雷掌门重伤不醒，需要一味叫「七星雪莲」的奇药才能续命。此药只长在古月峰背面无人能攀的冰壁上，三十年一开花。"
+desc_in_progress = "攀上古月峰北面千米绝壁采集七星雪莲。冰壁滑不留手，山风如刀。半途中你发现壁上有一行模糊的刻字——像是前人留下的攀爬标记。"
+desc_completed = "你耗时三个时辰攀上冰壁，在离峰顶三十丈处找到七朵雪莲，花瓣呈青白七星状。采药时冰壁崩塌一角，露出一个天然岩洞——里面竟有一具冰冻的尸体，看服饰是百年前的武林人物，怀中抱着一卷写满蝇头小楷的鹿皮卷。你带雪莲回山，古疆雷服下后伤势稳住。古峰派上下视你为再造之恩。"
+completion_triggers = Array[String](["flag_set:cliff_immortal_herb_collected"])
+reward_gold = 80
+reward_exp = 80
+reward_items = Array[Dictionary]([{"item_id": "nine_revive_pill", "count": 1}, {"item_id": "life_extend_pill", "count": 2}, {"item_id": "leather_scrap", "count": 1}])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_side_03_alchemy_trial"
+title = "丹房试药"
+kind = 1
+desc_not_started = "武当丹房的清虚道长自制了一炉新丹——名曰「小还神丹」。但不知药性如何、有无毒性。他不敢拿弟子试药，看你是江湖散人，问你可敢服丹一试？"
+desc_in_progress = "此丹有三重考验：第一重是药力冲脉，第二重是幻觉——若你心中有魔障，丹毒会把它勾出来。清虚道长给了你一盏清茶，说要是撑不住了就喝下去。"
+desc_completed = "你服药后丹田如火烧。眼前闪过林西村的雪、师傅的背、茗雾的雾。你咬紧牙关以意导气，将药力纳入经脉周天。一个时辰后你吐出一口浊气——经脉竟通了半条！清虚道长大喜，说你是十年来第一个纯凭意志扛过药力的人。他把剩下的三枚小还神丹都送你，外加一本他自己写的《丹道浅述》。"
+completion_triggers = Array[String](["flag_set:alchemy_trial_survived"])
+reward_gold = 0
+reward_exp = 50
+reward_items = Array[Dictionary]([{"item_id": "inner_breath_pill", "count": 3}, {"item_id": "revive_pill", "count": 1}, {"item_id": "spirit_stone", "count": 2}])

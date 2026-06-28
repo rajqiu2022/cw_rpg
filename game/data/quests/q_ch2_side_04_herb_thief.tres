@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_side_04_herb_thief"
+title = "药田黑手"
+kind = 1
+desc_not_started = "竹尾村东头药农沈伯的参田连遭偷盗——十年生的人参被连根刨走七株，切口用利器削得极平整，不像普通贼。"
+desc_in_progress = "沈伯说这是第三回了。前两次他报了里正，查了一圈没结果。你在田埂发现一串脚印——很奇怪，只有三个脚趾的痕迹。"
+desc_completed = "你循脚印追到村外破庙。偷参的不是人——是一只年岁极大的白猿，左掌只有三趾。它巢中有参渣和一件破烂道袍。你将道袍带回，里正认出是十年前失踪的道士青崖子的衣物。白猿怕是在替主人守灵偷参。沈伯沉默很久，最终没报官，只叹了一句：'灵兽护主……参它拿去吧。'"
+completion_triggers = Array[String](["flag_set:herb_thief_found"])
+reward_gold = 10
+reward_exp = 15
+reward_items = Array[Dictionary]([{"item_id": "healing_pill_minor", "count": 3}, {"item_id": "lingzhi_pill", "count": 1}])

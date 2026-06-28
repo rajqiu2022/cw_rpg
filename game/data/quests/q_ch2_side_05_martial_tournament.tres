@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_side_05_martial_tournament"
+title = "竹尾论武"
+kind = 1
+desc_not_started = "竹尾村最大的武林世家沈家在祠堂前摆下擂台——沈家老爷年过六旬，想在闭门前为独女招一位武艺高强的夫婿。你来不是为了入赘，但擂台第一名的彩头是一柄传家宝剑。"
+desc_in_progress = "擂台赛进入第二轮——沈家请来了六位武林中人，从擒拿到拳脚到兵刃，每轮淘汰一人。沈小姐亲自坐镇擂台西侧。"
+desc_completed = "你连胜五场，最后一战对沈家护院总管——他擅铁砂掌，掌风刮在脸上生疼。你以巧破力将他逼出圈子。沈小姐倒是豁达，不等父亲开口就解下腰间宝剑扔给你：'拿着，我叫沈晚棠。你要是不急着走，我请你喝酒。'（你可以选择留下吃酒，或拿了剑就走——她都会记住你）"
+completion_triggers = Array[String](["flag_set:tournament_won"])
+reward_gold = 30
+reward_exp = 35
+reward_items = Array[Dictionary]([{"item_id": "qingming_sword", "count": 1}, {"item_id": "silver_moon_necklace", "count": 1}])

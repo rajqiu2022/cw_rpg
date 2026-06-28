@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_04_longmen_mystery"
+title = "龙门谜踪"
+kind = 1
+desc_not_started = "洛阳龙门石窟的卢舍那大佛脚下，守窟僧人发现了一件怪事：连续七夜，大佛掌心出现一枚湿的铜钱，次日清晨又消失。有人说这是佛显灵，有人说是有盗墓贼在踩点。"
+desc_in_progress = "去龙门石窟调查铜钱之谜。守窟僧法号净空，说他每晚子时去查看时铜钱就在那里，但一碰就化成水。你决定在石窟中蹲守一夜。"
+desc_completed = "子时三刻，你听见大佛左后方有滴水声。循声而上，发现佛掌纹路的缝隙中有一道机关——推开后是一条向下甬道。甬道尽头是一间密室，里面有一具僧人坐化遗骸和一封信。信上说他是北魏时期凿窟工匠的后人，铜钱是感应机关——每月满月时地下水上升触动机关，铜钱才会出现。他留下了一枚北魏古玉和一张石刻地图。地图上标注的，是洛阳城底下的「隋唐排水暗渠」——直通皇城旧宫。"
+completion_triggers = Array[String](["flag_set:longmen_mystery_solved"])
+reward_gold = 30
+reward_exp = 35
+reward_items = Array[Dictionary]([{"item_id": "yuanming_ancient_jade", "count": 1}, {"item_id": "diamond_powder", "count": 2}])

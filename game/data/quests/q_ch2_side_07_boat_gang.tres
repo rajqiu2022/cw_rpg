@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_side_07_boat_gang"
+title = "漕河风波"
+kind = 1
+desc_not_started = "竹尾村外的清溪河是通往洛阳的重要水道。近日两伙船帮——本地「青龙帮」和南边来的「白鹄帮」——因码头泊位大打出手，已经伤了好几条人命。"
+desc_in_progress = "青龙帮帮主赵大江和白鹄帮帮主钱四海各执一词。赵家码头三代经营，钱家则是拿了漕运衙门的批文。你在中间调停——或者都打趴下。"
+desc_completed = "你查明真相：所谓漕运批文是钱四海花三百两从师爷手里买的假文书。钱四海被拿下交官，青龙帮愿意赔偿白鹄帮的医药费。赵大江感激不尽，说以后船帮码头对你永远免费。他送了你一柄匕首——据说从沉船里捞出来的，至少有五十年历史。"
+completion_triggers = Array[String](["flag_set:boat_feud_resolved"])
+reward_gold = 25
+reward_exp = 22
+reward_items = Array[Dictionary]([{"item_id": "iron_ore", "count": 3}, {"item_id": "assassin_blade", "count": 1}])

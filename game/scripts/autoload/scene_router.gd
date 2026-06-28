@@ -20,6 +20,9 @@ extends Node
 ##   "open_equipment"       请求当前 Field 打开装备 UI（M5）
 ##   "open_quest_log"       请求当前 Field 打开任务面板（M3）
 ##   "chapter_end:<chapter>"进入章节结算（M6）
+##   "play_bgm:<path>"      播放/切换 BGM（带 0.8s 交叉淡出）
+##   "play_sfx:<path>"      播放一击音效
+##   "stop_bgm"             停止当前 BGM（0.5s 淡出）
 ##   "end" 或 ""            空操作
 
 const SCENE_MAIN_MENU := "res://scenes/main_menu.tscn"
@@ -194,6 +197,12 @@ func resolve_action(action: String) -> void:
 			EventBus.ui_requested.emit(&"quest_log")
 		"chapter_end":
 			go_chapter_end(int(_arg(parts, 1, "1")))
+		"play_bgm":
+			AudioManager.play_bgm(_arg(parts, 1))
+		"play_sfx":
+			AudioManager.play_sfx(_arg(parts, 1))
+		"stop_bgm":
+			AudioManager.stop_bgm()
 		_:
 			push_warning("[SceneRouter] unknown action: %s" % action)
 

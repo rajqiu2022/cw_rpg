@@ -1,6 +1,6 @@
 # 当前工作进展（快照）
 
-> **更新日期：2026-05-28**  
+> **更新日期：2026-06-28**  
 > 用途：给协作者 / 新会话 AI 快速对齐「做到哪、卡在哪、下一步是什么」。  
 > 详细决策仍以 `docs/world-bible.md`、`docs/design-mvp-chapter1.md`、`docs/experience-log.md` 为准。
 > 协作规则：详见 `docs/agent-workflow.md`、`docs/module-owners.md`、`docs/agents/README.md`。
@@ -27,7 +27,7 @@
 | **M3** | QuestManager、任务面板、存档 v2（quests + current_field） | ✅ |
 | **M4** | 多场景、NPC 对话链、商店 `shop.tscn`、`SceneRouter` `shop:` 动作 | ✅（曾缺 `go_shop()`，已补） |
 | **M5** | 背包 / 装备 UI、消耗品 `use_item`、**6 装备槽**（武器/头/甲/手/鞋/饰）、存档 **v3**（`inventory` 块）、Field HUD `I/E/J`、 starter `Inventory.reset_for_new_game()` | ✅ **代码已合入工作区**；人工验收以 `docs/mvp-m5-checklist.md` 为准 |
-| **M6** | 章末演出、状态异常、章节结算 UI | ⏳ 未开始 |
+| **M6** | 章末 Boss + 状态异常 + 章节结算 + 音频系统 | ✅ **已完成 (2026-06-28)** |
 | **M7** | 多槽存档 UI、加载流程打磨 | ⏳ 未开始（当前仍为单槽逻辑为主） |
 
 ### 2.5 背包 UI 整改（2026-05-28）
@@ -44,6 +44,46 @@
 | 资产来源 | ssets/raw/ui/cold_wuxia/v2/inventory/（2026-05-13 AI 原版），ALAPI 当前不可用（返回 400） |
 
 
+
+### 2.1b M6 战斗系统升级（2026-06-28）
+
+| 维度 | 内容 |
+|------|------|
+| 新 domain 类 | `BattleFormula`（伤害/暴击/逃跑公式）、`EnemyAI`（5层决策树）、`StatusEffectDef`（5种异常类型的 Res 定义） |
+| 状态异常 | 眩晕（skip_turn）· 冰冻（skip_turn+受击+20%）· 5个 .tres 数据文件 |
+| Bug 修复 | `_player_stun_turns`/`_player_freeze_turns`/`_enemy_stun_turns`/`_enemy_freeze_turns` 四变量已声明 |
+| Boss 路由 | `EnemyDef.is_chapter_boss` 字段替代 `begins_with("boss_")`；7个 boss .tres 已更新 |
+| 信号 | `player_leveled_up`、`chapter_completed` 新信号 |
+| 第一章 Boss | `masked_killer_leader` 设为章节 Boss |
+
+### 2.1c M6 音频系统（2026-06-28）
+
+| 维度 | 内容 |
+|------|------|
+| AudioManager | autoload #9，BGM 交叉淡入淡出 + SFX 池化(8) + 音量3路独立 |
+| EventBus | `bgm_changed` / `sfx_requested` / `audio_volume_changed` 3个新信号 |
+| SceneRouter | `play_bgm:` / `play_sfx:` / `stop_bgm` 3个新 action |
+| Bus Layout | Master → BGM / SFX / UI 三路 |
+| 存档 | v4 写入 `audio_volumes` |
+| 测试音频 | `art/audio/bgm_test_440hz.wav` + `sfx_test_click.wav`（可替换） |
+| 场景接入 | `ch1_s1_road.tres` bgm_path 已指向测试 BGM |
+
+### 2.1d M6 任务扩充（2026-06-28）
+
+新增 34 个支线任务 .tres，覆盖全部 8 章，融入围棋/古琴/诗词/中医药/龙门石窟/白马寺等中国传统文化元素。
+
+### 2.1e Quest/Skill Panel 重构（2026-06-28）
+
+- `quest_panel.tscn/.gd`、`skill_panel.tscn/.gd`：Toolbar + Actions 从代码生成 → .tscn 预建节点
+- `skill_panel` 新增流派筛选（SchoolFilter，7流派）
+
+### 2.1f 其他
+
+- `test/capture_ui.gd`：headless 截图测试脚本（参考 godogen capture 思路）
+- `docs/ui-mockups.md`：UI 视觉规范文档
+- `ch1_s1_road.tres` bgm_path 已接入
+
+---
 
 ### 2.2 主菜单与版本号
 

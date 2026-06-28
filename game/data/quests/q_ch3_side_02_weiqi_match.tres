@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_side_02_weiqi_match"
+title = "残局对弈"
+kind = 1
+desc_not_started = "武林大会的间隙，一个邋遢道士在凌月派山门外的凉亭摆了一个围棋残局。他说此局名曰「困龙」，三年前摆到现在无人能解。道士放话说：'解得此局，贫道传你一式剑法。'"
+desc_in_progress = "研究棋局——白棋大龙被围，看似必死。但若是弃掉左下角，「倒脱靴」之后再「金鸡独立」，可将黑棋反杀。"
+desc_completed = "你落子弃角，道士眉头一动。七步之后白棋反杀黑棋一条边。道士大笑三声，拍案而起：'好！'他拔出腰间竹剑，在凉亭前舞了一式。「此剑名‘烂柯’，取王质观棋烂柯之典——你既然解得棋局，便有资格学此一式。」他传完口诀便扬长而去，连姓名都没留下。"
+completion_triggers = Array[String](["flag_set:weiqi_trick_solved"])
+reward_gold = 0
+reward_exp = 40
+reward_items = Array[Dictionary]([{"item_id": "bamboo_hat", "count": 1}, {"item_id": "heaven_element_pill", "count": 2}])

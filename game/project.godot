@@ -30,6 +30,7 @@ QuestManager="*res://scripts/autoload/quest_manager.gd"
 DialogPlayer="*res://scripts/autoload/dialog_player.gd"
 SaveManager="*res://scripts/autoload/save_manager.gd"
 CursorManager="*res://scripts/autoload/cursor_manager.gd"
+AudioManager="*res://scripts/autoload/audio_manager.gd"
 
 [display]
 
@@ -88,3 +89,7 @@ interact={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+
+[audio]
+
+buses/default_bus_layout="res://default_bus_layout.tres"

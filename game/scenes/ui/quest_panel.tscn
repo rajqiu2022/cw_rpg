@@ -79,3 +79,45 @@ bbcode_enabled = true
 fit_content = false
 scroll_active = false
 text = "选择任务查看详情。"
+
+[node name="QuestToolbar" type="HBoxContainer" parent="Panel/Body"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BtnAll" type="Button" parent="Panel/Body/QuestToolbar"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+text = "全部"
+
+[node name="BtnActive" type="Button" parent="Panel/Body/QuestToolbar"]
+custom_minimum_size = Vector2(78, 36)
+layout_mode = 2
+text = "进行中"
+
+[node name="BtnMain" type="Button" parent="Panel/Body/QuestToolbar"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+text = "主线"
+
+[node name="BtnDone" type="Button" parent="Panel/Body/QuestToolbar"]
+custom_minimum_size = Vector2(78, 36)
+layout_mode = 2
+text = "已完成"
+
+[node name="ChapterFilter" type="OptionButton" parent="Panel/Body/QuestToolbar"]
+layout_mode = 2
+
+[node name="Summary" type="Label" parent="Panel/Body/QuestToolbar"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = ""
+
+[node name="QuestActions" type="HBoxContainer" parent="Panel/Body"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="TrackBtn" type="Button" parent="Panel/Body/QuestActions"]
+custom_minimum_size = Vector2(190, 50)
+layout_mode = 2
+text = "追踪当前任务"

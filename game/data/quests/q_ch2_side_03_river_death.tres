@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_side_03_river_death"
+title = "河中女尸案"
+kind = 1
+desc_not_started = "竹尾村外清溪河漂来一具女尸，身穿红衣，手腕系一串七色丝绳。仵作说她死于三日前，但最古怪的是——水中泡了三天，身上却无半点水草附着。"
+desc_in_progress = "调查无名女尸的身份和死因。村人说那串七色丝绳是潥阳一带的风俗，已嫁女子才系。但潥阳距此三百里——她为什么大老远死在这里？"
+desc_completed = "你顺藤摸瓜查出真相：女子是潥阳富户童养媳，不堪虐待逃出，被丈夫带人追到竹尾村外推入河中。凶手以为伪造情杀可瞒天过海。你将证据呈交本地捕头，凶手伏法。女子入土那日，你往她坟前放了七朵野菊——不枉红衣白雪一程。"
+completion_triggers = Array[String](["flag_set:river_death_case_solved"])
+reward_gold = 15
+reward_exp = 18
+reward_items = Array[Dictionary]([{"item_id": "spirit_stone", "count": 3}])

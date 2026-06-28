@@ -229,6 +229,7 @@ func equip(item_id: StringName) -> bool:
 	_sync_legacy_equipped(eq.slot)
 	EventBus.equipment_changed.emit(eq.slot, item_id)
 	emit_signal("equipped_changed", eq.slot, eq)
+	emit_signal("slots_changed")
 	return true
 
 
@@ -237,6 +238,7 @@ func unequip(slot: int) -> void:
 	_sync_legacy_equipped(slot)
 	EventBus.equipment_changed.emit(slot, &"")
 	emit_signal("equipped_changed", slot, null)
+	emit_signal("slots_changed")
 
 
 func get_equipped(slot: int) -> Equipment:

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_03_stone_inscription"
+title = "残碑认字"
+kind = 1
+desc_not_started = "山道旁有一方残碑，碑文以秦篆所刻，风化大半。村中私塾先生认出「剑」、「心」、「通」三字，怀疑是一段失传内功的口诀。"
+desc_in_progress = "寻访附近三位见过此碑的老人，拼凑碑文全文。据说此碑与三百年前一位剑术宗师有关。"
+desc_completed = "你拼出完整碑文：「剑气随心，心通则剑利；心滞则剑钝。夫剑者，心之器也。」——原来是一段心法的总纲。你将碑文拓下带回，私塾先生说这足以让村中子弟参悟一生。"
+completion_triggers = Array[String](["flag_set:stone_inscription_deciphered"])
+reward_gold = 5
+reward_exp = 20
+reward_items = Array[Dictionary]([{"item_id": "spirit_stone", "count": 2}, {"item_id": "inner_breath_pill", "count": 1}])

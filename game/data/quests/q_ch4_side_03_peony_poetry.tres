@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_03_peony_poetry"
+title = "牡丹诗会"
+kind = 1
+desc_not_started = "四月洛阳牡丹花开如海。定鼎门内的姚家大宅举办一年一度的牡丹诗会——今年彩头是姚家祖传的「醉仙翁」牡丹一株，外加白银五十两。但诗会要求参赛者先通过三道文试关：对句、藏头、联诗。"
+desc_in_progress = "前往姚家牡丹诗会。来者多是洛阳文人墨客，偶尔也有武林中人带剑赴会。姚家小姐姚玉京主持诗会——她说不论文武，雅趣为先。"
+desc_completed = "你对：「唯有牡丹真国色，花开时节动京城。」姚玉京微微颔首。三道文试你连过两关，第三关联诗时你以一句『剑折东风花不谢』既合诗韵又带兵戈之气。姚玉京展颜一笑，将「醉仙翁」连盆端给你——她父亲脸色不太好，但女儿话已出口。她低声说：『我听说过你，竹尾村擂台赛的胜者。下次来洛阳，别只为了花。』」
+completion_triggers = Array[String](["flag_set:peony_poetry_won"])
+reward_gold = 50
+reward_exp = 20
+reward_items = Array[Dictionary]([{"item_id": "phoenix_heart", "count": 1}, {"item_id": "healing_salve", "count": 2}])

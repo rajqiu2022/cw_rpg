@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_side_06_moon_guqin"
+title = "月下琴声"
+kind = 1
+desc_not_started = "连续三个满月夜，竹尾村西郊废弃的谷雨观中传出琴声。有人说是鬼，有人说是狐仙。村正求你去看看——没人敢靠近。"
+desc_in_progress = "满月之夜来到谷雨观。琴声果然是古曲《广陵散》——且指法极正，不是泛泛之辈能弹的。你推门入内。"
+desc_completed = "弹琴的是一位白衣女子，名唤楚泠。她是苏州琴馆主人，因避一桩仇家追杀躲在谷雨观中。她每月满月弹琴一曲，是在祭奠三年前遇害的师父。她说《广陵散》的最后一个指法她已经参透了，但在报仇之前不想离开这里。她赠你一枚琴轸（轸音佩）——以琴弦绕成的护身符，据说能辟邪。'
+completion_triggers = Array[String](["flag_set:guqin_mystery_solved"])
+reward_gold = 0
+reward_exp = 20
+reward_items = Array[Dictionary]([{"item_id": "spirit_gathering_dust", "count": 1}, {"item_id": "heaven_element_pill", "count": 1}])

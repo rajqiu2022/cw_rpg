@@ -42,3 +42,7 @@ signal dialog_ended(dialog_id: StringName)
 signal ui_requested(panel_id: StringName)
 
 signal chapter_completed(chapter: int)
+
+signal bgm_changed(bgm_path: String)
+signal sfx_requested(sfx_path: String, volume_offset: float)
+signal audio_volume_changed(kind: StringName, linear: float)

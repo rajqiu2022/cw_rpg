@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_side_05_sword_forum"
+title = "论剑大会"
+kind = 1
+desc_not_started = "武林大会之余，五派弟子自发在凌月山演武坪举办了一场「论剑会」——不谈排名，只论剑理。但华山派弟子与古峰派弟子因一句「剑宗气宗孰高孰低」差点动起手来。"
+desc_in_progress = "作为调解人，你必须在论剑会上发表自己的武学见解，并现场接五派弟子的轮番挑战（点到为止）。说服华山剑宗和气宗各出一人与你同台切磋，以实战论剑理。"
+desc_completed = "你以三场轮战证明了一件事：剑法需气力相济、刚柔并蓄，拘泥于宗派门户只会路越走越窄。五派弟子沉默片刻后爆出喝彩——连华山剑宗和气宗的两位大师兄都拱手致意。凌霜掌门在高台上微微点头。经此一会，你在五派间赢得了「不拘门户」的声名。"
+completion_triggers = Array[String](["flag_set:sword_forum_hosted"])
+reward_gold = 20
+reward_exp = 35
+reward_items = Array[Dictionary]([{"item_id": "wulin_invitation", "count": 1}, {"item_id": "swift_pill", "count": 2}])

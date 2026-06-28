@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_06_canal_grudge"
+title = "漕运恩怨"
+kind = 1
+desc_not_started = "洛阳城北的含嘉仓码头，两帮漕工因争抢卸货权爆发械斗，伤了十几人。受伤的漕工里有赵思颖医馆的病人——她求你去看看能不能平息这场冲突。"
+desc_in_progress = "调查冲突根源。表面上是码头泊位之争，实际上是一批「不明货物」被人在夜间偷运进出仓库。一个受伤的漕工透露了一个细节：那批货箱底部有湿泥，闻起来有山野的气息。"
+desc_completed = "你顺藤摸瓜查出那批货竟是茗雾山庄从洛阳郊外古墓中盗出的陪葬品，改头换面通过漕运送出城。两帮帮主根本不知道自己在帮茗雾运货——他们被中间人挑拨了。你将中间人拿下，把证据交给赵思颖保管（她在洛阳有一定的官面关系）。两帮帮主握手言和。赵思颖看着你的眼神里多了一丝不一样的东西。"
+completion_triggers = Array[String](["flag_set:canal_feud_resolved"])
+reward_gold = 35
+reward_exp = 30
+reward_items = Array[Dictionary]([{"item_id": "healing_pill_major", "count": 2}, {"item_id": "antidote_pill", "count": 1}])

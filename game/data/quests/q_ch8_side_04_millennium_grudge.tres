@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch8_side_04_millennium_grudge"
+title = "千年宿怨"
+kind = 1
+desc_not_started = "苏雾笙在最终决战前交给你一本古籍——帛书残卷，碳十四测定为战国时期遗物。她说：'读完了再决定要不要杀我。'"
+desc_in_progress = "阅读帛书。上面记载的是渊冥子一脉的千年史——渊冥子是战国时期阴阳家的末裔，因一卷能『窥天机、断因果』的天书被六国追杀。茗雾山庄就是渊冥子后人创建的避世之所。千年以来，他们守护着天书三卷中的「因果卷」——而烈云盟、五派、甚至刑樊天的师门，都是在不同时期被茗雾利用或收割的棋子。"
+completion_triggers = Array[String](["flag_set:millennium_scroll_read"])
+reward_gold = 0
+reward_exp = 100
+reward_items = Array[Dictionary]([{"item_id": "qingming_fragment", "count": 1}, {"item_id": "seven_star_sword", "count": 1}])

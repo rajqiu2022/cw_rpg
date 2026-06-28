@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_01_luoyang_paper"
+title = "洛阳纸贵"
+kind = 1
+desc_not_started = "洛阳南市书生左明远十年寒窗著成《风物赋》三篇，欲献于太学祭酒以博功名。但城中纸价暴涨——因今年雨多，宣纸坊的楮皮全霉了。左明远买不起纸，文章誊抄不出。"
+desc_in_progress = "帮左明远解决纸的问题。洛阳城中有三家纸坊——西市的「雪浪笺」最好但最贵，东市的「竹纸」便宜但墨色不透，南市的「麻纸」产量大但粗糙。或者，城外龙门山有一种老藤皮，是古法制纸的上等原料。"
+desc_completed = "你从龙门山采来老藤皮，又找到一位退休的老纸匠，连夜赶制出三十张「藤皮玉版笺」。纸呈青白色，抚之温润，着墨如漆。左明远涕泪横流，连夜誊抄文章。三日后太学祭酒读罢击节赞叹：「洛阳纸贵？从今往后是左郎纸贵！」他赠你一卷亲手批注的《河洛图志》——里面藏着洛阳城地下水道的密图。"
+completion_triggers = Array[String](["flag_set:luoyang_paper_helped"])
+reward_gold = 10
+reward_exp = 25
+reward_items = Array[Dictionary]([{"item_id": "spirit_stone", "count": 3}, {"item_id": "heaven_element_pill", "count": 1}])

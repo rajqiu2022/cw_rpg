@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_side_04_incense_trail"
+title = "药香追踪"
+kind = 1
+desc_not_started = "古峰之战的硝烟中，你又一次闻到了那种冷香——与之前在竹尾村战后闻到的那一缕一模一样。冷香极淡，若不是刻意分辨几乎无法察觉。它来自战场的哪个方向？"
+desc_in_progress = "循着冷香追踪——香味很淡，时断时续，像是有人刻意在掩盖行踪。你追出三里地，在一条山涧旁发现了一枚被踩进泥里的翡翠耳坠。"
+desc_completed = "耳坠做工极其精细，底部刻着一个小小的「戚」字。你终于确认——香水是烈云盟那位神秘女子戚云笙留下的。但她为什么每次都在战后出现？她在跟踪你？还是在暗中保护你？你将耳坠收入怀中——这件物证也许有一天会派上用场。"
+completion_triggers = Array[String](["flag_set:incense_trail_followed"])
+reward_gold = 0
+reward_exp = 25
+reward_items = Array[Dictionary]([{"item_id": "qiyun_incense_pouch", "count": 1}, {"item_id": "silver_moon_necklace", "count": 1}])

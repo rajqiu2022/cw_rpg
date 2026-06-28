@@ -30,6 +30,10 @@ extends Resource
 @export var drop_random: Array[Dictionary] = []
 ## 例：[{"item_id": "healing_pill_minor", "chance": 0.3, "count": 1}]
 
+@export_category("Chapter")
+## 章节 Boss：胜利后进入章节结算而非普通胜利
+@export var is_chapter_boss: bool = false
+
 
 func to_runtime_stats() -> CharacterStats:
 	## 把模板"实例化"成战斗用的 CharacterStats。

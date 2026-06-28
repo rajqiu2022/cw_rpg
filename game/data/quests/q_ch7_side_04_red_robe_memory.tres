@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch7_side_04_red_robe_memory"
+title = "红衣往事"
+kind = 1
+desc_not_started = "你在烈云盟分舵的书房中偶然翻到一册手稿，笔迹清秀却力透纸背——是戚云笙少女时写的日记。你不该看，但扉页上「冷孤云」三个字让你没法放下。"
+desc_in_progress = "翻看日记。戚云笙十五岁时就已经是烈云盟最年轻的堂主。日记里多次提到一个「他」——没写名字，只写了「林西村，冬天，下雪天练剑的那个少年」。她在远处看过你很多次。她说她欠他一条命（准确地说，是欠他父亲的）。"
+desc_completed = "你将手稿放回原位。戚云笙不知何时站在门口——她没生气。『那是我十七岁写的。后来我才知道，我欠你父亲一条命，还不了。』她转身离开，在门口停了一步：『这次进攻茗雾，我走前面。别跟我争。』你终于明白她为什么一直在帮你——不是因为你，是因为你父亲。"
+completion_triggers = Array[String](["flag_set:red_robe_memory_read"])
+reward_gold = 0
+reward_exp = 35
+reward_items = Array[Dictionary]([{"item_id": "qiyun_jade", "count": 1}])

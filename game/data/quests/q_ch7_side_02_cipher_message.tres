@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch7_side_02_cipher_message"
+title = "暗语密信"
+kind = 1
+desc_not_started = "戚云笙交给你一封从茗雾山庄信鸽上截获的密信。信上全是一组组数字——天干地支纪年法乱序排列，明显是一种暗语。她说这是茗雾山庄的分舵联络密文，若能破译，就能提前知道茗雾的布防。"
+desc_in_progress = "你需要找到破解密文的方法。江湖传言少林藏经阁中有一本《切韵指掌图》记载了类似的暗语体系——或者，洛阳白马寺的了尘大师精通古代加密符咒。"
+desc_completed = "你将密信与从白马寺得来的一卷唐代敦煌密教写经对比——发现密码是以《金刚经》为密钥的「藏头嵌字」法：每句经文取第几个字对应一个地支，再转天干合为方位。破译后你得到茗雾山庄在洛阳的三处暗舵位置。戚云笙看你的眼神变了——『你这人，比我想的聪明。』"
+completion_triggers = Array[String](["flag_set:cipher_decoded"])
+reward_gold = 20
+reward_exp = 40
+reward_items = Array[Dictionary]([{"item_id": "spirit_stone", "count": 3}, {"item_id": "clarity_dew", "count": 2}])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_06_caravan_escort"
+title = "古道护商"
+kind = 1
+desc_not_started = "一队从蜀中贩运蜀锦和药材的商队，在穿越清风岭时被山贼盯上。领头的老掌柜姓范，头发花白，说这批货是他一辈子的积蓄。"
+desc_in_progress = "护送蜀中商队穿过清风岭——此路段常年匪患，最近又有一股流寇从川西窜入。商队已雇了两名镖师，加上你才能凑足人手。"
+desc_completed = "山贼果然出现——五个骑马的悍匪。你与两名镖师血战半个时辰，击退贼人。范掌柜感激涕零，除了工钱外又送你一匹蜀锦和一包从峨眉山上收来的珍稀药材。他低声说：'少侠，江湖险恶，这锦缎你拿去换钱，比银子轻便。'"
+completion_triggers = Array[String](["flag_set:caravan_escort_done"])
+reward_gold = 30
+reward_exp = 25
+reward_items = Array[Dictionary]([{"item_id": "silk_thread", "count": 3}, {"item_id": "herb_bundle", "count": 2}, {"item_id": "healing_pill_major", "count": 1}])

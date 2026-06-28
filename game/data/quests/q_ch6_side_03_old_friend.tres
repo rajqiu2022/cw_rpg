@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch6_side_03_old_friend"
+title = "故人相托"
+kind = 1
+desc_not_started = "林西村唯一的铁匠铺老板刘一手是你儿时的邻居。他看见你回村后悄悄把你拉到一边，说有一件事压在他心里十五年了。"
+desc_in_progress = "刘一手说十五年前他还在洛阳铁匠铺当学徒时，曾替一个蒙面人打造过一批奇怪的兵器——兵器淬火后呈现暗紫色，那人在铸完的当天就把他舌头割了半截。他说后来才知道那种紫色淬火是苗疆的毒炼法。"
+desc_completed = "你根据刘一手的描述画出了那批兵器的草图——三棱刺、钩镰、分水峨眉刺——全是暗杀专用器械。你再三追问下记起了一个细节：那人左脚有些跛。这与竹尾村击杀凌月派弟子的凶手特征吻合——说明茗雾山庄十五年前就在洛阳经营暗杀作坊。刘一手说完了这些，像是放下了一块大石头。他送了你一柄他偷偷复刻的暗紫色短剑——作为证据，也作为纪念。"
+completion_triggers = Array[String](["flag_set:old_friend_mission_done"])
+reward_gold = 10
+reward_exp = 25
+reward_items = Array[Dictionary]([{"item_id": "shadow_dagger", "count": 1}, {"item_id": "iron_ore", "count": 3}])

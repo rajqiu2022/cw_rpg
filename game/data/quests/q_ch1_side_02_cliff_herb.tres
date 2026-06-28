@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_02_cliff_herb"
+title = "悬崖采药"
+kind = 1
+desc_not_started = "林西村老药师韩百草苦求一味药引——青崖断魂草，只长在村后悬崖绝壁之上。"
+desc_in_progress = "攀上林西村后山绝壁，采集青崖断魂草。山道险峻，据说有猛禽栖息。"
+desc_completed = "你将断魂草交给韩百草。老人激动得双手颤抖，说此药可救三人性命。他拿出祖传丹药和一本残破的《本经》相赠。"
+completion_triggers = Array[String](["flag_set:cliff_herb_collected"])
+reward_gold = 8
+reward_exp = 15
+reward_items = Array[Dictionary]([{"item_id": "lingzhi_pill", "count": 1}, {"item_id": "life_extend_pill", "count": 1}])

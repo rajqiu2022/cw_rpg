@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch2_side_02_go_puzzle"
+title = "珍珑棋局"
+kind = 1
+desc_not_started = "竹尾村茶馆中有一位白发老翁，每日在棋盘上摆同一局残局。无人能解。他说这是三百年前大国手范西屏留下的最后一局。"
+desc_in_progress = "老翁说解开此局者，可得他珍藏之物。观察棋局——黑子看似必死，但左上角有一颗「闲子」可能暗藏玄机。"
+desc_completed = "你落子于左上角看似无关的那一处——老翁瞳孔骤缩。良久长叹：'范西屏衣钵有传了。'他从怀中取出一枚玉质棋子。玉棋子中有天然血丝纹路，隐泛温热——这不是棋子，是传说中的「温玉髓」，常人佩之可通经脉、避百毒。"
+completion_triggers = Array[String](["flag_set:go_puzzle_solved"])
+reward_gold = 0
+reward_exp = 25
+reward_items = Array[Dictionary]([{"item_id": "ice_heart_jade", "count": 1}])

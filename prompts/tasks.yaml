@@ -2934,14 +2934,6 @@ tasks:
     skip: false
     vars: {}
 
-  - id: ui_dialog_frame_v6
-    template: ui_dialog_frame_v6
-    category: ui/field_hud
-    priority: 1
-    model: gpt-image-2
-    skip: false
-    vars: {}
-
   # ============================================================
   # === [v0.10 头像+精灵+NPC+尸体] quality=high, 自我验证 ===
   # ============================================================
@@ -3919,8 +3911,57 @@ tasks:
     skip: false
     vars: {}
 
-  - id: ui_quest_panel_kit
-    template: ui_quest_panel_kit
+  - id: ui_quest_large_panels
+    template: ui_quest_large_panels
+    category: ui/quest
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: ui_quest_small_controls
+    template: ui_quest_small_controls
+    category: ui/quest
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+
+  - id: ui_skill_panel_kit
+    template: ui_skill_panel_kit
+    category: ui/skill
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: ui_tooltip_bg
+    template: ui_tooltip_bg
+    category: ui/equipment
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+  - id: ui_battle_kit
+    template: ui_battle_kit
+    category: ui/battle
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+
+
+  - id: ui_quest_detail_panel
+    template: ui_quest_detail_panel
+    category: ui/quest
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars: {}
+  - id: ui_quest_panel_new_bg
+    template: ui_quest_panel_new_bg
     category: ui/quest
     priority: 1
     model: gpt-image-2

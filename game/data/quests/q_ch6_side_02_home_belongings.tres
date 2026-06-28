@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch6_side_01_home_belongings"
+title = "旧居遗物"
+kind = 1
+desc_not_started = "回到林西村，你推开师傅刑樊天的屋门——屋里落满灰尘，桌上有半碗发霉的粥。在师傅床下的暗格里，你发现了一个上锁的木匣。"
+desc_in_progress = "打开木匣。锁是普通的铜锁，用剑尖就能挑开。但你在犹豫——这是师傅的隐私，你该不该看？"
+desc_completed = "你打开了木匣。里面是几样东西：一枚茗雾山庄外门弟子的铜牌（已经磨损发黄）、一张泛黄的婚书（上面的名字是刑樊天和一个叫「苏媛」的女子——正是苏雾笙的妹妹，二十年前难产而死）以及一封没有寄出的信。信上写：『吾妻媛媛：吾已收孤云为徒。他天资极好，吾会将毕生所学传他。待他长大，吾必回茗雾见你阿姊一面，了结旧账。』你的手微微发抖——原来师傅和茗雾山庄的渊源如此之深。"
+completion_triggers = Array[String](["flag_set:home_belongings_found"])
+reward_gold = 0
+reward_exp = 30
+reward_items = Array[Dictionary]([{"item_id": "fanxuan_letter", "count": 1}, {"item_id": "crimson_jade_pendant", "count": 1}])

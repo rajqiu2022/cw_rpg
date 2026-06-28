@@ -291,6 +291,11 @@ def agent_detail(request: Request, agent_id: str):
     )
 
 
+@app.get("/ui-layout")
+def ui_layout(request: Request):
+    return templates.TemplateResponse(request, "ui_layout.html", {})
+
+
 @app.get("/requirements")
 def requirements(request: Request):
     with _db() as conn:

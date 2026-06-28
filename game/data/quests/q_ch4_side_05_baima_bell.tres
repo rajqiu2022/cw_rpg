@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_05_baima_bell"
+title = "白马古钟"
+kind = 1
+desc_not_started = "洛阳白马寺——中国第一古刹——的千年铜钟，近日每夜丑时自鸣三响。寺中僧人说钟已两百年没撞过了，无人碰它却自己发声，怕是凶兆。"
+desc_in_progress = "夜宿白马寺，查明铜钟自鸣的原因。寺中方丈了尘大师说钟是东汉明帝年间所铸，距今已一千六百余年。"
+desc_completed = "你连夜守在钟楼。丑时三刻，一阵风穿堂而过——你注意到钟楼东壁有极细的风眼。原来百年前一次修缮时工匠在东壁留了一个空心砖缝，月圆之夜风向恰巧穿过砖缝形成共鸣，刚好是铜钟的固有频率。了尘大师听完你的解释合掌微笑：『施主以匠心破疑心——这串佛珠是老衲年轻时从敦煌带来的，送你做个念想。』他又说，你知道这个机关就够了——别张扬，寺里需要一点神秘才能让人敬畏。"
+completion_triggers = Array[String](["flag_set:baima_bell_solved"])
+reward_gold = 5
+reward_exp = 15
+reward_items = Array[Dictionary]([{"item_id": "inner_breath_pill", "count": 2}, {"item_id": "spirit_gathering_dust", "count": 2}])

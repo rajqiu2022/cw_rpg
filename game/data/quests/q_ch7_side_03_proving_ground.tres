@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch7_side_03_proving_ground"
+title = "试剑台"
+kind = 1
+desc_not_started = "烈云盟分舵后院有一座废弃的试剑台——赤焰长老说这座台上一任主人是十年前叛逃的冥光长老，他走后台上设下了禁制，无人能踏上第三级台阶。"
+desc_in_progress = "挑战试剑台。第一级台阶踏上时，四周空气骤然变重——是内力阵法。第二级台阶有一道隐形的剑气迎面削来。第三级台阶上，你看见了冥光长老留下的一行字和一枚令牌。"
+desc_completed = "你强顶压力踏上第三级台阶，取下冥光长老的信。信上说他的叛逃是假的——他是戚云笙安插在茗雾山庄的双面卧底，被茗雾识破后灭口。令牌是烈云盟最高级别的「玄铁令」，持令者可调动烈云盟一切资源。戚云笙接过令牌沉默良久——『他是我师兄。』那是你第一次在她语气中听出裂痕。"
+completion_triggers = Array[String](["flag_set:proving_ground_cleared"])
+reward_gold = 30
+reward_exp = 50
+reward_items = Array[Dictionary]([{"item_id": "liuyun_talisman", "count": 1}, {"item_id": "strength_pill", "count": 2}])

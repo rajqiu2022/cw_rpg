@@ -39,6 +39,7 @@ func save_to_slot(slot: int) -> bool:
 		"inventory": Inventory.to_dict(),
 		"quests": QuestManager.to_dict(),
 		"current_field": String(SceneRouter.get_current_field_id()),
+		"audio_volumes": AudioManager.get_volumes(),
 	}
 	var f := FileAccess.open(slot_path(slot), FileAccess.WRITE)
 	if f == null:
@@ -64,6 +65,7 @@ func load_from_slot(slot: int) -> bool:
 	_apply_stats(GameState.player, data.get("player", {}))
 	Inventory.from_dict(data.get("inventory", {}))
 	QuestManager.from_dict(data.get("quests", {}))
+	AudioManager.set_volumes(data.get("audio_volumes", {}))
 	GameState.emit_signal("player_changed")
 	GameState.emit_signal("gold_changed", GameState.gold)
 	return true

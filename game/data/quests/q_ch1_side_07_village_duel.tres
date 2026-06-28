@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_07_village_duel"
+title = "村口试剑"
+kind = 1
+desc_not_started = "林西村口老槐树下有个外乡剑客摆了张矮桌，桌上一壶茶、一柄剑。他说：'赢我一招，剑归你；输我一招，替我跑三天腿。'村里没人敢接。"
+desc_in_progress = "与外乡剑客比剑。他不肯说姓名，只说姓季，从南边来。剑法飘忽，不像江湖常见路数。"
+desc_completed = "你接了他十七招，第十八招他剑尖停在你喉前三寸。他收剑大笑：'好！林西村果然有人。剑你拿走——我师妹等在南边，我该走了。'他留下剑和一壶铁观音，大步离去。村民说那人腰间挂着岳麓山季家的玉佩——那可是百年剑术世家。"
+completion_triggers = Array[String](["flag_set:village_duel_won"])
+reward_gold = 0
+reward_exp = 30
+reward_items = Array[Dictionary]([{"item_id": "steel_longsword", "count": 1}, {"item_id": "swift_pill", "count": 1}])

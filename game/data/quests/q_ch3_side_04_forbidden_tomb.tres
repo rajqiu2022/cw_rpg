@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_side_04_forbidden_tomb"
+title = "禁地探秘"
+kind = 1
+desc_not_started = "凌月派后山有一处禁地——锁着铁门，贴着三道符咒。凌霜掌门说里面是百年前一位叛变师祖的衣冠冢，踏入者逐出师门。但有人告诉你，里面埋的不是衣冠——而是一卷天书的手抄本。"
+desc_in_progress = "趁夜色潜入凌月派禁地。铁门锁芯是罕见的四簧锁——或者你不需要撬锁，符咒后面有一个暗格直通地宫。"
+desc_completed = "你避开了三道机关进入地宫。里面没有天书——只有一具坐化的枯骨，膝上放着一封信。信上说这位师祖当年发现茗雾山庄的阴谋后被同门灭口，嫁祸为叛变。他临死前把证据封在地宫。你将信带回，凌霜掌门脸色铁青——禁地从此不再禁。她没谢你，但也没罚你。"
+completion_triggers = Array[String](["flag_set:forbidden_tomb_explored"])
+reward_gold = 20
+reward_exp = 45
+reward_items = Array[Dictionary]([{"item_id": "lingyue_token", "count": 1}, {"item_id": "jade_fragment", "count": 3}])

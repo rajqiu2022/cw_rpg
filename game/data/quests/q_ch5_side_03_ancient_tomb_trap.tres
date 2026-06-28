@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_side_03_ancient_tomb_trap"
+title = "古墓玄机"
+kind = 1
+desc_not_started = "古月峰山脚一处塌方露出了一座战国古墓的入口。墓道口有断龙石，石上以篆书刻着:『入此墓者，非求财，非求名，为求一答。』附近村民说夜里常听见墓中传出铁链拖地的声音。"
+desc_in_progress = "进入战国古墓。墓道中机关密布——流沙、翻板、毒箭、水银池。你发现墓道两侧的壁画在讲述一个故事:一位将军背叛了自己的君主后，在这里自刎。最深处似乎还有活物。"
+desc_completed = "你闯过七道机关，在墓室中央见到一副青铜棺椁。棺上悬着九条铁链——铁链声就是风吹过棺椁缝隙产生的鸣响。棺盖上刻着将军的遗言:『吾负君恩，葬身于此。后人若见，取吾佩剑，代吾守边三年。』棺中有一柄青铜短剑，剑身黝黑，铭文为『越王州句自作用剑』——这是一柄真正的春秋越王剑！你将剑取出，重新闭合棺盖。断龙石在你身后缓缓落下。这把剑的价值，足够让整个武林为之震动。"
+completion_triggers = Array[String](["flag_set:ancient_tomb_cleared"])
+reward_gold = 40
+reward_exp = 100
+reward_items = Array[Dictionary]([{"item_id": "thunder_amulet", "count": 1}, {"item_id": "diamond_powder", "count": 3}])

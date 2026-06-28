@@ -53,36 +53,15 @@ func _build_formal_layout() -> void:
 	var body: VBoxContainer = get_node_or_null("Panel/Body") as VBoxContainer
 	if body == null:
 		return
-	if body.get_node_or_null("QuestToolbar") == null:
-		var toolbar: HBoxContainer = HBoxContainer.new()
-		toolbar.name = "QuestToolbar"
-		toolbar.add_theme_constant_override("separation", 10)
-		body.add_child(toolbar)
-		body.move_child(toolbar, 1)
-		_filter_row = toolbar
-		_add_filter_button("全部", "all")
-		_add_filter_button("进行中", "active")
-		_add_filter_button("主线", "main")
-		_add_filter_button("已完成", "done")
 
-		# 章节筛选下拉
-		_chapter_filter_btn = OptionButton.new()
-		_chapter_filter_btn.add_item("全部章节", 0)
-		_chapter_filter_btn.set_item_metadata(0, "all")
-		var chap_idx := 1
-		for ch_key in ["ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7", "ch8"]:
-			_chapter_filter_btn.add_item(CHAPTER_NAMES[ch_key], chap_idx)
-			_chapter_filter_btn.set_item_metadata(chap_idx, ch_key)
-			chap_idx += 1
-		_chapter_filter_btn.item_selected.connect(_on_chapter_filter_changed)
-		toolbar.add_child(_chapter_filter_btn)
-		_summary_label = Label.new()
-		_summary_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		_summary_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
-		UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
-		toolbar.add_child(_summary_label)
+	var toolbar: HBoxContainer = body.get_node_or_null("QuestToolbar") as HBoxContainer
+	if toolbar != null:
+		if _filter_row == null:
+			_filter_row = toolbar
+			_apply_toolbar_style(toolbar)
 	else:
-		_filter_row = body.get_node_or_null("QuestToolbar") as HBoxContainer
+		_build_toolbar_in_code(body)
+		toolbar = body.get_node_or_null("QuestToolbar") as HBoxContainer
 
 	var content: HBoxContainer = get_node_or_null("Panel/Body/Content") as HBoxContainer
 	if content != null:
@@ -93,27 +72,87 @@ func _build_formal_layout() -> void:
 	var detail_parent: Control = detail.get_parent() as Control
 	if detail_parent != null:
 		detail_parent.custom_minimum_size = Vector2(610, 0)
-	if body.get_node_or_null("QuestActions") == null:
-		var actions: HBoxContainer = HBoxContainer.new()
-		actions.name = "QuestActions"
-		actions.alignment = BoxContainer.ALIGNMENT_CENTER
-		actions.add_theme_constant_override("separation", 12)
-		body.add_child(actions)
-		_track_btn = Button.new()
-		_track_btn.text = "追踪当前任务"
-		_track_btn.custom_minimum_size = Vector2(190, 50)
-		_track_btn.tooltip_text = "追踪当前任务"
-		UI_THEME.style_button(_track_btn, 16, UI_THEME.JADE)
-		_apply_btn_textures(_track_btn, "btn_track")
-		var tl := _track_btn.get_child(_track_btn.get_child_count() - 1) as Label
-		if tl != null:
-			tl.text = "追踪当前任务"
-		_track_btn.pressed.connect(_track_selected)
-		actions.add_child(_track_btn)
+
+	var actions: HBoxContainer = body.get_node_or_null("QuestActions") as HBoxContainer
+	if actions != null:
+		if _track_btn == null:
+			_track_btn = actions.get_node_or_null("TrackBtn") as Button
+			if _track_btn != null:
+				UI_THEME.style_button(_track_btn, 16, UI_THEME.JADE)
+				_apply_btn_textures(_track_btn, "btn_track")
+				_track_btn.pressed.connect(_track_selected)
 	else:
-		var actions_existing: HBoxContainer = body.get_node_or_null("QuestActions") as HBoxContainer
-		if actions_existing != null and actions_existing.get_child_count() > 0:
-			_track_btn = actions_existing.get_child(0) as Button
+		_build_actions_in_code(body)
+
+
+func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
+	var filter_pairs: Array = [["BtnAll", "all"], ["BtnActive", "active"], ["BtnMain", "main"], ["BtnDone", "done"]]
+	for pair in filter_pairs:
+		var btn: Button = toolbar.get_node_or_null(str(pair[0])) as Button
+		if btn == null: continue
+		UI_THEME.style_button(btn, 15, UI_THEME.BLUE_STEEL)
+		var mode: String = str(pair[1])
+		btn.pressed.connect(func(): _set_filter(mode))
+
+	_chapter_filter_btn = toolbar.get_node_or_null("ChapterFilter") as OptionButton
+	if _chapter_filter_btn != null:
+		_chapter_filter_btn.add_item("全部章节", 0)
+		_chapter_filter_btn.set_item_metadata(0, "all")
+		var idx: int = 1
+		for ch_key in ["ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7", "ch8"]:
+			_chapter_filter_btn.add_item(CHAPTER_NAMES[ch_key], idx)
+			_chapter_filter_btn.set_item_metadata(idx, ch_key)
+			idx += 1
+		_chapter_filter_btn.item_selected.connect(_on_chapter_filter_changed)
+
+	_summary_label = toolbar.get_node_or_null("Summary") as Label
+	if _summary_label != null:
+		UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
+
+
+func _build_toolbar_in_code(body: VBoxContainer) -> void:
+	var toolbar: HBoxContainer = HBoxContainer.new()
+	toolbar.name = "QuestToolbar"
+	toolbar.add_theme_constant_override("separation", 10)
+	body.add_child(toolbar)
+	body.move_child(toolbar, 1)
+	_filter_row = toolbar
+	_add_filter_button("全部", "all")
+	_add_filter_button("进行中", "active")
+	_add_filter_button("主线", "main")
+	_add_filter_button("已完成", "done")
+
+	_chapter_filter_btn = OptionButton.new()
+	_chapter_filter_btn.add_item("全部章节", 0)
+	_chapter_filter_btn.set_item_metadata(0, "all")
+	var chap_idx: int = 1
+	for ch_key in ["ch1", "ch2", "ch3", "ch4", "ch5", "ch6", "ch7", "ch8"]:
+		_chapter_filter_btn.add_item(CHAPTER_NAMES[ch_key], chap_idx)
+		_chapter_filter_btn.set_item_metadata(chap_idx, ch_key)
+		chap_idx += 1
+	_chapter_filter_btn.item_selected.connect(_on_chapter_filter_changed)
+	toolbar.add_child(_chapter_filter_btn)
+	_summary_label = Label.new()
+	_summary_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_summary_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
+	toolbar.add_child(_summary_label)
+
+
+func _build_actions_in_code(body: VBoxContainer) -> void:
+	var actions: HBoxContainer = HBoxContainer.new()
+	actions.name = "QuestActions"
+	actions.alignment = BoxContainer.ALIGNMENT_CENTER
+	actions.add_theme_constant_override("separation", 12)
+	body.add_child(actions)
+	_track_btn = Button.new()
+	_track_btn.text = "追踪当前任务"
+	_track_btn.custom_minimum_size = Vector2(190, 50)
+	_track_btn.tooltip_text = "追踪当前任务"
+	UI_THEME.style_button(_track_btn, 16, UI_THEME.JADE)
+	_apply_btn_textures(_track_btn, "btn_track")
+	_track_btn.pressed.connect(_track_selected)
+	actions.add_child(_track_btn)
 
 
 func _add_filter_button(label: String, mode: String) -> void:

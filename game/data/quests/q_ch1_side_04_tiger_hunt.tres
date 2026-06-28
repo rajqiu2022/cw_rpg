@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_04_tiger_hunt"
+title = "独猎猛虎"
+kind = 1
+desc_not_started = "猎户铁老七腿瘸了——不是老了，是被山南白虎岭的吊睛白额大虫咬断的。他儿子三月前进山打虎，至今未归。"
+desc_in_progress = "前往白虎岭猎杀伤人的猛虎。铁老七说此虎比寻常至少大三成，虎皮厚得箭射不进——得用剑刺它咽喉。"
+desc_completed = "你提虎头下山，全村沸腾。铁老七颤抖着跪在虎头前哭了一场——不是为腿，是为儿子。他把珍藏了二十年的虎骨酒送你，又翻出一对铁护腕：「我儿用不上了，你拿去。别学他——活着回来比什么都强。」"
+completion_triggers = Array[String](["flag_set:tiger_hunted"])
+reward_gold = 50
+reward_exp = 40
+reward_items = Array[Dictionary]([{"item_id": "tiger_claw_gloves", "count": 1}, {"item_id": "strength_pill", "count": 2}])

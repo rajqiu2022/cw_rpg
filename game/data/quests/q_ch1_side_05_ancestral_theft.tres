@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_05_ancestral_theft"
+title = "祠堂失窃"
+kind = 1
+desc_not_started = "林西村冷氏宗祠昨夜遭窃——供桌上的青铜香炉不翼而飞。此炉是冷家祖先明初年间传下来的，族老急得几乎昏厥。"
+desc_in_progress = "追查祠堂窃贼。村口卖炊饼的说半夜看见两个黑影往北山跑，其中一个走路有些跛。"
+desc_completed = "你在北山废窑抓住了窃贼——竟是村中两个游手好闲的后生。香炉完好，你押着两人回村。族老叹气放了他们，但让你把香炉归位。他说冷家子孙不该互相伤害。临走赠你一枚祖传玉佩——「你比他们更像冷家的人。」"
+completion_triggers = Array[String](["flag_set:ancestral_hall_case_solved"])
+reward_gold = 10
+reward_exp = 12
+reward_items = Array[Dictionary]([{"item_id": "jade_fragment", "count": 2}, {"item_id": "crimson_jade_pendant", "count": 1}])

@@ -79,3 +79,50 @@ bbcode_enabled = true
 fit_content = false
 scroll_active = false
 text = "选择一门武学查看详情。"
+
+[node name="SkillToolbar" type="HBoxContainer" parent="Panel/Body"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BtnAll" type="Button" parent="Panel/Body/SkillToolbar"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+text = "全部"
+
+[node name="BtnAttack" type="Button" parent="Panel/Body/SkillToolbar"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+text = "攻击"
+
+[node name="BtnSupport" type="Button" parent="Panel/Body/SkillToolbar"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+text = "辅助"
+
+[node name="BtnDefense" type="Button" parent="Panel/Body/SkillToolbar"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+text = "防御"
+
+[node name="SchoolFilter" type="OptionButton" parent="Panel/Body/SkillToolbar"]
+layout_mode = 2
+
+[node name="Summary" type="Label" parent="Panel/Body/SkillToolbar"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = ""
+
+[node name="SkillActions" type="HBoxContainer" parent="Panel/Body"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="QuickBtn" type="Button" parent="Panel/Body/SkillActions"]
+custom_minimum_size = Vector2(170, 42)
+layout_mode = 2
+text = "设为快捷招式"
+
+[node name="PracticeBtn" type="Button" parent="Panel/Body/SkillActions"]
+custom_minimum_size = Vector2(140, 42)
+layout_mode = 2
+text = "研读招式"
