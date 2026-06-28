@@ -232,21 +232,15 @@ func _apply_visual_style() -> void:
 	if dim != null:
 		dim.color = Color(0.005, 0.010, 0.016, 0.58)
 
-	# 面板背景贴图
-	var panel: PanelContainer = get_node_or_null("Panel") as PanelContainer
+	# 底框由 PanelBg TextureRect 承载，Content 保持透明
+	var panel: PanelContainer = get_node_or_null("Content") as PanelContainer
 	if panel != null:
-		panel.offset_left = -640
+		panel.offset_left = -590
 		panel.offset_top = -350
-		panel.offset_right = 640
+		panel.offset_right = 590
 		panel.offset_bottom = 350
-		var panel_tex = _try_load("panel_bg.png")
-		if panel_tex != null:
-			var sb := StyleBoxTexture.new()
-			sb.texture = panel_tex
-			sb.modulate_color = Color(1, 1, 1, 0.97)
-			panel.add_theme_stylebox_override("panel", sb)
-		else:
-			panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.060, 0.075, 0.98), UI_THEME.BLUE_STEEL, 18, 3))
+		# 透明背景，不覆盖 PanelBg/TitlePlaque/DetailBg
+		panel.add_theme_stylebox_override("panel", StyleBoxEmpty.new())
 
 	var title: Label = get_node_or_null("Content/Body/Header/Title") as Label
 	if title != null:
