@@ -8,6 +8,10 @@ const ART_DIR := "res://art/ui/quest/"
 @onready var quest_list: VBoxContainer = %QuestList
 @onready var detail: RichTextLabel = %Detail
 @onready var close_btn: Button = %CloseBtn
+@onready var summary_label: Label = $Content/Body/Toolbar/Summary
+@onready var chapter_filter: OptionButton = $Content/Body/Toolbar/ChapterFilter
+@onready var track_btn: Button = $Content/Body/Actions/TrackBtn
+@onready var dismiss_btn: Button = $Content/Body/Actions/DismissBtn
 
 var _filter_mode := "all"
 var _chapter_filter := "all"
@@ -34,6 +38,7 @@ func _ready() -> void:
 	_build_formal_layout()
 	_apply_visual_style()
 	close_btn.pressed.connect(close)
+	if dismiss_btn != null: dismiss_btn.pressed.connect(_untrack)
 	QuestManager.active_quests_changed.connect(_refresh)
 	_refresh()
 
@@ -50,30 +55,30 @@ func close() -> void:
 
 
 func _build_formal_layout() -> void:
-	var body: VBoxContainer = get_node_or_null("Panel/Body") as VBoxContainer
+	var body: VBoxContainer = get_node_or_null("Content/Body") as VBoxContainer
 	if body == null:
 		return
 
-	var toolbar: HBoxContainer = body.get_node_or_null("QuestToolbar") as HBoxContainer
+	var toolbar: HBoxContainer = body.get_node_or_null("Toolbar") as HBoxContainer
 	if toolbar != null:
 		if _filter_row == null:
 			_filter_row = toolbar
 			_apply_toolbar_style(toolbar)
 	else:
 		_build_toolbar_in_code(body)
-		toolbar = body.get_node_or_null("QuestToolbar") as HBoxContainer
+		toolbar = body.get_node_or_null("Toolbar") as HBoxContainer
 
-	var content: HBoxContainer = get_node_or_null("Panel/Body/Content") as HBoxContainer
+	var content: HBoxContainer = get_node_or_null("Content/Body/ListContent") as HBoxContainer
 	if content != null:
 		content.add_theme_constant_override("separation", 18)
-	var list_scroll: ScrollContainer = get_node_or_null("Panel/Body/Content/ListScroll") as ScrollContainer
+	var list_scroll: ScrollContainer = get_node_or_null("Content/Body/ListContent/ListScroll") as ScrollContainer
 	if list_scroll != null:
 		list_scroll.custom_minimum_size = Vector2(430, 0)
 	var detail_parent: Control = detail.get_parent() as Control
 	if detail_parent != null:
 		detail_parent.custom_minimum_size = Vector2(610, 0)
 
-	var actions: HBoxContainer = body.get_node_or_null("QuestActions") as HBoxContainer
+	var actions: HBoxContainer = body.get_node_or_null("Actions") as HBoxContainer
 	if actions != null:
 		if _track_btn == null:
 			_track_btn = actions.get_node_or_null("TrackBtn") as Button
@@ -81,6 +86,11 @@ func _build_formal_layout() -> void:
 				UI_THEME.style_button(_track_btn, 16, UI_THEME.JADE)
 				_apply_btn_textures(_track_btn, "btn_track")
 				_track_btn.pressed.connect(_track_selected)
+		if dismiss_btn == null:
+			dismiss_btn = actions.get_node_or_null("DismissBtn") as Button
+			if dismiss_btn != null:
+				UI_THEME.style_button(dismiss_btn, 16, UI_THEME.CRIMSON)
+				dismiss_btn.pressed.connect(_untrack)
 	else:
 		_build_actions_in_code(body)
 
@@ -118,7 +128,7 @@ func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
 
 
 func _update_filter_highlights() -> void:
-	var toolbar: HBoxContainer = get_node_or_null("Panel/Body/QuestToolbar") as HBoxContainer
+	var toolbar: HBoxContainer = get_node_or_null("Content/Body/Toolbar") as HBoxContainer
 	if toolbar == null: return
 	var mode_map := {"BtnAll": "all", "BtnActive": "active", "BtnMain": "main", "BtnDone": "done"}
 	for btn_name in mode_map:
@@ -134,7 +144,7 @@ func _update_filter_highlights() -> void:
 
 func _build_toolbar_in_code(body: VBoxContainer) -> void:
 	var toolbar: HBoxContainer = HBoxContainer.new()
-	toolbar.name = "QuestToolbar"
+	toolbar.name = "Toolbar"
 	toolbar.add_theme_constant_override("separation", 10)
 	body.add_child(toolbar)
 	body.move_child(toolbar, 1)
@@ -163,7 +173,7 @@ func _build_toolbar_in_code(body: VBoxContainer) -> void:
 
 func _build_actions_in_code(body: VBoxContainer) -> void:
 	var actions: HBoxContainer = HBoxContainer.new()
-	actions.name = "QuestActions"
+	actions.name = "Actions"
 	actions.alignment = BoxContainer.ALIGNMENT_CENTER
 	actions.add_theme_constant_override("separation", 12)
 	body.add_child(actions)
@@ -238,7 +248,7 @@ func _apply_visual_style() -> void:
 		else:
 			panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.060, 0.075, 0.98), UI_THEME.BLUE_STEEL, 18, 3))
 
-	var title: Label = get_node_or_null("Panel/Body/Header/Title") as Label
+	var title: Label = get_node_or_null("Content/Body/Header/Title") as Label
 	if title != null:
 		title.text = "任务卷宗"
 		UI_THEME.style_label(title, 34, UI_THEME.GOLD_LIGHT)

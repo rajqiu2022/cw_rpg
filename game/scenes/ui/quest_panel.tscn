@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/quest_panel.gd" id="1_quest"]
+[ext_resource type="Texture2D" path="res://art/ui/quest/panel_bg.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://art/ui/quest/title_plaque.png" id="3_title"]
+[ext_resource type="Texture2D" path="res://art/ui/quest/detail_panel.png" id="4_detail_bg"]
 
 [node name="QuestPanelFull" type="Control"]
 visible = false
@@ -18,7 +21,61 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.5)
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="PanelBg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TitlePlaque" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -340.0
+offset_right = -240.0
+offset_bottom = -260.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_title")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DetailBg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -230.0
+offset_right = 610.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_detail_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Content" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,98 +83,103 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -590.0
-offset_top = -340.0
+offset_top = -350.0
 offset_right = 590.0
-offset_bottom = 340.0
+offset_bottom = 350.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Body" type="VBoxContainer" parent="Panel"]
+[node name="Body" type="VBoxContainer" parent="Content"]
 layout_mode = 2
-theme_override_constants/separation = 14
+theme_override_constants/separation = 12
 
-[node name="Header" type="HBoxContainer" parent="Panel/Body"]
+[node name="Header" type="HBoxContainer" parent="Content/Body"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="Panel/Body/Header"]
+[node name="Title" type="Label" parent="Content/Body/Header"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "任务"
+text = "任务卷宗"
 
-[node name="CloseBtn" type="Button" parent="Panel/Body/Header"]
+[node name="CloseBtn" type="Button" parent="Content/Body/Header"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 42)
 layout_mode = 2
 text = "关闭 (Esc)"
 
-[node name="Content" type="HBoxContainer" parent="Panel/Body"]
+[node name="Toolbar" type="HBoxContainer" parent="Content/Body"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BtnAll" type="Button" parent="Content/Body/Toolbar"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+text = "全部"
+
+[node name="BtnActive" type="Button" parent="Content/Body/Toolbar"]
+custom_minimum_size = Vector2(78, 36)
+layout_mode = 2
+text = "进行中"
+
+[node name="BtnMain" type="Button" parent="Content/Body/Toolbar"]
+custom_minimum_size = Vector2(64, 36)
+layout_mode = 2
+text = "主线"
+
+[node name="BtnDone" type="Button" parent="Content/Body/Toolbar"]
+custom_minimum_size = Vector2(78, 36)
+layout_mode = 2
+text = "已完成"
+
+[node name="ChapterFilter" type="OptionButton" parent="Content/Body/Toolbar"]
+layout_mode = 2
+
+[node name="Summary" type="Label" parent="Content/Body/Toolbar"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = ""
+
+[node name="ListContent" type="HBoxContainer" parent="Content/Body"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="ListScroll" type="ScrollContainer" parent="Panel/Body/Content"]
+[node name="ListScroll" type="ScrollContainer" parent="Content/Body/ListContent"]
 custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 
-[node name="QuestList" type="VBoxContainer" parent="Panel/Body/Content/ListScroll"]
+[node name="QuestList" type="VBoxContainer" parent="Content/Body/ListContent/ListScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
-[node name="Detail" type="RichTextLabel" parent="Panel/Body/Content"]
+[node name="Detail" type="RichTextLabel" parent="Content/Body/ListContent"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 fit_content = false
-scroll_active = false
+scroll_active = true
 text = "选择任务查看详情。"
 
-[node name="QuestToolbar" type="HBoxContainer" parent="Panel/Body"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="BtnAll" type="Button" parent="Panel/Body/QuestToolbar"]
-custom_minimum_size = Vector2(64, 36)
-layout_mode = 2
-text = "全部"
-
-[node name="BtnActive" type="Button" parent="Panel/Body/QuestToolbar"]
-custom_minimum_size = Vector2(78, 36)
-layout_mode = 2
-text = "进行中"
-
-[node name="BtnMain" type="Button" parent="Panel/Body/QuestToolbar"]
-custom_minimum_size = Vector2(64, 36)
-layout_mode = 2
-text = "主线"
-
-[node name="BtnDone" type="Button" parent="Panel/Body/QuestToolbar"]
-custom_minimum_size = Vector2(78, 36)
-layout_mode = 2
-text = "已完成"
-
-[node name="ChapterFilter" type="OptionButton" parent="Panel/Body/QuestToolbar"]
-layout_mode = 2
-
-[node name="Summary" type="Label" parent="Panel/Body/QuestToolbar"]
-layout_mode = 2
-size_flags_horizontal = 8
-text = ""
-
-[node name="QuestActions" type="HBoxContainer" parent="Panel/Body"]
+[node name="Actions" type="HBoxContainer" parent="Content/Body"]
 layout_mode = 2
 alignment = 1
 theme_override_constants/separation = 12
 
-[node name="TrackBtn" type="Button" parent="Panel/Body/QuestActions"]
+[node name="TrackBtn" type="Button" parent="Content/Body/Actions"]
 custom_minimum_size = Vector2(190, 50)
 layout_mode = 2
 text = "追踪当前任务"
+
+[node name="DismissBtn" type="Button" parent="Content/Body/Actions"]
+custom_minimum_size = Vector2(120, 50)
+layout_mode = 2
+text = "取消追踪"
