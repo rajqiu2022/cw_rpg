@@ -1,0 +1,30 @@
+id: ui_quest_panel_detail_bg
+description: 任务详情区域背景，匹配装备面板冷钢厚涂风格
+model: gpt-image-2
+size: "1024x1024"
+quality: high
+skip: false
+priority: 1
+
+identity_anchor: |
+  《云影侠传》任务详情面板背景，2.5D武侠AVG-RPG，寒山玄铁冷色风格。
+  风格必须与装备面板（game/art/ui/equipment/panel_bg.png）完全一致。
+
+reference_images:
+  - "game/art/ui/equipment/panel_bg.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  生成一个任务详情区域的背景面板。
+
+  设计要求：
+  - 竖向面板，深墨蓝玄铁底、冷钢蓝细边框、内边缘有细微高光线
+  - 内部有几条淡色的水平分隔线（暗示文本内容分区）
+  - 与装备面板背景保持一致的色调和材质质感
+  - 不要任何文字
+  - 单独一个面板装饰，不要放在其他面板里
+
+  输出：一个独立的任务详情区域背景面板。
+
+variables: {}

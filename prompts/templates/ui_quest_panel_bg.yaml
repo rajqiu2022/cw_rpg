@@ -1,0 +1,35 @@
+id: ui_quest_panel_bg
+description: 任务面板主底图(面板背景)，匹配装备面板冷钢厚涂风格
+model: gpt-image-2
+size: "1024x1024"
+quality: high
+skip: false
+priority: 1
+
+identity_anchor: |
+  《云影侠传》任务卷宗面板，2.5D武侠AVG-RPG，寒山玄铁冷色风格。
+  风格必须与现有装备面板（game/art/ui/equipment/panel_bg.png）完全一致：
+  深墨蓝玄铁底、冷钢蓝边框、寒玉青高光、四角云纹角花。
+  港漫厚涂质感，暗调内敛。
+
+reference_images:
+  - "game/art/ui/equipment/panel_bg.png"
+
+prompt_template: |
+  {{identity_anchor}}
+
+  生成一张任务/卷宗面板的完整背景图。
+
+  尺寸 1280×720，适合 Godot TextureRect 直接使用。
+
+  设计要求：
+  - 深墨蓝玄铁质感底，四角有精致的祥云纹角花装饰
+  - 冷钢蓝色调的边框，边框内侧有细微高光线
+  - 整体暗调但层次分明，不能有大面积纯黑
+  - 面板内部分区自然，中央有轻微的竖向分隔暗示（左侧列表区+右侧详情区）
+  - 必须和参考图（装备面板背景）保持一致的色调材质和风格
+  - 不要任何文字
+
+  输出：一张1280×720的完整面板底图，单独一个面板，不要放在绿幕上。
+
+variables: {}
