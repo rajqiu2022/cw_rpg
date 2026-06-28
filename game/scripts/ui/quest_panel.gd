@@ -442,6 +442,11 @@ func _track_selected() -> void:
 	_show_selected()
 
 
+func _untrack() -> void:
+	_tracked_qid = &""
+	_refresh()
+
+
 func _update_summary() -> void:
 	if _summary_label == null:
 		return
