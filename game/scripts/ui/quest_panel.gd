@@ -35,6 +35,7 @@ const CHAPTER_NAMES := {
 
 
 func _ready() -> void:
+	visible = false
 	_build_formal_layout()
 	_apply_visual_style()
 	close_btn.pressed.connect(close)
