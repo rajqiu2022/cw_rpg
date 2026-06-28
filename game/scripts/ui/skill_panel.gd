@@ -77,12 +77,12 @@ func _build_formal_layout() -> void:
 		if _quick_btn == null:
 			_quick_btn = actions.get_node_or_null("QuickBtn") as Button
 			if _quick_btn != null:
-				UI_THEME.style_button(_quick_btn, 16, UI_THEME.JADE)
+				_apply_btn_textures(_quick_btn, "btn_quick")
 				_quick_btn.pressed.connect(_set_quick_skill)
 		if _practice_btn == null:
 			_practice_btn = actions.get_node_or_null("PracticeBtn") as Button
 			if _practice_btn != null:
-				UI_THEME.style_button(_practice_btn, 16, UI_THEME.BLUE_STEEL)
+				_apply_btn_textures(_practice_btn, "btn_practice")
 				_practice_btn.pressed.connect(_practice_selected)
 	else:
 		_build_actions_in_code(body)
@@ -111,6 +111,21 @@ func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
 	_summary_label = toolbar.get_node_or_null("Summary") as Label
 	if _summary_label != null:
 		UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
+
+	_update_filter_highlights()
+
+
+func _update_filter_highlights() -> void:
+	var toolbar: HBoxContainer = get_node_or_null("Panel/Body/SkillToolbar") as HBoxContainer
+	if toolbar == null: return
+	var mode_map := {"BtnAll": "all", "BtnAttack": "attack", "BtnSupport": "support", "BtnDefense": "defense"}
+	for btn_name in mode_map:
+		var btn: Button = toolbar.get_node_or_null(str(btn_name)) as Button
+		if btn == null: continue
+		var is_sel: bool = _filter_mode == str(mode_map[btn_name])
+		var tex: Texture2D = _try_load("tab_selected.png" if is_sel else "tab_normal.png")
+		if tex != null:
+			btn.add_theme_stylebox_override("normal", _tex_stylebox(tex))
 
 
 func _build_toolbar_in_code(body: VBoxContainer) -> void:
@@ -164,12 +179,16 @@ func _attach_filter_button(toolbar: HBoxContainer, node_name: String, mode: Stri
 	if btn == null:
 		_add_filter_button(toolbar, label, mode)
 		return
-	UI_THEME.style_button(btn, 15, UI_THEME.BLUE_STEEL)
+	_apply_btn_textures(btn, "tab")
+	btn.tooltip_text = label
+	var lbl := btn.get_child(btn.get_child_count() - 1) as Label
+	if lbl != null: lbl.text = label
 	btn.pressed.connect(func(): _set_filter(mode))
 
 
 func _set_filter(mode: String) -> void:
 	_filter_mode = mode
+	_update_filter_highlights()
 	_refresh_list()
 
 
@@ -183,12 +202,43 @@ func _apply_visual_style() -> void:
 		panel.offset_top = -350
 		panel.offset_right = 640
 		panel.offset_bottom = 350
-		panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.060, 0.075, 0.98), UI_THEME.BLUE_STEEL, 18, 3))
+		var panel_tex: Texture2D = _try_load("panel_bg.png")
+		if panel_tex != null:
+			var sb: StyleBoxTexture = StyleBoxTexture.new()
+			sb.texture = panel_tex
+			sb.modulate_color = Color(1, 1, 1, 0.97)
+			panel.add_theme_stylebox_override("panel", sb)
+		else:
+			panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.060, 0.075, 0.98), UI_THEME.JADE, 18, 3))
 	var title: Label = get_node_or_null("Panel/Body/Header/Title") as Label
 	if title != null:
 		title.text = "武学"
 		UI_THEME.style_label(title, 34, UI_THEME.GOLD_LIGHT)
-	UI_THEME.style_button(close_btn, 16, UI_THEME.CRIMSON)
+
+	var cn: Texture2D = _try_load("btn_close_normal.png")
+	if cn != null:
+		close_btn.flat = true
+		close_btn.text = ""
+		close_btn.custom_minimum_size = Vector2(cn.get_width(), cn.get_height())
+		close_btn.add_theme_stylebox_override("normal", _tex_stylebox(cn))
+		close_btn.add_theme_stylebox_override("hover", _tex_stylebox(_try_load("btn_close_hover.png")))
+		close_btn.add_theme_stylebox_override("pressed", _tex_stylebox(_try_load("btn_close_pressed.png")))
+	else:
+		UI_THEME.style_button(close_btn, 16, UI_THEME.CRIMSON)
+
+	var detail_tex: Texture2D = _try_load("detail_panel.png")
+	if detail_tex != null:
+		var detail_parent: Control = detail.get_parent() as Control
+		if detail_parent != null:
+			var dt: TextureRect = TextureRect.new()
+			dt.texture = detail_tex
+			dt.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			dt.stretch_mode = TextureRect.STRETCH_SCALE
+			dt.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			dt.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+			detail_parent.add_child(dt)
+			detail_parent.move_child(dt, 0)
+
 	UI_THEME.style_rich_text(detail, 18)
 
 
@@ -443,6 +493,40 @@ func _make_skill_icon(skill: Skill) -> TextureRect:
 	icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	icon.texture = tex
 	return icon
+
+
+func _try_load(name: String) -> Texture2D:
+	var path: String = "res://art/ui/skill/" + name
+	if ResourceLoader.exists(path): return load(path)
+	return null
+
+
+func _tex_stylebox(tex: Texture2D) -> StyleBoxTexture:
+	var sb: StyleBoxTexture = StyleBoxTexture.new()
+	sb.texture = tex
+	return sb
+
+
+func _apply_btn_textures(btn: Button, base_name: String) -> void:
+	var t_n: Texture2D = _try_load(base_name + "_normal.png")
+	if t_n == null: return
+	btn.flat = true
+	btn.text = ""
+	btn.custom_minimum_size = Vector2(t_n.get_width(), t_n.get_height())
+	btn.add_theme_stylebox_override("normal", _tex_stylebox(t_n))
+	var t_h: Texture2D = _try_load(base_name + "_hover.png")
+	if t_h != null: btn.add_theme_stylebox_override("hover", _tex_stylebox(t_h))
+	var t_p: Texture2D = _try_load(base_name + "_pressed.png")
+	if t_p != null: btn.add_theme_stylebox_override("pressed", _tex_stylebox(t_p))
+	var lbl: Label = Label.new()
+	lbl.text = btn.tooltip_text if btn.tooltip_text != "" else ""
+	lbl.add_theme_font_size_override("font_size", 16)
+	lbl.add_theme_color_override("font_color", Color(0.85, 0.92, 0.98))
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	lbl.anchors_preset = Control.PRESET_FULL_RECT
+	lbl.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	btn.add_child(lbl)
 
 
 func _unhandled_input(event: InputEvent) -> void:

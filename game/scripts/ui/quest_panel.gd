@@ -90,8 +90,13 @@ func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
 	for pair in filter_pairs:
 		var btn: Button = toolbar.get_node_or_null(str(pair[0])) as Button
 		if btn == null: continue
-		UI_THEME.style_button(btn, 15, UI_THEME.BLUE_STEEL)
 		var mode: String = str(pair[1])
+		# all/main/done 有专属贴图; active 回退到通用 tab
+		var tex_base: String = "tab_" + mode if mode in ["all", "main", "done"] else "tab"
+		_apply_btn_textures(btn, tex_base)
+		btn.tooltip_text = {"all": "全部", "active": "进行中", "main": "主线", "done": "已完成"}[mode]
+		var lbl := btn.get_child(btn.get_child_count() - 1) as Label
+		if lbl != null: lbl.text = btn.tooltip_text
 		btn.pressed.connect(func(): _set_filter(mode))
 
 	_chapter_filter_btn = toolbar.get_node_or_null("ChapterFilter") as OptionButton
@@ -108,6 +113,23 @@ func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
 	_summary_label = toolbar.get_node_or_null("Summary") as Label
 	if _summary_label != null:
 		UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
+
+	_update_filter_highlights()
+
+
+func _update_filter_highlights() -> void:
+	var toolbar: HBoxContainer = get_node_or_null("Panel/Body/QuestToolbar") as HBoxContainer
+	if toolbar == null: return
+	var mode_map := {"BtnAll": "all", "BtnActive": "active", "BtnMain": "main", "BtnDone": "done"}
+	for btn_name in mode_map:
+		var btn: Button = toolbar.get_node_or_null(str(btn_name)) as Button
+		if btn == null: continue
+		var mode: String = str(mode_map[btn_name])
+		var tex_base: String = "tab_" + mode if mode in ["all", "main", "done"] else "tab"
+		var is_sel: bool = _filter_mode == mode
+		var tex: Texture2D = _try_load(tex_base + ("_selected.png" if is_sel else "_normal.png"))
+		if tex != null:
+			btn.add_theme_stylebox_override("normal", _make_texture_stylebox(tex))
 
 
 func _build_toolbar_in_code(body: VBoxContainer) -> void:
@@ -175,6 +197,7 @@ func _add_filter_button(label: String, mode: String) -> void:
 
 func _set_filter(mode: String) -> void:
 	_filter_mode = mode
+	_update_filter_highlights()
 	_refresh()
 
 
