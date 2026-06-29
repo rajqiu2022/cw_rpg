@@ -36,125 +36,138 @@ stretch_mode = 5
 z_index = 2
 layout_mode = 0
 offset_left = 40.0
-offset_top = 10.0
+offset_top = -20.0
 offset_right = 400.0
-offset_bottom = 80.0
+offset_bottom = 50.0
 mouse_filter = 2
 texture = ExtResource("3_title")
-expand_mode = 1
-stretch_mode = 5
+expand_mode = 0
+stretch_mode = 0
 
 [node name="DetailBg" type="TextureRect" parent="."]
 z_index = 2
 layout_mode = 0
 offset_left = 610.0
-offset_top = 120.0
-offset_right = 1200.0
-offset_bottom = 600.0
+offset_top = 90.0
+offset_right = 1240.0
+offset_bottom = 650.0
 mouse_filter = 2
 texture = ExtResource("4_detail_bg")
-expand_mode = 1
+expand_mode = 2
 stretch_mode = 5
 
-[node name="Content" type="PanelContainer" parent="."]
+[node name="Title" type="Label" parent="."]
 z_index = 10
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 1280.0
-offset_bottom = 720.0
-
-[node name="Body" type="VBoxContainer" parent="Content"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="Header" type="HBoxContainer" parent="Content/Body"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Title" type="Label" parent="Content/Body/Header"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
+offset_left = 60.0
+offset_top = 8.0
+offset_right = 380.0
+offset_bottom = 42.0
 text = "任务卷宗"
+theme_override_font_sizes/font_size = 30
 
-[node name="CloseBtn" type="Button" parent="Content/Body/Header"]
+[node name="CloseBtn" type="Button" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(120, 42)
-layout_mode = 2
+z_index = 10
+layout_mode = 0
+offset_left = 1184.0
+offset_top = 4.0
+offset_right = 1276.0
+offset_bottom = 38.0
 text = "关闭 (Esc)"
 
-[node name="Toolbar" type="HBoxContainer" parent="Content/Body"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="BtnAll" type="Button" parent="Content/Body/Toolbar"]
-custom_minimum_size = Vector2(64, 36)
-layout_mode = 2
+[node name="BtnAll" type="Button" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 44.0
+offset_top = 58.0
+offset_right = 108.0
+offset_bottom = 94.0
 text = "全部"
 
-[node name="BtnActive" type="Button" parent="Content/Body/Toolbar"]
-custom_minimum_size = Vector2(78, 36)
-layout_mode = 2
+[node name="BtnActive" type="Button" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 116.0
+offset_top = 58.0
+offset_right = 194.0
+offset_bottom = 94.0
 text = "进行中"
 
-[node name="BtnMain" type="Button" parent="Content/Body/Toolbar"]
-custom_minimum_size = Vector2(64, 36)
-layout_mode = 2
+[node name="BtnMain" type="Button" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 202.0
+offset_top = 58.0
+offset_right = 266.0
+offset_bottom = 94.0
 text = "主线"
 
-[node name="BtnDone" type="Button" parent="Content/Body/Toolbar"]
-custom_minimum_size = Vector2(78, 36)
-layout_mode = 2
+[node name="BtnDone" type="Button" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 274.0
+offset_top = 58.0
+offset_right = 352.0
+offset_bottom = 94.0
 text = "已完成"
 
-[node name="ChapterFilter" type="OptionButton" parent="Content/Body/Toolbar"]
-layout_mode = 2
+[node name="ChapterFilter" type="OptionButton" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 364.0
+offset_top = 58.0
+offset_right = 504.0
+offset_bottom = 94.0
 
-[node name="Summary" type="Label" parent="Content/Body/Toolbar"]
-layout_mode = 2
-size_flags_horizontal = 8
+[node name="Summary" type="Label" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 520.0
+offset_top = 62.0
+offset_right = 1272.0
+offset_bottom = 90.0
 text = ""
 
-[node name="ListContent" type="HBoxContainer" parent="Content/Body"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 16
-
-[node name="ListScroll" type="ScrollContainer" parent="Content/Body/ListContent"]
-custom_minimum_size = Vector2(430, 0)
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-
-[node name="QuestList" type="VBoxContainer" parent="Content/Body/ListContent/ListScroll"]
+[node name="QuestList" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
+z_index = 10
+layout_mode = 0
+offset_left = 40.0
+offset_top = 115.0
+offset_right = 560.0
+offset_bottom = 670.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 8
+theme_override_constants/separation = 6
 
-[node name="Detail" type="RichTextLabel" parent="Content/Body/ListContent"]
+[node name="Detail" type="RichTextLabel" parent="."]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+z_index = 10
+layout_mode = 0
+offset_left = 580.0
+offset_top = 115.0
+offset_right = 1240.0
+offset_bottom = 600.0
 bbcode_enabled = true
 fit_content = false
 scroll_active = true
 text = "选择任务查看详情。"
 
-[node name="Actions" type="HBoxContainer" parent="Content/Body"]
-layout_mode = 2
-alignment = 1
-theme_override_constants/separation = 12
+[node name="TrackBtn" type="Button" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 500.0
+offset_top = 620.0
+offset_right = 690.0
+offset_bottom = 660.0
+text = "追踪"
 
-[node name="TrackBtn" type="Button" parent="Content/Body/Actions"]
-custom_minimum_size = Vector2(190, 50)
-layout_mode = 2
-text = "追踪当前任务"
-
-[node name="DismissBtn" type="Button" parent="Content/Body/Actions"]
-custom_minimum_size = Vector2(120, 50)
-layout_mode = 2
+[node name="DismissBtn" type="Button" parent="."]
+z_index = 10
+layout_mode = 0
+offset_left = 710.0
+offset_top = 620.0
+offset_right = 830.0
+offset_bottom = 660.0
 text = "取消追踪"
