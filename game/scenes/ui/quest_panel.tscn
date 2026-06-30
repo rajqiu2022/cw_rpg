@@ -1,50 +1,51 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://ds4fojce34bd2"]
 
-[ext_resource type="Script" path="res://scripts/ui/quest_panel.gd" id="1_quest"]
-[ext_resource type="Texture2D" path="res://art/ui/quest/panel_bg_v2.png" id="2_bg"]
-[ext_resource type="Texture2D" path="res://art/ui/quest/title_plaque_v2.png" id="3_title"]
-[ext_resource type="Texture2D" path="res://art/ui/quest/detail_panel_v2.png" id="4_detail_bg"]
+[ext_resource type="Script" uid="uid://dmb6jk3o8v0tq" path="res://scripts/ui/quest_panel.gd" id="1_quest"]
+[ext_resource type="Texture2D" uid="uid://b7sm5qcwq0xt7" path="res://art/ui/quest/panel_bg_v2.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://cgc86w74ui2wr" path="res://art/ui/quest/title_plaque_v2.png" id="3_title"]
+[ext_resource type="Texture2D" uid="uid://m4yj7qst5ith" path="res://art/ui/quest/detail_panel_v2.png" id="4_detail_bg"]
 
-[node name="QuestPanelFull" type="Control"]
+[node name="QuestPanelFull" type="Control" unique_id=1126360518]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_quest")
 
-[node name="Dim" type="ColorRect" parent="."]
+[node name="Dim" type="ColorRect" parent="." unique_id=131778747]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="PanelBg" type="TextureRect" parent="."]
+[node name="PanelBg" type="TextureRect" parent="." unique_id=77497710]
 z_index = 1
 layout_mode = 0
-offset_left = 0.0
-offset_top = 0.0
 offset_right = 1280.0
 offset_bottom = 720.0
 mouse_filter = 2
 texture = ExtResource("2_bg")
-expand_mode = 0
 stretch_mode = 5
 
-[node name="TitlePlaque" type="TextureRect" parent="."]
+[node name="TitlePlaque" type="TextureRect" parent="." unique_id=1902113205]
 z_index = 2
 layout_mode = 0
-offset_left = 40.0
-offset_top = -20.0
-offset_right = 400.0
-offset_bottom = 50.0
+offset_left = -229.0
+offset_top = 139.0
+offset_right = 1002.0
+offset_bottom = 367.0
 mouse_filter = 2
 texture = ExtResource("3_title")
-expand_mode = 0
+expand_mode = 1
 stretch_mode = 5
 
-[node name="DetailBg" type="TextureRect" parent="."]
+[node name="DetailBg" type="TextureRect" parent="." unique_id=275588978]
 z_index = 2
 layout_mode = 0
 offset_left = 610.0
@@ -56,17 +57,17 @@ texture = ExtResource("4_detail_bg")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="Label" parent="." unique_id=1953950284]
 z_index = 10
 layout_mode = 0
 offset_left = 60.0
 offset_top = 8.0
 offset_right = 380.0
 offset_bottom = 42.0
-text = "任务卷宗"
 theme_override_font_sizes/font_size = 30
+text = "任务卷宗"
 
-[node name="CloseBtn" type="Button" parent="."]
+[node name="CloseBtn" type="Button" parent="." unique_id=342563573]
 unique_name_in_owner = true
 z_index = 10
 layout_mode = 0
@@ -76,7 +77,7 @@ offset_right = 1276.0
 offset_bottom = 38.0
 text = "关闭 (Esc)"
 
-[node name="BtnAll" type="Button" parent="."]
+[node name="BtnAll" type="Button" parent="." unique_id=1203457203]
 z_index = 10
 layout_mode = 0
 offset_left = 44.0
@@ -85,7 +86,7 @@ offset_right = 108.0
 offset_bottom = 94.0
 text = "全部"
 
-[node name="BtnActive" type="Button" parent="."]
+[node name="BtnActive" type="Button" parent="." unique_id=1430133509]
 z_index = 10
 layout_mode = 0
 offset_left = 116.0
@@ -94,7 +95,7 @@ offset_right = 194.0
 offset_bottom = 94.0
 text = "进行中"
 
-[node name="BtnMain" type="Button" parent="."]
+[node name="BtnMain" type="Button" parent="." unique_id=812098048]
 z_index = 10
 layout_mode = 0
 offset_left = 202.0
@@ -103,7 +104,7 @@ offset_right = 266.0
 offset_bottom = 94.0
 text = "主线"
 
-[node name="BtnDone" type="Button" parent="."]
+[node name="BtnDone" type="Button" parent="." unique_id=838799896]
 z_index = 10
 layout_mode = 0
 offset_left = 274.0
@@ -112,7 +113,7 @@ offset_right = 352.0
 offset_bottom = 94.0
 text = "已完成"
 
-[node name="ChapterFilter" type="OptionButton" parent="."]
+[node name="ChapterFilter" type="OptionButton" parent="." unique_id=1356633314]
 z_index = 10
 layout_mode = 0
 offset_left = 364.0
@@ -120,16 +121,15 @@ offset_top = 58.0
 offset_right = 504.0
 offset_bottom = 94.0
 
-[node name="Summary" type="Label" parent="."]
+[node name="Summary" type="Label" parent="." unique_id=1408054084]
 z_index = 10
 layout_mode = 0
 offset_left = 520.0
 offset_top = 62.0
 offset_right = 1272.0
 offset_bottom = 90.0
-text = ""
 
-[node name="QuestList" type="VBoxContainer" parent="."]
+[node name="QuestList" type="VBoxContainer" parent="." unique_id=127709525]
 unique_name_in_owner = true
 z_index = 10
 layout_mode = 0
@@ -141,7 +141,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 6
 
-[node name="Detail" type="RichTextLabel" parent="."]
+[node name="Detail" type="RichTextLabel" parent="." unique_id=1260315050]
 unique_name_in_owner = true
 z_index = 10
 layout_mode = 0
@@ -150,11 +150,9 @@ offset_top = 115.0
 offset_right = 1240.0
 offset_bottom = 600.0
 bbcode_enabled = true
-fit_content = false
-scroll_active = true
 text = "选择任务查看详情。"
 
-[node name="TrackBtn" type="Button" parent="."]
+[node name="TrackBtn" type="Button" parent="." unique_id=374038340]
 z_index = 10
 layout_mode = 0
 offset_left = 500.0
@@ -163,7 +161,7 @@ offset_right = 690.0
 offset_bottom = 660.0
 text = "追踪"
 
-[node name="DismissBtn" type="Button" parent="."]
+[node name="DismissBtn" type="Button" parent="." unique_id=975080420]
 z_index = 10
 layout_mode = 0
 offset_left = 710.0

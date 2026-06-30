@@ -1,0 +1,51 @@
+id: ui_quest_tab_buttons
+description: 任务面板筛选标签按钮—四态(全部/进行中/主线/已完成)
+model: gpt-image-2
+size: "1024x1024"
+quality: medium
+skip: false
+priority: 1
+
+identity_anchor: |
+  《云影侠传》UI筛选标签按钮。寒山玄铁冷色风格。
+  深墨蓝底、钢蓝边框、寒玉青高光。
+  港漫厚涂暗调,与面板底图材质一致。
+
+reference_images:
+  - "game/art/ui/equipment/panel_bg.png"
+  - "game/art/ui/quest/tab_all_normal.png"
+
+prompt_template: |
+  {{identity_anchor}}
+  
+  纯白背景。生成4个筛选标签按钮并排摆放，每个按钮单独可用，之间留白间距。全部无文字。
+  
+  按钮 #1 (全部, 约 96×38):
+  - normal: 深墨蓝底+细钢蓝边框
+  - selected: 冷钢蓝加亮边框+微光底
+  - hover: 边框亮度提升
+  - pressed: 内凹暗色
+  
+  按钮 #2 (进行中, 约 96×38):
+  - normal: 深墨蓝底+细霜绿色边框
+  - selected: 霜绿加亮边框+微光底
+  - hover: 边框亮度提升
+  - pressed: 内凹暗色
+  
+  按钮 #3 (主线, 约 96×38):
+  - normal: 深墨蓝底+细钢蓝边框
+  - selected: 钢蓝加亮边框+微光底
+  - hover: 边框亮度提升
+  - pressed: 内凹暗色
+  
+  按钮 #4 (已完成, 约 96×38):
+  - normal: 深墨蓝底+细钢蓝边框
+  - selected: 钢蓝加亮边框+微光底
+  - hover: 边框亮度提升
+  - pressed: 内凹暗色
+  
+  所有按钮材质/色调必须与参考图一致。不要文字。横向排布: normal | selected | hover | pressed。
+  
+  输出: 四行标签按钮集，每行4个状态横排。
+
+variables: {}
