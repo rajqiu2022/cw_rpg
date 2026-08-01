@@ -109,16 +109,21 @@ func get_current_bgm() -> String:
 
 # --- SFX ---
 
+var _sfx_cache: Dictionary = {}  ## path → AudioStream
+
 func play_sfx(path: String, volume_offset: float = 0.0) -> void:
 	if path.is_empty():
 		return
-	if not ResourceLoader.exists(path):
-		push_warning("[AudioManager] SFX not found: %s" % path)
-		return
 
-	var stream := load(path) as AudioStream
+	var stream: AudioStream = _sfx_cache.get(path)
 	if stream == null:
-		return
+		if not ResourceLoader.exists(path):
+			push_warning("[AudioManager] SFX not found: %s" % path)
+			return
+		stream = load(path) as AudioStream
+		if stream == null:
+			return
+		_sfx_cache[path] = stream
 
 	var player := _sfx_pool[_sfx_index]
 	_sfx_index = (_sfx_index + 1) % SFX_POOL_SIZE
