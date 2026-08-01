@@ -52,6 +52,11 @@ func _ready() -> void:
 		add_child(p)
 		_sfx_pool.append(p)
 
+	_voice_player = AudioStreamPlayer.new()
+	_voice_player.bus = SFX_BUS if _has_bus(SFX_BUS) else &"Master"
+	_voice_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	add_child(_voice_player)
+
 	EventBus.scene_entered.connect(_on_scene_entered)
 	EventBus.sfx_requested.connect(_on_sfx_requested)
 
@@ -110,6 +115,7 @@ func get_current_bgm() -> String:
 # --- SFX ---
 
 var _sfx_cache: Dictionary = {}  ## path → AudioStream
+var _voice_player: AudioStreamPlayer  ## 对话语音专用通道，不参与 SFX 池
 
 func play_sfx(path: String, volume_offset: float = 0.0) -> void:
 	if path.is_empty():
@@ -140,6 +146,24 @@ func stop_all_sfx() -> void:
 	for p in _sfx_pool:
 		if p.playing:
 			p.stop()
+	_voice_player.stop()
+
+# --- Voice (对话语音专用通道) ---
+
+func play_voice(path: String) -> void:
+	if path.is_empty(): return
+	var stream: AudioStream = _sfx_cache.get(path)
+	if stream == null:
+		if not ResourceLoader.exists(path):
+			return
+		stream = load(path) as AudioStream
+		if stream == null: return
+		_sfx_cache[path] = stream
+	_voice_player.stream = stream
+	_voice_player.play()
+
+func stop_voice() -> void:
+	_voice_player.stop()
 
 # --- Volume ---
 

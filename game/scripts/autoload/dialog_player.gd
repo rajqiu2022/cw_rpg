@@ -52,8 +52,8 @@ func play(script: DialogScript) -> void:
 	_current_script = script
 	_is_playing = true
 	EventBus.dialog_started.emit(script.dialog_id)
-	_prewarm_voices()
 	_show_node(script.get_entry_node())
+	_prewarm_voices.call_deferred()
 
 
 func play_at(script: DialogScript, node_id: StringName) -> void:
@@ -61,8 +61,8 @@ func play_at(script: DialogScript, node_id: StringName) -> void:
 	_current_script = script
 	_is_playing = true
 	EventBus.dialog_started.emit(script.dialog_id)
-	_prewarm_voices()
 	_show_node(script.find_node_by_id(node_id))
+	_prewarm_voices.call_deferred()
 
 
 func advance() -> void:
@@ -172,7 +172,7 @@ func _play_node_voice(speaker: String, node_id: String) -> void:
 	var safe_spk := speaker.replace("/", "_").replace("\\", "_")
 	var path := "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, node_id]
 	if ResourceLoader.exists(path):
-		AudioManager.play_sfx(path)
+		AudioManager.play_voice(path)
 
 
 func _prewarm_voices() -> void:
