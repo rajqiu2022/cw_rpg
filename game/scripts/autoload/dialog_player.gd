@@ -171,8 +171,7 @@ func _play_node_voice(speaker: String, node_id: String) -> void:
 	var ch := dialog_id.substr(0, 3)
 	var safe_spk := speaker.replace("/", "_").replace("\\", "_")
 	var path := "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, node_id]
-	if ResourceLoader.exists(path):
-		AudioManager.play_voice(path)
+	AudioManager.play_voice(path)
 
 
 func _prewarm_voices() -> void:
@@ -184,10 +183,10 @@ func _prewarm_voices() -> void:
 		var spk: String = node.speaker if node.speaker != "" else "旁白"
 		var safe_spk := spk.replace("/", "_").replace("\\", "_")
 		var path := "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, String(node.node_id)]
-		if ResourceLoader.exists(path) and not AudioManager._sfx_cache.has(path):
-			var stream := load(path) as AudioStream
-			if stream != null:
-				AudioManager._sfx_cache[path] = stream
+		if AudioManager._sfx_cache.has(path): continue
+		var stream := load(path) as AudioStream
+		if stream != null:
+			AudioManager._sfx_cache[path] = stream
 
 
 func _end_dialog() -> void:

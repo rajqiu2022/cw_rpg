@@ -53,7 +53,7 @@ func _ready() -> void:
 		_sfx_pool.append(p)
 
 	_voice_player = AudioStreamPlayer.new()
-	_voice_player.bus = SFX_BUS if _has_bus(SFX_BUS) else &"Master"
+	_voice_player.bus = &"Master"  # 直连 Master，绕过可能有效果延迟的 SFX bus
 	_voice_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(_voice_player)
 
@@ -176,8 +176,10 @@ func play_voice(path: String) -> void:
 		stream = load(path) as AudioStream
 		if stream == null: return
 		_sfx_cache[path] = stream
+	# 不要 await — 直接切换流开始播放
+	_voice_player.stop()
 	_voice_player.stream = stream
-	_voice_player.play()
+	_voice_player.play(0.0)
 
 func stop_voice() -> void:
 	_voice_player.stop()
