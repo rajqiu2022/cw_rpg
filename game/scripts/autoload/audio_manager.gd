@@ -57,8 +57,25 @@ func _ready() -> void:
 	_voice_player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(_voice_player)
 
+	# 预热音频设备，避免首次播放延迟
+	_warmup_audio_device()
+
 	EventBus.scene_entered.connect(_on_scene_entered)
 	EventBus.sfx_requested.connect(_on_sfx_requested)
+
+
+func _warmup_audio_device() -> void:
+	# 以零音量播放一帧静音脉冲，初始化 AudioServer 管线
+	var pulse := AudioStreamGenerator.new()
+	pulse.mix_rate = 44100
+	pulse.buffer_length = 0.01
+	_voice_player.stream = pulse
+	_voice_player.volume_db = -80.0
+	_voice_player.play()
+	await get_tree().process_frame
+	_voice_player.stop()
+	_voice_player.stream = null
+	_voice_player.volume_db = 0.0
 
 # --- BGM ---
 
