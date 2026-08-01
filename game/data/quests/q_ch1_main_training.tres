@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_training"
+title = "师门授艺"
+kind = 0
+desc_not_started = "师傅说你的剑法还不够——光靠一式走不远。他让你去院中，说要教你点真东西。"
+desc_in_progress = "跟师傅学完林西剑法第二式和吐纳法——这是你下山前最后能学到的东西了。"
+desc_completed = "新学了林西基础剑法·二式和林西吐纳术。师傅最后一句话是'打不过就跑，活着回来'——只说这一次。"
+completion_triggers = Array[String](["flag_set:master_training_done"])
+reward_gold = 0
+reward_exp = 15
+reward_items = Array[Dictionary]([])

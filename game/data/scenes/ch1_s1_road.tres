@@ -1,21 +1,57 @@
-[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
 [ext_resource type="Resource" path="res://data/dialogs/ch1_road_enter.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch1_s1_road_layout_v4.tres" id="3_map"]
 
 [resource]
 script = ExtResource("1_scn")
 scene_id = &"ch1_s1_road"
 display_name = "林西村外 · 山道"
-background_path = "res://art/backgrounds/bg_ch1_s1_road.png"
-bgm_path = "res://art/audio/bgm_test_440hz.wav"
+background_path = "res://art/backgrounds/bg_ch1_s1_road_terrain_base_v1.png"
+bgm_path = ""
 on_enter_dialog = ExtResource("2_intro")
+is_walkable = true
+map_layout = ExtResource("3_map")
+player_spawn = Vector2(0.120, 0.835)
+encounter_enemy_ids = Array[StringName]([&"bandit_mountain"])
+encounter_step_distance = 620.0
+encounter_chance = 0.2
+encounter_require_flag = &"defeated_thug_lone"
+scene_objects = [
+	{
+		"id": "road_supply_box_closed",
+		"texture": "res://art/modules/prop/prop_linxi_box_wood_a.png",
+		"pos": Vector2(0.525, 0.455),
+		"scale": Vector2(0.55, 0.55),
+		"z_index": 14,
+		"collision_size": Vector2(0.075, 0.045),
+		"collision_offset": Vector2(0.0, 0.025),
+		"interaction_action": "dialog:ch1_road_supply_box",
+		"interaction_label": "打开木箱",
+		"interaction_size": Vector2(0.13, 0.13),
+		"interaction_offset": Vector2(0.0, 0.015),
+		"prompt_offset": Vector2(-0.057, -0.095),
+		"hide_flag": "looted_road_supply_box",
+	},
+	{
+		"id": "road_supply_box_open",
+		"texture": "res://art/modules/prop/prop_linxi_box_wood_open.png",
+		"pos": Vector2(0.525, 0.455),
+		"scale": Vector2(0.55, 0.55),
+		"z_index": 14,
+		"collision_size": Vector2(0.075, 0.045),
+		"collision_offset": Vector2(0.0, 0.025),
+		"require_flag": "looted_road_supply_box",
+	},
+]
 hotspots = [
 	{
 		"label": "查看石碑",
 		"pos_x": 0.2,
 		"pos_y": 0.62,
-		"action": "dialog:ch1_road_stone"
+		"action": "dialog:ch1_road_stone",
+		"hide_flag": "saw_stone_warning"
 	},
 	{
 		"label": "路边尸体",
@@ -25,10 +61,110 @@ hotspots = [
 		"hide_flag": "defeated_thug_lone"
 	},
 	{
-		"label": "→ 沿山道继续前行，前往竹尾村",
+		"label": "← 回林西村禀告师傅",
+		"pos_x": 0.12,
+		"pos_y": 0.82,
+		"action": "dialog:ch1_road_return_to_village",
+		"require_flag": "defeated_thug_lone",
+		"hide_flag": "master_training_done"
+	},
+	{
+		"label": "→ 沿山道继续前行",
 		"pos_x": 0.84,
 		"pos_y": 0.55,
 		"action": "dialog:ch1_road_after_battle",
-		"require_flag": "defeated_thug_lone"
+		"require_flag": "master_training_done"
+	}
+]
+
+exits = [
+	{
+		"id": "exit_to_zhuwei_blocked",
+		"label": "查看村口动静",
+		"pos": Vector2(0.845, 0.115),
+		"size": Vector2(0.150, 0.170),
+		"action": "dialog:ch1_road_corpse",
+		"hide_flag": "defeated_thug_lone",
+	},
+	{
+		"id": "exit_to_village",
+		"label": "返回林西村",
+		"pos": Vector2(0.055, 0.780),
+		"size": Vector2(0.090, 0.135),
+		"target_scene": "linxi_tutorial",
+		"target_pos": Vector2(0.880, 0.650),
+		"require_flag": "defeated_thug_lone",
+		"hide_flag": "master_training_done",
+	},
+	{
+		"id": "exit_to_zhuwei",
+		"label": "前往竹尾村",
+		"pos": Vector2(0.845, 0.115),
+		"size": Vector2(0.150, 0.170),
+		"action": "dialog:ch1_road_after_battle",
+		"require_flag": "master_training_done",
+	}
+]
+
+collision_rects = [
+	{
+		"id": "road_upper_left_forest",
+		"pos": Vector2(0.35, 0.045),
+		"size": Vector2(0.70, 0.09),
+	},
+	{
+		"id": "road_upper_right_buildings",
+		"pos": Vector2(0.975, 0.16),
+		"size": Vector2(0.05, 0.32),
+	},
+	{
+		"id": "road_left_cliff_face",
+		"pos": Vector2(0.365, 0.235),
+		"size": Vector2(0.315, 0.460),
+	},
+	{
+		"id": "road_left_bamboo",
+		"pos": Vector2(0.045, 0.500),
+		"size": Vector2(0.090, 1.000),
+	},
+	{
+		"id": "road_right_cliff_face",
+		"pos": Vector2(0.940, 0.650),
+		"size": Vector2(0.120, 0.600),
+	},
+	{
+		"id": "road_lower_right_rocks",
+		"pos": Vector2(0.790, 0.900),
+		"size": Vector2(0.420, 0.200),
+	},
+	{
+		"id": "road_lower_left_rocks",
+		"pos": Vector2(0.190, 0.975),
+		"size": Vector2(0.380, 0.050),
+	}
+]
+
+trigger_zones = [
+	{
+		"id": "road_stone_read",
+		"pos": Vector2(0.20, 0.62),
+		"size": Vector2(0.12, 0.16),
+		"action": "dialog:ch1_road_stone",
+		"interaction_only": true,
+		"hide_flag": "saw_stone_warning",
+	},
+	{
+		"id": "road_corpse",
+		"pos": Vector2(0.50, 0.74),
+		"size": Vector2(0.16, 0.16),
+		"action": "dialog:ch1_road_corpse",
+		"hide_flag": "defeated_thug_lone",
+	},
+	{
+		"id": "road_continue_after_battle",
+		"pos": Vector2(0.84, 0.55),
+		"size": Vector2(0.15, 0.22),
+		"action": "dialog:ch1_road_after_battle",
+		"require_flag": "defeated_thug_lone",
 	}
 ]

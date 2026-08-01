@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_return_master"
+title = "回禀师傅"
+kind = 0
+desc_not_started = "山道上撞见一具尸体和一个拦路的散兵。得先回村告诉师傅，顺带让他看看你肩上那道口子。"
+desc_in_progress = "回林西村向师傅禀告山道遇袭，让他看看你肩上的伤。"
+desc_completed = "师傅一眼就看出你剑法里的破绽。他说你光靠第一式走不远——"
+completion_triggers = Array[String](["flag_set:returned_to_master"])
+reward_gold = 0
+reward_exp = 5
+reward_items = Array[Dictionary]([])

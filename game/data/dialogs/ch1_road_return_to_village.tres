@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "尸体身上的地图指向竹尾村——但在这之前，得先把山道上有埋伏的事禀告师傅。他教我的那几招还差点火候，再出去可能会死在路上。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &"q_ch1_main_return_master"
+complete_quest = &""
+on_end = "scene:linxi_tutorial"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_road_return_to_village"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])
