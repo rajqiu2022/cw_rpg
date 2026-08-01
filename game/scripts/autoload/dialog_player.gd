@@ -11,6 +11,9 @@ signal choices_displayed(choices: Array)
 signal dialog_ended(dialog_id: StringName)
 
 const DIALOG_BOX_SCENE_PATH := "res://scenes/ui/dialog_box.tscn"
+const SPEAKER_PORTRAITS := {
+	"悦无姮": "res://art/characters/portrait_yuewuheng_rescue.png",
+}
 
 var _current_script: DialogScript = null
 var _current_node: DialogNode = null
@@ -101,6 +104,12 @@ func _show_node(node: DialogNode) -> void:
 	var pp: String = node.portrait_path
 	if pp == "" and _default_portrait != "":
 		pp = _default_portrait
+	if pp == "" and SPEAKER_PORTRAITS.has(spk):
+		pp = String(SPEAKER_PORTRAITS[spk])
+
+	# 播放对话语音 (如果有)
+	_play_node_voice(spk, String(node.node_id))
+
 	text_displayed.emit(
 		spk,
 		node.text,
@@ -150,6 +159,17 @@ func _resolve_action(action: String) -> void:
 
 	_end_dialog()
 	SceneRouter.resolve_action(action)
+
+
+func _play_node_voice(speaker: String, node_id: String) -> void:
+	if _current_script == null: return
+	var dialog_id: String = String(_current_script.dialog_id)
+	if dialog_id == "": return
+	var ch := dialog_id.substr(0, 3)
+	var safe_spk := speaker.replace("/", "_").replace("\\", "_")
+	var path := "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, node_id]
+	if ResourceLoader.exists(path):
+		AudioManager.play_sfx(path)
 
 
 func _end_dialog() -> void:
