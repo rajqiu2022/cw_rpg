@@ -17,6 +17,15 @@ const SFX_BUS := &"SFX"
 const UI_BUS  := &"UI"
 const SFX_POOL_SIZE := 8
 const FIELD_SCENE_DIR := "res://data/scenes/"
+const DEFAULT_FIELD_BGM := "res://art/audio/cc0/bgm_field_bards_tale_cc0.mp3"
+const DEFAULT_BATTLE_BGM := "res://art/audio/cc0/bgm_battle_medieval_cc0.mp3"
+const DEFAULT_ATTACK_SFX := "res://art/audio/free/sfx_attack_free_v1.wav"
+const DEFAULT_SKILL_SFX := "res://art/audio/free/sfx_skill_free_v1.wav"
+const DEFAULT_HIT_SFX := "res://art/audio/free/sfx_hit_free_v1.wav"
+const DEFAULT_DEFEND_SFX := "res://art/audio/free/sfx_defend_free_v1.wav"
+const DEFAULT_CONFIRM_SFX := "res://art/audio/free/sfx_ui_confirm_free_v1.wav"
+const DEFAULT_VICTORY_SFX := "res://art/audio/free/sfx_victory_free_v1.wav"
+const DEFAULT_DEFEAT_SFX := "res://art/audio/free/sfx_defeat_free_v1.wav"
 
 var bgm_player: AudioStreamPlayer
 var _sfx_pool: Array[AudioStreamPlayer] = []
@@ -27,6 +36,7 @@ var sfx_volume: float = 1.0
 var ui_volume: float = 1.0
 
 var _current_bgm_path: String = ""
+var _bgm_request_id: int = 0
 
 func _ready() -> void:
 	bgm_player = AudioStreamPlayer.new()
@@ -43,6 +53,7 @@ func _ready() -> void:
 		_sfx_pool.append(p)
 
 	EventBus.scene_entered.connect(_on_scene_entered)
+	EventBus.sfx_requested.connect(_on_sfx_requested)
 
 # --- BGM ---
 
@@ -58,10 +69,18 @@ func play_bgm(path: String, crossfade: float = 0.8) -> void:
 	var stream := load(path) as AudioStream
 	if stream == null:
 		return
+	if stream is AudioStreamWAV:
+		(stream as AudioStreamWAV).loop_mode = AudioStreamWAV.LOOP_FORWARD
+	elif stream is AudioStreamMP3:
+		(stream as AudioStreamMP3).loop = true
 
+	_bgm_request_id += 1
+	var request_id := _bgm_request_id
 	if bgm_player.playing:
 		_fade_to(bgm_player, -40.0, 0.25)
 		await get_tree().create_timer(0.25).timeout
+		if request_id != _bgm_request_id:
+			return
 		bgm_player.stop()
 
 	bgm_player.stream = stream
@@ -74,8 +93,12 @@ func play_bgm(path: String, crossfade: float = 0.8) -> void:
 func stop_bgm(fade_out: float = 0.5) -> void:
 	if not bgm_player.playing:
 		return
+	_bgm_request_id += 1
+	var request_id := _bgm_request_id
 	_fade_to(bgm_player, -40.0, fade_out)
 	await get_tree().create_timer(fade_out).timeout
+	if request_id != _bgm_request_id:
+		return
 	bgm_player.stop()
 	bgm_player.stream = null
 	_current_bgm_path = ""
@@ -103,6 +126,15 @@ func play_sfx(path: String, volume_offset: float = 0.0) -> void:
 	player.stream = stream
 	player.volume_db = _linear2db(sfx_volume) + volume_offset
 	player.play()
+
+
+func _on_sfx_requested(path: String, volume_offset: float) -> void:
+	play_sfx(path, volume_offset)
+
+func stop_all_sfx() -> void:
+	for p in _sfx_pool:
+		if p.playing:
+			p.stop()
 
 # --- Volume ---
 
@@ -137,8 +169,14 @@ func _on_scene_entered(scene_id: StringName) -> void:
 	var res := load(path)
 	if res is SceneScript:
 		var sd := res as SceneScript
-		if not sd.bgm_path.is_empty() and sd.bgm_path != _current_bgm_path:
-			play_bgm(sd.bgm_path)
+		var requested_path := sd.bgm_path
+		if requested_path.is_empty() or requested_path.ends_with("bgm_test_440hz.wav"):
+			requested_path = DEFAULT_FIELD_BGM
+		if requested_path != _current_bgm_path:
+			play_bgm(requested_path)
+
+func play_ui_confirm() -> void:
+	EventBus.sfx_requested.emit(DEFAULT_CONFIRM_SFX, -4.0)
 
 func _has_bus(bus_name: StringName) -> bool:
 	return AudioServer.get_bus_index(bus_name) != -1

@@ -67,6 +67,7 @@ func advance() -> void:
 	if _current_node == null: return
 	if _current_node.has_choices():
 		return
+	AudioManager.stop_all_sfx()
 	_apply_node_side_effects(_current_node)
 	_resolve_action(_current_node.on_end)
 
