@@ -73,14 +73,14 @@ var _world_background: Sprite2D = null
 var _visual_layer: Node2D = null
 var _collision_layer: Node2D = null
 var _interaction_layer: Node2D = null
-var _walkability_collision_entries: Array[Dictionary] = []
+var _walkability_blocker_footprints: Array[Rect2] = []
 var _portal_layer: Node2D = null
 var _actor_layer: Node2D = null
 var _foreground_layer: Node2D = null
 var _encounter_distance: float = 0.0
 var _last_encounter_position: Vector2 = Vector2.ZERO
 var _encounter_locked: bool = false
-var _item_toast: Label = null
+var _item_toast: RichTextLabel = null
 var _item_toast_lines: Array[String] = []
 var _item_toast_serial: int = 0
 
@@ -227,7 +227,7 @@ func _setup_scene(scene: SceneScript, player_spawn_override: Variant = null) -> 
 	_encounter_locked = false
 	_scene_object_nodes.clear()
 	_animated_prop_nodes.clear()
-	_walkability_collision_entries.clear()
+	_walkability_blocker_footprints.clear()
 	_create_runtime_layers()
 	_spawn_world_background(scene.background_path)
 
@@ -489,10 +489,7 @@ func _is_blocked_by_layout(normalized_pos: Vector2) -> bool:
 		return false
 	# Constraint is evaluated at the player origin. Expand authored footprints a
 	# little so the sprite cannot visually overlap baked roofs or gate beams.
-	for blocker in _walkability_collision_entries:
-		var pos: Vector2 = blocker.get("pos", Vector2.ZERO)
-		var size: Vector2 = blocker.get("size", Vector2.ZERO)
-		var footprint := Rect2(pos - size * 0.5, size).grow(0.014)
+	for footprint in _walkability_blocker_footprints:
 		if footprint.has_point(normalized_pos):
 			return true
 	return false
@@ -501,20 +498,22 @@ func _is_blocked_by_layout(normalized_pos: Vector2) -> bool:
 func _rebuild_walkability_collision_entries(blockers: Array, visual_objects: Array) -> void:
 	# Build this once per scene. Player movement calls the constraint every physics
 	# frame, so copying the full map layout there causes visible input lag.
-	_walkability_collision_entries.clear()
+	_walkability_blocker_footprints.clear()
 	for entry in blockers:
 		if entry is Dictionary:
-			_walkability_collision_entries.append(entry as Dictionary)
+			var blocker: Dictionary = entry as Dictionary
+			var pos: Vector2 = blocker.get("pos", Vector2.ZERO)
+			var size: Vector2 = blocker.get("size", Vector2.ZERO)
+			_walkability_blocker_footprints.append(Rect2(pos - size * 0.5, size).grow(0.014))
 	for object_entry in visual_objects:
 		if not object_entry is Dictionary:
 			continue
 		var object_data: Dictionary = object_entry as Dictionary
 		if not object_data.has("collision_size"):
 			continue
-		_walkability_collision_entries.append({
-			"pos": object_data.get("pos", Vector2.ZERO) + object_data.get("collision_offset", Vector2.ZERO),
-			"size": object_data.get("collision_size", Vector2.ZERO),
-		})
+		var object_pos: Vector2 = object_data.get("pos", Vector2.ZERO) + object_data.get("collision_offset", Vector2.ZERO)
+		var object_size: Vector2 = object_data.get("collision_size", Vector2.ZERO)
+		_walkability_blocker_footprints.append(Rect2(object_pos - object_size * 0.5, object_size).grow(0.014))
 
 
 func _spawn_npcs(npc_data: Array) -> void:

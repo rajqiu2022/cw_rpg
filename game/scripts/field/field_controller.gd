@@ -44,7 +44,7 @@ const ATTR_ICON_REGIONS := {
 @onready var hint_bg: ColorRect = $HintBar/HintBg
 @onready var hint_label: Label = $HintBar/HintLabel
 
-var _item_toast: Label = null
+var _item_toast: RichTextLabel = null
 var _item_toast_lines: Array[String] = []
 var _item_toast_serial: int = 0
 @onready var player_info: Label = %PlayerInfo
