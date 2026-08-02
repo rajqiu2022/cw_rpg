@@ -14,11 +14,36 @@ DIALOG_DIR = ROOT / "game" / "data" / "dialogs"
 VOICE_DIR = ROOT / "game" / "art" / "audio" / "voices"
 
 VOICE_MAP = {
-    "冷孤云": "zh-CN-YunxiNeural", "刑樊天": "zh-CN-YunjianNeural",
-    "悦无姮": "zh-CN-XiaoxiaoNeural", "杜青衫": "zh-CN-YunyangNeural",
-    "铁匠刘": "zh-CN-YunfengNeural",
-    "蒙面杀手甲": "zh-CN-YunhaoNeural", "蒙面杀手乙": "zh-CN-YunhaoNeural",
-    "蒙面杀手首领": "zh-CN-YunhaoNeural", "江湖散兵": "zh-CN-YunhaoNeural",
+    # 主角 — 年轻男声，活泼阳光
+    "冷孤云": "zh-CN-YunxiNeural",
+    # 师父/长辈 — 中年男声，充满感情
+    "刑樊天": "zh-CN-YunjianNeural",
+    # 女主 — 温暖女声
+    "悦无姮": "zh-CN-XiaoxiaoNeural",
+    # 铁匠/酒馆/朴实型 — 专业可靠男声
+    "杜青衫": "zh-CN-YunyangNeural",
+    "铁匠刘": "zh-CN-YunyangNeural",
+    "沈半盏": "zh-CN-YunyangNeural",
+    "护商镖师": "zh-CN-YunyangNeural",
+    "守门村民": "zh-CN-YunyangNeural",
+    # 武夫/反派/粗犷型 — 专业坚定男声
+    "武馆教头": "zh-CN-YunyangNeural",
+    "守城兵丁": "zh-CN-YunyangNeural",
+    "赵无忌": "zh-CN-YunyangNeural",
+    "蒙面杀手甲": "zh-CN-YunyangNeural",
+    "蒙面杀手乙": "zh-CN-YunyangNeural",
+    "蒙面杀手首领": "zh-CN-YunjianNeural",
+    "江湖散兵": "zh-CN-YunyangNeural",
+    "被绑男子": "zh-CN-YunxiNeural",
+    # 商贩/健谈型 — 活泼女声
+    "走货郎": "zh-CN-XiaoyiNeural",
+    "客栈老板": "zh-CN-YunjianNeural",
+    "神秘商人": "zh-CN-YunjianNeural",
+    "店小二": "zh-CN-YunxiNeural",
+    # 女性NPC — 温暖女声
+    "卖菜大婶": "zh-CN-XiaoxiaoNeural",
+    "哭泣女子": "zh-CN-XiaoxiaoNeural",
+    # 旁白 — 说书人
     "旁白": "zh-CN-YunjianNeural",
 }
 DEFAULT_VOICE = "zh-CN-YunyangNeural"

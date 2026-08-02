@@ -1,15 +1,28 @@
-[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
 [ext_resource type="Resource" path="res://data/dialogs/ch1_s2_intro.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch1_s2_qingfeng_layout_v2.tres" id="3_map"]
 
 [resource]
 script = ExtResource("1_scn")
 scene_id = &"ch1_s2_qingfeng"
 display_name = "竹尾村 · 主街"
-background_path = "res://art/backgrounds/bg_zhuwei_main_street.png"
-bgm_path = ""
-on_enter_dialog = ExtResource("2_intro")
+background_path = "res://art/backgrounds/bg_zhuwei_main_street_release_v3.png"
+bgm_path = "res://art/audio/bgm/bgm_calm.wav"
+on_enter_once_flag = &"entered_zhuwei_village"
+is_walkable = true
+map_layout = ExtResource("3_map")
+player_spawn = Vector2(0.10, 0.68)
+npcs = [
+	{"npc_id": "vegetable_vendor", "npc_name": "卖菜大婶", "pos": Vector2(0.51, 0.70), "sprite_path": "res://art/characters/npc_zhuwei_vegetable_vendor_idle_down_1f.png", "dialog_id": "ch1_s2_vegetable_vendor", "scale": 0.92},
+	{"npc_id": "inn_waiter", "npc_name": "店小二", "pos": Vector2(0.29, 0.57), "sprite_path": "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png", "dialog_id": "ch1_s2_inn_keeper", "scale": 0.95},
+	{"npc_id": "merchant", "npc_name": "行商", "pos": Vector2(0.39, 0.60), "sprite_path": "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f.png", "dialog_id": "ch1_s2_merchant", "scale": 0.95},
+	{"npc_id": "crying_woman", "npc_name": "焦急妇人", "pos": Vector2(0.60, 0.57), "sprite_path": "res://art/characters/npc_zhuwei_crying_woman_idle_down_25d_4f.png", "dialog_id": "ch1_s2_crying_woman", "scale": 0.95, "hide_flag": "accepted_rescue_husband"},
+	{"npc_id": "crying_woman_waiting", "npc_name": "焦急妇人", "pos": Vector2(0.60, 0.57), "sprite_path": "res://art/characters/npc_zhuwei_crying_woman_idle_down_25d_4f.png", "dialog_id": "ch1_s2_crying_woman_waiting", "scale": 0.95, "require_flag": "accepted_rescue_husband", "hide_flag": "rescued_husband"},
+	{"npc_id": "guard", "npc_name": "村口守卫", "pos": Vector2(0.90, 0.60), "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png", "dialog_id": "ch1_s2_guard", "scale": 0.95},
+	{"npc_id": "patrol_scout", "npc_name": "护商镖师", "pos": Vector2(0.42, 0.53), "sprite_path": "res://art/characters/npc_zhuwei_escort_idle_down_25d_4f.png", "dialog_id": "ch1_s2_patrol_scout", "scale": 0.95}
+]
 hotspots = [
 	{
 		"label": "客栈老板",
@@ -49,6 +62,6 @@ hotspots = [
 		"pos_x": 0.88,
 		"pos_y": 0.85,
 		"action": "scene:ch1_s3_west_ruin",
-		"require_flag": "rumour_west_ruin"
+		"require_flag": "chapter2_started"
 	}
 ]

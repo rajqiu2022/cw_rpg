@@ -1,22 +1,30 @@
-[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
 [ext_resource type="Resource" path="res://data/dialogs/ch1_forest_enter.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch1_s3_zhuwei_forest_layout_v2.tres" id="3_map"]
 
 [resource]
 script = ExtResource("1_scn")
 scene_id = &"ch1_s3_zhuwei_forest"
 display_name = "竹尾村外 · 密林深处"
-background_path = "res://art/backgrounds/bg_zhuwei_forest.png"
-bgm_path = ""
-on_enter_dialog = ExtResource("2_intro")
+background_path = "res://art/backgrounds/bg_zhuwei_forest_25d_v3.png"
+bgm_path = "res://art/audio/bgm/bgm_danger.wav"
+on_enter_once_flag = &"entered_zhuwei_forest"
+is_walkable = true
+map_layout = ExtResource("3_map")
+player_spawn = Vector2(0.14, 0.86)
+npcs = [
+	{"npc_id": "yuewuxing", "npc_name": "悦无星", "pos": Vector2(0.72, 0.58), "sprite_path": "res://art/characters/npc_yuewuxing_idle_down_25d_4f.png", "dialog_id": "ch1_forest_yuewuxing", "scale": 0.95, "hide_flag": "defeated_masked_killer_ambush"},
+	{"npc_id": "yuewuxing_after", "npc_name": "悦无星", "pos": Vector2(0.72, 0.58), "sprite_path": "res://art/characters/npc_yuewuxing_idle_down_25d_4f.png", "dialog_id": "ch1_forest_victory", "scale": 0.95, "require_flag": "defeated_masked_killer_ambush", "hide_flag": "chapter1_complete"}
+]
 hotspots = [
 	{
 		"label": "前方有打斗声——",
 		"pos_x": 0.55,
 		"pos_y": 0.42,
 		"action": "dialog:ch1_forest_yuewuxing",
-		"hide_flag": "masked_killer_defeated"
+		"hide_flag": "defeated_masked_killer_ambush"
 	},
 	{
 		"label": "旧木箱",
@@ -30,7 +38,7 @@ hotspots = [
 		"pos_x": 0.55,
 		"pos_y": 0.42,
 		"action": "dialog:ch1_forest_victory",
-		"require_flag": "masked_killer_defeated",
+		"require_flag": "defeated_masked_killer_ambush",
 		"hide_flag": "chapter1_complete"
 	}
 ]

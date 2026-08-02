@@ -1,15 +1,24 @@
-[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
 [ext_resource type="Resource" path="res://data/dialogs/ch1_s3_intro.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch1_s3_west_ruin_layout_v2.tres" id="3_map"]
 
 [resource]
 script = ExtResource("1_scn")
 scene_id = &"ch1_s3_west_ruin"
 display_name = "竹尾村 · 城西废宅"
-background_path = "res://art/backgrounds/bg_west_ruin.png"
-bgm_path = ""
-on_enter_dialog = ExtResource("2_intro")
+background_path = "res://art/backgrounds/bg_west_ruin_release_v2.png"
+bgm_path = "res://art/audio/bgm/bgm_danger.wav"
+on_enter_once_flag = &"entered_west_ruin"
+is_walkable = true
+map_layout = ExtResource("3_map")
+player_spawn = Vector2(0.12, 0.72)
+npcs = [
+	{"npc_id": "ruin_outer_guard", "npc_name": "废宅守卫", "pos": Vector2(0.58, 0.60), "sprite_path": "res://art/characters/npc_west_ruin_guard_idle_down_25d_4f.png", "dialog_id": "ch1_s3_outer_guard", "scale": 0.95, "hide_flag": "defeated_zhuwei_bandit"},
+	{"npc_id": "bound_man", "npc_name": "被缚村民", "pos": Vector2(0.40, 0.65), "sprite_path": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png", "dialog_id": "ch1_s3_bound_man", "scale": 0.95, "require_flag": "accepted_rescue_husband", "hide_flag": "rescued_husband"},
+	{"npc_id": "ruin_gatekeeper", "npc_name": "废宅守卫", "pos": Vector2(0.76, 0.46), "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png", "dialog_id": "ch1_s3_door_to_boss", "scale": 0.95, "require_flag": "defeated_zhuwei_bandit", "hide_flag": "defeated_boss_zhao_wuji"}
+]
 hotspots = [
 	{
 		"label": "旧木箱",

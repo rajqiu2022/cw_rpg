@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="SceneScript" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/ch1_s0_linxi_main_layout_v2.tres" id="2_map"]
 
 [resource]
 script = ExtResource("1_scn")
 scene_id = &"ch1_s0_linxi_main_walkable"
 display_name = "林西村 · 主街"
-background_path = "res://art/backgrounds/bg_linxi_main_street_full.png"
-bgm_path = ""
+background_path = "res://art/backgrounds/bg_linxi_main_street_panorama_v1.png"
+bgm_path = "res://art/audio/bgm/bgm_happy.wav"
 is_walkable = true
-player_spawn = Vector2(0.5, 0.88)
+map_layout = ExtResource("2_map")
+player_spawn = Vector2(0.22, 0.75)
 scene_objects = [
 {
 "id": "veg_bamboo_cluster_a",
@@ -674,70 +676,101 @@ npcs = [
   "npc_name": "沈半盏",
   "pos": Vector2(0.1, 0.52),
   "portrait_path": "res://art/characters/portrait_shenbanzhan_friendly.png",
-  "sprite_path": "res://art/characters/npc_shenbanzhan_idle_8f.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
   "dialog_id": "ch1_main_street_shenbanzhan",
-  "scale": 0.31,
+  "scale": 0.95,
 },
 {
   "npc_id": "duqingshan",
   "npc_name": "杜青衫",
   "pos": Vector2(0.69, 0.52),
   "portrait_path": "res://art/characters/portrait_duqingshan_steady.png",
-  "sprite_path": "res://art/characters/npc_duqingshan_v4.png",
+   "sprite_path": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
   "dialog_id": "ch1_main_street_duqingshan",
-  "scale": 0.16,
+   "scale": 0.95,
 },
 {
   "npc_id": "vendor",
   "npc_name": "走货郎",
-  "pos": Vector2(0.48, 0.6),
+  "pos": Vector2(0.30, 0.63),
   "portrait_path": "res://art/characters/npc_vendor_neutral.png",
-  "sprite_path": "res://art/characters/npc_vendor_neutral.png",
+  "sprite_path": "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png",
   "dialog_id": "ch1_main_street_vendor",
-  "scale": 0.25,
+  "scale": 0.95,
+},
+{
+  "npc_id": "martial_hall_master",
+  "npc_name": "武馆教头",
+  "pos": Vector2(0.22, 0.55),
+   "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "dialog_id": "ch1_martial_hall_master",
+   "scale": 0.95,
 }
 ]
 exits = [
 {
+"id": "exit_to_road",
 "label": "前往村外官道 →",
-"pos": Vector2(0.9583, 0.5093),
-"size": Vector2(0.0833, 0.2778),
+"pos": Vector2(0.9250, 0.5600),
+"size": Vector2(0.0900, 0.1600),
 "target_scene": "ch1_s1_road",
-"target_pos": Vector2(0.1, 0.5)
+"target_pos": Vector2(0.1, 0.5),
+"require_flag": "got_sword"
 },
 {
-"label": "← 返回主街",
+"id": "exit_to_tutorial",
+"label": "← 返回武师院",
 "pos": Vector2(0.0156, 0.8333),
 "size": Vector2(0.0833, 0.0556),
-"target_scene": "ch1_s2_qingfeng",
-"target_pos": Vector2(0.5, 0.85)
+"target_scene": "linxi_tutorial",
+"target_pos": Vector2(0.5, 0.72)
 }
 ]
 collision_rects = [
 {
 "id": "inn_wall",
-"pos": Vector2(0.0417, 0.4074),
-"size": Vector2(0.1354, 0.0741)
+"pos": Vector2(0.1650, 0.2800),
+"size": Vector2(0.3300, 0.4300)
 },
 {
 "id": "house_wall",
-"pos": Vector2(0.2917, 0.4167),
-"size": Vector2(0.1354, 0.0741)
+"pos": Vector2(0.5000, 0.2250),
+"size": Vector2(0.2300, 0.4100)
 },
 {
 "id": "smithy_wall",
-"pos": Vector2(0.6354, 0.4074),
-"size": Vector2(0.1354, 0.0741)
+"pos": Vector2(0.7900, 0.2850),
+"size": Vector2(0.3200, 0.4300)
 },
 {
 "id": "left_bamboo",
 "pos": Vector2(0.0, 0.1481),
-"size": Vector2(0.0312, 0.6481)
+"size": Vector2(0.0550, 0.7000)
 },
 {
-"id": "right_bamboo",
-"pos": Vector2(0.9688, 0.1481),
-"size": Vector2(0.0312, 0.6481)
+"id": "right_bamboo_top",
+"pos": Vector2(0.9800, 0.1900),
+"size": Vector2(0.0400, 0.3800)
+},
+{
+"id": "right_bamboo_bottom",
+"pos": Vector2(0.9800, 0.8200),
+"size": Vector2(0.0400, 0.3600)
+},
+{
+"id": "upper_bamboo_and_cliff",
+"pos": Vector2(0.5000, 0.0250),
+"size": Vector2(1.0000, 0.0500)
+},
+{
+"id": "lower_fence_and_slope",
+"pos": Vector2(0.5000, 0.9650),
+"size": Vector2(1.0000, 0.0700)
+},
+{
+"id": "altar_block",
+"pos": Vector2(0.5000, 0.5350),
+"size": Vector2(0.1150, 0.1050)
 }
 ]
 trigger_zones = [
@@ -757,7 +790,9 @@ trigger_zones = [
 "id": "stone_read",
 "pos": Vector2(0.5573, 0.5463),
 "size": Vector2(0.0417, 0.0556),
-"action": "dialog:ch1_main_street_stone"
+"action": "dialog:ch1_main_street_stone",
+"hide_flag": "saw_village_stone",
+"interaction_only": true
 },
 {
 "id": "vendor_talk",
