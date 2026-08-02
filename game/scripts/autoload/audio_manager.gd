@@ -31,7 +31,7 @@ var bgm_player: AudioStreamPlayer
 var _sfx_pool: Array[AudioStreamPlayer] = []
 var _sfx_index: int = 0
 
-var bgm_volume: float = 1.0
+var bgm_volume: float = 0.4
 var sfx_volume: float = 1.0
 var ui_volume: float = 1.0
 
