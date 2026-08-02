@@ -213,8 +213,8 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 	var cell: TextureRect = TextureRect.new()
 	cell.custom_minimum_size = Vector2(85, 83)
 	cell.texture = CELL_DEFAULT
-	cell.expand_mode = 1
-	cell.stretch_mode = 5
+	cell.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	cell.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	cell.mouse_filter = Control.MOUSE_FILTER_STOP
 	cell.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
@@ -224,8 +224,8 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 		icon.texture = icon_tex
 		icon.custom_minimum_size = Vector2(60, 44)
 		icon.position = Vector2(12, 4)
-		icon.expand_mode = 1
-		icon.stretch_mode = 4
+		icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
 		icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 		cell.add_child(icon)
 
@@ -281,8 +281,8 @@ func _make_empty_cell() -> Control:
 	var cell: TextureRect = TextureRect.new()
 	cell.custom_minimum_size = Vector2(85, 83)
 	cell.texture = CELL_EMPTY
-	cell.expand_mode = 1
-	cell.stretch_mode = 5
+	cell.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	cell.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	cell.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return cell
 
@@ -308,17 +308,17 @@ func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cel
 				var p: CharacterStats = GameState.player
 				if p == null: return
 				if item.heal_hp > 0 and p.hp >= p.max_hp and item.heal_mp == 0:
-					_show_tip("当前已满血")
+					_show_tip("[color=#ff6b6b]HP 已满[/color]", true)
 				elif item.heal_mp > 0 and p.mp >= p.max_mp and item.heal_hp == 0:
-					_show_tip("当前已满内力")
+					_show_tip("[color=#64b5f6]MP 已满[/color]", true)
 				else:
 					var old_hp := p.hp
 					var old_mp := p.mp
 					if Inventory.use_item(item.item_id):
-						var tip := ""
-						if p.hp > old_hp: tip += "HP +%d " % (p.hp - old_hp)
-						if p.mp > old_mp: tip += "MP +%d" % (p.mp - old_mp)
-						if tip != "": _show_tip(tip)
+						var parts: Array[String] = []
+						if p.hp > old_hp: parts.append("[color=#ff6b6b]HP +%d[/color]" % (p.hp - old_hp))
+						if p.mp > old_mp: parts.append("[color=#64b5f6]MP +%d[/color]" % (p.mp - old_mp))
+						if not parts.is_empty(): _show_tip(" ".join(parts), true)
 						_refresh()
 			else:
 				_context_slot_index = slot_index
@@ -333,7 +333,7 @@ func _highlight_cell(cell: TextureRect) -> void:
 	_highlighted_cell = cell
 
 
-func _show_tip(text: String) -> void:
+func _show_tip(text: String, use_bbcode: bool = false) -> void:
 	var panel := PanelContainer.new()
 	panel.add_theme_stylebox_override("panel", StyleBoxFlat.new())
 	var style: StyleBoxFlat = panel.get_theme_stylebox("panel")
@@ -346,10 +346,17 @@ func _show_tip(text: String) -> void:
 	style.content_margin_right = 10
 	style.content_margin_top = 4
 	style.content_margin_bottom = 4
-	var lbl := Label.new()
-	lbl.text = text
-	lbl.add_theme_font_size_override("font_size", 17)
-	lbl.add_theme_color_override("font_color", Color(0.3, 1, 0.4))
+	var lbl: Label
+	if use_bbcode:
+		lbl = RichTextLabel.new()
+		lbl.bbcode_enabled = true
+		lbl.fit_content = true
+		lbl.text = "[font_size=20]%s[/font_size]" % text
+	else:
+		lbl = Label.new()
+		lbl.text = text
+		lbl.add_theme_font_size_override("font_size", 17)
+		lbl.add_theme_color_override("font_color", Color(0.3, 1, 0.4))
 	panel.add_child(lbl)
 	panel.position = get_global_mouse_position() - global_position + Vector2(10, -40)
 	add_child(panel)
