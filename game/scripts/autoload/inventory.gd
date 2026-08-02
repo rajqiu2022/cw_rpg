@@ -40,13 +40,8 @@ func _ready() -> void:
 func reset_for_new_game() -> void:
 	from_dict({})
 	add_item(&"healing_pill_minor", 2)
-	add_item(&"linxi_jiu", 1)
-	# 各品质装备测试
-	add_item(&"straw_sandals", 1)       # 凡品
-	add_item(&"cloth_armor", 1)         # 优质
-	add_item(&"iron_sword", 1)          # 高品
-	add_item(&"battle_helmet", 1)       # 稀有
-	add_item(&"crimson_jade_pendant", 1) # 尚品
+	add_item(&"cloth_armor", 1)
+	add_item(&"straw_sandals", 1)
 
 
 # --- 加载与查询 ---
