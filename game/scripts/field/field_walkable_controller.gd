@@ -20,10 +20,14 @@ const INVENTORY_PANEL_SCENE := preload("res://scenes/ui/inventory_panel.tscn")
 const EQUIPMENT_PANEL_SCENE := preload("res://scenes/ui/equipment_panel.tscn")
 const SKILL_PANEL_SCENE := preload("res://scenes/ui/skill_panel.tscn")
 const QUEST_PANEL_SCENE := preload("res://scenes/ui/quest_panel.tscn")
+const WORLD_MAP_PANEL_SCENE := preload("res://scenes/ui/world_map_panel.tscn")
 const FIELD_PRIMARY_HUD_SCENE := preload("res://scenes/ui/field_primary_hud.tscn")
+const SYSTEM_MENU_SCENE := preload("res://scenes/ui/system_menu.tscn")
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
 const UI_TEXTURE_SKIN := preload("res://scripts/ui/ui_texture_skin.gd")
+const INTERACTION_OUTLINE_SHADER := preload("res://shaders/interaction_outline.gdshader")
 const HUD_ART_DIR := "res://art/ui/field_hud/v1"
+const NPC_CATALOG: NPCCatalog = preload("res://data/npcs/npc_catalog.tres")
 
 
 @onready var background: TextureRect = %Background
@@ -37,6 +41,7 @@ const HUD_ART_DIR := "res://art/ui/field_hud/v1"
 @onready var inventory_btn: Button = %InventoryBtn
 @onready var equipment_btn: Button = %EquipmentBtn
 @onready var skill_btn: Button = %SkillBtn
+@onready var system_btn: Button = %SystemBtn
 @onready var hint_bar: Control = %HintBar
 
 @onready var hint_label: Label = %HintLabel
@@ -49,15 +54,35 @@ var _equipment_panel = null
 var _panels_ready: bool = false
 var _skill_panel = null
 var _quest_panel_full = null
+var _world_map_panel: WorldMapPanel = null
 
 
 var _npc_nodes: Array[NPCNode] = []
 var _exit_nodes: Array[ExitZone] = []
 var _collision_bodies: Array[StaticBody2D] = []
 var _trigger_areas: Array[Area2D] = []
+var _trigger_events_in_flight: Dictionary = {}
+var _scene_refresh_pending: bool = false
 var _scene_object_nodes: Array[Sprite2D] = []
 var _animated_prop_nodes: Array[Node2D] = []
 var _screen_size: Vector2 = Vector2(1920, 1080)
+var _viewport_size: Vector2 = Vector2(1920, 1080)
+var _world_size: Vector2 = Vector2(1920, 1080)
+var _world_origin: Vector2 = Vector2.ZERO
+var _world_background: Sprite2D = null
+var _visual_layer: Node2D = null
+var _collision_layer: Node2D = null
+var _interaction_layer: Node2D = null
+var _walkability_collision_entries: Array[Dictionary] = []
+var _portal_layer: Node2D = null
+var _actor_layer: Node2D = null
+var _foreground_layer: Node2D = null
+var _encounter_distance: float = 0.0
+var _last_encounter_position: Vector2 = Vector2.ZERO
+var _encounter_locked: bool = false
+var _item_toast: Label = null
+var _item_toast_lines: Array[String] = []
+var _item_toast_serial: int = 0
 
 var _hud_btn_normal: StyleBoxFlat
 var _hud_btn_hover: StyleBoxFlat
@@ -78,6 +103,7 @@ func _ready() -> void:
 	EventBus.gold_changed.connect(_on_gold_changed)
 	EventBus.dialog_started.connect(_on_dialog_started)
 	EventBus.dialog_ended.connect(_on_dialog_ended)
+	EventBus.item_picked_up.connect(_on_item_picked_up)
 	EventBus.ui_requested.connect(_on_ui_requested)
 	QuestManager.active_quests_changed.connect(_refresh_quest_panel)
 	EventBus.quest_completed.connect(_on_quest_completed)
@@ -85,19 +111,23 @@ func _ready() -> void:
 	inventory_btn.pressed.connect(_toggle_inventory_panel)
 	equipment_btn.pressed.connect(_toggle_equipment_panel)
 	skill_btn.pressed.connect(_toggle_skill_panel)
+	system_btn.pressed.connect(_open_system_menu)
 	_init_m5_panels()
 
 	_init_field_ui_styles()
 
 	_init_formal_hud()
 	_apply_formal_hud_mode()
-	var scene_id: StringName = SceneRouter.get_field_payload().get("scene_id", &"ch1_s2_qingfeng_walkable")
+	var field_payload := SceneRouter.get_field_payload()
+	var scene_id: StringName = field_payload.get("scene_id", &"ch1_s2_qingfeng")
+	if scene_id == &"ch1_s2_qingfeng_walkable":
+		scene_id = &"ch1_s2_qingfeng"
 	_current_scene = _load_scene(scene_id)
 	if _current_scene == null:
 		push_warning("[FieldWalkable] failed to load scene %s" % scene_id)
 		return
 
-	_setup_scene(_current_scene)
+	_setup_scene(_current_scene, field_payload.get("player_spawn", null))
 	_refresh_gold()
 	_refresh_quest_panel()
 
@@ -105,9 +135,42 @@ func _ready() -> void:
 	EventBus.scene_entered.emit(scene_id)
 
 	# on_enter_dialog
-	if _current_scene.on_enter_dialog != null:
+	if _should_play_enter_dialog(_current_scene):
+		_mark_enter_dialog_played(_current_scene)
 		await get_tree().process_frame
 		DialogPlayer.play(_current_scene.on_enter_dialog)
+
+
+func _should_play_enter_dialog(scene: SceneScript) -> bool:
+	if scene.on_enter_dialog == null:
+		return false
+	var flag := String(scene.on_enter_once_flag)
+	return flag == "" or not _flag_truthy(flag)
+
+
+func _mark_enter_dialog_played(scene: SceneScript) -> void:
+	var flag := String(scene.on_enter_once_flag)
+	if flag == "":
+		return
+	GameState.flags[flag] = true
+	EventBus.flag_set.emit(StringName(flag), true)
+
+
+func _open_system_menu() -> void:
+	var existing := get_node_or_null("SystemMenu") as SystemMenu
+	if existing != null:
+		if existing.visible:
+			existing.close()
+		else:
+			_on_system_panel_opened()
+			existing.open()
+		return
+	var menu := SYSTEM_MENU_SCENE.instantiate() as SystemMenu
+	menu.name = "SystemMenu"
+	add_child(menu)
+	menu.closed.connect(_on_system_panel_closed)
+	_on_system_panel_opened()
+	menu.open()
 
 
 func _load_scene(scene_id: StringName) -> SceneScript:
@@ -129,9 +192,20 @@ func _setup_scene(scene: SceneScript, player_spawn_override: Variant = null) -> 
 		if res is Texture2D:
 			background.texture = res
 
-	## 计算实际显示尺寸（保持宽高比下的渲染尺寸）
-	var tex_size := _get_bg_display_size(background.texture)
-	_screen_size = tex_size if tex_size != Vector2.ZERO else Vector2(1920, 1080)
+	## 可行走地图以底图的原始比例定义世界矩形。设计尺寸只指定期望的
+	## 横向范围；绝不能用独立 X/Y 缩放把 3:2 底图硬拉成横向长地图。
+	var viewport_size := get_viewport_rect().size
+	_viewport_size = viewport_size if viewport_size != Vector2.ZERO else Vector2(1920, 1080)
+	_world_size = _resolve_world_size(scene, background.texture)
+	# Legacy helpers use this as the normalized-coordinate reference. It now
+	# represents the full scrollable world rather than the visible viewport.
+	_screen_size = _world_size
+	_world_origin = Vector2(
+		maxf(0.0, (_viewport_size.x - _world_size.x) * 0.5),
+		maxf(0.0, (_viewport_size.y - _world_size.y) * 0.5)
+	)
+	world_container.position = _world_origin
+	background.visible = false
 
 	if scene_title != null:
 		scene_title.text = scene.display_name
@@ -148,14 +222,35 @@ func _setup_scene(scene: SceneScript, player_spawn_override: Variant = null) -> 
 	_exit_nodes.clear()
 	_collision_bodies.clear()
 	_trigger_areas.clear()
+	_trigger_events_in_flight.clear()
+	_encounter_distance = 0.0
+	_encounter_locked = false
 	_scene_object_nodes.clear()
 	_animated_prop_nodes.clear()
+	_walkability_collision_entries.clear()
+	_create_runtime_layers()
+	_spawn_world_background(scene.background_path)
+
+	var visual_objects: Array = scene.scene_objects
+	var blockers: Array = scene.collision_rects
+	var interactions: Array = scene.trigger_zones
+	var portals: Array = scene.exits
+	if scene.map_layout != null:
+		visual_objects = scene.map_layout.visual_objects
+		blockers = scene.map_layout.blockers
+		interactions = scene.map_layout.interactions
+		portals = scene.map_layout.portals
+		_spawn_walkable_boundaries(scene.map_layout.walkable_regions)
+	if scene.map_layout == null and not scene.hotspots.is_empty():
+		interactions = _legacy_hotspots_to_interactions(scene.hotspots)
+		portals = _legacy_hotspots_to_portals(scene.hotspots)
 
 	## 生成地图边界碰撞（防止走出屏幕）
 	_spawn_map_bounds()
 
-	## 生成 Tiled / 模块化场景元素
-	_spawn_scene_objects(scene.scene_objects)
+	## 生成模块化场景元素
+	_spawn_scene_objects(visual_objects)
+	_rebuild_walkability_collision_entries(blockers, visual_objects)
 
 	## 生成背景上方的程序化小动画（旗子、炊烟、炉火等）
 	_spawn_animated_props(scene.animated_props)
@@ -164,33 +259,148 @@ func _setup_scene(scene: SceneScript, player_spawn_override: Variant = null) -> 
 	_spawn_npcs(scene.npcs)
 
 	## 生成出口
-	_spawn_exits(scene.exits)
+	_spawn_exits(portals)
 
 	## 生成静态障碍和剧情触发区
-	_spawn_collision_rects(scene.collision_rects)
-	_spawn_trigger_zones(scene.trigger_zones)
+	_spawn_collision_rects(blockers)
+	_spawn_trigger_zones(interactions)
 
 	## 生成玩家（最后生成，确保在最上层）
 	var spawn := scene.player_spawn
 	if player_spawn_override is Vector2:
 		spawn = player_spawn_override
 	_spawn_player(spawn)
+	SceneRouter.set_field_return_spawn(spawn)
+
+
+func _legacy_hotspots_to_interactions(hotspots: Array) -> Array:
+	var result: Array = []
+	for index in hotspots.size():
+		var source: Dictionary = hotspots[index]
+		var action: String = String(source.get("action", ""))
+		if action.is_empty() or action.begins_with("scene:"):
+			continue
+		result.append({
+			"id": "legacy_hotspot_%d" % index,
+			"pos": Vector2(float(source.get("pos_x", 0.5)), float(source.get("pos_y", 0.5))),
+			"size": Vector2(0.11, 0.12),
+			"action": action,
+			"activation": "interact",
+			"require_flag": String(source.get("require_flag", "")),
+			"hide_flag": String(source.get("hide_flag", "")),
+		})
+	return result
+
+
+func _legacy_hotspots_to_portals(hotspots: Array) -> Array:
+	var result: Array = []
+	for index in hotspots.size():
+		var source: Dictionary = hotspots[index]
+		var action: String = String(source.get("action", ""))
+		if not action.begins_with("scene:"):
+			continue
+		var target_scene := action.trim_prefix("scene:")
+		if target_scene.is_empty():
+			continue
+		result.append({
+			"id": "legacy_portal_%d" % index,
+			"pos": Vector2(float(source.get("pos_x", 0.5)), float(source.get("pos_y", 0.5))),
+			"size": Vector2(0.13, 0.14),
+			"label": String(source.get("label", "前往下一处")),
+			"target_scene": target_scene,
+			"target_pos": Vector2(0.12, 0.75),
+			"require_flag": String(source.get("require_flag", "")),
+			"hide_flag": String(source.get("hide_flag", "")),
+		})
+	return result
 
 	## 操作提示已移除（不用底部提示条）
 
 
+func _create_runtime_layers() -> void:
+	_visual_layer = Node2D.new()
+	_visual_layer.name = "VisualLayer"
+	_collision_layer = Node2D.new()
+	_collision_layer.name = "CollisionLayer"
+	_interaction_layer = Node2D.new()
+	_interaction_layer.name = "InteractionLayer"
+	_portal_layer = Node2D.new()
+	_portal_layer.name = "PortalLayer"
+	_portal_layer.z_index = 60
+	_actor_layer = Node2D.new()
+	_actor_layer.name = "ActorLayer"
+	_actor_layer.z_index = 20
+	# Field actors share one Y-sorted plane. A character farther down the map
+	# renders in front, so the player naturally passes behind an NPC above them.
+	_actor_layer.y_sort_enabled = true
+	_foreground_layer = Node2D.new()
+	_foreground_layer.name = "ForegroundLayer"
+	_foreground_layer.z_index = 40
+	var layers: Array[Node2D] = [_visual_layer, _collision_layer, _interaction_layer, _actor_layer, _portal_layer, _foreground_layer]
+	for layer in layers:
+		world_container.add_child(layer)
 
-func _get_bg_display_size(tex: Texture2D) -> Vector2:
-	if tex == null:
-		return Vector2.ZERO
-	var tw: float = tex.get_width()
-	var th: float = tex.get_height()
-	var vw: float = 1920.0
-	var vh: float = 1080.0
-	var scale_x: float = vw / tw
-	var scale_y: float = vh / th
-	var s: float = min(scale_x, scale_y)
-	return Vector2(tw * s, th * s)
+
+func _spawn_world_background(path: String) -> void:
+	if path.is_empty() or not ResourceLoader.exists(path):
+		background.visible = true
+		return
+	var texture := load(path) as Texture2D
+	if texture == null:
+		background.visible = true
+		return
+	_world_background = Sprite2D.new()
+	_world_background.name = "WorldBackground"
+	_world_background.texture = texture
+	_world_background.centered = false
+	_world_background.position = Vector2.ZERO
+	_world_background.z_index = -1000
+	var uniform_scale := _world_size.x / maxf(1.0, float(texture.get_width()))
+	_world_background.scale = Vector2.ONE * uniform_scale
+	world_container.add_child(_world_background)
+
+
+func _resolve_world_size(scene: SceneScript, texture: Texture2D) -> Vector2:
+	if texture == null:
+		return _viewport_size
+	if scene.map_layout != null and scene.map_layout.display_at_native_size:
+		return Vector2(texture.get_width(), texture.get_height())
+	var requested_width := _viewport_size.x
+	if scene.map_layout != null:
+		requested_width = maxf(requested_width, float(scene.map_layout.design_size.x))
+	var uniform_scale := requested_width / maxf(1.0, float(texture.get_width()))
+	var world_size := Vector2(texture.get_width(), texture.get_height()) * uniform_scale
+	if world_size.y < _viewport_size.y:
+		uniform_scale = _viewport_size.y / maxf(1.0, float(texture.get_height()))
+		world_size = Vector2(texture.get_width(), texture.get_height()) * uniform_scale
+	return world_size
+
+
+func _process(_delta: float) -> void:
+	if _player == null:
+		return
+	var max_offset := Vector2(
+		maxf(0.0, _world_size.x - _viewport_size.x),
+		maxf(0.0, _world_size.y - _viewport_size.y)
+	)
+	var target := _player.position - _viewport_size * 0.5
+	var offset := Vector2(
+		clampf(target.x, 0.0, max_offset.x),
+		clampf(target.y, 0.0, max_offset.y)
+	)
+	world_container.position = _world_origin - offset
+
+
+func _spawn_walkable_boundaries(regions: Array[PackedVector2Array]) -> void:
+	# Player movement is already constrained by _is_inside_walkable_screen(),
+	# which correctly evaluates the union of every authored road region. Turning
+	# each polygon outline into a physical wall also creates invisible walls where
+	# two valid regions touch or overlap, so only actual scene objects/blockers own
+	# physics collision.
+	for index in regions.size():
+		if regions[index].size() < 3:
+			push_warning("[FieldWalkable] walkable region %d has fewer than 3 points" % index)
+
 
 
 func _spawn_map_bounds() -> void:
@@ -198,7 +408,7 @@ func _spawn_map_bounds() -> void:
 	var bounds: StaticBody2D = StaticBody2D.new()
 
 	bounds.name = "MapBounds"
-	world_container.add_child(bounds)
+	_collision_layer.add_child(bounds)
 
 	var margin: float = 20.0
 	var w: float = _screen_size.x
@@ -231,6 +441,8 @@ func _spawn_player(spawn_norm: Vector2) -> void:
 	_player = PLAYER_SCENE.instantiate()
 	_player.position = pos
 	_player.name = "Player"
+	if _current_scene != null and _current_scene.map_layout != null:
+		_player.set_movement_constraint(_is_inside_walkable_screen)
 
 	if not _player.uses_directional_walk_sprites():
 		## 旧占位逻辑：没有行走动画的 Player 才使用立绘贴图。
@@ -246,7 +458,63 @@ func _spawn_player(spawn_norm: Vector2) -> void:
 				_player.sprite.scale = Vector2.ONE * (96.0 / origin_size)
 
 	_player.interacted.connect(_on_player_interacted)
-	world_container.add_child(_player)
+	_player.moved.connect(_on_player_moved)
+	_player.z_index = 0
+	_actor_layer.add_child(_player)
+	if _current_scene != null:
+		_player.set_visual_scale_multiplier(_current_scene.player_visual_scale)
+	_last_encounter_position = _player.position
+
+
+func _is_inside_walkable_screen(screen_pos: Vector2) -> bool:
+	if _current_scene == null or _current_scene.map_layout == null:
+		return true
+	if _screen_size.x <= 0.0 or _screen_size.y <= 0.0:
+		return true
+	# Player supplies a global target. Native-size maps may be centered and
+	# larger maps may be camera-shifted, so evaluate against world-local pixels.
+	var world_pos := world_container.to_local(screen_pos)
+	var normalized := Vector2(
+		clampf(world_pos.x / _screen_size.x, 0.0, 1.0),
+		clampf(world_pos.y / _screen_size.y, 0.0, 1.0)
+	)
+	for region in _current_scene.map_layout.walkable_regions:
+		if Geometry2D.is_point_in_polygon(normalized, region):
+			return not _is_blocked_by_layout(normalized)
+	return false
+
+
+func _is_blocked_by_layout(normalized_pos: Vector2) -> bool:
+	if _current_scene == null or _current_scene.map_layout == null:
+		return false
+	# Constraint is evaluated at the player origin. Expand authored footprints a
+	# little so the sprite cannot visually overlap baked roofs or gate beams.
+	for blocker in _walkability_collision_entries:
+		var pos: Vector2 = blocker.get("pos", Vector2.ZERO)
+		var size: Vector2 = blocker.get("size", Vector2.ZERO)
+		var footprint := Rect2(pos - size * 0.5, size).grow(0.014)
+		if footprint.has_point(normalized_pos):
+			return true
+	return false
+
+
+func _rebuild_walkability_collision_entries(blockers: Array, visual_objects: Array) -> void:
+	# Build this once per scene. Player movement calls the constraint every physics
+	# frame, so copying the full map layout there causes visible input lag.
+	_walkability_collision_entries.clear()
+	for entry in blockers:
+		if entry is Dictionary:
+			_walkability_collision_entries.append(entry as Dictionary)
+	for object_entry in visual_objects:
+		if not object_entry is Dictionary:
+			continue
+		var object_data: Dictionary = object_entry as Dictionary
+		if not object_data.has("collision_size"):
+			continue
+		_walkability_collision_entries.append({
+			"pos": object_data.get("pos", Vector2.ZERO) + object_data.get("collision_offset", Vector2.ZERO),
+			"size": object_data.get("collision_size", Vector2.ZERO),
+		})
 
 
 func _spawn_npcs(npc_data: Array) -> void:
@@ -267,23 +535,65 @@ func _spawn_npcs(npc_data: Array) -> void:
 		npc.dialog_id = String(d.get("dialog_id", ""))
 		npc.portrait_path = String(d.get("portrait_path", ""))
 		npc.sprite_path = String(d.get("sprite_path", ""))
+		npc.walk_sprite_path = String(d.get("walk_sprite_path", ""))
 		npc.sprite_scale = float(d.get("scale", 0.08))
-
+		npc.movement_mode = String(d.get("movement_mode", "idle"))
+		npc.patrol_axis = d.get("patrol_axis", Vector2.RIGHT)
+		npc.patrol_distance = float(d.get("patrol_distance", 70.0))
+		npc.patrol_speed = float(d.get("patrol_speed", 22.0))
+		var profile: NPCProfile = NPC_CATALOG.find(StringName(npc.npc_id), _current_scene.scene_id)
+		if profile != null:
+			if profile.display_name != "":
+				npc.npc_name = profile.display_name
+			if profile.default_dialog_id != &"":
+				npc.dialog_id = String(profile.default_dialog_id)
+			if profile.sprite_path != "":
+				npc.sprite_path = profile.sprite_path
+			npc.movement_mode = profile.movement_mode
+		# Keep the inn cast consistent even while older scene data is still present
+		# in saved projects: the keeper is an indoor-only role, while the outdoor
+		# actor and the indoor waiter use their own service dialogue and sprite.
+		if _current_scene.scene_id == &"ch1_s2_qingfeng" and npc.npc_id == "inn_waiter":
+			npc.sprite_path = "res://art/characters/npc_inn_waiter_idle_down_25d_1f.png"
+			npc.dialog_id = "ch1_s2_inn_waiter"
+		if _current_scene.scene_id == &"interior_inn_hall":
+			if npc.npc_id == "inn_waiter_inside":
+				npc.sprite_path = "res://art/characters/npc_inn_waiter_idle_down_25d_1f.png"
+				npc.dialog_id = "ch1_s2_inn_waiter"
+			if npc.npc_id in ["inn_guest_left", "inn_guest_right"]:
+				npc.sprite_path = "res://art/characters/npc_inn_tea_guest_seated_1f.png"
+				npc.movement_mode = "seated"
+				npc.dialog_id = "interior_inn_guest_chatter"
+				if npc.npc_id == "inn_guest_left":
+					d["pos"] = Vector2(0.34, 0.705)
+				else:
+					# Keep the seated sprite anchored on the actual right-hand stool.
+					d["pos"] = Vector2(0.800, 0.680)
 		var pos := Vector2(
 			float(d.get("pos", Vector2.ZERO).x) * _screen_size.x,
 			float(d.get("pos", Vector2.ZERO).y) * _screen_size.y
 		)
 		npc.position = pos
+		npc.z_index = 0
 		npc.npc_interacted.connect(_on_npc_interacted)
-		world_container.add_child(npc)
+		_actor_layer.add_child(npc)
 		_npc_nodes.append(npc)
 
 		## 更新 NPC sprite
+		var tex: Resource = null
 		if npc.sprite_path != "" and ResourceLoader.exists(npc.sprite_path):
-			var tex: Resource = load(npc.sprite_path)
-			if tex is Texture2D:
-				npc.sprite.texture = tex
-				npc.sprite.scale = Vector2.ONE * (npc.sprite_scale)
+			tex = load(npc.sprite_path)
+		if tex is Texture2D and is_instance_valid(npc.sprite):
+			var texture: Texture2D = tex
+			npc.sprite.texture = texture
+			npc.sprite.scale = Vector2.ONE * (npc.sprite_scale)
+			# NPCNode has already entered the tree here. Reapply frame metadata after
+			# the runtime texture override so a 4/8-frame strip never renders as a
+			# row of duplicate characters.
+			var texture_height: int = texture.get_height()
+			npc.sprite.hframes = maxi(1, texture.get_width() / texture_height) if texture_height > 0 and texture.get_width() > texture_height else 1
+			npc.sprite.vframes = 1
+			npc.sprite.frame = 0
 
 
 func _spawn_exits(exit_data: Array) -> void:
@@ -291,13 +601,20 @@ func _spawn_exits(exit_data: Array) -> void:
 		var d: Dictionary = entry
 
 		var require_flag: String = String(d.get("require_flag", ""))
+		var hide_flag: String = String(d.get("hide_flag", ""))
+		var is_locked: bool = require_flag != "" and not _flag_truthy(require_flag)
 
-		if require_flag != "" and not _flag_truthy(require_flag):
+		if is_locked and String(d.get("locked_label", "")) == "":
+			continue
+		if hide_flag != "" and _flag_truthy(hide_flag):
 			continue
 
 		var zone: ExitZone = EXIT_SCENE.instantiate()
-		zone.exit_label = String(d.get("label", "前往"))
-		zone.target_scene_id = String(d.get("target_scene", ""))
+		zone.is_locked = is_locked
+		zone.marker_rotation_degrees = float(d.get("marker_rotation_degrees", 0.0))
+		zone.exit_label = String(d.get("locked_label", "未解锁")) if is_locked else String(d.get("label", "前往"))
+		zone.target_scene_id = "" if is_locked else String(d.get("target_scene", ""))
+		zone.action = "" if is_locked else String(d.get("action", ""))
 		var tpos: Vector2 = d.get("target_pos", Vector2(0.5, 0.5))
 		zone.target_spawn_pos = tpos
 
@@ -307,7 +624,9 @@ func _spawn_exits(exit_data: Array) -> void:
 		)
 		zone.position = pos
 		zone.exit_triggered.connect(_on_exit_triggered)
-		world_container.add_child(zone)
+		zone.exit_action_triggered.connect(func(action: String): SceneRouter.resolve_action(action))
+		zone.exit_locked.connect(func(label: String): _show_toast("出口未解锁：%s" % label))
+		_portal_layer.add_child(zone)
 		_exit_nodes.append(zone)
 
 		## 调整出口碰撞大小
@@ -336,10 +655,68 @@ func _spawn_collision_rects(collision_data: Array) -> void:
 
 		var body: StaticBody2D = StaticBody2D.new()
 		body.name = "Collision_%s" % String(d.get("id", "rect"))
+		# Walkable-scene obstacles always live on layer 1; Player explicitly masks it.
+		body.collision_layer = 1
+		body.collision_mask = 0
 		body.position = _norm_to_screen(d.get("pos", Vector2.ZERO))
-		world_container.add_child(body)
-		_collider(body, Vector2.ZERO, _norm_size_to_screen(d.get("size", Vector2(0.1, 0.1))))
+		_collision_layer.add_child(body)
+		var offset := _norm_to_screen(d.get("foot_offset", Vector2.ZERO))
+		_collider(body, offset, _norm_size_to_screen(d.get("size", Vector2(0.1, 0.1))))
 		_collision_bodies.append(body)
+
+
+func _make_zone_highlight(_size: Vector2) -> Node2D:
+	# Baked map details have no silhouette. Use a compact amber exclamation cue
+	# rather than exposing an invisible interaction rectangle.
+	var root := Node2D.new()
+	root.name = "InteractionExclamation"
+	root.position = Vector2(0.0, -34.0)
+	root.z_index = 45
+	root.visible = false
+	var cue := Label.new()
+	cue.text = "!"
+	cue.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	cue.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	cue.position = Vector2(-14.0, -18.0)
+	cue.size = Vector2(28.0, 34.0)
+	cue.add_theme_font_size_override("font_size", 30)
+	cue.add_theme_color_override("font_color", Color(1.0, 0.69, 0.20, 1.0))
+	cue.add_theme_color_override("font_outline_color", Color(0.18, 0.08, 0.01, 0.96))
+	cue.add_theme_constant_override("outline_size", 3)
+	root.add_child(cue)
+	var tween := root.create_tween().set_loops()
+	tween.tween_property(root, "position:y", -44.0, 0.55).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(root, "position:y", -34.0, 0.55).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	return root
+
+
+func _make_sprite_highlight(sprite: Sprite2D) -> void:
+	var material := ShaderMaterial.new()
+	material.shader = INTERACTION_OUTLINE_SHADER
+	material.set_shader_parameter("pulse", 0.0)
+	sprite.material = material
+
+
+func _set_interaction_highlight(area: Area2D, active: bool) -> void:
+	var target: Variant = area.get_meta("highlight_node", null)
+	# Opening a chest may refresh the scene and queue-free its visual node
+	# before Area2D emits its final body-exited callback.
+	if target == null or not is_instance_valid(target):
+		return
+	if target is Sprite2D and target.material is ShaderMaterial:
+		(target.material as ShaderMaterial).set_shader_parameter("pulse", 1.0 if active else 0.0)
+	elif target is CanvasItem:
+		target.visible = active
+
+
+func _on_interaction_area_input(_viewport: Node, event: InputEvent, _shape_idx: int, area: Area2D, data: Dictionary) -> void:
+	var clicked: bool = event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT
+	var tapped: bool = event is InputEventScreenTouch and event.pressed
+	if not clicked and not tapped:
+		return
+	if _player == null or not area.overlaps_body(_player):
+		return
+	_on_trigger_zone_entered(_player, data)
 
 
 func _spawn_trigger_zones(trigger_data: Array) -> void:
@@ -355,11 +732,38 @@ func _spawn_trigger_zones(trigger_data: Array) -> void:
 
 		var area: Area2D = Area2D.new()
 		area.name = "Trigger_%s" % String(d.get("id", "zone"))
+		# Player is on layer 2.  Area2D defaults to mask 1, which silently
+		# prevented every walk-in story trigger from seeing the player.
+		area.collision_layer = 4
+		area.collision_mask = 2
 		area.position = _norm_to_screen(d.get("pos", Vector2.ZERO))
-		world_container.add_child(area)
+		_interaction_layer.add_child(area)
 		_collider(area, Vector2.ZERO, _norm_size_to_screen(d.get("size", Vector2(0.1, 0.1))))
 		var captured := d.duplicate(true)
-		area.body_entered.connect(func(body: Node2D): _on_trigger_zone_entered(body, captured))
+		var activation: String = String(captured.get("activation", ""))
+		if activation == "":
+			activation = "interact" if bool(captured.get("interaction_only", false)) else "enter_once"
+		captured["interaction_only"] = activation == "interact"
+		area.set_meta("trigger_data", captured)
+		var highlight: Node2D = null
+		if bool(captured.get("interaction_only", false)):
+			highlight = _make_zone_highlight(_norm_size_to_screen(captured.get("size", Vector2(0.1, 0.1))))
+			area.add_child(highlight)
+			area.set_meta("highlight_node", highlight)
+			area.input_pickable = true
+			area.input_event.connect(_on_interaction_area_input.bind(area, captured))
+		area.body_entered.connect(func(body: Node2D):
+			if bool(captured.get("interaction_only", false)):
+				if body.is_in_group("player"):
+					_set_interaction_highlight(area, true)
+			else:
+				_on_trigger_zone_entered(body, captured)
+		)
+		area.body_exited.connect(func(body: Node2D):
+			if body.is_in_group("player"):
+				_set_interaction_highlight(area, false)
+			_on_trigger_zone_exited(body, captured)
+		)
 		_trigger_areas.append(area)
 
 func _spawn_scene_objects(scene_objects: Array) -> void:
@@ -389,8 +793,62 @@ func _spawn_scene_objects(scene_objects: Array) -> void:
 		sprite.z_index = int(d.get("z_index", 0))
 		if d.has("modulate") and d["modulate"] is Color:
 			sprite.modulate = d["modulate"]
-		world_container.add_child(sprite)
+		var render_layer := _foreground_layer if String(d.get("render_layer", "")) == "foreground" else _visual_layer
+		render_layer.add_child(sprite)
 		_scene_object_nodes.append(sprite)
+
+		var object_pos: Vector2 = sprite.position
+		if d.has("collision_size"):
+			var body: StaticBody2D = StaticBody2D.new()
+			body.name = "ObjectCollision_%s" % String(d.get("id", "object"))
+			body.collision_layer = 1
+			body.collision_mask = 0
+			body.position = object_pos
+			_collision_layer.add_child(body)
+			_collider(
+				body,
+				_norm_to_screen(d.get("collision_offset", Vector2.ZERO)),
+				_norm_size_to_screen(d.get("collision_size", Vector2(0.05, 0.05)))
+			)
+			_collision_bodies.append(body)
+
+		var interaction_action: String = String(d.get("interaction_action", ""))
+		if interaction_action != "":
+			_make_sprite_highlight(sprite)
+			_spawn_scene_object_interaction(d, object_pos, interaction_action, sprite)
+
+
+func _spawn_scene_object_interaction(d: Dictionary, object_pos: Vector2, action: String, sprite: Sprite2D) -> void:
+	var area: Area2D = Area2D.new()
+	area.name = "ObjectInteraction_%s" % String(d.get("id", "object"))
+	area.collision_layer = 4
+	area.collision_mask = 2
+	area.position = object_pos + _norm_to_screen(d.get("interaction_offset", Vector2.ZERO))
+	_interaction_layer.add_child(area)
+	_collider(area, Vector2.ZERO, _norm_size_to_screen(d.get("interaction_size", Vector2(0.10, 0.10))))
+
+	var trigger_data: Dictionary = {
+		"id": String(d.get("id", "object")),
+		"action": action,
+		"interaction_only": true,
+		"require_flag": String(d.get("require_flag", "")),
+		"hide_flag": String(d.get("hide_flag", "")),
+	}
+	area.set_meta("trigger_data", trigger_data)
+	area.set_meta("highlight_node", sprite)
+	area.input_pickable = true
+	area.input_event.connect(_on_interaction_area_input.bind(area, trigger_data))
+
+	area.body_entered.connect(func(body: Node2D):
+		if body.is_in_group("player"):
+			_set_interaction_highlight(area, true)
+	)
+	area.body_exited.connect(func(body: Node2D):
+		if body.is_in_group("player"):
+			_set_interaction_highlight(area, false)
+			_on_trigger_zone_exited(body, trigger_data)
+	)
+	_trigger_areas.append(area)
 
 
 func _spawn_animated_props(animated_props: Array) -> void:
@@ -422,7 +880,7 @@ func _spawn_animated_props(animated_props: Array) -> void:
 		node.name = "AnimatedProp_%s" % String(d.get("id", prop_type))
 		node.position = _norm_to_screen(d.get("pos", Vector2.ZERO))
 		node.z_index = int(d.get("z_index", 22))
-		world_container.add_child(node)
+		_visual_layer.add_child(node)
 		_animated_prop_nodes.append(node)
 
 
@@ -620,6 +1078,9 @@ func _on_trigger_zone_entered(body: Node2D, data: Dictionary) -> void:
 		return
 	if DialogPlayer.is_playing():
 		return
+	var trigger_id := String(data.get("id", ""))
+	if trigger_id != "" and _trigger_events_in_flight.get(trigger_id, false):
+		return
 	var require_flag: String = String(data.get("require_flag", ""))
 	var hide_flag: String = String(data.get("hide_flag", ""))
 
@@ -630,7 +1091,17 @@ func _on_trigger_zone_entered(body: Node2D, data: Dictionary) -> void:
 	var action: String = String(data.get("action", ""))
 
 	if action != "":
-		SceneRouter.resolve_action(action)
+		if trigger_id != "":
+			_trigger_events_in_flight[trigger_id] = true
+		_resolve_field_action(action)
+
+
+func _on_trigger_zone_exited(body: Node2D, data: Dictionary) -> void:
+	if not body.is_in_group("player"):
+		return
+	var trigger_id := String(data.get("id", ""))
+	if trigger_id != "":
+		_trigger_events_in_flight.erase(trigger_id)
 
 
 func _on_player_interacted() -> void:
@@ -644,6 +1115,62 @@ func _on_player_interacted() -> void:
 	for zone in _exit_nodes:
 		if zone.try_interact():
 			return
+	## Finally inspect nearby scene objects. Interaction-only areas are never
+	## allowed to interrupt movement on entry; they require the explicit action.
+	for area in _trigger_areas:
+		if not is_instance_valid(area) or not area.overlaps_body(_player):
+			continue
+		var trigger_data: Variant = area.get_meta("trigger_data", {})
+		if trigger_data is Dictionary and bool(trigger_data.get("interaction_only", false)):
+			_on_trigger_zone_entered(_player, trigger_data)
+			return
+
+
+func _on_player_moved(_global_pos: Vector2) -> void:
+	if _player == null or _current_scene == null or _encounter_locked:
+		return
+	SceneRouter.set_field_return_spawn(_current_player_spawn())
+	if _current_scene.encounter_enemy_ids.is_empty() or _current_scene.encounter_step_distance <= 0.0:
+		return
+	if DialogPlayer.is_playing() or not _player.can_move:
+		_last_encounter_position = _player.position
+		return
+	var required_flag := String(_current_scene.encounter_require_flag)
+	if required_flag != "" and not _flag_truthy(required_flag):
+		_last_encounter_position = _player.position
+		return
+	_encounter_distance += _player.position.distance_to(_last_encounter_position)
+	_last_encounter_position = _player.position
+	if _encounter_distance < _current_scene.encounter_step_distance:
+		return
+	_encounter_distance = 0.0
+	if randf() > clampf(_current_scene.encounter_chance, 0.0, 1.0):
+		return
+	_encounter_locked = true
+	_player.set_can_move(false)
+	var enemy_id := StringName(_current_scene.encounter_enemy_ids.pick_random())
+	_show_toast("山道伏兵出现！")
+	await get_tree().create_timer(0.45).timeout
+	SceneRouter.start_battle(String(enemy_id), _current_scene.scene_id, _current_player_spawn())
+
+
+func _resolve_field_action(action: String) -> void:
+	## Preserve the exact exploration position when a local event starts battle.
+	if action.begins_with("battle:"):
+		var enemy_id := action.trim_prefix("battle:")
+		if not enemy_id.is_empty() and _current_scene != null:
+			SceneRouter.start_battle(enemy_id, _current_scene.scene_id, _current_player_spawn())
+		return
+	SceneRouter.resolve_action(action)
+
+
+func _current_player_spawn() -> Vector2:
+	if _player == null or _screen_size.x <= 0.0 or _screen_size.y <= 0.0:
+		return _current_scene.player_spawn if _current_scene != null else Vector2(0.5, 0.8)
+	return Vector2(
+		clampf(_player.position.x / _screen_size.x, 0.0, 1.0),
+		clampf(_player.position.y / _screen_size.y, 0.0, 1.0)
+	)
 
 
 func _on_npc_interacted(_npc_id: String, dialog_id: String) -> void:
@@ -727,7 +1254,7 @@ func _init_formal_hud() -> void:
 	_primary_hud.equipment_pressed.connect(_toggle_equipment_panel)
 	_primary_hud.skill_pressed.connect(_toggle_skill_panel)
 	_primary_hud.quest_pressed.connect(_toggle_quest_log_panel)
-	_primary_hud.system_pressed.connect(func() -> void: _show_toast("系统功能暂未开放"))
+	_primary_hud.system_pressed.connect(_open_system_menu)
 
 
 func _apply_formal_hud_mode() -> void:
@@ -750,6 +1277,10 @@ func _apply_formal_hud_mode() -> void:
 		skill_btn.visible = false
 	if quest_log_btn != null:
 		quest_log_btn.visible = false
+	# The formal HUD owns the textured system button. Keep the legacy plain
+	# Button wired for compatibility, but never show two menu controls.
+	if system_btn != null:
+		system_btn.visible = false
 
 
 func _build_player_info_panel() -> void:
@@ -935,15 +1466,30 @@ func _style_hud_button(btn: Button) -> void:
 
 func _on_flag_set(_flag: StringName, _v: Variant) -> void:
 	## flag 变化可能解锁/隐藏 NPC/出口/触发区，重新生成场景元素。
-	## 重建时保留玩家当前位置，避免触发区 set_flag 后瞬移回出生点。
-	if _current_scene != null:
-		var spawn := _current_scene.player_spawn
-		if _player != null and _screen_size.x > 0.0 and _screen_size.y > 0.0:
-			spawn = Vector2(
-				clampf(_player.position.x / _screen_size.x, 0.0, 1.0),
-				clampf(_player.position.y / _screen_size.y, 0.0, 1.0)
-			)
-		_setup_scene(_current_scene, spawn)
+	## 对话中重建会把玩家原地放进新的 Area2D，造成同一对话再次触发。
+	if DialogPlayer.is_playing():
+		_scene_refresh_pending = true
+		return
+	_refresh_scene_preserving_player()
+
+
+func _refresh_scene_preserving_player() -> void:
+	if _current_scene == null:
+		return
+	var spawn := _current_scene.player_spawn
+	if _player != null and _screen_size.x > 0.0 and _screen_size.y > 0.0:
+		spawn = Vector2(
+			clampf(_player.position.x / _screen_size.x, 0.0, 1.0),
+			clampf(_player.position.y / _screen_size.y, 0.0, 1.0)
+		)
+	_setup_scene(_current_scene, spawn)
+
+
+func _apply_pending_scene_refresh() -> void:
+	if not _scene_refresh_pending:
+		return
+	_scene_refresh_pending = false
+	_refresh_scene_preserving_player()
 
 
 func _on_gold_changed(_n: int) -> void:
@@ -969,6 +1515,8 @@ func _on_dialog_ended(_id: StringName) -> void:
 		_formal_bottom_bar.visible = true
 	if _formal_hint_label != null:
 		_formal_hint_label.visible = true
+	if _scene_refresh_pending:
+		call_deferred("_apply_pending_scene_refresh")
 
 
 func _refresh_gold() -> void:
@@ -1019,13 +1567,58 @@ func _on_quest_completed(qid: StringName) -> void:
 		_show_toast("任务完成：%s" % def.title)
 
 
+func _on_item_picked_up(item_id: StringName, count: int) -> void:
+	var item := Inventory.load_item_by_id(item_id)
+	var display_name := String(item_id)
+	var q_color: String = "#c0c8d0"
+	if item != null:
+		display_name = item.display_name
+		q_color = _quality_color(item.quality)
+	_item_toast_lines.append("[color=%s]%s[/color] × %d" % [q_color, display_name, count])
+	_show_item_toast()
+
+
+func _quality_color(q: int) -> String:
+	match q:
+		1: return "#1eff00"
+		2: return "#0070dd"
+		3: return "#a335ee"
+		4: return "#ff8000"
+		_: return "#c0c8d0"
+
+
+func _show_item_toast() -> void:
+	if _item_toast == null or not is_instance_valid(_item_toast):
+		_item_toast = RichTextLabel.new()
+		_item_toast.bbcode_enabled = true
+		_item_toast.fit_content = true
+		_item_toast.position = Vector2(_viewport_size.x / 2 - 190, _viewport_size.y * 0.22)
+		_item_toast.custom_minimum_size = Vector2(380, 44)
+		_item_toast.add_theme_font_size_override("normal_font_size", 20)
+		_item_toast.add_theme_color_override("default_color", Color(0.88, 0.92, 0.96, 1.0))
+		_item_toast.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.03, 0.98))
+		_item_toast.add_theme_constant_override("outline_size", 5)
+		_item_toast.add_theme_constant_override("line_spacing", 4)
+		add_child(_item_toast)
+	_item_toast.text = "\n".join(_item_toast_lines)
+	_item_toast_serial += 1
+	var serial := _item_toast_serial
+	await get_tree().create_timer(2.5).timeout
+	if serial != _item_toast_serial or not is_instance_valid(_item_toast):
+		return
+	_item_toast_lines.clear()
+	_item_toast.queue_free()
+	_item_toast = null
+
+
 func _show_toast(text: String) -> void:
 	var toast: Label = Label.new()
 	toast.text = text
-	toast.position = Vector2(_screen_size.x / 2 - 150, _screen_size.y * 0.25)
+	toast.position = Vector2(_viewport_size.x / 2 - 150, _viewport_size.y * 0.25)
 	toast.custom_minimum_size = Vector2(300, 40)
-	toast.add_theme_color_override("font_color", Color(1, 0.9, 0.5, 1))
-	toast.add_theme_color_override("font_shadow_color", Color(0, 0, 0, 0.8))
+	toast.add_theme_color_override("font_color", Color(0.98, 0.92, 0.62, 1))
+	toast.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.03, 0.98))
+	toast.add_theme_constant_override("outline_size", 5)
 	toast.add_theme_font_size_override("font_size", 20)
 	toast.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	add_child(toast)
@@ -1068,6 +1661,8 @@ func _on_ui_requested(panel_id: StringName) -> void:
 	match panel_id:
 		&"inventory":
 			_open_inventory_panel()
+		&"world_map":
+			_open_world_map_panel()
 		&"close_equipment":
 			if _equipment_panel:
 				_equipment_panel.visible = false
@@ -1077,6 +1672,15 @@ func _on_ui_requested(panel_id: StringName) -> void:
 			_open_skill_panel()
 		&"quest_log":
 			_open_quest_log_panel()
+
+
+func _open_world_map_panel() -> void:
+	if _world_map_panel == null:
+		_world_map_panel = WORLD_MAP_PANEL_SCENE.instantiate() as WorldMapPanel
+		add_child(_world_map_panel)
+		_world_map_panel.closed.connect(_on_system_panel_closed)
+	_world_map_panel.open()
+	_on_system_panel_opened()
 
 
 func _init_m5_panels() -> void:
@@ -1225,7 +1829,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.keycode == KEY_K:
 			_toggle_skill_panel()
 			get_viewport().set_input_as_handled()
+		elif event.keycode == KEY_M:
+			get_viewport().set_input_as_handled()
+			EventBus.ui_requested.emit(&"world_map")
 
+		elif event.keycode == KEY_F5:
+			_open_system_menu()
+			get_viewport().set_input_as_handled()
 
 func _on_system_panel_opened() -> void:
 	_system_panel_open = true
@@ -1277,4 +1887,18 @@ func _close_all_system_panels() -> void:
 		_skill_panel.close()
 	if _quest_panel_full != null and _quest_panel_full.visible:
 		_quest_panel_full.close()
+	var system_menu := get_node_or_null("SystemMenu") as SystemMenu
+	if system_menu != null and system_menu.visible:
+		system_menu.close()
 	_on_system_panel_closed()
+
+
+func _open_save_slot_panel() -> void:
+	if DialogPlayer.is_playing():
+		return
+	const SAVE_SLOT_PANEL_SCENE := preload("res://scenes/ui/save_slot_panel.tscn")
+	var panel: Control = SAVE_SLOT_PANEL_SCENE.instantiate()
+	add_child(panel)
+	panel.open(SaveSlotPanel.Mode.SAVE)
+	_on_system_panel_opened()
+	panel.closed.connect(_on_system_panel_closed)

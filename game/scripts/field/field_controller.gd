@@ -15,8 +15,9 @@ const INVENTORY_PANEL_SCENE := preload("res://scenes/ui/inventory_panel.tscn")
 const EQUIPMENT_PANEL_SCENE := preload("res://scenes/ui/equipment_panel.tscn")
 const SKILL_PANEL_SCENE := preload("res://scenes/ui/skill_panel.tscn")
 const QUEST_PANEL_SCENE := preload("res://scenes/ui/quest_panel.tscn")
+const WORLD_MAP_PANEL_SCENE := preload("res://scenes/ui/world_map_panel.tscn")
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
-const ATTR_ICON_ATLAS_PATH := "res://art/ui/cold_wuxia/v1/ui_cold_wuxia_attribute_icons_v1.png"
+const ATTR_ICON_ATLAS_PATH := "res://art/ui/icon/ui_cold_wuxia_attribute_icons_v1.png"
 const ATTR_ICON_REGIONS := {
 	"筋骨": Rect2(37, 55, 203, 204),
 	"机敏": Rect2(290, 55, 201, 204),
@@ -42,6 +43,10 @@ const ATTR_ICON_REGIONS := {
 @onready var quest_header: Label = $QuestPanel/Margin/VBox/QuestHeader
 @onready var hint_bg: ColorRect = $HintBar/HintBg
 @onready var hint_label: Label = $HintBar/HintLabel
+
+var _item_toast: Label = null
+var _item_toast_lines: Array[String] = []
+var _item_toast_serial: int = 0
 @onready var player_info: Label = %PlayerInfo
 
 var _current_scene: SceneScript = null
@@ -50,6 +55,7 @@ var _equipment_panel = null
 var _panels_ready: bool = false
 var _skill_panel = null
 var _quest_panel_full = null
+var _world_map_panel: WorldMapPanel = null
 
 var _hud_btn_normal: StyleBoxFlat
 var _hud_btn_hover: StyleBoxFlat
@@ -60,12 +66,24 @@ func _ready() -> void:
 	EventBus.flag_set.connect(_on_flag_set)
 	EventBus.gold_changed.connect(_on_gold_changed)
 	EventBus.dialog_ended.connect(_on_dialog_ended)
+	EventBus.item_picked_up.connect(_on_item_picked_up)
 	EventBus.ui_requested.connect(_on_ui_requested)
 	QuestManager.active_quests_changed.connect(_refresh_quest_panel)
 	EventBus.quest_completed.connect(_on_quest_completed)
 	quest_log_btn.pressed.connect(_on_quest_log_pressed)
 	inventory_btn.pressed.connect(_toggle_inventory_panel)
 	equipment_btn.pressed.connect(_toggle_equipment_panel)
+	# 存档按钮（M7）
+	var save_btn := Button.new()
+	save_btn.name = "SaveBtn"
+	save_btn.text = "存档 (F5)"
+	save_btn.custom_minimum_size = Vector2(140, 32)
+	save_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	save_btn.add_theme_font_size_override("font_size", 14)
+	save_btn.pressed.connect(_open_save_slot_panel)
+	var parent := equipment_btn.get_parent()
+	if parent != null:
+		parent.add_child(save_btn)
 	skill_btn.pressed.connect(_toggle_skill_panel)
 	if ResourceLoader.exists(ATTR_ICON_ATLAS_PATH):
 		_attr_icon_atlas = load(ATTR_ICON_ATLAS_PATH)
@@ -87,9 +105,25 @@ func _ready() -> void:
 	# UI 在面板里立即看到状态变化。
 	EventBus.scene_entered.emit(scene_id)
 
-	if _current_scene.on_enter_dialog != null:
+	if _should_play_enter_dialog(_current_scene):
+		_mark_enter_dialog_played(_current_scene)
 		await get_tree().process_frame
 		DialogPlayer.play(_current_scene.on_enter_dialog)
+
+
+func _should_play_enter_dialog(scene: SceneScript) -> bool:
+	if scene.on_enter_dialog == null:
+		return false
+	var flag := String(scene.on_enter_once_flag)
+	return flag == "" or not _flag_truthy(flag)
+
+
+func _mark_enter_dialog_played(scene: SceneScript) -> void:
+	var flag := String(scene.on_enter_once_flag)
+	if flag == "":
+		return
+	GameState.flags[flag] = true
+	EventBus.flag_set.emit(StringName(flag), true)
 
 
 func _load_scene(scene_id: StringName) -> SceneScript:
@@ -298,6 +332,65 @@ func _on_quest_completed(qid: StringName) -> void:
 		print("[Field] quest completed → %s（gold +%d, exp +%d）" % [def.title, def.reward_gold, def.reward_exp])
 
 
+func _on_item_picked_up(item_id: StringName, count: int) -> void:
+	var item := Inventory.load_item_by_id(item_id)
+	var display_name := String(item_id)
+	var q_color: String = "#c0c8d0"
+	if item != null:
+		display_name = item.display_name
+		q_color = _quality_color(item.quality)
+	_item_toast_lines.append("[color=%s]%s[/color] × %d" % [q_color, display_name, count])
+	_show_item_toast()
+
+
+func _quality_color(q: int) -> String:
+	match q:
+		1: return "#1eff00"
+		2: return "#0070dd"
+		3: return "#a335ee"
+		4: return "#ff8000"
+		_: return "#c0c8d0"
+
+
+func _show_item_toast() -> void:
+	if _item_toast == null or not is_instance_valid(_item_toast):
+		_item_toast = RichTextLabel.new()
+		_item_toast.bbcode_enabled = true
+		_item_toast.fit_content = true
+		_item_toast.position = Vector2(770, 210)
+		_item_toast.custom_minimum_size = Vector2(380, 44)
+		_item_toast.add_theme_font_size_override("normal_font_size", 20)
+		_item_toast.add_theme_color_override("default_color", Color(0.88, 0.92, 0.96, 1.0))
+		_item_toast.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.03, 0.98))
+		_item_toast.add_theme_constant_override("outline_size", 5)
+		_item_toast.add_theme_constant_override("line_spacing", 4)
+		add_child(_item_toast)
+	_item_toast.text = "\n".join(_item_toast_lines)
+	_item_toast_serial += 1
+	var serial := _item_toast_serial
+	await get_tree().create_timer(2.5).timeout
+	if serial != _item_toast_serial or not is_instance_valid(_item_toast):
+		return
+	_item_toast_lines.clear()
+	_item_toast.queue_free()
+	_item_toast = null
+
+
+func _show_toast(text: String) -> void:
+	var toast: Label = Label.new()
+	toast.text = text
+	toast.position = Vector2(810, 210)
+	toast.custom_minimum_size = Vector2(300, 40)
+	toast.add_theme_color_override("font_color", Color(0.98, 0.92, 0.62, 1))
+	toast.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.03, 0.98))
+	toast.add_theme_constant_override("outline_size", 5)
+	toast.add_theme_font_size_override("font_size", 20)
+	toast.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	add_child(toast)
+	await get_tree().create_timer(2.5).timeout
+	toast.queue_free()
+
+
 func _on_quest_log_pressed() -> void:
 	_toggle_quest_log_panel()
 
@@ -331,6 +424,8 @@ func _on_ui_requested(panel_id: StringName) -> void:
 	match panel_id:
 		&"inventory":
 			_open_inventory_panel()
+		&"world_map":
+			_open_world_map_panel()
 		&"close_equipment":
 			if _equipment_panel: _equipment_panel.close()
 		&"equipment":
@@ -339,6 +434,13 @@ func _on_ui_requested(panel_id: StringName) -> void:
 			_open_skill_panel()
 		&"quest_log":
 			_open_quest_log_panel()
+
+
+func _open_world_map_panel() -> void:
+	if _world_map_panel == null:
+		_world_map_panel = WORLD_MAP_PANEL_SCENE.instantiate() as WorldMapPanel
+		add_child(_world_map_panel)
+	_world_map_panel.open()
 
 
 func _init_m5_panels() -> void:
@@ -351,6 +453,7 @@ func _init_m5_panels() -> void:
 	_equipment_panel.visible = false
 	add_child(_skill_panel)
 	add_child(_quest_panel_full)
+	_panels_ready = true
 
 
 func _open_inventory_panel() -> void:
@@ -434,3 +537,20 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.keycode == KEY_K:
 			_toggle_skill_panel()
 			get_viewport().set_input_as_handled()
+		elif event.keycode == KEY_M:
+			get_viewport().set_input_as_handled()
+			EventBus.ui_requested.emit(&"world_map")
+		elif event.keycode == KEY_F5:
+			_open_save_slot_panel()
+			get_viewport().set_input_as_handled()
+
+func _open_save_slot_panel() -> void:
+	if DialogPlayer.is_playing():
+		return
+	const SAVE_SLOT_PANEL_SCENE := preload("res://scenes/ui/save_slot_panel.tscn")
+	var panel: Control = SAVE_SLOT_PANEL_SCENE.instantiate()
+	add_child(panel)
+	panel.open(SaveSlotPanel.Mode.SAVE)
+	panel.closed.connect(func() -> void:
+		_init_field_ui_styles()
+	)

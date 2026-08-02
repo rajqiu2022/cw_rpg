@@ -36,34 +36,13 @@ const PLAYER_HIT_FRAME_PATHS := [
 const PLAYER_DEFEAT_FRAME_PATHS := [
 	"res://art/sprites/battle/lengguyun_defeat_v3_full.png",
 ]
-const GENERIC_ENEMY_ATTACK_FRAMES := {
-	&"sword": PackedStringArray([
-		"res://art/sprites/battle/masked_bandit_attack_f01.png",
-		"res://art/sprites/battle/masked_bandit_attack_f02.png",
-		"res://art/sprites/battle/masked_bandit_attack_f03.png",
-	]),
-	&"staff": PackedStringArray([
-		"res://art/sprites/battle/staff_guard_attack_f01.png",
-		"res://art/sprites/battle/staff_guard_attack_f02.png",
-		"res://art/sprites/battle/staff_guard_attack_f03.png",
-	]),
-	&"palm": PackedStringArray([
-		"res://art/sprites/battle/martial_palm_attack_f01.png",
-		"res://art/sprites/battle/martial_palm_attack_f02.png",
-		"res://art/sprites/battle/martial_palm_attack_f03.png",
-	]),
-	&"beast": PackedStringArray([
-		"res://art/sprites/battle/cave_spider_attack_f01.png",
-		"res://art/sprites/battle/cave_spider_attack_f02.png",
-		"res://art/sprites/battle/cave_spider_attack_f03.png",
-	]),
-}
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
+const INVENTORY_PANEL_SCENE := preload("res://scenes/ui/inventory_panel.tscn")
 const BATTLE_HUD_ATLAS_PATH := "res://art/ui/frame/ui_cold_wuxia_battle_hud_v1.png"
-const BATTLE_SKILL_PANEL_FRAME_PATH := "res://art/ui/battle/candidates/battle_skill_panel_frame_v1.png"
-const BATTLE_COMMAND_NORMAL_PATH := "res://art/ui/battle/candidates/battle_command_normal_v1.png"
-const BATTLE_COMMAND_HOVER_PATH := "res://art/ui/battle/candidates/battle_command_hover_v1.png"
-const BATTLE_COMMAND_PRESSED_PATH := "res://art/ui/battle/candidates/battle_command_pressed_v1.png"
+const BATTLE_COMMAND_NORMAL_PATH := "res://art/ui/battle/formal/battle_button_normal_v2.png"
+const BATTLE_COMMAND_HOVER_PATH := "res://art/ui/battle/formal/battle_button_hover_v2.png"
+const BATTLE_COMMAND_PRESSED_PATH := "res://art/ui/battle/formal/battle_button_pressed_v2.png"
+const BATTLE_LOG_PANEL_PATH := "res://art/ui/battle/formal/battle_log_panel_v2.png"
 const ATTR_ICON_ATLAS_PATH := "res://art/ui/icon/ui_cold_wuxia_attribute_icons_v1.png"
 const BATTLE_FRAME_REGIONS := {
 	"enemy": Rect2(762, 29, 334, 386),
@@ -110,6 +89,7 @@ var _item_popup: PopupMenu = null
 var _skill_popup: PopupPanel = null
 var _skill_list: VBoxContainer = null
 var _equip_popup: PopupMenu = null
+var _battle_inventory_panel: Control = null
 var _player_action_points: int = 1
 var _guard_grants_extra_action: bool = false
 
@@ -190,17 +170,19 @@ func _ready() -> void:
 
 	btn_attack.pressed.connect(func(): _player_action_skill_use(0))
 	btn_skill.pressed.connect(_show_skill_popup)
-	btn_equip.pressed.connect(_show_equip_popup)
+	btn_equip.pressed.connect(_open_battle_inventory)
 	btn_defend.pressed.connect(func(): _player_action_defend())
 	btn_flee.pressed.connect(func(): _player_action_flee())
-	btn_item.pressed.connect(_show_item_popup)
+	btn_item.pressed.connect(_open_battle_inventory)
 	for action_button in [btn_attack, btn_skill, btn_equip, btn_defend, btn_flee, btn_item]:
 		action_button.pressed.connect(func(): AudioManager.play_ui_confirm())
 	_create_item_popup()
 	_create_skill_popup()
 	_create_equip_popup()
 	btn_skill.text = "\u62db\u5f0f"
-	btn_equip.text = "\u6362\u88c5"
+	btn_equip.text = "\u80cc\u5305"
+	btn_item.text = "\u80cc\u5305"
+	btn_equip.visible = false
 
 	EventBus.battle_started.emit(StringName(enemy_id))
 	EventBus.status_cured.connect(_on_status_cured)
@@ -482,13 +464,13 @@ func _bind_portraits() -> void:
 	)
 	enemy_actor.configure(
 		enemy_actor_texture,
-		false,
+		_enemy_def.battle_actor_flip_h,
 		_load_enemy_attack_frames(_enemy_def),
 		_load_texture_frames(_enemy_def.hit_frame_paths),
 		_load_texture_frames(_enemy_def.defeat_frame_paths)
 	)
 	player_actor.scale = Vector2.ONE * LEGACY_BATTLE_ACTOR_SCALE
-	enemy_actor.scale = Vector2.ONE * LEGACY_BATTLE_ACTOR_SCALE
+	enemy_actor.scale = Vector2.ONE * LEGACY_BATTLE_ACTOR_SCALE * maxf(0.5, _enemy_def.battle_actor_scale)
 	player_name.text = _player.display_name
 	enemy_name.text = _enemy.display_name
 
@@ -506,18 +488,7 @@ func _load_player_attack_frames() -> Array[Texture2D]:
 func _load_enemy_attack_frames(def: EnemyDef) -> Array[Texture2D]:
 	if def == null:
 		return []
-	var paths: PackedStringArray = def.attack_frame_paths
-	if paths.is_empty():
-		var enemy_key := String(def.enemy_id).to_lower()
-		var archetype: StringName = &"sword"
-		if "spider" in enemy_key or "beast" in enemy_key or "serpent" in enemy_key or "dragon" in enemy_key:
-			archetype = &"beast"
-		elif "staff" in enemy_key or "wudang" in enemy_key or "guard" in enemy_key or "patrol" in enemy_key:
-			archetype = &"staff"
-		elif "dojo" in enemy_key or "disciple" in enemy_key or "trainee" in enemy_key or "examiner" in enemy_key:
-			archetype = &"palm"
-		paths = GENERIC_ENEMY_ATTACK_FRAMES[archetype] as PackedStringArray
-	return _load_texture_frames(paths)
+	return _load_texture_frames(def.attack_frame_paths)
 
 
 func _action_frames_for(animation_id: StringName, fallback: Array[Texture2D], player_style: bool = true) -> Array[Texture2D]:
@@ -576,12 +547,14 @@ func _build_formal_battle_layout() -> void:
 	enemy_hud.offset_top = 34
 	enemy_hud.offset_right = -48
 	enemy_hud.offset_bottom = 158
-	log_panel.offset_left = -400
-	log_panel.offset_top = 150
-	log_panel.offset_right = 400
-	log_panel.offset_bottom = 330
+	# The turn feed is supporting information, not a modal. Keep it clear of the
+	# lower-left party formation and let the arena remain readable.
+	log_panel.offset_left = 180
+	log_panel.offset_top = 175
+	log_panel.offset_right = 600
+	log_panel.offset_bottom = 460
 	action_panel.offset_left = -310
-	action_panel.offset_top = -356
+	action_panel.offset_top = -420
 	action_panel.offset_right = -48
 	action_panel.offset_bottom = -44
 
@@ -589,13 +562,14 @@ func _build_formal_battle_layout() -> void:
 		_turn_label = Label.new()
 		_turn_label.name = "TurnLabel"
 		_turn_label.layout_mode = 1
-		_turn_label.anchor_left = 0.5
-		_turn_label.anchor_right = 0.5
-		_turn_label.offset_left = -190
-		_turn_label.offset_top = 620
-		_turn_label.offset_right = 190
-		_turn_label.offset_bottom = 664
-		_turn_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		_turn_label.anchor_left = 1.0
+		_turn_label.anchor_right = 1.0
+		_turn_label.offset_left = 180
+		_turn_label.offset_top = 112
+		_turn_label.offset_right = 600
+		_turn_label.offset_bottom = 192
+		_turn_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		_turn_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		_turn_label.text = "遭遇战"
 		add_child(_turn_label)
 
@@ -631,8 +605,13 @@ func _apply_visual_style() -> void:
 	# their own readability treatment, so the arena should remain un-tinted.
 	battle_background.modulate = Color.WHITE
 	dim_layer.color = Color(0.005, 0.010, 0.016, 0.06)
-	log_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.040, 0.060, 0.074, 0.94), UI_THEME.GOLD, 16, 2))
-	UI_THEME.style_rich_text(battle_log, 18)
+	log_panel.self_modulate = Color(1.0, 1.0, 1.0, 0.90)
+	var log_frame := _generated_texture_style(BATTLE_LOG_PANEL_PATH, 76.0, 76.0, 34.0, 34.0)
+	if log_frame != null:
+		log_panel.add_theme_stylebox_override("panel", log_frame)
+	else:
+		log_panel.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.025, 0.045, 0.060, 0.72), Color(0.34, 0.66, 0.68, 0.86), 7, 1))
+	UI_THEME.style_rich_text(battle_log, 15)
 	UI_THEME.style_label(player_name, 28, UI_THEME.GOLD_LIGHT)
 	UI_THEME.style_label(enemy_name, 28, Color(0.95, 0.62, 0.68, 1.0))
 	UI_THEME.style_label(player_hp_label, 16, UI_THEME.TEXT, false)
@@ -640,7 +619,7 @@ func _apply_visual_style() -> void:
 	if _player_mp_label != null:
 		UI_THEME.style_label(_player_mp_label, 15, Color(0.76, 0.90, 1.0, 1.0), false)
 	if _turn_label != null:
-		UI_THEME.style_label(_turn_label, 28, UI_THEME.GOLD_LIGHT)
+		UI_THEME.style_label(_turn_label, 18, UI_THEME.GOLD_LIGHT)
 	if _command_title != null:
 		UI_THEME.style_label(_command_title, 24, UI_THEME.GOLD_LIGHT)
 	if _player_status_label != null:
@@ -651,14 +630,11 @@ func _apply_visual_style() -> void:
 	UI_THEME.style_progress(enemy_hp_bar, Color(0.58, 0.14, 0.20, 1.0))
 	UI_THEME.style_progress(player_mp_bar, Color(0.28, 0.62, 0.78, 1.0))
 	for b in [btn_attack, btn_skill, btn_equip, btn_defend, btn_flee, btn_item]:
-		UI_THEME.style_button(b, 21, UI_THEME.BLUE_STEEL)
+		UI_THEME.style_button(b, 19, UI_THEME.BLUE_STEEL)
 		_apply_generated_command_style(b)
 	btn_attack.text = "普通攻击"
 	btn_defend.text = "防御架势"
 	btn_flee.text = "撤离"
-	btn_attack.add_theme_stylebox_override("normal", UI_THEME.button_style(Color(0.055, 0.090, 0.095, 0.96), UI_THEME.JADE))
-	btn_defend.add_theme_stylebox_override("normal", UI_THEME.button_style(Color(0.045, 0.070, 0.090, 0.96), UI_THEME.BLUE_STEEL))
-	btn_flee.add_theme_stylebox_override("normal", UI_THEME.button_style(Color(0.100, 0.050, 0.060, 0.94), UI_THEME.CRIMSON))
 	action_panel.add_theme_constant_override("separation", 14)
 
 
@@ -699,7 +675,6 @@ func _apply_hud_art_overlays() -> void:
 		return
 	_attach_hud_overlay("EnemyHudFrame", atlas, BATTLE_FRAME_REGIONS["enemy"], enemy_hud, Vector2(26, 20), Color(1, 1, 1, 0.90))
 	_attach_hud_overlay("PlayerHudFrame", atlas, BATTLE_FRAME_REGIONS["player"], player_hud, Vector2(26, 22), Color(1, 1, 1, 0.90))
-	_attach_hud_overlay("BattleLogFrame", atlas, BATTLE_FRAME_REGIONS["log"], log_panel, Vector2(18, 14), Color(1, 1, 1, 0.82))
 
 
 func _attach_hud_overlay(name: String, atlas: Texture2D, region: Rect2, target: Control, pad: Vector2, tint: Color) -> void:
@@ -741,13 +716,13 @@ func _apply_action_button_icons() -> void:
 	_apply_button_icon(btn_flee, "机敏", UI_THEME.CRIMSON)
 
 
-func _generated_texture_style(path: String, left: float, right: float, top: float, bottom: float) -> StyleBoxTexture:
+func _generated_texture_style(path: String, left: float, right: float, top: float, bottom: float) -> StyleBox:
 	if not ResourceLoader.exists(path):
 		return null
 	var texture := load(path) as Texture2D
 	if texture == null:
 		return null
-	var style := StyleBoxTexture.new()
+	var style: StyleBoxTexture = StyleBoxTexture.new() as StyleBoxTexture
 	style.texture = texture
 	style.texture_margin_left = left
 	style.texture_margin_right = right
@@ -763,9 +738,9 @@ func _generated_texture_style(path: String, left: float, right: float, top: floa
 func _apply_generated_command_style(button: Button) -> void:
 	if button == null:
 		return
-	var normal := _generated_texture_style(BATTLE_COMMAND_NORMAL_PATH, 32.0, 32.0, 28.0, 28.0)
-	var hover := _generated_texture_style(BATTLE_COMMAND_HOVER_PATH, 32.0, 32.0, 28.0, 28.0)
-	var pressed := _generated_texture_style(BATTLE_COMMAND_PRESSED_PATH, 32.0, 32.0, 28.0, 28.0)
+	var normal := _generated_texture_style(BATTLE_COMMAND_NORMAL_PATH, 64.0, 64.0, 30.0, 30.0)
+	var hover := _generated_texture_style(BATTLE_COMMAND_HOVER_PATH, 64.0, 64.0, 30.0, 30.0)
+	var pressed := _generated_texture_style(BATTLE_COMMAND_PRESSED_PATH, 64.0, 64.0, 30.0, 30.0)
 	if normal == null or hover == null or pressed == null:
 		return
 	button.add_theme_stylebox_override("normal", normal)
@@ -778,6 +753,7 @@ func _apply_button_icon(btn: Button, icon_key: String, accent: Color) -> void:
 	if btn == null:
 		return
 	UI_THEME.style_button(btn, 22, accent)
+	_apply_generated_command_style(btn)
 	btn.icon_alignment = HORIZONTAL_ALIGNMENT_LEFT
 	var icon := _build_button_icon_texture(icon_key, 26)
 	if icon != null:
@@ -833,9 +809,14 @@ func _team_take_next_turn() -> void:
 		_team_active_unit.action_points = 2 if _team_active_unit.guard_grants_extra_action else 1
 		_team_active_unit.guard_grants_extra_action = false
 		_state = State.PLAYER_TURN
-		_turn_label.text = "我方回合 · %s" % _team_active_unit.display_name
+		_turn_label.text = "我方回合 · %s\n选择招式、道具或防御架势" % _team_active_unit.display_name
 		action_panel.visible = true
 		_update_action_point_label(_team_active_unit.action_points)
+		_turn_label.text = "\u6211\u65b9\u56de\u5408 \u00b7 %s\n\u884c\u52a8\u673a\u4f1a %d / %d\n\u9009\u62e9\u62db\u5f0f\u3001\u80cc\u5305\u6216\u9632\u5fa1" % [
+			_team_active_unit.display_name,
+			_team_active_unit.action_points,
+			2 if _team_active_unit.action_points > 1 else 1,
+		]
 		_set_buttons_enabled(true)
 		_log("\n[color=#c8a04a]—— %s 行动 ——[/color]" % _team_active_unit.display_name)
 	else:
@@ -1323,7 +1304,7 @@ func _post_action() -> void:
 func _do_enemy_turn() -> void:
 	_state = State.ENEMY_TURN
 	if _turn_label != null:
-		_turn_label.text = "敌方回合"
+		_turn_label.text = "敌方回合\n正在观察对手行动"
 	_log("\n[color=#88aaff]——敌人的回合——[/color]")
 
 	# 敌人状态检查
@@ -1749,23 +1730,20 @@ func _create_skill_popup() -> void:
 	_skill_popup = PopupPanel.new()
 	_skill_popup.name = "SkillSelector"
 	_skill_popup.exclusive = true
-	var panel_style := _generated_texture_style(BATTLE_SKILL_PANEL_FRAME_PATH, 78.0, 78.0, 62.0, 62.0)
-	if panel_style == null:
-		panel_style = UI_THEME.panel(Color(0.025, 0.055, 0.075, 0.98), UI_THEME.GOLD, 6, 2)
+	var panel_style := _generated_texture_style("res://art/ui/battle/candidates/battle_skill_panel_frame_v1.png", 76.0, 76.0, 58.0, 58.0)
+	if panel_style != null:
+		_skill_popup.add_theme_stylebox_override("panel", panel_style)
 	else:
-		panel_style.content_margin_left = 24.0
-		panel_style.content_margin_right = 24.0
-		panel_style.content_margin_top = 20.0
-		panel_style.content_margin_bottom = 22.0
-	_skill_popup.add_theme_stylebox_override("panel", panel_style)
+		_skill_popup.add_theme_stylebox_override("panel", UI_THEME.panel(Color(0.018, 0.035, 0.050, 0.90), Color(0.34, 0.70, 0.72, 0.96), 8, 1))
 	add_child(_skill_popup)
 	var content := VBoxContainer.new()
-	content.add_theme_constant_override("separation", 10)
+	content.add_theme_constant_override("separation", 12)
 	_skill_popup.add_child(content)
 	var title := Label.new()
 	title.text = "选择招式"
+	title.custom_minimum_size = Vector2(0.0, 42.0)
 	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	title.add_theme_font_size_override("font_size", 28)
+	title.add_theme_font_size_override("font_size", 22)
 	title.add_theme_color_override("font_color", Color(0.94, 0.80, 0.43, 1.0))
 	title.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.03, 1.0))
 	title.add_theme_constant_override("outline_size", 3)
@@ -1773,7 +1751,7 @@ func _create_skill_popup() -> void:
 	var separator := HSeparator.new()
 	content.add_child(separator)
 	var scroll := ScrollContainer.new()
-	scroll.custom_minimum_size = Vector2(680, 370)
+	scroll.custom_minimum_size = Vector2(704, 380)
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	content.add_child(scroll)
 	_skill_list = VBoxContainer.new()
@@ -1796,21 +1774,55 @@ func _show_skill_popup() -> void:
 		if skill.is_passive:
 			continue
 		var option := Button.new()
-		option.custom_minimum_size = Vector2(650, 74)
+		option.custom_minimum_size = Vector2(660, 76)
 		option.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		option.alignment = HORIZONTAL_ALIGNMENT_LEFT
-		option.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		option.text = "%s    内力 %d\n%s" % [skill.display_name, skill.mp_cost, skill.description]
-		UI_THEME.style_button(option, 20, UI_THEME.JADE)
+		option.text = ""
+		option.flat = false
+		UI_THEME.style_button(option, 18, UI_THEME.JADE)
 		_apply_generated_command_style(option)
 		option.disabled = not _can_use_skill(skill, stats)
 		option.tooltip_text = skill.description
 		option.pressed.connect(_on_skill_selected.bind(skill_index))
+		var item_content := VBoxContainer.new()
+		item_content.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		item_content.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+		item_content.offset_left = 32.0
+		item_content.offset_top = 9.0
+		item_content.offset_right = -32.0
+		item_content.offset_bottom = -10.0
+		item_content.add_theme_constant_override("separation", 4)
+		option.add_child(item_content)
+		var headline := HBoxContainer.new()
+		headline.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		item_content.add_child(headline)
+		var name_label := Label.new()
+		name_label.text = skill.display_name
+		name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		name_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		name_label.add_theme_font_size_override("font_size", 18)
+		name_label.add_theme_color_override("font_color", UI_THEME.GOLD_LIGHT)
+		name_label.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.03, 0.96))
+		name_label.add_theme_constant_override("outline_size", 2)
+		headline.add_child(name_label)
+		var cost_label := Label.new()
+		cost_label.text = "内力 %d" % skill.mp_cost
+		cost_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		cost_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		cost_label.add_theme_font_size_override("font_size", 14)
+		cost_label.add_theme_color_override("font_color", Color(0.54, 0.92, 0.86, 1.0))
+		headline.add_child(cost_label)
+		var description_label := Label.new()
+		description_label.text = skill.description
+		description_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		description_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+		description_label.add_theme_font_size_override("font_size", 14)
+		description_label.add_theme_color_override("font_color", Color(0.86, 0.93, 0.94, 1.0))
+		item_content.add_child(description_label)
 		_skill_list.add_child(option)
 		shown_count += 1
 	if shown_count == 0:
 		return
-	_skill_popup.popup_centered(Vector2i(730, 470))
+	_skill_popup.popup_centered(Vector2i(760, 500))
 
 
 func _on_skill_selected(skill_index: int) -> void:
@@ -1849,6 +1861,23 @@ func _show_equip_popup() -> void:
 		return
 	_equip_popup.position = get_global_mouse_position()
 	_equip_popup.popup()
+
+
+func _open_battle_inventory() -> void:
+	if _state != State.PLAYER_TURN:
+		return
+	if _battle_inventory_panel == null:
+		_battle_inventory_panel = INVENTORY_PANEL_SCENE.instantiate() as Control
+		_battle_inventory_panel.name = "BattleInventoryPanel"
+		add_child(_battle_inventory_panel)
+		_battle_inventory_panel.closed.connect(_on_battle_inventory_closed)
+	_set_buttons_enabled(false)
+	_battle_inventory_panel.call("open")
+
+
+func _on_battle_inventory_closed() -> void:
+	if _state == State.PLAYER_TURN:
+		_set_buttons_enabled(true)
 
 
 func _on_equip_selected(index: int) -> void:
@@ -1968,7 +1997,7 @@ func _team_use_item(item: Item) -> void:
 	var mp_before: int = stats.mp
 	stats.hp = min(stats.max_hp, stats.hp + item.heal_hp)
 	stats.mp = min(stats.max_mp, stats.mp + item.heal_mp)
-	_log("→ %s 使用 %s：HP +%d，MP +%d" % [
+	_log("→ %s 使用 [color=#c0c8d0]%s[/color]：[color=#ff6b6b]HP +%d[/color] [color=#64b5f6]MP +%d[/color]" % [
 		_team_active_unit.display_name,
 		item.display_name,
 		stats.hp - hp_before,
