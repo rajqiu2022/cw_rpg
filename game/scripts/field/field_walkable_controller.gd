@@ -69,6 +69,7 @@ var _screen_size: Vector2 = Vector2(1920, 1080)
 var _viewport_size: Vector2 = Vector2(1920, 1080)
 var _world_size: Vector2 = Vector2(1920, 1080)
 var _world_origin: Vector2 = Vector2.ZERO
+var _camera_scroll_enabled: bool = false
 var _world_background: Sprite2D = null
 var _visual_layer: Node2D = null
 var _collision_layer: Node2D = null
@@ -197,10 +198,17 @@ func _setup_scene(scene: SceneScript, player_spawn_override: Variant = null) -> 
 	var viewport_size := get_viewport_rect().size
 	_viewport_size = viewport_size if viewport_size != Vector2.ZERO else Vector2(1920, 1080)
 	_world_size = _resolve_world_size(scene, background.texture)
+	_camera_scroll_enabled = _should_scroll_camera(scene)
 	# Legacy helpers use this as the normalized-coordinate reference. It now
 	# represents the full scrollable world rather than the visible viewport.
 	_screen_size = _world_size
+	# Single-screen maps often have a little extra height after uniform 16:9
+	# cover scaling. Keep those maps centered and static; treating that crop as a
+	# scrollable world makes vertical walking move the whole background.
 	_world_origin = Vector2(
+		(_viewport_size.x - _world_size.x) * 0.5,
+		(_viewport_size.y - _world_size.y) * 0.5
+	) if not _camera_scroll_enabled else Vector2(
 		maxf(0.0, (_viewport_size.x - _world_size.x) * 0.5),
 		maxf(0.0, (_viewport_size.y - _world_size.y) * 0.5)
 	)
@@ -330,9 +338,9 @@ func _create_runtime_layers() -> void:
 	_actor_layer = Node2D.new()
 	_actor_layer.name = "ActorLayer"
 	_actor_layer.z_index = 20
-	# Field actors share one Y-sorted plane. A character farther down the map
-	# renders in front, so the player naturally passes behind an NPC above them.
-	_actor_layer.y_sort_enabled = true
+	# Avoid whole-layer Y sorting on every vertical movement tick. Manual depth
+	# updates below preserve the same front/back result at much lower cost.
+	_actor_layer.y_sort_enabled = false
 	_foreground_layer = Node2D.new()
 	_foreground_layer.name = "ForegroundLayer"
 	_foreground_layer.z_index = 40
@@ -376,8 +384,18 @@ func _resolve_world_size(scene: SceneScript, texture: Texture2D) -> Vector2:
 	return world_size
 
 
+func _should_scroll_camera(scene: SceneScript) -> bool:
+	if scene.map_layout == null:
+		return false
+	# A map authored wider/taller than the viewport is a deliberate exploration
+	# map. A 1536x1024 single-screen map only gains height from cover scaling and
+	# should stay fixed in place.
+	var design_size := Vector2(scene.map_layout.design_size)
+	return design_size.x > _viewport_size.x * 1.05 or design_size.y > _viewport_size.y * 1.05
+
+
 func _process(_delta: float) -> void:
-	if _player == null:
+	if _player == null or not _camera_scroll_enabled:
 		return
 	var max_offset := Vector2(
 		maxf(0.0, _world_size.x - _viewport_size.x),
@@ -459,7 +477,7 @@ func _spawn_player(spawn_norm: Vector2) -> void:
 
 	_player.interacted.connect(_on_player_interacted)
 	_player.moved.connect(_on_player_moved)
-	_player.z_index = 0
+	_update_actor_depth(_player)
 	_actor_layer.add_child(_player)
 	if _current_scene != null:
 		_player.set_visual_scale_multiplier(_current_scene.player_visual_scale)
@@ -782,12 +800,21 @@ func _spawn_scene_objects(scene_objects: Array) -> void:
 		if not tex is Texture2D:
 			push_warning("[FieldWalkable] scene object is not Texture2D: %s" % texture_path)
 			continue
+		var texture: Texture2D = tex as Texture2D
 		var sprite: Sprite2D = Sprite2D.new()
 		sprite.name = "SceneObject_%s" % String(d.get("id", "object"))
-		sprite.texture = tex
+		sprite.texture = texture
 		sprite.centered = bool(d.get("centered", true))
 		sprite.position = _norm_to_screen(d.get("pos", Vector2.ZERO))
-		sprite.scale = _scale_value(d.get("scale", Vector2.ONE))
+		var render_size_value: Variant = d.get("render_size_px", null)
+		if render_size_value is Vector2:
+			var render_size: Vector2 = render_size_value as Vector2
+			sprite.scale = Vector2(
+				render_size.x / maxf(1.0, float(texture.get_width())),
+				render_size.y / maxf(1.0, float(texture.get_height()))
+			)
+		else:
+			sprite.scale = _scale_value(d.get("scale", Vector2.ONE))
 		sprite.rotation_degrees = float(d.get("rotation", 0.0))
 		sprite.z_index = int(d.get("z_index", 0))
 		if d.has("modulate") and d["modulate"] is Color:
@@ -1128,6 +1155,7 @@ func _on_player_interacted() -> void:
 func _on_player_moved(_global_pos: Vector2) -> void:
 	if _player == null or _current_scene == null or _encounter_locked:
 		return
+	_update_actor_depth(_player)
 	SceneRouter.set_field_return_spawn(_current_player_spawn())
 	if _current_scene.encounter_enemy_ids.is_empty() or _current_scene.encounter_step_distance <= 0.0:
 		return
@@ -1161,6 +1189,16 @@ func _resolve_field_action(action: String) -> void:
 			SceneRouter.start_battle(enemy_id, _current_scene.scene_id, _current_player_spawn())
 		return
 	SceneRouter.resolve_action(action)
+
+
+func _update_actor_depth(actor: Node2D) -> void:
+	if actor == null or not is_instance_valid(actor):
+		return
+	# Quantize depth into 64 px bands. Changing CanvasItem.z_index every vertical
+	# physics tick causes the renderer to rebuild ordering just like live Y-sort;
+	# a small band keeps convincing front/back overlap without that churn.
+	var depth_band := clampi(int(floor(actor.position.y / 64.0)), 0, 31)
+	actor.z_index = depth_band
 
 
 func _current_player_spawn() -> Vector2:
@@ -1573,7 +1611,7 @@ func _on_item_picked_up(item_id: StringName, count: int) -> void:
 	if item != null:
 		display_name = item.display_name
 		q_color = _quality_color(item.quality)
-	_item_toast_lines.append("[color=%s]%s[/color] × %d" % [q_color, display_name, count])
+	_item_toast_lines.append("[color=#8899aa]获得[/color] [color=%s]%s[/color] × %d" % [q_color, display_name, count])
 	_show_item_toast()
 
 

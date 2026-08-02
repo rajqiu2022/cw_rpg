@@ -339,7 +339,7 @@ func _on_item_picked_up(item_id: StringName, count: int) -> void:
 	if item != null:
 		display_name = item.display_name
 		q_color = _quality_color(item.quality)
-	_item_toast_lines.append("[color=%s]%s[/color] × %d" % [q_color, display_name, count])
+	_item_toast_lines.append("[color=#8899aa]获得[/color] [color=%s]%s[/color] × %d" % [q_color, display_name, count])
 	_show_item_toast()
 
 
