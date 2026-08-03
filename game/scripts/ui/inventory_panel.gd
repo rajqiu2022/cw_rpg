@@ -311,6 +311,8 @@ func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cel
 					_show_tip("[color=#ff6b6b]HP 已满[/color]", true)
 				elif item.heal_mp > 0 and p.mp >= p.max_mp and item.heal_hp == 0:
 					_show_tip("[color=#64b5f6]MP 已满[/color]", true)
+				elif item.heal_hp > 0 and item.heal_mp > 0 and p.hp >= p.max_hp and p.mp >= p.max_mp:
+					_show_tip("[color=#ff6b6b]HP[/color] [color=#64b5f6]MP[/color] 已满", true)
 				else:
 					var old_hp := p.hp
 					var old_mp := p.mp
@@ -346,17 +348,19 @@ func _show_tip(text: String, use_bbcode: bool = false) -> void:
 	style.content_margin_right = 10
 	style.content_margin_top = 4
 	style.content_margin_bottom = 4
-	var lbl: Label
+	var lbl: Control
 	if use_bbcode:
-		lbl = RichTextLabel.new()
-		lbl.bbcode_enabled = true
-		lbl.fit_content = true
-		lbl.text = "[font_size=20]%s[/font_size]" % text
+		var rich_lbl: RichTextLabel = RichTextLabel.new()
+		rich_lbl.bbcode_enabled = true
+		rich_lbl.fit_content = true
+		rich_lbl.text = "[font_size=20]%s[/font_size]" % text
+		lbl = rich_lbl
 	else:
-		lbl = Label.new()
-		lbl.text = text
-		lbl.add_theme_font_size_override("font_size", 17)
-		lbl.add_theme_color_override("font_color", Color(0.3, 1, 0.4))
+		var plain_lbl: Label = Label.new()
+		plain_lbl.text = text
+		plain_lbl.add_theme_font_size_override("font_size", 17)
+		plain_lbl.add_theme_color_override("font_color", Color(0.3, 1, 0.4))
+		lbl = plain_lbl
 	panel.add_child(lbl)
 	panel.position = get_global_mouse_position() - global_position + Vector2(10, -40)
 	add_child(panel)

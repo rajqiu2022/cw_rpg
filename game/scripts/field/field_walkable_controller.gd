@@ -602,15 +602,10 @@ func _spawn_npcs(npc_data: Array) -> void:
 			tex = load(npc.sprite_path)
 		if tex is Texture2D and is_instance_valid(npc.sprite):
 			var texture: Texture2D = tex
-			npc.sprite.texture = texture
 			npc.sprite.scale = Vector2.ONE * (npc.sprite_scale)
-			# NPCNode has already entered the tree here. Reapply frame metadata after
-			# the runtime texture override so a 4/8-frame strip never renders as a
-			# row of duplicate characters.
-			var texture_height: int = texture.get_height()
-			npc.sprite.hframes = maxi(1, texture.get_width() / texture_height) if texture_height > 0 and texture.get_width() > texture_height else 1
-			npc.sprite.vframes = 1
-			npc.sprite.frame = 0
+			# NPCNode owns its animation metadata. This also updates its internal
+			# frame counter after a scene-level sprite override.
+			npc.apply_runtime_idle_texture(texture)
 
 
 func _spawn_exits(exit_data: Array) -> void:
@@ -1610,7 +1605,10 @@ func _on_item_picked_up(item_id: StringName, count: int) -> void:
 	var q_color: String = "#c0c8d0"
 	if item != null:
 		display_name = item.display_name
-		q_color = _quality_color(item.quality)
+		if item.category == Item.Category.CONSUMABLE:
+			q_color = "#e3a64a"
+		else:
+			q_color = _quality_color(item.quality)
 	_item_toast_lines.append("[color=#8899aa]获得[/color] [color=%s]%s[/color] × %d" % [q_color, display_name, count])
 	_show_item_toast()
 
