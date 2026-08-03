@@ -170,8 +170,25 @@ func _play_node_voice(speaker: String, node_id: String) -> void:
 	if dialog_id == "": return
 	var ch := dialog_id.substr(0, 3)
 	var safe_spk := speaker.replace("/", "_").replace("\\", "_")
-	var path := "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, node_id]
-	AudioManager.play_voice(path)
+	var emotion := _detect_emotion(String(_current_node.text)) if _current_node != null else "normal"
+	# 优先带情感后缀，缺失则回退普通
+	var path := "res://art/audio/voices/%s/%s/%s_%s_e%s.mp3" % [ch, dialog_id, safe_spk, node_id, emotion]
+	if not ResourceLoader.exists(path):
+		path = "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, node_id]
+	if ResourceLoader.exists(path):
+		AudioManager.play_voice(path)
+
+
+func _detect_emotion(text: String) -> String:
+	if text.contains("别过来") or text.contains("救命") or text.contains("饶命") or text.contains("放过"):
+		return "fear"
+	if text.contains("哈哈") or text.contains("太好了") or text.contains("痛快"):
+		return "happy"
+	if text.contains("对不起") or text.contains("永别") or text.contains("舍不得"):
+		return "sad"
+	if text.contains("把东西留下") or text.contains("受死") or text.contains("识相"):
+		return "threat"
+	return "normal"
 
 
 func _prewarm_voices() -> void:
@@ -182,9 +199,13 @@ func _prewarm_voices() -> void:
 	for node in _current_script.nodes:
 		var spk: String = node.speaker if node.speaker != "" else "旁白"
 		var safe_spk := spk.replace("/", "_").replace("\\", "_")
-		var path := "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, String(node.node_id)]
+		var emotion := _detect_emotion(node.text)
+		var path := "res://art/audio/voices/%s/%s/%s_%s_e%s.mp3" % [ch, dialog_id, safe_spk, String(node.node_id), emotion]
 		if AudioManager._sfx_cache.has(path): continue
 		var stream := load(path) as AudioStream
+		if stream == null:
+			var plain := "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, String(node.node_id)]
+			stream = load(plain) as AudioStream
 		if stream != null:
 			AudioManager._sfx_cache[path] = stream
 
