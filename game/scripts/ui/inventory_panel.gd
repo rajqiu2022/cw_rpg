@@ -1,6 +1,7 @@
 extends Control
 ## 背包面板
 signal closed
+signal action_committed(action_type: StringName)
 
 # -- 格子贴图 --
 const CELL_DEFAULT := preload("res://art/ui/inventory/cells/cell_default.png")
@@ -55,6 +56,7 @@ var _selected_count: int = 0
 var _context_menu: PopupMenu = null
 var _context_slot_index: int = -1
 var _highlighted_cell: TextureRect = null
+var _battle_mode: bool = false
 
 
 func _ready() -> void:
@@ -90,6 +92,15 @@ func _setup_button_textures() -> void:
 func open() -> void:
 	visible = true
 	_refresh()
+
+
+func set_battle_mode(enabled: bool) -> void:
+	_battle_mode = enabled
+	if enabled:
+		_current_filter = "all"
+		_selected_item = null
+		_selected_count = 0
+		_refresh()
 
 
 func close() -> void:
@@ -344,6 +355,8 @@ func _highlight_cell(cell: TextureRect) -> void:
 
 func _show_tip(text: String, use_bbcode: bool = false) -> void:
 	var panel := PanelContainer.new()
+	panel.z_index = 100
+	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	panel.add_theme_stylebox_override("panel", StyleBoxFlat.new())
 	var style: StyleBoxFlat = panel.get_theme_stylebox("panel")
 	style.bg_color = Color(0, 0, 0, 0.75)
@@ -410,9 +423,11 @@ func _show_detail(item: Item, count: int) -> void:
 	var qn: String = QUALITY_NAMES.get(item.quality, "")
 
 	var lines: Array[String] = []
-	lines.append("[font_size=21][color=%s]%s[/color][/font_size]" % [qc, item.display_name])
+	lines.append("[font_size=21][color=%s]%s[/color] [color=#667788][%s][/color][/font_size]" % [qc, item.display_name, qn])
 	lines.append("[font_size=15][color=#667788]%s · ×%d[/color][/font_size]" % [_cat_text(item), count])
-	lines.append("[font_size=15][color=#bcc8cc]%s[/color][/font_size]" % item.description)
+	# 装备描述用绿色（功效说明）；消耗品/材料用灰色
+	var desc_color := "#4ecb71" if item is Equipment else "#bcc8cc"
+	lines.append("[font_size=15][color=%s]%s[/color][/font_size]" % [desc_color, item.description])
 
 	# Consumable effects
 	if item.category == Item.Category.CONSUMABLE:
@@ -422,13 +437,16 @@ func _show_detail(item: Item, count: int) -> void:
 		if not fx.is_empty():
 			lines.append("[font_size=15]%s[/font_size]" % "  ".join(fx))
 
-	# Equipment stat bonuses — larger, separate section
+	# Equipment stat bonuses — larger, separate section, quality color
 	if item is Equipment:
 		var eq := item as Equipment
 		lines.append("")
-		lines.append("[font_size=13][color=#667788]—— %s ——[/color][/font_size]" % Inventory.slot_display_name(eq.slot))
+		lines.append("[font_size=13][color=%s]—— %s ——[/color][/font_size]" % [qc, Inventory.slot_display_name(eq.slot)])
 		var bonus_lines: Array[String] = []
 		var stat_bonuses: Array[Dictionary] = [
+			{"name": "攻击", "val": eq.atk_bonus, "standout": false},
+			{"name": "防御", "val": eq.def_bonus, "standout": false},
+			{"name": "速度", "val": eq.speed_bonus, "standout": false},
 			{"name": "筋骨", "val": eq.get_strength_bonus(), "standout": false},
 			{"name": "机敏", "val": eq.get_agility_bonus(), "standout": false},
 			{"name": "内劲", "val": eq.get_inner_power_bonus(), "standout": false},
@@ -440,10 +458,12 @@ func _show_detail(item: Item, count: int) -> void:
 		var row: Array[String] = []
 		for s in stat_bonuses:
 			if s["val"] != 0:
-				var color: String = "#ff8c42" if s["standout"] else "#e8e8e8"
-				row.append("[color=%s]%s%+d[/color]" % [color, s["name"], s["val"]])
+				row.append("[color=%s]%s%+d[/color]" % [qc, s["name"], s["val"]])
 		if not row.is_empty():
 			bonus_lines.append("[font_size=18]%s[/font_size]" % "  ".join(row))
+		# 技能加成
+		if eq.skill_bonus_school != "" and eq.skill_bonus_power > 0:
+			bonus_lines.append("[font_size=15][color=%s]提升 %s 招式威力 %d[/color][/font_size]" % [qc, eq.skill_bonus_school, eq.skill_bonus_power])
 		var bonus: String = "\n".join(bonus_lines)
 		if bonus != "":
 			lines.append(bonus)
@@ -461,12 +481,50 @@ func _cat_text(item: Item) -> String:
 	return "物品"
 
 
-func _on_use(id: StringName) -> void:
-	if Inventory.use_item(id): _refresh()
+func _on_use(id: StringName) -> bool:
+	var item: Item = Inventory.load_item_by_id(id)
+	if item == null or not item.can_use(_battle_mode):
+		_show_tip("该道具当前无法使用", false)
+		return false
+	var player: CharacterStats = GameState.player
+	if player == null:
+		return false
+	var old_hp: int = player.hp
+	var old_mp: int = player.mp
+	var old_max_hp: int = player.max_hp
+	var old_max_mp: int = player.max_mp
+	if not Inventory.use_item(id, _battle_mode):
+		_show_tip("当前状态无法使用该道具", false)
+		return false
+	var parts: Array[String] = ["已使用 %s" % item.display_name]
+	if player.hp > old_hp:
+		parts.append("HP +%d" % (player.hp - old_hp))
+	if player.mp > old_mp:
+		parts.append("内力 +%d" % (player.mp - old_mp))
+	if player.max_hp > old_max_hp:
+		parts.append("生命上限 +%d" % (player.max_hp - old_max_hp))
+	if player.max_mp > old_max_mp:
+		parts.append("内力上限 +%d" % (player.max_mp - old_max_mp))
+	_show_tip(" · ".join(parts), false)
+	_refresh()
+	if _battle_mode:
+		action_committed.emit(&"use_item")
+	return true
 
 
-func _on_equip(id: StringName) -> void:
-	if Inventory.equip(id): _refresh()
+func _on_equip(id: StringName) -> bool:
+	var item: Item = Inventory.load_item_by_id(id)
+	if not item is Equipment:
+		_show_tip("请选择可装备的物品", false)
+		return false
+	if not Inventory.equip(id):
+		_show_tip("装备失败", false)
+		return false
+	_show_tip("已装备 %s" % item.display_name, false)
+	_refresh()
+	if _battle_mode:
+		action_committed.emit(&"equip")
+	return true
 
 
 func _create_context_menu() -> void:
