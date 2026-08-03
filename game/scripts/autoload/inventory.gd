@@ -170,6 +170,17 @@ func use_item(item_id: StringName, in_battle: bool = false) -> bool:
 			EventBus.item_used.emit(item_id)
 			return true
 
+	# 永久属性加成物品（使用后增加上限）
+	if sid == "linxi_jiu":
+		player.max_hp += 100
+		player.hp += 100
+		player.max_mp += 50
+		player.mp += 50
+		_consume_item(item_id, 1)
+		EventBus.item_used.emit(item_id)
+		GameState.emit_signal("player_changed")
+		return true
+
 	var new_hp: int = min(player.max_hp, player.hp + item.heal_hp)
 	var new_mp: int = min(player.max_mp, player.mp + item.heal_mp)
 	var changed := new_hp != player.hp or new_mp != player.mp

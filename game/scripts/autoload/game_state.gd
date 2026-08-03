@@ -36,12 +36,6 @@ func _on_flag_set(flag: StringName, _value: Variant) -> void:
 				if sid not in player.skills:
 					player.skills.append(sid)
 			player_changed.emit()
-		"got_linxi_jiu":
-			player.max_hp += 100
-			player.hp += 100
-			player.max_mp += 50
-			player.mp += 50
-			player_changed.emit()
 
 func _init_default_player() -> void:
 	var stats: CharacterStats = CharacterStats.new()

@@ -307,7 +307,14 @@ func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cel
 			elif item.category == Item.Category.CONSUMABLE:
 				var p: CharacterStats = GameState.player
 				if p == null: return
-				if item.heal_hp > 0 and p.hp >= p.max_hp and item.heal_mp == 0:
+				if String(item.item_id) == "linxi_jiu":
+					# 永久属性物品不受满血限制
+					var old_max_hp: int = p.max_hp
+					var old_max_mp: int = p.max_mp
+					if Inventory.use_item(item.item_id):
+						_show_tip("[color=#ffb14a]生命上限 +%d[/color] [color=#64b5f6]内力上限 +%d[/color]" % [p.max_hp - old_max_hp, p.max_mp - old_max_mp], true)
+						_refresh()
+				elif item.heal_hp > 0 and p.hp >= p.max_hp and item.heal_mp == 0:
 					_show_tip("[color=#ff6b6b]HP 已满[/color]", true)
 				elif item.heal_mp > 0 and p.mp >= p.max_mp and item.heal_hp == 0:
 					_show_tip("[color=#64b5f6]MP 已满[/color]", true)
