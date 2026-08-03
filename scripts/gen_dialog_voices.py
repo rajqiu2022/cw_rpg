@@ -70,14 +70,29 @@ def detect_emotion(text: str) -> str:
                 return emotion
     return "normal"
 
-def clean_text(t: str) -> str:
+def clean_text(t: str, with_narr: bool = True) -> dict:
+    """拆分台词和（旁白）。
+    返回 {'spoken': 角色台词, 'narr': 旁白文本}
+    """
     t = re.sub(r'\[/?[ibcu]\]', '', t)
     t = re.sub(r'\[color=[^\]]*\]', '', t)
     t = re.sub(r'\[/color\]', '', t)
     t = t.replace('\\n', '。')
-    t = re.sub(r'[（(].*?[）)]', '', t)
-    t = re.sub(r'\s+', '', t)
-    return t.strip()
+
+    # 提取所有（...）旁白
+    narr_parts = []
+    def grab(m):
+        inner = m.group(1).strip('。，,、 ')
+        if inner and len(inner) > 1:
+            narr_parts.append(inner)
+        return ''
+    spoken = re.sub(r'[（(](.*?)[）)]', grab, t)
+    spoken = re.sub(r'\s+', '', spoken).strip()
+
+    narr = ''
+    if with_narr and narr_parts:
+        narr = ''.join(narr_parts).strip('。，,、 ')
+    return {"spoken": spoken, "narr": narr}
 
 def build_ssml(text: str, emotion: str) -> str:
     return text  # 不再用 SSML 标签，改用 Communicate 的 rate/pitch 参数
@@ -102,13 +117,14 @@ def load_lines(files: list[str]) -> list[dict]:
             m_tx = re.match(r'text\s*=\s*"([^"]*)"', sl)
             if m_tx:
                 raw = speaker if speaker else "旁白"
-                t = clean_text(m_tx.group(1))
-                if t and len(t) > 3:
-                    emotion = detect_emotion(t)
+                parts = clean_text(m_tx.group(1))
+                if parts["spoken"] and len(parts["spoken"]) > 3:
+                    emotion = detect_emotion(parts["spoken"])
                     lines.append({
                         "file": fn.replace(".tres", ""),
                         "node": node_id, "speaker": raw,
-                        "text": t, "emotion": emotion,
+                        "text": parts["spoken"], "emotion": emotion,
+                        "narr": parts["narr"],
                     })
     return lines
 
@@ -161,6 +177,14 @@ async def main():
             ok += 1
         except Exception as e:
             print(f"    [ERR] {e}")
+        # 旁白：单独生成 (旁白声线)，文件名加 _narr
+        if l.get("narr"):
+            narr_path = VOICE_DIR / ch / l["file"] / f"{safe_spk}_{l['node']}_narr.mp3"
+            try:
+                await gen_voice(VOICE_MAP.get("旁白", DEFAULT_VOICE), l["narr"], "normal", narr_path)
+                print(f"      [narr] {l['narr'][:30]}")
+            except Exception as e:
+                print(f"      [narr ERR] {e}")
         await asyncio.sleep(0.3)
     print(f"\nDone: {ok}/{len(lines)} -> {VOICE_DIR}")
 

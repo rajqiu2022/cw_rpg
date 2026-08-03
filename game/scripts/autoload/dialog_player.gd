@@ -177,6 +177,19 @@ func _play_node_voice(speaker: String, node_id: String) -> void:
 		path = "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, node_id]
 	if ResourceLoader.exists(path):
 		AudioManager.play_voice(path)
+		# 旁白紧随其后播放
+		var narr_path := "res://art/audio/voices/%s/%s/%s_%s_narr.mp3" % [ch, dialog_id, safe_spk, node_id]
+		if ResourceLoader.exists(narr_path):
+			await _play_narration_after(narr_path)
+
+
+func _play_narration_after(narr_path: String) -> void:
+	# 等主语音播完再放旁白
+	for _i in 120:
+		if not AudioManager.is_voice_playing():
+			break
+		await get_tree().process_frame
+	AudioManager.play_voice(narr_path)
 
 
 func _detect_emotion(text: String) -> String:

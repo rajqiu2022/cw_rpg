@@ -184,6 +184,9 @@ func play_voice(path: String) -> void:
 func stop_voice() -> void:
 	_voice_player.stop()
 
+func is_voice_playing() -> bool:
+	return _voice_player.playing
+
 # --- Volume ---
 
 func set_bgm_volume(linear: float) -> void:
