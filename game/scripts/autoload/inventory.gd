@@ -40,8 +40,6 @@ func _ready() -> void:
 func reset_for_new_game() -> void:
 	from_dict({})
 	add_item(&"healing_pill_minor", 2)
-	add_item(&"cloth_armor", 1)
-	add_item(&"straw_sandals", 1)
 
 
 # --- 加载与查询 ---
