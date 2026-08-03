@@ -323,7 +323,7 @@ func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cel
 					var old_max_hp: int = p.max_hp
 					var old_max_mp: int = p.max_mp
 					if Inventory.use_item(item.item_id):
-						_show_tip("[color=#ffb14a]生命上限 +%d[/color] [color=#64b5f6]内力上限 +%d[/color]" % [p.max_hp - old_max_hp, p.max_mp - old_max_mp], true)
+						_show_tip("[color=#a335ee]生命上限 +%d[/color] [color=#a335ee]内力上限 +%d[/color]" % [p.max_hp - old_max_hp, p.max_mp - old_max_mp], true)
 						_refresh()
 				elif item.heal_hp > 0 and p.hp >= p.max_hp and item.heal_mp == 0:
 					_show_tip("[color=#ff6b6b]HP 已满[/color]", true)
@@ -357,6 +357,8 @@ func _show_tip(text: String, use_bbcode: bool = false) -> void:
 	var panel := PanelContainer.new()
 	panel.z_index = 100
 	panel.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var line_count: int = maxi(1, text.count("\n") + 1)
+	panel.custom_minimum_size = Vector2(280.0, 38.0 + line_count * 25.0)
 	panel.add_theme_stylebox_override("panel", StyleBoxFlat.new())
 	var style: StyleBoxFlat = panel.get_theme_stylebox("panel")
 	style.bg_color = Color(0, 0, 0, 0.75)
@@ -373,15 +375,24 @@ func _show_tip(text: String, use_bbcode: bool = false) -> void:
 		var rich_lbl: RichTextLabel = RichTextLabel.new()
 		rich_lbl.bbcode_enabled = true
 		rich_lbl.fit_content = true
+		rich_lbl.custom_minimum_size = Vector2(260.0, line_count * 25.0)
+		rich_lbl.add_theme_font_size_override("normal_font_size", 19)
+		rich_lbl.add_theme_color_override("default_color", Color(0.95, 0.98, 1.0, 1.0))
 		rich_lbl.text = "[font_size=20]%s[/font_size]" % text
 		lbl = rich_lbl
 	else:
 		var plain_lbl: Label = Label.new()
 		plain_lbl.text = text
-		plain_lbl.add_theme_font_size_override("font_size", 17)
-		plain_lbl.add_theme_color_override("font_color", Color(0.3, 1, 0.4))
+		plain_lbl.custom_minimum_size = Vector2(260.0, line_count * 25.0)
+		plain_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		plain_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		plain_lbl.add_theme_font_size_override("font_size", 19)
+		plain_lbl.add_theme_color_override("font_color", Color(0.92, 0.98, 1.0, 1.0))
+		plain_lbl.add_theme_color_override("font_outline_color", Color(0.02, 0.05, 0.08, 1.0))
+		plain_lbl.add_theme_constant_override("outline_size", 3)
 		lbl = plain_lbl
 	panel.add_child(lbl)
+	panel.reset_size()
 	panel.position = get_global_mouse_position() - global_position + Vector2(10, -40)
 	add_child(panel)
 	var tween := create_tween()
@@ -505,7 +516,7 @@ func _on_use(id: StringName) -> bool:
 		parts.append("生命上限 +%d" % (player.max_hp - old_max_hp))
 	if player.max_mp > old_max_mp:
 		parts.append("内力上限 +%d" % (player.max_mp - old_max_mp))
-	_show_tip(" · ".join(parts), false)
+	_show_tip("\n".join(parts), false)
 	_refresh()
 	if _battle_mode:
 		action_committed.emit(&"use_item")

@@ -15,44 +15,44 @@ DIALOG_DIR = ROOT / "game" / "data" / "dialogs"
 VOICE_DIR = ROOT / "game" / "art" / "audio" / "voices"
 
 VOICE_MAP = {
+    # 旁白 — 中性新闻播报（与所有角色区分）
+    "旁白": "zh-CN-YunyangNeural",
     # 主角 — 年轻男声
     "冷孤云": "zh-CN-YunxiNeural",
-    # 师父/长辈/旁白 — 中年男声
+    "店小二": "zh-CN-YunxiNeural",
+    "被绑男子": "zh-CN-YunxiNeural",
+    # 师父/反派/长者 — 深沉有感情男声
     "刑樊天": "zh-CN-YunjianNeural",
-    "旁白": "zh-CN-YunjianNeural",
+    "蒙面杀手首领": "zh-CN-YunjianNeural",
     "客栈老板": "zh-CN-YunjianNeural",
     "神秘商人": "zh-CN-YunjianNeural",
-    # 女主/女性 — 女声
+    # 打铁/粗犷/男性角色 — 豪迈男声（Yunjian，与旁白Yunyang区分）
+    "杜青衫": "zh-CN-YunjianNeural",
+    "铁匠刘": "zh-CN-YunjianNeural",
+    "沈半盏": "zh-CN-YunjianNeural",
+    "护商镖师": "zh-CN-YunjianNeural",
+    "守门村民": "zh-CN-YunjianNeural",
+    "武馆教头": "zh-CN-YunjianNeural",
+    "守城兵丁": "zh-CN-YunjianNeural",
+    "赵无忌": "zh-CN-YunjianNeural",
+    "蒙面杀手甲": "zh-CN-YunjianNeural",
+    "蒙面杀手乙": "zh-CN-YunjianNeural",
+    "江湖散兵": "zh-CN-YunjianNeural",
+    # 女性
     "悦无姮": "zh-CN-XiaoxiaoNeural",
     "卖菜大婶": "zh-CN-XiaoxiaoNeural",
     "哭泣女子": "zh-CN-XiaoxiaoNeural",
     "走货郎": "zh-CN-XiaoyiNeural",
-    # 男性 — 专业男声
-    "杜青衫": "zh-CN-YunyangNeural",
-    "铁匠刘": "zh-CN-YunyangNeural",
-    "沈半盏": "zh-CN-YunyangNeural",
-    "护商镖师": "zh-CN-YunyangNeural",
-    "守门村民": "zh-CN-YunyangNeural",
-    "武馆教头": "zh-CN-YunyangNeural",
-    "守城兵丁": "zh-CN-YunyangNeural",
-    "赵无忌": "zh-CN-YunyangNeural",
-    "蒙面杀手甲": "zh-CN-YunyangNeural",
-    "蒙面杀手乙": "zh-CN-YunyangNeural",
-    "蒙面杀手首领": "zh-CN-YunjianNeural",
-    "江湖散兵": "zh-CN-YunyangNeural",
-    # 年轻男性 — 活泼男声
-    "被绑男子": "zh-CN-YunxiNeural",
-    "店小二": "zh-CN-YunxiNeural",
 }
-DEFAULT_VOICE = "zh-CN-YunyangNeural"
+DEFAULT_VOICE = "zh-CN-YunjianNeural"
 
-# 情感 → SSML prosody 参数
-EMOTION_PROSODY = {
-    "normal": "",  # 无修饰
-    "fear":   '<prosody rate="+25%" pitch="+6st">',
-    "happy":  '<prosody rate="+15%" pitch="+8st">',
-    "sad":    '<prosody rate="-20%" pitch="-5st">',
-    "threat": '<prosody rate="-12%" pitch="-8st">',
+# 情感 → rate/pitch/volume 参数 (edge-tts Communicate 支持)
+EMOTION_PARAMS = {
+    "normal": {"rate": "+0%", "pitch": "+0Hz", "volume": "+0%"},
+    "fear":   {"rate": "+25%", "pitch": "+6Hz", "volume": "+10%"},
+    "happy":  {"rate": "+15%", "pitch": "+8Hz", "volume": "+10%"},
+    "sad":    {"rate": "-20%", "pitch": "-5Hz", "volume": "-10%"},
+    "threat": {"rate": "-12%", "pitch": "-8Hz", "volume": "+5%"},
 }
 
 # 情感关键词检测（从台词文本推断）
@@ -80,10 +80,7 @@ def clean_text(t: str) -> str:
     return t.strip()
 
 def build_ssml(text: str, emotion: str) -> str:
-    if emotion == "normal":
-        return text
-    open_tag = EMOTION_PROSODY[emotion]
-    return f'<speak>{open_tag}{text}</prosody></speak>'
+    return text  # 不再用 SSML 标签，改用 Communicate 的 rate/pitch 参数
 
 def load_lines(files: list[str]) -> list[dict]:
     lines = []
@@ -116,7 +113,8 @@ def load_lines(files: list[str]) -> list[dict]:
     return lines
 
 async def gen_voice(voice: str, text: str, emotion: str, out: Path) -> bool:
-    comm = edge_tts.Communicate(build_ssml(text, emotion), voice)
+    p = EMOTION_PARAMS.get(emotion, EMOTION_PARAMS["normal"])
+    comm = edge_tts.Communicate(text, voice, rate=p["rate"], pitch=p["pitch"], volume=p["volume"])
     await comm.save(str(out))
     return out.exists()
 
