@@ -70,6 +70,14 @@ def detect_emotion(text: str) -> str:
                 return emotion
     return "normal"
 
+# 角色级音色微调 (在情感参数基础上叠加)
+# pitch: Hz 负值=更低沉, rate: 负值=更慢
+CHARACTER_PARAMS = {
+    "刑樊天": {"pitch": "-80Hz", "rate": "-20%"},   # 苍老、沧桑、担忧
+    "蒙面杀手首领": {"pitch": "-60Hz", "rate": "-15%"},  # 低沉威胁
+    "悦无姮": {"pitch": "-10Hz", "rate": "-5%"},    # 清冷
+}
+
 def clean_text(t: str, with_narr: bool = True) -> dict:
     """拆分台词和（旁白）。
     返回 {'spoken': 角色台词, 'narr': 旁白文本}
@@ -128,8 +136,11 @@ def load_lines(files: list[str]) -> list[dict]:
                     })
     return lines
 
-async def gen_voice(voice: str, text: str, emotion: str, out: Path) -> bool:
-    p = EMOTION_PARAMS.get(emotion, EMOTION_PARAMS["normal"])
+async def gen_voice(voice: str, text: str, emotion: str, out: Path, char_params: dict | None = None) -> bool:
+    p = EMOTION_PARAMS.get(emotion, EMOTION_PARAMS["normal"]).copy()
+    if char_params:
+        for k, v in char_params.items():
+            p[k] = v
     comm = edge_tts.Communicate(text, voice, rate=p["rate"], pitch=p["pitch"], volume=p["volume"])
     await comm.save(str(out))
     return out.exists()
@@ -173,7 +184,7 @@ async def main():
         preview = l["text"][:40] + "..." if len(l["text"]) > 40 else l["text"]
         print(f"  [{i+1}/{len(lines)}] ({l['emotion']}) {l['speaker']}: {preview}")
         try:
-            await gen_voice(voice, l["text"], l["emotion"], out)
+            await gen_voice(voice, l["text"], l["emotion"], out, CHARACTER_PARAMS.get(l["speaker"]))
             ok += 1
         except Exception as e:
             print(f"    [ERR] {e}")
