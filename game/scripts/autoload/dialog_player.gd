@@ -184,10 +184,10 @@ func _play_node_voice(speaker: String, node_id: String) -> void:
 
 
 func _play_narration_after(narr_path: String) -> void:
-	# 等主语音播完再放旁白
-	for _i in 120:
-		if not AudioManager.is_voice_playing():
-			break
+	# 等主语音完全播完（playing 变 false 后再等 3 帧确保 buffer 清空）
+	while AudioManager.is_voice_playing():
+		await get_tree().process_frame
+	for _i in 5:
 		await get_tree().process_frame
 	AudioManager.play_voice(narr_path)
 

@@ -73,9 +73,9 @@ def detect_emotion(text: str) -> str:
 # 角色级音色微调 (在情感参数基础上叠加)
 # pitch: Hz 负值=更低沉, rate: 负值=更慢
 CHARACTER_PARAMS = {
-    "刑樊天": {"pitch": "-80Hz", "rate": "-20%"},   # 苍老、沧桑、担忧
-    "蒙面杀手首领": {"pitch": "-60Hz", "rate": "-15%"},  # 低沉威胁
-    "悦无姮": {"pitch": "-10Hz", "rate": "-5%"},    # 清冷
+    "刑樊天": {"pitch": "-40Hz", "rate": "-15%"},     # 浑厚、沧桑
+    "蒙面杀手首领": {"pitch": "-30Hz", "rate": "-10%"},  # 低沉威胁
+    "悦无姮": {"pitch": "-10Hz", "rate": "-5%"},      # 清冷
 }
 
 def clean_text(t: str, with_narr: bool = True) -> dict:

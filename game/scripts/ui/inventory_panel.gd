@@ -434,11 +434,9 @@ func _show_detail(item: Item, count: int) -> void:
 	var qn: String = QUALITY_NAMES.get(item.quality, "")
 
 	var lines: Array[String] = []
-	lines.append("[font_size=21][color=%s]%s[/color] [color=#667788][%s][/color][/font_size]" % [qc, item.display_name, qn])
-	lines.append("[font_size=15][color=#667788]%s · ×%d[/color][/font_size]" % [_cat_text(item), count])
-	# 装备描述用绿色（功效说明）；消耗品/材料用灰色
-	var desc_color := "#4ecb71" if item is Equipment else "#bcc8cc"
-	lines.append("[font_size=15][color=%s]%s[/color][/font_size]" % [desc_color, item.description])
+	lines.append("[font_size=21][color=%s]%s[/color] [color=#e8e8e8][%s][/color][/font_size]" % [qc, item.display_name, qn])
+	lines.append("[font_size=15][color=#8899aa]%s · ×%d[/color][/font_size]" % [_cat_text(item), count])
+	lines.append("[font_size=15][color=#e8e8e8]%s[/color][/font_size]" % item.description)
 
 	# Consumable effects
 	if item.category == Item.Category.CONSUMABLE:
@@ -448,39 +446,59 @@ func _show_detail(item: Item, count: int) -> void:
 		if not fx.is_empty():
 			lines.append("[font_size=15]%s[/font_size]" % "  ".join(fx))
 
-	# Equipment stat bonuses — larger, separate section, quality color
+	# Equipment stat bonuses
 	if item is Equipment:
 		var eq := item as Equipment
 		lines.append("")
-		lines.append("[font_size=13][color=%s]—— %s ——[/color][/font_size]" % [qc, Inventory.slot_display_name(eq.slot)])
+		lines.append("[font_size=13][color=#8899aa]—— %s ——[/color][/font_size]" % Inventory.slot_display_name(eq.slot))
 		var bonus_lines: Array[String] = []
 		var stat_bonuses: Array[Dictionary] = [
-			{"name": "攻击", "val": eq.atk_bonus, "standout": false},
-			{"name": "防御", "val": eq.def_bonus, "standout": false},
-			{"name": "速度", "val": eq.speed_bonus, "standout": false},
-			{"name": "筋骨", "val": eq.get_strength_bonus(), "standout": false},
-			{"name": "机敏", "val": eq.get_agility_bonus(), "standout": false},
-			{"name": "内劲", "val": eq.get_inner_power_bonus(), "standout": false},
-			{"name": "悟性", "val": eq.get_insight_bonus(), "standout": false},
-			{"name": "生命", "val": eq.get_vitality_bonus(), "standout": true},
-			{"name": "内力", "val": eq.get_inner_pool_bonus(), "standout": true},
-			{"name": "防御", "val": eq.get_guard_bonus(), "standout": true},
+			{"name": "攻击", "val": eq.atk_bonus},
+			{"name": "防御", "val": eq.def_bonus + eq.get_guard_bonus()},
+			{"name": "速度", "val": eq.speed_bonus},
+			{"name": "筋骨", "val": eq.get_strength_bonus()},
+			{"name": "机敏", "val": eq.get_agility_bonus()},
+			{"name": "内劲", "val": eq.get_inner_power_bonus()},
+			{"name": "悟性", "val": eq.get_insight_bonus()},
+			{"name": "生命", "val": eq.get_vitality_bonus()},
+			{"name": "内力", "val": eq.get_inner_pool_bonus()},
 		]
 		var row: Array[String] = []
 		for s in stat_bonuses:
 			if s["val"] != 0:
-				row.append("[color=%s]%s%+d[/color]" % [qc, s["name"], s["val"]])
+				row.append("[color=%s]%s%+d[/color]" % [_stat_tier_color(s["val"]), s["name"], s["val"]])
 		if not row.is_empty():
 			bonus_lines.append("[font_size=18]%s[/font_size]" % "  ".join(row))
 		# 技能加成
 		if eq.skill_bonus_school != "" and eq.skill_bonus_power > 0:
-			bonus_lines.append("[font_size=15][color=%s]提升 %s 招式威力 %d[/color][/font_size]" % [qc, eq.skill_bonus_school, eq.skill_bonus_power])
+			var school_cn := _school_name(eq.skill_bonus_school)
+			bonus_lines.append("[font_size=15][color=#4ecb71]提升%s招式威力 +%d[/color][/font_size]" % [school_cn, eq.skill_bonus_power])
 		var bonus: String = "\n".join(bonus_lines)
 		if bonus != "":
 			lines.append(bonus)
 
 	lines.append("[font_size=14][color=#889999]卖出 %d[/color][/font_size]" % item.sell_price)
 	_detail_label.text = "\n".join(lines)
+
+
+func _stat_tier_color(val: int) -> String:
+	var a := abs(val)
+	if a <= 2: return "#8899aa"
+	if a <= 5: return "#1eff00"
+	if a <= 10: return "#0070dd"
+	if a <= 20: return "#a335ee"
+	return "#ff8000"
+
+
+func _school_name(s: String) -> String:
+	match s:
+		"linxi": return "林西"
+		"gufeng": return "古峰"
+		"huashan": return "华山"
+		"lingyue": return "凌月"
+		"mingwu": return "茗雾"
+		"wudang": return "武当"
+	return s
 
 
 func _cat_text(item: Item) -> String:
