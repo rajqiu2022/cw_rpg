@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "挑担脚夫"
+text = "按少侠教的法子，两头的筐能接着劲儿走，换肩也不扯着伤处了。多谢！"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"huilan_openworld_balance_done"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

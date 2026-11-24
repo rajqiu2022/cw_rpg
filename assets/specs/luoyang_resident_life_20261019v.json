@@ -1,0 +1,517 @@
+{
+  "schema_version": 1,
+  "id": "luoyang_resident_life_20261019v",
+  "status": "DESIGN_CANDIDATE_NOT_FORMAL",
+  "locale": "zh-CN",
+  "scope": "四个现有居民的只读生活对白；十二人持续居民规划。不是游戏可直接执行的任务或角色配置。",
+  "production_writes_permitted": false,
+  "new_rewards": [],
+  "new_story_flags": [],
+  "canonical_boundaries": [
+    "沿用已有职业称呼，不新定真名。年龄、服饰、声音均为候选制作设定。",
+    "居民只知道亲见的生活和已完成的本地支线结果，不知道最终幕后者。",
+    "调查后指对应支线完成且结果标记吻合，不等于第四章主线结案。",
+    "闲聊不得接取、推进、完成任务或发奖励；既有任务入口保留为独立选项。",
+    "后续章复访只是规划，未核实章节或城市结果旗标，不允许自动接线。"
+  ],
+  "evidence": {
+    "paper_identity": {
+      "path": "game/data/luoyang_city_tasks_20261016/overlay.json",
+      "locator": "market.artisan.npc_id / npc_name"
+    },
+    "paper_phase": {
+      "path": "game/scripts/city/luoyang_city_tasks_20261016.gd",
+      "locator": "stages / authorize_dialog: paper / artisan_daily / artisan_after"
+    },
+    "paper_daily": {
+      "path": "game/data/dialogs/luoyang_city_tasks_20261016/artisan_daily.tres",
+      "locator": "start.text"
+    },
+    "paper_after": {
+      "path": "game/data/dialogs/luoyang_city_tasks_20261016/artisan_after.tres",
+      "locator": "start.text / required_story_flag"
+    },
+    "district_identities": {
+      "path": "game/data/maps/luoyang_district_life_20261016f/author.json",
+      "locator": "districts.ch4_s3_luoyang_market.crowd rows: market_shop_attendant / market_farmer / market_buyer / market_courier"
+    },
+    "district_id_prefix": {
+      "path": "game/scripts/city/luoyang_district_life_crowd_20261016f.gd",
+      "locator": "project: npc_id = district_life_ + row.id"
+    },
+    "harbour_identities": {
+      "path": "game/scripts/city/luoyang_harbour_life_crowd_retry3_20261016.gd",
+      "locator": "spec: docks_loading_attendant / docks_booking_attendant / gate_supply_attendant / gate_waiting_traveller_a; project: harbour_life_ prefix"
+    },
+    "canal_identity": {
+      "path": "game/data/luoyang_city_tasks_20261016/overlay.json",
+      "locator": "docks.soldier.npc_id / npc_name"
+    },
+    "canal_phase": {
+      "path": "game/scripts/city/luoyang_city_tasks_20261016.gd",
+      "locator": "stages / authorize_dialog: canal / canal_after"
+    },
+    "market_named_identities": {
+      "path": "game/data/scenes/ch4_s3_luoyang_market.tres",
+      "locator": "npcs: luoyang_paper_scholar / luoyang_poetry_host"
+    },
+    "canon": {
+      "path": "docs/narrative-open-world-revision-v1.md",
+      "locator": "第四章洛阳双案 / 开放世界与城市功能 / 证词与真相边界"
+    }
+  },
+  "phase_contracts": {
+    "paper": {
+      "quest_id": "q_ch4_side_02_luoyang_paper",
+      "evidence_refs": [
+        "paper_phase",
+        "paper_after"
+      ],
+      "priority": [
+        "after_local_investigation",
+        "unresolved",
+        "daily"
+      ],
+      "after_local_investigation": {
+        "quest_status": "COMPLETED",
+        "all_flags_true": [
+          "luoyang_paper_helped"
+        ]
+      },
+      "unresolved": {
+        "quest_status": "ACTIVE",
+        "all_flags_true": [
+          "luoyang_paper_started"
+        ]
+      },
+      "daily": {
+        "fallback": true
+      },
+      "known_flags_not_written": [
+        "luoyang_paper_started",
+        "luoyang_paper_artisan_hint",
+        "luoyang_paper_materials_found",
+        "luoyang_paper_helped"
+      ],
+      "inconsistent_or_legacy_state": "只给日常闲聊；不凭 luoyang_paper_helped 单旗标推定完整结算。既有任务系统自行处理兼容。"
+    },
+    "canal": {
+      "quest_id": "q_ch4_side_06_canal_grudge",
+      "evidence_refs": [
+        "canal_phase"
+      ],
+      "priority": [
+        "after_local_investigation",
+        "unresolved",
+        "daily"
+      ],
+      "after_local_investigation": {
+        "quest_status": "COMPLETED",
+        "all_flags_true": [
+          "canal_feud_resolved"
+        ]
+      },
+      "unresolved": {
+        "quest_status": "ACTIVE",
+        "all_flags_true": [
+          "canal_grudge_started"
+        ]
+      },
+      "daily": {
+        "fallback": true
+      },
+      "known_flags_not_written": [
+        "canal_grudge_started",
+        "canal_grudge_route_heard",
+        "canal_grudge_warehouse_located",
+        "canal_grudge_evidence_found",
+        "canal_feud_resolved"
+      ],
+      "inconsistent_or_legacy_state": "只给日常闲聊；不凭 canal_feud_resolved 单旗标推定已结算。"
+    }
+  },
+  "presentation_contract": {
+    "identity_pairing": "同一 NPC 的精灵、半身立绘、头像、声音共用 identity_id；年龄、脸形、发须、工作服颜色和职业道具一致。",
+    "sprite": "由美术负责人按现有 sprite 标准制作；固定脚底锚点和原生体型，不把立绘缩小充作行走精灵。静止四帧只承诺静止，不冒充四向行走。",
+    "portrait": "透明背景半身立绘；头像从已认可立绘同源裁切，禁止随机换另一张脸。",
+    "voice": "先合成经确认的短句，以 line_id 对应音频；普通话自然口语，不装作已考证古洛阳口音，不模仿特定真人。",
+    "audio_status": "CANDIDATE_TEXT_READY_AUDIO_PRODUCTION_BY_PRODUCER",
+    "audio_playback": "进入新句停止旧句，关闭、跳过或切换场景取消旧音频；失败时文字立即可用，不阻塞地图或对白。",
+    "conversation_coverage": "十二人全部应可主动对话；闲聊独立于委托。首批只制作四人的候选文本，不宣称十二人已正式可聊。"
+  },
+  "residents": [
+    {
+      "npc_id": "luoyang_paper_artisan_20261016",
+      "display_name": "老纸匠",
+      "identity_id": "luoyang_resident_paper_artisan_v",
+      "scene_id": "ch4_s3_luoyang_market",
+      "identity_evidence_refs": [
+        "paper_identity"
+      ],
+      "phase_contract": "paper",
+      "design_age": 58,
+      "design_age_status": "CANDIDATE_NOT_CANON_CHANGE",
+      "appearance_candidate": "灰白鬓发和短须，木簪，褪靛蓝短衫、米灰工作围裳、挽袖、粗布鞋；双手有纸浆痕，略含胸但手稳。不是年轻货郎或端托盘小二。",
+      "voice_candidate": "年长男声，中低音，慢半拍，提手艺时清楚有耐心；不做夸张苍老沙哑。",
+      "personal_anchor": "手艺做得仔细，烦的是仓储返潮，不是替江湖人解开一切秘密。",
+      "topic_options": [
+        "聊聊纸铺",
+        "问问近况",
+        "先不打扰"
+      ],
+      "task_option_policy": "原纸业支线由既有 paper_hint / paper_ready 等路由承接，候选闲聊不替代、不自动调用。",
+      "phases": {
+        "daily": [
+          {
+            "line_id": "v_paper_daily_01",
+            "text": "纸先离地，浆先避尘。做这行，急不得。"
+          },
+          {
+            "line_id": "v_paper_daily_02",
+            "text": "买来写家信的，用不着挑最贵的，挑一张落墨匀的就好。"
+          }
+        ],
+        "unresolved": [
+          {
+            "line_id": "v_paper_unresolved_01",
+            "text": "左先生要的纸，我记着呢。原料没认准，不能拿别人的货凑数。"
+          },
+          {
+            "line_id": "v_paper_unresolved_02",
+            "text": "你问到什么，带回来慢慢说；我能认的是纸料，不敢认人。"
+          }
+        ],
+        "after_local_investigation": [
+          {
+            "line_id": "v_paper_after_01",
+            "text": "左先生那批纸赶好了，这回多亏你肯把原料认仔细。"
+          },
+          {
+            "line_id": "v_paper_after_02",
+            "text": "旧木模我收在干处。往后再有人问起，至少还有实物可看。"
+          }
+        ]
+      },
+      "later_revisit_proposal": "后章仍在同一纸铺，聊家信、纸价、原料；需新的公开城市结果授权才谈案情。不得自行授武学残页。"
+    },
+    {
+      "npc_id": "district_life_market_buyer",
+      "display_name": "采买妇人",
+      "identity_id": "luoyang_resident_market_buyer_v",
+      "scene_id": "ch4_s3_luoyang_market",
+      "identity_evidence_refs": [
+        "district_identities",
+        "district_id_prefix"
+      ],
+      "phase_contract": "paper",
+      "design_age": 45,
+      "design_age_status": "CANDIDATE_NOT_CANON_CHANGE",
+      "appearance_candidate": "中年妇人，乌发夹少量白丝，素布挽髻、赭红短袄、靛蓝裙、粗布鞋；身旁菜篮，不穿少女华服或客栈围裙。",
+      "voice_candidate": "中年女声，清楚爽朗，话不急，讲家用时实在；不是夸张方言。",
+      "personal_anchor": "当地采买妇人，连接街坊家庭、日常花费与乡民进城；不当无所不知的消息商。",
+      "topic_options": [
+        "聊聊街坊日常",
+        "问问近日近况",
+        "您慢慢挑"
+      ],
+      "task_option_policy": "不新增任务、不代发药品、不改买卖；纸业阶段仅用于邻里近况闲聊。",
+      "phases": {
+        "daily": [
+          {
+            "line_id": "v_buyer_daily_01",
+            "text": "买东西先看分量，别只听吆喝。家里这点盐油，样样都得算着。"
+          },
+          {
+            "line_id": "v_buyer_daily_02",
+            "text": "街坊托我捎一把青菜，顺路的事。住得近，总要彼此搭把手。"
+          }
+        ],
+        "unresolved": [
+          {
+            "line_id": "v_buyer_uncertain_01",
+            "text": "你正替纸铺跑腿？手艺人的活，急也得照规矩来。"
+          },
+          {
+            "line_id": "v_buyer_uncertain_02",
+            "text": "街上说法多，你问过当事人再拿主意。买东西尚且要验看，何况是人家的事。"
+          }
+        ],
+        "after_local_investigation": [
+          {
+            "line_id": "v_buyer_after_01",
+            "text": "纸铺的事办妥了？那便好，街坊做成一桩事，大家都放心些。"
+          },
+          {
+            "line_id": "v_buyer_after_02",
+            "text": "下回来别只顾着赶路。坐下听两句家常，也知道这城里的人怎样过日子。"
+          }
+        ]
+      },
+      "later_revisit_proposal": "后章仍为同一位当地妇人，关心家用、街坊与物价；家庭关系与章节结果另核，不自行确立亲属或主线事实。"
+    },
+    {
+      "npc_id": "harbour_life_docks_loading_attendant",
+      "display_name": "装卸伙计",
+      "identity_id": "luoyang_resident_docks_loader_v",
+      "scene_id": "ch4_s2_canal_docks",
+      "identity_evidence_refs": [
+        "harbour_identities"
+      ],
+      "phase_contract": "canal",
+      "design_age": 39,
+      "design_age_status": "CANDIDATE_NOT_CANON_CHANGE",
+      "appearance_candidate": "日晒肤色、粗壮前臂、深褐短打、旧绑腿、布护掌；用现有已认可码头劳工视觉为前置，不回退客栈小二托盘。",
+      "voice_candidate": "成年低中音，短句有力但不粗暴；平常交谈不持续吼号子。",
+      "personal_anchor": "关心工钱、同伴受伤和货物交接；并非秘密组织的万能联络人。",
+      "topic_options": [
+        "聊聊装船",
+        "问问码头近况",
+        "不耽误你干活"
+      ],
+      "task_option_policy": "原漕运任务仍找漕工头领；伙计只提供无副作用闲聊，不赠证物。",
+      "phases": {
+        "daily": [
+          {
+            "line_id": "v_loader_daily_01",
+            "text": "绳子紧不紧，先看一眼再抬。担子落了，伤的都是自己的手脚。"
+          },
+          {
+            "line_id": "v_loader_daily_02",
+            "text": "重货两人搭手，轻货也别抢道。水边这点地方，容不得逞能。"
+          }
+        ],
+        "unresolved": [
+          {
+            "line_id": "v_loader_unresolved_01",
+            "text": "两边吵起来，先别堵着给伤者让的路。"
+          },
+          {
+            "line_id": "v_loader_unresolved_02",
+            "text": "我只认自己搬过的货。谁说哪家可疑，你还得找凭据。"
+          }
+        ],
+        "after_local_investigation": [
+          {
+            "line_id": "v_loader_after_01",
+            "text": "如今交货先核契，少吵一句，大家都能早些收工。"
+          },
+          {
+            "line_id": "v_loader_after_02",
+            "text": "伤者已经送去医治，后头还得养着。可不是一句和气就都好了。"
+          }
+        ]
+      },
+      "later_revisit_proposal": "后章聊货路与共同核契；不泄露证人住处或护送路线。工作位置可复访，不能接取后消失。"
+    },
+    {
+      "npc_id": "harbour_life_gate_supply_attendant",
+      "display_name": "货担主人",
+      "identity_id": "luoyang_resident_gate_supply_v",
+      "scene_id": "ch4_s0_luoyang_gate",
+      "identity_evidence_refs": [
+        "harbour_identities"
+      ],
+      "phase_contract": "canal",
+      "design_age": 47,
+      "design_age_status": "CANDIDATE_NOT_CANON_CHANGE",
+      "appearance_candidate": "厚实身形、褪土黄色短褂、深色裤、旧布帽、细竹记数签；待后续专用美术，不拿装卸伙计精灵改名字冒充新人。",
+      "voice_candidate": "中年中音，健谈而不油滑，先说生意再关照行旅。",
+      "personal_anchor": "连接城外村庄和城内日常采买，让进城的人不只有军士和江湖客。",
+      "topic_options": [
+        "聊聊进城的买卖",
+        "问问近日路况",
+        "一路平安"
+      ],
+      "task_option_policy": "不增加进城费、时间门锁或新任务；门吏原通行与公告对白保持。",
+      "phases": {
+        "daily": [
+          {
+            "line_id": "v_gate_daily_01",
+            "text": "我赶早挑货进城，卖完再把盐油带回村里，一趟路才不白走。"
+          },
+          {
+            "line_id": "v_gate_daily_02",
+            "text": "你先过，我这担子宽。门前让一让，谁都不必干等。"
+          }
+        ],
+        "unresolved": [
+          {
+            "line_id": "v_gate_unresolved_01",
+            "text": "近来行商说码头有争执，各人讲的都不一样，我不拿传话当见证。"
+          },
+          {
+            "line_id": "v_gate_unresolved_02",
+            "text": "要查就到码头问当事人，门前听十遍，也只是听来的。"
+          }
+        ],
+        "after_local_investigation": [
+          {
+            "line_id": "v_gate_after_01",
+            "text": "码头的争执办妥了？做买卖的人，求的就是把货和账说清。"
+          },
+          {
+            "line_id": "v_gate_after_02",
+            "text": "往后我也让收货人当面点过，省得只靠一句听说。"
+          }
+        ]
+      },
+      "later_revisit_proposal": "以同一乡民身份回访，聊庄稼、进城采买和家用；不把时代不明的现代民俗或主线秘密塞进村民口中。"
+    }
+  ],
+  "roster_plan": [
+    {
+      "npc_id": "luoyang_paper_artisan_20261016",
+      "role": "老纸匠",
+      "wave": 1,
+      "evidence_refs": [
+        "paper_identity"
+      ],
+      "revisit_thread": "手艺、纸价、家信",
+      "dialogue_status": "THREE_PHASE_CANDIDATE"
+    },
+    {
+      "npc_id": "district_life_market_buyer",
+      "role": "采买妇人",
+      "wave": 1,
+      "evidence_refs": [
+        "district_identities",
+        "district_id_prefix"
+      ],
+      "revisit_thread": "家用、邻里互助、街市物价",
+      "dialogue_status": "THREE_PHASE_CANDIDATE"
+    },
+    {
+      "npc_id": "harbour_life_docks_loading_attendant",
+      "role": "装卸伙计",
+      "wave": 1,
+      "evidence_refs": [
+        "harbour_identities"
+      ],
+      "revisit_thread": "劳作、伤者、核契",
+      "dialogue_status": "THREE_PHASE_CANDIDATE"
+    },
+    {
+      "npc_id": "harbour_life_gate_supply_attendant",
+      "role": "货担主人",
+      "wave": 1,
+      "evidence_refs": [
+        "harbour_identities"
+      ],
+      "revisit_thread": "村庄进城、货担与家用",
+      "dialogue_status": "THREE_PHASE_CANDIDATE"
+    },
+    {
+      "npc_id": "district_life_market_farmer",
+      "role": "入城乡民",
+      "wave": 2,
+      "evidence_refs": [
+        "district_identities",
+        "district_id_prefix"
+      ],
+      "revisit_thread": "田间收成、亲属采买、回村",
+      "dialogue_status": "OUTLINE_ONLY"
+    },
+    {
+      "npc_id": "district_life_market_shop_attendant",
+      "role": "铺中伙计",
+      "wave": 2,
+      "evidence_refs": [
+        "district_identities",
+        "district_id_prefix"
+      ],
+      "revisit_thread": "铺务、候客与让道；不是擅自新增药师",
+      "dialogue_status": "OUTLINE_ONLY"
+    },
+    {
+      "npc_id": "district_life_market_courier",
+      "role": "行脚商",
+      "wave": 2,
+      "evidence_refs": [
+        "district_identities",
+        "district_id_prefix"
+      ],
+      "revisit_thread": "货路见闻与传闻可信度",
+      "dialogue_status": "OUTLINE_ONLY"
+    },
+    {
+      "npc_id": "canal_old_soldier",
+      "role": "老漕卒",
+      "wave": 2,
+      "evidence_refs": [
+        "canal_identity"
+      ],
+      "revisit_thread": "旧刀与亲见记忆；既有任务不扩写真凶",
+      "dialogue_status": "OUTLINE_ONLY"
+    },
+    {
+      "npc_id": "luoyang_paper_scholar",
+      "role": "南市书生",
+      "wave": 2,
+      "evidence_refs": [
+        "market_named_identities"
+      ],
+      "revisit_thread": "纸业支线后仍可谈读写与往来家信",
+      "dialogue_status": "OUTLINE_ONLY"
+    },
+    {
+      "npc_id": "luoyang_poetry_host",
+      "role": "牡丹诗会主持",
+      "wave": 2,
+      "evidence_refs": [
+        "market_named_identities"
+      ],
+      "revisit_thread": "赏花、诗友与街坊；不是现代官方花会",
+      "dialogue_status": "OUTLINE_ONLY"
+    },
+    {
+      "npc_id": "harbour_life_docks_booking_attendant",
+      "role": "记货伙计",
+      "wave": 2,
+      "evidence_refs": [
+        "harbour_identities"
+      ],
+      "revisit_thread": "货册、当面交接与工作压力",
+      "dialogue_status": "OUTLINE_ONLY"
+    },
+    {
+      "npc_id": "harbour_life_gate_waiting_traveller_a",
+      "role": "候检旅人",
+      "wave": 2,
+      "evidence_refs": [
+        "harbour_identities"
+      ],
+      "revisit_thread": "投亲、歇脚与不同来源的行路见闻",
+      "dialogue_status": "OUTLINE_ONLY"
+    }
+  ],
+  "culture_research": {
+    "setting": "架空大乾；不能把不同朝代或当代洛阳活动混成固定史实。",
+    "safe_fictional_daily_life": [
+      "进城采买",
+      "纸铺防潮与家信",
+      "劳工搭手搬货",
+      "候客让座",
+      "邻里对话"
+    ],
+    "safe_fictional_daily_life_status": "符合职业的架空生活，不宣称洛阳独有历史习俗。",
+    "peony_reference": {
+      "url": "https://www.ihchina.cn/project_details/15243/",
+      "verification_owner": "producer",
+      "status": "PRODUCER_RESEARCHED_EXTERNAL_REFERENCE_NOT_FETCHED_BY_LORE",
+      "use_boundary": "可用于后续家院种花、相约赏花；不写现代官方牡丹花会或现代节庆制度。首批四人对白没有依赖此史实。"
+    },
+    "pending_research": [
+      "选定时代风格后再查饮食、岁时节日、行会与水运制度",
+      "不把当代水席、汤食名称及固定现代仪式直接写成大乾古俗",
+      "未检证的节俗只保留研究任务，不输出为史实对白"
+    ]
+  },
+  "acceptance": [
+    "首批四个 npc_id 均由证据路径定位，不能因存在 author row 就声称当前实机所有站位已验收。",
+    "四人每人三个阶段，每阶段两句，共二十四句；所有 line_id 唯一。",
+    "选句过程只读既有任务状态及 flags，不调用接取、完成、奖励、隐藏或传送。",
+    "已有纸业委托操作不被闲聊吞掉，返回话题菜单后仍可明确选择任务话题。",
+    "声音与同一人物美术匹配；无音频时仍能顺畅读文字。",
+    "后续章新增响应必须核实公开结果和存活条件，不自动推断真凶，不写证人地址。"
+  ]
+}

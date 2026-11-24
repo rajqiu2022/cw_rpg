@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"xuanshuang_hidden_current"
+display_name = "玄霜归藏诀"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_inner_breath_v1.png"
+description = "刑樊天封存多年的归藏法门。装备时全面强化内功；配合孤云九式或盘龙十七式可进一步破防、积累内伤，并在命中后同时回复气血与内力。"
+origin = "刑樊天隐居林西后把旧日寒劲与二十年吐纳心得重编为归藏诀。只有冷孤云完成终章归来，并将林西吐纳术修至九重，师徒才能补全最后一页。"
+kind = 2
+target = 4
+mp_cost = 0
+quality = 4
+required_insight = 12
+practice_base_cost = 68
+fixed_damage = 0
+attack_scaling = 0
+effect_value = 0
+animation_id = &"xuanshuang_hidden_current"
+school = "linxi"
+is_passive = true
+is_internal_art = true
+passive_vitality_bonus = 3
+passive_inner_pool_bonus = 4
+passive_inner_power_bonus = 3
+passive_vitality_growth = 1
+passive_inner_pool_growth = 1
+passive_inner_power_growth = 1
+equip_weapon_categories = Array[StringName]([&"all"])
+equip_damage_scope = "internal"
+equip_damage_scaling_bonus = 14
+equip_damage_scaling_growth = 3
+equip_crit_chance_bonus = 0.04
+equip_crit_chance_growth = 0.01
+equip_internal_injury_bonus = 10
+equip_internal_injury_growth = 2
+synergy_skill_ids = Array[StringName]([&"wanxiang_breaking_sword", &"canghai_zhenyue_palms"])
+synergy_damage_scaling_bonus = 15
+synergy_damage_scaling_growth = 1
+synergy_crit_chance_bonus = 0.08
+synergy_internal_injury_bonus = 12
+synergy_internal_injury_growth = 1
+synergy_defense_pierce_bonus = 10
+synergy_self_hp_restore = 8
+synergy_self_hp_restore_growth = 1
+synergy_self_mp_restore = 10
+synergy_self_mp_restore_growth = 1
+equipped_effect_description = "孤云九式、盘龙十七式额外破防并积累内伤，命中后回复生命与内力。"

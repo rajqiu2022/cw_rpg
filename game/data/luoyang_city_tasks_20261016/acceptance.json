@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "kind": "ACCEPTANCE_SPEC_NOT_TEST_EXECUTION",
+  "engine_executed": false,
+  "formal_installed": false,
+  "scenarios": [
+    {
+      "id": "offer_decline",
+      "quests": [
+        "q_ch4_side_06_canal_grudge",
+        "q_ch4_side_02_luoyang_paper",
+        "q_ch4_side_07_hanjia_blade"
+      ],
+      "expect": [
+        "Offer node has accept_quest but no flags/items/complete effects",
+        "Decline does not advance to accepted node",
+        "Started flag and quest remain unchanged",
+        "NPC persists"
+      ]
+    },
+    {
+      "id": "canal_stages",
+      "order": [
+        "not_started",
+        "accepted",
+        "witness",
+        "located",
+        "evidence",
+        "completed"
+      ],
+      "expect": [
+        "Chief and old soldier persist at original feet through all stages",
+        "Before acceptance and before witness, mud visual/interaction/actions absent",
+        "Witness is old soldier, not a talking box",
+        "At stand940750 one investigation gives located, second gives evidence",
+        "No reward at mud point",
+        "Return to chief17401310 completes original quest once",
+        "Ordinary cargo17401250 never gains task action/prompt/highlight/reward; original solid unchanged"
+      ]
+    },
+    {
+      "id": "paper_stages",
+      "order": [
+        "not_started",
+        "accepted",
+        "hint",
+        "materials",
+        "completed"
+      ],
+      "expect": [
+        "Scholar persists at5201340",
+        "Artisan13201290 has daily/hint/ready/after dialogue",
+        "Hint comprises city south exit, ancient temple west former paper workshop and exact visual clue",
+        "Temple existing legacy-bodycenter .38,.34 absent until accepted+hint",
+        "Temple collection gives only materials flag, no quest reward/lower fragment",
+        "Report at scholar gives original lower fragment and original quest completion effects once",
+        "Poetry host and existing paper_birdseal discovery stay unchanged"
+      ]
+    },
+    {
+      "id": "hanjia_preservation",
+      "expect": [
+        "Old soldier remains visible after old blade quest acceptance",
+        "Canal witness branch takes temporary priority only until testimony obtained",
+        "Original blade offer/start flag, active reminder and completed idle retained",
+        "Original old blade quest/reward/target resources unchanged"
+      ]
+    },
+    {
+      "id": "native_clearance",
+      "expect": [
+        "No C.prepare or resolve from helper",
+        "Market source has exact bound R metadata and corresponding current C record",
+        "Artisan foot13201290 and approach12401290 each pass original C.safe_body(full875+polygon) plus17 mask samples, no unsafe repair/teleport",
+        "Native Physics and visible placement must still be checked by ROOT; not implied by candidate static source"
+      ]
+    },
+    {
+      "id": "source_immutability",
+      "expect": [
+        "Source SceneScript/layout/NPC/objects/interactions remain byte/value unchanged",
+        "Only returned arrays change",
+        "C masks/solids/records, original cargo geometry, portals/routes/room IDs/BGM unchanged",
+        "New source/spec hash drift, duplicate identity, wrong source/hotspot or unsafe foot returns ok=false with no fallback to unsafe data",
+        "Projection never sent back through C.runtime_fidelity as if it were the source scene"
+      ]
+    },
+    {
+      "id": "action_authorization",
+      "expect": [
+        "Unknown IDs under our prefix refused",
+        "Cannot report while unaccepted, before all prefix flags, after completed or after source drift",
+        "All owned NPC/dialog field entry paths must call authorize_dialog with fresh flags and quest states",
+        "Each effects script has required_story_flag/blocked_story_flag backstops",
+        "No paid API, new image, inventory type or save-schema changes"
+      ]
+    },
+    {
+      "id": "resident_refresh",
+      "expect": [
+        "After indoor quest-state changes, resumed outdoor projections use fresh flags/states",
+        "New helper/spec/dialog sources must enter resident source/epoch seal; drift invalidates snapshot",
+        "No new Field hook installed by this candidate"
+      ]
+    }
+  ],
+  "preserved_rewards": {
+    "q_ch4_side_06_canal_grudge": {
+      "gold": 35,
+      "exp": 30,
+      "items": [
+        {
+          "item_id": "xuantong_fist_gauntlets",
+          "count": 1
+        },
+        {
+          "item_id": "healing_pill_major",
+          "count": 2
+        },
+        {
+          "item_id": "antidote_pill",
+          "count": 1
+        }
+      ],
+      "report_flags": [
+        "canal_feud_resolved",
+        "huilan_water_rule_understood"
+      ]
+    },
+    "q_ch4_side_02_luoyang_paper": {
+      "gold": 10,
+      "exp": 25,
+      "items": [
+        {
+          "item_id": "spirit_stone",
+          "count": 3
+        },
+        {
+          "item_id": "heaven_element_pill",
+          "count": 1
+        }
+      ],
+      "report_give_items": [
+        {
+          "id": "canglong_fragment_lower",
+          "count": 1
+        }
+      ],
+      "report_flags": [
+        "luoyang_paper_helped",
+        "canglong_lower_found"
+      ],
+      "report_accept_quest": "q_secret_canglong_three_pages"
+    }
+  }
+}
+

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"luoyang_case_robber"
+display_name = "断指裴安"
+title = "盗卷勒索"
+description = "窃走陈年案卷后向当事人索钱。卖药人见他拿着有朱封的包裹，可能在旧官亭或中原旧驿落脚。"
+board_city = &"luoyang"
+recommended_min_level = 5
+recommended_max_level = 7
+enemy_ids = Array[StringName]([&"warrant_luoyang_case_robber", &"central_road_scout"])
+locations = Array[Dictionary]([{"scene_id":&"ch4_s0_luoyang_gate","label":"洛阳南郊 · 旧官亭","pos":Vector2(0.72,0.68)},{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 破药铺","pos":Vector2(0.30,0.52)}])
+reward_reputation = 16
+reward_training = 32
+reward_exp = 72
+reward_gold = 75
+reward_items = Array[Dictionary]([{"item_id":&"herb_bundle","count":3}])
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_duan_changfeng_idle_down_4f_v1_runtime.png"

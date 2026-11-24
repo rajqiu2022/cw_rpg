@@ -14,9 +14,9 @@
 from __future__ import annotations
 
 import os
-import shutil
 import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -32,11 +32,13 @@ if hasattr(sys.stdout, "reconfigure"):
         pass
 
 
-def run(cmd: list[str], step: str) -> int:
+def run(cmd: list[str], step: str, env_overrides: dict[str, str] | None = None) -> int:
     print(f"\n=== [{step}] {' '.join(cmd)} ===")
     env = os.environ.copy()
     env.setdefault("OPENAI_API_KEY", "sk-smoke-test-placeholder")
     env["PYTHONIOENCODING"] = "utf-8"
+    if env_overrides:
+        env.update(env_overrides)
     res = subprocess.run(cmd, cwd=ROOT, env=env)
     if res.returncode != 0:
         print(f"!!! [{step}] FAILED with exit {res.returncode}")
@@ -46,26 +48,33 @@ def run(cmd: list[str], step: str) -> int:
 
 
 def main() -> int:
-    if RAW.exists() and any(RAW.iterdir()):
-        print(f"清理旧的 dry-run 产物: {RAW}")
-        for child in RAW.iterdir():
-            if child.is_dir():
-                shutil.rmtree(child)
-            else:
-                child.unlink()
-
     py = sys.executable
     failures = 0
 
     failures += run(
-        [py, str(SCRIPTS / "gen_assets.py"), "--dry-run", "--priority", "1"],
+        [
+            py,
+            str(SCRIPTS / "gen_assets.py"),
+            "--dry-run",
+            "--task",
+            "ui_quest_panel_bg_v3",
+        ],
         "gen_assets dry-run",
     )
 
-    failures += run(
-        [py, str(SCRIPTS / "verify.py")],
-        "verify (empty)",
-    )
+    with tempfile.TemporaryDirectory(prefix="rpg-art-smoke-") as temp_dir:
+        empty_raw = Path(temp_dir) / "raw"
+        empty_processed = Path(temp_dir) / "processed"
+        empty_raw.mkdir()
+        empty_processed.mkdir()
+        failures += run(
+            [py, str(SCRIPTS / "verify.py")],
+            "verify (isolated empty dirs)",
+            {
+                "RAW_DIR": str(empty_raw),
+                "PROCESSED_DIR": str(empty_processed),
+            },
+        )
 
     failures += run(
         [py, str(SCRIPTS / "postprocess.py"), "--help"],
@@ -76,16 +85,6 @@ def main() -> int:
     if failures:
         print(f"[FAIL] {failures} step(s) failed")
         return 1
-
-    if RAW.exists():
-        meta_files = list(RAW.rglob("*.meta.json"))
-        print(f"[OK] dry-run produced {len(meta_files)} meta file(s) under assets/raw/")
-        for child in RAW.iterdir():
-            if child.is_dir():
-                shutil.rmtree(child)
-            else:
-                child.unlink()
-        print(f"[OK] cleaned up dry-run artifacts")
 
     print("[PASS] smoke test all green - environment is healthy")
     return 0

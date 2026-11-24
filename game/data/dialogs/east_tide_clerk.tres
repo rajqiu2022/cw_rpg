@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "货栈账房"
+text = "双股索、落潮……当日有两船都挂过茶牌，我可不敢凭船名指人。案桌上摊着两张船单，你自己核一遍，我给你开旧泊位的簿。"
+set_flags = Array[Dictionary]([{"key": "tide_waybills_open", "value": true}])
+
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_tide_clerk"
+
+nodes = Array[ExtResource("node")]([SubResource("start")])

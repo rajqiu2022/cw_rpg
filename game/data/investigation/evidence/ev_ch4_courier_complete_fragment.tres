@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch4_courier_complete_fragment"
+display_name = "信使携带的完整残卷"
+description = "被截信使携带的残卷可与古冢碎页拼合，补出了十八年前押运队的换班顺序。末尾仍缺委托人署名，但洛阳中转点已经明确。"
+chapter = 4
+category = &"document"
+source_hint = "漕渠逃离信使"
+related_testimony_ids = Array[StringName]([&"ts_ch4_captured_courier_orders"])
+tags = Array[StringName]([&"old_case", &"roster", &"courier"])

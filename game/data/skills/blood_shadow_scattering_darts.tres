@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"blood_shadow_scattering_darts"
+display_name = "血影散星"
+icon_path = "res://art/ui/skill/icons_semantic_v2/icon_skill_hidden_blood_darts_v1.png"
+description = "暗器分作数路封锁退势。伤及全体敌人，并有较高概率造成持续流血。"
+kind = 0
+target = 1
+delivery = 1
+mp_cost = 24
+quality = 3
+required_insight = 10
+practice_base_cost = 42
+fixed_damage = 22
+attack_scaling = 90
+hit_count = 1
+base_hit_chance = 0.96
+animation_id = &"blood_shadow_scattering_darts"
+required_weapon_type = &"hidden"
+martial_category = &"hidden"
+damage_type = 0
+inflicted_status = &"bleed"
+status_chance = 0.7
+status_duration = 3
+school = "generic"

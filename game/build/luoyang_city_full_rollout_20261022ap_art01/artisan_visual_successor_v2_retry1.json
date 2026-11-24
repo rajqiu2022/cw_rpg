@@ -1,0 +1,120 @@
+{
+  "change_id": "luoyang-city-full-rollout-20261022ap",
+  "status": "ART_COORDINATE_RETRY_SOURCE_READY_REQUIRES_SYSTEM_GEOMETRY_AND_NATIVE_REVIEW",
+  "parent_art_contract": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_art01/artisan_visual_successor_v2.json",
+    "sha256": "D9AA1F3A7C49B71B8C0D449FDED47045E410EE7EB832D54FBD3BFDD05022AC3D"
+  },
+  "scope": "Only the listed placement and exact visual-overlap successors. Every unlisted asset, ground layer, building placement, source measurement and acceptance rule is inherited byte-for-byte in meaning from the parent contract.",
+  "placement_successors": [
+    {
+      "id": "ap_tree_nw_v2",
+      "old_foot_world": [300, 740],
+      "new_foot_world": [260, 740],
+      "complete_A1_world_xywh": [185.0, 528.235, 150.0, 213.529],
+      "reason": "move 40px west so the complete tree A1 no longer touches the west residence A1"
+    },
+    {
+      "id": "ap_tree_well_e_v2",
+      "old_foot_world": [1882, 1110],
+      "new_foot_world": [1820, 1500],
+      "complete_A1_world_xywh": [1745.0, 1288.235, 150.0, 213.529],
+      "reason": "move to the southeast court edge, clear of both the enlarged well and the cloth-front complete A1"
+    },
+    {
+      "id": "ap_cloth_rack_v2",
+      "old_foot_world": [2200, 1335],
+      "new_foot_world": [2200, 1405],
+      "complete_A1_world_xywh": [2061.76, 1233.82, 270.0, 184.32],
+      "reason": "move 70px down to read as a foreground yard rack rather than merging into the cloth building"
+    },
+    {
+      "id": "ap_smith_brazier_v2",
+      "old_foot_world": [520, 1330],
+      "new_foot_world": [520, 1332],
+      "reason": "remove the measured 0.173px visual contact with ap_closed_smithy_west instead of whitelisting a building-prop overlap"
+    }
+  ],
+  "exact_visual_A1_overlap_allowlist": [
+    {
+      "pair": ["ap_smith_brazier_v2", "ap_smith_wall_w1"],
+      "required_depth": "prop behind foreground wall",
+      "reason": "intentional forge yard occlusion"
+    },
+    {
+      "pair": ["ap_smith_brazier_v2", "ap_smith_wall_w2"],
+      "required_depth": "prop behind foreground wall",
+      "reason": "intentional forge yard occlusion"
+    },
+    {
+      "pair": ["ap_smith_anvil_v2", "ap_smith_wall_e1"],
+      "required_depth": "prop behind foreground wall",
+      "reason": "intentional smith yard occlusion"
+    },
+    {
+      "pair": ["ap_carpentry_cart_v2", "ap_smith_wall_w1"],
+      "required_depth": "cart behind foreground wall",
+      "reason": "parked service cart partly screened by the west yard edge"
+    },
+    {
+      "pair": ["ap_carpentry_cart_v2", "ap_smith_wall_w2"],
+      "required_depth": "cart behind foreground wall",
+      "reason": "parked service cart partly screened by the west yard edge"
+    },
+    {
+      "pair": ["ap_cloth_rack_v2", "ap_cloth_wall_w1"],
+      "required_depth": "rack behind foreground wall",
+      "reason": "cloth rack is inside the bounded east workyard"
+    },
+    {
+      "pair": ["ap_cloth_rack_v2", "ap_cloth_wall_e1"],
+      "required_depth": "rack behind foreground wall",
+      "reason": "cloth rack is inside the bounded east workyard"
+    }
+  ],
+  "allowlist_hard_limits": [
+    "The allowlist applies only to complete visual A1 rectangle overlap for the seven exact unordered ID pairs above.",
+    "It does not authorize any solid rectangle, solid polygon, 875+17 body, NAV, route, room threshold, return point or portal overlap.",
+    "It does not authorize wall-wall, prop-prop, building-prop, building-wall, tree-anything, notice-anything or well-anything overlap.",
+    "All source-ground geometry remains strict and must be projected from the original asset contracts.",
+    "The wall must render in front of its paired yard prop; reversing that order invalidates the visual exception."
+  ],
+  "approved_room_threshold_successor": {
+    "retained_room_count": 3,
+    "portals": [
+      {
+        "id": "ap_enter_ap_courtyard_home_west",
+        "threshold_world": [650, 674],
+        "route_endpoint_world": [650, 674],
+        "identity": "unchanged west residence room"
+      },
+      {
+        "id": "ap_enter_ap_courtyard_home_east",
+        "threshold_world": [2290, 674],
+        "route_endpoint_world": [2290, 674],
+        "identity": "unchanged east guest residence room"
+      },
+      {
+        "id": "ap_enter_ap_carpentry_general_shop_south",
+        "threshold_world": [1536, 1900],
+        "return_world": [1536, 1924],
+        "route_endpoint_world": [1536, 1924],
+        "identity": "retained third general-stall/carpentry room moved with the south focal building"
+      }
+    ],
+    "route_successor_points": {
+      "west_residence_branch": [[1536, 864], [650, 864], [650, 674]],
+      "east_residence_branch": [[1536, 864], [2290, 864], [2290, 674]],
+      "south_general_shop_branch": [[1536, 1664], [1536, 1924]]
+    },
+    "strict_requirement": "All three branches, thresholds and the south +24 return must pass real body and navigation checks after publication; these coordinates grant no runtime credit."
+  },
+  "not_changed": [
+    "all parent asset paths, SHA values, A1/source anchors and solids",
+    "five-building purpose and silhouette selection",
+    "grass, bounded earth and native-scale courtyard paving layers",
+    "six foreground wall positions and both 160px yard openings",
+    "outer craft_to_market identity and foot [2816,1740]",
+    "no image generation, image processing, import, canonical write or engine run"
+  ]
+}

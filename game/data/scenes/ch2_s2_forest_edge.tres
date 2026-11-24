@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/ch2_s2_forest_edge_layout_v2.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1920, 1280)
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch2_s2_forest_edge"
+display_name = "竹尾村外 · 北林旧道"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_forest_mystery_v4.wav"
+on_enter_once_flag = &"seen_ch2_forest_route"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+animated_props = Array[Dictionary]([{"id":"ch2_forest_edge_bamboo_canopy","type":"texture_sway","texture":"res://art/modules/veg/veg_bamboo_top_canopy.png","pos":Vector2(0.020,0.025),"size":Vector2(0.360,0.090),"speed":0.44,"z_index":32},{"id":"ch2_forest_edge_mist","type":"mist_drift","pos":Vector2(0.55,0.650),"size":Vector2(0.76,0.12),"speed":0.32,"opacity":0.06,"count":3,"color":"#cbd7d1","z_index":12}])
+npcs = [
+	{"npc_id": "old_hunter_forest_edge", "npc_name": "旧猎户", "pos": Vector2(0.42, 0.60), "sprite_path": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png", "dialog_id": "ch2_forest_route", "scale": 0.95}
+]
+hotspots = [
+	{"label": "追踪林中血迹", "pos_x": 0.70, "pos_y": 0.46, "action": "scene:ch2_s3_forest_ambush", "require_flag": "forest_route_open"},
+	{"label": "破庙旁的老猕", "pos_x": 0.25, "pos_y": 0.58, "action": "dialog:ch2_herb_thief_find", "require_flag": "forest_route_open", "require_quest_active": "q_ch2_side_04_herb_thief", "hide_flag": "herb_thief_evidence_found"},
+	{"label": "返回竹尾村", "pos_x": 0.10, "pos_y": 0.82, "action": "scene:ch2_s1_zhuwei_market"}
+]
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids": [&"zhuwei_bandit"], "weight": 32.0},
+	{"enemy_ids": [&"bamboo_feral_dog"], "weight": 13.0},
+	{"enemy_ids": [&"masked_killer_minion"], "weight": 20.0},
+	{"enemy_ids": [&"zhuwei_bandit", &"masked_killer_minion"], "weight": 22.0},
+	{"enemy_ids": [&"zhuwei_bandit", &"masked_killer_minion", &"zhuwei_bandit"], "weight": 8.0},
+	{"enemy_ids": [&"wild_elite_zhuwei"], "weight": 5.0}
+])
+encounter_allow_full_group_for_solo = true
+encounter_step_distance = 560.0
+encounter_chance = 0.16

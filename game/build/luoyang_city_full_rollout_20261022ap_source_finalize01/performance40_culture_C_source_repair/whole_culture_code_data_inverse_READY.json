@@ -1,0 +1,91 @@
+{
+  "status": "AP15_EXACT_CULTURE_C_PIN_AND_LITERAL_DEPENDENCY_REPAIR_PROPOSAL_NOT_DEPLOYED",
+  "records": {
+    "runtime_contract": {
+      "target": "res://data/luoyang_culture_integration_20261019x/runtime_contract.json",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/outputs/root_artisan_A2_source_stage01/runtime_contract_source_successor.json",
+        "sha256": "7ee1224b29184563e59b6a7b3fea7fa5348e264fe765f7a8efda253efc50454e"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/runtime_contract_C_literal_READY.json",
+        "sha256": "59cf1ebdac2f8f17b644b00f36e241b8b4e43275a50ec6a8b1eb7d89632e59c1"
+      },
+      "hunks": [
+        {
+          "old": "8c145ffb7ce25fcbdf59adf59eb1646f91be753246d24d5fe529b6e1b0bca26b",
+          "new": "b14a1042421029651fe0283d3daf8f6e52bea96c9047b79095912f1eb45dc9be"
+        }
+      ],
+      "whole_typed_inverse_one_C_source_value": true
+    },
+    "Coordinator": {
+      "target": "res://scripts/city/luoyang_cultural_sidequests_coordinator_20261019x.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/a2_production04/Coordinator_contract_READY.gd",
+        "sha256": "d59026fb7e82cf0ad1ce730fe2dc9917c6f66e50a324b1e0f682b05417b2e420"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/Coordinator_C_contract_CANDIDATE.gd",
+        "sha256": "fd54339b283735fd3859bd91499405a17a1ac62ba041ad0e3b65db8d9bec77b7"
+      },
+      "hunks": [
+        {
+          "old": "const CONTRACT_SHA := \"7ee1224b29184563e59b6a7b3fea7fa5348e264fe765f7a8efda253efc50454e\"",
+          "new": "const CONTRACT_SHA := \"59cf1ebdac2f8f17b644b00f36e241b8b4e43275a50ec6a8b1eb7d89632e59c1\""
+        }
+      ]
+    },
+    "temple_binding": {
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/temple_binding_C_literal_READY.json",
+        "sha256": "a5fadbd1466eafa84c0d3a78e96f02a609802af35d2b17848cb9bfb1744b5c9c"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/temple_binding_Culture_literals_READY.json",
+        "sha256": "2682fc0c3bd74e26d26149e56b9c736f7183193ae53c37b46f1754be89488aab"
+      },
+      "hunks": [
+        {
+          "old": "d59026fb7e82cf0ad1ce730fe2dc9917c6f66e50a324b1e0f682b05417b2e420",
+          "new": "fd54339b283735fd3859bd91499405a17a1ac62ba041ad0e3b65db8d9bec77b7"
+        },
+        {
+          "old": "7ee1224b29184563e59b6a7b3fea7fa5348e264fe765f7a8efda253efc50454e",
+          "new": "59cf1ebdac2f8f17b644b00f36e241b8b4e43275a50ec6a8b1eb7d89632e59c1"
+        }
+      ],
+      "whole_typed_inverse_two_values_187others_unchanged": true
+    },
+    "Temple": {
+      "target": "res://scripts/city/luoyang_temple_assembly_20261016.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Temple_C_binding_CANDIDATE.gd",
+        "sha256": "9001636cebcc00d955e9293cb242215d2aa7be7a1908e81281a9eec8d87d2e70"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/Temple_Culture_binding_CANDIDATE.gd",
+        "sha256": "927bbe01f918c9d0406a817677348b00d7f7bfbd52f5452c19b449f97c29472a"
+      },
+      "hunks": [
+        {
+          "old": "const BIND_PATH=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/temple_binding_C_literal_READY.json\"",
+          "new": "const BIND_PATH=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/temple_binding_Culture_literals_READY.json\""
+        },
+        {
+          "old": "const BIND_SHA=\"a5fadbd1466eafa84c0d3a78e96f02a609802af35d2b17848cb9bfb1744b5c9c\"",
+          "new": "const BIND_SHA=\"2682fc0c3bd74e26d26149e56b9c736f7183193ae53c37b46f1754be89488aab\""
+        }
+      ]
+    }
+  },
+  "all_forward_and_listed_inverse_bytes_equal": true,
+  "runtime_contract_source_fields_only_C_changed": true,
+  "contract_other25_source_values_and_all_story_NPC_pickup_flags_rewards_unchanged": true,
+  "Temple_merged189_only_Coordinator_and_contract_changed": true,
+  "other187_values_same": true,
+  "cause": "Formal C changed8C145->B14A underAP15; frozen culture contract7EE and CoordinatorD590 kept old C pin. readiness53-57 correctly refused at Field cultural projection; no readiness/freshness gate is removed.",
+  "contract_AP15_changed_target_intersection_only_C": true,
+  "no_new_media_hash_or_runtime_collector_observation": true,
+  "engine_Stage_collector_native_decode_formal_calls": 0
+}

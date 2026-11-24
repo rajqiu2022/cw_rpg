@@ -1,0 +1,28 @@
+{
+  "status": "BUILD_ONLY_ROOT_APPROVED_MINIMAL_RECEIPT_SCHEMA_BRIDGE_NOT_ENGINE_TEST",
+  "pairs": [
+    {
+      "parent": "res://build/luoyang_city_finish_20261025i_source01/visible_doors_boundaries33_repair01/closure_READY01/Field_READY.gd",
+      "parent_sha256": "864bb14b896f4a1654d0d125478a4e2906bdd15d44e7f36092fe3cd3cdae123f",
+      "candidate": "res://build/luoyang_city_finish_20261025i_system01/temple_actor_receipt_bridge01_NOTREADY/Field_receipt_bridge_CANDIDATE.gd",
+      "candidate_sha256": "3eb013420320ed269f7e983de3cfce2e138b92f815971fef2005b9d39c47577c",
+      "hunks": [
+        {
+          "old": "\t\t_city_tasks_receipt=projected.receipt.duplicate(true)\n",
+          "new": "\t\t_city_tasks_receipt=projected.receipt.duplicate(true)\n\t\tif temple_session!=null and scene.scene_id==&\"ch4_s4_ancient_temple\":\n\t\t\t_city_tasks_receipt[\"matched\"]=projected.get(\"matched\")==true\n"
+        }
+      ]
+    }
+  ],
+  "source_of_permission": "Original TEMPLE_TASKS.project adapter:39 already strictly requires projected.ok and projected.matched before returning. Bridge propagates that actual top-level boolean to exactTemple copied inner receipt consumed by unchanged helper:209.",
+  "unchanged": [
+    "all helper functions and source pins",
+    "Task and quest source/data",
+    "NPCNode/body/scale/phase/Scene/Layout/storage",
+    "all original FIRST/FINAL, signed IID and Weak lease gates",
+    "all non-Temple Field behavior",
+    "all QA limits and movement/portal/dialog assertions"
+  ],
+  "preserved_actual_FAIL": "WEST116100/40828 no picture/dialog/Space prefix executed",
+  "no_engine_or_canonical_or_parse_run": true
+}

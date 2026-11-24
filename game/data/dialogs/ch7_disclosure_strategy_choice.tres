@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="戚云笙"
+portrait_path="res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text="烈云旧罪、薛影身份、内署授权和证人安置都已成卷。现在决定公开多少、何时公开。"
+accept_quest=&"q_ch7_main_11_disclosure_strategy"
+on_end="next:choice"
+[sub_resource type="Resource" id="choice"]
+script=ExtResource("2")
+node_id=&"choice"
+speaker=""
+text="第七章证据如何公开？"
+choices=Array[Dictionary]([{"text":"立即完整公开，由各方同时承担责任","next":"full","set_flag":{"ch7_disclosure_full":true},"method_flags":[{"key":"ch7_disclosure_method","value":"full_now"}]},{"text":"先公开可核验核心，继续保护证人","next":"staged","set_flag":{"ch7_disclosure_staged":true},"method_flags":[{"key":"ch7_disclosure_method","value":"verified_stages"}]},{"text":"交烈云、洛阳与五派联合封存会审","next":"joint","set_flag":{"ch7_disclosure_joint_review":true},"method_flags":[{"key":"ch7_disclosure_method","value":"joint_review"}]}])
+[sub_resource type="Resource" id="full"]
+script=ExtResource("2")
+node_id=&"full"
+speaker="冷孤云"
+text="全部公开。烈云的错、茗雾的令、薛影的身份，都不能再由任何一方单独删改。"
+on_end="next:converge"
+[sub_resource type="Resource" id="staged"]
+script=ExtResource("2")
+node_id=&"staged"
+speaker="冷孤云"
+text="先公开已核验核心，隐去证人去向。真相要见光，活人也要活到作证那天。"
+on_end="next:converge"
+[sub_resource type="Resource" id="joint"]
+script=ExtResource("2")
+node_id=&"joint"
+speaker="冷孤云"
+text="三方封存副本共同会审，谁想改一页，都必须同时骗过另外两方。"
+on_end="next:converge"
+[sub_resource type="Resource" id="converge"]
+script=ExtResource("2")
+node_id=&"converge"
+speaker="戚云笙"
+portrait_path="res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text="证据按你的方式出峡谷。下一步，是去问苏雾笙：她想用这些真实旧罪，把江湖推到哪里。"
+set_flags=Array[Dictionary]([{"key":"ch7_disclosure_strategy_resolved","value":true}])
+complete_quest=&"q_ch7_main_11_disclosure_strategy"
+on_end="chapter_end:7"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch7_disclosure_strategy_choice"
+required_story_flag = &"chapter6_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("choice"),SubResource("full"),SubResource("staged"),SubResource("joint"),SubResource("converge")])

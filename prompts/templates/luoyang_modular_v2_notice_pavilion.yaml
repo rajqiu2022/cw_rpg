@@ -1,0 +1,20 @@
+id: luoyang_modular_v2_notice_pavilion
+description: Independent human-scale realistic Luoyang notice pavilion. Built-in only; generated original asset, NOT CC0.
+backend: codex_builtin_imagegen
+model: builtin
+size: "1024x1024"
+background: transparent
+transparent_background: true
+quality: high
+reference_images:
+  - game/art/maps/luoyang_modular_v1/source/inn_v1.png
+require_reference_images: true
+prompt_template: |
+  Use case: historical-scene.
+  Asset type: ONE isolated transparent RGBA street prop for a realistic Chinese wuxia RPG city INTERIOR, not a world-map miniature or a UI frame.
+  Input images: the existing Luoyang inn is a MATERIAL AND LIGHTING reference only, not an edit target and not to be copied into this asset.
+  Primary request: a complete human-scale public notice pavilion made by a skilled Chinese carpenter, with two substantial dark timber uprights standing on separate warm weathered stone shoes, a broad recessed notice board between them, a small traditional charcoal-grey tiled hip roof with convincing tile thickness, modest curved brackets and joinery. The board has three naturally creased blank ivory paper notices pinned in place. The pavilion is open around its uprights; do not fill it with a solid wall. Include believable worn wood grain, end-grain, mortise joints, chipped stone and individual roof tiles, not flat-color boxes or a toy model.
+  Composition/framing: fixed FRONT-FACING ORTHOGRAPHIC view, camera directly SOUTH looking NORTH at exactly 30 degrees elevation above horizontal, parallel projection with horizontal front facade and no perspective vanishing point. Complete roof, both stone feet and their lowest front contact edges inside the image, with generous 10% genuinely transparent margin on ALL sides, especially beneath the feet. Aim for a readable asset about 220-240 logical pixels wide in the game; ordinary adult game sprites are about 113.5 pixels tall. The real pavilion is about 2.8 metres high, not a monumental gatehouse.
+  Lighting/mood: neutral upper-left/front daylight, restrained cool ambient fill, soft contact shade ONLY directly beneath the two feet. Match realistic dark aged timber, warm old grey stone and charcoal tiles from the reference inn, without its buildings or lanterns.
+  Text: NONE. Paper notices are completely blank; no Chinese characters, Latin letters, icons, stamps, decorative glyphs or signage. Game text and interaction are separate runtime layers.
+  Constraints: one coherent standalone object; truly transparent alpha=0 background and all open gaps; photorealistic physically based pre-rendered game architecture, sharp natural material detail, no thick outlines. Do not add a floor plane, paving patch, landscape, people, trees, barrels, other buildings or disconnected accessory objects. Preserve a clean silhouette and natural antialiasing. No broad baked cast shadow, smoky grey halo, black backdrop, checkerboard pixels, cropped feet, watercolor, painterly brushstrokes, cartoon, anime, plastic toy surfaces, logo or watermark.

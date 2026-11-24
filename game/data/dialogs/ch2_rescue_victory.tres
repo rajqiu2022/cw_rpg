@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "悦无姮"
+text = "多谢。我叫悦无姮，凌月派弟子。若你晚来半刻，我未必护得住师妹。"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "他们的令牌太新，边角连磨痕都没有。像是刚从作坊拿出来，专门留给人看的。"
+add_evidence = Array[StringName]([&"ev_ch2_fresh_lieyun_token"])
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="n3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "悦无姮"
+text = "他们不用烈云盟的合击步，毒烟也不对。令牌只能说明有人想让我们相信它。"
+verify_evidence = Array[StringName]([&"ev_ch2_fresh_lieyun_token"])
+verify_testimonies = Array[StringName]([&"ts_ch2_apothecary_bound_buyer", &"ts_ch2_yue_attackers_method"])
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="n4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "冷孤云"
+text = "林外还有被绑的村民，东边那名信使正带着文书逃。我们只能先顾一头。"
+choices = Array[Dictionary]([
+	{
+		"text": "先救村民，让证人活着开口",
+		"next": "rescue_first",
+		"add_testimonies": ["ts_ch2_rescued_villager"],
+		"companion_trust_changes": [{"id": "yuewuheng", "delta": 8}],
+		"bond_events": [{"companion": "yuewuheng", "event": "ch2_saved_people_first"}],
+		"city_outcomes": [{"city": "zhuwei", "key": "forest_witness_alive", "value": true}],
+		"method_flags": [{"key": "ch2_rescue_first", "value": true}]
+	},
+	{
+		"text": "由悦无姮护送伤者，我去截信使",
+		"next": "courier_first",
+		"add_evidence": ["ev_ch2_courier_fragment"],
+		"companion_trust_changes": [{"id": "yuewuheng", "delta": 2}],
+		"bond_events": [{"companion": "yuewuheng", "event": "ch2_divided_duties"}],
+		"city_outcomes": [{"city": "zhuwei", "key": "forest_witness_alive", "value": true}],
+		"method_flags": [{"key": "ch2_pursue_courier_first", "value": true}]
+	}
+])
+
+[sub_resource type="Resource" id="rescue_first"]
+script = ExtResource("2_dnode")
+node_id = &"rescue_first"
+speaker = "悦无姮"
+text = "先救人。活人的记忆会乱，却总比死人的沉默多一条路。信使留下的车辙，我记住了。"
+on_end = "next:finish"
+
+[sub_resource type="Resource" id="courier_first"]
+script = ExtResource("2_dnode")
+node_id = &"courier_first"
+speaker = "悦无姮"
+text = "去吧，伤者交给我。你追回文书后立刻回来，别把追线索变成逞强。"
+on_end = "next:finish"
+
+[sub_resource type="Resource" id="finish"]
+script = ExtResource("2_dnode")
+node_id = &"finish"
+speaker = "冷孤云"
+text = "无论先走哪条路，旧矿洞都是交会处。先把眼前的人安置好，再去查它。"
+on_end = "next:spoils"
+
+[sub_resource type="Resource" id="spoils"]
+script = ExtResource("2_dnode")
+node_id = &"spoils"
+speaker = "悦无姮"
+text = "这副竹弩的毒匣已经拆了，机括还能用。听竹叶落地再扣弦——别盯着手，先听风。我只教一遍。"
+set_flags = Array[Dictionary]([{"key": "defeated_masked_ambushers", "value": true}, {"key": "ch2_rescue_complete", "value": true}])
+complete_quest = &"q_ch2_main_02_rescue_yue"
+on_end = "scene:ch2_s3_forest_ambush"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_rescue_victory"
+required_story_flag = &"chapter1_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2"), SubResource("n3"), SubResource("n4"), SubResource("rescue_first"), SubResource("courier_first"), SubResource("finish"), SubResource("spoils")])

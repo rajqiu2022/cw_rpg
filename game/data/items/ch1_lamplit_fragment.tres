@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/item.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_id = &"ch1_lamplit_fragment"
+display_name = "藏锋息法 · 矿灯残页"
+description = "记了如何收息的旧页。与折竹残页对读，方能学会藏锋息法。"
+icon_path = "res://art/ui/inventory/icons/icon_xuanshuang_script.png"
+category = 2
+quality = 3
+max_stack = 1
+usable_in_field = false
+readable = true
+read_title = "藏锋息法 · 收息"
+read_content = "收住第二息，再归刃于身侧。动时不散，停时不滞，平日负重上坡亦可慢慢习得。\n\n纸上没有第一息的行气次序，须同折竹所留一页对读。"
+read_source = "后山洞窟 · 矿灯石座"
+study_skill_id = &"ch1_hide_edge_breath"
+study_requires_item = &"ch1_woodland_fragment"

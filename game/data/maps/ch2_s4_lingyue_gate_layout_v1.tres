@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.0200, 0.9600, 0.0200, 0.7400, 0.2200, 0.6000, 0.4300, 0.4500, 0.6400, 0.3000, 0.8200, 0.1000, 0.9800, 0.0200, 0.9800, 0.2700, 0.8200, 0.4200, 0.6100, 0.5800, 0.4000, 0.7200, 0.2000, 0.9000)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = []
+interactions = []
+portals = [
+	{"id":"lingyue_to_inner_court","label":"主楼正门 · 空格进内庭","pos":Vector2(0.671875,0.273611111),"size":Vector2(0.025,0.025),"target_scene":"openworld_lingyue_inner_court","target_pos":Vector2(0.500,0.840)},
+	{"id":"lingyue_leave_mountain","label":"离开凌月山 · 江湖大地图","pos":Vector2(0.080,0.820),"size":Vector2(0.100,0.105),"action":"world_map","marker_rotation_degrees":180.0}
+]
+walkable_probes = [
+	{"id":"route_0", "pos":Vector2(0.5117, 0.5050)},
+	{"id":"under_gate", "pos":Vector2(0.705, 0.355)}
+]
+blocked_probes = [
+	{"id":"top_left_margin", "pos":Vector2(0.01, 0.01)},
+	{"id":"top_right_margin", "pos":Vector2(0.99, 0.01)}
+]

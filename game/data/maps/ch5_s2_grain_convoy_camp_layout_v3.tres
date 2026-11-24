@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.000, 0.900, 0.180, 0.970, 0.800, 0.900, 0.940, 0.690, 0.900, 0.390, 0.980, 0.000, 0.760, 0.000, 0.720, 0.180, 0.250, 0.180, 0.170, 0.300, 0.070, 0.550, 0.000, 0.670)
+])
+visual_objects = [
+	{"id":"relief_receipt_desk", "texture":"res://art/modules/luoyang_assembled_interiors_20261016g/writing_desk_v1.png", "pos":Vector2(0.37,0.507), "render_size_px":Vector2(142,80), "sort_by_feet":true, "depth_sort_foot_y":0.538, "collision_size":Vector2(0.063,0.023), "collision_offset":Vector2(0,0.029)},
+	{"id": "snow_gravel_0_0", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0, 0), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.87, 0.84, 0.8, 1)},
+	{"id": "snow_gravel_1_0", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0.333333333, 0), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.87, 0.84, 0.8, 1)},
+	{"id": "snow_gravel_2_0", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0.666666667, 0), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.87, 0.84, 0.8, 1)},
+	{"id": "snow_gravel_0_1", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0, 0.5), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.87, 0.84, 0.8, 1)},
+	{"id": "snow_gravel_1_1", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0.333333333, 0.5), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.87, 0.84, 0.8, 1)},
+	{"id": "snow_gravel_2_1", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0.666666667, 0.5), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.87, 0.84, 0.8, 1)},
+	{"id": "relief_west_approach", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.192344418, 0.724805194), "scale": Vector2(0.417308609, 0.417308609), "rotation": -2.849945143, "z_index": -61, "modulate": Color(0.82, 0.78, 0.72, 0.81)},
+	{"id": "convoy_wheelway", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.477318165, 0.558355837), "scale": Vector2(0.357793602, 0.357793602), "rotation": 8.438449589, "z_index": -60, "modulate": Color(0.82, 0.78, 0.72, 0.81)},
+	{"id": "convoy_grain_lane", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.580203392, 0.375458861), "scale": Vector2(0.235571613, 0.235571613), "rotation": -85.595622357, "z_index": -61, "modulate": Color(0.79, 0.75, 0.67, 0.75)},
+	{"id": "convoy_ridge_exit", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.712482594, 0.194384894), "scale": Vector2(0.372467823, 0.372467823), "rotation": 6.974852812, "z_index": -60, "modulate": Color(0.82, 0.78, 0.72, 0.81)},
+	{"id": "world_branch_south", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.301167803, 0.770492459), "scale": Vector2(0.283070385, 0.283070385), "rotation": 139.715185886, "z_index": -62, "modulate": Color(0.79, 0.75, 0.67, 0.75)},
+	{"id": "fire_turnout", "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png", "pos": Vector2(0.250520833, 0.46796875), "scale": Vector2(0.36, 0.36), "rotation": 12, "z_index": -65, "modulate": Color(0.82, 0.76, 0.69, 0.64)},
+	{"id": "central_loading_yard", "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png", "pos": Vector2(0.5625, 0.51015625), "scale": Vector2(0.53, 0.53), "rotation": -13, "z_index": -64, "modulate": Color(0.82, 0.76, 0.69, 0.64)},
+	{"id": "upper_loading_yard", "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png", "pos": Vector2(0.5, 0.234375), "scale": Vector2(0.34, 0.34), "rotation": -13, "z_index": -66, "modulate": Color(0.82, 0.76, 0.69, 0.64)},
+	{"id": "convoy_wheel_tracks", "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.png", "pos": Vector2(0.5375, 0.53359375), "scale": Vector2(0.46, 0.46), "rotation": -18, "z_index": -54, "modulate": Color(0.74, 0.7, 0.66, 0.77)},
+	{"id": "ridge_wheel_tracks", "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.png", "pos": Vector2(0.703125, 0.196875), "scale": Vector2(0.33, 0.33), "rotation": -15, "z_index": -54, "modulate": Color(0.74, 0.7, 0.66, 0.68)},
+	{"id": "camp_north_slope", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.2953125, 0.04140625), "scale": Vector2(0.3, 0.3), "sort_by_feet": true, "depth_sort_foot_y": 0.140625, "modulate": Color(0.83, 0.84, 0.83, 1)},
+	{"id": "camp_north_rim", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.644270833, 0.00546875), "scale": Vector2(-0.35, 0.35), "sort_by_feet": true, "depth_sort_foot_y": 0.12734375, "modulate": Color(0.75, 0.78, 0.8, 1)},
+	{"id": "camp_south_rim", "texture": "res://art/modules/miao_recompose_20261029g/rock_bank.png", "pos": Vector2(0.5765625, 0.97265625), "scale": Vector2(0.43, 0.43), "sort_by_feet": true, "depth_sort_foot_y": 1.0859375, "modulate": Color(0.83, 0.84, 0.83, 1)},
+	{"id": "camp_southeast_rim", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.932291667, 0.85546875), "scale": Vector2(-0.34, 0.34), "sort_by_feet": true, "depth_sort_foot_y": 0.9578125, "modulate": Color(0.83, 0.84, 0.83, 1)},
+	{"id": "camp_outer_pines", "texture": "res://art/modules/sect_maps_20261029k/wudang_pine.png", "pos": Vector2(0.096354167, 0.3453125), "scale": Vector2(0.23, 0.23), "sort_by_feet": true, "depth_sort_foot_y": 0.43203125, "modulate": Color(0.76, 0.77, 0.74, 1)},
+	{"id": "camp_lee_pines", "texture": "res://art/modules/sect_maps_20261029k/wudang_pine.png", "pos": Vector2(0.807291667, 0.74453125), "scale": Vector2(0.25, 0.25), "sort_by_feet": true, "depth_sort_foot_y": 0.8515625, "modulate": Color(0.76, 0.77, 0.74, 1), "collision_size": Vector2(0.031770833, 0.02734375), "collision_offset": Vector2(0.002083333, 0.08671875)},
+	{"id": "camp_south_watch_pine", "texture": "res://art/modules/sect_maps_20261029k/wudang_pine.png", "pos": Vector2(0.630729167, 0.85), "scale": Vector2(0.24, 0.24), "sort_by_feet": true, "depth_sort_foot_y": 0.9515625, "modulate": Color(0.76, 0.77, 0.74, 1)},
+	{"id": "relief_tent_supply_shelter", "texture": "res://art/modules/riverside_visual_20261101a/shelter_v1.png", "pos": Vector2(0.144791667, 0.17109375), "scale": Vector2(0.28, 0.28), "sort_by_feet": true, "depth_sort_foot_y": 0.2515625, "modulate": Color(0.91, 0.87, 0.8, 1)},
+	{"id": "upper_grain_cart", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png", "pos": Vector2(0.455208333, 0.13515625), "scale": Vector2(0.19, 0.19), "sort_by_feet": true, "depth_sort_foot_y": 0.18046875, "modulate": Color(0.91, 0.87, 0.8, 1)},
+	{"id": "right_grain_cart", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png", "pos": Vector2(0.884895833, 0.30859375), "scale": Vector2(0.23, 0.23), "sort_by_feet": true, "depth_sort_foot_y": 0.36328125, "modulate": Color(0.91, 0.87, 0.8, 1)},
+	{"id": "right_grain_sacks", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png", "pos": Vector2(0.825520833, 0.3359375), "scale": Vector2(0.119, 0.119), "sort_by_feet": true, "depth_sort_foot_y": 0.3640625, "modulate": Color(0.91, 0.87, 0.8, 1)},
+	{"id": "upper_cart_sacks", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png", "pos": Vector2(0.496354167, 0.16015625), "scale": Vector2(0.096, 0.096), "sort_by_feet": true, "depth_sort_foot_y": 0.18203125, "modulate": Color(0.91, 0.87, 0.8, 1)},
+	{"id": "camp_campfire_cask", "texture": "res://art/modules/prop/prop_linxi_barrel_wood_a.png", "pos": Vector2(0.194270833, 0.48203125), "scale": Vector2(0.29, 0.29), "sort_by_feet": true, "depth_sort_foot_y": 0.4984375, "modulate": Color(0.91, 0.87, 0.8, 1), "collision_size": Vector2(0.023958333, 0.0171875), "collision_offset": Vector2(0.001041667, 0.01171875)},
+	{"id": "camp_campfire_stones", "texture": "res://art/modules/prop/prop_ruin_rubble_pile.png", "pos": Vector2(0.234375, 0.4734375), "scale": Vector2(0.26, 0.26), "rotation": -7, "z_index": 11, "modulate": Color(0.58, 0.56, 0.53, 1), "collision_size": Vector2(0.041666667, 0.01875), "collision_offset": Vector2(0.000520833, 0)},
+	{"id": "camp_hay_supply", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png", "pos": Vector2(0.166666667, 0.3078125), "scale": Vector2(0.113, 0.113), "sort_by_feet": true, "depth_sort_foot_y": 0.3421875, "modulate": Color(0.91, 0.87, 0.8, 1), "collision_size": Vector2(0.047916667, 0.02109375), "collision_offset": Vector2(0, 0.02265625)},
+	{"id": "camp_tools_crate", "texture": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png", "pos": Vector2(0.201041667, 0.296875), "scale": Vector2(0.5, 0.5), "sort_by_feet": true, "depth_sort_foot_y": 0.31796875, "modulate": Color(0.91, 0.87, 0.8, 1), "collision_size": Vector2(0.022916667, 0.0203125), "collision_offset": Vector2(0, 0.0140625)},
+	{"id": "camp_far_granary", "texture": "res://art/modules/miao_town_20261029f/granary.png", "pos": Vector2(0.958854167, 0.56171875), "scale": Vector2(0.24, 0.24), "sort_by_feet": true, "depth_sort_foot_y": 0.64609375, "modulate": Color(0.86, 0.84, 0.81, 1)},
+	{"id": "cart_yard_barrels", "texture": "res://art/modules/prop/prop_linxi_barrel_wood_a.png", "pos": Vector2(0.818229167, 0.39140625), "scale": Vector2(0.28, 0.28), "sort_by_feet": true, "depth_sort_foot_y": 0.40859375, "modulate": Color(0.91, 0.87, 0.8, 1), "collision_size": Vector2(0.023958333, 0.015625), "collision_offset": Vector2(0, 0.0125)},
+	{"id": "camp_lower_rubble", "texture": "res://art/modules/prop/prop_ruin_rubble_pile.png", "pos": Vector2(0.4578125, 0.85078125), "scale": Vector2(0.34, 0.34), "sort_by_feet": true, "depth_sort_foot_y": 0.8671875, "modulate": Color(0.8, 0.77, 0.73, 1), "collision_size": Vector2(0.052604167, 0.01640625), "collision_offset": Vector2(0.002604167, 0.0109375)},
+	{"id": "camp_waypost", "texture": "res://art/modules/prop/prop_zhuwei_road_sign.png", "pos": Vector2(0.309375, 0.815625), "scale": Vector2(0.3, 0.3), "sort_by_feet": true, "depth_sort_foot_y": 0.85078125, "modulate": Color(0.83, 0.79, 0.74, 1), "collision_size": Vector2(0.008854167, 0.01171875), "collision_offset": Vector2(0.000520833, 0.0296875)},
+	{"id": "camp_rockside_scrub", "texture": "res://art/modules/redrock_luoyang_standard_20261028b/dry_shrub.png", "pos": Vector2(0.759895833, 0.81796875), "scale": Vector2(0.145, 0.145), "rotation": 0, "z_index": -19, "modulate": Color(0.79, 0.76, 0.69, 0.86)},
+	{"id": "camp_yard_scrub", "texture": "res://art/modules/redrock_luoyang_standard_20261028b/dry_shrub.png", "pos": Vector2(0.348958333, 0.2171875), "scale": Vector2(0.16, 0.16), "rotation": 0, "z_index": -20, "modulate": Color(0.79, 0.76, 0.69, 0.8)},
+	{"id": "camp_ridge_scrub", "texture": "res://art/modules/redrock_luoyang_standard_20261028b/dry_shrub.png", "pos": Vector2(0.75, 0.13203125), "scale": Vector2(0.13, 0.13), "rotation": 0, "z_index": -20, "modulate": Color(0.79, 0.76, 0.69, 0.82)}
+]
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"relief_tent", "pos":Vector2(0.145,0.190), "size":Vector2(0.200,0.190)},
+	{"id":"upper_grain_cart", "pos":Vector2(0.455,0.135), "size":Vector2(0.145,0.115)},
+	{"id":"right_grain_cart", "pos":Vector2(0.885,0.310), "size":Vector2(0.170,0.170)}
+]
+interactions = [
+	{"id":"ch5_relief_receipt_start", "pos":Vector2(0.37,0.57), "size":Vector2(0.078,0.079), "activation":"interact", "label":"核对分粮簿", "action":"dialog:ch5_relief_receipt_start", "visual_baked":true, "require_flag":"ch5_grain_convoy_saved", "hide_flag":"ch5_relief_receipt_wet_seal"},
+	{"id":"ch5_relief_receipt_seal", "pos":Vector2(0.772,0.425), "size":Vector2(0.070,0.071), "activation":"interact", "label":"查看东棚车辕", "action":"dialog:ch5_relief_receipt_seal", "visual_baked":true, "require_quest_active":"q_ch5_side_01_relief_receipt", "hide_flag":"ch5_relief_receipt_wet_seal"},
+	{"id":"ch5_relief_receipt_report", "pos":Vector2(0.37,0.57), "size":Vector2(0.078,0.079), "activation":"interact", "label":"在分粮簿登记湿封签", "action":"dialog:ch5_relief_receipt_report", "visual_baked":true, "require_quest_active":"q_ch5_side_01_relief_receipt", "require_flag":"ch5_relief_receipt_wet_seal", "hide_flag":"ch5_relief_receipt_reported"},
+	{"id":"legacy_hotspot_0", "pos":Vector2(0.56,0.53), "size":Vector2(0.11,0.12), "action":"dialog:ch5_grain_convoy_battle", "activation":"interact", "require_flag":"ch5_relief_road_cleared", "hide_flag":"ch5_grain_convoy_saved"},
+	{"id":"legacy_hotspot_1", "pos":Vector2(0.57,0.25), "size":Vector2(0.11,0.12), "action":"dialog:ch5_false_banner_evidence", "activation":"interact", "visual_texture":"res://art/props/ambient/prop_ambient_tattered_crimson_banner_v1.png", "visual_render_size_px":Vector2(42,63), "require_flag":"ch5_grain_convoy_saved", "hide_flag":"ch5_false_banner_cloth_found"}
+]
+portals = [
+	{"id":"return_relief_road", "label":"返回赈粮路", "pos":Vector2(0.08,0.82), "size":Vector2(0.12,0.12), "target_scene":"ch5_s1_relief_road", "target_pos":Vector2(0.84,0.17)},
+	{"id":"enter_snow_pass", "label":"前往雪岭关", "pos":Vector2(0.86,0.12), "size":Vector2(0.12,0.16), "target_scene":"ch5_s3_snow_pass", "target_pos":Vector2(0.25,0.88), "require_flag":"ch5_false_banner_cloth_found"},
+	{"id":"legacy_portal_2", "label":"返回江湖大地图", "pos":Vector2(0.255,0.89), "size":Vector2(0.10,0.10), "action":"world_map"}
+]
+walkable_probes = [
+	{"id":"spawn", "pos":Vector2(0.16,0.82)},
+	{"id":"convoy_battle", "pos":Vector2(0.55,0.52)},
+	{"id":"banner_evidence", "pos":Vector2(0.57,0.25)},
+	{"id":"snow_exit", "pos":Vector2(0.86,0.12)}
+]
+blocked_probes = [
+	{"id":"tent", "pos":Vector2(0.14,0.19)},
+	{"id":"right_cart", "pos":Vector2(0.88,0.31)}
+]

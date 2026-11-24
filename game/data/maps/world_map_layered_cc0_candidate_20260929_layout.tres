@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 13
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+walkable_mask_path = "res://art/navigation_masks/world_map_v13_proto/central_plain_walk_v1.svg"
+walkable_regions = Array[PackedVector2Array]([])
+visual_objects = Array[Dictionary]([
+	{"id":"central_walled_city", "texture":"res://art/modules/world_map_v13/city_walled_compound_proto_v1.png", "pos":Vector2(0.456,0.381), "render_size_px":Vector2(640,427), "sort_by_feet":true, "depth_sort_foot_y":0.510, "collision_size":Vector2(0.405,0.280), "collision_offset":Vector2(0.0,-0.025)},
+	{"id":"cc0_boulder_01", "texture":"res://art/modules/world_map_v13/boulder_01_cc0_southwest_v1.png", "pos":Vector2(0.250,0.620), "render_size_px":Vector2(145,105), "modulate":Color(0.82,0.85,0.83,1.0), "sort_by_feet":true, "depth_sort_foot_y":0.670, "collision_size":Vector2(0.060,0.040), "collision_offset":Vector2(0.0,0.040)}
+])
+occluders = Array[Dictionary]([])
+actor_fade_zones = Array[Dictionary]([])
+blockers = Array[Dictionary]([])
+interactions = Array[Dictionary]([])
+portals = Array[Dictionary]([
+	{"id":"prototype_city_gate", "label":"进入汴州城（授权素材候选）", "pos":Vector2(0.456,0.555), "size":Vector2(0.075,0.060), "show_destination_label":true, "target_scene":"openworld_bianzhou_city", "target_pos":Vector2(0.535,0.900)}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"spawn_ground", "pos":Vector2(0.185,0.730)},
+	{"id":"city_gate_approach", "pos":Vector2(0.456,0.555)},
+	{"id":"rock_front_passage", "pos":Vector2(0.250,0.740)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"east_sea", "pos":Vector2(0.965,0.530)},
+	{"id":"city_roofs", "pos":Vector2(0.455,0.380)},
+	{"id":"cc0_boulder_foot", "pos":Vector2(0.250,0.660)}
+])

@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "change_id": "luoyang-shore-market-20261020ae",
+  "status": "PREFLIGHT_TWO_NEW_GENERATES_ONE_TARGETED_EDIT_READY_NOT_CALLED",
+  "owner_if_called": "producer_ROOT",
+  "execution_backend": "builtin_image_gen",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "initial_generation_budget_total": 4,
+  "initial_generation_calls_already_used": 2,
+  "remaining_initial_generation_calls": 2,
+  "targeted_edit_budget": 1,
+  "followup_calls_used": 0,
+  "automatic_retry": false,
+  "cli_network_or_paid_fallback": false,
+  "tasks_yaml_registered": true,
+  "historical_no_call": {
+    "id": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1",
+    "decision": "prompts/luoyang_shore_market_20261020ae/mooring_bollard_v1_no_call_decision.json",
+    "decision_sha256": "193407D9DD0D894FCDEBC24A5654BE46DB394D49C2D3FBE21C94BC9C1413E295",
+    "calls_used": 0,
+    "failure_credit": false
+  },
+  "tasks": [
+    {
+      "id": "luoyang_shore_market_20261020ae_hawser_knot_right_v2",
+      "kind": "remaining_initial_generate_3_of_4",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/decal_docks_hawser_knot_right_v2.txt",
+      "prompt_sha256": "9EA77D2D9DA89564FA3789061A795A2A951B3801DBB25E6E6E32CED29F83F28F",
+      "spec": "prompts/luoyang_shore_market_20261020ae/decal_docks_hawser_knot_right_v2.spec.json",
+      "spec_sha256": "FF879267B5FBDDAA735ED3804FB0F7177384ECE6BFE620328754F8FD05B970C6",
+      "anchor_measurement": "prompts/luoyang_shore_market_20261020ae/rope_successor_anchor_measurement.json",
+      "anchor_measurement_sha256": "D604D125541E7211EBDC822CE5D013006F3E3655FA78475FC201928E00C4CFC6"
+    },
+    {
+      "id": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1",
+      "kind": "remaining_initial_generate_4_of_4",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.txt",
+      "prompt_sha256": "0757A5ACC1995BBCEF333D61A92FB406561D4F56B8AAE3E3E9842C13D439C749",
+      "spec": "prompts/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.spec.json",
+      "spec_sha256": "A5E53090567DA8D8990121808A3842C368D486C7D9D31457666FDB1173A639C8"
+    },
+    {
+      "id": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v2_halo_extraction_edit",
+      "kind": "single_targeted_edit_not_initial_generation",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v2_halo_extraction_edit.txt",
+      "prompt_sha256": "118E3D4EC0363D0510D633A607D68B45A012082CC98DDD59D59F8C1474950ED0",
+      "spec": "prompts/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v2_halo_extraction_edit.spec.json",
+      "spec_sha256": "240468FBEA9CEF81394F86B79FE295C08E3EB8DB3C90B141D53E1CD3832F3CC0",
+      "reference_image": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v1.png",
+      "reference_image_sha256": "EF5E208E192421FC70D93D62482BB23C251E6EB373BD81B2C8B854C050BCE6BA"
+    }
+  ],
+  "credit_boundary": "Registration and offline preflight only. No followup call, output, import, placement, Field or formal admission."
+}

@@ -1,0 +1,60 @@
+{
+  "change_id": "luoyang-market-frontage-20261021ai",
+  "task_id": "luoyang_market_frontage_20261021ai_independent_mansion_gate_single_bay_v2_edge_margin_edit",
+  "asset_role": "south_market_edge_and_future_noble_residence_gate_targeted_successor",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "edit",
+  "transparent_background": true,
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "network_fallback_allowed": false,
+  "status": "READY_FOR_ROOT_SINGLE_TARGETED_EDIT_NOT_EXECUTED",
+  "edit_target": {
+    "path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_independent_mansion_gate_single_bay_v1.png",
+    "png_sha256": "8D2A6984174AD1233CF28D057E1D156E5E2EBB7882747F295098623C6DE5C8E7",
+    "png_bytes": 1317458,
+    "role": "only_edit_target",
+    "preserve_original_file": true
+  },
+  "failed_raw_metadata": {
+    "path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_independent_mansion_gate_single_bay_v1.meta.json",
+    "sha256": "76E61B9DAF9481C7F5F7D14C4DA9BC016C356859AED7A9D6B4D3D3E48153DD40"
+  },
+  "prompt_path": "prompts/luoyang_market_frontage_20261021ai/facade_luoyang_independent_mansion_gate_single_bay_v2_edge_margin_edit.txt",
+  "prompt_sha256": "B284F7ED09FD60B5390FBF1C501DC6AA1850FFA358160065E8B4539C387230D0",
+  "raw_output_path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_independent_mansion_gate_single_bay_v2_edge_margin_edit.png",
+  "generated_metadata_path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_independent_mansion_gate_single_bay_v2_edge_margin_edit.meta.json",
+  "required_preservation": {
+    "same_gatehouse_identity_and_body_proportions": true,
+    "same_roof_and_carved_lintel": true,
+    "same_open_passage_and_threshold": true,
+    "same_stone_footings_and_timber_joinery": true,
+    "same_upper_left_camera_lighting_and_material_colours": true,
+    "principal_entrance_count": 1,
+    "secondary_door_count": 0
+  },
+  "required_targeted_changes": {
+    "remove_red_yellow_fringe_and_detached_specks": true,
+    "remove_full_canvas_low_alpha_haze": true,
+    "true_transparent_margin_each_side_min_fraction_at_a1": 0.10,
+    "a1_bbox_canvas_width_fraction_range": [0.50, 0.60]
+  },
+  "required_actual_checks": {
+    "complete_a1_bbox_width_over_clear_door_height_max": 2.3,
+    "runtime_feasible_clear_door_height_px_range": [120, 150],
+    "runtime_complete_width_px_max": 380,
+    "doorway_and_threshold_unblocked": true,
+    "no_shop_or_apothecary_props": true,
+    "no_long_flanking_walls_or_courtyard_panorama": true,
+    "no_low_alpha_haze_or_edge_contact": true,
+    "record_a1_a16_edges_components_and_weak_alpha": true,
+    "returned_raw_bytes_must_be_preserved": true,
+    "alpha_threshold_cleanup_is_forbidden": true
+  },
+  "credit_boundary": "Exactly one targeted builtin edit of the preserved failed mansion-gate raw. No further retry is authorized. Actual output must be measured before import, layout, runtime or formal credit."
+}

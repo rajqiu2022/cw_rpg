@@ -1,0 +1,71 @@
+tasks:
+  - id: npc_street_merchant_hd_down_idle_20261106_b03_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106_batch03
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106_batch03/merchant_down_idle.txt
+    vars:
+      reference_raw: game/art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png
+      reference_runtime: assets/raw/character/expansion_20260805/npc_street_merchant_walk_8x4_v1_alpha.png
+      asset_prompt: Exact prompt_path; ordinary straw-hat merchant, same bag side and 4 down-idle phases.
+  - id: npc_street_merchant_hd_down_walk_20261106_b03_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106_batch03
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106_batch03/merchant_down_walk.txt
+    vars:
+      reference_raw: assets/raw/npc_hd_20261106_batch03/merchant_down_idle_v1.png
+      reference_runtime: game/art/characters/street_expansion_v1/npc_street_merchant_down_walk_8f_v3_runtime.png
+      asset_prompt: Exact prompt_path; same merchant and original down filename action pixels, eight phases in 4x2.
+  - id: npc_street_merchant_hd_up_walk_20261106_b03_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106_batch03
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106_batch03/merchant_up_walk.txt
+    vars:
+      reference_raw: assets/raw/npc_hd_20261106_batch03/merchant_down_idle_v1.png
+      reference_runtime: game/art/characters/street_expansion_v1/npc_street_merchant_up_walk_8f_v3_runtime.png
+      asset_prompt: Exact prompt_path; same merchant and original up filename action pixels, eight phases in 4x2.
+  - id: npc_street_merchant_hd_left_walk_20261106_b03_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106_batch03
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106_batch03/merchant_left_walk.txt
+    vars:
+      reference_raw: assets/raw/npc_hd_20261106_batch03/merchant_down_idle_v1.png
+      reference_runtime: game/art/characters/street_expansion_v1/npc_street_merchant_left_walk_8f_v3_runtime.png
+      asset_prompt: Exact prompt_path; same merchant and original left filename action pixels, eight phases in 4x2.
+  - id: npc_street_merchant_hd_right_walk_20261106_b03_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106_batch03
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106_batch03/merchant_right_walk.txt
+    vars:
+      reference_raw: assets/raw/npc_hd_20261106_batch03/merchant_down_idle_v1.png
+      reference_runtime: game/art/characters/street_expansion_v1/npc_street_merchant_right_walk_8f_v3_runtime.png
+      asset_prompt: Exact prompt_path; same merchant and original right filename action pixels, eight phases in 4x2.

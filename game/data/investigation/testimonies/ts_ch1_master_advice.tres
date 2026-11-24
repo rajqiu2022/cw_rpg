@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch1_master_advice"
+display_name = "师傅的告诫"
+speaker_npc_id = &"npc_xingfantian"
+statement = "江湖上的尸体会说话，活人的话反而未必可信；先记事实，别急着替任何人定罪。"
+chapter = 1
+initial_credibility = 65
+related_evidence_ids = Array[StringName]([&"ev_ch1_road_corpse_wound", &"ev_ch1_bloodstained_route_map"])

@@ -1,0 +1,193 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/loading_screen.gd" id="1_script"]
+[ext_resource type="FontFile" path="res://art/fonts/LXGWWenKaiLite-Regular.ttf" id="2_font"]
+
+[sub_resource type="StyleBoxFlat" id="StyleProgressBg"]
+bg_color = Color(0.025, 0.047, 0.059, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.258, 0.455, 0.53, 0.82)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleProgressFill"]
+bg_color = Color(0.23, 0.78, 0.72, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleRetry"]
+bg_color = Color(0.055, 0.105, 0.125, 0.96)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.31, 0.72, 0.7, 0.9)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+content_margin_left = 24.0
+content_margin_top = 10.0
+content_margin_right = 24.0
+content_margin_bottom = 10.0
+
+[node name="LoadingScreen" type="CanvasLayer"]
+layer = 245
+script = ExtResource("1_script")
+
+[node name="Root" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+
+[node name="Background" type="TextureRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Shade" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.005, 0.012, 0.018, 0.16)
+
+[node name="TopLine" type="ColorRect" parent="Root"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 90.0
+offset_right = 362.0
+offset_bottom = 93.0
+mouse_filter = 2
+color = Color(0.29, 0.77, 0.72, 0.85)
+
+[node name="Content" type="Control" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Category" type="Label" parent="Root/Content"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 104.0
+offset_right = 700.0
+offset_bottom = 146.0
+theme_override_colors/font_color = Color(0.58, 0.86, 0.83, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 27
+text = "江湖见闻"
+
+[node name="Title" type="Label" parent="Root/Content"]
+layout_mode = 0
+offset_left = 118.0
+offset_top = 752.0
+offset_right = 1500.0
+offset_bottom = 814.0
+theme_override_colors/font_color = Color(0.9, 0.95, 0.97, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 42
+text = "行至江湖深处"
+
+[node name="Body" type="Label" parent="Root/Content"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 822.0
+offset_right = 1750.0
+offset_bottom = 900.0
+theme_override_colors/font_color = Color(0.72, 0.8, 0.83, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.85)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 25
+text = "风声会掩去脚步，却掩不住留下的因果。"
+autowrap_mode = 2
+
+[node name="Footer" type="VBoxContainer" parent="Root/Content"]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = -72.0
+offset_right = -120.0
+offset_bottom = -72.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="Status" type="HBoxContainer" parent="Root/Content/Footer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 20
+
+[node name="Stage" type="Label" parent="Root/Content/Footer/Status"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 35)
+size_flags_horizontal = 3
+autowrap_mode = 3
+theme_override_colors/font_color = Color(0.66, 0.78, 0.82, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 21
+text = "正在整理行囊……"
+
+[node name="Percent" type="Label" parent="Root/Content/Footer/Status"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.93, 0.9, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+text = "0%"
+horizontal_alignment = 2
+
+[node name="Progress" type="ProgressBar" parent="Root/Content/Footer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 17)
+theme_override_styles/background = SubResource("StyleProgressBg")
+theme_override_styles/fill = SubResource("StyleProgressFill")
+show_percentage = false
+
+[node name="Retry" type="Button" parent="Root/Content/Footer"]
+visible = false
+layout_mode = 2
+custom_minimum_size = Vector2(210, 54)
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.86, 0.94, 0.95, 1)
+theme_override_fonts/font = ExtResource("2_font")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleRetry")
+theme_override_styles/hover = SubResource("StyleRetry")
+theme_override_styles/pressed = SubResource("StyleRetry")
+text = "重试加载"
+

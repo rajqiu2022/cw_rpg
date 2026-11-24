@@ -1,0 +1,39 @@
+{
+  "schema": "CITYNAV_20261101D_FIXED_ORDINARY_WHOLEBYTE_LAYER_V1",
+  "path": "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd",
+  "parent_sha256": "f1c8da74c69bf6660b2d9c9637b54e15d2679dfa7a2d75b1e0ed3f48a25374ab",
+  "current_sha256": "a3e2c509e230b401c47bd1446af3676a74a9064a08b3781ae412edc2e47a9e88",
+  "whole_inverse_exact": true,
+  "hunks": [
+    {
+      "old_offset": 263,
+      "new_offset": 263,
+      "old": "const FINISH25I_RUNTIME_SHA: String=\"a92ba58cb260eedb2d47d4be0bda349cd2274811149d9474a1d91d2ab7afa4d8\"\n",
+      "new": "const FINISH25I_RUNTIME_SHA: String=\"05ef868ff19bb03f81cffe4e1f8f304a6fae3990d3f24bd52637555b25c818e9\"\n"
+    },
+    {
+      "old_offset": 7563,
+      "new_offset": 7563,
+      "old": "",
+      "new": "\t\"world_map_jianghu_v16->ch4_s0_luoyang_gate\": {\"portal\":\"luoyang\",\"uv\":Vector2(.5,.9),\"slot\":\"return_world\",\"foot\":Vector2(1536,1860),\"reverse\":false},\n"
+    },
+    {
+      "old_offset": 60043,
+      "new_offset": 60196,
+      "old": "",
+      "new": "\tif FileAccess.get_sha256(FRESH_WORLD_V16_CANONICAL)==FRESH_WORLD_V16_PINS.get(FRESH_WORLD_V16_CANONICAL,\"\"):\n\t\tvar world16_proofs: Dictionary=_world_v16_source_paths()\n\t\tif world16_proofs.is_empty():return {}\n\t\tpaths.merge(world16_proofs)\n"
+    },
+    {
+      "old_offset": 117253,
+      "new_offset": 117646,
+      "old": "",
+      "new": "# Root-approved exact World16 source pair. Old V14/V15 admission remains exact.\nconst FRESH_WORLD_V16_PINS := {\n \"res://build/world_coast_20261031h_system01/world_v16_scene03.tres\": \"c47c462ebab03b129bcf6967a23d32b19fb3b9d312c9189f17706c7e3167ca08\",\n \"res://build/world_coast_20261031h_system01/world_v16_layout02.tres\": \"231e6221b774dac7564ce70d54bea14c559087d397e8dc2c7015c3886dd33822\",\n \"res://build/world_coast_20261031h_system01/world_v16_stream02.tres\": \"b702d0632dc50c1e98b12d925110332dafb122fecf4fa41ca5ada8203fe8fe3f\",\n \"res://art/maps/world_coast_20261031h/candidate02/runtime_contract03.json\": \"022e24149ee224416c66f13b95adc0c7aab3282f3d2d673fd4a3b4e3024d386d\",\n \"res://build/world_coast_20261031h_system02/world_contract_dispatch03.gd\": \"a1761ec8f004c5750ac460bcb501ad7f8ec8f6af939402b3c67bb12363c2508e\",\n \"res://build/world_coast_20261031h_system02/world_v16_contract03.gd\": \"f25edf94ba7b2901f29e6705f4284689cd9364a94a949455dae7854dad0483c8\",\n \"res://data/scenes/world_map_jianghu.tres\": \"e03cccf388d270fd5f36e16929938568b4a2b7f46590230d42321c04d9f7dc19\"\n}\nconst FRESH_WORLD_V16_SCENE := \"res://build/world_coast_20261031h_system01/world_v16_scene03.tres\"\nconst FRESH_WORLD_V16_LAYOUT := \"res://build/world_coast_20261031h_system01/world_v16_layout02.tres\"\nconst FRESH_WORLD_V16_STREAM := \"res://build/world_coast_20261031h_system01/world_v16_stream02.tres\"\nconst FRESH_WORLD_V16_MANIFEST := \"res://art/maps/world_coast_20261031h/candidate02/runtime_contract03.json\"\nconst FRESH_WORLD_V16_CANONICAL := \"res://data/scenes/world_map_jianghu.tres\"\n\nstatic func _world_v16_source_paths() -> Dictionary:\n\tvar out: Dictionary={}\n\tif FRESH_WORLD_V16_PINS.size()!=7:return out\n\tfor path: String in FRESH_WORLD_V16_PINS:\n\t\tif not _hash(FRESH_WORLD_V16_PINS[path]) or FileAccess.get_sha256(path)!=FRESH_WORLD_V16_PINS[path]:return {}\n\t\tout[path]=true\n\treturn out\n\nstatic func _fresh_world_v16_portal_matches(source: StringName,target: StringName,normalized: Vector2,route: Dictionary) -> bool:\n\tif source not in [&\"world_map_jianghu\",&\"world_map_jianghu_v16\"] or target!=&\"ch4_s0_luoyang_gate\" or normalized!=Vector2(.5,.9):return false\n\tif route.get(\"portal\")!=\"luoyang\" or route.get(\"slot\")!=\"return_world\" or route.get(\"foot\")!=Vector2(1536,1860) or route.get(\"reverse\")!=false:return false\n\tif _world_v16_source_paths().is_empty():return false\n\tvar manifest: Variant=JSON.parse_string(FileAccess.get_file_as_string(FRESH_WORLD_V16_MANIFEST))\n\tif not manifest is Dictionary or manifest.get(\"coordinate_version\")!=16 or manifest.get(\"scene_id\")!=\"world_map_jianghu_v16\" or manifest.get(\"scene_path\")!=FRESH_WORLD_V16_SCENE or manifest.get(\"layout_path\")!=FRESH_WORLD_V16_LAYOUT or manifest.get(\"stream_path\")!=FRESH_WORLD_V16_STREAM:return false\n\tif manifest.get(\"scene_sha256\")!=FRESH_WORLD_V16_PINS[FRESH_WORLD_V16_SCENE] or manifest.get(\"layout_sha256\")!=FRESH_WORLD_V16_PINS[FRESH_WORLD_V16_LAYOUT] or manifest.get(\"stream_sha256\")!=FRESH_WORLD_V16_PINS[FRESH_WORLD_V16_STREAM]:return false\n\tvar path: String=FRESH_WORLD_V16_CANONICAL if source==&\"world_map_jianghu\" else FRESH_WORLD_V16_SCENE\n\tvar original:=ResourceLoader.load(path,\"\",ResourceLoader.CACHE_MODE_IGNORE) as SceneScript\n\tvar layout:=ResourceLoader.load(FRESH_WORLD_V16_LAYOUT,\"\",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout\n\tif FileAccess.get_sha256(FRESH_WORLD_V15_SOURCE.layout)!=FRESH_WORLD_V15_SOURCE.layout_sha:return false\n\tvar old_layout:=ResourceLoader.load(\"res://data/maps/world_map_jianghu_layout_v15.tres\",\"\",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout\n\tif original==null or original.scene_id!=source or original.map_layout==null or original.map_layout.resource_path!=FRESH_WORLD_V16_LAYOUT or layout==null or old_layout==null:return false\n\tif layout.schema_version!=15 or layout.design_size!=Vector2i(12288,8192) or typeof(layout.get_meta(\"coordinate_space_version\",null))!=TYPE_INT or layout.get_meta(\"coordinate_space_version\")!=16 or layout.get_meta(\"geography_revision\",\"\")!=\"world_coast_20261031h\":return false\n\tif original.streamed_background==null or original.streamed_background.resource_path!=FRESH_WORLD_V16_STREAM or original.background_path!=\"res://art/maps/world_coast_20261031h/candidate02/overview.png\":return false\n\tvar old_rows: Array[Dictionary]=[]\n\tvar new_rows: Array[Dictionary]=[]\n\tfor portal: Dictionary in old_layout.portals:\n\t\tif String(portal.get(\"id\",\"\"))==\"luoyang\":old_rows.append(portal)\n\tfor portal: Dictionary in layout.portals:\n\t\tif String(portal.get(\"id\",\"\"))==\"luoyang\":new_rows.append(portal)\n\tif old_rows.size()!=1 or new_rows.size()!=1 or var_to_bytes(old_rows[0])!=var_to_bytes(new_rows[0]):return false\n\treturn String(new_rows[0].get(\"target_scene\",\"\"))==String(target) and new_rows[0].get(\"target_pos\") is Vector2 and new_rows[0].target_pos==normalized\n\n\n\n"
+    },
+    {
+      "old_offset": 117383,
+      "new_offset": 122582,
+      "old": "",
+      "new": "\tif source==&\"world_map_jianghu_v16\" or (source==&\"world_map_jianghu\" and FileAccess.get_sha256(FRESH_WORLD_V16_CANONICAL)==FRESH_WORLD_V16_PINS.get(FRESH_WORLD_V16_CANONICAL,\"\")):\n\t\treturn _fresh_world_v16_portal_matches(source,target,normalized,route)\n"
+    }
+  ]
+}

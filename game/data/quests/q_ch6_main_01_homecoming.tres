@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch6_main_01_homecoming"
+title = "归村问师"
+kind = 0
+desc_not_started = "古峰伪旗一案留下的割页与旧证词都指向十八年前。冷孤云决定回林西村，先确认刑樊天是否安全。"
+desc_in_progress = "返回师徒院落，查看刑樊天与正屋的异状。"
+desc_completed = "刑樊天负了轻伤，屋内有人翻动过旧册。他没有解释旧案，只要求先保住仍在屋中的记录。"
+tracker_hint = "林西村 · 师徒院落"
+completion_triggers = Array[String](["flag_set:ch6_master_found"])
+starts_in_chapter = 6
+completes_in_chapter = 6
+reward_gold = 0
+reward_exp = 70
+reward_items = Array[Dictionary]([])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch6_master_found", "text":"刑樊天肩部有新伤，正屋旧柜刚被人翻动；袭击者寻找的是一卷旧册。"}])

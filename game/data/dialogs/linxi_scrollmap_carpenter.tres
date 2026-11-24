@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="DialogNode_1"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "乡勇教头"
+text = "南坊年轻人常在空地练拳。近来山路不太平，我让他们入夜后少往村外走。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"linxi_scrollmap_carpenter"
+nodes = Array[ExtResource("2_node")]([SubResource("DialogNode_1")])

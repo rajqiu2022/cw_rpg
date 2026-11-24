@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch5_side_01_relief_receipt"
+title = "少记的两袋粮"
+kind = 1
+desc_not_started = "护粮营地转危为安后，可去营中查一查分粮簿。"
+desc_in_progress = "东棚车辕处核对封签，回营中分粮簿登记。粮袋减少不一定是有人偷粮。"
+desc_completed = "两袋受潮粮已经转入东棚晾晒，账簿留下了交接和复秤记录。"
+tracker_hint = "古峰 · 护粮营地"
+starts_in_chapter = 5
+completes_in_chapter = 5
+completion_triggers = Array[String](["flag_set:ch5_relief_receipt_reported"])
+reward_gold = 35
+reward_exp = 55
+reward_items = Array[Dictionary]([{"item_id":"timber_bundle","count":2},{"item_id":"cloth_roll","count":2}])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch5_relief_receipt_wet_seal","text":"两张湿封签与缺粮编号一致。受潮粮已转到东棚晾晒，未见割开袋口的痕迹。"}])

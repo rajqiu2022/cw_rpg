@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch2_rescued_villager"
+display_name = "获救村民的转运路线"
+speaker_npc_id = &"npc_ch2_rescued_villager"
+statement = "绑匪不断更换外衣和令牌，一部分人押送俘虏，一部分人带着文书先行，最后都提到北林旧矿洞。"
+chapter = 2
+initial_credibility = 80
+related_evidence_ids = Array[StringName]([&"ev_ch2_courier_fragment", &"ev_ch2_forgery_ledger"])

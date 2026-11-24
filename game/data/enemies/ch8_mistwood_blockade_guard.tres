@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch8_mistwood_blockade_guard"
+poison_weapons=true
+trait_caption="烬茶社叛徒"
+display_name="茗雾截盟护卫"
+battle_actor_path = "res://art/sprites/battle/story_squads_20261121/blockade/ready1.tres"
+battle_actor_scale = 0.9558
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/blockade/ready1.tres", "res://art/sprites/battle/story_squads_20261121/blockade/ready2.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/blockade/ready2.tres", "res://art/sprites/battle/story_squads_20261121/blockade/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/blockade/ready2.tres", "res://art/sprites/battle/story_squads_20261121/blockade/step.tres", "res://art/sprites/battle/story_squads_20261121/blockade/attack.tres", "res://art/sprites/battle/story_squads_20261121/blockade/ready1.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/blockade/hit1.tres", "res://art/sprites/battle/story_squads_20261121/blockade/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/blockade/kneel.tres", "res://art/sprites/battle/story_squads_20261121/blockade/down.tres")
+level=13
+max_hp=760
+max_mp=135
+attack=128
+defense=26
+speed=32
+skill_ids=Array[StringName]([&"basic_attack",&"mingwu_wuyin_sanshi",&"toxic_needle"])
+aggression=0.84
+drop_gold_min=70
+drop_gold_max=100
+drop_exp=135

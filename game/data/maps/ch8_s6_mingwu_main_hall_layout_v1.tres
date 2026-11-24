@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script=ExtResource("1")
+design_size=Vector2i(1536,1024)
+fill_viewport=true
+walkable_regions=Array[PackedVector2Array]([PackedVector2Array(0.20,0.96,0.80,0.96,0.88,0.72,0.83,0.31,0.70,0.22,0.30,0.22,0.17,0.31,0.12,0.72)])
+blockers=Array[Dictionary]([{"id":"right_order_cabinets","pos":Vector2(0.79,0.43),"size":Vector2(0.16,0.22)},{"id":"master_dais","pos":Vector2(0.50,0.19),"size":Vector2(0.30,0.12)}])
+portals=Array[Dictionary]([{"id":"return_to_alliance_platform","pos":Vector2(0.50,0.92),"size":Vector2(0.16,0.10),"label":"返回会盟祭台","target_scene":"ch8_s5_alliance_ceremonial_platform","target_pos":Vector2(0.50,0.24)},{"id":"enter_rear_sanctum","pos":Vector2(0.50,0.30),"size":Vector2(0.15,0.10),"label":"进入山庄后殿","target_scene":"ch8_s7_mingwu_rear_sanctum","target_pos":Vector2(0.50,0.86),"require_flag":"ch8_rear_sanctum_unlocked"}])
+walkable_probes=Array[Dictionary]([{"id":"spawn","pos":Vector2(0.50,0.86)},{"id":"confrontation_floor","pos":Vector2(0.50,0.52)},{"id":"west_evacuation_doors","pos":Vector2(0.24,0.50)},{"id":"order_cabinets","pos":Vector2(0.68,0.48)},{"id":"rear_sanctum_approach","pos":Vector2(0.50,0.28)}])
+blocked_probes=Array[Dictionary]([{"id":"order_cabinets_blocked","pos":Vector2(0.79,0.43)},{"id":"dais_blocked","pos":Vector2(0.50,0.19)}])

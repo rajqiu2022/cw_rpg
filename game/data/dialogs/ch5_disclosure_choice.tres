@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "伪旗栽赃已经坐实，烈云旧部误报复的证词也在。眼下该先公示哪一步？"
+choices = Array[Dictionary]([
+	{"text":"先公开已证实的栽赃链，未证实部分注明保留", "next":"publish", "set_flag":{"ch5_disclosure_choice_made":true, "ch5_partial_evidence_published":true}, "faction_trust_changes":[{"id":"gufeng", "delta":6}], "companion_trust_changes":[{"id":"tang_xingzhou", "delta":4}], "bond_events":[{"companion":"tang_xingzhou", "event":"ch5_published_verified_facts"}], "city_outcomes":[{"city":"gufeng", "key":"false_banner_chain_published", "value":true}], "method_flags":[{"key":"ch5_publish_partial_evidence", "value":true}]},
+	{"text":"先安置证人、补齐责任链，再让双方共同公示", "next":"hold", "set_flag":{"ch5_disclosure_choice_made":true, "ch5_witnesses_relocated":true}, "faction_trust_changes":[{"id":"lieyun", "delta":6}], "companion_trust_changes":[{"id":"shen_qinghe", "delta":4}], "bond_events":[{"companion":"shen_qinghe", "event":"ch5_protected_witnesses_first"}], "city_outcomes":[{"city":"gufeng", "key":"old_case_witnesses_protected", "value":true}], "method_flags":[{"key":"ch5_hold_evidence_for_witnesses", "value":true}]}
+])
+[sub_resource type="Resource" id="publish"]
+script = ExtResource("2")
+node_id = &"publish"
+speaker = "唐行舟"
+text = "那就只写已经核实的部分：伪旗、毒粉、赈粮和灭口。烈云旧债另列一卷，等证词补齐再公示。"
+set_flags = Array[Dictionary]([{"key":"chapter5_complete", "value":true}])
+complete_quest = &"q_ch5_main_06_disclosure_choice"
+on_end = "chapter_end:5"
+[sub_resource type="Resource" id="hold"]
+script = ExtResource("2")
+node_id = &"hold"
+speaker = "沈青禾"
+text = "先把活人送下山。谁敢说你在包庇，我替你把两份卷宗都拍到他桌上——一份栽赃，一份旧债，谁也别想少。"
+voice_emotion = "angry"
+set_flags = Array[Dictionary]([{"key":"chapter5_complete", "value":true}])
+complete_quest = &"q_ch5_main_06_disclosure_choice"
+on_end = "chapter_end:5"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_disclosure_choice"
+required_story_flag = &"chapter4_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("publish"), SubResource("hold")])

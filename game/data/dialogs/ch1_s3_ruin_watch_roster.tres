@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]门边值守册记录着近七日的车次。每页都由同一人画押：赵无忌。职责一栏写着“守门、验货、清理尾随者”。[/i]"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "赵无忌……他掌着这处中转点，却只接触交接人。真正下令的人还藏在更后面。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = ""
+text = "[i]册页最后夹着一张粗略画像：林西村来的年轻剑客，可能沿货路追查。赵无忌已经在等他。[/i]"
+set_flags = Array[Dictionary]([{"key": "zhao_wuji_identified", "value": true}])
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = ""
+text = "[i]值守册的夹层还粘着一页旧抄单。纸上原有六个同行编号，前五行尚能辨认，第六行却被人反复刮去，只剩“同往”二字。[/i]"
+add_evidence = Array[StringName]([&"ev_ch1_erased_sixth_companion"])
+set_flags = Array[Dictionary]([{"key": "ch1_sixth_companion_erased", "value": true}])
+accept_quest = &"q_ch1_main_west_ruin"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s3_ruin_watch_roster"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4")])

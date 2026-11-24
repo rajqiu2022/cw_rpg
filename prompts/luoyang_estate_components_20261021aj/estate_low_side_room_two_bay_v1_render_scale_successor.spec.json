@@ -1,0 +1,49 @@
+{
+  "change_id": "luoyang-estate-components-20261021aj",
+  "task_id": "luoyang_estate_components_20261021aj_low_side_room_two_bay_v1",
+  "intent": "generate",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "transparent_background": true,
+  "input_images": [],
+  "references_required": 0,
+  "attempt_budget": 1,
+  "cli_fallback_allowed": false,
+  "output_raw_path": "assets/raw/luoyang_estate_components_20261021aj/estate_low_side_room_two_bay_v1.png",
+  "runtime_target": {
+    "complete_A1_world_width_px_min": 440,
+    "complete_A1_world_width_px_max": 520,
+    "complete_A1_world_height_px_max": 330,
+    "clear_door_world_height_px_min": 120,
+    "uniform_scale_only": true
+  },
+  "render_scale_contract": {
+    "width_basis": "complete_A1_world_bbox",
+    "uniform_scale_source": "world_A1_width/source_A1_width",
+    "target_width_semantics": "complete_A1_world_envelope_width_not_transparent_canvas_width",
+    "uniform_scale_formula": "uniform_scale = complete_A1_world_width_px / source_A1_width_px",
+    "render_size_formula": "render_size_px = source_canvas_size_px * uniform_scale",
+    "same_scale_measurements_required": [
+      "conservative_manual_clear_door_height_px_with_uncertainty",
+      "complete_A1_height_px",
+      "all_A1_pixels_including_alpha_1_to_15"
+    ],
+    "weak_alpha_must_not_be_discarded_or_thresholded": true
+  },
+  "alpha_acceptance": {
+    "mode": "RGBA",
+    "complete_A1_subject_required": true,
+    "minimum_true_transparent_margin_fraction_each_side": 0.10,
+    "subject_not_cropped": true,
+    "no_threshold_cleanup_allowed": true
+  },
+  "architecture_acceptance": {
+    "storeys": 1,
+    "bays": 2,
+    "principal_open_doors": 1,
+    "lattice_windows": 1,
+    "doorway_unobstructed": true,
+    "visibly_lower_and_simpler_than_main_hall": true
+  },
+  "status": "READY_FOR_ROOT_SINGLE_BUILTIN_GENERATE_NOT_EXECUTED_RENDER_SCALE_CLARIFIED"
+}

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_10_xueying_resolution"
+title="影断旧令"
+kind=0
+desc_not_started="证人与平民已经撤出，薛影带着最后一枚庄主令牌退入后殿。"
+desc_in_progress="进入茗雾后殿，根据已经取得的亲令、证词与救人结果，决定让薛影伏法、活着作证，或与他完成死战。若要动手，正厅随营药商知道怎样识破他的移形步。"
+desc_completed="薛影的最终处置已经确定；无论伏法、作证或死战，苏雾笙都失去了以死士继续执行终局命令的最后一只手。"
+tracker_hint="茗雾山庄 · 后殿"
+completion_triggers=Array[String](["flag_set:ch8_xueying_resolution_done"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=360
+reward_gold=100

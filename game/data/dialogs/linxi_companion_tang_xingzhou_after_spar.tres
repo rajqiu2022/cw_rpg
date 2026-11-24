@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dialog"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+text = "好剑路！你出招不花哨，却能在紧要处收住锋芒。与你过这一场，我才知道林西并非只有山色可看。"
+set_flags = Array[Dictionary]([{"key": "tang_xingzhou_sparred", "value": true}])
+on_end = "next:offer"
+
+[sub_resource type="Resource" id="node_offer"]
+script = ExtResource("2_node")
+node_id = &"offer"
+speaker = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+text = "我本就想沿途见识各家武学。若你接下来要走一段江湖路，不妨让我同行；遇敌时，我的长棍替你守住侧翼。"
+choices = Array[Dictionary]([{"text": "一同上路，彼此照应", "next": "joined"}, {"text": "我还要准备一下", "next": "later"}])
+
+[sub_resource type="Resource" id="node_joined"]
+script = ExtResource("2_node")
+node_id = &"joined"
+speaker = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+text = "好！同路之后，武学上互相拆招，路上也互相照应。"
+give_items = Array[Dictionary]([{"id": "wooden_staff", "count": 1}])
+set_flags = Array[Dictionary]([{"key": "companion_tang_xingzhou_joined", "value": true}])
+on_end = "end"
+
+[sub_resource type="Resource" id="node_later"]
+script = ExtResource("2_node")
+node_id = &"later"
+speaker = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+text = "行。真正的同行要双方都想清楚，我在村中等你答复。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dialog")
+dialog_id = &"linxi_companion_tang_xingzhou_after_spar"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_offer"), SubResource("node_joined"), SubResource("node_later")])

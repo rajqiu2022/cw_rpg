@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "id": "luoyang_culture_candidates_20261019w",
+  "status": "CANDIDATE_NOT_FORMAL",
+  "formal_enabled": false,
+  "runtime_hook_present": false,
+  "numeric_rewards": "TBD_NOT_AUTHORIZED_CANDIDATE_ZERO_ONLY",
+  "quests": [
+    {
+      "id": "q_ch4_side_08_qiangxiang_receipt",
+      "key": "qiangxiang_receipt",
+      "title": "强项旧事",
+      "quest_path": "res://data/quests/luoyang_culture_candidates_20261019w/qiangxiang_receipt.tres",
+      "dialog_paths": {
+        "offer": "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_offer.tres",
+        "clue_1": "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_clue_1.tres",
+        "clue_2": "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_clue_2.tres",
+        "clue_3": "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_clue_3.tres",
+        "solve": "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_solve.tres",
+        "report": "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_report.tres",
+        "after": "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_after.tres"
+      },
+      "actors": [
+        {"scene_id": "ch4_s1_luoyang_yamen", "npc_id": "district_life_yamen_petitioner"},
+        {"scene_id": "ch4_s0_luoyang_gate", "npc_id": "harbour_life_gate_supply_attendant"},
+        {"scene_id": "ch4_s1_luoyang_yamen", "npc_id": "district_life_yamen_clerk"}
+      ],
+      "clues": [
+        {"id": "petition_receipt_time", "scene_id": "ch4_s1_luoyang_yamen", "npc_id": "district_life_yamen_petitioner", "label": "核对接状副联的时记"},
+        {"id": "gate_order_testimony", "scene_id": "ch4_s0_luoyang_gate", "npc_id": "harbour_life_gate_supply_attendant", "label": "询问亲见递状先后的货担主人"},
+        {"id": "registry_original_order", "scene_id": "ch4_s1_luoyang_yamen", "npc_id": "district_life_yamen_clerk", "label": "查对原册誊录次序"}
+      ],
+      "choices": [
+        {"id": "preserve_and_correct_registry", "text": "保留原副联与证言，按核实的递状次序补正登记", "correct": true},
+        {"id": "follow_power_priority", "text": "按来人的权势高低决定先后", "correct": false},
+        {"id": "discard_original_receipt", "text": "丢弃原副联，直接重写原册", "correct": false}
+      ],
+      "reporter": {"scene_id": "ch4_s1_luoyang_yamen", "npc_id": "district_life_yamen_clerk"},
+      "outcome": "受理次序经核对得到补正；不替官府作实体判案，不赋予玩家官职。",
+      "source_references": ["docs/luoyang-cultural-sidequests-design-20261019w.md", "https://www.kflz.gov.cn/sitesources/kflzw/page_pc/lzwh/qfwy/articlef7ea03371df24c6a8aff28d2fb7d0864.html"]
+    },
+    {
+      "id": "q_ch4_side_09_luoshu_numbers",
+      "key": "luoshu_numbers",
+      "title": "河洛九数",
+      "quest_path": "res://data/quests/luoyang_culture_candidates_20261019w/luoshu_numbers.tres",
+      "dialog_paths": {
+        "offer": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_offer.tres",
+        "clue_1": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_clue_1.tres",
+        "clue_2": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_clue_2.tres",
+        "clue_3": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_clue_3.tres",
+        "solve": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_solve.tres",
+        "report": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_report.tres",
+        "after": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_after.tres"
+      },
+      "actors": [
+        {"scene_id": "ch4_s3_luoyang_market", "npc_id": "luoyang_paper_scholar"},
+        {"scene_id": "ch4_s0_luoyang_gate", "npc_id": "harbour_life_gate_supply_attendant"}
+      ],
+      "clues": [
+        {"id": "nine_rules", "scene_id": "ch4_s3_luoyang_market", "npc_id": "luoyang_paper_scholar", "label": "确认一至九各用一次、八线之和均为十五"},
+        {"id": "nine_center_pairs", "scene_id": "ch4_s0_luoyang_gate", "npc_id": "harbour_life_gate_supply_attendant", "label": "核实中心为五、相对两数之和为十"},
+        {"id": "nine_orientation", "scene_id": "ch4_s3_luoyang_market", "npc_id": "luoyang_paper_scholar", "label": "按本题北向约定核实左上四、右中七"}
+      ],
+      "choices": [
+        {"id": "orient_and_verify_492357816", "text": "按题面朝向排为四九二、三五七、八一六，并逐线复核", "correct": true},
+        {"id": "numbers_only_without_orientation", "text": "只摆齐九个数字，不管题面的方位约定", "correct": false},
+        {"id": "use_repeated_digits", "text": "重复使用顺手的数字凑出十五", "correct": false}
+      ],
+      "reporter": {"scene_id": "ch4_s3_luoyang_market", "npc_id": "luoyang_paper_scholar"},
+      "outcome": "复核本题九宫布局；这是游戏算学题解，不把传说写成已证史实或神迹。",
+      "source_references": ["docs/luoyang-cultural-sidequests-design-20261019w.md", "https://www.dpm.org.cn/lemmas/239992.html"]
+    },
+    {
+      "id": "q_ch4_side_10_luoshui_letter",
+      "key": "luoshui_letter",
+      "title": "洛水归信",
+      "quest_path": "res://data/quests/luoyang_culture_candidates_20261019w/luoshui_letter.tres",
+      "dialog_paths": {
+        "offer": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_offer.tres",
+        "clue_1": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_clue_1.tres",
+        "clue_2": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_clue_2.tres",
+        "clue_3": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_clue_3.tres",
+        "solve": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_solve.tres",
+        "report": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_report.tres",
+        "after": "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_after.tres"
+      },
+      "actors": [
+        {"scene_id": "ch4_s2_canal_docks", "npc_id": "harbour_life_docks_booking_attendant"},
+        {"scene_id": "ch4_s3_luoyang_market", "npc_id": "district_life_market_buyer"}
+      ],
+      "clues": [
+        {"id": "letter_envelope_mark", "scene_id": "ch4_s2_canal_docks", "npc_id": "harbour_life_docks_booking_attendant", "label": "核验未拆外封的标识"},
+        {"id": "recipient_independent_token", "scene_id": "ch4_s3_luoyang_market", "npc_id": "district_life_market_buyer", "label": "向收信人核实独立记号与本人同意"},
+        {"id": "booking_original_entry", "scene_id": "ch4_s2_canal_docks", "npc_id": "harbour_life_docks_booking_attendant", "label": "比对原交接条的登记"}
+      ],
+      "choices": [
+        {"id": "verify_consent_deliver", "text": "交叉核实身份，征得本人同意，再交还未拆信件", "correct": true},
+        {"id": "open_and_announce", "text": "拆开信件当街宣读以便找人", "correct": false},
+        {"id": "leave_with_unverified_stranger", "text": "交给随便一个声称认识她的人", "correct": false}
+      ],
+      "reporter": {"scene_id": "ch4_s3_luoyang_market", "npc_id": "district_life_market_buyer"},
+      "pickup": {
+        "scene_id": "ch4_s2_canal_docks",
+        "npc_id": "harbour_life_docks_booking_attendant",
+        "recipient_npc_id": "district_life_market_buyer",
+        "mode": "personal_only",
+        "required_state": "solved",
+        "next_state": "collected",
+        "event_is_candidate_logic_only": true,
+        "future_coordinator_must_verify_actual_recipient_presence_and_authorization": true
+      },
+      "outcome": "收信人本人确认收信，不公开信中私人内容；市井事件是虚构剧情而非历史事件复述。",
+      "source_references": ["docs/luoyang-cultural-sidequests-design-20261019w.md", "https://www.dpm.org.cn/collection/paint/234597.html"]
+    }
+  ],
+  "source_sha256": {
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_after.tres": "cf8320317cbd46c812b5b850e9655a4fe484af7a3ee84ba2a9ada3078537ce61",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_clue_1.tres": "0ec5db8ea633761428c55021176f651512a477bb3bf33d4faabb6285925b5cbc",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_clue_2.tres": "6f03898882a0a9d6351f94a91e69975fc59af5aabdeed030e93733f320db92f4",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_clue_3.tres": "3a0278cdba3285517f80257c01788a379185c2350738d276dca2b350874448d8",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_offer.tres": "fef880c646e3a17073b224e2deb00a4202bf1b84d7f0d4b47048aab9702690da",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_report.tres": "f249a7e5a1e177977d80621fb26df2ce53487d7a72425947e58d40419cca6527",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshu_numbers_solve.tres": "bd5945c12d2a11703865fcb1244a865c6bc51ec1ea40c9223539fb28678cb742",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_after.tres": "d580846f3ae1cb6782d92655c2d12f6f466cf4907b1ba956c54ef27ed74513e3",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_clue_1.tres": "7fac039be0dd3b6aa66e562767bdbf7300d8415ea55bd7a1f221439e6159f9e0",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_clue_2.tres": "40765b7883bc1e199acc352345f261b2bcb593e14675c9f582b82e14f64f9823",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_clue_3.tres": "fb8db8b049c8e873bbbfa856abf7da752d2714e65b39488ed56ee7fe40d47e0f",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_offer.tres": "8c147d9821b83f9ed58fc9cd54ca2f273cf428d11a1e49968de33e441094a82d",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_report.tres": "f01d5ff105432f453829f5971be707400aa855c2c7fa6062646e4eb4eda07541",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/luoshui_letter_solve.tres": "7b64309318b8ffe6bb9449f29757bb9b687b4b4ef829bb9147e4f94956d9bee1",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_after.tres": "257398865086bf3240cdc07a58e1d9d28257bb116afa1bd317efbbc65096aaaf",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_clue_1.tres": "c5ad7adc7e9b5720d1bc71224ecf84b579ecfb896ae0d4db3810104aec650133",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_clue_2.tres": "239f12ba2babac75ebbf07c880f2cc01fd7409e379861e91b37bd06e425c7eb4",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_clue_3.tres": "fcd7ccf980f1cf1656eda9f05f064471a783bbad9147aa9546951cd3cbc31cd8",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_offer.tres": "5f4469ad3ac360501081a143b9f6ae423ae48d6859bf5c4684c5b1522cfc67c2",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_report.tres": "053314c1ae0ab8deb70e642b937f27224422864c360f104633c2e39c8130e334",
+    "res://data/dialogs/luoyang_culture_candidates_20261019w/qiangxiang_receipt_solve.tres": "8797a83e4d2ed5e55a17e9cb1288bb4db678b7102186e7fa79fe5b06aadbe69f",
+    "res://data/quests/luoyang_culture_candidates_20261019w/luoshu_numbers.tres": "379dcc0430dbc644233b23abed42052b787a6c33dea6f39f421f548db2f46342",
+    "res://data/quests/luoyang_culture_candidates_20261019w/luoshui_letter.tres": "46e53585076955cd7c659995711fe36f48332fb2426fee349ac876c6d66925ce",
+    "res://data/quests/luoyang_culture_candidates_20261019w/qiangxiang_receipt.tres": "eba84c0db9f162f11a37d6e3e194570e995428fc3199e69fb82200251eb24407"
+  },
+  "source_freeze_status": "FROZEN_24_RESOURCES",
+  "candidate_state_only": true,
+  "personal_pickup_policy": "Only the letter quest can move solved -> collected at the docks booking attendant after an explicit personal-pickup confirmation for the exact recipient. This pure event is not proof of actual movement, NPC presence or delivery authorization; a future production Coordinator must verify those before issuing it. Market report requires collected, not merely solved.",
+  "questmanager_registration": "NONE",
+  "reserved_not_implemented": ["独乐书香"]
+}

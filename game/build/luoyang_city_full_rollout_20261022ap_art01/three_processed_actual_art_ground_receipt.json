@@ -1,0 +1,123 @@
+{
+  "change_id": "luoyang-city-full-rollout-20261022ap",
+  "status": "PARTIAL_ART_READY_SIGN_AND_PAVILION_ONLY_BRIDGE_ALPHA_READY_BUT_DECK_CONTRACT_REJECTED",
+  "review_scope": "Actual processed PNG pixels and frozen metadata only; no engine, import, generation, cleanup, canonical or task write.",
+  "alpha_display_correction": {
+    "finding": "The brown/gray fields shown by the raw-RGB viewer are hidden RGB under alpha zero, not visible runtime fog.",
+    "do_not_do": ["rembg", "GrabCut", "threshold the subject again", "treat A16 as the sprite extent"],
+    "diagnostic_script": "game/build/luoyang_city_full_rollout_20261022ap_art01/render_processed_alpha_diagnostics.py",
+    "diagnostic_script_sha256": "43DA139192A6453F528583B81BCFE3FC9EC8F2ABB777C2DEB687A612F46DEA0D",
+    "actual_diagnostic_outputs": {
+      "sign_checker_and_white": {
+        "path": "game/build/luoyang_city_full_rollout_20261022ap_art01/alpha_diagnostic_actual/sign_checker_and_white.png",
+        "png_sha256": "30B6BEB2ABB2E52EA1311A68DD69A339FC1658C20F052BAEB5B5B41D0E5E3217",
+        "visual_result": "PASS_NO_VISIBLE_FOG"
+      },
+      "bridge_checker_and_white": {
+        "path": "game/build/luoyang_city_full_rollout_20261022ap_art01/alpha_diagnostic_actual/bridge_checker_and_white.png",
+        "png_sha256": "762B27989B69A55B8EBAE3D49327F26B2B59F0BE4298C54D8E09D582DC002782",
+        "visual_result": "PASS_NO_VISIBLE_FOG"
+      },
+      "pavilion_checker_and_white": {
+        "path": "game/build/luoyang_city_full_rollout_20261022ap_art01/alpha_diagnostic_actual/pavilion_checker_and_white.png",
+        "png_sha256": "77AE739B44C7BEC9B2338B1A717AC9646052536E44AC6004452D556D96BC90EA",
+        "visual_result": "PASS_NO_VISIBLE_FOG"
+      }
+    },
+    "evidence_samples": [
+      {"asset": "sign", "processed_xy": [733, 760], "rgba": [50, 37, 26, 0]},
+      {"asset": "bridge", "processed_xy": [993, 118], "rgba": [127, 122, 115, 0]}
+    ]
+  },
+  "assets": {
+    "pawnshop_sign": {
+      "art_status": "LIMITED_VISUAL_CANDIDATE_READY",
+      "source_png_sha256": "EEB0CC0C169B19100AE43C3D716BAF54D57BDDC1C71DE574620F48A6DD35DF15",
+      "processed_path": "assets/processed/luoyang_city_full_rollout_20261022ap/sign_luoyang_pawnshop_dang_vertical_v1_clean_padded.png",
+      "processed_png_sha256": "37C59298F97F640787F7B7CD612C41891C35F3E85EBAA6E7E2A8CE75299711D4",
+      "processed_rgba8_sha256": "75D6A75985CC9F3FDC8525B7647BEC3342478BF05E93353ED13B65A483570D2F",
+      "canvas_size_px": [944, 1649],
+      "complete_A1_bbox_exclusive_px": [109, 191, 835, 1458],
+      "complete_A16_bbox_exclusive_px_reference_only": [114, 197, 831, 1456],
+      "complete_A1_margins_px": [109, 191, 109, 191],
+      "protected_RGBA_byte_exact": true,
+      "hidden_RGB_outside_alpha_is_not_rendered": true,
+      "scene_candidate": {
+        "world_A1_height": 156.0,
+        "uniform_scale": 0.1231254933,
+        "world_A1_width": 89.38910813,
+        "full_canvas_render_size": [116.2304657, 203.0339384],
+        "output_mount_point_px": [114, 324],
+        "node_mount_to_canvas_top_left_world": [-14.03630624, -39.89423836],
+        "mount_semantics": "Fix the left wall bracket plate to the pawnshop eave/wall; the board hangs freely to its right and below.",
+        "new_rigid_body": false,
+        "collision": "none; decorative facade attachment only",
+        "minimum_clearance": "Do not place the hanging board over the doorway or the +24 return foot."
+      },
+      "visual_limit": "A weathered dark wood and bronze vertical sign; use only on the pawnshop facade and do not duplicate as a freestanding building."
+    },
+    "curved_stone_bridge": {
+      "art_status": "ALPHA_VISUAL_READY_BUT_REJECT_FOR_REQUIRED_TRAVERSABLE_GARDEN_BRIDGE",
+      "source_png_sha256": "530696FBE7F58E7071BD445AF855C8E456BA3E07B8171C74B447025C66D70CE9",
+      "processed_path": "assets/processed/luoyang_city_full_rollout_20261022ap/module_luoyang_riverside_curved_stone_bridge_v1_clean_padded.png",
+      "processed_png_sha256": "A1C6CF366FCD922C65AF0227470A38EEDDF8575C704B1DC6D094D4BC52D023F4",
+      "processed_rgba8_sha256": "31FE3C5DE0E305AE89A9FF16E88E4A60C927B52B65E30360C60683BD97D73B05",
+      "canvas_size_px": [1928, 791],
+      "complete_A1_bbox_exclusive_px": [223, 92, 1705, 699],
+      "complete_A16_bbox_exclusive_px_reference_only": [228, 94, 1700, 695],
+      "complete_A1_margins_px": [223, 92, 223, 92],
+      "protected_RGBA_byte_exact": true,
+      "required_contract": {"world_complete_length_range": [500, 700], "world_clear_deck_width_min": 180},
+      "manual_between_rail_samples_processed_px": [
+        {"section": "left", "segment": [[430, 372], [430, 570]], "gap_px": 198},
+        {"section": "crown", "segment": [[965, 226], [965, 374]], "gap_px": 148},
+        {"section": "right", "segment": [[1500, 312], [1500, 454]], "gap_px": 142}
+      ],
+      "manual_landmark_uncertainty_px_each_endpoint": 8,
+      "uniform_scale_at_world_length_620": 0.4183535762,
+      "derived_clear_width_range_world_at_length_620": [52.71120108, 89.52766532],
+      "derived_max_possible_sample_clear_width_at_length_700": 101.0796221,
+      "decision": "No single uniform scale can keep complete length at or below 700 while giving 180 world units between the two railings. Do not bind it as the required walkable garden bridge or invent a wider collision deck than the visible deck.",
+      "allowed_use": "Visual reference or non-traversable distant decoration only; not this rollout bridge."
+    },
+    "four_column_pavilion": {
+      "art_status": "LIMITED_VISUAL_AND_GROUND_CANDIDATE_READY",
+      "source_png_sha256": "A94C69DA27149AB5B43052AA90117989256E4B202ACD3C4738CEAF6647E2ADD4",
+      "processed_path": "assets/processed/luoyang_city_full_rollout_20261022ap/module_luoyang_riverside_four_column_hex_pavilion_v1_clean_padded.png",
+      "processed_png_sha256": "E8F857C15C1A9BE0738663EF05825307E24500A2B889A578B53FA90DFC37E570",
+      "processed_rgba8_sha256": "2D822C4AC7616D42E1ECEBE1D63795512C02C39626A8EA7ED9BA2113207F44D3",
+      "canvas_size_px": [1498, 1415],
+      "complete_A1_bbox_exclusive_px": [173, 164, 1325, 1251],
+      "complete_A16_bbox_exclusive_px_reference_only": [179, 167, 1320, 1245],
+      "complete_A1_margins_px": [173, 164, 173, 164],
+      "protected_RGBA_byte_exact": true,
+      "scene_candidate": {
+        "world_A1_width": 480.0,
+        "uniform_scale": 0.4166666667,
+        "world_A1_height": 452.9166667,
+        "full_canvas_render_size": [624.1666667, 589.5833334],
+        "output_ground_anchor_px": [749, 1245],
+        "front_opening_clear_segment_px": [[749, 792], [749, 1105]],
+        "front_opening_clear_height_world": 130.4166667,
+        "front_opening_clear_height_world_lower_bound_with_8px_each_endpoint": 123.75,
+        "adult_120_clear": true,
+        "walkable_plinth_support_polygon_px": [[374, 1137], [518, 1043], [980, 1043], [1124, 1137], [1000, 1238], [498, 1238]],
+        "four_column_foot_solid_rects_px": [
+          [493, 1035, 118, 94],
+          [522, 1106, 160, 125],
+          [861, 1100, 166, 126],
+          [1042, 1024, 127, 96]
+        ],
+        "manual_foot_landmark_uncertainty_px": 8,
+        "physics_semantics": "The plinth polygon is floor/support, not a blocking body. Only the four stone column-foot rectangles are rigid solids; open bays stay traversable."
+      },
+      "visual_limit": "Large detailed pavilion candidate; scene composition and paths still need an actual Garden view and geometry check."
+    }
+  },
+  "overall_limits": [
+    "This receipt does not admit any canonical, import, scene, NAV, Field or formal binding.",
+    "The old raw and first cleanup evidence remain preserved.",
+    "The bridge fails the explicit traversable-deck contract even though its alpha cleanup is mechanically intact.",
+    "No claim is made that district 09 or the ten-zone city is artistically complete."
+  ]
+}

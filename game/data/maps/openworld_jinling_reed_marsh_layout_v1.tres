@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.07,0.95,0.93,0.95,0.91,0.22,0.70,0.11,0.24,0.12,0.08,0.30)])
+blockers = [{"id":"deep_pool","pos":Vector2(0.54,0.48),"size":Vector2(0.20,0.14)}]
+interactions = []
+portals = [{"id":"return_city","label":"乘舟返回金陵城","pos":Vector2(0.50,0.920),"size":Vector2(0.16,0.08),"target_scene":"openworld_jinling_city","target_pos":Vector2(0.15,0.50)}]
+walkable_probes = [{"id":"arrival","pos":Vector2(0.50,0.88)},{"id":"north_camp","pos":Vector2(0.24,0.43)},{"id":"ship_bay","pos":Vector2(0.72,0.58)},{"id":"paper_mill","pos":Vector2(0.84,0.38)}]
+blocked_probes = [{"id":"deep_pool","pos":Vector2(0.54,0.48)},{"id":"north_water","pos":Vector2(0.50,0.04)}]

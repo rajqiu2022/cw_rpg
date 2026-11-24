@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "泥里混有白灰和碎瓦，只在废仓北墙下有。箱子没走水路，是有人故意让两帮以为对方抢货。"
+on_end = "next:end"
+[sub_resource type="Resource" id="end"]
+script = ExtResource("2")
+node_id = &"end"
+speaker = "漕工头领"
+text = "中间人跑了，假契还在。两帮先停手，把伤者送医。这副玄铜拳套是旧漕卒压舱护身的物件，你替我们止住械斗，便收下吧。"
+set_flags = Array[Dictionary]([{"key":"canal_feud_resolved", "value":true}, {"key":"huilan_water_rule_understood", "value":true}])
+complete_quest = &"q_ch4_side_06_canal_grudge"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_canal_grudge_turnin"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("end")])

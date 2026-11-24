@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "status": "ART_AUTHOR_READY_NATIVE_ENCLOSURE_PEONY_IMAGE_PENDING_USER_CLEANUP_AUTHORIZATION",
+  "change_id": "luoyang-estate-courtyard-20261021am",
+  "goal": "Turn the AK/AL skeleton into one ordered courtyard: connect every building gap with visible masonry, close the two grass-stone forecourt shoulders while keeping the central axis open, and place two bounded peony beds outside the gate line after the accepted v3 body is legally cleaned.",
+  "world_context": {
+    "main_hall_foot_px": [1536, 520],
+    "west_wing_foot_px": [700, 860],
+    "east_wing_foot_px": [2222, 860],
+    "west_corridor_foot_px": [680, 1180],
+    "east_corridor_foot_px": [2392, 1180],
+    "gate_foot_px": [1536, 1120],
+    "protected_cross_route_y_px": 700,
+    "protected_central_axis_x_px": [1344, 1728],
+    "current_north_court_visual_rect_px": [1024, 496, 1024, 768],
+    "rule": "No new object, foot body, or alpha envelope may enter the protected central axis. The y=700 route is not narrowed by the north connectors."
+  },
+  "sources": {
+    "courtyard_gate_atlas": {
+      "texture_path": "res://art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png",
+      "file_sha256": "dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221",
+      "source_size_px": [1942, 809],
+      "mode": "RGBA",
+      "regions": {
+        "left_flat_wall": {
+          "xywh": [220, 300, 480, 430],
+          "region_rgba_sha256": "2aeffcead7c728c332363a204a29a51e0c10be04fdb971e255fde33ac47f1c84",
+          "A1_bbox_xyxy": [0, 0, 480, 398],
+          "ground_anchor_px": [240, 398],
+          "uniform_scale": 0.25,
+          "world_A1_size_px": [120.0, 99.5]
+        },
+        "right_flat_wall": {
+          "xywh": [1242, 300, 480, 430],
+          "region_rgba_sha256": "60b60095270abd21b6645a17af79fd206788717dbc46bb415777eb82c0741c5f",
+          "A1_bbox_xyxy": [0, 0, 480, 399],
+          "ground_anchor_px": [240, 399],
+          "uniform_scale": 0.25,
+          "world_A1_size_px": [120.0, 99.75]
+        },
+        "left_angled_end_wall": {
+          "xywh": [0, 180, 250, 540],
+          "region_rgba_sha256": "0fe69a637a369ebbd673ed9103d7df23f5e4bbc0be3af02e8285f13caa7de15f",
+          "A1_bbox_xyxy": [15, 27, 250, 517],
+          "ground_anchor_px": [132.5, 517],
+          "uniform_scale": 0.18,
+          "world_A1_size_px": [42.3, 88.2]
+        },
+        "right_angled_end_wall": {
+          "xywh": [1692, 180, 250, 540],
+          "region_rgba_sha256": "d6fa36464d497328c6db66d236cb090e4057934df72360700d86fe2f69ebdb9b",
+          "A1_bbox_xyxy": [0, 27, 233, 516],
+          "ground_anchor_px": [116.5, 516],
+          "uniform_scale": 0.18,
+          "world_A1_size_px": [41.94, 88.02]
+        }
+      }
+    },
+    "grass_stone_edge": {
+      "texture_path": "res://art/modules/ground/road_stone_grass_edge.png",
+      "file_sha256": "527d8babc86461c7f37c49bbed9f6d7c348df827b483bfedd1f1e1b8117cacd3",
+      "rgba_sha256": "d285fa517f502ffe8f0598240eae0e952086d182401501ed0b4adedeffe27818",
+      "source_size_px": [317, 109],
+      "A1_bbox_xyxy": [9, 9, 309, 100],
+      "ground_anchor_px": [159, 100],
+      "uniform_scale": 0.5333333333,
+      "world_A1_size_px": [160.0, 48.53333333],
+      "semantics": "Low visible grass-stone shoulder at the exact court-to-lawn boundary, with a matching low foot body. It is not a flowerbed and not a walkable ground decal."
+    },
+    "peony_bed_v3": {
+      "texture_path": "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_peony_bed_v3_compact_edit.png",
+      "file_sha256": "d90e93e72be474f49b88d107086239acb7454cb53fa09a09b6248f806670f741",
+      "rgba_sha256": "01ae37b8181559aeb9ffead3f0ca8a5da9e2c400b7c48e482a752d84f5a9d017",
+      "source_size_px": [1736, 906],
+      "visible_A8_bbox_xyxy": [202, 211, 1537, 734],
+      "visible_A8_ratio": 2.552581262,
+      "status": "BODY_ART_ACCEPTED_BUT_RAW_A1_FAILED; do not bind until user-authorized local cleanup and independent proof complete"
+    }
+  },
+  "masonry_instances": [
+    {
+      "id": "estate_am_northwest_hall_wing_wall",
+      "region": "left_flat_wall",
+      "ground_foot_px": [1095, 610],
+      "solid_rect_px": [1039, 592, 112, 18],
+      "purpose": "Close the measured 123px west wing-to-hall facade gap while remaining north of y=700."
+    },
+    {
+      "id": "estate_am_northeast_hall_wing_wall",
+      "region": "right_flat_wall",
+      "ground_foot_px": [1977, 610],
+      "solid_rect_px": [1921, 592, 112, 18],
+      "purpose": "Close the measured 119px hall-to-east-wing facade gap while remaining north of y=700."
+    },
+    {
+      "id": "estate_am_west_wing_corridor_return_wall",
+      "region": "left_angled_end_wall",
+      "ground_foot_px": [1012, 951],
+      "solid_rect_px": [992, 933, 40, 18],
+      "purpose": "Use the original angled end wall to bridge the 89px vertical gap from the west wing bottom to the west corridor top; no stretched or rotated wall."
+    },
+    {
+      "id": "estate_am_east_wing_corridor_return_wall",
+      "region": "right_angled_end_wall",
+      "ground_foot_px": [2060, 951],
+      "solid_rect_px": [2040, 933, 40, 18],
+      "purpose": "Mirror the native right end-wall source across the east 89px gap without flipping the texture."
+    },
+    {
+      "id": "estate_am_southwest_corridor_gate_wall",
+      "region": "right_flat_wall",
+      "ground_foot_px": [1055, 1180],
+      "solid_rect_px": [999, 1162, 112, 18],
+      "purpose": "Close the measured west corridor-to-gate gap; no intrusion into the gate aperture."
+    },
+    {
+      "id": "estate_am_southeast_corridor_gate_wall",
+      "region": "left_flat_wall",
+      "ground_foot_px": [2019, 1180],
+      "solid_rect_px": [1963, 1162, 112, 18],
+      "purpose": "Close the measured east gate-to-corridor gap; no intrusion into the gate aperture."
+    }
+  ],
+  "grass_stone_boundary_instances": [
+    {
+      "id": "estate_am_west_forecourt_edge_0",
+      "ground_foot_px": [1104, 1264],
+      "solid_rect_px": [1028, 1248, 152, 16],
+      "world_A1_x_range_px": [1024, 1184]
+    },
+    {
+      "id": "estate_am_west_forecourt_edge_1",
+      "ground_foot_px": [1264, 1264],
+      "solid_rect_px": [1188, 1248, 152, 16],
+      "world_A1_x_range_px": [1184, 1344]
+    },
+    {
+      "id": "estate_am_east_forecourt_edge_0",
+      "ground_foot_px": [1808, 1264],
+      "solid_rect_px": [1732, 1248, 152, 16],
+      "world_A1_x_range_px": [1728, 1888]
+    },
+    {
+      "id": "estate_am_east_forecourt_edge_1",
+      "ground_foot_px": [1968, 1264],
+      "solid_rect_px": [1892, 1248, 152, 16],
+      "world_A1_x_range_px": [1888, 2048]
+    }
+  ],
+  "conditional_peony_instances_after_authorized_cleanup": [
+    {
+      "id": "estate_am_west_peony_bed",
+      "planned_ground_foot_px": [1160, 1328],
+      "target_world_A1_size_px": [300, 120, 140],
+      "target_world_x_range_px": [1010, 1310],
+      "clearance": "34px west of the protected central axis; positioned outside the gate and corridor foot line, integrated with the west grass-stone shoulder."
+    },
+    {
+      "id": "estate_am_east_peony_bed",
+      "planned_ground_foot_px": [1912, 1328],
+      "target_world_A1_size_px": [300, 120, 140],
+      "target_world_x_range_px": [1762, 2062],
+      "clearance": "34px east of the protected central axis; positioned outside the gate and corridor foot line, integrated with the east grass-stone shoulder."
+    }
+  ],
+  "render_order": [
+    "AL ground sections",
+    "grass-stone boundary instances",
+    "conditional peony beds",
+    "masonry connectors sorted by their real ground feet",
+    "unchanged AK buildings, gate, and trees according to existing foot-depth policy"
+  ],
+  "actual_acceptance": [
+    "hall, wings, corridors, and gate form one continuous six-link enclosure with no floating architectural gap",
+    "the north y=700 route and central x=1344..1728 approach remain visibly and physically open",
+    "grass-to-stone transitions cover the two hard 320px forecourt shoulders but do not cross the central approach",
+    "two compact peony beds sit outside the gate line and read as deliberate paired garden beds, not loose vegetation or duplicated walls",
+    "every visible raised wall, edge, and bed has a matching conservative solid; plants add no separate invisible bodies",
+    "whole-scene actual preview is reviewed at native player scale before formal or complete-art credit"
+  ],
+  "scope_boundary": "Author plan only. Native enclosure and edge assets are source-ready; peony rows are conditional on explicit user-authorized cleanup. No engine, Field, formal, route, or completion credit is claimed here."
+}

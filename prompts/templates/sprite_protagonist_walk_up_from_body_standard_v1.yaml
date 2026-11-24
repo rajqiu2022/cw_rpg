@@ -1,0 +1,30 @@
+id: sprite_protagonist_walk_up_from_body_standard_v1
+description: Four-frame up walk locked to the approved Leng Guyun body standard.
+quality: medium
+size: "1536x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/assets/raw/sprite/field-rework/body-standard/sprite_lengguyun_body_standard_v1_a.png"
+  - "F:/Code/RPG_GAME/game/art/characters/protagonist_portrait.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied full-body body-standard image as the absolute body-proportion and costume authority for Leng Guyun. Use the portrait only for identity. Do not redesign him.
+
+  Create ONE 1536x1024 horizontal sprite strip containing EXACTLY FOUR isolated, equal-width cells arranged left to right. Pure white background with wide white gaps. Each cell contains one complete full-body orthographic BACK view sprite walking AWAY FROM THE VIEWER. The character's back and rear hair tie are visible, not his face. No grid, border, label, text, scenery, shadow, additional person, crop, or 45-degree view.
+
+  Every cell preserves the approved body's exact seven-head medium athletic build: same head size, shoulder width, compact torso, moderate legs, mid-calf robe length and boot size. Preserve black tied hair with no headband, dark blue-grey cross-collar robe, pale inner collar only where naturally visible, brown diagonal leather chest strap, waist sword, and exactly ONE grey-green double-lobed wine gourd at the left belt. No red hair tie, no second gourd, no costume or body change.
+
+  All four figures are about 150px tall, centered in their own cells, with one shared invisible shoe baseline. Keep head, shoulder and belt height stable. Only legs, lower robe hem, hair tip and arms may move slightly.
+
+  Clear four-frame rear-walk loop played 1 -> 2 -> 3 -> 4 -> 1:
+  1. Left-foot contact forward away from viewer, right foot behind, moderate step.
+  2. Passing, feet close beneath the torso, upright.
+  3. Right-foot contact forward away from viewer, left foot behind, mirror phase of frame 1.
+  4. Passing, close to frame 2 and naturally returning to frame 1.
+
+  Hong Kong wuxia comic game-sprite style, crisp dark ink contours, restrained painted shading. Prioritize exact identity, silhouette and readable alternating feet over detail.
+
+  Avoid: text, watermark, infographic, document, UI, grid, front-facing pose, side-facing pose, action pose, extra limbs, stiff standing frames, large stride, tall thin anatomy, short stocky anatomy, headscarf, forehead band, red ribbon, spider, web, demon, western armor.
+
+variables: {}

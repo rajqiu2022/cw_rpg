@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scene"]
+[ext_resource type="Resource" path="res://data/maps/luoyang_home_candidates_20261015/shop_room_layout.tres" id="2_layout"]
+
+[resource]
+script = ExtResource("1_scene")
+scene_id = &"luoyang_market_shop_interior_20261015"
+display_name = "洛阳南市 · 大宅书房"
+background_path = "res://art/backgrounds/bg_linxi_scholar_house_25d_v2.png"
+bgm_path = "res://art/audio/bgm/wuxia_20261011/city_bianzhou.wav"
+is_walkable = true
+actor_positions_are_feet = false
+is_settlement = true
+map_layout = ExtResource("2_layout")
+player_spawn = Vector2(0.5, 0.625)
+player_visual_scale = 1.18
+camera_zoom = 1.0
+npcs = []
+hotspots = []
+trigger_zones = []
+encounter_enemy_ids = Array[StringName]([])
+encounter_groups = []
+encounter_chance = 0.0
+metadata/luoyang_home_candidate_only = true
+metadata/luoyang_home_author_path = "res://data/maps/luoyang_home_candidates_20261015/home_author.json"
+metadata/luoyang_home_building_id = "shop"
+metadata/luoyang_home_template_id = "large_study"
+metadata/luoyang_home_activation_status = "CPU_LOCAL_ONLY_PENDING_DOOR_VISUAL_PHYSICS_ROUTING"

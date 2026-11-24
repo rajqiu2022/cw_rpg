@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "游方道人"
+text = "白龙被困。你若能救活，这顶旧斗笠便归你。"
+accept_quest = &"q_ch3_side_02_weiqi_match"
+on_end = "next:choose"
+[sub_resource type="Resource" id="choose"]
+script = ExtResource("2_dnode")
+node_id = &"choose"
+speaker = "冷孤云"
+text = "要保住大龙，先取哪一处？"
+choices = Array[Dictionary]([{"text": "固守中央", "next": "wrong"}, {"text": "弃掉左下角", "next": "right"}])
+[sub_resource type="Resource" id="wrong"]
+script = ExtResource("2_dnode")
+node_id = &"wrong"
+speaker = "游方道人"
+text = "贪一角，便会丢全局。再想。"
+on_end = "next:choose"
+[sub_resource type="Resource" id="right"]
+script = ExtResource("2_dnode")
+node_id = &"right"
+speaker = "游方道人"
+text = "舍小取势，七步反围。斗笠归你，记住今日这手取舍。"
+set_flags = Array[Dictionary]([{"key": "weiqi_trick_solved", "value": true}, {"key": "huilan_yielding_position_understood", "value": true}])
+complete_quest = &"q_ch3_side_02_weiqi_match"
+on_end = "end"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_weiqi_side"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("choose"), SubResource("wrong"), SubResource("right")])

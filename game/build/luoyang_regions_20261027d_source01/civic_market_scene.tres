@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scene"]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="2_layout"]
+
+[sub_resource type="Resource" id="Layout"]
+script = ExtResource("2_layout")
+design_size = Vector2i(6144, 4608)
+
+[resource]
+script = ExtResource("1_scene")
+scene_id = &"luoyang_civic_market_region_27d"
+display_name = "洛阳·府衙街与南市"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = SubResource("Layout")
+player_spawn = Vector2(0.5, 0.9)
+camera_zoom = 1.0

@@ -1,0 +1,7 @@
+"""Same mature31 metadata expression, currentDFCF and one seven-field batch."""
+from pathlib import Path
+N=Path(__file__).resolve().parent
+t=(N/'prepare_market_living_street31_metadata_NOTENGINE.py').read_text(encoding='utf8')
+changes=[('market_living_street_repair01/','seven_fields_layout_repair01/'),('current_AAF_exact31_scope_PREPARATION.json','current_DFCF_exact31_scope_PREPARATION.json'),('fc3aaa0ad232d603d64eefba0d691d46d9d2a3cede67c83edc3a6d1e08a01a54','c2fbb7dca13b28548199cdf06872cd8933afe03d7c11ca6ee1935258ebb70818'),('pawnshop_collision_Gbinding_repair01/unified25_READY01/pawn_Gbinding25_all_candidates_and_inverse_NOT_STAGE.json','market_living_street_repair01/unified31_READY01/unified32_all_candidates_and_inverse_NOT_STAGE.json'),('4e8f536f2517ff331f376bac871bd26a0d33cc87e29f5a7230a889d6b534ece4','60f7504c23c9bfa98e8d8c8e436bd72da29c9a640c28b4c9003610c8a597b485'),('current_AAF_backup31_ROOT_ACTUAL.json','current_DFCF_backup31_ROOT_ACTUAL.json'),('31970cb86774421e36bca2b520569f2cf17b4c0672f8aeb845abc0eb470eebc0','ffc6a84395acf4fbde30c4e4bd706ffb7d8d25ed76155201861a610418139d7b'),('CURRENT_AAF_MARKET_SIX_INSTANCES_EXACT31_NOT_STAGE','CURRENT_DFCF_SEVEN_FIELDS_EXACT31_NOT_STAGE')]
+for a,b in changes:assert a in t,a;t=t.replace(a,b)
+exec(compile(t,str(N/'prepare_seven_fields31_metadata_DERIVED_NOTENGINE.py'),'exec'),{'__file__':str(N/'prepare_seven_fields31_metadata_DERIVED_NOTENGINE.py')})

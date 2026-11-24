@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.12369791666666667, 0.390625, 0.8763020833333334, 0.390625, 0.9375, 0.763671875, 0.630859375, 0.763671875, 0.630859375, 0.9140625, 0.384765625, 0.9140625, 0.384765625, 0.763671875, 0.06510416666666667, 0.763671875)])
+visual_objects = [{"id": "scholar_study_bookcase_0", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/bookcase_v1.png", "pos": Vector2(0.36999999999999994, 0.18986328125), "render_size_px": Vector2(399.36, 266.24), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.439453125, "assembled_furniture": true},
+{"id": "scholar_study_bookcase_1", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/bookcase_v1.png", "pos": Vector2(0.6677604166666667, 0.25789062500000004), "render_size_px": Vector2(368.64, 245.76), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.48828125, "assembled_furniture": true},
+{"id": "scholar_study_writing_desk_2", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/writing_desk_v1.png", "pos": Vector2(0.6977604166666667, 0.5043164062500001), "render_size_px": Vector2(276.48, 184.32), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.6591796875, "assembled_furniture": true},
+{"id": "scholar_study_wood_armchair_3", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_armchair_v1.png", "pos": Vector2(0.7227604166666667, 0.590380859375), "render_size_px": Vector2(199.68, 133.12), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.712890625, "assembled_furniture": true},
+{"id": "scholar_study_folding_screen_4", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/folding_screen_v1.png", "pos": Vector2(0.08182291666666668, 0.41140625), "render_size_px": Vector2(368.64, 245.76), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.634765625, "assembled_furniture": true},
+{"id": "scholar_study_wood_armchair_5", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_armchair_v1.png", "pos": Vector2(0.13682291666666666, 0.580615234375), "render_size_px": Vector2(199.68, 133.12), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.703125, "assembled_furniture": true}]
+blockers = [{"id": "scholar_study_bookcase_0", "ground_polygon": PackedVector2Array(0.44904947916666665, 0.41583984375, 0.5504427083333333, 0.41583984375, 0.5504427083333333, 0.43970703125, 0.44904947916666665, 0.43970703125), "walkability_margin": 0.0},
+{"id": "scholar_study_bookcase_1", "ground_polygon": PackedVector2Array(0.7407291666666667, 0.466484375, 0.8343229166666667, 0.466484375, 0.8343229166666667, 0.488515625, 0.7407291666666667, 0.488515625), "walkability_margin": 0.0},
+{"id": "scholar_study_writing_desk_2", "ground_polygon": PackedVector2Array(0.7282291666666666, 0.62314453125, 0.8467057291666666, 0.62314453125, 0.8522135416666666, 0.65935546875, 0.7230729166666667, 0.65935546875), "walkability_margin": 0.0},
+{"id": "scholar_study_wood_armchair_3", "ground_polygon": PackedVector2Array(0.7634700520833334, 0.68572265625, 0.8126432291666666, 0.68572265625, 0.8128125, 0.713017578125, 0.76330078125, 0.713017578125), "walkability_margin": 0.0},
+{"id": "scholar_study_folding_screen_4", "ground_polygon": PackedVector2Array(0.12463541666666667, 0.605, 0.1679166666666667, 0.624453125, 0.17385416666666667, 0.626796875, 0.23057291666666666, 0.626796875, 0.23651041666666664, 0.62421875, 0.2791666666666667, 0.605234375, 0.2791666666666667, 0.615078125, 0.23635416666666667, 0.63546875, 0.16776041666666666, 0.63546875, 0.12463541666666667, 0.61484375), "walkability_margin": 0.0},
+{"id": "scholar_study_wood_armchair_5", "ground_polygon": PackedVector2Array(0.17753255208333332, 0.67595703125, 0.22670572916666668, 0.67595703125, 0.22687500000000002, 0.703251953125, 0.17736328125, 0.703251953125), "walkability_margin": 0.0},
+{"id": "fixed_column_0", "ground_polygon": PackedVector2Array(0.3079427083333333, 0.578125, 0.3567708333333333, 0.578125, 0.3567708333333333, 0.6171875, 0.3079427083333333, 0.6171875), "walkability_margin": 0.0},
+{"id": "fixed_column_1", "ground_polygon": PackedVector2Array(0.6497395833333334, 0.578125, 0.6953125, 0.578125, 0.6953125, 0.6171875, 0.6497395833333334, 0.6171875), "walkability_margin": 0.0}]
+portals = [{"id": "return_assembled_scholar_study", "pos": Vector2(0.5, 0.892578125), "size": Vector2(0.06510416666666667, 0.0234375), "target_scene": "ch4_s3_luoyang_market", "target_pos": Vector2(0.830078125, 0.626953125), "auto_trigger": false, "label": "返回洛阳"}]
+metadata/assembled_room_contract = "source_feet_assembled_interiors_20261016g"

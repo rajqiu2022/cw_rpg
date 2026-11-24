@@ -1,0 +1,336 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/gate_opening.png" id="gate_opening"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/tower.png" id="tower"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/front_wall.png" id="front_wall"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/side_wall.png" id="side_wall"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/cargo.png" id="cargo"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/trough.png" id="trough"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/guard_idle.png" id="guard_idle"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/earth.png" id="earth"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_gate_20261023c/rock.png" id="rock"]
+[ext_resource type="Script" path="res://scripts/drafts/redrock_gate_20261023c/gate_preview.gd" id="script"]
+[ext_resource type="Shader" path="res://art/modules/redrock_gate_20261023c/ground_blend.gdshader" id="shader"]
+
+[sub_resource type="ShaderMaterial" id="ground_mat"]
+shader = ExtResource("shader")
+shader_parameter/earth_tex = ExtResource("earth")
+shader_parameter/rock_tex = ExtResource("rock")
+
+[sub_resource type="RectangleShape2D" id="body_shape"]
+size = Vector2(35, 25)
+
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "Noto Sans CJK SC")
+
+[node name="RedrockGateDraft" type="Node2D"]
+script = ExtResource("script")
+metadata/status = "首分区编辑草案；尚未接入正式世界"
+metadata/source_design = "assets/raw/sect_western_map_designs_20261022d/redrock_masterplan_overview_v1.png"
+
+[node name="Ground" type="ColorRect" parent="."]
+material = SubResource("ground_mat")
+offset_right = 2560.0
+offset_bottom = 1760.0
+mouse_filter = 2
+
+[node name="Depth" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="WestWall" type="Node2D" parent="Depth"]
+position = Vector2(0, 1000)
+metadata/asset_key = "front_wall"
+metadata/original_canvas_origin = Vector2(-160, 752)
+metadata/source_pixel_scale = 0.45
+
+[node name="Art" type="Sprite2D" parent="Depth/WestWall"]
+position = Vector2(-299.95000000000005, -294.79999999999995)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("front_wall")
+centered = false
+
+[node name="Solid" type="StaticBody2D" parent="Depth/WestWall"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Depth/WestWall/Solid"]
+polygon = PackedVector2Array(0, -34, 1100, -34, 1100, 4, 0, 4)
+
+[node name="EastWall" type="Node2D" parent="Depth"]
+position = Vector2(0, 1000)
+metadata/asset_key = "front_wall"
+metadata/original_canvas_origin = Vector2(1730, 752)
+metadata/source_pixel_scale = 0.45
+
+[node name="Art" type="Sprite2D" parent="Depth/EastWall"]
+position = Vector2(1590.05, -294.79999999999995)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("front_wall")
+centered = false
+
+[node name="Solid" type="StaticBody2D" parent="Depth/EastWall"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Depth/EastWall/Solid"]
+polygon = PackedVector2Array(1460, -34, 2560, -34, 2560, 4, 1460, 4)
+
+[node name="Watchtower" type="Node2D" parent="Depth"]
+position = Vector2(0, 742)
+metadata/asset_key = "tower"
+metadata/original_canvas_origin = Vector2(20, 30)
+metadata/source_pixel_scale = 0.6
+
+[node name="Art" type="Sprite2D" parent="Depth/Watchtower"]
+position = Vector2(-85.0, -822.4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("tower")
+centered = false
+
+[node name="Solid" type="StaticBody2D" parent="Depth/Watchtower"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Depth/Watchtower/Solid"]
+polygon = PackedVector2Array(76, -178, 625, -141, 721, 0, 61, -39)
+
+[node name="Gate" type="Node2D" parent="Depth"]
+position = Vector2(0, 1030)
+metadata/asset_key = "gate_opening"
+metadata/original_canvas_origin = Vector2(601.46, 320)
+metadata/source_pixel_scale = 0.86
+
+[node name="Art" type="Sprite2D" parent="Depth/Gate"]
+position = Vector2(406.24, -832.12)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("gate_opening")
+centered = false
+
+[node name="GateWestPier" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="GateWestPier"]
+polygon = PackedVector2Array(730, 920, 1100, 920, 1100, 1030, 710, 1030)
+
+[node name="GateEastPier" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="GateEastPier"]
+polygon = PackedVector2Array(1460, 920, 1830, 920, 1850, 1030, 1460, 1030)
+
+[node name="EastRetainingWall" type="Node2D" parent="Depth"]
+position = Vector2(0, 1017)
+metadata/asset_key = "side_wall"
+metadata/original_canvas_origin = Vector2(1855, 600)
+metadata/source_pixel_scale = 0.44
+
+[node name="Art" type="Sprite2D" parent="Depth/EastRetainingWall"]
+position = Vector2(1758.2, -481.68000000000006)
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("side_wall")
+centered = false
+
+[node name="Solid" type="StaticBody2D" parent="Depth/EastRetainingWall"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Depth/EastRetainingWall/Solid"]
+polygon = PackedVector2Array(1930, -277, 2445, -9, 2461, -54, 1940, -314)
+
+[node name="WaterTrough" type="Node2D" parent="Depth"]
+position = Vector2(0, 1315)
+metadata/asset_key = "trough"
+metadata/original_canvas_origin = Vector2(300, 1030)
+metadata/source_pixel_scale = 0.36
+
+[node name="Art" type="Sprite2D" parent="Depth/WaterTrough"]
+position = Vector2(218.28, -336.12)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("trough")
+centered = false
+
+[node name="Solid" type="StaticBody2D" parent="Depth/WaterTrough"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Depth/WaterTrough/Solid"]
+polygon = PackedVector2Array(378, -55, 758, 8, 815, -42, 417, -95)
+
+[node name="CargoBales" type="Node2D" parent="Depth"]
+position = Vector2(0, 1303)
+metadata/asset_key = "cargo"
+metadata/original_canvas_origin = Vector2(1720, 1000)
+metadata/source_pixel_scale = 0.37
+
+[node name="Art" type="Sprite2D" parent="Depth/CargoBales"]
+position = Vector2(1638.6, -357.39)
+scale = Vector2(0.37, 0.37)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Solid" type="StaticBody2D" parent="Depth/CargoBales"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Depth/CargoBales/Solid"]
+polygon = PackedVector2Array(1867, -56, 2114, 1, 2162, -44, 1923, -85)
+
+[node name="AnonymousGuard" type="Node2D" parent="Depth"]
+position = Vector2(1020, 1180)
+metadata/asset_key = "guard_idle"
+metadata/original_canvas_origin = Vector2(946.8726513569937, 1050.2296450939457)
+metadata/source_pixel_scale = 0.11691022964509394
+
+[node name="Art" type="Sprite2D" parent="Depth/AnonymousGuard"]
+position = Vector2(-94.17118997912314, -150.8141962421712)
+scale = Vector2(0.11691022964509394, 0.11691022964509394)
+texture = ExtResource("guard_idle")
+centered = false
+
+[node name="Solid" type="StaticBody2D" parent="Depth/AnonymousGuard"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Depth/AnonymousGuard/Solid"]
+polygon = PackedVector2Array(-18, -12, 18, -12, 18, 13, -18, 13)
+
+[node name="SurveyActor" type="CharacterBody2D" parent="Depth"]
+position = Vector2(680, 1510)
+collision_layer = 2
+collision_mask = 1
+motion_mode = 1
+metadata/purpose = "尺度与通行检查；非正式玩家角色"
+
+[node name="Body" type="CollisionShape2D" parent="Depth/SurveyActor"]
+shape = SubResource("body_shape")
+
+[node name="Art" type="Sprite2D" parent="Depth/SurveyActor"]
+position = Vector2(-94.17118997912317, -150.8141962421712)
+scale = Vector2(0.11691022964509394, 0.11691022964509394)
+texture = ExtResource("guard_idle")
+centered = false
+
+[node name="Bounds" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="West" type="CollisionPolygon2D" parent="Bounds"]
+polygon = PackedVector2Array(0, 0, 32, 0, 32, 1760, 0, 1760)
+
+[node name="East" type="CollisionPolygon2D" parent="Bounds"]
+polygon = PackedVector2Array(2528, 0, 2560, 0, 2560, 1760, 2528, 1760)
+
+[node name="North" type="CollisionPolygon2D" parent="Bounds"]
+polygon = PackedVector2Array(0, 0, 2560, 0, 2560, 32, 0, 32)
+
+[node name="South" type="CollisionPolygon2D" parent="Bounds"]
+polygon = PackedVector2Array(0, 1728, 2560, 1728, 2560, 1760, 0, 1760)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(1280, 880)
+zoom = Vector2(0.58, 0.58)
+
+[node name="Notes" type="CanvasLayer" parent="."]
+
+[node name="Title" type="Label" parent="Notes"]
+offset_left = 34.0
+offset_top = 24.0
+theme_override_colors/font_color = Color(1, 0.92, 0.75, 1)
+theme_override_colors/font_shadow_color = Color(0.12, 0.065, 0.035, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 28
+text = "赤岩关镇 · 峡口关门"
+
+[node name="Status" type="Label" parent="Notes"]
+offset_left = 35.0
+offset_top = 65.0
+theme_override_colors/font_color = Color(1, 0.92, 0.75, 1)
+theme_override_colors/font_shadow_color = Color(0.12, 0.065, 0.035, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 17
+text = "首分区编辑草案 · 关防 / 饮水 / 候检"
+
+[node name="Controls" type="Label" parent="Notes"]
+offset_left = 35.0
+offset_top = 1010.0
+theme_override_colors/font_color = Color(1, 0.92, 0.75, 1)
+theme_override_colors/font_shadow_color = Color(0.12, 0.065, 0.035, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 19
+text = "WASD / 方向键 移动   Tab 全景 / 跟随   R 回起点   F1 制作标记"
+
+[node name="Limits" type="Label" parent="Notes"]
+offset_left = 35.0
+offset_top = 1042.0
+theme_override_colors/font_color = Color(1, 0.92, 0.75, 1)
+theme_override_colors/font_shadow_color = Color(0.12, 0.065, 0.035, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 16
+text = "待补：峡壁立面、后接层台、阶街建筑；行走序列尚未接入"
+
+[node name="MakingNotes" type="Node2D" parent="."]
+
+[node name="NorthInterface" type="Label" parent="MakingNotes"]
+offset_left = 2070.0
+offset_top = 255.0
+theme_override_fonts/font = SubResource("font")
+theme_override_colors/font_color = Color(1, 0.9, 0.67, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.04, 0.02, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "后续层台接口（未连接）"
+
+[node name="TowerLabel" type="Label" parent="MakingNotes"]
+offset_left = 265.0
+offset_top = 760.0
+theme_override_fonts/font = SubResource("font")
+theme_override_colors/font_color = Color(1, 0.9, 0.67, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.04, 0.02, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "平顶岗楼 · 门前保留"
+
+[node name="WaterLabel" type="Label" parent="MakingNotes"]
+offset_left = 460.0
+offset_top = 1360.0
+theme_override_fonts/font = SubResource("font")
+theme_override_colors/font_color = Color(1, 0.9, 0.67, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.04, 0.02, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "商队饮水"
+
+[node name="CargoLabel" type="Label" parent="MakingNotes"]
+offset_left = 1930.0
+offset_top = 1340.0
+theme_override_fonts/font = SubResource("font")
+theme_override_colors/font_color = Color(1, 0.9, 0.67, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.04, 0.02, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "候检货位"
+
+[node name="ActorLabel" type="Label" parent="MakingNotes"]
+offset_left = 620.0
+offset_top = 1532.0
+theme_override_fonts/font = SubResource("font")
+theme_override_colors/font_color = Color(1, 0.9, 0.67, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.04, 0.02, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 24
+text = "尺度检查员"

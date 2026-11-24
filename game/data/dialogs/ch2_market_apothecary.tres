@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "药铺掌柜"
+text = "昨晚有个手背带勒痕的人来买解毒散，说是遭凌月女侠劫了货。他怕我细问，连找银都没等。"
+add_testimonies = Array[StringName]([&"ts_ch2_apothecary_bound_buyer"])
+set_flags = Array[Dictionary]([{"key": "ch2_market_apothecary_heard", "value": true}])
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "勒痕说明他不久前被绑过。他的话与货郎所见不是同一条路线。"
+on_end = "next:shop"
+
+[sub_resource type="Resource" id="shop"]
+script = ExtResource("2_dnode")
+node_id = &"shop"
+speaker = "药铺掌柜"
+text = "你既要进林查人，伤药和解毒丹总得备些。柜上都是明码实价。"
+choices = Array[Dictionary]([{"text": "看看药品", "action": "shop:zhuwei_apothecary"}, {"text": "暂时不用", "next": "end"}])
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_market_apothecary"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2"), SubResource("shop")])

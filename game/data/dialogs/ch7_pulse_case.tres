@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="外院老药工"
+text="内院抬出来的两名抄手，手腕都只见一道红痕，隔夜却连笔都提不起。我记过他们的脉案。少侠若往档房去，可愿帮我寻回来？"
+choices=Array[Dictionary]([{"text":"我去找，认得出是哪本吗？","accept_quest":"q_ch7_side_06_pulse_case","next":"accept"},{"text":"先看别处。","next":"leave"}])
+
+[sub_resource type="Resource" id="accept"]
+script=ExtResource("2")
+node_id=&"accept"
+speaker="外院老药工"
+text="西边转运桌脚垫着一本蓝皮账，翻过来才是脉案。巡守一人点腕、一人截流，挨了招，换个院子伤也还在。"
+accept_quest=&"q_ch7_side_06_pulse_case"
+set_flags=Array[Dictionary]([{"key":"ch7_pulse_taken","value":true}])
+
+[sub_resource type="Resource" id="leave"]
+script=ExtResource("2")
+node_id=&"leave"
+speaker="外院老药工"
+text="好。若觉指尖发木，记得回来寻我。"
+
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch7_pulse_case"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("accept"),SubResource("leave")])

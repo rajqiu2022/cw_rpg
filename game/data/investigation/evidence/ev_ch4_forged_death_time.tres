@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch4_forged_death_time"
+display_name = "被改写的死亡时刻"
+description = "赵思颖复核府衙验状后确认，五名旧案死者中至少一人的死亡时刻被人为提前。改动使用了正确官式，却与尸身药理痕迹不符。"
+chapter = 4
+category = &"medical_record"
+source_hint = "洛阳府衙验状与赵氏医馆复验"
+related_testimony_ids = Array[StringName]([&"ts_ch4_zhao_autopsy"])
+tags = Array[StringName]([&"old_case", &"forged_time", &"medical"])

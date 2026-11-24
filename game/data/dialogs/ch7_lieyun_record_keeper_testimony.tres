@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "旧渡记档人"
+text = "那暗号我见过。死亡名册送到旧渡后一个月，有个遮面人持同样的压签走茶路，连更次口令都没有错。"
+voice_emotion = "solemn"
+on_end = "next:limit"
+[sub_resource type="Resource" id="limit"]
+script = ExtResource("2")
+node_id = &"limit"
+speaker = "旧渡记档人"
+text = "我没看清脸，也不敢说死者回来了。只因当时觉得不对，私下留了一张副签；日期和暗号压痕都还在右柜。"
+voice_emotion = "concerned"
+add_testimonies = Array[StringName]([&"ts_ch7_lieyun_posthumous_code_use"])
+set_flags = Array[Dictionary]([{"key":"ch7_lieyun_posthumous_code_heard", "value":true}])
+on_end = "next:hero"
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "副签证明权限在死后仍被用过，身份仍要另查。你保住的是时间线，不是一个未经核实的结论。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_lieyun_record_keeper_testimony"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("limit"), SubResource("hero")])

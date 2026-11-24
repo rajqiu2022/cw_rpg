@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "原册写我被同行者接走，白水驿又换过一辆窄车。你后来把“另行安置”改成“途中失散”。我要听你亲口说为什么。"
+accept_quest = &"q_ch6_main_05_master_confrontation"
+on_end = "next:master"
+
+[sub_resource type="Resource" id="master"]
+script = ExtResource("2")
+node_id = &"master"
+speaker = "刑樊天"
+text = "因为追那辆窄车的人没有停过。我把你的去向改成失散，想让他们以为线索断了。可我也把你该有的选择一起藏了二十年。"
+voice_emotion = "solemn"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "保护我，不等于替我决定一生该知道什么。接下来你准备怎么做，不再只由你一个人说了算。"
+on_end = "next:choice"
+
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("2")
+node_id = &"choice"
+speaker = ""
+text = "你如何处理刑樊天的证词与安全？"
+choices = Array[Dictionary]([
+	{"text":"我可以原谅，但你必须公开作证", "next":"public", "set_flag":{"ch6_master_stance":"public", "ch6_master_stance_public":true}, "method_flags":[{"key":"ch6_require_public_testimony", "value":true}]},
+	{"text":"这条路我自己查，你只需把知道的交出来", "next":"independent", "set_flag":{"ch6_master_stance":"independent", "ch6_master_stance_independent":true}, "method_flags":[{"key":"ch6_independent_investigation", "value":true}]},
+	{"text":"先避开追兵，我从别处补齐证词", "next":"protect", "set_flag":{"ch6_master_stance":"protect", "ch6_master_stance_protect":true}, "method_flags":[{"key":"ch6_protect_master_first", "value":true}]}
+])
+
+[sub_resource type="Resource" id="public"]
+script = ExtResource("2")
+node_id = &"public"
+speaker = "刑樊天"
+text = "好。该我署名的那一页，我亲自重写；该我承担的后果，不再让你替我挡。"
+voice_emotion = "solemn"
+on_end = "next:converge"
+
+[sub_resource type="Resource" id="independent"]
+script = ExtResource("2")
+node_id = &"independent"
+speaker = "刑樊天"
+text = "你不信我，也该由我受着。我把旧路和封蜡样式都交给你，之后只在暗处替你盯追兵。"
+voice_emotion = "weary"
+on_end = "next:converge"
+
+[sub_resource type="Resource" id="protect"]
+script = ExtResource("2")
+node_id = &"protect"
+speaker = "刑樊天"
+text = "先保人再补证，不等于永远不作证。等你找到能接上裁页的人，我会出来把改过的那一行认下。"
+voice_emotion = "concerned"
+on_end = "next:converge"
+
+[sub_resource type="Resource" id="converge"]
+script = ExtResource("2")
+node_id = &"converge"
+speaker = "刑樊天"
+text = "这册《玄霜诀》只到藏息篇，不能替你把路走完。拿着它。村外古道还有人在等你——桌上的火漆不是我的。"
+set_flags = Array[Dictionary]([{"key":"ch6_master_choice_made", "value":true}, {"key":"ch6_ancient_road_letter_unlocked", "value":true}])
+accept_quest = &"q_ch6_main_06_ancient_road_letter"
+complete_quest = &"q_ch6_main_05_master_confrontation"
+on_end = "scene:ch6_s5_ancient_road_inn"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_master_confrontation"
+required_story_flag = &"chapter5_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("master"), SubResource("hero"), SubResource("choice"), SubResource("public"), SubResource("independent"), SubResource("protect"), SubResource("converge")])

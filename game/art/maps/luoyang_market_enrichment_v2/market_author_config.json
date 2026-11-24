@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "scene_id": "ch4_s3_luoyang_market",
+  "design_size_px": [3072, 2048],
+  "original_enclosure_manifest_sha": "ba46bfa02e4152918d6696033450bf1f0329be01318f69449a7fad7355a85c84",
+  "notes": "沿用v1全部几何与原身份。v2仅新增3份原字节完全相同PNG运行别名及无alpha-border修正的无损导入，不改原3PNG/旧imports/构图/任务。",
+  "source_sha256": {
+    "res://art/maps/luoyang_modular_v3/source/street_row_v3.png": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+    "res://art/maps/luoyang_modular_v3/source/goods_stall_v2.png": "85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0",
+    "res://art/maps/luoyang_modular_v3/source/module_semantics.json": "9a2f68fd3c6c243dd690a04dbdeec8bd8627931aa498337b2fa01957a9c449c2",
+    "res://art/maps/luoyang_modular_v3/source/generation_record.json": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+    "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/native_tree.png": "e7cddeee8d3d9f71a0bf8cc61a0949f328591f2e38aacef12853ab650f9df430",
+    "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/native_tree.json": "4bc622e3c4239d35c24f46a98ece3a9aeb09199dc785459aaa4acb2e751b04e4",
+    "res://art/maps/luoyang_market_enrichment_v2/textures/street_row.png": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+    "res://art/maps/luoyang_market_enrichment_v2/textures/goods_stall.png": "85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0",
+    "res://art/maps/luoyang_market_enrichment_v2/textures/native_tree.png": "e7cddeee8d3d9f71a0bf8cc61a0949f328591f2e38aacef12853ab650f9df430"
+  },
+  "texture_aliases": {
+    "res://art/maps/luoyang_modular_v3/source/street_row_v3.png": "res://art/maps/luoyang_market_enrichment_v2/textures/street_row.png",
+    "res://art/maps/luoyang_modular_v3/source/goods_stall_v2.png": "res://art/maps/luoyang_market_enrichment_v2/textures/goods_stall.png",
+    "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/native_tree.png": "res://art/maps/luoyang_market_enrichment_v2/textures/native_tree.png"
+  },
+  "placements": [
+    {"id":"market_west_ward_frontage","kind":"street_row","foot_px":[650,1440],"scale":0.54},
+    {"id":"market_east_ward_frontage","kind":"street_row","foot_px":[2550,1260],"scale":0.54},
+    {"id":"market_northwest_rear_frontage","kind":"street_row","foot_px":[620,500],"scale":0.5},
+    {"id":"market_northeast_rear_frontage","kind":"street_row","foot_px":[2530,500],"scale":0.5},
+    {"id":"market_west_alley_stall","kind":"stall","foot_px":[900,1190],"scale":0.14},
+    {"id":"market_east_alley_stall","kind":"stall","foot_px":[2300,1150],"scale":0.14},
+    {"id":"market_west_court_tree_a","kind":"tree","foot_px":[500,1480],"scale":1},
+    {"id":"market_west_court_tree_b","kind":"tree","foot_px":[760,1480],"scale":1},
+    {"id":"market_east_court_tree_a","kind":"tree","foot_px":[2350,1290],"scale":1},
+    {"id":"market_east_court_tree_b","kind":"tree","foot_px":[2700,1290],"scale":1}
+  ]
+}

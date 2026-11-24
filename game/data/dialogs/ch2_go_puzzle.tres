@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "棋叟"
+text = "黑棋封住四面，白棋只剩一口气。年轻人，可敢落一子？"
+accept_quest = &"q_ch2_side_02_go_puzzle"
+on_end = "next:choose"
+
+[sub_resource type="Resource" id="choose"]
+script = ExtResource("2_dnode")
+node_id = &"choose"
+speaker = "冷孤云"
+text = "要救中央白子，先从哪里动手？"
+choices = Array[Dictionary]([{"text": "抢中央气口", "next": "wrong"}, {"text": "落在左上闲位", "next": "right"}])
+
+[sub_resource type="Resource" id="wrong"]
+script = ExtResource("2_dnode")
+node_id = &"wrong"
+speaker = "棋叟"
+text = "只看眼前，三步后仍是死局。再看看那枚最不像棋的棋。"
+on_end = "next:choose"
+
+[sub_resource type="Resource" id="right"]
+script = ExtResource("2_dnode")
+node_id = &"right"
+speaker = "棋叟"
+text = "以闲子断气路，好。局破了，这枚玉棋归你。"
+set_flags = Array[Dictionary]([{"key": "go_puzzle_solved", "value": true}])
+complete_quest = &"q_ch2_side_02_go_puzzle"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_go_puzzle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("choose"), SubResource("wrong"), SubResource("right")])

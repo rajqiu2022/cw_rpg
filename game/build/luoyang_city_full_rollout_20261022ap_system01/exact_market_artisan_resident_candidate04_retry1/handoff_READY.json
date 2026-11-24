@@ -1,0 +1,27 @@
+{
+  "status": "NEW_BUILD_ONLY_NO_ENGINE_OR_DEPLOY",
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate04_retry1/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "7c65d2d1e7eee99b9f0d2f9418428382545ed49c9fc13f883ae0beb376acab2d",
+    "bytes": 108645
+  },
+  "parent": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate03/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "9d80b90198fa4b0a3a78c1f81e44e46d06a8e97503819cb2b39895398aecd1e3"
+  },
+  "whole_byte_inverse": true,
+  "old": "\t\tvar expected_source: Vector2=Vector2(2816,1740)/LUOYANG_V3.SIZE\r\n",
+  "new": "\t\tvar expected_source: Vector2=Vector2(2816,1740)/LUOYANG_V3.SIZE\r\n\t\tvar actual_source: Vector2=source_node.call(\"resident_actual_spawn\") if is_instance_valid(source_node) else Vector2(INF,INF)\r\n\t\tif not actual_source.is_finite() or not AP_QUARTERS.safe_body(AP_LEASE_ARTISAN,actual_source*LUOYANG_V3.SIZE): _resident_city.release(\"AP_ARTISAN_ACTUAL_FEET_UNSAFE\");return false\r\n",
+  "contract": "Author-bound source_portal_spawn stays2816,1740 UV; actual Artisan player feet separately finite/AP safe/live Area overlap. Legal off-center2816,1744 supported, return Market1100,1860 unchanged. Field A148 unchanged.",
+  "original_sources": [
+    {
+      "path": "res://scripts/field/field_walkable_controller.gd",
+      "sha256": "24b5159b01470b571955f68a2762b9e979fc45703168e86cb8da157defea1179",
+      "lines": "1950-1951 author bind;3843-3863 only revision-room actual override"
+    }
+  ],
+  "parent_handoff": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate03/handoff_READY.json",
+    "sha256": "4c3794e19f339fb7829a46bead0ade09e7198278c9302c525f4362068df0b231"
+  }
+}

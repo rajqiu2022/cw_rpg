@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/ch2_s1_market_training_hall_layout_v2.tres" id="2_map"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1920, 1280)
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch2_s1_market_training_hall"
+display_name = "竹尾河滩 · 武馆"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+is_settlement = true
+map_layout = ExtResource("2_map")
+player_spawn = Vector2(0.50,0.72)
+npcs = [
+	{"npc_id":"spar_zhuwei_apprentice","npc_name":"河滩练家子","pos":Vector2(0.35,0.56),"sprite_path":"res://art/sprites/battle/zhuwei_dojo_20261121/apprentice_guard_a.tres","walk_sprite_path":"res://art/sprites/battle/zhuwei_dojo_20261121/apprentice_field.tres","movement_mode":"patrol","patrol_axis":Vector2(1,0),"patrol_distance":78.0,"patrol_speed":42.0,"invert_patrol_facing":true,"walk_frame_seconds":0.19,"conversation_base_facing":"left","interaction_action":"spar:zhuwei_apprentice:zhuwei_dojo_apprentice:河滩练家子:12:3","scale":0.43},
+	{"npc_id":"spar_zhuwei_senior","npc_name":"游馆师兄","pos":Vector2(0.52,0.48),"sprite_path":"res://art/sprites/battle/zhuwei_dojo_20261121/senior_field.tres","idle_frame_seconds":0.9,"conversation_base_facing":"left","interaction_action":"spar:zhuwei_senior:zhuwei_dojo_senior:游馆师兄:20:5","scale":0.43},
+	{"npc_id":"spar_shen_guard","npc_name":"沈家护院","pos":Vector2(0.698,0.627),"sprite_path":"res://art/sprites/battle/zhuwei_dojo_20261121/guard_field.tres","idle_frame_seconds":0.55,"conversation_base_facing":"left","interaction_action":"spar:zhuwei_shen_guard:zhuwei_dojo_guard:沈家护院总管:28:7","scale":0.43}
+]

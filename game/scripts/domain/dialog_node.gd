@@ -21,12 +21,17 @@ extends Resource
 @export var speaker: String = ""              ## "客栈老板" / "" 表示旁白
 @export var portrait_path: String = ""        ## 立绘路径，可空
 @export var text: String = ""                 ## 台词内容（支持 BBCode）
+## 语音情绪。auto 会按关键词推断；关键剧情应显式填写，避免配音语气漂移。
+@export_enum("auto", "normal", "concerned", "solemn", "weary", "fear", "happy", "sad", "angry", "threat")
+var voice_emotion: String = "auto"
 
 ## 选项。空数组 = "按任意键继续"。每个元素结构：
 ##   {
 ##     "text":     "我帮你",            # 选项文字
 ##     "next":     "node_helped",       # 选完跳到哪个 node_id；"" 或 "end" 即结束
 ##     "set_flag": {"helped": true},    # 可选，选完置 flag
+##     "accept_quest": "quest_id",      # 可选，此分支首次到达同 ID 的接取节点时不再确认
+##     "decline_quest": "quest_id",     # 可选，标记同一委托的拒绝按钮，不改变任务状态
 ##   }
 @export var choices: Array[Dictionary] = []
 
@@ -35,6 +40,19 @@ extends Resource
 @export var give_items: Array[Dictionary] = []     ## [{"id": "iron_sword", "count": 1}]
 @export var give_gold: int = 0
 @export var set_flags: Array[Dictionary] = []      ## [{"key": "has_map", "value": true}]
+@export var learn_skills: Array[StringName] = []  ## [&"linxi_basic_sword_two"]
+@export var add_evidence: Array[StringName] = []
+@export var verify_evidence: Array[StringName] = []
+@export var add_testimonies: Array[StringName] = []
+@export var verify_testimonies: Array[StringName] = []
+@export var faction_trust_changes: Array[Dictionary] = []   ## [{"id": "lingyue", "delta": 5}]
+@export var companion_trust_changes: Array[Dictionary] = [] ## [{"id": "yuewuheng", "delta": 5}]
+@export var bond_events: Array[Dictionary] = []              ## [{"companion": "yuewuheng", "event": "kept_promise"}]
+@export var city_outcomes: Array[Dictionary] = []            ## [{"city": "zhuwei", "key": "witness_alive", "value": true}]
+@export var method_flags: Array[Dictionary] = []              ## [{"key": "saved_witness_first", "value": true}]
+## Plot weather is a node side effect, not a scene property. Use clear to stop.
+@export var weather_id: StringName = &""
+@export_range(0.25, 1.50, 0.05) var weather_strength: float = 1.0
 @export var accept_quest: StringName = &""
 @export var complete_quest: StringName = &""
 
@@ -42,6 +60,11 @@ extends Resource
 ##   ""              / "end"   → 结束对话，回到调用方
 ##   "next:node_id"           → 跳到本 script 内的另一段
 ##   "battle:enemy_id"        → 启动战斗（结束对话）
+##   "battle_solo:enemy_id"   → 启动不带队友的正式战斗
+##   "battle_solo_then:<enemy>:<dialog>"
+##                              → 正式单人考校，胜利后继续指定对话
+##   "spar_then:<spar>:<enemy>:<name>:<win>:<loss>:<dialog>"
+##                              → 切磋胜利后回场景继续指定对话
 ##   "scene:scene_id"         → 切换探索场景（结束对话）
 ##   "shop:shop_id"           → 打开商店（结束对话）
 ##   "open_inventory"         → 打开背包 UI（M5）

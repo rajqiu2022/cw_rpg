@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"wudang_raozhirou_sword"
+display_name = "绕指柔剑"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_sword_yinyang_v1.png"
+description = "武当入门剑法，剑锋绕开正面劲路后回刺空门。以单体内功伤害和稳定命中见长。"
+origin = "武当山门将柔劲运于剑脊的基础剑路。所谓绕指并非软剑，而是心意不与敌力正争。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 5
+quality = 1
+required_insight = 4
+practice_base_cost = 14
+fixed_damage = 10
+attack_scaling = 96
+hit_count = 1
+base_hit_chance = 0.96
+animation_id = &"sword_tier_1"
+required_weapon_type = &"sword"
+martial_category = &"sword"
+damage_type = 1
+internal_injury_gain = 10
+school = "wudang"
+complemented_by = "wudang_xuanwu_xinjing"
+complement_bonus_scaling = 6
+complement_bonus_desc = "玄武心经使柔劲贯入剑脊，回刺更稳"
+

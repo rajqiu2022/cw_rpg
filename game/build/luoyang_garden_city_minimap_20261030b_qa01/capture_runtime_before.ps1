@@ -1,0 +1,12 @@
+$ErrorActionPreference='Stop'
+$repo='F:/Code/RPG_GAME';$qa="$repo/game/build/luoyang_garden_city_minimap_20261030b_qa01"
+$previous=Get-Content "$repo/game/build/luoyang_private_garden_20261029q_qa01/freeze_ROOT_ACTUAL.json" -Raw | ConvertFrom-Json
+function Fact([string]$p){if(!(Test-Path -LiteralPath $p)){return [ordered]@{exists=$false}};$i=Get-Item -LiteralPath $p;return [ordered]@{exists=$true;sha256=(Get-FileHash -LiteralPath $p).Hash.ToLower();bytes=$i.Length;utc_ticks=[string]$i.LastWriteTimeUtc.Ticks}}
+$paths=@('game/scripts/field/field_walkable_controller.gd','game/build/luoyang_regions_20261027d_source01/region_field.gd','game/build/three_towns_world_20261029j_system01/town_field.gd','game/build/luoyang_regions_20261027d_source01/region_runtime_manifest_BUILD.json')
+$sources=[ordered]@{};$backups=@();$saves=[ordered]@{};$external=[ordered]@{}
+foreach($path in $paths){$f=Fact "$repo/$path";if(!$f.exists){throw "MISSING:$path"};$sources[$path]=$f;$backup="$qa/source_before/$path";[IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($backup)) | Out-Null;$stream=[IO.File]::Open($backup,[IO.FileMode]::CreateNew);try{$bytes=[IO.File]::ReadAllBytes("$repo/$path");$stream.Write($bytes,0,$bytes.Length)}finally{$stream.Dispose()};[IO.File]::SetLastWriteTimeUtc($backup,[DateTime]::new([long]$f.utc_ticks,[DateTimeKind]::Utc));$b=Fact $backup;if($b.sha256 -ne $f.sha256 -or $b.bytes -ne $f.bytes -or $b.utc_ticks -ne $f.utc_ticks){throw "COPY_RACE:$path"};$backups+=@{source=$path;path=$backup;fact=$b}}
+foreach($p in $previous.saves.PSObject.Properties){$saves[$p.Name]=Fact $p.Name}
+foreach($p in $previous.external_run_before.PSObject.Properties){$external[$p.Name]=Fact "$repo/$($p.Name)"}
+$result=[ordered]@{status='FOUR_RUNTIME_TARGETS_FRESH_BEFORE_CLOSURE';sources=$sources;exact_backups=$backups;registered_save_paths=$saves;external_parallel_sources=$external;external_policy='record-only from beginning; not this task rollback scope';closure_scope='System exact changed closure paths pending; do not infer final scope';engine_calls=0;production_writes=0;save_contents_read=$false;save_writes=0}
+$path="$qa/runtime_before_ACTUAL.json";$stream=[IO.File]::Open($path,[IO.FileMode]::CreateNew);try{$bytes=[Text.UTF8Encoding]::new($false).GetBytes(($result | ConvertTo-Json -Depth 22)+"`n");$stream.Write($bytes,0,$bytes.Length)}finally{$stream.Dispose()}
+[ordered]@{path=$path;sha256=(Fact $path).sha256;sources=$sources.Count;backups=$backups.Count;saves=$saves.Count;external_record_only=$external.Count} | ConvertTo-Json

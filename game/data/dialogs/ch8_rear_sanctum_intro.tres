@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="旁白"
+text="后殿的止杀钟尚未敲响，右侧杠杆却已经压到一半。薛影把最后一枚庄主令放在石地上，没有再藏进袖中。"
+on_end="next:rule"
+[sub_resource type="Resource" id="rule"]
+script=ExtResource("2")
+node_id=&"rule"
+speaker="冷孤云"
+text="人已撤走，亲令、证词和死籍都在卷中。现在谈的是你的责任，不再是苏雾笙替你安排的身份。"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_rear_sanctum_intro"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("rule")])

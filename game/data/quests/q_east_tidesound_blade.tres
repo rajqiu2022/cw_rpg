@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="QuestDef" format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="quest"]
+
+[resource]
+script = ExtResource("quest")
+quest_id = &"q_east_tidesound_blade"
+title = "失镖的潮声刀"
+kind = 1
+chapter_independent = true
+desc_not_started = "沧浦有宗旧镖案，留下的空茶箱竟结着盐霜。驿站记事想查清当年的收货记录。"
+desc_in_progress = "按箱篾、盐壳和船单追查失货经过，查清当年的押镖人是否卷货。"
+desc_completed = "锈刀和铜签证实镖师曾破箱救货。记事亲手销案，请匠人修好潮声刀相赠。"
+tracker_hint = "茶岭脚夫、盐湾晒盐人"
+progress_records = Array[Dictionary]([
+	{"trigger":"evidence_acquired:ev_tide_sample","text":"记事交来箱篾。勒痕和盐壳各有来历，先问哪一处都行。","tracker_hint":"茶岭脚夫、盐湾晒盐人"},
+	{"trigger":"flag_set:tide_tea_known","text":"脚夫认出双股拖索的勒痕。另一条凭据在盐壳里；合齐后去潮门。","tracker_hint":"查盐壳，合证后访潮门账房"},
+	{"trigger":"flag_set:tide_salt_known","text":"晒盐人认出落潮拖底的黑泥。还要对上拖索；合齐后去潮门。","tracker_hint":"核篾痕，合证后访潮门账房"},
+	{"trigger":"flag_set:tide_waybills_open","text":"账房取出两份同日船单，可去案桌核对。","tracker_hint":"潮门港 · 货栈案桌"},
+	{"trigger":"flag_set:tide_berth_known","text":"乌篷号在西栈断过索。去西边栈桥的南沿摸一摸。","tracker_hint":"潮门港 · 西栈南沿"},
+	{"trigger":"flag_set:tide_blade_found","text":"沉箱里有锈刀与救货铜签，回沧浦找记事验戳。","tracker_hint":"沧浦城 · 验货棚"}
+])
+completion_triggers = Array[String](["flag_set:tide_case_closed"])
+reward_exp = 160
+reward_items = Array[Dictionary]([{"item_id":"east_tidesound_blade","count":1}])

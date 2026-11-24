@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_09_protect_witnesses"
+title = "护证分流"
+kind = 0
+desc_not_started = "内署授权链已经惊动山庄，录事与旧教习不能继续留在原处。"
+desc_in_progress = "在聚义厅决定两名证人如何转移与公开。"
+desc_completed = "证人转移方案已经确定。选择将影响证词公开速度、烈云承担的风险与洛阳官面介入程度。"
+tracker_hint = "烈云分舵 · 聚义厅"
+completion_triggers = Array[String](["flag_set:ch7_witness_protection_resolved"])
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 0
+reward_exp = 180
+reward_items = Array[Dictionary]([])

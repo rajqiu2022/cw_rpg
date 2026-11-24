@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_mask_path = "res://art/navigation_masks/ch5_false_banner_outpost_walk_v1.svg"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.42,1.00, 0.39,0.80, 0.10,0.78, 0.08,0.50, 0.26,0.36, 0.30,0.10, 0.72,0.06, 0.78,0.31, 0.94,0.30, 0.94,0.55, 0.67,0.67, 0.61,1.00)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"left_watchtower", "pos":Vector2(0.17,0.27), "size":Vector2(0.16,0.22)},
+	{"id":"right_command_tent", "pos":Vector2(0.86,0.39), "size":Vector2(0.15,0.14)},
+	{"id":"evidence_table", "pos":Vector2(0.22,0.72), "size":Vector2(0.12,0.07)}
+]
+interactions = [
+	{"id":"inspect_poisoned_weapons", "pos":Vector2(0.22,0.67), "size":Vector2(0.13,0.11), "activation":"interact", "label":"查验淬毒兵刃", "action":"dialog:ch5_false_banner_poisoned_weapons", "visual_baked":true, "require_quest_active":"q_ch5_main_05_false_banner_outpost", "hide_flag":"ch5_poisoned_weapon_found"}
+]
+portals = []
+walkable_probes = [
+	{"id":"mine_spawn", "pos":Vector2(0.50,0.90)},
+	{"id":"central_yard", "pos":Vector2(0.50,0.56)},
+	{"id":"weapon_evidence", "pos":Vector2(0.22,0.67)},
+	{"id":"boss_court", "pos":Vector2(0.51,0.22)},
+	{"id":"command_desk", "pos":Vector2(0.78,0.42)}
+]
+blocked_probes = [
+	{"id":"left_watchtower", "pos":Vector2(0.17,0.27)},
+	{"id":"right_command_tent", "pos":Vector2(0.86,0.39)},
+	{"id":"left_cliff", "pos":Vector2(0.04,0.70)}
+]

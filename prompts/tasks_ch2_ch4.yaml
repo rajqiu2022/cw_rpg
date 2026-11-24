@@ -1,0 +1,111 @@
+tasks:
+  - id: ch2_bg_zhuwei_market_v1
+    template: chapter_scene_walkable
+    category: scene_background/ch2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      scene_name: "第二章竹尾村集市可行走场景"
+      scene_desc: "江南山村集市，青瓦木楼与竹棚摊位沿道路两侧展开，中央是开阔石土混合主路，远端通向密林山道。场景有人生活过的痕迹，但画面中不出现人物。"
+      lighting: "晴朗上午，阳光穿过竹叶，明亮通透，气氛热闹但不拥挤。"
+      key_elements: "左侧客栈与告示栏，右侧药铺和杂货摊，中部水井与任务交谈空地，左下村口入口，右上密林出口；出口轮廓明显。"
+
+  - id: ch2_portrait_yuewuheng_rescue_v1
+    template: portrait_yuewuheng_locked
+    category: character_portrait/ch2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      pose: "左手按住受伤的右肩，右手持剑斜指地面，身体仍保持戒备"
+      expression: "负伤后的警惕与克制感激"
+
+  - id: ch2_bg_zhuwei_market_v2
+    template: chapter_scene_walkable
+    category: scene_background/ch2
+    priority: 1
+    model: gpt-image-2
+    skip: false
+    vars:
+      scene_name: "第二章竹尾村集市可行走场景，无文字纯场景版"
+      scene_desc: "江南山村集市，青瓦木楼与竹棚摊位沿道路两侧展开，中央是开阔石土混合主路，远端通向密林山道。场景有人生活过的痕迹，但画面中不出现人物。所有门、墙、告示栏、棚架和旗帜都保持纯材质表面，不悬挂纸张。"
+      lighting: "晴朗上午，阳光穿过竹叶，明亮通透，气氛热闹但不拥挤。"
+      key_elements: "左侧客栈和空白木告示栏，右侧药铺和杂货摊，中部水井与任务交谈空地，左下村口入口，右上密林出口；出口轮廓明显。严禁红纸、门联、招牌、旗号、文字、字符、符号或类似书写的装饰。"
+
+  - id: ch3_bg_wulin_assembly_v1
+    template: chapter_scene_walkable
+    category: scene_background/ch3
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "第三章武林大会会场，无文字纯场景"
+      scene_desc: "山门前开阔石坪，五座无标记深色旗杆与木案围出大会空地，远处群山和苍松，画面没有人物。"
+      lighting: "清晨薄雾散去后的冷白日光，明亮而沉稳。"
+      key_elements: "中央石坪留出对话区域，左侧长案与证物托盘，右侧石阶通往考校场。旗帜和木牌均为纯色无字，严禁文字、符号、水印、招牌。"
+
+  - id: ch3_bg_trial_ground_v1
+    template: chapter_scene_walkable
+    category: scene_background/ch3
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "第三章五派考校场，无文字纯场景"
+      scene_desc: "山腰练武石台，粗粝圆形演武地面，四周木桩、兵器架和石灯，无人物，远处可见大会山门。"
+      lighting: "晴朗午后，冷蓝山影与淡金日光平衡，地面清晰便于交互。"
+      key_elements: "中央演武圆台，左右各留空地，上方石阶通往大会。所有兵器架和旗杆无文字无符号，严禁水印。"
+
+  - id: ch4_bg_luoyang_yamen_v1
+    template: chapter_scene_walkable
+    category: scene_background/ch4
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "第四章洛阳府衙内堂，无文字纯场景"
+      scene_desc: "古代武侠府衙内堂，乌木公案、卷宗架、窗外雨后洛阳街景，无人物，无可读文字。"
+      lighting: "雨后清冷天光从格窗照入，暖色纸灯仅局部点缀，保持冷铁蓝灰主调。"
+      key_elements: "中央公案和卷宗区域，左侧证物架，右侧通往街市的敞门。卷轴与匾额均为纯材质无字，严禁文字、印章、水印。"
+
+  - id: ch4_bg_ancient_temple_v1
+    template: chapter_scene_walkable
+    category: scene_background/ch4
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "第四章洛阳城外古寺伏击地，无文字纯场景"
+      scene_desc: "荒废山寺的断墙和石佛残座，湿润石阶、散落香炉和密林边缘，无人物，无文字。"
+      lighting: "阴天暮色，石面反射微冷天光，悬疑伏击但交互区域清楚可见。"
+      key_elements: "中央空旷石坪用于战斗，左侧破殿入口，右侧林间退路，前景有伪造令牌调查石案。严禁宗教文字、符号、水印、招牌。"
+
+  - id: ch3_portrait_lingshuang_v1
+    template: portrait_chapter_npc
+    category: character_portrait/ch3
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "凌霜"
+      character_desc: "三十余岁的女性凌月派掌门，明确为女性面容和女性身形，清冷端正，乌发高束，银灰与月白相间的女侠长衣，佩一柄细长佩剑；绝不可生成男性或中性男性化外形"
+      pose: "一手按在剑鞘上，另一手微抬示意安静"
+      expression: "克制、锐利、值得信任"
+
+  - id: ch3_portrait_suwusheng_v1
+    template: portrait_chapter_npc
+    category: character_portrait/ch3
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "苏雾笙"
+      character_desc: "二十七岁茗雾山庄代表，眉目温和却难以捉摸，墨青长发半束，深青与乌银色轻甲长袍，腰间无显眼武器"
+      pose: "双手拢袖站在山风中"
+      expression: "平静、审慎、隐约带笑"
+
+  - id: ch4_portrait_zhaosiying_v1
+    template: portrait_chapter_npc
+    category: character_portrait/ch4
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "赵思颖"
+      character_desc: "二十多岁的洛阳女医者，清秀坚定，乌发以玉簪束起，青白色医者长衣配深青披肩，随身药囊与银针盒"
+      pose: "左手捧药瓶，右手收起银针"
+      expression: "冷静、专注、带有医者的温和"

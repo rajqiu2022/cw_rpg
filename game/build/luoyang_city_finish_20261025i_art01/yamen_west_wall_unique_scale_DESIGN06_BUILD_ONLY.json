@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "status": "UNIQUE_ROOT_REQUESTED_WEST_SCALE_REVISION_ART_DESIGN_ONLY_NOT_SOURCE_OR_RUNTIME_PASS",
+  "ready": false,
+  "parent_design": {"path":"res://build/luoyang_city_finish_20261025i_art01/continuous_street_edge_three_revisions_DESIGN05_SOURCE_CANDIDATE.json","sha256":"bf41ca4fc11bc42d659d5fb949357418f2f6d6e4a5937807243591419e26bbcc"},
+  "fixed_Source_evidence": {
+    "author": {"path":"res://build/luoyang_city_finish_20261025i_source01/street_edges05_FINAL_BUILD01/author_five_street_edges01_NOTREADY.json","sha256":"a4baf5057bf985fadd6eede216184651a4d7ef1d929eacd0bed2276e86ed34ea"},
+    "finite_plan": {"path":"res://build/luoyang_city_finish_20261025i_source01/street_edges05_FINAL_BUILD01/finite_five_domains_A1_route_NPC_plan_READONLY.json","sha256":"18b6dbd096150b31a5fcc70e4814a29b7ca7dc19c7653f40e80d071cb46193ae"},
+    "old_failure_retained": "The .8 wall right792 overlaps fixed magistrate_hall minimumx790.8200073242188 by1.17999267578125. No epsilon, alpha waiver or hall movement."
+  },
+  "one_delta": {
+    "lot_id":"EDGE04_YAMEN_WEST_ARCHIVE_COMPOUND",
+    "id":"edge05_yamen_west_archive_back_boundary",
+    "foot_px":[540,200],
+    "uniform_scale_before":0.8,
+    "uniform_scale_after":0.77,
+    "texture":"res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png",
+    "source_sha256":"664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0",
+    "source_size_px":[640,132],
+    "source_ground_anchor_px":[319,124],
+    "source_complete_A1_xyxy":[4,4,634,127],
+    "source_true_ground_polygon_px":[[4,112],[634,112],[634,124],[4,124]],
+    "coordinate_expression":"Vector2f32(foot) + Vector2f32(Vector2f32(source_point-anchor)*float64(.77)); readonly Python struct float32 rounded each Vector2 step; Source must retain its native expression.",
+    "complete_A1_world_f32_xyxy":[297.45001220703125,107.5999984741211,782.5499877929688,202.30999755859375],
+    "true_ground_polygon_world_f32":[[297.45001220703125,190.75999450683594],[782.5499877929688,190.75999450683594],[782.5499877929688,200.0],[297.45001220703125,200.0]],
+    "full_A1_hall_gap_px":8.27001953125,
+    "old_full_A1_world_f32_xyxy":[288.0,104.0,792.0,202.39999389648438],
+    "old_true_ground_bbox_world_f32":[288.0,190.39999389648438,792.0,200.0],
+    "subset_reason":"Both new fullA1 and actual base are strict subsets of their rejected .8 envelopes. The fixed Source full inventory named only magistrate_hall; eliminating that intersection cannot introduce another old-row envelope conflict. This is inheritance plus arithmetic, not a new PNG-alpha or payload re-audit."
+  },
+  "service_lot_design": {
+    "decision":"ACCEPT_THIS_ONE_LIMITED_BACK_BOUNDARY_COMPOSITION_FOR_SOURCE_FINITE_VALIDATION",
+    "existing_front":{"id":"assembled_west_service_annex","foot_px":[590,1000],"scale":0.5,"door_height_px":150},
+    "existing_rear":{"id":"finish_i_yamen_west_archive","foot_px":[540,620],"scale":0.4931972789115646,"door_height_px":145,"complete_A1_world_xyxy_nominal":[228.792517,248.129252,833.452381,637.755102]},
+    "relationship":"Existing front service facade, rear archive/kitchen and the same-axis short north back boundary remain one service lot. New wall visible width485.10 is subordinate to604.66 rear-body width; nominal north silhouette gap is45.819254px. No second house, reduced door or narrow passage is inserted.",
+    "closure_limit":"This is a readable rear boundary for the existing compound, NOT a claimed four-sided watertight walled courtyard. Lateral ends remain open; do not invent end walls to close it or advertise an8.27px pedestrian passage beside the main hall. Public lower frontage and original side lanes remain open.",
+    "adult_buildings_unchanged":true,
+    "literal_four_sided_new_enclosure_claim":false
+  },
+  "readonly_original_route_check": {
+    "body_px":[34,24],
+    "sources":[
+      {"path":"res://build/luoyang_yamen_annex_publication_20261016/84632_1726/manifest.json","sha256":"b606f4913456fc967a7a650c979d3f20ced97bb41a4f8bd3da4a6a445670aee3","selector":"record.routes","rows":10},
+      {"path":"res://build/luoyang_yamen_courts_20261024c_system01/author_courts_NOTREADY.json","sha256":"51582b8d281876b08989acef6d16e9216022bad34640cb7bf1c872f0cc2cf429","selector":"proposed_short_routes","rows":6},
+      {"path":"res://build/luoyang_layout_quest_20261018t_layout_source01/author_retry2.json","sha256":"8f708341b9923e53d016aa2198900e2a8c93085e11b154b42b6c44ff4bc1ba6e","selector":"districts.ch4_s1_luoyang_yamen.additional_routes","rows":1},
+      {"path":"res://build/luoyang_city_finish_20261025i_source01/author_gate_yamen_axis09_three_body_substitutions_NOTREADY.json","sha256":"2b17aa92d9b034fc914fa2c643a41b6301da7218c1422492e5f1128b80083731","selector":"scenes[1].new_source_routes","rows":3}
+    ],
+    "evaluated_route_rows":20,
+    "evaluated_segment_body_AABBs":52,
+    "method":"For each immutable polyline segment, axis-aligned swept bounding rectangle expanded17 horizontally and12 vertically; reject any intersection with the new true-base rectangle. This over-approximates diagonal sweeps.",
+    "intersections":[],
+    "minimum_route_body_y":648.0,
+    "new_base_bottom_y":200.0,
+    "minimum_global_vertical_separation_px":448.0,
+    "unchanged":"Original x300 public lane, ceremonial axis, notice approach, hall door and all other current route rows remain fixed. Source finite_plan also records near_new_axis_route_rows=[] for the containing .8 domain.",
+    "not_claimed":"No mask rasterization, Physics, independent complete currentNPC envelope audit or actual image. Source validates only this reduced domain and exact current guards before admission."
+  },
+  "other_lots": {
+    "unchanged":["Gate west710740/1","Gate east2490740/1","Yamen east29601210/.3"],
+    "Inn_new_return":"ABANDONED_BY_ROOT:982858/.7 actualbase top746 meets original DE191 y735 Player34x24 bottom747. Retain failure; omit this new wall. No alternative wall, oldroute move, door move or NPC move.",
+    "maximum_new_walls_after_this_successor":4,
+    "no_Gate_or_east_reassessment":true
+  },
+  "E_shrine_door_limited_art_judgement": {
+    "viewed_actual_image":{"path":"res://build/luoyang_city_finish_20261025i_system01/qa_role_new/real_families12_ROOT_READY/FAMILY_E_ESTATE_TWO_REAL_HERO_RESIDENTS_output_ROOT_READY/119312_2691/1_01_actual_NPC_hero_first_portrait.png","sha256":"6fadd9212e36302aed04f4ff83187e04a5571a6e452a15a2cb0fd7256970d8d2"},
+    "observed":"Whole adult-size wing reads as a small complete hall, but its open doorway visibly contains the same grass as the exterior. This is backdrop absence, not evidence requiring new art or a new room/portal.",
+    "same_wing_metadata":{"path":"res://build/luoyang_estate_courtyard_20261021ak_system01/receipts/wing.meta.json","sha256":"ea6709f5e4a7c93ccb0feb1c54d41fd50ed0a38292f358aaf4c97fc250bf2fd3","door_clear_rect_xywh":[772,631,242,363],"conservative_door_height_px":355},
+    "approved_existing_Atlas_for_reuse":{"path":"res://build/luoyang_estate_courtyard_20261021al_system01/textures/wing_door_depth.tres","sha256":"61c70b6f98c4c399ae4356ccba9151d2621b6833a8c71ed1b2cf8a79e1ee4efd","source_region_xywh":[432,208,248,369]},
+    "use_judgement":"Suitable limited reuse: this is the exact same wing door aspect, with source doorway grow3 per side giving248x369, not a hall crop. Full residential shell source was also viewed; warm dark interior floor/wall context is stylistically consistent behind the jambs. It is not a fully furnished visible ancestral interior.",
+    "at_original_new_wing_scale":0.44,
+    "nominal_backdrop_size_px":[109.12,162.36],
+    "conservative_door_clear_height_world_px":156.2,
+    "nominal_backdrop_world_xyxy":[595.44,1516.4,704.56,1678.76],
+    "interface_only":"System/Source bind one backdrop behind finish_i_estate_family_ancestral_wing at the parent's unchanged foot/depth minus1, same original metadata and warm modulate. Do not paint PNG, widen doorway, overdraw jambs/windows/step, add solid or new portal. Existing old87.8457x130.7059 row size belongs to old.3542166 wing and must NOT be copied as the new.44 size.",
+    "actual_fix_verified":false
+  },
+  "execution":{"engine_calls":0,"generation_calls":0,"PNG_writes":0,"canonical_writes":0,"Source_writes":0,"BUILD_report_only":true},
+  "whole_city_completion_claim":false
+}

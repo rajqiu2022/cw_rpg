@@ -1,0 +1,20 @@
+id: scene_linxi_panorama_panel_v1
+description: Native-resolution panel for the scrollable Linxi tutorial village panorama.
+quality: high
+size: "1536x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/backgrounds/bg_linxi_tutorial_full.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied image only as the strict visual-style reference for a hand-painted Chinese wuxia 2.5D RPG environment: high three-quarter view, dark ink contours, warm morning light from upper right, gray tile roofs, weathered wood, bamboo, dirt paths, stone foundations, readable gameplay paths. Do not reuse its exact composition.
+
+  Create ONE native 1536x1024 panorama panel for Linxi Village tutorial map. This is the {{panel_role}} of a two-panel horizontally scrollable map. Keep the actual traversable dirt-and-stone paths visibly broad and continuous. The outside seam edge must be a natural visual transition made of dense bamboo, rock wall, fence, or a narrow shaded path so it can join a second independently generated panel without a hard geometric seam.
+
+  Required composition: {{composition}}
+  This is gameplay scenery, not concept art: no characters, no NPCs, no animals, no text, no signs with writing, no UI, no watermark, no labels, no oversized foreground roof that hides the walkable route. Buildings must have clear visible foot-level entrances and their roof silhouette must not cover the adjacent walkable path.
+
+variables:
+  panel_role: "required"
+  composition: "required"

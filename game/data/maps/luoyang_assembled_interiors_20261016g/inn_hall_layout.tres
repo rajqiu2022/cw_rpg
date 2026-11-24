@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.15625, 0.4375, 0.8411458333333334, 0.4375, 0.9114583333333334, 0.802734375, 0.5846354166666666, 0.802734375, 0.5846354166666666, 0.9189453125, 0.4231770833333333, 0.9189453125, 0.4231770833333333, 0.802734375, 0.07942708333333333, 0.802734375)])
+visual_objects = [{"id": "inn_hall_inn_counter_0", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/inn_counter_v1.png", "pos": Vector2(0.6352083333333334, 0.363828125), "render_size_px": Vector2(368.64, 245.76), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.546875, "assembled_furniture": true},
+{"id": "inn_hall_wine_tea_shelf_1", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wine_tea_shelf_v1.png", "pos": Vector2(0.6436979166666666, 0.27515625), "render_size_px": Vector2(322.56, 215.04), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.46875, "assembled_furniture": true},
+{"id": "inn_hall_dining_table_2", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png", "pos": Vector2(0.18041666666666667, 0.45953125), "render_size_px": Vector2(245.76, 163.84), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.60546875, "assembled_furniture": true},
+{"id": "inn_hall_long_bench_3", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png", "pos": Vector2(0.19541666666666666, 0.5694140625), "render_size_px": Vector2(199.68, 133.12), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.6689453125, "assembled_furniture": true},
+{"id": "inn_hall_dining_table_4", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png", "pos": Vector2(0.6166145833333333, 0.57671875), "render_size_px": Vector2(245.76, 163.84), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.72265625, "assembled_furniture": true},
+{"id": "inn_hall_long_bench_5", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png", "pos": Vector2(0.6316145833333333, 0.679765625), "render_size_px": Vector2(199.68, 133.12), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.779296875, "assembled_furniture": true},
+{"id": "inn_hall_timber_stair_6", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/timber_stair_v1.png", "pos": Vector2(0.04218749999999999, 0.25968749999999996), "render_size_px": Vector2(430.08000000000004, 286.72), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.5224609375, "assembled_furniture": true}]
+blockers = [{"id": "inn_hall_inn_counter_0", "ground_polygon": PackedVector2Array(0.6588020833333333, 0.527421875, 0.8523958333333334, 0.527421875, 0.8523958333333334, 0.54734375, 0.6588020833333333, 0.54734375), "walkability_margin": 0.0},
+{"id": "inn_hall_wine_tea_shelf_1", "ground_polygon": PackedVector2Array(0.6729557291666667, 0.44947265625, 0.8244401041666666, 0.44947265625, 0.8244401041666666, 0.46916015625, 0.6729557291666667, 0.46916015625), "walkability_margin": 0.0},
+{"id": "inn_hall_dining_table_2", "ground_polygon": PackedVector2Array(0.22291666666666665, 0.5665625, 0.29812500000000003, 0.5665625, 0.30822916666666667, 0.60546875, 0.21270833333333336, 0.60546875), "walkability_margin": 0.0},
+{"id": "inn_hall_long_bench_3", "ground_polygon": PackedVector2Array(0.21090494791666667, 0.656630859375, 0.31018229166666667, 0.656630859375, 0.31018229166666667, 0.669072265625, 0.21090494791666667, 0.669072265625), "walkability_margin": 0.0},
+{"id": "inn_hall_dining_table_4", "ground_polygon": PackedVector2Array(0.6591145833333333, 0.68375, 0.7343229166666667, 0.68375, 0.7444270833333334, 0.72265625, 0.64890625, 0.72265625), "walkability_margin": 0.0},
+{"id": "inn_hall_long_bench_5", "ground_polygon": PackedVector2Array(0.6471028645833333, 0.766982421875, 0.7463802083333334, 0.766982421875, 0.7463802083333334, 0.779423828125, 0.6471028645833333, 0.779423828125), "walkability_margin": 0.0},
+{"id": "inn_hall_timber_stair_6", "ground_polygon": PackedVector2Array(0.17052083333333334, 0.31027343749999997, 0.2217447916666667, 0.31027343749999997, 0.22283854166666664, 0.4584765625, 0.20515625, 0.52328125, 0.14044270833333333, 0.5202734375, 0.14080729166666667, 0.4852734375), "walkability_margin": 0.0},
+{"id": "fixed_column_0", "ground_polygon": PackedVector2Array(0.2506510416666667, 0.380859375, 0.2897135416666667, 0.380859375, 0.2897135416666667, 0.423828125, 0.2506510416666667, 0.423828125), "walkability_margin": 0.0},
+{"id": "fixed_column_1", "ground_polygon": PackedVector2Array(0.7063802083333334, 0.380859375, 0.75390625, 0.380859375, 0.75390625, 0.435546875, 0.7063802083333334, 0.435546875), "walkability_margin": 0.0}]
+portals = [{"id": "return_assembled_inn_hall", "pos": Vector2(0.5, 0.8984375), "size": Vector2(0.06510416666666667, 0.0234375), "target_scene": "ch4_s3_luoyang_market", "target_pos": Vector2(0.2392578125, 0.4169921875), "auto_trigger": false, "label": "返回洛阳"}]
+metadata/assembled_room_contract = "source_feet_assembled_interiors_20261016g"

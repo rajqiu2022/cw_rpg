@@ -1,0 +1,35 @@
+id: sprite_lengguyun_field_weapon_atlas_v1
+description: Leng Guyun four-direction field atlas with weapon-specific silhouette.
+quality: high
+size: "1024x1024"
+
+reference_images:
+  - "assets/raw/sprite/field-rework/body-standard/sprite_lengguyun_body_standard_v1_a.png"
+  - "game/art/characters/hero_idle_down_25d_runtime_4f.png"
+require_reference_images: true
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: identity-preserve
+  Asset type: production 2.5D wuxia RPG field protagonist sprite atlas.
+  Input image 1: strict body, costume, face, hair and wine-gourd identity reference.
+  Input image 2: strict runtime scale and field-rendering reference.
+  Primary request: preserve Leng Guyun exactly and change only his equipped field silhouette to {weapon_name}.
+  Weapon lock: {weapon_spec}
+
+  Create exactly one strict 4-column by 4-row atlas on a perfectly flat solid #FF00FF chroma-key background.
+  Row order: down/front, up/back, right, left. Each row uses four walk phases: planted, left step,
+  passing pose, right step. Keep the same character, scale, weapon placement and grip logic in every cell.
+  The repaired grey-green wine gourd remains visible on the left waist. Full hair, clothes, weapon and both
+  boots must remain inside each cell. Shared feet baseline; at least 18 pixels empty chroma space below feet.
+  Readable at 160-pixel runtime height, grounded 2.5D volume, crisp comic ink contours.
+
+  Constraints: change only equipped weapon state; no sword unless {weapon_name} is sword; no text, labels,
+  grid, scenery, ground plane, shadow, cropped feet, cross-cell leak, extra weapon, costume drift or chibi body.
+  Avoid: {negative}
+
+variables:
+  weapon_name: "dao | staff | unarmed palm"
+  weapon_spec: "exact field carry and grip"
+

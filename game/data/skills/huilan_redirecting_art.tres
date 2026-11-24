@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"huilan_redirecting_art"
+display_name = "移花换劲"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_redirect_v1.png"
+description = "从琴拍、棋势与水门回流中悟出的移劲心法。习得后常驻提升机敏与内劲；主动运功可化去下一次所受伤害的一部分，并将等量劲力返还来敌。"
+origin = "这门心法没有单一秘谱。习得者须在开放江湖中亲自验证竹尾回声、凌月逆钟、会场让位棋、洛阳水则与扁担换肩，最后以五理化解双车险局，才会把借力、换向与返劲连成一门完整心法。"
+kind = 2
+target = 4
+delivery = 2
+mp_cost = 24
+quality = 4
+required_insight = 12
+practice_base_cost = 68
+fixed_damage = 0
+attack_scaling = 0
+effect_value = 30
+hit_count = 1
+animation_id = &"huilan_redirecting_art"
+motion_style = 1
+required_weapon_type = &""
+school = "generic"
+is_passive = false
+is_internal_art = true
+passive_agility_bonus = 2
+passive_inner_power_bonus = 2
+passive_agility_growth = 1
+passive_inner_power_growth = 1
+active_effect_description = "化去下一次所受伤害的一部分，并将等量劲力返还来敌。"
+active_effect_type = &"redirect"
+active_effect_growth = 10
+active_duration_turns = 1
+active_duration_growth = 0
+equip_weapon_categories = Array[StringName]([&"all"])
+equip_damage_scaling_bonus = 8
+equip_damage_scaling_growth = 2
+equip_crit_chance_bonus = 0.02
+equipped_effect_description = "借势移劲，增强全系招式。"

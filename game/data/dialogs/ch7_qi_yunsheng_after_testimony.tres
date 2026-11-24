@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "戚云笙"
+portrait_path = "res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text = "左案原页不会撤。等你带回茗雾内证，我们再一起核哪一句能公开、哪一个人必须先保护。"
+voice_emotion = "normal"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_qi_yunsheng_after_testimony"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

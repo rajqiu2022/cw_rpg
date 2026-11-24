@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "notes": "冻结当前核实的源码/处理器规范，不能用旧手记历史推荐覆盖现役路径；索引只关联 sprite 样本，不修改 Godot。",
+  "contracts": [
+    {
+      "id": "field-player-v7",
+      "name": "现役主角 v7 场景横条",
+      "scope": "runtime-source-verified",
+      "canvas_px": [
+        160,
+        160
+      ],
+      "layout": "horizontal-strip",
+      "directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ],
+      "states": [
+        {
+          "id": "idle",
+          "frames": 4,
+          "seconds_per_frame": 0.28
+        },
+        {
+          "id": "walk",
+          "frames": 8,
+          "horizontal_seconds_per_frame": 0.08,
+          "vertical_seconds_per_frame": 0.1
+        }
+      ],
+      "bottom_margin_px": 8,
+      "horizontal_anchor": "center",
+      "ground_anchor": "sprite.position.y = -texture_height * sprite.scale.y * 0.45",
+      "base_visual_scale": 0.945,
+      "evidence_paths": [
+        "game/scripts/field/player.gd"
+      ],
+      "notes": "当前 Player 使用 weapon_variants/lengguyun/v7_idle_stable；旧 MVP 上下四帧方案只属历史。场景倍率另乘，不在本次改动。"
+    },
+    {
+      "id": "field-npc-idle-strip",
+      "name": "场景 NPC 四帧待机横条",
+      "scope": "runtime-source-verified-with-sample",
+      "canvas_px": [
+        160,
+        160
+      ],
+      "layout": "horizontal-square-cells",
+      "directions": [
+        "down"
+      ],
+      "states": [
+        {
+          "id": "idle",
+          "frames": 4,
+          "seconds_per_frame": 0.28
+        }
+      ],
+      "bottom_margin_px": null,
+      "horizontal_anchor": "center",
+      "ground_anchor": "当前 NPC 从首 cell 非零 alpha bounds 的底部求 foot offset；无固定通用底边承诺。",
+      "evidence_paths": [
+        "game/scripts/field/npc_node.gd",
+        "game/data/scenes/ch4_s0_luoyang_gate.tres"
+      ],
+      "notes": "门吏 sample PNG 头实读640×160，即四个160×160 cell；不是所有NPC的强制画布。NPCNode按宽/高推hframes，朝向贴图可另配，不代表所有NPC只支持down/4帧。脚底未做像素测量，不继承Player8px。"
+    },
+    {
+      "id": "human-battle-v2",
+      "name": "人体战斗五状态合同",
+      "scope": "document-and-processor-verified",
+      "canvas_px": [
+        512,
+        384
+      ],
+      "source_atlas_grid": [
+        4,
+        5
+      ],
+      "states": [
+        {
+          "id": "ready",
+          "frames": 4
+        },
+        {
+          "id": "move",
+          "frames": 4
+        },
+        {
+          "id": "attack",
+          "frames": 4
+        },
+        {
+          "id": "hit",
+          "frames": 4
+        },
+        {
+          "id": "defeat",
+          "frames": 4
+        }
+      ],
+      "bottom_margin_px": 12,
+      "horizontal_anchor": "center",
+      "normal_human_standing_height_px": 300,
+      "boss_max_standing_height_px": 330,
+      "allies_facing": "right",
+      "enemies_facing": "left",
+      "uniform_scale_across_all_states": true,
+      "evidence_paths": [
+        "docs/battle-sprite-standard-v2.md",
+        "scripts/process_battle_sprite_atlas.py",
+        "scripts/validate_battle_sprite_sets.py"
+      ],
+      "notes": "每角色独立二十帧；defeat末帧保持，不借别角色。人体高度不得应用动物。"
+    },
+    {
+      "id": "animal-battle-tiger-v1",
+      "name": "虎战斗二十帧候选合同",
+      "scope": "candidate-processor-and-report-verified-not-runtime-bound",
+      "canvas_px": [
+        512,
+        384
+      ],
+      "source_atlas_grid": [
+        4,
+        5
+      ],
+      "states": [
+        {
+          "id": "ready",
+          "frames": 4
+        },
+        {
+          "id": "move",
+          "frames": 4
+        },
+        {
+          "id": "attack",
+          "frames": 4
+        },
+        {
+          "id": "hit",
+          "frames": 4
+        },
+        {
+          "id": "defeat",
+          "frames": 4
+        }
+      ],
+      "bottom_margin_px": 12,
+      "horizontal_anchor": "center",
+      "species_ready_target_bounds_px": [
+        460,
+        265
+      ],
+      "normal_human_standing_height_px": null,
+      "enemies_facing": "left",
+      "uniform_scale_across_all_states": true,
+      "max_content_px": [
+        480,
+        350
+      ],
+      "evidence_paths": [
+        "scripts/process_animal_battle_atlas_20261012.py",
+        "assets/processed/sprite/animal_battle_20261012/tiger/tiger_processing_report.json"
+      ],
+      "notes": "460×265是该物种ready尺寸目标；同二十帧一个共享scale，禁止每帧塞满画布。朝向/物种/相位仍须目视，候选不代表已绑定敌人。"
+    }
+  ]
+}

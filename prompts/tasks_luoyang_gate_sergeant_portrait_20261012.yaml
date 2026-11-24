@@ -1,0 +1,11 @@
+# ROOT sole API caller; one authorized image, estimated ceiling 1.2 CNY.
+# No fallback model change or automatic retries; registry task remains skip:true.
+tasks:
+  - id: portrait_luoyang_gate_sergeant_mature_20261012_v1
+    template: portrait_luoyang_gate_sergeant_mature_20261012_v1
+    category: character_portrait/luoyang_gate_sergeant_20261012
+    model: gpt-image-2
+    priority: 1
+    skip: false
+    execution_owner: producer
+    vars: {}

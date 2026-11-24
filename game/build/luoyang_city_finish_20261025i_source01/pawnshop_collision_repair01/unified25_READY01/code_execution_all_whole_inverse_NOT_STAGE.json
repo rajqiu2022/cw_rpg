@@ -1,0 +1,141 @@
+{
+  "status": "PAWN_ONLY_LOCAL9BASE_BODY_FIELD_HUNK_AND_NECESSARY_PINS_NOT_STAGE",
+  "records": {
+    "res://scripts/field/field_walkable_controller.gd": {
+      "parent": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/Estate_wall_source_repair01/closure_READY01/Field_READY.gd",
+        "sha256": "bdda1c86ecd701e257668c43c106b1d01e641e8e47adbde4b6c6a59e369d3f55",
+        "bytes": 268966
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Field_READY.gd",
+        "sha256": "9504c55b9f0b664a35a24e830aeb5278152b3d8e732af42a3f17b8b762ebcde2",
+        "bytes": 270274
+      },
+      "hunks": [
+        {
+          "old": "\t\tif visual_objects.size()!=ASSEMBLED_ROOMS.prop_ids(scene).size() or visual_objects.is_empty():\n\t\t\t_field_loading_failed=true; _scene_rebuilding=false; push_error(\"[Field] Source-bound furniture projection count refused\"); return\n\tvar navigation_objects: Array=visual_objects\n\t_field_loading_profile_record(\"mask_and_layout\", loading_phase_started, motion_revision, scene)\n",
+          "new": "\t\tif visual_objects.size()!=ASSEMBLED_ROOMS.prop_ids(scene).size() or visual_objects.is_empty():\n\t\t\t_field_loading_failed=true; _scene_rebuilding=false; push_error(\"[Field] Source-bound furniture projection count refused\"); return\n\t\tif scene.scene_id==&\"luoyang_functional_pawnshop_candidate_20261016\":\n\t\t\t# Keep original six serialized blockers/storage as the parent identity.\n\t\t\t# The same source-bound room view must also supply the real nine bodies.\n\t\t\tvar pawn_author: Dictionary=ASSEMBLED_ROOMS.author_for_id(scene.scene_id)\n\t\t\tif not ASSEMBLED_ROOMS.matches(scene,scene.scene_id) or blockers.size()!=6 or var_to_bytes(blockers)!=var_to_bytes(scene.map_layout.blockers) or pawn_author.is_empty() or var_to_bytes(_functional_room_geometry.get(\"furniture_bases\",[]))!=var_to_bytes(pawn_author.geometry.furniture_bases):\n\t\t\t\t_field_loading_failed=true; _scene_rebuilding=false; push_error(\"[Field] Pawn original blocker identity refused\"); return\n\t\t\tvar pawn_blockers: Array=[]\n\t\t\tfor pawn_base: Dictionary in pawn_author.geometry.furniture_bases:\n\t\t\t\tvar pawn_poly:=PackedVector2Array()\n\t\t\t\tfor pawn_point: Variant in pawn_base.ground_polygon_px:\n\t\t\t\t\tpawn_poly.append(Vector2(float(pawn_point[0]),float(pawn_point[1]))/Vector2(1536,1024))\n\t\t\t\tpawn_blockers.append({\"id\":pawn_base.id,\"ground_polygon\":pawn_poly,\"walkability_margin\":0.0})\n\t\t\tif pawn_blockers.size()!=visual_objects.size():\n\t\t\t\t_field_loading_failed=true; _scene_rebuilding=false; push_error(\"[Field] Pawn furniture/body view differs\"); return\n\t\t\tblockers=pawn_blockers\n\tvar navigation_objects: Array=visual_objects\n\t_field_loading_profile_record(\"mask_and_layout\", loading_phase_started, motion_revision, scene)\n"
+        }
+      ],
+      "whole_byte_forward_inverse": true
+    },
+    "res://scripts/city/luoyang_cultural_sidequests_coordinator_20261019x.gd": {
+      "parent": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/Estate_wall_source_repair01/closure_READY01/Coordinator_READY.gd",
+        "sha256": "966212945b17eb1fc93fdd162691ad1525620c4046bd10e8846a5b6782d31d26",
+        "bytes": 36102
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Coordinator_READY.gd",
+        "sha256": "a5fcd6490f002c8869fba96be41ee206a7f6225448b00528bb8767d05250423a",
+        "bytes": 36102
+      },
+      "hunks": [
+        {
+          "old": "const INDEX := \"res://scripts/city/luoyang_culture_integration_index_20261019x.gd\"\nconst CONTRACT := \"res://data/luoyang_culture_integration_20261019x/runtime_contract.json\"\nconst CONTRACT_SHA := \"115c71bb304a6712b92df10a704b3fce96a6ad01a7f8fac21000a9496053d8b9\"\nconst FIELD := \"res://scripts/field/field_walkable_controller.gd\"\nconst FLAG := \"--luoyang-culture-integration-20261019x\"\n",
+          "new": "const INDEX := \"res://scripts/city/luoyang_culture_integration_index_20261019x.gd\"\nconst CONTRACT := \"res://data/luoyang_culture_integration_20261019x/runtime_contract.json\"\nconst CONTRACT_SHA := \"1b86ccd9589c9161635d70bd9b56d17ff2ef150823e7e11be0e93ba55cc540d9\"\nconst FIELD := \"res://scripts/field/field_walkable_controller.gd\"\nconst FLAG := \"--luoyang-culture-integration-20261019x\"\n"
+        }
+      ],
+      "whole_byte_forward_inverse": true
+    },
+    "res://scripts/city/luoyang_temple_assembly_20261016.gd": {
+      "parent": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/Estate_wall_source_repair01/closure_READY01/Temple_READY.gd",
+        "sha256": "e51cf3ef7e758ea9522e483767976903785454deb58177adf09de30cc3a56d89",
+        "bytes": 24275
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Temple_READY.gd",
+        "sha256": "c789d1f34f341c0f6f5e27c07ad3d62c2670f85fe63379337c8f97e67dd58d54",
+        "bytes": 24277
+      },
+      "hunks": [
+        {
+          "old": "const META=\"temple_assembled_ground_feet_20261016\"\nconst SELF=\"res://scripts/city/luoyang_temple_assembly_20261016.gd\"\nconst BIND_PATH=\"res://build/luoyang_city_finish_20261025i_source01/Estate_wall_source_repair01/closure_READY01/Temple_binding_READY.json\"\nconst BIND_SHA=\"d78e1e363d1c030f37e9b814f171cc3cea63f43d8b6eba193c1cd6aeac4d287a\"\nconst SCENE_PATH=\"res://data/scenes/luoyang_temple_layout_quest_20261018t/temple.tres\"\nconst LAYOUT_PATH=\"res://data/maps/luoyang_temple_layout_quest_20261018t/layout.tres\"\n",
+          "new": "const META=\"temple_assembled_ground_feet_20261016\"\nconst SELF=\"res://scripts/city/luoyang_temple_assembly_20261016.gd\"\nconst BIND_PATH=\"res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Temple_binding_READY.json\"\nconst BIND_SHA=\"c4ee30c03a4120a8a52862970ca45af7a30673aa184df114d6d2541e6ebe7c9e\"\nconst SCENE_PATH=\"res://data/scenes/luoyang_temple_layout_quest_20261018t/temple.tres\"\nconst LAYOUT_PATH=\"res://data/maps/luoyang_temple_layout_quest_20261018t/layout.tres\"\n"
+        }
+      ],
+      "whole_byte_forward_inverse": true
+    }
+  },
+  "execution": {
+    "parent": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_only_repair01/unified22_READY01/execution_successor_READY.json",
+      "sha256": "7d33325105c45f87e2577afa2f86fa98237402b576bcd941c83375494f90284f",
+      "bytes": 681370
+    },
+    "candidate": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/execution_successor_READY.json",
+      "sha256": "e42a58ca14c9e159850b645e66e290b56ccfdefc4269f10eb6bd97988d6aa5af",
+      "bytes": 688524
+    },
+    "changed_existing_owned": [
+      "res://scripts/field/field_walkable_controller.gd",
+      "res://scripts/city/luoyang_cultural_sidequests_coordinator_20261019x.gd",
+      "res://scripts/city/luoyang_temple_assembly_20261016.gd"
+    ],
+    "extra": {
+      "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Field_READY.gd": "9504c55b9f0b664a35a24e830aeb5278152b3d8e732af42a3f17b8b762ebcde2",
+      "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Coordinator_READY.gd": "a5fcd6490f002c8869fba96be41ee206a7f6225448b00528bb8767d05250423a",
+      "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Temple_READY.gd": "c789d1f34f341c0f6f5e27c07ad3d62c2670f85fe63379337c8f97e67dd58d54",
+      "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/runtime_contract_READY.json": "1b86ccd9589c9161635d70bd9b56d17ff2ef150823e7e11be0e93ba55cc540d9",
+      "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Temple_binding_READY.json": "c4ee30c03a4120a8a52862970ca45af7a30673aa184df114d6d2541e6ebe7c9e"
+    },
+    "old236_all_values_edges_retained": true,
+    "whole_typed_UTF8_inverse": true
+  },
+  "contract": {
+    "parent": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/Estate_wall_source_repair01/closure_READY01/runtime_contract_READY.json",
+      "sha256": "115c71bb304a6712b92df10a704b3fce96a6ad01a7f8fac21000a9496053d8b9",
+      "bytes": 5422
+    },
+    "candidate": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/runtime_contract_READY.json",
+      "sha256": "1b86ccd9589c9161635d70bd9b56d17ff2ef150823e7e11be0e93ba55cc540d9",
+      "bytes": 5422
+    },
+    "changes": {
+      "res://scripts/field/field_walkable_controller.gd": {
+        "old": "bdda1c86ecd701e257668c43c106b1d01e641e8e47adbde4b6c6a59e369d3f55",
+        "new": "9504c55b9f0b664a35a24e830aeb5278152b3d8e732af42a3f17b8b762ebcde2"
+      }
+    },
+    "whole_typed_UTF8_inverse": true
+  },
+  "temple_binding": {
+    "parent": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/Estate_wall_source_repair01/closure_READY01/Temple_binding_READY.json",
+      "sha256": "d78e1e363d1c030f37e9b814f171cc3cea63f43d8b6eba193c1cd6aeac4d287a",
+      "bytes": 16496
+    },
+    "candidate": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_repair01/unified25_READY01/Temple_binding_READY.json",
+      "sha256": "c4ee30c03a4120a8a52862970ca45af7a30673aa184df114d6d2541e6ebe7c9e",
+      "bytes": 16496
+    },
+    "changes": {
+      "res://scripts/field/field_walkable_controller.gd": {
+        "old": "bdda1c86ecd701e257668c43c106b1d01e641e8e47adbde4b6c6a59e369d3f55",
+        "new": "9504c55b9f0b664a35a24e830aeb5278152b3d8e732af42a3f17b8b762ebcde2"
+      },
+      "res://data/luoyang_culture_integration_20261019x/runtime_contract.json": {
+        "old": "115c71bb304a6712b92df10a704b3fce96a6ad01a7f8fac21000a9496053d8b9",
+        "new": "1b86ccd9589c9161635d70bd9b56d17ff2ef150823e7e11be0e93ba55cc540d9"
+      },
+      "res://scripts/city/luoyang_cultural_sidequests_coordinator_20261019x.gd": {
+        "old": "966212945b17eb1fc93fdd162691ad1525620c4046bd10e8846a5b6782d31d26",
+        "new": "a5fcd6490f002c8869fba96be41ee206a7f6225448b00528bb8767d05250423a"
+      }
+    },
+    "whole_typed_UTF8_inverse": true
+  },
+  "Field_source_proof": {
+    "path": "res://build/luoyang_pawnshop_repair_20261026a_system01/Field_bodies01_direct_whole_inverse_BUILD.json",
+    "sha256": "b7cac3e366462f107f954db58147fa89ec975157ef4e95654a63357d885b78f4"
+  },
+  "G_service_author_and_other_runtime_functions_unchanged": true,
+  "engine_calls": 0,
+  "Stage_calls": 0
+}

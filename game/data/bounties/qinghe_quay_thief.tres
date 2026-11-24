@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"qinghe_quay_thief"
+display_name = "翻舟许五"
+title = "河埠盗货"
+description = "清河粮船接连少货。船工跟着湿脚印追到襄州矿谷，见许五带着一串河埠货签。"
+board_city = &"qinghe"
+recommended_min_level = 5
+recommended_max_level = 7
+enemy_ids = Array[StringName]([&"warrant_qinghe_quay_thief"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_xiangzhou_mine_valley","label":"襄州矿谷 · 西采坑外","pos":Vector2(0.26,0.47)},{"scene_id":&"openworld_xiangzhou_mine_valley","label":"襄州矿谷 · 商队仓外","pos":Vector2(0.64,0.54)}])
+reward_reputation = 13
+reward_training = 24
+reward_exp = 54
+reward_gold = 78
+field_sprite_path = "res://art/characters/npc_zhuwei_escort_idle_down_25d_4f.png"

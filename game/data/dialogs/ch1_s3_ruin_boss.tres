@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "赵无忌"
+voice_emotion = "threat"
+portrait_path = "res://art/characters/battle_boss_zhao_wuji_v1.png"
+text = "画像上的人果然来了。你从山道追到兽穴，又摸进外院，比名单上写的更难缠。"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "所以你们早就在盯着林西村。山道上的死人、洞窟里的货、被掳的村民，都经过你这道门。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "赵无忌"
+voice_emotion = "solemn"
+portrait_path = "res://art/characters/battle_boss_zhao_wuji_v1.png"
+text = "我只认货单和名单。货从哪里来、人送到哪里去，自有交接的人负责。至于你师傅——上头只说，他教出的徒弟若追来，就不能放走。"
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "你不是主使，却替他们灭口、掳人、转运兵器。告诉我活口去了哪里，我可以留你一命。"
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = "赵无忌"
+voice_emotion = "threat"
+portrait_path = "res://art/characters/battle_boss_zhao_wuji_v1.png"
+text = "想看后面的名单，就从我刀下过去。让我看看刑樊天教你的第二剑，究竟值不值得他们如此提防。"
+add_testimonies = Array[StringName]([&"ts_ch1_zhao_gatekeeper"])
+on_end = "battle_then:boss_zhao_wuji:ch1_s3_ruin_after_boss"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s3_ruin_boss"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5")])

@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.385,0.955, 0.615,0.955, 0.640,0.770, 0.635,0.560, 0.665,0.375, 0.645,0.165, 0.355,0.165, 0.335,0.375, 0.365,0.560, 0.360,0.770),
+	PackedVector2Array(0.105,0.760, 0.390,0.760, 0.410,0.345, 0.170,0.335, 0.105,0.470),
+	PackedVector2Array(0.600,0.760, 0.900,0.760, 0.900,0.395, 0.650,0.345)
+])
+blockers = Array[Dictionary]([
+	{"id":"left_archive_shelves", "pos":Vector2(0.165,0.325), "size":Vector2(0.155,0.260)},
+	{"id":"left_archive_desk", "pos":Vector2(0.255,0.455), "size":Vector2(0.205,0.145)},
+	{"id":"right_archive_shelves", "pos":Vector2(0.825,0.315), "size":Vector2(0.150,0.260)},
+	{"id":"right_supply_dais", "pos":Vector2(0.780,0.535), "size":Vector2(0.205,0.175)},
+	{"id":"upper_sealed_door", "pos":Vector2(0.500,0.120), "size":Vector2(0.180,0.090)}
+])
+interactions = Array[Dictionary]([
+	{"id":"ch6_parent_convoy_roster", "pos":Vector2(0.270,0.500), "size":Vector2(0.145,0.130), "activation":"interact", "label":"查阅十八年前押运底册", "action":"dialog:ch6_archive_parent_roster", "visual_baked":true, "require_flag":"ch6_archive_reclaimers_defeated", "hide_flag":"ch6_archive_roster_found"},
+	{"id":"ch6_amendment_cut", "pos":Vector2(0.705,0.355), "size":Vector2(0.130,0.120), "activation":"interact", "label":"核对被裁去的去向栏", "action":"dialog:ch6_archive_amendment", "visual_baked":true, "require_flag":"ch6_archive_roster_found", "hide_flag":"ch6_archive_records_secured"},
+	{"id":"ch6_supply_cache", "pos":Vector2(0.780,0.505), "size":Vector2(0.120,0.115), "activation":"interact", "label":"打开封存补给箱", "action":"dialog:ch6_archive_supply_cache", "visual_baked":true, "require_quest_active":"q_ch6_main_03_underground_archive", "hide_flag":"ch6_archive_supply_looted"},
+	{"id":"guyun_master_book", "pos":Vector2(0.500,0.285), "size":Vector2(0.135,0.120), "activation":"interact", "label":"打开师祖留下的旧木匣", "action":"dialog:ch8_guyun_master_book", "visual_baked":true, "require_flag":"guyun_master_book_unlocked", "hide_flag":"guyun_master_book_read"}
+])
+portals = Array[Dictionary]([
+	{"id":"return_to_master_hall", "pos":Vector2(0.500,0.915), "size":Vector2(0.125,0.105), "label":"返回刑樊天正屋", "target_scene":"linxi_master_hall", "target_pos":Vector2(0.375,0.475), "marker_rotation_degrees":180.0},
+	{"id":"enter_baishui_convoy_route", "pos":Vector2(0.500,0.190), "size":Vector2(0.125,0.095), "label":"前往白水驿旧押运路线", "target_scene":"ch6_s4_baishui_convoy_route", "target_pos":Vector2(0.500,0.875), "require_flag":"ch6_old_convoy_route_unlocked"}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"archive_spawn", "pos":Vector2(0.500,0.885)},
+	{"id":"archive_center", "pos":Vector2(0.500,0.585)},
+	{"id":"archive_battle_floor", "pos":Vector2(0.500,0.260)},
+	{"id":"archive_upper_passage", "pos":Vector2(0.500,0.190)},
+	{"id":"archive_left_desk", "pos":Vector2(0.315,0.500)},
+	{"id":"archive_right_branch", "pos":Vector2(0.700,0.650)},
+	{"id":"archive_supply_front", "pos":Vector2(0.690,0.505)},
+	{"id":"guyun_master_book_front", "pos":Vector2(0.500,0.285)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"left_shelves", "pos":Vector2(0.165,0.325)},
+	{"id":"left_desk", "pos":Vector2(0.255,0.455)},
+	{"id":"right_shelves", "pos":Vector2(0.825,0.315)},
+	{"id":"sealed_door", "pos":Vector2(0.500,0.120)}
+])

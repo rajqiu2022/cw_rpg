@@ -1,0 +1,2428 @@
+{
+  "schema_version": 1,
+  "scope": "SOURCE_ONLY_16_DOORS_48_NEGATIVE_SUGGESTIONS_NOT_APPROVAL_NOT_FIELD_NOT_FINAL_NAV",
+  "status": "UNAPPROVED_NOT_EXECUTABLE_REVIEW",
+  "production_approved": false,
+  "engine_executed": false,
+  "final_v9c_source_sha256": "PENDING",
+  "final_v9c_manifest_sha256": "PENDING",
+  "final_v9c_report_sha256": "PENDING",
+  "immutable_coordinate_basis": {
+    "source_path": "res://data/maps/world_map_v15_complete_v8_source.json",
+    "source_sha256": "13f3d5a9940283a92971ea20eae0234301635812dd0975a4c119536fb026cff5",
+    "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+    "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242"
+  },
+  "coordinate_domain": "WORLD_LOGICAL_PIXELS_12288x8192_AND_ORIGINAL_SOURCE_PIXELS",
+  "method_limits": [
+    "Source original PNG bytes/size/explicit roof alpha measured on CPU; actual semantic witnesses come from traced footprint authoring, not bounding rectangle inference.",
+    "875 and17 are independent CPU point-in-authored-solid tests only, NOT final nav, continuous shape Physics2D, or input success.",
+    "327 immutable-v8 blocking objects within700px of at least one door considered. Final newRF/nav/objects/doorPNG/source must be independently rebound and audited after FULL.",
+    "Wall approach routes may cross final blocked terrain; no legal standing or reachable claim is made.",
+    "No APPROVED statuses/reviewer/signatures; never pass directly as production visual_review.json."
+  ],
+  "portal_count": 16,
+  "negative_count": 48,
+  "doors": [
+    {
+      "portal_id": "yanmen_pass",
+      "compound_id": "compound_yanmen_pass",
+      "target_scene": "openworld_yanmen_pass",
+      "threshold_kind": "open_gate",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_yanmen_pass_v1.png",
+        "original_sha256": "5e1c0dcc645175f82fc46d891e26a094acbf64135a608950d166d04143d9d218",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_yanmen_pass.png",
+        "new_runtime_sha256": "5e1c0dcc645175f82fc46d891e26a094acbf64135a608950d166d04143d9d218",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.245717366536458,
+          0.0515571273863316
+        ],
+        "render_size_px": [
+          620,
+          413.333343505859
+        ],
+        "origin_world_px": [
+          2709.374999999996,
+          215.68931579589898
+        ],
+        "actual_door_foot_px": [
+          3000,
+          536.587768554688
+        ],
+        "projected_measured_door_foot_px": [
+          2999.999999999996,
+          536.5877611935141
+        ],
+        "door_projection_distance_px": 0.000007361173857135555,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.000011185804510205344
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            530,
+            757
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            2923.3072916666624,
+            521.2492191493513
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            2923.3072916666624,
+            580.7895914713536
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            2923.3072916666624,
+            580.7895914713536
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            791,
+            238
+          ],
+          "source_uv": [
+            0.5149739583333334,
+            0.232421875
+          ],
+          "source_pixel_alpha_8bit": 252,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            3028.6588541666624,
+            311.7570264935498
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            3000,
+            706.587768554688
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            3000,
+            706.587768554688
+          ],
+          "world_click_px": [
+            3000,
+            536.587768554688
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Archway floor remains open. Side stone bases, not snowy roof silhouettes, delimit the threshold."
+    },
+    {
+      "portal_id": "huashan",
+      "compound_id": "compound_huashan",
+      "target_scene": "openworld_huashan_forecourt",
+      "threshold_kind": "open_gate",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/maps/world_map_v15/entities/sect_huashan_compound_v1.png",
+        "original_sha256": "38856d5837532c818a8cf2993bb83dd2a9ac6a53c0e3bee73fe64d39a35ab5d0",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_huashan.png",
+        "new_runtime_sha256": "38856d5837532c818a8cf2993bb83dd2a9ac6a53c0e3bee73fe64d39a35ab5d0",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.057031845053037,
+          0.248723551630974
+        ],
+        "render_size_px": [
+          620,
+          413.333343505859
+        ],
+        "origin_world_px": [
+          390.80731201171875,
+          1830.8766632080096
+        ],
+        "actual_door_foot_px": [
+          700,
+          2202.63452148438
+        ],
+        "projected_measured_door_foot_px": [
+          700.0000203450521,
+          2202.634484857322
+        ],
+        "door_projection_distance_px": 0.00004189823997189747,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.000041107333345280495
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            470,
+            816
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            580.5208536783854,
+            2160.251671314241
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            580.5208536783854,
+            2223.5248178426536
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            580.5208536783854,
+            2223.5248178426536
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            784,
+            141
+          ],
+          "source_uv": [
+            0.5104166666666666,
+            0.1376953125
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            707.265645345052,
+            1887.7907271087188
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            700,
+            2372.63452148438
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            700,
+            2372.63452148438
+          ],
+          "world_click_px": [
+            700,
+            2202.63452148438
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Front wall masonry is solid on both sides; stair and central open doorway are a separate passage."
+    },
+    {
+      "portal_id": "luoyang",
+      "compound_id": "compound_luoyang",
+      "target_scene": "ch4_s0_luoyang_gate",
+      "threshold_kind": "open_gate",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_luoyang_city_v1.png",
+        "original_sha256": "0557a3b0c5b79e85aa718821c1827b31667e8a38057e0b56b176f2d56ed96854",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_luoyang.png",
+        "new_runtime_sha256": "0557a3b0c5b79e85aa718821c1827b31667e8a38057e0b56b176f2d56ed96854",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.325520833333333,
+          0.298514246940613
+        ],
+        "render_size_px": [
+          720,
+          480
+        ],
+        "origin_world_px": [
+          3639.9999999999955,
+          2205.428710937502
+        ],
+        "actual_door_foot_px": [
+          4000,
+          2594.4912109375
+        ],
+        "projected_measured_door_foot_px": [
+          3999.9999999999955,
+          2594.491210937502
+        ],
+        "door_projection_distance_px": 4.897778860262865e-12,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 4.547473508864641e-12
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            430,
+            760
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            3841.5624999999955,
+            2561.678710937502
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            3841.5624999999955,
+            2634.212761645047
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            3841.5624999999955,
+            2634.212761645047
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            755,
+            453
+          ],
+          "source_uv": [
+            0.4915364583333333,
+            0.4423828125
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            3993.9062499999955,
+            2417.772460937502
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            4000,
+            2764.4912109375
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            4000,
+            2764.4912109375
+          ],
+          "world_click_px": [
+            4000,
+            2594.4912109375
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Visible south arch and stone apron, not old arbitrary city centre, define the doorway. No crossing solid side bastions."
+    },
+    {
+      "portal_id": "bianzhou",
+      "compound_id": "compound_bianzhou",
+      "target_scene": "openworld_bianzhou_city",
+      "threshold_kind": "closed_gate_front_step",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/city_walled_compound_proto_v1.png",
+        "original_sha256": "f73efab30b1629c805ac78e803371e46d7538111a52d30288b57760bc25a3e17",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_bianzhou.png",
+        "new_runtime_sha256": "f73efab30b1629c805ac78e803371e46d7538111a52d30288b57760bc25a3e17",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.619939168294271,
+          0.251407980918884
+        ],
+        "render_size_px": [
+          720,
+          480
+        ],
+        "origin_world_px": [
+          7257.812500000002,
+          1819.5341796874977
+        ],
+        "actual_door_foot_px": [
+          7600,
+          2196.8779296875
+        ],
+        "projected_measured_door_foot_px": [
+          7600.000000000002,
+          2196.8779296874977
+        ],
+        "door_projection_distance_px": 2.9118037843694986e-12,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 2.2737367544323206e-12
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            505,
+            754
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            7494.531250000002,
+            2172.9716796874977
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            7494.531250000002,
+            2240.7764477287374
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            7494.531250000002,
+            2240.7764477287374
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            759,
+            547
+          ],
+          "source_uv": [
+            0.494140625,
+            0.5341796875
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            7613.593750000002,
+            2075.9404296874977
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            7600,
+            2366.8779296875
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            7600,
+            2366.8779296875
+          ],
+          "world_click_px": [
+            7600,
+            2196.8779296875
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Door leaves are CLOSED and remain part of the solid courtyard footprint. Interaction and return are on the outside stair only."
+    },
+    {
+      "portal_id": "gufeng",
+      "compound_id": "compound_gufeng",
+      "target_scene": "ch5_s1_relief_road",
+      "threshold_kind": "open_gate",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/maps/world_map_v15/entities/sect_gufeng_compound_v2.png",
+        "original_sha256": "d13e9d8c3bd418d04d8fa7e2d3f1f3e65bf8174e27721b1e1e0bf8bc896eeb3d",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_gufeng.png",
+        "new_runtime_sha256": "d13e9d8c3bd418d04d8fa7e2d3f1f3e65bf8174e27721b1e1e0bf8bc896eeb3d",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.886321624120077,
+          0.122571960091591
+        ],
+        "render_size_px": [
+          620,
+          413.333343505859
+        ],
+        "origin_world_px": [
+          10581.120117187505,
+          797.4428253173841
+        ],
+        "actual_door_foot_px": [
+          10900,
+          1172.83349609375
+        ],
+        "projected_measured_door_foot_px": [
+          10900.00032552084,
+          1172.8334595561037
+        ],
+        "door_projection_distance_px": 0.00032756498054797476,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.0003255208721384406
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            564,
+            864
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            10808.776367187505,
+            1146.1928339004526
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            10808.776367187505,
+            1205.0183706313292
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            10808.776367187505,
+            1205.0183706313292
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            518,
+            190
+          ],
+          "source_uv": [
+            0.3372395833333333,
+            0.185546875
+          ],
+          "source_pixel_alpha_8bit": 252,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            10790.208658854172,
+            874.1355355381977
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            10900,
+            1342.83349609375
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            10900,
+            1342.83349609375
+          ],
+          "world_click_px": [
+            10900,
+            1172.83349609375
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Rough lower retaining walls and lodge bases are solid; central lower stone steps remain wide and separate."
+    },
+    {
+      "portal_id": "linxi_village",
+      "compound_id": "compound_linxi_village",
+      "target_scene": "linxi_village_scrollmap",
+      "threshold_kind": "fence_gap",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_linxi_village_v1.png",
+        "original_sha256": "010cc622f0bc30a53ad6b15401505fe59d85bcb7928971f260702c359c60cbe7",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_linxi_village.png",
+        "new_runtime_sha256": "010cc622f0bc30a53ad6b15401505fe59d85bcb7928971f260702c359c60cbe7",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.211658477783203,
+          0.473801970481873
+        ],
+        "render_size_px": [
+          440,
+          293.333343505859
+        ],
+        "origin_world_px": [
+          2380.859374999998,
+          3734.719070434574
+        ],
+        "actual_door_foot_px": [
+          2600,
+          3991.09936523438
+        ],
+        "projected_measured_door_foot_px": [
+          2599.999999999998,
+          3991.099287658933
+        ],
+        "door_projection_distance_px": 0.00007757544699416032,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.0000823537457108614
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            541,
+            847
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            2535.8333333333317,
+            3977.349287182096
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            2535.8333333333317,
+            4033.756399284553
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            2535.8333333333317,
+            4033.756399284553
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            650,
+            220
+          ],
+          "source_uv": [
+            0.4231770833333333,
+            0.21484375
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            2567.0572916666647,
+            3797.739905953411
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            2600,
+            4161.0993652343805
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            2600,
+            4161.0993652343805
+          ],
+          "world_click_px": [
+            2600,
+            3991.09936523438
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "The open front bamboo-fence gap is the approach. Houses and front fence feet block, not the empty dirt courtyard."
+    },
+    {
+      "portal_id": "qinghe_town",
+      "compound_id": "compound_qinghe_town",
+      "target_scene": "openworld_qinghe_town",
+      "threshold_kind": "front_dry_steps",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_qinghe_town_v1.png",
+        "original_sha256": "69cb9c41c7b3a1403a6716b2eb10dc072ec76f6c6a1c7983674ccb35c3c2d9de",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_qinghe_town.png",
+        "new_runtime_sha256": "69cb9c41c7b3a1403a6716b2eb10dc072ec76f6c6a1c7983674ccb35c3c2d9de",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.385606567064921,
+          0.523366630077362
+        ],
+        "render_size_px": [
+          460,
+          306.666656494141
+        ],
+        "origin_world_px": [
+          4508.33349609375,
+          4134.086105346679
+        ],
+        "actual_door_foot_px": [
+          4700,
+          4396.13037109375
+        ],
+        "projected_measured_door_foot_px": [
+          4700.000162760417,
+          4396.130367487668
+        ],
+        "door_projection_distance_px": 0.0001628003598245277,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.00016276041969831567
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            1100,
+            670
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            4837.760579427083,
+            4334.737140357493
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            4837.760579427083,
+            4445.044972343344
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            4837.760579427083,
+            4445.044972343344
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            931,
+            207
+          ],
+          "source_uv": [
+            0.6061197916666666,
+            0.2021484375
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            4787.148600260417,
+            4196.0782907903185
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            4700,
+            4566.13037109375
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            4700,
+            4566.13037109375
+          ],
+          "world_click_px": [
+            4700,
+            4396.13037109375
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "The village approach is the south stone landing before the painted bridge. Painted river pixels do not create world walk support."
+    },
+    {
+      "portal_id": "zhuwei_village",
+      "compound_id": "compound_zhuwei_village",
+      "target_scene": "ch1_s2_qingfeng",
+      "threshold_kind": "fence_gap",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_zhuwei_village_v1.png",
+        "original_sha256": "92ddf4d0ab30550ee6f5d7517257c2db2bc03b636568ad050447cc9a43665fb0",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_zhuwei_village.png",
+        "new_runtime_sha256": "92ddf4d0ab30550ee6f5d7517257c2db2bc03b636568ad050447cc9a43665fb0",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.528924743334452,
+          0.559746444225311
+        ],
+        "render_size_px": [
+          440,
+          293.333343505859
+        ],
+        "origin_world_px": [
+          6279.427246093746,
+          4438.776199340818
+        ],
+        "actual_door_foot_px": [
+          6500,
+          4696.5888671875
+        ],
+        "projected_measured_door_foot_px": [
+          6500.000162760413,
+          4696.588708281514
+        ],
+        "door_projection_distance_px": 0.00022746882080659106,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.00016428034086857224
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            566,
+            862
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            6441.562662760413,
+            4685.703291237352
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            6441.562662760413,
+            4741.057093028954
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            6441.562662760413,
+            4741.057093028954
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            927,
+            221
+          ],
+          "source_uv": [
+            0.603515625,
+            0.2158203125
+          ],
+          "source_pixel_alpha_8bit": 252,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            6544.974121093746,
+            4502.083493202922
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            6500,
+            4866.5888671875
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            6500,
+            4866.5888671875
+          ],
+          "world_click_px": [
+            6500,
+            4696.5888671875
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Front bamboo gate gap and stones are open; surrounding bamboo fences and house bases remain solid."
+    },
+    {
+      "portal_id": "wudang",
+      "compound_id": "compound_wudang",
+      "target_scene": "openworld_wudang_gate",
+      "threshold_kind": "open_gate",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/maps/world_map_v15/entities/sect_wudang_compound_v1.png",
+        "original_sha256": "0cf39bb9d6979b152903402128ca05e9838c3a41ddad9ffce2baf43bff26c7e8",
+        "actual_size_px": [
+          1421,
+          1107
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_wudang.png",
+        "new_runtime_sha256": "0cf39bb9d6979b152903402128ca05e9838c3a41ddad9ffce2baf43bff26c7e8",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.113914539416631,
+          0.656660735607147
+        ],
+        "render_size_px": [
+          620,
+          482.997894287109
+        ],
+        "origin_world_px": [
+          1089.7818603515618,
+          5137.8657989501935
+        ],
+        "actual_door_foot_px": [
+          1400,
+          5587.7041015625
+        ],
+        "projected_measured_door_foot_px": [
+          1400.0000165795702,
+          5587.703946204041
+        ],
+        "door_projection_distance_px": 0.00015624062497048935,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.0001583267076057382
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            323,
+            925
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            1230.710783645017,
+            5541.454825341861
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            1230.710783645017,
+            5613.8436247813415
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            1230.710783645017,
+            5613.8436247813415
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            702,
+            157
+          ],
+          "source_uv": [
+            0.494018296973962,
+            0.14182475158084915
+          ],
+          "source_pixel_alpha_8bit": 252,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            1396.0732044754182,
+            5206.366855321536
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            1400,
+            5757.7041015625
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            1400,
+            5757.7041015625
+          ],
+          "world_click_px": [
+            1400,
+            5587.7041015625
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "The visible front stone steps end near original canvas bottom. Source bytes and original framing are retained; no invented crop/margin."
+    },
+    {
+      "portal_id": "xiangzhou",
+      "compound_id": "compound_xiangzhou",
+      "target_scene": "openworld_xiangzhou_city",
+      "threshold_kind": "open_gate",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_xiangzhou_city_v1.png",
+        "original_sha256": "0c580b50539f53188b002b8b95837061d04ed05a73c141c6e7a545809f190b2d",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_xiangzhou.png",
+        "new_runtime_sha256": "0c580b50539f53188b002b8b95837061d04ed05a73c141c6e7a545809f190b2d",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.390357971191406,
+          0.711156904697418
+        ],
+        "render_size_px": [
+          720,
+          480
+        ],
+        "origin_world_px": [
+          4436.718749999996,
+          5585.797363281248
+        ],
+        "actual_door_foot_px": [
+          4800,
+          5995.95361328125
+        ],
+        "projected_measured_door_foot_px": [
+          4799.999999999996,
+          5995.953613281248
+        ],
+        "door_projection_distance_px": 4.067383956680332e-12,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 3.637978807091713e-12
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            488,
+            782
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            4665.468749999996,
+            5952.359863281248
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            4665.468749999996,
+            6019.280986275901
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            4665.468749999996,
+            6019.280986275901
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            800,
+            568
+          ],
+          "source_uv": [
+            0.5208333333333334,
+            0.5546875
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            4811.718749999996,
+            5852.047363281248
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            4800,
+            6165.95361328125
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            4800,
+            6165.95361328125
+          ],
+          "world_click_px": [
+            4800,
+            5995.95361328125
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Front gate leaves appear open. Keep actual narrow arch/fan-shaped forecourt clear while enclosing the city body."
+    },
+    {
+      "portal_id": "jinling",
+      "compound_id": "compound_jinling",
+      "target_scene": "openworld_jinling_city",
+      "threshold_kind": "closed_gate_front_step",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/city_jinling_river_v1.png",
+        "original_sha256": "4a4cea49eca9af9b81ee763758a8c6d25c69b76f4d5813c575fa05232f7c0755",
+        "actual_size_px": [
+          1374,
+          1145
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_jinling.png",
+        "new_runtime_sha256": "4a4cea49eca9af9b81ee763758a8c6d25c69b76f4d5813c575fa05232f7c0755",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.659478187561035,
+          0.760668337345123
+        ],
+        "render_size_px": [
+          720,
+          600
+        ],
+        "origin_world_px": [
+          7743.667968749998,
+          5931.395019531247
+        ],
+        "actual_door_foot_px": [
+          8100,
+          6492.09375
+        ],
+        "projected_measured_door_foot_px": [
+          8099.999846479256,
+          6492.093709487579
+        ],
+        "door_projection_distance_px": 0.00015877617913130312,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.00015352074933616677
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            446,
+            923
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            7977.379759143011,
+            6415.063141801989
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            7977.379759143011,
+            6485.739052806143
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            7977.379759143011,
+            6485.739052806143
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            688,
+            754
+          ],
+          "source_uv": [
+            0.5007278020378457,
+            0.6585152838427948
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            8104.191986217247,
+            6326.5041898369245
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            8100,
+            6662.09375
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            8100,
+            6662.09375
+          ],
+          "world_click_px": [
+            8100,
+            6492.09375
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "City front gate leaves are CLOSED; lawful approach stops on the exterior stair. Internal painted canals are not walk-support authority."
+    },
+    {
+      "portal_id": "bailu_ferry",
+      "compound_id": "compound_bailu_ferry",
+      "target_scene": "openworld_bailu_ferry",
+      "threshold_kind": "dry_landing_to_deck",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_bailu_ferry_v1.png",
+        "original_sha256": "49842bb82c79c386fd51db483ebfaae6f58bcca650387b112c74891c1c3075e1",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_bailu_ferry.png",
+        "new_runtime_sha256": "49842bb82c79c386fd51db483ebfaae6f58bcca650387b112c74891c1c3075e1",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.758158365885417,
+          0.5068439245224
+        ],
+        "render_size_px": [
+          520,
+          346.666656494141
+        ],
+        "origin_world_px": [
+          9056.250000000004,
+          3978.7321014404306
+        ],
+        "actual_door_foot_px": [
+          9300,
+          4291.88330078125
+        ],
+        "projected_measured_door_foot_px": [
+          9300.000000000004,
+          4291.883133918048
+        ],
+        "door_projection_distance_px": 0.00016686320213921138,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.00016689300446159905
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            519,
+            851
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            9231.953125000004,
+            4266.8310513198385
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            9231.953125000004,
+            4335.692242612933
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            9231.953125000004,
+            4335.692242612933
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            360,
+            155
+          ],
+          "source_uv": [
+            0.234375,
+            0.1513671875
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            9178.125000000004,
+            4031.2060582339773
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            9300,
+            4461.88330078125
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            9300,
+            4461.88330078125
+          ],
+          "world_click_px": [
+            9300,
+            4291.88330078125
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Land-side stone landing is the entrance. Boardwalk/piling solids are measured separately; the adjacent boat NEVER whites water."
+    },
+    {
+      "portal_id": "east_sea_port",
+      "compound_id": "compound_east_sea_port",
+      "target_scene": "openworld_east_sea_port",
+      "threshold_kind": "gate_front_deck",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_east_sea_port_v1.png",
+        "original_sha256": "d3193ecba1f28e7cb71e787d4a0bbf31c640bd4f300def51512991859825edd1",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_east_sea_port.png",
+        "new_runtime_sha256": "d3193ecba1f28e7cb71e787d4a0bbf31c640bd4f300def51512991859825edd1",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.957132975260417,
+          0.416446775197983
+        ],
+        "render_size_px": [
+          560,
+          373.333343505859
+        ],
+        "origin_world_px": [
+          11481.250000000004,
+          3224.865310668947
+        ],
+        "actual_door_foot_px": [
+          11700,
+          3407.15698242188
+        ],
+        "projected_measured_door_foot_px": [
+          11700.000000000004,
+          3407.1569823026675
+        ],
+        "door_projection_distance_px": 1.1921247283774712e-7,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.00000402330988436006
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            328,
+            448
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            11600.833333333338,
+            3388.1986484527606
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            11600.833333333338,
+            3443.0165893719463
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            11600.833333333338,
+            3443.0165893719463
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            430,
+            189
+          ],
+          "source_uv": [
+            0.2799479166666667,
+            0.1845703125
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            11638.020833333338,
+            3293.7715625464934
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            11700,
+            3577.15698242188
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            11700,
+            3577.15698242188
+          ],
+          "world_click_px": [
+            11700,
+            3407.15698242188
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Original gate-front stone deck and its lower short steps define entry. The remote southeast wood pier is not the door or automatic navigation."
+    },
+    {
+      "portal_id": "mingwu",
+      "compound_id": "compound_mingwu",
+      "target_scene": "ch7_s2_mingwu_tea_town",
+      "threshold_kind": "open_gate",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/maps/world_map_v15/entities/sect_mingwu_compound_v2.png",
+        "original_sha256": "06111c60195afd77b989b4230d416464c5fd51f237f04fc03456e142d915e947",
+        "actual_size_px": [
+          1374,
+          1145
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_mingwu.png",
+        "new_runtime_sha256": "06111c60195afd77b989b4230d416464c5fd51f237f04fc03456e142d915e947",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.903287172317505,
+          0.942876815795898
+        ],
+        "render_size_px": [
+          560,
+          466.666656494141
+        ],
+        "origin_world_px": [
+          10819.592773437502,
+          7490.713546752926
+        ],
+        "actual_door_foot_px": [
+          11100,
+          7894.61474609375
+        ],
+        "projected_measured_door_foot_px": [
+          11100.000342578696,
+          7894.6145568714355
+        ],
+        "door_projection_distance_px": 0.00039136331898575923,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.00034257873267051764
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            453,
+            902
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            11004.221594398201,
+            7858.340904095909
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            11004.221594398201,
+            7918.969365642875
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            11004.221594398201,
+            7918.969365642875
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            427,
+            177
+          ],
+          "source_uv": [
+            0.31077147016011647,
+            0.15458515283842794
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            10993.624796727167,
+            7562.853283171671
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            11100,
+            8064.61474609375
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            11100,
+            8064.61474609375
+          ],
+          "world_click_px": [
+            11100,
+            7894.61474609375
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Tea garden screen walls/lodges are solid; central roof-gate stair and straight lower opening are independently accessible."
+    },
+    {
+      "portal_id": "lingyue",
+      "compound_id": "compound_lingyue",
+      "target_scene": "ch2_s4_lingyue_gate",
+      "threshold_kind": "open_gate",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/maps/world_map_v15/entities/sect_lingyue_compound_v2.png",
+        "original_sha256": "f606865bc66ff57202c72c05a15a61f65c85e3787e4013b29fab3b043a6ac6ce",
+        "actual_size_px": [
+          1312,
+          1199
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_lingyue.png",
+        "new_runtime_sha256": "f606865bc66ff57202c72c05a15a61f65c85e3787e4013b29fab3b043a6ac6ce",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.937372207641602,
+          0.523907482624054
+        ],
+        "render_size_px": [
+          620,
+          566.6005859375
+        ],
+        "origin_world_px": [
+          11208.429687500005,
+          4008.5498046875
+        ],
+        "actual_door_foot_px": [
+          11500,
+          4530.7294921875
+        ],
+        "projected_measured_door_foot_px": [
+          11499.999809451225,
+          4530.729660785029
+        ],
+        "door_projection_distance_px": 0.00025442869857064936,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.00019054882432101294
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            424,
+            984
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            11408.795541158543,
+            4473.5497851399605
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            11408.795541158543,
+            4519.1422526041715
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            11408.795541158543,
+            4519.1422526041715
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            929,
+            152
+          ],
+          "source_uv": [
+            0.708079268292683,
+            0.1267723102585488
+          ],
+          "source_pixel_alpha_8bit": 252,
+          "semantic_role": "MEASURED_ROOF_OR_HIGH_FACE",
+          "world_click_px": [
+            11647.438833841468,
+            4080.3790699606443
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            11500,
+            4700.7294921875
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            11500,
+            4700.7294921875
+          ],
+          "world_click_px": [
+            11500,
+            4530.7294921875
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "Raised bamboo buildings, pond and platform bases block; only the front stair/deck passage is entry. Painted pond remains nonwalkable without actual native support."
+    },
+    {
+      "portal_id": "lieyun_valley",
+      "compound_id": "compound_lieyun_valley",
+      "target_scene": "ch7_s1_lieyun_valley_ferry",
+      "threshold_kind": "trail_mouth",
+      "status": "SUGGESTION_ONLY_PENDING_ROOT_FINAL_SOURCE_NAV_PHYSICS_AND_INPUT",
+      "captured_input_negative_probes_present": false,
+      "source_binding": {
+        "original_path": "res://art/modules/world_map_v13/landmark_lieyun_gorge_v1.png",
+        "original_sha256": "2447be85686c9b65e2edcb3c6376fb2da68b9127d02d4f3ba5464fda87920a85",
+        "actual_size_px": [
+          1536,
+          1024
+        ],
+        "new_runtime_path": "res://art/maps/world_map_v15_complete_v9c/entities/compound_lieyun_valley.png",
+        "new_runtime_sha256": "2447be85686c9b65e2edcb3c6376fb2da68b9127d02d4f3ba5464fda87920a85",
+        "original_runtime_byte_equal": true,
+        "footprint_path": "res://data/maps/world_map_v15_complete_v5_landmark_footprints_candidate.json",
+        "footprint_sha256": "72c942db3430e2ae58326b3acd330643d8c90e0cadf073d3ba731582f902f242",
+        "actual_size_matches_measured": true,
+        "original_matches_footprint_sha": true
+      },
+      "transform": {
+        "authority": "IMMUTABLE_V8_COMPOUND_CENTER_RENDER_SOURCE_UV_NOT_FINAL_V9C",
+        "object_pos": [
+          0.830315510431925,
+          0.895543277263641
+        ],
+        "render_size_px": [
+          560,
+          373.333343505859
+        ],
+        "origin_world_px": [
+          9922.916992187495,
+          7149.623855590818
+        ],
+        "actual_door_foot_px": [
+          10200,
+          7488.6865234375
+        ],
+        "projected_measured_door_foot_px": [
+          10200.000325520828,
+          7488.6863648295375
+        ],
+        "door_projection_distance_px": 0.00036210536524164405,
+        "final_source_status": "PENDING_FINAL_V9C_BINDING",
+        "maximum_measured_to_stored_solid_component_delta_px": 0.0003255208612245042
+      },
+      "proposed_negative_origin": "INDEPENDENT_ROOT_REVIEW_AUTHORED_NEGATIVES_V1",
+      "input_negative_probes": [
+        {
+          "kind": "wall_approach",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            509,
+            906
+          ],
+          "source_witness_in_measured_solid": true,
+          "blocked_foot_px": [
+            10108.48990885416,
+            7479.936364591119
+          ],
+          "blocked_in_projected_compound_solid": true,
+          "legal_start_px": [
+            10108.48990885416,
+            7542.274646384422
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "stand_selection": "Vertical south ray intersected traced measured compound polygons +44px, then bounded geometry-only offsets; not a nav repair",
+          "preferred_start_px": [
+            10108.48990885416,
+            7542.274646384422
+          ],
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        },
+        {
+          "kind": "roof_click",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "source_witness_px": [
+            1059,
+            343
+          ],
+          "source_uv": [
+            0.689453125,
+            0.3349609375
+          ],
+          "source_pixel_alpha_8bit": 253,
+          "semantic_role": "MEASURED_HIGH_ROCK_FACE_NOT_LITERAL_ROOF",
+          "world_click_px": [
+            10309.010742187495,
+            7274.67594233155
+          ],
+          "click_outside_interaction_polygon": true,
+          "legal_stand_px": [
+            10200,
+            7658.6865234375
+          ],
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          }
+        },
+        {
+          "kind": "wrongside",
+          "semantic_review_status": "PENDING_ROOT_REVIEW",
+          "legal_stand_px": [
+            10200,
+            7658.6865234375
+          ],
+          "world_click_px": [
+            10200,
+            7488.6865234375
+          ],
+          "stand_outside_interaction_polygon": true,
+          "click_inside_interaction_polygon": true,
+          "stand_geometry": {
+            "full17_source_solids_clear": true,
+            "body34x24_875_source_solids_clear": true,
+            "source_blocker_ids": [],
+            "nav_status": "NOT_RUN_FINAL_NAV_UNAVAILABLE",
+            "physics_status": "NOT_RUN",
+            "samples_17": 17,
+            "samples_body": 875
+          },
+          "offset_from_preferred_px": [
+            0,
+            0
+          ],
+          "unresolved": false
+        }
+      ],
+      "source_measurement_notes": "There is no building door: a real visible gorge trail mouth, flanked by rock feet. Roof negative is not applicable; use high exposed rock-face click instead."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.1800, 0.8800, 0.1700, 0.2900, 0.2900, 0.1800, 0.7200, 0.1800, 0.8300, 0.3000, 0.8200, 0.8900)
+])
+visual_objects = [
+	{"id":"seep_floor_0_0","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(-0.166666667,-0.125),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_1_0","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.166666667,-0.125),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_2_0","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.5,-0.125),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_3_0","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.833333333,-0.125),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_0_1","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(-0.166666667,0.375),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_1_1","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.166666667,0.375),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_2_1","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.5,0.375),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_3_1","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.833333333,0.375),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_0_2","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(-0.166666667,0.875),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_1_2","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.166666667,0.875),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_2_2","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.5,0.875),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"seep_floor_3_2","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.833333333,0.875),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.36,0.39,0.38,1)},
+	{"id":"old_loading_floor","texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png","pos":Vector2(0.508,0.351),"scale":Vector2(0.81,0.81),"z_index":-95,"rotation":12,"modulate":Color(0.71,0.68,0.59,0.66)},
+	{"id":"wet_left_drain","texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_docks_flat_damp_stain_vertical_v4.png","pos":Vector2(0.181,0.612),"scale":Vector2(0.44,0.44),"z_index":-93,"rotation":14,"modulate":Color(0.53,0.68,0.67,0.67)},
+	{"id":"wet_storage_edge","texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_docks_flat_damp_stain_vertical_v4.png","pos":Vector2(0.799,0.495),"scale":Vector2(0.39,0.39),"z_index":-93,"rotation":-13,"modulate":Color(0.63,0.74,0.68,0.58)},
+	{"id":"lower_haul_ruts","texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.png","pos":Vector2(0.505,0.729),"scale":Vector2(0.49,0.49),"z_index":-88,"rotation":90,"modulate":Color(0.65,0.65,0.58,0.72)},
+	{"id":"upper_haul_ruts","texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.png","pos":Vector2(0.48,0.502),"scale":Vector2(0.47,0.47),"z_index":-88,"rotation":77,"modulate":Color(0.67,0.68,0.61,0.75)},
+	{"id":"north_rock_left","texture":"res://art/modules/sect_maps_20261029k/limestone_mass.png","pos":Vector2(0.248,0.106),"scale":Vector2(0.44,0.44),"sort_by_feet":true,"depth_sort_foot_y":0.234,"rotation":0,"modulate":Color(0.43,0.50,0.48,1)},
+	{"id":"north_rock_right","texture":"res://art/modules/sect_maps_20261029k/limestone_mass.png","pos":Vector2(0.754,0.101),"scale":Vector2(0.43,0.43),"sort_by_feet":true,"depth_sort_foot_y":0.226,"rotation":0,"modulate":Color(0.48,0.52,0.48,1)},
+	{"id":"left_channel_rock","texture":"res://art/modules/sect_maps_20261029k/limestone_mass.png","pos":Vector2(0.005,0.422),"scale":Vector2(0.4,0.4),"sort_by_feet":true,"depth_sort_foot_y":0.552,"rotation":-10,"modulate":Color(0.43,0.49,0.48,1)},
+	{"id":"right_passage_rock","texture":"res://art/modules/sect_maps_20261029k/limestone_mass.png","pos":Vector2(1.03,0.432),"scale":Vector2(0.39,0.39),"sort_by_feet":true,"depth_sort_foot_y":0.561,"rotation":7,"modulate":Color(0.48,0.52,0.49,1)},
+	{"id":"left_entry_rock","texture":"res://art/modules/sect_maps_20261029k/limestone_mass.png","pos":Vector2(0.151,0.902),"scale":Vector2(0.41,0.41),"sort_by_feet":true,"depth_sort_foot_y":1.04,"rotation":12,"modulate":Color(0.41,0.46,0.45,1)},
+	{"id":"right_entry_rock","texture":"res://art/modules/sect_maps_20261029k/limestone_mass.png","pos":Vector2(0.886,0.872),"scale":Vector2(0.37,0.37),"sort_by_feet":true,"depth_sort_foot_y":0.999,"rotation":-9,"modulate":Color(0.45,0.50,0.46,1)},
+	{"id":"loading_bay_post_w","texture":"res://art/modules/building/build_linxi_column_wood.png","pos":Vector2(0.382,0.203),"scale":Vector2(1.03,1.03),"sort_by_feet":true,"depth_sort_foot_y":0.303,"rotation":0,"modulate":Color(0.68,0.61,0.52,1)},
+	{"id":"loading_bay_post_e","texture":"res://art/modules/building/build_linxi_column_wood.png","pos":Vector2(0.673,0.2),"scale":Vector2(1.03,1.03),"sort_by_feet":true,"depth_sort_foot_y":0.302,"rotation":0,"modulate":Color(0.65,0.60,0.52,1)},
+	{"id":"cargo_carrier","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png","pos":Vector2(0.485,0.241),"scale":Vector2(0.23,0.23),"sort_by_feet":true,"depth_sort_foot_y":0.316,"rotation":0,"modulate":Color(0.76,0.69,0.59,1)},
+	{"id":"sealed_cargo_left","texture":"res://art/modules/luoyang_district_life_20261016f/stock_crate.png","pos":Vector2(0.434,0.29),"scale":Vector2(0.86,0.86),"sort_by_feet":true,"depth_sort_foot_y":0.327,"rotation":0,"modulate":Color(0.84,0.75,0.63,1)},
+	{"id":"sealed_cargo_right","texture":"res://art/modules/luoyang_district_life_20261016f/stock_crate.png","pos":Vector2(0.554,0.28),"scale":Vector2(0.98,0.98),"sort_by_feet":true,"depth_sort_foot_y":0.324,"rotation":0,"modulate":Color(0.88,0.78,0.65,1)},
+	{"id":"loading_sacks","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png","pos":Vector2(0.609,0.278),"scale":Vector2(0.122,0.122),"sort_by_feet":true,"depth_sort_foot_y":0.326,"rotation":0,"modulate":Color(0.81,0.76,0.65,1)},
+	{"id":"water_level_stele","texture":"res://art/modules/prop/linxi_stone_tablet_v2.png","pos":Vector2(0.287,0.458),"scale":Vector2(0.4,0.4),"sort_by_feet":true,"depth_sort_foot_y":0.525,"rotation":0,"modulate":Color(0.81,0.86,0.80,1)},
+	{"id":"water_level_rubble","texture":"res://art/modules/prop/prop_ruin_rubble_pile.png","pos":Vector2(0.238,0.54),"scale":Vector2(0.43,0.43),"sort_by_feet":true,"depth_sort_foot_y":0.562,"rotation":0,"modulate":Color(0.64,0.69,0.62,1)},
+	{"id":"repair_tablet_desk","texture":"res://art/modules/ancient_temple_assembled_20261016/low_incense_altar_v1.png","pos":Vector2(0.754,0.461),"scale":Vector2(0.194,0.194),"sort_by_feet":true,"depth_sort_foot_y":0.534,"rotation":0,"modulate":Color(0.79,0.81,0.73,1)},
+	{"id":"desk_open_box","texture":"res://art/modules/prop/prop_linxi_box_wood_open.png","pos":Vector2(0.785,0.493),"scale":Vector2(0.42,0.42),"sort_by_feet":true,"depth_sort_foot_y":0.536,"rotation":0,"modulate":Color(0.71,0.70,0.61,1)},
+	{"id":"tunnel_flame_left_bowl","texture":"res://art/modules/prop/linxi_brazier_forge_v1.png","pos":Vector2(0.325,0.596),"scale":Vector2(0.23,0.23),"sort_by_feet":true,"depth_sort_foot_y":0.625,"rotation":0,"modulate":Color(0.88,0.84,0.77,1)},
+	{"id":"tunnel_flame_right_bowl","texture":"res://art/modules/prop/linxi_brazier_forge_v1.png","pos":Vector2(0.675,0.596),"scale":Vector2(0.23,0.23),"sort_by_feet":true,"depth_sort_foot_y":0.625,"rotation":0,"modulate":Color(0.88,0.84,0.77,1)},
+	{"id":"tunnel_flame_lower_bowl","texture":"res://art/modules/prop/linxi_brazier_forge_v1.png","pos":Vector2(0.584,0.725),"scale":Vector2(0.223,0.223),"sort_by_feet":true,"depth_sort_foot_y":0.753,"rotation":0,"modulate":Color(0.87,0.83,0.76,1)},
+	{"id":"stowed_empty_crate","texture":"res://art/modules/luoyang_district_life_20261016f/stock_crate.png","pos":Vector2(0.715,0.728),"scale":Vector2(0.68,0.68),"sort_by_feet":true,"depth_sort_foot_y":0.757,"rotation":0,"modulate":Color(0.72,0.72,0.62,1)}
+]
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"loading_west_post_base","pos":Vector2(0.382,0.292),"size":Vector2(0.032,0.023),"walkability_margin":0.0},
+	{"id":"loading_east_post_base","pos":Vector2(0.673,0.29),"size":Vector2(0.032,0.023),"walkability_margin":0.0},
+	{"id":"cart_base","pos":Vector2(0.486,0.286),"size":Vector2(0.09,0.039),"walkability_margin":0.0},
+	{"id":"cargo_left_base","pos":Vector2(0.434,0.314),"size":Vector2(0.045,0.031),"walkability_margin":0.0},
+	{"id":"cargo_right_base","pos":Vector2(0.554,0.314),"size":Vector2(0.056,0.036),"walkability_margin":0.0},
+	{"id":"stele_base","pos":Vector2(0.287,0.512),"size":Vector2(0.063,0.028),"walkability_margin":0.0},
+	{"id":"stone_desk_base","pos":Vector2(0.758,0.513),"size":Vector2(0.135,0.026),"walkability_margin":0.0},
+	{"id":"bowl_left_base","pos":Vector2(0.325,0.614),"size":Vector2(0.041,0.026),"walkability_margin":0.0},
+	{"id":"bowl_right_base","pos":Vector2(0.675,0.614),"size":Vector2(0.041,0.026),"walkability_margin":0.0},
+	{"id":"bowl_lower_base","pos":Vector2(0.584,0.743),"size":Vector2(0.041,0.026),"walkability_margin":0.0},
+	{"id":"empty_crate_base","pos":Vector2(0.715,0.746),"size":Vector2(0.045,0.026),"walkability_margin":0.0}
+]
+interactions = []
+portals = []
+walkable_probes = [
+	{"id":"route_0", "pos":Vector2(0.5017, 0.4533)}
+]
+blocked_probes = [
+	{"id":"top_left_margin", "pos":Vector2(0.01, 0.01)},
+	{"id":"top_right_margin", "pos":Vector2(0.99, 0.01)}
+]

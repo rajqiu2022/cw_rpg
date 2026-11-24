@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_05_baima_bell"
+title = "白马古钟"
+kind = 1
+desc_not_started = "白马寺古钟近日每夜自鸣三响，守钟僧人担心有人借此装神弄鬼。"
+desc_in_progress = "查验钟楼梁木、钟杵与东墙砖缝，再回报守钟僧。"
+desc_completed = "东墙暗缝在夜风中形成共鸣，推动钟舌轻撞。守钟僧人修好砖缝，古钟恢复平静。"
+tracker_hint = "洛阳城外 · 古寺钟楼"
+progress_records = Array[Dictionary]([{"trigger":"flag_set:baima_bell_investigated_20261018t", "text":"薄纸在东墙裂缝处连颤三次，夜风正从这里推动钟舌。应回报守钟僧。"}])
+completion_triggers = Array[String]([])
+reward_gold = 5
+reward_exp = 15
+reward_items = Array[Dictionary]([{"item_id": "inner_breath_pill", "count": 2}, {"item_id": "spirit_gathering_dust", "count": 2}])

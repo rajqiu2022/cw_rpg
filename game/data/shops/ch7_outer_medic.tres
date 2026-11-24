@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/shop_def.gd" id="1_shop"]
+
+[resource]
+script = ExtResource("1_shop")
+shop_id = &"ch7_outer_medic"
+display_name = "外院药箱"
+greeting = "药箱里还剩些金创药和清心露，进门前可以备上。"
+stock = Array[StringName]([&"healing_salve", &"healing_pill_minor", &"antidote_pill", &"inner_breath_pill", &"clarity_dew"])
+sell_back_ratio = 0.4

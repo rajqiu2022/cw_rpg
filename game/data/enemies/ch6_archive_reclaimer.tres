@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+enemy_id = &"ch6_archive_reclaimer"
+trait_caption = "青烟烈毒"
+finisher_affliction = "venom"
+display_name = "茗雾销卷使"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_01.png"
+battle_actor_scale = 1.05
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_04.png")
+level = 10
+max_hp = 470
+max_mp = 110
+attack = 94
+defense = 19
+speed = 25
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_wuyin_sanshi", &"mingwu_yinying_duoming", &"mingwu_saofeng"])
+aggression = 0.78
+drop_gold_min = 55
+drop_gold_max = 85
+drop_exp = 95
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"inner_breath_pill", "chance":0.35, "count":1}])

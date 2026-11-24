@@ -9,19 +9,24 @@ script = ExtResource("1_scn")
 scene_id = &"ch1_s2_qingfeng"
 display_name = "竹尾村 · 主街"
 background_path = "res://art/backgrounds/bg_zhuwei_main_street_release_v3.png"
-bgm_path = "res://art/audio/bgm/bgm_calm.wav"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+on_enter_dialog = ExtResource("2_intro")
+on_enter_require_flag = &"master_training_done"
 on_enter_once_flag = &"entered_zhuwei_village"
 is_walkable = true
+is_settlement = true
 map_layout = ExtResource("3_map")
-player_spawn = Vector2(0.10, 0.68)
+player_spawn = Vector2(0.24, 0.72)
 npcs = [
-	{"npc_id": "vegetable_vendor", "npc_name": "卖菜大婶", "pos": Vector2(0.51, 0.70), "sprite_path": "res://art/characters/npc_zhuwei_vegetable_vendor_idle_down_1f.png", "dialog_id": "ch1_s2_vegetable_vendor", "scale": 0.92},
-	{"npc_id": "inn_waiter", "npc_name": "店小二", "pos": Vector2(0.29, 0.57), "sprite_path": "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png", "dialog_id": "ch1_s2_inn_keeper", "scale": 0.95},
-	{"npc_id": "merchant", "npc_name": "行商", "pos": Vector2(0.39, 0.60), "sprite_path": "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f.png", "dialog_id": "ch1_s2_merchant", "scale": 0.95},
-	{"npc_id": "crying_woman", "npc_name": "焦急妇人", "pos": Vector2(0.60, 0.57), "sprite_path": "res://art/characters/npc_zhuwei_crying_woman_idle_down_25d_4f.png", "dialog_id": "ch1_s2_crying_woman", "scale": 0.95, "hide_flag": "accepted_rescue_husband"},
-	{"npc_id": "crying_woman_waiting", "npc_name": "焦急妇人", "pos": Vector2(0.60, 0.57), "sprite_path": "res://art/characters/npc_zhuwei_crying_woman_idle_down_25d_4f.png", "dialog_id": "ch1_s2_crying_woman_waiting", "scale": 0.95, "require_flag": "accepted_rescue_husband", "hide_flag": "rescued_husband"},
-	{"npc_id": "guard", "npc_name": "村口守卫", "pos": Vector2(0.90, 0.60), "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png", "dialog_id": "ch1_s2_guard", "scale": 0.95},
-	{"npc_id": "patrol_scout", "npc_name": "护商镖师", "pos": Vector2(0.42, 0.53), "sprite_path": "res://art/characters/npc_zhuwei_escort_idle_down_25d_4f.png", "dialog_id": "ch1_s2_patrol_scout", "scale": 0.95}
+	{"npc_id": "zhuwei_huilan_porter", "npc_name": "挑担脚夫", "pos": Vector2(0.5262, 0.7688), "portrait_path": "res://art/characters/portraits/luoyang_docks_roles_20261019ad/portrait_docks_strong_carrier_v1.png", "sprite_path": "res://art/characters/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_idle_down_1f_v1_runtime.png", "dialog_id": "huilan_openworld_balance", "dialog_variants": [{"dialog_id": "huilan_openworld_balance_done", "require_flags": ["huilan_balance_understood"]}], "scale": 0.98},
+	{"npc_id": "vegetable_vendor", "npc_name": "卖菜大婶", "pos": Vector2(0.51, 0.70), "sprite_path": "res://art/characters/npc_zhuwei_vegetable_vendor_idle_down_25d_4f_v2_runtime.png", "dialog_id": "ch1_s2_vegetable_vendor", "dialog_variants": [{"dialog_id": "ch1_s2_vegetable_vendor_done", "require_flags": ["zhuwei_forest_herb_delivered"]}, {"dialog_id": "ch1_s2_vegetable_vendor_turnin", "require_flags": ["zhuwei_forest_herb_collected"], "hide_flags": ["zhuwei_forest_herb_delivered"]}, {"dialog_id": "ch1_s2_vegetable_vendor_waiting", "require_quest_active": "q_ch1_side_12_forest_medicine"}], "scale": 1.02},
+	{"npc_id": "inn_waiter", "npc_name": "店小二", "pos": Vector2(0.29, 0.57), "sprite_path": "res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png", "dialog_id": "ch1_s2_inn_waiter", "scale": 1.02},
+	{"npc_id": "merchant", "npc_name": "行商", "pos": Vector2(0.39, 0.60), "sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png", "walk_sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_right_walk_8f_v3_runtime.png", "dialog_id": "ch1_s2_merchant", "scale": 0.88, "movement_mode": "patrol", "patrol_axis": Vector2(1.0, 0.08), "patrol_distance": 26.0, "patrol_speed": 11.0, "invert_patrol_facing": true},
+	{"npc_id": "crying_woman", "npc_name": "焦急妇人", "pos": Vector2(0.60, 0.57), "portrait_path": "res://art/characters/portraits/generic/portrait_zhuwei_anxious_middle_aged_woman_v1.png", "sprite_path": "res://art/characters/road_story_and_older_npcs_20261112/anxious_mother/frame_0.tres", "dialog_id": "ch1_s2_crying_woman", "scale": 0.27, "dialog_variants": [{"dialog_id": "ch1_s2_crying_woman_done", "require_quest_completed": "q_ch1_side_01_rescue_husband"}], "hide_flag": "accepted_rescue_husband"},
+	{"npc_id": "crying_woman_waiting", "npc_name": "焦急妇人", "pos": Vector2(0.60, 0.57), "portrait_path": "res://art/characters/portraits/generic/portrait_zhuwei_anxious_middle_aged_woman_v1.png", "sprite_path": "res://art/characters/road_story_and_older_npcs_20261112/anxious_mother/frame_0.tres", "dialog_id": "ch1_s2_crying_woman_waiting", "scale": 0.27, "dialog_variants": [{"dialog_id": "ch1_s2_crying_woman_done", "require_quest_completed": "q_ch1_side_01_rescue_husband"}, {"dialog_id": "ch1_s2_crying_woman_turnin", "require_quest_active": "q_ch1_side_01_rescue_husband", "require_flags": ["rescued_husband"]}], "require_flag": "accepted_rescue_husband"},
+	{"npc_id": "guard", "npc_name": "村口守卫", "pos": Vector2(0.88, 0.60), "sprite_path": "res://art/characters/npc_zhuwei_gate_guard_idle_down_25d_4f_v2_runtime.png", "dialog_id": "ch1_s2_guard", "dialog_variants": [{"dialog_id": "ch1_s2_guard_after_report", "require_flags": ["zhuwei_village_inquiry_done"]}, {"dialog_id": "ch1_s2_guard_report", "require_flags": ["zhuwei_guard_briefed", "zhuwei_inn_clue", "zhuwei_scout_clue"], "hide_flags": ["zhuwei_village_inquiry_done"]}], "scale": 1.03, "idle_frame_seconds": 0.95},
+	{"npc_id": "patrol_scout", "npc_name": "护商镖师", "pos": Vector2(0.42, 0.53), "sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png", "walk_sprite_path": "res://art/characters/street_expansion_v2/npc_escort_guard_walk_right_8f_v1_runtime.png", "dialog_id": "ch1_s2_patrol_scout", "dialog_variants": [{"dialog_id": "ch1_s2_scout_main_clue", "hide_flags": ["zhuwei_scout_clue"], "require_quest_active": "q_ch1_side_08_mountain_patrol"}, {"dialog_id": "ch1_s2_patrol_scout", "hide_flags": ["zhuwei_scout_clue"]}, {"dialog_id": "ch1_s2_bandit_cave_turnin", "require_quest_active": "q_ch1_side_10_bandit_cave", "require_flags": ["clue_bandit_cave_mist_mark"]}, {"dialog_id": "ch1_s2_bandit_cave_waiting", "require_quest_active": "q_ch1_side_10_bandit_cave"}, {"dialog_id": "ch1_s2_patrol_scout_turnin", "require_quest_active": "q_ch1_side_08_mountain_patrol", "require_flags": ["mountain_patrol_bandits_repelled"]}, {"dialog_id": "ch1_s2_patrol_scout_waiting", "require_quest_active": "q_ch1_side_08_mountain_patrol"}, {"dialog_id": "ch1_s2_bandit_cave_done", "require_quest_completed": "q_ch1_side_10_bandit_cave"}, {"dialog_id": "ch1_s2_bandit_cave_rumour", "require_quest_completed": "q_ch1_side_08_mountain_patrol", "hide_flags": ["clue_bandit_cave_mist_mark"]}, {"dialog_id": "ch1_s2_patrol_scout_done", "require_quest_completed": "q_ch1_side_08_mountain_patrol"}], "scale": 0.88, "movement_mode": "patrol", "patrol_axis": Vector2(1.0, 0.0), "patrol_distance": 28.0, "patrol_speed": 10.0, "walk_frame_seconds": 0.12},
+	{"npc_id": "patrol_scout_partner", "npc_name": "镖局枪手", "pos": Vector2(0.465, 0.525), "sprite_path": "res://art/characters/npc_zhuwei_gate_guard_idle_down_25d_4f_v2_runtime.png", "dialog_id": "ch1_s2_caravan_spearman_idle", "dialog_variants": [{"dialog_id": "ch1_side_caravan_done", "require_quest_completed": "q_ch1_side_06_caravan_escort"}, {"dialog_id": "ch1_side_caravan_turnin", "require_quest_active": "q_ch1_side_06_caravan_escort", "require_flags": ["caravan_escort_done"]}, {"dialog_id": "ch1_side_caravan_waiting", "require_quest_active": "q_ch1_side_06_caravan_escort"}, {"dialog_id": "ch1_side_caravan_offer", "require_flags": ["zhuwei_village_inquiry_done"]}], "scale": 1.03, "movement_mode": "idle", "idle_frame_seconds": 0.95}
 ]
 hotspots = [
 	{
@@ -37,14 +42,14 @@ hotspots = [
 		"action": "dialog:ch1_s2_merchant"
 	},
 	{
-		"label": "哭泣女子",
+		"label": "焦急妇人",
 		"pos_x": 0.62,
 		"pos_y": 0.55,
 		"action": "dialog:ch1_s2_crying_woman",
 		"hide_flag": "accepted_rescue_husband"
 	},
 	{
-		"label": "哭泣女子",
+		"label": "焦急妇人",
 		"pos_x": 0.62,
 		"pos_y": 0.55,
 		"action": "dialog:ch1_s2_crying_woman_waiting",
@@ -56,6 +61,28 @@ hotspots = [
 		"pos_x": 0.85,
 		"pos_y": 0.62,
 		"action": "dialog:ch1_s2_guard"
+	},
+	{
+		"label": "听檐下双盆回声",
+		"pos_x": 0.22,
+		"pos_y": 0.38,
+		"action": "dialog:huilan_openworld_echo",
+		"hide_flag": "huilan_echo_understood"
+	},
+	{
+		"label": "帮脚夫调整扁担",
+		"pos_x": 0.52,
+		"pos_y": 0.43,
+		"action": "dialog:huilan_openworld_balance",
+		"hide_flag": "huilan_balance_understood"
+	},
+	{
+		"label": "化解街口双车险局",
+		"pos_x": 0.72,
+		"pos_y": 0.47,
+		"action": "dialog:huilan_openworld_final_trial",
+		"require_flag": "huilan_openworld_clues_complete",
+		"hide_flag": "huilan_openworld_trial_complete"
 	},
 	{
 		"label": "[出口] 前往城西 →",

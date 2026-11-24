@@ -233,7 +233,8 @@ def render_template(template_name: str, vars_: dict, shared: dict) -> dict:
     # 解析 reference 图片为绝对路径
     refs: list[Path] = []
     declared_refs = tpl.get("reference_images", []) or []
-    for r in declared_refs:
+    rendered_refs = [_safe_format(str(r), full_vars) for r in declared_refs]
+    for r in rendered_refs:
         p = (PROJECT_ROOT / r).resolve()
         if p.exists():
             refs.append(p)
@@ -243,10 +244,10 @@ def render_template(template_name: str, vars_: dict, shared: dict) -> dict:
             )
 
     # 续帧类模板：声明 require_reference_images 时必须齐套，否则 edits 会静默退回 generations，外观漂移。
-    if tpl.get("require_reference_images") and declared_refs and len(refs) != len(declared_refs):
+    if tpl.get("require_reference_images") and rendered_refs and len(refs) != len(rendered_refs):
         missing = [
             str((PROJECT_ROOT / r).resolve())
-            for r in declared_refs
+            for r in rendered_refs
             if not (PROJECT_ROOT / r).resolve().exists()
         ]
         raise FileNotFoundError(
@@ -295,7 +296,7 @@ class Budget:
     async def add(self, amount: float) -> None:
         async with self._lock:
             self.spent += amount
-            if self.spent >= self.limit:
+            if self.spent > self.limit:
                 raise BudgetExceeded(
                     f"预算上限触发：已花费 ${self.spent:.4f} / 上限 ${self.limit:.2f}"
                 )
@@ -507,6 +508,14 @@ def _alapi_generations_url(base_url: str | None) -> str:
     return f"{root}/images/generations"
 
 
+def _alapi_async_submit_url(base_url: str | None) -> str:
+    return f"{_alapi_generations_url(base_url)}_sync"
+
+
+def _alapi_task_url(base_url: str | None) -> str:
+    return f"{_alapi_generations_url(base_url)}/task"
+
+
 def _alapi_reference_base64(path: Path, max_side: int = 1280, quality: int = 88) -> str:
     """Compress reference images before sending to ALAPI.
 
@@ -521,31 +530,72 @@ def _alapi_reference_base64(path: Path, max_side: int = 1280, quality: int = 88)
     return base64.b64encode(buffer.getvalue()).decode("ascii")
 
 
-async def _call_alapi_generation(
+def _alapi_generation_payload(api_key: str, spec: dict, model: str) -> dict[str, Any]:
+    image_refs = [
+        f"data:image/jpeg;base64,{_alapi_reference_base64(path)}"
+        for path in spec["reference_images"]
+    ]
+    size_for_alapi = {
+        "1024x1024": "1:1",
+        "1536x1024": "3:2",
+        "1024x1536": "2:3",
+        "1024x768": "4:3",
+        "768x1024": "3:4",
+        "1536x864": "16:9",
+        "864x1536": "9:16",
+        "2048x1024": "2:1",
+        "1024x2048": "1:2",
+    }.get(str(spec["size"]), spec["size"])
+    payload: dict[str, Any] = {
+        "token": api_key,
+        "model": model,
+        "prompt": spec["prompt"],
+        "n": "1",
+        "size": size_for_alapi,
+        "resolution": spec.get("resolution", "1k"),
+    }
+    if image_refs:
+        payload["image_urls"] = image_refs
+    return payload
+
+
+def _alapi_response_error(data: dict[str, Any]) -> RuntimeError:
+    diagnostic = {
+        key: data.get(key)
+        for key in ("success", "code", "message", "request_id", "time", "data")
+        if key in data
+    }
+    return RuntimeError(
+        "ALAPI error " + json.dumps(diagnostic, ensure_ascii=False, default=str)[:1000]
+    )
+
+
+async def _download_alapi_image(items: list[Any]) -> tuple[bytes, str]:
+    first = items[0]
+    b64_val = first.get("b64_json") if isinstance(first, dict) else None
+    url_val = first.get("url") if isinstance(first, dict) else None
+    if b64_val:
+        return base64.b64decode(b64_val), "b64"
+    if url_val:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(120.0, connect=20.0)) as hc:
+            img_response = await hc.get(str(url_val))
+            img_response.raise_for_status()
+            return img_response.content, f"url:{url_val}"
+    raise RuntimeError("ALAPI 返回中既无 b64_json 也无 url")
+
+
+async def _call_alapi_generation_sync(
     api_key: str,
     base_url: str | None,
     spec: dict,
     model: str,
 ) -> tuple[bytes, dict]:
-    image_refs: list[dict[str, str]] = []
-    for path in spec["reference_images"]:
-        image_refs.append(
-            {
-                "type": "base64",
-                "data": _alapi_reference_base64(path),
-            }
-        )
-
-    payload: dict[str, Any] = {
-        "model": model,
-        "prompt": spec["prompt"],
-        "n": 1,
-        "size": spec["size"],
-        "quality": spec["quality"],
-        "resolution": spec.get("resolution", "1k"),
-    }
-    if image_refs:
-        payload["image"] = image_refs
+    # API 107's current contract accepts token in the JSON body, `n` as a
+    # string, and reference images through `image_urls`. Keep the token header
+    # as well for compatibility with older ALAPI deployments, but avoid
+    # forwarding OpenAI-only fields such as `quality` which strict validators
+    # can reject with an opaque code=400 response.
+    payload = _alapi_generation_payload(api_key, spec, model)
 
     async with httpx.AsyncClient(timeout=httpx.Timeout(300.0, connect=30.0)) as hc:
         response = await hc.post(
@@ -557,7 +607,7 @@ async def _call_alapi_generation(
         data = response.json()
 
     if data.get("code") not in (None, 200):
-        raise RuntimeError(f"ALAPI error code={data.get('code')} message={data.get('message')}")
+        raise _alapi_response_error(data)
 
     items: list[Any] = []
     data_field = data.get("data")
@@ -571,20 +621,7 @@ async def _call_alapi_generation(
     if not items:
         raise RuntimeError(f"ALAPI 未返回可用图像列表：{str(data)[:500]}")
 
-    first = items[0]
-    b64_val = first.get("b64_json") if isinstance(first, dict) else None
-    url_val = first.get("url") if isinstance(first, dict) else None
-    if b64_val:
-        img_bytes = base64.b64decode(b64_val)
-        image_source = "b64"
-    elif url_val:
-        async with httpx.AsyncClient(timeout=httpx.Timeout(120.0, connect=20.0)) as hc:
-            img_response = await hc.get(str(url_val))
-            img_response.raise_for_status()
-            img_bytes = img_response.content
-            image_source = f"url:{url_val}"
-    else:
-        raise RuntimeError("ALAPI 返回中既无 b64_json 也无 url")
+    img_bytes, image_source = await _download_alapi_image(items)
 
     meta = {
         "model": model,
@@ -597,6 +634,81 @@ async def _call_alapi_generation(
         "usage": data.get("usage"),
     }
     return img_bytes, meta
+
+
+async def _call_alapi_generation_async(
+    api_key: str,
+    base_url: str | None,
+    spec: dict,
+    model: str,
+    poll_timeout: float = 300.0,
+) -> tuple[bytes, dict]:
+    headers = {"token": api_key, "Content-Type": "application/json"}
+    payload = _alapi_generation_payload(api_key, spec, model)
+    async with httpx.AsyncClient(timeout=httpx.Timeout(60.0, connect=30.0)) as hc:
+        response = await hc.post(_alapi_async_submit_url(base_url), headers=headers, json=payload)
+        response.raise_for_status()
+        submitted = response.json()
+    if submitted.get("code") not in (None, 200):
+        raise _alapi_response_error(submitted)
+    submission = submitted.get("data") if isinstance(submitted.get("data"), dict) else submitted
+    task_id = submission.get("task_id") if isinstance(submission, dict) else None
+    if not task_id:
+        raise RuntimeError(f"ALAPI 异步提交未返回 task_id：{str(submitted)[:500]}")
+
+    deadline = time.monotonic() + poll_timeout
+    last_status = "submitted"
+    completed_payload: dict[str, Any] | None = None
+    while time.monotonic() < deadline:
+        await asyncio.sleep(3.0)
+        async with httpx.AsyncClient(timeout=httpx.Timeout(60.0, connect=30.0)) as hc:
+            response = await hc.post(
+                _alapi_task_url(base_url),
+                headers=headers,
+                json={"token": api_key, "task_id": task_id},
+            )
+            response.raise_for_status()
+            polled = response.json()
+        if polled.get("code") not in (None, 200):
+            raise _alapi_response_error(polled)
+        task = polled.get("data") if isinstance(polled.get("data"), dict) else polled
+        result = task.get("result") if isinstance(task.get("result"), dict) else {}
+        last_status = str(task.get("status") or result.get("status") or last_status).lower()
+        if last_status in ("failed", "error", "cancelled", "canceled"):
+            raise RuntimeError(f"ALAPI 异步任务失败 task_id={task_id}: {str(task)[:500]}")
+        images = result.get("images") or task.get("images")
+        if last_status in ("completed", "succeeded", "success") and isinstance(images, list) and images:
+            completed_payload = polled
+            img_bytes, image_source = await _download_alapi_image(images)
+            break
+    else:
+        raise RuntimeError(f"ALAPI 异步任务超时 task_id={task_id}, last_status={last_status}")
+
+    meta = {
+        "model": model,
+        "size": spec["size"],
+        "quality": spec["quality"],
+        "background": spec["background"],
+        "image_source": image_source,
+        "n_reference_images": len(spec["reference_images"]),
+        "reference_images": [str(p) for p in spec["reference_images"]],
+        "usage": completed_payload.get("usage") if completed_payload else None,
+        "alapi_mode": "async",
+        "alapi_task_id": task_id,
+    }
+    return img_bytes, meta
+
+
+async def _call_alapi_generation(
+    api_key: str,
+    base_url: str | None,
+    spec: dict,
+    model: str,
+) -> tuple[bytes, dict]:
+    mode = os.getenv("ALAPI_IMAGE_MODE", "async").strip().lower()
+    if mode == "sync":
+        return await _call_alapi_generation_sync(api_key, base_url, spec, model)
+    return await _call_alapi_generation_async(api_key, base_url, spec, model)
 
 
 async def startup_ping(
@@ -920,6 +1032,11 @@ async def process_task(
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="GPT Image 2 批量生成器")
     p.add_argument("--task", action="append", help="只跑指定 task id（可多次）")
+    p.add_argument(
+        "--tasks-file",
+        type=str,
+        help="使用独立任务清单（相对项目根目录或绝对路径，默认 prompts/tasks.yaml）",
+    )
     p.add_argument("--priority", type=int, help="只跑优先级 <= N 的任务")
     p.add_argument("--budget", type=float, help="覆盖 .env 中的预算上限")
     p.add_argument("--concurrency", type=int, help="覆盖 .env 中的并发数（默认 1）")
@@ -1037,7 +1154,10 @@ async def main_async(args: argparse.Namespace) -> int:
 
     # 加载 shared + tasks
     shared = load_yaml(SHARED_FILE)
-    tasks_doc = load_yaml(TASKS_FILE)
+    tasks_file = Path(args.tasks_file) if args.tasks_file else TASKS_FILE
+    if not tasks_file.is_absolute():
+        tasks_file = PROJECT_ROOT / tasks_file
+    tasks_doc = load_yaml(tasks_file.resolve())
     all_tasks = tasks_doc.get("tasks", [])
 
     retry_ids: set[str] | None = None

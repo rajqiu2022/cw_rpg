@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="冷孤云"
+text="首轮假令没有离开祭台。各派仍按分工守位，尚未互相出手。"
+set_flags=Array[Dictionary]([{"key":"ch8_first_false_order_stopped","value":true}])
+accept_quest=&"q_ch8_main_07_su_first_confrontation"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_false_order_victory"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

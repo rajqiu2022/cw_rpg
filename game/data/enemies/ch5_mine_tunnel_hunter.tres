@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"ch5_mine_tunnel_hunter"
+display_name = "矿道灭口人"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/snow_mine_20261122/hunter/ready.tres"
+battle_actor_scale = 0.9885
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+battle_actor_status_lift = 24.0
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/hunter/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/hunter/ready.tres", "res://art/sprites/battle/snow_mine_20261122/hunter/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/hunter/ready.tres", "res://art/sprites/battle/snow_mine_20261122/hunter/draw.tres", "res://art/sprites/battle/snow_mine_20261122/hunter/strike.tres", "res://art/sprites/battle/snow_mine_20261122/hunter/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/hunter/hit1.tres", "res://art/sprites/battle/snow_mine_20261122/hunter/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/hunter/kneel.tres", "res://art/sprites/battle/snow_mine_20261122/hunter/down.tres")
+level = 9
+max_hp = 420
+max_mp = 90
+attack = 86
+defense = 17
+speed = 25
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_saofeng", &"toxic_needle"])
+aggression = 0.78
+drop_gold_min = 48
+drop_gold_max = 72
+drop_exp = 82
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"antidote_pill", "chance":0.35, "count":1}])

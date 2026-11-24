@@ -1,0 +1,67 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "师傅，《孤云残解》带回来了。九处换力我逐一试过；可一旦首尾相接，旧力总会慢半拍。"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "因为我也只练到第九重。当年不是我藏着不教，是师父从未把这页交给我。今日我们照书推演，不分谁教谁。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "封砚秋"
+portrait_path = "res://art/characters/portraits/portrait_feng_yanqiu_v1.png"
+text = "茗雾原目录与书页穿线孔完全相合。目录旁注也写得清楚：‘林西’只是避祸后的地名，原名从来都是孤云九式。"
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="node_4"]
+script = ExtResource("2_dnode")
+node_id = &"n4"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "断剑教我卸力，残图教我引偏，洛阳试痕让我看见不同兵器的回势；最后缺的不是第十招，而是让九处关节回到同一条线。"
+on_end = "next:n5"
+
+[sub_resource type="Resource" id="node_5"]
+script = ExtResource("2_dnode")
+node_id = &"n5"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "对。第九重是九处各自无碍；第十重是出剑之后，力仍能回到自己身上。再来——这次我替你守第一处，封砚秋替你核最后一处。"
+on_end = "next:n6"
+
+[sub_resource type="Resource" id="node_6"]
+script = ExtResource("2_dnode")
+node_id = &"n6"
+speaker = ""
+portrait_path = ""
+text = "[i]三人从日影西斜推演到灯火初上。冷孤云最后一剑递出，剑锋无声掠过院中旧石；余力沿腕、肘、肩、脊、胯、膝、踝与呼吸回环，终于不再断裂。[/i]"
+on_end = "next:n7"
+
+[sub_resource type="Resource" id="node_7"]
+script = ExtResource("2_dnode")
+node_id = &"n7"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "这才是第十重。林西剑法只是我们避祸时用过的名字——从今日起，把它原本的名字堂堂正正写回去：孤云九式。吐纳一路，也可随这一口回息归藏为玄霜。"
+set_flags = Array[Dictionary]([{"key": "linxi_master_ultimate_breakthrough", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch8_master_ultimate_breakthrough"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5"), SubResource("node_6"), SubResource("node_7")])

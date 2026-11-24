@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+
+[ext_resource type="Resource" path="res://build/luoyang_layout_quest_20261018t_task_integration_source01/layout_successor.tres" id="1_ix3si"]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="2_21bu3"]
+
+[resource]
+script = ExtResource("2_21bu3")
+scene_id = &"ch4_s4_ancient_temple"
+display_name = "洛阳城外 · 古寺"
+background_path = "res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png"
+bgm_path = "res://art/audio/bgm/bgm_sect_clouds_v4.wav"
+hotspots = Array[Dictionary]([{
+"action": "dialog:ch4_temple_ambush",
+"hide_flag": "defeated_temple_ambusher",
+"label": "调查古寺布置",
+"pos_x": 0.52,
+"pos_y": 0.42,
+"require_flag": "ch4_canal_witness_saved"
+}, {
+"action": "dialog:ch4_tunnel_intro",
+"hide_flag": "chapter4_complete",
+"label": "寻找寺后暗道",
+"pos_x": 0.68,
+"pos_y": 0.3,
+"require_flag": "defeated_temple_ambusher"
+}, {
+"action": "dialog:ch4_heal_veteran_turnin",
+"hide_flag": "healed_veteran",
+"label": "采集背阴石缝药草",
+"pos_x": 0.24,
+"pos_y": 0.56,
+"require_flag": "heal_veteran_started"
+}, {
+"action": "dialog:ch4_luoyang_paper_turnin",
+"hide_flag": "luoyang_paper_helped",
+"label": "查看废纸坊木模",
+"pos_x": 0.38,
+"pos_y": 0.34,
+"require_flag": "luoyang_paper_started"
+}, {
+"action": "scene:ch4_s3_luoyang_market",
+"label": "返回洛阳街市",
+"pos_x": 0.15625,
+"pos_y": 0.830078125
+}, {
+"action": "scene:ch4_s2_canal_docks",
+"label": "返回漕渠码头",
+"pos_x": 0.84375,
+"pos_y": 0.830078125
+}])
+is_walkable = true
+actor_positions_are_feet = true
+npcs = Array[Dictionary]([{
+"conversation_base_facing": "front",
+"dialog_id": "luoyang_layout_quest_20261018t/longmen_offer",
+"dialog_variants": [],
+"interaction_action": "",
+"movement_mode": "idle",
+"npc_id": "temple_cave_keeper_20261018t",
+"npc_name": "守窟僧",
+"portrait_path": "res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png",
+"pos": Vector2(0.609375, 0.87890625),
+"scale": 0.9459459459459459,
+"sprite_path": "res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png"
+}, {
+"conversation_base_facing": "front",
+"dialog_id": "luoyang_layout_quest_20261018t/baima_offer",
+"dialog_variants": [],
+"interaction_action": "",
+"movement_mode": "idle",
+"npc_id": "temple_bell_keeper_20261018t",
+"npc_name": "守钟僧",
+"portrait_path": "res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png",
+"pos": Vector2(0.390625, 0.87890625),
+"scale": 0.9459459459459459,
+"sprite_path": "res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png"
+}])
+map_layout = ExtResource("1_ix3si")
+player_spawn = Vector2(0.5, 0.72)
+animated_props = Array[Dictionary]([{
+"color": "#c2cdca",
+"count": 3,
+"id": "ch4_temple_ground_mist",
+"opacity": 0.08,
+"pos": Vector2(0.53, 0.665),
+"size": Vector2(0.72, 0.14),
+"speed": 0.32,
+"type": "mist_drift",
+"z_index": 12
+}])
+metadata/temple_assembly_contract = "temple_assembled_ground_feet_20261016"

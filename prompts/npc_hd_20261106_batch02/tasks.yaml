@@ -1,0 +1,15 @@
+tasks:
+  - id: npc_common_escort_guard_hd_down_idle_20261106_b02_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106_batch02
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106_batch02/escort_guard_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite/npc/escort_guard_walk_codex_builtin_v1/npc_escort_guard_walk_right_8f_v1_alpha.png
+      reference_runtime: game/art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png
+      asset_prompt: "Exact prompt_path; common black-clothed guard identity and four down idle phases, not zhuwei_escort."

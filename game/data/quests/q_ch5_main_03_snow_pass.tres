@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_main_03_snow_pass"
+title = "雪岭断路"
+kind = 0
+desc_not_started = "伪旗线索指向古峰雪岭，一队追兵正封住通往旧矿道的窄路。"
+desc_in_progress = "沿雪路穿过截路者的封锁，进入废弃矿道寻找仍知晓十八年前旧案的人。"
+desc_completed = "雪岭追兵已退。冷孤云从守路人的遗物中取得金刚斩马刀，并在回身破阵时悟得断雪回锋。"
+tracker_hint = "古峰 · 雪岭关"
+completion_triggers = Array[String](["flag_set:ch5_snow_pass_cleared"])
+reward_gold = 95
+reward_exp = 155
+reward_items = Array[Dictionary]([{"item_id":"gufeng_diamond_blade", "count":1}])
+reward_skills = Array[StringName]([&"snow_pass_returning_blade"])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch5_snow_pass_cleared", "text":"雪岭截路者携带的伪旗针脚，与护粮营地所得完全一致。"}])

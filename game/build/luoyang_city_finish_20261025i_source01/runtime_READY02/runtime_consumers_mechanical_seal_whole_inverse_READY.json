@@ -1,0 +1,686 @@
+{
+  "status": "ROOT_READY_FIELD_MISSED_ENABLE_LITERAL_CORRECTED_NOT_STAGE",
+  "binding": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_binding_READY.json",
+    "sha256": "73cb22aa36f5170fdc14ed12339138056bebd1c96d18433a463b74fb9eead612",
+    "bytes": 78368
+  },
+  "runtime": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd",
+    "sha256": "6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334",
+    "bytes": 32270
+  },
+  "ambient": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ambient18_runtime_READY.gd",
+    "sha256": "e482fc0043a16c6a873941b1c5706819618896209cbc753ef1535e2231b7a787",
+    "bytes": 15913
+  },
+  "Field": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY02/Field_READY.gd",
+    "sha256": "bd7c32b6bfd42673c0db3d48be5da23a34e1fb1cc56929591fc466fd07702301",
+    "bytes": 255081
+  },
+  "records": {
+    "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd": {
+      "parent_sha256": "5ba3e9f62979337c68db86b7533dd50d81c02221d7d568d3b419b970cd20d00f",
+      "parent_bytes": 117177,
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/C_READY.gd",
+        "sha256": "a205593b9849f54d6e2edf60bffca5a6b5ea246778a9825f6d9ee4829dea8b46",
+        "bytes": 121282
+      },
+      "hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\n# 25i exact terminal lease, after original complete FIRST/storage proof only.\nconst FINISH25I_ENABLED: bool=true\nconst FINISH25I_RUNTIME: String=\"res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd\"\nconst FINISH25I_RUNTIME_SHA: String=\"6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334\"\nconst FINISH25I_OWNER: String=\"res://build/luoyang_city_finish_20261025i_source01/original_owner_receipts03_family_weak_snapshot_NOTREADY.gd\"\nconst FINISH25I_OWNER_SHA: String=\"9ed1b1166bd1e7b700925e18a55337bb7d2fdb321b00cd3d6ae7cea685ae78d5\"\nconst FINISH25I_AMBIENT: String=\"res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ambient18_runtime_READY.gd\"\nconst FINISH25I_AMBIENT_SHA: String=\"e482fc0043a16c6a873941b1c5706819618896209cbc753ef1535e2231b7a787\"\nstatic var _finish25i_handle: Variant=null\nstatic func _finish25i_runtime() -> Variant:\n\tif not FINISH25I_ENABLED: return null\n\tif _finish25i_handle!=null: return _finish25i_handle\n\tif FileAccess.get_sha256(FINISH25I_RUNTIME)!=FINISH25I_RUNTIME_SHA: return null\n\tvar value: Variant=load(FINISH25I_RUNTIME)\n\tif not value is GDScript or value.resource_path!=FINISH25I_RUNTIME: return null\n\t_finish25i_handle=value;return value\nstatic func _finish25i_ensure(scene: SceneScript) -> bool:\n\tif not FINISH25I_ENABLED or scene==null or not owns_id(scene.scene_id): return not FINISH25I_ENABLED\n\tvar runtime: Variant=_finish25i_runtime()\n\tif runtime==null or FileAccess.get_sha256(FINISH25I_OWNER)!=FINISH25I_OWNER_SHA: return false\n\tvar adapter: Variant=load(FINISH25I_OWNER)\n\tvar original: Dictionary=adapter.receipt(scene,null,false) if adapter is GDScript else {}\n\treturn not original.is_empty() and runtime.ensure(scene,scene.map_layout.visual_objects,scene.map_layout.blockers,original)\n"
+        },
+        {
+          "old": "\"mask_sha\":_transition_bytes_sha(_masks[String(id)].get_data()), \"reuses\":0}\n\treturn result",
+          "new": "\"mask_sha\":_transition_bytes_sha(_masks[String(id)].get_data()), \"reuses\":0}\n\tif FINISH25I_ENABLED and not _finish25i_ensure(result): _fail(\"Finish25i original FIRST cold lease refused\");return null\n\treturn result"
+        },
+        {
+          "old": "\t_record_live_tail_stage(token,id,\"tail.proof.publish\",tail_started_usec,tail_started_frame)\n\treturn result",
+          "new": "\t_record_live_tail_stage(token,id,\"tail.proof.publish\",tail_started_usec,tail_started_frame)\n\tif FINISH25I_ENABLED and not _finish25i_ensure(result): _fail(\"Finish25i live original FIRST lease refused\");return null\n\treturn result"
+        },
+        {
+          "old": "\t_transition_validation=proof\n\t_live_phase_msec[\"precomputed_packet_and_materialize\"]",
+          "new": "\t_transition_validation=proof\n\tif FINISH25I_ENABLED and not _finish25i_ensure(result): job.release();_live_revision_job=null;_fail(\"Finish25i complete bundle FIRST lease refused\");return null\n\t_live_phase_msec[\"precomputed_packet_and_materialize\"]"
+        },
+        {
+          "old": "\t# Field-owned additive scenery has the same complete first/final source lease;",
+          "new": "\tif FINISH25I_ENABLED and owns_id(id):\n\t\tvar terminal: Variant=_finish25i_runtime()\n\t\tif terminal==null: return {}\n\t\tvar terminal_paths: Dictionary=terminal.source_paths_for(id)\n\t\tif terminal_paths.is_empty(): return {}\n\t\tpaths.merge(terminal_paths);paths[FINISH25I_OWNER]=true\n\t\tif FileAccess.get_sha256(FINISH25I_AMBIENT)!=FINISH25I_AMBIENT_SHA: return {}\n\t\tvar ambient: Variant=load(FINISH25I_AMBIENT)\n\t\tvar ambient_paths: Dictionary=ambient.source_paths_for(id) if ambient is GDScript else {}\n\t\tif ambient_paths.is_empty(): return {}\n\t\tpaths.merge(ambient_paths)\n\t# Field-owned additive scenery has the same complete first/final source lease;"
+        },
+        {
+          "old": "static func safe_body(id: StringName, point_px: Vector2) -> bool:\n",
+          "new": "static func safe_body(id: StringName, point_px: Vector2) -> bool:\n\tif FINISH25I_ENABLED and owns_id(id):\n\t\tvar original: Dictionary=_transition_validation if _transition_validation.get(\"id\")==id else (_resident_ready if _resident_ready.get(\"id\")==id else {})\n\t\tvar scene: SceneScript=original.get(\"scene\") as SceneScript\n\t\tvar terminal: Variant=_finish25i_runtime()\n\t\t# Missing/invalid new lease never falls back to old bare geometry.\n\t\treturn scene!=null and terminal!=null and not terminal.state_for(scene).is_empty() and terminal.safe_body(scene,point_px)\n\treturn _original_body_safe25i(id,point_px)\n\nstatic func _original_body_safe25i(id: StringName, point_px: Vector2) -> bool:\n"
+        },
+        {
+          "old": "static func _record_body_safe(point_px: Vector2, id: StringName) -> bool:\n\treturn safe_body(id, point_px)",
+          "new": "static func _record_body_safe(point_px: Vector2, id: StringName) -> bool:\n\t# Original authoring checks retain the original private geometry oracle.\n\t# Only post-FIRST public arrivals/live movement use the terminal lease.\n\treturn _original_body_safe25i(id, point_px)"
+        },
+        {
+          "old": "\tvar route_key: String = String(source) + \"->\" + String(id)\n\tif source == &\"\"",
+          "new": "\tif FINISH25I_ENABLED:\n\t\tvar terminal: Variant=_finish25i_runtime()\n\t\tif terminal==null: _fail(\"Finish25i authored arrival source missing\");return {}\n\t\tvar precise: Dictionary=terminal.authored_arrival(source,id,normalized)\n\t\tif precise.get(\"matched\")==true:\n\t\t\tif precise.get(\"ok\")!=true or precise.get(\"kind\")!=\"ORIGINAL_FIRST_COLD_LEASE\": _fail(\"Finish25i exact new public pair refused\");return {}\n\t\t\treturn {\"scene_id\":String(id),\"spawn\":precise.spawn,\"source_version\":1,\"target_version\":VERSION,\"reason\":\"finish25i_exact_original_FIRST_public_pair\"}\n\tvar route_key: String = String(source) + \"->\" + String(id)\n\tif source == &\"\""
+        }
+      ],
+      "whole_byte_forward_inverse": true,
+      "mechanical_edits": [
+        {
+          "old": "const FINISH25I_ENABLED: bool=false",
+          "new": "const FINISH25I_ENABLED: bool=true"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/finish8_runtime07_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd"
+        },
+        {
+          "old": "fec8a4e79478c2767941d79c7398f1df635e4e3498589558f74d4008ba9f94be",
+          "new": "6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/ambient18_runtime04_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ambient18_runtime_READY.gd"
+        },
+        {
+          "old": "44514521029882f84241cc24dce1ae8311e1564b4494fba5274172b29a49fe44",
+          "new": "e482fc0043a16c6a873941b1c5706819618896209cbc753ef1535e2231b7a787"
+        }
+      ]
+    },
+    "res://scripts/city/luoyang_quarters_family_20261022ap.gd": {
+      "parent_sha256": "2e4890fe3f1c25afea01c8395d615496c36b3d581916ea24d0f465722cae63ee",
+      "parent_bytes": 36989,
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/Quarter_READY.gd",
+        "sha256": "54e7a6ac33a94eaf88fda9942bf517e3dc9696b36d627a6e28dd508a786c7cf3",
+        "bytes": 43194
+      },
+      "hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINISH25I_ENABLED: bool=true\nconst FINISH25I_RUNTIME: String=\"res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd\"\nconst FINISH25I_RUNTIME_SHA: String=\"6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334\"\nconst FINISH25I_ADAPTER: String=\"res://build/luoyang_city_finish_20261025i_source01/original_owner_receipts03_family_weak_snapshot_NOTREADY.gd\"\nconst FINISH25I_ADAPTER_SHA: String=\"9ed1b1166bd1e7b700925e18a55337bb7d2fdb321b00cd3d6ae7cea685ae78d5\"\nstatic var _finish25i_handle: Variant=null\nstatic var _finish25i_checking: bool=false\nstatic var _finish25i_original_owners: Dictionary={}\nstatic var _finish25i_active_scenes: Dictionary={}\nstatic func _finish25i_runtime() -> Variant:\n\tif not FINISH25I_ENABLED: return null\n\tif _finish25i_handle!=null: return _finish25i_handle\n\tif FileAccess.get_sha256(FINISH25I_RUNTIME)!=FINISH25I_RUNTIME_SHA: return null\n\tvar script: Variant=load(FINISH25I_RUNTIME)\n\tif not script is GDScript or script.resource_path!=FINISH25I_RUNTIME: return null\n\t_finish25i_handle=script;return script\nstatic func original_receipt_for(scene: SceneScript) -> Dictionary:\n\tif not FINISH25I_ENABLED or scene==null or scene.map_layout==null: return {}\n\tvar row: Dictionary=_finish25i_original_owners.get(scene.get_instance_id(),{})\n\tif row.is_empty() or row.scene.get_ref()!=scene or row.layout.get_ref()!=scene.map_layout: return {}\n\treturn row.receipt.duplicate(true)\nstatic func _finish25i_promote_original_final() -> void:\n\tif not FINISH25I_ENABLED: return\n\tvar actual: Dictionary=validation_receipt()\n\tif actual.get(\"finalized\")!=true or actual.get(\"full_source_hash_passes\")!=2 or actual.get(\"source_first\")!=actual.get(\"source_final\"): return\n\tfor key: int in _finish25i_original_owners.keys():\n\t\tvar row: Dictionary=_finish25i_original_owners[key]\n\t\tif row.scene.get_ref()==null or row.layout.get_ref()==null:\n\t\t\t_finish25i_original_owners.erase(key);continue\n\t\tif row.receipt.get(\"serial\")==actual.get(\"serial\") and row.receipt.get(\"key\")==actual.get(\"key\") and row.receipt.get(\"source_first\")==actual.get(\"source_first\"):\n\t\t\trow.receipt=actual.duplicate(true)\nstatic func _finish25i_ensure(scene: SceneScript) -> bool:\n\tif not FINISH25I_ENABLED: return true\n\t# Adapter recursively calls matches; its inner call still executes every old\n\t# whole-storage guard, but cannot recursively create or finalize a lease.\n\tif _finish25i_checking: return true\n\tvar runtime: Variant=_finish25i_runtime()\n\tif runtime==null or scene==null or scene.map_layout==null: return false\n\tfor key: int in _finish25i_original_owners.keys():\n\t\tvar owner: Dictionary=_finish25i_original_owners[key]\n\t\tif owner.scene.get_ref()==null or owner.layout.get_ref()==null: _finish25i_original_owners.erase(key)\n\tif not _finish25i_original_owners.has(scene.get_instance_id()):\n\t\tvar first: Dictionary=validation_receipt()\n\t\tif int(first.get(\"serial\",0))<=0 or String(first.get(\"key\",\"\"))==\"\" or not first.get(\"source_first\") is Dictionary or first.source_first.is_empty(): return false\n\t\t_finish25i_original_owners[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(scene.map_layout),\"receipt\":first.duplicate(true)}\n\tif original_receipt_for(scene).is_empty() or FileAccess.get_sha256(FINISH25I_ADAPTER)!=FINISH25I_ADAPTER_SHA: return false\n\tvar adapter: Variant=load(FINISH25I_ADAPTER)\n\tif not adapter is GDScript or adapter.resource_path!=FINISH25I_ADAPTER: return false\n\t_finish25i_checking=true\n\tvar receipt: Dictionary=adapter.receipt(scene,null,false)\n\t_finish25i_checking=false\n\tif receipt.is_empty(): return false\n\tif not runtime.ensure(scene,receipt.original_native_navigation,receipt.original_parent_blockers,receipt): return false\n\t_finish25i_active_scenes[scene.scene_id]=weakref(scene)\n\treturn true\nstatic func _finish25i_safe(id: StringName,foot: Vector2) -> bool:\n\tvar runtime: Variant=_finish25i_handle\n\tif runtime==null or not foot.is_finite(): return false\n\tvar active: WeakRef=_finish25i_active_scenes.get(id) as WeakRef\n\tvar scene: SceneScript=active.get_ref() as SceneScript if active!=null else null\n\tif scene==null or scene.scene_id!=id or scene.map_layout==null: return false\n\tvar row: Dictionary=_finish25i_original_owners.get(scene.get_instance_id(),{})\n\treturn not row.is_empty() and row.scene.get_ref()==scene and row.layout.get_ref()==scene.map_layout and runtime.safe_body(scene,foot)\n"
+        },
+        {
+          "old": "_receipt.finalized=true;return true",
+          "new": "_receipt.finalized=true;_finish25i_promote_original_final();return true"
+        },
+        {
+          "old": "if _receipt.get(\"finalized\")==true: return true",
+          "new": "if _receipt.get(\"finalized\")==true:\n\t\t_finish25i_promote_original_final();return true"
+        },
+        {
+          "old": "static func matches(scene: SceneScript) -> bool:\n\tif scene==null or scene.scene_id not in IDS or scene.map_layout==null or not scene.actor_positions_are_feet: return false\n\tvar data: Dictionary=manifest();var value: Dictionary=packet(scene.scene_id)\n\tif data.is_empty() or value.is_empty(): return false\n\tvar row: Dictionary=data.scenes[String(scene.scene_id)]\n\tif scene.resource_path!=row.scene_path or scene.map_layout.resource_path!=row.layout_path or scene.get_meta(\"luoyang_full_city_AP\",\"\")!=value.author_sha256: return false\n\tif not b().equal(b().storage(scene),value.scene_storage) or not b().equal(b().storage(scene.map_layout),value.layout_storage): return false\n\tfor old: int in _sessions.keys():\n\t\tif _sessions[old].scene.get_ref()==null or _sessions[old].layout.get_ref()==null: _sessions.erase(old)\n\tif _sessions.size()>=8 and not _sessions.has(scene.get_instance_id()): return false\n\t_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(scene.map_layout)};return true\n",
+          "new": "static func matches(scene: SceneScript) -> bool:\n\tif scene==null or scene.scene_id not in IDS or scene.map_layout==null or not scene.actor_positions_are_feet: return false\n\tvar data: Dictionary=manifest();var value: Dictionary=packet(scene.scene_id)\n\tif data.is_empty() or value.is_empty(): return false\n\tvar row: Dictionary=data.scenes[String(scene.scene_id)]\n\tif scene.resource_path!=row.scene_path or scene.map_layout.resource_path!=row.layout_path or scene.get_meta(\"luoyang_full_city_AP\",\"\")!=value.author_sha256: return false\n\tif not b().equal(b().storage(scene),value.scene_storage) or not b().equal(b().storage(scene.map_layout),value.layout_storage): return false\n\tfor old: int in _sessions.keys():\n\t\tif _sessions[old].scene.get_ref()==null or _sessions[old].layout.get_ref()==null: _sessions.erase(old)\n\tif _sessions.size()>=8 and not _sessions.has(scene.get_instance_id()): return false\n\t_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(scene.map_layout)};return _finish25i_ensure(scene)\n"
+        },
+        {
+          "old": "static func safe_body(id: StringName,foot: Vector2) -> bool:\n",
+          "new": "static func safe_body(id: StringName,foot: Vector2) -> bool:\n\tif FINISH25I_ENABLED and id in IDS: return _finish25i_safe(id,foot)\n"
+        },
+        {
+          "old": "\tfor p: String in data.source_sha256: out[p]=true\n\treturn out",
+          "new": "\tfor p: String in data.source_sha256: out[p]=true\n\tif FINISH25I_ENABLED:\n\t\tvar runtime: Variant=_finish25i_runtime()\n\t\tif runtime==null: return {}\n\t\tfor id: StringName in IDS:\n\t\t\tvar extra: Dictionary=runtime.source_paths_for(id)\n\t\t\tif extra.is_empty(): return {}\n\t\t\tout.merge(extra,true)\n\t\tout[FINISH25I_ADAPTER]=true\n\treturn out"
+        },
+        {
+          "old": "static func owns_route(source: StringName,target: StringName) -> bool:\n",
+          "new": "static func owns_route(source: StringName,target: StringName) -> bool:\n\tif FINISH25I_ENABLED and _finish25i_new_pair(source,target): return _finish25i_runtime()!=null\n"
+        },
+        {
+          "old": "static func prepare_arrival(source: StringName,target: StringName,authored: Variant,remembered: Variant,destination: SceneScript) -> Dictionary:\n",
+          "new": "static func _finish25i_new_pair(source: StringName,target: StringName) -> bool:\n\treturn (source==&\"ch4_s1_luoyang_yamen\" and target==IDS[0]) or (source==IDS[0] and target==&\"ch4_s1_luoyang_yamen\")\nstatic func _finish25i_new_arrival(source: StringName,target: StringName,authored: Variant,remembered: Variant,destination: SceneScript) -> Dictionary:\n\tif not authored is Vector2 or destination==null or destination.scene_id!=target or (remembered!=null and not remembered is Vector2): return {}\n\tif target in IDS and not matches(destination): return {}\n\tvar runtime: Variant=_finish25i_runtime()\n\tif runtime==null: return {}\n\tvar authority: Dictionary=runtime.authored_arrival(source,target,authored)\n\tif authority.get(\"matched\")!=true or authority.get(\"ok\")!=true or authority.get(\"kind\")!=\"ORIGINAL_FIRST_COLD_LEASE\": return {}\n\tvar arrival: Vector2=remembered if remembered is Vector2 else authored\n\tif not arrival.is_finite() or ((arrival-authored)*SIZE).length()>180.0 or not runtime.safe_body(destination,arrival*SIZE): return {}\n\treturn {\"spawn\":arrival,\"source_version\":3,\"target_version\":3,\"reason\":\"finish25i_exact_original_owner_public_pair\"}\nstatic func prepare_arrival(source: StringName,target: StringName,authored: Variant,remembered: Variant,destination: SceneScript) -> Dictionary:\n\tif FINISH25I_ENABLED and _finish25i_new_pair(source,target): return _finish25i_new_arrival(source,target,authored,remembered,destination)\n"
+        }
+      ],
+      "whole_byte_forward_inverse": true,
+      "mechanical_edits": [
+        {
+          "old": "const FINISH25I_ENABLED: bool=false",
+          "new": "const FINISH25I_ENABLED: bool=true"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/finish8_runtime07_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd"
+        },
+        {
+          "old": "fec8a4e79478c2767941d79c7398f1df635e4e3498589558f74d4008ba9f94be",
+          "new": "6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334"
+        }
+      ]
+    },
+    "res://scripts/city/luoyang_estate_family_20261021am.gd": {
+      "parent_sha256": "7cd3517bb2b67c007060e9e4f2dcc963aa4f3e3e2e57862f1248718060243d4e",
+      "parent_bytes": 11208,
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/Estate_READY.gd",
+        "sha256": "6b4ff498962330fc582e8f6ac4368aae3db91641a3b1f421933f2f766d445873",
+        "bytes": 16590
+      },
+      "hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINISH25I_ENABLED: bool=true\nconst FINISH25I_RUNTIME: String=\"res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd\"\nconst FINISH25I_RUNTIME_SHA: String=\"6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334\"\nconst FINISH25I_ADAPTER: String=\"res://build/luoyang_city_finish_20261025i_source01/original_owner_receipts03_family_weak_snapshot_NOTREADY.gd\"\nconst FINISH25I_ADAPTER_SHA: String=\"9ed1b1166bd1e7b700925e18a55337bb7d2fdb321b00cd3d6ae7cea685ae78d5\"\nconst FINISH25I_AMBIENT: String=\"res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ambient18_runtime_READY.gd\"\nconst FINISH25I_AMBIENT_SHA: String=\"e482fc0043a16c6a873941b1c5706819618896209cbc753ef1535e2231b7a787\"\nstatic var _finish25i_handle: Variant=null\nstatic var _finish25i_checking: bool=false\nstatic var _finish25i_original_owners: Dictionary={}\nstatic var _finish25i_active_scenes: Dictionary={}\nstatic func _finish25i_runtime() -> Variant:\n\tif not FINISH25I_ENABLED: return null\n\tif _finish25i_handle!=null: return _finish25i_handle\n\tif FileAccess.get_sha256(FINISH25I_RUNTIME)!=FINISH25I_RUNTIME_SHA: return null\n\tvar script: Variant=load(FINISH25I_RUNTIME)\n\tif not script is GDScript or script.resource_path!=FINISH25I_RUNTIME: return null\n\t_finish25i_handle=script;return script\nstatic func original_receipt_for(scene: SceneScript) -> Dictionary:\n\tif not FINISH25I_ENABLED or scene==null or scene.map_layout==null: return {}\n\tvar row: Dictionary=_finish25i_original_owners.get(scene.get_instance_id(),{})\n\tif row.is_empty() or row.scene.get_ref()!=scene or row.layout.get_ref()!=scene.map_layout: return {}\n\treturn row.receipt.duplicate(true)\nstatic func _finish25i_promote_original_final() -> void:\n\tif not FINISH25I_ENABLED: return\n\tvar actual: Dictionary=validation_receipt()\n\tif actual.get(\"finalized\")!=true or actual.get(\"full_source_hash_passes\")!=2 or actual.get(\"source_first\")!=actual.get(\"source_final\"): return\n\tfor key: int in _finish25i_original_owners.keys():\n\t\tvar row: Dictionary=_finish25i_original_owners[key]\n\t\tif row.scene.get_ref()==null or row.layout.get_ref()==null:\n\t\t\t_finish25i_original_owners.erase(key);continue\n\t\tif row.receipt.get(\"serial\")==actual.get(\"serial\") and row.receipt.get(\"key\")==actual.get(\"key\") and row.receipt.get(\"source_first\")==actual.get(\"source_first\"):\n\t\t\trow.receipt=actual.duplicate(true)\nstatic func _finish25i_ensure(scene: SceneScript) -> bool:\n\tif not FINISH25I_ENABLED: return true\n\t# Adapter recursively calls matches; its inner call still executes every old\n\t# whole-storage guard, but cannot recursively create or finalize a lease.\n\tif _finish25i_checking: return true\n\tvar runtime: Variant=_finish25i_runtime()\n\tif runtime==null or scene==null or scene.map_layout==null: return false\n\tfor key: int in _finish25i_original_owners.keys():\n\t\tvar owner: Dictionary=_finish25i_original_owners[key]\n\t\tif owner.scene.get_ref()==null or owner.layout.get_ref()==null: _finish25i_original_owners.erase(key)\n\tif not _finish25i_original_owners.has(scene.get_instance_id()):\n\t\tvar first: Dictionary=validation_receipt()\n\t\tif int(first.get(\"serial\",0))<=0 or String(first.get(\"key\",\"\"))==\"\" or not first.get(\"source_first\") is Dictionary or first.source_first.is_empty(): return false\n\t\t_finish25i_original_owners[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(scene.map_layout),\"receipt\":first.duplicate(true)}\n\tif original_receipt_for(scene).is_empty() or FileAccess.get_sha256(FINISH25I_ADAPTER)!=FINISH25I_ADAPTER_SHA: return false\n\tvar adapter: Variant=load(FINISH25I_ADAPTER)\n\tif not adapter is GDScript or adapter.resource_path!=FINISH25I_ADAPTER: return false\n\t_finish25i_checking=true\n\tvar receipt: Dictionary=adapter.receipt(scene,null,false)\n\t_finish25i_checking=false\n\tif receipt.is_empty(): return false\n\tif not runtime.ensure(scene,receipt.original_native_navigation,receipt.original_parent_blockers,receipt): return false\n\t_finish25i_active_scenes[scene.scene_id]=weakref(scene)\n\treturn true\nstatic func _finish25i_safe(id: StringName,foot: Vector2) -> bool:\n\tvar runtime: Variant=_finish25i_handle\n\tif runtime==null or not foot.is_finite(): return false\n\tvar active: WeakRef=_finish25i_active_scenes.get(id) as WeakRef\n\tvar scene: SceneScript=active.get_ref() as SceneScript if active!=null else null\n\tif scene==null or scene.scene_id!=id or scene.map_layout==null: return false\n\tvar row: Dictionary=_finish25i_original_owners.get(scene.get_instance_id(),{})\n\treturn not row.is_empty() and row.scene.get_ref()==scene and row.layout.get_ref()==scene.map_layout and runtime.safe_body(scene,foot)\n"
+        },
+        {
+          "old": "_validation.finalized=true\n\treturn true",
+          "new": "_validation.finalized=true\n\t_finish25i_promote_original_final()\n\treturn true"
+        },
+        {
+          "old": "if _validation.get(\"finalized\")==true: return true",
+          "new": "if _validation.get(\"finalized\")==true:\n\t\t_finish25i_promote_original_final();return true"
+        },
+        {
+          "old": "B.equal(B.storage(scene.map_layout),prior.packet.layout_storage)\n",
+          "new": "B.equal(B.storage(scene.map_layout),prior.packet.layout_storage) and _finish25i_ensure(scene)\n"
+        },
+        {
+          "old": "\t_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(scene.map_layout),\"packet\":value}\n\treturn true",
+          "new": "\t_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(scene.map_layout),\"packet\":value}\n\treturn _finish25i_ensure(scene)"
+        },
+        {
+          "old": "static func safe_body(foot: Vector2) -> bool:\n",
+          "new": "static func safe_body(foot: Vector2) -> bool:\n\tif FINISH25I_ENABLED: return _finish25i_safe(ID,foot)\n"
+        },
+        {
+          "old": "\tfor path: String in data.source_sha256: paths[path]=true\n\treturn paths",
+          "new": "\tfor path: String in data.source_sha256: paths[path]=true\n\tif FINISH25I_ENABLED:\n\t\tvar runtime: Variant=_finish25i_runtime()\n\t\tif runtime==null: return {}\n\t\tvar extra: Dictionary=runtime.source_paths_for(ID)\n\t\tif extra.is_empty(): return {}\n\t\tpaths.merge(extra,true);paths[FINISH25I_ADAPTER]=true\n\t\tif FileAccess.get_sha256(FINISH25I_AMBIENT)!=FINISH25I_AMBIENT_SHA: return {}\n\t\tvar ambient: Variant=load(FINISH25I_AMBIENT)\n\t\tif not ambient is GDScript or ambient.resource_path!=FINISH25I_AMBIENT: return {}\n\t\tvar ambient_paths: Dictionary=ambient.source_paths_for(ID)\n\t\tif ambient_paths.is_empty(): return {}\n\t\tpaths.merge(ambient_paths,true)\n\treturn paths"
+        }
+      ],
+      "whole_byte_forward_inverse": true,
+      "mechanical_edits": [
+        {
+          "old": "const FINISH25I_ENABLED: bool=false",
+          "new": "const FINISH25I_ENABLED: bool=true"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/finish8_runtime07_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd"
+        },
+        {
+          "old": "fec8a4e79478c2767941d79c7398f1df635e4e3498589558f74d4008ba9f94be",
+          "new": "6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/ambient18_runtime05_family_receipt_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ambient18_runtime_READY.gd"
+        },
+        {
+          "old": "db339bcb7b5a734a24116f4d73bafb936d075bef445babe7d454d36394da984a",
+          "new": "e482fc0043a16c6a873941b1c5706819618896209cbc753ef1535e2231b7a787"
+        }
+      ]
+    },
+    "res://scripts/city/luoyang_assembled_interiors_20261016g.gd": {
+      "parent_sha256": "537ca3d782a97144a19c6f22683833f4541640deb4a8fc981dafe3a790d09105",
+      "parent_bytes": 35099,
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/G_READY.gd",
+        "sha256": "bea30e25f412025d79ada89b282385198471b19f0811a5b97a01cd1a810c6064",
+        "bytes": 36992
+      },
+      "hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINISH25I_RETURNS_ENABLED: bool=true\nconst FINISH25I_RETURNS: String=\"res://build/luoyang_city_finish_20261025i_source01/artisan_existing_rooms_return_projection01_NOTREADY.gd\"\nconst FINISH25I_RETURNS_SHA: String=\"952b7d48b4e9eadceee8d512feac03c7e45138a203d3e69b6b57ce80d759ccb8\"\nstatic var _finish25i_returns_handle: Variant=null\nstatic func _finish25i_returns() -> Variant:\n\tif not FINISH25I_RETURNS_ENABLED: return null\n\tif _finish25i_returns_handle!=null: return _finish25i_returns_handle\n\tif FileAccess.get_sha256(FINISH25I_RETURNS)!=FINISH25I_RETURNS_SHA: return null\n\tvar value: Variant=load(FINISH25I_RETURNS)\n\tif not value is GDScript or value.resource_path!=FINISH25I_RETURNS or not value.source_bound(): return null\n\t_finish25i_returns_handle=value;return value\n"
+        },
+        {
+          "old": "\treturn paths\nstatic func storage_for(",
+          "new": "\tif FINISH25I_RETURNS_ENABLED:\n\t\tvar finish_returns: Variant=_finish25i_returns()\n\t\tif finish_returns==null: return {}\n\t\tpaths.merge(finish_returns.source_paths(),true)\n\treturn paths\nstatic func storage_for("
+        },
+        {
+          "old": "static func return_binding(id: StringName) -> Dictionary:\n",
+          "new": "static func return_binding(id: StringName) -> Dictionary:\n\tvar parent: Dictionary=_original_return_binding_finish25i(id)\n\tif not FINISH25I_RETURNS_ENABLED: return parent\n\tvar finish_returns: Variant=_finish25i_returns()\n\treturn finish_returns.room_binding(id,parent) if finish_returns!=null else {}\nstatic func _original_return_binding_finish25i(id: StringName) -> Dictionary:\n"
+        },
+        {
+          "old": "static func project_portals(scene: SceneScript,original: Array) -> Dictionary:\n",
+          "new": "static func project_portals(scene: SceneScript,original: Array) -> Dictionary:\n\tvar parent: Dictionary=_original_project_portals_finish25i(scene,original)\n\tif not FINISH25I_RETURNS_ENABLED or parent.get(\"ok\")!=true: return parent\n\tvar finish_returns: Variant=_finish25i_returns()\n\tif finish_returns==null: return {\"ok\":false,\"error\":\"ARTISAN25I_RETURNS_SOURCE\",\"portals\":[]}\n\tif scene!=null and finish_returns.owns(scene.scene_id) and not matches(scene,scene.scene_id): return {\"ok\":false,\"error\":\"ARTISAN25I_ORIGINAL_ROOM_NATIVE_STORAGE\",\"portals\":[]}\n\treturn finish_returns.portals(scene,parent.portals)\nstatic func _original_project_portals_finish25i(scene: SceneScript,original: Array) -> Dictionary:\n"
+        }
+      ],
+      "whole_byte_forward_inverse": true,
+      "mechanical_edits": [
+        {
+          "old": "const FINISH25I_RETURNS_ENABLED: bool=false",
+          "new": "const FINISH25I_RETURNS_ENABLED: bool=true"
+        }
+      ]
+    },
+    "res://scripts/city/luoyang_temple_assembly_20261016.gd": {
+      "parent_sha256": "847516ef067dd73e3cd814c87d93b4db161828c667f25c0e9b35ccf0c9f0e76a",
+      "parent_bytes": 22776,
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/Temple_READY.gd",
+        "sha256": "9dd0fe275601d03e985099c5385d5b6ea892717f8ca56703224a7de0c7dd1c32",
+        "bytes": 23612
+      },
+      "hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINISH25I_ENABLED: bool=true\nconst FINISH25I_RUNTIME: String=\"res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd\"\nconst FINISH25I_RUNTIME_SHA: String=\"6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334\"\nconst FINISH25I_ADAPTER: String=\"res://build/luoyang_city_finish_20261025i_source01/original_owner_receipts03_family_weak_snapshot_NOTREADY.gd\"\n"
+        },
+        {
+          "old": "\tresult.merge(people_paths);return result",
+          "new": "\tresult.merge(people_paths)\n\tif FINISH25I_ENABLED:\n\t\tif FileAccess.get_sha256(FINISH25I_RUNTIME)!=FINISH25I_RUNTIME_SHA: return {}\n\t\tvar finish_runtime: Variant=load(FINISH25I_RUNTIME)\n\t\tif not finish_runtime is GDScript or finish_runtime.resource_path!=FINISH25I_RUNTIME: return {}\n\t\tvar finish_paths: Dictionary=finish_runtime.source_paths_for(ID)\n\t\tif finish_paths.is_empty(): return {}\n\t\tresult.merge(finish_paths,true);result[FINISH25I_ADAPTER]=true\n\treturn result"
+        }
+      ],
+      "whole_byte_forward_inverse": true,
+      "mechanical_edits": [
+        {
+          "old": "const FINISH25I_ENABLED: bool=false",
+          "new": "const FINISH25I_ENABLED: bool=true"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/finish8_runtime07_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd"
+        },
+        {
+          "old": "fec8a4e79478c2767941d79c7398f1df635e4e3498589558f74d4008ba9f94be",
+          "new": "6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334"
+        }
+      ]
+    },
+    "res://scripts/city/luoyang_environment_layer_20261022ap.gd": {
+      "parent_sha256": "62b5ab39df126d97cc00a2a59100f02404984aa428f3c040acf1f282b01a7dcf",
+      "parent_bytes": 42069,
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ENV_READY.gd",
+        "sha256": "2f21c0e6461de4fd3e7b02f40a1638d21fb60f1cae88b056281ccf65a94bbc44",
+        "bytes": 47344
+      },
+      "hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINISH25I_ENABLED: bool=true\nconst FINISH25I_RUNTIME: String=\"res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd\"\nconst FINISH25I_RUNTIME_SHA: String=\"6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334\"\nconst FINISH25I_PURPOSE_SPEC: String=\"res://build/luoyang_city_finish_20261025i_source01/eight_fields_purpose_surface04_explicit_repeat_NOTREADY.json\"\nconst FINISH25I_PURPOSE_PINS: Dictionary={\"res://build/luoyang_city_finish_20261025i_source01/eight_fields_purpose_surface04_explicit_repeat_NOTREADY.json\":\"7b95cbb5f9ff62541e259ac8779aff76ebb8e6f3cdbaf161cacbf06f96ffd63d\",\"res://build/luoyang_city_finish_20261025i_source01/city_purpose_surface04_explicit_repeat_NOTREADY.gd\":\"28fcbf648affc0e867126a88e71286a69d82e44e0c505eb72202cea63a66b5d3\",\"res://build/luoyang_city_finish_20261025i_source01/city_purpose_surface04_explicit_repeat_NOTREADY.gdshader\":\"13c1a3181570845460c624fa909232d06fb5dec5677d04dd484f14dea9388e86\",\"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png\":\"39c898f7ac8c409b7b244077dd30016c398b21313156c8fc36911ddc859a5c0e\",\"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png\":\"7e9c7d892f86ced04ad3b8ad293208e05d87a01afffc2729804e4469f87deb7d\",\"res://art/external/polyhaven/world_terrain_v14_sixth/brown_mud_03/brown_mud_03_diff_2k.jpg\":\"57a87dae26769677578ab53b8829fe9b1e4dfec1ae1726f2942ce99fc73f400b\",\"res://art/external/polyhaven/world_terrain_v14_sixth/forest_ground_04/forest_ground_04_diff_2k.jpg\":\"24b8aaf4c8547305d80b0e029ec365219ab1b90748d4ca5651bdc9e75bfde5e6\"}\nstatic func _finish25i_purpose_spec() -> Dictionary:\n\tif not FINISH25I_ENABLED or FileAccess.get_sha256(FINISH25I_PURPOSE_SPEC)!=FINISH25I_PURPOSE_PINS[FINISH25I_PURPOSE_SPEC]: return {}\n\tvar value: Variant=JSON.parse_string(FileAccess.get_file_as_string(FINISH25I_PURPOSE_SPEC))\n\tif not value is Dictionary or not value.get(\"textures\") is Dictionary or value.textures.size()!=4 or not value.get(\"scenes\") is Dictionary or value.scenes.size()!=8: return {}\n\tif value.get(\"factory\",{}).get(\"path\")!=\"res://build/luoyang_city_finish_20261025i_source01/city_purpose_surface04_explicit_repeat_NOTREADY.gd\" or value.factory.get(\"sha256\")!=FINISH25I_PURPOSE_PINS[value.factory.path] or value.get(\"shader\",{}).get(\"path\")!=\"res://build/luoyang_city_finish_20261025i_source01/city_purpose_surface04_explicit_repeat_NOTREADY.gdshader\" or value.shader.get(\"sha256\")!=FINISH25I_PURPOSE_PINS[value.shader.path]: return {}\n\tfor role: String in value.textures:\n\t\tvar row: Dictionary=value.textures[role]\n\t\tif FINISH25I_PURPOSE_PINS.get(row.get(\"path\"))!=row.get(\"sha256\"): return {}\n\treturn value\nstatic func _finish25i_purpose_node(scene: SceneScript,spec: Dictionary,owner: Callable) -> Node2D:\n\tif not FINISH25I_ENABLED or scene==null or spec.is_empty() or not owner.is_valid() or not owner.call() or FileAccess.get_sha256(FINISH25I_RUNTIME)!=FINISH25I_RUNTIME_SHA: return null\n\tvar runtime: Variant=load(FINISH25I_RUNTIME)\n\tif not runtime is GDScript or runtime.resource_path!=FINISH25I_RUNTIME or runtime.state_for(scene).is_empty(): return null\n\tvar textures: Dictionary={}\n\tfor role: String in spec.textures:\n\t\tvar row: Dictionary=spec.textures[role]\n\t\tvar texture: Texture2D=ResourceLoader.load(row.path) as Texture2D\n\t\tif texture==null or texture.resource_path!=row.path: return null\n\t\tif row.has(\"source_size\") and texture.get_size()!=Vector2(float(row.source_size[0]),float(row.source_size[1])): return null\n\t\ttextures[role]=texture\n\tvar factory: Variant=load(spec.factory.path)\n\tvar shader: Shader=ResourceLoader.load(spec.shader.path) as Shader\n\tif not factory is GDScript or factory.resource_path!=spec.factory.path or shader==null or shader.resource_path!=spec.shader.path or not owner.call(): return null\n\treturn factory.create(spec.scenes[String(scene.scene_id)],textures,shader)\n"
+        },
+        {
+          "old": "\treturn out\nstatic func install(",
+          "new": "\tif FINISH25I_ENABLED:\n\t\tfor p: String in FINISH25I_PURPOSE_PINS: out[p]=true\n\treturn out\nstatic func install("
+        },
+        {
+          "old": "\tfor p: String in source_pins:\n",
+          "new": "\tvar finish_spec: Dictionary={}\n\tif FINISH25I_ENABLED:\n\t\tfinish_spec=_finish25i_purpose_spec()\n\t\tif finish_spec.is_empty(): return fail(\"FINISH25I_PURPOSE_FIXED_SPEC\")\n\t\tfor p: String in FINISH25I_PURPOSE_PINS:\n\t\t\tif source_pins.has(p) and source_pins[p]!=FINISH25I_PURPOSE_PINS[p]: return fail(\"FINISH25I_PURPOSE_CONFLICTING_SOURCE\",p)\n\t\t\tsource_pins[p]=FINISH25I_PURPOSE_PINS[p]\n\tfor p: String in source_pins:\n"
+        },
+        {
+          "old": "\tvar source_final: Dictionary={}\n",
+          "new": "\tvar finish_purpose: Node2D=null\n\tif FINISH25I_ENABLED:\n\t\tif world.get_node_or_null(\"CityPurposeGround25i\")!=null: layer.free();return fail(\"FINISH25I_PURPOSE_DUPLICATE\")\n\t\tfinish_purpose=_finish25i_purpose_node(scene,finish_spec,owner)\n\t\tif finish_purpose==null: layer.free();return fail(\"FINISH25I_PURPOSE_SOURCE_OR_OWNER\")\n\t\t# Temporary unattached ownership means every later rejection frees this too.\n\t\t# At successful commit it becomes a world sibling with factory z=-3 intact.\n\t\tlayer.add_child(finish_purpose)\n\tvar source_final: Dictionary={}\n"
+        },
+        {
+          "old": "\tlayer.set_meta(\"ap_environment_receipt\",receipt.duplicate(true));world.add_child(layer)\n",
+          "new": "\tif finish_purpose!=null:\n\t\tif not owner.call(): layer.free();return fail(\"FINISH25I_PURPOSE_COMMIT_OWNER\")\n\t\tlayer.remove_child(finish_purpose);world.add_child(finish_purpose)\n\t\treceipt[\"finish25i_purpose_material\"]={\"count\":finish_purpose.get_child_count(),\"source_spec\":FINISH25I_PURPOSE_SPEC,\"world_position\":finish_purpose.position,\"z_index\":finish_purpose.z_index,\"visual_only\":true,\"geometry_mask_NPC_unchanged\":true}\n\tlayer.set_meta(\"ap_environment_receipt\",receipt.duplicate(true));world.add_child(layer)\n"
+        }
+      ],
+      "whole_byte_forward_inverse": true,
+      "mechanical_edits": [
+        {
+          "old": "const FINISH25I_ENABLED: bool=false",
+          "new": "const FINISH25I_ENABLED: bool=true"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/finish8_runtime07_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd"
+        },
+        {
+          "old": "fec8a4e79478c2767941d79c7398f1df635e4e3498589558f74d4008ba9f94be",
+          "new": "6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334"
+        }
+      ]
+    }
+  },
+  "mechanical": [
+    {
+      "parent": {
+        "path": "res://build/luoyang_city_finish_20261025i_system01/ambient18_runtime05_family_receipt_NOTREADY.gd",
+        "sha256": "db339bcb7b5a734a24116f4d73bafb936d075bef445babe7d454d36394da984a"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ambient18_runtime_READY.gd",
+        "sha256": "e482fc0043a16c6a873941b1c5706819618896209cbc753ef1535e2231b7a787",
+        "bytes": 15913
+      },
+      "hunks": [
+        {
+          "old": "const FORMAL_READY := false",
+          "new": "const FORMAL_READY := true"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/ambient18_runtime04_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ambient18_runtime_READY.gd"
+        }
+      ],
+      "whole_byte_inverse": true
+    },
+    {
+      "parent": {
+        "path": "res://build/luoyang_city_finish_20261025i_system01/finish8_runtime07_NOTREADY.gd",
+        "sha256": "fec8a4e79478c2767941d79c7398f1df635e4e3498589558f74d4008ba9f94be"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd",
+        "sha256": "6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334",
+        "bytes": 32270
+      },
+      "hunks": [
+        {
+          "old": "const FORMAL_READY := false",
+          "new": "const FORMAL_READY := true"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/finish8_runtime07_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/finish8_binding03_NOTREADY.json",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_binding_READY.json"
+        },
+        {
+          "old": "PENDING_ROOT_FINAL_BINDING_SHA",
+          "new": "73cb22aa36f5170fdc14ed12339138056bebd1c96d18433a463b74fb9eead612"
+        }
+      ],
+      "whole_byte_inverse": true
+    },
+    {
+      "parent": {
+        "path": "res://build/luoyang_city_finish_20261025i_system01/Field_finish8_ambient_toast08_CANDIDATE.gd",
+        "sha256": "b6022da44db1305b5d18ece7c7f497da2db848dbd66a113a0b946cb9cbfcd49b"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/Field_READY.gd",
+        "sha256": "27687d0bc62f083e250fafc0ca9fe4038a0626f8770362987ff20cf440cb1f15",
+        "bytes": 255082
+      },
+      "hunks": [
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/finish8_runtime07_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/finish8_runtime_READY.gd"
+        },
+        {
+          "old": "fec8a4e79478c2767941d79c7398f1df635e4e3498589558f74d4008ba9f94be",
+          "new": "6bf511258f2ab12e645762f85a4d55721633d7fb4a02fc7850929bc3b678a334"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_source01/original_owner_receipts02_source_arrays_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/original_owner_receipts03_family_weak_snapshot_NOTREADY.gd"
+        },
+        {
+          "old": "a427abf67f581e6970135cc4c1fe88393c1db99e9a9cf00b69eaf1dd5f30380a",
+          "new": "9ed1b1166bd1e7b700925e18a55337bb7d2fdb321b00cd3d6ae7cea685ae78d5"
+        },
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/ambient18_runtime04_NOTREADY.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/ambient18_runtime_READY.gd"
+        },
+        {
+          "old": "44514521029882f84241cc24dce1ae8311e1564b4494fba5274172b29a49fe44",
+          "new": "e482fc0043a16c6a873941b1c5706819618896209cbc753ef1535e2231b7a787"
+        }
+      ],
+      "whole_byte_inverse": true
+    },
+    {
+      "parent": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY01/Field_READY.gd",
+        "sha256": "27687d0bc62f083e250fafc0ca9fe4038a0626f8770362987ff20cf440cb1f15",
+        "bytes": 255082
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/runtime_READY02/Field_READY.gd",
+        "sha256": "bd7c32b6bfd42673c0db3d48be5da23a34e1fb1cc56929591fc466fd07702301",
+        "bytes": 255081
+      },
+      "hunks": [
+        {
+          "old": "const FINISH25I_ENABLED := false",
+          "new": "const FINISH25I_ENABLED := true"
+        }
+      ],
+      "whole_byte_inverse": true
+    }
+  ],
+  "texture_roots": {
+    "ch4_s0_luoyang_gate": [
+      {
+        "path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png",
+        "compiled_paths": [
+          "res://.godot/imported/v13_market_west_plot_wall.png-a714f8ecb52fec604c157c8669ecf318.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_district_life_20261016f/official_service_annex_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/official_service_annex_v1.png-83ff62c7f17523e0cbc91773bc40b845.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_estate_components_20261021am/corridor.png",
+        "compiled_paths": [
+          "res://.godot/imported/corridor.png-6abf17fb74772e02350ec6a46bcb04d0.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_estate_components_20261021am/wing.png",
+        "compiled_paths": [
+          "res://.godot/imported/wing.png-932369d54e69cf52c193108f9d75057e.ctex"
+        ]
+      }
+    ],
+    "ch4_s1_luoyang_yamen": [
+      {
+        "path": "res://art/modules/luoyang_city_finish_20261025i/ordinary_kitchen_rear_body_v2.png",
+        "compiled_paths": [
+          "res://.godot/imported/ordinary_kitchen_rear_body_v2.png-6420991ce279f1b8dd92d91bb23a2022.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png",
+        "compiled_paths": [
+          "res://.godot/imported/stock_crate.png-67fa8fd05c2b4c4127a45663488aad04.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_estate_components_20261021am/wing.png",
+        "compiled_paths": [
+          "res://.godot/imported/wing.png-932369d54e69cf52c193108f9d75057e.ctex"
+        ]
+      }
+    ],
+    "ch4_s2_canal_docks": [
+      {
+        "path": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/grain_sack_stack_v1.png-ab74ddd853af6418e7c004e219c83789.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/wood_handcart_v1.png-626cf6592d4765fe328d99d0933c3aba.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_assembled_interiors_20261016g/writing_desk_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/writing_desk_v1.png-a18249c3c28a7a08250dee19bcaa312a.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_estate_components_20261021am/corridor.png",
+        "compiled_paths": [
+          "res://.godot/imported/corridor.png-6abf17fb74772e02350ec6a46bcb04d0.ctex"
+        ]
+      }
+    ],
+    "ch4_s3_luoyang_market": [
+      {
+        "path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png",
+        "compiled_paths": [
+          "res://.godot/imported/v13_market_west_plot_wall.png-a714f8ecb52fec604c157c8669ecf318.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/grain_sack_stack_v1.png-ab74ddd853af6418e7c004e219c83789.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/wood_handcart_v1.png-626cf6592d4765fe328d99d0933c3aba.ctex"
+        ]
+      }
+    ],
+    "ch4_s4_ancient_temple": [
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/ancient_bell_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/ancient_bell_v1.png-990d0a27d407bb7d953f0121dcb4b4a1.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/broken_buddha_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/broken_buddha_v1.png-b1f527710486594c148d7eb11cd25749.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/broken_vermilion_wall_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/broken_vermilion_wall_v1.png-1542df5108b6263654b02a07cc6814f4.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/courtyard_floor_v1.png-acacb66bad82a36d99fed2005fb8e80b.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/low_incense_altar_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/low_incense_altar_v1.png-bcfb83639ebe279330fafb2624ef49b0.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/reuse_bamboo0.png",
+        "compiled_paths": [
+          "res://.godot/imported/reuse_bamboo0.png-fa998caf7a6946bcf9e36f81f0603bde.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/reuse_bamboo1.png",
+        "compiled_paths": [
+          "res://.godot/imported/reuse_bamboo1.png-3d31bf6b33793688f76691fefaa78881.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/reuse_boulder0.png",
+        "compiled_paths": [
+          "res://.godot/imported/reuse_boulder0.png-927d88e245fc6f7fbdc29aa90f270c52.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/temple_hall_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/temple_hall_v1.png-d33e1d2d9182d6d9809f85fefa814fc2.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_estate_components_20261021am/wing.png",
+        "compiled_paths": [
+          "res://.godot/imported/wing.png-932369d54e69cf52c193108f9d75057e.ctex"
+        ]
+      }
+    ],
+    "luoyang_artisan_residential_20261022ap": [
+      {
+        "path": "res://art/modules/luoyang_city_finish_20261025i/chinese_open_ironwork_v2.png",
+        "compiled_paths": [
+          "res://.godot/imported/chinese_open_ironwork_v2.png-afe0cb140556391535099b860f8291d2.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_city_finish_20261025i/ordinary_kitchen_rear_body_v2.png",
+        "compiled_paths": [
+          "res://.godot/imported/ordinary_kitchen_rear_body_v2.png-6420991ce279f1b8dd92d91bb23a2022.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_city_finish_20261025i/pottery_kiln_house_v2.png",
+        "compiled_paths": [
+          "res://.godot/imported/pottery_kiln_house_v2.png-f65f6ce113937b044fbdf4c8e6487930.ctex"
+        ]
+      }
+    ],
+    "luoyang_estate_riverside_20261021ai": [
+      {
+        "path": "res://art/modules/ancient_temple_assembled_20261016/low_incense_altar_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/low_incense_altar_v1.png-bcfb83639ebe279330fafb2624ef49b0.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_assembled_20261016b/quench_tub_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/quench_tub_v1.png-eaf8ec9a54fa50ddfaac1541dcccb1e2.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/cloth_roll_rack_v1.png-91ba09a5807325789368d0e0ce15d0ae.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/wood_handcart_v1.png-626cf6592d4765fe328d99d0933c3aba.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_city_finish_20261025i/ordinary_kitchen_rear_body_v2.png",
+        "compiled_paths": [
+          "res://.godot/imported/ordinary_kitchen_rear_body_v2.png-6420991ce279f1b8dd92d91bb23a2022.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_estate_components_20261021am/wing.png",
+        "compiled_paths": [
+          "res://.godot/imported/wing.png-932369d54e69cf52c193108f9d75057e.ctex"
+        ]
+      }
+    ],
+    "luoyang_riverside_garden_20261022ap": [
+      {
+        "path": "res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png",
+        "compiled_paths": [
+          "res://.godot/imported/long_bench_v1.png-cd86fe53f4df55b35601d4ac0f853d00.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_district_life_20261016f/stock_tree.png",
+        "compiled_paths": [
+          "res://.godot/imported/stock_tree.png-05788b84425f11097dea0ff80b10ab20.ctex"
+        ]
+      },
+      {
+        "path": "res://art/modules/luoyang_estate_components_20261021am/peony_bed.png",
+        "compiled_paths": [
+          "res://.godot/imported/peony_bed.png-493ef3a84ac35b1ff0de71e75098066d.ctex"
+        ]
+      }
+    ]
+  },
+  "publication": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/publication11/output_ROOT_READY/109200/result.json",
+    "sha256": "f4925d3ff6e57900a0f7ac0c1549b9477fe9ce3ad255882096a3cd956222df66"
+  },
+  "Root_media14": {
+    "path": "res://build/luoyang_city_finish_20261025i_system01/qa_role_new/finish7_mask_media_promotion07_ROOT_ONLY/promotion_ROOT_EXECUTED.json",
+    "sha256": "aba31957cb919a94a6138b39f253c48cd390e486e989cb3ac979a36d47806d3b"
+  },
+  "Root_trial": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/finish8_ROOT_TRIAL_PERMISSION01.json",
+    "sha256": "e4da07475a77c31b4bcee99c75dfa226eca5baaf4723bd4f3530b1979b8065cb"
+  },
+  "original8_sources_only_immutable_subset": true,
+  "engine_calls": 0,
+  "Stage_calls": 0,
+  "canonical_writes": 0
+}

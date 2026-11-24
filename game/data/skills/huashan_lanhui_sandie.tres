@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"huashan_lanhui_sandie"
+display_name = "华山剑法·岚回三叠"
+icon_path = "res://art/ui/skill/icons_semantic_v2/icon_skill_sword_pierce_v1.png"
+description = "收去蛮力，让呼吸带动三次回锋，最后一剑穿过守势。造成高额单体伤害并穿透防御。"
+origin = "失踪多年的华山前辈游天鸿在山涧旁口授的变招。五派弟子与无门派江湖客都可因奇遇习得。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 18
+quality = 3
+required_insight = 6
+practice_base_cost = 30
+fixed_damage = 28
+attack_scaling = 126
+hit_count = 1
+base_hit_chance = 0.97
+animation_id = &"sword_tier_3"
+motion_style = 3
+required_weapon_type = &"sword"
+martial_category = &"sword"
+damage_type = 0
+defense_pierce_percent = 20
+school = "huashan"
+complemented_by = "huashan_zixia_shengong"
+complement_bonus_scaling = 9
+complement_bonus_desc = "紫霞真气令三叠回锋一气呵成"
+self_practice_level_cap = 9
+breakthrough_attribute = "insight"
+breakthrough_attribute_min = 22
+breakthrough_hint = "前两剑学的是回锋，第三剑却要看懂对手何时收势。能在收势之前看出那一寸空隙，三剑才算合一。"

@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_DOCKS_ORDINARY_C_SOURCE_SUCCESSOR_NOT_EXECUTION_OWNER",
+  "path": "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd",
+  "old_sha256": "c68272dd8bb2fd989a7776a1ee970a0d082290927d1fd30734c72d59b1d0fe50",
+  "new_sha256": "1dbd8c1357608a96c04a602f2c0a3c5f4478928bbc969c43963c6f430ef2c2b7",
+  "whole_inverse_exact": true,
+  "replacements": [
+    {
+      "old": "extends RefCounted\n",
+      "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"cf2aa3da4f8dbafd30d48d9310d69d7eacb9f17d25e47ce02ca221835eff3736\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+    },
+    {
+      "old": "static func _object_render_role_valid(id: StringName, object: Dictionary) -> bool:\n",
+      "new": "static func _object_render_role_valid(id: StringName, object: Dictionary) -> bool:\n\tif object.get(\"role\",\"\")==\"yamen_low_prop\":\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\treturn yamen_adapter!=null and yamen_adapter.native_low_prop_role_valid(id,object)\n"
+    }
+  ],
+  "historical_chain": [
+    {
+      "old_sha256": "c68272dd8bb2fd989a7776a1ee970a0d082290927d1fd30734c72d59b1d0fe50",
+      "new_sha256": "8c145ffb7ce25fcbdf59adf59eb1646f91be753246d24d5fe529b6e1b0bca26b",
+      "proof": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/handoff_PRODUCTION_PROPOSAL.json"
+    },
+    {
+      "old_sha256": "8c145ffb7ce25fcbdf59adf59eb1646f91be753246d24d5fe529b6e1b0bca26b",
+      "new_sha256": "b14a1042421029651fe0283d3daf8f6e52bea96c9047b79095912f1eb45dc9be",
+      "proof": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance34_merged_DT_subspan_dependencies/whole_code_and_binding_inverse_READY.json"
+    },
+    {
+      "old_sha256": "b14a1042421029651fe0283d3daf8f6e52bea96c9047b79095912f1eb45dc9be",
+      "new_sha256": "1dbd8c1357608a96c04a602f2c0a3c5f4478928bbc969c43963c6f430ef2c2b7",
+      "proof": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/whole_code_binding_contract_inverse_READY.json"
+    }
+  ],
+  "does_not_add_C_or_AA_to_OWNED": true
+}

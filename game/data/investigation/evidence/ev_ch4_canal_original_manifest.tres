@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch4_canal_original_manifest"
+display_name = "漕渠原始货单"
+description = "脚夫藏下的原始货单记录了药粉、空白腰牌和旧纸从漕渠转往城外古寺。收货暗号像烈云盟，押运腰牌却新得没有使用痕迹。"
+chapter = 4
+category = &"document"
+source_hint = "洛阳城南漕渠"
+related_testimony_ids = Array[StringName]([&"ts_ch4_canal_witness_night_transfer", &"ts_ch4_captured_courier_orders"])
+tags = Array[StringName]([&"cargo", &"temple", &"false_flag"])

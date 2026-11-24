@@ -1,0 +1,25 @@
+{
+  "schema": "world-map-v13-native-compose-spec-1",
+  "logical_size": [4608, 3072],
+  "cell_size": [1536, 1024],
+  "seed": 130928,
+  "topology_reference": "game/art/backgrounds/world_map_v13_tiles/world_map_v13_unified_topology_master_v1_candidate.png",
+  "composition_mode": "detail_residual",
+  "detail_gain": 1.25,
+  "human_runtime_visual_approval": "REJECTED_MICROTEXTURE_APPROACH",
+  "visual_review_note": "Godot 1.25x A/B: strong detail gain becomes a repeated top-down texture carpet and hides 2.5D relief; 20% gain preserves relief but remains visibly as soft as the 1536 topology reference. Stop here, do not expand nine tiles or switch runtime. Require a native 4608 editable 2.5D terrain master with structural mountain/shore detail and same-source water/nav masks.",
+  "required_material_ids": ["dry_grass", "rock", "wetland_bank", "beach_sand", "shallow_water", "deep_water"],
+  "max_processed_edge_delta_rgb": 1.0,
+  "min_source_high_frequency_fraction": 0.12,
+  "min_topology_probe_count": 20,
+  "topology_probes": [],
+  "materials": [
+    {"id":"dry_grass", "texture_path":"game/art/modules/world_map_v13/terrain_mat_dry_grass_v1_candidate.png", "mask_path":"game/build/world_map_v13_native_candidate/masks/rough_dry_grass.png"},
+    {"id":"rock", "texture_path":"game/art/modules/world_map_v13/terrain_mat_rock_gravel_v1_candidate.png", "mask_path":"game/build/world_map_v13_native_candidate/masks/rough_rock.png"},
+    {"id":"wetland_bank", "texture_path":"game/art/modules/world_map_v13/terrain_mat_wetland_bank_v1_candidate.png", "mask_path":"game/build/world_map_v13_native_candidate/masks/rough_wetland_bank.png"},
+    {"id":"beach_sand", "texture_path":"game/art/modules/world_map_v13/terrain_mat_beach_sand_v1_candidate.png", "mask_path":"game/build/world_map_v13_native_candidate/masks/rough_beach_sand.png"},
+    {"id":"shallow_water", "texture_path":"game/art/modules/world_map_v13/terrain_mat_coastal_water_v1_candidate.png", "mask_path":"game/build/world_map_v13_native_candidate/masks/rough_shallow_water.png"},
+    {"id":"deep_water", "texture_path":"game/art/modules/world_map_v13/terrain_mat_coastal_water_v1_candidate.png", "mask_path":"game/build/world_map_v13_native_candidate/masks/rough_deep_water.png"}
+  ],
+  "decals": []
+}

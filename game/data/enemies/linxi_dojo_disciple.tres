@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"linxi_dojo_disciple"
+display_name = "武馆陪练弟子"
+battle_actor_path = "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_ready_01.png"
+battle_actor_scale = 1.00
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_ready_01.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_ready_02.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_ready_03.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_move_01.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_move_02.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_move_03.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_attack_01.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_attack_02.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_attack_03.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_hit_01.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_hit_02.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_hit_03.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_defeat_01.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_defeat_02.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_defeat_03.png", "res://art/sprites/battle/standard_v2/dojo_disciple/dojo_disciple_defeat_04.png")
+level = 1
+max_hp = 88
+max_mp = 0
+attack = 20
+defense = 3
+speed = 8
+skill_ids = Array[StringName]([&"basic_attack", &"heavy_swing"])
+aggression = 0.50
+drop_gold_min = 2
+drop_gold_max = 5
+drop_exp = 14
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{ "item_id": "healing_salve", "chance": 0.2, "count": 1 }])

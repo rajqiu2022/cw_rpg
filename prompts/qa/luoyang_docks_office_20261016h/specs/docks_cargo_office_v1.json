@@ -1,0 +1,63 @@
+{
+  "version": 1,
+  "id": "luoyang_docks_office_20261016h_docks_cargo_office_v1",
+  "asset_id": "docks_cargo_office_v1",
+  "name": "码头货务公所",
+  "kind": "building",
+  "status": "PLANNED_WAITING_ROOT_PROMPT_PREFLIGHT_GO",
+  "execution_backend": "builtin_image_gen",
+  "model": null,
+  "provider": null,
+  "attempt_budget": 1,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "transparent_background": true,
+  "intended_size_px": [
+    1536,
+    1024
+  ],
+  "prompt_path": "prompts/qa/luoyang_docks_office_20261016h/prompts/docks_cargo_office_v1.txt",
+  "output_path": "assets/raw/luoyang_docks_office_20261016h/docks_cargo_office_v1.png",
+  "reference_images": [
+    {
+      "path": "F:/Code/RPG_GAME/game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southwest_market_front.png",
+      "role": "camera_material_and_massing_reference_only_not_edit_target",
+      "sha256": "D2D082C4E50B82B060AE1E10AEC95201C70D80EEE8C877232BA4AD88FBFA614A"
+    }
+  ],
+  "runtime_authorization": "NONE_ART_SOURCE_ONLY_NO_GAME_OR_ENGINE_WRITES",
+  "acceptance": [
+    "exact original bytes and tool metadata saved",
+    "actual PNG dimensions/mode/alpha edges/A>=8 and64 bbox measured",
+    "complete subject and genuinely transparent background",
+    "strict margin failures retained; no alpha threshold/crop/pixel edits",
+    "manual source foot and conservative base assigned only after real-image inspection"
+  ],
+  "source_geometry": {
+    "source_ground_anchor_px": null,
+    "ground_base_polygon_px": null,
+    "door_threshold_px": null,
+    "status": "PENDING_ACTUAL_GENERATED_OUTPUT_NOT_INHERITED_FROM_DONOR"
+  },
+  "stationary_only": false,
+  "npc_runtime_caution": "Existing harbour_cargo_trade_front has no portal/room; right visual door is not a claim of new indoor entry.",
+  "source_oracle_paths": [
+    "game/scripts/field/npc_node.gd",
+    "game/scripts/city/luoyang_harbour_life_crowd_retry3_20261016.gd"
+  ],
+  "identity_constraints": {
+    "building_id": "harbour_cargo_trade_front",
+    "old_texture": "F:/Code/RPG_GAME/game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southwest_market_front.png",
+    "old_native_world_foot_px": [
+      1720,
+      1790
+    ],
+    "old_source_anchor_approx_px": [
+      448,
+      357
+    ],
+    "old_anchor_is_mid_pillar_not_door": true,
+    "new_base_must_not_be_assumed_same": true,
+    "harbour_no_new_door": true
+  }
+}

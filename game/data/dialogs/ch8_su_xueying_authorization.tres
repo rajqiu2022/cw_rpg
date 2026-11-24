@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=13 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="苏雾笙"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+text="他原本连名字都没有。是我把他从死人堆里带出来，给他药、给他住处，也教他这世上只有命令不会背叛。"
+on_end="next:xueying"
+[sub_resource type="Resource" id="xueying"]
+script=ExtResource("2")
+node_id=&"xueying"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="旧名在名册上已经死了。庄主给我的每一道命令，都是我还能活着的理由。"
+on_end="next:choice"
+[sub_resource type="Resource" id="choice"]
+script=ExtResource("2")
+node_id=&"choice"
+speaker=""
+text="如何拆开苏雾笙与薛影的私人命令链？"
+choices=Array[Dictionary]([{"text":"薛影，把你接过的亲令逐条作证","next":"testify","set_flag":{"ch8_authorization_method_testimony":true},"method_flags":[{"key":"ch8_authorization_method","value":"testimony"}]},{"text":"你受过的伤不能抵消你杀过的人","next":"responsibility","set_flag":{"ch8_authorization_method_responsibility":true},"method_flags":[{"key":"ch8_authorization_method","value":"responsibility"}]},{"text":"先报出仍被扣在主厅的人与出口","next":"rescue","set_flag":{"ch8_authorization_method_rescue":true},"method_flags":[{"key":"ch8_authorization_method","value":"rescue"}]}])
+[sub_resource type="Resource" id="testify"]
+script=ExtResource("2")
+node_id=&"testify"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="北道截口供、洛阳烧副卷、竹尾留活口引人入局……都不是盟令，是庄主亲令。每次只给我一句，不留全卷。"
+on_end="next:su_answer"
+[sub_resource type="Resource" id="responsibility"]
+script=ExtResource("2")
+node_id=&"responsibility"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="我记得每一张脸。被当作刀，不等于刀下的人就没有死。若活到天明，我会受审。"
+on_end="next:su_answer"
+[sub_resource type="Resource" id="rescue"]
+script=ExtResource("2")
+node_id=&"rescue"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="西侧两道门。一道通药圃，一道通旧驿坡。封令柜后还有六名抄录人，后殿落闸前必须带走。"
+on_end="next:su_answer"
+[sub_resource type="Resource" id="su_answer"]
+script=ExtResource("2")
+node_id=&"su_answer"
+speaker="苏雾笙"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+text="我没有伪造他的苦难，也没有伪造各派的旧债。我只教他别再把命交给那些会删掉他名字的人。"
+on_end="next:reply"
+[sub_resource type="Resource" id="reply"]
+script=ExtResource("2")
+node_id=&"reply"
+speaker="冷孤云"
+text="真实苦难只能证明旧案必须追责，不能授权你把另一些无辜者变成代价。救命之恩更不是终身杀人契。"
+on_end="next:converge"
+[sub_resource type="Resource" id="converge"]
+script=ExtResource("2")
+node_id=&"converge"
+speaker="旁白"
+text="薛影放下针套，交出最后一枚后殿令牌。苏雾笙没有认罪，却也无法再把私人亲令伪装成会盟公议。"
+set_flags=Array[Dictionary]([{"key":"ch8_su_xueying_authorization_exposed","value":true},{"key":"ch8_xueying_personal_orders_testified","value":true}])
+add_testimonies=Array[StringName]([&"ts_ch8_xueying_personal_orders"])
+complete_quest=&"q_ch8_main_08_su_xueying_authorization"
+accept_quest=&"q_ch8_main_09_final_evacuation"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_su_xueying_authorization"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("xueying"),SubResource("choice"),SubResource("testify"),SubResource("responsibility"),SubResource("rescue"),SubResource("su_answer"),SubResource("reply"),SubResource("converge")])

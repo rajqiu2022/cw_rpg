@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "船夫赵大江"
+text = "青龙帮和白鹄帮为泊位打得头破血流。那张漕运批文看着新，墨却旧得不对。你可愿替我查查纸与印？"
+accept_quest = &"q_ch2_side_07_boat_gang"
+set_flags = Array[Dictionary]([{"key": "boat_gang_investigation_started", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch2_boat_gang_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

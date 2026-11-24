@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="stock"]
+script = ExtResource("2")
+node_id = &"start"
+text = "药箱盖内夹着军医的手记：薛影走的是移形步，盯衣角必慢一拍。听风佩辨真步，明目散能看清接连三轮的落脚处。薄荷与车前草各取一份，也可在药铺自行调制。"
+choices = Array[Dictionary]([{"text":"添置行装","action":"shop:mingwu_ruins_vendor"},{"text":"合上药箱","next":"end"}])
+
+[sub_resource type="Resource" id="close"]
+script = ExtResource("2")
+node_id = &"end"
+text = "你合上了药箱。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch8_rearguard_supplies"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("stock"),SubResource("close")])

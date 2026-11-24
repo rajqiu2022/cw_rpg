@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_10_bandit_cave"
+title = "山寨暗记"
+kind = 1
+desc_not_started = "山道上的匪徒似乎有固定据点。"
+desc_in_progress = "进林西村外山道中央石脊旁的洞窟。击退留守山贼，查验旗帜旁的货箱与送货单，再回竹尾村主街向护商镖师回报。"
+desc_completed = "洞内送货单证明，山寨与城西废宅暗中往来。留守山贼已经被击退。"
+progress_records = Array[Dictionary]([{"trigger": "flag_set:clue_bandit_cave_mist_mark", "text": "已查明雾纹旗和送货单，回竹尾村主街复命。", "tracker_hint": "竹尾村 · 护商镖师"}])
+reward_gold = 45
+reward_exp = 55
+reward_items = Array[Dictionary]([{"id": "antidote_pill", "count": 2}])
+tracker_hint = "林西村外 · 山贼洞窟"

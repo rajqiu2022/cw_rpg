@@ -1,0 +1,629 @@
+{
+  "schema": "27D_THREE_RAW_MANUAL_GROUND_AND_DOORS_V1",
+  "status": "READONLY_MANUAL_SOURCE_ANNOTATIONS_NOT_NATIVE_READY_NOT_PHYSICS_PASS",
+  "adoption_enabled": false,
+  "parent_space_fragment_sha256": "94AC0E251A633C36F05F725CF54672E134B2B26C75C66FB2E4FBA6261FAB3416",
+  "parent_market_stations_sha256": "0496A7491F9E5B757EEE011C2BCAC68DE998D551AEF75134FE04EB64AAE4A03F",
+  "rows": [
+    {
+      "id": "east_shop_residence_v1",
+      "raw": {
+        "path": "assets/raw/luoyang_city_rebuild_20261027d/east_shop_residence_v1.png",
+        "sha256": "68A9501E4A8CF74742D01E0169C7FD92E8408F2C12E897EAE9586D42DAEE6EE3",
+        "size_px": [
+          1176,
+          1338
+        ]
+      },
+      "protected_subject_rect_xyxy": [
+        106,
+        137,
+        1136,
+        1213
+      ],
+      "annotation_method": "Manual original-native visible stone foundation, jamb and stair observations, +/-8source px. Not alpha bbox, not Source physical geometry pass.",
+      "render_transform": {
+        "uniform_scale": 0.8,
+        "source_anchor_px": [
+          968,
+          1110
+        ],
+        "target_foot_px": [
+          2520,
+          3100
+        ],
+        "policy": "Keep this existing27d transform unchanged; measured contact anchor below does not reposition the artwork."
+      },
+      "ground_contact": {
+        "visible_front_step_contact_anchor_px": [
+          972,
+          1118
+        ],
+        "world_contact_anchor_px": [
+          2523.2,
+          3106.4
+        ],
+        "visible_foundation_edge_segments_px": [
+          [
+            [
+              171,
+              963
+            ],
+            [
+              550,
+              1198
+            ]
+          ],
+          [
+            [
+              550,
+              1198
+            ],
+            [
+              1078,
+              1078
+            ]
+          ]
+        ],
+        "closed_ground_footprint_proposal_px": [
+          [
+            171,
+            963
+          ],
+          [
+            701,
+            841
+          ],
+          [
+            1078,
+            1078
+          ],
+          [
+            550,
+            1198
+          ]
+        ],
+        "closed_ground_footprint_world_proposal_px": [
+          [
+            1882.4,
+            2982.4
+          ],
+          [
+            2306.4,
+            2884.8
+          ],
+          [
+            2608,
+            3074.4
+          ],
+          [
+            2185.6,
+            3170.4
+          ]
+        ],
+        "occluded_rear_corner_proposal_px": [
+          701,
+          841
+        ],
+        "rear_corner_basis": "Inferred closed footprint from actual visible side/front foundation edge directions; rear corner is occluded and is not claimed as directly measured RGBA.",
+        "not_roof_bbox": true,
+        "body_mode": "Closed footprint minus explicit front walk channel only; outside side/rear walls stay solid. Stairs in door channel are walkable entrance surface, not a full black strip."
+      },
+      "door": {
+        "clear_opening_source_polygon_px": [
+          [
+            892,
+            817
+          ],
+          [
+            994,
+            793
+          ],
+          [
+            994,
+            1018
+          ],
+          [
+            892,
+            1047
+          ]
+        ],
+        "clear_threshold_source_px": [
+          943,
+          1034
+        ],
+        "clear_threshold_world_px": [
+          2500,
+          3039.2
+        ],
+        "vertical_clear_height_source_px": 225,
+        "conservative_vertical_clear_height_world_px": 173.60000000000002,
+        "clear_image_horizontal_width_source_px": 102,
+        "clear_image_horizontal_width_world_px": 81.60000000000001,
+        "front_walk_channel_source_polygon_px": [
+          [
+            892,
+            1047
+          ],
+          [
+            994,
+            1018
+          ],
+          [
+            1026,
+            1121
+          ],
+          [
+            914,
+            1152
+          ]
+        ],
+        "front_walk_channel_world_proposal_px": [
+          [
+            2459.2,
+            3049.6
+          ],
+          [
+            2540.8,
+            3026.4
+          ],
+          [
+            2566.4,
+            3108.8
+          ],
+          [
+            2476.8,
+            3133.6
+          ]
+        ],
+        "front_stair_contact_source_px": [
+          972,
+          1118
+        ],
+        "public_outward_image_vector": [
+          0.23,
+          0.97
+        ],
+        "activation_foot_px": [
+          2520,
+          3160
+        ],
+        "return_approach_foot_px": [
+          2520,
+          3224
+        ],
+        "channel_rule": "Subtract explicit measured doorway/stair channel from the closed body; do not make an entire wall or rear half walkable. Portal remains on public side. Retain dark backwall visual, no background hole."
+      },
+      "orientation_and_purpose": "East/right-front oblique complete cloth/residential house; main street is to image-right, not a cardinal90-degree billboard.",
+      "padding_contract": {
+        "permission_status": "PENDING_THIS_BATCH_ONLY",
+        "raw_unchanged": true,
+        "translation_only_when_authorized": "For integer pad[left,top], add[left,top] to every source anchor/polygon/jamb/contact annotation. Keep uniform and world foot unchanged.",
+        "world_mapping_formula": "world = targetFoot + uniform*(sourcePixel-sourceAnchor); padded world uses sourcePixel+pad and sourceAnchor+pad, exactly identical.",
+        "centered_sprite_position_formula": "nodeCenter = targetFoot + uniform*(newCanvasSize/2 - paddedSourceAnchor)",
+        "no_threshold_bbox_as_solid": true,
+        "no_local_processing_performed": true
+      }
+    },
+    {
+      "id": "west_shop_residence_v1",
+      "raw": {
+        "path": "assets/raw/luoyang_city_rebuild_20261027d/west_shop_residence_v1.png",
+        "sha256": "0ECC57A5A83F05CC589FF1FCF3FB4CEF483CB479A3BDA9E6B2E660F2343F92B5",
+        "size_px": [
+          1185,
+          1327
+        ]
+      },
+      "protected_subject_rect_xyxy": [
+        54,
+        98,
+        1132,
+        1246
+      ],
+      "annotation_method": "Manual original-native visible stone foundation, jamb and stair observations, +/-8source px. Not alpha bbox, not Source physical geometry pass.",
+      "render_transform": {
+        "uniform_scale": 0.95,
+        "source_anchor_px": [
+          250,
+          1040
+        ],
+        "target_foot_px": [
+          3620,
+          3260
+        ],
+        "policy": "Keep this existing27d transform unchanged; measured contact anchor below does not reposition the artwork."
+      },
+      "ground_contact": {
+        "visible_front_step_contact_anchor_px": [
+          250,
+          1064
+        ],
+        "world_contact_anchor_px": [
+          3620,
+          3282.8
+        ],
+        "visible_foundation_edge_segments_px": [
+          [
+            [
+              113,
+              970
+            ],
+            [
+              720,
+              1234
+            ]
+          ],
+          [
+            [
+              720,
+              1234
+            ],
+            [
+              1102,
+              1101
+            ]
+          ]
+        ],
+        "closed_ground_footprint_proposal_px": [
+          [
+            113,
+            970
+          ],
+          [
+            492,
+            804
+          ],
+          [
+            1102,
+            1101
+          ],
+          [
+            720,
+            1234
+          ]
+        ],
+        "closed_ground_footprint_world_proposal_px": [
+          [
+            3489.85,
+            3193.5
+          ],
+          [
+            3849.9,
+            3035.8
+          ],
+          [
+            4429.4,
+            3317.95
+          ],
+          [
+            4066.5,
+            3444.3
+          ]
+        ],
+        "occluded_rear_corner_proposal_px": [
+          492,
+          804
+        ],
+        "rear_corner_basis": "Inferred closed footprint from actual visible side/front foundation edge directions; rear corner is occluded and is not claimed as directly measured RGBA.",
+        "not_roof_bbox": true,
+        "body_mode": "Closed footprint minus explicit front walk channel only; outside side/rear walls stay solid. Stairs in door channel are walkable entrance surface, not a full black strip."
+      },
+      "door": {
+        "clear_opening_source_polygon_px": [
+          [
+            215,
+            761
+          ],
+          [
+            324,
+            801
+          ],
+          [
+            324,
+            991
+          ],
+          [
+            215,
+            950
+          ]
+        ],
+        "clear_threshold_source_px": [
+          270,
+          974
+        ],
+        "clear_threshold_world_px": [
+          3639,
+          3197.3
+        ],
+        "vertical_clear_height_source_px": 189,
+        "conservative_vertical_clear_height_world_px": 171.95,
+        "clear_image_horizontal_width_source_px": 109,
+        "clear_image_horizontal_width_world_px": 103.55,
+        "front_walk_channel_source_polygon_px": [
+          [
+            215,
+            950
+          ],
+          [
+            324,
+            991
+          ],
+          [
+            305,
+            1126
+          ],
+          [
+            187,
+            1085
+          ]
+        ],
+        "front_walk_channel_world_proposal_px": [
+          [
+            3586.75,
+            3174.5
+          ],
+          [
+            3690.3,
+            3213.45
+          ],
+          [
+            3672.25,
+            3341.7
+          ],
+          [
+            3560.15,
+            3302.75
+          ]
+        ],
+        "front_stair_contact_source_px": [
+          250,
+          1064
+        ],
+        "public_outward_image_vector": [
+          -0.2,
+          0.98
+        ],
+        "activation_foot_px": [
+          3620,
+          3320
+        ],
+        "return_approach_foot_px": [
+          3620,
+          3384
+        ],
+        "channel_rule": "Subtract explicit measured doorway/stair channel from the closed body; do not make an entire wall or rear half walkable. Portal remains on public side. Retain dark backwall visual, no background hole."
+      },
+      "orientation_and_purpose": "West/left-front oblique complete ironshop/residential house with actual rear lean-to; street is to image-left. The lean-to is same compound, not a second unrelated facade.",
+      "padding_contract": {
+        "permission_status": "PENDING_THIS_BATCH_ONLY",
+        "raw_unchanged": true,
+        "translation_only_when_authorized": "For integer pad[left,top], add[left,top] to every source anchor/polygon/jamb/contact annotation. Keep uniform and world foot unchanged.",
+        "world_mapping_formula": "world = targetFoot + uniform*(sourcePixel-sourceAnchor); padded world uses sourcePixel+pad and sourceAnchor+pad, exactly identical.",
+        "centered_sprite_position_formula": "nodeCenter = targetFoot + uniform*(newCanvasSize/2 - paddedSourceAnchor)",
+        "no_threshold_bbox_as_solid": true,
+        "no_local_processing_performed": true
+      }
+    },
+    {
+      "id": "spring_house_complete_v1",
+      "raw": {
+        "path": "assets/raw/luoyang_city_rebuild_20261027d/spring_house_complete_v1.png",
+        "sha256": "64A50BEB1CA3E23D53D209A3B391C911CE5C061DC441A1638FFB8C96AB16D5BE",
+        "size_px": [
+          1374,
+          1145
+        ]
+      },
+      "protected_subject_rect_xyxy": [
+        70,
+        62,
+        1311,
+        1056
+      ],
+      "annotation_method": "Manual original-native visible stone foundation, jamb and stair observations, +/-8source px. Not alpha bbox, not Source physical geometry pass.",
+      "render_transform": {
+        "uniform_scale": 1.03,
+        "source_anchor_px": [
+          619,
+          1014
+        ],
+        "target_foot_px": [
+          5200,
+          4160
+        ],
+        "policy": "Keep this existing27d transform unchanged; measured contact anchor below does not reposition the artwork."
+      },
+      "ground_contact": {
+        "visible_front_step_contact_anchor_px": [
+          625,
+          1028
+        ],
+        "world_contact_anchor_px": [
+          5206.18,
+          4174.42
+        ],
+        "visible_foundation_edge_segments_px": [
+          [
+            [
+              139,
+              959
+            ],
+            [
+              1097,
+              1044
+            ]
+          ],
+          [
+            [
+              1097,
+              1044
+            ],
+            [
+              1285,
+              913
+            ]
+          ]
+        ],
+        "closed_ground_footprint_proposal_px": [
+          [
+            139,
+            959
+          ],
+          [
+            329,
+            828
+          ],
+          [
+            1285,
+            913
+          ],
+          [
+            1097,
+            1044
+          ]
+        ],
+        "closed_ground_footprint_world_proposal_px": [
+          [
+            4705.6,
+            4103.35
+          ],
+          [
+            4901.3,
+            3968.42
+          ],
+          [
+            5885.98,
+            4055.97
+          ],
+          [
+            5692.34,
+            4190.9
+          ]
+        ],
+        "occluded_rear_corner_proposal_px": [
+          329,
+          828
+        ],
+        "rear_corner_basis": "Inferred closed footprint from actual visible side/front foundation edge directions; rear corner is occluded and is not claimed as directly measured RGBA.",
+        "not_roof_bbox": true,
+        "body_mode": "Closed footprint minus explicit front walk channel only; outside side/rear walls stay solid. Stairs in door channel are walkable entrance surface, not a full black strip."
+      },
+      "door": {
+        "clear_opening_source_polygon_px": [
+          [
+            534,
+            738
+          ],
+          [
+            717,
+            735
+          ],
+          [
+            717,
+            928
+          ],
+          [
+            534,
+            921
+          ]
+        ],
+        "clear_threshold_source_px": [
+          625,
+          928
+        ],
+        "clear_threshold_world_px": [
+          5206.18,
+          4071.42
+        ],
+        "vertical_clear_height_source_px": 183,
+        "conservative_vertical_clear_height_world_px": 180.25,
+        "clear_image_horizontal_width_source_px": 183,
+        "clear_image_horizontal_width_world_px": 188.49,
+        "front_walk_channel_source_polygon_px": [
+          [
+            534,
+            921
+          ],
+          [
+            717,
+            928
+          ],
+          [
+            730,
+            1092
+          ],
+          [
+            520,
+            1085
+          ]
+        ],
+        "front_walk_channel_world_proposal_px": [
+          [
+            5112.45,
+            4064.21
+          ],
+          [
+            5300.94,
+            4071.42
+          ],
+          [
+            5314.33,
+            4240.34
+          ],
+          [
+            5098.03,
+            4233.13
+          ]
+        ],
+        "front_stair_contact_source_px": [
+          625,
+          1028
+        ],
+        "public_outward_image_vector": [
+          0,
+          1
+        ],
+        "activation_foot_px": [
+          5200,
+          4250
+        ],
+        "return_approach_foot_px": [
+          5200,
+          4330
+        ],
+        "channel_rule": "Subtract explicit measured doorway/stair channel from the closed body; do not make an entire wall or rear half walkable. Portal remains on public side. Retain dark backwall visual, no background hole."
+      },
+      "orientation_and_purpose": "Front-facing two-storey social/performance landmark, one actual central public entrance; side lattices are windows, not two extra portals.",
+      "padding_contract": {
+        "permission_status": "PENDING_THIS_BATCH_ONLY",
+        "raw_unchanged": true,
+        "translation_only_when_authorized": "For integer pad[left,top], add[left,top] to every source anchor/polygon/jamb/contact annotation. Keep uniform and world foot unchanged.",
+        "world_mapping_formula": "world = targetFoot + uniform*(sourcePixel-sourceAnchor); padded world uses sourcePixel+pad and sourceAnchor+pad, exactly identical.",
+        "centered_sprite_position_formula": "nodeCenter = targetFoot + uniform*(newCanvasSize/2 - paddedSourceAnchor)",
+        "no_threshold_bbox_as_solid": true,
+        "no_local_processing_performed": true
+      }
+    }
+  ],
+  "constraints": [
+    "No PNG cleaning, padding, cropping, drawing, thresholding or engine call.",
+    "Protect complete core RGBA; exact future integer padding offsets not yet selected/applied.",
+    "Closed footprint deliberately includes occluded building interior; visible front stone segments are distinct from inferred rear corner.",
+    "Existing raw full alpha margins remain not accepted. This annotation does not convert raw into formal/native ready assets.",
+    "Source compiler owns f32 transformations, polygon difference and true door/player clearance checks; manual proposals must not be advertised as tested collision."
+  ],
+  "iron_task_binding": {
+    "interaction_id": "armory_old_record",
+    "semantic_owner_id": "shop",
+    "record_activation_foot_px": [
+      4140,
+      3510
+    ],
+    "new_raw_equivalent_source_px": [
+      797.3684210526316,
+      1303.157894736842
+    ],
+    "note": "On public ironshop apron beyond the front body, not inside the opaque rear. New bitmap does not prove a separate legible record prop; source keeps original readable action/hide and logical owner semantics."
+  }
+}

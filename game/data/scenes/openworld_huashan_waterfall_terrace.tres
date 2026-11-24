@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scene"]
+[ext_resource type="Resource" path="res://data/maps/openworld_huashan_waterfall_terrace_layout_v2.tres" id="2_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(3072, 2048)
+[resource]
+script = ExtResource("1_scene")
+scene_id = &"openworld_huashan_waterfall_terrace"
+display_name = "华山派 · 观瀑剑台"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("2_layout")
+player_spawn = Vector2(0.440,0.860)
+player_visual_scale = 0.70
+npcs = Array[Dictionary]([{"npc_id":"openworld_you_tianhong","npc_name":"观瀑老者 · 游天鸿","pos":Vector2(0.290,0.360),"sprite_path":"res://art/characters/npc_inn_tea_guest_left_seated_idle_down_25d_4f_v2_runtime.png","movement_mode":"seated","scale":0.70,"dialog_id":"openworld_huashan_lanhui_lesson","dialog_variants":[{"dialog_id":"openworld_huashan_stream_insight","require_flags":["openworld_huashan_lanhui_heard","chapter5_started"],"hide_flags":["mountain_stream_encounter"]},{"dialog_id":"openworld_huashan_lanhui_revisit","require_flags":["openworld_huashan_lanhui_heard"]}] }])

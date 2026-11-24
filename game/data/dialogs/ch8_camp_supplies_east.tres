@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "手车下的备用包里有一张干燥的油布。我把它盖好，扎住两个角；名册仍留在车上，没有翻动。"
+set_flags = Array[Dictionary]([{"key":"ch8_camp_supplies_east_done","value":true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch8_camp_supplies_east"
+nodes = Array[Resource]([SubResource("start")])

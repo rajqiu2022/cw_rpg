@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "少林行脚僧"
+text = "抬担的人伤了气，我得留下照看。有一页记吐纳的旧医案，避雪时落在废弃矿道南口的灯架下。你若路过，替我带回来。练息先要听得出哪里走了岔气，洛阳古寺那口钟，倒是个好老师。"
+set_flags = Array[Dictionary]([{"key": "shaolin_lay_disciple_met", "value": true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"shaolin_snow_inquiry"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "茶叶底下压着旧秤签：三篓离架时一样重，都是干茶。这里过秤之后才换过篓；去水边竹篓旁看看旧绑绳还在不在。"
+set_flags = Array[Dictionary]([{"key":"ch7_tea_basket_tag_seen","value":true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_tea_basket_tag"
+nodes = Array[Resource]([SubResource("start")])

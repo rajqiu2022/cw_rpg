@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"jingang_tempered_meridians"
+display_name = "易筋经"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_inner_breath_v1.png"
+description = "少林不外传的涤脉法门，不以一时爆发争胜，而以吐纳、负重与静坐重整筋脉。习得后常驻提升生命、内功与防御；此心法没有主动运功。"
+origin = "相传由少林前代僧众整理负重行功、静坐吐纳与药浴涤脉之法而成。经文散藏于戒律、医案和石刻之间，求取者须先解开三处传承线索。"
+kind = 2
+target = 4
+delivery = 2
+mp_cost = 0
+quality = 4
+required_insight = 11
+practice_base_cost = 66
+fixed_damage = 0
+attack_scaling = 0
+effect_value = 0
+hit_count = 1
+animation_id = &"jingang_tempered_meridians"
+motion_style = 1
+required_weapon_type = &""
+school = "shaolin"
+is_passive = true
+is_internal_art = true
+passive_vitality_bonus = 4
+passive_inner_pool_bonus = 4
+passive_guard_bonus = 2
+passive_vitality_growth = 1
+passive_inner_pool_growth = 1
+passive_guard_growth = 1
+equip_weapon_categories = Array[StringName]([&"all"])
+equip_damage_scope = "internal"
+equip_damage_scaling_bonus = 8
+equip_damage_scaling_growth = 2
+equip_internal_injury_bonus = 4
+equip_internal_injury_growth = 1
+equipped_effect_description = "筋脉圆融，所受内伤积累减少三成，并增强内功招式。"
+incoming_injury_resist_percent = 30

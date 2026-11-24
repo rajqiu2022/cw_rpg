@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "汴州驿丞"
+text = "汴州车马通达，中轴榜亭每日张贴各府缉捕文书。少侠若要磨炼武艺，可揭榜追凶，也可从北门去旧驿清剿劫匪。"
+choices = Array[Dictionary]([{"text":"榜亭在何处？","next":"board_location"},{"text":"先购置补给","action":"shop:wulin_trade_hall"},{"text":"告辞","next":"end"}])
+[sub_resource type="Resource" id="board_location"]
+script = ExtResource("2")
+node_id = &"board_location"
+speaker = "汴州驿丞"
+text = "就在坊市东侧的木榜亭。少侠请走到榜前亲自查阅、揭榜，榜文不可由旁人代领。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_bianzhou_guide"
+nodes = Array[Resource]([SubResource("start"), SubResource("board_location")])

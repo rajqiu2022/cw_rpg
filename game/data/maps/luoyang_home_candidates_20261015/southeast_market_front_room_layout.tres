@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.16, 0.39, 0.84, 0.39, 0.855, 0.82, 0.565, 0.82, 0.565, 0.885, 0.435, 0.885, 0.435, 0.82, 0.145, 0.82)])
+visual_objects = []
+blockers = [
+	{"id": "bed", "pos": Vector2(0.252, 0.445), "size": Vector2(0.095, 0.11)},
+	{"id": "writing_desk", "pos": Vector2(0.565, 0.39), "size": Vector2(0.17, 0.105)},
+	{"id": "book_cabinet", "pos": Vector2(0.795, 0.5), "size": Vector2(0.09, 0.19)},
+	{"id": "tea_table", "pos": Vector2(0.655, 0.8), "size": Vector2(0.15, 0.14)}
+]
+interactions = []
+portals = [{"id": "return_southeast_market_front_door", "pos": Vector2(0.5, 0.845), "size": Vector2(0.13, 0.075), "label": "返回南市", "target_scene": "ch4_s3_luoyang_market", "target_pos": Vector2(0.8203125, 0.8955078125), "auto_trigger": false, "destination_building_id": "southeast_market_front", "candidate_only": true}]
+walkable_probes = [{"id": "large_study_spawn", "pos": Vector2(0.5, 0.625)}, {"id": "large_study_exit", "pos": Vector2(0.5, 0.845)}]
+blocked_probes = [{"id": "bed", "pos": Vector2(0.252, 0.445)}, {"id": "writing_desk", "pos": Vector2(0.565, 0.39)}, {"id": "book_cabinet", "pos": Vector2(0.795, 0.5)}, {"id": "tea_table", "pos": Vector2(0.655, 0.8)}]
+metadata/luoyang_home_candidate_only = true
+metadata/home_template_id = "large_study"

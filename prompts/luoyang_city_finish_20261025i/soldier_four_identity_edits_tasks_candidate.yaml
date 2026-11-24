@@ -1,0 +1,64 @@
+
+  - id: luoyang_20261025i_guard_young_bluegrey_portrait_v1_edit
+    template: luoyang_innkeeper_portrait_text_20261025h
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: false
+    prompt_path: prompts/luoyang_city_finish_20261025i/guard_young_bluegrey_portrait_v1_edit.txt
+    reference_images: [assets/raw/luoyang_city_finish_20261025i/guard_young_bluegrey_walk4_v1.png]
+    vars:
+      asset_prompt: "IDENTITY-PRESERVE EDIT actual young bluegrey walk man into ONE opaque square head/shoulder portrait. Same ordinary30 face/cap/armor/colors, no glamour/hero. Actual sprite EDIT target, not unrelated text-only new person. Exact prompt_path rendered offline; Root uses only referenced_image_paths, omits num_last_images_to_include."
+
+  - id: luoyang_20261025i_guard_veteran_ochre_portrait_v1_edit
+    template: luoyang_innkeeper_portrait_text_20261025h
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: false
+    prompt_path: prompts/luoyang_city_finish_20261025i/guard_veteran_ochre_portrait_v1_edit.txt
+    reference_images: [assets/raw/luoyang_city_finish_20261025i/guard_veteran_ochre_walk4_v1.png]
+    vars:
+      asset_prompt: "IDENTITY-PRESERVE EDIT actual veteran ochre walk man into ONE opaque square head/shoulder portrait. Same ordinary55 weathered face/greytemple/shortbeard/browncap/ochre armor, no glamour/villain. Actualsprite EDIT target, not unrelated new person. Exact prompt_path rendered offline; Root uses only referenced_image_paths."
+
+  - id: luoyang_20261025i_guard_young_bluegrey_idle_v1_edit
+    template: world_expansion_100_20261022
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: true
+    prompt_path: prompts/luoyang_city_finish_20261025i/guard_young_bluegrey_idle_v1_edit.txt
+    reference_images: [assets/raw/luoyang_city_finish_20261025i/guard_young_bluegrey_walk4_v1.png]
+    vars:
+      asset_prompt: "IDENTITY-PRESERVE EDIT actual bluegrey walk man into ONE true frontal neutral standing idle, both boots planted/arms relaxed, same ordinary30 face/cap/armor/SHEATHED waist dao, NO SPEAR. Not frozen walk. Whole A1 central66% bothaxes/truealpha, no floor/shadow. Same thick-painted wuxia/slight downward look/upperleft light. Exact prompt_path rendered offline; actualsprite EDIT target."
+
+  - id: luoyang_20261025i_guard_veteran_ochre_idle_v1_edit
+    template: world_expansion_100_20261022
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: true
+    prompt_path: prompts/luoyang_city_finish_20261025i/guard_veteran_ochre_idle_v1_edit.txt
+    reference_images: [assets/raw/luoyang_city_finish_20261025i/guard_veteran_ochre_walk4_v1.png]
+    vars:
+      asset_prompt: "IDENTITY-PRESERVE EDIT actual ochre veteran walk man into ONE true frontal neutral idle, both boots planted/arms relaxed, same ordinary55 greytemple/shortbeard/browncap/ochre armor/SHEATHED waist dao, NO SPEAR. Not frozen walk. Whole A1 central66% bothaxes/truealpha/no floor. Same painterly wuxia/slight downward look/upperleft light. Exact prompt_path rendered offline; actualsprite EDIT target."

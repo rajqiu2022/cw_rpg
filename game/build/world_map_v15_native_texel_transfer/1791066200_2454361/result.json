@@ -1,0 +1,4720 @@
+{
+	"baseline": {
+		"engine_static_memory_bytes": 81869671,
+		"gpu_index": 0,
+		"gpu_name": "NVIDIA GeForce RTX 4080",
+		"gpu_query": {
+			"args": [
+				"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+				"--format=csv,noheader,nounits"
+			],
+			"path": "C:/Windows/System32/nvidia-smi.exe"
+		},
+		"gpu_query_exit": 0,
+		"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8455, 7596",
+		"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+		"host_free_bytes": 64282411008,
+		"host_query_exit": 0,
+		"host_raw_output": "{\"host_free_bytes\":64282411008,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":293896192,\"process_private_bytes\":334946304,\"process_peak_working_set_bytes\":295342080}",
+		"host_total_bytes": 137050136576,
+		"process_peak_working_set_bytes": 295342080,
+		"process_private_bytes": 334946304,
+		"process_working_set_bytes": 293896192,
+		"stage": "before_stage_A",
+		"ticks_usec": 2458602,
+		"valid": true,
+		"vram_free_bytes": 7964983296,
+		"vram_total_bytes": 17171480576,
+		"vram_used_bytes": 8865710080
+	},
+	"caps_fixture": {
+		"path": "res://scripts/dev/diagnose_world_v15_backend_caps.gd",
+		"sha256": "73cc260391873fa7f167a8a29c0099b20b9375de787e90c88fd870dfc40100c7"
+	},
+	"configured_renderer": "gl_compatibility",
+	"cpu_color_correction": false,
+	"display_server": "Windows",
+	"engine_pid": 51528,
+	"executed_fixture_path": "res://scripts/dev/diagnose_world_v15_native_texel_transfer.gd",
+	"executed_fixture_sha256": "e8a13e9ef6c8080893aff8f0e06282347bac48fb53c7fa683e07c0a871c513fb",
+	"filter_resize_or_ssaa_downgrade": false,
+	"formal_adoption_approved": false,
+	"gamma_compensation": false,
+	"get_video_adapter_api_version": "3.3.0 NVIDIA 581.29",
+	"get_video_adapter_name": "NVIDIA GeForce RTX 4080",
+	"get_video_adapter_vendor": "NVIDIA",
+	"gl_enumerated_limits_known": false,
+	"godot_version": {
+		"build": "official",
+		"hash": "71f334935c000924d403448e698df4441130df18",
+		"hex": 263682,
+		"major": 4,
+		"minor": 6,
+		"patch": 2,
+		"status": "stable",
+		"string": "4.6.2-stable (official)",
+		"timestamp": 0
+	},
+	"historical_square_component": {
+		"actual_computed_square_deltas": {
+			"gl_enumerated_limit_known": false,
+			"measurement_includes_other_live_GPU_processes": true,
+			"process_peak_delta_bytes": 1898823680,
+			"process_release_delta_bytes": 247283712,
+			"valid": true,
+			"vram_peak_delta_bytes": 519045120,
+			"vram_release_delta_bytes": -18874368
+		},
+		"actual_historical_execution": {
+			"fixture_sha256": "fa4a63b9e3413362e0eb14b3de97556fc4ddb82a9c1fa25f5ab06bbc4306c26a",
+			"parent_sha256": "73cc260391873fa7f167a8a29c0099b20b9375de787e90c88fd870dfc40100c7",
+			"proposed_exit_code": 1.0,
+			"proposed_exit_code_variant_type": 3,
+			"status": "WHOLE_FRAMEBUFFER_ACTUAL_FAILED"
+		},
+		"actual_square_flags_and_canvas": {
+			"actual_canvas_component_variant_types": [
+				3,
+				3
+			],
+			"actual_canvas_variant_type": 28,
+			"actual_raw_canvas": [
+				8192.0,
+				8192.0
+			],
+			"actual_viewport_node_released": true,
+			"exact_numeric_canvas_semantics": true,
+			"existing_array_comparison_equal": false,
+			"expected_native_canvas": [
+				8192,
+				8192
+			],
+			"expected_native_canvas_component_variant_type": 2,
+			"passed": true,
+			"raw_repeat_byte_exact": true
+		},
+		"actual_square_image_records": [
+			{
+				"path": "res://build/world_map_v15_whole_framebuffer_memory/1791062610_2434323/native_8192x8192_raw.png",
+				"sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5"
+			},
+			{
+				"path": "res://build/world_map_v15_whole_framebuffer_memory/1791062610_2434323/native_8192x8192_raw_repeat.png",
+				"sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5"
+			}
+		],
+		"actual_square_png_sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5",
+		"actual_square_repeat_png_sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5",
+		"actual_stored_square_deltas": {
+			"gl_enumerated_limit_known": false,
+			"measurement_includes_other_live_GPU_processes": true,
+			"process_peak_delta_bytes": 1898823680.0,
+			"process_release_delta_bytes": 247283712.0,
+			"valid": true,
+			"vram_peak_delta_bytes": 519045120.0,
+			"vram_release_delta_bytes": -18874368.0
+		},
+		"computed_delta_variant_types": {
+			"gl_enumerated_limit_known": 1,
+			"measurement_includes_other_live_GPU_processes": 1,
+			"process_peak_delta_bytes": 2,
+			"process_release_delta_bytes": 2,
+			"valid": 1,
+			"vram_peak_delta_bytes": 2,
+			"vram_release_delta_bytes": 2
+		},
+		"deltas": {
+			"gl_enumerated_limit_known": false,
+			"measurement_includes_other_live_GPU_processes": true,
+			"process_peak_delta_bytes": 1898823680,
+			"process_release_delta_bytes": 247283712,
+			"valid": true,
+			"vram_peak_delta_bytes": 519045120,
+			"vram_release_delta_bytes": -18874368
+		},
+		"exact_numeric_and_boolean_delta_semantics": true,
+		"existing_dictionary_comparison_equal": false,
+		"expected_result_sha256": "635f79565e1258f077c47ab53ed5e22c235921896c48079dbdc695b5859cd6fe",
+		"expected_square_png_sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5",
+		"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+		"historical_execution_source": {
+			"parent_path": "res://scripts/dev/diagnose_world_v15_backend_caps.gd",
+			"parent_sha256": "73cc260391873fa7f167a8a29c0099b20b9375de787e90c88fd870dfc40100c7",
+			"path": "res://scripts/dev/diagnose_world_v15_whole_framebuffer_memory.gd",
+			"sha256": "fa4a63b9e3413362e0eb14b3de97556fc4ddb82a9c1fa25f5ab06bbc4306c26a"
+		},
+		"overall_historical_OS_result_not_overridden": 1,
+		"overall_historical_status": "WHOLE_FRAMEBUFFER_ACTUAL_FAILED",
+		"parsed_result_variant_type": 27,
+		"result_path": "res://build/world_map_v15_whole_framebuffer_memory/1791062610_2434323/result.json",
+		"result_sha256": "635f79565e1258f077c47ab53ed5e22c235921896c48079dbdc695b5859cd6fe",
+		"square_images": [
+			{
+				"path": "res://build/world_map_v15_whole_framebuffer_memory/1791062610_2434323/native_8192x8192_raw.png",
+				"sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5"
+			},
+			{
+				"path": "res://build/world_map_v15_whole_framebuffer_memory/1791062610_2434323/native_8192x8192_raw_repeat.png",
+				"sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5"
+			}
+		],
+		"stored_delta_variant_types": {
+			"gl_enumerated_limit_known": 1,
+			"measurement_includes_other_live_GPU_processes": 1,
+			"process_peak_delta_bytes": 3,
+			"process_release_delta_bytes": 3,
+			"valid": 1,
+			"vram_peak_delta_bytes": 3,
+			"vram_release_delta_bytes": 3
+		},
+		"valid": true
+	},
+	"memory_fixture": {
+		"path": "res://scripts/dev/diagnose_world_v15_whole_framebuffer_memory.gd",
+		"sha256": "fa4a63b9e3413362e0eb14b3de97556fc4ddb82a9c1fa25f5ab06bbc4306c26a"
+	},
+	"pattern_shader_code": "shader_type spatial;\nrender_mode unshaded, cull_disabled;\nvoid fragment() {\n vec2 p = floor(UV * vec2(769.0, 513.0));\n ALBEDO = vec3(mod(p.x, 256.0), mod(p.y, 256.0), mod(p.x * 7.0 + p.y * 13.0, 256.0)) / 255.0;\n}\n",
+	"pattern_shader_code_sha256": "6dd31f9699e85ef709c8c2401ca27d40f6e87d7031c0c90d6ae66dfd1b070818",
+	"proposed_exit_code_not_external_OS_evidence": 0,
+	"repeat_scope": "second actual render of same diagnostic 3D world; NOT independent terrain reference capture",
+	"schema_version": 1,
+	"scope": "NATIVE_INTEGER_GPU_TRANSFER_NOT_TERRAIN_OR_PROTOCOL_APPROVAL",
+	"stage_A": {
+		"actual_primary_released": true,
+		"after_all_small_readbacks": {
+			"engine_static_memory_bytes": 90358108,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8525, 7526",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 63864700928,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":63864700928,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":348618752,\"process_private_bytes\":576778240,\"process_peak_working_set_bytes\":475348992}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 475348992,
+			"process_private_bytes": 576778240,
+			"process_working_set_bytes": 348618752,
+			"stage": "stage_A_all_small_readbacks_released",
+			"ticks_usec": 12252098,
+			"valid": true,
+			"vram_free_bytes": 7891582976,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8939110400
+		},
+		"allocated": {
+			"engine_static_memory_bytes": 89453422,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8543, 7508",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64317919232,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64317919232,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":312217600,\"process_private_bytes\":462532608,\"process_peak_working_set_bytes\":312217600}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 312217600,
+			"process_private_bytes": 462532608,
+			"process_working_set_bytes": 312217600,
+			"stage": "stage_A_primary_pass_1_before_transfer",
+			"ticks_usec": 6645183,
+			"valid": true,
+			"vram_free_bytes": 7872708608,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8957984768
+		},
+		"baseline": {
+			"engine_static_memory_bytes": 81875151,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8447, 7604",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64314167296,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64314167296,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":293904384,\"process_private_bytes\":332521472,\"process_peak_working_set_bytes\":295342080}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 295342080,
+			"process_private_bytes": 332521472,
+			"process_working_set_bytes": 293904384,
+			"stage": "stage_A_before_primary",
+			"ticks_usec": 4515853,
+			"valid": true,
+			"vram_free_bytes": 7973371904,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8857321472
+		},
+		"direct_oracle_available": true,
+		"name": "stage_A",
+		"passed": true,
+		"passes": [
+			{
+				"actual_3D_source_witnesses": {
+					"alpha_gamut_scope": "diagnostic primary is opaque; arbitrary-alpha transport is not separately certified",
+					"five_colors": [
+						{
+							"id": "top_left_red",
+							"passed": true,
+							"raw_RGBA": [
+								0.800000011920929,
+								0.00392156885936856,
+								0.00392156885936856,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								1,
+								1
+							]
+						},
+						{
+							"id": "top_right_green",
+							"passed": true,
+							"raw_RGBA": [
+								0.00392156885936856,
+								0.800000011920929,
+								0.00392156885936856,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								3070,
+								1
+							]
+						},
+						{
+							"id": "bottom_left_blue",
+							"passed": true,
+							"raw_RGBA": [
+								0.00392156885936856,
+								0.00392156885936856,
+								0.800000011920929,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								1,
+								2046
+							]
+						},
+						{
+							"id": "bottom_right_yellow",
+							"passed": true,
+							"raw_RGBA": [
+								0.800000011920929,
+								0.800000011920929,
+								0.00392156885936856,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								3070,
+								2046
+							]
+						},
+						{
+							"id": "center_magenta",
+							"passed": true,
+							"raw_RGBA": [
+								0.800000011920929,
+								0.00392156885936856,
+								0.800000011920929,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								1536,
+								1024
+							]
+						}
+					],
+					"passed": true,
+					"procedural_panel_actual_unique_colors": 49,
+					"procedural_panel_samples": [
+						{
+							"raw_RGBA_bytes": [
+								186,
+								36,
+								0,
+								255
+							],
+							"source_pixel": [
+								614,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								36,
+								94,
+								255
+							],
+							"source_pixel": [
+								721,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								36,
+								191,
+								255
+							],
+							"source_pixel": [
+								829,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								36,
+								30,
+								255
+							],
+							"source_pixel": [
+								936,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								36,
+								129,
+								255
+							],
+							"source_pixel": [
+								1044,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								36,
+								226,
+								255
+							],
+							"source_pixel": [
+								1152,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								36,
+								59,
+								255
+							],
+							"source_pixel": [
+								1259,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								96,
+								246,
+								255
+							],
+							"source_pixel": [
+								614,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								96,
+								80,
+								255
+							],
+							"source_pixel": [
+								721,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								96,
+								177,
+								255
+							],
+							"source_pixel": [
+								829,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								96,
+								14,
+								255
+							],
+							"source_pixel": [
+								936,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								96,
+								115,
+								255
+							],
+							"source_pixel": [
+								1044,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								96,
+								212,
+								255
+							],
+							"source_pixel": [
+								1152,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								96,
+								45,
+								255
+							],
+							"source_pixel": [
+								1259,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								155,
+								245,
+								255
+							],
+							"source_pixel": [
+								614,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								155,
+								79,
+								255
+							],
+							"source_pixel": [
+								721,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								155,
+								176,
+								255
+							],
+							"source_pixel": [
+								829,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								155,
+								12,
+								255
+							],
+							"source_pixel": [
+								936,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								155,
+								114,
+								255
+							],
+							"source_pixel": [
+								1044,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								155,
+								211,
+								255
+							],
+							"source_pixel": [
+								1152,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								155,
+								44,
+								255
+							],
+							"source_pixel": [
+								1259,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								214,
+								244,
+								255
+							],
+							"source_pixel": [
+								614,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								214,
+								78,
+								255
+							],
+							"source_pixel": [
+								721,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								214,
+								175,
+								255
+							],
+							"source_pixel": [
+								829,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								214,
+								11,
+								255
+							],
+							"source_pixel": [
+								936,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								214,
+								113,
+								255
+							],
+							"source_pixel": [
+								1044,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								214,
+								210,
+								255
+							],
+							"source_pixel": [
+								1152,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								214,
+								43,
+								255
+							],
+							"source_pixel": [
+								1259,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								11,
+								230,
+								255
+							],
+							"source_pixel": [
+								614,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								11,
+								64,
+								255
+							],
+							"source_pixel": [
+								721,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								11,
+								161,
+								255
+							],
+							"source_pixel": [
+								829,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								11,
+								0,
+								255
+							],
+							"source_pixel": [
+								936,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								11,
+								99,
+								255
+							],
+							"source_pixel": [
+								1044,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								11,
+								196,
+								255
+							],
+							"source_pixel": [
+								1152,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								11,
+								27,
+								255
+							],
+							"source_pixel": [
+								1259,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								76,
+								242,
+								255
+							],
+							"source_pixel": [
+								614,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								76,
+								76,
+								255
+							],
+							"source_pixel": [
+								721,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								76,
+								173,
+								255
+							],
+							"source_pixel": [
+								829,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								76,
+								9,
+								255
+							],
+							"source_pixel": [
+								936,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								76,
+								111,
+								255
+							],
+							"source_pixel": [
+								1044,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								76,
+								208,
+								255
+							],
+							"source_pixel": [
+								1152,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								76,
+								40,
+								255
+							],
+							"source_pixel": [
+								1259,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								135,
+								241,
+								255
+							],
+							"source_pixel": [
+								614,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								135,
+								75,
+								255
+							],
+							"source_pixel": [
+								721,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								135,
+								172,
+								255
+							],
+							"source_pixel": [
+								829,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								135,
+								8,
+								255
+							],
+							"source_pixel": [
+								936,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								135,
+								110,
+								255
+							],
+							"source_pixel": [
+								1044,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								135,
+								207,
+								255
+							],
+							"source_pixel": [
+								1152,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								135,
+								39,
+								255
+							],
+							"source_pixel": [
+								1259,
+								952
+							]
+						}
+					]
+				},
+				"camera": {
+					"keep_aspect": 1,
+					"projection": 1,
+					"size": 2.0,
+					"transform": {
+						"basis": [
+							[
+								1.0,
+								0.0,
+								0.0
+							],
+							[
+								0.0,
+								1.0,
+								0.0
+							],
+							[
+								0.0,
+								0.0,
+								1.0
+							]
+						],
+						"origin": [
+							0.0,
+							0.0,
+							10.0
+						]
+					}
+				},
+				"camera_instance_id": 142539229659,
+				"capture_identity_method": "actual eight natural process/frame_post_draw signal fences after UPDATE_ONCE requests; Engine draw counter growth is NOT asserted; actual image witnesses still required",
+				"direct_oracle_image": {
+					"PNG_reload_RGBA": {
+						"actual_canvas": [
+							3072,
+							2048
+						],
+						"actual_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+						"different_bytes": 0,
+						"dimensions_equal": true,
+						"exact": true,
+						"expected_canvas": [
+							3072,
+							2048
+						],
+						"expected_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+						"maximum_byte_delta": 0,
+						"tolerance": 0
+					},
+					"format": 5,
+					"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_direct_pass_1.png",
+					"raw_RGBA_bytes": 25165824,
+					"raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"saved": true,
+					"sha256": "f1dbdc0255441441256d7d9850cda8fd2804513c75eeb7f307d509854d05cfd2"
+				},
+				"engine_draw_counter_advanced": true,
+				"frame_after": 7,
+				"frame_before": 0,
+				"fresh_draw_observed": true,
+				"id": "stage_A_primary_pass_1",
+				"last_post_draw_fence_sequence": 8,
+				"msaa_2d": 0,
+				"msaa_3d": 0,
+				"pattern_shader_code_sha256": "6dd31f9699e85ef709c8c2401ca27d40f6e87d7031c0c90d6ae66dfd1b070818",
+				"post_draw_fences": [
+					{
+						"engine_draw_frame_after": 0,
+						"engine_draw_frame_before": 0,
+						"fence_sequence": 1,
+						"process_frame_after": 0,
+						"process_frame_before": 0,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 6528403
+					},
+					{
+						"engine_draw_frame_after": 1,
+						"engine_draw_frame_before": 0,
+						"fence_sequence": 2,
+						"process_frame_after": 1,
+						"process_frame_before": 0,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 6545101
+					},
+					{
+						"engine_draw_frame_after": 2,
+						"engine_draw_frame_before": 1,
+						"fence_sequence": 3,
+						"process_frame_after": 2,
+						"process_frame_before": 1,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 6561780
+					},
+					{
+						"engine_draw_frame_after": 3,
+						"engine_draw_frame_before": 2,
+						"fence_sequence": 4,
+						"process_frame_after": 3,
+						"process_frame_before": 2,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 6578454
+					},
+					{
+						"engine_draw_frame_after": 4,
+						"engine_draw_frame_before": 3,
+						"fence_sequence": 5,
+						"process_frame_after": 4,
+						"process_frame_before": 3,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 6595120
+					},
+					{
+						"engine_draw_frame_after": 5,
+						"engine_draw_frame_before": 4,
+						"fence_sequence": 6,
+						"process_frame_after": 5,
+						"process_frame_before": 4,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 6611775
+					},
+					{
+						"engine_draw_frame_after": 6,
+						"engine_draw_frame_before": 5,
+						"fence_sequence": 7,
+						"process_frame_after": 6,
+						"process_frame_before": 5,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 6628450
+					},
+					{
+						"engine_draw_frame_after": 7,
+						"engine_draw_frame_before": 6,
+						"fence_sequence": 8,
+						"process_frame_after": 7,
+						"process_frame_before": 6,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 6645116
+					}
+				],
+				"primary_canvas": [
+					3072,
+					2048
+				],
+				"primary_frozen_update_mode": 0,
+				"primary_texture_instance_id": -9223371894718199357,
+				"primary_texture_rid": 6579889897509,
+				"primary_viewport_instance_id": 142103022016,
+				"primary_viewport_rid": 6562710028292,
+				"process_frame_after": 7,
+				"process_frame_before": 0,
+				"ticks_usec": 6645125,
+				"world_3d_instance_id": -9223371894701422140,
+				"world_node_instance_id": 142170130885
+			},
+			{
+				"actual_3D_source_witnesses": {
+					"alpha_gamut_scope": "diagnostic primary is opaque; arbitrary-alpha transport is not separately certified",
+					"five_colors": [
+						{
+							"id": "top_left_red",
+							"passed": true,
+							"raw_RGBA": [
+								0.800000011920929,
+								0.00392156885936856,
+								0.00392156885936856,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								1,
+								1
+							]
+						},
+						{
+							"id": "top_right_green",
+							"passed": true,
+							"raw_RGBA": [
+								0.00392156885936856,
+								0.800000011920929,
+								0.00392156885936856,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								3070,
+								1
+							]
+						},
+						{
+							"id": "bottom_left_blue",
+							"passed": true,
+							"raw_RGBA": [
+								0.00392156885936856,
+								0.00392156885936856,
+								0.800000011920929,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								1,
+								2046
+							]
+						},
+						{
+							"id": "bottom_right_yellow",
+							"passed": true,
+							"raw_RGBA": [
+								0.800000011920929,
+								0.800000011920929,
+								0.00392156885936856,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								3070,
+								2046
+							]
+						},
+						{
+							"id": "center_magenta",
+							"passed": true,
+							"raw_RGBA": [
+								0.800000011920929,
+								0.00392156885936856,
+								0.800000011920929,
+								1.0
+							],
+							"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat",
+							"source_pixel": [
+								1536,
+								1024
+							]
+						}
+					],
+					"passed": true,
+					"procedural_panel_actual_unique_colors": 49,
+					"procedural_panel_samples": [
+						{
+							"raw_RGBA_bytes": [
+								186,
+								36,
+								0,
+								255
+							],
+							"source_pixel": [
+								614,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								36,
+								94,
+								255
+							],
+							"source_pixel": [
+								721,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								36,
+								191,
+								255
+							],
+							"source_pixel": [
+								829,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								36,
+								30,
+								255
+							],
+							"source_pixel": [
+								936,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								36,
+								129,
+								255
+							],
+							"source_pixel": [
+								1044,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								36,
+								226,
+								255
+							],
+							"source_pixel": [
+								1152,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								36,
+								59,
+								255
+							],
+							"source_pixel": [
+								1259,
+								522
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								96,
+								246,
+								255
+							],
+							"source_pixel": [
+								614,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								96,
+								80,
+								255
+							],
+							"source_pixel": [
+								721,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								96,
+								177,
+								255
+							],
+							"source_pixel": [
+								829,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								96,
+								14,
+								255
+							],
+							"source_pixel": [
+								936,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								96,
+								115,
+								255
+							],
+							"source_pixel": [
+								1044,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								96,
+								212,
+								255
+							],
+							"source_pixel": [
+								1152,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								96,
+								45,
+								255
+							],
+							"source_pixel": [
+								1259,
+								593
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								155,
+								245,
+								255
+							],
+							"source_pixel": [
+								614,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								155,
+								79,
+								255
+							],
+							"source_pixel": [
+								721,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								155,
+								176,
+								255
+							],
+							"source_pixel": [
+								829,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								155,
+								12,
+								255
+							],
+							"source_pixel": [
+								936,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								155,
+								114,
+								255
+							],
+							"source_pixel": [
+								1044,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								155,
+								211,
+								255
+							],
+							"source_pixel": [
+								1152,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								155,
+								44,
+								255
+							],
+							"source_pixel": [
+								1259,
+								665
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								214,
+								244,
+								255
+							],
+							"source_pixel": [
+								614,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								214,
+								78,
+								255
+							],
+							"source_pixel": [
+								721,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								214,
+								175,
+								255
+							],
+							"source_pixel": [
+								829,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								214,
+								11,
+								255
+							],
+							"source_pixel": [
+								936,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								214,
+								113,
+								255
+							],
+							"source_pixel": [
+								1044,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								214,
+								210,
+								255
+							],
+							"source_pixel": [
+								1152,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								214,
+								43,
+								255
+							],
+							"source_pixel": [
+								1259,
+								737
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								11,
+								230,
+								255
+							],
+							"source_pixel": [
+								614,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								11,
+								64,
+								255
+							],
+							"source_pixel": [
+								721,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								11,
+								161,
+								255
+							],
+							"source_pixel": [
+								829,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								11,
+								0,
+								255
+							],
+							"source_pixel": [
+								936,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								11,
+								99,
+								255
+							],
+							"source_pixel": [
+								1044,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								11,
+								196,
+								255
+							],
+							"source_pixel": [
+								1152,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								11,
+								27,
+								255
+							],
+							"source_pixel": [
+								1259,
+								808
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								76,
+								242,
+								255
+							],
+							"source_pixel": [
+								614,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								76,
+								76,
+								255
+							],
+							"source_pixel": [
+								721,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								76,
+								173,
+								255
+							],
+							"source_pixel": [
+								829,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								76,
+								9,
+								255
+							],
+							"source_pixel": [
+								936,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								76,
+								111,
+								255
+							],
+							"source_pixel": [
+								1044,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								76,
+								208,
+								255
+							],
+							"source_pixel": [
+								1152,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								76,
+								40,
+								255
+							],
+							"source_pixel": [
+								1259,
+								880
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								186,
+								135,
+								241,
+								255
+							],
+							"source_pixel": [
+								614,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								11,
+								135,
+								75,
+								255
+							],
+							"source_pixel": [
+								721,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								103,
+								135,
+								172,
+								255
+							],
+							"source_pixel": [
+								829,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								190,
+								135,
+								8,
+								255
+							],
+							"source_pixel": [
+								936,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								17,
+								135,
+								110,
+								255
+							],
+							"source_pixel": [
+								1044,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								108,
+								135,
+								207,
+								255
+							],
+							"source_pixel": [
+								1152,
+								952
+							]
+						},
+						{
+							"raw_RGBA_bytes": [
+								194,
+								135,
+								39,
+								255
+							],
+							"source_pixel": [
+								1259,
+								952
+							]
+						}
+					]
+				},
+				"camera": {
+					"keep_aspect": 1,
+					"projection": 1,
+					"size": 2.0,
+					"transform": {
+						"basis": [
+							[
+								1.0,
+								0.0,
+								0.0
+							],
+							[
+								0.0,
+								1.0,
+								0.0
+							],
+							[
+								0.0,
+								0.0,
+								1.0
+							]
+						],
+						"origin": [
+							0.0,
+							0.0,
+							10.0
+						]
+					}
+				},
+				"camera_instance_id": 142539229659,
+				"capture_identity_method": "actual eight natural process/frame_post_draw signal fences after UPDATE_ONCE requests; Engine draw counter growth is NOT asserted; actual image witnesses still required",
+				"direct_oracle_image": {
+					"PNG_reload_RGBA": {
+						"actual_canvas": [
+							3072,
+							2048
+						],
+						"actual_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+						"different_bytes": 0,
+						"dimensions_equal": true,
+						"exact": true,
+						"expected_canvas": [
+							3072,
+							2048
+						],
+						"expected_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+						"maximum_byte_delta": 0,
+						"tolerance": 0
+					},
+					"format": 5,
+					"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_direct_pass_2.png",
+					"raw_RGBA_bytes": 25165824,
+					"raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"saved": true,
+					"sha256": "f1dbdc0255441441256d7d9850cda8fd2804513c75eeb7f307d509854d05cfd2"
+				},
+				"engine_draw_counter_advanced": true,
+				"frame_after": 45,
+				"frame_before": 37,
+				"fresh_draw_observed": true,
+				"id": "stage_A_primary_pass_2",
+				"last_post_draw_fence_sequence": 22,
+				"msaa_2d": 0,
+				"msaa_3d": 0,
+				"pattern_shader_code_sha256": "6dd31f9699e85ef709c8c2401ca27d40f6e87d7031c0c90d6ae66dfd1b070818",
+				"post_draw_fences": [
+					{
+						"engine_draw_frame_after": 38,
+						"engine_draw_frame_before": 37,
+						"fence_sequence": 15,
+						"process_frame_after": 38,
+						"process_frame_before": 37,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 9260540
+					},
+					{
+						"engine_draw_frame_after": 39,
+						"engine_draw_frame_before": 38,
+						"fence_sequence": 16,
+						"process_frame_after": 39,
+						"process_frame_before": 38,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 9277391
+					},
+					{
+						"engine_draw_frame_after": 40,
+						"engine_draw_frame_before": 39,
+						"fence_sequence": 17,
+						"process_frame_after": 40,
+						"process_frame_before": 39,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 9293841
+					},
+					{
+						"engine_draw_frame_after": 41,
+						"engine_draw_frame_before": 40,
+						"fence_sequence": 18,
+						"process_frame_after": 41,
+						"process_frame_before": 40,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 9310523
+					},
+					{
+						"engine_draw_frame_after": 42,
+						"engine_draw_frame_before": 41,
+						"fence_sequence": 19,
+						"process_frame_after": 42,
+						"process_frame_before": 41,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 9327180
+					},
+					{
+						"engine_draw_frame_after": 43,
+						"engine_draw_frame_before": 42,
+						"fence_sequence": 20,
+						"process_frame_after": 43,
+						"process_frame_before": 42,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 9343880
+					},
+					{
+						"engine_draw_frame_after": 44,
+						"engine_draw_frame_before": 43,
+						"fence_sequence": 21,
+						"process_frame_after": 44,
+						"process_frame_before": 43,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 9360528
+					},
+					{
+						"engine_draw_frame_after": 45,
+						"engine_draw_frame_before": 44,
+						"fence_sequence": 22,
+						"process_frame_after": 45,
+						"process_frame_before": 44,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 9377204
+					}
+				],
+				"primary_canvas": [
+					3072,
+					2048
+				],
+				"primary_frozen_update_mode": 0,
+				"primary_repeat_RGBA": {
+					"actual_canvas": [
+						3072,
+						2048
+					],
+					"actual_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						3072,
+						2048
+					],
+					"expected_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"primary_texture_instance_id": -9223371894718199357,
+				"primary_texture_rid": 6579889897509,
+				"primary_viewport_instance_id": 142103022016,
+				"primary_viewport_rid": 6562710028292,
+				"process_frame_after": 45,
+				"process_frame_before": 37,
+				"ticks_usec": 9377217,
+				"world_3d_instance_id": -9223371894701422140,
+				"world_node_instance_id": 142170130885
+			}
+		],
+		"primary_allocated": true,
+		"primary_canvas": [
+			3072,
+			2048
+		],
+		"released": {
+			"engine_static_memory_bytes": 89355413,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8473, 7578",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 63878852608,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":63878852608,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":321601536,\"process_private_bytes\":456007680,\"process_peak_working_set_bytes\":475348992}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 475348992,
+			"process_private_bytes": 456007680,
+			"process_working_set_bytes": 321601536,
+			"stage": "stage_A_primary_released",
+			"ticks_usec": 14012155,
+			"valid": true,
+			"vram_free_bytes": 7946108928,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8884584448
+		},
+		"scope": "NATIVE_INTEGER_GPU_TRANSFER_NOT_TERRAIN_OR_PROTOCOL_APPROVAL",
+		"transfers": [
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						3072,
+						2048
+					],
+					"actual_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						3072,
+						2048
+					],
+					"expected_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					3072,
+					2048
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					3072,
+					2048
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 9,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 8,
+				"destination_draw_frame_before": 7,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 8,
+				"destination_process_frame_before": 7,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 9899899617320,
+				"destination_viewport_instance_id": 147438175944,
+				"destination_viewport_rid": 9882719748101,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						3072,
+						2048
+					],
+					"actual_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						3072,
+						2048
+					],
+					"expected_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					3072,
+					2048
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_0_pass_1.png",
+				"raw_RGBA_bytes": 25165824,
+				"raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+				"resized": false,
+				"saved": true,
+				"sha256": "f1dbdc0255441441256d7d9850cda8fd2804513c75eeb7f307d509854d05cfd2",
+				"source_origin_px": [
+					0,
+					0
+				],
+				"source_primary_frame": 7,
+				"source_primary_pass_id": "stage_A_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 8,
+				"source_primary_process_frame": 7,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						257,
+						129
+					],
+					"actual_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						257,
+						129
+					],
+					"expected_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					257,
+					129
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					257,
+					129
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 10,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 13,
+				"destination_draw_frame_before": 12,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 13,
+				"destination_process_frame_before": 12,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 9942849290279,
+				"destination_viewport_instance_id": 147958270442,
+				"destination_viewport_rid": 9925669421061,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						257,
+						129
+					],
+					"actual_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						257,
+						129
+					],
+					"expected_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					257,
+					129
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_1_pass_1.png",
+				"raw_RGBA_bytes": 132612,
+				"raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+				"resized": false,
+				"saved": true,
+				"sha256": "9555f80f77961aa965d29d6a73d8c59c6763706f8ae02429ca96727f93d95828",
+				"source_origin_px": [
+					1,
+					3
+				],
+				"source_primary_frame": 7,
+				"source_primary_pass_id": "stage_A_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 8,
+				"source_primary_process_frame": 7,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						281,
+						137
+					],
+					"actual_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						281,
+						137
+					],
+					"expected_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					281,
+					137
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					281,
+					137
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 11,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 18,
+				"destination_draw_frame_before": 17,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 18,
+				"destination_process_frame_before": 17,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 9977209028648,
+				"destination_viewport_instance_id": 148461586121,
+				"destination_viewport_rid": 9960029159429,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						281,
+						137
+					],
+					"actual_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						281,
+						137
+					],
+					"expected_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					281,
+					137
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_2_pass_1.png",
+				"raw_RGBA_bytes": 153988,
+				"raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+				"resized": false,
+				"saved": true,
+				"sha256": "e08dab10739255f6e3747822d2d9d7e174cb9b26cc339f89579cdefa00e86426",
+				"source_origin_px": [
+					2789,
+					5
+				],
+				"source_primary_frame": 7,
+				"source_primary_pass_id": "stage_A_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 8,
+				"source_primary_process_frame": 7,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						263,
+						149
+					],
+					"actual_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						263,
+						149
+					],
+					"expected_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					263,
+					149
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					263,
+					149
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 12,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 23,
+				"destination_draw_frame_before": 22,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 23,
+				"destination_process_frame_before": 22,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10011568767015,
+				"destination_viewport_instance_id": 148964902600,
+				"destination_viewport_rid": 9994388897797,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						263,
+						149
+					],
+					"actual_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						263,
+						149
+					],
+					"expected_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					263,
+					149
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_3_pass_1.png",
+				"raw_RGBA_bytes": 156748,
+				"raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+				"resized": false,
+				"saved": true,
+				"sha256": "20c4336170aaab39f3ff4c010d05d33933c4860428ed7d5d2388f3d88dcdc7e8",
+				"source_origin_px": [
+					3,
+					1897
+				],
+				"source_primary_frame": 7,
+				"source_primary_pass_id": "stage_A_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 8,
+				"source_primary_process_frame": 7,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						283,
+						157
+					],
+					"actual_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						283,
+						157
+					],
+					"expected_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					283,
+					157
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					283,
+					157
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 13,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 28,
+				"destination_draw_frame_before": 27,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 28,
+				"destination_process_frame_before": 27,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10045928505384,
+				"destination_viewport_instance_id": 149468219882,
+				"destination_viewport_rid": 10028748636165,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						283,
+						157
+					],
+					"actual_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						283,
+						157
+					],
+					"expected_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					283,
+					157
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_4_pass_1.png",
+				"raw_RGBA_bytes": 177724,
+				"raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+				"resized": false,
+				"saved": true,
+				"sha256": "575d70039b39ac4e5ffa200a5fd2a8ff34118e6fbed2a558288ce99aec2f053a",
+				"source_origin_px": [
+					2787,
+					1889
+				],
+				"source_primary_frame": 7,
+				"source_primary_pass_id": "stage_A_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 8,
+				"source_primary_process_frame": 7,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						321,
+						255
+					],
+					"actual_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						321,
+						255
+					],
+					"expected_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					321,
+					255
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					321,
+					255
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 14,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 33,
+				"destination_draw_frame_before": 32,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 33,
+				"destination_process_frame_before": 32,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10080288243751,
+				"destination_viewport_instance_id": 149971535561,
+				"destination_viewport_rid": 10063108374533,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						321,
+						255
+					],
+					"actual_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						321,
+						255
+					],
+					"expected_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					321,
+					255
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_5_pass_1.png",
+				"raw_RGBA_bytes": 327420,
+				"raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+				"resized": false,
+				"saved": true,
+				"sha256": "203c5bd81d7de1609a61a6353459ed4c38bad5ac5879045808fbdf2dff555542",
+				"source_origin_px": [
+					1457,
+					991
+				],
+				"source_primary_frame": 7,
+				"source_primary_pass_id": "stage_A_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 8,
+				"source_primary_process_frame": 7,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						3072,
+						2048
+					],
+					"actual_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						3072,
+						2048
+					],
+					"expected_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					3072,
+					2048
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					3072,
+					2048
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 23,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 46,
+				"destination_draw_frame_before": 45,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 46,
+				"destination_process_frame_before": 45,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10114647982120,
+				"destination_viewport_instance_id": 151045278189,
+				"destination_viewport_rid": 10097468112901,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						3072,
+						2048
+					],
+					"actual_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						3072,
+						2048
+					],
+					"expected_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						3072,
+						2048
+					],
+					"actual_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						3072,
+						2048
+					],
+					"expected_raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					3072,
+					2048
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_0_pass_2.png",
+				"raw_RGBA_bytes": 25165824,
+				"raw_RGBA_sha256": "c38d187966b921dd9ca73fd5fd569401e5810111a0a85d188e5ba8d98eae48a0",
+				"resized": false,
+				"saved": true,
+				"sha256": "f1dbdc0255441441256d7d9850cda8fd2804513c75eeb7f307d509854d05cfd2",
+				"source_origin_px": [
+					0,
+					0
+				],
+				"source_primary_frame": 45,
+				"source_primary_pass_id": "stage_A_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 22,
+				"source_primary_process_frame": 45,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						257,
+						129
+					],
+					"actual_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						257,
+						129
+					],
+					"expected_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					257,
+					129
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					257,
+					129
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 24,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 51,
+				"destination_draw_frame_before": 50,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 51,
+				"destination_process_frame_before": 50,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10149007720487,
+				"destination_viewport_instance_id": 151649257961,
+				"destination_viewport_rid": 10131827851269,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						257,
+						129
+					],
+					"actual_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						257,
+						129
+					],
+					"expected_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						257,
+						129
+					],
+					"actual_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						257,
+						129
+					],
+					"expected_raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					257,
+					129
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_1_pass_2.png",
+				"raw_RGBA_bytes": 132612,
+				"raw_RGBA_sha256": "6665103f803c09833cd6d75a5943b19918f5720e153377e63194ff7b3c494aa1",
+				"resized": false,
+				"saved": true,
+				"sha256": "9555f80f77961aa965d29d6a73d8c59c6763706f8ae02429ca96727f93d95828",
+				"source_origin_px": [
+					1,
+					3
+				],
+				"source_primary_frame": 45,
+				"source_primary_pass_id": "stage_A_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 22,
+				"source_primary_process_frame": 45,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						281,
+						137
+					],
+					"actual_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						281,
+						137
+					],
+					"expected_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					281,
+					137
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					281,
+					137
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 25,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 56,
+				"destination_draw_frame_before": 55,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 56,
+				"destination_process_frame_before": 55,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10183367458856,
+				"destination_viewport_instance_id": 152253236937,
+				"destination_viewport_rid": 10166187589637,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						281,
+						137
+					],
+					"actual_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						281,
+						137
+					],
+					"expected_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						281,
+						137
+					],
+					"actual_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						281,
+						137
+					],
+					"expected_raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					281,
+					137
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_2_pass_2.png",
+				"raw_RGBA_bytes": 153988,
+				"raw_RGBA_sha256": "cfa5a53d6047b70a09ff56e531d0eb1f0aa79d613940c9613f00ce57ab947fd7",
+				"resized": false,
+				"saved": true,
+				"sha256": "e08dab10739255f6e3747822d2d9d7e174cb9b26cc339f89579cdefa00e86426",
+				"source_origin_px": [
+					2789,
+					5
+				],
+				"source_primary_frame": 45,
+				"source_primary_pass_id": "stage_A_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 22,
+				"source_primary_process_frame": 45,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						263,
+						149
+					],
+					"actual_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						263,
+						149
+					],
+					"expected_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					263,
+					149
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					263,
+					149
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 26,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 61,
+				"destination_draw_frame_before": 60,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 61,
+				"destination_process_frame_before": 60,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10217727197223,
+				"destination_viewport_instance_id": 152857217517,
+				"destination_viewport_rid": 10200547328005,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						263,
+						149
+					],
+					"actual_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						263,
+						149
+					],
+					"expected_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						263,
+						149
+					],
+					"actual_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						263,
+						149
+					],
+					"expected_raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					263,
+					149
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_3_pass_2.png",
+				"raw_RGBA_bytes": 156748,
+				"raw_RGBA_sha256": "32a07385f7b68819a06add0accd38480b85e9b24ef419134f532dc06dfc626a5",
+				"resized": false,
+				"saved": true,
+				"sha256": "20c4336170aaab39f3ff4c010d05d33933c4860428ed7d5d2388f3d88dcdc7e8",
+				"source_origin_px": [
+					3,
+					1897
+				],
+				"source_primary_frame": 45,
+				"source_primary_pass_id": "stage_A_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 22,
+				"source_primary_process_frame": 45,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						283,
+						157
+					],
+					"actual_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						283,
+						157
+					],
+					"expected_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					283,
+					157
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					283,
+					157
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 27,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 66,
+				"destination_draw_frame_before": 65,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 66,
+				"destination_process_frame_before": 65,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10252086935592,
+				"destination_viewport_instance_id": 153461197289,
+				"destination_viewport_rid": 10234907066373,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						283,
+						157
+					],
+					"actual_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						283,
+						157
+					],
+					"expected_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						283,
+						157
+					],
+					"actual_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						283,
+						157
+					],
+					"expected_raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					283,
+					157
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_4_pass_2.png",
+				"raw_RGBA_bytes": 177724,
+				"raw_RGBA_sha256": "86068f0c564b051ef1c5d5836bc9d8ffa07816c9cfcd8c9127c62d0bdc290b48",
+				"resized": false,
+				"saved": true,
+				"sha256": "575d70039b39ac4e5ffa200a5fd2a8ff34118e6fbed2a558288ce99aec2f053a",
+				"source_origin_px": [
+					2787,
+					1889
+				],
+				"source_primary_frame": 45,
+				"source_primary_pass_id": "stage_A_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 22,
+				"source_primary_process_frame": 45,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						321,
+						255
+					],
+					"actual_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						321,
+						255
+					],
+					"expected_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					321,
+					255
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					321,
+					255
+				],
+				"actual_source_canvas": [
+					3072,
+					2048
+				],
+				"destination_actual_post_draw_fence_sequence": 28,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 71,
+				"destination_draw_frame_before": 70,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 71,
+				"destination_process_frame_before": 70,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10286446673959,
+				"destination_viewport_instance_id": 154065176265,
+				"destination_viewport_rid": 10269266804741,
+				"direct_oracle_RGBA": {
+					"actual_canvas": [
+						321,
+						255
+					],
+					"actual_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						321,
+						255
+					],
+					"expected_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						321,
+						255
+					],
+					"actual_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						321,
+						255
+					],
+					"expected_raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					321,
+					255
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_A_window_5_pass_2.png",
+				"raw_RGBA_bytes": 327420,
+				"raw_RGBA_sha256": "17e32d19fbc2298ec3d331527c5b21004202e344391b24d26c607a429d5d1ed7",
+				"resized": false,
+				"saved": true,
+				"sha256": "203c5bd81d7de1609a61a6353459ed4c38bad5ac5879045808fbdf2dff555542",
+				"source_origin_px": [
+					1457,
+					991
+				],
+				"source_primary_frame": 45,
+				"source_primary_pass_id": "stage_A_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 22,
+				"source_primary_process_frame": 45,
+				"source_texture_rid": 6579889897509,
+				"source_viewport_rid": 6562710028292,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			}
+		],
+		"whole_primary_cpu_readback": false
+	},
+	"stage_B": {
+		"actual_primary_released": true,
+		"after_all_small_readbacks": {
+			"engine_static_memory_bytes": 90423604,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 11497, 4554",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64166674432,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64166674432,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":332136448,\"process_private_bytes\":3654373376,\"process_peak_working_set_bytes\":475348992}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 475348992,
+			"process_private_bytes": 3654373376,
+			"process_working_set_bytes": 332136448,
+			"stage": "stage_B_all_small_readbacks_released",
+			"ticks_usec": 22867148,
+			"valid": true,
+			"vram_free_bytes": 4775215104,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 12055478272
+		},
+		"allocated": {
+			"engine_static_memory_bytes": 89750520,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 11495, 4556",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64172453888,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64172453888,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":329723904,\"process_private_bytes\":3822751744,\"process_peak_working_set_bytes\":475348992}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 475348992,
+			"process_private_bytes": 3822751744,
+			"process_working_set_bytes": 329723904,
+			"stage": "stage_B_primary_pass_1_before_transfer",
+			"ticks_usec": 18768756,
+			"valid": true,
+			"vram_free_bytes": 4777312256,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 12053381120
+		},
+		"baseline": {
+			"engine_static_memory_bytes": 89382433,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8473, 7578",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 63881584640,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":63881584640,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":321626112,\"process_private_bytes\":404467712,\"process_peak_working_set_bytes\":475348992}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 475348992,
+			"process_private_bytes": 404467712,
+			"process_working_set_bytes": 321626112,
+			"stage": "stage_B_before_primary",
+			"ticks_usec": 16912427,
+			"valid": true,
+			"vram_free_bytes": 7946108928,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8884584448
+		},
+		"direct_oracle_available": false,
+		"name": "stage_B",
+		"passed": true,
+		"passes": [
+			{
+				"camera": {
+					"keep_aspect": 1,
+					"projection": 1,
+					"size": 2.0,
+					"transform": {
+						"basis": [
+							[
+								1.0,
+								0.0,
+								0.0
+							],
+							[
+								0.0,
+								1.0,
+								0.0
+							],
+							[
+								0.0,
+								0.0,
+								1.0
+							]
+						],
+						"origin": [
+							0.0,
+							0.0,
+							10.0
+						]
+					}
+				},
+				"camera_instance_id": 155709344219,
+				"capture_identity_method": "actual eight natural process/frame_post_draw signal fences after UPDATE_ONCE requests; Engine draw counter growth is NOT asserted; actual image witnesses still required",
+				"engine_draw_counter_advanced": true,
+				"frame_after": 99,
+				"frame_before": 91,
+				"fresh_draw_observed": true,
+				"id": "stage_B_primary_pass_1",
+				"last_post_draw_fence_sequence": 36,
+				"msaa_2d": 0,
+				"msaa_3d": 0,
+				"pattern_shader_code_sha256": "6dd31f9699e85ef709c8c2401ca27d40f6e87d7031c0c90d6ae66dfd1b070818",
+				"post_draw_fences": [
+					{
+						"engine_draw_frame_after": 92,
+						"engine_draw_frame_before": 91,
+						"fence_sequence": 29,
+						"process_frame_after": 92,
+						"process_frame_before": 91,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 18652050
+					},
+					{
+						"engine_draw_frame_after": 93,
+						"engine_draw_frame_before": 92,
+						"fence_sequence": 30,
+						"process_frame_after": 93,
+						"process_frame_before": 92,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 18668690
+					},
+					{
+						"engine_draw_frame_after": 94,
+						"engine_draw_frame_before": 93,
+						"fence_sequence": 31,
+						"process_frame_after": 94,
+						"process_frame_before": 93,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 18685385
+					},
+					{
+						"engine_draw_frame_after": 95,
+						"engine_draw_frame_before": 94,
+						"fence_sequence": 32,
+						"process_frame_after": 95,
+						"process_frame_before": 94,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 18702028
+					},
+					{
+						"engine_draw_frame_after": 96,
+						"engine_draw_frame_before": 95,
+						"fence_sequence": 33,
+						"process_frame_after": 96,
+						"process_frame_before": 95,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 18718738
+					},
+					{
+						"engine_draw_frame_after": 97,
+						"engine_draw_frame_before": 96,
+						"fence_sequence": 34,
+						"process_frame_after": 97,
+						"process_frame_before": 96,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 18735373
+					},
+					{
+						"engine_draw_frame_after": 98,
+						"engine_draw_frame_before": 97,
+						"fence_sequence": 35,
+						"process_frame_after": 98,
+						"process_frame_before": 97,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 18752034
+					},
+					{
+						"engine_draw_frame_after": 99,
+						"engine_draw_frame_before": 98,
+						"fence_sequence": 36,
+						"process_frame_after": 99,
+						"process_frame_before": 98,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 18768688
+					}
+				],
+				"primary_canvas": [
+					24576,
+					16384
+				],
+				"primary_frozen_update_mode": 0,
+				"primary_texture_instance_id": -9223371881548084796,
+				"primary_texture_rid": 10320806412324,
+				"primary_viewport_instance_id": 155273136578,
+				"primary_viewport_rid": 10303626543108,
+				"process_frame_after": 99,
+				"process_frame_before": 91,
+				"ticks_usec": 18768697,
+				"world_3d_instance_id": -9223371881531308342,
+				"world_node_instance_id": 155340245445
+			},
+			{
+				"camera": {
+					"keep_aspect": 1,
+					"projection": 1,
+					"size": 2.0,
+					"transform": {
+						"basis": [
+							[
+								1.0,
+								0.0,
+								0.0
+							],
+							[
+								0.0,
+								1.0,
+								0.0
+							],
+							[
+								0.0,
+								0.0,
+								1.0
+							]
+						],
+						"origin": [
+							0.0,
+							0.0,
+							10.0
+						]
+					}
+				},
+				"camera_instance_id": 155709344219,
+				"capture_identity_method": "actual eight natural process/frame_post_draw signal fences after UPDATE_ONCE requests; Engine draw counter growth is NOT asserted; actual image witnesses still required",
+				"engine_draw_counter_advanced": true,
+				"frame_after": 142,
+				"frame_before": 134,
+				"fresh_draw_observed": true,
+				"id": "stage_B_primary_pass_2",
+				"last_post_draw_fence_sequence": 51,
+				"msaa_2d": 0,
+				"msaa_3d": 0,
+				"pattern_shader_code_sha256": "6dd31f9699e85ef709c8c2401ca27d40f6e87d7031c0c90d6ae66dfd1b070818",
+				"post_draw_fences": [
+					{
+						"engine_draw_frame_after": 135,
+						"engine_draw_frame_before": 134,
+						"fence_sequence": 44,
+						"process_frame_after": 135,
+						"process_frame_before": 134,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 20794301
+					},
+					{
+						"engine_draw_frame_after": 136,
+						"engine_draw_frame_before": 135,
+						"fence_sequence": 45,
+						"process_frame_after": 136,
+						"process_frame_before": 135,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 20810979
+					},
+					{
+						"engine_draw_frame_after": 137,
+						"engine_draw_frame_before": 136,
+						"fence_sequence": 46,
+						"process_frame_after": 137,
+						"process_frame_before": 136,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 20827643
+					},
+					{
+						"engine_draw_frame_after": 138,
+						"engine_draw_frame_before": 137,
+						"fence_sequence": 47,
+						"process_frame_after": 138,
+						"process_frame_before": 137,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 20844312
+					},
+					{
+						"engine_draw_frame_after": 139,
+						"engine_draw_frame_before": 138,
+						"fence_sequence": 48,
+						"process_frame_after": 139,
+						"process_frame_before": 138,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 20860974
+					},
+					{
+						"engine_draw_frame_after": 140,
+						"engine_draw_frame_before": 139,
+						"fence_sequence": 49,
+						"process_frame_after": 140,
+						"process_frame_before": 139,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 20877654
+					},
+					{
+						"engine_draw_frame_after": 141,
+						"engine_draw_frame_before": 140,
+						"fence_sequence": 50,
+						"process_frame_after": 141,
+						"process_frame_before": 140,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 20894309
+					},
+					{
+						"engine_draw_frame_after": 142,
+						"engine_draw_frame_before": 141,
+						"fence_sequence": 51,
+						"process_frame_after": 142,
+						"process_frame_before": 141,
+						"requested_primary_update_mode": 1,
+						"ticks_usec": 20910960
+					}
+				],
+				"primary_canvas": [
+					24576,
+					16384
+				],
+				"primary_frozen_update_mode": 0,
+				"primary_texture_instance_id": -9223371881548084796,
+				"primary_texture_rid": 10320806412324,
+				"primary_viewport_instance_id": 155273136578,
+				"primary_viewport_rid": 10303626543108,
+				"process_frame_after": 142,
+				"process_frame_before": 134,
+				"ticks_usec": 20910973,
+				"world_3d_instance_id": -9223371881531308342,
+				"world_node_instance_id": 155340245445
+			}
+		],
+		"primary_allocated": true,
+		"primary_canvas": [
+			24576,
+			16384
+		],
+		"released": {
+			"engine_static_memory_bytes": 89551485,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8422, 7629",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64164749312,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64164749312,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":330452992,\"process_private_bytes\":602402816,\"process_peak_working_set_bytes\":475348992}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 475348992,
+			"process_private_bytes": 602402816,
+			"process_working_set_bytes": 330452992,
+			"stage": "stage_B_primary_released",
+			"ticks_usec": 24658092,
+			"valid": true,
+			"vram_free_bytes": 7999586304,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8831107072
+		},
+		"scope": "NATIVE_INTEGER_GPU_TRANSFER_NOT_TERRAIN_OR_PROTOCOL_APPROVAL",
+		"transfers": [
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						129,
+						127
+					],
+					"actual_raw_RGBA_sha256": "3771ecbc2e70f4964f6c70eea32a9cddf5b4be0ed4aa8e7f5623bc589e3c7c67",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						129,
+						127
+					],
+					"expected_raw_RGBA_sha256": "3771ecbc2e70f4964f6c70eea32a9cddf5b4be0ed4aa8e7f5623bc589e3c7c67",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					129,
+					127
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					129,
+					127
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "top_left_red",
+					"passed": true,
+					"raw_RGBA": [
+						0.800000011920929,
+						0.00392156885936856,
+						0.00392156885936856,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 37,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 100,
+				"destination_draw_frame_before": 99,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 100,
+				"destination_process_frame_before": 99,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10462540333096,
+				"destination_viewport_instance_id": 156179106285,
+				"destination_viewport_rid": 10445360463877,
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					129,
+					127
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_0_pass_1.png",
+				"raw_RGBA_bytes": 65532,
+				"raw_RGBA_sha256": "3771ecbc2e70f4964f6c70eea32a9cddf5b4be0ed4aa8e7f5623bc589e3c7c67",
+				"resized": false,
+				"saved": true,
+				"sha256": "3b7d0a69814b3ad2e2ee78a41f0aee67e25e4f40caa9e2e4ef978c99794c5e32",
+				"source_origin_px": [
+					1,
+					3
+				],
+				"source_primary_frame": 99,
+				"source_primary_pass_id": "stage_B_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 36,
+				"source_primary_process_frame": 99,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						131,
+						129
+					],
+					"actual_raw_RGBA_sha256": "03790b2d080c29caf2ce45c973f0b7dcc2461787b6b07a89abc7f6aa9e945eb1",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						131,
+						129
+					],
+					"expected_raw_RGBA_sha256": "03790b2d080c29caf2ce45c973f0b7dcc2461787b6b07a89abc7f6aa9e945eb1",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					131,
+					129
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					131,
+					129
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "top_right_green",
+					"passed": true,
+					"raw_RGBA": [
+						0.00392156885936856,
+						0.800000011920929,
+						0.00392156885936856,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 38,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 105,
+				"destination_draw_frame_before": 104,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 105,
+				"destination_process_frame_before": 104,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10496900071463,
+				"destination_viewport_instance_id": 156632091118,
+				"destination_viewport_rid": 10479720202245,
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					131,
+					129
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_1_pass_1.png",
+				"raw_RGBA_bytes": 67596,
+				"raw_RGBA_sha256": "03790b2d080c29caf2ce45c973f0b7dcc2461787b6b07a89abc7f6aa9e945eb1",
+				"resized": false,
+				"saved": true,
+				"sha256": "b03a85e6243fa52c410533dcf993a68142468fc11f2fe3227b4cb9c1569d726d",
+				"source_origin_px": [
+					24443,
+					5
+				],
+				"source_primary_frame": 99,
+				"source_primary_pass_id": "stage_B_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 36,
+				"source_primary_process_frame": 99,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						127,
+						133
+					],
+					"actual_raw_RGBA_sha256": "d86257600339e785087f88f1b94fd617aed1a7e95875f7cb141f157394fa3e11",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						127,
+						133
+					],
+					"expected_raw_RGBA_sha256": "d86257600339e785087f88f1b94fd617aed1a7e95875f7cb141f157394fa3e11",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					127,
+					133
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					127,
+					133
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "bottom_left_blue",
+					"passed": true,
+					"raw_RGBA": [
+						0.00392156885936856,
+						0.00392156885936856,
+						0.800000011920929,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 39,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 110,
+				"destination_draw_frame_before": 109,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 110,
+				"destination_process_frame_before": 109,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10531259809832,
+				"destination_viewport_instance_id": 157085075933,
+				"destination_viewport_rid": 10514079940613,
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					127,
+					133
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_2_pass_1.png",
+				"raw_RGBA_bytes": 67564,
+				"raw_RGBA_sha256": "d86257600339e785087f88f1b94fd617aed1a7e95875f7cb141f157394fa3e11",
+				"resized": false,
+				"saved": true,
+				"sha256": "c5a37e47e0f0d81634722a46edd9d7f0073e26ca6e7ef97f7468174b52bfb59f",
+				"source_origin_px": [
+					3,
+					16249
+				],
+				"source_primary_frame": 99,
+				"source_primary_pass_id": "stage_B_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 36,
+				"source_primary_process_frame": 99,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						135,
+						131
+					],
+					"actual_raw_RGBA_sha256": "b04607fb44b5b1b7eddbeddf6a430c8f30f088d9d38799448e0c7cd845fc3fa5",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						135,
+						131
+					],
+					"expected_raw_RGBA_sha256": "b04607fb44b5b1b7eddbeddf6a430c8f30f088d9d38799448e0c7cd845fc3fa5",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					135,
+					131
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					135,
+					131
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "bottom_right_yellow",
+					"passed": true,
+					"raw_RGBA": [
+						0.800000011920929,
+						0.800000011920929,
+						0.00392156885936856,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 40,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 115,
+				"destination_draw_frame_before": 114,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 115,
+				"destination_process_frame_before": 114,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10565619548199,
+				"destination_viewport_instance_id": 157538060781,
+				"destination_viewport_rid": 10548439678981,
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					135,
+					131
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_3_pass_1.png",
+				"raw_RGBA_bytes": 70740,
+				"raw_RGBA_sha256": "b04607fb44b5b1b7eddbeddf6a430c8f30f088d9d38799448e0c7cd845fc3fa5",
+				"resized": false,
+				"saved": true,
+				"sha256": "940d35aa7fffa18d3b24e0ae66f013e14c72efef950acf9250287555c34fa023",
+				"source_origin_px": [
+					24439,
+					16251
+				],
+				"source_primary_frame": 99,
+				"source_primary_pass_id": "stage_B_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 36,
+				"source_primary_process_frame": 99,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						131,
+						129
+					],
+					"actual_raw_RGBA_sha256": "6adf9c905b589c7976c4f8e9dbf0aef9a4e464af4af36829116a91c3ddb5d040",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						131,
+						129
+					],
+					"expected_raw_RGBA_sha256": "6adf9c905b589c7976c4f8e9dbf0aef9a4e464af4af36829116a91c3ddb5d040",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					131,
+					129
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					131,
+					129
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "center_magenta",
+					"passed": true,
+					"raw_RGBA": [
+						0.800000011920929,
+						0.00392156885936856,
+						0.800000011920929,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 41,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 120,
+				"destination_draw_frame_before": 119,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 120,
+				"destination_process_frame_before": 119,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10599979286568,
+				"destination_viewport_instance_id": 157991045614,
+				"destination_viewport_rid": 10582799417349,
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					131,
+					129
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_4_pass_1.png",
+				"raw_RGBA_bytes": 67596,
+				"raw_RGBA_sha256": "6adf9c905b589c7976c4f8e9dbf0aef9a4e464af4af36829116a91c3ddb5d040",
+				"resized": false,
+				"saved": true,
+				"sha256": "7abb2cdcfe6064ab50aada6b9b5abdddb3c3673dc382ef874189028f3c1266e4",
+				"source_origin_px": [
+					12223,
+					8129
+				],
+				"source_primary_frame": 99,
+				"source_primary_pass_id": "stage_B_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 36,
+				"source_primary_process_frame": 99,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						257,
+						255
+					],
+					"actual_raw_RGBA_sha256": "0342ba9e01e49ac3633de4fef9f0d4eeb53e6c9f6e63da738924c0d20c159b2c",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						257,
+						255
+					],
+					"expected_raw_RGBA_sha256": "0342ba9e01e49ac3633de4fef9f0d4eeb53e6c9f6e63da738924c0d20c159b2c",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					257,
+					255
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					257,
+					255
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"destination_actual_post_draw_fence_sequence": 42,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 125,
+				"destination_draw_frame_before": 124,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 125,
+				"destination_process_frame_before": 124,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10634339024935,
+				"destination_viewport_instance_id": 158444030429,
+				"destination_viewport_rid": 10617159155717,
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					257,
+					255
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_5_pass_1.png",
+				"raw_RGBA_bytes": 262140,
+				"raw_RGBA_sha256": "0342ba9e01e49ac3633de4fef9f0d4eeb53e6c9f6e63da738924c0d20c159b2c",
+				"resized": false,
+				"saved": true,
+				"sha256": "d2923ba865474cdc87063439969b9d404980c1106d7dbd0a861a89675578023b",
+				"source_origin_px": [
+					3065,
+					2041
+				],
+				"source_primary_frame": 99,
+				"source_primary_pass_id": "stage_B_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 36,
+				"source_primary_process_frame": 99,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						259,
+						253
+					],
+					"actual_raw_RGBA_sha256": "06a02921a485587d219b6e2ffe9f4fb91706428a116bd188877fc0b0e3f28559",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						259,
+						253
+					],
+					"expected_raw_RGBA_sha256": "06a02921a485587d219b6e2ffe9f4fb91706428a116bd188877fc0b0e3f28559",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					259,
+					253
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					259,
+					253
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"destination_actual_post_draw_fence_sequence": 43,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 130,
+				"destination_draw_frame_before": 129,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 130,
+				"destination_process_frame_before": 129,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10668698763304,
+				"destination_viewport_instance_id": 158897015277,
+				"destination_viewport_rid": 10651518894085,
+				"format": 5,
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					259,
+					253
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_6_pass_1.png",
+				"raw_RGBA_bytes": 262108,
+				"raw_RGBA_sha256": "06a02921a485587d219b6e2ffe9f4fb91706428a116bd188877fc0b0e3f28559",
+				"resized": false,
+				"saved": true,
+				"sha256": "f039c5783d335c058d98bd42f5a4493bd3fe15125cfecde19768186e779f4186",
+				"source_origin_px": [
+					12281,
+					8185
+				],
+				"source_primary_frame": 99,
+				"source_primary_pass_id": "stage_B_primary_pass_1",
+				"source_primary_post_draw_fence_sequence": 36,
+				"source_primary_process_frame": 99,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						129,
+						127
+					],
+					"actual_raw_RGBA_sha256": "3771ecbc2e70f4964f6c70eea32a9cddf5b4be0ed4aa8e7f5623bc589e3c7c67",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						129,
+						127
+					],
+					"expected_raw_RGBA_sha256": "3771ecbc2e70f4964f6c70eea32a9cddf5b4be0ed4aa8e7f5623bc589e3c7c67",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					129,
+					127
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					129,
+					127
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "top_left_red",
+					"passed": true,
+					"raw_RGBA": [
+						0.800000011920929,
+						0.00392156885936856,
+						0.00392156885936856,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 52,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 143,
+				"destination_draw_frame_before": 142,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 143,
+				"destination_process_frame_before": 142,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10703058501671,
+				"destination_viewport_instance_id": 159685544431,
+				"destination_viewport_rid": 10685878632453,
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						129,
+						127
+					],
+					"actual_raw_RGBA_sha256": "3771ecbc2e70f4964f6c70eea32a9cddf5b4be0ed4aa8e7f5623bc589e3c7c67",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						129,
+						127
+					],
+					"expected_raw_RGBA_sha256": "3771ecbc2e70f4964f6c70eea32a9cddf5b4be0ed4aa8e7f5623bc589e3c7c67",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					129,
+					127
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_0_pass_2.png",
+				"raw_RGBA_bytes": 65532,
+				"raw_RGBA_sha256": "3771ecbc2e70f4964f6c70eea32a9cddf5b4be0ed4aa8e7f5623bc589e3c7c67",
+				"resized": false,
+				"saved": true,
+				"sha256": "3b7d0a69814b3ad2e2ee78a41f0aee67e25e4f40caa9e2e4ef978c99794c5e32",
+				"source_origin_px": [
+					1,
+					3
+				],
+				"source_primary_frame": 142,
+				"source_primary_pass_id": "stage_B_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 51,
+				"source_primary_process_frame": 142,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						131,
+						129
+					],
+					"actual_raw_RGBA_sha256": "03790b2d080c29caf2ce45c973f0b7dcc2461787b6b07a89abc7f6aa9e945eb1",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						131,
+						129
+					],
+					"expected_raw_RGBA_sha256": "03790b2d080c29caf2ce45c973f0b7dcc2461787b6b07a89abc7f6aa9e945eb1",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					131,
+					129
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					131,
+					129
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "top_right_green",
+					"passed": true,
+					"raw_RGBA": [
+						0.00392156885936856,
+						0.800000011920929,
+						0.00392156885936856,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 53,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 148,
+				"destination_draw_frame_before": 147,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 148,
+				"destination_process_frame_before": 147,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10737418240040,
+				"destination_viewport_instance_id": 160239192556,
+				"destination_viewport_rid": 10720238370821,
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						131,
+						129
+					],
+					"actual_raw_RGBA_sha256": "03790b2d080c29caf2ce45c973f0b7dcc2461787b6b07a89abc7f6aa9e945eb1",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						131,
+						129
+					],
+					"expected_raw_RGBA_sha256": "03790b2d080c29caf2ce45c973f0b7dcc2461787b6b07a89abc7f6aa9e945eb1",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					131,
+					129
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_1_pass_2.png",
+				"raw_RGBA_bytes": 67596,
+				"raw_RGBA_sha256": "03790b2d080c29caf2ce45c973f0b7dcc2461787b6b07a89abc7f6aa9e945eb1",
+				"resized": false,
+				"saved": true,
+				"sha256": "b03a85e6243fa52c410533dcf993a68142468fc11f2fe3227b4cb9c1569d726d",
+				"source_origin_px": [
+					24443,
+					5
+				],
+				"source_primary_frame": 142,
+				"source_primary_pass_id": "stage_B_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 51,
+				"source_primary_process_frame": 142,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						127,
+						133
+					],
+					"actual_raw_RGBA_sha256": "d86257600339e785087f88f1b94fd617aed1a7e95875f7cb141f157394fa3e11",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						127,
+						133
+					],
+					"expected_raw_RGBA_sha256": "d86257600339e785087f88f1b94fd617aed1a7e95875f7cb141f157394fa3e11",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					127,
+					133
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					127,
+					133
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "bottom_left_blue",
+					"passed": true,
+					"raw_RGBA": [
+						0.00392156885936856,
+						0.00392156885936856,
+						0.800000011920929,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 54,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 153,
+				"destination_draw_frame_before": 152,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 153,
+				"destination_process_frame_before": 152,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10771777978407,
+				"destination_viewport_instance_id": 160792840685,
+				"destination_viewport_rid": 10754598109189,
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						127,
+						133
+					],
+					"actual_raw_RGBA_sha256": "d86257600339e785087f88f1b94fd617aed1a7e95875f7cb141f157394fa3e11",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						127,
+						133
+					],
+					"expected_raw_RGBA_sha256": "d86257600339e785087f88f1b94fd617aed1a7e95875f7cb141f157394fa3e11",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					127,
+					133
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_2_pass_2.png",
+				"raw_RGBA_bytes": 67564,
+				"raw_RGBA_sha256": "d86257600339e785087f88f1b94fd617aed1a7e95875f7cb141f157394fa3e11",
+				"resized": false,
+				"saved": true,
+				"sha256": "c5a37e47e0f0d81634722a46edd9d7f0073e26ca6e7ef97f7468174b52bfb59f",
+				"source_origin_px": [
+					3,
+					16249
+				],
+				"source_primary_frame": 142,
+				"source_primary_pass_id": "stage_B_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 51,
+				"source_primary_process_frame": 142,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						135,
+						131
+					],
+					"actual_raw_RGBA_sha256": "b04607fb44b5b1b7eddbeddf6a430c8f30f088d9d38799448e0c7cd845fc3fa5",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						135,
+						131
+					],
+					"expected_raw_RGBA_sha256": "b04607fb44b5b1b7eddbeddf6a430c8f30f088d9d38799448e0c7cd845fc3fa5",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					135,
+					131
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					135,
+					131
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "bottom_right_yellow",
+					"passed": true,
+					"raw_RGBA": [
+						0.800000011920929,
+						0.800000011920929,
+						0.00392156885936856,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 55,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 158,
+				"destination_draw_frame_before": 157,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 158,
+				"destination_process_frame_before": 157,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10806137716776,
+				"destination_viewport_instance_id": 161346488815,
+				"destination_viewport_rid": 10788957847557,
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						135,
+						131
+					],
+					"actual_raw_RGBA_sha256": "b04607fb44b5b1b7eddbeddf6a430c8f30f088d9d38799448e0c7cd845fc3fa5",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						135,
+						131
+					],
+					"expected_raw_RGBA_sha256": "b04607fb44b5b1b7eddbeddf6a430c8f30f088d9d38799448e0c7cd845fc3fa5",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					135,
+					131
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_3_pass_2.png",
+				"raw_RGBA_bytes": 70740,
+				"raw_RGBA_sha256": "b04607fb44b5b1b7eddbeddf6a430c8f30f088d9d38799448e0c7cd845fc3fa5",
+				"resized": false,
+				"saved": true,
+				"sha256": "940d35aa7fffa18d3b24e0ae66f013e14c72efef950acf9250287555c34fa023",
+				"source_origin_px": [
+					24439,
+					16251
+				],
+				"source_primary_frame": 142,
+				"source_primary_pass_id": "stage_B_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 51,
+				"source_primary_process_frame": 142,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						131,
+						129
+					],
+					"actual_raw_RGBA_sha256": "6adf9c905b589c7976c4f8e9dbf0aef9a4e464af4af36829116a91c3ddb5d040",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						131,
+						129
+					],
+					"expected_raw_RGBA_sha256": "6adf9c905b589c7976c4f8e9dbf0aef9a4e464af4af36829116a91c3ddb5d040",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					131,
+					129
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					131,
+					129
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"color_witness": {
+					"id": "center_magenta",
+					"passed": true,
+					"raw_RGBA": [
+						0.800000011920929,
+						0.00392156885936856,
+						0.800000011920929,
+						1.0
+					],
+					"scope": "color/orientation witness only; exact byte proof comes from Stage A and real repeat"
+				},
+				"destination_actual_post_draw_fence_sequence": 56,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 163,
+				"destination_draw_frame_before": 162,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 163,
+				"destination_process_frame_before": 162,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10840497455143,
+				"destination_viewport_instance_id": 161900136940,
+				"destination_viewport_rid": 10823317585925,
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						131,
+						129
+					],
+					"actual_raw_RGBA_sha256": "6adf9c905b589c7976c4f8e9dbf0aef9a4e464af4af36829116a91c3ddb5d040",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						131,
+						129
+					],
+					"expected_raw_RGBA_sha256": "6adf9c905b589c7976c4f8e9dbf0aef9a4e464af4af36829116a91c3ddb5d040",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					131,
+					129
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_4_pass_2.png",
+				"raw_RGBA_bytes": 67596,
+				"raw_RGBA_sha256": "6adf9c905b589c7976c4f8e9dbf0aef9a4e464af4af36829116a91c3ddb5d040",
+				"resized": false,
+				"saved": true,
+				"sha256": "7abb2cdcfe6064ab50aada6b9b5abdddb3c3673dc382ef874189028f3c1266e4",
+				"source_origin_px": [
+					12223,
+					8129
+				],
+				"source_primary_frame": 142,
+				"source_primary_pass_id": "stage_B_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 51,
+				"source_primary_process_frame": 142,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						257,
+						255
+					],
+					"actual_raw_RGBA_sha256": "0342ba9e01e49ac3633de4fef9f0d4eeb53e6c9f6e63da738924c0d20c159b2c",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						257,
+						255
+					],
+					"expected_raw_RGBA_sha256": "0342ba9e01e49ac3633de4fef9f0d4eeb53e6c9f6e63da738924c0d20c159b2c",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					257,
+					255
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					257,
+					255
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"destination_actual_post_draw_fence_sequence": 57,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 168,
+				"destination_draw_frame_before": 167,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 168,
+				"destination_process_frame_before": 167,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10874857193512,
+				"destination_viewport_instance_id": 162453785069,
+				"destination_viewport_rid": 10857677324293,
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						257,
+						255
+					],
+					"actual_raw_RGBA_sha256": "0342ba9e01e49ac3633de4fef9f0d4eeb53e6c9f6e63da738924c0d20c159b2c",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						257,
+						255
+					],
+					"expected_raw_RGBA_sha256": "0342ba9e01e49ac3633de4fef9f0d4eeb53e6c9f6e63da738924c0d20c159b2c",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					257,
+					255
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_5_pass_2.png",
+				"raw_RGBA_bytes": 262140,
+				"raw_RGBA_sha256": "0342ba9e01e49ac3633de4fef9f0d4eeb53e6c9f6e63da738924c0d20c159b2c",
+				"resized": false,
+				"saved": true,
+				"sha256": "d2923ba865474cdc87063439969b9d404980c1106d7dbd0a861a89675578023b",
+				"source_origin_px": [
+					3065,
+					2041
+				],
+				"source_primary_frame": 142,
+				"source_primary_pass_id": "stage_B_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 51,
+				"source_primary_process_frame": 142,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			},
+			{
+				"PNG_reload_RGBA": {
+					"actual_canvas": [
+						259,
+						253
+					],
+					"actual_raw_RGBA_sha256": "06a02921a485587d219b6e2ffe9f4fb91706428a116bd188877fc0b0e3f28559",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						259,
+						253
+					],
+					"expected_raw_RGBA_sha256": "06a02921a485587d219b6e2ffe9f4fb91706428a116bd188877fc0b0e3f28559",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"actual_destination_canvas": [
+					259,
+					253
+				],
+				"actual_destination_released": true,
+				"actual_readback_canvas": [
+					259,
+					253
+				],
+				"actual_source_canvas": [
+					24576,
+					16384
+				],
+				"destination_actual_post_draw_fence_sequence": 58,
+				"destination_capture_identity_method": "actual natural process/frame_post_draw signal fence, followed by native RGBA readback; Engine counter growth NOT asserted",
+				"destination_draw_frame_after": 173,
+				"destination_draw_frame_before": 172,
+				"destination_engine_draw_counter_advanced": true,
+				"destination_process_frame_after": 173,
+				"destination_process_frame_before": 172,
+				"destination_requested_update_mode": 1,
+				"destination_texture_rid": 10909216931879,
+				"destination_viewport_instance_id": 163007433199,
+				"destination_viewport_rid": 10892037062661,
+				"format": 5,
+				"fresh_primary_repeat_RGBA": {
+					"actual_canvas": [
+						259,
+						253
+					],
+					"actual_raw_RGBA_sha256": "06a02921a485587d219b6e2ffe9f4fb91706428a116bd188877fc0b0e3f28559",
+					"different_bytes": 0,
+					"dimensions_equal": true,
+					"exact": true,
+					"expected_canvas": [
+						259,
+						253
+					],
+					"expected_raw_RGBA_sha256": "06a02921a485587d219b6e2ffe9f4fb91706428a116bd188877fc0b0e3f28559",
+					"maximum_byte_delta": 0,
+					"tolerance": 0
+				},
+				"gamma_compensation": false,
+				"native_RGBA8": true,
+				"native_window_size": [
+					259,
+					253
+				],
+				"passed": true,
+				"path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/stage_B_window_6_pass_2.png",
+				"raw_RGBA_bytes": 262108,
+				"raw_RGBA_sha256": "06a02921a485587d219b6e2ffe9f4fb91706428a116bd188877fc0b0e3f28559",
+				"resized": false,
+				"saved": true,
+				"sha256": "f039c5783d335c058d98bd42f5a4493bd3fe15125cfecde19768186e779f4186",
+				"source_origin_px": [
+					12281,
+					8185
+				],
+				"source_primary_frame": 142,
+				"source_primary_pass_id": "stage_B_primary_pass_2",
+				"source_primary_post_draw_fence_sequence": 51,
+				"source_primary_process_frame": 142,
+				"source_texture_rid": 10320806412324,
+				"source_viewport_rid": 10303626543108,
+				"transfer_shader_sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+			}
+		],
+		"whole_primary_cpu_readback": false
+	},
+	"status": "SMALL_ORACLE_AND_WHOLE_WINDOW_PASS",
+	"terrain_or_capture_protocol_approved": false,
+	"transfer_shader": {
+		"path": "res://shaders/world_v15_native_texel_transfer.gdshader",
+		"sha256": "4997274fc2a62404235a69117785448c2ec65cc50667a4353d27c456d33ec47e"
+	},
+	"whole_cpu_image_requested": false,
+	"whole_estimate": {
+		"method": "bound actual ROOT078 square peak deltas times six; minimum 8GiB RAM",
+		"pixel_ratio": 6,
+		"ram_requirement_bytes": 11392942080,
+		"vram_estimate_bytes": 3114270720,
+		"vram_headroom_bytes": 1073741824
+	},
+	"whole_gpu_allocated": true,
+	"whole_guard": {
+		"engine_static_memory_bytes": 89376101,
+		"gpu_index": 0,
+		"gpu_name": "NVIDIA GeForce RTX 4080",
+		"gpu_query": {
+			"args": [
+				"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+				"--format=csv,noheader,nounits"
+			],
+			"path": "C:/Windows/System32/nvidia-smi.exe"
+		},
+		"gpu_query_exit": 0,
+		"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8473, 7578",
+		"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+		"host_free_bytes": 63885742080,
+		"host_query_exit": 0,
+		"host_raw_output": "{\"host_free_bytes\":63885742080,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":321626112,\"process_private_bytes\":404467712,\"process_peak_working_set_bytes\":475348992}",
+		"host_total_bytes": 137050136576,
+		"process_peak_working_set_bytes": 475348992,
+		"process_private_bytes": 404467712,
+		"process_working_set_bytes": 321626112,
+		"stage": "fresh_before_whole_transfer_guard",
+		"ticks_usec": 15457814,
+		"valid": true,
+		"vram_free_bytes": 7946108928,
+		"vram_total_bytes": 17171480576,
+		"vram_used_bytes": 8884584448
+	},
+	"whole_guard_passed": true,
+	"whole_requested": true,
+	"zero_tolerance": true
+}

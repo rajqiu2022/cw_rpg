@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "id": "luoyang_city_masterplan_20261019z_overview_v1",
+  "asset_id": "luoyang_city_masterplan_overview_v1",
+  "status": "GENERATED_CONCEPT_LIMITED_ACCEPT_NO_EDIT_RUNTIME_NOT_AUTHORIZED",
+  "use_case": "infographic-diagram",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "attempt_budget": 1,
+  "attempts_used": 1,
+  "optional_targeted_edit_budget": 1,
+  "optional_edit_condition": "Root may register and run exactly one targeted identity-preserving edit only if the generated overview breaks a critical spatial relationship, omits major districts, or makes numbering unusable; no automatic retry",
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "transparent_background": false,
+  "input_images": [],
+  "prompt_path": "prompts/luoyang_city_masterplan_20261019z/luoyang_city_masterplan_overview_v1.txt",
+  "output_path": "assets/raw/luoyang_city_masterplan_20261019z/luoyang_city_masterplan_overview_v1.png",
+  "metadata_path": "assets/raw/luoyang_city_masterplan_20261019z/luoyang_city_masterplan_overview_v1.meta.json",
+  "requested_composition": "wide landscape, approximately 16:10, north-up whole-city bird's-eye planning overview",
+  "district_order": ["01 南门瓮城", "02 南北主街", "03 府衙官署", "04 南市商街", "05 西市百工", "06 民居坊巷", "07 世家宅园", "08 漕运码头", "09 洛水园林", "10 城外古寺"],
+  "spatial_invariants": [
+    "south gate/barbican at bottom centre with moat bridge and clear axis",
+    "north-south main street plus connected loop streets and narrower ward lanes",
+    "yamen north-central, elite mansion/garden northeastern, port southeastern, temple east outside walls",
+    "Luoshui/port water has banks and bridges; ordinary shops remain inside fortifications",
+    "more than fifteen readable building functions; buildings and courtyards remain separate",
+    "no current screenshots used as generation or edit inputs"
+  ],
+  "art_acceptance": [
+    "reads immediately as one large city rather than four sparse courtyards",
+    "all ten zones are spatially recognizable even if Chinese label fidelity is imperfect",
+    "main route, loop streets, ward alleys and return paths are coherent",
+    "market, crafts, housing, mansion, docks, gardens, government and temple have different density and ground language",
+    "no single generic facade with three doors is used as multiple building identities",
+    "no HUD, gameplay screenshot, runtime or historical-reconstruction claim"
+  ],
+  "runtime_authorization": "NONE_CONCEPT_PLANNING_ONLY"
+}

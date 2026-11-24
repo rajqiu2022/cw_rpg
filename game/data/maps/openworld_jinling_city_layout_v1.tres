@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.40,0.99,0.62,0.99,0.63,0.53,0.39,0.53),PackedVector2Array(0.25,0.34,0.77,0.34,0.79,0.69,0.25,0.69),PackedVector2Array(0.01,0.24,0.35,0.23,0.36,0.58,0.02,0.61),PackedVector2Array(0.67,0.30,0.96,0.28,0.96,0.62,0.67,0.63)])
+blockers = [{"id":"east_notice_board","pos":Vector2(0.805,0.535),"size":Vector2(0.085,0.07)},{"id":"central_tree","pos":Vector2(0.525,0.555),"size":Vector2(0.13,0.09)}]
+interactions = [{"id":"jinling_bounty_board","label":"查看金陵府缉捕榜","pos":Vector2(0.805,0.585),"size":Vector2(0.13,0.11),"activation":"interact","action":"bounty_board:jinling","visual_baked":true,"baked_feature":"东桥头实体缉捕榜"}]
+portals = [{"id":"return_world","label":"离开金陵 · 江湖大地图","pos":Vector2(0.510,0.955),"size":Vector2(0.17,0.075),"action":"world_map"},{"id":"reed_marsh","label":"乘舟前往江南芦荡（9～13级）","pos":Vector2(0.120,0.500),"size":Vector2(0.12,0.10),"target_scene":"openworld_jinling_reed_marsh","target_pos":Vector2(0.50,0.88)}]
+walkable_probes = [{"id":"arrival","pos":Vector2(0.510,0.90)},{"id":"central_square","pos":Vector2(0.52,0.63)},{"id":"board","pos":Vector2(0.80,0.62)},{"id":"west_market","pos":Vector2(0.18,0.44)},{"id":"east_bridge","pos":Vector2(0.72,0.45)}]
+blocked_probes = [{"id":"south_water","pos":Vector2(0.82,0.88)},{"id":"central_tree","pos":Vector2(0.525,0.555)}]

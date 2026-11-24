@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "药师苏伯"
+portrait_path = "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text = "你从山道回来后，苏伯就一直留意你肩上的伤。他说近来伤药用得快，有一味青崖止血藤却只生在临崖石缝里，药铺学徒不敢去取。"
+on_end = "next:ask"
+
+[sub_resource type="Resource" id="node_ask"]
+script = ExtResource("2_dnode")
+node_id = &"ask"
+speaker = "药师苏伯"
+portrait_path = "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text = "你若还要经过村外山道，可愿替我带一束回来？藤叶背面泛青，断口有淡淡辛味。别往崖外探身，够不着便算了。"
+choices = Array[Dictionary]([{"text":"我经过时会留意", "next":"accept", "accept_quest":"q_ch1_side_02_cliff_herb"}, {"text":"眼下先不答应", "next":"decline", "decline_quest":"q_ch1_side_02_cliff_herb"}])
+on_end = "end"
+
+[sub_resource type="Resource" id="node_accept"]
+script = ExtResource("2_dnode")
+node_id = &"accept"
+speaker = "药师苏伯"
+portrait_path = "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text = "多谢。山路上刚出过事，药草没有人命要紧。若见石缝边那一小簇，割近根处一段就够。"
+set_flags = Array[Dictionary]([{"key":"cliff_herb_accepted", "value":true}])
+accept_quest = &"q_ch1_side_02_cliff_herb"
+on_end = "end"
+
+[sub_resource type="Resource" id="node_decline"]
+script = ExtResource("2_dnode")
+node_id = &"decline"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "山道的事情还没理清。我若再经过，会先看清路势，再决定是否采药。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"linxi_cliff_herb_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_ask"), SubResource("node_accept"), SubResource("node_decline")])

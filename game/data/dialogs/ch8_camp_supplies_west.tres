@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "我把干毡从西棚的备用捆里取出来，折好放在粮袋旁的架上。守棚的人伸手就拿得到，不必开领粮的封签。"
+set_flags = Array[Dictionary]([{"key":"ch8_camp_supplies_west_done","value":true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch8_camp_supplies_west"
+nodes = Array[Resource]([SubResource("start")])

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "id": "luoyang_covered_ferry_margin_edit_20261015_v2",
+  "name": "洛阳渡船安全透明边距编辑候选v2",
+  "status": "PREPARED_NOT_GENERATED_NOT_ADOPTED",
+  "execution": {
+    "backend": "builtin_image_gen",
+    "intent": "edit",
+    "owner": "producer",
+    "calls_authorized_here": 0,
+    "cli_allowed": false,
+    "external_paid_api_allowed": false,
+    "transparent_background": true,
+    "model": null,
+    "model_identity_policy": "Save actual tool response metadata if disclosed; otherwise explicitly model not disclosed. No inferred gpt-image-2, provider, price or successful-result claim."
+  },
+  "referenced_image": {
+    "path": "assets/raw/luoyang_city_candidates_20261015/covered_ferry_v1.png",
+    "absolute_path": "F:/Code/RPG_GAME/assets/raw/luoyang_city_candidates_20261015/covered_ferry_v1.png",
+    "role": "edit_target_not_merely_style_reference",
+    "sha256": "CC9DEE16DB88E73B6C5D8225B06E0CD44A6075BA726289F77460FFD9B78C4A08",
+    "actual_size_px": [
+      1024,
+      1536
+    ],
+    "source_provenance": "assets/raw/luoyang_city_candidates_20261015/provenance.json",
+    "source_provenance_sha256": "E4CF9EA96AC861350150E9B97BA53DB5FC838D610E94C3192912D723F6A202C5",
+    "source_nonzero_alpha_bounds_inclusive": [
+      0,
+      33,
+      1009,
+      1535
+    ],
+    "source_status": "Margin rejected; keep original bytes and report. This edit request does not change old evidence."
+  },
+  "prompt_path": "prompts/qa/luoyang_city_asset_candidates_20261015/covered_ferry_v2_margin_edit.prompt.txt",
+  "candidate_output_path": "assets/raw/luoyang_city_candidates_20261015/covered_ferry_v2.png",
+  "change_scope": [
+    "Uniformly reduce complete visual boat/oar/local-shadow group and center within same portrait framing.",
+    "Clear exterior broad atmospheric halo to true alpha=0."
+  ],
+  "visual_invariants": [
+    "Same boat identity, complete hull, canopy, ropes and attached oar.",
+    "Same original orientation and elevated orthographic camera.",
+    "Same realistic weathered timber/woven canopy materials, lighting and colours.",
+    "No geometrical edits to shorten oar or hide clipped parts; no manually cropped/repacked pixels."
+  ],
+  "acceptance": {
+    "threshold": "Every nonzero-alpha pixel counts; no alpha threshold weakening.",
+    "target_margin_fraction_each_side": 0.12,
+    "minimum_margin_fraction_each_side": 0.1,
+    "formal_formula": "For actual W,H and alpha>0 bounds inclusive [x0,y0,x1,y1], require x0>=ceil(.1*W), y0>=ceil(.1*H), x1<floor(.9*W), y1<floor(.9*H), and all pixels outside the corresponding safe interior exactly alpha=0.",
+    "no_halo_or_guidelines": true,
+    "preserve_full_oar": true,
+    "requires_root_actual_image_review": true,
+    "geometry_foot_uv": null,
+    "collision_or_nav_credit": false,
+    "runtime_credit": false
+  },
+  "retention": "Preserve v1 and provenance exact. Copy actual returned v2 to the new workspace path without modifying pixels. Record actual output path/SHA/size/alpha support/model disclosure. No image edit or engine is executed by this preparation task.",
+  "prompt": "Use case: precise-object-edit\nAsset type: transparent human-scale 2.5D game environment sprite.\nInput image: Image 1 is the exact edit target, covered_ferry_v1.png. Preserve this particular boat, its present direction and camera, realistic 3D-baked timber construction, weathered wood colour, woven canopy, ropes, boards, hull proportions and attached steering oar. Do not redesign or add anything.\nChange only framing and empty-background treatment: uniformly make the COMPLETE boat-plus-oar group smaller and place it centrally on the same portrait canvas, so every part of the bow, stern, hull, canopy, ropes and especially the long lower-right oar is fully visible and comfortably inside the image. Keep all attached pieces at the same relative scale and angle; do not shorten or detach the oar to make it fit. Aim for the total visible group to fit within the central 76 percent of the image width AND height, leaving approximately 12 percent empty transparent padding on every side, with an absolute minimum of 10 percent on all four sides.\nRemove the broad brown/grey background glow or translucent halo around the object. The exterior padding must be genuinely alpha=0, not almost-transparent colour. If a very faint local shadow immediately under the hull is retained, it belongs to the same uniformly reduced group and its entire nonzero-alpha extent must also stay inside the safe central area. Do not replace the surrounding glow with another shadow plate.\nRetain the same existing elevated orthographic viewpoint and vertical hull orientation, bow toward upper image and stern toward lower image. No new rotation, camera movement, perspective change, colour grading, lighting change or material simplification. The result should still look like this same detailed, dimensional, realistically rendered wooden ferry, not a flat map icon or cartoon.\nOutput intent: one portrait transparent RGBA PNG, preferably preserving the original 1024 by 1536 canvas shape, clean edges and complete object. No water, ripples, riverbank, dock, ground plane, extra boat, people, text, UI, watermark, checkerboard, alignment guide, anchor dot, measurement line or border. Do not crop the original object or hide edge-clipped pieces. Do not draw padding as an opaque background. This is only a candidate framing correction, not a claim of runtime foot, collision, navigation or adoption readiness."
+}

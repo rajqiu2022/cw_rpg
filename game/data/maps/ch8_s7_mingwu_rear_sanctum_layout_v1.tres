@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script=ExtResource("1")
+design_size=Vector2i(1536,1024)
+fill_viewport=true
+walkable_regions=Array[PackedVector2Array]([PackedVector2Array(0.31,0.98,0.69,0.98,0.83,0.76,0.82,0.27,0.68,0.16,0.32,0.16,0.18,0.27,0.17,0.76)])
+blockers=Array[Dictionary]([{"id":"left_testimony_alcove","pos":Vector2(0.20,0.55),"size":Vector2(0.17,0.28)},{"id":"right_command_bell","pos":Vector2(0.81,0.51),"size":Vector2(0.18,0.34)},{"id":"rear_archive_dais","pos":Vector2(0.50,0.16),"size":Vector2(0.28,0.10)}])
+portals=Array[Dictionary]([{"id":"return_to_main_hall","pos":Vector2(0.50,0.93),"size":Vector2(0.16,0.10),"label":"返回山庄正厅","target_scene":"ch8_s6_mingwu_main_hall","target_pos":Vector2(0.50,0.33)}])
+walkable_probes=Array[Dictionary]([{"id":"spawn","pos":Vector2(0.50,0.86)},{"id":"confrontation_floor","pos":Vector2(0.50,0.54)},{"id":"testimony_approach","pos":Vector2(0.33,0.52)},{"id":"bell_approach","pos":Vector2(0.67,0.50)},{"id":"final_archive_approach","pos":Vector2(0.50,0.27)}])
+blocked_probes=Array[Dictionary]([{"id":"testimony_desk_blocked","pos":Vector2(0.20,0.55)},{"id":"command_bell_blocked","pos":Vector2(0.81,0.51)},{"id":"archive_dais_blocked","pos":Vector2(0.50,0.16)}])

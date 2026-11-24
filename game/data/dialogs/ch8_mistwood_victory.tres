@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="冷孤云"
+text="信号已断，第一道雾林封锁清除。证人路线没有暴露。"
+set_flags=Array[Dictionary]([{"key":"ch8_mistwood_blockade_cleared","value":true}])
+accept_quest=&"q_ch8_main_03_false_order_matrix"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_mistwood_victory"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/openworld_yanmen_pass_layout.tres" id="2"]
+[resource]
+script = ExtResource("1")
+scene_id = &"openworld_yanmen_pass"
+display_name = "雁门关 · 关外雪径"
+background_path = "res://art/backgrounds/bg_ch5_snow_pass_gameplay_v1.png"
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = false
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.25,0.78)
+npcs = Array[Dictionary]([])
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids": [&"openworld_snow_raider"], "weight": 45.0},
+	{"enemy_ids": [&"training_wolf_mountain_lv7"], "weight": 12.0},
+	{"enemy_ids": [&"yanmen_eagle"], "weight": 8.0},
+	{"enemy_ids": [&"openworld_snow_raider", &"ch5_snow_pass_pursuer"], "weight": 22.0},
+	{"enemy_ids": [&"openworld_snow_raider", &"ch5_snow_pass_pursuer", &"openworld_snow_raider"], "weight": 8.0},
+	{"enemy_ids": [&"wild_elite_yanmen"], "weight": 5.0}
+])
+encounter_allow_full_group_for_solo = true
+encounter_step_distance = 580.0
+encounter_chance = 0.16
+animated_props = Array[Dictionary]([
+	{"id":"openworld_yanmen_crosswind","type":"snow_drift","pos":Vector2(0.50,0.46),"size":Vector2(0.98,0.82),"speed":0.88,"opacity":0.40,"count":16,"wind_x":0.40,"color":"#f1f6f4","z_index":31},
+	{"id":"openworld_yanmen_low_mist","type":"mist_drift","pos":Vector2(0.54,0.71),"size":Vector2(0.86,0.13),"speed":0.40,"opacity":0.07,"count":3,"color":"#e4e9e6","z_index":12}
+])

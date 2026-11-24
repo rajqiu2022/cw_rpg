@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "maps": [
+    {
+      "scene_id": "adventure_luoyang_riverside_route",
+      "label": "古寺外·岸驿曲径",
+      "size": [
+        4096,
+        3072
+      ],
+      "spawn": [
+        2048,
+        2764.8
+      ],
+      "zones": [
+        {
+          "id": "luoyang_wet_bank",
+          "label": "石岸浅洼",
+          "kind": "waterfront",
+          "polygon": [
+            [
+              2160,
+              700
+            ],
+            [
+              3800,
+              700
+            ],
+            [
+              3800,
+              2750
+            ],
+            [
+              2160,
+              2750
+            ]
+          ]
+        },
+        {
+          "id": "luoyang_shelter",
+          "label": "废驿旧棚",
+          "kind": "explore",
+          "polygon": [
+            [
+              980,
+              1000
+            ],
+            [
+              1960,
+              1000
+            ],
+            [
+              1960,
+              1700
+            ],
+            [
+              980,
+              1700
+            ]
+          ]
+        },
+        {
+          "id": "luoyang_dry_loop",
+          "label": "灰岩曲径",
+          "kind": "path",
+          "polygon": [
+            [
+              760,
+              800
+            ],
+            [
+              2400,
+              800
+            ],
+            [
+              2450,
+              2800
+            ],
+            [
+              760,
+              2800
+            ]
+          ]
+        }
+      ],
+      "points": [
+        {
+          "id": "luoyang_shelter_observation",
+          "label": "察看废驿木槽",
+          "foot": [
+            1685,
+            1525
+          ],
+          "kind": "clue",
+          "visual_baked": true,
+          "text": "废棚里的木槽已经干裂，旧绳也磨得起毛。若要追问古寺机关，仍应回寺请教守窟僧。"
+        },
+        {
+          "id": "luoyang_waterline_observation",
+          "label": "察看岸边水线",
+          "foot": [
+            2480,
+            1450
+          ],
+          "kind": "clue",
+          "text": "石岸的水线有深有浅，几片枯叶停在浅洼边。这里的水声不能代替古寺机关的调查；有疑问仍可请教守窟僧。"
+        }
+      ],
+      "signposts": [
+        {
+          "foot": [
+            2048,
+            2650
+          ],
+          "text": "沿土石曲径可绕旧棚与湿岸一周；向南可返古寺。"
+        }
+      ]
+    }
+  ],
+  "connectors": [
+    {
+      "id": "luoyang_temple_riverside_connector",
+      "source_scene": "ch4_s4_ancient_temple",
+      "source_region_id": "luoyang_temple_region_27d",
+      "source_basis": [
+        3072,
+        4608
+      ],
+      "source_foot": [
+        900,
+        3560
+      ],
+      "target_scene": "adventure_luoyang_riverside_route",
+      "label": "前往岸驿曲径",
+      "target_pos": [
+        0.5,
+        0.9
+      ]
+    }
+  ]
+}

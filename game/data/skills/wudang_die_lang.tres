@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"wudang_die_lang"
+display_name = "绵掌·叠浪"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_palm_wave_v1.png"
+description = "前掌试劲，后掌沿腕透入。单体内功，命中积累 24 点内伤。"
+origin = "从武当绵掌的收势中悟出。将武当绵掌练至十重后自行领悟。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 10
+quality = 2
+required_insight = 4
+practice_base_cost = 18
+fixed_damage = 15
+attack_scaling = 112
+hit_count = 1
+base_hit_chance = 0.95
+animation_id = &"wudang_mianzhang"
+required_weapon_type = &"palm"
+martial_category = &"palm"
+damage_type = 1
+internal_injury_gain = 24
+school = "wudang"
+complemented_by = "wudang_xuanwu_xinjing"
+complement_bonus_scaling = 10
+complement_bonus_desc = "配合本门心法，出招更具威力。"

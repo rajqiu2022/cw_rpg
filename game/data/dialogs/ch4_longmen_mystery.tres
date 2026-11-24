@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "守窟僧"
+text = "石壁每逢夜雨便响，游人说是龙门显灵。我只怕有人借声掩门。"
+accept_quest = &"q_ch4_side_04_longmen_mystery"
+on_end = "next:clue"
+[sub_resource type="Resource" id="clue"]
+script = ExtResource("2")
+node_id = &"clue"
+speaker = "冷孤云"
+text = "铜钱没有法术，只是压在水槽浮木上。水涨，浮木托钱叩石；水退，钱落回暗槽。"
+on_end = "next:end"
+[sub_resource type="Resource" id="end"]
+script = ExtResource("2")
+node_id = &"end"
+speaker = "守窟僧"
+text = "怪声解了，旧工匠留下的排水图也保住了。传说有趣，真相同样值得留下。"
+set_flags = Array[Dictionary]([{"key":"longmen_mystery_solved", "value":true}])
+complete_quest = &"q_ch4_side_04_longmen_mystery"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_longmen_mystery"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("clue"), SubResource("end")])

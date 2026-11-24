@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch5_captain_sealed_orders"
+display_name = "伪旗统领封蜡密令"
+description = "密令只写了伪装烈云、焚毁赈粮、灭口矿道证人三项差事，落款被整齐割去。纸张与封蜡能串回洛阳伪造工坊，却仍不足以指认最终发令者。"
+chapter = 5
+category = &"document"
+source_hint = "古峰 · 伪旗统领随身匣"
+related_testimony_ids = Array[StringName]([&"ts_ch5_old_case_survivor"])
+tags = Array[StringName]([&"orders", &"false_flag", &"relief_convoy", &"witness_silencing"])

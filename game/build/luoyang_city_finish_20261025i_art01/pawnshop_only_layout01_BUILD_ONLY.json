@@ -1,0 +1,145 @@
+{
+  "status":"PAWNSHOP_ONLY_SELECTED_ART_LAYOUT_BUILD_NOT_SOURCE_OR_FIELD_PASS",
+  "ready":false,
+  "separate_task":"Old whole-city/elder/World tasks remain paused. This file grants no canonical writes or engine calls.",
+  "scene_id":"luoyang_functional_pawnshop_candidate_20261016",
+  "coordinate_contract":"SOURCE_FEET_1536_1024",
+  "actual_world_size":[1920,1280],
+  "source_to_world_uniform":1.25,
+  "formula":"Furniture world = (placement_foot + (source_pixel-source_anchor)*render_scale)*1.25; depth_foot_y below remains source Y. Actor source feet also multiply1.25 only once, not legacy bodycenter conversion.",
+  "fixed_source_context":{
+    "room_author":{"path":"res://data/maps/luoyang_assembled_interiors_20261016g/pawnshop_author.json","sha256":"f8f78919eaf41e0418e1f419fe0e1f0dee40935bce6d6c8a3c8950bbd316eb2f"},
+    "room_scene":{"path":"res://data/scenes/luoyang_assembled_interiors_20261016g/pawnshop_room.tres","sha256":"2927705717c26c8e6ea2832f0af201459a8228c52cb9e29e60f6d834856a926c"},
+    "formal_service":{"path":"res://build/luoyang_indoor_services_20261025h_system01/runtime_READY02/services_runtime_READY.gd","sha256":"f898f4b3860dda07bdfc95d62c1b08e30889b89b93843bf9a24d808e8a433fc8"},
+    "formal_service_author":{"path":"res://build/luoyang_indoor_services_20261025h_system01/services_author05_CANDIDATE.json","sha256":"7706e07c00a8a318673fd496448f5a48e7005fa8998b9d16f7520615bd3effd8"},
+    "qualification":"These are read-only current inputs for design. System owns service/exit implementation; its reviewed successor must preserve original service protocol except explicitly pawn-scoped placement/ambient tuple additions. Do not restore a stale parent file."
+  },
+  "layout_intent":"Center cashier behind the real high gridded pawn counter. Right rear staff sorts records/goods; two different ordinary customers wait on either side of the unobstructed central aisle. Add four distinguishable pawned-goods groups along side/back edges, not randomly on the entry floor.",
+  "counter_unchanged":{
+    "id":"pawnshop_pawn_counter_grille_0",
+    "texture":"res://art/modules/luoyang_assembled_interiors_20261016g/pawn_counter_grille_v1.png",
+    "sha256":"73bee302b3c59e8a1f0302e80aa189407c033133d175c100916bf07fadd95708",
+    "source_anchor":[768,927],"foot":[768,555],"scale":0.31,"depth_foot_y":555,
+    "true_ground_source_world_polygon":[[586.96,529.27],[948.11,529.27],[948.11,556.24],[586.96,556.24]],
+    "visual_rule":"Original high gridded counter remains fully opaque. Cashier must depth-sort behind it; natural partial visibility through the existing actual openings is correct. Never fade the entire counter, draw cashier above its grille, cut a fake window or erase pixels to expose him. It is not a low open counter."
+  },
+  "actors":[
+    {
+      "role":"existing_keeper","npc_id":"luoyang25h_pawn_keeper","name":"当铺掌柜",
+      "old_foot":[1000,585],"foot":[768,497],"depth_foot_y":497,
+      "sprite":"res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png",
+      "sprite_sha256":"2250b7a84dce99f48fa09f2619d3e39c22727aaa969e15b3569177c163c31f15",
+      "portrait":"res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png",
+      "portrait_sha256":"978b73dd07f4a412a8e024a1c3444e9fbd075a974e01b93c1bb72bdc88bc186a",
+      "scale":"Preserve original pawn service row scale1.0 and existing room/Node adult calibration; no body or shared NPCNode change.",
+      "action":"Preserve indoor_service25h, original unique merchant/service/menu/shop inventory and prices.",
+      "approach":[768,585],"nominal_actor_distance_world":110,"existing_service_distance_limit_world":118,
+      "trade_rule":"Transaction activated only from the customer-facing south side of the actual counter; the actor remains behind it. Use a pawn-only validated front interaction anchor/zone if the generic target navigation expects an inaccessible rear foot. Do not authorize walking through the counter or globally increase118 distance."
+    },
+    {
+      "role":"pawn_back_counter_helper","suggested_name":"当铺伙计","local_only_no_story_identity":true,
+      "foot":[970,500],"depth_foot_y":500,"row_scale":1.0,"movement":"existing true idle only",
+      "sprite":"res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png",
+      "sprite_sha256":"904ff9885d7c7f7a3337b4db964141c6c1b4a8411cfc31a7b4b888723fd43900",
+      "portrait":"res://art/characters/portraits/portrait_linxi_farmer_v1.png",
+      "portrait_sha256":"a4d9b9aa249007f7608ebc11f5252936c445f5e7b471530263992b30e0d59335",
+      "identity_authority":"Existing25h formal_service_author source_sha256 farmer tuple, also existing ambient same-family resource. Plain brown work clothes/ordinary mature man, no tray or weapon.",
+      "dialog":"Only local ordinary staff daily line, no new quest/reward/backstory. Same-family portrait, never hero fallback.",
+      "clearance":"North of counter base; x970 leaves nominal8.29source px after a13.6half-body to counter right edge948.11. This is a tight station to verify, not a walk route."
+    },
+    {
+      "role":"ordinary_male_customer","suggested_name":"典当客","local_only_no_story_identity":true,
+      "foot":[560,660],"depth_foot_y":660,"row_scale":1.0,"movement":"existing true idle only",
+      "sprite":"res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png",
+      "sprite_sha256":"2082d5dbe2c73b4d397c091d068901aa0e50a991149856f716b7bc428ef0c3ad",
+      "portrait":"res://art/characters/portraits/generic/portrait_generic_older_man_v1.png",
+      "portrait_sha256":"f74ac5192e1a7c82d9953be77bfcfe1837aa2edc4a5b1087400f2acfdd605785",
+      "identity_authority":"Exact existing25h formal_service_author sprite/portrait association used for merchant family, NOT street merchant2250 family. Existing mature bearded gray-robed bundle-carrying commoner; not a new named canon character. Portrait is the inherited formal association, not a newly proven microscopic face identity.",
+      "dialog":"Local waiting/customer daily line only; no new quest/reward or implication this is the original named merchant himself."
+    },
+    {
+      "role":"ordinary_older_female_customer","suggested_name":"候当老妇","local_only_no_story_identity":true,
+      "foot":[1000,615],"depth_foot_y":615,"row_scale":1.0,"movement":"existing true idle only",
+      "sprite":"res://art/characters/street_expansion_v1/npc_vegetable_seller_idle_down_4f.png",
+      "sprite_sha256":"4ca9b367587102238b9cea55c49f02d3f001420f9a05d89e67229265c6e39f96",
+      "portrait":"res://art/characters/portraits/street_expansion_v1/portrait_vegetable_seller_v1.png",
+      "portrait_sha256":"645d6aab019f27819de10268fa645ab6c651c6f595d246bb0d160eafe4bdbc4c",
+      "identity_authority":"Physically viewed existing gray-haired ordinary older woman and matching portrait, same olive/brown clothes and plain features. Exact existing street_expansion_v1 family, NOT younger zhuwei vegetable vendor fdf0 family.",
+      "dialog":"Local household/customer daily line only; basket is ordinary belongings, no new vendor service."
+    }
+  ],
+  "four_pawned_goods_groups":[
+    {
+      "group":"LEFT_CLOTH_ROLLS","operation":"NEW existing asset instance","id":"pawn_fill01_cloth_rolls",
+      "texture":"res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png",
+      "sha256":"078b1086cd2003916e73bb9c9f7a5f98d52286eabd765c609cb928e9ea84fc0e",
+      "source_size":[1536,1024],"source_anchor":[768,951],"source_complete_A1":[0,0,1500,1024],
+      "foot":[245,540],"scale":0.065,"depth_foot_y":540,
+      "complete_A1_world_source":[195.08,478.185,292.58,544.745],
+      "true_ground_source_polygon":[[126,839],[1407,839],[1411,953],[122,953]],
+      "donor":"res://data/maps/luoyang_assembled_interiors_20261016g/cloth_shop_author.json furniture asset_id=cloth_roll_rack_v1",
+      "semantic":"Low folded-cloth/roll goods rack against left wall, not a small building or an entire tailor shop."
+    },
+    {
+      "group":"LEFT_PAWNED_COATS","operation":"NEW existing asset instance","id":"pawn_fill01_garments",
+      "texture":"res://art/modules/luoyang_assembled_interiors_20261016g/garment_rack_v1.png",
+      "sha256":"ff279aa1949676a02c84b5e8a24615d4f1570901c1f7013a62814893dc6956b6",
+      "source_size":[1536,1024],"source_anchor":[768,942],"source_complete_A1":[45,19,1498,1002],
+      "foot":[220,650],"scale":0.08,"depth_foot_y":650,
+      "complete_A1_world_source":[162.16,576.16,278.4,654.8],
+      "true_ground_source_polygon":[[290,791],[1246,791],[1248,944],[289,944]],
+      "donor":"res://data/maps/luoyang_assembled_interiors_20261016g/cloth_shop_author.json furniture asset_id=garment_rack_v1",
+      "semantic":"One compact side display of pawned clothes. Keep original silhouettes, do not recolor/fabricate jewelry."
+    },
+    {
+      "group":"REAR_RIGHT_CERAMICS","operation":"REPLACE only original pawnshop_pawn_ticket_cabinet_2 with this existing display asset; no overlapping third cabinet",
+      "old_id":"pawnshop_pawn_ticket_cabinet_2","old_texture":"res://art/modules/luoyang_assembled_interiors_20261016g/pawn_ticket_cabinet_v1.png","old_foot":[1100,440],"old_scale":0.25,
+      "id":"pawn_fill01_display_cabinet",
+      "texture":"res://art/modules/luoyang_assembled_interiors_20261016g/display_cabinet_v1.png",
+      "sha256":"eb24ddcea90014e140ba2da5fc86bad2981fc8acd20fbed1f6aec2625ec8e955",
+      "source_size":[1536,1024],"source_anchor":[768,985],"source_complete_A1":[17,9,1520,1000],
+      "foot":[1120,440],"scale":0.22,"depth_foot_y":440,
+      "complete_A1_world_source":[954.78,225.28,1285.44,443.3],
+      "true_ground_source_polygon":[[389,902],[1149,902],[1149,988],[389,988]],
+      "donor":"res://data/maps/luoyang_assembled_interiors_20261016g/mansion_reception_author.json furniture asset_id=display_cabinet_v1",
+      "semantic":"Already-rendered celadon and small ornaments read as selected pawned valuables; old left ticket cabinet_1 remains the bookkeeping cabinet."
+    },
+    {
+      "group":"RIGHT_BOXED_GOODS","operation":"NEW existing asset instance","id":"pawn_fill01_box_rack",
+      "texture":"res://art/modules/luoyang_assembled_interiors_20261016g/warehouse_rack_v1.png",
+      "sha256":"42cea5501f73de0d12f134f641574855c40eb0b82b44e0db637d00ec320510df",
+      "source_size":[1536,1024],"source_anchor":[768,947],"source_complete_A1":[0,21,1512,1024],
+      "foot":[1250,590],"scale":0.15,"depth_foot_y":590,
+      "complete_A1_world_source":[1134.8,451.1,1361.6,601.55],
+      "true_ground_source_polygon":[[289,840],[1254,840],[1254,950],[289,950]],
+      "donor":"res://data/maps/luoyang_assembled_interiors_20261016g/warehouse_author.json furniture asset_id=warehouse_rack_v1",
+      "semantic":"Full three-tier wooden box/parcel rack, not modern safe boxes. Visible source height150.45*1.25=188.0625world, comparable to adult rather than miniature."
+    }
+  ],
+  "one_chair_migration":{
+    "id":"pawnshop_wood_armchair_5","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/wood_armchair_v1.png",
+    "sha256":"054cf8bc4d3f8a79cfd869bdb1654be56da9fd7d23ddb73f49c6808d02cb6337",
+    "source_anchor":[768,965],"scale":0.12,"old_foot":[1120,650],"foot":[1040,685],"depth_foot_y":685,
+    "complete_A1_world_source":[960.2,574.84,1129.28,687.52],
+    "true_ground_source_polygon":[[481,751],[1062,751],[1064,966],[479,966]],
+    "nominal_base_source":[1005.32,659.32,1075.52,685.12],
+    "reason":"Move this one waiting chair left/down to avoid new full-height right goods rack; its complete A1 ends1129.28 and rack starts1134.8, leaving5.52source px. Existing left table and left chair remain exactly fixed."
+  },
+  "protected_spaces":[
+    {"id":"main_customer_aisle","source_rect_xywh":[648,580,240,272],"clear_width_world":300,"rule":"No new goods, NPC bodies or chair inside this exit-to-counter corridor."},
+    {"id":"spawn_exit","points":[[768,780],[768,830]],"rule":"Original exact spawn and front exit path unchanged, including original activation100x24source at768830."},
+    {"id":"cashier_front","source_rect_xywh":[708,568,120,92],"rule":"Clear player transaction approach, not a customer waiting station."},
+    {"id":"left_table_and_chair","original_ids":["pawnshop_dining_table_3","pawnshop_wood_armchair_4"],"rule":"No changes; ordinary male customer stands to their east, not on either base."}
+  ],
+  "finite_validation_only":[
+    "System freezes exact current pawn room/service ancestors before implementation. One counter unchanged, one old cabinet replacement, one chair migration, three new goods instances, keeper relocation plus3localambient people only. No old city-wide/elder/World source closure work.",
+    "Derive all real furniture bases with original source anchors and uniform scale, retain source1536/world1920 distinction. Check shell floor support, Player/NPC body sweeps, original spawn/exit and counter front approach. Do not label full furniture alpha bbox as a solid.",
+    "Full A1 placement gap estimates are design inputs, not actual pixel-overlap certification. New rack/display7.8px gap and rack/chair5.52px gap require exact source f32 verification. Tiny gaps are not walkable passage claims. Existing original furniture overlaps, if inherited, are not new blanket approval.",
+    "Recheck original source required_routes near cabinet2/left furniture and right chair, or provide one precise local successor if their furniture approach ID changes. Do not put new garment base on the left table/bench path; original330600->280675 and330600->240692 are explicit affected guards.",
+    "Staff970500 tight counter-right gap must pass original adult body check; no automatic nudge, actor-body shrink or NPCNode change. Customer560660 and1000615 must stay off the original furniture bases and off the300world central aisle.",
+    "Counter-front service must genuinely open original pawn shop from768585 with keeper behind, retain session/owner and price guards, then close/exit correctly. Do not reuse merchant actor position as player's destination behind the solid grille.",
+    "Root sole current-room image: mature distinct4 people, four goods groups readable, counter stays opaque, no actor/furniture float or whole-counter fade. Natural grille occlusion is allowed; if face wholly invisible, report the actual view limitation rather than fake a full-body overlay.",
+    "No new PNG/import, animated motion, quest, reward, named character history or new trade stock follows from this design. Optional ordinary daily text belongs to System's pawn-only scoped helper, using exact declared portrait family and Hero-first convention."
+  ],
+  "execution_by_ART":{"PNG_edits":0,"generation":0,"engine":0,"import":0,"canonical_writes":0,"BUILD_design_only":true}
+}

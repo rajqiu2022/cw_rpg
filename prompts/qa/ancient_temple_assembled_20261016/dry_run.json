@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "scope": "BUILTIN_SPEC_PREFLIGHT_NOT_CLI_GEN_ASSETS_OR_NETWORK",
+  "checks": "Five tasks registered, exact prompt/spec text, files present, output absent, single-call budget and builtin/null-model validated; no API client constructed.",
+  "passed": true,
+  "rows": [
+    {
+      "id": "ancient_temple_assembled_20261016_courtyard_floor_v1",
+      "prompt_sha256": "14DDB32567F96E759DB98418CF5A24F07C8D1E5D1EC681B15C2DF6B2798D0557",
+      "spec_sha256": "9E3CD5D1348867322A54F648204B4AC6A12F185AAE3DF3DF812991628FD0E642",
+      "prompt_chars": 2081,
+      "transparent": false,
+      "passed": true
+    },
+    {
+      "id": "ancient_temple_assembled_20261016_temple_hall_v1",
+      "prompt_sha256": "A1D27294F6B7C0B35474E37032AF0A9F2C4FBABD8821E7EFC5493A003721B856",
+      "spec_sha256": "5151D31D9AD374D9AF350AEFA671B481FEC9026546CEB6E66A20C186ED7D5904",
+      "prompt_chars": 2410,
+      "transparent": true,
+      "passed": true
+    },
+    {
+      "id": "ancient_temple_assembled_20261016_broken_buddha_v1",
+      "prompt_sha256": "904033EFD17B09DC695CF60648A59035EDC75A75F15DB9B30625AA6A7AF60925",
+      "spec_sha256": "98DEAEBB037400BAF1FC138EC82084FA80EF6C64D1D9B845020ECD37F355505C",
+      "prompt_chars": 2084,
+      "transparent": true,
+      "passed": true
+    },
+    {
+      "id": "ancient_temple_assembled_20261016_low_incense_altar_v1",
+      "prompt_sha256": "96B9B08634427335617B0B4611D7EEA4649F9B02077DBDA01600B13C546BF856",
+      "spec_sha256": "47FFEFCA4FF53B1E0D9716B52B98834BC241AE2DF82207A1125FCC8656F75687",
+      "prompt_chars": 2240,
+      "transparent": true,
+      "passed": true
+    },
+    {
+      "id": "ancient_temple_assembled_20261016_broken_vermilion_wall_v1",
+      "prompt_sha256": "942979B0FE3885BB3CC1EA5BA3269B4FD37D2518A9F314BD404ECB608C6DA7D0",
+      "spec_sha256": "69B7057FDDAEA0F0F41F3B2D1265E4583C8DF5421D189718D4958EF26685D0BE",
+      "prompt_chars": 2255,
+      "transparent": true,
+      "passed": true
+    }
+  ],
+  "bell_extension_preflight": {
+    "id": "ancient_temple_assembled_20261016_ancient_bell_v1",
+    "prompt_sha256": "946EB4E061E2E9ACC76497140269AC1A17418F844F2A76732C7C5E6E18D23924",
+    "spec_sha256": "FC3AE9B77E41ECE9AE70ED3B5851FC9DB5333DBE825DA4E068A03B8D9C812995",
+    "prompt_chars": 2271,
+    "transparent": true,
+    "passed": true,
+    "notes": "Sixth task/spec registered and same built-in preflight passed before six-call launch; initial five rows retain original pre-generation hashes. Outputs present now because preflight is historical, not rerun absence assertion."
+  },
+  "post_generation_note": "Six calls completed once each. Specs now contain actual results and therefore have new SHA; historical preflight hashes above are not current-spec hashes."
+}

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "三篓离架时同重，换篓后只有靠水的旧绳和篓底湿了。退货单上应该怎么写？"
+choices = Array[Dictionary]([{"text":"采茶户在晾架上掺了杂物。","next":"recheck"},{"text":"换篓时受潮，晾干后再复秤。","next":"verified"}])
+
+[sub_resource type="Resource" id="recheck"]
+script = ExtResource("2")
+node_id = &"recheck"
+speaker = "冷孤云"
+text = "原秤签是在换篓前记的。能对上异常的，是靠水一侧的湿绳和篓底。"
+on_end = "next:start"
+
+[sub_resource type="Resource" id="verified"]
+script = ExtResource("2")
+node_id = &"verified"
+speaker = "冷孤云"
+text = "写‘受潮待复秤’，也把原秤签的编号记上。证据只说明在水边受了潮，不能拿来指认是谁做的。"
+set_flags = Array[Dictionary]([{"key":"ch7_tea_basket_verified","value":true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_tea_basket_report"
+nodes = Array[Resource]([SubResource("start"), SubResource("recheck"), SubResource("verified")])

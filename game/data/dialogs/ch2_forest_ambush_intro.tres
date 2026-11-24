@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "蒙面人"
+text = "回村去。林里的事，不是你该问的。"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "你若真不想让我问，就不会先开口。"
+on_end = "battle_group:masked_killer_minion,masked_killer_minion"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_forest_ambush_intro"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2")])

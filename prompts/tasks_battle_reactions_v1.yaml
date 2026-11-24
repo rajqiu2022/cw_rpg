@@ -1,0 +1,36 @@
+tasks:
+  - id: sprite_masked_killer_hurt_f01
+    template: sprite_enemy_reaction_action
+    category: sprite/battle-reaction
+    priority: 1
+    model: gpt-image-2
+    vars:
+      reaction_type: "hurt reaction"
+      frame_action: "受击瞬间：身体向后仰，左肩被冲击带动，短刃下垂，披风向后扬起，仍保持站立"
+
+  - id: sprite_masked_killer_hurt_f02
+    template: sprite_enemy_reaction_action
+    category: sprite/battle-reaction
+    priority: 1
+    model: gpt-image-2
+    vars:
+      reaction_type: "hurt recovery"
+      frame_action: "受击回稳：身体从后仰回到低重心防守姿势，短刃重新抬起，披风回落"
+
+  - id: sprite_masked_killer_defeat_f01
+    template: sprite_enemy_reaction_action
+    category: sprite/battle-reaction
+    priority: 1
+    model: gpt-image-2
+    vars:
+      reaction_type: "defeat beginning"
+      frame_action: "倒地开始：单膝跪地，肩膀下沉，短刃脱手落向身侧，披风垂落"
+
+  - id: sprite_masked_killer_defeat_f02
+    template: sprite_enemy_reaction_action
+    category: sprite/battle-reaction
+    priority: 1
+    model: gpt-image-2
+    vars:
+      reaction_type: "defeat final"
+      frame_action: "倒地结束：侧身倒下，披风铺开，人物轮廓完整但失去战斗姿态，短刃在手边"

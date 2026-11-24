@@ -1,0 +1,776 @@
+{
+  "schema_version": 1,
+  "status": "LAYOUT_CANDIDATE_NOT_PUBLISHED",
+  "coordinate_contract": "native_world_groundfeet_3072x2048_body34x24",
+  "history_mutated": false,
+  "source_sha256": {
+    "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json": "e103039fcf1d332fbb9cebe289cee88bcdb82c4c5fc28274e3737be489dc62f3",
+    "res://art/maps/luoyang_city_revision_v1_20261015/ch4_s2_canal_docks/candidate_manifest.json": "fae2b99d98499fc255c9c5607b9811fd29d6b539a2969cec0937884f29f02451",
+    "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s1_luoyang_yamen/art_contract.json": "b7bfdd920ba69858b70c9cf77c5d3b65161f14032ae3eb0e1f5f5f0b04385315",
+    "res://art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/art_patch.json": "2e1f562c429aabc89ebd38f044192e0f8dd71738147cb51b5fba4f9d6b7b50d4",
+    "res://data/maps/luoyang_home_candidates_20261015/southeast_market_front_room_layout.tres": "ab35bc35eb4505dc52602e4dda0fc2d4de62ffdd2fd47782c1fa9b4e6963fe4f",
+    "res://data/maps/luoyang_home_candidates_20261015/market_west_ward_frontage_room_layout.tres": "57e590741c88298f238a58a8854631ae4cb01305b57a281be4f86459d72210a6",
+    "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s2_canal_docks/entities/north_canal_warehouse.png": "3bfa2bd8a906ffe8ef069f7933e45255fe569606781c46886dd0dea519e9580b",
+    "res://data/scenes/luoyang_home_candidates_20261015/market_west_ward_frontage_room.tres": "05346c8aae8e286a1765b2a97440fb6381ece5aff034c24d246c1ad9fa9dd5e3",
+    "res://data/scenes/luoyang_home_candidates_20261015/southeast_market_front_room.tres": "b94666f8e15d587ebbda089ca1bff0c99741da2dd670e4dadec53603e9de4de2"
+  },
+  "scenes": [
+    {
+      "scene_id": "ch4_s1_luoyang_yamen",
+      "concept": "Dominant hall, clear ceremonial axis, real west service annex and quieter east annex plus planted court; preserve every live portal/task foot.",
+      "parent_identity": {
+        "enclosure_patch_sha256": "2e1f562c429aabc89ebd38f044192e0f8dd71738147cb51b5fba4f9d6b7b50d4"
+      },
+      "protected_objects": [
+        {
+          "id": "south_court_gate",
+          "foot_px": [
+            1536,
+            1700
+          ]
+        },
+        {
+          "id": "notice_pavilion",
+          "foot_px": [
+            550,
+            1180
+          ]
+        },
+        {
+          "id": "court_stone_inscription",
+          "foot_px": [
+            1960,
+            1390
+          ]
+        }
+      ],
+      "object_moves": [
+        {
+          "id": "magistrate_hall",
+          "before_foot_px": [
+            1536,
+            660
+          ],
+          "to_foot_px": [
+            1536,
+            620
+          ]
+        },
+        {
+          "id": "street_tree_0",
+          "before_foot_px": [
+            300,
+            550
+          ],
+          "to_foot_px": [
+            350,
+            1500
+          ]
+        },
+        {
+          "id": "street_tree_1",
+          "before_foot_px": [
+            2800,
+            520
+          ],
+          "to_foot_px": [
+            2730,
+            1520
+          ]
+        },
+        {
+          "id": "lamp_0",
+          "before_foot_px": [
+            1300,
+            1190
+          ],
+          "to_foot_px": [
+            1230,
+            1460
+          ]
+        },
+        {
+          "id": "lamp_1",
+          "before_foot_px": [
+            1765,
+            1190
+          ],
+          "to_foot_px": [
+            1840,
+            1460
+          ]
+        }
+      ],
+      "object_additions": [
+        {
+          "id": "assembled_west_service_annex",
+          "donor_manifest": "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json",
+          "donor_id": "shop",
+          "donor_foot_px": [
+            2320,
+            850
+          ],
+          "foot_px": [
+            650,
+            1110
+          ],
+          "scale_ratio": 0.84,
+          "usage": "Interim service sidebuilding using existing single shop silhouette; no invented official door/function"
+        },
+        {
+          "id": "assembled_east_service_annex",
+          "donor_manifest": "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json",
+          "donor_id": "shop",
+          "donor_foot_px": [
+            2320,
+            850
+          ],
+          "foot_px": [
+            2430,
+            1210
+          ],
+          "scale_ratio": 0.8,
+          "usage": "Offset quieter sidebuilding, no invented entrance"
+        },
+        {
+          "id": "assembled_east_garden_tree_a",
+          "donor_manifest": "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json",
+          "donor_id": "street_tree_0",
+          "donor_foot_px": [
+            300,
+            550
+          ],
+          "foot_px": [
+            2280,
+            1510
+          ],
+          "scale_ratio": 1,
+          "usage": "Grouped court tree, not a claimed flower planter"
+        },
+        {
+          "id": "assembled_east_garden_tree_b",
+          "donor_manifest": "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json",
+          "donor_id": "street_tree_1",
+          "donor_foot_px": [
+            2800,
+            520
+          ],
+          "foot_px": [
+            2470,
+            1610
+          ],
+          "scale_ratio": 0.9,
+          "usage": "Grouped court tree"
+        }
+      ],
+      "route_replacements": [
+        {
+          "id": "court_loop",
+          "before_points_px": [
+            [
+              1536,
+              1360
+            ],
+            [
+              1100,
+              1360
+            ],
+            [
+              1100,
+              1080
+            ],
+            [
+              300,
+              1080
+            ],
+            [
+              300,
+              1220
+            ],
+            [
+              300,
+              1080
+            ],
+            [
+              2790,
+              1080
+            ],
+            [
+              2790,
+              1350
+            ],
+            [
+              2790,
+              1080
+            ],
+            [
+              2050,
+              1080
+            ],
+            [
+              2050,
+              1500
+            ],
+            [
+              1536,
+              1500
+            ],
+            [
+              1536,
+              1360
+            ]
+          ],
+          "points_px": [
+            [
+              1536,
+              1360
+            ],
+            [
+              1100,
+              1360
+            ],
+            [
+              1100,
+              1135
+            ],
+            [
+              300,
+              1135
+            ],
+            [
+              300,
+              1220
+            ],
+            [
+              300,
+              1135
+            ],
+            [
+              1100,
+              1135
+            ],
+            [
+              1100,
+              1080
+            ],
+            [
+              2790,
+              1080
+            ],
+            [
+              2790,
+              1350
+            ],
+            [
+              2790,
+              1080
+            ],
+            [
+              2050,
+              1080
+            ],
+            [
+              2050,
+              1500
+            ],
+            [
+              1536,
+              1500
+            ],
+            [
+              1536,
+              1360
+            ]
+          ]
+        },
+        {
+          "id": "case_board",
+          "before_points_px": [
+            [
+              1100,
+              1360
+            ],
+            [
+              1100,
+              1080
+            ],
+            [
+              750,
+              1080
+            ],
+            [
+              750,
+              1240
+            ],
+            [
+              550,
+              1240
+            ]
+          ],
+          "points_px": [
+            [
+              1100,
+              1360
+            ],
+            [
+              1100,
+              1135
+            ],
+            [
+              750,
+              1135
+            ],
+            [
+              750,
+              1240
+            ],
+            [
+              550,
+              1240
+            ]
+          ]
+        }
+      ],
+      "routes_append": [
+        {
+          "id": "assembled_west_service_front",
+          "points_px": [
+            [
+              300,
+              1220
+            ],
+            [
+              300,
+              1280
+            ],
+            [
+              840,
+              1280
+            ],
+            [
+              840,
+              1150
+            ],
+            [
+              700,
+              1150
+            ]
+          ]
+        },
+        {
+          "id": "assembled_east_service_front",
+          "points_px": [
+            [
+              2050,
+              1080
+            ],
+            [
+              2620,
+              1080
+            ],
+            [
+              2620,
+              1260
+            ],
+            [
+              2430,
+              1260
+            ]
+          ]
+        }
+      ],
+      "task_portal_policy": "All parent gameplay slots and Scene NPC/interactions/portals preserved exact; no stale relocated doors.",
+      "portal_moves": []
+    },
+    {
+      "scene_id": "ch4_s3_luoyang_market",
+      "concept": "Keep exact working inn/smith/cloth and other enabled home doors; move disabled south-west mass inward, two real new sideplot building volumes, stagger market stalls/walls and create connected backlane.",
+      "parent_identity": {
+        "city_revision_manifest_sha": "e103039fcf1d332fbb9cebe289cee88bcdb82c4c5fc28274e3737be489dc62f3"
+      },
+      "protected_objects": [
+        {
+          "id": "inn",
+          "foot_px": [
+            735,
+            830
+          ]
+        },
+        {
+          "id": "shop",
+          "foot_px": [
+            2320,
+            850
+          ]
+        },
+        {
+          "id": "north_market_front",
+          "foot_px": [
+            1536,
+            630
+          ]
+        },
+        {
+          "id": "market_east_ward_frontage",
+          "foot_px": [
+            2550,
+            1260
+          ]
+        },
+        {
+          "id": "market_northwest_rear_frontage",
+          "foot_px": [
+            620,
+            500
+          ]
+        },
+        {
+          "id": "market_northeast_rear_frontage",
+          "foot_px": [
+            2530,
+            500
+          ]
+        }
+      ],
+      "object_moves": [
+        {
+          "id": "southwest_market_front",
+          "before_foot_px": [
+            600,
+            1810
+          ],
+          "to_foot_px": [
+            520,
+            1700
+          ]
+        },
+        {
+          "id": "v13_market_west_plot_wall",
+          "before_foot_px": [
+            535,
+            1320
+          ],
+          "to_foot_px": [
+            350,
+            1420
+          ]
+        },
+        {
+          "id": "v13_market_east_plot_wall",
+          "before_foot_px": [
+            2490,
+            1140
+          ],
+          "to_foot_px": [
+            2730,
+            1480
+          ]
+        },
+        {
+          "id": "market_west_alley_stall",
+          "before_foot_px": [
+            900,
+            1190
+          ],
+          "to_foot_px": [
+            900,
+            1290
+          ]
+        },
+        {
+          "id": "market_east_alley_stall",
+          "before_foot_px": [
+            2300,
+            1150
+          ],
+          "to_foot_px": [
+            1970,
+            1530
+          ]
+        },
+        {
+          "id": "lamp_0",
+          "before_foot_px": [
+            1100,
+            1460
+          ],
+          "to_foot_px": [
+            1020,
+            1580
+          ]
+        },
+        {
+          "id": "lamp_1",
+          "before_foot_px": [
+            1940,
+            1450
+          ],
+          "to_foot_px": [
+            2010,
+            1680
+          ]
+        },
+        {
+          "id": "market_west_ward_frontage",
+          "before_foot_px": [
+            650,
+            1440
+          ],
+          "to_foot_px": [
+            510,
+            1480
+          ]
+        },
+        {
+          "id": "southeast_market_front",
+          "before_foot_px": [
+            2520,
+            1810
+          ],
+          "to_foot_px": [
+            2680,
+            1700
+          ]
+        }
+      ],
+      "object_additions": [
+        {
+          "id": "assembled_market_backlane_row",
+          "donor_manifest": "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json",
+          "donor_id": "market_northwest_rear_frontage",
+          "donor_foot_px": [
+            620,
+            500
+          ],
+          "foot_px": [
+            1010,
+            1660
+          ],
+          "scale_ratio": 0.48,
+          "usage": "One independent compact continuous row beside the domestic backlane, no false extra doors"
+        },
+        {
+          "id": "assembled_market_warehouse_edge",
+          "donor_manifest": "res://art/maps/luoyang_city_revision_v1_20261015/ch4_s2_canal_docks/candidate_manifest.json",
+          "donor_id": "north_canal_warehouse",
+          "donor_foot_px": [
+            870,
+            580
+          ],
+          "foot_px": [
+            2760,
+            1450
+          ],
+          "scale_ratio": 0.45,
+          "usage": "Sideplot cargo building, not a mansion or new entered warehouse"
+        },
+        {
+          "id": "assembled_market_tree_group_a",
+          "donor_manifest": "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json",
+          "donor_id": "street_tree_0",
+          "donor_foot_px": [
+            300,
+            550
+          ],
+          "foot_px": [
+            820,
+            1750
+          ],
+          "scale_ratio": 0.85,
+          "usage": "Paired backlane tree off the main axis"
+        },
+        {
+          "id": "assembled_market_tree_group_b",
+          "donor_manifest": "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json",
+          "donor_id": "street_tree_1",
+          "donor_foot_px": [
+            2800,
+            520
+          ],
+          "foot_px": [
+            2230,
+            1740
+          ],
+          "scale_ratio": 0.85,
+          "usage": "Paired backlane tree off the main axis"
+        }
+      ],
+      "route_replacements": [
+        {
+          "id": "room_westward_approach",
+          "before_points_px": [
+            [
+              1180,
+              1380
+            ],
+            [
+              1180,
+              1510
+            ],
+            [
+              650,
+              1510
+            ],
+            [
+              650,
+              1464
+            ]
+          ],
+          "points_px": [
+            [
+              1180,
+              1380
+            ],
+            [
+              1180,
+              1530
+            ],
+            [
+              510,
+              1530
+            ],
+            [
+              510,
+              1504
+            ]
+          ]
+        },
+        {
+          "id": "room_southeast_market_front_approach",
+          "before_points_px": [
+            [
+              1536,
+              1860
+            ],
+            [
+              1980,
+              1860
+            ],
+            [
+              2520,
+              1834
+            ]
+          ],
+          "points_px": [
+            [
+              1536,
+              1860
+            ],
+            [
+              2950,
+              1860
+            ],
+            [
+              2950,
+              1740
+            ],
+            [
+              2680,
+              1724
+            ]
+          ]
+        }
+      ],
+      "routes_append": [
+        {
+          "id": "assembled_backlane_row_front",
+          "points_px": [
+            [
+              1320,
+              1790
+            ],
+            [
+              1010,
+              1790
+            ],
+            [
+              1010,
+              1710
+            ]
+          ]
+        },
+        {
+          "id": "assembled_warehouse_edge_front",
+          "points_px": [
+            [
+              2550,
+              1350
+            ],
+            [
+              2390,
+              1350
+            ],
+            [
+              2390,
+              1500
+            ],
+            [
+              2760,
+              1500
+            ]
+          ]
+        },
+        {
+          "id": "assembled_paper_artisan_kept",
+          "points_px": [
+            [
+              1180,
+              1380
+            ],
+            [
+              1240,
+              1290
+            ],
+            [
+              1320,
+              1290
+            ]
+          ]
+        }
+      ],
+      "task_portal_policy": "Two explicitly relocated active home doorway+fixed return+passage+approach deltas; all other portal feet and all task/NPC/interaction anchors unchanged.",
+      "portal_moves": [
+        {
+          "source_id": "enter_market_west_ward_frontage_room",
+          "building_id": "market_west_ward_frontage",
+          "before_foot_px": [
+            650,
+            1464
+          ],
+          "foot_px": [
+            510,
+            1504
+          ],
+          "room_id": "luoyang_market_market_west_ward_frontage_interior_20261015",
+          "old_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_west_ward_frontage_room.tres",
+          "old_layout_path": "res://data/maps/luoyang_home_candidates_20261015/market_west_ward_frontage_room_layout.tres"
+        },
+        {
+          "source_id": "enter_southeast_market_front_room",
+          "building_id": "southeast_market_front",
+          "before_foot_px": [
+            2520,
+            1834
+          ],
+          "foot_px": [
+            2680,
+            1724
+          ],
+          "room_id": "luoyang_market_southeast_market_front_interior_20261015",
+          "old_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/southeast_market_front_room.tres",
+          "old_layout_path": "res://data/maps/luoyang_home_candidates_20261015/southeast_market_front_room_layout.tres"
+        }
+      ]
+    }
+  ],
+  "not_granted": [
+    "No source Scene/old manifest/result/import/canonical mutation",
+    "Candidate arrangement still needs original raw support minus new solids, full875+17/<=4px routes and new native import proof",
+    "No false 11 building or entered-room count",
+    "No new quests/rewards/economy",
+    "No unchanged old R.bound proof for new walk path",
+    "Moved two home doors require NEW derived return resources and exact room resolver binding; old R binding is not reused for changed return foot"
+  ],
+  "publication_policy": "New build output only; old raw support reused (never cooked old walk); all exact door/task feet audited under regenerated walk and transformed full solids.",
+  "revision_note": "retry2: measured fixed west enclosure wall at x942..978/y1200..1360 crossed by old y1280 route; cross real gap at y1135 between annex front1110 and notice rear1154.26 instead. West stall shifted clear of existing market_loop; warehouse route uses west wall endpoint, no solid/mask/body reduction."
+}

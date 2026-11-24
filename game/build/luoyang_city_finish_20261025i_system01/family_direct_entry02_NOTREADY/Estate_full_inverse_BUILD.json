@@ -1,0 +1,21 @@
+{
+  "status": "ROOT_AUTHORIZED_STRICT_FAMILY_UNFINISHED_FIRST_CLEANUP_BUILD",
+  "parent": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/gate_texture_repair01/closure_READY01/luoyang_estate_family_20261021am.gd",
+    "sha256": "ee564b4472ebff5ae9e55b18cc1874e3dff6b9ee82a6b23bdc0c03f93234349f"
+  },
+  "candidate": {
+    "path": "res://build/luoyang_city_finish_20261025i_system01/family_direct_entry02_NOTREADY/Estate_pending_FIRST_cold_discard_CANDIDATE.gd"
+  },
+  "target": "res://scripts/city/luoyang_estate_family_20261021am.gd",
+  "hunks": [
+    {
+      "old": "static func validation_begin() -> bool:\n",
+      "new": "static func validation_begin() -> bool:\n\t# Remove only dead owners or unfinished FIRST from a previous failed attempt.\n\t# Every live FINAL/parked original receipt remains byte-identical.\n\tfor pending_key: int in _finish25i_original_owners.keys():\n\t\tvar pending: Dictionary=_finish25i_original_owners[pending_key]\n\t\tvar pending_scene: SceneScript=pending.scene.get_ref() as SceneScript\n\t\tvar pending_layout: Resource=pending.layout.get_ref() as Resource\n\t\tif pending_scene==null or pending_layout==null:\n\t\t\t_finish25i_original_owners.erase(pending_key);continue\n\t\tif pending.receipt.get(\"finalized\")!=true:\n\t\t\tvar pending_runtime: Variant=_finish25i_runtime()\n\t\t\tif pending_runtime==null or not pending_runtime.discard_unfinalized_original(pending_scene,pending_layout,\"ESTATE_ORIGINAL\",pending.receipt): return false\n\t\t\t_finish25i_original_owners.erase(pending_key)\n"
+    }
+  ],
+  "protected": "All live FINAL original owners incl parked Fields untouched. Only dead Weak removed, or valid unfinished own FIRST discarded through runtime strict cold-only API before removing original snapshot. API refusal preserves that snapshot and rejects begin; original serial increment/reset happens only after cleanup. No synthesized receipt/token/FINAL/storage bypass.",
+  "mechanical_runtime_path_SHA_pending_Source_seal": true,
+  "engine_calls": 0,
+  "canonical_writes": 0
+}

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"wild_elite_zhuwei"
+display_name = "北林蒙面哨长"
+portrait_path = ""
+battle_actor_path = "res://art/characters/battle_masked_killer_leader_v1.png"
+battle_actor_scale = 0.822
+battle_actor_use_exact_scale = true
+level = 5
+max_hp = 177
+max_mp = 0
+attack = 39
+defense = 8
+speed = 9
+skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle"])
+aggression = 0.55
+drop_gold_min = 20
+drop_gold_max = 40
+drop_exp = 67

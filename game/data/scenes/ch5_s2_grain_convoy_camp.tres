@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/dialogs/ch5_grain_convoy_intro.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch5_s2_grain_convoy_camp_layout_v3.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="98_native_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("98_native_extent")
+logical_size = Vector2i(1920, 1280)
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch5_s2_grain_convoy_camp"
+display_name = "古峰 · 护粮营地"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
+on_enter_dialog = ExtResource("2_intro")
+on_enter_require_flag = &"ch5_relief_road_cleared"
+on_enter_once_flag = &"seen_ch5_grain_convoy_intro"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+player_spawn = Vector2(0.15,0.82)
+animated_props = Array[Dictionary]([{"id":"ch5_convoy_campfire","type":"flame","pos":Vector2(0.235,0.470),"size":Vector2(0.027,0.068),"speed":0.90,"z_index":25},{"id":"ch5_convoy_campfire_smoke","type":"smoke","pos":Vector2(0.235,0.425),"size":Vector2(0.080,0.170),"speed":0.58,"color":"#c1bbb1","z_index":24},{"id":"ch5_convoy_fire_glow","type":"glow","pos":Vector2(0.235,0.468),"size":Vector2(0.075,0.085),"speed":0.76,"color":"#ff8c32","z_index":17},{"id":"ch5_convoy_cold_mist","type":"mist_drift","pos":Vector2(0.58,0.70),"size":Vector2(0.72,0.13),"speed":0.40,"opacity":0.07,"count":3,"color":"#dde4e1","z_index":12},{"id":"ch5_convoy_tent_flap","type":"texture_sway","texture":"res://art/props/ambient/prop_ambient_tent_flap_canvas_v1.png","pos":Vector2(0.164583333,0.1796875),"size":Vector2(0.0375,0.0578125),"speed":0.42,"z_index":54},{"id":"ch5_convoy_light_snow","type":"snow_drift","pos":Vector2(0.50,0.48),"size":Vector2(0.96,0.76),"speed":0.62,"opacity":0.30,"count":10,"wind_x":0.20,"color":"#eef3f1","z_index":30}])
+npcs = Array[Dictionary]([
+	{"npc_id": "shaolin_snow_monk", "npc_name": "少林行脚僧", "pos": Vector2(0.39,0.48), "sprite_path": "res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png", "dialog_id": "shaolin_snow_inquiry", "dialog_variants": [{"dialog_id": "shaolin_camp_after", "require_flags": ["shaolin_meridian_trial_complete"]}, {"dialog_id": "shaolin_camp_trial", "require_flags": ["baima_bell_solved", "shaolin_burned_script_returned"]}, {"dialog_id": "shaolin_return_page", "require_flags": ["shaolin_snow_page_found"]}], "require_flag": "ch5_grain_convoy_saved", "scale": 0.86},
+	{"npc_id": "xingyi_grain_keeper", "npc_name": "行义帮粮秤人", "pos": Vector2(0.59,0.57), "sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png", "dialog_id": "xingyi_camp_inquiry", "dialog_variants": [{"dialog_id": "xingyi_camp_after", "require_flags": ["xingyi_three_oaths_complete"]}, {"dialog_id": "xingyi_camp_oath", "require_flags": ["boat_feud_resolved", "ch4_canal_witness_saved", "xingyi_grain_convoy_saved"]}], "require_flag": "ch5_grain_convoy_saved", "scale": 0.86},
+	{"npc_id":"ch5_relief_guard", "npc_name":"古峰护粮守卫", "pos":Vector2(0.30,0.43), "portrait_path":"res://art/characters/portraits/street_expansion_v1/portrait_escort_guard_v1.png", "sprite_path":"res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png", "dialog_id":"ch5_grain_convoy_intro","dialog_variants":[{"dialog_id":"ch5_patrol_after","require_flags":["ch5_patrol_paid"]},{"dialog_id":"ch5_patrol_pay","require_flags":["ch5_patrol_three"],"require_quest_active":"q_ch5_side_02_patrol_blades"},{"dialog_id":"ch5_patrol_offer","require_flags":["ch5_grain_convoy_saved"]}], "scale":0.96}
+])
+hotspots = Array[Dictionary]([
+	{"label":"守住赈粮车队", "pos_x":0.56, "pos_y":0.53, "action":"dialog:ch5_grain_convoy_battle", "require_flag":"ch5_relief_road_cleared", "hide_flag":"ch5_grain_convoy_saved"},
+	{"label":"查验破损伪旗", "pos_x":0.57, "pos_y":0.25, "action":"dialog:ch5_false_banner_evidence", "require_flag":"ch5_grain_convoy_saved", "hide_flag":"ch5_false_banner_cloth_found"},
+	{"label":"返回江湖大地图", "pos_x":0.12, "pos_y":0.86, "action":"world_map"}
+])
+exits = Array[Dictionary]([
+	{"label":"返回赈粮路", "pos":Vector2(0.08,0.82), "size":Vector2(0.12,0.18), "target_scene":"ch5_s1_relief_road", "target_pos":Vector2(0.84,0.17)},
+	{"label":"前往雪岭关", "pos":Vector2(0.86,0.12), "size":Vector2(0.12,0.16), "target_scene":"ch5_s3_snow_pass", "target_pos":Vector2(0.25,0.88), "require_flag":"ch5_false_banner_cloth_found"}
+])

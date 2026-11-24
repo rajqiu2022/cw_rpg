@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="scene"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="stream"]
+[ext_resource type="Resource" path="res://data/maps/east_mainland/east_salt_bay_village.tres" id="layout"]
+[sub_resource type="Resource" id="EastExtent"]
+script = ExtResource("stream")
+logical_size = Vector2i(3072, 2048)
+[resource]
+script = ExtResource("scene")
+scene_id = &"east_salt_bay_village"
+display_name = "东大陆 · 盐湾村"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+is_settlement = true
+actor_positions_are_feet = true
+player_spawn = Vector2(0.50130208, 0.22460938)
+map_layout = ExtResource("layout")
+streamed_background = SubResource("EastExtent")
+npcs = Array[Dictionary]([
+	{"npc_id": "saltbay_resident", "dialog_variants": [{"dialog_id": "east_tide_salt", "require_quest_active": "q_east_tidesound_blade", "hide_flags": ["tide_salt_known"]}], "npc_name": "晒盐村民", "sprite_path": "res://art/characters/npc_zhuwei_vegetable_vendor_idle_down_25d_4f_v2_runtime.png", "portrait_path": "res://art/characters/portraits/generic/portrait_generic_older_woman_v1.png", "dialog_id": "east_salt_bay_resident", "scale": 0.92, "pos": Vector2(0.5078125, 0.56396484)}
+])

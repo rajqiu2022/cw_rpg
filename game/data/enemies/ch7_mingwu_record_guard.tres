@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch7_mingwu_record_guard"
+trait_caption="截脉封针"
+finisher_affliction="seal"
+display_name="茗雾内署护档使"
+battle_actor_path = "res://art/sprites/battle/ch7_ferry_office_20261122/keeper/ready.tres"
+battle_actor_scale = 1.1070
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/keeper/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/keeper/ready.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/keeper/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/keeper/ready.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/keeper/draw.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/keeper/strike.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/keeper/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/keeper/hit1.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/keeper/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/keeper/kneel.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/keeper/down.tres")
+level=12
+max_hp=680
+max_mp=125
+attack=108
+defense=24
+speed=30
+skill_ids=Array[StringName]([&"basic_attack",&"mingwu_wuyin_sanshi",&"toxic_needle", &"mingwu_counterseal_needles"])
+aggression=0.72
+drop_gold_min=65
+drop_gold_max=90
+drop_exp=120

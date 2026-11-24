@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "段长风"
+text = "油布上的刀痕没错，是我的药包。你肯冒风雪替陌生人跑这一趟，我愿随你走一程。"
+
+choices = Array[Dictionary]([{"text":"正想结交前辈，一起走吧","next":"join"},{"text":"先各自游历","next":"end"}])
+[sub_resource type="Resource" id="join"]
+script = ExtResource("2")
+node_id = &"join"
+speaker = "段长风"
+text = "走吧。险地可以试，硬仗打不过就退；你的师门事，还是由你自己拿主意。"
+set_flags = Array[Dictionary]([{"key":"companion_duan_changfeng_joined","value":true}])
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_duan_changfeng_join"
+nodes = Array[Resource]([SubResource("start"), SubResource("join")])
+required_story_flag = &"openworld_snow_medicine_found"
+blocked_story_flag = &"companion_duan_changfeng_joined"

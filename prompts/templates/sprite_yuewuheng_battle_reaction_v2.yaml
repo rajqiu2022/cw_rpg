@@ -1,0 +1,19 @@
+id: sprite_yuewuheng_battle_reaction_v2
+description: Yue Wuheng reaction frame matched to the approved v2 attack candidate.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/assets/raw/sprite/battle-action/yuewuheng/v2/sprite_yuewuheng_battle_attack_v2.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied image as the strict identity, full-body costume, hairstyle, sword, palette, and combat-art reference for Yue Wuheng. Create ONE full-body 2.5D wuxia RPG combat animation frame facing right for the allied lower-left battle formation. Keep exactly her long black high ponytail with pale-blue ornament, white robe with light-blue and deep-teal layers, dark-teal sash and silver ornaments, tall dark-teal boots, and one ornate straight sword.
+
+  Reaction: {{reaction}}
+  Use the same crisp dark ink outlines and controlled painted shading as the reference. Keep head, both boots, sword tip, hair, and robe hems fully inside the 1024x1024 image with at least 12 percent empty padding. Perfectly flat #00ff00 chroma-key background only: no floor, shadow, halo, scenery, text, UI, border, watermark, effect, second person, blood, or wound.
+
+  Avoid: cropped anatomy, bust portrait, photorealism, different woman, white-and-gold costume, green robe, exposed legs, bare feet, twin swords, red ribbon, headscarf, western armor, demon, spider, web.
+
+variables:
+  reaction: "required"

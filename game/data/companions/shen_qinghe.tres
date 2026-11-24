@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/character_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+character_id = "shen_qinghe"
+display_name = "沈青禾"
+portrait_path = "res://art/characters/companions/portrait_shen_qinghe_v1.png"
+role_title = "林西剑伴"
+origin = "林西村"
+biography = "与冷孤云一同长大的村中伙伴，剑路轻灵，懂得以吐纳护住同伴经脉。嘴硬心热、直率蛮横，最看不惯冷孤云逞强独扛，认定的事会直接管到底。"
+weapon_specialty = &"sword"
+fixed_martial_arts = true
+equipped_internal_art = &"qinghe_jade_guard"
+battle_actor_path = "res://art/sprites/battle/companions_v4/shen_qinghe/shen_qinghe_ready_01.png"
+battle_sprite_root = "res://art/sprites/battle/companions_v4/shen_qinghe"
+battle_sprite_prefix = "shen_qinghe"
+battle_actor_scale = 0.42
+level = 2
+strength = 7
+agility = 9
+inner_power = 9
+insight = 9
+vitality = 9
+inner_pool = 10
+guard = 9
+skills = Array[StringName]([&"basic_attack", &"qinghe_swallow_sword", &"qinghe_returning_breath", &"qinghe_jade_guard", &"defend"])

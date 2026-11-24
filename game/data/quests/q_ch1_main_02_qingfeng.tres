@@ -5,11 +5,13 @@
 [resource]
 script = ExtResource("1_qdef")
 quest_id = &"q_ch1_main_02_qingfeng"
-title = "打探竹尾村"
-desc_not_started = "顺着尸体身上的地图，前方便是竹尾村。"
-desc_in_progress = "进入竹尾村，向当地人打听茗雾的消息。"
-desc_completed = "在竹尾村打听到了茗雾的踪迹。"
-completion_triggers = Array[String](["scene_entered:ch1_s2_qingfeng_walkable"])
-reward_gold = 0
-reward_exp = 0
+title = "前往竹尾村"
+kind = 0
+desc_not_started = "山道尽头的竹尾村出现了凌月派弟子失踪的告示。"
+desc_in_progress = "沿山道前往竹尾村，并向村口守卫问清告示上的消息。"
+desc_completed = "你抵达竹尾村，第一次把脚步迈进了真正的江湖。"
+tracker_hint = "竹尾村"
+completion_triggers = Array[String](["flag_set:chapter1_complete"])
+reward_gold = 20
+reward_exp = 25
 reward_items = Array[Dictionary]([])

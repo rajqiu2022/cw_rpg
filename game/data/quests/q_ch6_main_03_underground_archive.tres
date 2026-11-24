@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch6_main_03_underground_archive"
+title = "地底原册"
+kind = 0
+desc_not_started = "旧居地下藏着一座档案室，灯芯尚热，追索旧档的人仍在里面。"
+desc_in_progress = "先过灯下袖针、书架散镖两道巡守。针镖所附是普通毒，暗门外的送药人识得毒痕。再击退销卷使，核对押运底册与正屋旁注。听闻他袖底泛青烟便要放烈毒，记得先护住要害。林西药铺有丹砂佩和解毒丹，青禾的回春引也能拔毒。"
+desc_completed = "原册证明冷孤云并非途中失散；刑樊天确实改过证词，但接走幼子之人的姓名仍被裁去。"
+tracker_hint = "林西村 · 地下档案室"
+completion_triggers = Array[String](["flag_set:ch6_archive_reclaimers_defeated", "evidence_acquired:ev_ch6_revised_escort_note", "evidence_acquired:ev_ch6_parent_convoy_roster", "flag_set:ch6_archive_records_secured"])
+require_all_completion_triggers = true
+starts_in_chapter = 6
+completes_in_chapter = 6
+reward_gold = 120
+reward_exp = 200
+reward_items = Array[Dictionary]([{"item_id":"jinhe_duanyue_blade", "count":1}, {"item_id":"inner_breath_pill", "count":2}])
+progress_records = Array[Dictionary]([
+	{"trigger":"flag_set:ch6_archive_reclaimers_defeated", "text":"两名追档者携火油与封蜡而来，目的不是取走档案，而是销毁原册。"},
+	{"trigger":"evidence_acquired:ev_ch6_parent_convoy_roster", "text":"原册记载冷氏夫妇与幼子均到过白水驿，幼子后来被同行者接走。"}
+])

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "两名巡守被击退，外区守望没有追击，也没有替他们掩走药册。强硬派的阻挠并不代表整个烈云分舵。"
+on_end = "next:hero"
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "药册留下，原册也还在我手里。等茗雾外院的转运簿补上另一边，才能继续往内查。"
+set_flags = Array[Dictionary]([{"key":"ch7_lieyun_hardliners_defeated", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_lieyun_hardliner_victory"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero")])

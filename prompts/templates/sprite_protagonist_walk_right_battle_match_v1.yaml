@@ -1,0 +1,27 @@
+id: sprite_protagonist_walk_right_battle_match_v1
+description: 以战斗动作资源为外观锚点的主角 Field 右向四帧行走条
+quality: high
+size: "1536x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/sprites/battle/lengguyun_attack_slash_south_f01.png"
+require_reference_images: true
+
+prompt_template: |
+  {style_anchor}
+
+  Use the supplied image only as the locked character-design reference for 冷孤云: same young Chinese wuxia swordsman, same tied black hair, grey-white cross-collar robe, dark grey trousers and short boots, dark belt, waist sword and small wine gourd. Do not copy the attacking pose.
+
+  Create one production game field sprite strip: four consecutive right-facing walking frames of this exact character, in a single horizontal row on a 1536 by 1024 canvas. Each frame is a small full-body orthogonal 2D RPG sprite, not portrait art and not a large character illustration.
+
+  Layout: four evenly spaced invisible cells, one character centered in each cell, all feet on exactly the same invisible baseline. Character height about 180 pixels. Plain pure white #FFFFFF background only, no ground, no cast shadow, no texture, no grid lines, no text, no UI, no watermark.
+
+  Motion: frame 1 left foot forward and right foot back; frame 2 passing pose with legs crossing; frame 3 right foot forward and left foot back; frame 4 passing pose returning smoothly to frame 1. The head, torso, belt, sword and gourd remain stable; only legs, arms and robe hem make small readable walk changes.
+
+  Style: Hong Kong wuxia comic, painterly ink outline, clean silhouette at game-sprite scale, restrained colours matching the supplied battle reference. The body faces screen right in a clean orthogonal side view, no isometric tiles, no 45 degree perspective.
+
+  Constraints: all four figures must be the same person, same outfit and equipment placement. No headscarf, forehead band, red hair ribbon, blue robe, extra characters, spiders, webs, text, signatures or watermarks.
+
+  Negative: {negative}
+
+variables: {}

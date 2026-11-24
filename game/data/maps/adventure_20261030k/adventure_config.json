@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "coordinate_basis": "world_pixels",
+  "maps": [
+    {
+      "scene_id": "adventure_zhuwei_hunting_ground",
+      "label": "竹尾猎径",
+      "size": [
+        4096,
+        3072
+      ],
+      "spawn": [
+        2048,
+        2764.8
+      ],
+      "return": {
+        "target_scene": "ch1_s3_zhuwei_forest",
+        "target_pos": [
+          0.371,
+          0.506
+        ],
+        "pos": [
+          2048,
+          2856.96
+        ],
+        "source_spawn_pos": [
+          2048,
+          2764.8
+        ]
+      },
+      "zones": [
+        {
+          "id": "forest_main_safe",
+          "label": "回程与中央主路",
+          "kind": "safe",
+          "polygon": [
+            [
+              1740,
+              2920
+            ],
+            [
+              2360,
+              2920
+            ],
+            [
+              2380,
+              1400
+            ],
+            [
+              2300,
+              900
+            ],
+            [
+              1780,
+              780
+            ],
+            [
+              1660,
+              1400
+            ]
+          ]
+        },
+        {
+          "id": "forest_herb_loop",
+          "label": "西侧采药小径",
+          "kind": "safe",
+          "polygon": [
+            [
+              550,
+              2100
+            ],
+            [
+              1250,
+              2480
+            ],
+            [
+              1740,
+              2020
+            ],
+            [
+              1580,
+              950
+            ],
+            [
+              550,
+              650
+            ]
+          ]
+        },
+        {
+          "id": "forest_beast",
+          "label": "东林兽区",
+          "kind": "danger",
+          "enemy_group": "wolf",
+          "polygon": [
+            [
+              2540,
+              650
+            ],
+            [
+              3500,
+              560
+            ],
+            [
+              3600,
+              2150
+            ],
+            [
+              2850,
+              2500
+            ],
+            [
+              2500,
+              2100
+            ]
+          ]
+        }
+      ],
+      "points": [
+        {
+          "id": "forest_old_marks",
+          "label": "岩凹旧痕",
+          "kind": "clue",
+          "foot": [
+            680,
+            800
+          ],
+          "text": "石缝中只有旧日柴痕和风干的树皮，静看林间便可循原路返回。"
+        },
+        {
+          "id": "forest_wolf_trail",
+          "label": "兽踪小径 · 野狗",
+          "kind": "challenge",
+          "tier": "normal",
+          "foot": [
+            3150,
+            1780
+          ],
+          "enemy_ids": ["bamboo_feral_dog"],
+          "text": "东侧兽径有野狗留下的新鲜足迹。是否追踪？南侧主路可以绕行。"
+        },
+        {
+          "id": "forest_wolf_ridge",
+          "label": "北林狼踪 · 竹尾头狼",
+          "kind": "challenge",
+          "tier": "elite",
+          "foot": [
+            3000,
+            760
+          ],
+          "enemy_ids": ["wild_elite_wolf"],
+          "text": "林里只传来一声低吼。灌木间，灰鬃头狼正压低身子。是否迎战？"
+        }
+      ],
+      "signposts": [
+        {
+          "foot": [
+            2210,
+            2720
+          ],
+          "text": "竹尾猎径｜南返密林"
+        },
+        {
+          "foot": [
+            2210,
+            2350
+          ],
+          "text": "西：采药环径｜东：兽踪险径"
+        },
+        {
+          "foot": [
+            2280,
+            1260
+          ],
+          "text": "西南归路｜东北深林谨行"
+        }
+      ],
+      "runtime_random_encounters": false
+    },
+    {
+      "scene_id": "adventure_xiangzhou_deep_mine",
+      "label": "襄州深矿",
+      "size": [
+        4096,
+        3072
+      ],
+      "spawn": [
+        2048,
+        2764.8
+      ],
+      "return": {
+        "target_scene": "openworld_xiangzhou_mine_valley",
+        "target_pos": [
+          0.3255208333333333,
+          0.732421875
+        ],
+        "pos": [
+          2048,
+          2856.96
+        ],
+        "source_spawn_pos": [
+          2048,
+          2764.8
+        ]
+      },
+      "zones": [
+        {
+          "id": "mine_main_safe",
+          "label": "中央运矿主路",
+          "kind": "safe",
+          "polygon": [
+            [
+              1750,
+              2900
+            ],
+            [
+              2440,
+              2900
+            ],
+            [
+              2460,
+              1300
+            ],
+            [
+              2320,
+              800
+            ],
+            [
+              1890,
+              700
+            ],
+            [
+              1700,
+              1400
+            ]
+          ]
+        },
+        {
+          "id": "mine_quarry",
+          "label": "西侧石质采坑",
+          "kind": "danger",
+          "enemy_group": "mine",
+          "polygon": [
+            [
+              580,
+              1260
+            ],
+            [
+              1560,
+              900
+            ],
+            [
+              1750,
+              1450
+            ],
+            [
+              1650,
+              2200
+            ],
+            [
+              780,
+              2400
+            ],
+            [
+              500,
+              1900
+            ]
+          ]
+        },
+        {
+          "id": "mine_outlaw_camp",
+          "label": "东侧匪营与北支口",
+          "kind": "danger",
+          "enemy_group": "mine",
+          "polygon": [
+            [
+              2750,
+              530
+            ],
+            [
+              3530,
+              650
+            ],
+            [
+              3670,
+              1750
+            ],
+            [
+              3310,
+              2280
+            ],
+            [
+              2710,
+              2020
+            ]
+          ]
+        }
+      ],
+      "points": [
+        {
+          "id": "mine_old_cut",
+          "label": "废采坑石壁",
+          "kind": "clue",
+          "foot": [
+            1150,
+            740
+          ],
+          "text": "石壁上留有手凿痕迹，木楔早已风化。这里只能观察，不会取得额外物品。"
+        },
+        {
+          "id": "mine_camp_watch",
+          "label": "匪营外哨 · 普通试炼",
+          "kind": "challenge",
+          "tier": "normal",
+          "foot": [
+            3350,
+            1600
+          ],
+          "enemy_group": "mine",
+          "text": "旧采具棚边有人窥探。是否自愿迎战？中央运矿道仍可安全绕行。"
+        },
+        {
+          "id": "mine_north_sentries",
+          "label": "北矿匪哨 · 精英试炼",
+          "kind": "challenge",
+          "tier": "elite",
+          "foot": [
+            3150,
+            780
+          ],
+          "enemy_group": "mine",
+          "text": "北矿道有数名匪徒结伴。此战危险，是否仍要接近？"
+        }
+      ],
+      "signposts": [
+        {
+          "foot": [
+            2260,
+            2710
+          ],
+          "text": "襄州深矿｜南返矿谷"
+        },
+        {
+          "foot": [
+            2260,
+            2340
+          ],
+          "text": "西：旧采坑｜东：匪营险地"
+        },
+        {
+          "foot": [
+            2350,
+            1320
+          ],
+          "text": "中路南返｜北矿道谨行"
+        }
+      ],
+      "runtime_random_encounters": false
+    }
+  ],
+  "field_points": {
+    "openworld_redrock_town": [
+      {
+        "id": "redrock_fox_trail",
+        "label": "关外风蚀道 · 沙狐",
+        "kind": "challenge",
+        "tier": "normal",
+        "foot": [2250, 4740],
+        "enemy_ids": ["western_sand_fox"],
+        "text": "石缝外有一串轻浅的足迹，沙狐在背风处伏着。是否迎战？"
+      }
+    ],
+    "openworld_desert_city": [
+      {
+        "id": "desert_dog_tracks",
+        "label": "城外商道 · 沙地野狗",
+        "kind": "challenge",
+        "tier": "normal",
+        "foot": [2560, 4775],
+        "enemy_ids": ["western_feral_dog", "western_feral_dog"],
+        "text": "离城的驼队常在这里卸水。两只野狗沿着旧车辙游荡。是否迎战？"
+      },
+      {
+        "id": "desert_lion_territory",
+        "label": "沙丘深处 · 西域雄狮",
+        "kind": "challenge",
+        "tier": "elite",
+        "foot": [2560, 5060],
+        "enemy_ids": ["wild_elite_western_lion"],
+        "text": "风把商道的车辙吹平了。再往前是雄狮伏猎的领地。是否迎战？"
+      }
+    ]
+  },
+  "connectors": [
+    {
+      "source_scene": "openworld_xiangzhou_mine_valley",
+      "source_basis": [
+        3072,
+        2048
+      ],
+      "source_foot": [
+        1000,
+        1500
+      ],
+      "target_scene": "adventure_xiangzhou_deep_mine",
+      "target_spawn": [
+        0.5,
+        0.9
+      ],
+      "label": "进入襄州深矿"
+    }
+  ]
+}

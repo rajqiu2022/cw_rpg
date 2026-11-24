@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "护商镖师"
+text = "我巡到村东时，看见一群野兽从后山密林里惊逃出来，林里像有什么东西把它们逼疯了。林西村外那段山道也有山匪游荡，商队都不敢走。"
+choices = Array[Dictionary]([
+    {"text": "我去山道巡一巡", "next": "accept", "accept_quest": "q_ch1_side_08_mountain_patrol"},
+    {"text": "先做别的事", "next": "end", "decline_quest": "q_ch1_side_08_mountain_patrol"}
+])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "zhuwei_scout_clue", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[sub_resource type="Resource" id="node_accept"]
+script = ExtResource("2_dnode")
+node_id = &"accept"
+speaker = "护商镖师"
+text = "旧寨里的匪徒不算这趟。还有一伙残匪沿林西村外的山道截货，专挑无人看守的时候下手。击退他们后，回来给我报个信。"
+choices = Array[Dictionary]([])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &"q_ch1_side_08_mountain_patrol"
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s2_patrol_scout"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_accept")])

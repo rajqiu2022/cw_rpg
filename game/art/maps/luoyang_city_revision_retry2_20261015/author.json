@@ -1,0 +1,1350 @@
+{
+  "schema_version": 1,
+  "status": "AUTHOR_CANDIDATE_NOT_PUBLISHED_NOT_FORMAL",
+  "source_sha256": {
+    "res://data/maps/luoyang_home_candidates_20261015/home_author.json": "83448c815954c4efc4a081e642b591b190f72d6552bf49bd0bd40ca5edea96da",
+    "res://data/scenes/ch4_s3_luoyang_market.tres": "2df5059ab647d956e7b37c8bb5f7d0d568d575deac7931b3ccadb5451c6fe8f6",
+    "res://data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres": "70eed1b355ec18ac6d2a5d781fd1d98975d032e9961118251127ba0076e33de4",
+    "res://data/scenes/ch4_s2_canal_docks.tres": "51527c472d4c4ce33e00f1a07754411cc433f770c5882614187f165a7834b34d",
+    "res://data/maps/luoyang_enclosure_v11_candidates/ch4_s2_canal_docks_layout.tres": "271b1c59d4e3b0f87c67cd59b58cc4fa98487ea7d28d98029981ed77bb63540e",
+    "res://art/maps/luoyang_market_enrichment_v2/runtime_manifest.json": "d617289ee22a40223f86e9f2003bdc149e8b2714aef1f83d93d4faf605ee67cd",
+    "res://art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/art_patch.json": "b4b06110c299bf97dad8eb7134d8b0902135b37bc7c7f4952522ce6f30a5cf23",
+    "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png": "904ff9885d7c7f7a3337b4db964141c6c1b4a8411cfc31a7b4b888723fd43900",
+    "res://data/dialogs/ch4_canal_grudge_offer.tres": "431d43b11cf55a8f53aad96f71a077def8c1ef78477cdfb094da2cf34207dc80"
+  },
+  "home_author_path": "res://data/maps/luoyang_home_candidates_20261015/home_author.json",
+  "home_author_sha256": "83448c815954c4efc4a081e642b591b190f72d6552bf49bd0bd40ca5edea96da",
+  "world_nav_changed": false,
+  "city_version": 3,
+  "scenes": [
+    {
+      "scene_id": "ch4_s3_luoyang_market",
+      "parent_manifest_path": "res://art/maps/luoyang_market_enrichment_v2/runtime_manifest.json",
+      "parent_manifest_sha256": "d617289ee22a40223f86e9f2003bdc149e8b2714aef1f83d93d4faf605ee67cd",
+      "expected_parent_metadata_key": "market_enrichment_manifest_sha",
+      "expected_parent_metadata_sha": "d617289ee22a40223f86e9f2003bdc149e8b2714aef1f83d93d4faf605ee67cd",
+      "expected_object_ids": [
+        "inn",
+        "shop",
+        "goods_stall",
+        "medicine_stall",
+        "street_tree_0",
+        "street_tree_1",
+        "street_tree_2",
+        "street_tree_3",
+        "lamp_0",
+        "lamp_1",
+        "xuantong_note_scroll",
+        "north_market_front",
+        "southwest_market_front",
+        "southeast_market_front",
+        "v13_market_west_plot_wall",
+        "v13_market_east_plot_wall",
+        "market_west_ward_frontage",
+        "market_east_ward_frontage",
+        "market_northwest_rear_frontage",
+        "market_northeast_rear_frontage",
+        "market_west_alley_stall",
+        "market_east_alley_stall",
+        "market_west_court_tree_a",
+        "market_west_court_tree_b",
+        "market_east_court_tree_a",
+        "market_east_court_tree_b"
+      ],
+      "expected_gameplay_slots": {
+        "interactions": [
+          {
+            "interaction_polygon_px": [
+              [
+                2282.0,
+                930.0
+              ],
+              [
+                2358.0,
+                930.0
+              ],
+              [
+                2358.0,
+                970.0
+              ],
+              [
+                2282.0,
+                970.0
+              ]
+            ],
+            "object_id": "shop",
+            "source_id": "armory_old_record",
+            "stand_px": [
+              2320.0,
+              950.0
+            ]
+          },
+          {
+            "interaction_polygon_px": [
+              [
+                1282.0,
+                1210.0
+              ],
+              [
+                1358.0,
+                1210.0
+              ],
+              [
+                1358.0,
+                1250.0
+              ],
+              [
+                1282.0,
+                1250.0
+              ]
+            ],
+            "object_id": "goods_stall",
+            "source_id": "paper_birdseal",
+            "stand_px": [
+              1320.0,
+              1230.0
+            ]
+          },
+          {
+            "interaction_polygon_px": [
+              [
+                1712.0,
+                1210.0
+              ],
+              [
+                1788.0,
+                1210.0
+              ],
+              [
+                1788.0,
+                1250.0
+              ],
+              [
+                1712.0,
+                1250.0
+              ]
+            ],
+            "object_id": "medicine_stall",
+            "source_id": "zhao_medicine_parcel",
+            "stand_px": [
+              1750.0,
+              1230.0
+            ]
+          },
+          {
+            "interaction_polygon_px": [
+              [
+                2402.0,
+                1080.0
+              ],
+              [
+                2478.0,
+                1080.0
+              ],
+              [
+                2478.0,
+                1120.0
+              ],
+              [
+                2402.0,
+                1120.0
+              ]
+            ],
+            "object_id": "xuantong_note_scroll",
+            "source_id": "xuantong_note",
+            "stand_px": [
+              2440.0,
+              1100.0
+            ]
+          }
+        ],
+        "npcs": [
+          {
+            "foot_px": [
+              370.0,
+              1130.0
+            ],
+            "source_id": "spar_luoyang_shen_guard"
+          },
+          {
+            "foot_px": [
+              1170.0,
+              820.0
+            ],
+            "source_id": "spar_luoyang_examiner"
+          },
+          {
+            "foot_px": [
+              1380.0,
+              1540.0
+            ],
+            "source_id": "spar_luoyang_blademaster"
+          },
+          {
+            "foot_px": [
+              1710.0,
+              1500.0
+            ],
+            "source_id": "spar_luoyang_patrol"
+          },
+          {
+            "foot_px": [
+              790.0,
+              1030.0
+            ],
+            "source_id": "feng_yanqiu_ch4"
+          },
+          {
+            "foot_px": [
+              520.0,
+              1340.0
+            ],
+            "source_id": "luoyang_paper_scholar"
+          },
+          {
+            "foot_px": [
+              1260.0,
+              1720.0
+            ],
+            "source_id": "luoyang_poetry_host"
+          },
+          {
+            "foot_px": [
+              2440.0,
+              950.0
+            ],
+            "source_id": "luoyang_armorer"
+          }
+        ],
+        "portals": [
+          {
+            "arrival_foot_px": [
+              1536.0,
+              770.0
+            ],
+            "foot_px": [
+              1536.0,
+              770.0
+            ],
+            "interaction_polygon_px": [
+              [
+                1488.0,
+                746.0
+              ],
+              [
+                1584.0,
+                746.0
+              ],
+              [
+                1584.0,
+                794.0
+              ],
+              [
+                1488.0,
+                794.0
+              ]
+            ],
+            "passage_path_px": [
+              [
+                1536.0,
+                788.0
+              ],
+              [
+                1536.0,
+                770.0
+              ]
+            ],
+            "source_id": "to_yamen_square"
+          },
+          {
+            "arrival_foot_px": [
+              220.0,
+              1060.0
+            ],
+            "foot_px": [
+              220.0,
+              1060.0
+            ],
+            "interaction_polygon_px": [
+              [
+                172.0,
+                1036.0
+              ],
+              [
+                268.0,
+                1036.0
+              ],
+              [
+                268.0,
+                1084.0
+              ],
+              [
+                172.0,
+                1084.0
+              ]
+            ],
+            "passage_path_px": [
+              [
+                220.0,
+                1078.0
+              ],
+              [
+                220.0,
+                1060.0
+              ]
+            ],
+            "source_id": "to_city_gate"
+          },
+          {
+            "arrival_foot_px": [
+              2840.0,
+              1060.0
+            ],
+            "foot_px": [
+              2840.0,
+              1060.0
+            ],
+            "interaction_polygon_px": [
+              [
+                2792.0,
+                1036.0
+              ],
+              [
+                2888.0,
+                1036.0
+              ],
+              [
+                2888.0,
+                1084.0
+              ],
+              [
+                2792.0,
+                1084.0
+              ]
+            ],
+            "passage_path_px": [
+              [
+                2840.0,
+                1078.0
+              ],
+              [
+                2840.0,
+                1060.0
+              ]
+            ],
+            "source_id": "to_canal_docks"
+          },
+          {
+            "arrival_foot_px": [
+              1536.0,
+              1860.0
+            ],
+            "foot_px": [
+              1536.0,
+              1860.0
+            ],
+            "interaction_polygon_px": [
+              [
+                1488.0,
+                1836.0
+              ],
+              [
+                1584.0,
+                1836.0
+              ],
+              [
+                1584.0,
+                1884.0
+              ],
+              [
+                1488.0,
+                1884.0
+              ]
+            ],
+            "passage_path_px": [
+              [
+                1536.0,
+                1878.0
+              ],
+              [
+                1536.0,
+                1860.0
+              ]
+            ],
+            "source_id": "to_ancient_temple"
+          }
+        ]
+      },
+      "expected_routes": [
+        {
+          "id": "market_axis",
+          "points_px": [
+            [
+              1536.0,
+              1860.0
+            ],
+            [
+              1536.0,
+              1500.0
+            ],
+            [
+              1536.0,
+              1050.0
+            ],
+            [
+              1536.0,
+              770.0
+            ]
+          ]
+        },
+        {
+          "id": "market_east_west",
+          "points_px": [
+            [
+              220.0,
+              1060.0
+            ],
+            [
+              1000.0,
+              1060.0
+            ],
+            [
+              1536.0,
+              1060.0
+            ],
+            [
+              2090.0,
+              1060.0
+            ],
+            [
+              2840.0,
+              1060.0
+            ]
+          ]
+        },
+        {
+          "id": "market_loop",
+          "points_px": [
+            [
+              1000.0,
+              1060.0
+            ],
+            [
+              1180.0,
+              1380.0
+            ],
+            [
+              1320.0,
+              1420.0
+            ],
+            [
+              1320.0,
+              1790.0
+            ],
+            [
+              1536.0,
+              1790.0
+            ],
+            [
+              1780.0,
+              1790.0
+            ],
+            [
+              1780.0,
+              1400.0
+            ],
+            [
+              1880.0,
+              1360.0
+            ],
+            [
+              2090.0,
+              1060.0
+            ]
+          ]
+        },
+        {
+          "id": "inn_and_paper",
+          "points_px": [
+            [
+              1000.0,
+              1060.0
+            ],
+            [
+              735.0,
+              920.0
+            ],
+            [
+              735.0,
+              830.0
+            ]
+          ]
+        },
+        {
+          "id": "armory",
+          "points_px": [
+            [
+              2090.0,
+              1060.0
+            ],
+            [
+              2320.0,
+              950.0
+            ],
+            [
+              2320.0,
+              850.0
+            ]
+          ]
+        },
+        {
+          "id": "medicine",
+          "points_px": [
+            [
+              1880.0,
+              1360.0
+            ],
+            [
+              1750.0,
+              1230.0
+            ]
+          ]
+        },
+        {
+          "id": "paper_stall",
+          "points_px": [
+            [
+              1180.0,
+              1380.0
+            ],
+            [
+              1320.0,
+              1230.0
+            ]
+          ]
+        }
+      ],
+      "object_edits": [
+        {
+          "id": "inn",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  345.639996337891,
+                  657.640002441406
+                ],
+                [
+                  1120.63999633789,
+                  657.640002441406
+                ],
+                [
+                  1120.63999633789,
+                  805.200002441406
+                ],
+                [
+                  345.639996337891,
+                  805.200002441406
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              735.0,
+              830.0
+            ],
+            "render_size_px": [
+              952.320007324219,
+              634.880004882813
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "shop",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  1915.0,
+                  714.0
+                ],
+                [
+                  2475.0,
+                  714.0
+                ],
+                [
+                  2475.0,
+                  830.0
+                ],
+                [
+                  1915.0,
+                  830.0
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              2320.0,
+              850.0
+            ],
+            "render_size_px": [
+              768.0,
+              512.0
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "north_market_front",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  1083.07995605469,
+                  567.02001953125
+                ],
+                [
+                  1992.27001953125,
+                  567.02001953125
+                ],
+                [
+                  1992.27001953125,
+                  626.650024414063
+                ],
+                [
+                  1083.07995605469,
+                  626.650024414063
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              1536.0,
+              630.0
+            ],
+            "render_size_px": [
+              1039.0,
+              696.0
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "southwest_market_front",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  211.5,
+                  1770.75
+                ],
+                [
+                  989.5,
+                  1770.75
+                ],
+                [
+                  989.5,
+                  1810.09997558594
+                ],
+                [
+                  211.5,
+                  1810.09997558594
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              600.0,
+              1810.0
+            ],
+            "render_size_px": [
+              897.0,
+              453.0
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "southeast_market_front",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  2066.39990234375,
+                  1657.67993164063
+                ],
+                [
+                  2693.60009765625,
+                  1657.67993164063
+                ],
+                [
+                  2693.60009765625,
+                  1787.59997558594
+                ],
+                [
+                  2066.39990234375,
+                  1787.59997558594
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              2520.0,
+              1810.0
+            ],
+            "render_size_px": [
+              870.0,
+              583.0
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "market_west_ward_frontage",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  284.9599914550781,
+                  1389.239990234375
+                ],
+                [
+                  1017.739990234375,
+                  1389.239990234375
+                ],
+                [
+                  1017.739990234375,
+                  1437.300048828125
+                ],
+                [
+                  284.9599914550781,
+                  1437.300048828125
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              650.0,
+              1440.0
+            ],
+            "render_size_px": [
+              829.4400634765625,
+              552.9600219726562
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "market_east_ward_frontage",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  2184.9599609375,
+                  1209.239990234375
+                ],
+                [
+                  2917.739990234375,
+                  1209.239990234375
+                ],
+                [
+                  2917.739990234375,
+                  1257.300048828125
+                ],
+                [
+                  2184.9599609375,
+                  1257.300048828125
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              2550.0,
+              1260.0
+            ],
+            "render_size_px": [
+              829.4400634765625,
+              552.9600219726562
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "market_northwest_rear_frontage",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  282.0,
+                  453.0
+                ],
+                [
+                  960.5,
+                  453.0
+                ],
+                [
+                  960.5,
+                  497.5
+                ],
+                [
+                  282.0,
+                  497.5
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              620.0,
+              500.0
+            ],
+            "render_size_px": [
+              768.0,
+              512.0
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "market_northeast_rear_frontage",
+          "kind": "extend_solid_front_to_original_worldfoot",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  2192.0,
+                  453.0
+                ],
+                [
+                  2870.5,
+                  453.0
+                ],
+                [
+                  2870.5,
+                  497.5
+                ],
+                [
+                  2192.0,
+                  497.5
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              2530.0,
+              500.0
+            ],
+            "render_size_px": [
+              768.0,
+              512.0
+            ]
+          },
+          "world_foot_must_not_change": true,
+          "depth_must_not_change": true
+        },
+        {
+          "id": "v13_market_west_plot_wall",
+          "kind": "translate_back_or_side_court",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  220.0,
+                  1498.0
+                ],
+                [
+                  850.0,
+                  1498.0
+                ],
+                [
+                  850.0,
+                  1510.0
+                ],
+                [
+                  220.0,
+                  1510.0
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              535.0,
+              1510.0
+            ],
+            "render_size_px": [
+              640.0,
+              132.0
+            ]
+          },
+          "to_foot_px": [
+            535.0,
+            1320.0
+          ]
+        },
+        {
+          "id": "v13_market_east_plot_wall",
+          "kind": "translate_back_or_side_court",
+          "before": {
+            "solid_polygons_px": [
+              [
+                [
+                  2190.0,
+                  1308.0
+                ],
+                [
+                  2790.0,
+                  1308.0
+                ],
+                [
+                  2790.0,
+                  1320.0
+                ],
+                [
+                  2190.0,
+                  1320.0
+                ]
+              ]
+            ],
+            "world_foot_px": [
+              2490.0,
+              1320.0
+            ],
+            "render_size_px": [
+              609.0,
+              132.0
+            ]
+          },
+          "to_foot_px": [
+            2490.0,
+            1140.0
+          ]
+        },
+        {
+          "id": "market_west_court_tree_a",
+          "kind": "translate_back_or_side_court",
+          "before": {
+            "solid_polygons_px": [],
+            "world_foot_px": [
+              500.0,
+              1480.0
+            ],
+            "render_size_px": [
+              178.0,
+              250.0
+            ]
+          },
+          "to_foot_px": [
+            220.0,
+            1360.0
+          ]
+        },
+        {
+          "id": "market_west_court_tree_b",
+          "kind": "translate_back_or_side_court",
+          "before": {
+            "solid_polygons_px": [],
+            "world_foot_px": [
+              760.0,
+              1480.0
+            ],
+            "render_size_px": [
+              178.0,
+              250.0
+            ]
+          },
+          "to_foot_px": [
+            1060.0,
+            1360.0
+          ]
+        },
+        {
+          "id": "market_east_court_tree_a",
+          "kind": "translate_back_or_side_court",
+          "before": {
+            "solid_polygons_px": [],
+            "world_foot_px": [
+              2350.0,
+              1290.0
+            ],
+            "render_size_px": [
+              178.0,
+              250.0
+            ]
+          },
+          "to_foot_px": [
+            2120.0,
+            1180.0
+          ]
+        },
+        {
+          "id": "market_east_court_tree_b",
+          "kind": "translate_back_or_side_court",
+          "before": {
+            "solid_polygons_px": [],
+            "world_foot_px": [
+              2700.0,
+              1290.0
+            ],
+            "render_size_px": [
+              178.0,
+              250.0
+            ]
+          },
+          "to_foot_px": [
+            2960.0,
+            1180.0
+          ]
+        }
+      ],
+      "portal_moves": [
+        {
+          "foot_px": [
+            2090.0,
+            160.0
+          ],
+          "id": "to_yamen_square",
+          "old_foot_px": [
+            1536.0,
+            770.0
+          ]
+        }
+      ],
+      "route_terminal_replacements": [
+        {
+          "route_id": "inn_and_paper",
+          "new_end_px": [
+            735.0,
+            854.0
+          ],
+          "old_end_px": [
+            735.0,
+            830.0
+          ]
+        },
+        {
+          "route_id": "armory",
+          "new_end_px": [
+            2320.0,
+            874.0
+          ],
+          "old_end_px": [
+            2320.0,
+            850.0
+          ]
+        }
+      ],
+      "append_routes": [
+        {
+          "points_px": [
+            [
+              1536.0,
+              770.0
+            ],
+            [
+              1850.0,
+              680.0
+            ],
+            [
+              2090.0,
+              680.0
+            ],
+            [
+              2090.0,
+              160.0
+            ]
+          ],
+          "id": "north_street_to_yamen"
+        },
+        {
+          "id": "room_inn_approach",
+          "points_px": [
+            [
+              1000.0,
+              1060.0
+            ],
+            [
+              735.0,
+              920.0
+            ],
+            [
+              735.0,
+              854.0
+            ]
+          ],
+          "building_id": "inn"
+        },
+        {
+          "id": "room_shop_approach",
+          "points_px": [
+            [
+              2090.0,
+              1060.0
+            ],
+            [
+              2320.0,
+              950.0
+            ],
+            [
+              2320.0,
+              874.0
+            ]
+          ],
+          "building_id": "shop"
+        },
+        {
+          "id": "room_north_market_front_approach",
+          "points_px": [
+            [
+              1536.0,
+              770.0
+            ],
+            [
+              1536.0,
+              654.0
+            ]
+          ],
+          "building_id": "north_market_front"
+        },
+        {
+          "id": "room_southwest_market_front_approach",
+          "points_px": [
+            [
+              1536.0,
+              1860.0
+            ],
+            [
+              1100.0,
+              1860.0
+            ],
+            [
+              600.0,
+              1834.0
+            ]
+          ],
+          "building_id": "southwest_market_front"
+        },
+        {
+          "id": "room_southeast_market_front_approach",
+          "points_px": [
+            [
+              1536.0,
+              1860.0
+            ],
+            [
+              1980.0,
+              1860.0
+            ],
+            [
+              2520.0,
+              1834.0
+            ]
+          ],
+          "building_id": "southeast_market_front"
+        },
+        {
+          "id": "room_westward_approach",
+          "points_px": [
+            [
+              1180.0,
+              1380.0
+            ],
+            [
+              1180.0,
+              1510.0
+            ],
+            [
+              650.0,
+              1510.0
+            ],
+            [
+              650.0,
+              1464.0
+            ]
+          ],
+          "building_id": "market_west_ward_frontage"
+        },
+        {
+          "id": "room_eastward_approach",
+          "points_px": [
+            [
+              2090.0,
+              1060.0
+            ],
+            [
+              2070.0,
+              1350.0
+            ],
+            [
+              2550.0,
+              1350.0
+            ],
+            [
+              2550.0,
+              1284.0
+            ]
+          ],
+          "building_id": "market_east_ward_frontage"
+        },
+        {
+          "id": "room_northwestrear_approach",
+          "points_px": [
+            [
+              220.0,
+              1060.0
+            ],
+            [
+              220.0,
+              590.0
+            ],
+            [
+              620.0,
+              590.0
+            ],
+            [
+              620.0,
+              524.0
+            ]
+          ],
+          "building_id": "market_northwest_rear_frontage"
+        },
+        {
+          "id": "room_northeastrear_approach",
+          "points_px": [
+            [
+              2090.0,
+              680.0
+            ],
+            [
+              2090.0,
+              550.0
+            ],
+            [
+              2530.0,
+              524.0
+            ]
+          ],
+          "building_id": "market_northeast_rear_frontage"
+        }
+      ],
+      "room_count": 9,
+      "fresh_arrival_overrides": [
+        {
+          "foot_px": [
+            2090.0,
+            160.0
+          ],
+          "slot": "to_yamen_square",
+          "route_key": "ch4_s1_luoyang_yamen->ch4_s3_luoyang_market",
+          "old_foot_px": [
+            1536.0,
+            770.0
+          ],
+          "authored_uv": [
+            0.955,
+            0.355
+          ]
+        }
+      ]
+    },
+    {
+      "scene_id": "ch4_s2_canal_docks",
+      "parent_manifest_path": "res://art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/art_patch.json",
+      "parent_manifest_sha256": "b4b06110c299bf97dad8eb7134d8b0902135b37bc7c7f4952522ce6f30a5cf23",
+      "expected_parent_metadata_key": "enclosure_patch_sha256",
+      "expected_parent_metadata_sha": "b4b06110c299bf97dad8eb7134d8b0902135b37bc7c7f4952522ce6f30a5cf23",
+      "object_edits": [],
+      "portal_moves": [
+        {
+          "foot_px": [
+            2140.0,
+            1840.0
+          ],
+          "id": "canal_world_ferry",
+          "old_foot_px": [
+            340.0,
+            1840.0
+          ],
+          "minimum_other_exit_separation_px": 500.0
+        }
+      ],
+      "entry_return_move": {
+        "old_foot_px": [
+          340.0,
+          1840.0
+        ],
+        "foot_px": [
+          2140.0,
+          1840.0
+        ]
+      },
+      "append_routes": [
+        {
+          "points_px": [
+            [
+              1200.0,
+              1840.0
+            ],
+            [
+              2140.0,
+              1840.0
+            ]
+          ],
+          "id": "world_ferry_quay_approach"
+        },
+        {
+          "points_px": [
+            [
+              1430.0,
+              1250.0
+            ],
+            [
+              1740.0,
+              1310.0
+            ]
+          ],
+          "id": "canal_work_chief_approach"
+        }
+      ],
+      "interaction_to_npc": {
+        "action": "dialog:ch4_canal_grudge_offer",
+        "npc_id": "canal_work_chief",
+        "object_id": "canal_feud_chest",
+        "hide_flag": "canal_grudge_started",
+        "npc_name": "漕工头领",
+        "interaction_id": "canal_feud_chest",
+        "foot_px": [
+          1740.0,
+          1310.0
+        ],
+        "scale": 0.94,
+        "sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png"
+      },
+      "fresh_arrival_overrides": [
+        {
+          "foot_px": [
+            2140.0,
+            1840.0
+          ],
+          "slot": "canal_world_ferry",
+          "route_key": "ch4_s4_ancient_temple->ch4_s2_canal_docks",
+          "old_foot_px": [
+            340.0,
+            1840.0
+          ],
+          "authored_uv": [
+            0.12,
+            0.75
+          ]
+        }
+      ]
+    }
+  ],
+  "visual_door_runtime_QA": "PENDING",
+  "flat_room_router_install": "PENDING"
+}

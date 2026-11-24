@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch7_s3_lieyun_outpost_outer_ward_layout_v2.tres" id="2"]
+[ext_resource type="Resource" path="res://data/dialogs/ch7_lieyun_outer_intro.tres" id="3"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="9_extent"]
+
+[sub_resource type="Resource" id="MapExtent"]
+script = ExtResource("9_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch7_s3_lieyun_outpost_outer_ward"
+display_name = "烈云分舵 · 外区"
+streamed_background = SubResource("MapExtent")
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
+on_enter_dialog = ExtResource("3")
+on_enter_require_flag = &"ch7_outer_routes_opened"
+on_enter_once_flag = &"seen_ch7_lieyun_outer_intro"
+is_walkable = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.500,0.875)
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids": [&"ch7_lieyun_hardliner_tracker"], "weight": 45.0},
+	{"enemy_ids": [&"ch7_lieyun_hardliner_guard"], "weight": 20.0},
+	{"enemy_ids": [&"ch7_lieyun_hardliner_tracker", &"ch7_lieyun_hardliner_guard"], "weight": 22.0},
+	{"enemy_ids": [&"ch7_lieyun_hardliner_tracker", &"ch7_lieyun_hardliner_guard", &"ch7_lieyun_hardliner_tracker"], "weight": 8.0},
+	{"enemy_ids": [&"wild_elite_lieyun"], "weight": 5.0}
+])
+encounter_allow_full_group_for_solo = true
+encounter_step_distance = 820.0
+encounter_chance = 0.10
+encounter_require_flag = &"ch7_lieyun_hardliners_defeated"
+player_visual_scale = 1.0
+npcs = Array[Dictionary]([{"npc_id":"liuyun_elite_field", "npc_name":"烈云破阵校尉", "pos":Vector2(0.24,0.51), "sprite_path":"res://art/sprites/battle/enemy_expansion_20261112/liuyun_elite/field_idle.tres", "portrait_path":"res://art/sprites/battle/enemy_expansion_20261112/liuyun_elite/ready_01.tres", "dialog_id":"encounter_liuyun_elite", "require_flag":"ch7_lieyun_hardliners_defeated", "hide_flag":"defeated_liuyun_elite", "scale":0.568, "conversation_base_facing":"left"},
+
+	{"npc_id":"ch7_lieyun_hardliner_field", "npc_name":"烈云强硬派巡守", "pos":Vector2(0.610,0.430), "sprite_path":"res://art/characters/npc_west_ruin_guard_idle_down_25d_4f.png", "dialog_id":"ch7_lieyun_hardliner_prebattle", "dialog_variants":[{"dialog_id":"ch7_lieyun_hardliner_prebattle_alerted", "require_flags":["ch7_route_first_mingwu"]}], "require_flag":"ch7_lieyun_registry_checked", "hide_flag":"ch7_lieyun_hardliners_defeated", "scale":0.96, "movement_mode":"idle"},
+	{"npc_id":"ch7_lieyun_reform_guide", "npc_name":"聚义厅引路人", "pos":Vector2(0.710,0.380), "sprite_path":"res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png", "dialog_id":"ch7_inner_routes_open", "require_quest_completed":"q_ch7_main_03_outer_wards", "hide_flag":"ch7_inner_routes_opened", "scale":0.90, "movement_mode":"idle"}
+])
+hotspots = Array[Dictionary]([])
+exits = Array[Dictionary]([])

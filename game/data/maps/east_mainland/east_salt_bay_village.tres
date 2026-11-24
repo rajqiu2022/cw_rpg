@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="layout"]
+[resource]
+script = ExtResource("layout")
+schema_version = 5
+design_size = Vector2i(3072, 2048)
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.00976563, 0.03662109, 0.97981771, 0.03662109, 0.9765625, 0.72753906, 0.87890625, 0.77148438, 0.75195313, 0.71777344, 0.65755208, 0.74707031, 0.54361979, 0.79101563, 0.390625, 0.83007813, 0.25716146, 0.79101563, 0.12695313, 0.703125, 0.00976563, 0.74707031)])
+metadata/east_yards = Array[Dictionary]([
+	{"id": "salt_store_landing", "surface": "earth", "repeat_px": 285, "tint": Color(0.83, 0.82, 0.76, 1), "points": PackedVector2Array(0.24739583, 0.42773438, 0.32421875, 0.43164062, 0.37272135, 0.44531250, 0.39127604, 0.46191406, 0.39160156, 0.48828125, 0.35677083, 0.50292969, 0.30143229, 0.50048828, 0.25585938, 0.48144531)}
+])
+metadata/east_routes = Array[Dictionary]([
+	{"id": "salt_lane", "width_px": 115, "repeat_px": 260, "points": PackedVector2Array(0.50130208, 0.17089844, 0.50455729, 0.31494141, 0.47526042, 0.46386719, 0.50455729, 0.61035156), "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png"},
+	{"id": "net_lane", "width_px": 90, "repeat_px": 260, "points": PackedVector2Array(0.47526042, 0.46386719, 0.62825521, 0.57519531, 0.69921875, 0.60839844, 0.73925781, 0.61035156), "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png"},
+	{"id": "salt_berm", "width_px": 76, "repeat_px": 260, "points": PackedVector2Array(0.47526042, 0.46386719, 0.407, 0.522, 0.397, 0.631, 0.397, 0.727), "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png"}
+])
+blockers = Array[Dictionary]([
+	{"id": "salt_pan_a", "pos": Vector2(0.218, 0.573), "size": Vector2(0.126, 0.084), "walkability_margin": 0.0, "salt_pan": "brine"},
+	{"id": "salt_pan_b", "pos": Vector2(0.34, 0.574), "size": Vector2(0.078, 0.086), "walkability_margin": 0.0, "salt_pan": "crystal"},
+	{"id": "salt_pan_c", "pos": Vector2(0.230, 0.695), "size": Vector2(0.142, 0.090), "walkability_margin": 0.0, "salt_pan": "brine"},
+	{"id": "salt_pan_d", "pos": Vector2(0.347, 0.697), "size": Vector2(0.070, 0.085), "walkability_margin": 0.0, "salt_pan": "crystal"}
+])
+visual_objects = Array[Dictionary]([
+	{"id": "net_shed", "texture": "res://art/modules/riverside_visual_20261101a/shelter_v1.png", "pos": Vector2(0.76497396, 0.49316406), "scale": Vector2(0.55, 0.55), "sort_by_feet": true, "depth_sort_foot_y": 0.56396484, "collision_size": Vector2(0.12207031, 0.04736328), "collision_offset": Vector2(0, 0.06884766)},
+	{"id": "salt_store", "texture": "res://art/modules/four_settlements_20261030e/repair_shed.png", "pos": Vector2(0.30403646, 0.38330078), "scale": Vector2(0.52, 0.52), "sort_by_feet": true, "depth_sort_foot_y": 0.44335938, "collision_size": Vector2(0.13346354, 0.05224609), "collision_offset": Vector2(0, 0.05810547)},
+	{"id": "fishing_home", "texture": "res://art/modules/miao_town_20261029f/house_side.png", "pos": Vector2(0.67708333, 0.24414063), "scale": Vector2(0.47, 0.47), "sort_by_feet": true, "depth_sort_foot_y": 0.31738281, "collision_size": Vector2(0.12369792, 0.05029297), "collision_offset": Vector2(0, 0.07128906)},
+	{"id": "boat", "texture": "res://art/modules/four_settlements_20261030e/ferry_boat.png", "pos": Vector2(0.46875, 0.83984375), "scale": Vector2(0.53, 0.53), "sort_by_feet": true, "depth_sort_foot_y": 0.83984375},
+	{"id": "willow", "texture": "res://art/modules/four_settlements_20261030e/willow.png", "pos": Vector2(0.11, 0.504), "scale": Vector2(0.56, 0.56), "sort_by_feet": true, "depth_sort_foot_y": 0.548, "collision_size": Vector2(0.01497396, 0.01269531), "collision_offset": Vector2(0, 0.044)},
+	{"id": "bagged_salt", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png", "pos": Vector2(0.34346825, 0.45621192), "scale": Vector2(0.08964317, 0.08964317), "sort_by_feet": true, "depth_sort_foot_y": 0.47363281, "collision_size": Vector2(0.02832031, 0.01416016), "collision_offset": Vector2(-0.00004377, 0.01034081)},
+	{"id": "salt_handcart", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png", "pos": Vector2(0.37232143, 0.45558036), "scale": Vector2(0.11428571, 0.11428571), "sort_by_feet": true, "depth_sort_foot_y": 0.47265625, "collision_size": Vector2(0.03059896, 0.01562500), "collision_offset": Vector2(0.00007440, 0.00926339)}
+])
+portals = Array[Dictionary]([
+	{"id": "east_road_return", "label": "返回东大陆驿道", "pos": Vector2(0.50130208, 0.17089844), "size": Vector2(0.04394531, 0.05371094), "target_scene": "east_mainland_overworld", "target_pos": Vector2(0.63509115, 0.84692383), "show_destination_label": true}
+])

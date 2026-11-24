@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "卖菜大婶"
+text = "多谢少侠。后山还有猛兽，采药也别离道路太远。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s2_vegetable_vendor_done"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])

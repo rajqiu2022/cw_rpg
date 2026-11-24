@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_AO_DISTRICT_EXECUTION_SUCCESSOR_ONE_SOURCE_GATE_ONLY",
+  "path": "res://scripts/city/luoyang_district_life_20261016f.gd",
+  "old_sha256": "c4fb86ebd6d7683a9a7ddc96c6f72f98fe614fc8c6d4ac18424bfe3ebf09d351",
+  "new_sha256": "1b44e7452f7fac5056c6da65af1560d0dafdb2ad61d0020291ad2a17a7842fa9",
+  "old_snapshot": "res://build/luoyang_market_two_shops_20261021ao_system01/before/District_C4FB.gd",
+  "navigation_unchanged": true,
+  "navigation_source": "func navigation_objects(original: Array) -> Array: return G.apply_render(original,projected) if _scene!=null else []",
+  "whole_inverse_exact": true,
+  "replacements": [
+    {
+      "old": "\tif actual==prior_sha: return true",
+      "new": "\tif actual==prior_sha: return true\n\tif load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").ao_fade_source_matches(scene,proof,path,prior_sha): return true"
+    }
+  ],
+  "scope": "One additive source-verification branch only. No prepare/render/navigation/NPC/task/geometry alteration."
+}

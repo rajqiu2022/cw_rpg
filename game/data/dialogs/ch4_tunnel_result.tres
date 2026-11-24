@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "赵思颖"
+text = "首领还活着。地道里的印版、药粉和账册足以证明有人系统地伪造各派身份。"
+add_evidence = Array[StringName]([&"ev_ch4_forgery_workshop", &"ev_ch4_eighteen_year_roster"])
+add_testimonies = Array[StringName]([&"ts_ch4_fake_leader_partial_confession"])
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "名册缺了签押页，活口也只肯说半句。先押回府衙；洛阳眼前的案子能结，十八年前那只手才刚露出影子。"
+verify_evidence = Array[StringName]([&"ev_ch4_forgery_workshop", &"ev_ch4_eighteen_year_roster"])
+companion_trust_changes = Array[Dictionary]([{"id": "zhao_siying", "delta": 5}])
+bond_events = Array[Dictionary]([{"companion": "zhao_siying", "event": "ch4_kept_enemy_alive_for_truth"}])
+city_outcomes = Array[Dictionary]([{"city": "luoyang", "key": "fake_leader_captured", "value": true}])
+set_flags = Array[Dictionary]([{"key":"captured_fake_liuyun_witness","value":true}, {"key":"chapter4_complete","value":true}])
+complete_quest = &"q_ch4_main_04_tunnel_mastermind"
+on_end = "chapter_end:4"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_tunnel_result"
+required_story_flag = &"chapter3_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

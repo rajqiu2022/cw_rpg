@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="会盟公示总录"
+text="按第七章既定方案，先公开已核验核心。证人安全与待复核附卷进入第二阶段，不因终战胜利仓促放出。"
+on_end="next:facts"
+[sub_resource type="Resource" id="facts"]
+script=ExtResource("2")
+node_id=&"facts"
+speaker="冷孤云"
+text="首批公示仍包含四项：烈云强硬派误杀、茗雾亲令与死籍、薛影行动责任、苏雾笙止杀钟。分阶段只改变时机，不删除任何已核验责任。"
+on_end="next:witness"
+[sub_resource type="Resource" id="witness"]
+script=ExtResource("2")
+node_id=&"witness"
+speaker="戚云笙"
+portrait_path="res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text="证词先以编号和三方核验印公开，姓名待证人迁至稳定住处并重新确认意愿后追加。任何延后都要写明期限与负责者。"
+on_end="next:arts"
+[sub_resource type="Resource" id="arts"]
+script=ExtResource("2")
+node_id=&"arts"
+speaker="刑樊天"
+portrait_path="res://art/characters/portrait_xingfantian_master.png"
+text="危险武学先公开目录、来历和受害记录，招式路径与配方暂封；六个月后由外部医者、武师和官府共同复核是否保留研究副本。"
+on_end="next:end"
+[sub_resource type="Resource" id="end"]
+script=ExtResource("2")
+node_id=&"end"
+speaker="会盟公示总录"
+text="首批公示完成，补充附卷的期限、负责人和证人复核条件已同时公告。延后不是压案，每一次延后都有可追查的日期。"
+set_flags=Array[Dictionary]([{"key":"ch8_disclosure_staged_published","value":true},{"key":"ch8_witness_appendix_delayed","value":true},{"key":"ch8_dangerous_arts_review_sealed","value":true},{"key":"ch8_evidence_multi_copy","value":true},{"key":"ch8_truth_disclosure_settled","value":true}])
+method_flags=Array[Dictionary]([{"key":"ch8_truth_disclosure_method","value":"staged_with_deadlines"}])
+city_outcomes=Array[Dictionary]([{"city":"luoyang","key":"ch8_public_archive","value":"staged_with_deadlines"}])
+complete_quest=&"q_ch8_main_12_truth_disclosure"
+accept_quest=&"q_ch8_main_13_aftermath_returns"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_truth_disclosure_staged"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("facts"),SubResource("witness"),SubResource("arts"),SubResource("end")])

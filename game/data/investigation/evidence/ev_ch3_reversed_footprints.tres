@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch3_reversed_footprints"
+display_name = "倒踏旧印"
+description = "武当练剑场复原出的脚印先落右足，剑痕却从相反方向补上。凶手熟悉武当步法的外形，却没有按真实发力顺序行动。"
+chapter = 3
+category = &"trace"
+source_hint = "武当考校"
+related_testimony_ids = Array[StringName]([&"ts_ch3_wudang_archive_revision"])
+tags = Array[StringName]([&"imitation", &"wudang", &"footwork"])

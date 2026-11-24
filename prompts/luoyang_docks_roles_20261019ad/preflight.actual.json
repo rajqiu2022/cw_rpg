@@ -1,0 +1,272 @@
+{
+  "schema_version": 1,
+  "batch_id": "luoyang_docks_roles_20261019ad",
+  "passed": true,
+  "scope": "offline prompt, registry and processing-source preflight only",
+  "calls_made_by_this_preflight": {
+    "generation": 0,
+    "network": 0,
+    "engine": 0,
+    "sdk": 0
+  },
+  "historical_call_order": "Carrier builtin was already started by Root before this preflight; this pass is post-call reconciliation for carrier and a mandatory pre-call gate for store attendant and rope seller.",
+  "checks": [
+    {
+      "name": "required_sources_exist",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "name": "exactly_three_registered_tasks",
+      "passed": true,
+      "actual": [
+        "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v1",
+        "luoyang_docks_roles_20261019ad_store_attendant_idle_down_1f_v1",
+        "luoyang_docks_roles_20261019ad_rope_seller_idle_down_1f_v1"
+      ]
+    },
+    {
+      "name": "task_order_exact",
+      "passed": true,
+      "actual": [
+        "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v1",
+        "luoyang_docks_roles_20261019ad_store_attendant_idle_down_1f_v1",
+        "luoyang_docks_roles_20261019ad_rope_seller_idle_down_1f_v1"
+      ]
+    },
+    {
+      "name": "npc_docks_strong_carrier_posepack_idle1_right4_v1_id_and_paths",
+      "passed": true,
+      "actual": {
+        "row": "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v1",
+        "spec": "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v1"
+      }
+    },
+    {
+      "name": "npc_docks_strong_carrier_posepack_idle1_right4_v1_builtin_unknown_metadata",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "npc_docks_strong_carrier_posepack_idle1_right4_v1_transparent_no_fallback",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "npc_docks_strong_carrier_posepack_idle1_right4_v1_runtime_not_authorized",
+      "passed": true,
+      "actual": "NONE_SOURCE_ART_ONLY"
+    },
+    {
+      "name": "npc_docks_strong_carrier_posepack_idle1_right4_v1_prompt_has_transparent_fullbody",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "npc_docks_store_attendant_idle_down_1f_v1_id_and_paths",
+      "passed": true,
+      "actual": {
+        "row": "luoyang_docks_roles_20261019ad_store_attendant_idle_down_1f_v1",
+        "spec": "luoyang_docks_roles_20261019ad_store_attendant_idle_down_1f_v1"
+      }
+    },
+    {
+      "name": "npc_docks_store_attendant_idle_down_1f_v1_builtin_unknown_metadata",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "npc_docks_store_attendant_idle_down_1f_v1_transparent_no_fallback",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "npc_docks_store_attendant_idle_down_1f_v1_runtime_not_authorized",
+      "passed": true,
+      "actual": "NONE_SOURCE_ART_ONLY"
+    },
+    {
+      "name": "npc_docks_store_attendant_idle_down_1f_v1_prompt_has_transparent_fullbody",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "npc_docks_rope_seller_idle_down_1f_v1_id_and_paths",
+      "passed": true,
+      "actual": {
+        "row": "luoyang_docks_roles_20261019ad_rope_seller_idle_down_1f_v1",
+        "spec": "luoyang_docks_roles_20261019ad_rope_seller_idle_down_1f_v1"
+      }
+    },
+    {
+      "name": "npc_docks_rope_seller_idle_down_1f_v1_builtin_unknown_metadata",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "npc_docks_rope_seller_idle_down_1f_v1_transparent_no_fallback",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "npc_docks_rope_seller_idle_down_1f_v1_runtime_not_authorized",
+      "passed": true,
+      "actual": "NONE_SOURCE_ART_ONLY"
+    },
+    {
+      "name": "npc_docks_rope_seller_idle_down_1f_v1_prompt_has_transparent_fullbody",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "carrier_started_before_preflight_honestly_recorded",
+      "passed": true,
+      "actual": {
+        "task_attempts": 1,
+        "status": "BUILTIN_CALL_STARTED_BEFORE_REGISTRY_PREFLIGHT_RESULT_PENDING"
+      }
+    },
+    {
+      "name": "npc_docks_store_attendant_idle_down_1f_v1_unused_before_preflight",
+      "passed": true,
+      "actual": {
+        "attempts": 0,
+        "output_exists": false
+      }
+    },
+    {
+      "name": "npc_docks_rope_seller_idle_down_1f_v1_unused_before_preflight",
+      "passed": true,
+      "actual": {
+        "attempts": 0,
+        "output_exists": false
+      }
+    },
+    {
+      "name": "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v1_exact_prompt_matches_frozen_contract",
+      "passed": true,
+      "actual": {
+        "prompt_sha256": "7349C7421C3953B32A90A62ADE5E821A08237F0518342A16E8533BC8CDAF24CA"
+      }
+    },
+    {
+      "name": "luoyang_docks_roles_20261019ad_store_attendant_idle_down_1f_v1_exact_prompt_matches_frozen_contract",
+      "passed": true,
+      "actual": {
+        "prompt_sha256": "07E5E1492E935BDB27E2CDBDE45A06584106A7540262121128CE1EE2C934FA52"
+      }
+    },
+    {
+      "name": "luoyang_docks_roles_20261019ad_rope_seller_idle_down_1f_v1_exact_prompt_matches_frozen_contract",
+      "passed": true,
+      "actual": {
+        "prompt_sha256": "E2F577E3BBFC7DFD50B52AF03206CDD7B3AC8DC5079DE3BBE0CEBAA84E204D4F"
+      }
+    },
+    {
+      "name": "only_carrier_has_walk_credit",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "carrier_targets_exact_three_carriers",
+      "passed": true,
+      "actual": [
+        "harbour_life_docks_rope_carrier",
+        "harbour_life_docks_southern_carrier",
+        "harbour_life_docks_west_carrier"
+      ]
+    },
+    {
+      "name": "portrait_same_raw_rule",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "batch_budget_exact",
+      "passed": true,
+      "actual": {
+        "owner": "producer_ROOT",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "maximum_calls": 3,
+        "calls_used": 1,
+        "calls_per_identity": 1,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false,
+        "call_order_fact": "The carrier builtin call was already started from frozen source contract 30AE7454 before prompts/tasks.yaml registration and local preflight. Store-attendant and rope-seller calls require a passing local preflight first."
+      }
+    },
+    {
+      "name": "chief_explicitly_excluded",
+      "passed": true,
+      "actual": true
+    }
+  ],
+  "sources": [
+    {
+      "path": "prompts/tasks.yaml",
+      "sha256": "23947E0E702565B98E60FC3459FF94EB3523EE9D7356497349EB1A790583578B",
+      "bytes": 195885
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/manifest.json",
+      "sha256": "7C5E2DF6EAE439FB04CD34462D38ABB39A52E7E21097AF445BD0CFDA77D7B34C",
+      "bytes": 1851
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/process_carrier_posepack.py",
+      "sha256": "F0ECEDA9005EA858FEE0921F56BE46931BEBF87332D75FDFA78D95ED238FA5E7",
+      "bytes": 12429
+    },
+    {
+      "path": "game/build/luoyang_docks_roles_20261019ad_art01/generation_contract_priority_carrier_v2.json",
+      "sha256": "30AE7454AAC6D7183570273EDFB3E7410527048EE0D41305EE1551E3F7528DCB",
+      "bytes": 7770
+    },
+    {
+      "path": "game/build/luoyang_docks_roles_20261019ad_art01/generation_contract.json",
+      "sha256": "A73AF52E560031BA8C89FE87AA3FEB3D90B83D1AE5124D1EFAC4E26740634E41",
+      "bytes": 10921
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/preflight.py",
+      "sha256": "773AC2BFD86A8459259CF0E4DA3C7E690B41D4E5342D9BA0DB23897F765BE9E3",
+      "bytes": 8688
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v1.txt",
+      "sha256": "3E1F65DBF879607FF2DE59D6EC9A2AACB81B1C316A4174335B0910C8B6317008",
+      "bytes": 2061
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v1.spec.json",
+      "sha256": "671768EA4798FFBCB05CB35703264054E9FDFF774C79C480212644769E835A06",
+      "bytes": 3571
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_store_attendant_idle_down_1f_v1.txt",
+      "sha256": "6051BCC4FF01D21FE4493F5EB8B1316DB3E1C7014C5E07237EABE49BA06F5245",
+      "bytes": 1223
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_store_attendant_idle_down_1f_v1.spec.json",
+      "sha256": "CBB8877E6A77AF1C95FDB81DE25B73EEA650725B3B3BE1D08D04004711978865",
+      "bytes": 2501
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_rope_seller_idle_down_1f_v1.txt",
+      "sha256": "3F18130194455F0725CEEB087802CD3DE51D702F81E0B82E722D090B7B0BB2D2",
+      "bytes": 1293
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_rope_seller_idle_down_1f_v1.spec.json",
+      "sha256": "AC2B7B72832BB3CD9DF09099133DF280B075E7A3640CD8A1B25F5744179E319A",
+      "bytes": 2487
+    }
+  ],
+  "credit_boundary": "A pass permits only the two still-unused Root builtin calls. It gives no carrier result, pose, portrait, import, runtime, Field or formal credit."
+}

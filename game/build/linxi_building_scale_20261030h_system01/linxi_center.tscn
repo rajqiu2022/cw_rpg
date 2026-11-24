@@ -1,0 +1,1233 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/drafts/sect_maps_20261029k/terrain.gd" id="20_7rg68"]
+[ext_resource type="Script" path="res://scripts/drafts/redrock_luoyang_standard_20261028b/preview_player.gd" id="adapter"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/bench.png" id="bench"]
+[ext_resource type="Script" path="res://scripts/drafts/four_settlements_20261030e/controller.gd" id="controller"]
+[ext_resource type="Texture2D" path="res://art/modules/prop/prop_zhuwei_cottage_25d_v2.png" id="cottage"]
+[ext_resource type="Shader" path="res://art/modules/miao_town_20261029f/occlusion.gdshader" id="fade_shader"]
+[ext_resource type="Texture2D" path="res://art/modules/prop/linxi_fence_low_v1.png" id="fence"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/ground.png" id="ground"]
+[ext_resource type="Shader" path="res://build/linxi_building_scale_20261030h_system01/linxi_center_ground.gdshader" id="ground_shader"]
+[ext_resource type="Texture2D" path="res://art/modules/prop/prop_zhuwei_inn_25d_v2.png" id="inn"]
+[ext_resource type="Texture2D" path="res://art/modules/luoyang_docks_office_20261016h/docks_cargo_office_v1.png" id="office"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/path.png" id="path"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="player"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_maps_20261029k/quiet_ground.png" id="quiet_ground"]
+[ext_resource type="Texture2D" path="res://art/modules/four_settlements_20261030e/repair_shed.png" id="repair_shed"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_building_variety_20261029h/small_cottage.png" id="small_home"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/trees.png" id="trees"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/water_jars.png" id="water_jars"]
+[ext_resource type="Texture2D" path="res://art/modules/linxi_center_well_depth_prop_v1.png" id="well"]
+[ext_resource type="Texture2D" path="res://art/modules/four_settlements_20261030e/willow.png" id="willow"]
+
+[ext_resource type="Texture2D" path="res://art/modules/linxi_house_variety_20261109/herbal_drying_home.png" id="herbal_drying_home"]
+[ext_resource type="Texture2D" path="res://art/modules/linxi_house_variety_20261109/stone_hip_roof_home.png" id="stone_hip_roof_home"]
+
+[sub_resource type="ShaderMaterial" id="ground_mat"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("quiet_ground")
+shader_parameter/dirt_tex = ExtResource("ground")
+shader_parameter/path_tex = ExtResource("path")
+
+[sub_resource type="ShaderMaterial" id="fade_School"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_FarmerHome"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_HerbHome"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_HerbShop"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Tavern"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_HouseA"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_HouseB"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Well"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_OldWillow"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Jars0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bench0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Jars1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Jars2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bench2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Jars3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Jars4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bench4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Jars5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Jars6"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bench6"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Fence20"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Fence21"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Fence22"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Fence23"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Fence24"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Fence25"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Grove0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Grove1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Grove2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Grove3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Grove4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Grove5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Grove6"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Grove7"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BackHouse0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BackHouse1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BackHouse2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(500, 2360)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.06, 0.09, 0.08, 0.92)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "SimHei")
+
+[node name="SectMap" type="Node2D" unique_id=920628754]
+script = ExtResource("controller")
+layout_path = "res://build/linxi_building_scale_20261030h_system01/linxi_center.json"
+metadata/terrain_baked = true
+
+[node name="Ground" type="Polygon2D" parent="." unique_id=879639640]
+z_index = -20
+material = SubResource("ground_mat")
+polygon = PackedVector2Array(-1000, -1000, 4600, -1000, 4600, 3800, -1000, 3800)
+
+[node name="Town" type="Node2D" parent="." unique_id=697392485]
+
+[node name="Boundary0" type="StaticBody2D" parent="Town" unique_id=1989350518]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary0" unique_id=1967566449]
+polygon = PackedVector2Array(90, 90, 3510, 90, 3510, 110, 90, 110)
+
+[node name="Boundary1" type="StaticBody2D" parent="Town" unique_id=422010802]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary1" unique_id=2137739137]
+polygon = PackedVector2Array(3490, 90, 3510, 90, 3510, 2710, 3490, 2710)
+
+[node name="Boundary2" type="StaticBody2D" parent="Town" unique_id=1347514265]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary2" unique_id=1802329392]
+polygon = PackedVector2Array(90, 2690, 3510, 2690, 3510, 2710, 90, 2710)
+
+[node name="Boundary3" type="StaticBody2D" parent="Town" unique_id=1156723803]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary3" unique_id=1320283385]
+polygon = PackedVector2Array(90, 90, 110, 90, 110, 2710, 90, 2710)
+
+[node name="School" type="Node2D" parent="Town" unique_id=698990084]
+z_index = 185
+z_as_relative = false
+position = Vector2(1639.7851102941, 740)
+metadata/label = "私塾旧宅"
+metadata/visual_rect = Rect2(-537.48, -391.68, 1074.96, 391.68)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/School" unique_id=1440780507]
+material = SubResource("fade_School")
+position = Vector2(-553.32, -563.76)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("office")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/School" unique_id=1710852062]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/School/Body" unique_id=47769210]
+polygon = PackedVector2Array(-451.4832, -170, 451.4832, -170, 451.4832, 0, -451.4832, 0)
+
+[node name="FarmerHome" type="Node2D" parent="Town" unique_id=737155833]
+z_index = 275
+z_as_relative = false
+position = Vector2(2799.1867571235, 1100)
+metadata/label = "村民家"
+metadata/visual_rect = Rect2(-301.76, -414.08, 603.52, 414.08)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/FarmerHome" unique_id=1259105319]
+material = SubResource("fade_FarmerHome")
+position = Vector2(-652.48, -623.36)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("small_home")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/FarmerHome" unique_id=243660544]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/FarmerHome/Body" unique_id=1999722675]
+polygon = PackedVector2Array(-253.4784, -120, 253.4784, -120, 253.4784, 0, -253.4784, 0)
+
+[node name="HerbHome" type="Node2D" parent="Town" unique_id=253369922]
+z_index = 528
+z_as_relative = false
+position = Vector2(2780.72, 2110)
+metadata/label = "采药人家"
+metadata/visual_rect = Rect2(-289.07, -443.7, 648.21, 443.7)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/HerbHome" unique_id=1564844086]
+material = SubResource("fade_HerbHome")
+position = Vector2(-368.63, -469.2)
+scale = Vector2(0.51, 0.51)
+texture = ExtResource("herbal_drying_home")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/HerbHome" unique_id=1340950356]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/HerbHome/Body" unique_id=1603611872]
+polygon = PackedVector2Array(-250, -120, 328, -120, 328, -58, 28, -5, -105, 0, -250, -55)
+
+[node name="HerbShop" type="Node2D" parent="Town" unique_id=1886551592]
+z_index = 295
+z_as_relative = false
+position = Vector2(750, 1180)
+metadata/label = "日用作棚"
+metadata/visual_rect = Rect2(-368.25, -369.5, 736.5, 369.5)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/HerbShop" unique_id=911116429]
+material = SubResource("fade_HerbShop")
+position = Vector2(-481.25, -487)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("repair_shed")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/HerbShop" unique_id=1661918239]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/HerbShop/Body" unique_id=1126024103]
+polygon = PackedVector2Array(-309.33, -120, 309.33, -120, 309.33, 0, -309.33, 0)
+
+[node name="Tavern" type="Node2D" parent="Town" unique_id=84647227]
+z_index = 545
+z_as_relative = false
+position = Vector2(770, 2180)
+metadata/label = "街边客栈"
+metadata/visual_rect = Rect2(-440.86, -772.68, 881.72, 772.68)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Tavern" unique_id=996568995]
+material = SubResource("fade_Tavern")
+position = Vector2(-485.98, -855.4)
+scale = Vector2(0.94, 0.94)
+texture = ExtResource("inn")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Tavern" unique_id=973314515]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Tavern/Body" unique_id=1378877582]
+polygon = PackedVector2Array(-370.3224, -185, 370.3224, -185, 370.3224, 0, -370.3224, 0)
+
+[node name="HouseA" type="Node2D" parent="Town" unique_id=264962133]
+z_index = 175
+z_as_relative = false
+position = Vector2(2540, 700)
+metadata/label = "临街民居"
+metadata/visual_rect = Rect2(-301.76, -414.08, 603.52, 414.08)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/HouseA" unique_id=1095350699]
+material = SubResource("fade_HouseA")
+position = Vector2(-652.48, -623.36)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("small_home")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/HouseA" unique_id=1848997771]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/HouseA/Body" unique_id=1066364002]
+polygon = PackedVector2Array(-253.4784, -120, 253.4784, -120, 253.4784, 0, -253.4784, 0)
+
+[node name="HouseB" type="Node2D" parent="Town" unique_id=1243294009]
+z_index = 563
+z_as_relative = false
+position = Vector2(1730, 2250)
+metadata/label = "石墙民居"
+metadata/visual_rect = Rect2(-227.9, -338.14, 462.16, 338.14)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/HouseB" unique_id=535785815]
+material = SubResource("fade_HouseB")
+position = Vector2(-417.64, -439.9)
+scale = Vector2(0.53, 0.53)
+texture = ExtResource("stone_hip_roof_home")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/HouseB" unique_id=1113720364]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/HouseB/Body" unique_id=1670674667]
+polygon = PackedVector2Array(-206, -117, 202, -117, 202, -41, 52, 0, -98, -3, -206, -53)
+
+[node name="Well" type="Node2D" parent="Town" unique_id=273314364]
+z_index = 363
+z_as_relative = false
+position = Vector2(1720, 1450)
+metadata/label = "老井"
+metadata/visual_rect = Rect2(-70.654205, -140, 141.30841, 140)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Well" unique_id=305142797]
+material = SubResource("fade_Well")
+position = Vector2(-348.90967, -290.4673)
+scale = Vector2(0.43613708, 0.43613708)
+texture = ExtResource("well")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Well" unique_id=50708969]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Well/Body" unique_id=896166569]
+polygon = PackedVector2Array(-59.349533, -35, 59.349533, -35, 59.349533, 0, -59.349533, 0)
+
+[node name="OldWillow" type="Node2D" parent="Town" unique_id=1347022116]
+z_index = 313
+z_as_relative = false
+position = Vector2(2040, 1250)
+metadata/label = "老井旁树坪"
+metadata/visual_rect = Rect2(-244.31201, -460, 488.62402, 460)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/OldWillow" unique_id=514606989]
+material = SubResource("fade_OldWillow")
+position = Vector2(-337.44083, -534.18054)
+scale = Vector2(0.40315512, 0.40315512)
+texture = ExtResource("willow")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/OldWillow" unique_id=1002950738]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/OldWillow/Body" unique_id=2030182985]
+polygon = PackedVector2Array(-32, -25, 32, -25, 32, 0, -32, 0)
+
+[node name="Jars0" type="Node2D" parent="Town" unique_id=1630125782]
+z_index = 194
+z_as_relative = false
+position = Vector2(1955.0, 775)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-34.753967, -58, 69.507935, 58)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Jars0" unique_id=1645280539]
+material = SubResource("fade_Jars0")
+position = Vector2(-59.24286, -88.84127)
+scale = Vector2(0.092063494, 0.092063494)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Jars0" unique_id=1574662825]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Jars0/Body" unique_id=283694320]
+polygon = PackedVector2Array(-25, -20, 25, -20, 25, 0, -25, 0)
+
+[node name="Bench0" type="Node2D" parent="Town" unique_id=668947600]
+z_index = 199
+z_as_relative = false
+position = Vector2(1500, 795)
+metadata/label = "屋前长凳"
+metadata/visual_rect = Rect2(-57.421288, -38, 114.842575, 38)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bench0" unique_id=857907219]
+material = SubResource("fade_Bench0")
+position = Vector2(-64.583145, -66.14191)
+scale = Vector2(0.08425721, 0.08425721)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bench0" unique_id=561155736]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bench0/Body" unique_id=2027944334]
+polygon = PackedVector2Array(-65, -13, 65, -13, 65, 0, -65, 0)
+
+[node name="Jars1" type="Node2D" parent="Town" unique_id=1805733905]
+z_index = 284
+z_as_relative = false
+position = Vector2(2985, 1135)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-34.753967, -58, 69.507935, 58)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Jars1" unique_id=271799515]
+material = SubResource("fade_Jars1")
+position = Vector2(-59.24286, -88.84127)
+scale = Vector2(0.092063494, 0.092063494)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Jars1" unique_id=846891718]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Jars1/Body" unique_id=1668371864]
+polygon = PackedVector2Array(-25, -20, 25, -20, 25, 0, -25, 0)
+
+[node name="Jars2" type="Node2D" parent="Town" unique_id=825652129]
+z_index = 536
+z_as_relative = false
+position = Vector2(2935, 2145)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-34.753967, -58, 69.507935, 58)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Jars2" unique_id=1974061438]
+material = SubResource("fade_Jars2")
+position = Vector2(-59.24286, -88.84127)
+scale = Vector2(0.092063494, 0.092063494)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Jars2" unique_id=1850371269]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Jars2/Body" unique_id=124522645]
+polygon = PackedVector2Array(-25, -20, 25, -20, 25, 0, -25, 0)
+
+[node name="Bench2" type="Node2D" parent="Town" unique_id=1754925964]
+z_index = 541
+z_as_relative = false
+position = Vector2(2640, 2165)
+metadata/label = "屋前长凳"
+metadata/visual_rect = Rect2(-57.421288, -38, 114.842575, 38)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bench2" unique_id=1309937712]
+material = SubResource("fade_Bench2")
+position = Vector2(-64.583145, -66.14191)
+scale = Vector2(0.08425721, 0.08425721)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bench2" unique_id=2079940074]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bench2/Body" unique_id=601375007]
+polygon = PackedVector2Array(-65, -13, 65, -13, 65, 0, -65, 0)
+
+[node name="Jars3" type="Node2D" parent="Town" unique_id=947917322]
+z_index = 304
+z_as_relative = false
+position = Vector2(895, 1215)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-34.753967, -58, 69.507935, 58)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Jars3" unique_id=927517066]
+material = SubResource("fade_Jars3")
+position = Vector2(-59.24286, -88.84127)
+scale = Vector2(0.092063494, 0.092063494)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Jars3" unique_id=630154202]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Jars3/Body" unique_id=1081863330]
+polygon = PackedVector2Array(-25, -20, 25, -20, 25, 0, -25, 0)
+
+[node name="Jars4" type="Node2D" parent="Town" unique_id=1597863221]
+z_index = 559
+z_as_relative = false
+position = Vector2(970, 2235)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-34.753967, -58, 69.507935, 58)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Jars4" unique_id=1804044546]
+material = SubResource("fade_Jars4")
+position = Vector2(-59.24286, -88.84127)
+scale = Vector2(0.092063494, 0.092063494)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Jars4" unique_id=503134506]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Jars4/Body" unique_id=890804365]
+polygon = PackedVector2Array(-25, -20, 25, -20, 25, 0, -25, 0)
+
+[node name="Bench4" type="Node2D" parent="Town" unique_id=1735647608]
+z_index = 559
+z_as_relative = false
+position = Vector2(620, 2235)
+metadata/label = "屋前长凳"
+metadata/visual_rect = Rect2(-57.421288, -38, 114.842575, 38)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bench4" unique_id=885209355]
+material = SubResource("fade_Bench4")
+position = Vector2(-64.583145, -66.14191)
+scale = Vector2(0.08425721, 0.08425721)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bench4" unique_id=633247136]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bench4/Body" unique_id=665390797]
+polygon = PackedVector2Array(-65, -13, 65, -13, 65, 0, -65, 0)
+
+[node name="Jars5" type="Node2D" parent="Town" unique_id=1815618514]
+z_index = 184
+z_as_relative = false
+position = Vector2(2395, 735)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-34.753967, -58, 69.507935, 58)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Jars5" unique_id=1309577509]
+material = SubResource("fade_Jars5")
+position = Vector2(-59.24286, -88.84127)
+scale = Vector2(0.092063494, 0.092063494)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Jars5" unique_id=216303294]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Jars5/Body" unique_id=517760729]
+polygon = PackedVector2Array(-25, -20, 25, -20, 25, 0, -25, 0)
+
+[node name="Jars6" type="Node2D" parent="Town" unique_id=92554072]
+z_index = 571
+z_as_relative = false
+position = Vector2(1875, 2285)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-34.753967, -58, 69.507935, 58)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Jars6" unique_id=325883352]
+material = SubResource("fade_Jars6")
+position = Vector2(-59.24286, -88.84127)
+scale = Vector2(0.092063494, 0.092063494)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Jars6" unique_id=1310729063]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Jars6/Body" unique_id=419181581]
+polygon = PackedVector2Array(-25, -20, 25, -20, 25, 0, -25, 0)
+
+[node name="Bench6" type="Node2D" parent="Town" unique_id=116198208]
+z_index = 576
+z_as_relative = false
+position = Vector2(1580, 2305)
+metadata/label = "屋前长凳"
+metadata/visual_rect = Rect2(-57.421288, -38, 114.842575, 38)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bench6" unique_id=1448975006]
+material = SubResource("fade_Bench6")
+position = Vector2(-64.583145, -66.14191)
+scale = Vector2(0.08425721, 0.08425721)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bench6" unique_id=1312146009]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bench6/Body" unique_id=3540586]
+polygon = PackedVector2Array(-65, -13, 65, -13, 65, 0, -65, 0)
+
+[node name="Fence20" type="Node2D" parent="Town" unique_id=292061744]
+z_index = 360
+z_as_relative = false
+position = Vector2(2530, 1440)
+metadata/label = "院落篱笆"
+metadata/visual_rect = Rect2(-77.5, -91.22396, 155, 91.22396)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Fence20" unique_id=1858369453]
+material = SubResource("fade_Fence20")
+position = Vector2(-83.15104, -96.875)
+scale = Vector2(0.40364584, 0.40364584)
+texture = ExtResource("fence")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Fence20" unique_id=1411004655]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Fence20/Body" unique_id=897571546]
+polygon = PackedVector2Array(-76, -12, 76, -12, 76, 4, -76, 4)
+
+[node name="Fence21" type="Node2D" parent="Town" unique_id=1960881443]
+z_index = 360
+z_as_relative = false
+position = Vector2(2680, 1440)
+metadata/label = "院落篱笆"
+metadata/visual_rect = Rect2(-77.5, -91.22396, 155, 91.22396)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Fence21" unique_id=1759340866]
+material = SubResource("fade_Fence21")
+position = Vector2(-83.15104, -96.875)
+scale = Vector2(0.40364584, 0.40364584)
+texture = ExtResource("fence")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Fence21" unique_id=1448209801]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Fence21/Body" unique_id=2074236024]
+polygon = PackedVector2Array(-76, -12, 76, -12, 76, 4, -76, 4)
+
+[node name="Fence22" type="Node2D" parent="Town" unique_id=1056324899]
+z_index = 360
+z_as_relative = false
+position = Vector2(2930, 1440)
+metadata/label = "院落篱笆"
+metadata/visual_rect = Rect2(-77.5, -91.22396, 155, 91.22396)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Fence22" unique_id=1006750824]
+material = SubResource("fade_Fence22")
+position = Vector2(-83.15104, -96.875)
+scale = Vector2(0.40364584, 0.40364584)
+texture = ExtResource("fence")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Fence22" unique_id=646854106]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Fence22/Body" unique_id=1191578073]
+polygon = PackedVector2Array(-76, -12, 76, -12, 76, 4, -76, 4)
+
+[node name="Fence23" type="Node2D" parent="Town" unique_id=2101353485]
+z_index = 360
+z_as_relative = false
+position = Vector2(3080, 1440)
+metadata/label = "院落篱笆"
+metadata/visual_rect = Rect2(-77.5, -91.22396, 155, 91.22396)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Fence23" unique_id=613390887]
+material = SubResource("fade_Fence23")
+position = Vector2(-83.15104, -96.875)
+scale = Vector2(0.40364584, 0.40364584)
+texture = ExtResource("fence")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Fence23" unique_id=1847261927]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Fence23/Body" unique_id=273816108]
+polygon = PackedVector2Array(-76, -12, 76, -12, 76, 4, -76, 4)
+
+[node name="Fence24" type="Node2D" parent="Town" unique_id=314962148]
+z_index = 610
+z_as_relative = false
+position = Vector2(2480, 2440)
+metadata/label = "院落篱笆"
+metadata/visual_rect = Rect2(-77.5, -91.22396, 155, 91.22396)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Fence24" unique_id=2118273081]
+material = SubResource("fade_Fence24")
+position = Vector2(-83.15104, -96.875)
+scale = Vector2(0.40364584, 0.40364584)
+texture = ExtResource("fence")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Fence24" unique_id=1406401663]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Fence24/Body" unique_id=188542097]
+polygon = PackedVector2Array(-76, -12, 76, -12, 76, 4, -76, 4)
+
+[node name="Fence25" type="Node2D" parent="Town" unique_id=1528761177]
+z_index = 610
+z_as_relative = false
+position = Vector2(2630, 2440)
+metadata/label = "院落篱笆"
+metadata/visual_rect = Rect2(-77.5, -91.22396, 155, 91.22396)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Fence25" unique_id=1997849928]
+material = SubResource("fade_Fence25")
+position = Vector2(-83.15104, -96.875)
+scale = Vector2(0.40364584, 0.40364584)
+texture = ExtResource("fence")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Fence25" unique_id=875312164]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Fence25/Body" unique_id=989056259]
+polygon = PackedVector2Array(-76, -12, 76, -12, 76, 4, -76, 4)
+
+[node name="Grove0" type="Node2D" parent="Town" unique_id=604517512]
+z_index = 150
+z_as_relative = false
+position = Vector2(330, 600)
+metadata/label = "树木与林缘"
+metadata/visual_rect = Rect2(-198.509, -360, 397.018, 360)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Grove0" unique_id=1682017231]
+material = SubResource("fade_Grove0")
+position = Vector2(-398.8689, -508.99744)
+scale = Vector2(0.46272492, 0.46272492)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Grove0" unique_id=670230311]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Grove0/Body" unique_id=1029426720]
+polygon = PackedVector2Array(-28, -25, 28, -25, 28, 0, -28, 0)
+
+[node name="Grove1" type="Node2D" parent="Town" unique_id=1979316826]
+z_index = 88
+z_as_relative = false
+position = Vector2(1050, 350)
+metadata/label = "树木与林缘"
+metadata/visual_rect = Rect2(-206.78021, -375, 413.56042, 375)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Grove1" unique_id=790307915]
+material = SubResource("fade_Grove1")
+position = Vector2(-415.48843, -530.2056)
+scale = Vector2(0.48200515, 0.48200515)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Grove1" unique_id=1481190205]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Grove1/Body" unique_id=325819982]
+polygon = PackedVector2Array(-28, -25, 28, -25, 28, 0, -28, 0)
+
+[node name="Grove2" type="Node2D" parent="Town" unique_id=411073083]
+z_index = 78
+z_as_relative = false
+position = Vector2(1400, 310)
+metadata/label = "树木与林缘"
+metadata/visual_rect = Rect2(-215.0514, -390, 430.1028, 390)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Grove2" unique_id=209936285]
+material = SubResource("fade_Grove2")
+position = Vector2(-432.10797, -551.4139)
+scale = Vector2(0.5012854, 0.5012854)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Grove2" unique_id=89897711]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Grove2/Body" unique_id=1552815751]
+polygon = PackedVector2Array(-28, -25, 28, -25, 28, 0, -28, 0)
+
+[node name="Grove3" type="Node2D" parent="Town" unique_id=1362913087]
+z_index = 88
+z_as_relative = false
+position = Vector2(2200, 350)
+metadata/label = "树木与林缘"
+metadata/visual_rect = Rect2(-198.509, -360, 397.018, 360)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Grove3" unique_id=560847452]
+material = SubResource("fade_Grove3")
+position = Vector2(-398.8689, -508.99744)
+scale = Vector2(0.46272492, 0.46272492)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Grove3" unique_id=1224297539]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Grove3/Body" unique_id=909392071]
+polygon = PackedVector2Array(-28, -25, 28, -25, 28, 0, -28, 0)
+
+[node name="Grove4" type="Node2D" parent="Town" unique_id=311264285]
+z_index = 163
+z_as_relative = false
+position = Vector2(3180, 650)
+metadata/label = "树木与林缘"
+metadata/visual_rect = Rect2(-206.78021, -375, 413.56042, 375)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Grove4" unique_id=1234190902]
+material = SubResource("fade_Grove4")
+position = Vector2(-415.48843, -530.2056)
+scale = Vector2(0.48200515, 0.48200515)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Grove4" unique_id=445970670]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Grove4/Body" unique_id=182256751]
+polygon = PackedVector2Array(-28, -25, 28, -25, 28, 0, -28, 0)
+
+[node name="Grove5" type="Node2D" parent="Town" unique_id=2063553333]
+z_index = 493
+z_as_relative = false
+position = Vector2(3420, 1970)
+metadata/label = "树木与林缘"
+metadata/visual_rect = Rect2(-215.0514, -390, 430.1028, 390)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Grove5" unique_id=15063461]
+material = SubResource("fade_Grove5")
+position = Vector2(-432.10797, -551.4139)
+scale = Vector2(0.5012854, 0.5012854)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Grove5" unique_id=306297076]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Grove5/Body" unique_id=590520902]
+polygon = PackedVector2Array(-28, -25, 28, -25, 28, 0, -28, 0)
+
+[node name="Grove6" type="Node2D" parent="Town" unique_id=1916533492]
+z_index = 630
+z_as_relative = false
+position = Vector2(3200, 2520)
+metadata/label = "树木与林缘"
+metadata/visual_rect = Rect2(-198.509, -360, 397.018, 360)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Grove6" unique_id=1739361435]
+material = SubResource("fade_Grove6")
+position = Vector2(-398.8689, -508.99744)
+scale = Vector2(0.46272492, 0.46272492)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Grove6" unique_id=523588474]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Grove6/Body" unique_id=547499482]
+polygon = PackedVector2Array(-28, -25, 28, -25, 28, 0, -28, 0)
+
+[node name="Grove7" type="Node2D" parent="Town" unique_id=167387339]
+z_index = 640
+z_as_relative = false
+position = Vector2(1120, 2630)
+metadata/label = "树木与林缘"
+metadata/visual_rect = Rect2(-206.78021, -375, 413.56042, 375)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Grove7" unique_id=1609124676]
+material = SubResource("fade_Grove7")
+position = Vector2(-415.48843, -530.2056)
+scale = Vector2(0.48200515, 0.48200515)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Grove7" unique_id=771451336]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Grove7/Body" unique_id=1056889232]
+polygon = PackedVector2Array(-28, -25, 28, -25, 28, 0, -28, 0)
+
+[node name="BackHouse0" type="Node2D" parent="Town" unique_id=378505991]
+z_index = 225
+z_as_relative = false
+position = Vector2(850, 900)
+metadata/label = "街坊侧舍"
+metadata/visual_rect = Rect2(-301.76, -414.08, 603.52, 414.08)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BackHouse0" unique_id=1076525967]
+material = SubResource("fade_BackHouse0")
+position = Vector2(-652.48, -623.36)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("small_home")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BackHouse0" unique_id=1492325043]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BackHouse0/Body" unique_id=1688189902]
+polygon = PackedVector2Array(-253.4784, -120, 253.4784, -120, 253.4784, 0, -253.4784, 0)
+
+[node name="BackHouse1" type="Node2D" parent="Town" unique_id=836684553]
+z_index = 125
+z_as_relative = false
+position = Vector2(650, 500)
+metadata/label = "街坊侧舍"
+metadata/visual_rect = Rect2(-301.76, -414.08, 603.52, 414.08)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BackHouse1" unique_id=2087385080]
+material = SubResource("fade_BackHouse1")
+position = Vector2(-652.48, -623.36)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("small_home")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BackHouse1" unique_id=644774462]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BackHouse1/Body" unique_id=1730222276]
+polygon = PackedVector2Array(-253.4784, -120, 253.4784, -120, 253.4784, 0, -253.4784, 0)
+
+[node name="BackHouse2" type="Node2D" parent="Town" unique_id=89991827]
+z_index = 623
+z_as_relative = false
+position = Vector2(2120, 2490)
+metadata/label = "街坊侧舍"
+metadata/visual_rect = Rect2(-301.76, -414.08, 603.52, 414.08)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BackHouse2" unique_id=337678430]
+material = SubResource("fade_BackHouse2")
+position = Vector2(-652.48, -623.36)
+scale = Vector2(0.64, 0.64)
+texture = ExtResource("small_home")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BackHouse2" unique_id=272178753]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BackHouse2/Body" unique_id=1131374786]
+polygon = PackedVector2Array(-253.4784, -120, 253.4784, -120, 253.4784, 0, -253.4784, 0)
+
+[node name="Player" type="CharacterBody2D" parent="Town" unique_id=1793257322 instance=ExtResource("player")]
+z_index = 590
+z_as_relative = false
+position = Vector2(500, 2360)
+collision_layer = 2
+collision_mask = 24
+script = ExtResource("adapter")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=2104337054]
+position = Vector2(500, 2170)
+zoom = Vector2(0.9, 0.9)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=2058194605]
+
+[node name="Top" type="Panel" parent="UI" unique_id=361981284]
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 1080.0
+offset_bottom = 102.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Title" type="Label" parent="UI" unique_id=32928787]
+offset_left = 34.0
+offset_top = 22.0
+offset_right = 1800.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 30
+text = "林西村 · 老井村心"
+
+[node name="Status" type="Label" parent="UI" unique_id=1078228044]
+offset_left = 34.0
+offset_top = 63.0
+offset_right = 1800.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 20
+text = "老井树坪 · 私塾院 · 村民家 · 采药院 · 南坊路"
+
+[node name="Hint" type="Label" parent="UI" unique_id=952738781]
+offset_left = 34.0
+offset_top = 1038.0
+offset_right = 1800.0
+offset_bottom = 1076.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 22
+text = "WASD / 方向键移动　Shift快走　Tab全景/跟随　空格查看　R回山口　Esc关闭说明"
+
+[node name="Detail" type="Panel" parent="UI" unique_id=542773169]
+visible = false
+offset_left = 400.0
+offset_top = 760.0
+offset_right = 1500.0
+offset_bottom = 1000.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Text" type="Label" parent="UI/Detail" unique_id=1567611857]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 1075.0
+offset_bottom = 215.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 3
+
+[node name="Terrain" type="Node2D" parent="." unique_id=949000231]
+script = ExtResource("20_7rg68")

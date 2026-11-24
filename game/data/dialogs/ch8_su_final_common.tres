@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="bell_one"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="旁白"
+text="苏雾笙抬手击钟。第一声沿山腹铜管传出，外场埋伏的传令人开始拆开预置令匣。"
+on_end="next:su"
+[sub_resource type="Resource" id="su"]
+script=ExtResource("2")
+node_id=&"su"
+speaker="苏雾笙"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+text="你救得出这一厅人，救不出每一代被删去名字的人。三声钟后，各派会先杀向自己最怕的旧敌——他们会亲自证明我没有看错。"
+on_end="next:master"
+[sub_resource type="Resource" id="master"]
+script=ExtResource("2")
+node_id=&"master"
+speaker="刑樊天"
+portrait_path="res://art/characters/portrait_xingfantian_master.png"
+text="孤云，我已经断了内侧铜管。第二声只会留在后殿，第三声绝不能让他敲出来。你守人，我断令——这一次师父不再替你隐瞒。"
+set_flags=Array[Dictionary]([{"key":"ch8_master_counterbreath_active","value":true},{"key":"ch8_second_bell_isolated","value":true}])
+on_end="next:reply"
+[sub_resource type="Resource" id="reply"]
+script=ExtResource("2")
+node_id=&"reply"
+speaker="冷孤云"
+text="旧罪会见光，删名的人会受审。但你不能用下一批无辜者的命，替上一批死者讨一个你独占的公道。"
+on_end="next:battle"
+[sub_resource type="Resource" id="battle"]
+script=ExtResource("2")
+node_id=&"battle"
+speaker="苏雾笙"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+text="那就看看，第三声钟和你的剑，谁先到。"
+on_end="battle_group_then:ch8_su_wusheng_final:ch8_su_final_victory"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_su_final_common"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("bell_one"),SubResource("su"),SubResource("master"),SubResource("reply"),SubResource("battle")])

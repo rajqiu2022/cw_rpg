@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "外院录事"
+text = "烈云放鹰后，内院叫我午后离镇。我躲进这条廊才等到你。搬簿的人遮面，用的是一个早已注销的内门暗号。"
+voice_emotion = "fear"
+on_end = "next:limit"
+[sub_resource type="Resource" id="limit"]
+script = ExtResource("2")
+node_id = &"limit"
+speaker = "外院录事"
+text = "暗号属于死亡名册上的弟子，可我没有看清脸。别把我的话写成死者复生——我只能证明权限还在被人使用。"
+voice_emotion = "fear"
+add_testimonies = Array[StringName]([&"ts_ch7_mingwu_dead_disciple_code"])
+set_flags = Array[Dictionary]([{"key":"ch7_mingwu_witness_heard", "value":true}, {"key":"ch7_mingwu_witness_at_risk", "value":true}])
+on_end = "next:hero"
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "我先记事实，也先记你已被调离。你从侧廊离开，去茶镇外等行义帮接应，别再回档案廊。"
+method_flags = Array[Dictionary]([{"key":"ch7_protect_mingwu_witness", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_mingwu_clerk_witness_alerted"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("limit"), SubResource("hero")])

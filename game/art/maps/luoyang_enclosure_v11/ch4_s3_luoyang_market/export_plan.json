@@ -1,0 +1,397 @@
+{
+	"schema_version": 1,
+	"canonical_scene_id": "ch4_s3_luoyang_market",
+	"status": "ROOT_APPROVED_AUTHORING_REQUIRES_GPU_FIELD_VISUAL",
+	"base_manifest_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/art_contract.json",
+	"base_manifest_sha256": "bc100b541f74ddaa49391ccb7e8a5161905f3586c243dc74eded840284f8dc5f",
+	"remove_object_ids": [
+		"north_market_front",
+		"southwest_market_front",
+		"southeast_market_front"
+	],
+	"source_catalog": {
+		"res://scripts/dev/prepare_luoyang_enclosure_v13_remaining_plans.gd": "14babbbc0d0c8deb9a9030171388a8869ce9ad5104c04558cf3929284a0f6ede",
+		"res://scripts/dev/export_luoyang_enclosure_v11_candidate.gd": "7493ecc658d5548c687e3f0d0da041d71e9f8c318215bee7f9f3491f0ba60ea9",
+		"res://art/maps/luoyang_modular_v3/source/canal_warehouse_v3.png": "3bfa2bd8a906ffe8ef069f7933e45255fe569606781c46886dd0dea519e9580b",
+		"res://art/maps/luoyang_modular_v3/source/street_row_v3.png": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+		"res://art/maps/luoyang_modular_v3/source/shop_v1.png": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+		"res://art/maps/luoyang_modular_v3/source/goods_stall_v2.png": "85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0",
+		"res://art/maps/luoyang_enclosure_v11/source/front_wall_v9_candidate.png": "b903c3aef333e0c3880ad0fb2fc83e131336cc381fde8d4f0fa88b59585149fb",
+		"res://scripts/dev/luoyang_gate_market_street_blocks_v13_preview.gd": "2572239a85dad5fa1d04c3ca15ed9ae6e752fadb931d26ad5524307eb39f5674",
+		"res://art/maps/luoyang_modular_v3/source/module_semantics.json": "9a2f68fd3c6c243dd690a04dbdeec8bd8627931aa498337b2fa01957a9c449c2",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/art_contract.json": "bc100b541f74ddaa49391ccb7e8a5161905f3586c243dc74eded840284f8dc5f"
+	},
+	"objects": [
+		{
+			"id": "north_market_front",
+			"world_foot_px": [
+				1536.0,
+				630.0
+			],
+			"physical_center_px": [
+				1536.0,
+				630.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						1083.07995605469,
+						567.02001953125
+					],
+					[
+						1992.27001953125,
+						567.02001953125
+					],
+					[
+						1992.27001953125,
+						626.650024414063
+					],
+					[
+						1083.07995605469,
+						626.650024414063
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_modular_v3/source/street_row_v3.png",
+					"uv_polygon_px": [
+						[
+							0.0,
+							0.0
+						],
+						[
+							1536.0,
+							0.0
+						],
+						[
+							1536.0,
+							1024.0
+						],
+						[
+							0.0,
+							1024.0
+						]
+					],
+					"origin_px": [
+						1021.44000244141,
+						19.6300048828125
+					],
+					"scale": 0.67
+				}
+			],
+			"foot_authority": "Registered original source semantic ground point, not alpha bottom/bbox; independently transform original ground solids at same uniform scale"
+		},
+		{
+			"id": "southwest_market_front",
+			"world_foot_px": [
+				600.0,
+				1810.0
+			],
+			"physical_center_px": [
+				600.0,
+				1810.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						211.5,
+						1770.75
+					],
+					[
+						989.5,
+						1770.75
+					],
+					[
+						989.5,
+						1810.09997558594
+					],
+					[
+						211.5,
+						1810.09997558594
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_modular_v3/source/canal_warehouse_v3.png",
+					"uv_polygon_px": [
+						[
+							0.0,
+							0.0
+						],
+						[
+							1774.0,
+							0.0
+						],
+						[
+							1774.0,
+							887.0
+						],
+						[
+							0.0,
+							887.0
+						]
+					],
+					"origin_px": [
+						156.5,
+						1457.0
+					],
+					"scale": 0.5
+				}
+			],
+			"foot_authority": "Registered original source semantic ground point, not alpha bottom/bbox; independently transform original ground solids at same uniform scale"
+		},
+		{
+			"id": "southeast_market_front",
+			"world_foot_px": [
+				2520.0,
+				1810.0
+			],
+			"physical_center_px": [
+				2520.0,
+				1810.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						2066.39990234375,
+						1657.67993164063
+					],
+					[
+						2693.60009765625,
+						1657.67993164063
+					],
+					[
+						2693.60009765625,
+						1787.59997558594
+					],
+					[
+						2066.39990234375,
+						1787.59997558594
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_modular_v3/source/shop_v1.png",
+					"uv_polygon_px": [
+						[
+							0.0,
+							0.0
+						],
+						[
+							1536.0,
+							0.0
+						],
+						[
+							1536.0,
+							1024.0
+						],
+						[
+							0.0,
+							1024.0
+						]
+					],
+					"origin_px": [
+						1960.0,
+						1282.47998046875
+					],
+					"scale": 0.56
+				}
+			],
+			"foot_authority": "Registered original source semantic ground point, not alpha bottom/bbox; independently transform original ground solids at same uniform scale"
+		},
+		{
+			"id": "v13_market_west_plot_wall",
+			"world_foot_px": [
+				535.0,
+				1510.0
+			],
+			"physical_center_px": [
+				535.0,
+				1504.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						220.0,
+						1498.0
+					],
+					[
+						850.0,
+						1498.0
+					],
+					[
+						850.0,
+						1510.0
+					],
+					[
+						220.0,
+						1510.0
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_enclosure_v11/source/front_wall_v9_candidate.png",
+					"uv_polygon_px": [
+						[
+							100.0,
+							200.0
+						],
+						[
+							2009.09090909091,
+							200.0
+						],
+						[
+							2009.09090909091,
+							572.0
+						],
+						[
+							100.0,
+							572.0
+						]
+					],
+					"origin_px": [
+						187.0,
+						1324.2099609375
+					],
+					"scale": 0.33
+				}
+			],
+			"foot_authority": "Explicit NEW low-wall ground at selected source brickfoot563; ground depth12logical authoring, not alpha roof bbox or imported old collision credit",
+			"source_uv_exclusion": "Exclude original generated terminal pillars and A1 canvas edges; no alpha threshold or bitmap edit",
+			"known_risk": "Selected panel flat terminal cuts require current GPU review, not a finished endcap/native wall claim"
+		},
+		{
+			"id": "v13_market_east_plot_wall",
+			"world_foot_px": [
+				2490.0,
+				1320.0
+			],
+			"physical_center_px": [
+				2490.0,
+				1314.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						2190.0,
+						1308.0
+					],
+					[
+						2790.0,
+						1308.0
+					],
+					[
+						2790.0,
+						1320.0
+					],
+					[
+						2190.0,
+						1320.0
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_enclosure_v11/source/front_wall_v9_candidate.png",
+					"uv_polygon_px": [
+						[
+							100.0,
+							200.0
+						],
+						[
+							1918.18181818182,
+							200.0
+						],
+						[
+							1918.18181818182,
+							572.0
+						],
+						[
+							100.0,
+							572.0
+						]
+					],
+					"origin_px": [
+						2157.0,
+						1134.2099609375
+					],
+					"scale": 0.33
+				}
+			],
+			"foot_authority": "Explicit NEW low-wall ground at selected source brickfoot563; ground depth12logical authoring, not alpha roof bbox or imported old collision credit",
+			"source_uv_exclusion": "Exclude original generated terminal pillars and A1 canvas edges; no alpha threshold or bitmap edit",
+			"known_risk": "Selected panel flat terminal cuts require current GPU review, not a finished endcap/native wall claim"
+		}
+	],
+	"authoring_observations": {
+		"scope": "TWO_REGION_STREET_BLOCK_CANDIDATE_NOT_ADOPTED",
+		"region": "ch4_s3_luoyang_market",
+		"generated_images": 0,
+		"new_story_or_interaction": false,
+		"physical_routes_npc_slots_portals_unchanged": true,
+		"fortification_and_ground": "Unchanged; not declared newly finished by this helper",
+		"west_gate_entrance_ground_width": 120.0,
+		"east_gate_entrance_ground_width": 140.0,
+		"low_wall_visible_ridge_foot_height": 113.52,
+		"north_market_front_alpha_gt30_top_expected": 55.14,
+		"north_market_front_weak_alpha0_source_row_expected": 19.63,
+		"actual_gpu_alpha_crop_visual_Field": "PENDING; no prior credit inherited",
+		"known_risks": [
+			"Low-wall end cuts and original source light need actual GPU review",
+			"North roof/weak alpha margins must be reviewed current render",
+			"All transformed source solids need realField player17point/currentY checks",
+			"No claim town fully approved or formally integrated"
+		]
+	},
+	"retained_object_ids": [
+		"inn",
+		"shop",
+		"goods_stall",
+		"medicine_stall",
+		"street_tree_0",
+		"street_tree_1",
+		"street_tree_2",
+		"street_tree_3",
+		"lamp_0",
+		"lamp_1",
+		"xuantong_note_scroll"
+	],
+	"original_gameplay_slots_unchanged": true,
+	"original_routes_unchanged": true,
+	"alpha_bbox_is_not_physical_foot": true,
+	"source_bitmap_modified": false,
+	"additional_walk_support": false,
+	"production_approved": false,
+	"field_approved": false,
+	"visual_approved": false
+}

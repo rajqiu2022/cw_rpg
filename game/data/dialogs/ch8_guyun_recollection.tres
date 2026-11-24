@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "封砚秋"
+portrait_path = "res://art/characters/portraits/portrait_feng_yanqiu_v1.png"
+text = "晨市断剑、回锋残图、洛阳试痕和茗雾原目录都指向同一套换力记号。可冷孤云已把林西剑法练到第九重，仍然少了最后一段。"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2")
+node_id = &"n2"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "因为我也只练到第九重。我师父从未传我第十重，只说我把剑当成了答案，而不是一条回来的路。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="n3"]
+script = ExtResource("2")
+node_id = &"n3"
+speaker = "封砚秋"
+portrait_path = "res://art/characters/portraits/portrait_feng_yanqiu_v1.png"
+text = "原目录缺页处盖着你师门旧印。那本书也许没有送进茗雾，而是一直留在林西。"
+on_end = "next:n4"
+
+[sub_resource type="Resource" id="n4"]
+script = ExtResource("2")
+node_id = &"n4"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "地下档案室最上层有一只封死的旧木匣。我一直以为里面只是师父留下的押运账，原来他把剑解藏在账页夹层。去兵器架前的暗门，我们一起把它取出来。"
+set_flags = Array[Dictionary]([{"key":"guyun_master_recollection_done","value":true},{"key":"guyun_master_book_unlocked","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch8_guyun_recollection"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"),SubResource("n2"),SubResource("n3"),SubResource("n4")])

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "老纸匠"
+portrait_path = ""
+text = "左先生那批纸赶好了，这回多亏你肯把原料认仔细。"
+voice_emotion = "normal"
+on_end = "next:reply"
+
+[sub_resource type="Resource" id="reply"]
+script = ExtResource("2")
+node_id = &"reply"
+speaker = "老纸匠"
+portrait_path = ""
+text = "旧木模我收在干处。往后再有人问起，至少还有实物可看。"
+voice_emotion = "normal"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_resident_v_paper_artisan_after"
+entry_node_id = &"start"
+required_story_flag = &"luoyang_paper_helped"
+required_completed_quest = &"q_ch4_side_02_luoyang_paper"
+nodes = Array[Resource]([SubResource("start"), SubResource("reply")])

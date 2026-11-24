@@ -1,0 +1,23 @@
+{
+  "status": "ROOT_AUTHORIZED_STRICT_ORIGINAL_UNFINALIZED_COLD_DISCARD_PLUS_DOCKS_SOURCEFOOT_BUILD",
+  "parent": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/gate_texture_repair01/closure_READY01/finish8_runtime_READY.gd",
+    "sha256": "b3b959854579c7f1846841a30ad26387c2eef1210f84b54e010d1b0f4e989207"
+  },
+  "candidate": {
+    "path": "res://build/luoyang_city_finish_20261025i_system01/family_direct_entry02_NOTREADY/finish8_runtime_ferry2140_cold_discard_CANDIDATE.gd"
+  },
+  "hunks": [
+    {
+      "old": "\t\treturn {\"portal\":\"canal_world_ferry\",\"source_foot\":Vector2(340,1840),\"target_foot\":docks_uv*Vector2(1920,1280),\"uv\":docks_uv,\"kind\":\"TEMPLE_DEFERRED_ORIGINAL_PREPARE\"}",
+      "new": "\t\treturn {\"portal\":\"canal_world_ferry\",\"source_foot\":Vector2(2140,1840),\"target_foot\":docks_uv*Vector2(1920,1280),\"uv\":docks_uv,\"kind\":\"TEMPLE_DEFERRED_ORIGINAL_PREPARE\"}"
+    },
+    {
+      "old": "static func _receipt(scene: SceneScript,receipt: Dictionary,final: bool = false) -> bool:\n",
+      "new": "static func discard_unfinalized_original(scene: SceneScript,layout: Resource,kind: String,original: Dictionary) -> bool:\n\t# Failure recovery only: never clear a live/FINAL lease or manufacture original proof.\n\tif scene==null or layout==null or scene.map_layout!=layout: return false\n\tif kind==\"QUARTER_ORIGINAL\":\n\t\tif scene.scene_id not in [&\"luoyang_artisan_residential_20261022ap\",&\"luoyang_riverside_garden_20261022ap\"]: return false\n\telif kind==\"ESTATE_ORIGINAL\":\n\t\tif scene.scene_id!=&\"luoyang_estate_riverside_20261021ai\": return false\n\telse: return false\n\tif original.get(\"finalized\")==true or typeof(original.get(\"serial\"))!=TYPE_INT or int(original.serial)<=0 or not original.get(\"key\") is String or String(original.key).is_empty() or not original.get(\"source_first\") is Dictionary or original.source_first.is_empty(): return false\n\tif not _states.has(scene.get_instance_id()): return true\n\tvar pending: Dictionary=_states[scene.get_instance_id()]\n\tif not pending.get(\"scene\") is WeakRef or not pending.get(\"layout\") is WeakRef or pending.scene.get_ref()!=scene or pending.layout.get_ref()!=layout: return false\n\tif pending.get(\"owner_kind\")!=kind or pending.get(\"owner_key\")!=original.key or pending.get(\"token\")!=original.serial or var_to_bytes(pending.get(\"first\"))!=var_to_bytes(original.source_first): return false\n\tif pending.get(\"field\")!=null or pending.get(\"finalized\")!=false or pending.get(\"released\")!=false: return false\n\t_states.erase(scene.get_instance_id())\n\treturn true\n\nstatic func _receipt(scene: SceneScript,receipt: Dictionary,final: bool = false) -> bool:\n"
+    }
+  ],
+  "protected": "Original ensure/current/acquire/final/release and all previous-cache equality guards untouched. New API only exact Family Scene/Layout/kind/key/serial/sourcefirst; no-state true only after valid own FIRST schema; any Field pointer or FINAL/released/different owner refuses. No matches/source hash/new token/FINAL simulation.",
+  "engine_calls": 0,
+  "canonical_writes": 0
+}

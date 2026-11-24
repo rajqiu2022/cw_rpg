@@ -1,0 +1,51 @@
+{
+  "schema": "CITYNAV_20261101D_FIXED_ORDINARY_WHOLEBYTE_LAYER_V1",
+  "path": "res://scripts/city/luoyang_docks_district08_20261019aa.gd",
+  "parent_sha256": "fe1d8be0a6a6625697d8d5260c4a9821d468cf0780de6f62906b35b4b15c5f40",
+  "current_sha256": "2ac87f75d14b5265b4840fd1b273f1c150438d1ef6c095ecf712f861cf3728bb",
+  "whole_inverse_exact": true,
+  "hunks": [
+    {
+      "old_offset": 2841,
+      "new_offset": 2841,
+      "old": "\tif FileAccess.get_sha256(ORDINARY_C_PATH)!=FINISH_C_SHA or FileAccess.get_sha256(ORDINARY_C_CURRENT_PROOF)!=ORDINARY_C_CURRENT_PROOF_SHA: return PackedByteArray()\n",
+      "new": "\tif b().bytes_sha(_citynav_c_fixed_parent_bytes())!=FINISH_C_SHA or FileAccess.get_sha256(ORDINARY_C_CURRENT_PROOF)!=ORDINARY_C_CURRENT_PROOF_SHA: return PackedByteArray()\n"
+    },
+    {
+      "old_offset": 4648,
+      "new_offset": 4656,
+      "old": "\tif FileAccess.get_sha256(ORDINARY_C_PATH)!=FINISH_C_SHA or FileAccess.get_sha256(FINISH_C_PROOF)!=FINISH_C_PROOF_SHA: return PackedByteArray()\n",
+      "new": "\tif b().bytes_sha(_citynav_c_fixed_parent_bytes())!=FINISH_C_SHA or FileAccess.get_sha256(FINISH_C_PROOF)!=FINISH_C_PROOF_SHA: return PackedByteArray()\n"
+    },
+    {
+      "old_offset": 5274,
+      "new_offset": 5290,
+      "old": "\tvar bytes: PackedByteArray=FileAccess.get_file_as_bytes(ORDINARY_C_PATH)\n",
+      "new": "\tvar bytes: PackedByteArray=_citynav_c_fixed_parent_bytes()\n"
+    },
+    {
+      "old_offset": 6453,
+      "new_offset": 6455,
+      "old": "\tif FileAccess.get_sha256(ORDINARY_C_PATH)!=FINISH_C_SHA or FileAccess.get_sha256(ORDINARY_C_OUTER_PROOF)!=ORDINARY_C_OUTER_PROOF_SHA: return PackedByteArray()\n",
+      "new": "\tif b().bytes_sha(_citynav_c_fixed_parent_bytes())!=FINISH_C_SHA or FileAccess.get_sha256(ORDINARY_C_OUTER_PROOF)!=ORDINARY_C_OUTER_PROOF_SHA: return PackedByteArray()\n"
+    },
+    {
+      "old_offset": 7947,
+      "new_offset": 7957,
+      "old": "\tif path!=ORDINARY_C_PATH or expected!=ORDINARY_C_OLD_SHA or FileAccess.get_sha256(ORDINARY_C_PATH)!=FINISH_C_SHA or FileAccess.get_sha256(ORDINARY_C_PROOF)!=ORDINARY_C_PROOF_SHA: return false\n",
+      "new": "\tif path!=ORDINARY_C_PATH or expected!=ORDINARY_C_OLD_SHA or b().bytes_sha(_citynav_c_fixed_parent_bytes())!=FINISH_C_SHA or FileAccess.get_sha256(ORDINARY_C_PROOF)!=ORDINARY_C_PROOF_SHA: return false\n"
+    },
+    {
+      "old_offset": 10380,
+      "new_offset": 10398,
+      "old": "\tvar paths: Dictionary={SELF:true,INDEX:true,AUTHOR:true,ORDINARY_C_PROOF:true,ORDINARY_C_CURRENT_PROOF:true,ORDINARY_C_OUTER_PROOF:true,FINISH_C_PROOF:true}\n",
+      "new": "\tvar paths: Dictionary={SELF:true,INDEX:true,AUTHOR:true,ORDINARY_C_PROOF:true,ORDINARY_C_CURRENT_PROOF:true,ORDINARY_C_OUTER_PROOF:true,FINISH_C_PROOF:true,CITYNAV_C_PROOF:true}\n"
+    },
+    {
+      "old_offset": 16970,
+      "new_offset": 17009,
+      "old": "",
+      "new": "\nconst CITYNAV_C_CURRENT_SHA := \"7ec013fe42f6286bfed4bbd9b9256cc944b2fe78117aa9c73dabc2fc777105b7\"\nconst CITYNAV_C_PARENT_SHA := \"f1c8da74c69bf6660b2d9c9637b54e15d2679dfa7a2d75b1e0ed3f48a25374ab\"\nconst CITYNAV_C_PROOF := \"res://build/luoyang_navigation_docks_20261101d_successor02/C_11c_to_fixed_FINISH_C_inverse_READY.json\"\nconst CITYNAV_C_PROOF_SHA := \"cad1fb1dec81e8dacf12b0544dfcb3125895e9ea7c8ac31c90ef93ed77f99c8f\"\nstatic func _citynav_c_fixed_parent_bytes() -> PackedByteArray:\n\t# Ordinary fixed predecessor only. Original older layers and author checks remain.\n\tif FileAccess.get_sha256(ORDINARY_C_PATH)!=CITYNAV_C_CURRENT_SHA or FileAccess.get_sha256(CITYNAV_C_PROOF)!=CITYNAV_C_PROOF_SHA: return PackedByteArray()\n\tvar layer: Variant=JSON.parse_string(FileAccess.get_file_as_string(CITYNAV_C_PROOF))\n\tif not layer is Dictionary or layer.get(\"schema\")!=\"CITYNAV_20261101D_FIXED_ORDINARY_WHOLEBYTE_LAYER_V1\" or layer.get(\"path\")!=ORDINARY_C_PATH or layer.get(\"current_sha256\")!=CITYNAV_C_CURRENT_SHA or layer.get(\"parent_sha256\")!=CITYNAV_C_PARENT_SHA or layer.get(\"whole_inverse_exact\")!=true or not layer.get(\"hunks\") is Array or layer.hunks.is_empty(): return PackedByteArray()\n\tvar bytes: PackedByteArray=FileAccess.get_file_as_bytes(ORDINARY_C_PATH)\n\tif b().bytes_sha(bytes)!=CITYNAV_C_CURRENT_SHA: return PackedByteArray()\n\tfor index: int in range(layer.hunks.size()-1,-1,-1):\n\t\tvar row: Variant=layer.hunks[index]\n\t\tif not row is Dictionary or not row.get(\"new_offset\") is float or not row.get(\"old\") is String or not row.get(\"new\") is String: return PackedByteArray()\n\t\tvar start: int=int(row.new_offset)\n\t\tvar native_new: PackedByteArray=String(row.new).to_utf8_buffer()\n\t\tif start<0 or start+native_new.size()>bytes.size() or bytes.slice(start,start+native_new.size())!=native_new: return PackedByteArray()\n\t\tbytes=bytes.slice(0,start)+String(row.old).to_utf8_buffer()+bytes.slice(start+native_new.size())\n\treturn bytes if b().bytes_sha(bytes)==CITYNAV_C_PARENT_SHA else PackedByteArray()\n"
+    }
+  ]
+}

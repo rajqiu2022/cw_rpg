@@ -1,0 +1,57 @@
+tasks:
+  - id: npc_gate_guard_hd_down_idle_20261106_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/gate_guard_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite_sheet/npc_zhuwei_gate_guard_idle_down_25d_4f_source_v2.png
+      reference_runtime: game/art/characters/npc_zhuwei_gate_guard_idle_down_25d_4f_v2_runtime.png
+      asset_prompt: "Exact prompt_path; same identity and four idle phases."
+  - id: npc_martial_master_hd_down_idle_20261106_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/martial_master_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite_sheet/npc_linxi_martial_hall_master_idle_down_25d_4f_source_v2.png
+      reference_runtime: game/art/characters/npc_linxi_martial_hall_master_idle_down_25d_4f_v2_runtime.png
+      asset_prompt: "Exact prompt_path; same identity and four idle phases."
+  - id: npc_crying_woman_hd_down_idle_20261106_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/crying_woman_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite_sheet/npc_zhuwei_crying_woman_idle_source_v1.png
+      reference_runtime: game/art/characters/npc_zhuwei_crying_woman_idle_down_25d_4f_v2_runtime.png
+      asset_prompt: "Exact prompt_path; same identity and four idle phases."
+  - id: npc_escort_hd_down_idle_20261106_v1
+    skip: true
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/escort_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite_sheet/npc_zhuwei_escort_idle_source_v1.png
+      reference_runtime: game/art/characters/npc_zhuwei_escort_idle_down_25d_4f.png
+      asset_prompt: "Exact prompt_path; same identity and four idle phases."

@@ -197,7 +197,7 @@ func _on_data_changed() -> void:
 	_dirty = true
 	# 更新列表中的标题
 	if _selected_index >= 0 and _selected_index < _all_quests.size():
-		var title := _detail_panel.get_edited_title()
+		var title: String = _detail_panel.get_edited_title()
 		if title != "":
 			var def: QuestDef = _all_quests[_selected_index]["def"]
 			_status_label.text = "✏️ 已修改: %s" % title

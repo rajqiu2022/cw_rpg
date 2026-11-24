@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/ch2_s4_lingyue_gate_layout_v1.tres" id="99_layout"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch2_s4_lingyue_gate"
+display_name = "凌月派 · 山门"
+background_path = "res://art/backgrounds/sect_maps_v4/bg_lingyue_gate_v2_1536.png"
+bgm_path = "res://art/audio/bgm/bgm_forest_mystery_v4.wav"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+is_settlement = true
+player_spawn = Vector2(0.12, 0.82)
+animated_props = Array[Dictionary]([{"id":"ch2_lingyue_cloud_mist","type":"mist_drift","pos":Vector2(0.52,0.455),"size":Vector2(0.86,0.24),"speed":0.30,"opacity":0.12,"count":5,"color":"#d7e6ee","z_index":12},{"id":"ch2_lingyue_gate_glow_left","type":"glow","pos":Vector2(0.405,0.565),"size":Vector2(0.050,0.065),"speed":0.58,"color":"#a8d4ff","z_index":17},{"id":"ch2_lingyue_gate_glow_right","type":"glow","pos":Vector2(0.595,0.565),"size":Vector2(0.050,0.065),"speed":0.66,"color":"#a8d4ff","z_index":17}])
+hotspots = [
+	{"label": "交还失踪弟子线索", "pos_x": 0.30, "pos_y": 0.58, "action": "dialog:ch2_missing_disciple_complete", "require_flag": "defeated_masked_killer_elite", "hide_flag": "found_missing_disciple_clue"},
+	{"label": "与凌霜交谈", "pos_x": 0.62, "pos_y": 0.42, "action": "dialog:ch2_lingyue_arrival", "require_flag": "ch2_hideout_cleared", "hide_flag": "chapter2_complete"},
+	{"label": "调停山门逆风旧钟", "pos_x": 0.46, "pos_y": 0.54, "action": "dialog:huilan_openworld_bell", "hide_flag": "huilan_bell_counterforce_understood"}
+]

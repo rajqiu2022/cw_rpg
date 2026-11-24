@@ -1,0 +1,21 @@
+id: sprite_yuewuheng_battle_action_v2
+description: Yue Wuheng full-body battle frame matching her adopted battle actor.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/characters/battle_yuewuheng_v1.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied reference as the strict identity, costume, hairstyle, palette, painterly ink style, and full-body proportion reference for Yue Wuheng. Create ONE single full-body 2.5D wuxia RPG combat animation frame, facing right for the allied lower-left battle formation.
+
+  Preserve exactly: young Chinese woman with a long black high ponytail and small pale-blue hair ornament; white robe with icy light-blue and deep teal layers; dark teal waist sash with silver ornaments; tall dark teal boots; one ornate straight sword. Match the reference's elegant Hong Kong wuxia game illustration with crisp dark ink contours and controlled painted shading. She must remain recognizably the same character, not a different woman and not photorealistic.
+
+  Action: {{action}}
+  Composition: one whole character only, head, both boots, sword tip, hair, and all robe hems fully visible inside the 1024x1024 image with at least 12 percent empty padding. Perfectly flat #00ff00 chroma-key background only: no floor, shadow, halo, scenery, text, UI, border, watermark, effect, second person, blood, or wound.
+
+  Avoid: cropped anatomy, bust portrait, white-and-gold costume, green robe, exposed legs, bare feet, twin swords, red ribbon, headscarf, western armor, demon, spider, web.
+
+variables:
+  action: "required"

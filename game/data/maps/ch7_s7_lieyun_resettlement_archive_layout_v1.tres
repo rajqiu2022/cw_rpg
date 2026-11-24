@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536,1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.410,0.995, 0.590,0.995, 0.640,0.825, 0.805,0.705, 0.805,0.230, 0.650,0.165, 0.580,0.105, 0.420,0.105, 0.350,0.165, 0.195,0.230, 0.195,0.705, 0.360,0.825),
+	PackedVector2Array(0.240,0.285, 0.075,0.285, 0.070,0.570, 0.215,0.610, 0.350,0.515, 0.350,0.325),
+	PackedVector2Array(0.650,0.270, 0.825,0.260, 0.930,0.300, 0.930,0.610, 0.790,0.640, 0.650,0.520)
+])
+blockers = Array[Dictionary]([
+	{"id":"central_map_table", "pos":Vector2(0.500,0.505), "size":Vector2(0.165,0.120)},
+	{"id":"left_register_table", "pos":Vector2(0.145,0.400), "size":Vector2(0.145,0.145)},
+	{"id":"right_manifest_table", "pos":Vector2(0.855,0.435), "size":Vector2(0.120,0.235)},
+	{"id":"upper_vault_door", "pos":Vector2(0.500,0.070), "size":Vector2(0.200,0.085)}
+])
+interactions = Array[Dictionary]([])
+portals = Array[Dictionary]([
+	{"id":"return_to_lieyun_assembly_hall", "pos":Vector2(0.500,0.925), "size":Vector2(0.130,0.105), "label":"返回烈云聚义厅", "target_scene":"ch7_s5_lieyun_assembly_hall", "target_pos":Vector2(0.500,0.175), "marker_rotation_degrees":180.0},
+	{"id":"enter_night_transfer_station","pos":Vector2(0.500,0.175),"size":Vector2(0.120,0.085),"label":"进入夜航转运栈","target_scene":"ch7_s10_lieyun_night_transfer_station","target_pos":Vector2(0.50,0.86),"require_flag":"ch7_identity_routes_opened"}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"archive_spawn", "pos":Vector2(0.500,0.875)},
+	{"id":"central_reading_floor", "pos":Vector2(0.500,0.650)},
+	{"id":"witness_position", "pos":Vector2(0.275,0.365)},
+	{"id":"manifest_front", "pos":Vector2(0.725,0.400)},
+	{"id":"vault_front", "pos":Vector2(0.500,0.175)},
+	{"id":"hall_return", "pos":Vector2(0.500,0.925)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"central_map_table", "pos":Vector2(0.500,0.505)},
+	{"id":"left_register_table", "pos":Vector2(0.145,0.400)},
+	{"id":"right_manifest_table", "pos":Vector2(0.855,0.435)},
+	{"id":"upper_vault_door", "pos":Vector2(0.500,0.070)}
+])

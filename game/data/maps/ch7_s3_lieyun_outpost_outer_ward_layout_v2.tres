@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536,1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.430,0.995, 0.570,0.995, 0.625,0.820, 0.820,0.720, 0.820,0.255, 0.655,0.185, 0.575,0.115, 0.425,0.115, 0.345,0.185, 0.180,0.255, 0.180,0.720, 0.375,0.820),
+	PackedVector2Array(0.180,0.300, 0.075,0.315, 0.070,0.550, 0.190,0.590, 0.325,0.500, 0.330,0.330),
+	PackedVector2Array(0.670,0.300, 0.820,0.265, 0.930,0.300, 0.930,0.570, 0.810,0.600, 0.675,0.505)
+])
+visual_objects = [
+	{"id":"garrison_court","texture":"res://art/modules/lieyun_checkpoint/outpost_yard.png","pos":Vector2(-0.125,-0.02734375),"centered":false,"render_size_px":Vector2(1920,1080),"z_index":-99},
+	{"id":"register_desk","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/medicine_worktable_v1.png","pos":Vector2(0.1544721,0.3040468),"centered":false,"render_size_px":Vector2(175.348,116.898),"sort_by_feet":true,"depth_sort_foot_y":0.4052734},
+	{"id":"clinic_bundles","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png","pos":Vector2(0.0828718,0.3624772),"centered":false,"render_size_px":Vector2(129.671,86.447),"sort_by_feet":true,"depth_sort_foot_y":0.4375000},
+	{"id":"duty_staves","texture":"res://art/modules/sect_completion_20261030a/staff_rack.png","pos":Vector2(0.6450488,0.1904760),"centered":false,"render_size_px":Vector2(398.209,275.353),"sort_by_feet":true,"depth_sort_foot_y":0.4111328},
+	{"id":"yard_lower_check","texture":"res://art/modules/lieyun_checkpoint/inspection_rail.png","pos":Vector2(0.2484874,0.5968418),"centered":false,"render_size_px":Vector2(431.482,143.827),"sort_by_feet":true,"depth_sort_foot_y":0.7363281},
+	{"id":"yard_upper_check","texture":"res://art/modules/lieyun_checkpoint/inspection_rail.png","pos":Vector2(0.4822469,0.4305235),"centered":false,"render_size_px":Vector2(429.397,143.132),"sort_by_feet":true,"depth_sort_foot_y":0.5693359},
+	{"id":"gate_bar","texture":"res://art/modules/lieyun_checkpoint/inspection_rail.png","pos":Vector2(0.4382010,0.2938460),"centered":false,"render_size_px":Vector2(187.601,62.534),"sort_by_feet":true,"depth_sort_foot_y":0.3544922,"hide_flag":"ch7_inner_routes_opened"},
+	{"id":"bar_set_aside","texture":"res://art/modules/lieyun_checkpoint/inspection_rail.png","pos":Vector2(0.7389823,0.4198225),"centered":false,"render_size_px":Vector2(187.601,62.534),"sort_by_feet":true,"depth_sort_foot_y":0.4804688,"require_flag":"ch7_inner_routes_opened"}
+]
+blockers = [
+	{"id":"stockade_west","pos":Vector2(0.1992188,0.3164062),"size":Vector2(0.4830729,0.0742188),"walkability_margin":0.0},
+	{"id":"stockade_east","pos":Vector2(0.8007812,0.3164062),"size":Vector2(0.4830729,0.0742188),"walkability_margin":0.0},
+	{"id":"register_desk_foot","pos":Vector2(0.2115885,0.3906250),"size":Vector2(0.0735677,0.0292969),"walkability_margin":0.0},
+	{"id":"clinic_bundles_foot","pos":Vector2(0.1250000,0.4272461),"size":Vector2(0.0481771,0.0205078),"walkability_margin":0.0},
+	{"id":"duty_staves_foot","pos":Vector2(0.7727865,0.3974609),"size":Vector2(0.0794271,0.0273438),"walkability_margin":0.0},
+	{"id":"yard_lower_check_foot","pos":Vector2(0.3906250,0.7172852),"size":Vector2(0.2565104,0.0380859),"walkability_margin":0.0},
+	{"id":"yard_upper_check_foot","pos":Vector2(0.6236979,0.5502930),"size":Vector2(0.2558594,0.0380859),"walkability_margin":0.0}
+]
+interactions = Array[Dictionary]([
+	{"id":"ch7_lieyun_quarantine_register", "pos":Vector2(0.245,0.405), "size":Vector2(0.120,0.105), "activation":"interact", "label":"查阅隔离药册", "action":"dialog:ch7_lieyun_quarantine_register", "visual_baked":true, "require_quest_active":"q_ch7_main_03_outer_wards", "hide_flag":"ch7_lieyun_registry_checked"}
+])
+portals = Array[Dictionary]([
+	{"id":"return_to_lieyun_ferry", "pos":Vector2(0.500,0.925), "size":Vector2(0.120,0.105), "label":"返回峡谷旧渡", "target_scene":"ch7_s1_lieyun_valley_ferry", "target_pos":Vector2(0.500,0.205), "marker_rotation_degrees":180.0},
+	{"id":"enter_lieyun_assembly_hall", "pos":Vector2(0.500,0.355), "size":Vector2(0.120,0.090), "label":"进入烈云聚义厅", "locked_label":"寨门设卡，须有分舵放行令。", "target_scene":"ch7_s5_lieyun_assembly_hall", "target_pos":Vector2(0.500,0.875), "require_flag":"ch7_inner_routes_opened"}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"outer_ward_spawn", "pos":Vector2(0.500,0.875)},
+	{"id":"battle_square", "pos":Vector2(0.500,0.515)},
+	{"id":"registry_front", "pos":Vector2(0.300,0.405)},
+	{"id":"barracks_front", "pos":Vector2(0.720,0.405)},
+	{"id":"assembly_gate_front", "pos":Vector2(0.500,0.355)},
+	{"id":"ferry_return", "pos":Vector2(0.500,0.925)}
+])
+blocked_probes = [
+	{"id":"stockade_west","pos":Vector2(0.1992188,0.3164062)},
+	{"id":"stockade_east","pos":Vector2(0.8007812,0.3164062)},
+	{"id":"register_desk_foot","pos":Vector2(0.2115885,0.3906250)},
+	{"id":"clinic_bundles_foot","pos":Vector2(0.1250000,0.4272461)},
+	{"id":"duty_staves_foot","pos":Vector2(0.7727865,0.3974609)},
+	{"id":"yard_lower_check_foot","pos":Vector2(0.3906250,0.7172852)},
+	{"id":"yard_upper_check_foot","pos":Vector2(0.6236979,0.5502930)}
+]
+metadata/sprite_footprints_uv = {&"SceneObject_gate_bar": Rect2(0.05023020, 0.60930018, 0.91151013, 0.38379374), &"SceneObject_bar_set_aside": Rect2(0.05023020, 0.60930018, 0.91151013, 0.38379374)}

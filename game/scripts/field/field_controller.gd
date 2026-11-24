@@ -1,5 +1,7 @@
 extends Control
 
+const INVENTORY_SHORTCUT_ENABLED := false
+
 ## 探索场景（Field）控制器。
 ##
 ## 工作方式：
@@ -12,11 +14,12 @@ extends Control
 ## 热点 dict 格式见 SceneScript.gd 注释。
 
 const INVENTORY_PANEL_SCENE := preload("res://scenes/ui/inventory_panel.tscn")
-const EQUIPMENT_PANEL_SCENE := preload("res://scenes/ui/equipment_panel.tscn")
+const EQUIPMENT_PANEL_SCENE := preload("res://scenes/ui/character_panel.tscn")
 const SKILL_PANEL_SCENE := preload("res://scenes/ui/skill_panel.tscn")
 const QUEST_PANEL_SCENE := preload("res://scenes/ui/quest_panel.tscn")
 const WORLD_MAP_PANEL_SCENE := preload("res://scenes/ui/world_map_panel.tscn")
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
+const UI_LAYER_POLICY := preload("res://scripts/ui/ui_layer_policy.gd")
 const ATTR_ICON_ATLAS_PATH := "res://art/ui/icon/ui_cold_wuxia_attribute_icons_v1.png"
 const ATTR_ICON_REGIONS := {
 	"筋骨": Rect2(37, 55, 203, 204),
@@ -56,6 +59,8 @@ var _panels_ready: bool = false
 var _skill_panel = null
 var _quest_panel_full = null
 var _world_map_panel: WorldMapPanel = null
+var _hud_canvas_layer: CanvasLayer = null
+var _system_ui_canvas_layer: CanvasLayer = null
 
 var _hud_btn_normal: StyleBoxFlat
 var _hud_btn_hover: StyleBoxFlat
@@ -63,11 +68,15 @@ var _attr_icon_atlas: Texture2D = null
 
 
 func _ready() -> void:
+	_init_ui_canvas_layers()
 	EventBus.flag_set.connect(_on_flag_set)
 	EventBus.gold_changed.connect(_on_gold_changed)
+	EventBus.reputation_changed.connect(_on_reputation_changed)
 	EventBus.dialog_ended.connect(_on_dialog_ended)
 	EventBus.item_picked_up.connect(_on_item_picked_up)
+	EventBus.skill_learned.connect(_on_skill_learned)
 	EventBus.ui_requested.connect(_on_ui_requested)
+	EventBus.toast_requested.connect(_show_toast)
 	QuestManager.active_quests_changed.connect(_refresh_quest_panel)
 	EventBus.quest_completed.connect(_on_quest_completed)
 	quest_log_btn.pressed.connect(_on_quest_log_pressed)
@@ -89,6 +98,7 @@ func _ready() -> void:
 		_attr_icon_atlas = load(ATTR_ICON_ATLAS_PATH)
 	_init_m5_panels()
 	_init_field_ui_styles()
+	_disable_gameplay_button_focus(self)
 
 	var scene_id: StringName = SceneRouter.get_field_payload().get("scene_id", &"ch1_s1_road")
 	_current_scene = _load_scene(scene_id)
@@ -104,6 +114,7 @@ func _ready() -> void:
 	# 这样 QuestManager 可以推进 "scene_entered:<id>" 触发的任务，
 	# UI 在面板里立即看到状态变化。
 	EventBus.scene_entered.emit(scene_id)
+	AudioManager.ensure_bgm_for_scene(scene_id)
 
 	if _should_play_enter_dialog(_current_scene):
 		_mark_enter_dialog_played(_current_scene)
@@ -111,8 +122,33 @@ func _ready() -> void:
 		DialogPlayer.play(_current_scene.on_enter_dialog)
 
 
+func _init_ui_canvas_layers() -> void:
+	_hud_canvas_layer = UI_LAYER_POLICY.ensure_canvas_layer(
+		self,
+		&"HudCanvasLayer",
+		UI_LAYER_POLICY.HUD_LAYER
+	)
+	_system_ui_canvas_layer = UI_LAYER_POLICY.ensure_canvas_layer(
+		self,
+		&"SystemUICanvasLayer",
+		UI_LAYER_POLICY.SYSTEM_LAYER
+	)
+	for node in [
+		hotspots_container,
+		get_node_or_null("HUD"),
+		quest_panel,
+		get_node_or_null("HintBar"),
+	]:
+		UI_LAYER_POLICY.move_to_canvas(node, _hud_canvas_layer)
+
+
 func _should_play_enter_dialog(scene: SceneScript) -> bool:
 	if scene.on_enter_dialog == null:
+		return false
+	if not DialogPlayer.can_play_script(scene.on_enter_dialog):
+		return false
+	var require_flag := String(scene.on_enter_require_flag)
+	if require_flag != "" and not _flag_truthy(require_flag):
 		return false
 	var flag := String(scene.on_enter_once_flag)
 	return flag == "" or not _flag_truthy(flag)
@@ -122,8 +158,7 @@ func _mark_enter_dialog_played(scene: SceneScript) -> void:
 	var flag := String(scene.on_enter_once_flag)
 	if flag == "":
 		return
-	GameState.flags[flag] = true
-	EventBus.flag_set.emit(StringName(flag), true)
+	GameState.set_flag(StringName(flag), true)
 
 
 func _load_scene(scene_id: StringName) -> SceneScript:
@@ -295,6 +330,10 @@ func _on_gold_changed(_n: int) -> void:
 	_refresh_gold()
 
 
+func _on_reputation_changed(_value: int, _title: String) -> void:
+	_refresh_gold()
+
+
 func _on_dialog_ended(_id: StringName) -> void:
 	# 对话结束后刷新热点（对话副作用可能改了 flag/物品）
 	if _current_scene != null:
@@ -304,9 +343,9 @@ func _on_dialog_ended(_id: StringName) -> void:
 func _refresh_gold() -> void:
 	var p: CharacterStats = GameState.player
 	if p != null and player_info != null:
-		player_info.text = "%s  Lv.%d  HP %d/%d  MP %d/%d" % [p.display_name, p.level, p.hp, p.max_hp, p.mp, p.max_mp]
+		player_info.text = "%s  Lv.%d  生命 %d/%d  内力 %d/%d" % [p.display_name, p.level, p.hp, p.max_hp, p.mp, p.max_mp]
 	if hud_gold != null:
-		hud_gold.text = "金 %d" % GameState.gold
+		hud_gold.text = "金 %d · 声望 %d" % [GameState.gold, GameState.reputation]
 
 
 func _refresh_quest_panel() -> void:
@@ -327,9 +366,11 @@ func _on_quest_completed(qid: StringName) -> void:
 	# 完成提示：直接借用对话框做最简版"toast"——
 	# M3 范围只在控制台 print + 让面板从列表里移除，避免阻塞玩家流程。
 	# 真正的弹幕/Toast UI 留给 M5+ 美术 UI 阶段。
-	var def := QuestManager.load_def(qid)
+	var def: QuestDef = QuestManager.load_def(qid)
 	if def != null:
 		print("[Field] quest completed → %s（gold +%d, exp +%d）" % [def.title, def.reward_gold, def.reward_exp])
+		_item_toast_lines.append("[color=#e3a64a]完成任务：[/color][color=#f0d8ad]%s[/color]" % def.title)
+		_show_item_toast()
 
 
 func _on_item_picked_up(item_id: StringName, count: int) -> void:
@@ -343,6 +384,18 @@ func _on_item_picked_up(item_id: StringName, count: int) -> void:
 		else:
 			q_color = _quality_color(item.quality)
 	_item_toast_lines.append("[color=#8899aa]获得[/color] [color=%s]%s[/color] × %d" % [q_color, display_name, count])
+	if item_id == &"linxi_iron_sword" and not bool(GameState.flags.get("seen_linxi_sword_equip_tip", false)):
+		_item_toast_lines.append("[color=#e3a64a]提示：[/color][color=#9fd3d0]装备剑后，方可使用林西剑法。[/color]")
+		GameState.set_flag(&"seen_linxi_sword_equip_tip", true)
+	_show_item_toast()
+
+
+func _on_skill_learned(skill_id: StringName, display_name: String) -> void:
+	var skill_path := "res://data/skills/%s.tres" % String(skill_id)
+	var skill := load(skill_path) as Skill if ResourceLoader.exists(skill_path) else null
+	var quality_color := _quality_color(skill.quality) if skill != null else "#c0c8d0"
+	var learned_type := "心法" if skill != null and skill.is_internal_art else "招式"
+	_item_toast_lines.append("[color=#e3a64a]学会%s：[/color][color=%s]%s[/color]" % [learned_type, quality_color, display_name])
 	_show_item_toast()
 
 
@@ -367,7 +420,7 @@ func _show_item_toast() -> void:
 		_item_toast.add_theme_color_override("font_outline_color", Color(0.01, 0.02, 0.03, 0.98))
 		_item_toast.add_theme_constant_override("outline_size", 5)
 		_item_toast.add_theme_constant_override("line_spacing", 4)
-		add_child(_item_toast)
+		_hud_canvas_layer.add_child(_item_toast)
 	_item_toast.text = "\n".join(_item_toast_lines)
 	_item_toast_serial += 1
 	var serial := _item_toast_serial
@@ -389,7 +442,7 @@ func _show_toast(text: String) -> void:
 	toast.add_theme_constant_override("outline_size", 5)
 	toast.add_theme_font_size_override("font_size", 20)
 	toast.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	add_child(toast)
+	_hud_canvas_layer.add_child(toast)
 	await get_tree().create_timer(2.5).timeout
 	toast.queue_free()
 
@@ -442,7 +495,7 @@ func _on_ui_requested(panel_id: StringName) -> void:
 func _open_world_map_panel() -> void:
 	if _world_map_panel == null:
 		_world_map_panel = WORLD_MAP_PANEL_SCENE.instantiate() as WorldMapPanel
-		add_child(_world_map_panel)
+		_system_ui_canvas_layer.add_child(_world_map_panel)
 	_world_map_panel.open()
 
 
@@ -451,11 +504,11 @@ func _init_m5_panels() -> void:
 	_equipment_panel = EQUIPMENT_PANEL_SCENE.instantiate()
 	_skill_panel = SKILL_PANEL_SCENE.instantiate()
 	_quest_panel_full = QUEST_PANEL_SCENE.instantiate()
-	add_child(_inventory_panel)
-	add_child(_equipment_panel)
+	_system_ui_canvas_layer.add_child(_inventory_panel)
+	_system_ui_canvas_layer.add_child(_equipment_panel)
 	_equipment_panel.visible = false
-	add_child(_skill_panel)
-	add_child(_quest_panel_full)
+	_system_ui_canvas_layer.add_child(_skill_panel)
+	_system_ui_canvas_layer.add_child(_quest_panel_full)
 	_panels_ready = true
 
 
@@ -485,12 +538,12 @@ func _open_equipment_panel() -> void:
 		_init_m5_panels()
 	if _equipment_panel == null:
 		return
-	if _inventory_panel != null and not _inventory_panel.visible:
-		_inventory_panel.open()
-	var slot: Control = _equipment_panel.get_node_or_null("InventorySlot")
-	var mp: Control = _inventory_panel.get_node_or_null("MainPanel")
-	if slot and mp and mp.get_parent() != slot:
-		mp.reparent(slot, false)
+	if _inventory_panel != null:
+		_inventory_panel.visible = false
+	if _skill_panel != null:
+		_skill_panel.visible = false
+	if _quest_panel_full != null:
+		_quest_panel_full.visible = false
 	_equipment_panel.open()
 
 
@@ -524,6 +577,15 @@ func _toggle_skill_panel() -> void:
 		_open_skill_panel()
 
 
+func _disable_gameplay_button_focus(root: Node) -> void:
+	# Keep arrow keys and Space dedicated to exploration/interactions.
+	for child in root.get_children():
+		if child is BaseButton:
+			(child as BaseButton).focus_mode = Control.FOCUS_NONE
+		if child.get_child_count() > 0:
+			_disable_gameplay_button_focus(child)
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if DialogPlayer.is_playing():
 		return
@@ -532,9 +594,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			_on_quest_log_pressed()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_I:
-			_toggle_inventory_panel()
+			if INVENTORY_SHORTCUT_ENABLED:
+				_toggle_inventory_panel()
 			get_viewport().set_input_as_handled()
-		elif event.keycode == KEY_E:
+		elif event.keycode == KEY_C:
 			_toggle_equipment_panel()
 			get_viewport().set_input_as_handled()
 		elif event.keycode == KEY_K:
@@ -552,7 +615,7 @@ func _open_save_slot_panel() -> void:
 		return
 	const SAVE_SLOT_PANEL_SCENE := preload("res://scenes/ui/save_slot_panel.tscn")
 	var panel: Control = SAVE_SLOT_PANEL_SCENE.instantiate()
-	add_child(panel)
+	_system_ui_canvas_layer.add_child(panel)
 	panel.open(SaveSlotPanel.Mode.SAVE)
 	panel.closed.connect(func() -> void:
 		_init_field_ui_styles()

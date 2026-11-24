@@ -1,0 +1,1197 @@
+{
+  "schema_version": 1,
+  "status": "STATIC_CANDIDATES_NOT_ROUTER_REGISTERED_NOT_FORMAL",
+  "scene_id": "ch4_s3_luoyang_market",
+  "revision": 1,
+  "source_sha256": {
+    "game/data/scenes/ch4_s3_luoyang_market.tres": "2DF5059AB647D956E7B37C8BB5F7D0D568D575DEAC7931B3CCADB5451C6FE8F6",
+    "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres": "70EED1B355EC18AC6D2A5D781FD1D98975D032E9961118251127BA0076E33DE4",
+    "game/art/maps/luoyang_market_enrichment_v2/runtime_manifest.json": "D617289EE22A40223F86E9F2003BDC149E8B2714AEF1F83D93D4FAF605EE67CD",
+    "game/art/maps/luoyang_modular_v3/source/module_semantics.json": "9A2F68FD3C6C243DD690A04DBDEEC8BD8627931AA498337B2FA01957A9C449C2",
+    "game/data/maps/linxi_farmer_cottage_layout_v1.tres": "0F5FD3868B86EDF0AAE260C4D80CEC5F010E6D868839D213FAEBEF43674391D6",
+    "game/data/maps/linxi_scholar_house_layout_v1.tres": "9EF6503C91767E3FCCFFB5C14AA9473FAA7BBE57AF834B4907B434D79F689021",
+    "game/data/maps/interior_inn_hall_layout_v1.tres": "08DF9B2E75F76C116C8163E3529897223549CD0485F10537212D9A9456600A27",
+    "game/art/backgrounds/bg_linxi_farmer_cottage_25d_v2.png": "58EF8555F4A62C23BEC76FF3FC962CFA5B7012C939A549A349ACFF022314958D",
+    "game/art/backgrounds/bg_linxi_scholar_house_25d_v2.png": "40126767E8CD41DEA6B05B39293B4518ED376F897C82841AF2944D23551F989A",
+    "game/art/backgrounds/bg_interior_inn_hall_v1.png": "773926B48B8687BC3831208F8BA3948E89D25F275BC021C86F0F9B7DF326ABEE",
+    "game/scripts/domain/scene_script.gd": "E01A01BA69D13492441960972109D32BA0C62B1E0E881C5B805B11B73CB41BEF",
+    "game/scripts/domain/walkable_map_layout.gd": "C90F62DF3F1B3F88B2E361568903E5F35C7440E445115C3003656C3312EED451",
+    "game/art/maps/luoyang_modular_v3/source/inn_v1.png": "661BD90EBC9BF75EBB67064E80633AFD3AB7F371184E514574D667E59E2540B9",
+    "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/inn.png": "661BD90EBC9BF75EBB67064E80633AFD3AB7F371184E514574D667E59E2540B9",
+    "game/art/maps/luoyang_modular_v3/source/shop_v1.png": "02D474A76C6DEAF995EFF97BE9CB343BF1B0F6AE26A42A72E716308F38D23883",
+    "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/shop.png": "02D474A76C6DEAF995EFF97BE9CB343BF1B0F6AE26A42A72E716308F38D23883",
+    "game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png": "6097A1D45FA5E829A2130AB2D41DF988F0C521A3E14ED102FFDABDC99C848209",
+    "game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southwest_market_front.png": "D2D082C4E50B82B060AE1E10AEC95201C70D80EEE8C877232BA4AD88FBFA614A",
+    "game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southeast_market_front.png": "6119E1A2587B6A0B0A7F6547090F6DE0641A644C311758D7B3D608B5C5475A5B",
+    "game/art/maps/luoyang_modular_v3/source/street_row_v3.png": "C012D6D3698A8CE00D3F3F32202614A1D2743DC5773C53E5521FD99821DA0303",
+    "game/art/maps/luoyang_market_enrichment_v2/textures/street_row.png": "C012D6D3698A8CE00D3F3F32202614A1D2743DC5773C53E5521FD99821DA0303",
+    "game/art/maps/luoyang_market_enrichment_v2/walk.png": "EAFFF63DD416959DFF357D5D0F06CDC22CA93D648AC76ABF9F73D34CBA2B2333"
+  },
+  "template_count": 3,
+  "room_count": 9,
+  "formal_enabled": false,
+  "author_scope": "NEW content directories only. No canonical city, C/Field/Router/Loading, image/import, NPC, reward or save modifications.",
+  "templates": [
+    {
+      "id": "small_home",
+      "name": "小宅",
+      "template_layout_path": "res://data/maps/luoyang_home_candidates_20261015/template_small_home_layout.tres",
+      "background_path": "res://art/backgrounds/bg_linxi_farmer_cottage_25d_v2.png",
+      "source_layout_path": "res://data/maps/linxi_farmer_cottage_layout_v1.tres",
+      "design_size_px": [
+        1536,
+        1024
+      ],
+      "player_spawn_uv": [
+        0.5,
+        0.65
+      ],
+      "player_visual_scale": 1.18,
+      "actor_positions_are_feet": false,
+      "exit_uv": [
+        0.5,
+        0.845
+      ],
+      "exit_size_uv": [
+        0.13,
+        0.075
+      ],
+      "geometry_recipe": "Copy only positive floor polygon and furniture-foot blockers from existing reviewed image layout. Remove every old interaction/chest/NPC/dialog/flag/reward/portal. Each room instance owns a new explicit return portal.",
+      "not_luxury_mansion": false
+    },
+    {
+      "id": "large_study",
+      "name": "大宅书房",
+      "template_layout_path": "res://data/maps/luoyang_home_candidates_20261015/template_large_study_layout.tres",
+      "background_path": "res://art/backgrounds/bg_linxi_scholar_house_25d_v2.png",
+      "source_layout_path": "res://data/maps/linxi_scholar_house_layout_v1.tres",
+      "design_size_px": [
+        1536,
+        1024
+      ],
+      "player_spawn_uv": [
+        0.5,
+        0.625
+      ],
+      "player_visual_scale": 1.18,
+      "actor_positions_are_feet": false,
+      "exit_uv": [
+        0.5,
+        0.845
+      ],
+      "exit_size_uv": [
+        0.13,
+        0.075
+      ],
+      "geometry_recipe": "Copy only positive floor polygon and furniture-foot blockers from existing reviewed image layout. Remove every old interaction/chest/NPC/dialog/flag/reward/portal. Each room instance owns a new explicit return portal.",
+      "not_luxury_mansion": true
+    },
+    {
+      "id": "inn_hall",
+      "name": "客栈厅堂",
+      "template_layout_path": "res://data/maps/luoyang_home_candidates_20261015/template_inn_hall_layout.tres",
+      "background_path": "res://art/backgrounds/bg_interior_inn_hall_v1.png",
+      "source_layout_path": "res://data/maps/interior_inn_hall_layout_v1.tres",
+      "design_size_px": [
+        1536,
+        1024
+      ],
+      "player_spawn_uv": [
+        0.5,
+        0.59
+      ],
+      "player_visual_scale": 1.18,
+      "actor_positions_are_feet": false,
+      "exit_uv": [
+        0.5,
+        0.795
+      ],
+      "exit_size_uv": [
+        0.125,
+        0.075
+      ],
+      "geometry_recipe": "Copy only positive floor polygon and furniture-foot blockers from existing reviewed image layout. Remove every old interaction/chest/NPC/dialog/flag/reward/portal. Each room instance owns a new explicit return portal.",
+      "not_luxury_mansion": false
+    }
+  ],
+  "rooms": [
+    {
+      "building_id": "inn",
+      "scene_id": "luoyang_market_inn_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/inn_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/inn_room_layout.tres",
+      "template_id": "inn_hall",
+      "activation_status": "CPU_LOCAL_ONLY_PENDING_DOOR_VISUAL_PHYSICS_ROUTING",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_modular_v3/source/inn_v1.png",
+        "sha256": "661bd90ebc9bf75ebb67064e80633afd3ab7f371184e514574d667e59e2540b9",
+        "size_px": [
+          1536,
+          1024
+        ],
+        "foot_uv": [
+          0.5,
+          0.9404296875
+        ],
+        "measured_source_anchor_px": [
+          768,
+          963
+        ],
+        "texture": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/inn.png",
+        "render_size_px": [
+          952.320007324219,
+          634.880004882813
+        ],
+        "world_foot_px": [
+          735,
+          830
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        735,
+        830
+      ],
+      "return_foot_px": [
+        735,
+        854
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.2392578125,
+        0.4169921875
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "inn",
+        "source_foot_uv": [
+          0.5,
+          0.9404296875
+        ],
+        "doorstep_px": [
+          735,
+          830
+        ],
+        "return_px": [
+          735,
+          854
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.59
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_inn_door",
+        "pos": [
+          0.5,
+          0.795
+        ],
+        "size": [
+          0.125,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_inn_room",
+        "pos": [
+          0.2392578125,
+          0.4169921875
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_inn_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/inn_room.tres",
+        "target_pos": [
+          0.5,
+          0.59
+        ],
+        "auto_trigger": false,
+        "label": "进入客栈厅堂",
+        "building_id": "inn",
+        "enabled": false
+      },
+      "notes": "Local exact shoe and short approach only; no main-street connectivity, visual door or runtime claim."
+    },
+    {
+      "building_id": "shop",
+      "scene_id": "luoyang_market_shop_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/shop_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/shop_room_layout.tres",
+      "template_id": "large_study",
+      "activation_status": "CPU_LOCAL_ONLY_PENDING_DOOR_VISUAL_PHYSICS_ROUTING",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_modular_v3/source/shop_v1.png",
+        "sha256": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+        "size_px": [
+          1536,
+          1024
+        ],
+        "foot_uv": [
+          0.651041666666667,
+          0.919921875
+        ],
+        "measured_source_anchor_px": [
+          1000.0000000000005,
+          942
+        ],
+        "texture": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/shop.png",
+        "render_size_px": [
+          768,
+          512
+        ],
+        "world_foot_px": [
+          2320,
+          850
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        2320,
+        850
+      ],
+      "return_foot_px": [
+        2320,
+        874
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.7552083333333334,
+        0.4267578125
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "shop",
+        "source_foot_uv": [
+          0.651041666666667,
+          0.919921875
+        ],
+        "doorstep_px": [
+          2320,
+          850
+        ],
+        "return_px": [
+          2320,
+          874
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.625
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_shop_door",
+        "pos": [
+          0.5,
+          0.845
+        ],
+        "size": [
+          0.13,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_shop_room",
+        "pos": [
+          0.7552083333333334,
+          0.4267578125
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_shop_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/shop_room.tres",
+        "target_pos": [
+          0.5,
+          0.625
+        ],
+        "auto_trigger": false,
+        "label": "进入大宅书房",
+        "building_id": "shop",
+        "enabled": false
+      },
+      "notes": "Local exact shoe and short approach only; no main-street connectivity, visual door or runtime claim."
+    },
+    {
+      "building_id": "north_market_front",
+      "scene_id": "luoyang_market_north_market_front_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/north_market_front_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/north_market_front_room_layout.tres",
+      "template_id": "large_study",
+      "activation_status": "CPU_LOCAL_ONLY_PENDING_DOOR_VISUAL_PHYSICS_ROUTING",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png",
+        "sha256": "6097a1d45fa5e829a2130ab2d41df988f0c521a3e14ed102ffdabdc99c848209",
+        "size_px": [
+          1039,
+          696
+        ],
+        "foot_uv": [
+          0.499518781900406,
+          0.88362067937851
+        ],
+        "measured_source_anchor_px": [
+          519.0000143945218,
+          614.999992847443
+        ],
+        "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png",
+        "render_size_px": [
+          1039,
+          696
+        ],
+        "world_foot_px": [
+          1536,
+          630
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        1536,
+        630
+      ],
+      "return_foot_px": [
+        1536,
+        654
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.5,
+        0.3193359375
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "north_market_front",
+        "source_foot_uv": [
+          0.499518781900406,
+          0.88362067937851
+        ],
+        "doorstep_px": [
+          1536,
+          630
+        ],
+        "return_px": [
+          1536,
+          654
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.625
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_north_market_front_door",
+        "pos": [
+          0.5,
+          0.845
+        ],
+        "size": [
+          0.13,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_north_market_front_room",
+        "pos": [
+          0.5,
+          0.3193359375
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_north_market_front_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/north_market_front_room.tres",
+        "target_pos": [
+          0.5,
+          0.625
+        ],
+        "auto_trigger": false,
+        "label": "进入大宅书房",
+        "building_id": "north_market_front",
+        "enabled": false
+      },
+      "notes": "Local exact shoe and short approach only; no main-street connectivity, visual door or runtime claim."
+    },
+    {
+      "building_id": "southwest_market_front",
+      "scene_id": "luoyang_market_southwest_market_front_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/southwest_market_front_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/southwest_market_front_room_layout.tres",
+      "template_id": "small_home",
+      "activation_status": "CPU_LOCAL_ONLY_PENDING_DOOR_VISUAL_PHYSICS_ROUTING",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southwest_market_front.png",
+        "sha256": "d2d082c4e50b82b060ae1e10aec95201c70d80eee8c877232ba4ad88fbfa614a",
+        "size_px": [
+          897,
+          453
+        ],
+        "foot_uv": [
+          0.499442577362061,
+          0.788079440593719
+        ],
+        "measured_source_anchor_px": [
+          447.9999918937687,
+          356.9999865889547
+        ],
+        "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southwest_market_front.png",
+        "render_size_px": [
+          897,
+          453
+        ],
+        "world_foot_px": [
+          600,
+          1810
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        600,
+        1810
+      ],
+      "return_foot_px": [
+        600,
+        1834
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.1953125,
+        0.8955078125
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "southwest_market_front",
+        "source_foot_uv": [
+          0.499442577362061,
+          0.788079440593719
+        ],
+        "doorstep_px": [
+          600,
+          1810
+        ],
+        "return_px": [
+          600,
+          1834
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.65
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_southwest_market_front_door",
+        "pos": [
+          0.5,
+          0.845
+        ],
+        "size": [
+          0.13,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_southwest_market_front_room",
+        "pos": [
+          0.1953125,
+          0.8955078125
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_southwest_market_front_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/southwest_market_front_room.tres",
+        "target_pos": [
+          0.5,
+          0.65
+        ],
+        "auto_trigger": false,
+        "label": "进入小宅",
+        "building_id": "southwest_market_front",
+        "enabled": false
+      },
+      "notes": "Local exact shoe and short approach only; no main-street connectivity, visual door or runtime claim."
+    },
+    {
+      "building_id": "southeast_market_front",
+      "scene_id": "luoyang_market_southeast_market_front_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/southeast_market_front_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/southeast_market_front_room_layout.tres",
+      "template_id": "large_study",
+      "activation_status": "CPU_LOCAL_ONLY_PENDING_DOOR_VISUAL_PHYSICS_ROUTING",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southeast_market_front.png",
+        "sha256": "6119e1a2587b6a0b0a7f6547090f6de0641a644c311758d7b3d608b5c5475a5b",
+        "size_px": [
+          870,
+          583
+        ],
+        "foot_uv": [
+          0.648275852203369,
+          0.912521421909332
+        ],
+        "measured_source_anchor_px": [
+          563.999991416931,
+          531.9999889731406
+        ],
+        "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southeast_market_front.png",
+        "render_size_px": [
+          870,
+          583
+        ],
+        "world_foot_px": [
+          2520,
+          1810
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        2520,
+        1810
+      ],
+      "return_foot_px": [
+        2520,
+        1834
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.8203125,
+        0.8955078125
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "southeast_market_front",
+        "source_foot_uv": [
+          0.648275852203369,
+          0.912521421909332
+        ],
+        "doorstep_px": [
+          2520,
+          1810
+        ],
+        "return_px": [
+          2520,
+          1834
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.625
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_southeast_market_front_door",
+        "pos": [
+          0.5,
+          0.845
+        ],
+        "size": [
+          0.13,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_southeast_market_front_room",
+        "pos": [
+          0.8203125,
+          0.8955078125
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_southeast_market_front_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/southeast_market_front_room.tres",
+        "target_pos": [
+          0.5,
+          0.625
+        ],
+        "auto_trigger": false,
+        "label": "进入大宅书房",
+        "building_id": "southeast_market_front",
+        "enabled": false
+      },
+      "notes": "Local exact shoe and short approach only; no main-street connectivity, visual door or runtime claim."
+    },
+    {
+      "building_id": "market_west_ward_frontage",
+      "scene_id": "luoyang_market_market_west_ward_frontage_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_west_ward_frontage_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/market_west_ward_frontage_room_layout.tres",
+      "template_id": "small_home",
+      "activation_status": "PENDING_APPROACH_BLOCKED_BY_EXISTING_PLOT_WALL",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_modular_v3/source/street_row_v3.png",
+        "sha256": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+        "size_px": [
+          1536,
+          1024
+        ],
+        "foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "measured_source_anchor_px": [
+          768,
+          911
+        ],
+        "texture": "res://art/maps/luoyang_market_enrichment_v2/textures/street_row.png",
+        "render_size_px": [
+          829.4400634765625,
+          552.9600219726562
+        ],
+        "world_foot_px": [
+          650,
+          1440
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        650,
+        1440
+      ],
+      "return_foot_px": [
+        650,
+        1464
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.21158854166666666,
+        0.71484375
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "market_west_ward_frontage",
+        "source_foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "doorstep_px": [
+          650,
+          1440
+        ],
+        "return_px": [
+          650,
+          1464
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": false
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.65
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_market_west_ward_frontage_door",
+        "pos": [
+          0.5,
+          0.845
+        ],
+        "size": [
+          0.13,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_market_west_ward_frontage_room",
+        "pos": [
+          0.21158854166666666,
+          0.71484375
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_market_west_ward_frontage_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_west_ward_frontage_room.tres",
+        "target_pos": [
+          0.5,
+          0.65
+        ],
+        "auto_trigger": false,
+        "label": "进入小宅",
+        "building_id": "market_west_ward_frontage",
+        "enabled": false
+      },
+      "notes": "Stand is clear, but the existing plot wall blocks the forward main-road connection. No search/teleport or wall removal performed."
+    },
+    {
+      "building_id": "market_east_ward_frontage",
+      "scene_id": "luoyang_market_market_east_ward_frontage_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_east_ward_frontage_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/market_east_ward_frontage_room_layout.tres",
+      "template_id": "large_study",
+      "activation_status": "PENDING_APPROACH_BLOCKED_BY_EXISTING_PLOT_WALL",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_modular_v3/source/street_row_v3.png",
+        "sha256": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+        "size_px": [
+          1536,
+          1024
+        ],
+        "foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "measured_source_anchor_px": [
+          768,
+          911
+        ],
+        "texture": "res://art/maps/luoyang_market_enrichment_v2/textures/street_row.png",
+        "render_size_px": [
+          829.4400634765625,
+          552.9600219726562
+        ],
+        "world_foot_px": [
+          2550,
+          1260
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        2550,
+        1260
+      ],
+      "return_foot_px": [
+        2550,
+        1284
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.830078125,
+        0.626953125
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "market_east_ward_frontage",
+        "source_foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "doorstep_px": [
+          2550,
+          1260
+        ],
+        "return_px": [
+          2550,
+          1284
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": false
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.625
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_market_east_ward_frontage_door",
+        "pos": [
+          0.5,
+          0.845
+        ],
+        "size": [
+          0.13,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_market_east_ward_frontage_room",
+        "pos": [
+          0.830078125,
+          0.626953125
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_market_east_ward_frontage_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_east_ward_frontage_room.tres",
+        "target_pos": [
+          0.5,
+          0.625
+        ],
+        "auto_trigger": false,
+        "label": "进入大宅书房",
+        "building_id": "market_east_ward_frontage",
+        "enabled": false
+      },
+      "notes": "Stand is clear, but the existing plot wall blocks the forward main-road connection. No search/teleport or wall removal performed."
+    },
+    {
+      "building_id": "market_northwest_rear_frontage",
+      "scene_id": "luoyang_market_market_northwest_rear_frontage_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_northwest_rear_frontage_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/market_northwest_rear_frontage_room_layout.tres",
+      "template_id": "small_home",
+      "activation_status": "CPU_LOCAL_ONLY_PENDING_DOOR_VISUAL_PHYSICS_ROUTING",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_modular_v3/source/street_row_v3.png",
+        "sha256": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+        "size_px": [
+          1536,
+          1024
+        ],
+        "foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "measured_source_anchor_px": [
+          768,
+          911
+        ],
+        "texture": "res://art/maps/luoyang_market_enrichment_v2/textures/street_row.png",
+        "render_size_px": [
+          768,
+          512
+        ],
+        "world_foot_px": [
+          620,
+          500
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        620,
+        500
+      ],
+      "return_foot_px": [
+        620,
+        524
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.20182291666666666,
+        0.255859375
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "market_northwest_rear_frontage",
+        "source_foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "doorstep_px": [
+          620,
+          500
+        ],
+        "return_px": [
+          620,
+          524
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.65
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_market_northwest_rear_frontage_door",
+        "pos": [
+          0.5,
+          0.845
+        ],
+        "size": [
+          0.13,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_market_northwest_rear_frontage_room",
+        "pos": [
+          0.20182291666666666,
+          0.255859375
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_market_northwest_rear_frontage_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_northwest_rear_frontage_room.tres",
+        "target_pos": [
+          0.5,
+          0.65
+        ],
+        "auto_trigger": false,
+        "label": "进入小宅",
+        "building_id": "market_northwest_rear_frontage",
+        "enabled": false
+      },
+      "notes": "Local exact shoe and short approach only; no main-street connectivity, visual door or runtime claim."
+    },
+    {
+      "building_id": "market_northeast_rear_frontage",
+      "scene_id": "luoyang_market_market_northeast_rear_frontage_interior_20261015",
+      "scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_northeast_rear_frontage_room.tres",
+      "layout_path": "res://data/maps/luoyang_home_candidates_20261015/market_northeast_rear_frontage_room_layout.tres",
+      "template_id": "small_home",
+      "activation_status": "CPU_LOCAL_ONLY_PENDING_DOOR_VISUAL_PHYSICS_ROUTING",
+      "formal_enabled": false,
+      "source_module": {
+        "path": "res://art/maps/luoyang_modular_v3/source/street_row_v3.png",
+        "sha256": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+        "size_px": [
+          1536,
+          1024
+        ],
+        "foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "measured_source_anchor_px": [
+          768,
+          911
+        ],
+        "texture": "res://art/maps/luoyang_market_enrichment_v2/textures/street_row.png",
+        "render_size_px": [
+          768,
+          512
+        ],
+        "world_foot_px": [
+          2530,
+          500
+        ],
+        "point_mapping": "world_foot_px + (source_point_uv - foot_uv) * render_size_px; no old guessed UV"
+      },
+      "outdoor_doorstep_px": [
+        2530,
+        500
+      ],
+      "return_foot_px": [
+        2530,
+        524
+      ],
+      "return_target_scene": "ch4_s3_luoyang_market",
+      "return_target_pos_uv": [
+        0.8235677083333334,
+        0.255859375
+      ],
+      "return_coordinate_mode": "visible_feet",
+      "return_offset_from_source_anchor_px": [
+        0,
+        24
+      ],
+      "anchor_status": "EXACT_EXISTING_MODULE_FOOT_NOT_YET_VISUAL_DOOR_APPROVED",
+      "outdoor_cpu_precheck": {
+        "id": "market_northeast_rear_frontage",
+        "source_foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "doorstep_px": [
+          2530,
+          500
+        ],
+        "return_px": [
+          2530,
+          524
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      "indoor_spawn_uv": [
+        0.5,
+        0.65
+      ],
+      "indoor_actor_coordinate_mode": "legacy_body_center_preserved_from_reviewed_interior_layout",
+      "indoor_exit": {
+        "portal_id": "return_market_northeast_rear_frontage_door",
+        "pos": [
+          0.5,
+          0.845
+        ],
+        "size": [
+          0.13,
+          0.075
+        ],
+        "auto_trigger": false
+      },
+      "candidate_entry_portal": {
+        "id": "enter_market_northeast_rear_frontage_room",
+        "pos": [
+          0.8235677083333334,
+          0.255859375
+        ],
+        "size": [
+          0.013020833333333334,
+          0.015625
+        ],
+        "target_scene": "luoyang_market_market_northeast_rear_frontage_interior_20261015",
+        "target_scene_path": "res://data/scenes/luoyang_home_candidates_20261015/market_northeast_rear_frontage_room.tres",
+        "target_pos": [
+          0.5,
+          0.65
+        ],
+        "auto_trigger": false,
+        "label": "进入小宅",
+        "building_id": "market_northeast_rear_frontage",
+        "enabled": false
+      },
+      "notes": "Local exact shoe and short approach only; no main-street connectivity, visual door or runtime claim."
+    }
+  ],
+  "router_boundary": "Current SceneRouter resolves only res://data/scenes/{id}.tres. These nested candidate resources require an explicit NEW revision-layer resolver or future authorized registration. This author file does not make them reachable.",
+  "remaining_gaps": [
+    "True rich-mansion multi-room hall/interior/garden artwork is not supplied; large_study is ordinary bookish living space.",
+    "Nine module foot anchors still require visible-door confirmation; four street-row images contain multiple doors, only their measured central anchor is provisionally selected.",
+    "Two ward-frontage direct approaches are blocked by existing plot walls; no physical changes or nearest-point substitution were made.",
+    "No new NPC, shop behavior, loot, chapter, dialogue, story or furniture interactions are included."
+  ]
+}

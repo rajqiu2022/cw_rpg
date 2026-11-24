@@ -1,0 +1,459 @@
+{
+  "schema_version": 2,
+  "status": "HAND_AUTHORED_SOURCE_GEOMETRY_CANDIDATE_NOT_ENGINE_VALIDATED",
+  "id": "interior_warehouse_v1",
+  "title": "漕运仓房",
+  "source_image": "assets/raw/luoyang_city_expansion_20261016/interior_warehouse_v1.png",
+  "source_sha256": "550e9d7d3e87116123b0b6ae70cc4fe8c4e16d760000e700404a8bdf7618dbaa",
+  "source_size_px": [
+    1536,
+    1024
+  ],
+  "coordinates": {
+    "origin": "top_left",
+    "unit": "original_source_raster_pixels",
+    "all_actor_positions": "visible_ground_feet_NOT_legacy_bodycenter",
+    "transform_applied": false,
+    "system_mapping_note": "SYSTEM alone maps source foot F through actual image cover then converts to controller body origin. Do not apply actor offset twice. All polygons below remain unscaled source pixels."
+  },
+  "floor_regions_px": [
+    [
+      [
+        350,
+        316
+      ],
+      [
+        1232,
+        316
+      ],
+      [
+        1427,
+        748
+      ],
+      [
+        950,
+        748
+      ],
+      [
+        950,
+        968
+      ],
+      [
+        605,
+        968
+      ],
+      [
+        605,
+        748
+      ],
+      [
+        110,
+        748
+      ]
+    ]
+  ],
+  "floor_scope": "Accessible primary room floor and central front threshold; black canvas and background-only rear/side spaces excluded.",
+  "furniture_bases": [
+    {
+      "id": "left_rear_crates",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          154,
+          275
+        ],
+        [
+          343,
+          275
+        ],
+        [
+          343,
+          399
+        ],
+        [
+          154,
+          399
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "左后捆箱/木箱垛在墙内的接地组合。"
+    },
+    {
+      "id": "left_middle_crate_sacks",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          102,
+          398
+        ],
+        [
+          380,
+          398
+        ],
+        [
+          380,
+          648
+        ],
+        [
+          102,
+          648
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "左中分层货垛底层投影，垛顶不扩为物理底座。"
+    },
+    {
+      "id": "left_front_cargo",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          83,
+          651
+        ],
+        [
+          354,
+          651
+        ],
+        [
+          354,
+          758
+        ],
+        [
+          83,
+          758
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "左前陶罐/捆箱的底层接地带。"
+    },
+    {
+      "id": "rear_storage_rack",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          369,
+          289
+        ],
+        [
+          691,
+          289
+        ],
+        [
+          691,
+          317
+        ],
+        [
+          369,
+          317
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "后墙货架立柱与最低层基座。"
+    },
+    {
+      "id": "central_back_pillar",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          741,
+          291
+        ],
+        [
+          788,
+          291
+        ],
+        [
+          788,
+          317
+        ],
+        [
+          741,
+          317
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "后中木柱石础。"
+    },
+    {
+      "id": "weighing_counter",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          842,
+          307
+        ],
+        [
+          1170,
+          307
+        ],
+        [
+          1170,
+          369
+        ],
+        [
+          842,
+          369
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "验货秤台下柜底座。"
+    },
+    {
+      "id": "right_rear_sacks",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1237,
+          343
+        ],
+        [
+          1391,
+          343
+        ],
+        [
+          1391,
+          445
+        ],
+        [
+          1237,
+          445
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "右后粮袋/竹篓底层。"
+    },
+    {
+      "id": "right_middle_cargo",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1121,
+          471
+        ],
+        [
+          1400,
+          471
+        ],
+        [
+          1400,
+          643
+        ],
+        [
+          1121,
+          643
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "右中货垛木箱/坛/粮袋的接地带。"
+    },
+    {
+      "id": "right_front_cargo",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1137,
+          644
+        ],
+        [
+          1433,
+          644
+        ],
+        [
+          1433,
+          758
+        ],
+        [
+          1137,
+          758
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "右前捆箱/篓筐底层接地带。"
+    }
+  ],
+  "spawn_foot_px": [
+    768,
+    690
+  ],
+  "front_exit": {
+    "id": "front_central_exit",
+    "approach_foot_px": [
+      768,
+      885
+    ],
+    "activation_polygon_px": [
+      [
+        713,
+        870
+      ],
+      [
+        823,
+        870
+      ],
+      [
+        823,
+        900
+      ],
+      [
+        713,
+        900
+      ]
+    ],
+    "return_scene_id": null,
+    "return_foot_px": null,
+    "binding_status": "PENDING_EXACT_MATCHED_EXTERNAL_DOOR"
+  },
+  "npc_slots": [
+    {
+      "id": "warehouse_keeper_slot",
+      "role": "仓栈管事",
+      "foot_px": [
+        1050,
+        430
+      ],
+      "approach_foot_px": [
+        1050,
+        510
+      ],
+      "route_from_spawn_feet_px": [
+        [
+          768,
+          690
+        ],
+        [
+          1000,
+          550
+        ],
+        [
+          1050,
+          510
+        ]
+      ],
+      "status": "NEW_SOURCE_FOOT_CANDIDATE_NO_NPC_RESOURCE_BOUND"
+    }
+  ],
+  "functional_points": [
+    {
+      "id": "weighing_and_registration",
+      "foot_px": [
+        1003,
+        430
+      ],
+      "purpose": "后方验货登记台前",
+      "gameplay_action": null
+    },
+    {
+      "id": "left_cargo_inspection",
+      "foot_px": [
+        449,
+        500
+      ],
+      "purpose": "左货垛外侧检查点",
+      "gameplay_action": null
+    },
+    {
+      "id": "right_cargo_inspection",
+      "foot_px": [
+        1048,
+        600
+      ],
+      "purpose": "右货垛外侧检查点",
+      "gameplay_action": null
+    },
+    {
+      "id": "loading_aisle",
+      "foot_px": [
+        768,
+        590
+      ],
+      "purpose": "中央装卸通道，不堆货",
+      "gameplay_action": null
+    }
+  ],
+  "required_routes": [
+    {
+      "id": "to_weighing",
+      "feet_points_px": [
+        [
+          768,
+          690
+        ],
+        [
+          768,
+          455
+        ],
+        [
+          1003,
+          430
+        ]
+      ]
+    },
+    {
+      "id": "to_left_cargo",
+      "feet_points_px": [
+        [
+          768,
+          690
+        ],
+        [
+          525,
+          650
+        ],
+        [
+          449,
+          500
+        ]
+      ]
+    },
+    {
+      "id": "to_right_cargo",
+      "feet_points_px": [
+        [
+          768,
+          690
+        ],
+        [
+          1048,
+          600
+        ]
+      ]
+    },
+    {
+      "id": "to_exit",
+      "feet_points_px": [
+        [
+          768,
+          690
+        ],
+        [
+          768,
+          885
+        ]
+      ]
+    }
+  ],
+  "nonblocking_ground": [
+    "rug",
+    "floor_pattern",
+    "sunlight",
+    "soft_contact_shadow"
+  ],
+  "validation_required": [
+    "Source PNG SHA/dimensions/native import fullRGBA",
+    "Exact sourcefoot-to-cover/controller mapping",
+    "Full body collision and native Physics using final actual scale",
+    "Spawn to every functional point and exit with <=4px samples",
+    "Furniture negative points collide",
+    "One exact exterior door forward/back return without conflating source foot and body center"
+  ],
+  "notes": [
+    "旧hint的930不作出口，885才是中央真实门台内接近点。",
+    "所有箱袋只是仓储陈设，不能自动变成奖励或任务容器。",
+    "层叠货物只以最下层承重脚座作为阻挡，后墙上层投影不整体铺成障碍。"
+  ],
+  "not_granted": [
+    "No Godot import/compilation/Physics or current source/door runtime acceptance",
+    "No PNG edits/crops/resizing/alpha changes",
+    "No lore/NPC/rewards/canonical source mutation"
+  ]
+}

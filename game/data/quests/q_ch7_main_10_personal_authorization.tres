@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch7_main_10_personal_authorization"
+title="内署亲令"
+kind=0
+desc_not_started="机构授权已经确认，还需取得苏雾笙个人签发证据。"
+desc_in_progress="外院老药工听说过巡守的截脉劲。经内院、权限档案房两道巡守，伤劲会随人累积。到封印审验室突破灭证者，取得庄主亲签底令。护档使双袖一张，专取气海：护体能减轻内伤，林西药铺的冰心玉也能护脉。若经脉闭塞，可用清心露或请青禾施回春引。"
+desc_completed="亲签底令确认苏雾笙本人批准保留薛影死籍、回收残卷并控制知情人。她的最终江湖布局仍需在终局审问。"
+tracker_hint="茗雾山庄 · 封印审验室"
+completion_triggers=Array[String](["flag_set:ch7_inner_office_destroyers_defeated","evidence_acquired:ev_ch7_su_personal_signed_directive"])
+require_all_completion_triggers=true
+starts_in_chapter=7
+completes_in_chapter=7
+reward_gold=120
+reward_exp=300
+reward_items=Array[Dictionary]([])

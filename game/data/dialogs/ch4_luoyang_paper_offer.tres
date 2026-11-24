@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "左明远"
+text = "洛阳文章多，纸价也跟着涨。人说左思《三都赋》写成后洛阳纸贵，如今我只求一叠能抄案卷的藤纸。"
+on_end = "next:accept"
+
+[sub_resource type="Resource" id="accept"]
+script = ExtResource("2_node")
+node_id = &"accept"
+speaker = "冷孤云"
+text = "我去问老纸匠。若缺的是原料，总能从旧货箱里找出替代。"
+accept_quest = &"q_ch4_side_02_luoyang_paper"
+set_flags = Array[Dictionary]([{"key":"luoyang_paper_started","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch4_luoyang_paper_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("accept")])
+

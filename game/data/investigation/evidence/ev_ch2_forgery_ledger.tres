@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch2_forgery_ledger"
+display_name = "伪装物资账册"
+description = "烧剩的账册记着空白令牌、药粉和五派服色，末页只有残缺雾纹。账册证明有人批量伪造身份，却故意切断了与买家的直接联系。"
+chapter = 2
+category = &"ledger"
+source_hint = "北林旧矿洞"
+related_testimony_ids = Array[StringName]([&"ts_ch2_yue_attackers_method", &"ts_ch2_rescued_villager"])
+tags = Array[StringName]([&"forgery", &"factions", &"mist_mark"])

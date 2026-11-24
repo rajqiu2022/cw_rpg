@@ -1,0 +1,68 @@
+{
+  "status": "BUILD_ONLY_ROOT_APPROVED_TWO_EXACT_TEMPLE_TARGET_SOURCE_Y_VALUES_NOT_NAV_OR_CAMERA_CHANGE",
+  "parent": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/temple_signed_iid_repair01/closure_READY01/finish8_runtime_READY.gd",
+    "sha256": "92f9bb93f6837ceb065fc892be09bfdfd4e316bc7b00b55520f396e52752ae7d"
+  },
+  "candidate": {
+    "path": "res://build/luoyang_city_finish_20261025i_system01/Temple_visible_arrival03_NOTREADY/finish8_runtime_visible_Temple_CANDIDATE.gd",
+    "sha256": "74be6359fa36e7699b5e8ba2f3832c11241e1c1b873649590d8aac65775b5f99"
+  },
+  "hunks": [
+    {
+      "old": "var market_uv: Vector2 = Vector2(170,980)/Vector2(1536,1024)",
+      "new": "var market_uv: Vector2 = Vector2(170,926)/Vector2(1536,1024)"
+    },
+    {
+      "old": "var docks_uv: Vector2 = Vector2(1380,980)/Vector2(1536,1024)",
+      "new": "var docks_uv: Vector2 = Vector2(1380,926)/Vector2(1536,1024)"
+    }
+  ],
+  "whole_UTF8_byte_inverse": true,
+  "all_other_functions_and_SELF_BIND_header_whole_unchanged": true,
+  "exact_pairs": [
+    {
+      "source": "ch4_s3_luoyang_market",
+      "portal": "to_ancient_temple",
+      "source_foot_unchanged": [
+        1170,
+        1600
+      ],
+      "target_UV_expression": "Vector2(170,926)/Vector2(1536,1024)",
+      "target_world_expression": "UV*Vector2(1920,1280)",
+      "target_world": [
+        212.5,
+        1157.5
+      ]
+    },
+    {
+      "source": "ch4_s2_canal_docks",
+      "portal": "canal_world_ferry",
+      "source_foot_unchanged": [
+        2140,
+        1840
+      ],
+      "target_UV_expression": "Vector2(1380,926)/Vector2(1536,1024)",
+      "target_world_expression": "UV*Vector2(1920,1280)",
+      "target_world": [
+        1725,
+        1157.5
+      ]
+    }
+  ],
+  "original_other_two_pairs_unchanged": true,
+  "original_Temple_deferred_original_prepare_and_signed_rawIID_gates_unchanged": true,
+  "source_counterparts_owned_by_Source": "Three payload portal/contract/hotspot exact successors + two new route finite component; do not deploy this runtime alone with old payload/BIND. Source final SELF/BIND pointers mechanically seal only after Root actual source components.",
+  "static_view": {
+    "original_visible_world_y": [
+      100,
+      1180
+    ],
+    "Player34x24_bottom_y": 1169.5,
+    "margin": 10.5,
+    "no_camera_change": true
+  },
+  "engine_calls": 0,
+  "canonical_writes": 0,
+  "formal_READY_or_actual_credit": false
+}

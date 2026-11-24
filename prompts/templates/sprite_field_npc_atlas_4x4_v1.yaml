@@ -1,0 +1,33 @@
+id: sprite_field_npc_atlas_4x4_v1
+description: Reference-locked 4-direction NPC field atlas with full feet.
+quality: high
+size: "1024x1024"
+
+reference_images:
+  - "{portrait_reference}"
+require_reference_images: true
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: identity-preserve
+  Asset type: 2.5D wuxia RPG field NPC sprite atlas.
+  Input image: strict face, age, costume, palette and accessory reference.
+  Subject: {character_name}. {character_spec}
+
+  Create exactly one 4-column by 4-row atlas on a perfectly flat solid #FF00FF chroma-key background.
+  Row order: down/front, up/back, right, left. Each row has four gentle idle/walk phases: planted,
+  left step, passing pose, right step. Preserve the same body and clothes in all cells.
+  Full body from hair to both boots must be visible in every cell. Use a shared feet baseline and leave at
+  least 18 pixels of empty chroma space below the lowest foot. One character per cell, no cell overlap.
+  Medium adult proportions, grounded 2.5D volume, crisp comic ink, readable after reduction to 160 pixels.
+
+  Constraints: no text, labels, grid lines, scenery, ground plane, cast shadow, cropped feet, seated pose,
+  extra person, costume drift, extra accessory, duplicate limbs, neighboring-cell fragments or chibi body.
+  Avoid: {negative}
+
+variables:
+  portrait_reference: "generated portrait path"
+  character_name: "NPC name"
+  character_spec: "identity and role"
+

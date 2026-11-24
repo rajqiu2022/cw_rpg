@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/luoyang_functional_interiors_20261016/smithy_layout.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+scene_id = &"luoyang_market_shop_interior_20261015"
+display_name = "洛阳南市 · 铁匠工坊"
+background_path = "res://art/backgrounds/luoyang_functional_interiors_20261016/interior_smithy_v1.png"
+bgm_path = "res://art/audio/bgm/wuxia_20261011/city_bianzhou.wav"
+is_walkable = true
+actor_positions_are_feet = false
+is_settlement = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.5, 0.7001953125)
+player_visual_scale = 1.18
+camera_zoom = 1.0
+npcs = [{"npc_id": "luoyang_functional_smithy_20261016", "npc_name": "铁匠师傅", "pos": Vector2(0.431640625, 0.4375), "source_foot_px": Vector2(663, 448), "sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png", "portrait_path": "res://art/characters/portraits/portrait_linxi_farmer_v1.png", "dialog_id": "luoyang_distinct_rooms_20261016/smith_daily", "movement_mode": "idle", "scale": 1.0}]
+hotspots = []
+trigger_zones = []
+encounter_enemy_ids = Array[StringName]([])
+encounter_groups = []
+encounter_chance = 0.0
+metadata/functional_interior_revision = "20261016_sourcefeet_legacy42"
+metadata/functional_interior_type = "smithy"
+metadata/functional_interior_status = "CANDIDATE_MATCHED_EXTERNAL_DOOR"

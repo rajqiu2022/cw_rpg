@@ -1,0 +1,58 @@
+{
+  "change_id": "luoyang-modular-city-trial-v1",
+  "date": "2026-10-03",
+  "scope": "LIMITED_LUOYANG_FIELD_MECHANISMS",
+  "mechanisms": "PASS_LIMITED",
+  "overall_visual": "FAIL",
+  "production_adopted": false,
+  "actions": "DRY_RUN_ONLY",
+  "headless": {
+    "wrapper_pid": 49996,
+    "engine_pid": 78228,
+    "actual_os_exit": 0,
+    "checks": 547,
+    "failures": 0,
+    "result": "game/build/luoyang_layered_interior_v1_qa/run_1791031470_1614/result.json",
+    "result_sha256": "E4237070EF65ACA68410C2AC49EB1E7289AB6B66FDE76B2C2E97CD5FB0E35763"
+  },
+  "gpu": {
+    "wrapper_pid": 23744,
+    "engine_pid": 68572,
+    "actual_os_exit": 0,
+    "checks": 697,
+    "failures": 0,
+    "result": "game/build/luoyang_layered_interior_v1_qa/run_1791031722_2412/result.json",
+    "result_sha256": "0B83B02CAF4A553AA5CD3EB3B53FA1EB21448692A0B309B14FF1C334C0D78C66",
+    "raw_screenshots": 50,
+    "root_and_qa_png_sha_mismatches": 0
+  },
+  "root_viewed_raw_screenshot_labels": [
+    "entry_adult_scale", "inn_front", "south_gate_behind",
+    "lamp_east_front", "lamp_east_behind", "shop_front",
+    "street_tree_0_front", "street_tree_0_behind",
+    "route_market_public_loop", "notice_pavilion_behind", "gate_enter_mouse"
+  ],
+  "remaining_images_have_no_visual_pass_assigned": true,
+  "visual_problems": [
+    "uniform grey pavement and empty market composition",
+    "prototype notice pavilion and lamps are too crude",
+    "building-to-ground contact, environment detail and city enclosure need development"
+  ],
+  "mechanism_limits": [
+    "five declared routes and bounded object bypass paths only",
+    "current alpha frame and finite positive positions, not all states or a continuous-domain absence proof",
+    "tree front positive cases contain one strong-alpha boundary pixel",
+    "three original NPCs and fourteen dry-run input cases only",
+    "original Luoyang storyline, rewards, shop or bounty execution NOT_RUN"
+  ],
+  "final_read_only_integrity": {
+    "production_files": 21,
+    "production_changed": 0,
+    "real_player_files": 6,
+    "player_sha_size_exact_utc_ticks_changed": 0,
+    "user_editor_pid_preserved": 36036
+  },
+  "warnings_each_final_run": {"stderr_warning_lines": 62, "script_shader_resource_errors": 0, "leaked_exit_timers": 2},
+  "historical_failures_preserved": ["run_1791029719_1562: 515/5", "run_1791031220_1592: 547/2"],
+  "next": "Improve independent ground and city props/layout, then separately migrate original four Luoyang regions and validate production gameplay; do not inherit this prototype's acceptance for changed art."
+}

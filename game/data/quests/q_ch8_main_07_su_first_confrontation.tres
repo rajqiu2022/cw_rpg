@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_07_su_first_confrontation"
+title="庄主问局"
+kind=0
+desc_not_started="首轮假令已截，苏雾笙在主厅门前现身。"
+desc_in_progress="与苏雾笙正面对质，决定先救人、先举证或先追问其秩序动机。"
+desc_completed="苏雾笙承认要利用真实旧罪制造共同恐惧，再以茗雾控制的秩序收拢江湖。对质方法已记录，最终主厅仍待进入。"
+tracker_hint="茗雾山庄 · 会盟祭台"
+completion_triggers=Array[String](["flag_set:ch8_su_first_confrontation_done"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=240

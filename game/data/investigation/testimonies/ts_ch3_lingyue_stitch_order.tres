@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch3_lingyue_stitch_order"
+display_name = "悦无姮对月纹的判断"
+speaker_npc_id = &"npc_yue_wuheng"
+statement = "凌月月纹必须沿收势方向缝制。白晚晴遗物上的反纹不是弟子会犯的错，但接触过旧档和遗物的人都可能仿出外形。"
+chapter = 3
+initial_credibility = 80
+related_evidence_ids = Array[StringName]([&"ev_ch3_reversed_moon_stitch", &"ev_ch3_composite_technique_marks"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch3_mingwu_common_artisan"])

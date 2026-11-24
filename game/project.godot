@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="云影侠传"
 config/description="原创漫画 2.5D 武侠 RPG · 林西村外，剑入江湖"
-run/main_scene="res://scenes/main_menu.tscn"
+run/main_scene="res://scenes/loading_bootstrap.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,13 +24,31 @@ config/icon="res://icon.svg"
 
 EventBus="*res://scripts/autoload/event_bus.gd"
 GameState="*res://scripts/autoload/game_state.gd"
+WeatherManager="*res://scripts/autoload/weather_manager.gd"
+InvestigationState="*res://scripts/autoload/investigation_state.gd"
 Inventory="*res://scripts/autoload/inventory.gd"
+LoadingManager="*res://scripts/autoload/loading_manager.gd"
 SceneRouter="*res://scripts/autoload/scene_router.gd"
-QuestManager="*res://scripts/autoload/quest_manager.gd"
+QuestManager="*res://scripts/autoload/quest_rewards_runtime.gd"
+BountyManager="*res://scripts/bounty/city_warrants.gd"
 DialogPlayer="*res://scripts/autoload/dialog_player.gd"
-SaveManager="*res://scripts/autoload/save_manager.gd"
+SaveManager="*res://scripts/autoload/save_previews.gd"
 CursorManager="*res://scripts/autoload/cursor_manager.gd"
+PlatformBridge="*res://scripts/autoload/platform_bridge.gd"
+ContentPackManager="*res://scripts/autoload/content_pack_manager.gd"
 AudioManager="*res://scripts/autoload/audio_manager.gd"
+GMConsole="*res://scripts/autoload/gm_console.gd"
+LifeSkills="*res://scripts/life_skills/life_skills.gd"
+AdventureRuntime="*res://scripts/adventure/adventure_runtime.gd"
+SceneArtQualityRuntime="*res://build/luoyang_quality_20261101b_runtime01/scene_art_quality_runtime.gd"
+NPCGaitRuntime="*res://build/npc_gait_20261101c_candidate01/npc_gait_runtime.gd"
+NPCVisualCorrections="*res://scripts/field/npc_visual_corrections.gd"
+CityNavigationRuntime="*res://build/city_navigation_20261101d_candidate01/city_navigation_runtime.gd"
+EntranceOverlayRuntime="*res://build/entrance_overlay_20261102b_runtime01/entrance_overlay_runtime.gd"
+MapIconRuntime="*res://build/minimap_icons_20261102c_runtime01/map_icon_runtime.gd"
+PCSpriteViewRuntime="*res://build/pc_sprite_view_20261102c_runtime01/pc_sprite_view_runtime.gd"
+LayeredAppearanceRuntime="*res://scripts/appearance/layered_appearance_runtime.gd"
+EastMainlandRuntime="*res://scripts/world/east_mainland_runtime.gd"
 
 [display]
 
@@ -83,6 +101,10 @@ interact={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [rendering]
 

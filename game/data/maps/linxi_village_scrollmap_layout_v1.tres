@@ -1,0 +1,103 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(2048, 976)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.000, 0.355, 1.000, 0.355, 1.000, 0.585, 0.000, 0.585),
+	PackedVector2Array(0.165, 0.000, 0.280, 0.000, 0.280, 0.390, 0.165, 0.390),
+	PackedVector2Array(0.760, 0.000, 0.875, 0.000, 0.875, 0.395, 0.760, 0.395),
+	PackedVector2Array(0.070, 0.255, 0.120, 0.255, 0.120, 0.370, 0.070, 0.370),
+	PackedVector2Array(0.195, 0.215, 0.315, 0.195, 0.445, 0.260, 0.565, 0.190, 0.745, 0.205, 0.900, 0.335, 0.865, 0.420, 0.725, 0.335, 0.565, 0.305, 0.450, 0.385, 0.325, 0.320, 0.205, 0.370),
+	PackedVector2Array(0.035, 0.490, 0.055, 0.390, 0.120, 0.315, 0.200, 0.300, 0.275, 0.350, 0.315, 0.450, 0.305, 0.565, 0.250, 0.645, 0.170, 0.675, 0.090, 0.645, 0.045, 0.565),
+	PackedVector2Array(0.270, 0.475, 0.300, 0.355, 0.390, 0.285, 0.500, 0.280, 0.590, 0.340, 0.625, 0.465, 0.600, 0.590, 0.520, 0.675, 0.410, 0.685, 0.320, 0.625, 0.275, 0.560),
+	PackedVector2Array(0.690, 0.480, 0.720, 0.370, 0.790, 0.310, 0.865, 0.315, 0.925, 0.380, 0.945, 0.485, 0.920, 0.590, 0.850, 0.655, 0.775, 0.660, 0.715, 0.590),
+	PackedVector2Array(0.300, 0.335, 0.415, 0.335, 0.415, 0.485, 0.300, 0.485),
+	PackedVector2Array(0.615, 0.270, 0.685, 0.270, 0.685, 0.390, 0.615, 0.390),
+	PackedVector2Array(0.100, 0.555, 0.215, 0.550, 0.350, 0.835, 0.300, 0.935, 0.205, 0.860, 0.105, 0.625),
+	PackedVector2Array(0.255, 0.780, 0.750, 0.780, 0.715, 0.960, 0.285, 0.960),
+	PackedVector2Array(0.395, 0.540, 0.520, 0.540, 0.520, 0.950, 0.395, 0.950),
+	PackedVector2Array(0.650, 0.835, 0.785, 0.550, 0.900, 0.555, 0.895, 0.625, 0.795, 0.860, 0.700, 0.935)
+])
+visual_objects = []
+occluders = []
+blockers = [
+	{"id": "northwest_house", "pos": Vector2(0.095, 0.135), "size": Vector2(0.155, 0.245)},
+	{"id": "north_midwest_house", "pos": Vector2(0.355, 0.130), "size": Vector2(0.185, 0.235)},
+	{"id": "north_mideast_apothecary", "pos": Vector2(0.650, 0.135), "size": Vector2(0.215, 0.250)},
+	{"id": "northeast_house", "pos": Vector2(0.935, 0.140), "size": Vector2(0.130, 0.250)},
+	{"id": "southwest_house", "pos": Vector2(0.100, 0.750), "size": Vector2(0.140, 0.250)},
+	{"id": "south_midwest_house", "pos": Vector2(0.360, 0.750), "size": Vector2(0.170, 0.250)},
+	{"id": "south_mideast_house", "pos": Vector2(0.640, 0.750), "size": Vector2(0.180, 0.250)},
+	{"id": "southeast_house", "pos": Vector2(0.930, 0.750), "size": Vector2(0.120, 0.250)}
+]
+interactions = []
+portals = [
+	{
+		"id": "enter_south_villager_home",
+		"pos": Vector2(0.095, 0.290),
+		"size": Vector2(0.055, 0.060),
+		"label": "进入南坊民居",
+		"target_scene": "linxi_south_villager_home",
+		"target_pos": Vector2(0.500, 0.760)
+	},
+	{
+		"id": "enter_south_scholar_house",
+		"pos": Vector2(0.355, 0.405),
+		"size": Vector2(0.130, 0.155),
+		"label": "进入南坊私塾",
+		"target_scene": "linxi_south_scholar_house",
+		"target_pos": Vector2(0.560, 0.760)
+	},
+	{
+		"id": "enter_south_apothecary_home",
+		"pos": Vector2(0.650, 0.295),
+		"size": Vector2(0.060, 0.065),
+		"label": "进入药铺内堂",
+		"target_scene": "linxi_south_apothecary_home",
+		"target_pos": Vector2(0.500, 0.760)
+	},
+	{
+		"id": "return_to_linxi_center",
+		"pos": Vector2(0.025, 0.500),
+		"size": Vector2(0.035, 0.100),
+		"label": "返回林西村中心",
+		"target_scene": "linxi_village_center",
+		"target_pos": Vector2(0.330, 0.760)
+	},
+	{
+		"id": "linxi_to_world_map",
+		"pos": Vector2(0.970, 0.500),
+		"size": Vector2(0.055, 0.120),
+		"label": "离开林西村 · 江湖大地图",
+		"target_scene": "world_map_jianghu",
+		"target_pos": Vector2(0.120443, 0.517578)
+	}
+]
+walkable_probes = [
+	{"id": "entry", "pos": Vector2(0.080, 0.500)},
+	{"id": "west_plaza", "pos": Vector2(0.185, 0.500)},
+	{"id": "center_plaza", "pos": Vector2(0.450, 0.500)},
+	{"id": "east_plaza", "pos": Vector2(0.820, 0.500)},
+	{"id": "northwest_road", "pos": Vector2(0.220, 0.080)},
+	{"id": "north_connector", "pos": Vector2(0.500, 0.315)},
+	{"id": "villager_home_door", "pos": Vector2(0.095, 0.290)},
+	{"id": "scholar_house_door", "pos": Vector2(0.355, 0.405)},
+	{"id": "apothecary_door", "pos": Vector2(0.650, 0.295)},
+	{"id": "northeast_road", "pos": Vector2(0.820, 0.080)},
+	{"id": "southwest_loop", "pos": Vector2(0.250, 0.800)},
+	{"id": "south_center_road", "pos": Vector2(0.490, 0.850)},
+	{"id": "southeast_loop", "pos": Vector2(0.750, 0.800)},
+	{"id": "east_exit_road", "pos": Vector2(0.970, 0.500)}
+]
+blocked_probes = [
+	{"id": "northwest_roof", "pos": Vector2(0.095, 0.135)},
+	{"id": "north_apothecary_roof", "pos": Vector2(0.650, 0.135)},
+	{"id": "southwest_roof", "pos": Vector2(0.095, 0.755)},
+	{"id": "south_mideast_roof", "pos": Vector2(0.650, 0.750)},
+	{"id": "southeast_roof", "pos": Vector2(0.935, 0.755)}
+]

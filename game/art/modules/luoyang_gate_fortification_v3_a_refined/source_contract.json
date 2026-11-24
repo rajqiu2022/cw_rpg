@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "asset_pack": "luoyang_gate_fortification_v3_a_refined",
+  "status": "SOURCE_AUTHORED_CAPTURE_PENDING",
+  "scope": "One new A-only refined wall candidate. No tower B, publisher, runtime, Field, Physics, portal, water, save or formal write.",
+  "visual_goal": {
+    "body": "Ten finer staggered ashlar courses, normally sixteen stones across, with narrow real joints and restrained deterministic width/depth variation.",
+    "damage": "A few geometry-level shallow recesses and small missing upper corners; not a bitmap edit and not uniform destruction.",
+    "parapet": "Low parapet with narrow real arrow openings, a thin lintel course and fourteen low crenellations; avoids the previous tall square-tooth silhouette.",
+    "material": "Retain the accepted weathered rock_01 plus project-original worn_bluestone blend, adding restrained low-frequency variation and a subtle damp foot zone."
+  },
+  "frozen_parent": {
+    "script": "game/scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_weathered1.gd",
+    "script_sha256": "AC207395A18A8094A3822737A51034F16B85126C33E6DE0949EB5C8EEF6C7031",
+    "source_contract": "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/source_contract.json",
+    "source_contract_sha256": "7737F72281420B032927D22E3E8A18FE7E9395546D7A80F939BD4C588C0C442F",
+    "capture_result": "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/capture_result.json",
+    "capture_result_sha256": "2DC9DAFB87EEF0B375CDFA2F6AFB4CC8C758815A11B5058617ED04EBF98799AE",
+    "mesh_sha256": "1305FFA04E000CD1F7EFBF5B73D2D1E38BA630149797C7B3CD73B78FD734F94A",
+    "transparent_png_sha256": "BAA0ECF0408769877731E252637D9EF57C21FD00F26C46F1D5E123965FE18CC3"
+  },
+  "geometry_contract": {
+    "full_draw_min_m": [-2.5, 0.0, -0.361250013113022],
+    "full_draw_max_m": [2.5, 1.98000001907349, 0.361250013113022],
+    "minimum_y_support_min_m": [-2.46, 0.0, -0.34375],
+    "minimum_y_support_max_m": [2.46, 0.0, 0.34375],
+    "body_origin_unchanged": [0.0, 0.0, -0.34375],
+    "camera_unchanged": "Frozen 30-degree orthographic capture inherited from native v1.",
+    "bitmap_scaling_or_geometry_fabrication": false
+  },
+  "capture_guards": {
+    "crop_width_px_inclusive": [650, 662],
+    "crop_height_px_inclusive": [274, 288],
+    "foot_anchor_distance_from_v1_max_px": 3.0,
+    "comparison_seam_tolerance_px": 0.01,
+    "actual_dimensions_must_be_recorded": true,
+    "root_visual_review_required": true
+  },
+  "source_boundary": {
+    "rock_01": "Existing Poly Haven CC0-1.0 texture set already registered by the frozen gate art contract.",
+    "worn_bluestone_v2": "Existing project-original builtin-imagegen texture with frozen generation record; not CC0 and not newly generated or edited.",
+    "architecture": "Procedural project geometry; the complete gate architecture is not represented as CC0.",
+    "network_or_new_generation": false
+  }
+}

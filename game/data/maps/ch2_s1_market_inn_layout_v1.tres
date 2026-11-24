@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.16,0.40, 0.84,0.40, 0.88,0.78, 0.58,0.78, 0.58,0.88, 0.42,0.88, 0.42,0.78, 0.12,0.78)])
+blockers = [{"id":"counter","pos":Vector2(0.34,0.43),"size":Vector2(0.28,0.12)}, {"id":"tables","pos":Vector2(0.66,0.65),"size":Vector2(0.22,0.17)}]
+portals = [{"id":"return_market","pos":Vector2(0.50,0.82),"size":Vector2(0.13,0.08),"label":"返回竹尾晨市","target_scene":"ch2_s1_zhuwei_market","target_pos":Vector2(0.24,0.43),"marker_rotation_degrees":180.0}]
+walkable_probes = [{"id":"spawn","pos":Vector2(0.50,0.72)}, {"id":"counter","pos":Vector2(0.47,0.52)}, {"id":"exit","pos":Vector2(0.50,0.82)}]

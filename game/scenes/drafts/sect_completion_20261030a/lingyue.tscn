@@ -1,0 +1,2497 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/drafts/sect_maps_20261029k/terrain.gd" id="26_y5yq7"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/terrace.png" id="27_6g3y8"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/stairs.png" id="28_gfoey"]
+[ext_resource type="Script" path="res://scripts/drafts/redrock_luoyang_standard_20261028b/preview_player.gd" id="adapter"]
+[ext_resource type="Texture2D" path="res://art/modules/veg/veg_bamboo_cluster_a.png" id="bamboo"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/bank_shrub.png" id="bank_shrub"]
+[ext_resource type="Texture2D" path="res://art/modules/ancient_temple_assembled_20261016/ancient_bell_v1.png" id="bell"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/bench.png" id="bench"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/open_bridge.png" id="bridge"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/cargo.png" id="cargo"]
+[ext_resource type="Script" path="res://scripts/drafts/sect_completion_20261030a/controller.gd" id="controller"]
+[ext_resource type="Texture2D" path="res://art/modules/huashan_map_20261029m/granite_crag.png" id="crag"]
+[ext_resource type="Shader" path="res://art/modules/miao_town_20261029f/occlusion.gdshader" id="fade_shader"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/ground.png" id="ground"]
+[ext_resource type="Shader" path="res://art/modules/sect_completion_20261030a/lingyue_ground.gdshader" id="ground_shader"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_completion_20261030a/lingyue_dorm.png" id="lingyue_dorm"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_completion_20261030a/lingyue_gate.png" id="lingyue_gate"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_completion_20261030a/lingyue_hall.png" id="lingyue_hall"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/path.png" id="path"]
+[ext_resource type="Texture2D" path="res://art/modules/luoyang_full_city_20261022ap/pavilion.png" id="pavilion"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="player"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_maps_20261029k/quiet_ground.png" id="quiet_ground"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_completion_20261030a/staff_rack.png" id="staff_rack"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/table.png" id="table"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_maps_20261029k/tea_workshop.png" id="tea_workshop"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/water.png" id="water"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/water_jars.png" id="water_jars"]
+[ext_resource type="Shader" path="res://art/modules/miao_town_20261029f/water.gdshader" id="water_shader"]
+
+[sub_resource type="ShaderMaterial" id="ground_mat"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("quiet_ground")
+shader_parameter/dirt_tex = ExtResource("ground")
+shader_parameter/path_tex = ExtResource("path")
+
+[sub_resource type="ShaderMaterial" id="fade_MainHall"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_MountainGate"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_WestDorm"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_NorthDorm"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_EastDorm"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_LowerDorm"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_QuietPavilion"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Kitchen"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_StaffRack0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_StaffRack1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_StaffRack2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_OldBell"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_PoolBank0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_PoolBank1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_PoolBank2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_PoolBank3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_PoolBank4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_PoolBank5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_PoolBank6"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_PoolBank7"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bench0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bench1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bench2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bench3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Household0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Household1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Household2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo6"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo7"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo8"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo9"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Bamboo10"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove6"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove7"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove8"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove9"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove10"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove11"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove12"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove13"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_BambooGrove14"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_WestService"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_UpperWing"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_YardJars0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_YardJars1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_YardJars2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_YardJars3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_YardJars4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(1900, 3370)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="water_mat"]
+shader = ExtResource("water_shader")
+shader_parameter/water_tex = ExtResource("water")
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.06, 0.09, 0.08, 0.92)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "SimHei")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qeled"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("quiet_ground")
+shader_parameter/dirt_tex = ExtResource("ground")
+shader_parameter/path_tex = ExtResource("path")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1mp6r"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("quiet_ground")
+shader_parameter/dirt_tex = ExtResource("ground")
+shader_parameter/path_tex = ExtResource("path")
+
+[node name="SectMap" type="Node2D" unique_id=306081883]
+script = ExtResource("controller")
+layout_path = "res://art/modules/sect_completion_20261030a/lingyue.json"
+metadata/terrain_baked = true
+metadata/sort_projected_feet = true
+
+[node name="Ground" type="Polygon2D" parent="." unique_id=1443415664]
+z_index = -20
+material = SubResource("ground_mat")
+polygon = PackedVector2Array(-1000, -1000, 5800, -1000, 5800, 4600, -1000, 4600)
+
+[node name="Town" type="Node2D" parent="." unique_id=1799604738]
+
+[node name="Boundary0" type="StaticBody2D" parent="Town" unique_id=273866652]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary0" unique_id=692487942]
+polygon = PackedVector2Array(90, 90, 4710, 90, 4710, 110, 90, 110)
+
+[node name="Boundary1" type="StaticBody2D" parent="Town" unique_id=1609998651]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary1" unique_id=1146833973]
+polygon = PackedVector2Array(4690, 90, 4710, 90, 4710, 3510, 4690, 3510)
+
+[node name="Boundary2" type="StaticBody2D" parent="Town" unique_id=536254368]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary2" unique_id=1905727947]
+polygon = PackedVector2Array(90, 3490, 4710, 3490, 4710, 3510, 90, 3510)
+
+[node name="Boundary3" type="StaticBody2D" parent="Town" unique_id=1815147687]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary3" unique_id=1364951729]
+polygon = PackedVector2Array(90, 90, 110, 90, 110, 3510, 90, 3510)
+
+[node name="MainHall" type="Node2D" parent="Town" unique_id=1976806024]
+z_index = 238
+z_as_relative = false
+position = Vector2(3250, 950)
+metadata/label = "临潭主楼：二级高台，双阶通往潭院。"
+metadata/visual_rect = Rect2(-475.41595, -415, 950.8319, 415)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 180.0
+
+[node name="Art" type="Sprite2D" parent="Town/MainHall" unique_id=1785833038]
+material = SubResource("fade_MainHall")
+position = Vector2(-703.4142, -856.8024)
+scale = Vector2(0.71923745, 0.71923745)
+texture = ExtResource("lingyue_hall")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/MainHall" unique_id=1683303449]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/MainHall/Body" unique_id=1360689793]
+polygon = PackedVector2Array(-446, -119, -363, -175, 413, -175, 450, -116, 450, -30, 403, -1, 53, -6, -151, -10, -446, -37)
+metadata/sort_front_edge = true
+
+[node name="MountainGate" type="Node2D" parent="Town" unique_id=1752472735]
+z_index = 768
+z_as_relative = false
+position = Vector2(1900, 3070)
+metadata/label = "山门：中央通行，两侧柱脚阻挡。"
+metadata/visual_rect = Rect2(-210.80586, -300, 421.61172, 300)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/MountainGate" unique_id=1258245708]
+material = SubResource("fade_MountainGate")
+position = Vector2(-341.9414, -371.06226)
+scale = Vector2(0.36630037, 0.36630037)
+texture = ExtResource("lingyue_gate")
+centered = false
+
+[node name="Pier0" type="StaticBody2D" parent="Town/MountainGate" unique_id=1061544013]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/MountainGate/Pier0" unique_id=2034856763]
+polygon = PackedVector2Array(-133.15018, -53.846153, -67.21612, -53.846153, -67.21612, -8.058608, -133.15018, -8.058608)
+
+[node name="Pier1" type="StaticBody2D" parent="Town/MountainGate" unique_id=908784646]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/MountainGate/Pier1" unique_id=237601858]
+polygon = PackedVector2Array(81.13553, -42.857143, 150.7326, -42.857143, 150.7326, 2.930403, 81.13553, 2.930403)
+
+[node name="WestDorm" type="Node2D" parent="Town" unique_id=386242682]
+z_index = 385
+z_as_relative = false
+position = Vector2(1150, 1540)
+metadata/label = "弟子竹舍：沿屋前小径通行。"
+metadata/visual_rect = Rect2(-356.29294, -305, 712.5859, 305)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/WestDorm" unique_id=300538084]
+material = SubResource("fade_WestDorm")
+position = Vector2(-544.91864, -588.5895)
+scale = Vector2(0.5515371, 0.5515371)
+texture = ExtResource("lingyue_dorm")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WestDorm" unique_id=451554353]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/WestDorm/Body" unique_id=1217644494]
+polygon = PackedVector2Array(-330, -99, -275, -149, 286, -149, 332, -101, 332, -43, 262, -7, 162, 0, -330, -37)
+metadata/sort_front_edge = true
+
+[node name="NorthDorm" type="Node2D" parent="Town" unique_id=951509912]
+z_index = 275
+z_as_relative = false
+position = Vector2(1700, 1100)
+metadata/label = "弟子竹舍：沿屋前小径通行。"
+metadata/visual_rect = Rect2(-356.29294, -305, 712.5859, 305)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/NorthDorm" unique_id=2089661047]
+material = SubResource("fade_NorthDorm")
+position = Vector2(-544.91864, -588.5895)
+scale = Vector2(0.5515371, 0.5515371)
+texture = ExtResource("lingyue_dorm")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/NorthDorm" unique_id=594525277]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/NorthDorm/Body" unique_id=1314519607]
+polygon = PackedVector2Array(-330, -99, -275, -149, 286, -149, 332, -101, 332, -43, 262, -7, 162, 0, -330, -37)
+metadata/sort_front_edge = true
+
+[node name="EastDorm" type="Node2D" parent="Town" unique_id=734467236]
+z_index = 500
+z_as_relative = false
+position = Vector2(3850, 2000)
+metadata/label = "弟子竹舍：沿屋前小径通行。"
+metadata/visual_rect = Rect2(-356.29294, -305, 712.5859, 305)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/EastDorm" unique_id=1094078076]
+material = SubResource("fade_EastDorm")
+position = Vector2(-544.91864, -588.5895)
+scale = Vector2(0.5515371, 0.5515371)
+texture = ExtResource("lingyue_dorm")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/EastDorm" unique_id=2097514684]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/EastDorm/Body" unique_id=136785530]
+polygon = PackedVector2Array(-330, -99, -275, -149, 286, -149, 332, -101, 332, -43, 262, -7, 162, 0, -330, -37)
+metadata/sort_front_edge = true
+
+[node name="LowerDorm" type="Node2D" parent="Town" unique_id=1031895947]
+z_index = 705
+z_as_relative = false
+position = Vector2(3800, 2820)
+metadata/label = "弟子竹舍：沿屋前小径通行。"
+metadata/visual_rect = Rect2(-356.29294, -305, 712.5859, 305)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/LowerDorm" unique_id=408797653]
+material = SubResource("fade_LowerDorm")
+position = Vector2(-544.91864, -498.5895)
+scale = Vector2(0.5515371, 0.5515371)
+texture = ExtResource("lingyue_dorm")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LowerDorm" unique_id=305218781]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/LowerDorm/Body" unique_id=1282556077]
+polygon = PackedVector2Array(-330, -99, -275, -149, 286, -149, 332, -101, 332, -43, 262, -7, 162, 0, -330, -37)
+metadata/sort_front_edge = true
+
+[node name="QuietPavilion" type="Node2D" parent="Town" unique_id=1861611260]
+z_index = 258
+z_as_relative = false
+position = Vector2(4050, 1030)
+metadata/label = "后山静台"
+metadata/visual_rect = Rect2(-129.6724, -245, 259.3448, 245)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 180.0
+
+[node name="Art" type="Sprite2D" parent="Town/QuietPavilion" unique_id=1948702813]
+material = SubResource("fade_QuietPavilion")
+position = Vector2(-170.65753, -463.25278)
+scale = Vector2(0.22769517, 0.22769517)
+texture = ExtResource("pavilion")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/QuietPavilion" unique_id=477567847]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/QuietPavilion/Body" unique_id=1667145356]
+polygon = PackedVector2Array(-108, -98, -68, -122, 72, -122, 111, -89, 111, -29, 74, 0, -105, -21)
+metadata/sort_front_edge = true
+
+[node name="Kitchen" type="Node2D" parent="Town" unique_id=226483888]
+z_index = 695
+z_as_relative = false
+position = Vector2(950, 2780)
+metadata/label = "日常作棚"
+metadata/visual_rect = Rect2(-183.83359, -235, 367.66718, 235)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Kitchen" unique_id=186754925]
+material = SubResource("fade_Kitchen")
+position = Vector2(-345.00778, -331.11975)
+scale = Vector2(0.36547434, 0.36547434)
+texture = ExtResource("tea_workshop")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Kitchen" unique_id=1678673252]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Kitchen/Body" unique_id=999630483]
+polygon = PackedVector2Array(-159, -108, -122, -134, 126, -134, 169, -92, 169, -29, 130, 0, -159, -23)
+metadata/sort_front_edge = true
+
+[node name="StaffRack0" type="Node2D" parent="Town" unique_id=1873501035]
+z_index = 490
+z_as_relative = false
+position = Vector2(1510, 1960)
+metadata/label = "演棍坪长棍架"
+metadata/visual_rect = Rect2(-54.57317, -125, 109.14634, 125)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/StaffRack0" unique_id=455041934]
+material = SubResource("fade_StaffRack0")
+position = Vector2(-139.17683, -250.21341)
+scale = Vector2(0.15243903, 0.15243903)
+texture = ExtResource("staff_rack")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/StaffRack0" unique_id=1612205690]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/StaffRack0/Body" unique_id=958273686]
+polygon = PackedVector2Array(-45.841465, -31.25, 45.841465, -31.25, 45.841465, 0, -45.841465, 0)
+
+[node name="StaffRack1" type="Node2D" parent="Town" unique_id=1080964543]
+z_index = 490
+z_as_relative = false
+position = Vector2(2060, 1960)
+metadata/label = "演棍坪长棍架"
+metadata/visual_rect = Rect2(-54.57317, -125, 109.14634, 125)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/StaffRack1" unique_id=827514305]
+material = SubResource("fade_StaffRack1")
+position = Vector2(-139.17683, -250.21341)
+scale = Vector2(0.15243903, 0.15243903)
+texture = ExtResource("staff_rack")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/StaffRack1" unique_id=486316380]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/StaffRack1/Body" unique_id=1360325495]
+polygon = PackedVector2Array(-45.841465, -31.25, 45.841465, -31.25, 45.841465, 0, -45.841465, 0)
+
+[node name="StaffRack2" type="Node2D" parent="Town" unique_id=751363613]
+z_index = 288
+z_as_relative = false
+position = Vector2(3540, 1150)
+metadata/label = "演棍坪长棍架"
+metadata/visual_rect = Rect2(-54.57317, -125, 109.14634, 125)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 180.0
+
+[node name="Art" type="Sprite2D" parent="Town/StaffRack2" unique_id=1965066340]
+material = SubResource("fade_StaffRack2")
+position = Vector2(-139.17683, -340.2134)
+scale = Vector2(0.15243903, 0.15243903)
+texture = ExtResource("staff_rack")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/StaffRack2" unique_id=488385950]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/StaffRack2/Body" unique_id=2072732782]
+polygon = PackedVector2Array(-45.841465, -31.25, 45.841465, -31.25, 45.841465, 0, -45.841465, 0)
+
+[node name="OldBell" type="Node2D" parent="Town" unique_id=996513616]
+z_index = 700
+z_as_relative = false
+position = Vector2(2300, 2800)
+metadata/label = "山门旧钟"
+metadata/visual_rect = Rect2(-68.9292, -145, 137.8584, 145)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/OldBell" unique_id=1743703395]
+material = SubResource("fade_OldBell")
+position = Vector2(-80.024185, -152.39665)
+scale = Vector2(0.12752858, 0.12752858)
+texture = ExtResource("bell")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/OldBell" unique_id=357293186]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/OldBell/Body" unique_id=1343057743]
+polygon = PackedVector2Array(-57.900528, -36.25, 57.900528, -36.25, 57.900528, 0, -57.900528, 0)
+
+[node name="MoonBridge" type="Node2D" parent="Town" unique_id=1802563250]
+z_index = 430
+z_as_relative = false
+position = Vector2(2555, 1720)
+metadata/bridge = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Deck" type="Polygon2D" parent="Town/MoonBridge" unique_id=792715751]
+z_index = -4
+z_as_relative = false
+position = Vector2(0, -90)
+texture = ExtResource("bridge")
+polygon = PackedVector2Array(-543, -25, 543, -25, 543, 12.5, -543, 12.5)
+uv = PackedVector2Array(273, 328, 2445, 328, 2445, 403, 273, 403)
+
+[node name="Under" type="Polygon2D" parent="Town/MoonBridge" unique_id=1963604021]
+z_index = -4
+z_as_relative = false
+position = Vector2(0, -90)
+texture = ExtResource("bridge")
+polygon = PackedVector2Array(-543, 39.5, 543, 39.5, 543, 198.5, -543, 198.5)
+uv = PackedVector2Array(273, 457, 2445, 457, 2445, 775, 273, 775)
+
+[node name="Back" type="Polygon2D" parent="Town/MoonBridge" unique_id=112339711]
+z_index = 420
+z_as_relative = false
+position = Vector2(0, -90)
+texture = ExtResource("bridge")
+polygon = PackedVector2Array(-543, -163.5, 543, -163.5, 543, -25, -543, -25)
+uv = PackedVector2Array(273, 51, 2445, 51, 2445, 328, 273, 328)
+
+[node name="Front" type="Polygon2D" parent="Town/MoonBridge" unique_id=539429020]
+z_index = 435
+z_as_relative = false
+position = Vector2(0, -90)
+texture = ExtResource("bridge")
+polygon = PackedVector2Array(-543, 12.5, 543, 12.5, 543, 39.5, -543, 39.5)
+uv = PackedVector2Array(273, 403, 2445, 403, 2445, 457, 273, 457)
+
+[node name="BackRail" type="StaticBody2D" parent="Town/MoonBridge" unique_id=428164556]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/MoonBridge/BackRail" unique_id=400330625]
+polygon = PackedVector2Array(-390, -37, 390, -37, 390, -27, -390, -27)
+
+[node name="FrontRail" type="StaticBody2D" parent="Town/MoonBridge" unique_id=733574390]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/MoonBridge/FrontRail" unique_id=1675939918]
+polygon = PackedVector2Array(-390, 12.5, 390, 12.5, 390, 22.5, -390, 22.5)
+
+[node name="BambooBridge" type="Node2D" parent="Town" unique_id=916475324]
+z_index = 530
+z_as_relative = false
+position = Vector2(2555, 2120)
+metadata/bridge = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Deck" type="Polygon2D" parent="Town/BambooBridge" unique_id=879599503]
+z_index = -4
+z_as_relative = false
+position = Vector2(0, -90)
+texture = ExtResource("bridge")
+polygon = PackedVector2Array(-543, -25, 543, -25, 543, 12.5, -543, 12.5)
+uv = PackedVector2Array(273, 328, 2445, 328, 2445, 403, 273, 403)
+
+[node name="Under" type="Polygon2D" parent="Town/BambooBridge" unique_id=1625768567]
+z_index = -4
+z_as_relative = false
+position = Vector2(0, -90)
+texture = ExtResource("bridge")
+polygon = PackedVector2Array(-543, 39.5, 543, 39.5, 543, 198.5, -543, 198.5)
+uv = PackedVector2Array(273, 457, 2445, 457, 2445, 775, 273, 775)
+
+[node name="Back" type="Polygon2D" parent="Town/BambooBridge" unique_id=573194405]
+z_index = 520
+z_as_relative = false
+position = Vector2(0, -90)
+texture = ExtResource("bridge")
+polygon = PackedVector2Array(-543, -163.5, 543, -163.5, 543, -25, -543, -25)
+uv = PackedVector2Array(273, 51, 2445, 51, 2445, 328, 273, 328)
+
+[node name="Front" type="Polygon2D" parent="Town/BambooBridge" unique_id=898611595]
+z_index = 535
+z_as_relative = false
+position = Vector2(0, -90)
+texture = ExtResource("bridge")
+polygon = PackedVector2Array(-543, 12.5, 543, 12.5, 543, 39.5, -543, 39.5)
+uv = PackedVector2Array(273, 403, 2445, 403, 2445, 457, 273, 457)
+
+[node name="BackRail" type="StaticBody2D" parent="Town/BambooBridge" unique_id=1575071350]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooBridge/BackRail" unique_id=22430220]
+polygon = PackedVector2Array(-390, -37, 390, -37, 390, -27, -390, -27)
+
+[node name="FrontRail" type="StaticBody2D" parent="Town/BambooBridge" unique_id=785165168]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooBridge/FrontRail" unique_id=1336362985]
+polygon = PackedVector2Array(-390, 12.5, 390, 12.5, 390, 22.5, -390, 22.5)
+
+[node name="WaterBand0" type="StaticBody2D" parent="Town" unique_id=1165706456]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/WaterBand0" unique_id=498281863]
+polygon = PackedVector2Array(2490, 1440, 2630, 1440, 2630, 1590, 2741.5625, 1695, 2361.5789, 1695, 2450, 1590)
+
+[node name="WaterBand1" type="StaticBody2D" parent="Town" unique_id=1222106939]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/WaterBand1" unique_id=695478548]
+polygon = PackedVector2Array(2781.4063, 1732.5, 2800, 1750, 2830, 1950, 2700, 2040, 2682.8125, 2095, 2415, 2095, 2400, 2060, 2280, 1940, 2290, 1780, 2330, 1732.5)
+
+[node name="WaterBand2" type="StaticBody2D" parent="Town" unique_id=1215527873]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/WaterBand2" unique_id=1592503984]
+polygon = PackedVector2Array(2671.0938, 2132.5, 2650, 2200, 2460, 2200, 2431.0715, 2132.5)
+
+[node name="PoolBank0" type="Node2D" parent="Town" unique_id=1005274315]
+z_index = 380
+z_as_relative = false
+position = Vector2(2450, 1520)
+metadata/label = "寒潭曲岸石丛"
+metadata/visual_rect = Rect2(-119.05449, -95, 238.10898, 95)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/PoolBank0" unique_id=40867194]
+material = SubResource("fade_PoolBank0")
+position = Vector2(-226.43697, -257.67096)
+scale = Vector2(0.20299146, 0.20299146)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="PoolBank1" type="Node2D" parent="Town" unique_id=371856895]
+z_index = 395
+z_as_relative = false
+position = Vector2(2670, 1580)
+metadata/label = "寒潭曲岸石丛"
+metadata/visual_rect = Rect2(-119.05449, -95, 238.10898, 95)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/PoolBank1" unique_id=898244892]
+material = SubResource("fade_PoolBank1")
+position = Vector2(-226.43697, -257.67096)
+scale = Vector2(0.20299146, 0.20299146)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="PoolBank2" type="Node2D" parent="Town" unique_id=158278966]
+z_index = 453
+z_as_relative = false
+position = Vector2(2260, 1810)
+metadata/label = "寒潭曲岸石丛"
+metadata/visual_rect = Rect2(-119.05449, -95, 238.10898, 95)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/PoolBank2" unique_id=99600518]
+material = SubResource("fade_PoolBank2")
+position = Vector2(-226.43697, -257.67096)
+scale = Vector2(0.20299146, 0.20299146)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="PoolBank3" type="Node2D" parent="Town" unique_id=527389864]
+z_index = 453
+z_as_relative = false
+position = Vector2(2870, 1810)
+metadata/label = "寒潭曲岸石丛"
+metadata/visual_rect = Rect2(-119.05449, -95, 238.10898, 95)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/PoolBank3" unique_id=206268503]
+material = SubResource("fade_PoolBank3")
+position = Vector2(-226.43697, -257.67096)
+scale = Vector2(0.20299146, 0.20299146)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="PoolBank4" type="Node2D" parent="Town" unique_id=311333243]
+z_index = 490
+z_as_relative = false
+position = Vector2(2240, 1960)
+metadata/label = "寒潭曲岸石丛"
+metadata/visual_rect = Rect2(-119.05449, -95, 238.10898, 95)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/PoolBank4" unique_id=774086986]
+material = SubResource("fade_PoolBank4")
+position = Vector2(-226.43697, -257.67096)
+scale = Vector2(0.20299146, 0.20299146)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="PoolBank5" type="Node2D" parent="Town" unique_id=1000276468]
+z_index = 495
+z_as_relative = false
+position = Vector2(2860, 1980)
+metadata/label = "寒潭曲岸石丛"
+metadata/visual_rect = Rect2(-119.05449, -95, 238.10898, 95)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/PoolBank5" unique_id=850763383]
+material = SubResource("fade_PoolBank5")
+position = Vector2(-226.43697, -257.67096)
+scale = Vector2(0.20299146, 0.20299146)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="PoolBank6" type="Node2D" parent="Town" unique_id=673053773]
+z_index = 523
+z_as_relative = false
+position = Vector2(2380, 2090)
+metadata/label = "寒潭曲岸石丛"
+metadata/visual_rect = Rect2(-119.05449, -95, 238.10898, 95)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/PoolBank6" unique_id=1595770520]
+material = SubResource("fade_PoolBank6")
+position = Vector2(-226.43697, -257.67096)
+scale = Vector2(0.20299146, 0.20299146)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="PoolBank7" type="Node2D" parent="Town" unique_id=7781418]
+z_index = 528
+z_as_relative = false
+position = Vector2(2700, 2110)
+metadata/label = "寒潭曲岸石丛"
+metadata/visual_rect = Rect2(-119.05449, -95, 238.10898, 95)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/PoolBank7" unique_id=1350561006]
+material = SubResource("fade_PoolBank7")
+position = Vector2(-226.43697, -257.67096)
+scale = Vector2(0.20299146, 0.20299146)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="Bench0" type="Node2D" parent="Town" unique_id=64869039]
+z_index = 750
+z_as_relative = false
+position = Vector2(1100, 3000)
+metadata/label = "竹院长凳"
+metadata/visual_rect = Rect2(-63.465633, -42, 126.93127, 42)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bench0" unique_id=1467828198]
+material = SubResource("fade_Bench0")
+position = Vector2(-71.38138, -73.10421)
+scale = Vector2(0.09312639, 0.09312639)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bench0" unique_id=2007057386]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bench0/Body" unique_id=273137543]
+polygon = PackedVector2Array(-53.31113, -10.5, 53.31113, -10.5, 53.31113, 0, -53.31113, 0)
+
+[node name="Bench1" type="Node2D" parent="Town" unique_id=120826776]
+z_index = 428
+z_as_relative = false
+position = Vector2(1300, 1710)
+metadata/label = "竹院长凳"
+metadata/visual_rect = Rect2(-63.465633, -42, 126.93127, 42)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bench1" unique_id=1233306483]
+material = SubResource("fade_Bench1")
+position = Vector2(-71.38138, -163.10422)
+scale = Vector2(0.09312639, 0.09312639)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bench1" unique_id=565380836]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bench1/Body" unique_id=91166416]
+polygon = PackedVector2Array(-53.31113, -10.5, 53.31113, -10.5, 53.31113, 0, -53.31113, 0)
+
+[node name="Bench2" type="Node2D" parent="Town" unique_id=672555605]
+z_index = 530
+z_as_relative = false
+position = Vector2(3560, 2120)
+metadata/label = "竹院长凳"
+metadata/visual_rect = Rect2(-63.465633, -42, 126.93127, 42)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bench2" unique_id=1527002347]
+material = SubResource("fade_Bench2")
+position = Vector2(-71.38138, -163.10422)
+scale = Vector2(0.09312639, 0.09312639)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bench2" unique_id=2094333446]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bench2/Body" unique_id=129268994]
+polygon = PackedVector2Array(-53.31113, -10.5, 53.31113, -10.5, 53.31113, 0, -53.31113, 0)
+
+[node name="Bench3" type="Node2D" parent="Town" unique_id=1462800329]
+z_index = 298
+z_as_relative = false
+position = Vector2(3700, 1190)
+metadata/label = "竹院长凳"
+metadata/visual_rect = Rect2(-63.465633, -42, 126.93127, 42)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 180.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bench3" unique_id=1498362522]
+material = SubResource("fade_Bench3")
+position = Vector2(-71.38138, -253.10422)
+scale = Vector2(0.09312639, 0.09312639)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bench3" unique_id=137755554]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bench3/Body" unique_id=2030851127]
+polygon = PackedVector2Array(-53.31113, -10.5, 53.31113, -10.5, 53.31113, 0, -53.31113, 0)
+
+[node name="Household0" type="Node2D" parent="Town" unique_id=1704507014]
+z_index = 710
+z_as_relative = false
+position = Vector2(1040, 2840)
+metadata/label = "院落日用陈设"
+metadata/visual_rect = Rect2(-41.944443, -70, 83.888885, 70)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Household0" unique_id=633141567]
+material = SubResource("fade_Household0")
+position = Vector2(-71.5, -107.22222)
+scale = Vector2(0.11111111, 0.11111111)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Household0" unique_id=1252916570]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Household0/Body" unique_id=1567343854]
+polygon = PackedVector2Array(-35.233334, -17.5, 35.233334, -17.5, 35.233334, 0, -35.233334, 0)
+
+[node name="Household1" type="Node2D" parent="Town" unique_id=170808904]
+z_index = 715
+z_as_relative = false
+position = Vector2(3500, 2860)
+metadata/label = "院落日用陈设"
+metadata/visual_rect = Rect2(-55.170864, -75, 110.34173, 75)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Household1" unique_id=1966273786]
+material = SubResource("fade_Household1")
+position = Vector2(-135.56654, -130.30576)
+scale = Vector2(0.13489209, 0.13489209)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Household1" unique_id=109844322]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Household1/Body" unique_id=380488424]
+polygon = PackedVector2Array(-46.343525, -18.75, 46.343525, -18.75, 46.343525, 0, -46.343525, 0)
+
+[node name="Household2" type="Node2D" parent="Town" unique_id=1522898371]
+z_index = 525
+z_as_relative = false
+position = Vector2(3630, 2100)
+metadata/label = "院落日用陈设"
+metadata/visual_rect = Rect2(-51.651497, -80, 103.30299, 80)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/Household2" unique_id=1561879204]
+material = SubResource("fade_Household2")
+position = Vector2(-79.94798, -187.26918)
+scale = Vector2(0.10403121, 0.10403121)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Household2" unique_id=2038802682]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Household2/Body" unique_id=1043451390]
+polygon = PackedVector2Array(-43.387257, -20, 43.387257, -20, 43.387257, 0, -43.387257, 0)
+
+[node name="Bamboo0" type="Node2D" parent="Town" unique_id=1379773311]
+z_index = 675
+z_as_relative = false
+position = Vector2(550, 2700)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo0" unique_id=2067415770]
+material = SubResource("fade_Bamboo0")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo0" unique_id=623086686]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo0/Body" unique_id=1715152536]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo1" type="Node2D" parent="Town" unique_id=1749091923]
+z_index = 475
+z_as_relative = false
+position = Vector2(650, 1900)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo1" unique_id=1322273441]
+material = SubResource("fade_Bamboo1")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo1" unique_id=983639688]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo1/Body" unique_id=1725673664]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo2" type="Node2D" parent="Town" unique_id=998778295]
+z_index = 275
+z_as_relative = false
+position = Vector2(650, 1100)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo2" unique_id=297999607]
+material = SubResource("fade_Bamboo2")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo2" unique_id=197710530]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo2/Body" unique_id=459448589]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo3" type="Node2D" parent="Town" unique_id=2062573799]
+z_index = 150
+z_as_relative = false
+position = Vector2(1100, 600)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo3" unique_id=670609047]
+material = SubResource("fade_Bamboo3")
+position = Vector2(-218.31776, -418.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo3" unique_id=2046324348]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo3/Body" unique_id=324710100]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo4" type="Node2D" parent="Town" unique_id=1452019892]
+z_index = 138
+z_as_relative = false
+position = Vector2(1950, 550)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo4" unique_id=1363756064]
+material = SubResource("fade_Bamboo4")
+position = Vector2(-218.31776, -418.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo4" unique_id=633248685]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo4/Body" unique_id=184358645]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo5" type="Node2D" parent="Town" unique_id=1731371246]
+z_index = 213
+z_as_relative = false
+position = Vector2(4300, 850)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo5" unique_id=2065307611]
+material = SubResource("fade_Bamboo5")
+position = Vector2(-218.31776, -418.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo5" unique_id=1548712878]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo5/Body" unique_id=495802893]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo6" type="Node2D" parent="Town" unique_id=546249279]
+z_index = 450
+z_as_relative = false
+position = Vector2(4400, 1800)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo6" unique_id=762327601]
+material = SubResource("fade_Bamboo6")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo6" unique_id=941264239]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo6/Body" unique_id=674861709]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo7" type="Node2D" parent="Town" unique_id=1947645853]
+z_index = 713
+z_as_relative = false
+position = Vector2(4400, 2850)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo7" unique_id=1869100595]
+material = SubResource("fade_Bamboo7")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo7" unique_id=1109407065]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo7/Body" unique_id=1724158848]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo8" type="Node2D" parent="Town" unique_id=1455563960]
+z_index = 788
+z_as_relative = false
+position = Vector2(2550, 3150)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo8" unique_id=1462923126]
+material = SubResource("fade_Bamboo8")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo8" unique_id=644623202]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo8/Body" unique_id=630373874]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo9" type="Node2D" parent="Town" unique_id=983554978]
+z_index = 700
+z_as_relative = false
+position = Vector2(3100, 2800)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo9" unique_id=2058646671]
+material = SubResource("fade_Bamboo9")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo9" unique_id=1832192002]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo9/Body" unique_id=133605818]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Bamboo10" type="Node2D" parent="Town" unique_id=535099784]
+z_index = 520
+z_as_relative = false
+position = Vector2(3050, 2080)
+metadata/label = "竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/Bamboo10" unique_id=1155725128]
+material = SubResource("fade_Bamboo10")
+position = Vector2(-218.31776, -418.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Bamboo10" unique_id=432143104]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Bamboo10/Body" unique_id=1936219632]
+polygon = PackedVector2Array(-45, -25, 45, -25, 45, 0, -45, 0)
+
+[node name="Ridge0" type="Node2D" parent="Town" unique_id=587025524]
+z_index = 175
+z_as_relative = false
+position = Vector2(600, 700)
+metadata/label = "灰岩山脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge0" unique_id=1380056771]
+material = SubResource("fade_Ridge0")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge0" unique_id=62770166]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge0/Body" unique_id=409299137]
+polygon = PackedVector2Array(-300, -80, 300, -80, 300, 0, -300, 0)
+
+[node name="Ridge1" type="Node2D" parent="Town" unique_id=2142994748]
+z_index = 95
+z_as_relative = false
+position = Vector2(2000, 380)
+metadata/label = "灰岩山脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge1" unique_id=560639542]
+material = SubResource("fade_Ridge1")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge1" unique_id=1912136171]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge1/Body" unique_id=1650229568]
+polygon = PackedVector2Array(-300, -80, 300, -80, 300, 0, -300, 0)
+
+[node name="Ridge2" type="Node2D" parent="Town" unique_id=1007824803]
+z_index = 80
+z_as_relative = false
+position = Vector2(3450, 320)
+metadata/label = "灰岩山脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge2" unique_id=8184912]
+material = SubResource("fade_Ridge2")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge2" unique_id=2037045593]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge2/Body" unique_id=979804889]
+polygon = PackedVector2Array(-300, -80, 300, -80, 300, 0, -300, 0)
+
+[node name="Ridge3" type="Node2D" parent="Town" unique_id=777174240]
+z_index = 163
+z_as_relative = false
+position = Vector2(4450, 650)
+metadata/label = "灰岩山脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge3" unique_id=1513975770]
+material = SubResource("fade_Ridge3")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge3" unique_id=1818400780]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge3/Body" unique_id=283549882]
+polygon = PackedVector2Array(-300, -80, 300, -80, 300, 0, -300, 0)
+
+[node name="BambooGrove0" type="Node2D" parent="Town" unique_id=595367063]
+z_index = 188
+z_as_relative = false
+position = Vector2(800, 750)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-187.1028, -280, 374.2056, 280)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove0" unique_id=340070767]
+material = SubResource("fade_BambooGrove0")
+position = Vector2(-191.02803, -377.19626)
+scale = Vector2(0.6542056, 0.6542056)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove0" unique_id=1914025965]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove0/Body" unique_id=450660232]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove1" type="Node2D" parent="Town" unique_id=318629172]
+z_index = 150
+z_as_relative = false
+position = Vector2(1250, 600)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-200.46729, -300, 400.93457, 300)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove1" unique_id=974639392]
+material = SubResource("fade_BambooGrove1")
+position = Vector2(-204.6729, -397.71027)
+scale = Vector2(0.7009346, 0.7009346)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove1" unique_id=516340461]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove1/Body" unique_id=2139233181]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove2" type="Node2D" parent="Town" unique_id=1467010828]
+z_index = 150
+z_as_relative = false
+position = Vector2(1550, 600)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove2" unique_id=692060657]
+material = SubResource("fade_BambooGrove2")
+position = Vector2(-218.31776, -418.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove2" unique_id=1456834259]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove2/Body" unique_id=497924397]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove3" type="Node2D" parent="Town" unique_id=1757650432]
+z_index = 205
+z_as_relative = false
+position = Vector2(2030, 820)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-187.1028, -280, 374.2056, 280)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove3" unique_id=1044478130]
+material = SubResource("fade_BambooGrove3")
+position = Vector2(-191.02803, -377.19626)
+scale = Vector2(0.6542056, 0.6542056)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove3" unique_id=824452956]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove3/Body" unique_id=1333421536]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove4" type="Node2D" parent="Town" unique_id=1074368010]
+z_index = 500
+z_as_relative = false
+position = Vector2(900, 2000)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-200.46729, -300, 400.93457, 300)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove4" unique_id=1112675766]
+material = SubResource("fade_BambooGrove4")
+position = Vector2(-204.6729, -397.71027)
+scale = Vector2(0.7009346, 0.7009346)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove4" unique_id=637118721]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove4/Body" unique_id=1820062785]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove5" type="Node2D" parent="Town" unique_id=1122650116]
+z_index = 600
+z_as_relative = false
+position = Vector2(810, 2400)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove5" unique_id=915678926]
+material = SubResource("fade_BambooGrove5")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove5" unique_id=1026047504]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove5/Body" unique_id=1146519901]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove6" type="Node2D" parent="Town" unique_id=547987230]
+z_index = 183
+z_as_relative = false
+position = Vector2(2950, 730)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-187.1028, -280, 374.2056, 280)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 180.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove6" unique_id=1778475289]
+material = SubResource("fade_BambooGrove6")
+position = Vector2(-191.02803, -467.19626)
+scale = Vector2(0.6542056, 0.6542056)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove6" unique_id=1910881263]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove6/Body" unique_id=2137423727]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove7" type="Node2D" parent="Town" unique_id=1345576816]
+z_index = 325
+z_as_relative = false
+position = Vector2(4300, 1300)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-200.46729, -300, 400.93457, 300)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove7" unique_id=49050023]
+material = SubResource("fade_BambooGrove7")
+position = Vector2(-204.6729, -397.71027)
+scale = Vector2(0.7009346, 0.7009346)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove7" unique_id=1307017024]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove7/Body" unique_id=1852220745]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove8" type="Node2D" parent="Town" unique_id=1093658277]
+z_index = 575
+z_as_relative = false
+position = Vector2(4300, 2300)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove8" unique_id=365280146]
+material = SubResource("fade_BambooGrove8")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove8" unique_id=787760185]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove8/Body" unique_id=761824365]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove9" type="Node2D" parent="Town" unique_id=938053343]
+z_index = 768
+z_as_relative = false
+position = Vector2(4180, 3070)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-187.1028, -280, 374.2056, 280)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove9" unique_id=1249262289]
+material = SubResource("fade_BambooGrove9")
+position = Vector2(-191.02803, -287.19626)
+scale = Vector2(0.6542056, 0.6542056)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove9" unique_id=854713395]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove9/Body" unique_id=985163522]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove10" type="Node2D" parent="Town" unique_id=673430898]
+z_index = 800
+z_as_relative = false
+position = Vector2(3150, 3200)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-200.46729, -300, 400.93457, 300)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove10" unique_id=928222843]
+material = SubResource("fade_BambooGrove10")
+position = Vector2(-204.6729, -307.71027)
+scale = Vector2(0.7009346, 0.7009346)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove10" unique_id=689932846]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove10/Body" unique_id=746727830]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove11" type="Node2D" parent="Town" unique_id=762549057]
+z_index = 805
+z_as_relative = false
+position = Vector2(1500, 3220)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove11" unique_id=1758217124]
+material = SubResource("fade_BambooGrove11")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove11" unique_id=1704934471]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove11/Body" unique_id=739269418]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove12" type="Node2D" parent="Town" unique_id=812925595]
+z_index = 765
+z_as_relative = false
+position = Vector2(2400, 3060)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-187.1028, -280, 374.2056, 280)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove12" unique_id=111868636]
+material = SubResource("fade_BambooGrove12")
+position = Vector2(-191.02803, -287.19626)
+scale = Vector2(0.6542056, 0.6542056)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove12" unique_id=1931430274]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove12/Body" unique_id=228772870]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove13" type="Node2D" parent="Town" unique_id=1532287797]
+z_index = 408
+z_as_relative = false
+position = Vector2(3020, 1630)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-200.46729, -300, 400.93457, 300)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove13" unique_id=1245837175]
+material = SubResource("fade_BambooGrove13")
+position = Vector2(-204.6729, -397.71027)
+scale = Vector2(0.7009346, 0.7009346)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove13" unique_id=1399859426]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove13/Body" unique_id=150901268]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="BambooGrove14" type="Node2D" parent="Town" unique_id=252344311]
+z_index = 663
+z_as_relative = false
+position = Vector2(3550, 2650)
+metadata/label = "成片竹林"
+metadata/visual_rect = Rect2(-213.83177, -320, 427.66354, 320)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/BambooGrove14" unique_id=1754576338]
+material = SubResource("fade_BambooGrove14")
+position = Vector2(-218.31776, -328.2243)
+scale = Vector2(0.74766356, 0.74766356)
+texture = ExtResource("bamboo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/BambooGrove14" unique_id=825988796]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/BambooGrove14/Body" unique_id=1989386609]
+polygon = PackedVector2Array(-38, -25, 38, -25, 38, 0, -38, 0)
+
+[node name="WestService" type="Node2D" parent="Town" unique_id=300477918]
+z_index = 555
+z_as_relative = false
+position = Vector2(1070, 2220)
+metadata/label = "竹院侧舍"
+metadata/visual_rect = Rect2(-332.92947, -285, 665.85895, 285)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/WestService" unique_id=528901308]
+material = SubResource("fade_WestService")
+position = Vector2(-509.18625, -555.89514)
+scale = Vector2(0.5153707, 0.5153707)
+texture = ExtResource("lingyue_dorm")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WestService" unique_id=189181044]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/WestService/Body" unique_id=1451684751]
+polygon = PackedVector2Array(-279.66077, -71.25, 279.66077, -71.25, 279.66077, 0, -279.66077, 0)
+
+[node name="UpperWing" type="Node2D" parent="Town" unique_id=1553047733]
+z_index = 245
+z_as_relative = false
+position = Vector2(2460, 980)
+metadata/label = "竹院侧舍"
+metadata/visual_rect = Rect2(-332.92947, -285, 665.85895, 285)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 180.0
+
+[node name="Art" type="Sprite2D" parent="Town/UpperWing" unique_id=569282693]
+material = SubResource("fade_UpperWing")
+position = Vector2(-509.18625, -645.89514)
+scale = Vector2(0.5153707, 0.5153707)
+texture = ExtResource("lingyue_dorm")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/UpperWing" unique_id=460944638]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/UpperWing/Body" unique_id=2095481950]
+polygon = PackedVector2Array(-279.66077, -71.25, 279.66077, -71.25, 279.66077, 0, -279.66077, 0)
+
+[node name="YardJars0" type="Node2D" parent="Town" unique_id=1024585228]
+z_index = 425
+z_as_relative = false
+position = Vector2(1150, 1700)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-38.948414, -65, 77.89683, 65)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/YardJars0" unique_id=1158367851]
+material = SubResource("fade_YardJars0")
+position = Vector2(-66.39286, -189.56349)
+scale = Vector2(0.103174604, 0.103174604)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/YardJars0" unique_id=623398992]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/YardJars0/Body" unique_id=1690693416]
+polygon = PackedVector2Array(-32.716667, -16.25, 32.716667, -16.25, 32.716667, 0, -32.716667, 0)
+
+[node name="YardJars1" type="Node2D" parent="Town" unique_id=880357270]
+z_index = 538
+z_as_relative = false
+position = Vector2(3880, 2150)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-38.948414, -65, 77.89683, 65)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/YardJars1" unique_id=96853770]
+material = SubResource("fade_YardJars1")
+position = Vector2(-66.39286, -189.56349)
+scale = Vector2(0.103174604, 0.103174604)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/YardJars1" unique_id=1110617423]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/YardJars1/Body" unique_id=1797699200]
+polygon = PackedVector2Array(-32.716667, -16.25, 32.716667, -16.25, 32.716667, 0, -32.716667, 0)
+
+[node name="YardJars2" type="Node2D" parent="Town" unique_id=182475600]
+z_index = 738
+z_as_relative = false
+position = Vector2(3860, 2950)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-38.948414, -65, 77.89683, 65)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/YardJars2" unique_id=509596457]
+material = SubResource("fade_YardJars2")
+position = Vector2(-66.39286, -99.56349)
+scale = Vector2(0.103174604, 0.103174604)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/YardJars2" unique_id=625680732]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/YardJars2/Body" unique_id=1472281833]
+polygon = PackedVector2Array(-32.716667, -16.25, 32.716667, -16.25, 32.716667, 0, -32.716667, 0)
+
+[node name="YardJars3" type="Node2D" parent="Town" unique_id=1502399515]
+z_index = 315
+z_as_relative = false
+position = Vector2(1700, 1260)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-38.948414, -65, 77.89683, 65)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 90.0
+
+[node name="Art" type="Sprite2D" parent="Town/YardJars3" unique_id=1646942262]
+material = SubResource("fade_YardJars3")
+position = Vector2(-66.39286, -189.56349)
+scale = Vector2(0.103174604, 0.103174604)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/YardJars3" unique_id=1079161697]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/YardJars3/Body" unique_id=56230770]
+polygon = PackedVector2Array(-32.716667, -16.25, 32.716667, -16.25, 32.716667, 0, -32.716667, 0)
+
+[node name="YardJars4" type="Node2D" parent="Town" unique_id=1642937516]
+z_index = 293
+z_as_relative = false
+position = Vector2(2520, 1170)
+metadata/label = "屋前水缸"
+metadata/visual_rect = Rect2(-38.948414, -65, 77.89683, 65)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 180.0
+
+[node name="Art" type="Sprite2D" parent="Town/YardJars4" unique_id=1874628265]
+material = SubResource("fade_YardJars4")
+position = Vector2(-66.39286, -279.56348)
+scale = Vector2(0.103174604, 0.103174604)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/YardJars4" unique_id=1022762122]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/YardJars4/Body" unique_id=283479611]
+polygon = PackedVector2Array(-32.716667, -16.25, 32.716667, -16.25, 32.716667, 0, -32.716667, 0)
+
+[node name="Player" type="CharacterBody2D" parent="Town" unique_id=1998134591 instance=ExtResource("player")]
+z_index = 843
+z_as_relative = false
+position = Vector2(1900, 3370)
+collision_layer = 2
+collision_mask = 24
+script = ExtResource("adapter")
+
+[node name="MoonPool" type="Polygon2D" parent="." unique_id=179442104]
+z_index = -5
+material = SubResource("water_mat")
+position = Vector2(0, -90)
+polygon = PackedVector2Array(2490, 1440, 2630, 1440, 2630, 1590, 2800, 1750, 2830, 1950, 2700, 2040, 2650, 2200, 2460, 2200, 2400, 2060, 2280, 1940, 2290, 1780, 2450, 1590)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=812415967]
+position = Vector2(1900, 3180)
+zoom = Vector2(0.9, 0.9)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=698905592]
+
+[node name="Top" type="Panel" parent="UI" unique_id=955290044]
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 1080.0
+offset_bottom = 102.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Title" type="Label" parent="UI" unique_id=1616720651]
+offset_left = 34.0
+offset_top = 22.0
+offset_right = 1800.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 30
+text = "凌月派 · 寒潭竹院"
+
+[node name="Status" type="Label" parent="UI" unique_id=545157795]
+offset_left = 34.0
+offset_top = 63.0
+offset_right = 1800.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 20
+text = "竹径山门 · 演棍坪 · 临潭主楼 · 弟子竹舍 · 月潭双桥 · 后山静台"
+
+[node name="Hint" type="Label" parent="UI" unique_id=1891355335]
+offset_left = 34.0
+offset_top = 1038.0
+offset_right = 1800.0
+offset_bottom = 1076.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 22
+text = "WASD / 方向键移动　Shift快走　Tab全景/跟随　空格查看　R回山口　Esc关闭说明"
+
+[node name="Detail" type="Panel" parent="UI" unique_id=1651296166]
+visible = false
+offset_left = 400.0
+offset_top = 760.0
+offset_right = 1500.0
+offset_bottom = 1000.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Text" type="Label" parent="UI/Detail" unique_id=441413841]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 1075.0
+offset_bottom = 215.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 3
+
+[node name="Terrain" type="Node2D" parent="." unique_id=482133695]
+script = ExtResource("26_y5yq7")
+
+[node name="Platform1" type="Polygon2D" parent="Terrain" unique_id=1771951644]
+z_index = -8
+material = SubResource("ShaderMaterial_qeled")
+position = Vector2(0, -90)
+polygon = PackedVector2Array(700, 550, 4350, 550, 4350, 2250, 700, 2250)
+
+[node name="Platform2" type="Polygon2D" parent="Terrain" unique_id=227052975]
+z_index = -7
+material = SubResource("ShaderMaterial_1mp6r")
+position = Vector2(0, -180)
+polygon = PackedVector2Array(2350, 550, 4200, 550, 4200, 1350, 2350, 1350)
+
+[node name="Cliff0" type="StaticBody2D" parent="Terrain" unique_id=42418042]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@2" type="CollisionPolygon2D" parent="Terrain/Cliff0" unique_id=2128635562]
+polygon = PackedVector2Array(700, 545, 4350, 545, 4350, 555, 700, 555)
+
+[node name="Cliff1" type="StaticBody2D" parent="Terrain" unique_id=2034968444]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@3" type="CollisionPolygon2D" parent="Terrain/Cliff1" unique_id=505808192]
+polygon = PackedVector2Array(4355, 550, 4355, 2250, 4345, 2250, 4345, 550)
+
+[node name="Cliff2" type="StaticBody2D" parent="Terrain" unique_id=235990755]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@4" type="CollisionPolygon2D" parent="Terrain/Cliff2" unique_id=1648268868]
+polygon = PackedVector2Array(4350, 2255, 4145, 2255, 4145, 2245, 4350, 2245)
+
+[node name="Cliff3" type="StaticBody2D" parent="Terrain" unique_id=1556660192]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@5" type="CollisionPolygon2D" parent="Terrain/Cliff3" unique_id=1073039789]
+polygon = PackedVector2Array(3855, 2255, 2045, 2255, 2045, 2245, 3855, 2245)
+
+[node name="Cliff4" type="StaticBody2D" parent="Terrain" unique_id=1144761120]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@6" type="CollisionPolygon2D" parent="Terrain/Cliff4" unique_id=1155001106]
+polygon = PackedVector2Array(1755, 2255, 700, 2255, 700, 2245, 1755, 2245)
+
+[node name="@Polygon2D@7" type="Polygon2D" parent="Terrain" unique_id=1478195649]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(4350, 2160, 4235, 2160, 4235, 2250, 4350, 2250)
+uv = PackedVector2Array(493, 397, 657.2857, 397, 657.2857, 547, 493, 547)
+
+[node name="@Polygon2D@8" type="Polygon2D" parent="Terrain" unique_id=864662194]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(3765, 2160, 3493.3333, 2160, 3493.3333, 2250, 3765, 2250)
+uv = PackedVector2Array(493, 397, 881.09534, 397, 881.09534, 547, 493, 547)
+
+[node name="@Polygon2D@9" type="Polygon2D" parent="Terrain" unique_id=220907678]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(3493.3333, 2160, 3221.6665, 2160, 3221.6665, 2250, 3493.3333, 2250)
+uv = PackedVector2Array(843, 397, 1231.0953, 397, 1231.0953, 547, 843, 547)
+
+[node name="@Polygon2D@10" type="Polygon2D" parent="Terrain" unique_id=1073597926]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(3221.6665, 2160, 2950, 2160, 2950, 2250, 3221.6665, 2250)
+uv = PackedVector2Array(1193, 397, 1581.095, 397, 1581.095, 547, 1193, 547)
+
+[node name="@Polygon2D@11" type="Polygon2D" parent="Terrain" unique_id=601156127]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(2950, 2160, 2678.3333, 2160, 2678.3333, 2250, 2950, 2250)
+uv = PackedVector2Array(1543, 397, 1931.0953, 397, 1931.0953, 547, 1543, 547)
+
+[node name="@Polygon2D@12" type="Polygon2D" parent="Terrain" unique_id=1607466293]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(2678.3333, 2160, 2406.6667, 2160, 2406.6667, 2250, 2678.3333, 2250)
+uv = PackedVector2Array(493, 397, 881.09503, 397, 881.09503, 547, 493, 547)
+
+[node name="@Polygon2D@13" type="Polygon2D" parent="Terrain" unique_id=904359398]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(2406.6667, 2160, 2135, 2160, 2135, 2250, 2406.6667, 2250)
+uv = PackedVector2Array(843, 397, 1231.0953, 397, 1231.0953, 547, 843, 547)
+
+[node name="@Polygon2D@14" type="Polygon2D" parent="Terrain" unique_id=1037250008]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(1665, 2160, 1423.75, 2160, 1423.75, 2250, 1665, 2250)
+uv = PackedVector2Array(493, 397, 837.6429, 397, 837.6429, 547, 493, 547)
+
+[node name="@Polygon2D@15" type="Polygon2D" parent="Terrain" unique_id=417210361]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(1423.75, 2160, 1182.5, 2160, 1182.5, 2250, 1423.75, 2250)
+uv = PackedVector2Array(843, 397, 1187.6428, 397, 1187.6428, 547, 843, 547)
+
+[node name="@Polygon2D@16" type="Polygon2D" parent="Terrain" unique_id=1383033]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(1182.5, 2160, 941.25, 2160, 941.25, 2250, 1182.5, 2250)
+uv = PackedVector2Array(1193, 397, 1537.6428, 397, 1537.6428, 547, 1193, 547)
+
+[node name="@Polygon2D@17" type="Polygon2D" parent="Terrain" unique_id=2137389652]
+z_index = 561
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(941.25, 2160, 700, 2160, 700, 2250, 941.25, 2250)
+uv = PackedVector2Array(1543, 397, 1887.6428, 397, 1887.6428, 547, 1543, 547)
+
+[node name="Cliff5" type="StaticBody2D" parent="Terrain" unique_id=1420828000]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@18" type="CollisionPolygon2D" parent="Terrain/Cliff5" unique_id=332411445]
+polygon = PackedVector2Array(695, 2250, 695, 550, 705, 550, 705, 2250)
+
+[node name="Cliff6" type="StaticBody2D" parent="Terrain" unique_id=325946092]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@19" type="CollisionPolygon2D" parent="Terrain/Cliff6" unique_id=244557741]
+polygon = PackedVector2Array(2350, 545, 4200, 545, 4200, 555, 2350, 555)
+
+[node name="Cliff7" type="StaticBody2D" parent="Terrain" unique_id=2126546245]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@20" type="CollisionPolygon2D" parent="Terrain/Cliff7" unique_id=623421210]
+polygon = PackedVector2Array(4205, 550, 4205, 1350, 4195, 1350, 4195, 550)
+
+[node name="Cliff8" type="StaticBody2D" parent="Terrain" unique_id=539080717]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@21" type="CollisionPolygon2D" parent="Terrain/Cliff8" unique_id=1289734160]
+polygon = PackedVector2Array(4200, 1355, 4095, 1355, 4095, 1345, 4200, 1345)
+
+[node name="Cliff9" type="StaticBody2D" parent="Terrain" unique_id=463511421]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@22" type="CollisionPolygon2D" parent="Terrain/Cliff9" unique_id=41132109]
+polygon = PackedVector2Array(3805, 1355, 3395, 1355, 3395, 1345, 3805, 1345)
+
+[node name="Cliff10" type="StaticBody2D" parent="Terrain" unique_id=1388593368]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@23" type="CollisionPolygon2D" parent="Terrain/Cliff10" unique_id=1437168461]
+polygon = PackedVector2Array(3105, 1355, 2350, 1355, 2350, 1345, 3105, 1345)
+
+[node name="@Polygon2D@24" type="Polygon2D" parent="Terrain" unique_id=1087918854]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(4200, 1170, 4185, 1170, 4185, 1260, 4200, 1260)
+uv = PackedVector2Array(493, 397, 514.4286, 397, 514.4286, 547, 493, 547)
+
+[node name="@Polygon2D@25" type="Polygon2D" parent="Terrain" unique_id=1181865787]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(3715, 1170, 3485, 1170, 3485, 1260, 3715, 1260)
+uv = PackedVector2Array(493, 397, 821.5714, 397, 821.5714, 547, 493, 547)
+
+[node name="@Polygon2D@26" type="Polygon2D" parent="Terrain" unique_id=1518150409]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(3015, 1170, 2793.3333, 1170, 2793.3333, 1260, 3015, 1260)
+uv = PackedVector2Array(493, 397, 809.6668, 397, 809.6668, 547, 493, 547)
+
+[node name="@Polygon2D@27" type="Polygon2D" parent="Terrain" unique_id=1527769446]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(2793.3333, 1170, 2571.6667, 1170, 2571.6667, 1260, 2793.3333, 1260)
+uv = PackedVector2Array(843, 397, 1159.6664, 397, 1159.6664, 547, 843, 547)
+
+[node name="@Polygon2D@28" type="Polygon2D" parent="Terrain" unique_id=1936925470]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("27_6g3y8")
+polygon = PackedVector2Array(2571.6667, 1170, 2350, 1170, 2350, 1260, 2571.6667, 1260)
+uv = PackedVector2Array(1193, 397, 1509.6667, 397, 1509.6667, 547, 1193, 547)
+
+[node name="Cliff11" type="StaticBody2D" parent="Terrain" unique_id=1421551623]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@29" type="CollisionPolygon2D" parent="Terrain/Cliff11" unique_id=1201830200]
+polygon = PackedVector2Array(2345, 1350, 2345, 550, 2355, 550, 2355, 1350)
+
+[node name="CourtRise" type="Node2D" parent="Terrain" unique_id=566286070]
+position = Vector2(1900, 2433)
+
+[node name="@Polygon2D@30" type="Polygon2D" parent="Terrain/CourtRise" unique_id=516381185]
+z_index = -4
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(-187.59999, -546, 190.4, -546, 190.4, -295.4, 249.9, 0, 249.9, 170.8, -250.59999, 170.8, -250.59999, 0, -187.59999, -295.4)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="@Polygon2D@31" type="Polygon2D" parent="Terrain/CourtRise" unique_id=1629911944]
+z_index = 614
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(-537.6, -546, -187.59999, -546, -187.59999, -295.4, -250.59999, 0, -250.59999, 170.8, -537.6, 170.8)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="@Polygon2D@32" type="Polygon2D" parent="Terrain/CourtRise" unique_id=2030435367]
+z_index = 614
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(190.4, -546, 537.6, -546, 537.6, 170.8, 249.9, 170.8, 249.9, 0, 190.4, -295.4)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="RampRail0-1" type="StaticBody2D" parent="Terrain" unique_id=1742470683]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@33" type="CollisionPolygon2D" parent="Terrain/RampRail0-1" unique_id=96907818]
+polygon = PackedVector2Array(1760, 2228, 1760, 2455, 1750, 2455, 1750, 2228)
+
+[node name="RampRail01" type="StaticBody2D" parent="Terrain" unique_id=275365543]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@34" type="CollisionPolygon2D" parent="Terrain/RampRail01" unique_id=848600867]
+polygon = PackedVector2Array(2050, 2228, 2050, 2455, 2040, 2455, 2040, 2228)
+
+[node name="EastRise" type="Node2D" parent="Terrain" unique_id=1907250847]
+position = Vector2(4000, 2433)
+
+[node name="@Polygon2D@35" type="Polygon2D" parent="Terrain/EastRise" unique_id=1797023577]
+z_index = -4
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(-187.59999, -546, 190.4, -546, 190.4, -295.4, 249.9, 0, 249.9, 170.8, -250.59999, 170.8, -250.59999, 0, -187.59999, -295.4)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="@Polygon2D@36" type="Polygon2D" parent="Terrain/EastRise" unique_id=1645274191]
+z_index = 614
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(-537.6, -546, -187.59999, -546, -187.59999, -295.4, -250.59999, 0, -250.59999, 170.8, -537.6, 170.8)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="@Polygon2D@37" type="Polygon2D" parent="Terrain/EastRise" unique_id=1264670116]
+z_index = 614
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(190.4, -546, 537.6, -546, 537.6, 170.8, 249.9, 170.8, 249.9, 0, 190.4, -295.4)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="RampRail1-1" type="StaticBody2D" parent="Terrain" unique_id=2034554070]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@38" type="CollisionPolygon2D" parent="Terrain/RampRail1-1" unique_id=662744487]
+polygon = PackedVector2Array(3860, 2228, 3860, 2455, 3850, 2455, 3850, 2228)
+
+[node name="RampRail11" type="StaticBody2D" parent="Terrain" unique_id=96830513]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@39" type="CollisionPolygon2D" parent="Terrain/RampRail11" unique_id=1839917119]
+polygon = PackedVector2Array(4150, 2228, 4150, 2455, 4140, 2455, 4140, 2228)
+
+[node name="HallRise" type="Node2D" parent="Terrain" unique_id=543101876]
+position = Vector2(3250, 1443)
+
+[node name="@Polygon2D@40" type="Polygon2D" parent="Terrain/HallRise" unique_id=1588606695]
+z_index = -4
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(-187.59999, -546, 190.4, -546, 190.4, -295.4, 249.9, 0, 249.9, 170.8, -250.59999, 170.8, -250.59999, 0, -187.59999, -295.4)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="@Polygon2D@41" type="Polygon2D" parent="Terrain/HallRise" unique_id=152454304]
+z_index = 389
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(-537.6, -546, -187.59999, -546, -187.59999, -295.4, -250.59999, 0, -250.59999, 170.8, -537.6, 170.8)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="@Polygon2D@42" type="Polygon2D" parent="Terrain/HallRise" unique_id=12658450]
+z_index = 389
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(190.4, -546, 537.6, -546, 537.6, 170.8, 249.9, 170.8, 249.9, 0, 190.4, -295.4)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="RampRail2-1" type="StaticBody2D" parent="Terrain" unique_id=2063141265]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@43" type="CollisionPolygon2D" parent="Terrain/RampRail2-1" unique_id=2027803467]
+polygon = PackedVector2Array(3110, 1328, 3110, 1555, 3100, 1555, 3100, 1328)
+
+[node name="RampRail21" type="StaticBody2D" parent="Terrain" unique_id=1383544452]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@44" type="CollisionPolygon2D" parent="Terrain/RampRail21" unique_id=1189251721]
+polygon = PackedVector2Array(3400, 1328, 3400, 1555, 3390, 1555, 3390, 1328)
+
+[node name="SideRise" type="Node2D" parent="Terrain" unique_id=971970287]
+position = Vector2(3950, 1443)
+
+[node name="@Polygon2D@45" type="Polygon2D" parent="Terrain/SideRise" unique_id=646343522]
+z_index = -4
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(-187.59999, -546, 190.4, -546, 190.4, -295.4, 249.9, 0, 249.9, 170.8, -250.59999, 170.8, -250.59999, 0, -187.59999, -295.4)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="@Polygon2D@46" type="Polygon2D" parent="Terrain/SideRise" unique_id=1454113287]
+z_index = 389
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(-537.6, -546, -187.59999, -546, -187.59999, -295.4, -250.59999, 0, -250.59999, 170.8, -537.6, 170.8)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="@Polygon2D@47" type="Polygon2D" parent="Terrain/SideRise" unique_id=157917978]
+z_index = 389
+z_as_relative = false
+texture = ExtResource("28_gfoey")
+polygon = PackedVector2Array(190.4, -546, 537.6, -546, 537.6, 170.8, 249.9, 170.8, 249.9, 0, 190.4, -295.4)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="RampRail3-1" type="StaticBody2D" parent="Terrain" unique_id=309833399]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@48" type="CollisionPolygon2D" parent="Terrain/RampRail3-1" unique_id=1856523984]
+polygon = PackedVector2Array(3810, 1328, 3810, 1555, 3800, 1555, 3800, 1328)
+
+[node name="RampRail31" type="StaticBody2D" parent="Terrain" unique_id=2109353097]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@49" type="CollisionPolygon2D" parent="Terrain/RampRail31" unique_id=502876134]
+polygon = PackedVector2Array(4100, 1328, 4100, 1555, 4090, 1555, 4090, 1328)

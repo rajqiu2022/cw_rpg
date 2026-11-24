@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="offer"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "烈云破阵校尉"
+text = "他们输在各自为战。我带的是破阵刀，你想领教，便来西坪。"
+choices = Array[Dictionary]([{"text":"迎战","action":"battle:liuyun_elite"},{"text":"暂且离开","next":"end"}])
+[resource]
+script = ExtResource("1")
+dialog_id = &"encounter_liuyun_elite"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("offer")])

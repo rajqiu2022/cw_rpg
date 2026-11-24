@@ -1,0 +1,18 @@
+id: luoyang_modular_v2_worn_bluestone
+description: Original generated stone ALBEDO only; NOT a scan or CC0 PBR set. Native geometry supplies paving joints.
+backend: codex_builtin_imagegen
+model: builtin
+size: "1536x1536"
+background: opaque
+transparent_background: false
+execution_owner: producer
+physical_width_m: 2.0
+material_role: original_albedo_only
+prompt_template: |
+  Use case: historical-scene material authoring.
+  Asset type: ONE seamless tileable opaque RGB surface-colour texture of old blue-grey limestone, for realistic stone paving in a Chinese historical city interior.
+  This is an ALBEDO / BASE COLOUR texture ONLY, NOT a finished street image, not a PBR scan, not a normal map, not a height map and not a collection of tiles.
+  View: perfectly orthographic directly overhead, completely flat unlit diffuse surface colour. All edges must tile seamlessly with the opposite edge. The represented physical surface patch is about two metres square. No perspective, camera tilt, horizon or depth-of-field.
+  Material: naturally weathered warm blue-grey limestone. Clearly readable irregular intermediate-scale mineral mottling, rubbed and slightly polished pale wear patches, a few fine shallow hairline cracks, tiny natural pores, restrained earthy deposits and dark aged dirt trapped in surface fissures. Mix relatively smooth worn stone with subtly rougher weathered areas; do not cover the entire image with uniform fine gravel, salt-and-pepper dots or noisy grain. Muted grey stone, not green grass, not bright blue, not pure white concrete. Realistic restrained photographic surface detail, not painted or cartoon.
+  Crucial exclusions: NO paving tile arrangement, NO square grid, NO grout lines, NO separate slab borders, NO bevelled brick edges, NO joints, NO directional light, highlights, ambient occlusion, cast shadows or baked rim shading. Native 3D paving geometry in the game supplies all slab boundaries, cracks at slab edges and actual lighting. Do not draw fake stone joints into this texture.
+  Fill the entire square with stone surface; no margin, ground outside, objects, vegetation, moss clumps, text, symbols, logo, border, watermark or checkerboard. Truly tileable surface-colour organisation, not a repeating ornamental pattern.

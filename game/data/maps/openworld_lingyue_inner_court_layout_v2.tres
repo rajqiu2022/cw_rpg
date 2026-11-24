@@ -1,0 +1,71 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 5
+design_size = Vector2i(1920, 1280)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.205,0.950, 0.795,0.950, 0.885,0.720, 0.915,0.255, 0.665,0.235, 0.625,0.115, 0.375,0.115, 0.335,0.235, 0.085,0.255, 0.115,0.720)
+])
+visual_objects = Array[Dictionary]([
+	{"id":"ground_0","texture":"res://art/modules/sect_maps_20261029k/quiet_ground.png","centered":false,"pos":Vector2(0, 0),"render_size_px":Vector2(960, 960),"z_index":-999},
+	{"id":"ground_1","texture":"res://art/modules/sect_maps_20261029k/quiet_ground.png","centered":false,"pos":Vector2(0.5, 0),"render_size_px":Vector2(960, 960),"z_index":-999},
+	{"id":"ground_2","texture":"res://art/modules/sect_maps_20261029k/quiet_ground.png","centered":false,"pos":Vector2(0, 0.75),"render_size_px":Vector2(960, 960),"z_index":-999},
+	{"id":"ground_3","texture":"res://art/modules/sect_maps_20261029k/quiet_ground.png","centered":false,"pos":Vector2(0.5, 0.75),"render_size_px":Vector2(960, 960),"z_index":-999},
+	{"id":"lower_court_approach","texture":"res://art/modules/world_map_v13/road_stone_northsouth_v1.png","pos":Vector2(0.5, 0.8046875),"render_size_px":Vector2(690, 1035),"z_index":-90,"modulate":Color(0.86,0.91,0.93,1)},
+	{"id":"moon_court_flagstones_0_0","texture":"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png","pos":Vector2(0.3578125000, 0.3210937500),"render_size_px":Vector2(546, 364.000000),"z_index":-88,"modulate":Color(0.91,0.97,1.02,1)},
+	{"id":"moon_court_flagstones_0_1","texture":"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png","pos":Vector2(0.6421875000, 0.3210937500),"render_size_px":Vector2(546, 364.000000),"z_index":-88,"modulate":Color(0.91,0.97,1.02,1)},
+	{"id":"moon_court_flagstones_1_0","texture":"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png","pos":Vector2(0.3578125000, 0.6054687500),"render_size_px":Vector2(546, 364.000000),"z_index":-88,"modulate":Color(0.91,0.97,1.02,1)},
+	{"id":"moon_court_flagstones_1_1","texture":"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png","pos":Vector2(0.6421875000, 0.6054687500),"render_size_px":Vector2(546, 364.000000),"z_index":-88,"modulate":Color(0.91,0.97,1.02,1)},
+	{"id":"moon_court_hall","texture":"res://art/modules/sect_completion_20261030a/lingyue_hall.png","centered":false,"pos":Vector2(0.26059375, -0.12728125),"scale":Vector2(0.47, 0.47),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.21640625},
+	{"id":"west_scripture_lodge","texture":"res://art/modules/sect_completion_20261030a/lingyue_dorm.png","centered":false,"pos":Vector2(-0.00028125, 0.03515625),"scale":Vector2(0.42, 0.42),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.33046875},
+	{"id":"east_bamboo_lodge","texture":"res://art/modules/sect_completion_20261030a/lingyue_dorm.png","centered":true,"pos":Vector2(0.797916667, 0.24703125),"scale":Vector2(-0.4, 0.4),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.33515625},
+	{"id":"west_bamboo_crown","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","centered":false,"pos":Vector2(-0.040291667, -0.0370625),"scale":Vector2(0.34, 0.34),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.259375},
+	{"id":"east_bamboo_crown","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","centered":true,"pos":Vector2(0.897333333, 0.13175),"scale":Vector2(-0.36, 0.36),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.265625},
+	{"id":"west_lotus_water","texture":"res://art/modules/luoyang_estate_garden_20261029q/lotus_pond_v1.png","centered":false,"pos":Vector2(0.05978125, 0.441453125),"scale":Vector2(0.37, 0.37),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.7484375},
+	{"id":"east_stone_recess","texture":"res://art/modules/sect_maps_20261029k/limestone_mass.png","centered":true,"pos":Vector2(0.804869792, 0.674691406),"scale":Vector2(-0.27, 0.27),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.74609375},
+	{"id":"east_bamboo_grove","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","centered":true,"pos":Vector2(0.866041667, 0.589375),"scale":Vector2(-0.35, 0.35),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.71953125},
+	{"id":"east_tea_bench","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png","centered":false,"pos":Vector2(0.651645833, 0.5309375),"scale":Vector2(0.13, 0.13),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.61015625},
+	{"id":"west_shoulder_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","centered":false,"pos":Vector2(0.004166667, 0.60625),"scale":Vector2(0.25, 0.25),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.82421875},
+	{"id":"east_shoulder_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","centered":true,"pos":Vector2(0.891625, 0.78184375),"scale":Vector2(-0.24, 0.24),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.87109375},
+	{"id":"west_lantern_stand","texture":"res://art/modules/prop/prop_linxi_lantern_red_a.png","centered":false,"pos":Vector2(0.32446875, 0.698359375),"scale":Vector2(0.33, 0.33),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.79375},
+	{"id":"east_lantern_stand","texture":"res://art/modules/prop/prop_linxi_lantern_red_a.png","centered":false,"pos":Vector2(0.608322917, 0.698359375),"scale":Vector2(0.33, 0.33),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.79375}
+])
+blockers = Array[Dictionary]([
+	{"id":"moon_court_hall_foot_0","pos":Vector2(0.5, 0.18515625),"size":Vector2(0.283854167, 0.0625),"walkability_margin":0.0},
+	{"id":"west_scripture_lodge_foot_1","pos":Vector2(0.215625, 0.3015625),"size":Vector2(0.244791667, 0.0578125),"walkability_margin":0.0},
+	{"id":"east_bamboo_lodge_foot_2","pos":Vector2(0.792708333, 0.30703125),"size":Vector2(0.231770833, 0.05625),"walkability_margin":0.0},
+	{"id":"west_bamboo_crown_foot_3","pos":Vector2(0.119791667, 0.23828125),"size":Vector2(0.122395833, 0.0421875),"walkability_margin":0.0},
+	{"id":"east_bamboo_crown_foot_4","pos":Vector2(0.895833333, 0.24375),"size":Vector2(0.122395833, 0.04375),"walkability_margin":0.0},
+	{"id":"west_lotus_water_foot_5","pos":Vector2(0.234375, 0.58359375),"size":Vector2(0.151041667, 0.04609375),"walkability_margin":0.0},
+	{"id":"west_lotus_water_foot_6","pos":Vector2(0.234375, 0.6453125),"size":Vector2(0.239583333, 0.078125),"walkability_margin":0.0},
+	{"id":"west_lotus_water_foot_7","pos":Vector2(0.234375, 0.70390625),"size":Vector2(0.221354167, 0.0390625),"walkability_margin":0.0},
+	{"id":"west_lotus_water_foot_8","pos":Vector2(0.234375, 0.7296875),"size":Vector2(0.145833333, 0.0125),"walkability_margin":0.0},
+	{"id":"east_stone_recess_foot_9","pos":Vector2(0.804166667, 0.72421875),"size":Vector2(0.184895833, 0.04375),"walkability_margin":0.0},
+	{"id":"east_bamboo_grove_foot_10","pos":Vector2(0.864583333, 0.70234375),"size":Vector2(0.106770833, 0.034375),"walkability_margin":0.0},
+	{"id":"east_tea_bench_foot_11","pos":Vector2(0.703645833, 0.60234375),"size":Vector2(0.080729167, 0.015625),"walkability_margin":0.0},
+	{"id":"west_shoulder_bamboo_foot_12","pos":Vector2(0.121875, 0.80703125),"size":Vector2(0.083333333, 0.034375),"walkability_margin":0.0},
+	{"id":"east_shoulder_bamboo_foot_13","pos":Vector2(0.890625, 0.85390625),"size":Vector2(0.075520833, 0.034375),"walkability_margin":0.0},
+	{"id":"west_lantern_stand_foot_14","pos":Vector2(0.3578125, 0.78125),"size":Vector2(0.050520833, 0.025),"walkability_margin":0.0},
+	{"id":"east_lantern_stand_foot_15","pos":Vector2(0.641666667, 0.78125),"size":Vector2(0.050520833, 0.025),"walkability_margin":0.0}
+])
+portals = Array[Dictionary]([
+	{"id":"return_lingyue_gate","label":"返回凌月山门","pos":Vector2(0.500,0.925),"size":Vector2(0.160,0.080),"target_scene":"ch2_s4_lingyue_gate","target_pos":Vector2(0.705,0.405),"marker_rotation_degrees":180.0}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"spawn","pos":Vector2(0.500,0.840)},
+	{"id":"open_court","pos":Vector2(0.500,0.520)},
+	{"id":"hall_approach","pos":Vector2(0.500,0.245)},
+	{"id":"west_court","pos":Vector2(0.240,0.520)},
+	{"id":"east_court","pos":Vector2(0.760,0.520)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"west_building","pos":Vector2(0.035,0.400)},
+	{"id":"east_building","pos":Vector2(0.965,0.400)},
+	{"id":"main_hall","pos":Vector2(0.500,0.050)},
+	{"id":"west_garden","pos":Vector2(0.205,0.205)},
+	{"id":"east_garden","pos":Vector2(0.795,0.205)}
+])

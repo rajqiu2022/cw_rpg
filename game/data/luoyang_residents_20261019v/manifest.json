@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "id": "luoyang_residents_20261019v",
+  "status": "CANDIDATE_NOT_FORMAL",
+  "read_only": true,
+  "residents": [
+    {
+      "npc_id": "luoyang_paper_artisan_20261016",
+      "name": "老纸匠",
+      "scene_id": "ch4_s3_luoyang_market",
+      "identity_id": "luoyang_resident_paper_artisan_v",
+      "dialogs": {
+        "daily": "res://data/dialogs/ch4_resident_v_paper_artisan_daily.tres",
+        "uncertain": "res://data/dialogs/ch4_resident_v_paper_artisan_uncertain.tres",
+        "after": "res://data/dialogs/ch4_resident_v_paper_artisan_after.tres"
+      },
+      "progress": {
+        "quest_id": "q_ch4_side_02_luoyang_paper",
+        "active_flags": [
+          "luoyang_paper_started"
+        ],
+        "completed_flags": [
+          "luoyang_paper_helped"
+        ]
+      },
+      "evidence_refs": [
+        "paper_identity"
+      ]
+    },
+    {
+      "npc_id": "district_life_market_buyer",
+      "name": "采买妇人",
+      "scene_id": "ch4_s3_luoyang_market",
+      "identity_id": "luoyang_resident_market_buyer_v",
+      "dialogs": {
+        "daily": "res://data/dialogs/ch4_resident_v_market_buyer_daily.tres",
+        "uncertain": "res://data/dialogs/ch4_resident_v_market_buyer_uncertain.tres",
+        "after": "res://data/dialogs/ch4_resident_v_market_buyer_after.tres"
+      },
+      "progress": {
+        "quest_id": "q_ch4_side_02_luoyang_paper",
+        "active_flags": [
+          "luoyang_paper_started"
+        ],
+        "completed_flags": [
+          "luoyang_paper_helped"
+        ]
+      },
+      "evidence_refs": [
+        "district_identities",
+        "district_id_prefix"
+      ]
+    },
+    {
+      "npc_id": "harbour_life_docks_loading_attendant",
+      "name": "装卸伙计",
+      "scene_id": "ch4_s2_canal_docks",
+      "identity_id": "luoyang_resident_docks_loader_v",
+      "dialogs": {
+        "daily": "res://data/dialogs/ch4_resident_v_docks_loader_daily.tres",
+        "uncertain": "res://data/dialogs/ch4_resident_v_docks_loader_uncertain.tres",
+        "after": "res://data/dialogs/ch4_resident_v_docks_loader_after.tres"
+      },
+      "progress": {
+        "quest_id": "q_ch4_side_06_canal_grudge",
+        "active_flags": [
+          "canal_grudge_started"
+        ],
+        "completed_flags": [
+          "canal_feud_resolved"
+        ]
+      },
+      "evidence_refs": [
+        "harbour_identities"
+      ]
+    },
+    {
+      "npc_id": "harbour_life_gate_supply_attendant",
+      "name": "货担主人",
+      "scene_id": "ch4_s0_luoyang_gate",
+      "identity_id": "luoyang_resident_gate_supply_v",
+      "dialogs": {
+        "daily": "res://data/dialogs/ch4_resident_v_gate_supply_daily.tres",
+        "uncertain": "res://data/dialogs/ch4_resident_v_gate_supply_uncertain.tres",
+        "after": "res://data/dialogs/ch4_resident_v_gate_supply_after.tres"
+      },
+      "progress": {
+        "quest_id": "q_ch4_side_06_canal_grudge",
+        "active_flags": [
+          "canal_grudge_started"
+        ],
+        "completed_flags": [
+          "canal_feud_resolved"
+        ]
+      },
+      "evidence_refs": [
+        "harbour_identities"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "res://data/dialogs/ch4_resident_v_docks_loader_after.tres": "8758fc1556e4a5ec41ae780fb6918f19c6d5e01346c3e709ba60a6296738cc90",
+    "res://data/dialogs/ch4_resident_v_docks_loader_daily.tres": "5733235395ad9474a1129ba51d00fa5c7c1f18f67660d2050ec1f889de545111",
+    "res://data/dialogs/ch4_resident_v_docks_loader_uncertain.tres": "0894e7eba0aa3ed4efbdb20498fb1f8c96dc9b7b8742b3241d418b317ee08116",
+    "res://data/dialogs/ch4_resident_v_gate_supply_after.tres": "ce0a9080f7fe82f35f4d6d0c588fa730f0d277ba2954ad67dd0d9aed64e84939",
+    "res://data/dialogs/ch4_resident_v_gate_supply_daily.tres": "04fc6430ea41a44313b994b2fe6489d52480caf02f7930cc78799376a9b82a94",
+    "res://data/dialogs/ch4_resident_v_gate_supply_uncertain.tres": "8b7c96e396434342ec570d66bbb9defbfd173e3860ebf6efa992f91d29724e9e",
+    "res://data/dialogs/ch4_resident_v_market_buyer_after.tres": "114210847b80c9cfcf5ef6dae4cc996a7b9651aa693899d78c76f28ba603093e",
+    "res://data/dialogs/ch4_resident_v_market_buyer_daily.tres": "cdfc842cfb4dc5ef7df2d941eda92654b30637a2d2c72c5978ba44f8501bd6a6",
+    "res://data/dialogs/ch4_resident_v_market_buyer_uncertain.tres": "801f430a40b49559341cc749893e983230b458cbf33c8b6356d2b5d82bebe8aa",
+    "res://data/dialogs/ch4_resident_v_paper_artisan_after.tres": "7268536f2d5327263d6e1c64263aa15823e099a8cef314f50d7bfa2e71707063",
+    "res://data/dialogs/ch4_resident_v_paper_artisan_daily.tres": "a8cea0afb7cf4893607bd90c06bb232a44073bf7a81cdbfac7236b5ca4c6ff0a",
+    "res://data/dialogs/ch4_resident_v_paper_artisan_uncertain.tres": "bc8e8441caac511c7b07a9a122852e92dbbde51bce07a25f71777e9881e821b6"
+  },
+  "phase_policy": "completed quest AND all completed_flags -> after; active quest AND all active_flags -> uncertain; otherwise daily. Legacy flags alone do not qualify.",
+  "no_task_side_effects": true,
+  "evidence_spec_path": "assets/specs/luoyang_resident_life_20261019v.json"
+}

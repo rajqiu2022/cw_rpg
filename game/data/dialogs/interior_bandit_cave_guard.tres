@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "留守山贼"
+portrait_path = "res://art/characters/story_enemies_20261109/bandit_cave_guard/portrait.png"
+text = "这洞是爷们看货的地方。再往里一步，可别怪我不客气。"
+choices = Array[Dictionary]([{"text": "问清这批货的去处", "next": "challenge"}, {"text": "暂且退开", "next": "end"}])
+on_end = "end"
+
+[sub_resource type="Resource" id="challenge"]
+script = ExtResource("2_dnode")
+node_id = &"challenge"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "山道上的脚印一路通到这里。箱里的货，是送往哪里的？"
+on_end = "battle_solo_then:bandit_cave_guard:interior_bandit_cave_cleared"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"interior_bandit_cave_guard"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("challenge")])

@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536,1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.410,0.995, 0.590,0.995, 0.640,0.825, 0.805,0.705, 0.805,0.230, 0.650,0.165, 0.580,0.105, 0.420,0.105, 0.350,0.165, 0.195,0.230, 0.195,0.705, 0.360,0.825),
+	PackedVector2Array(0.240,0.285, 0.075,0.285, 0.070,0.570, 0.215,0.610, 0.350,0.515, 0.350,0.325),
+	PackedVector2Array(0.650,0.270, 0.825,0.260, 0.930,0.300, 0.930,0.610, 0.790,0.640, 0.650,0.520)
+])
+visual_objects = [
+	{"id":"scene_matte","texture":"res://build/qingfeng_inn_20261108_runtime01/stage_matte.tres","pos":Vector2(0.5,0.5),"render_size_px":Vector2(4096,2304),"z_index":-950},
+	{"id":"room_shell","texture":"res://art/modules/luoyang_assembled_20261016b/shell_v1.png","pos":Vector2(0.5,0.438),"scale":Vector2(1.36,1.36),"z_index":-940,"rotation":0,"modulate":Color(0.88,0.79,0.69,1)},
+	{"id":"side_passage","texture":"res://art/modules/building/build_linxi_door_wood_a.png","pos":Vector2(0.5,0.106),"scale":Vector2(1.04,1.04),"sort_by_feet":true,"depth_sort_foot_y":0.182,"modulate":Color(1,1,1,1)},
+	{"id":"map_table","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/ceremonial_desk_v1.png","pos":Vector2(0.5,0.454),"scale":Vector2(0.22,0.22),"sort_by_feet":true,"depth_sort_foot_y":0.513,"modulate":Color(1,1,1,1)},
+	{"id":"keeper_workbench","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/writing_desk_v1.png","pos":Vector2(0.155,0.35),"scale":Vector2(0.158,0.158),"sort_by_feet":true,"depth_sort_foot_y":0.407,"modulate":Color(1,1,1,1)},
+	{"id":"copyist_seat","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/wood_armchair_v1.png","pos":Vector2(0.168,0.259),"scale":Vector2(0.103,0.103),"sort_by_feet":true,"depth_sort_foot_y":0.308,"modulate":Color(1,1,1,1)},
+	{"id":"signed_manifests","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/writing_desk_v1.png","pos":Vector2(0.847,0.383),"scale":Vector2(0.173,0.173),"sort_by_feet":true,"depth_sort_foot_y":0.446,"modulate":Color(1,1,1,1)},
+	{"id":"old_roll_shelf","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/bookcase_v1.png","pos":Vector2(0.188,0.192),"scale":Vector2(0.174,0.174),"sort_by_feet":true,"depth_sort_foot_y":0.267,"modulate":Color(1,1,1,1)},
+	{"id":"manifest_wall_shelf","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/warehouse_rack_v1.png","pos":Vector2(0.81,0.204),"scale":Vector2(0.185,0.185),"sort_by_feet":true,"depth_sort_foot_y":0.278,"modulate":Color(1,1,1,1)},
+	{"id":"traveller_bench","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png","pos":Vector2(0.305,0.604),"scale":Vector2(0.105,0.105),"sort_by_feet":true,"depth_sort_foot_y":0.627,"modulate":Color(1,1,1,1)},
+	{"id":"archive_chest","texture":"res://art/modules/luoyang_district_life_20261016f/stock_crate.png","pos":Vector2(0.73,0.596),"scale":Vector2(0.83,0.83),"sort_by_feet":true,"depth_sort_foot_y":0.634,"modulate":Color(1,1,1,1)},
+	{"id":"crates_in_store","texture":"res://art/modules/luoyang_district_life_20261016f/stock_crate.png","pos":Vector2(0.859,0.53),"scale":Vector2(0.74,0.74),"sort_by_feet":true,"depth_sort_foot_y":0.563,"modulate":Color(1,1,1,1)},
+	{"id":"old_ferry_counterfoil","texture":"res://art/props/interactive/interaction_letter_sealed_v1.png","pos":Vector2(0.151,0.325),"render_size_px":Vector2(36,27),"z_index":530,"hide_flag":"ch7_lieyun_posthumous_code_heard"}
+]
+blockers = [
+	{"id":"map_table_foot","pos":Vector2(0.5,0.503),"size":Vector2(0.162,0.04),"walkability_margin":0.0},
+	{"id":"keeper_workbench_foot","pos":Vector2(0.153,0.392),"size":Vector2(0.112,0.034),"walkability_margin":0.0},
+	{"id":"manifest_desk_foot","pos":Vector2(0.847,0.432),"size":Vector2(0.128,0.034),"walkability_margin":0.0},
+	{"id":"rear_archive_wall","pos":Vector2(0.5,0.071),"size":Vector2(0.2,0.084),"walkability_margin":0.0},
+	{"id":"left_shelf_foot","pos":Vector2(0.188,0.251),"size":Vector2(0.091,0.028),"walkability_margin":0.0},
+	{"id":"right_shelf_foot","pos":Vector2(0.81,0.262),"size":Vector2(0.091,0.028),"walkability_margin":0.0},
+	{"id":"keeper_seat_foot","pos":Vector2(0.168,0.3),"size":Vector2(0.046,0.026),"walkability_margin":0.0},
+	{"id":"bench_foot","pos":Vector2(0.305,0.622),"size":Vector2(0.086,0.02),"walkability_margin":0.0},
+	{"id":"archive_chest_foot","pos":Vector2(0.73,0.622),"size":Vector2(0.049,0.027),"walkability_margin":0.0},
+	{"id":"store_crates_foot","pos":Vector2(0.859,0.553),"size":Vector2(0.045,0.025),"walkability_margin":0.0}
+]
+interactions = Array[Dictionary]([])
+portals = Array[Dictionary]([
+	{"id":"return_to_lieyun_assembly_hall", "pos":Vector2(0.500,0.925), "size":Vector2(0.130,0.105), "label":"返回烈云聚义厅", "target_scene":"ch7_s5_lieyun_assembly_hall", "target_pos":Vector2(0.500,0.175), "marker_rotation_degrees":180.0},
+	{"id":"enter_night_transfer_station","pos":Vector2(0.500,0.175),"size":Vector2(0.120,0.085),"label":"进入夜航转运栈","target_scene":"ch7_s10_lieyun_night_transfer_station","target_pos":Vector2(0.50,0.86),"require_flag":"ch7_identity_routes_opened"}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"archive_spawn", "pos":Vector2(0.500,0.875)},
+	{"id":"central_reading_floor", "pos":Vector2(0.500,0.650)},
+	{"id":"witness_position", "pos":Vector2(0.275,0.365)},
+	{"id":"manifest_front", "pos":Vector2(0.725,0.400)},
+	{"id":"vault_front", "pos":Vector2(0.500,0.175)},
+	{"id":"hall_return", "pos":Vector2(0.500,0.925)}
+])
+blocked_probes = [
+	{"id":"map_table_foot","pos":Vector2(0.5,0.503)},
+	{"id":"keeper_workbench_foot","pos":Vector2(0.153,0.392)},
+	{"id":"manifest_desk_foot","pos":Vector2(0.847,0.432)},
+	{"id":"rear_archive_wall","pos":Vector2(0.5,0.071)},
+	{"id":"left_shelf_foot","pos":Vector2(0.188,0.251)}
+]

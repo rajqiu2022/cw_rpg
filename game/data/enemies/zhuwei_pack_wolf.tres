@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"zhuwei_pack_wolf"
+display_name = "洞穴野狼"
+battle_actor_path = "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_ready_01.png"
+battle_actor_scale = 0.82
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_ready_01.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_ready_02.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_ready_03.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_move_01.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_move_02.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_move_03.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_attack_01.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_attack_02.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_attack_03.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_hit_01.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_hit_02.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_hit_03.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_defeat_01.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_defeat_02.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_defeat_03.png", "res://art/sprites/battle/standard_v2/wild_wolf/wild_wolf_defeat_04.png")
+attack_sfx_path = "res://art/audio/animals/sfx_wolf_attack_20261110.wav"
+hit_sfx_path = "res://art/audio/animals/sfx_wolf_hit_20261110.wav"
+level = 2
+max_hp = 112
+max_mp = 0
+attack = 30
+defense = 5
+speed = 11
+skill_ids = Array[StringName]([&"basic_attack"])
+aggression = 0.72
+drop_gold_min = 5
+drop_gold_max = 9
+drop_exp = 22
+drop_random = Array[Dictionary]([{"item_id":"healing_salve", "chance":0.12, "count":1}])

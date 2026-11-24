@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"warrant_xiangzhou_mine_stamp"
+display_name = "铁算盘任敖"
+battle_actor_path = "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_ready_01.png"
+battle_actor_scale = 1.10
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_ready_01.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_ready_02.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_ready_03.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_move_01.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_move_02.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_move_03.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_attack_01.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_attack_02.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_attack_03.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_hit_01.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_hit_02.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_hit_03.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_defeat_01.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_defeat_02.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_defeat_03.png", "res://art/sprites/battle/standard_v2/zhao_wuji/zhao_wuji_defeat_04.png")
+level = 8
+max_hp = 590
+max_mp = 64
+attack = 70
+defense = 18
+speed = 13
+skill_ids = Array[StringName]([&"basic_attack", &"gufeng_kaishan_yidao", &"gufeng_liedi"])
+aggression = 0.76
+drop_gold_min = 0
+drop_gold_max = 0
+drop_exp = 104

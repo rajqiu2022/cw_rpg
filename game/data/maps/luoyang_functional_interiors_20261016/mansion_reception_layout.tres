@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.18619791666666666, 0.337890625, 0.8138020833333334, 0.337890625, 0.9153645833333334, 0.771484375, 0.607421875, 0.771484375, 0.607421875, 0.927734375, 0.3919270833333333, 0.927734375, 0.3919270833333333, 0.771484375, 0.08463541666666667, 0.771484375)])
+blockers = [{"id": "central_screen_foot", "ground_polygon": PackedVector2Array(0.375, 0.3046875, 0.6223958333333334, 0.3046875, 0.6223958333333334, 0.333984375, 0.375, 0.333984375), "walkability_margin": 0.0},
+{"id": "host_left_armchair", "ground_polygon": PackedVector2Array(0.3854166666666667, 0.345703125, 0.4596354166666667, 0.345703125, 0.4596354166666667, 0.3896484375, 0.3854166666666667, 0.3896484375), "walkability_margin": 0.0},
+{"id": "host_right_armchair", "ground_polygon": PackedVector2Array(0.5358072916666666, 0.345703125, 0.609375, 0.345703125, 0.609375, 0.388671875, 0.5358072916666666, 0.388671875), "walkability_margin": 0.0},
+{"id": "host_tea_table", "ground_polygon": PackedVector2Array(0.4713541666666667, 0.341796875, 0.5266927083333334, 0.341796875, 0.5266927083333334, 0.392578125, 0.4713541666666667, 0.392578125), "walkability_margin": 0.0},
+{"id": "left_guest_seating_group", "ground_polygon": PackedVector2Array(0.06901041666666667, 0.4130859375, 0.17838541666666666, 0.4130859375, 0.15625, 0.642578125, 0.06901041666666667, 0.642578125), "walkability_margin": 0.0},
+{"id": "right_guest_seating_group", "ground_polygon": PackedVector2Array(0.8209635416666666, 0.4130859375, 0.9296875, 0.4130859375, 0.9296875, 0.642578125, 0.8430989583333334, 0.642578125), "walkability_margin": 0.0},
+{"id": "left_front_lantern_stand", "ground_polygon": PackedVector2Array(0.054036458333333336, 0.7099609375, 0.10286458333333333, 0.7099609375, 0.10286458333333333, 0.75390625, 0.054036458333333336, 0.75390625), "walkability_margin": 0.0},
+{"id": "right_front_lantern_stand", "ground_polygon": PackedVector2Array(0.8977864583333334, 0.7099609375, 0.9466145833333334, 0.7099609375, 0.9466145833333334, 0.75390625, 0.8977864583333334, 0.75390625), "walkability_margin": 0.0},
+{"id": "left_porcelain_vase", "ground_polygon": PackedVector2Array(0.3391927083333333, 0.306640625, 0.37109375, 0.306640625, 0.37109375, 0.33984375, 0.3391927083333333, 0.33984375), "walkability_margin": 0.0},
+{"id": "right_porcelain_vase", "ground_polygon": PackedVector2Array(0.6256510416666666, 0.306640625, 0.66015625, 0.306640625, 0.66015625, 0.341796875, 0.6256510416666666, 0.341796875), "walkability_margin": 0.0}]
+portals = []
+walkable_probes = [{"id": "spawn", "pos": Vector2(0.5, 0.68359375), "source_feet": true}, {"id": "host_reception", "pos": Vector2(0.5, 0.4521484375), "source_feet": true}, {"id": "left_guest_area", "pos": Vector2(0.236328125, 0.5517578125), "source_feet": true}, {"id": "right_guest_area", "pos": Vector2(0.7610677083333334, 0.5517578125), "source_feet": true}, {"id": "central_courtesy", "pos": Vector2(0.5, 0.6298828125), "source_feet": true}, {"id": "exit", "pos": Vector2(0.5, 0.8642578125), "source_feet": true}]
+metadata/functional_interior_author = "res://data/maps/luoyang_functional_interiors_20261016/mansion_reception_author.json"

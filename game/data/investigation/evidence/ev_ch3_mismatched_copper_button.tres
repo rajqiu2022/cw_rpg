@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch3_mismatched_copper_button"
+display_name = "差半分的制式铜扣"
+description = "茗雾影廊里的铜扣与大会证物纹样相同，尺寸却差了半分。它可能出自同一批匠人，也可能是有人依据旧样翻模。"
+chapter = 3
+category = &"forgery"
+source_hint = "茗雾影廊"
+related_testimony_ids = Array[StringName]([&"ts_ch3_mingwu_common_artisan"])
+tags = Array[StringName]([&"mingwu", &"mold", &"ambiguous"])

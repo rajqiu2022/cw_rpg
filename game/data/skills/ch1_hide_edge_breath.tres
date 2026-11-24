@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+skill_id = &"ch1_hide_edge_breath"
+display_name = "藏锋息法"
+description = "矿道行走时养成的短促吐纳。习得后提高守御；装备后，小幅强化近身刀剑。"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_inner_breath_v1.png"
+kind = 2
+target = 4
+quality = 3
+required_insight = 6
+is_passive = true
+is_internal_art = true
+passive_guard_bonus = 2
+passive_guard_growth = 1
+equip_weapon_categories = Array[StringName]([&"sword", &"blade"])
+equip_damage_scaling_bonus = 5
+equip_damage_scaling_growth = 1
+equipped_effect_description = "刀剑招式伤害系数提升。"
+max_level = 3
+self_practice_level_cap = 3

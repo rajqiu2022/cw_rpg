@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch6_side_05_stained_wick"
+title="灯布上的乌痕"
+kind=1
+desc_not_started="林西正屋门口有人来给伤者送药。"
+desc_in_progress="在正屋茶桌的托盘下找旧灯布，交给送药人辨认针镖上的毒痕。"
+desc_completed="针镖上的黑痕是普通麻毒。送药人赠了一枚丹砂佩。"
+tracker_hint="林西正屋 · 送药人 → 茶桌托盘 → 送药人"
+starts_in_chapter=6
+completes_in_chapter=6
+completion_triggers=Array[String](["flag_set:ch6_wick_returned"])
+progress_records=Array[Dictionary]([{"trigger":"flag_set:ch6_wick_found","text":"已取到沾着断针的灯布，回门边找送药人。"}])
+reward_items=Array[Dictionary]([{"item_id":"cinnabar_pendant","count":1}])

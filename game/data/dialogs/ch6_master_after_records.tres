@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "原册写我被人接走，你的旁注却改成途中失散。那一行，是你改的。"
+on_end = "next:master"
+
+[sub_resource type="Resource" id="master"]
+script = ExtResource("2")
+node_id = &"master"
+speaker = "刑樊天"
+text = "是我改的。可裁走去向的人不是我。去白水驿，重走那段押运路；回来后，我把该承担的都说清楚。"
+voice_emotion = "solemn"
+set_flags = Array[Dictionary]([{"key":"ch6_old_convoy_route_unlocked", "value":true}])
+accept_quest = &"q_ch6_main_04_old_convoy_route"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_master_after_records"
+required_story_flag = &"chapter5_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("master")])

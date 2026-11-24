@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.12369791666666667, 0.359375, 0.849609375, 0.359375, 0.9114583333333334, 0.685546875, 0.61328125, 0.685546875, 0.61328125, 0.83203125, 0.3697916666666667, 0.83203125, 0.3697916666666667, 0.685546875, 0.083984375, 0.685546875)])
+visual_objects = [{"id": "herbal_shop_medicine_cabinet_0", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/medicine_cabinet_v1.png", "pos": Vector2(0.1349479166666667, 0.16092773437500002), "render_size_px": Vector2(445.43999999999994, 296.96), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.4296875, "assembled_furniture": true},
+{"id": "herbal_shop_medicine_cabinet_1", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/medicine_cabinet_v1.png", "pos": Vector2(0.5861458333333333, 0.18873046875), "render_size_px": Vector2(399.36, 266.24), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.4296875, "assembled_furniture": true},
+{"id": "herbal_shop_medicine_worktable_2", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/medicine_worktable_v1.png", "pos": Vector2(0.24552083333333333, 0.454296875), "render_size_px": Vector2(245.76, 163.84), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.595703125, "assembled_furniture": true},
+{"id": "herbal_shop_dining_table_3", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png", "pos": Vector2(0.6691666666666666, 0.5008984375), "render_size_px": Vector2(184.32, 122.88), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.6103515625, "assembled_furniture": true},
+{"id": "herbal_shop_wood_armchair_4", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_armchair_v1.png", "pos": Vector2(0.6691666666666666, 0.5490234375), "render_size_px": Vector2(184.32, 122.88), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.662109375, "assembled_furniture": true},
+{"id": "herbal_shop_long_bench_5", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png", "pos": Vector2(0.5048958333333333, 0.589609375), "render_size_px": Vector2(168.96, 112.64), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.673828125, "assembled_furniture": true}]
+blockers = [{"id": "herbal_shop_medicine_cabinet_0", "ground_polygon": PackedVector2Array(0.18573567708333336, 0.39966796875, 0.37699218749999996, 0.39966796875, 0.37699218749999996, 0.43025390625, 0.18573567708333336, 0.43025390625), "walkability_margin": 0.0},
+{"id": "herbal_shop_medicine_cabinet_1", "ground_polygon": PackedVector2Array(0.6316796875, 0.4027734375, 0.8031510416666667, 0.4027734375, 0.8031510416666667, 0.4301953125, 0.6316796875, 0.4301953125), "walkability_margin": 0.0},
+{"id": "herbal_shop_medicine_worktable_2", "ground_polygon": PackedVector2Array(0.26614583333333336, 0.567890625, 0.3852083333333334, 0.567890625, 0.3852083333333334, 0.596171875, 0.26625, 0.596171875), "walkability_margin": 0.0},
+{"id": "herbal_shop_dining_table_3", "ground_polygon": PackedVector2Array(0.7010416666666667, 0.581171875, 0.7574479166666667, 0.581171875, 0.7650260416666667, 0.6103515625, 0.6933854166666666, 0.6103515625), "walkability_margin": 0.0},
+{"id": "herbal_shop_wood_armchair_4", "ground_polygon": PackedVector2Array(0.7067447916666666, 0.63703125, 0.7521354166666666, 0.63703125, 0.7522916666666667, 0.6622265625, 0.7065885416666666, 0.6622265625), "walkability_margin": 0.0},
+{"id": "herbal_shop_long_bench_5", "ground_polygon": PackedVector2Array(0.5180013020833333, 0.663408203125, 0.6020052083333334, 0.663408203125, 0.6020052083333334, 0.673935546875, 0.5180013020833333, 0.673935546875), "walkability_margin": 0.0}]
+portals = [{"id": "return_assembled_herbal_shop", "pos": Vector2(0.5, 0.810546875), "size": Vector2(0.06510416666666667, 0.0234375), "target_scene": "ch4_s3_luoyang_market", "target_pos": Vector2(0.8235677083333334, 0.255859375), "auto_trigger": false, "label": "返回洛阳"}]
+metadata/assembled_room_contract = "source_feet_assembled_interiors_20261016g"

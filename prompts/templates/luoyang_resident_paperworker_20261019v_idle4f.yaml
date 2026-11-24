@@ -1,0 +1,53 @@
+{
+  "id": "luoyang_resident_paperworker_20261019v_idle4f_candidate",
+  "description": "候选：以先完成的同人半身立绘锁身份，生成完整四等格横排站立微动；运行后处理另验640x160。",
+  "status": "candidate_prompt_only_blocked_until_portrait_accepted",
+  "mode": "builtin",
+  "model": null,
+  "provider": null,
+  "quality": "high",
+  "size": "2048x512",
+  "transparent_background": true,
+  "attempt_limit": 1,
+  "auto_retry": false,
+  "reference_images": [
+    "assets/raw/luoyang_resident_life_20261019v/luoyang_resident_paperworker_portrait_20261019v_candidate.png"
+  ],
+  "require_reference_images": true,
+  "reference_roles": [
+    "Identity reference: the accepted independent portrait candidate of this exact paper artisan. This path is planned, not an assertion the image already exists. Root must supply the actual saved and inspected portrait file before this call."
+  ],
+  "candidate_identity": {
+    "existing_npc_id": "luoyang_paper_artisan_20261016",
+    "existing_display_name": "老纸匠",
+    "age_design": "about 58, proposed visual design",
+    "wardrobe_design": "faded indigo short work jacket, warm-grey work apron, rolled sleeves, plain wooden hairpin; add plain dark loose work trousers and coarse cloth shoes",
+    "portrait_required_first": true
+  },
+  "raw_layout_contract": {
+    "rows": 1,
+    "columns": 4,
+    "equal_square_cells": true,
+    "normalized_cell_center_x": [0.125, 0.375, 0.625, 0.875],
+    "normalized_feet_y_within_cell": 0.95,
+    "normalized_character_height_within_cell": 0.875,
+    "direction": "down/front only",
+    "camera": "fixed orthographic 2.5D, about 30 degrees downward",
+    "all_four_frames_generated_together": true,
+    "generated_dimensions_must_be_measured_not_assumed": true
+  },
+  "runtime_contract_pending": {
+    "width": 640,
+    "height": 160,
+    "hframes": 4,
+    "cell_width": 160,
+    "cell_height": 160,
+    "processing": "One shared scale and common foot baseline for all cells; no per-frame fit, mirroring, manufactured translate-only animation or duplicate-frame idle.",
+    "target_body_height_px": 140,
+    "target_bottom_padding_px": 8,
+    "actual_alpha_feet_must_be_measured": true,
+    "formal_admission": false
+  },
+  "prompt_template": "Use case: historical-scene\nAsset type: one four-frame horizontal full-body field idle-sprite strip for a Chinese wuxia RPG.\nInput image 1 is the IDENTITY reference: preserve this exact older paper artisan's face, grey temples, short salt-and-pepper beard, small topknot with plain wooden hairpin, faded indigo rolled-sleeve work jacket and undyed warm-grey apron. No redesign into a different person. Complete the unseen lower body with plain dark loose working trousers and simple coarse cloth shoes. No straw hat, pack, tray, weapon, armour, official cap or ornate clothing.\nCamera and direction: one fixed orthographic 2.5D camera, approximately 30 degrees downward, looking at the front of the man. He faces directly down toward the player/viewer, not sideways, not three-quarter-left/right, not overhead or perspective foreshortened. Realistic adult body proportions, substantial 3D-like painted fabric and skin, quiet upper-left daylight, gentle cool fill, coherent with the supplied portrait.\nLayout: one row of EXACTLY FOUR equal square cells across a wide 4:1 canvas; no extra row, contact sheet, decorative grid or labels. Ideally 2048 by 512 pixels, four 512-square cells. Each complete man is centered in his own cell at full-image relative x positions 1/8, 3/8, 5/8 and 7/8. All heads, wooden hairpins, hands, hems and both shoes are complete and comfortably inside their individual cells. Identical scale in all four frames: figure height about 87.5 percent of cell height, feet on the same horizontal baseline at about 95 percent of cell height, equal upper and side safety space. Do not stretch the man to fill the cell width.\nAction, left to right, four genuine sequential drawings of one restrained natural idle loop: frame 1 relaxed planted rest, frame 2 small inhalation lifting the chest/shoulder cloth a little with one slow eyelid narrowing, frame 3 gentle exhalation with a slight apron-fold settling and fingertips relaxing, frame 4 almost resting again ready to loop to frame 1. These are small independently drawn anatomical/cloth changes, not four identical pasted men, not translated or resized copies, not four walking steps. Keep both soles planted at the SAME coordinates, pelvis and head axis fixed, no hopping, sliding, swaying from side to side or direction change. Head size, age, beard, hair, apron knot and garment colours stay consistent.\nBackground: genuinely transparent RGBA alpha across all unused space. No painted checkerboard, magenta/white/grey backdrop, floor, scenery, cast shadow or ambient contact oval. Only the four figures and their clean antialiased edges.\nAvoid: cropped hairpin or feet, cross-cell limbs, extra people or limbs, different ages between frames, disproportionate giant heads, chibi/anime look, blur, dark silhouettes, text, numbering, borders, watermark, duplicates or a static portrait copied four times. Produce this ONE strip with all four poses together.\n",
+  "variables": {}
+}

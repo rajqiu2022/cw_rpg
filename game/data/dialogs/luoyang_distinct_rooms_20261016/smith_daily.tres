@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dialog"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "铁匠师傅"
+text = "炉前火旺，客人站在砧台外说话。修器、淬火、收料，各有各的地方。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dialog")
+dialog_id = &"luoyang_distinct_rooms_20261016_smith_daily"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

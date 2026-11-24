@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "药包仍包着防水油布，内附短笺：白鹿渡段长风失物。你把药包妥善收好，带回渡口应能找到失主。"
+set_flags = Array[Dictionary]([{"key":"openworld_snow_medicine_found","value":true}])
+
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_snow_medicine"
+nodes = Array[Resource]([SubResource("start")])
+blocked_story_flag = &"openworld_snow_medicine_found"

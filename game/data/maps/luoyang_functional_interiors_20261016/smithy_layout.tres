@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.1171875, 0.341796875, 0.876953125, 0.341796875, 0.9440104166666666, 0.771484375, 0.6171875, 0.771484375, 0.6171875, 0.9521484375, 0.384765625, 0.9521484375, 0.384765625, 0.771484375, 0.055989583333333336, 0.771484375)])
+blockers = [{"id": "forge_hearth_base", "ground_polygon": PackedVector2Array(0.15299479166666666, 0.333984375, 0.310546875, 0.333984375, 0.310546875, 0.404296875, 0.15299479166666666, 0.404296875), "walkability_margin": 0.0},
+{"id": "bellows_support", "ground_polygon": PackedVector2Array(0.3248697916666667, 0.337890625, 0.4537760416666667, 0.337890625, 0.4537760416666667, 0.3974609375, 0.3248697916666667, 0.3974609375), "walkability_margin": 0.0},
+{"id": "anvil_stump", "ground_polygon": PackedVector2Array(0.21549479166666666, 0.470703125, 0.3001302083333333, 0.470703125, 0.3001302083333333, 0.572265625, 0.21549479166666666, 0.572265625), "walkability_margin": 0.0},
+{"id": "left_water_bucket", "ground_polygon": PackedVector2Array(0.17838541666666666, 0.5166015625, 0.21419270833333334, 0.5166015625, 0.21419270833333334, 0.556640625, 0.17838541666666666, 0.556640625), "walkability_margin": 0.0},
+{"id": "left_workbench", "ground_polygon": PackedVector2Array(0.11588541666666667, 0.4521484375, 0.17903645833333334, 0.4521484375, 0.17317708333333334, 0.541015625, 0.10677083333333333, 0.541015625), "walkability_margin": 0.0},
+{"id": "rear_weapon_rack", "ground_polygon": PackedVector2Array(0.59765625, 0.3115234375, 0.8567708333333334, 0.3115234375, 0.8567708333333334, 0.34765625, 0.59765625, 0.34765625), "walkability_margin": 0.0},
+{"id": "rear_coal_baskets", "ground_polygon": PackedVector2Array(0.6438802083333334, 0.3583984375, 0.7369791666666666, 0.3583984375, 0.7369791666666666, 0.3974609375, 0.6438802083333334, 0.3974609375), "walkability_margin": 0.0},
+{"id": "quench_tub", "ground_polygon": PackedVector2Array(0.7350260416666666, 0.37890625, 0.8580729166666666, 0.37890625, 0.8580729166666666, 0.4501953125, 0.7350260416666666, 0.4501953125), "walkability_margin": 0.0},
+{"id": "quench_front_bench", "ground_polygon": PackedVector2Array(0.7115885416666666, 0.4248046875, 0.7897135416666666, 0.4248046875, 0.7897135416666666, 0.46875, 0.7115885416666666, 0.46875), "walkability_margin": 0.0},
+{"id": "right_mid_grinding_station", "ground_polygon": PackedVector2Array(0.8138020833333334, 0.4521484375, 0.8860677083333334, 0.4521484375, 0.8860677083333334, 0.521484375, 0.8138020833333334, 0.521484375), "walkability_margin": 0.0},
+{"id": "right_lower_workbench", "ground_polygon": PackedVector2Array(0.8671875, 0.548828125, 0.9348958333333334, 0.548828125, 0.9348958333333334, 0.650390625, 0.8671875, 0.650390625), "walkability_margin": 0.0},
+{"id": "left_front_tool_storage", "ground_polygon": PackedVector2Array(0.061848958333333336, 0.736328125, 0.2545572916666667, 0.736328125, 0.2545572916666667, 0.783203125, 0.061848958333333336, 0.783203125), "walkability_margin": 0.0},
+{"id": "right_front_tool_storage", "ground_polygon": PackedVector2Array(0.7434895833333334, 0.734375, 0.9153645833333334, 0.734375, 0.9153645833333334, 0.78515625, 0.7434895833333334, 0.78515625), "walkability_margin": 0.0}]
+portals = [{"id": "return_smithy", "pos": Vector2(0.5, 0.8642578125), "size": Vector2(0.07161458333333333, 0.029296875), "target_scene": "ch4_s3_luoyang_market", "target_pos": Vector2(0.7552083333333334, 0.4267578125), "auto_trigger": false, "label": "返回南市"}]
+walkable_probes = [{"id": "spawn", "pos": Vector2(0.5, 0.7001953125), "source_feet": true}, {"id": "forge_workpoint", "pos": Vector2(0.3203125, 0.44921875), "source_feet": true}, {"id": "anvil_workpoint", "pos": Vector2(0.3430989583333333, 0.5419921875), "source_feet": true}, {"id": "quench_workpoint", "pos": Vector2(0.6861979166666666, 0.5078125), "source_feet": true}, {"id": "weapon_rack_view", "pos": Vector2(0.6002604166666666, 0.427734375), "source_feet": true}, {"id": "exit", "pos": Vector2(0.5, 0.8642578125), "source_feet": true}]
+metadata/functional_interior_author = "res://data/maps/luoyang_functional_interiors_20261016/smithy_author.json"

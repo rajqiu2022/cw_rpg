@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_mask_path = "res://art/navigation_masks/ch5_snow_pass_walk_v1.svg"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.18,1.00, 0.15,0.70, 0.28,0.55, 0.42,0.40, 0.72,0.34, 0.82,0.08, 0.92,0.06, 0.80,0.42, 0.98,0.90, 0.88,1.00, 0.64,0.62, 0.32,0.62, 0.32,1.00)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"center_rock_spine", "pos":Vector2(0.47,0.72), "size":Vector2(0.20,0.12)},
+	{"id":"upper_camp_debris", "pos":Vector2(0.67,0.31), "size":Vector2(0.10,0.10)}
+]
+interactions = []
+portals = []
+walkable_probes = [
+	{"id":"camp_spawn", "pos":Vector2(0.25,0.90)},
+	{"id":"battle_terrace", "pos":Vector2(0.52,0.51)},
+	{"id":"mine_exit", "pos":Vector2(0.84,0.13)},
+	{"id":"lower_right_path", "pos":Vector2(0.86,0.84)}
+]
+blocked_probes = [
+	{"id":"cliff_void", "pos":Vector2(0.18,0.28)},
+	{"id":"center_rock_spine", "pos":Vector2(0.47,0.72)}
+]

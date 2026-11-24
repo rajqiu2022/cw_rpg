@@ -1,0 +1,155 @@
+extends RefCounted
+## One Field-owned additive lease. No Scene/record/nav alias or cross-field cache.
+const G=preload("res://scripts/city/luoyang_district_life_geometry_20261016f.gd")
+const CROWD=preload("res://scripts/city/luoyang_district_life_crowd_20261016f.gd")
+const SPACING=preload("res://scripts/city/luoyang_building_spacing_20261017p.gd")
+const FLAG="--luoyang-district-life-20261016f"
+const FORMAL_ENABLED=true
+const SELF="res://scripts/city/luoyang_district_life_20261016f.gd"
+const AUTHOR_PATH="res://data/maps/luoyang_district_life_20261016f/author.json"
+const BIND_PATH="res://data/maps/luoyang_district_life_20261016f/binding.json"
+const BIND_SHA="8bce718d3bfb363d15b9845aeedd113e02ff7cf7ef107ca94d3983363f33b668"
+const IDS=[&"ch4_s0_luoyang_gate",&"ch4_s1_luoyang_yamen",&"ch4_s2_canal_docks",&"ch4_s3_luoyang_market"]
+var projected: Dictionary={}
+var parent_render: Array=[]
+var _solids: Array[PackedVector2Array]=[]
+var _bounds: Array[Rect2]=[]
+var _scene: SceneScript
+var _sources: Dictionary={}
+var _textures: Dictionary={}
+var _config: Dictionary={}
+var _receipt: Dictionary={"matched":false,"finalized":false}
+var error: String=""
+static func enabled() -> bool: return FORMAL_ENABLED or FLAG in OS.get_cmdline_user_args()
+static func requested(id: StringName) -> bool: return enabled() and id in IDS
+static func binding() -> Dictionary:
+	if BIND_SHA.length()!=64 or FileAccess.get_sha256(BIND_PATH)!=BIND_SHA: return {}
+	var raw: Variant=JSON.parse_string(FileAccess.get_file_as_string(BIND_PATH))
+	return raw if raw is Dictionary and raw.get("status")=="READY_SOURCE_BOUND_DISTRICT_LIFE" and not raw.get("source_sha256",{}).is_empty() else {}
+static func author(config: Dictionary) -> Dictionary:
+	if config.is_empty() or FileAccess.get_sha256(AUTHOR_PATH)!=config.get("author_sha256",""): return {}
+	var raw: Variant=JSON.parse_string(FileAccess.get_file_as_string(AUTHOR_PATH))
+	return raw if raw is Dictionary and raw.get("status")=="READY_AUTHORED_DISTRICT_LIFE" and raw.get("districts",{}).size()==4 else {}
+static func cpu_proof_valid(config: Dictionary,data: Dictionary) -> bool:
+	var path: String=String(config.get("cpu_proof_path","")); var sha: String=String(config.get("cpu_proof_sha256",""))
+	if not path.begins_with("res://build/luoyang_district_life_publication_20261016f/") or ".." in path or sha.length()!=64 or config.get("source_sha256",{}).get(path)!=sha or FileAccess.get_sha256(path)!=sha: return false
+	var proof: Variant=JSON.parse_string(FileAccess.get_file_as_string(path))
+	if not proof is Dictionary or proof.get("passed")!=true or proof.get("status")!="BOUNDED_CPU_NEW_DELTA_PROOF_NOT_RUNTIME" or proof.get("old_nav_unchanged")!=true or proof.get("author_sha256")!=config.author_sha256 or not G._c()._equal_value(proof.get("rows"),config.get("cpu_audit")): return false
+	if proof.get("source_sha256",{}).is_empty() or proof.get("rows",{}).size()!=4: return false
+	for source: String in proof.source_sha256:
+		if config.source_sha256.get(source)!=proof.source_sha256[source]: return false
+	var seen: Dictionary={}; var proofs: Dictionary=config.get("texture_proofs",{})
+	if proofs.size()!=6 or data.assets.size()!=6: return false
+	for asset: Dictionary in data.assets.values():
+		var texture: String=String(asset.texture); var row: Dictionary=proofs.get(texture,{})
+		if seen.has(texture) or row.get("full_rgba_exact")!=true or row.get("params23")!=true or G.v(row.get("size_px"))!=G.v(asset.size_px) or row.get("import_path")!=texture+".import": return false
+		for pair: Array in [[texture,row.get("source_sha256")],[row.get("import_path"),row.get("import_sha256")],[row.get("compiled_path"),row.get("compiled_sha256")]]:
+			if not pair[0] is String or not pair[1] is String or pair[1].length()!=64 or config.source_sha256.get(pair[0])!=pair[1]: return false
+		seen[texture]=true
+	return true
+static func source_paths() -> Dictionary:
+	var config:=binding()
+	if config.is_empty(): return {}
+	var out: Dictionary={SELF:true,BIND_PATH:true,AUTHOR_PATH:true,"res://build/luoyang_layout_quest_20261018t_layout_source01/layout_transform_retry2.gd":true,"res://build/luoyang_layout_quest_20261018t_layout_source01/author_retry2.json":true,"res://scripts/city/luoyang_district_life_geometry_20261016f.gd":true,"res://scripts/city/luoyang_district_life_fade_20261016f.gd":true}
+	out.merge(CROWD.source_paths())
+	for path: String in config.source_sha256:
+		if not path.begins_with("res://") or ".." in path: return {}
+		out[path]=true
+	return out
+static func _proof(scene: SceneScript) -> Dictionary:
+	var c: Variant=G._c()
+	for proof: Dictionary in [c._transition_validation,c._resident_ready]:
+		if proof.get("scene")==scene and proof.get("record")==c._records.get(String(scene.scene_id)): return proof
+	return {}
+static func _same_wire(left: Variant,right: Variant) -> bool:
+	return G._c()._equal_value(JSON.parse_string(JSON.stringify(left,"\t",true,true)),right)
+static func _parent_bound(scene: SceneScript) -> bool:
+	if scene!=null and scene.has_meta("luoyang_layout_quest_20261018t"): return load("res://scripts/city/luoyang_precomputed_bundle_20261018r.gd").whole_bound(scene)
+	if scene==null or not G._c().is_v3(scene): return false
+	var id: String=String(scene.scene_id)
+	if id=="ch4_s3_luoyang_market": return load("res://scripts/city/luoyang_city_assembled_runtime_20261016b.gd").bound(scene)
+	if id=="ch4_s1_luoyang_yamen": return load("res://scripts/city/luoyang_yamen_annex_runtime_20261016.gd").bound(scene)
+	return id in ["ch4_s0_luoyang_gate","ch4_s2_canal_docks"] and load("res://scripts/city/luoyang_harbour_life_runtime_20261016.gd").bound(scene)
+func prepare(scene: SceneScript,original_render: Array,owner: Callable) -> bool:
+	if not owner.is_valid() or not owner.call() or not requested(scene.scene_id) or not _parent_bound(scene): return _reject("DISTRICT_PARENT_OR_OWNER")
+	_config=binding(); var data:=author(_config)
+	if data.is_empty() or not cpu_proof_valid(_config,data): return _reject("DISTRICT_BINDING_OR_CPU_PROOF_PENDING_OR_CHANGED")
+	var proof:=_proof(scene)
+	if proof.is_empty(): return _reject("DISTRICT_ORIGINAL_CITY_RECEIPT_MISSING")
+	for path: String in _config.source_sha256:
+		if proof.get("sources",{}).get(path)!=_config.source_sha256[path]: return _reject("DISTRICT_SOURCE_NOT_IN_CITY_FIRST:"+path)
+	for path: String in source_paths():
+		if not proof.sources.has(path): return _reject("DISTRICT_INCOMPLETE_SOURCE_SET:"+path)
+	_sources=proof.sources.duplicate(true); _scene=scene
+	projected=G.project(data,scene.scene_id)
+	if scene.has_meta("luoyang_layout_quest_20261018t"):
+		var t_author: Dictionary=load("res://scripts/city/luoyang_precomputed_bundle_20261018r.gd").layout_author(scene)
+		if t_author.is_empty(): return _reject("T_AUTHOR_ABSENT")
+		projected=load("res://build/luoyang_layout_quest_20261018t_layout_source01/layout_transform_retry2.gd").district_projection(projected,scene.scene_id,t_author)
+	if projected.is_empty(): return _reject("DISTRICT_AUTHOR_PROJECT_REFUSED")
+	var expected: Dictionary=projected.parent.duplicate(true)
+	var current: Dictionary=G._c()._records.get(String(scene.scene_id),{}).duplicate(true)
+	# Only these already-published parent's runtime receipts are outside its
+	# frozen JSON record. Their values remain explicitly bound, not ignored.
+	var receipts: Dictionary={}
+	if scene.scene_id==&"ch4_s3_luoyang_market": receipts={"assembled_runtime_binding_sha":load("res://scripts/city/luoyang_city_assembled_runtime_20261016b.gd").BIND_SHA,"assembled_parent_task_semantics_preserved":true}
+	elif scene.scene_id==&"ch4_s1_luoyang_yamen": receipts={"annex_runtime_binding_sha":load("res://scripts/city/luoyang_yamen_annex_runtime_20261016.gd").BIND_SHA,"annex_parent_semantics_unchanged":true}
+	else: receipts={"harbour_runtime_binding_sha":load("res://scripts/city/luoyang_harbour_life_runtime_20261016.gd").BIND_SHA,"harbour_parent_task_semantics_preserved":true}
+	for key: String in receipts:
+		if current.get(key)!=receipts[key]: return _reject("DISTRICT_PARENT_RUNTIME_RECEIPT:"+key)
+		current.erase(key)
+	if scene.has_meta(SPACING.META):
+		current=SPACING.restore_parent_record(current,expected,scene)
+		if current.is_empty(): return _reject("DISTRICT_SPACING_EXACT_REMOVE_ONE_PARENT_MAPPING")
+	if scene.has_meta("luoyang_layout_quest_20261018t"):
+		current=load("res://scripts/city/luoyang_precomputed_bundle_20261018r.gd").restore_parent_record(scene,current,expected)
+		if current.is_empty(): return _reject("T_COMPLETE_REVERSIBLE_PARENT_RECORD")
+	if not _same_wire(current,expected): return _reject("DISTRICT_COMPLETE_PARENT_RECORD_CHANGED")
+	if not _config.get("cpu_audit",{}).get(String(scene.scene_id),{}).get("passed",false): return _reject("DISTRICT_CPU_AUDIT_NOT_PASSED")
+	parent_render=original_render.duplicate(true); _solids=G.delta_solids(projected)
+	for poly: PackedVector2Array in _solids:
+		var low: Vector2=poly[0]; var high: Vector2=poly[0]
+		for point: Vector2 in poly: low=low.min(point); high=high.max(point)
+		_bounds.append(Rect2(low,high-low))
+	var assets: Dictionary=data.assets; var used: Dictionary={}
+	for item: Dictionary in projected.additions+projected.replacements: used[String(assets[item.district_life_asset_id].texture)]=true
+	for path: String in used:
+		if not owner.call(): return _reject("DISTRICT_TEXTURE_OWNER_CHANGED")
+		var row: Dictionary=_config.get("texture_proofs",{}).get(path,{})
+		var texture:=ResourceLoader.load(path) as Texture2D
+		var image: Image=texture.get_image() if texture!=null else null
+		if row.is_empty() or image==null or image.get_size()!=Vector2i(row.size_px[0],row.size_px[1]): return _reject("DISTRICT_TEXTURE_SIZE:"+path)
+		image.convert(Image.FORMAT_RGBA8)
+		if G._c()._transition_bytes_sha(image.get_data())!=row.get("rgba_sha256",""): return _reject("DISTRICT_ACTUAL_RGBA:"+path)
+		_textures[path]=texture; image=null
+		await (Engine.get_main_loop() as SceneTree).process_frame
+	var npcs:=CROWD.project(projected.spec.crowd)
+	if npcs.size()!=projected.spec.crowd.size(): return _reject("DISTRICT_CROWD_AUTHOR")
+	_receipt={"matched":true,"finalized":false,"scene_id":String(scene.scene_id),"scene_instance":scene.get_instance_id(),"binding_sha256":BIND_SHA,"author_sha256":_config.author_sha256,"source_first_in_city_receipt":true,"source_count":_sources.size(),"texture_verified":used.size(),"physical_delta_count":_solids.size(),"new_object_ids":[],"replacement_ids":[],"new_npc_ids":[],"owner_token":int(proof.get("token",0)),"old_nav_unchanged":true}
+	for item: Dictionary in projected.additions: _receipt.new_object_ids.append(String(item.id))
+	for item: Dictionary in projected.replacements: _receipt.replacement_ids.append(String(item.id))
+	for npc: Dictionary in npcs: _receipt.new_npc_ids.append(npc.npc_id)
+	return true if owner.call() else _reject("DISTRICT_PREPARE_OWNER_CHANGED")
+func render_objects(original: Array) -> Array: return G.apply_render(original,projected) if _scene!=null else []
+func navigation_objects(original: Array) -> Array: return G.apply_render(original,projected) if _scene!=null else []
+func npcs() -> Array: return CROWD.project(projected.spec.crowd) if _scene!=null else []
+func safe_foot(foot: Vector2,full: bool=false) -> bool:
+	if _scene==null or not foot.is_finite(): return false
+	# Geometry is compiled once per Field. Per-frame queries do not read files,
+	# rebuild author polygons, scan875 pixels, or allocate offscreen polygons.
+	var body:=Rect2(foot-Vector2(17,12),Vector2(34,24))
+	var near: Array[PackedVector2Array]=[]
+	for i: int in _bounds.size():
+		if body.intersects(_bounds[i],true): near.append(_solids[i])
+	return G.safe_foot(near,foot,Vector2(17,12),full)
+func texture_matches(path: String,texture: Texture2D) -> bool: return not _textures.has(path) or _textures[path]==texture
+func finalize(scene: SceneScript) -> bool:
+	var proof:=_proof(scene)
+	if scene!=_scene or proof.is_empty() or not G._c()._equal_value(_sources,proof.sources) or (proof.get("live_scope",false) and proof.get("sources_finalized")!=true): return _reject("DISTRICT_FINAL_CITY_OWNER_OR_SOURCE")
+	_receipt.finalized=true; return true
+func state() -> Dictionary: return _receipt.duplicate(true)
+func release() -> void:
+	_scene=null; _textures.clear(); _solids.clear(); _bounds.clear(); projected.clear(); parent_render.clear(); _sources.clear(); _config.clear()
+	_receipt["released"]=true
+func _reject(message: String) -> bool:
+	error=message; _receipt["error"]=message; _receipt["finalized"]=false; release(); return false

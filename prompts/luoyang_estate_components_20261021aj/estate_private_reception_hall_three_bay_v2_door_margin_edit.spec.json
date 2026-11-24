@@ -1,0 +1,66 @@
+{
+  "change_id": "luoyang-estate-components-20261021aj",
+  "task_id": "luoyang_estate_components_20261021aj_private_reception_hall_three_bay_v2_door_margin_edit",
+  "intent": "targeted_edit",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "edit",
+  "transparent_background": true,
+  "input_images": [
+    {
+      "path": "assets/raw/luoyang_estate_components_20261021aj/estate_private_reception_hall_three_bay_v1.png",
+      "png_sha256": "5DA2B02391BE94B0E4C7B8EAECD34211B0972E60D36F19B1ED8FD90453A8C9A6",
+      "role": "sole_edit_target"
+    }
+  ],
+  "references_required": 1,
+  "attempt_budget": 1,
+  "cli_fallback_allowed": false,
+  "output_raw_path": "assets/raw/luoyang_estate_components_20261021aj/estate_private_reception_hall_three_bay_v2_door_margin_edit.png",
+  "measured_failure_input": {
+    "report_path": "game/build/luoyang_estate_courtyard_20261021aj_qa01/raw_three_first.json",
+    "report_sha256": "61E3A46E5A8C994F5D273798D60413DC4456D3781AE780AEA1E9F2234C2ADA19",
+    "source_canvas_px": [1765, 891],
+    "complete_A1_bbox_exclusive": [0, 0, 1732, 891],
+    "complete_A1_width_px": 1732,
+    "manual_clear_door_vertical_landmarks_y_approx": [452, 704],
+    "manual_clear_door_height_px_approx": 252,
+    "nominal_world_width_px": 760,
+    "nominal_uniform_scale": 0.4387990762124711,
+    "nominal_world_door_height_px_approx": 110.57736720554273,
+    "failure": "door_below_120_world_px_and_A1_margin_edge_fail"
+  },
+  "runtime_target": {
+    "complete_A1_world_width_px": 760,
+    "complete_A1_world_height_px_max": 450,
+    "clear_door_world_height_px_min": 120,
+    "complete_A1_width_over_clear_door_height_max": 5.8,
+    "uniform_scale_only": true
+  },
+  "render_scale_contract": {
+    "width_basis": "complete_A1_world_bbox",
+    "uniform_scale_source": "world_A1_width/source_A1_width",
+    "render_size_formula": "render_size_px = source_canvas_size_px * uniform_scale",
+    "same_scale_measurements_required": [
+      "conservative_manual_clear_door_height_px_with_uncertainty",
+      "complete_A1_height_px",
+      "all_A1_pixels_including_alpha_1_to_15"
+    ],
+    "weak_alpha_must_not_be_discarded_or_thresholded": true
+  },
+  "alpha_acceptance": {
+    "mode": "RGBA",
+    "complete_A1_subject_required": true,
+    "minimum_true_transparent_margin_fraction_each_side": 0.10,
+    "edit_prompt_target_margin_fraction_each_side": 0.15,
+    "subject_not_cropped": true,
+    "no_local_cleanup_or_thresholding": true
+  },
+  "identity_must_remain": {
+    "storeys": 1,
+    "bays": 3,
+    "principal_open_doors": 1,
+    "side_lattice_window_bays": 2,
+    "private_residence_not_official_or_palatial": true
+  },
+  "status": "READY_FOR_ROOT_SINGLE_TARGETED_BUILTIN_EDIT_NOT_EXECUTED"
+}

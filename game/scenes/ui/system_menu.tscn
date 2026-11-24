@@ -1,0 +1,166 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/system_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://art/ui/quest/runtime_v1/panel_bg_v5.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://art/ui/inventory/buttons/btn_x_normal.png" id="3_close_n"]
+[ext_resource type="Texture2D" path="res://art/ui/inventory/buttons/btn_x_pressed.png" id="4_close_p"]
+[ext_resource type="Texture2D" path="res://art/ui/inventory/buttons/btn_x_hover.png" id="5_close_h"]
+
+[node name="SystemMenu" type="Control" groups=["transient_ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+visible = false
+script = ExtResource("1_script")
+
+[node name="Panel" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -400.0
+offset_right = 600.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="PanelArt" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+visible = true
+
+[node name="Content" type="Control" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Title" type="Label" parent="Panel/Content"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 405.0
+offset_top = 49.0
+offset_right = 795.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 28
+text = "系统菜单"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsBtn" type="Button" parent="Panel/Content"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 96.0
+offset_top = 229.0
+offset_right = 339.0
+offset_bottom = 277.0
+text = "设置"
+
+[node name="SaveBtn" type="Button" parent="Panel/Content"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 96.0
+offset_top = 293.0
+offset_right = 339.0
+offset_bottom = 341.0
+text = "保存游戏"
+
+[node name="LoadBtn" type="Button" parent="Panel/Content"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 96.0
+offset_top = 357.0
+offset_right = 339.0
+offset_bottom = 405.0
+text = "读取存档"
+
+[node name="SettingsPage" type="Control" parent="Panel/Content"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="SettingsTitle" type="Label" parent="Panel/Content/SettingsPage"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 441.0
+offset_top = 173.0
+offset_right = 1082.0
+offset_bottom = 220.0
+theme_override_font_sizes/font_size = 20
+text = "音量设置"
+
+[node name="BgmRow" type="HBoxContainer" parent="Panel/Content/SettingsPage"]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 306.0
+offset_right = 1065.0
+offset_bottom = 347.0
+
+[node name="Label" type="Label" parent="Panel/Content/SettingsPage/BgmRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 30)
+text = "背景音乐"
+
+[node name="BgmSlider" type="HSlider" parent="Panel/Content/SettingsPage/BgmRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="SfxRow" type="HBoxContainer" parent="Panel/Content/SettingsPage"]
+layout_mode = 0
+offset_left = 444.0
+offset_top = 391.0
+offset_right = 1065.0
+offset_bottom = 432.0
+
+[node name="Label" type="Label" parent="Panel/Content/SettingsPage/SfxRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(100, 30)
+text = "动作音效"
+
+[node name="SfxSlider" type="HSlider" parent="Panel/Content/SettingsPage/SfxRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.05
+value = 1.0
+
+[node name="CloseBtn" type="TextureButton" parent="Panel/Content"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1122.0
+offset_top = 34.0
+offset_right = 1168.0
+offset_bottom = 80.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_close_n")
+texture_pressed = ExtResource("4_close_p")
+texture_hover = ExtResource("5_close_h")

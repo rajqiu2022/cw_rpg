@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="会盟录事"
+text="洛阳府衙已把两份口供封入官卷，证人不随先遣队。公开稍慢，但截盟者无法靠杀人销毁全部记录。"
+set_flags=Array[Dictionary]([{"key":"ch8_alliance_mustered","value":true},{"key":"ch8_luoyang_witness_custody_active","value":true}])
+complete_quest=&"q_ch8_main_01_alliance_muster"
+accept_quest=&"q_ch8_main_02_mistwood_blockade"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_muster_luoyang"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

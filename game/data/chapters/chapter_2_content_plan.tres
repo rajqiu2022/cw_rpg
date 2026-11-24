@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ChapterContentPlan" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/chapter_content_plan.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+chapter = 2
+title = "竹尾迷踪"
+main_scene_ids = Array[StringName]([&"ch2_s1_zhuwei_market", &"ch2_s2_forest_edge", &"ch2_s3_forest_ambush", &"ch2_s5_bandit_cave", &"ch2_s5_mine_workshop", &"ch2_s5_mine_command", &"ch2_s4_lingyue_gate"])
+main_quest_ids = Array[StringName]([&"q_ch2_main_01_investigate", &"q_ch2_main_02_rescue_yue", &"q_ch2_main_03_trace_hideout", &"q_ch2_main_04_report_lingyue"])
+side_quest_ids = Array[StringName]([&"q_ch2_side_01_missing_disciple", &"q_ch2_side_02_go_puzzle", &"q_ch2_side_03_river_death", &"q_ch2_side_04_herb_thief", &"q_ch2_side_05_martial_tournament", &"q_ch2_side_06_moon_guqin", &"q_ch2_side_07_boat_gang", &"q_secret_canglong_three_pages"])
+leveling_scene_ids = Array[StringName]([&"ch2_s2_forest_edge", &"ch2_s6_river_camp"])
+story_battle_groups = Array[Dictionary]([
+	{"id":"forest_ambush", "enemy_ids":[&"masked_killer_minion", &"masked_killer_minion"]},
+	{"id":"rescue_yue", "enemy_ids":[&"masked_killer_elite", &"masked_killer_minion", &"masked_killer_minion"]},
+	{"id":"mine_workshop_sentries", "enemy_ids":[&"ch2_mine_sentry", &"ch2_mine_sentry"]},
+	{"id":"hideout_leader", "enemy_ids":[&"masked_killer_ambush", &"zhuwei_bandit", &"zhuwei_bandit"]}
+])
+estimated_main_minutes = 75
+estimated_completionist_minutes = 180

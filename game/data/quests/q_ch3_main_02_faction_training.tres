@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch3_main_02_faction_training"
+title = "同门合练"
+kind = 0
+desc_not_started = "正式入门后，先通过同门合练熟悉多人攻防。"
+desc_in_progress = "在合练场同时应对前后夹击，学会选择目标、守势蓄势与连续行动。"
+desc_completed = "你通过合练，也发现大会证物上的步法并非任何一派的完整套路。"
+tracker_hint = "五派营地 · 合练场"
+completion_triggers = Array[String](["flag_set:ch3_training_complete"])
+reward_gold = 55
+reward_exp = 100
+reward_items = Array[Dictionary]([])

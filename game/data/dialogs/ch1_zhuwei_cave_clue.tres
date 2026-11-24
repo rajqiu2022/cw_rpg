@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]洞穴角落堆着几只被撕开的货箱。箱底沾着湿泥，木板上留有半枚烧焦的雾纹。[/i]"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "这不是猎户留下的东西。车辙从村外绕向城西……那里有人借兽穴藏运物资。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = ""
+text = "[i]新的去向已经明确。返回竹尾村，前往城西废宅。[/i]"
+set_flags = Array[Dictionary]([{"key": "clue_west_ruin_supply_route", "value": true}, {"key": "rumour_west_ruin", "value": true}])
+accept_quest = &"q_ch1_main_west_ruin_trace"
+complete_quest = &"q_ch1_main_zhuwei_wilds"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_zhuwei_cave_clue"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3")])

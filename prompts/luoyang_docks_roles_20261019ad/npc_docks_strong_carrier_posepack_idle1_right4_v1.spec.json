@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "id": "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v1",
+  "asset_id": "npc_docks_strong_carrier_posepack_idle1_right4_v1",
+  "identity": "strong_docks_carrier",
+  "name": "洛阳码头青蓝短打搬运工同人待机一帧与向右真步态四帧",
+  "status": "GENERATED_SOURCE_IDENTITY_LIMITED_ACCEPT_WALK_CYCLE_FAILED_NO_DERIVATIVES",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "fallback_used": false,
+  "attempt_budget": 1,
+  "attempts_used": 1,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "transparent_background": true,
+  "preflight_order": "POST_CALL_REGISTRY_RECONCILIATION; Root began the unique builtin call from frozen contract 30AE7454 before this registry/preflight source existed; this file does not claim a pre-call pass",
+  "source_layout_request": {
+    "kind": "five_pose_horizontal_row",
+    "poses": [
+      "idle_down_front",
+      "walk_right_left_contact",
+      "walk_right_right_passing",
+      "walk_right_right_contact",
+      "walk_right_left_passing"
+    ],
+    "actual_layout_must_be_measured": true,
+    "requested_layout_is_not_grid_evidence": true
+  },
+  "prompt_path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v1.txt",
+  "output_path": "assets/raw/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v1.png",
+  "metadata_path": "assets/raw/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v1.png.meta.json",
+  "reference_images": [],
+  "generation_owner": "producer_ROOT_unique_builtin_call",
+  "runtime_authorization": "NONE_SOURCE_ART_ONLY",
+  "runtime_targets_after_actual_measurement_and_art_admission": {
+    "idle": {
+      "path": "res://art/characters/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_idle_down_1f_v1_runtime.png",
+      "canvas_px": [160, 160],
+      "hframes": 1,
+      "facing": "down_front"
+    },
+    "walk": {
+      "path": "res://art/characters/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_walk_right_4f_v1_runtime.png",
+      "canvas_px": [640, 160],
+      "cell_px": [160, 160],
+      "hframes": 4,
+      "facing": "right"
+    },
+    "portrait": {
+      "path": "res://art/characters/portraits/luoyang_docks_roles_20261019ad/portrait_docks_strong_carrier_v1.png",
+      "canvas_px": [512, 512],
+      "source": "same actual raw idle pose only"
+    },
+    "shared": {
+      "one_uniform_scale_for_all_five_poses": true,
+      "target_visible_height_px": 140,
+      "target_sole_y_px": 152,
+      "target_foot_anchor_px": [80, 152],
+      "preserve_all_source_alpha": true,
+      "native_body_px": [22.4, 28.8]
+    }
+  },
+  "authorized_npc_ids_after_separate_runtime_admission": [
+    "harbour_life_docks_rope_carrier",
+    "harbour_life_docks_southern_carrier",
+    "harbour_life_docks_west_carrier"
+  ],
+  "acceptance": [
+    "exactly one persistent person identity across all five poses",
+    "one front-facing idle plus four materially different right-walk phases",
+    "left and right contact frames alternate, with two distinct passing poses",
+    "full head and both shoes visible in every pose with transparent separation",
+    "no merchant, farmer, waiter, soldier, straw hat, tray, pole, cargo or weapon",
+    "actual raw dimensions, alpha bounds, pose rectangles, bytes and SHA recorded before any derivative",
+    "not runtime or formal until mechanical proof, portrait identity review, import proof and Docks Field review pass"
+  ]
+}

@@ -1,0 +1,1205 @@
+{
+  "ready": true,
+  "scope": "MARKET_HERBAL_RETRY1_DISTRICT_EXACT_METADATA_SUCCESSOR_NO_GEOMETRY_RERUN",
+  "whole_ms": 90000,
+  "arrival_ms": 60000,
+  "return_ms": 2000,
+  "allowed_args": [
+    "--luoyang-precomputed-bundle-20261018r",
+    "--luoyang-layout-quest-20261018t"
+  ],
+  "source_sha256": {
+    "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd": "c68272dd8bb2fd989a7776a1ee970a0d082290927d1fd30734c72d59b1d0fe50",
+    "res://scripts/city/luoyang_precomputed_bundle_20261018r.gd": "833f2f78bb504e83a09c722c7d17c02c4d08c3e91e99cbde7147cf510cf8f931",
+    "res://scripts/city/luoyang_district_life_20261016f.gd": "bcd4e401303e97cd65075c86c9bba6d08c4b3d542a36a1ec546f73c949670118",
+    "res://scripts/city/luoyang_district_life_fade_20261016f.gd": "bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf",
+    "res://scripts/city/luoyang_assembled_interiors_20261016g.gd": "7eeeb4be5086d80472d2ab0781f7a26f39745674e77cd794286ccc6ddce1e734",
+    "res://scripts/city/luoyang_assembled_rooms_20261016b.gd": "38e23a16334fe524b7cfd39bbbf482bbe8d3e65c371bb40acc0d12e7e5e37ece",
+    "res://scripts/city/luoyang_city_tasks_20261016.gd": "aa079d0190d26b0f8dd290938965eea5fa886a8b8e838d5d96ac3c90c96212df",
+    "res://scripts/city/luoyang_temple_assembly_20261016.gd": "dca61e7a45959de7b8b7c989a9eff2c3d71c76636271080e3f477844cc2b36c5",
+    "res://scripts/city/luoyang_temple_task_adapter_20261016.gd": "11278eb3105dd66caecfc1e35c695ed8c0c571610239c6da1729995e0d724245",
+    "res://data/quests/q_ch4_side_03_peony_poetry.tres": "b8048767c8ee62ef61156e5e98e71cfab94b00239f8d3f5e7bc8686d046f594c",
+    "res://data/quests/q_ch4_side_04_longmen_mystery.tres": "9fabaa5bd92cf7a5c14dc05489c100f7222f3cf8eb7263e054cab97ec82dd38e",
+    "res://data/quests/q_ch4_side_05_baima_bell.tres": "0a60f548af721cb645d91b7e1e01f5bf3e7d9e7535c17e044d3a4de73b414410",
+    "res://scripts/city/luoyang_precomputed_bundle_index_20261018r.gd": "aa2680276d1b9cee3fb304cac7e6016c3beddc31c34ded5abc96bf92b9833b05",
+    "res://scripts/city/luoyang_layout_room_index_20261018t.gd": "bd521d3e8fa78a925da7a08ff510093d084c6d08a829e2108ffece4953d97597",
+    "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_v2/finalize_publication_v2.gd": "a1acb0c489afa5ee60cdb8027327264f296795e00cddb2db93373b1e8a6e93ba",
+    "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_v2/runtime_source_migration.json": "ef763784d6b89e882635eed15fde9aea46bbb34145155b9b0e7db376429052a4",
+    "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_v2/deployment.json": "8985bcee48118bc330a7cedeb19c4b9e05b510eb78ce30a94cceaf055f5d44e9",
+    "res://tests/test_luoyang_city_life_cpu_draft_20261016f.gd": "a8d112574bf860fb595c78e34524abba1693cbeb6d65f43c23be50e667ef8895",
+    "res://tests/test_luoyang_t_runtime_collector_admission_draft_20261019u.gd": "1922972ce2312fe6615a85d926a68885854ed78be1bb341285cf577dbb592098",
+    "res://tests/test_luoyang_layout_representatives_draft_20261019t.gd": "558b0950a3bd2cde0c09071e8f408d950e8081e380bab0e7533fe87a75f197c5",
+    "res://tests/helpers/v15_input_driver.gd": "a3c59fde8d9f55d71919276286dc720e177ef3dc046d224204868a24881de5d7",
+    "res://tests/helpers/luoyang_eleven_rooms_raw_polygon_oracle_v2_20261016g.gd": "0f00d4a8a7bc7f514d4b0859275c2eb6d03296dd81eaa170416694c6068b2835",
+    "res://build/luoyang_layout_quest_finalize_20261018t/81048/result.json": "f4910aa7492b2f654f7e4d7f546281b39c5737b6b07d40f5581535eadb38811e",
+    "res://data/maps/luoyang_layout_rooms_20261018t/registry.json": "646cbaab6b1c92beb869e3cdfa217d1650082461fb222b816f23251c2fb840e9",
+    "res://data/maps/luoyang_layout_rooms_20261018t/luoyang_market_market_northeast_rear_frontage_interior_20261015/author.json": "430759ca47bab41b886005ba39167fb05e43ed85c5191039b7379b16bb030622",
+    "res://build/luoyang_layout_quest_20261018t_layout_source01/author_retry2.json": "8f708341b9923e53d016aa2198900e2a8c93085e11b154b42b6c44ff4bc1ba6e",
+    "res://build/luoyang_city_assembled_publication_20261016b/78428_1686/ch4_s3_luoyang_market/manifest.json": "eac64463aa3bc00835114b0856e6e00a98d57c38d0fd6e8de472f329cd28bd13",
+    "res://data/maps/luoyang_district_life_20261016f/author.json": "d98c65879681b58feea64158a4d0bde33d2ef9fc6b8a25d7d2f33dc961a9c59c",
+    "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/deployment.json": "bf67be2169bf54ead9fb032b44a031a99c572d57342d68c09906a9a0b6fdd2ab",
+    "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/before/registry_ACCD.source": "accd1b022004c08892879f60595ab1d8fe1332c30e29bc260878d6a1fffb6138",
+    "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/before/ch4_s3_luoyang_market_manifest.source": "8b3db011d70b23e5e902952f085c576cf5e7fc87fc2d174d85a4d9dc126d68fd",
+    "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s3_luoyang_market/manifest.json": "35690125e4f82ed4188fa413e9ce256a1f692a7272420a0862429d84d29a3e0d",
+    "res://build/luoyang_layout_quest_20261018t_layout_source01/District_fade_candidate.gd": "bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf"
+  },
+  "authority": {
+    "A_result": "res://build/luoyang_layout_quest_finalize_20261018t/81048/result.json",
+    "registry": "res://data/maps/luoyang_layout_rooms_20261018t/registry.json",
+    "index": "res://scripts/city/luoyang_precomputed_bundle_index_20261018r.gd",
+    "index_sha": "aa2680276d1b9cee3fb304cac7e6016c3beddc31c34ded5abc96bf92b9833b05",
+    "manifest": "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s3_luoyang_market/manifest.json",
+    "manifest_sha": "35690125e4f82ed4188fa413e9ce256a1f692a7272420a0862429d84d29a3e0d"
+  },
+  "atoms": {
+    "market": {
+      "city_id": "ch4_s3_luoyang_market",
+      "room_id": "luoyang_market_market_northeast_rear_frontage_interior_20261015",
+      "setup_uv": [
+        0.7480729420979818,
+        0.859375
+      ],
+      "street_to_door_world": [
+        [
+          2298.080078125,
+          1760
+        ],
+        [
+          2298.080078125,
+          1704
+        ]
+      ],
+      "native_door_world": [
+        2298.080078125,
+        1704
+      ],
+      "room_props": [
+        {
+          "id": "herbal_shop_consultation_bench_4",
+          "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png",
+          "rotation": 0,
+          "source_foot_px": [
+            1120,
+            665
+          ],
+          "render_scale": 0.075
+        }
+      ],
+      "room_display_name": "药铺",
+      "room_to_exit_world": [
+        [
+          960,
+          975
+        ],
+        [
+          960,
+          1037.5
+        ]
+      ],
+      "native_room_exit_world": [
+        960,
+        1037.5
+      ]
+    }
+  },
+  "identities": {
+    "ch4_s3_luoyang_market": {
+      "scene_path": "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s3_luoyang_market/scene.res",
+      "layout_path": "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s3_luoyang_market/layout.res",
+      "owner_kind": "CITY",
+      "proof_kind": "PRECOMPUTED_PUBLISHED_FULL_SOURCE_V1",
+      "source_sha256": {}
+    },
+    "luoyang_market_market_northeast_rear_frontage_interior_20261015": {
+      "author_path": "res://data/maps/luoyang_layout_rooms_20261018t/luoyang_market_market_northeast_rear_frontage_interior_20261015/author.json",
+      "author_sha256": "430759ca47bab41b886005ba39167fb05e43ed85c5191039b7379b16bb030622",
+      "scene_path": "res://data/maps/luoyang_layout_rooms_20261018t/luoyang_market_market_northeast_rear_frontage_interior_20261015/scene.res",
+      "layout_path": "res://data/maps/luoyang_layout_rooms_20261018t/luoyang_market_market_northeast_rear_frontage_interior_20261015/layout.res",
+      "owner_kind": "ROOM",
+      "source_sha256": {}
+    }
+  },
+  "geometry": {
+    "ch4_s3_luoyang_market": {
+      "source_size_px": [
+        3072,
+        2048
+      ],
+      "world_size_px": [
+        3072,
+        2048
+      ],
+      "floor_regions_px": [
+        [
+          [
+            0,
+            0
+          ],
+          [
+            3072,
+            0
+          ],
+          [
+            3072,
+            2048
+          ],
+          [
+            0,
+            2048
+          ]
+        ]
+      ],
+      "solids": [
+        {
+          "id": "inn_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              160.63998413085938,
+              567.6400146484375
+            ],
+            [
+              935.6400146484375,
+              567.6400146484375
+            ],
+            [
+              935.6400146484375,
+              740
+            ],
+            [
+              160.63998413085938,
+              740
+            ]
+          ]
+        },
+        {
+          "id": "shop_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              2345,
+              604
+            ],
+            [
+              2905,
+              604
+            ],
+            [
+              2905,
+              740
+            ],
+            [
+              2345,
+              740
+            ]
+          ]
+        },
+        {
+          "id": "goods_stall_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              1175.3050537109375,
+              1121.2999267578125
+            ],
+            [
+              1464.47998046875,
+              1121.2999267578125
+            ],
+            [
+              1464.47998046875,
+              1160
+            ],
+            [
+              1175.3050537109375,
+              1160
+            ]
+          ]
+        },
+        {
+          "id": "medicine_stall_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              1605.3050537109375,
+              1121.2999267578125
+            ],
+            [
+              1894.47998046875,
+              1121.2999267578125
+            ],
+            [
+              1894.47998046875,
+              1160
+            ],
+            [
+              1605.3050537109375,
+              1160
+            ]
+          ]
+        },
+        {
+          "id": "street_tree_0_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              288,
+              532
+            ],
+            [
+              312,
+              532
+            ],
+            [
+              312,
+              550
+            ],
+            [
+              288,
+              550
+            ]
+          ]
+        },
+        {
+          "id": "street_tree_1_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              2788,
+              502
+            ],
+            [
+              2812,
+              502
+            ],
+            [
+              2812,
+              520
+            ],
+            [
+              2788,
+              520
+            ]
+          ]
+        },
+        {
+          "id": "street_tree_2_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              318,
+              1752
+            ],
+            [
+              342,
+              1752
+            ],
+            [
+              342,
+              1770
+            ],
+            [
+              318,
+              1770
+            ]
+          ]
+        },
+        {
+          "id": "street_tree_3_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              2708,
+              1742
+            ],
+            [
+              2732,
+              1742
+            ],
+            [
+              2732,
+              1760
+            ],
+            [
+              2708,
+              1760
+            ]
+          ]
+        },
+        {
+          "id": "lamp_0_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              1005.824951171875,
+              1562.449951171875
+            ],
+            [
+              1033.635009765625,
+              1562.449951171875
+            ],
+            [
+              1033.635009765625,
+              1580
+            ],
+            [
+              1005.824951171875,
+              1580
+            ]
+          ]
+        },
+        {
+          "id": "lamp_1_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              1995.824951171875,
+              1662.449951171875
+            ],
+            [
+              2023.635009765625,
+              1662.449951171875
+            ],
+            [
+              2023.635009765625,
+              1680
+            ],
+            [
+              1995.824951171875,
+              1680
+            ]
+          ]
+        },
+        {
+          "id": "north_market_front_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              1187.0799560546875,
+              617.02001953125
+            ],
+            [
+              2096.27001953125,
+              617.02001953125
+            ],
+            [
+              2096.27001953125,
+              680
+            ],
+            [
+              1187.0799560546875,
+              680
+            ]
+          ]
+        },
+        {
+          "id": "v13_market_west_plot_wall_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              35,
+              1408
+            ],
+            [
+              665,
+              1408
+            ],
+            [
+              665,
+              1420
+            ],
+            [
+              35,
+              1420
+            ]
+          ]
+        },
+        {
+          "id": "v13_market_east_plot_wall_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              2430,
+              1468
+            ],
+            [
+              3030,
+              1468
+            ],
+            [
+              3030,
+              1480
+            ],
+            [
+              2430,
+              1480
+            ]
+          ]
+        },
+        {
+          "id": "market_west_ward_frontage_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              194.95999145507812,
+              1869.239990234375
+            ],
+            [
+              927.739990234375,
+              1869.239990234375
+            ],
+            [
+              927.739990234375,
+              1920
+            ],
+            [
+              194.95999145507812,
+              1920
+            ]
+          ]
+        },
+        {
+          "id": "market_east_ward_frontage_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              2174.9599609375,
+              1629.239990234375
+            ],
+            [
+              2907.739990234375,
+              1629.239990234375
+            ],
+            [
+              2907.739990234375,
+              1680
+            ],
+            [
+              2174.9599609375,
+              1680
+            ]
+          ]
+        },
+        {
+          "id": "market_west_alley_stall_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              805.780029296875,
+              1264.7999267578125
+            ],
+            [
+              994.0800170898438,
+              1264.7999267578125
+            ],
+            [
+              994.0800170898438,
+              1290
+            ],
+            [
+              805.780029296875,
+              1290
+            ]
+          ]
+        },
+        {
+          "id": "market_east_alley_stall_poly_0",
+          "kind": "PARENT_NATIVE_TRANSLATED_POLYGON",
+          "points_px": [
+            [
+              1875.780029296875,
+              1504.7999267578125
+            ],
+            [
+              2064.080078125,
+              1504.7999267578125
+            ],
+            [
+              2064.080078125,
+              1530
+            ],
+            [
+              1875.780029296875,
+              1530
+            ]
+          ]
+        },
+        {
+          "id": "market_west_court_tree_a_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              208,
+              1342
+            ],
+            [
+              232,
+              1342
+            ],
+            [
+              232,
+              1360
+            ],
+            [
+              208,
+              1360
+            ]
+          ]
+        },
+        {
+          "id": "market_west_court_tree_b_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              1048,
+              1342
+            ],
+            [
+              1072,
+              1342
+            ],
+            [
+              1072,
+              1360
+            ],
+            [
+              1048,
+              1360
+            ]
+          ]
+        },
+        {
+          "id": "market_east_court_tree_a_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              2108,
+              1162
+            ],
+            [
+              2132,
+              1162
+            ],
+            [
+              2132,
+              1180
+            ],
+            [
+              2108,
+              1180
+            ]
+          ]
+        },
+        {
+          "id": "market_east_court_tree_b_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              2948,
+              1162
+            ],
+            [
+              2972,
+              1162
+            ],
+            [
+              2972,
+              1180
+            ],
+            [
+              2948,
+              1180
+            ]
+          ]
+        },
+        {
+          "id": "assembled_market_tree_group_a_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              809.7999877929688,
+              1734.699951171875
+            ],
+            [
+              830.2000122070312,
+              1734.699951171875
+            ],
+            [
+              830.2000122070312,
+              1750
+            ],
+            [
+              809.7999877929688,
+              1750
+            ]
+          ]
+        },
+        {
+          "id": "assembled_market_tree_group_b_rect",
+          "kind": "PARENT_NATIVE_RECTANGLE",
+          "points_px": [
+            [
+              2219.800048828125,
+              1724.699951171875
+            ],
+            [
+              2240.199951171875,
+              1724.699951171875
+            ],
+            [
+              2240.199951171875,
+              1740
+            ],
+            [
+              2219.800048828125,
+              1740
+            ]
+          ]
+        },
+        {
+          "id": "district_medicine_stall_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              1616.1600341796875,
+              1130.3199462890625
+            ],
+            [
+              1884.4000244140625,
+              1130.3199462890625
+            ],
+            [
+              1884.4000244140625,
+              1140.4000244140625
+            ],
+            [
+              1866.760009765625,
+              1160.280029296875
+            ],
+            [
+              1632.9599609375,
+              1160.280029296875
+            ],
+            [
+              1616.1600341796875,
+              1140.4000244140625
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_goods_0_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              675.3049926757812,
+              1891.2999267578125
+            ],
+            [
+              964.47998046875,
+              1891.2999267578125
+            ],
+            [
+              964.47998046875,
+              1930
+            ],
+            [
+              675.3049926757812,
+              1930
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_crate_0_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              1100.5999755859375,
+              1141.0159912109375
+            ],
+            [
+              1163.0960693359375,
+              1135.8079833984375
+            ],
+            [
+              1164.9439697265625,
+              1158.1519775390625
+            ],
+            [
+              1113.199951171875,
+              1161.679931640625
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_crate_1_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              1095.5999755859375,
+              1091.0159912109375
+            ],
+            [
+              1158.0960693359375,
+              1085.8079833984375
+            ],
+            [
+              1159.9439697265625,
+              1108.1519775390625
+            ],
+            [
+              1108.199951171875,
+              1111.679931640625
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_crate_2_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              2130.60009765625,
+              1121.0159912109375
+            ],
+            [
+              2193.09619140625,
+              1115.8079833984375
+            ],
+            [
+              2194.94384765625,
+              1138.1519775390625
+            ],
+            [
+              2143.199951171875,
+              1141.679931640625
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_tree_0_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              98,
+              1422
+            ],
+            [
+              122,
+              1422
+            ],
+            [
+              122,
+              1440
+            ],
+            [
+              98,
+              1440
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_tree_1_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              143,
+              1532
+            ],
+            [
+              167,
+              1532
+            ],
+            [
+              167,
+              1550
+            ],
+            [
+              143,
+              1550
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_tree_2_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              2838,
+              1382
+            ],
+            [
+              2862,
+              1382
+            ],
+            [
+              2862,
+              1400
+            ],
+            [
+              2838,
+              1400
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_tree_3_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              2888,
+              1572
+            ],
+            [
+              2912,
+              1572
+            ],
+            [
+              2912,
+              1590
+            ],
+            [
+              2888,
+              1590
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_lamp_0_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              885.824951171875,
+              1172.449951171875
+            ],
+            [
+              913.635009765625,
+              1172.449951171875
+            ],
+            [
+              913.635009765625,
+              1190
+            ],
+            [
+              885.824951171875,
+              1190
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_lamp_1_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              2025.824951171875,
+              1202.449951171875
+            ],
+            [
+              2053.635009765625,
+              1202.449951171875
+            ],
+            [
+              2053.635009765625,
+              1220
+            ],
+            [
+              2025.824951171875,
+              1220
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_lamp_2_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              1015.824951171875,
+              1912.449951171875
+            ],
+            [
+              1043.635009765625,
+              1912.449951171875
+            ],
+            [
+              1043.635009765625,
+              1930
+            ],
+            [
+              1015.824951171875,
+              1930
+            ]
+          ]
+        },
+        {
+          "id": "district_district_luoyang_market_stock_lamp_3_0",
+          "kind": "ADDITIVE_NATIVE_BASE",
+          "points_px": [
+            [
+              2405.824951171875,
+              1752.449951171875
+            ],
+            [
+              2433.635009765625,
+              1752.449951171875
+            ],
+            [
+              2433.635009765625,
+              1770
+            ],
+            [
+              2405.824951171875,
+              1770
+            ]
+          ]
+        }
+      ],
+      "foot_forbidden_regions_px": [],
+      "mask_path": "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s3_luoyang_market/walk.png"
+    },
+    "luoyang_market_market_northeast_rear_frontage_interior_20261015": {
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "world_size_px": [
+        1920,
+        1280
+      ],
+      "floor_regions_px": [
+        [
+          [
+            190,
+            368
+          ],
+          [
+            1305,
+            368
+          ],
+          [
+            1400,
+            702
+          ],
+          [
+            942,
+            702
+          ],
+          [
+            942,
+            852
+          ],
+          [
+            568,
+            852
+          ],
+          [
+            568,
+            702
+          ],
+          [
+            129,
+            702
+          ]
+        ]
+      ],
+      "solids": [
+        {
+          "id": "herbal_shop_medicine_cabinet_0",
+          "kind": "independent_furniture",
+          "points_px": [
+            [
+              285.29,
+              409.26
+            ],
+            [
+              579.06,
+              409.26
+            ],
+            [
+              579.06,
+              440.58
+            ],
+            [
+              285.29,
+              440.58
+            ]
+          ]
+        },
+        {
+          "id": "herbal_shop_medicine_cabinet_1",
+          "kind": "independent_furniture",
+          "points_px": [
+            [
+              970.26,
+              412.44
+            ],
+            [
+              1233.64,
+              412.44
+            ],
+            [
+              1233.64,
+              440.52
+            ],
+            [
+              970.26,
+              440.52
+            ]
+          ]
+        },
+        {
+          "id": "herbal_shop_medicine_worktable_2",
+          "kind": "independent_furniture",
+          "points_px": [
+            [
+              408.8,
+              581.52
+            ],
+            [
+              591.6800000000001,
+              581.52
+            ],
+            [
+              591.6800000000001,
+              610.48
+            ],
+            [
+              408.96,
+              610.48
+            ]
+          ]
+        },
+        {
+          "id": "herbal_shop_dining_table_3",
+          "kind": "independent_furniture",
+          "points_px": [
+            [
+              1076.8,
+              595.12
+            ],
+            [
+              1163.44,
+              595.12
+            ],
+            [
+              1175.08,
+              625
+            ],
+            [
+              1065.04,
+              625
+            ]
+          ]
+        },
+        {
+          "id": "herbal_shop_consultation_bench_4",
+          "kind": "independent_furniture",
+          "points_px": [
+            [
+              1076.125,
+              657.7249755859375
+            ],
+            [
+              1164.0999755859375,
+              657.7249755859375
+            ],
+            [
+              1164.0999755859375,
+              665.0750122070312
+            ],
+            [
+              1076.125,
+              665.0750122070312
+            ]
+          ]
+        },
+        {
+          "id": "herbal_shop_long_bench_5",
+          "kind": "independent_furniture",
+          "points_px": [
+            [
+              795.65,
+              679.33
+            ],
+            [
+              924.68,
+              679.33
+            ],
+            [
+              924.68,
+              690.11
+            ],
+            [
+              795.65,
+              690.11
+            ]
+          ]
+        }
+      ],
+      "foot_forbidden_regions_px": [],
+      "mask_path": ""
+    }
+  },
+  "oracle_basis": "QA independent JSON polygons: original 30 entries minus exact6; exact5 native F32 translations; all13 additive District bases; published mask and full87517/continuous34x24; no production clearance.",
+  "successor": {
+    "deployment_path": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/deployment.json",
+    "deployment_sha256": "bf67be2169bf54ead9fb032b44a031a99c572d57342d68c09906a9a0b6fdd2ab",
+    "targets": [
+      {
+        "target": "res://scripts/city/luoyang_district_life_20261016f.gd",
+        "old_sha256": "f63222bde9e9fa0b7e44d1195017061341b057611942e50756b515ab2e4668ae",
+        "candidate": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/District_runtime_successor.gd",
+        "new_sha256": "bcd4e401303e97cd65075c86c9bba6d08c4b3d542a36a1ec546f73c949670118"
+      },
+      {
+        "target": "res://data/maps/luoyang_layout_rooms_20261018t/registry.json",
+        "old_sha256": "accd1b022004c08892879f60595ab1d8fe1332c30e29bc260878d6a1fffb6138",
+        "candidate": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/registry_successor.json",
+        "new_sha256": "646cbaab6b1c92beb869e3cdfa217d1650082461fb222b816f23251c2fb840e9"
+      },
+      {
+        "target": "res://scripts/city/luoyang_layout_room_index_20261018t.gd",
+        "old_sha256": "140f0e56229f2cd0fb80b8c92f608c4426c023f0f040e7106120f411166cd00a",
+        "candidate": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/room_index_successor.gd",
+        "new_sha256": "bd521d3e8fa78a925da7a08ff510093d084c6d08a829e2108ffece4953d97597"
+      },
+      {
+        "target": "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s0_luoyang_gate/manifest.json",
+        "old_sha256": "ea73efa58792bb2a7830f9a8af697b0d17742738fa3d55ded411a45629952692",
+        "candidate": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/ch4_s0_luoyang_gate_manifest_successor.json",
+        "new_sha256": "e08d98bb9856866913092088d7ac310b94f2644e575192900c4ec7d45d706092"
+      },
+      {
+        "target": "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s1_luoyang_yamen/manifest.json",
+        "old_sha256": "adadf68c62e50fa9e67116d3c887fb841520b738de72eed72255d6bdd971191b",
+        "candidate": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/ch4_s1_luoyang_yamen_manifest_successor.json",
+        "new_sha256": "037ef50f7688b4d80083296a4fda1c1261dbb2ff36c9e9616e50ea210cca5612"
+      },
+      {
+        "target": "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s2_canal_docks/manifest.json",
+        "old_sha256": "f2e39682d47e39709f59d4866d0fc51b135b4dd33b276b92382f17072167c82d",
+        "candidate": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/ch4_s2_canal_docks_manifest_successor.json",
+        "new_sha256": "7e3aa32c9adc7030a6de921dd5d053b6764d0541ffcbb4718684cc9b9dc4e9a1"
+      },
+      {
+        "target": "res://data/maps/luoyang_layout_bundle_20261018t_retry2/ch4_s3_luoyang_market/manifest.json",
+        "old_sha256": "8b3db011d70b23e5e902952f085c576cf5e7fc87fc2d174d85a4d9dc126d68fd",
+        "candidate": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/ch4_s3_luoyang_market_manifest_successor.json",
+        "new_sha256": "35690125e4f82ed4188fa413e9ce256a1f692a7272420a0862429d84d29a3e0d"
+      },
+      {
+        "target": "res://scripts/city/luoyang_precomputed_bundle_index_20261018r.gd",
+        "old_sha256": "240b80220ddb2b4e77c96d782c65b4d6206b844a6eded7eb065e9b67b7b7bbb8",
+        "candidate": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/final/bundle_index_successor.gd",
+        "new_sha256": "aa2680276d1b9cee3fb304cac7e6016c3beddc31c34ded5abc96bf92b9833b05"
+      }
+    ],
+    "prior_registry_path": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/before/registry_ACCD.source",
+    "prior_registry_sha256": "accd1b022004c08892879f60595ab1d8fe1332c30e29bc260878d6a1fffb6138",
+    "prior_city_manifest_path": "res://build/luoyang_layout_quest_20261018t_layout_source01/runtime_source_successor02/before/ch4_s3_luoyang_market_manifest.source",
+    "prior_city_manifest_sha256": "8b3db011d70b23e5e902952f085c576cf5e7fc87fc2d174d85a4d9dc126d68fd",
+    "added_legacy_source_sha256": {
+      "res://build/luoyang_layout_quest_20261018t_layout_source01/District_fade_candidate.gd": "bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf"
+    },
+    "changed_room_source_path": "res://scripts/city/luoyang_district_life_20261016f.gd",
+    "changed_room_source_old": "f63222bde9e9fa0b7e44d1195017061341b057611942e50756b515ab2e4668ae",
+    "changed_room_source_new": "bcd4e401303e97cd65075c86c9bba6d08c4b3d542a36a1ec546f73c949670118"
+  }
+}

@@ -8,8 +8,9 @@ script = ExtResource("1_scn")
 scene_id = &"ch1_s0_linxi_main_walkable"
 display_name = "林西村 · 主街"
 background_path = "res://art/backgrounds/bg_linxi_main_street_panorama_v1.png"
-bgm_path = "res://art/audio/bgm/bgm_happy.wav"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
 is_walkable = true
+is_settlement = true
 map_layout = ExtResource("2_map")
 player_spawn = Vector2(0.22, 0.75)
 scene_objects = [
@@ -676,7 +677,7 @@ npcs = [
   "npc_name": "沈半盏",
   "pos": Vector2(0.1, 0.52),
   "portrait_path": "res://art/characters/portrait_shenbanzhan_friendly.png",
-  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "sprite_path": "res://art/characters/npc_shenbanzhan_idle_4f.png",
   "dialog_id": "ch1_main_street_shenbanzhan",
   "scale": 0.95,
 },
@@ -685,9 +686,15 @@ npcs = [
   "npc_name": "杜青衫",
   "pos": Vector2(0.69, 0.52),
   "portrait_path": "res://art/characters/portrait_duqingshan_steady.png",
-   "sprite_path": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+  "sprite_path": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+  "conversation_sprite_paths": {
+    "down": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+    "up": "res://art/characters/npc_duqingshan_v3_idle_up_25d_4f.png",
+    "left": "res://art/characters/npc_duqingshan_v3_idle_right_25d_4f.png",
+    "right": "res://art/characters/npc_duqingshan_v3_idle_left_25d_4f.png",
+  },
   "dialog_id": "ch1_main_street_duqingshan",
-   "scale": 0.95,
+  "scale": 0.95,
 },
 {
   "npc_id": "vendor",
@@ -702,7 +709,7 @@ npcs = [
   "npc_id": "martial_hall_master",
   "npc_name": "武馆教头",
   "pos": Vector2(0.22, 0.55),
-   "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+   "sprite_path": "res://art/characters/npc_linxi_martial_hall_master_idle_down_25d_4f_v2_runtime.png",
   "dialog_id": "ch1_martial_hall_master",
    "scale": 0.95,
 }
@@ -714,7 +721,7 @@ exits = [
 "pos": Vector2(0.9250, 0.5600),
 "size": Vector2(0.0900, 0.1600),
 "target_scene": "ch1_s1_road",
-"target_pos": Vector2(0.1, 0.5),
+"target_pos": Vector2(0.120, 0.835),
 "require_flag": "got_sword"
 },
 {

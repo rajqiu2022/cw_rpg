@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"wanxiang_breaking_sword"
+display_name = "孤云九式"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_sword_cross_v1.png"
+description = "不拘泥固定剑路，而从百般兵器的起手、换势与收招中寻找空隙。造成固定 80 + 外功攻击 × 180% 的单体伤害并穿透 45% 防御；配合玄霜归藏诀可回气养血并进一步破防。"
+origin = "林西剑法原名“孤云九式”。刑樊天与冷孤云都只能凭现存两式练到第九重；冷孤云与茗雾录事封砚秋跨越数章解开四组旧谱谜题，终章回村后才从地下档案室取出祖师所留《孤云残解》，悟通第十重并恢复原名。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 28
+quality = 4
+required_insight = 11
+practice_base_cost = 62
+fixed_damage = 80
+attack_scaling = 180
+effect_value = 0
+hit_count = 1
+animation_id = &"wanxiang_breaking_sword"
+motion_style = 4
+required_weapon_type = &"sword"
+school = "generic"
+is_passive = false
+defense_pierce_percent = 45

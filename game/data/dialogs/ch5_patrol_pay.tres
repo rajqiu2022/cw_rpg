@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "古峰护粮守卫"
+text = "三处哨都撤了！这领玄铁重甲是车队老师傅打的，六十两也点齐了。披上它，统领手下那两把快刀就难伤你了。"
+set_flags = Array[Dictionary]([{"key":"ch5_patrol_paid","value":true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_patrol_pay"
+required_free_inventory_slots = 1
+required_story_flag = &"ch5_patrol_three"
+blocked_story_flag = &"ch5_patrol_paid"
+nodes = Array[Resource]([SubResource("start")])

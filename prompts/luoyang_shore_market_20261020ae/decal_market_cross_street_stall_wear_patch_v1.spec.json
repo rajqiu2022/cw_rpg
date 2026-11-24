@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "id": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1",
+  "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "transparent_background": true,
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "automatic_retry": false,
+  "cli_network_or_paid_fallback": false,
+  "prompt_path": "prompts/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.txt",
+  "proposed_output_path": "assets/raw/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png",
+  "requested_canvas_px": [1536, 768],
+  "proposed_world_envelope_px": [[1050, 1012], [2010, 1012], [2010, 1380], [1050, 1380]],
+  "internal_layout_world_px": {
+    "north_south_main_street": [[1472, 1012], [1600, 1380]],
+    "east_west_cross_street": [[1050, 1012], [2010, 1108]],
+    "west_stall_forecourt_context": {"existing_goods_stall_foot": [1320, 1160]},
+    "east_stall_forecourt_context": {"existing_medicine_stall_foot": [1750, 1160]}
+  },
+  "render_order_intent": "append as a Market ground overlay before the existing goods and medicine stall sprites; never cover the stalls or create collision",
+  "processing_boundary": "Measure actual output first, then use one uniform scale and transparent padding/crop preserving every A>0 pixel. No rotation, mirroring, threshold cleanup, local repaint, multi-asset slicing or nonuniform fit.",
+  "physics_boundary": "Pure nonblocking ground decoration. No Field/C/Scene/NAV change, solid, curb, platform, walk support or interaction.",
+  "acceptance": [
+    "one connected cross-street and two stall-front wear areas with irregular transparent edges",
+    "main street remains visually continuous through the crossing",
+    "cross street and stall forecourts read through subtle wear differences rather than hard borders",
+    "no wheel ruts, wet shore, building, stall, NPC, goods, tree, sign, shadow or raised platform",
+    "actual Field overlay keeps goods stall [1320,1160] and medicine stall [1750,1160] readable above it"
+  ],
+  "runtime_credit": false
+}

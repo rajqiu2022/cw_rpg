@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-estate-courtyard-20261021an-final-gate-material-walls-postscript2",
+  "status": "FINAL_ART_POSTSCRIPT_READY_NO_FURTHER_PROBE_DESIGN",
+  "parent_author_path": "game/build/luoyang_estate_courtyard_20261021an_art01/final_gate_material_horizontal_wall_author.json",
+  "parent_author_sha256": "22376BD31C59EABB0FD3C3DF7DB7ADAEBD906A99005EC8811B948E0889F07EB8",
+  "reason": "System measured the real gate bodies after the parent author: the left jamb begins at x=1180.04 while the west connector ended at x=1115, and the right body ends at x=1904.28 while the east connector began at x=1956. Add two same-material physical wall crops behind the gate to cover those visible 65px and 52px gaps without touching the central axis.",
+  "source_binding": {
+    "texture_path": "res://art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png",
+    "png_sha256": "DBE22E8E6072CBFEE28FD5FB01CBC393F532DE12ED9F356E7EC269FFF5248221",
+    "import_sha256": "E22B7CFF15F1E8DA3E1B92EA36A0AF99DBC1B96A4F302D258C3A7D9134703DE0",
+    "uniform_scale": 0.3333333333333333,
+    "pixel_rule": "AtlasTexture crops only. No PNG edit, stretch, recolor, rotation or invented transparent-width collision."
+  },
+  "new_atlas_assets": {
+    "flat_left_short_70": {
+      "parent_flat_region_xywh": [220, 300, 480, 430],
+      "atlas_region_xywh": [355, 300, 210, 430],
+      "source_size_px": [210, 430],
+      "complete_A1_xywh": [0, 0, 210, 398],
+      "ground_anchor_px": [105, 398],
+      "solid_rect_px": [0, 326, 210, 72],
+      "world_complete_A1_relative_to_foot_xywh": [-35, -132.66666666666666, 70, 132.66666666666666],
+      "world_solid_relative_to_foot_xywh": [-35, -24, 70, 24]
+    },
+    "flat_right_short_60": {
+      "parent_flat_region_xywh": [1242, 300, 480, 430],
+      "atlas_region_xywh": [1392, 300, 180, 430],
+      "source_size_px": [180, 430],
+      "complete_A1_xywh": [0, 0, 180, 399],
+      "ground_anchor_px": [90, 399],
+      "solid_rect_px": [0, 327, 180, 72],
+      "world_complete_A1_relative_to_foot_xywh": [-30, -133, 60, 133],
+      "world_solid_relative_to_foot_xywh": [-30, -24, 60, 24]
+    }
+  },
+  "append_horizontal_components": [
+    {
+      "id": "estate_an3_southwest_gate_jamb_fill",
+      "asset": "flat_left_short_70",
+      "foot": [1150, 1150],
+      "visual_x_interval": [1115, 1185],
+      "solid_rect_xywh": [1115, 1126, 70, 24],
+      "measured_gate_body_overlap_px": 4.96
+    },
+    {
+      "id": "estate_an3_southeast_gate_jamb_fill",
+      "asset": "flat_right_short_60",
+      "foot": [1926, 1150],
+      "visual_x_interval": [1896, 1956],
+      "solid_rect_xywh": [1896, 1126, 60, 24],
+      "measured_gate_body_overlap_px": 8.28
+    }
+  ],
+  "draw_and_access_contract": {
+    "draw_order": "Both appended rows draw behind the existing gate and corridor sprites at the same y=1150 wall foot. Their overlaps disappear under the measured gate jamb bodies.",
+    "axis_protection": "Both additions remain wholly outside the protected central axis x=1344..1728.",
+    "corrected_perimeter_semantics": "Only visible raised wall bodies must reject adult traversal. The existing courtyard gate opening and the two genuine open corridor bays remain intentional passable openings and must retain their routes and Physics traversal.",
+    "forbidden_interpretation": "Do not close the open corridor bays, do not require the courtyard gate to be the sole exit, and do not fill transparent roof or eave width with collision."
+  },
+  "acceptance_delta": [
+    "the west gate-side material is visually continuous from x=990 through the measured left jamb beginning x=1180.04",
+    "the east gate-side material is visually continuous from the measured right body ending x=1904.28 through x=2081",
+    "both new visible stone bases use their exact 70x24 and 60x24 solids",
+    "adult Physics cannot pass through any visible raised-wall seam, while the gate opening and both authentic corridor openings remain passable",
+    "all other parent author geometry, material, inverse and art acceptance clauses remain unchanged"
+  ],
+  "scope_boundary": "Two-row source-author postscript only. No new probe design, image generation, PNG edit, engine execution by ART, production deployment or formal credit."
+}

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"wild_elite_wolf"
+display_name = "竹尾头狼"
+battle_actor_path = "res://art/sprites/battle/zhuwei_wolf_20261115/idle_02.tres"
+battle_actor_scale = 0.94
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_wolf_20261115/idle_02.tres", "res://art/sprites/battle/zhuwei_wolf_20261115/idle_03.tres", "res://art/sprites/battle/zhuwei_wolf_20261115/idle_04.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_wolf_20261115/action_01.tres", "res://art/sprites/battle/zhuwei_wolf_20261115/action_02.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_wolf_20261115/action_03.tres", "res://art/sprites/battle/zhuwei_wolf_20261115/action_04.tres", "res://art/sprites/battle/zhuwei_wolf_20261115/reaction_02.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_wolf_20261115/reaction_01.tres", "res://art/sprites/battle/zhuwei_wolf_20261115/reaction_02.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_wolf_20261115/reaction_01.tres", "res://art/sprites/battle/zhuwei_wolf_20261115/reaction_03.tres", "res://art/sprites/battle/zhuwei_wolf_20261115/reaction_04.tres")
+attack_sfx_path = "res://art/audio/animals/sfx_wolf_attack_20261110.wav"
+hit_sfx_path = "res://art/audio/animals/sfx_wolf_hit_20261110.wav"
+level = 4
+max_hp = 152
+max_mp = 0
+attack = 33
+defense = 8
+speed = 11
+skill_ids = Array[StringName]([&"basic_attack", &"wolf_rending_bite"])
+aggression = 0.72
+drop_gold_min = 5
+drop_gold_max = 9
+drop_exp = 27

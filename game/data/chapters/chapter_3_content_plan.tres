@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ChapterContentPlan" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/chapter_content_plan.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+chapter = 3
+title = "五派风云"
+main_scene_ids = Array[StringName]([&"ch3_s1_wulin_assembly", &"ch3_s2_trial_ground", &"ch3_s3_faction_training", &"ch3_s4_forbidden_tomb"])
+main_quest_ids = Array[StringName]([&"q_ch3_main_00_assembly_clues", &"q_ch3_main_01_join_faction", &"q_ch3_main_02_faction_training", &"q_ch3_main_03_token_conspiracy"])
+side_quest_ids = Array[StringName]([&"q_ch3_side_01_guqin_manual", &"q_ch3_side_02_weiqi_match", &"q_ch3_side_03_alchemy_trial", &"q_ch3_side_04_forbidden_tomb", &"q_ch3_side_05_sword_forum"])
+leveling_scene_ids = Array[StringName]([&"ch3_s2_trial_ground", &"ch3_s3_faction_training"])
+story_battle_groups = Array[Dictionary]([
+	{"id":"qualification", "enemy_ids":[&"wulin_examiner", &"ch2_tournament_guard"]},
+	{"id":"faction_drill", "enemy_ids":[&"linxi_dojo_senior", &"linxi_dojo_disciple"]},
+	{"id":"tomb_interception", "enemy_ids":[&"mingwu_shadow", &"mingwu_spy", &"mingwu_infiltrator"]}
+])
+estimated_main_minutes = 85
+estimated_completionist_minutes = 185

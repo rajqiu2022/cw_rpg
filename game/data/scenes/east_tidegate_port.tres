@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="scene"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="stream"]
+[ext_resource type="Resource" path="res://data/maps/east_mainland/east_tidegate_port.tres" id="layout"]
+[sub_resource type="Resource" id="EastExtent"]
+script = ExtResource("stream")
+logical_size = Vector2i(3072, 2048)
+[resource]
+script = ExtResource("scene")
+scene_id = &"east_tidegate_port"
+display_name = "东大陆 · 潮门港"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+is_settlement = true
+actor_positions_are_feet = true
+player_spawn = Vector2(0.26692708, 0.53222656)
+map_layout = ExtResource("layout")
+streamed_background = SubResource("EastExtent")
+npcs = Array[Dictionary]([
+	{"npc_id": "tidegate_captain", "npc_name": "潮门船头", "sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png", "dialog_id": "east_tidegate_sail", "scale": 0.9, "pos": Vector2(0.29296875, 0.4921875)},
+	{"npc_id": "tidegate_clerk", "dialog_variants": [{"dialog_id": "east_tide_clerk", "require_quest_active": "q_east_tidesound_blade", "require_flags": ["tide_tea_known", "tide_salt_known"], "hide_flags": ["tide_waybills_open"]}], "portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png", "movement_mode": "patrol", "walk_sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_right_walk_8f_v3_runtime.png", "patrol_axis": Vector2(1, 0.04), "patrol_distance": 104.0, "patrol_speed": 24.0, "invert_patrol_facing": true, "npc_name": "货栈账房", "sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png", "dialog_id": "east_tidegate_clerk", "scale": 0.9, "pos": Vector2(0.56770833, 0.45605469)}
+])

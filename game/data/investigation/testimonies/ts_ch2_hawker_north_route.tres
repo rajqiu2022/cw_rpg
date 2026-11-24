@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch2_hawker_north_route"
+display_name = "货郎所见的北行女侠"
+speaker_npc_id = &"npc_ch2_market_hawker"
+statement = "数名凌月弟子主动购买火折子和止血布，随后结伴前往北林旧猎道，看起来并未受人胁迫。"
+chapter = 2
+initial_credibility = 65
+related_evidence_ids = Array[StringName]([&"ev_ch2_missing_notices"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch2_apothecary_bound_buyer", &"ts_ch2_gatekeeper_charcoal_cart"])

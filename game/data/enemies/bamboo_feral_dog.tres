@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+enemy_id = &"bamboo_feral_dog"
+display_name = "竹尾野狗"
+battle_actor_path = "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/ready_01.tres"
+battle_actor_scale = 0.85
+battle_actor_flip_h = false
+attack_sfx_path = "res://art/audio/animals/enemy_expansion_20261112/dog_attack.wav"
+hit_sfx_path = "res://art/audio/animals/enemy_expansion_20261112/dog_hit.wav"
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/ready_01.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/ready_02.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/ready_03.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/ready_04.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/move_01.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/move_02.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/move_03.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/move_04.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/attack_01.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/attack_02.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/attack_03.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/attack_04.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/hit_01.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/hit_02.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/hit_03.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/hit_04.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/defeat_01.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/defeat_02.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/defeat_03.tres", "res://art/sprites/battle/field_animals_20261114/bamboo_feral_dog/defeat_04.tres")
+level = 3
+max_hp = 92
+max_mp = 0
+attack = 25
+defense = 5
+speed = 13
+skill_ids = Array[StringName]([&"basic_attack"])
+aggression = 0.0
+drop_gold_min = 3
+drop_gold_max = 6
+drop_exp = 17

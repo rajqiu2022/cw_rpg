@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "游天鸿"
+text = "上回看我折枝教剑。今日这竿没挂钩，你猜我能不能钓起那片叶子？"
+choices = Array[Dictionary]([{"text":"蹲下看他如何收线","next":"cast","accept_quest":"q_ch5_side_05_mountain_stream"},{"text":"改日再来观钓","next":"leave","decline_quest":"q_ch5_side_05_mountain_stream"}])
+
+[sub_resource type="Resource" id="cast"]
+script = ExtResource("2")
+node_id = &"cast"
+speaker = "游天鸿"
+text = "盯着白沫。叶子还藏在下面，你一提竿，它便顺水逃远了。"
+accept_quest = &"q_ch5_side_05_mountain_stream"
+on_end = "next:lift"
+
+[sub_resource type="Resource" id="lift"]
+script = ExtResource("2")
+node_id = &"lift"
+speaker = "冷孤云"
+text = "前辈先松了腕！等叶柄翻出水面，线圈一收，叶子自己就落进圈里。原来追燕的最后一剑，也得留它一个转身。"
+set_flags = Array[Dictionary]([{"key":"mountain_stream_encounter","value":true}])
+on_end = "end"
+
+[sub_resource type="Resource" id="leave"]
+script = ExtResource("2")
+node_id = &"leave"
+speaker = "游天鸿"
+text = "去吧。哪天走累了，潭边还留着这块坐人的石头。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_huashan_stream_insight"
+required_free_inventory_slots = 3
+blocked_story_flag = &"mountain_stream_encounter"
+nodes = Array[Resource]([SubResource("start"), SubResource("cast"), SubResource("lift"), SubResource("leave")])

@@ -1,0 +1,8475 @@
+{
+  "schema_version": 1,
+  "layout_version": 3006,
+  "scope": "ONLY_WUDANG_HUASHAN_OUTDOORS_AND_ORIGINAL_TAIJI_ID_ON_SAME_WUDANG_SITE",
+  "geometry_proof": {
+    "path": "game/build/sect_adoption_20261030n_source01/business_geometry_READY.json",
+    "sha256": "a95e8713086f8c9243bfded7ee7458cd06448fec7b9731e0c1d80f72bb3de32d",
+    "not_engine_or_Physics": true
+  },
+  "towns": {
+    "openworld_wudang_gate": {
+      "key": "wudang",
+      "id": "openworld_wudang_gate",
+      "label": "武当派",
+      "scene": "res://scenes/drafts/sect_maps_20261029k/wudang.tscn",
+      "native_layout": "res://art/modules/sect_maps_20261029k/wudang.json",
+      "size": [
+        5200,
+        4400
+      ],
+      "arrival": [
+        1700,
+        4100
+      ],
+      "leave_arrow": [
+        1700,
+        4200
+      ],
+      "inner_arrow": [
+        2500,
+        2620
+      ],
+      "inner_return": [
+        2700,
+        1240
+      ],
+      "inner_source": "openworld_wudang_purple_cloud_court",
+      "old_inner_return_uv": [
+        0.5,
+        0.205
+      ],
+      "world_uv": [
+        0.11393229,
+        0.6820928
+      ],
+      "world_portal_id": "wudang",
+      "portal_feet": {
+        "return_world": [
+          1700,
+          4200
+        ],
+        "to_wudang_purple_cloud_court": [
+          2700,
+          1160
+        ]
+      },
+      "npc_feet": {
+        "wudang_gate_disciple": [
+          1900,
+          3900
+        ]
+      },
+      "original_npcs": [
+        {
+          "npc_id": "wudang_gate_disciple",
+          "npc_name": "武当守山弟子",
+          "pos": [
+            0.585,
+            0.69
+          ],
+          "sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png",
+          "dialog_id": "openworld_wudang_gate_disciple",
+          "scale": 0.92,
+          "conversation_base_facing": "left"
+        }
+      ],
+      "original_portals": [
+        {
+          "id": "return_world",
+          "label": "下山 · 返回江湖大地图",
+          "pos": [
+            0.5,
+            0.945
+          ],
+          "size": [
+            0.17,
+            0.08
+          ],
+          "action": "world_map",
+          "marker_rotation_degrees": 180.0
+        },
+        {
+          "id": "to_wudang_taiji_court",
+          "label": "进入武当太极场",
+          "pos": [
+            0.5,
+            0.115
+          ],
+          "size": [
+            0.15,
+            0.075
+          ],
+          "target_scene": "openworld_wudang_taiji_court",
+          "target_pos": [
+            0.5,
+            0.875
+          ]
+        }
+      ],
+      "original_interactions": [],
+      "original_hotspots": [],
+      "terrain": {
+        "heights": [
+          0,
+          180,
+          360
+        ],
+        "platforms": [
+          {
+            "level": 1,
+            "polygon": [
+              [
+                1100,
+                650
+              ],
+              [
+                2100,
+                250
+              ],
+              [
+                3900,
+                450
+              ],
+              [
+                4700,
+                1500
+              ],
+              [
+                4700,
+                2650
+              ],
+              [
+                4100,
+                2900
+              ],
+              [
+                1300,
+                2900
+              ],
+              [
+                1000,
+                2300
+              ]
+            ]
+          },
+          {
+            "level": 2,
+            "polygon": [
+              [
+                2000,
+                550
+              ],
+              [
+                2800,
+                400
+              ],
+              [
+                3700,
+                650
+              ],
+              [
+                3850,
+                1200
+              ],
+              [
+                3500,
+                1600
+              ],
+              [
+                1900,
+                1600
+              ],
+              [
+                1750,
+                1200
+              ]
+            ]
+          }
+        ],
+        "ramps": [
+          {
+            "id": "MainRise",
+            "label": "山门—太极道场",
+            "low": 0,
+            "high": 1,
+            "top": [
+              2400,
+              2900
+            ],
+            "bottom": [
+              2400,
+              3039.8
+            ],
+            "rise": 180,
+            "ground_run": 139.79999999999995
+          },
+          {
+            "id": "ServiceRise",
+            "label": "东麓—生活道院",
+            "low": 0,
+            "high": 1,
+            "top": [
+              3900,
+              2900
+            ],
+            "bottom": [
+              3900,
+              3039.8
+            ],
+            "rise": 180,
+            "ground_run": 139.79999999999995
+          },
+          {
+            "id": "HallRise",
+            "label": "道场—正殿高台",
+            "low": 1,
+            "high": 2,
+            "top": [
+              2600,
+              1600
+            ],
+            "bottom": [
+              2600,
+              1739.8
+            ],
+            "rise": 180,
+            "ground_run": 139.79999999999995
+          },
+          {
+            "id": "LibraryRise",
+            "label": "道院—藏经台",
+            "low": 1,
+            "high": 2,
+            "top": [
+              3300,
+              1600
+            ],
+            "bottom": [
+              3300,
+              1739.8
+            ],
+            "rise": 180,
+            "ground_run": 139.79999999999995
+          }
+        ],
+        "source_stair_scale": 0.82,
+        "portal_half_width": 180,
+        "facade_opening_half_width": 300,
+        "object_moves": {}
+      },
+      "solids": [
+        {
+          "path": "Town/Boundary0",
+          "shape_path": "Town/Boundary0/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              90.0
+            ],
+            [
+              5110.0,
+              90.0
+            ],
+            [
+              5110.0,
+              110.0
+            ],
+            [
+              90.0,
+              110.0
+            ]
+          ],
+          "line": 360
+        },
+        {
+          "path": "Town/Boundary1",
+          "shape_path": "Town/Boundary1/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              5090.0,
+              90.0
+            ],
+            [
+              5110.0,
+              90.0
+            ],
+            [
+              5110.0,
+              4310.0
+            ],
+            [
+              5090.0,
+              4310.0
+            ]
+          ],
+          "line": 369
+        },
+        {
+          "path": "Town/Boundary2",
+          "shape_path": "Town/Boundary2/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              4290.0
+            ],
+            [
+              5110.0,
+              4290.0
+            ],
+            [
+              5110.0,
+              4310.0
+            ],
+            [
+              90.0,
+              4310.0
+            ]
+          ],
+          "line": 378
+        },
+        {
+          "path": "Town/Boundary3",
+          "shape_path": "Town/Boundary3/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              90.0
+            ],
+            [
+              110.0,
+              90.0
+            ],
+            [
+              110.0,
+              4310.0
+            ],
+            [
+              90.0,
+              4310.0
+            ]
+          ],
+          "line": 387
+        },
+        {
+          "path": "Town/MainHall/Body",
+          "shape_path": "Town/MainHall/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              2235.4727,
+              830.0
+            ],
+            [
+              3164.5273,
+              830.0
+            ],
+            [
+              3164.5273,
+              950.0
+            ],
+            [
+              2235.4727,
+              950.0
+            ]
+          ],
+          "line": 411
+        },
+        {
+          "path": "Town/MountainGate/LeftPier",
+          "shape_path": "Town/MountainGate/LeftPier/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              1329.5798300000001,
+              3725.0
+            ],
+            [
+              1619.63586,
+              3725.0
+            ],
+            [
+              1619.63586,
+              3800.0
+            ],
+            [
+              1329.5798300000001,
+              3800.0
+            ]
+          ],
+          "line": 435
+        },
+        {
+          "path": "Town/MountainGate/RightPier",
+          "shape_path": "Town/MountainGate/RightPier/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              1739.383755,
+              3725.0
+            ],
+            [
+              2070.42017,
+              3725.0
+            ],
+            [
+              2070.42017,
+              3800.0
+            ],
+            [
+              1739.383755,
+              3800.0
+            ]
+          ],
+          "line": 442
+        },
+        {
+          "path": "Town/Scripture/Body",
+          "shape_path": "Town/Scripture/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3667.2861,
+              1640.0
+            ],
+            [
+              4312.7139,
+              1640.0
+            ],
+            [
+              4312.7139,
+              1730.0
+            ],
+            [
+              3667.2861,
+              1730.0
+            ]
+          ],
+          "line": 483
+        },
+        {
+          "path": "Town/EastDormitory/Body",
+          "shape_path": "Town/EastDormitory/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3758.66107,
+              2238.75
+            ],
+            [
+              4341.33893,
+              2238.75
+            ],
+            [
+              4341.33893,
+              2320.0
+            ],
+            [
+              3758.66107,
+              2320.0
+            ]
+          ],
+          "line": 507
+        },
+        {
+          "path": "Town/Kitchen/Body",
+          "shape_path": "Town/Kitchen/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3210.03604,
+              2507.5
+            ],
+            [
+              3729.96396,
+              2507.5
+            ],
+            [
+              3729.96396,
+              2580.0
+            ],
+            [
+              3210.03604,
+              2580.0
+            ]
+          ],
+          "line": 531
+        },
+        {
+          "path": "Town/UpperWing/Body",
+          "shape_path": "Town/UpperWing/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              3092.10748,
+              1052.5
+            ],
+            [
+              3647.89252,
+              1052.5
+            ],
+            [
+              3647.89252,
+              1130.0
+            ],
+            [
+              3092.10748,
+              1130.0
+            ]
+          ],
+          "line": 555
+        },
+        {
+          "path": "Town/WestWing/Body",
+          "shape_path": "Town/WestWing/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              1804.51817,
+              1178.75
+            ],
+            [
+              2315.48183,
+              1178.75
+            ],
+            [
+              2315.48183,
+              1250.0
+            ],
+            [
+              1804.51817,
+              1250.0
+            ]
+          ],
+          "line": 579
+        },
+        {
+          "path": "Town/GateHouse/Body",
+          "shape_path": "Town/GateHouse/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              897.9645800000001,
+              3582.5
+            ],
+            [
+              1382.03542,
+              3582.5
+            ],
+            [
+              1382.03542,
+              3650.0
+            ],
+            [
+              897.9645800000001,
+              3650.0
+            ]
+          ],
+          "line": 603
+        },
+        {
+          "path": "Town/Meditation/Body",
+          "shape_path": "Town/Meditation/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1256.60948,
+              1442.5
+            ],
+            [
+              1603.39052,
+              1442.5
+            ],
+            [
+              1603.39052,
+              1540.0
+            ],
+            [
+              1256.60948,
+              1540.0
+            ]
+          ],
+          "line": 627
+        },
+        {
+          "path": "Town/CourtBench/Body",
+          "shape_path": "Town/CourtBench/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1971.611618,
+              2618.5
+            ],
+            [
+              2088.388382,
+              2618.5
+            ],
+            [
+              2088.388382,
+              2630.0
+            ],
+            [
+              1971.611618,
+              2630.0
+            ]
+          ],
+          "line": 651
+        },
+        {
+          "path": "Town/DormBench/Body",
+          "shape_path": "Town/DormBench/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4291.611618,
+              2408.5
+            ],
+            [
+              4408.388382,
+              2408.5
+            ],
+            [
+              4408.388382,
+              2420.0
+            ],
+            [
+              4291.611618,
+              2420.0
+            ]
+          ],
+          "line": 675
+        },
+        {
+          "path": "Town/HallBench/Body",
+          "shape_path": "Town/HallBench/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              2961.611618,
+              1228.5
+            ],
+            [
+              3078.388382,
+              1228.5
+            ],
+            [
+              3078.388382,
+              1240.0
+            ],
+            [
+              2961.611618,
+              1240.0
+            ]
+          ],
+          "line": 699
+        },
+        {
+          "path": "Town/KitchenJars/Body",
+          "shape_path": "Town/KitchenJars/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3710.74,
+              2600.5
+            ],
+            [
+              3789.26,
+              2600.5
+            ],
+            [
+              3789.26,
+              2620.0
+            ],
+            [
+              3710.74,
+              2620.0
+            ]
+          ],
+          "line": 723
+        },
+        {
+          "path": "Town/Storage/Body",
+          "shape_path": "Town/Storage/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4384.38777,
+              2227.5
+            ],
+            [
+              4495.61223,
+              2227.5
+            ],
+            [
+              4495.61223,
+              2250.0
+            ],
+            [
+              4384.38777,
+              2250.0
+            ]
+          ],
+          "line": 747
+        },
+        {
+          "path": "Town/GardenTable/Body",
+          "shape_path": "Town/GardenTable/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1371.18934,
+              1717.5
+            ],
+            [
+              1468.81066,
+              1717.5
+            ],
+            [
+              1468.81066,
+              1740.0
+            ],
+            [
+              1371.18934,
+              1740.0
+            ]
+          ],
+          "line": 771
+        },
+        {
+          "path": "Town/Pine0/Body",
+          "shape_path": "Town/Pine0/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              762.0,
+              3360.0
+            ],
+            [
+              838.0,
+              3360.0
+            ],
+            [
+              838.0,
+              3400.0
+            ],
+            [
+              762.0,
+              3400.0
+            ]
+          ],
+          "line": 795
+        },
+        {
+          "path": "Town/Pine1/Body",
+          "shape_path": "Town/Pine1/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2212.0,
+              3610.0
+            ],
+            [
+              2288.0,
+              3610.0
+            ],
+            [
+              2288.0,
+              3650.0
+            ],
+            [
+              2212.0,
+              3650.0
+            ]
+          ],
+          "line": 819
+        },
+        {
+          "path": "Town/Pine2/Body",
+          "shape_path": "Town/Pine2/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3162.0,
+              3380.0
+            ],
+            [
+              3238.0,
+              3380.0
+            ],
+            [
+              3238.0,
+              3420.0
+            ],
+            [
+              3162.0,
+              3420.0
+            ]
+          ],
+          "line": 843
+        },
+        {
+          "path": "Town/Pine3/Body",
+          "shape_path": "Town/Pine3/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4442.0,
+              3260.0
+            ],
+            [
+              4518.0,
+              3260.0
+            ],
+            [
+              4518.0,
+              3300.0
+            ],
+            [
+              4442.0,
+              3300.0
+            ]
+          ],
+          "line": 867
+        },
+        {
+          "path": "Town/Pine4/Body",
+          "shape_path": "Town/Pine4/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              882.0,
+              2560.0
+            ],
+            [
+              958.0,
+              2560.0
+            ],
+            [
+              958.0,
+              2600.0
+            ],
+            [
+              882.0,
+              2600.0
+            ]
+          ],
+          "line": 891
+        },
+        {
+          "path": "Town/Pine5/Body",
+          "shape_path": "Town/Pine5/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1142.0,
+              1940.0
+            ],
+            [
+              1218.0,
+              1940.0
+            ],
+            [
+              1218.0,
+              1980.0
+            ],
+            [
+              1142.0,
+              1980.0
+            ]
+          ],
+          "line": 915
+        },
+        {
+          "path": "Town/Pine6/Body",
+          "shape_path": "Town/Pine6/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1502.0,
+              2060.0
+            ],
+            [
+              1578.0,
+              2060.0
+            ],
+            [
+              1578.0,
+              2100.0
+            ],
+            [
+              1502.0,
+              2100.0
+            ]
+          ],
+          "line": 939
+        },
+        {
+          "path": "Town/Pine7/Body",
+          "shape_path": "Town/Pine7/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4492.0,
+              1770.0
+            ],
+            [
+              4568.0,
+              1770.0
+            ],
+            [
+              4568.0,
+              1810.0
+            ],
+            [
+              4492.0,
+              1810.0
+            ]
+          ],
+          "line": 963
+        },
+        {
+          "path": "Town/Pine8/Body",
+          "shape_path": "Town/Pine8/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4412.0,
+              1210.0
+            ],
+            [
+              4488.0,
+              1210.0
+            ],
+            [
+              4488.0,
+              1250.0
+            ],
+            [
+              4412.0,
+              1250.0
+            ]
+          ],
+          "line": 987
+        },
+        {
+          "path": "Town/Pine9/Body",
+          "shape_path": "Town/Pine9/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1592.0,
+              910.0
+            ],
+            [
+              1668.0,
+              910.0
+            ],
+            [
+              1668.0,
+              950.0
+            ],
+            [
+              1592.0,
+              950.0
+            ]
+          ],
+          "line": 1011
+        },
+        {
+          "path": "Town/Pine10/Body",
+          "shape_path": "Town/Pine10/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3792.0,
+              720.0
+            ],
+            [
+              3868.0,
+              720.0
+            ],
+            [
+              3868.0,
+              760.0
+            ],
+            [
+              3792.0,
+              760.0
+            ]
+          ],
+          "line": 1035
+        },
+        {
+          "path": "Town/Pine11/Body",
+          "shape_path": "Town/Pine11/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3012.0,
+              340.0
+            ],
+            [
+              3088.0,
+              340.0
+            ],
+            [
+              3088.0,
+              380.0
+            ],
+            [
+              3012.0,
+              380.0
+            ]
+          ],
+          "line": 1059
+        },
+        {
+          "path": "Town/Pine12/Body",
+          "shape_path": "Town/Pine12/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              1072.0,
+              3290.0
+            ],
+            [
+              1148.0,
+              3290.0
+            ],
+            [
+              1148.0,
+              3330.0
+            ],
+            [
+              1072.0,
+              3330.0
+            ]
+          ],
+          "line": 1083
+        },
+        {
+          "path": "Town/Pine13/Body",
+          "shape_path": "Town/Pine13/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3552.0,
+              2120.0
+            ],
+            [
+              3628.0,
+              2120.0
+            ],
+            [
+              3628.0,
+              2160.0
+            ],
+            [
+              3552.0,
+              2160.0
+            ]
+          ],
+          "line": 1107
+        },
+        {
+          "path": "Town/MountainRock0/Body",
+          "shape_path": "Town/MountainRock0/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              113.0,
+              1671.0
+            ],
+            [
+              887.0,
+              1671.0
+            ],
+            [
+              887.0,
+              1800.0
+            ],
+            [
+              113.0,
+              1800.0
+            ]
+          ],
+          "line": 1131
+        },
+        {
+          "path": "Town/MountainRock1/Body",
+          "shape_path": "Town/MountainRock1/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              169.0,
+              2463.0
+            ],
+            [
+              871.0,
+              2463.0
+            ],
+            [
+              871.0,
+              2580.0
+            ],
+            [
+              169.0,
+              2580.0
+            ]
+          ],
+          "line": 1155
+        },
+        {
+          "path": "Town/MountainRock2/Body",
+          "shape_path": "Town/MountainRock2/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              391.0,
+              767.0
+            ],
+            [
+              1309.0,
+              767.0
+            ],
+            [
+              1309.0,
+              920.0
+            ],
+            [
+              391.0,
+              920.0
+            ]
+          ],
+          "line": 1179
+        },
+        {
+          "path": "Town/MountainRock3/Body",
+          "shape_path": "Town/MountainRock3/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              1214.0,
+              238.0
+            ],
+            [
+              2186.0,
+              238.0
+            ],
+            [
+              2186.0,
+              400.0
+            ],
+            [
+              1214.0,
+              400.0
+            ]
+          ],
+          "line": 1203
+        },
+        {
+          "path": "Town/MountainRock4/Body",
+          "shape_path": "Town/MountainRock4/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2215.0,
+              45.0
+            ],
+            [
+              3385.0,
+              45.0
+            ],
+            [
+              3385.0,
+              240.0
+            ],
+            [
+              2215.0,
+              240.0
+            ]
+          ],
+          "line": 1227
+        },
+        {
+          "path": "Town/MountainRock5/Body",
+          "shape_path": "Town/MountainRock5/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3560.0,
+              270.0
+            ],
+            [
+              4460.0,
+              270.0
+            ],
+            [
+              4460.0,
+              420.0
+            ],
+            [
+              3560.0,
+              420.0
+            ]
+          ],
+          "line": 1251
+        },
+        {
+          "path": "Town/MountainRock6/Body",
+          "shape_path": "Town/MountainRock6/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4498.0,
+              1366.0
+            ],
+            [
+              5362.0,
+              1366.0
+            ],
+            [
+              5362.0,
+              1510.0
+            ],
+            [
+              4498.0,
+              1510.0
+            ]
+          ],
+          "line": 1275
+        },
+        {
+          "path": "Town/MountainRock7/Body",
+          "shape_path": "Town/MountainRock7/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4654.0,
+              2388.0
+            ],
+            [
+              5446.0,
+              2388.0
+            ],
+            [
+              5446.0,
+              2520.0
+            ],
+            [
+              4654.0,
+              2520.0
+            ]
+          ],
+          "line": 1299
+        },
+        {
+          "path": "Town/MountainRock8/Body",
+          "shape_path": "Town/MountainRock8/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4135.0,
+              3685.0
+            ],
+            [
+              4765.0,
+              3685.0
+            ],
+            [
+              4765.0,
+              3790.0
+            ],
+            [
+              4135.0,
+              3790.0
+            ]
+          ],
+          "line": 1323
+        },
+        {
+          "path": "Town/MountainRock9/Body",
+          "shape_path": "Town/MountainRock9/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              376.0,
+              3942.0
+            ],
+            [
+              1024.0,
+              3942.0
+            ],
+            [
+              1024.0,
+              4050.0
+            ],
+            [
+              376.0,
+              4050.0
+            ]
+          ],
+          "line": 1347
+        },
+        {
+          "path": "Town/Grove0/Body",
+          "shape_path": "Town/Grove0/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              708.0,
+              1370.0
+            ],
+            [
+              772.0,
+              1370.0
+            ],
+            [
+              772.0,
+              1400.0
+            ],
+            [
+              708.0,
+              1400.0
+            ]
+          ],
+          "line": 1371
+        },
+        {
+          "path": "Town/Grove1/Body",
+          "shape_path": "Town/Grove1/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              678.0,
+              2020.0
+            ],
+            [
+              742.0,
+              2020.0
+            ],
+            [
+              742.0,
+              2050.0
+            ],
+            [
+              678.0,
+              2050.0
+            ]
+          ],
+          "line": 1395
+        },
+        {
+          "path": "Town/Grove2/Body",
+          "shape_path": "Town/Grove2/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              748.0,
+              2810.0
+            ],
+            [
+              812.0,
+              2810.0
+            ],
+            [
+              812.0,
+              2840.0
+            ],
+            [
+              748.0,
+              2840.0
+            ]
+          ],
+          "line": 1419
+        },
+        {
+          "path": "Town/Grove3/Body",
+          "shape_path": "Town/Grove3/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1098.0,
+              1040.0
+            ],
+            [
+              1162.0,
+              1040.0
+            ],
+            [
+              1162.0,
+              1070.0
+            ],
+            [
+              1098.0,
+              1070.0
+            ]
+          ],
+          "line": 1443
+        },
+        {
+          "path": "Town/Grove4/Body",
+          "shape_path": "Town/Grove4/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1438.0,
+              590.0
+            ],
+            [
+              1502.0,
+              590.0
+            ],
+            [
+              1502.0,
+              620.0
+            ],
+            [
+              1438.0,
+              620.0
+            ]
+          ],
+          "line": 1467
+        },
+        {
+          "path": "Town/Grove5/Body",
+          "shape_path": "Town/Grove5/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1918.0,
+              460.0
+            ],
+            [
+              1982.0,
+              460.0
+            ],
+            [
+              1982.0,
+              490.0
+            ],
+            [
+              1918.0,
+              490.0
+            ]
+          ],
+          "line": 1491
+        },
+        {
+          "path": "Town/Grove6/Body",
+          "shape_path": "Town/Grove6/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3668.0,
+              310.0
+            ],
+            [
+              3732.0,
+              310.0
+            ],
+            [
+              3732.0,
+              340.0
+            ],
+            [
+              3668.0,
+              340.0
+            ]
+          ],
+          "line": 1515
+        },
+        {
+          "path": "Town/Grove7/Body",
+          "shape_path": "Town/Grove7/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4448.0,
+              750.0
+            ],
+            [
+              4512.0,
+              750.0
+            ],
+            [
+              4512.0,
+              780.0
+            ],
+            [
+              4448.0,
+              780.0
+            ]
+          ],
+          "line": 1539
+        },
+        {
+          "path": "Town/Grove8/Body",
+          "shape_path": "Town/Grove8/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4628.0,
+              1020.0
+            ],
+            [
+              4692.0,
+              1020.0
+            ],
+            [
+              4692.0,
+              1050.0
+            ],
+            [
+              4628.0,
+              1050.0
+            ]
+          ],
+          "line": 1563
+        },
+        {
+          "path": "Town/Grove9/Body",
+          "shape_path": "Town/Grove9/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4778.0,
+              2190.0
+            ],
+            [
+              4842.0,
+              2190.0
+            ],
+            [
+              4842.0,
+              2220.0
+            ],
+            [
+              4778.0,
+              2220.0
+            ]
+          ],
+          "line": 1587
+        },
+        {
+          "path": "Town/Grove10/Body",
+          "shape_path": "Town/Grove10/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4718.0,
+              2800.0
+            ],
+            [
+              4782.0,
+              2800.0
+            ],
+            [
+              4782.0,
+              2830.0
+            ],
+            [
+              4718.0,
+              2830.0
+            ]
+          ],
+          "line": 1611
+        },
+        {
+          "path": "Town/Grove11/Body",
+          "shape_path": "Town/Grove11/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4198.0,
+              3420.0
+            ],
+            [
+              4262.0,
+              3420.0
+            ],
+            [
+              4262.0,
+              3450.0
+            ],
+            [
+              4198.0,
+              3450.0
+            ]
+          ],
+          "line": 1635
+        },
+        {
+          "path": "Town/Grove12/Body",
+          "shape_path": "Town/Grove12/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3768.0,
+              3710.0
+            ],
+            [
+              3832.0,
+              3710.0
+            ],
+            [
+              3832.0,
+              3740.0
+            ],
+            [
+              3768.0,
+              3740.0
+            ]
+          ],
+          "line": 1659
+        },
+        {
+          "path": "Town/Grove13/Body",
+          "shape_path": "Town/Grove13/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              968.0,
+              3920.0
+            ],
+            [
+              1032.0,
+              3920.0
+            ],
+            [
+              1032.0,
+              3950.0
+            ],
+            [
+              968.0,
+              3950.0
+            ]
+          ],
+          "line": 1683
+        },
+        {
+          "path": "Town/Grove14/Body",
+          "shape_path": "Town/Grove14/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2128.0,
+              3400.0
+            ],
+            [
+              2192.0,
+              3400.0
+            ],
+            [
+              2192.0,
+              3430.0
+            ],
+            [
+              2128.0,
+              3430.0
+            ]
+          ],
+          "line": 1707
+        },
+        {
+          "path": "Town/Grove15/Body",
+          "shape_path": "Town/Grove15/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              2908.0,
+              2810.0
+            ],
+            [
+              2972.0,
+              2810.0
+            ],
+            [
+              2972.0,
+              2840.0
+            ],
+            [
+              2908.0,
+              2840.0
+            ]
+          ],
+          "line": 1731
+        },
+        {
+          "path": "Town/Grove16/Body",
+          "shape_path": "Town/Grove16/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3058.0,
+              2700.0
+            ],
+            [
+              3122.0,
+              2700.0
+            ],
+            [
+              3122.0,
+              2730.0
+            ],
+            [
+              3058.0,
+              2730.0
+            ]
+          ],
+          "line": 1755
+        },
+        {
+          "path": "Town/Grove17/Body",
+          "shape_path": "Town/Grove17/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1748.0,
+              2570.0
+            ],
+            [
+              1812.0,
+              2570.0
+            ],
+            [
+              1812.0,
+              2600.0
+            ],
+            [
+              1748.0,
+              2600.0
+            ]
+          ],
+          "line": 1779
+        },
+        {
+          "path": "Terrain/Cliff0",
+          "shape_path": "Terrain/Cliff0/@CollisionPolygon2D@2",
+          "layer": 48,
+          "polygon": [
+            [
+              1098.1431,
+              645.3576
+            ],
+            [
+              2098.143,
+              245.35762
+            ],
+            [
+              2101.857,
+              254.64238
+            ],
+            [
+              1101.8569,
+              654.6424
+            ]
+          ],
+          "line": 1871
+        },
+        {
+          "path": "Terrain/Cliff1",
+          "shape_path": "Terrain/Cliff1/@CollisionPolygon2D@3",
+          "layer": 48,
+          "polygon": [
+            [
+              2100.5522,
+              245.03058
+            ],
+            [
+              3900.5522,
+              445.03058
+            ],
+            [
+              3899.4478,
+              454.96942
+            ],
+            [
+              2099.4478,
+              254.96942
+            ]
+          ],
+          "line": 1878
+        },
+        {
+          "path": "Terrain/Cliff2",
+          "shape_path": "Terrain/Cliff2/@CollisionPolygon2D@4",
+          "layer": 48,
+          "polygon": [
+            [
+              3903.977,
+              446.9698
+            ],
+            [
+              4703.977,
+              1496.9697
+            ],
+            [
+              4696.023,
+              1503.0303
+            ],
+            [
+              3896.023,
+              453.0302
+            ]
+          ],
+          "line": 1885
+        },
+        {
+          "path": "Terrain/Cliff3",
+          "shape_path": "Terrain/Cliff3/@CollisionPolygon2D@5",
+          "layer": 48,
+          "polygon": [
+            [
+              4705.0,
+              1500.0
+            ],
+            [
+              4705.0,
+              2650.0
+            ],
+            [
+              4695.0,
+              2650.0
+            ],
+            [
+              4695.0,
+              1500.0
+            ]
+          ],
+          "line": 1892
+        },
+        {
+          "path": "Terrain/Cliff4",
+          "shape_path": "Terrain/Cliff4/@CollisionPolygon2D@6",
+          "layer": 48,
+          "polygon": [
+            [
+              4701.923,
+              2654.6155
+            ],
+            [
+              4101.923,
+              2904.6155
+            ],
+            [
+              4098.077,
+              2895.3845
+            ],
+            [
+              4698.077,
+              2645.3845
+            ]
+          ],
+          "line": 1899
+        },
+        {
+          "path": "Terrain/Cliff5",
+          "shape_path": "Terrain/Cliff5/@CollisionPolygon2D@10",
+          "layer": 48,
+          "polygon": [
+            [
+              4100.0,
+              2905.0
+            ],
+            [
+              4080.0,
+              2905.0
+            ],
+            [
+              4080.0,
+              2895.0
+            ],
+            [
+              4100.0,
+              2895.0
+            ]
+          ],
+          "line": 1927
+        },
+        {
+          "path": "Terrain/Cliff6",
+          "shape_path": "Terrain/Cliff6/@CollisionPolygon2D@11",
+          "layer": 48,
+          "polygon": [
+            [
+              3720.0,
+              2905.0
+            ],
+            [
+              2580.0,
+              2905.0
+            ],
+            [
+              2580.0,
+              2895.0
+            ],
+            [
+              3720.0,
+              2895.0
+            ]
+          ],
+          "line": 1934
+        },
+        {
+          "path": "Terrain/Cliff7",
+          "shape_path": "Terrain/Cliff7/@CollisionPolygon2D@12",
+          "layer": 48,
+          "polygon": [
+            [
+              2220.0,
+              2905.0
+            ],
+            [
+              1300.0,
+              2905.0
+            ],
+            [
+              1300.0,
+              2895.0
+            ],
+            [
+              2220.0,
+              2895.0
+            ]
+          ],
+          "line": 1941
+        },
+        {
+          "path": "Terrain/Cliff8",
+          "shape_path": "Terrain/Cliff8/@CollisionPolygon2D@19",
+          "layer": 48,
+          "polygon": [
+            [
+              1295.5278,
+              2902.236
+            ],
+            [
+              995.5279,
+              2302.236
+            ],
+            [
+              1004.4721,
+              2297.764
+            ],
+            [
+              1304.4722,
+              2897.764
+            ]
+          ],
+          "line": 1990
+        },
+        {
+          "path": "Terrain/Cliff9",
+          "shape_path": "Terrain/Cliff9/@CollisionPolygon2D@23",
+          "layer": 48,
+          "polygon": [
+            [
+              995.00916,
+              2299.6975
+            ],
+            [
+              1095.0092,
+              649.6975
+            ],
+            [
+              1104.9908,
+              650.3025
+            ],
+            [
+              1004.99084,
+              2300.3025
+            ]
+          ],
+          "line": 2018
+        },
+        {
+          "path": "Terrain/Cliff10",
+          "shape_path": "Terrain/Cliff10/@CollisionPolygon2D@24",
+          "layer": 96,
+          "polygon": [
+            [
+              1999.0786,
+              545.08563
+            ],
+            [
+              2799.0786,
+              395.08563
+            ],
+            [
+              2800.9214,
+              404.91437
+            ],
+            [
+              2000.9214,
+              554.91437
+            ]
+          ],
+          "line": 2025
+        },
+        {
+          "path": "Terrain/Cliff11",
+          "shape_path": "Terrain/Cliff11/@CollisionPolygon2D@25",
+          "layer": 96,
+          "polygon": [
+            [
+              2801.3381,
+              395.1824
+            ],
+            [
+              3701.3381,
+              645.18243
+            ],
+            [
+              3698.6619,
+              654.81757
+            ],
+            [
+              2798.6619,
+              404.8176
+            ]
+          ],
+          "line": 2032
+        },
+        {
+          "path": "Terrain/Cliff12",
+          "shape_path": "Terrain/Cliff12/@CollisionPolygon2D@26",
+          "layer": 96,
+          "polygon": [
+            [
+              3704.8237,
+              648.6844
+            ],
+            [
+              3854.8237,
+              1198.6844
+            ],
+            [
+              3845.1763,
+              1201.3156
+            ],
+            [
+              3695.1763,
+              651.3156
+            ]
+          ],
+          "line": 2039
+        },
+        {
+          "path": "Terrain/Cliff13",
+          "shape_path": "Terrain/Cliff13/@CollisionPolygon2D@27",
+          "layer": 96,
+          "polygon": [
+            [
+              3853.763,
+              1203.2925
+            ],
+            [
+              3503.763,
+              1603.2925
+            ],
+            [
+              3496.237,
+              1596.7075
+            ],
+            [
+              3846.237,
+              1196.7075
+            ]
+          ],
+          "line": 2046
+        },
+        {
+          "path": "Terrain/Cliff14",
+          "shape_path": "Terrain/Cliff14/@CollisionPolygon2D@30",
+          "layer": 96,
+          "polygon": [
+            [
+              3500.0,
+              1605.0
+            ],
+            [
+              3480.0,
+              1605.0
+            ],
+            [
+              3480.0,
+              1595.0
+            ],
+            [
+              3500.0,
+              1595.0
+            ]
+          ],
+          "line": 2067
+        },
+        {
+          "path": "Terrain/Cliff15",
+          "shape_path": "Terrain/Cliff15/@CollisionPolygon2D@31",
+          "layer": 96,
+          "polygon": [
+            [
+              3120.0,
+              1605.0
+            ],
+            [
+              2780.0,
+              1605.0
+            ],
+            [
+              2780.0,
+              1595.0
+            ],
+            [
+              3120.0,
+              1595.0
+            ]
+          ],
+          "line": 2074
+        },
+        {
+          "path": "Terrain/Cliff16",
+          "shape_path": "Terrain/Cliff16/@CollisionPolygon2D@32",
+          "layer": 96,
+          "polygon": [
+            [
+              2420.0,
+              1605.0
+            ],
+            [
+              1900.0,
+              1605.0
+            ],
+            [
+              1900.0,
+              1595.0
+            ],
+            [
+              2420.0,
+              1595.0
+            ]
+          ],
+          "line": 2081
+        },
+        {
+          "path": "Terrain/Cliff17",
+          "shape_path": "Terrain/Cliff17/@CollisionPolygon2D@36",
+          "layer": 96,
+          "polygon": [
+            [
+              1895.3184,
+              1601.7556
+            ],
+            [
+              1745.3184,
+              1201.7556
+            ],
+            [
+              1754.6816,
+              1198.2444
+            ],
+            [
+              1904.6816,
+              1598.2444
+            ]
+          ],
+          "line": 2109
+        },
+        {
+          "path": "Terrain/Cliff18",
+          "shape_path": "Terrain/Cliff18/@CollisionPolygon2D@39",
+          "layer": 96,
+          "polygon": [
+            [
+              1745.3333,
+              1198.2051
+            ],
+            [
+              1995.3333,
+              548.2051
+            ],
+            [
+              2004.6667,
+              551.7949
+            ],
+            [
+              1754.6667,
+              1201.7949
+            ]
+          ],
+          "line": 2130
+        },
+        {
+          "path": "Terrain/RampRail0-1",
+          "shape_path": "Terrain/RampRail0-1/@CollisionPolygon2D@43",
+          "layer": 48,
+          "polygon": [
+            [
+              2225.0,
+              2878.0
+            ],
+            [
+              2225.0,
+              3061.8
+            ],
+            [
+              2215.0,
+              3061.8
+            ],
+            [
+              2215.0,
+              2878.0
+            ]
+          ],
+          "line": 2161
+        },
+        {
+          "path": "Terrain/RampRail01",
+          "shape_path": "Terrain/RampRail01/@CollisionPolygon2D@44",
+          "layer": 48,
+          "polygon": [
+            [
+              2585.0,
+              2878.0
+            ],
+            [
+              2585.0,
+              3061.8
+            ],
+            [
+              2575.0,
+              3061.8
+            ],
+            [
+              2575.0,
+              2878.0
+            ]
+          ],
+          "line": 2168
+        },
+        {
+          "path": "Terrain/RampRail1-1",
+          "shape_path": "Terrain/RampRail1-1/@CollisionPolygon2D@48",
+          "layer": 48,
+          "polygon": [
+            [
+              3725.0,
+              2878.0
+            ],
+            [
+              3725.0,
+              3061.8
+            ],
+            [
+              3715.0,
+              3061.8
+            ],
+            [
+              3715.0,
+              2878.0
+            ]
+          ],
+          "line": 2199
+        },
+        {
+          "path": "Terrain/RampRail11",
+          "shape_path": "Terrain/RampRail11/@CollisionPolygon2D@49",
+          "layer": 48,
+          "polygon": [
+            [
+              4085.0,
+              2878.0
+            ],
+            [
+              4085.0,
+              3061.8
+            ],
+            [
+              4075.0,
+              3061.8
+            ],
+            [
+              4075.0,
+              2878.0
+            ]
+          ],
+          "line": 2206
+        },
+        {
+          "path": "Terrain/RampRail2-1",
+          "shape_path": "Terrain/RampRail2-1/@CollisionPolygon2D@53",
+          "layer": 96,
+          "polygon": [
+            [
+              2425.0,
+              1578.0
+            ],
+            [
+              2425.0,
+              1761.8
+            ],
+            [
+              2415.0,
+              1761.8
+            ],
+            [
+              2415.0,
+              1578.0
+            ]
+          ],
+          "line": 2237
+        },
+        {
+          "path": "Terrain/RampRail21",
+          "shape_path": "Terrain/RampRail21/@CollisionPolygon2D@54",
+          "layer": 96,
+          "polygon": [
+            [
+              2785.0,
+              1578.0
+            ],
+            [
+              2785.0,
+              1761.8
+            ],
+            [
+              2775.0,
+              1761.8
+            ],
+            [
+              2775.0,
+              1578.0
+            ]
+          ],
+          "line": 2244
+        },
+        {
+          "path": "Terrain/RampRail3-1",
+          "shape_path": "Terrain/RampRail3-1/@CollisionPolygon2D@58",
+          "layer": 96,
+          "polygon": [
+            [
+              3125.0,
+              1578.0
+            ],
+            [
+              3125.0,
+              1761.8
+            ],
+            [
+              3115.0,
+              1761.8
+            ],
+            [
+              3115.0,
+              1578.0
+            ]
+          ],
+          "line": 2275
+        },
+        {
+          "path": "Terrain/RampRail31",
+          "shape_path": "Terrain/RampRail31/@CollisionPolygon2D@59",
+          "layer": 96,
+          "polygon": [
+            [
+              3485.0,
+              1578.0
+            ],
+            [
+              3485.0,
+              1761.8
+            ],
+            [
+              3475.0,
+              1761.8
+            ],
+            [
+              3475.0,
+              1578.0
+            ]
+          ],
+          "line": 2282
+        },
+        {
+          "path": "Town/GateClosure0/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              95.0,
+              3775.5
+            ],
+            [
+              874.5,
+              3775.5
+            ],
+            [
+              874.5,
+              3799.5
+            ],
+            [
+              95.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure1/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              555.0,
+              3775.5
+            ],
+            [
+              1334.5,
+              3775.5
+            ],
+            [
+              1334.5,
+              3799.5
+            ],
+            [
+              555.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure2/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              2065.0,
+              3775.5
+            ],
+            [
+              2844.5,
+              3775.5
+            ],
+            [
+              2844.5,
+              3799.5
+            ],
+            [
+              2065.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure3/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              2815.0,
+              3775.5
+            ],
+            [
+              3594.5,
+              3775.5
+            ],
+            [
+              3594.5,
+              3799.5
+            ],
+            [
+              2815.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure4/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              3565.0,
+              3775.5
+            ],
+            [
+              4344.5,
+              3775.5
+            ],
+            [
+              4344.5,
+              3799.5
+            ],
+            [
+              3565.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure5/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              4315.0,
+              3775.5
+            ],
+            [
+              5094.5,
+              3775.5
+            ],
+            [
+              5094.5,
+              3799.5
+            ],
+            [
+              4315.0,
+              3799.5
+            ]
+          ]
+        }
+      ],
+      "base_outline": [
+        [
+          110,
+          110
+        ],
+        [
+          5090,
+          110
+        ],
+        [
+          5090,
+          4290
+        ],
+        [
+          110,
+          4290
+        ]
+      ],
+      "route": [
+        [
+          1700,
+          4200
+        ],
+        [
+          1700,
+          4100
+        ],
+        [
+          1700,
+          3500
+        ],
+        [
+          2400,
+          3250
+        ],
+        [
+          2400,
+          3070
+        ],
+        [
+          2400,
+          2860
+        ],
+        [
+          2400,
+          2700
+        ],
+        [
+          2500,
+          2700
+        ],
+        [
+          2500,
+          2620
+        ]
+      ],
+      "negative": {
+        "foot": [
+          2700,
+          900
+        ],
+        "level": 2,
+        "height": 360,
+        "projected_foot": [
+          2700,
+          540
+        ],
+        "full35x25_clear": false,
+        "hits": [
+          "Town/MainHall/Body"
+        ],
+        "inside_base_outline": true
+      },
+      "new_gate_walls": [
+        {
+          "path": "Town/GateClosure0/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              95.0,
+              3775.5
+            ],
+            [
+              874.5,
+              3775.5
+            ],
+            [
+              874.5,
+              3799.5
+            ],
+            [
+              95.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            485.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure1/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              555.0,
+              3775.5
+            ],
+            [
+              1334.5,
+              3775.5
+            ],
+            [
+              1334.5,
+              3799.5
+            ],
+            [
+              555.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            945.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure2/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              2065.0,
+              3775.5
+            ],
+            [
+              2844.5,
+              3775.5
+            ],
+            [
+              2844.5,
+              3799.5
+            ],
+            [
+              2065.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            2455.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure3/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              2815.0,
+              3775.5
+            ],
+            [
+              3594.5,
+              3775.5
+            ],
+            [
+              3594.5,
+              3799.5
+            ],
+            [
+              2815.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            3205.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure4/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              3565.0,
+              3775.5
+            ],
+            [
+              4344.5,
+              3775.5
+            ],
+            [
+              4344.5,
+              3799.5
+            ],
+            [
+              3565.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            3955.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure5/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              4315.0,
+              3775.5
+            ],
+            [
+              5094.5,
+              3775.5
+            ],
+            [
+              5094.5,
+              3799.5
+            ],
+            [
+              4315.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            4705.5,
+            3800
+          ]
+        }
+      ],
+      "gate_wall_safe_entry": [
+        1680,
+        3890
+      ],
+      "purple_arrow": [
+        2700,
+        1160
+      ],
+      "purple_return": [
+        2700,
+        1240
+      ]
+    },
+    "openworld_huashan_forecourt": {
+      "key": "huashan",
+      "id": "openworld_huashan_forecourt",
+      "label": "华山派",
+      "scene": "res://scenes/drafts/huashan_map_20261029m/huashan.tscn",
+      "native_layout": "res://art/modules/huashan_map_20261029m/huashan.json",
+      "size": [
+        5800,
+        5000
+      ],
+      "arrival": [
+        2780,
+        4420
+      ],
+      "leave_arrow": [
+        2780,
+        4520
+      ],
+      "inner_arrow": [
+        2700,
+        2500
+      ],
+      "inner_return": [
+        2700,
+        2580
+      ],
+      "inner_source": "openworld_huashan_sword_terrace",
+      "old_inner_return_uv": [
+        0.5,
+        0.225
+      ],
+      "world_uv": [
+        0.056966145,
+        0.26887628
+      ],
+      "world_portal_id": "huashan",
+      "portal_feet": {
+        "huashan_leave_gate": [
+          2780,
+          4520
+        ],
+        "huashan_to_sword_terrace": [
+          2700,
+          2500
+        ]
+      },
+      "npc_feet": {},
+      "original_npcs": [],
+      "original_portals": [
+        {
+          "id": "huashan_leave_gate",
+          "label": "下山 · 江湖大地图",
+          "pos": [
+            0.5,
+            0.945
+          ],
+          "size": [
+            0.17,
+            0.08
+          ],
+          "action": "world_map",
+          "marker_rotation_degrees": 180.0
+        },
+        {
+          "id": "huashan_to_sword_terrace",
+          "label": "进入华山演武坪",
+          "pos": [
+            0.5,
+            0.145
+          ],
+          "size": [
+            0.15,
+            0.075
+          ],
+          "target_scene": "openworld_huashan_sword_terrace",
+          "target_pos": [
+            0.5,
+            0.885
+          ]
+        }
+      ],
+      "original_interactions": [],
+      "original_hotspots": [],
+      "terrain": {
+        "heights": [
+          0,
+          240,
+          480
+        ],
+        "platforms": [
+          {
+            "level": 1,
+            "polygon": [
+              [
+                850,
+                900
+              ],
+              [
+                1800,
+                400
+              ],
+              [
+                3300,
+                450
+              ],
+              [
+                3900,
+                950
+              ],
+              [
+                3950,
+                1670
+              ],
+              [
+                4750,
+                1600
+              ],
+              [
+                5150,
+                1720
+              ],
+              [
+                5150,
+                2090
+              ],
+              [
+                4670,
+                2160
+              ],
+              [
+                4140,
+                1990
+              ],
+              [
+                4120,
+                2460
+              ],
+              [
+                4110,
+                2800
+              ],
+              [
+                1050,
+                2800
+              ],
+              [
+                800,
+                2300
+              ]
+            ]
+          },
+          {
+            "level": 2,
+            "polygon": [
+              [
+                1900,
+                700
+              ],
+              [
+                2600,
+                420
+              ],
+              [
+                3350,
+                700
+              ],
+              [
+                3670,
+                1100
+              ],
+              [
+                3690,
+                1550
+              ],
+              [
+                1950,
+                1550
+              ],
+              [
+                1780,
+                1200
+              ]
+            ]
+          }
+        ],
+        "ramps": [
+          {
+            "id": "MainRise",
+            "label": "山门—练剑前坪",
+            "low": 0,
+            "high": 1,
+            "top": [
+              2700,
+              2800
+            ],
+            "bottom": [
+              2700,
+              2989.0
+            ],
+            "rise": 240,
+            "ground_run": 189.00000000000006
+          },
+          {
+            "id": "WestRise",
+            "label": "生活侧径—弟子居舍",
+            "low": 0,
+            "high": 1,
+            "top": [
+              1400,
+              2800
+            ],
+            "bottom": [
+              1400,
+              2989.0
+            ],
+            "rise": 240,
+            "ground_run": 189.00000000000006
+          },
+          {
+            "id": "HallRise",
+            "label": "练剑坪—主堂剑院",
+            "low": 1,
+            "high": 2,
+            "top": [
+              2700,
+              1550
+            ],
+            "bottom": [
+              2700,
+              1739.0
+            ],
+            "rise": 240,
+            "ground_run": 189.00000000000006
+          },
+          {
+            "id": "HallSideRise",
+            "label": "东廊—主堂侧院",
+            "low": 1,
+            "high": 2,
+            "top": [
+              3420,
+              1550
+            ],
+            "bottom": [
+              3420,
+              1739.0
+            ],
+            "rise": 240,
+            "ground_run": 189.00000000000006
+          },
+          {
+            "id": "CliffRise",
+            "label": "思过崖径—论剑台",
+            "low": 0,
+            "high": 1,
+            "top": [
+              3930,
+              2800
+            ],
+            "bottom": [
+              3930,
+              2989.0
+            ],
+            "rise": 240,
+            "ground_run": 189.00000000000006
+          }
+        ],
+        "source_stair_scale": 1.1,
+        "portal_half_width": 238,
+        "facade_opening_half_width": 370,
+        "object_moves": {},
+        "base_outline": [
+          [
+            650,
+            650
+          ],
+          [
+            1800,
+            200
+          ],
+          [
+            3350,
+            250
+          ],
+          [
+            4030,
+            750
+          ],
+          [
+            4250,
+            1450
+          ],
+          [
+            5100,
+            1350
+          ],
+          [
+            5500,
+            1700
+          ],
+          [
+            5450,
+            2300
+          ],
+          [
+            4730,
+            2350
+          ],
+          [
+            4450,
+            2200
+          ],
+          [
+            4260,
+            2450
+          ],
+          [
+            4480,
+            3100
+          ],
+          [
+            4900,
+            3250
+          ],
+          [
+            4930,
+            3650
+          ],
+          [
+            4430,
+            3750
+          ],
+          [
+            3980,
+            3200
+          ],
+          [
+            3650,
+            3030
+          ],
+          [
+            3300,
+            3400
+          ],
+          [
+            3100,
+            3950
+          ],
+          [
+            3200,
+            4570
+          ],
+          [
+            2510,
+            4700
+          ],
+          [
+            2290,
+            4200
+          ],
+          [
+            2120,
+            3690
+          ],
+          [
+            1200,
+            3350
+          ],
+          [
+            650,
+            2850
+          ]
+        ]
+      },
+      "solids": [
+        {
+          "path": "Town/Boundary0",
+          "shape_path": "Town/Boundary0/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              90.0
+            ],
+            [
+              5710.0,
+              90.0
+            ],
+            [
+              5710.0,
+              110.0
+            ],
+            [
+              90.0,
+              110.0
+            ]
+          ],
+          "line": 257
+        },
+        {
+          "path": "Town/Boundary1",
+          "shape_path": "Town/Boundary1/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              5690.0,
+              90.0
+            ],
+            [
+              5710.0,
+              90.0
+            ],
+            [
+              5710.0,
+              4910.0
+            ],
+            [
+              5690.0,
+              4910.0
+            ]
+          ],
+          "line": 266
+        },
+        {
+          "path": "Town/Boundary2",
+          "shape_path": "Town/Boundary2/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              4890.0
+            ],
+            [
+              5710.0,
+              4890.0
+            ],
+            [
+              5710.0,
+              4910.0
+            ],
+            [
+              90.0,
+              4910.0
+            ]
+          ],
+          "line": 275
+        },
+        {
+          "path": "Town/Boundary3",
+          "shape_path": "Town/Boundary3/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              90.0
+            ],
+            [
+              110.0,
+              90.0
+            ],
+            [
+              110.0,
+              4910.0
+            ],
+            [
+              90.0,
+              4910.0
+            ]
+          ],
+          "line": 284
+        },
+        {
+          "path": "Town/MainHall/Body",
+          "shape_path": "Town/MainHall/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              2341.45706,
+              927.5
+            ],
+            [
+              3198.54294,
+              927.5
+            ],
+            [
+              3198.54294,
+              1040.0
+            ],
+            [
+              2341.45706,
+              1040.0
+            ]
+          ],
+          "line": 308
+        },
+        {
+          "path": "Town/MountainGate/LeftPier",
+          "shape_path": "Town/MountainGate/LeftPier/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2593.83763,
+              3957.85978
+            ],
+            [
+              2701.402214,
+              3957.85978
+            ],
+            [
+              2701.402214,
+              4011.84502
+            ],
+            [
+              2593.83763,
+              4011.84502
+            ]
+          ],
+          "line": 332
+        },
+        {
+          "path": "Town/MountainGate/RightPier",
+          "shape_path": "Town/MountainGate/RightPier/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2833.321033,
+              3994.391144
+            ],
+            [
+              2949.0037,
+              3994.391144
+            ],
+            [
+              2949.0037,
+              4049.59409595
+            ],
+            [
+              2833.321033,
+              4049.59409595
+            ]
+          ],
+          "line": 339
+        },
+        {
+          "path": "Town/WestLongHouse/Body",
+          "shape_path": "Town/WestLongHouse/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              986.09515,
+              2023.75
+            ],
+            [
+              1613.90485,
+              2023.75
+            ],
+            [
+              1613.90485,
+              2110.0
+            ],
+            [
+              986.09515,
+              2110.0
+            ]
+          ],
+          "line": 363
+        },
+        {
+          "path": "Town/NorthLongHouse/Body",
+          "shape_path": "Town/NorthLongHouse/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              956.09515,
+              1293.75
+            ],
+            [
+              1583.90485,
+              1293.75
+            ],
+            [
+              1583.90485,
+              1380.0
+            ],
+            [
+              956.09515,
+              1380.0
+            ]
+          ],
+          "line": 387
+        },
+        {
+          "path": "Town/WestStudy/Body",
+          "shape_path": "Town/WestStudy/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1681.77467,
+              1930.0
+            ],
+            [
+              2078.22533,
+              1930.0
+            ],
+            [
+              2078.22533,
+              2050.0
+            ],
+            [
+              1681.77467,
+              2050.0
+            ]
+          ],
+          "line": 411
+        },
+        {
+          "path": "Town/UpperStudy/Body",
+          "shape_path": "Town/UpperStudy/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              3234.16376,
+              980.0
+            ],
+            [
+              3605.83624,
+              980.0
+            ],
+            [
+              3605.83624,
+              1100.0
+            ],
+            [
+              3234.16376,
+              1100.0
+            ]
+          ],
+          "line": 435
+        },
+        {
+          "path": "Town/Kitchen/Body",
+          "shape_path": "Town/Kitchen/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              817.61273,
+              2401.25
+            ],
+            [
+              1302.38727,
+              2401.25
+            ],
+            [
+              1302.38727,
+              2480.0
+            ],
+            [
+              817.61273,
+              2480.0
+            ]
+          ],
+          "line": 459
+        },
+        {
+          "path": "Town/Storehouse/Body",
+          "shape_path": "Town/Storehouse/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1626.84981,
+              2517.5
+            ],
+            [
+              2073.15019,
+              2517.5
+            ],
+            [
+              2073.15019,
+              2590.0
+            ],
+            [
+              1626.84981,
+              2590.0
+            ]
+          ],
+          "line": 483
+        },
+        {
+          "path": "Town/UpperWing/Body",
+          "shape_path": "Town/UpperWing/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              1858.84186,
+              1080.0
+            ],
+            [
+              2441.15814,
+              1080.0
+            ],
+            [
+              2441.15814,
+              1160.0
+            ],
+            [
+              1858.84186,
+              1160.0
+            ]
+          ],
+          "line": 507
+        },
+        {
+          "path": "Town/GateHouse/Body",
+          "shape_path": "Town/GateHouse/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2096.84981,
+              3707.5
+            ],
+            [
+              2543.15019,
+              3707.5
+            ],
+            [
+              2543.15019,
+              3780.0
+            ],
+            [
+              2096.84981,
+              3780.0
+            ]
+          ],
+          "line": 531
+        },
+        {
+          "path": "Town/SwordRack0/Body",
+          "shape_path": "Town/SwordRack0/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              2218.90854,
+              2451.75
+            ],
+            [
+              2341.09146,
+              2451.75
+            ],
+            [
+              2341.09146,
+              2480.0
+            ],
+            [
+              2218.90854,
+              2480.0
+            ]
+          ],
+          "line": 555
+        },
+        {
+          "path": "Town/SwordRack1/Body",
+          "shape_path": "Town/SwordRack1/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3208.90854,
+              2451.75
+            ],
+            [
+              3331.09146,
+              2451.75
+            ],
+            [
+              3331.09146,
+              2480.0
+            ],
+            [
+              3208.90854,
+              2480.0
+            ]
+          ],
+          "line": 579
+        },
+        {
+          "path": "Town/SwordRack2/Body",
+          "shape_path": "Town/SwordRack2/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4718.90854,
+              1781.75
+            ],
+            [
+              4841.09146,
+              1781.75
+            ],
+            [
+              4841.09146,
+              1810.0
+            ],
+            [
+              4718.90854,
+              1810.0
+            ]
+          ],
+          "line": 603
+        },
+        {
+          "path": "Town/SwordRack3/Body",
+          "shape_path": "Town/SwordRack3/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              2992.692963,
+              1223.5
+            ],
+            [
+              3107.307037,
+              1223.5
+            ],
+            [
+              3107.307037,
+              1250.0
+            ],
+            [
+              2992.692963,
+              1250.0
+            ]
+          ],
+          "line": 627
+        },
+        {
+          "path": "Town/KitchenJars/Body",
+          "shape_path": "Town/KitchenJars/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1329.733334,
+              2510.0
+            ],
+            [
+              1410.266666,
+              2510.0
+            ],
+            [
+              1410.266666,
+              2530.0
+            ],
+            [
+              1329.733334,
+              2530.0
+            ]
+          ],
+          "line": 651
+        },
+        {
+          "path": "Town/YardTable/Body",
+          "shape_path": "Town/YardTable/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1443.3587,
+              2298.5
+            ],
+            [
+              1536.6413,
+              2298.5
+            ],
+            [
+              1536.6413,
+              2320.0
+            ],
+            [
+              1443.3587,
+              2320.0
+            ]
+          ],
+          "line": 675
+        },
+        {
+          "path": "Town/Cargo/Body",
+          "shape_path": "Town/Cargo/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              2030.566906,
+              2560.0
+            ],
+            [
+              2129.433094,
+              2560.0
+            ],
+            [
+              2129.433094,
+              2580.0
+            ],
+            [
+              2030.566906,
+              2580.0
+            ]
+          ],
+          "line": 699
+        },
+        {
+          "path": "Town/StudyShelf/Body",
+          "shape_path": "Town/StudyShelf/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              2028.454224,
+              2022.5
+            ],
+            [
+              2151.545776,
+              2022.5
+            ],
+            [
+              2151.545776,
+              2050.0
+            ],
+            [
+              2028.454224,
+              2050.0
+            ]
+          ],
+          "line": 723
+        },
+        {
+          "path": "Town/WestBench/Body",
+          "shape_path": "Town/WestBench/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1496.68887,
+              2599.5
+            ],
+            [
+              1603.31113,
+              2599.5
+            ],
+            [
+              1603.31113,
+              2610.0
+            ],
+            [
+              1496.68887,
+              2610.0
+            ]
+          ],
+          "line": 747
+        },
+        {
+          "path": "Town/HallBench/Body",
+          "shape_path": "Town/HallBench/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              3046.68887,
+              1239.5
+            ],
+            [
+              3153.31113,
+              1239.5
+            ],
+            [
+              3153.31113,
+              1250.0
+            ],
+            [
+              3046.68887,
+              1250.0
+            ]
+          ],
+          "line": 771
+        },
+        {
+          "path": "Town/CliffBench/Body",
+          "shape_path": "Town/CliffBench/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4616.68887,
+              3469.5
+            ],
+            [
+              4723.31113,
+              3469.5
+            ],
+            [
+              4723.31113,
+              3480.0
+            ],
+            [
+              4616.68887,
+              3480.0
+            ]
+          ],
+          "line": 795
+        },
+        {
+          "path": "Town/DebateBench/Body",
+          "shape_path": "Town/DebateBench/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4816.68887,
+              1969.5
+            ],
+            [
+              4923.31113,
+              1969.5
+            ],
+            [
+              4923.31113,
+              1980.0
+            ],
+            [
+              4816.68887,
+              1980.0
+            ]
+          ],
+          "line": 819
+        },
+        {
+          "path": "Town/MountainPine0/Body",
+          "shape_path": "Town/MountainPine0/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              773.0,
+              1605.0
+            ],
+            [
+              827.0,
+              1605.0
+            ],
+            [
+              827.0,
+              1630.0
+            ],
+            [
+              773.0,
+              1630.0
+            ]
+          ],
+          "line": 894
+        },
+        {
+          "path": "Town/MountainPine1/Body",
+          "shape_path": "Town/MountainPine1/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              863.0,
+              2725.0
+            ],
+            [
+              917.0,
+              2725.0
+            ],
+            [
+              917.0,
+              2750.0
+            ],
+            [
+              863.0,
+              2750.0
+            ]
+          ],
+          "line": 918
+        },
+        {
+          "path": "Town/MountainPine2/Body",
+          "shape_path": "Town/MountainPine2/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2173.0,
+              2975.0
+            ],
+            [
+              2227.0,
+              2975.0
+            ],
+            [
+              2227.0,
+              3000.0
+            ],
+            [
+              2173.0,
+              3000.0
+            ]
+          ],
+          "line": 942
+        },
+        {
+          "path": "Town/MountainPine3/Body",
+          "shape_path": "Town/MountainPine3/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2213.0,
+              3475.0
+            ],
+            [
+              2267.0,
+              3475.0
+            ],
+            [
+              2267.0,
+              3500.0
+            ],
+            [
+              2213.0,
+              3500.0
+            ]
+          ],
+          "line": 966
+        },
+        {
+          "path": "Town/MountainPine4/Body",
+          "shape_path": "Town/MountainPine4/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3133.0,
+              3965.0
+            ],
+            [
+              3187.0,
+              3965.0
+            ],
+            [
+              3187.0,
+              3990.0
+            ],
+            [
+              3133.0,
+              3990.0
+            ]
+          ],
+          "line": 990
+        },
+        {
+          "path": "Town/MountainPine5/Body",
+          "shape_path": "Town/MountainPine5/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1673.0,
+              1755.0
+            ],
+            [
+              1727.0,
+              1755.0
+            ],
+            [
+              1727.0,
+              1780.0
+            ],
+            [
+              1673.0,
+              1780.0
+            ]
+          ],
+          "line": 1014
+        },
+        {
+          "path": "Town/MountainPine6/Body",
+          "shape_path": "Town/MountainPine6/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3533.0,
+              755.0
+            ],
+            [
+              3587.0,
+              755.0
+            ],
+            [
+              3587.0,
+              780.0
+            ],
+            [
+              3533.0,
+              780.0
+            ]
+          ],
+          "line": 1038
+        },
+        {
+          "path": "Town/MountainPine7/Body",
+          "shape_path": "Town/MountainPine7/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              2073.0,
+              735.0
+            ],
+            [
+              2127.0,
+              735.0
+            ],
+            [
+              2127.0,
+              760.0
+            ],
+            [
+              2073.0,
+              760.0
+            ]
+          ],
+          "line": 1062
+        },
+        {
+          "path": "Town/MountainPine8/Body",
+          "shape_path": "Town/MountainPine8/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4123.0,
+              2135.0
+            ],
+            [
+              4177.0,
+              2135.0
+            ],
+            [
+              4177.0,
+              2160.0
+            ],
+            [
+              4123.0,
+              2160.0
+            ]
+          ],
+          "line": 1086
+        },
+        {
+          "path": "Town/MountainPine9/Body",
+          "shape_path": "Town/MountainPine9/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              5113.0,
+              2095.0
+            ],
+            [
+              5167.0,
+              2095.0
+            ],
+            [
+              5167.0,
+              2120.0
+            ],
+            [
+              5113.0,
+              2120.0
+            ]
+          ],
+          "line": 1110
+        },
+        {
+          "path": "Town/MountainPine10/Body",
+          "shape_path": "Town/MountainPine10/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4423.0,
+              3225.0
+            ],
+            [
+              4477.0,
+              3225.0
+            ],
+            [
+              4477.0,
+              3250.0
+            ],
+            [
+              4423.0,
+              3250.0
+            ]
+          ],
+          "line": 1134
+        },
+        {
+          "path": "Town/MountainPine11/Body",
+          "shape_path": "Town/MountainPine11/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4883.0,
+              3575.0
+            ],
+            [
+              4937.0,
+              3575.0
+            ],
+            [
+              4937.0,
+              3600.0
+            ],
+            [
+              4883.0,
+              3600.0
+            ]
+          ],
+          "line": 1158
+        },
+        {
+          "path": "Terrain/RidgeEdge0",
+          "shape_path": "Terrain/RidgeEdge0/@CollisionPolygon2D@2",
+          "layer": 8,
+          "polygon": [
+            [
+              648.178,
+              645.3438
+            ],
+            [
+              1798.178,
+              195.34378
+            ],
+            [
+              1801.822,
+              204.65622
+            ],
+            [
+              651.822,
+              654.6562
+            ]
+          ],
+          "line": 1238
+        },
+        {
+          "path": "Terrain/RidgeEdge1",
+          "shape_path": "Terrain/RidgeEdge1/@CollisionPolygon2D@3",
+          "layer": 8,
+          "polygon": [
+            [
+              1800.1613,
+              195.0026
+            ],
+            [
+              3350.1611,
+              245.0026
+            ],
+            [
+              3349.8389,
+              254.9974
+            ],
+            [
+              1799.8387,
+              204.9974
+            ]
+          ],
+          "line": 1245
+        },
+        {
+          "path": "Terrain/RidgeEdge2",
+          "shape_path": "Terrain/RidgeEdge2/@CollisionPolygon2D@9",
+          "layer": 8,
+          "polygon": [
+            [
+              3352.962,
+              245.97174
+            ],
+            [
+              4032.962,
+              745.97174
+            ],
+            [
+              4027.038,
+              754.02826
+            ],
+            [
+              3347.038,
+              254.02826
+            ]
+          ],
+          "line": 1287
+        },
+        {
+          "path": "Terrain/RidgeEdge3",
+          "shape_path": "Terrain/RidgeEdge3/@CollisionPolygon2D@13",
+          "layer": 8,
+          "polygon": [
+            [
+              4034.77,
+              748.50085
+            ],
+            [
+              4254.77,
+              1448.5009
+            ],
+            [
+              4245.23,
+              1451.4991
+            ],
+            [
+              4025.23,
+              751.49915
+            ]
+          ],
+          "line": 1315
+        },
+        {
+          "path": "Terrain/RidgeEdge4",
+          "shape_path": "Terrain/RidgeEdge4/@CollisionPolygon2D@17",
+          "layer": 8,
+          "polygon": [
+            [
+              4249.416,
+              1445.0343
+            ],
+            [
+              5099.416,
+              1345.0343
+            ],
+            [
+              5100.584,
+              1354.9657
+            ],
+            [
+              4250.584,
+              1454.9657
+            ]
+          ],
+          "line": 1343
+        },
+        {
+          "path": "Terrain/RidgeEdge5",
+          "shape_path": "Terrain/RidgeEdge5/@CollisionPolygon2D@18",
+          "layer": 8,
+          "polygon": [
+            [
+              5103.2925,
+              1346.237
+            ],
+            [
+              5503.2925,
+              1696.237
+            ],
+            [
+              5496.7075,
+              1703.763
+            ],
+            [
+              5096.7075,
+              1353.763
+            ]
+          ],
+          "line": 1350
+        },
+        {
+          "path": "Terrain/RidgeEdge6",
+          "shape_path": "Terrain/RidgeEdge6/@CollisionPolygon2D@21",
+          "layer": 8,
+          "polygon": [
+            [
+              5504.983,
+              1700.4153
+            ],
+            [
+              5454.983,
+              2300.4153
+            ],
+            [
+              5445.017,
+              2299.5847
+            ],
+            [
+              5495.017,
+              1699.5847
+            ]
+          ],
+          "line": 1371
+        },
+        {
+          "path": "Terrain/RidgeEdge7",
+          "shape_path": "Terrain/RidgeEdge7/@CollisionPolygon2D@24",
+          "layer": 8,
+          "polygon": [
+            [
+              5450.346,
+              2304.988
+            ],
+            [
+              4730.346,
+              2354.988
+            ],
+            [
+              4729.654,
+              2345.012
+            ],
+            [
+              5449.654,
+              2295.012
+            ]
+          ],
+          "line": 1392
+        },
+        {
+          "path": "Terrain/RidgeEdge8",
+          "shape_path": "Terrain/RidgeEdge8/@CollisionPolygon2D@28",
+          "layer": 8,
+          "polygon": [
+            [
+              4727.6387,
+              2354.4075
+            ],
+            [
+              4447.6387,
+              2204.4075
+            ],
+            [
+              4452.3613,
+              2195.5925
+            ],
+            [
+              4732.3613,
+              2345.5925
+            ]
+          ],
+          "line": 1420
+        },
+        {
+          "path": "Terrain/RidgeEdge9",
+          "shape_path": "Terrain/RidgeEdge9/@CollisionPolygon2D@30",
+          "layer": 8,
+          "polygon": [
+            [
+              4453.981,
+              2203.0254
+            ],
+            [
+              4263.981,
+              2453.0254
+            ],
+            [
+              4256.019,
+              2446.9746
+            ],
+            [
+              4446.019,
+              2196.9746
+            ]
+          ],
+          "line": 1434
+        },
+        {
+          "path": "Terrain/RidgeEdge10",
+          "shape_path": "Terrain/RidgeEdge10/@CollisionPolygon2D@32",
+          "layer": 8,
+          "polygon": [
+            [
+              4264.736,
+              2448.397
+            ],
+            [
+              4484.736,
+              3098.397
+            ],
+            [
+              4475.264,
+              3101.603
+            ],
+            [
+              4255.264,
+              2451.603
+            ]
+          ],
+          "line": 1448
+        },
+        {
+          "path": "Terrain/RidgeEdge11",
+          "shape_path": "Terrain/RidgeEdge11/@CollisionPolygon2D@35",
+          "layer": 8,
+          "polygon": [
+            [
+              4481.6816,
+              3095.2913
+            ],
+            [
+              4901.6816,
+              3245.2913
+            ],
+            [
+              4898.3184,
+              3254.7087
+            ],
+            [
+              4478.3184,
+              3104.7087
+            ]
+          ],
+          "line": 1469
+        },
+        {
+          "path": "Terrain/RidgeEdge12",
+          "shape_path": "Terrain/RidgeEdge12/@CollisionPolygon2D@38",
+          "layer": 8,
+          "polygon": [
+            [
+              4904.986,
+              3249.626
+            ],
+            [
+              4934.986,
+              3649.626
+            ],
+            [
+              4925.014,
+              3650.374
+            ],
+            [
+              4895.014,
+              3250.374
+            ]
+          ],
+          "line": 1490
+        },
+        {
+          "path": "Terrain/RidgeEdge13",
+          "shape_path": "Terrain/RidgeEdge13/@CollisionPolygon2D@41",
+          "layer": 8,
+          "polygon": [
+            [
+              4930.9805,
+              3654.9028
+            ],
+            [
+              4430.9805,
+              3754.9028
+            ],
+            [
+              4429.0195,
+              3745.0972
+            ],
+            [
+              4929.0195,
+              3645.0972
+            ]
+          ],
+          "line": 1511
+        },
+        {
+          "path": "Terrain/RidgeEdge14",
+          "shape_path": "Terrain/RidgeEdge14/@CollisionPolygon2D@44",
+          "layer": 8,
+          "polygon": [
+            [
+              4426.1304,
+              3753.1663
+            ],
+            [
+              3976.1301,
+              3203.1663
+            ],
+            [
+              3983.8699,
+              3196.8337
+            ],
+            [
+              4433.8696,
+              3746.8337
+            ]
+          ],
+          "line": 1532
+        },
+        {
+          "path": "Terrain/RidgeEdge15",
+          "shape_path": "Terrain/RidgeEdge15/@CollisionPolygon2D@47",
+          "layer": 8,
+          "polygon": [
+            [
+              3977.7102,
+              3204.4448
+            ],
+            [
+              3647.7102,
+              3034.4448
+            ],
+            [
+              3652.2898,
+              3025.5552
+            ],
+            [
+              3982.2898,
+              3195.5552
+            ]
+          ],
+          "line": 1553
+        },
+        {
+          "path": "Terrain/RidgeEdge16",
+          "shape_path": "Terrain/RidgeEdge16/@CollisionPolygon2D@50",
+          "layer": 8,
+          "polygon": [
+            [
+              3653.6323,
+              3033.436
+            ],
+            [
+              3303.6323,
+              3403.436
+            ],
+            [
+              3296.3677,
+              3396.564
+            ],
+            [
+              3646.3677,
+              3026.564
+            ]
+          ],
+          "line": 1574
+        },
+        {
+          "path": "Terrain/RidgeEdge17",
+          "shape_path": "Terrain/RidgeEdge17/@CollisionPolygon2D@53",
+          "layer": 8,
+          "polygon": [
+            [
+              3304.699,
+              3401.7087
+            ],
+            [
+              3104.699,
+              3951.7087
+            ],
+            [
+              3095.301,
+              3948.2913
+            ],
+            [
+              3295.301,
+              3398.2913
+            ]
+          ],
+          "line": 1595
+        },
+        {
+          "path": "Terrain/RidgeEdge18",
+          "shape_path": "Terrain/RidgeEdge18/@CollisionPolygon2D@56",
+          "layer": 8,
+          "polygon": [
+            [
+              3104.9363,
+              3949.2039
+            ],
+            [
+              3204.9363,
+              4569.2036
+            ],
+            [
+              3195.0637,
+              4570.7964
+            ],
+            [
+              3095.0637,
+              3950.7961
+            ]
+          ],
+          "line": 1616
+        },
+        {
+          "path": "Terrain/RidgeEdge19",
+          "shape_path": "Terrain/RidgeEdge19/@CollisionPolygon2D@59",
+          "layer": 8,
+          "polygon": [
+            [
+              3200.9258,
+              4574.9136
+            ],
+            [
+              2510.9258,
+              4704.9136
+            ],
+            [
+              2509.0742,
+              4695.0864
+            ],
+            [
+              3199.0742,
+              4565.0864
+            ]
+          ],
+          "line": 1637
+        },
+        {
+          "path": "Terrain/RidgeEdge20",
+          "shape_path": "Terrain/RidgeEdge20/@CollisionPolygon2D@62",
+          "layer": 8,
+          "polygon": [
+            [
+              2505.4233,
+              4702.0137
+            ],
+            [
+              2285.4233,
+              4202.0137
+            ],
+            [
+              2294.5767,
+              4197.9863
+            ],
+            [
+              2514.5767,
+              4697.9863
+            ]
+          ],
+          "line": 1658
+        },
+        {
+          "path": "Terrain/RidgeEdge21",
+          "shape_path": "Terrain/RidgeEdge21/@CollisionPolygon2D@65",
+          "layer": 8,
+          "polygon": [
+            [
+              2285.2566,
+              4201.581
+            ],
+            [
+              2115.2566,
+              3691.581
+            ],
+            [
+              2124.7434,
+              3688.419
+            ],
+            [
+              2294.7434,
+              4198.419
+            ]
+          ],
+          "line": 1679
+        },
+        {
+          "path": "Terrain/RidgeEdge22",
+          "shape_path": "Terrain/RidgeEdge22/@CollisionPolygon2D@68",
+          "layer": 8,
+          "polygon": [
+            [
+              2118.2668,
+              3694.69
+            ],
+            [
+              1198.2667,
+              3354.69
+            ],
+            [
+              1201.7333,
+              3345.31
+            ],
+            [
+              2121.7332,
+              3685.31
+            ]
+          ],
+          "line": 1700
+        },
+        {
+          "path": "Terrain/RidgeEdge23",
+          "shape_path": "Terrain/RidgeEdge23/@CollisionPolygon2D@72",
+          "layer": 8,
+          "polygon": [
+            [
+              1196.6366,
+              3353.6997
+            ],
+            [
+              646.63666,
+              2853.6997
+            ],
+            [
+              653.36334,
+              2846.3003
+            ],
+            [
+              1203.3634,
+              3346.3003
+            ]
+          ],
+          "line": 1728
+        },
+        {
+          "path": "Terrain/RidgeEdge24",
+          "shape_path": "Terrain/RidgeEdge24/@CollisionPolygon2D@76",
+          "layer": 8,
+          "polygon": [
+            [
+              645.0,
+              2850.0
+            ],
+            [
+              645.0,
+              650.0
+            ],
+            [
+              655.0,
+              650.0
+            ],
+            [
+              655.0,
+              2850.0
+            ]
+          ],
+          "line": 1756
+        },
+        {
+          "path": "Terrain/Cliff0",
+          "shape_path": "Terrain/Cliff0/@CollisionPolygon2D@77",
+          "layer": 48,
+          "polygon": [
+            [
+              847.67126,
+              895.57544
+            ],
+            [
+              1797.6713,
+              395.5754
+            ],
+            [
+              1802.3287,
+              404.4246
+            ],
+            [
+              852.32874,
+              904.42456
+            ]
+          ],
+          "line": 1775
+        },
+        {
+          "path": "Terrain/Cliff1",
+          "shape_path": "Terrain/Cliff1/@CollisionPolygon2D@78",
+          "layer": 48,
+          "polygon": [
+            [
+              1800.1666,
+              395.00278
+            ],
+            [
+              3300.1665,
+              445.00278
+            ],
+            [
+              3299.8335,
+              454.99722
+            ],
+            [
+              1799.8334,
+              404.99722
+            ]
+          ],
+          "line": 1782
+        },
+        {
+          "path": "Terrain/Cliff2",
+          "shape_path": "Terrain/Cliff2/@CollisionPolygon2D@79",
+          "layer": 48,
+          "polygon": [
+            [
+              3303.201,
+              446.1589
+            ],
+            [
+              3903.201,
+              946.1589
+            ],
+            [
+              3896.799,
+              953.8411
+            ],
+            [
+              3296.799,
+              453.8411
+            ]
+          ],
+          "line": 1789
+        },
+        {
+          "path": "Terrain/Cliff3",
+          "shape_path": "Terrain/Cliff3/@CollisionPolygon2D@80",
+          "layer": 48,
+          "polygon": [
+            [
+              3904.988,
+              949.6536
+            ],
+            [
+              3954.988,
+              1669.6536
+            ],
+            [
+              3945.012,
+              1670.3464
+            ],
+            [
+              3895.012,
+              950.3464
+            ]
+          ],
+          "line": 1796
+        },
+        {
+          "path": "Terrain/Cliff4",
+          "shape_path": "Terrain/Cliff4/@CollisionPolygon2D@81",
+          "layer": 48,
+          "polygon": [
+            [
+              3949.5642,
+              1665.019
+            ],
+            [
+              4749.564,
+              1595.019
+            ],
+            [
+              4750.436,
+              1604.981
+            ],
+            [
+              3950.4358,
+              1674.981
+            ]
+          ],
+          "line": 1803
+        },
+        {
+          "path": "Terrain/Cliff5",
+          "shape_path": "Terrain/Cliff5/@CollisionPolygon2D@82",
+          "layer": 48,
+          "polygon": [
+            [
+              4751.4365,
+              1595.2108
+            ],
+            [
+              5151.4365,
+              1715.2108
+            ],
+            [
+              5148.5635,
+              1724.7892
+            ],
+            [
+              4748.5635,
+              1604.7892
+            ]
+          ],
+          "line": 1810
+        },
+        {
+          "path": "Terrain/Cliff6",
+          "shape_path": "Terrain/Cliff6/@CollisionPolygon2D@83",
+          "layer": 48,
+          "polygon": [
+            [
+              5155.0,
+              1720.0
+            ],
+            [
+              5155.0,
+              2090.0
+            ],
+            [
+              5145.0,
+              2090.0
+            ],
+            [
+              5145.0,
+              1720.0
+            ]
+          ],
+          "line": 1817
+        },
+        {
+          "path": "Terrain/Cliff7",
+          "shape_path": "Terrain/Cliff7/@CollisionPolygon2D@84",
+          "layer": 48,
+          "polygon": [
+            [
+              5150.7217,
+              2094.9478
+            ],
+            [
+              4670.7217,
+              2164.9478
+            ],
+            [
+              4669.2783,
+              2155.0522
+            ],
+            [
+              5149.2783,
+              2085.0522
+            ]
+          ],
+          "line": 1824
+        },
+        {
+          "path": "Terrain/Cliff8",
+          "shape_path": "Terrain/Cliff8/@CollisionPolygon2D@87",
+          "layer": 48,
+          "polygon": [
+            [
+              4668.4727,
+              2164.761
+            ],
+            [
+              4138.4727,
+              1994.7611
+            ],
+            [
+              4141.5273,
+              1985.2389
+            ],
+            [
+              4671.5273,
+              2155.239
+            ]
+          ],
+          "line": 1845
+        },
+        {
+          "path": "Terrain/Cliff9",
+          "shape_path": "Terrain/Cliff9/@CollisionPolygon2D@90",
+          "layer": 48,
+          "polygon": [
+            [
+              4144.9956,
+              1990.2125
+            ],
+            [
+              4124.9956,
+              2460.2126
+            ],
+            [
+              4115.0044,
+              2459.7874
+            ],
+            [
+              4135.0044,
+              1989.7875
+            ]
+          ],
+          "line": 1866
+        },
+        {
+          "path": "Terrain/Cliff10",
+          "shape_path": "Terrain/Cliff10/@CollisionPolygon2D@93",
+          "layer": 48,
+          "polygon": [
+            [
+              4124.998,
+              2460.147
+            ],
+            [
+              4114.998,
+              2800.147
+            ],
+            [
+              4105.002,
+              2799.853
+            ],
+            [
+              4115.002,
+              2459.853
+            ]
+          ],
+          "line": 1887
+        },
+        {
+          "path": "Terrain/Cliff11",
+          "shape_path": "Terrain/Cliff11/@CollisionPolygon2D@96",
+          "layer": 48,
+          "polygon": [
+            [
+              4110.0,
+              2800.0
+            ],
+            [
+              4110.0,
+              2800.0
+            ],
+            [
+              4110.0,
+              2800.0
+            ],
+            [
+              4110.0,
+              2800.0
+            ]
+          ],
+          "line": 1908
+        },
+        {
+          "path": "Terrain/Cliff12",
+          "shape_path": "Terrain/Cliff12/@CollisionPolygon2D@97",
+          "layer": 48,
+          "polygon": [
+            [
+              3692.0,
+              2805.0
+            ],
+            [
+              2938.0,
+              2805.0
+            ],
+            [
+              2938.0,
+              2795.0
+            ],
+            [
+              3692.0,
+              2795.0
+            ]
+          ],
+          "line": 1915
+        },
+        {
+          "path": "Terrain/Cliff13",
+          "shape_path": "Terrain/Cliff13/@CollisionPolygon2D@98",
+          "layer": 48,
+          "polygon": [
+            [
+              2462.0,
+              2805.0
+            ],
+            [
+              1638.0,
+              2805.0
+            ],
+            [
+              1638.0,
+              2795.0
+            ],
+            [
+              2462.0,
+              2795.0
+            ]
+          ],
+          "line": 1922
+        },
+        {
+          "path": "Terrain/Cliff14",
+          "shape_path": "Terrain/Cliff14/@CollisionPolygon2D@99",
+          "layer": 48,
+          "polygon": [
+            [
+              1162.0,
+              2805.0
+            ],
+            [
+              1050.0,
+              2805.0
+            ],
+            [
+              1050.0,
+              2795.0
+            ],
+            [
+              1162.0,
+              2795.0
+            ]
+          ],
+          "line": 1929
+        },
+        {
+          "path": "Terrain/Cliff15",
+          "shape_path": "Terrain/Cliff15/@CollisionPolygon2D@104",
+          "layer": 48,
+          "polygon": [
+            [
+              1045.5278,
+              2802.236
+            ],
+            [
+              795.5279,
+              2302.236
+            ],
+            [
+              804.4721,
+              2297.764
+            ],
+            [
+              1054.4722,
+              2797.764
+            ]
+          ],
+          "line": 1964
+        },
+        {
+          "path": "Terrain/Cliff16",
+          "shape_path": "Terrain/Cliff16/@CollisionPolygon2D@107",
+          "layer": 48,
+          "polygon": [
+            [
+              795.0032,
+              2299.8215
+            ],
+            [
+              845.0032,
+              899.82153
+            ],
+            [
+              854.9968,
+              900.17847
+            ],
+            [
+              804.9968,
+              2300.1785
+            ]
+          ],
+          "line": 1985
+        },
+        {
+          "path": "Terrain/Cliff17",
+          "shape_path": "Terrain/Cliff17/@CollisionPolygon2D@108",
+          "layer": 96,
+          "polygon": [
+            [
+              1898.1431,
+              695.3576
+            ],
+            [
+              2598.143,
+              415.3576
+            ],
+            [
+              2601.857,
+              424.6424
+            ],
+            [
+              1901.8569,
+              704.6424
+            ]
+          ],
+          "line": 1992
+        },
+        {
+          "path": "Terrain/Cliff18",
+          "shape_path": "Terrain/Cliff18/@CollisionPolygon2D@109",
+          "layer": 96,
+          "polygon": [
+            [
+              2601.7488,
+              415.3158
+            ],
+            [
+              3351.7488,
+              695.3158
+            ],
+            [
+              3348.2512,
+              704.6842
+            ],
+            [
+              2598.2512,
+              424.6842
+            ]
+          ],
+          "line": 1999
+        },
+        {
+          "path": "Terrain/Cliff19",
+          "shape_path": "Terrain/Cliff19/@CollisionPolygon2D@110",
+          "layer": 96,
+          "polygon": [
+            [
+              3353.9043,
+              696.8765
+            ],
+            [
+              3673.9043,
+              1096.8765
+            ],
+            [
+              3666.0957,
+              1103.1235
+            ],
+            [
+              3346.0957,
+              703.1235
+            ]
+          ],
+          "line": 2006
+        },
+        {
+          "path": "Terrain/Cliff20",
+          "shape_path": "Terrain/Cliff20/@CollisionPolygon2D@111",
+          "layer": 96,
+          "polygon": [
+            [
+              3674.995,
+              1099.778
+            ],
+            [
+              3694.995,
+              1549.778
+            ],
+            [
+              3685.005,
+              1550.222
+            ],
+            [
+              3665.005,
+              1100.222
+            ]
+          ],
+          "line": 2013
+        },
+        {
+          "path": "Terrain/Cliff21",
+          "shape_path": "Terrain/Cliff21/@CollisionPolygon2D@112",
+          "layer": 96,
+          "polygon": [
+            [
+              3690.0,
+              1555.0
+            ],
+            [
+              3658.0,
+              1555.0
+            ],
+            [
+              3658.0,
+              1545.0
+            ],
+            [
+              3690.0,
+              1545.0
+            ]
+          ],
+          "line": 2020
+        },
+        {
+          "path": "Terrain/Cliff22",
+          "shape_path": "Terrain/Cliff22/@CollisionPolygon2D@113",
+          "layer": 96,
+          "polygon": [
+            [
+              3182.0,
+              1555.0
+            ],
+            [
+              2938.0,
+              1555.0
+            ],
+            [
+              2938.0,
+              1545.0
+            ],
+            [
+              3182.0,
+              1545.0
+            ]
+          ],
+          "line": 2027
+        },
+        {
+          "path": "Terrain/Cliff23",
+          "shape_path": "Terrain/Cliff23/@CollisionPolygon2D@114",
+          "layer": 96,
+          "polygon": [
+            [
+              2462.0,
+              1555.0
+            ],
+            [
+              1950.0,
+              1555.0
+            ],
+            [
+              1950.0,
+              1545.0
+            ],
+            [
+              2462.0,
+              1545.0
+            ]
+          ],
+          "line": 2034
+        },
+        {
+          "path": "Terrain/Cliff24",
+          "shape_path": "Terrain/Cliff24/@CollisionPolygon2D@117",
+          "layer": 96,
+          "polygon": [
+            [
+              1945.5024,
+              1552.1846
+            ],
+            [
+              1775.5024,
+              1202.1846
+            ],
+            [
+              1784.4976,
+              1197.8154
+            ],
+            [
+              1954.4976,
+              1547.8154
+            ]
+          ],
+          "line": 2055
+        },
+        {
+          "path": "Terrain/Cliff25",
+          "shape_path": "Terrain/Cliff25/@CollisionPolygon2D@120",
+          "layer": 96,
+          "polygon": [
+            [
+              1775.1381,
+              1198.8331
+            ],
+            [
+              1895.1381,
+              698.8331
+            ],
+            [
+              1904.8619,
+              701.1669
+            ],
+            [
+              1784.8619,
+              1201.1669
+            ]
+          ],
+          "line": 2076
+        },
+        {
+          "path": "Terrain/RampRail0-1",
+          "shape_path": "Terrain/RampRail0-1/@CollisionPolygon2D@124",
+          "layer": 48,
+          "polygon": [
+            [
+              2467.0,
+              2778.0
+            ],
+            [
+              2467.0,
+              3011.0
+            ],
+            [
+              2457.0,
+              3011.0
+            ],
+            [
+              2457.0,
+              2778.0
+            ]
+          ],
+          "line": 2107
+        },
+        {
+          "path": "Terrain/RampRail01",
+          "shape_path": "Terrain/RampRail01/@CollisionPolygon2D@125",
+          "layer": 48,
+          "polygon": [
+            [
+              2943.0,
+              2778.0
+            ],
+            [
+              2943.0,
+              3011.0
+            ],
+            [
+              2933.0,
+              3011.0
+            ],
+            [
+              2933.0,
+              2778.0
+            ]
+          ],
+          "line": 2114
+        },
+        {
+          "path": "Terrain/RampRail1-1",
+          "shape_path": "Terrain/RampRail1-1/@CollisionPolygon2D@129",
+          "layer": 48,
+          "polygon": [
+            [
+              1167.0,
+              2778.0
+            ],
+            [
+              1167.0,
+              3011.0
+            ],
+            [
+              1157.0,
+              3011.0
+            ],
+            [
+              1157.0,
+              2778.0
+            ]
+          ],
+          "line": 2145
+        },
+        {
+          "path": "Terrain/RampRail11",
+          "shape_path": "Terrain/RampRail11/@CollisionPolygon2D@130",
+          "layer": 48,
+          "polygon": [
+            [
+              1643.0,
+              2778.0
+            ],
+            [
+              1643.0,
+              3011.0
+            ],
+            [
+              1633.0,
+              3011.0
+            ],
+            [
+              1633.0,
+              2778.0
+            ]
+          ],
+          "line": 2152
+        },
+        {
+          "path": "Terrain/RampRail2-1",
+          "shape_path": "Terrain/RampRail2-1/@CollisionPolygon2D@134",
+          "layer": 96,
+          "polygon": [
+            [
+              2467.0,
+              1528.0
+            ],
+            [
+              2467.0,
+              1761.0
+            ],
+            [
+              2457.0,
+              1761.0
+            ],
+            [
+              2457.0,
+              1528.0
+            ]
+          ],
+          "line": 2183
+        },
+        {
+          "path": "Terrain/RampRail21",
+          "shape_path": "Terrain/RampRail21/@CollisionPolygon2D@135",
+          "layer": 96,
+          "polygon": [
+            [
+              2943.0,
+              1528.0
+            ],
+            [
+              2943.0,
+              1761.0
+            ],
+            [
+              2933.0,
+              1761.0
+            ],
+            [
+              2933.0,
+              1528.0
+            ]
+          ],
+          "line": 2190
+        },
+        {
+          "path": "Terrain/RampRail3-1",
+          "shape_path": "Terrain/RampRail3-1/@CollisionPolygon2D@139",
+          "layer": 96,
+          "polygon": [
+            [
+              3187.0,
+              1528.0
+            ],
+            [
+              3187.0,
+              1761.0
+            ],
+            [
+              3177.0,
+              1761.0
+            ],
+            [
+              3177.0,
+              1528.0
+            ]
+          ],
+          "line": 2221
+        },
+        {
+          "path": "Terrain/RampRail31",
+          "shape_path": "Terrain/RampRail31/@CollisionPolygon2D@140",
+          "layer": 96,
+          "polygon": [
+            [
+              3663.0,
+              1528.0
+            ],
+            [
+              3663.0,
+              1761.0
+            ],
+            [
+              3653.0,
+              1761.0
+            ],
+            [
+              3653.0,
+              1528.0
+            ]
+          ],
+          "line": 2228
+        },
+        {
+          "path": "Terrain/RampRail4-1",
+          "shape_path": "Terrain/RampRail4-1/@CollisionPolygon2D@144",
+          "layer": 48,
+          "polygon": [
+            [
+              3697.0,
+              2778.0
+            ],
+            [
+              3697.0,
+              3011.0
+            ],
+            [
+              3687.0,
+              3011.0
+            ],
+            [
+              3687.0,
+              2778.0
+            ]
+          ],
+          "line": 2259
+        },
+        {
+          "path": "Terrain/RampRail41",
+          "shape_path": "Terrain/RampRail41/@CollisionPolygon2D@145",
+          "layer": 48,
+          "polygon": [
+            [
+              4173.0,
+              2778.0
+            ],
+            [
+              4173.0,
+              3011.0
+            ],
+            [
+              4163.0,
+              3011.0
+            ],
+            [
+              4163.0,
+              2778.0
+            ]
+          ],
+          "line": 2266
+        }
+      ],
+      "base_outline": [
+        [
+          650,
+          650
+        ],
+        [
+          1800,
+          200
+        ],
+        [
+          3350,
+          250
+        ],
+        [
+          4030,
+          750
+        ],
+        [
+          4250,
+          1450
+        ],
+        [
+          5100,
+          1350
+        ],
+        [
+          5500,
+          1700
+        ],
+        [
+          5450,
+          2300
+        ],
+        [
+          4730,
+          2350
+        ],
+        [
+          4450,
+          2200
+        ],
+        [
+          4260,
+          2450
+        ],
+        [
+          4480,
+          3100
+        ],
+        [
+          4900,
+          3250
+        ],
+        [
+          4930,
+          3650
+        ],
+        [
+          4430,
+          3750
+        ],
+        [
+          3980,
+          3200
+        ],
+        [
+          3650,
+          3030
+        ],
+        [
+          3300,
+          3400
+        ],
+        [
+          3100,
+          3950
+        ],
+        [
+          3200,
+          4570
+        ],
+        [
+          2510,
+          4700
+        ],
+        [
+          2290,
+          4200
+        ],
+        [
+          2120,
+          3690
+        ],
+        [
+          1200,
+          3350
+        ],
+        [
+          650,
+          2850
+        ]
+      ],
+      "route": [
+        [
+          2780,
+          4520
+        ],
+        [
+          2780,
+          4420
+        ],
+        [
+          2770,
+          4050
+        ],
+        [
+          2640,
+          3560
+        ],
+        [
+          2700,
+          3200
+        ],
+        [
+          2700,
+          3030
+        ],
+        [
+          2700,
+          2760
+        ],
+        [
+          2700,
+          2580
+        ],
+        [
+          2700,
+          2500
+        ]
+      ],
+      "negative": {
+        "foot": [
+          2770,
+          1000
+        ],
+        "level": 2,
+        "height": 480,
+        "projected_foot": [
+          2770,
+          520
+        ],
+        "full35x25_clear": false,
+        "hits": [
+          "Town/MainHall/Body"
+        ],
+        "inside_base_outline": true
+      }
+    },
+    "openworld_wudang_taiji_court": {
+      "key": "wudang",
+      "id": "openworld_wudang_taiji_court",
+      "label": "武当派 · 太极场",
+      "scene": "res://scenes/drafts/sect_maps_20261029k/wudang.tscn",
+      "native_layout": "res://art/modules/sect_maps_20261029k/wudang.json",
+      "size": [
+        5200,
+        4400
+      ],
+      "arrival": [
+        2500,
+        2700
+      ],
+      "leave_arrow": [
+        1700,
+        4200
+      ],
+      "inner_arrow": [
+        2500,
+        2620
+      ],
+      "inner_return": [
+        2700,
+        1240
+      ],
+      "inner_source": "openworld_wudang_purple_cloud_court",
+      "old_inner_return_uv": [
+        0.5,
+        0.15
+      ],
+      "world_uv": [
+        0.11393229,
+        0.6820928
+      ],
+      "world_portal_id": "wudang",
+      "portal_feet": {
+        "return_wudang_gate": [
+          1700,
+          4200
+        ],
+        "to_wudang_purple_cloud_court": [
+          2700,
+          1160
+        ]
+      },
+      "npc_feet": {
+        "wudang_gate_disciple": [
+          1900,
+          3900
+        ]
+      },
+      "original_npcs": [
+        {
+          "npc_id": "wudang_gate_disciple",
+          "npc_name": "武当守山弟子",
+          "pos": [
+            0.585,
+            0.69
+          ],
+          "sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png",
+          "dialog_id": "openworld_wudang_gate_disciple",
+          "scale": 0.92,
+          "conversation_base_facing": "left"
+        }
+      ],
+      "original_portals": [
+        {
+          "id": "return_world",
+          "label": "下山 · 返回江湖大地图",
+          "pos": [
+            0.5,
+            0.945
+          ],
+          "size": [
+            0.17,
+            0.08
+          ],
+          "action": "world_map",
+          "marker_rotation_degrees": 180.0
+        },
+        {
+          "id": "to_wudang_taiji_court",
+          "label": "进入武当太极场",
+          "pos": [
+            0.5,
+            0.115
+          ],
+          "size": [
+            0.15,
+            0.075
+          ],
+          "target_scene": "openworld_wudang_taiji_court",
+          "target_pos": [
+            0.5,
+            0.875
+          ]
+        }
+      ],
+      "original_interactions": [],
+      "original_hotspots": [],
+      "terrain": {
+        "heights": [
+          0,
+          180,
+          360
+        ],
+        "platforms": [
+          {
+            "level": 1,
+            "polygon": [
+              [
+                1100,
+                650
+              ],
+              [
+                2100,
+                250
+              ],
+              [
+                3900,
+                450
+              ],
+              [
+                4700,
+                1500
+              ],
+              [
+                4700,
+                2650
+              ],
+              [
+                4100,
+                2900
+              ],
+              [
+                1300,
+                2900
+              ],
+              [
+                1000,
+                2300
+              ]
+            ]
+          },
+          {
+            "level": 2,
+            "polygon": [
+              [
+                2000,
+                550
+              ],
+              [
+                2800,
+                400
+              ],
+              [
+                3700,
+                650
+              ],
+              [
+                3850,
+                1200
+              ],
+              [
+                3500,
+                1600
+              ],
+              [
+                1900,
+                1600
+              ],
+              [
+                1750,
+                1200
+              ]
+            ]
+          }
+        ],
+        "ramps": [
+          {
+            "id": "MainRise",
+            "label": "山门—太极道场",
+            "low": 0,
+            "high": 1,
+            "top": [
+              2400,
+              2900
+            ],
+            "bottom": [
+              2400,
+              3039.8
+            ],
+            "rise": 180,
+            "ground_run": 139.79999999999995
+          },
+          {
+            "id": "ServiceRise",
+            "label": "东麓—生活道院",
+            "low": 0,
+            "high": 1,
+            "top": [
+              3900,
+              2900
+            ],
+            "bottom": [
+              3900,
+              3039.8
+            ],
+            "rise": 180,
+            "ground_run": 139.79999999999995
+          },
+          {
+            "id": "HallRise",
+            "label": "道场—正殿高台",
+            "low": 1,
+            "high": 2,
+            "top": [
+              2600,
+              1600
+            ],
+            "bottom": [
+              2600,
+              1739.8
+            ],
+            "rise": 180,
+            "ground_run": 139.79999999999995
+          },
+          {
+            "id": "LibraryRise",
+            "label": "道院—藏经台",
+            "low": 1,
+            "high": 2,
+            "top": [
+              3300,
+              1600
+            ],
+            "bottom": [
+              3300,
+              1739.8
+            ],
+            "rise": 180,
+            "ground_run": 139.79999999999995
+          }
+        ],
+        "source_stair_scale": 0.82,
+        "portal_half_width": 180,
+        "facade_opening_half_width": 300,
+        "object_moves": {}
+      },
+      "solids": [
+        {
+          "path": "Town/Boundary0",
+          "shape_path": "Town/Boundary0/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              90.0
+            ],
+            [
+              5110.0,
+              90.0
+            ],
+            [
+              5110.0,
+              110.0
+            ],
+            [
+              90.0,
+              110.0
+            ]
+          ],
+          "line": 360
+        },
+        {
+          "path": "Town/Boundary1",
+          "shape_path": "Town/Boundary1/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              5090.0,
+              90.0
+            ],
+            [
+              5110.0,
+              90.0
+            ],
+            [
+              5110.0,
+              4310.0
+            ],
+            [
+              5090.0,
+              4310.0
+            ]
+          ],
+          "line": 369
+        },
+        {
+          "path": "Town/Boundary2",
+          "shape_path": "Town/Boundary2/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              4290.0
+            ],
+            [
+              5110.0,
+              4290.0
+            ],
+            [
+              5110.0,
+              4310.0
+            ],
+            [
+              90.0,
+              4310.0
+            ]
+          ],
+          "line": 378
+        },
+        {
+          "path": "Town/Boundary3",
+          "shape_path": "Town/Boundary3/Shape",
+          "layer": 8,
+          "polygon": [
+            [
+              90.0,
+              90.0
+            ],
+            [
+              110.0,
+              90.0
+            ],
+            [
+              110.0,
+              4310.0
+            ],
+            [
+              90.0,
+              4310.0
+            ]
+          ],
+          "line": 387
+        },
+        {
+          "path": "Town/MainHall/Body",
+          "shape_path": "Town/MainHall/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              2235.4727,
+              830.0
+            ],
+            [
+              3164.5273,
+              830.0
+            ],
+            [
+              3164.5273,
+              950.0
+            ],
+            [
+              2235.4727,
+              950.0
+            ]
+          ],
+          "line": 411
+        },
+        {
+          "path": "Town/MountainGate/LeftPier",
+          "shape_path": "Town/MountainGate/LeftPier/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              1329.5798300000001,
+              3725.0
+            ],
+            [
+              1619.63586,
+              3725.0
+            ],
+            [
+              1619.63586,
+              3800.0
+            ],
+            [
+              1329.5798300000001,
+              3800.0
+            ]
+          ],
+          "line": 435
+        },
+        {
+          "path": "Town/MountainGate/RightPier",
+          "shape_path": "Town/MountainGate/RightPier/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              1739.383755,
+              3725.0
+            ],
+            [
+              2070.42017,
+              3725.0
+            ],
+            [
+              2070.42017,
+              3800.0
+            ],
+            [
+              1739.383755,
+              3800.0
+            ]
+          ],
+          "line": 442
+        },
+        {
+          "path": "Town/Scripture/Body",
+          "shape_path": "Town/Scripture/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3667.2861,
+              1640.0
+            ],
+            [
+              4312.7139,
+              1640.0
+            ],
+            [
+              4312.7139,
+              1730.0
+            ],
+            [
+              3667.2861,
+              1730.0
+            ]
+          ],
+          "line": 483
+        },
+        {
+          "path": "Town/EastDormitory/Body",
+          "shape_path": "Town/EastDormitory/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3758.66107,
+              2238.75
+            ],
+            [
+              4341.33893,
+              2238.75
+            ],
+            [
+              4341.33893,
+              2320.0
+            ],
+            [
+              3758.66107,
+              2320.0
+            ]
+          ],
+          "line": 507
+        },
+        {
+          "path": "Town/Kitchen/Body",
+          "shape_path": "Town/Kitchen/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3210.03604,
+              2507.5
+            ],
+            [
+              3729.96396,
+              2507.5
+            ],
+            [
+              3729.96396,
+              2580.0
+            ],
+            [
+              3210.03604,
+              2580.0
+            ]
+          ],
+          "line": 531
+        },
+        {
+          "path": "Town/UpperWing/Body",
+          "shape_path": "Town/UpperWing/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              3092.10748,
+              1052.5
+            ],
+            [
+              3647.89252,
+              1052.5
+            ],
+            [
+              3647.89252,
+              1130.0
+            ],
+            [
+              3092.10748,
+              1130.0
+            ]
+          ],
+          "line": 555
+        },
+        {
+          "path": "Town/WestWing/Body",
+          "shape_path": "Town/WestWing/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              1804.51817,
+              1178.75
+            ],
+            [
+              2315.48183,
+              1178.75
+            ],
+            [
+              2315.48183,
+              1250.0
+            ],
+            [
+              1804.51817,
+              1250.0
+            ]
+          ],
+          "line": 579
+        },
+        {
+          "path": "Town/GateHouse/Body",
+          "shape_path": "Town/GateHouse/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              897.9645800000001,
+              3582.5
+            ],
+            [
+              1382.03542,
+              3582.5
+            ],
+            [
+              1382.03542,
+              3650.0
+            ],
+            [
+              897.9645800000001,
+              3650.0
+            ]
+          ],
+          "line": 603
+        },
+        {
+          "path": "Town/Meditation/Body",
+          "shape_path": "Town/Meditation/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1256.60948,
+              1442.5
+            ],
+            [
+              1603.39052,
+              1442.5
+            ],
+            [
+              1603.39052,
+              1540.0
+            ],
+            [
+              1256.60948,
+              1540.0
+            ]
+          ],
+          "line": 627
+        },
+        {
+          "path": "Town/CourtBench/Body",
+          "shape_path": "Town/CourtBench/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1971.611618,
+              2618.5
+            ],
+            [
+              2088.388382,
+              2618.5
+            ],
+            [
+              2088.388382,
+              2630.0
+            ],
+            [
+              1971.611618,
+              2630.0
+            ]
+          ],
+          "line": 651
+        },
+        {
+          "path": "Town/DormBench/Body",
+          "shape_path": "Town/DormBench/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4291.611618,
+              2408.5
+            ],
+            [
+              4408.388382,
+              2408.5
+            ],
+            [
+              4408.388382,
+              2420.0
+            ],
+            [
+              4291.611618,
+              2420.0
+            ]
+          ],
+          "line": 675
+        },
+        {
+          "path": "Town/HallBench/Body",
+          "shape_path": "Town/HallBench/Body/Shape",
+          "layer": 64,
+          "polygon": [
+            [
+              2961.611618,
+              1228.5
+            ],
+            [
+              3078.388382,
+              1228.5
+            ],
+            [
+              3078.388382,
+              1240.0
+            ],
+            [
+              2961.611618,
+              1240.0
+            ]
+          ],
+          "line": 699
+        },
+        {
+          "path": "Town/KitchenJars/Body",
+          "shape_path": "Town/KitchenJars/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3710.74,
+              2600.5
+            ],
+            [
+              3789.26,
+              2600.5
+            ],
+            [
+              3789.26,
+              2620.0
+            ],
+            [
+              3710.74,
+              2620.0
+            ]
+          ],
+          "line": 723
+        },
+        {
+          "path": "Town/Storage/Body",
+          "shape_path": "Town/Storage/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4384.38777,
+              2227.5
+            ],
+            [
+              4495.61223,
+              2227.5
+            ],
+            [
+              4495.61223,
+              2250.0
+            ],
+            [
+              4384.38777,
+              2250.0
+            ]
+          ],
+          "line": 747
+        },
+        {
+          "path": "Town/GardenTable/Body",
+          "shape_path": "Town/GardenTable/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1371.18934,
+              1717.5
+            ],
+            [
+              1468.81066,
+              1717.5
+            ],
+            [
+              1468.81066,
+              1740.0
+            ],
+            [
+              1371.18934,
+              1740.0
+            ]
+          ],
+          "line": 771
+        },
+        {
+          "path": "Town/Pine0/Body",
+          "shape_path": "Town/Pine0/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              762.0,
+              3360.0
+            ],
+            [
+              838.0,
+              3360.0
+            ],
+            [
+              838.0,
+              3400.0
+            ],
+            [
+              762.0,
+              3400.0
+            ]
+          ],
+          "line": 795
+        },
+        {
+          "path": "Town/Pine1/Body",
+          "shape_path": "Town/Pine1/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2212.0,
+              3610.0
+            ],
+            [
+              2288.0,
+              3610.0
+            ],
+            [
+              2288.0,
+              3650.0
+            ],
+            [
+              2212.0,
+              3650.0
+            ]
+          ],
+          "line": 819
+        },
+        {
+          "path": "Town/Pine2/Body",
+          "shape_path": "Town/Pine2/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3162.0,
+              3380.0
+            ],
+            [
+              3238.0,
+              3380.0
+            ],
+            [
+              3238.0,
+              3420.0
+            ],
+            [
+              3162.0,
+              3420.0
+            ]
+          ],
+          "line": 843
+        },
+        {
+          "path": "Town/Pine3/Body",
+          "shape_path": "Town/Pine3/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4442.0,
+              3260.0
+            ],
+            [
+              4518.0,
+              3260.0
+            ],
+            [
+              4518.0,
+              3300.0
+            ],
+            [
+              4442.0,
+              3300.0
+            ]
+          ],
+          "line": 867
+        },
+        {
+          "path": "Town/Pine4/Body",
+          "shape_path": "Town/Pine4/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              882.0,
+              2560.0
+            ],
+            [
+              958.0,
+              2560.0
+            ],
+            [
+              958.0,
+              2600.0
+            ],
+            [
+              882.0,
+              2600.0
+            ]
+          ],
+          "line": 891
+        },
+        {
+          "path": "Town/Pine5/Body",
+          "shape_path": "Town/Pine5/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1142.0,
+              1940.0
+            ],
+            [
+              1218.0,
+              1940.0
+            ],
+            [
+              1218.0,
+              1980.0
+            ],
+            [
+              1142.0,
+              1980.0
+            ]
+          ],
+          "line": 915
+        },
+        {
+          "path": "Town/Pine6/Body",
+          "shape_path": "Town/Pine6/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1502.0,
+              2060.0
+            ],
+            [
+              1578.0,
+              2060.0
+            ],
+            [
+              1578.0,
+              2100.0
+            ],
+            [
+              1502.0,
+              2100.0
+            ]
+          ],
+          "line": 939
+        },
+        {
+          "path": "Town/Pine7/Body",
+          "shape_path": "Town/Pine7/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4492.0,
+              1770.0
+            ],
+            [
+              4568.0,
+              1770.0
+            ],
+            [
+              4568.0,
+              1810.0
+            ],
+            [
+              4492.0,
+              1810.0
+            ]
+          ],
+          "line": 963
+        },
+        {
+          "path": "Town/Pine8/Body",
+          "shape_path": "Town/Pine8/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              4412.0,
+              1210.0
+            ],
+            [
+              4488.0,
+              1210.0
+            ],
+            [
+              4488.0,
+              1250.0
+            ],
+            [
+              4412.0,
+              1250.0
+            ]
+          ],
+          "line": 987
+        },
+        {
+          "path": "Town/Pine9/Body",
+          "shape_path": "Town/Pine9/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1592.0,
+              910.0
+            ],
+            [
+              1668.0,
+              910.0
+            ],
+            [
+              1668.0,
+              950.0
+            ],
+            [
+              1592.0,
+              950.0
+            ]
+          ],
+          "line": 1011
+        },
+        {
+          "path": "Town/Pine10/Body",
+          "shape_path": "Town/Pine10/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3792.0,
+              720.0
+            ],
+            [
+              3868.0,
+              720.0
+            ],
+            [
+              3868.0,
+              760.0
+            ],
+            [
+              3792.0,
+              760.0
+            ]
+          ],
+          "line": 1035
+        },
+        {
+          "path": "Town/Pine11/Body",
+          "shape_path": "Town/Pine11/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3012.0,
+              340.0
+            ],
+            [
+              3088.0,
+              340.0
+            ],
+            [
+              3088.0,
+              380.0
+            ],
+            [
+              3012.0,
+              380.0
+            ]
+          ],
+          "line": 1059
+        },
+        {
+          "path": "Town/Pine12/Body",
+          "shape_path": "Town/Pine12/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              1072.0,
+              3290.0
+            ],
+            [
+              1148.0,
+              3290.0
+            ],
+            [
+              1148.0,
+              3330.0
+            ],
+            [
+              1072.0,
+              3330.0
+            ]
+          ],
+          "line": 1083
+        },
+        {
+          "path": "Town/Pine13/Body",
+          "shape_path": "Town/Pine13/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3552.0,
+              2120.0
+            ],
+            [
+              3628.0,
+              2120.0
+            ],
+            [
+              3628.0,
+              2160.0
+            ],
+            [
+              3552.0,
+              2160.0
+            ]
+          ],
+          "line": 1107
+        },
+        {
+          "path": "Town/MountainRock0/Body",
+          "shape_path": "Town/MountainRock0/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              113.0,
+              1671.0
+            ],
+            [
+              887.0,
+              1671.0
+            ],
+            [
+              887.0,
+              1800.0
+            ],
+            [
+              113.0,
+              1800.0
+            ]
+          ],
+          "line": 1131
+        },
+        {
+          "path": "Town/MountainRock1/Body",
+          "shape_path": "Town/MountainRock1/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              169.0,
+              2463.0
+            ],
+            [
+              871.0,
+              2463.0
+            ],
+            [
+              871.0,
+              2580.0
+            ],
+            [
+              169.0,
+              2580.0
+            ]
+          ],
+          "line": 1155
+        },
+        {
+          "path": "Town/MountainRock2/Body",
+          "shape_path": "Town/MountainRock2/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              391.0,
+              767.0
+            ],
+            [
+              1309.0,
+              767.0
+            ],
+            [
+              1309.0,
+              920.0
+            ],
+            [
+              391.0,
+              920.0
+            ]
+          ],
+          "line": 1179
+        },
+        {
+          "path": "Town/MountainRock3/Body",
+          "shape_path": "Town/MountainRock3/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              1214.0,
+              238.0
+            ],
+            [
+              2186.0,
+              238.0
+            ],
+            [
+              2186.0,
+              400.0
+            ],
+            [
+              1214.0,
+              400.0
+            ]
+          ],
+          "line": 1203
+        },
+        {
+          "path": "Town/MountainRock4/Body",
+          "shape_path": "Town/MountainRock4/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2215.0,
+              45.0
+            ],
+            [
+              3385.0,
+              45.0
+            ],
+            [
+              3385.0,
+              240.0
+            ],
+            [
+              2215.0,
+              240.0
+            ]
+          ],
+          "line": 1227
+        },
+        {
+          "path": "Town/MountainRock5/Body",
+          "shape_path": "Town/MountainRock5/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3560.0,
+              270.0
+            ],
+            [
+              4460.0,
+              270.0
+            ],
+            [
+              4460.0,
+              420.0
+            ],
+            [
+              3560.0,
+              420.0
+            ]
+          ],
+          "line": 1251
+        },
+        {
+          "path": "Town/MountainRock6/Body",
+          "shape_path": "Town/MountainRock6/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4498.0,
+              1366.0
+            ],
+            [
+              5362.0,
+              1366.0
+            ],
+            [
+              5362.0,
+              1510.0
+            ],
+            [
+              4498.0,
+              1510.0
+            ]
+          ],
+          "line": 1275
+        },
+        {
+          "path": "Town/MountainRock7/Body",
+          "shape_path": "Town/MountainRock7/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4654.0,
+              2388.0
+            ],
+            [
+              5446.0,
+              2388.0
+            ],
+            [
+              5446.0,
+              2520.0
+            ],
+            [
+              4654.0,
+              2520.0
+            ]
+          ],
+          "line": 1299
+        },
+        {
+          "path": "Town/MountainRock8/Body",
+          "shape_path": "Town/MountainRock8/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4135.0,
+              3685.0
+            ],
+            [
+              4765.0,
+              3685.0
+            ],
+            [
+              4765.0,
+              3790.0
+            ],
+            [
+              4135.0,
+              3790.0
+            ]
+          ],
+          "line": 1323
+        },
+        {
+          "path": "Town/MountainRock9/Body",
+          "shape_path": "Town/MountainRock9/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              376.0,
+              3942.0
+            ],
+            [
+              1024.0,
+              3942.0
+            ],
+            [
+              1024.0,
+              4050.0
+            ],
+            [
+              376.0,
+              4050.0
+            ]
+          ],
+          "line": 1347
+        },
+        {
+          "path": "Town/Grove0/Body",
+          "shape_path": "Town/Grove0/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              708.0,
+              1370.0
+            ],
+            [
+              772.0,
+              1370.0
+            ],
+            [
+              772.0,
+              1400.0
+            ],
+            [
+              708.0,
+              1400.0
+            ]
+          ],
+          "line": 1371
+        },
+        {
+          "path": "Town/Grove1/Body",
+          "shape_path": "Town/Grove1/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              678.0,
+              2020.0
+            ],
+            [
+              742.0,
+              2020.0
+            ],
+            [
+              742.0,
+              2050.0
+            ],
+            [
+              678.0,
+              2050.0
+            ]
+          ],
+          "line": 1395
+        },
+        {
+          "path": "Town/Grove2/Body",
+          "shape_path": "Town/Grove2/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              748.0,
+              2810.0
+            ],
+            [
+              812.0,
+              2810.0
+            ],
+            [
+              812.0,
+              2840.0
+            ],
+            [
+              748.0,
+              2840.0
+            ]
+          ],
+          "line": 1419
+        },
+        {
+          "path": "Town/Grove3/Body",
+          "shape_path": "Town/Grove3/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1098.0,
+              1040.0
+            ],
+            [
+              1162.0,
+              1040.0
+            ],
+            [
+              1162.0,
+              1070.0
+            ],
+            [
+              1098.0,
+              1070.0
+            ]
+          ],
+          "line": 1443
+        },
+        {
+          "path": "Town/Grove4/Body",
+          "shape_path": "Town/Grove4/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1438.0,
+              590.0
+            ],
+            [
+              1502.0,
+              590.0
+            ],
+            [
+              1502.0,
+              620.0
+            ],
+            [
+              1438.0,
+              620.0
+            ]
+          ],
+          "line": 1467
+        },
+        {
+          "path": "Town/Grove5/Body",
+          "shape_path": "Town/Grove5/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1918.0,
+              460.0
+            ],
+            [
+              1982.0,
+              460.0
+            ],
+            [
+              1982.0,
+              490.0
+            ],
+            [
+              1918.0,
+              490.0
+            ]
+          ],
+          "line": 1491
+        },
+        {
+          "path": "Town/Grove6/Body",
+          "shape_path": "Town/Grove6/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3668.0,
+              310.0
+            ],
+            [
+              3732.0,
+              310.0
+            ],
+            [
+              3732.0,
+              340.0
+            ],
+            [
+              3668.0,
+              340.0
+            ]
+          ],
+          "line": 1515
+        },
+        {
+          "path": "Town/Grove7/Body",
+          "shape_path": "Town/Grove7/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4448.0,
+              750.0
+            ],
+            [
+              4512.0,
+              750.0
+            ],
+            [
+              4512.0,
+              780.0
+            ],
+            [
+              4448.0,
+              780.0
+            ]
+          ],
+          "line": 1539
+        },
+        {
+          "path": "Town/Grove8/Body",
+          "shape_path": "Town/Grove8/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4628.0,
+              1020.0
+            ],
+            [
+              4692.0,
+              1020.0
+            ],
+            [
+              4692.0,
+              1050.0
+            ],
+            [
+              4628.0,
+              1050.0
+            ]
+          ],
+          "line": 1563
+        },
+        {
+          "path": "Town/Grove9/Body",
+          "shape_path": "Town/Grove9/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4778.0,
+              2190.0
+            ],
+            [
+              4842.0,
+              2190.0
+            ],
+            [
+              4842.0,
+              2220.0
+            ],
+            [
+              4778.0,
+              2220.0
+            ]
+          ],
+          "line": 1587
+        },
+        {
+          "path": "Town/Grove10/Body",
+          "shape_path": "Town/Grove10/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4718.0,
+              2800.0
+            ],
+            [
+              4782.0,
+              2800.0
+            ],
+            [
+              4782.0,
+              2830.0
+            ],
+            [
+              4718.0,
+              2830.0
+            ]
+          ],
+          "line": 1611
+        },
+        {
+          "path": "Town/Grove11/Body",
+          "shape_path": "Town/Grove11/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              4198.0,
+              3420.0
+            ],
+            [
+              4262.0,
+              3420.0
+            ],
+            [
+              4262.0,
+              3450.0
+            ],
+            [
+              4198.0,
+              3450.0
+            ]
+          ],
+          "line": 1635
+        },
+        {
+          "path": "Town/Grove12/Body",
+          "shape_path": "Town/Grove12/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              3768.0,
+              3710.0
+            ],
+            [
+              3832.0,
+              3710.0
+            ],
+            [
+              3832.0,
+              3740.0
+            ],
+            [
+              3768.0,
+              3740.0
+            ]
+          ],
+          "line": 1659
+        },
+        {
+          "path": "Town/Grove13/Body",
+          "shape_path": "Town/Grove13/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              968.0,
+              3920.0
+            ],
+            [
+              1032.0,
+              3920.0
+            ],
+            [
+              1032.0,
+              3950.0
+            ],
+            [
+              968.0,
+              3950.0
+            ]
+          ],
+          "line": 1683
+        },
+        {
+          "path": "Town/Grove14/Body",
+          "shape_path": "Town/Grove14/Body/Shape",
+          "layer": 16,
+          "polygon": [
+            [
+              2128.0,
+              3400.0
+            ],
+            [
+              2192.0,
+              3400.0
+            ],
+            [
+              2192.0,
+              3430.0
+            ],
+            [
+              2128.0,
+              3430.0
+            ]
+          ],
+          "line": 1707
+        },
+        {
+          "path": "Town/Grove15/Body",
+          "shape_path": "Town/Grove15/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              2908.0,
+              2810.0
+            ],
+            [
+              2972.0,
+              2810.0
+            ],
+            [
+              2972.0,
+              2840.0
+            ],
+            [
+              2908.0,
+              2840.0
+            ]
+          ],
+          "line": 1731
+        },
+        {
+          "path": "Town/Grove16/Body",
+          "shape_path": "Town/Grove16/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              3058.0,
+              2700.0
+            ],
+            [
+              3122.0,
+              2700.0
+            ],
+            [
+              3122.0,
+              2730.0
+            ],
+            [
+              3058.0,
+              2730.0
+            ]
+          ],
+          "line": 1755
+        },
+        {
+          "path": "Town/Grove17/Body",
+          "shape_path": "Town/Grove17/Body/Shape",
+          "layer": 32,
+          "polygon": [
+            [
+              1748.0,
+              2570.0
+            ],
+            [
+              1812.0,
+              2570.0
+            ],
+            [
+              1812.0,
+              2600.0
+            ],
+            [
+              1748.0,
+              2600.0
+            ]
+          ],
+          "line": 1779
+        },
+        {
+          "path": "Terrain/Cliff0",
+          "shape_path": "Terrain/Cliff0/@CollisionPolygon2D@2",
+          "layer": 48,
+          "polygon": [
+            [
+              1098.1431,
+              645.3576
+            ],
+            [
+              2098.143,
+              245.35762
+            ],
+            [
+              2101.857,
+              254.64238
+            ],
+            [
+              1101.8569,
+              654.6424
+            ]
+          ],
+          "line": 1871
+        },
+        {
+          "path": "Terrain/Cliff1",
+          "shape_path": "Terrain/Cliff1/@CollisionPolygon2D@3",
+          "layer": 48,
+          "polygon": [
+            [
+              2100.5522,
+              245.03058
+            ],
+            [
+              3900.5522,
+              445.03058
+            ],
+            [
+              3899.4478,
+              454.96942
+            ],
+            [
+              2099.4478,
+              254.96942
+            ]
+          ],
+          "line": 1878
+        },
+        {
+          "path": "Terrain/Cliff2",
+          "shape_path": "Terrain/Cliff2/@CollisionPolygon2D@4",
+          "layer": 48,
+          "polygon": [
+            [
+              3903.977,
+              446.9698
+            ],
+            [
+              4703.977,
+              1496.9697
+            ],
+            [
+              4696.023,
+              1503.0303
+            ],
+            [
+              3896.023,
+              453.0302
+            ]
+          ],
+          "line": 1885
+        },
+        {
+          "path": "Terrain/Cliff3",
+          "shape_path": "Terrain/Cliff3/@CollisionPolygon2D@5",
+          "layer": 48,
+          "polygon": [
+            [
+              4705.0,
+              1500.0
+            ],
+            [
+              4705.0,
+              2650.0
+            ],
+            [
+              4695.0,
+              2650.0
+            ],
+            [
+              4695.0,
+              1500.0
+            ]
+          ],
+          "line": 1892
+        },
+        {
+          "path": "Terrain/Cliff4",
+          "shape_path": "Terrain/Cliff4/@CollisionPolygon2D@6",
+          "layer": 48,
+          "polygon": [
+            [
+              4701.923,
+              2654.6155
+            ],
+            [
+              4101.923,
+              2904.6155
+            ],
+            [
+              4098.077,
+              2895.3845
+            ],
+            [
+              4698.077,
+              2645.3845
+            ]
+          ],
+          "line": 1899
+        },
+        {
+          "path": "Terrain/Cliff5",
+          "shape_path": "Terrain/Cliff5/@CollisionPolygon2D@10",
+          "layer": 48,
+          "polygon": [
+            [
+              4100.0,
+              2905.0
+            ],
+            [
+              4080.0,
+              2905.0
+            ],
+            [
+              4080.0,
+              2895.0
+            ],
+            [
+              4100.0,
+              2895.0
+            ]
+          ],
+          "line": 1927
+        },
+        {
+          "path": "Terrain/Cliff6",
+          "shape_path": "Terrain/Cliff6/@CollisionPolygon2D@11",
+          "layer": 48,
+          "polygon": [
+            [
+              3720.0,
+              2905.0
+            ],
+            [
+              2580.0,
+              2905.0
+            ],
+            [
+              2580.0,
+              2895.0
+            ],
+            [
+              3720.0,
+              2895.0
+            ]
+          ],
+          "line": 1934
+        },
+        {
+          "path": "Terrain/Cliff7",
+          "shape_path": "Terrain/Cliff7/@CollisionPolygon2D@12",
+          "layer": 48,
+          "polygon": [
+            [
+              2220.0,
+              2905.0
+            ],
+            [
+              1300.0,
+              2905.0
+            ],
+            [
+              1300.0,
+              2895.0
+            ],
+            [
+              2220.0,
+              2895.0
+            ]
+          ],
+          "line": 1941
+        },
+        {
+          "path": "Terrain/Cliff8",
+          "shape_path": "Terrain/Cliff8/@CollisionPolygon2D@19",
+          "layer": 48,
+          "polygon": [
+            [
+              1295.5278,
+              2902.236
+            ],
+            [
+              995.5279,
+              2302.236
+            ],
+            [
+              1004.4721,
+              2297.764
+            ],
+            [
+              1304.4722,
+              2897.764
+            ]
+          ],
+          "line": 1990
+        },
+        {
+          "path": "Terrain/Cliff9",
+          "shape_path": "Terrain/Cliff9/@CollisionPolygon2D@23",
+          "layer": 48,
+          "polygon": [
+            [
+              995.00916,
+              2299.6975
+            ],
+            [
+              1095.0092,
+              649.6975
+            ],
+            [
+              1104.9908,
+              650.3025
+            ],
+            [
+              1004.99084,
+              2300.3025
+            ]
+          ],
+          "line": 2018
+        },
+        {
+          "path": "Terrain/Cliff10",
+          "shape_path": "Terrain/Cliff10/@CollisionPolygon2D@24",
+          "layer": 96,
+          "polygon": [
+            [
+              1999.0786,
+              545.08563
+            ],
+            [
+              2799.0786,
+              395.08563
+            ],
+            [
+              2800.9214,
+              404.91437
+            ],
+            [
+              2000.9214,
+              554.91437
+            ]
+          ],
+          "line": 2025
+        },
+        {
+          "path": "Terrain/Cliff11",
+          "shape_path": "Terrain/Cliff11/@CollisionPolygon2D@25",
+          "layer": 96,
+          "polygon": [
+            [
+              2801.3381,
+              395.1824
+            ],
+            [
+              3701.3381,
+              645.18243
+            ],
+            [
+              3698.6619,
+              654.81757
+            ],
+            [
+              2798.6619,
+              404.8176
+            ]
+          ],
+          "line": 2032
+        },
+        {
+          "path": "Terrain/Cliff12",
+          "shape_path": "Terrain/Cliff12/@CollisionPolygon2D@26",
+          "layer": 96,
+          "polygon": [
+            [
+              3704.8237,
+              648.6844
+            ],
+            [
+              3854.8237,
+              1198.6844
+            ],
+            [
+              3845.1763,
+              1201.3156
+            ],
+            [
+              3695.1763,
+              651.3156
+            ]
+          ],
+          "line": 2039
+        },
+        {
+          "path": "Terrain/Cliff13",
+          "shape_path": "Terrain/Cliff13/@CollisionPolygon2D@27",
+          "layer": 96,
+          "polygon": [
+            [
+              3853.763,
+              1203.2925
+            ],
+            [
+              3503.763,
+              1603.2925
+            ],
+            [
+              3496.237,
+              1596.7075
+            ],
+            [
+              3846.237,
+              1196.7075
+            ]
+          ],
+          "line": 2046
+        },
+        {
+          "path": "Terrain/Cliff14",
+          "shape_path": "Terrain/Cliff14/@CollisionPolygon2D@30",
+          "layer": 96,
+          "polygon": [
+            [
+              3500.0,
+              1605.0
+            ],
+            [
+              3480.0,
+              1605.0
+            ],
+            [
+              3480.0,
+              1595.0
+            ],
+            [
+              3500.0,
+              1595.0
+            ]
+          ],
+          "line": 2067
+        },
+        {
+          "path": "Terrain/Cliff15",
+          "shape_path": "Terrain/Cliff15/@CollisionPolygon2D@31",
+          "layer": 96,
+          "polygon": [
+            [
+              3120.0,
+              1605.0
+            ],
+            [
+              2780.0,
+              1605.0
+            ],
+            [
+              2780.0,
+              1595.0
+            ],
+            [
+              3120.0,
+              1595.0
+            ]
+          ],
+          "line": 2074
+        },
+        {
+          "path": "Terrain/Cliff16",
+          "shape_path": "Terrain/Cliff16/@CollisionPolygon2D@32",
+          "layer": 96,
+          "polygon": [
+            [
+              2420.0,
+              1605.0
+            ],
+            [
+              1900.0,
+              1605.0
+            ],
+            [
+              1900.0,
+              1595.0
+            ],
+            [
+              2420.0,
+              1595.0
+            ]
+          ],
+          "line": 2081
+        },
+        {
+          "path": "Terrain/Cliff17",
+          "shape_path": "Terrain/Cliff17/@CollisionPolygon2D@36",
+          "layer": 96,
+          "polygon": [
+            [
+              1895.3184,
+              1601.7556
+            ],
+            [
+              1745.3184,
+              1201.7556
+            ],
+            [
+              1754.6816,
+              1198.2444
+            ],
+            [
+              1904.6816,
+              1598.2444
+            ]
+          ],
+          "line": 2109
+        },
+        {
+          "path": "Terrain/Cliff18",
+          "shape_path": "Terrain/Cliff18/@CollisionPolygon2D@39",
+          "layer": 96,
+          "polygon": [
+            [
+              1745.3333,
+              1198.2051
+            ],
+            [
+              1995.3333,
+              548.2051
+            ],
+            [
+              2004.6667,
+              551.7949
+            ],
+            [
+              1754.6667,
+              1201.7949
+            ]
+          ],
+          "line": 2130
+        },
+        {
+          "path": "Terrain/RampRail0-1",
+          "shape_path": "Terrain/RampRail0-1/@CollisionPolygon2D@43",
+          "layer": 48,
+          "polygon": [
+            [
+              2225.0,
+              2878.0
+            ],
+            [
+              2225.0,
+              3061.8
+            ],
+            [
+              2215.0,
+              3061.8
+            ],
+            [
+              2215.0,
+              2878.0
+            ]
+          ],
+          "line": 2161
+        },
+        {
+          "path": "Terrain/RampRail01",
+          "shape_path": "Terrain/RampRail01/@CollisionPolygon2D@44",
+          "layer": 48,
+          "polygon": [
+            [
+              2585.0,
+              2878.0
+            ],
+            [
+              2585.0,
+              3061.8
+            ],
+            [
+              2575.0,
+              3061.8
+            ],
+            [
+              2575.0,
+              2878.0
+            ]
+          ],
+          "line": 2168
+        },
+        {
+          "path": "Terrain/RampRail1-1",
+          "shape_path": "Terrain/RampRail1-1/@CollisionPolygon2D@48",
+          "layer": 48,
+          "polygon": [
+            [
+              3725.0,
+              2878.0
+            ],
+            [
+              3725.0,
+              3061.8
+            ],
+            [
+              3715.0,
+              3061.8
+            ],
+            [
+              3715.0,
+              2878.0
+            ]
+          ],
+          "line": 2199
+        },
+        {
+          "path": "Terrain/RampRail11",
+          "shape_path": "Terrain/RampRail11/@CollisionPolygon2D@49",
+          "layer": 48,
+          "polygon": [
+            [
+              4085.0,
+              2878.0
+            ],
+            [
+              4085.0,
+              3061.8
+            ],
+            [
+              4075.0,
+              3061.8
+            ],
+            [
+              4075.0,
+              2878.0
+            ]
+          ],
+          "line": 2206
+        },
+        {
+          "path": "Terrain/RampRail2-1",
+          "shape_path": "Terrain/RampRail2-1/@CollisionPolygon2D@53",
+          "layer": 96,
+          "polygon": [
+            [
+              2425.0,
+              1578.0
+            ],
+            [
+              2425.0,
+              1761.8
+            ],
+            [
+              2415.0,
+              1761.8
+            ],
+            [
+              2415.0,
+              1578.0
+            ]
+          ],
+          "line": 2237
+        },
+        {
+          "path": "Terrain/RampRail21",
+          "shape_path": "Terrain/RampRail21/@CollisionPolygon2D@54",
+          "layer": 96,
+          "polygon": [
+            [
+              2785.0,
+              1578.0
+            ],
+            [
+              2785.0,
+              1761.8
+            ],
+            [
+              2775.0,
+              1761.8
+            ],
+            [
+              2775.0,
+              1578.0
+            ]
+          ],
+          "line": 2244
+        },
+        {
+          "path": "Terrain/RampRail3-1",
+          "shape_path": "Terrain/RampRail3-1/@CollisionPolygon2D@58",
+          "layer": 96,
+          "polygon": [
+            [
+              3125.0,
+              1578.0
+            ],
+            [
+              3125.0,
+              1761.8
+            ],
+            [
+              3115.0,
+              1761.8
+            ],
+            [
+              3115.0,
+              1578.0
+            ]
+          ],
+          "line": 2275
+        },
+        {
+          "path": "Terrain/RampRail31",
+          "shape_path": "Terrain/RampRail31/@CollisionPolygon2D@59",
+          "layer": 96,
+          "polygon": [
+            [
+              3485.0,
+              1578.0
+            ],
+            [
+              3485.0,
+              1761.8
+            ],
+            [
+              3475.0,
+              1761.8
+            ],
+            [
+              3475.0,
+              1578.0
+            ]
+          ],
+          "line": 2282
+        },
+        {
+          "path": "Town/GateClosure0/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              95.0,
+              3775.5
+            ],
+            [
+              874.5,
+              3775.5
+            ],
+            [
+              874.5,
+              3799.5
+            ],
+            [
+              95.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure1/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              555.0,
+              3775.5
+            ],
+            [
+              1334.5,
+              3775.5
+            ],
+            [
+              1334.5,
+              3799.5
+            ],
+            [
+              555.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure2/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              2065.0,
+              3775.5
+            ],
+            [
+              2844.5,
+              3775.5
+            ],
+            [
+              2844.5,
+              3799.5
+            ],
+            [
+              2065.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure3/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              2815.0,
+              3775.5
+            ],
+            [
+              3594.5,
+              3775.5
+            ],
+            [
+              3594.5,
+              3799.5
+            ],
+            [
+              2815.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure4/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              3565.0,
+              3775.5
+            ],
+            [
+              4344.5,
+              3775.5
+            ],
+            [
+              4344.5,
+              3799.5
+            ],
+            [
+              3565.0,
+              3799.5
+            ]
+          ]
+        },
+        {
+          "path": "Town/GateClosure5/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              4315.0,
+              3775.5
+            ],
+            [
+              5094.5,
+              3775.5
+            ],
+            [
+              5094.5,
+              3799.5
+            ],
+            [
+              4315.0,
+              3799.5
+            ]
+          ]
+        }
+      ],
+      "base_outline": [
+        [
+          110,
+          110
+        ],
+        [
+          5090,
+          110
+        ],
+        [
+          5090,
+          4290
+        ],
+        [
+          110,
+          4290
+        ]
+      ],
+      "route": [
+        [
+          1700,
+          4200
+        ],
+        [
+          1700,
+          4100
+        ],
+        [
+          1700,
+          3500
+        ],
+        [
+          2400,
+          3250
+        ],
+        [
+          2400,
+          3070
+        ],
+        [
+          2400,
+          2860
+        ],
+        [
+          2400,
+          2700
+        ],
+        [
+          2500,
+          2700
+        ],
+        [
+          2500,
+          2620
+        ]
+      ],
+      "negative": {
+        "foot": [
+          2700,
+          900
+        ],
+        "level": 2,
+        "height": 360,
+        "projected_foot": [
+          2700,
+          540
+        ],
+        "full35x25_clear": false,
+        "hits": [
+          "Town/MainHall/Body"
+        ],
+        "inside_base_outline": true
+      },
+      "new_gate_walls": [
+        {
+          "path": "Town/GateClosure0/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              95.0,
+              3775.5
+            ],
+            [
+              874.5,
+              3775.5
+            ],
+            [
+              874.5,
+              3799.5
+            ],
+            [
+              95.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            485.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure1/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              555.0,
+              3775.5
+            ],
+            [
+              1334.5,
+              3775.5
+            ],
+            [
+              1334.5,
+              3799.5
+            ],
+            [
+              555.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            945.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure2/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              2065.0,
+              3775.5
+            ],
+            [
+              2844.5,
+              3775.5
+            ],
+            [
+              2844.5,
+              3799.5
+            ],
+            [
+              2065.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            2455.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure3/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              2815.0,
+              3775.5
+            ],
+            [
+              3594.5,
+              3775.5
+            ],
+            [
+              3594.5,
+              3799.5
+            ],
+            [
+              2815.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            3205.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure4/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              3565.0,
+              3775.5
+            ],
+            [
+              4344.5,
+              3775.5
+            ],
+            [
+              4344.5,
+              3799.5
+            ],
+            [
+              3565.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            3955.5,
+            3800
+          ]
+        },
+        {
+          "path": "Town/GateClosure5/Body",
+          "layer": 16,
+          "polygon": [
+            [
+              4315.0,
+              3775.5
+            ],
+            [
+              5094.5,
+              3775.5
+            ],
+            [
+              5094.5,
+              3799.5
+            ],
+            [
+              4315.0,
+              3799.5
+            ]
+          ],
+          "foot": [
+            4705.5,
+            3800
+          ]
+        }
+      ],
+      "gate_wall_safe_entry": [
+        1680,
+        3890
+      ],
+      "purple_arrow": [
+        2700,
+        1160
+      ],
+      "purple_return": [
+        2700,
+        1240
+      ],
+      "on_site_alias_of": "openworld_wudang_gate"
+    }
+  }
+}

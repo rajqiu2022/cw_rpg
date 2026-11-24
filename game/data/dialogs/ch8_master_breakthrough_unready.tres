@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "先别问第十重。握剑，把你如今能走到的最远处使给我看。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = ""
+portrait_path = ""
+text = "[i]你收息、沉肩，剑尖划过院中旧石。刑樊天只看了一眼，便用两根手指夹住剑脊。[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "我也只练到第九重，并不知道第十重的完整走法。先把两式剑法与吐纳都练稳，再把你和封砚秋一路查到的断剑、残图、试痕与原目录带回来。少一环，我们都只是在拿经脉猜答案。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch8_master_breakthrough_unready"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3")])

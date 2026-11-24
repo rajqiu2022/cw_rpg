@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch8_mist_valve_keeper"
+display_name="茗雾雾阀守手"
+battle_actor_path = "res://art/sprites/battle/story_squads_20261121/valve/ready1.tres"
+battle_actor_scale = 0.9585
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/valve/ready1.tres", "res://art/sprites/battle/story_squads_20261121/valve/ready2.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/valve/ready2.tres", "res://art/sprites/battle/story_squads_20261121/valve/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/valve/ready2.tres", "res://art/sprites/battle/story_squads_20261121/valve/step.tres", "res://art/sprites/battle/story_squads_20261121/valve/attack.tres", "res://art/sprites/battle/story_squads_20261121/valve/ready1.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/valve/hit1.tres", "res://art/sprites/battle/story_squads_20261121/valve/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/valve/kneel.tres", "res://art/sprites/battle/story_squads_20261121/valve/down.tres")
+level=14
+max_hp=620
+max_mp=130
+attack=126
+defense=24
+speed=38
+skill_ids=Array[StringName]([&"basic_attack",&"blood_shadow_scattering_darts",&"toxic_needle"])
+aggression=0.82
+drop_gold_min=60
+drop_gold_max=85
+drop_exp=130

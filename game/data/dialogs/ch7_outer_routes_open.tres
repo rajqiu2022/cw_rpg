@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "两处入口都看过了。只在门外比较态度不够，接下来要把烈云药册、茗雾转运簿和阻挠取证的人放在同一条证据链上。"
+on_end = "next:open"
+[sub_resource type="Resource" id="open"]
+script = ExtResource("2")
+node_id = &"open"
+speaker = ""
+text = "烈云分舵外区与茗雾山庄外院同时开放。调查顺序会改变对方的防备，但不会阻断取证。"
+set_flags = Array[Dictionary]([{"key":"ch7_outer_routes_opened", "value":true}])
+accept_quest = &"q_ch7_main_03_outer_wards"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_outer_routes_open"
+required_story_flag = &"chapter6_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("open")])

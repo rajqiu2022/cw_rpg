@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/ch2_s5_mine_command_layout_v3.tres" id="2_map"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch2_s5_mine_command"
+display_name = "北林旧矿洞 · 深处账房"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_cave_ominous_v4.wav"
+is_walkable = true
+map_layout = ExtResource("2_map")
+player_spawn = Vector2(0.130, 0.825)
+player_visual_scale = 1.12
+animated_props = Array[Dictionary]([{"id":"command_brazier","type":"flame","pos":Vector2(0.660,0.270),"size":Vector2(0.026,0.062),"speed":1.02,"z_index":23},{"id":"command_smoke","type":"smoke","pos":Vector2(0.660,0.220),"size":Vector2(0.075,0.145),"speed":0.54,"color":"#b8b2a8","z_index":22},{"id":"command_low_mist","type":"mist_drift","pos":Vector2(0.52,0.70),"size":Vector2(0.66,0.13),"speed":0.32,"opacity":0.08,"count":3,"color":"#aaa79f","z_index":12}])
+npcs = [
+	{"npc_id":"ch2_hideout_leader", "npc_name":"蒙面头领", "pos":Vector2(0.655,0.455), "sprite_path":"res://art/characters/npc_west_ruin_guard_idle_down_25d_4f.png", "dialog_id":"ch2_hideout_battle", "scale":1.02, "hide_flag":"defeated_masked_killer_ambush"}
+]
+hotspots = Array[Dictionary]([])

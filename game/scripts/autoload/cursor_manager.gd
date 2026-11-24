@@ -1,8 +1,8 @@
 extends Node
 
-const CURSOR_ARROW_PATH := "res://art/ui/cursors/cursor_arrow.png"
-const CURSOR_HAND_PATH := "res://art/ui/cursors/cursor_hand.png"
-const CURSOR_WAIT_PATH := "res://art/ui/cursors/cursor_wait.png"
+const CURSOR_ARROW_PATH := "res://art/ui/cursor/cursor_arrow.png"
+const CURSOR_HAND_PATH := "res://art/ui/cursor/cursor_hand.png"
+const CURSOR_WAIT_PATH := "res://art/ui/cursor/cursor_wait.png"
 
 var _arrow: Texture2D = null
 var _hand: Texture2D = null

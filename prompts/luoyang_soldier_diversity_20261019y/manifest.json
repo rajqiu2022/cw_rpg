@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "batch_id": "luoyang_soldier_diversity_20261019y",
+  "status": "EIGHT_BOUNDED_CALLS_COMPLETE_FOUR_STATIC_ASSET_CANDIDATES_READY_TWO_WALKS_REJECTED_FOR_RUNTIME_PHASES",
+  "goal": "Replace repeated black-clad Luoyang guard silhouettes with six role-readable military identities in a bounded first source-art batch.",
+  "generation": {
+    "owner": "producer_ROOT",
+    "execution_backend": "builtin_image_gen",
+    "model": null,
+    "provider": null,
+    "cost": null,
+    "maximum_calls": 6,
+    "calls_used": 6,
+    "calls_per_identity": 1,
+    "retries_allowed": false,
+    "cli_fallback_allowed": false,
+    "network_or_engine_by_art_agent": false
+  },
+  "targeted_weapon_envelope_edits": {
+    "authorization": "exactly two measured-cause builtin edits after the original six calls; no further retries",
+    "maximum_calls": 2,
+    "calls_used": 2,
+    "model": null,
+    "provider": null,
+    "cost": null,
+    "young_gate_sentry_v2_raw_sha256": "a6c9a11c43dc046958c0caf2e400353f4e3bbfa03709e015f68ec98ae462288d",
+    "old_veteran_v2_raw_sha256": "3b4cc21d7942a7b447183ed38c8015fe309626480bdb1edb18f16035c7bc7468",
+    "runtime_credit": false
+  },
+  "current_runtime_standard": {
+    "cell_px": [160, 160],
+    "idle_current_frames": 4,
+    "walk_current_frames": 8,
+    "walk_facing": "right; runtime flip_h supplies left",
+    "walk_frame_seconds_current": 0.12,
+    "idle_frame_seconds_current": 0.18,
+    "target_visible_height_px": 140,
+    "target_alpha_bounds_y": [12, 152],
+    "target_bottom_transparent_margin_px": 8,
+    "ground_anchor": "first-frame A>0 feet, ground_anchored; actual binding must retain NPCNode calibrated-adult branch and scale 1.0",
+    "collision_at_scale_1_px": [22.4, 28.8],
+    "runtime_strip_rule": "strict width == frame_count * 160 and height == 160; one horizontal row for NPCNode hframes",
+    "note": "Raw builtin output is never assumed to have these measurements. Normalization and import require a separately reviewed mechanical stage after actual output measurement."
+  },
+  "current_references": [
+    {
+      "path": "game/art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png",
+      "sha256": "03695af14571f765c9f8721af4d668892216cca6183ebf9ffc9333606da21fa8",
+      "bytes": 54352,
+      "geometry": "640x160 RGBA, four 160x160 cells; A>0 height 126-127 and bottom margin 10",
+      "role": "current repeated black-clad front idle reference"
+    },
+    {
+      "path": "game/art/characters/street_expansion_v2/npc_escort_guard_walk_right_8f_v1_runtime.png",
+      "sha256": "d6e3080e37365835262c20118b6c1836ce1b2e74426450a9922480d95e50da54",
+      "bytes": 109219,
+      "geometry": "1280x160 RGBA, eight 160x160 cells; A>0 height 140 and bottom margin 8",
+      "role": "current repeated black-clad right-walk reference"
+    }
+  ],
+  "reusable_existing_assets": [
+    {
+      "path": "game/art/characters/street_expansion_v1/npc_linxi_south_militia_coach_idle_down_4f_v2_runtime.png",
+      "sha256": "b0f4dd193ac9b3a48db72c3d8804a09ccb37f8f326d01cb2bb45d4c62d862c67",
+      "bytes": 98746,
+      "use_boundary": "distinct teal/bronze veteran-coach idle reference only; no matching walk asset found, so not a complete patrol replacement"
+    },
+    {
+      "path": "game/art/characters/npc_zhuwei_gate_guard_idle_down_25d_4f_v2_runtime.png",
+      "sha256": "2d1f7487219a96f69420b52b6cb8f563c8c796ae0c41bf6e286950364acccf6b",
+      "bytes": 40042,
+      "use_boundary": "blue spear gate-guard idle reference only; no matching walk asset found"
+    },
+    {
+      "path": "game/art/characters/npc_west_ruin_guard_idle_down_25d_4f.png",
+      "sha256": "036e9dd335ad45a079591cd82d50e16672dfe368bf682255c87cc7c90612b0cd",
+      "bytes": 65058,
+      "use_boundary": "old 4f idle reference, bottom alpha reaches source edge; not current 8px-foot normalized and no matching walk"
+    },
+    {
+      "path": "game/art/characters/npc_zhuwei_escort_idle_down_25d_4f.png",
+      "sha256": "65d64d0cea3a0ad20e723e33299541c28e2d94fa906ae0cb30b9ce77b6e478db",
+      "bytes": 58613,
+      "use_boundary": "old 4f escort idle reference, bottom alpha reaches source edge; no matching walk"
+    }
+  ],
+  "identities": [
+    {"id": "young_gate_sentry", "age": "18-22", "body": "lean", "weapon": "upright spear", "armour": "light practical lamellar", "headgear": "plain cloth cap", "palette": "blue-grey", "source_layout": "single 1f front static"},
+    {"id": "mature_patrol", "age": "32-40", "body": "sturdy", "weapon": "sheathed saber", "armour": "ordinary iron-grey lamellar", "headgear": "cloth cap", "palette": "dark red-brown and iron-grey", "source_layout": "4x2 equal-cell 8f right-walk atlas"},
+    {"id": "old_veteran", "age": "52-62", "body": "wiry and slightly stooped", "weapon": "plain spear or dao", "armour": "patched old leather/iron", "headgear": "weathered cap", "palette": "olive-brown", "source_layout": "single 1f front static"},
+    {"id": "archer", "age": "25-35", "body": "agile compact", "weapon": "bow and fixed quiver", "armour": "light leather/lamellar", "headgear": "practical cap", "palette": "moss-green and brown", "source_layout": "4x2 equal-cell 8f right-walk atlas"},
+    {"id": "squad_leader", "age": "35-45", "body": "compact authoritative", "weapon": "sheathed saber and command baton", "armour": "reinforced shoulders", "headgear": "low military helmet", "palette": "dark blue and iron-grey with muted belt rank knot", "source_layout": "single 1f front static"},
+    {"id": "commander", "age": "45-55", "body": "broad", "weapon": "command sword", "armour": "layered higher-grade dark steel", "headgear": "formal modest helmet", "palette": "dark steel, oxblood and dull brass", "source_layout": "single 1f front static"}
+  ],
+  "walk_contact_idle_rule": "For mature_patrol and archer only, frame 1 may be mechanically extracted as a separate 160x160 idle1f when the generated contact pose is visually acceptable to ART and Root. It must never be duplicated into fake breathing frames. A failed contact pose leaves the identity source-only and incomplete for runtime.",
+  "actual_outcomes": [
+    {
+      "identity": "young_gate_sentry",
+      "raw_sha256": "8ef7f6ece54947f396e92f4c97e7a5ad27448dc4afcf2eaa7762731cace99987",
+      "raw_size_px": [1254, 1254],
+      "art_identity": "ACCEPTED_SOURCE_DIRECTION",
+      "runtime_normalization": "BLOCKED: body140 and complete spear cannot both fit 160x160 without crop or nonuniform scaling",
+      "runtime_credit": false
+    },
+    {
+      "identity": "old_veteran",
+      "raw_sha256": "8a884701c17ad699dc7f23f7994f70499430e291ac932f6b6a0e7377daaaac96",
+      "raw_size_px": [1254, 1254],
+      "art_identity": "ACCEPTED_SOURCE_DIRECTION",
+      "raw_margin": "FAIL: 35 A>0 border pixels; spear A>8 begins at y1",
+      "runtime_credit": false
+    },
+    {
+      "identity": "squad_leader",
+      "raw_sha256": "42cb655482610490f4d00859a670a1dc43d69f053ab2e48a645ed0147894ad60",
+      "raw_size_px": [1254, 1254],
+      "art_identity": "ACCEPTED_SOURCE_DIRECTION",
+      "raw_margin": "FAIL: 20 bottom-border pixels at alpha1; A>8 content has 8px top and 12px bottom source margins",
+      "runtime_credit": false
+    },
+    {
+      "identity": "commander",
+      "raw_sha256": "0b14f43c0901f38372f34fe14b816bc7354e918a9a1b02a17150991083b14e6a",
+      "raw_size_px": [1254, 1254],
+      "art_identity": "ACCEPTED_SOURCE_DIRECTION",
+      "raw_margin": "FAIL: 152 A>0 border pixels; visible A>8 helmet margin only3px",
+      "runtime_credit": false
+    },
+    {
+      "identity": "mature_patrol",
+      "raw_sha256": "65cdfae125a0249c69b799b24a105f42a3d7638300e60edf53b2955f58aa63b5",
+      "raw_size_px": [1774, 887],
+      "art_identity": "ACCEPTED_SOURCE_DIRECTION",
+      "raw_layout": "4x2 visual arrangement but 1774x887 is not integer-divisible; raw contract remains FAIL. Mechanical successor resolves the exact half-pixel grid by whole-image 2x NEAREST to 3548x1774, proving nearest downsample returns every original RGBA pixel, then uses eight 887px cells.",
+      "walk_phase": "REJECTED for runtime: apparent four-pose near-repeat is not accepted as a true eight-phase loop; contact frame is not accepted as idle",
+      "runtime_credit": false
+    },
+    {
+      "identity": "archer",
+      "raw_sha256": "7fbb1fa821f86db3834a3be3a7c9d432393710a05a92aa5943ce1b4b1f2a6edc",
+      "raw_size_px": [1774, 887],
+      "art_identity": "ACCEPTED_SOURCE_DIRECTION",
+      "raw_layout": "4x2 visual arrangement but 1774x887 is not integer-divisible; raw contract remains FAIL. Mechanical successor resolves the exact half-pixel grid by whole-image 2x NEAREST to 3548x1774, proving nearest downsample returns every original RGBA pixel, then uses eight 887px cells; low-alpha residue is retained.",
+      "walk_phase": "REJECTED for runtime: too many frames retain the same forward-foot pose; contact frame is not accepted as idle",
+      "runtime_credit": false
+    }
+  ],
+  "forbidden_claims": ["all six runtime-ready", "true eight-phase walk before visual review", "contact frame accepted as idle before visual review", "imported", "Field passed", "formal replacement", "all architecture or existing art is CC0"]
+}

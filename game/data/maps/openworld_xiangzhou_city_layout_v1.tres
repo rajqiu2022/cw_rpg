@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.40,0.99,0.63,0.99,0.59,0.08,0.45,0.08),PackedVector2Array(0.03,0.32,0.43,0.28,0.43,0.70,0.04,0.72),PackedVector2Array(0.58,0.25,0.91,0.24,0.93,0.70,0.58,0.69)])
+blockers = [{"id":"west_notice_board","pos":Vector2(0.205,0.565),"size":Vector2(0.09,0.07)}]
+interactions = [{"id":"xiangzhou_bounty_board","label":"查看襄州城缉捕榜","pos":Vector2(0.205,0.610),"size":Vector2(0.13,0.11),"activation":"interact","action":"bounty_board:xiangzhou","visual_baked":true,"baked_feature":"西校场木制榜亭"}]
+portals = [{"id":"return_world","label":"离开襄州 · 江湖大地图","pos":Vector2(0.515,0.955),"size":Vector2(0.17,0.075),"action":"world_map"},{"id":"mine_valley","label":"前往襄州矿谷（6～10级）","pos":Vector2(0.490,0.120),"size":Vector2(0.14,0.08),"target_scene":"openworld_xiangzhou_mine_valley","target_pos":Vector2(0.50,0.88)}]
+walkable_probes = [{"id":"arrival","pos":Vector2(0.515,0.90)},{"id":"board","pos":Vector2(0.205,0.65)},{"id":"drill_square","pos":Vector2(0.26,0.50)},{"id":"harbor_square","pos":Vector2(0.73,0.48)},{"id":"north_road","pos":Vector2(0.50,0.18)}]
+blocked_probes = [{"id":"east_river","pos":Vector2(0.97,0.50)},{"id":"south_wall","pos":Vector2(0.18,0.84)}]
+

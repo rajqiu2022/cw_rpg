@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "漕工头领"
+text = "两帮为泊位打得头破血流，可昨夜那批箱子两边都说没接过。你若肯查，先看箱底的泥。"
+accept_quest = &"q_ch4_side_06_canal_grudge"
+set_flags = Array[Dictionary]([{"key":"canal_grudge_started", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_canal_grudge_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "古疆雷"
+text = "不拼蛮力，专打甲片接缝。好！古峰要的是敢上前，也知道怎么回来的人。"
+add_testimonies = Array[StringName]([&"ts_ch3_gufeng_crate_witness"])
+on_end = "next:n2"
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "活着站稳，才有下一刀。"
+set_flags = Array[Dictionary]([{"key": "ch3_gufeng_complete", "value": true}, {"key": "joined_faction", "value": true}])
+complete_quest = &"q_ch3_gufeng_drink"
+on_end = "scene:ch3_s1_wulin_assembly"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_gufeng_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2")])

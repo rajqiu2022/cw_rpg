@@ -1,0 +1,24 @@
+id: sprite_enemy_attack_action
+description: Enemy battle attack action frame on chroma-key background
+quality: medium
+size: "1024x1024"
+reference_images:
+  - "game/art/characters/battle_masked_killer_leader_v1.png"
+require_reference_images: true
+
+prompt_template: |
+  Use case: stylized-concept
+  Asset type: 2.5D wuxia turn-based RPG battle sprite action frame
+  Input image: the supplied image is the identity reference; preserve the same masked killer leader, face covering, black light armor, long dark cape, silhouette, proportions, and weapon style.
+  Primary request: create one single full-body combat action frame for the masked killer leader.
+  Subject: a tall ruthless masked killer leader, black head wrap showing only sharp eyes, black light armor, long dark cape with subtle dark-red trim, short blade in the right hand.
+  Action frame: {{frame_action}}
+  Facing: three-quarter side view facing toward the left side of the screen, suitable for the enemy upper-right battle formation.
+  Style: Hong Kong wuxia comic illustration, thick ink contours, hand-painted shading, readable silhouette, consistent with the reference image.
+  Composition: square 1024x1024, complete figure, generous transparent-safe padding, feet visible, no crop.
+  Background: perfectly flat solid #00ff00 chroma-key background, no floor, no shadow, no gradient, no texture.
+  Constraints: preserve identity and costume across all frames; no extra characters; no extra weapons; no text; no UI; no border; no watermark.
+  Avoid: anime cute style, western fantasy armor, 3D render, isometric tile perspective, blood spray, gore, spider, web.
+
+variables:
+  frame_action: "required"

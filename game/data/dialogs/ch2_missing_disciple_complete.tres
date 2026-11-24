@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "冷孤云"
+text = "我找到她的腰牌和染血布条。人已由同门带走，至少还活着。"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "凌月弟子"
+text = "这确是她的腰牌。多谢少侠，我会报给凌霜师姐，也给竹尾客栈捎个平安信。"
+set_flags = Array[Dictionary]([{"key": "found_missing_disciple_clue", "value": true}])
+complete_quest = &"q_ch2_side_01_missing_disciple"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_missing_disciple_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2")])

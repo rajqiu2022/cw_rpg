@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "contract_id": "luoyang_docks_workyard_20261019ac_art01",
+  "status": "SOURCE_READY_ART_LAYOUT_NOT_RUNTIME_NOT_FIELD",
+  "scope": "four unchanged low props forming two functional groups in the west docks workyard",
+  "design_size_px": [3072, 2048],
+  "frozen_inputs": {
+    "ab_art_contract": {
+      "path": "game/build/luoyang_docks_district08_20261019ab_art01/resource_contract.json",
+      "sha256": "1728B77CA9DAEBF1DA87BA28A544B6215182E503DC6752B57BB20047667826BF"
+    },
+    "current_25_object_manifest": {
+      "path": "game/data/maps/luoyang_docks_district08_20261019aa/runtime/ch4_s2_canal_docks/manifest.json",
+      "sha256": "04444504EF888A80F25AC8A6349887BD20F0F0F7D2157EFD403EDC26670B61EB"
+    },
+    "current_scene": {
+      "path": "game/data/maps/luoyang_docks_district08_20261019aa/runtime/ch4_s2_canal_docks/scene.res",
+      "sha256": "8EF66A941A835CD0FAC000707DC354FB8D7812D1F52E5DD5FA47D3F0FFC055FC"
+    },
+    "current_layout": {
+      "path": "game/data/maps/luoyang_docks_district08_20261019aa/runtime/ch4_s2_canal_docks/layout.res",
+      "sha256": "01947A6190380ADA444FDB380678BF139790FCD3F9BC9A9E79A602184EFE0355"
+    },
+    "current_walk": {
+      "path": "game/data/maps/luoyang_docks_district08_20261019aa/runtime/ch4_s2_canal_docks/walk.png",
+      "sha256": "A67327C7EC8FEB5896B77A3CBA3EF7B79CFB2AD327BC285F541AA793013259E6"
+    },
+    "current_crowd_source": {
+      "path": "game/scripts/city/luoyang_harbour_life_crowd_retry3_20261016.gd",
+      "sha256": "1AAEA6CA19AB8ABB1F164B155F24AC8A11CA43E7E4D73B1FA4FD899937B5E83B"
+    },
+    "latest_default_field_image": {
+      "path": "game/build/luoyang_docks08_formal_field_20261019ab/113316/ordinary_docks08_default_after32px.png",
+      "sha256": "F85A85E460256E7F48E4A59059EBA4123C4745F6ABBA4E8E6BCBACC782822B67",
+      "credit": "east default-camera reference only; west workyard is outside this image"
+    }
+  },
+  "visual_review_of_sources": {
+    "performed": true,
+    "wood_handcart": "Viewed actual pixels: complete two-wheel double-shaft cart in a diagonal 3/4 view, detailed warm weathered wood and iron rims. Suitable only as one static loading obstacle; do not rotate, mirror or imply pushable gameplay.",
+    "grain_sack_stack": "Viewed actual pixels: five tied burlap sacks on one low pallet, front-facing and materially distinct from crates. Treat pallet and all sacks as one obstacle.",
+    "style_control": "Both sources are warmer and more studio-lit than the cold grey quay; exact scales below reduce them to NPC-readable props. No tint, relighting, alpha cleanup or source edit is authorized. Actual Field image decides final fit."
+  },
+  "functional_groups": [
+    {
+      "group_id": "north_warehouse_storage",
+      "purpose": "stored grain awaiting tally beside the warehouse approach, while leaving the real warehouse door and mud clue legible",
+      "members": ["ac_grain_sack_stack", "ac_north_tally_crate"],
+      "spatial_read": "The sacks sit on the west side of the warehouse approach; the single crate punctuates the east edge toward the freight spine. They frame storage rather than form a barricade."
+    },
+    {
+      "group_id": "south_loading_transfer",
+      "purpose": "cart staged below the rope shop with one outbound crate near the freight spine",
+      "members": ["ac_wood_handcart", "ac_south_transfer_crate"],
+      "spatial_read": "The cart occupies the building-free south yard; the crate sits to its east as the handoff point to the north-south freight road. The open strip between them remains visibly traversable."
+    }
+  ],
+  "placements": [
+    {
+      "id": "ac_grain_sack_stack",
+      "group_id": "north_warehouse_storage",
+      "asset_path": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png",
+      "asset_sha256": "696AE8DB11DF69D6D9BB178979C6275102725217D2C0946F3457BC333382B4C3",
+      "source_size_px": [1536, 1024],
+      "foot_px": [760, 960],
+      "source_scale": 0.14,
+      "render_size_px": [215.04, 143.36],
+      "foot_uv": [0.5, 0.8876953125],
+      "alpha_nonzero_aabb_px": [652.48, 833.86, 854.36, 976.1],
+      "alpha_ge8_aabb_px": [679.36, 854.16, 840.22, 960.28],
+      "solid_polygon_px": [[684.82, 941.66], [835.46, 941.66], [835.46, 960.28], [684.82, 960.28]],
+      "relationship": {
+        "north_warehouse_door_foot_px": [754, 610],
+        "door_to_solid_vertical_gap_px": 331.66,
+        "yamen_route_center_y_px": 790,
+        "route_center_to_solid_vertical_gap_px": 151.66,
+        "store_attendant_foot_px": [1050, 970],
+        "rule": "warehouse door, clue and yamen path stay in front; this is storage at the side, not a doorstep pile"
+      }
+    },
+    {
+      "id": "ac_north_tally_crate",
+      "group_id": "north_warehouse_storage",
+      "asset_path": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png",
+      "asset_sha256": "D985D13D8095B2456A7EE4819058AF620E777B6B023C8034986ECD2690CABC6B",
+      "source_size_px": [117, 118],
+      "foot_px": [1000, 1160],
+      "source_scale": 1.0,
+      "render_size_px": [117, 118],
+      "foot_uv": [0.49572649572649574, 0.8559322033898306],
+      "alpha_nonzero_aabb_px": [955, 1091, 1045, 1162],
+      "alpha_ge8_aabb_px": [955, 1091, 1045, 1162],
+      "solid_polygon_px": [[963.25, 1136.2700163125992], [1041.3701172173023, 1129.7600065469792], [1043.6799316704323, 1157.6899381875992], [979.0, 1162.0999723672892]],
+      "relationship": {
+        "nearest_main_route_center_x_px": 1170,
+        "route_center_to_solid_horizontal_gap_px": 126.3200683295677,
+        "west_patrol_lane_end_x_px": 690,
+        "rule": "one tally crate at the yard edge; never expand into a crate wall"
+      }
+    },
+    {
+      "id": "ac_wood_handcart",
+      "group_id": "south_loading_transfer",
+      "asset_path": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png",
+      "asset_sha256": "0CCD655D3A3D406130C811FEB6D240646A10A20AE612811BDED334B9B98BFE76",
+      "source_size_px": [1536, 1024],
+      "foot_px": [820, 1590],
+      "source_scale": 0.18,
+      "render_size_px": [276.48, 184.32],
+      "foot_uv": [0.7122395833333334, 0.7978515625],
+      "alpha_nonzero_aabb_px": [630.1, 1446.72, 879.4, 1621.5],
+      "alpha_ge8_aabb_px": [648.1, 1473.72, 875.08, 1590.18],
+      "solid_polygon_px": [[648.1, 1546.44], [724.06, 1522.5], [809.02, 1498.02], [874.72, 1545.72], [870.76, 1573.26], [841.24, 1590.18], [703.0, 1575.24], [648.1, 1557.42]],
+      "relationship": {
+        "retained_rope_shop_alpha_bottom_y_px": 1437.85,
+        "shop_to_cart_nonzero_alpha_gap_px": 8.87,
+        "main_freight_route_center_x_px": 1200,
+        "route_center_to_solid_horizontal_gap_px": 325.28,
+        "market_exit_route_y_px": 1740,
+        "route_center_to_solid_vertical_gap_px": 149.82,
+        "rule": "cart reads as staged below the shop, never across its frontage or the market connector"
+      },
+      "orientation": "exact original 3/4 diagonal; no rotation or mirroring"
+    },
+    {
+      "id": "ac_south_transfer_crate",
+      "group_id": "south_loading_transfer",
+      "asset_path": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png",
+      "asset_sha256": "D985D13D8095B2456A7EE4819058AF620E777B6B023C8034986ECD2690CABC6B",
+      "source_size_px": [117, 118],
+      "foot_px": [1030, 1530],
+      "source_scale": 1.0,
+      "render_size_px": [117, 118],
+      "foot_uv": [0.49572649572649574, 0.8559322033898306],
+      "alpha_nonzero_aabb_px": [985, 1461, 1075, 1532],
+      "alpha_ge8_aabb_px": [985, 1461, 1075, 1532],
+      "solid_polygon_px": [[993.25, 1506.2700163125992], [1071.3701172173023, 1499.7600065469792], [1073.6799316704323, 1527.6899381875992], [1009.0, 1532.0999723672892]],
+      "relationship": {
+        "main_freight_route_center_x_px": 1200,
+        "route_center_to_solid_horizontal_gap_px": 126.3200683295677,
+        "rope_seller_foot_px": [1050, 1410],
+        "rope_seller_to_solid_vertical_gap_px": 89.7600065469792,
+        "cart_alpha_to_crate_alpha_horizontal_gap_px": 105.6,
+        "rule": "single transfer crate between cart and freight road; seller interaction and road body clearance must remain exact"
+      }
+    }
+  ],
+  "rgba_and_import_policy": {
+    "source_pixels": "All four instances use the exact PNG bytes above. Preserve full A1/nonzero envelopes and hidden RGB; no crop, alpha threshold, fix-alpha rewrite, tint, rotation or bitmap resize output.",
+    "imports": [
+      {
+        "asset": "wood_handcart_v1",
+        "import_path": "game/art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png.import",
+        "import_sha256": "E1FC8116713735429E6D70C123BA7D9DCFAE4D4C313933E3DBDBC92AEE0C1AAA",
+        "compiled_path": "game/.godot/imported/wood_handcart_v1.png-626cf6592d4765fe328d99d0933c3aba.ctex",
+        "compiled_sha256": "958A19FC774F6EC155A3C9E00744A821576BFCA42F4A0BC2E2589D5459FCDF76"
+      },
+      {
+        "asset": "grain_sack_stack_v1",
+        "import_path": "game/art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png.import",
+        "import_sha256": "1D59B1CB0EEE3684C2CFE19B83215B9B4818F37EFFB571A3CA58117A4887CE8C",
+        "compiled_path": "game/.godot/imported/grain_sack_stack_v1.png-ab74ddd853af6418e7c004e219c83789.ctex",
+        "compiled_sha256": "C525F53404066E9B3ACA353EDC550C931A7C500211B49A9C2C44BB847820789F"
+      },
+      {
+        "asset": "stock_crate_shared_by_two_instances",
+        "import_path": "game/art/modules/luoyang_district_life_20261016f/stock_crate.png.import",
+        "import_sha256": "BF67F0E1A4B74FB1D624F0282966C2CE7344FC202A44AEBF5ECC5CDD1333CFF3",
+        "compiled_path": "game/.godot/imported/stock_crate.png-67fa8fd05c2b4c4127a45663488aad04.ctex",
+        "compiled_sha256": "290E1F125C4E9F66C568F84BB5220F460A9670803FFAB5E05244859BAC8A05AE"
+      }
+    ],
+    "observed_import_settings": {
+      "compress_mode": 0,
+      "mipmaps_generate": false,
+      "fix_alpha_border": false,
+      "detect_3d_compress_to": 0
+    },
+    "availability_credit": "PNG, sidecar and compiled files exist and are source-pinned. This art turn did not run an engine/direct-ctex RGBA verifier, so runtime must still fail closed on import or full-RGBA mismatch."
+  },
+  "protected_six_moving_lanes": [
+    {"id": "docks_rope_carrier", "points_px": [[1340, 880], [1460, 880]], "native_body_min_px": [34, 24]},
+    {"id": "docks_goods_broker", "points_px": [[1600, 900], [1740, 900]], "native_body_min_px": [34, 24]},
+    {"id": "docks_quay_patrol", "points_px": [[1510, 1430], [1630, 1430]], "native_body_min_px": [34, 24]},
+    {"id": "docks_southern_carrier", "points_px": [[1500, 1740], [1640, 1740]], "native_body_min_px": [34, 24]},
+    {"id": "docks_west_carrier", "points_px": [[490, 1240], [690, 1240]], "native_body_min_px": [34, 24]},
+    {"id": "docks_departing_merchant", "points_px": [[760, 1930], [1040, 1930]], "native_body_min_px": [34, 24]}
+  ],
+  "movement_and_gameplay_policy": {
+    "main_freight_spine": "Keep the x=1200 north-south route visually open; nearest new solid ends at x=1073.6799316704323, leaving 126.3200683295677 px centerline clearance before the player body test.",
+    "required": [
+      "all routes from the frozen ab contract remain byte/point exact",
+      "all six moving lanes above remain exact and are checked with their native body envelopes",
+      "all existing NPC feet, warehouse door, mud clue, portals, ships and office remain exact",
+      "875/17 player body, 4px sampling and real Physics decide admission; design distances never waive them"
+    ],
+    "forbidden": [
+      "moving any of the four props to make a failing test pass without a new art contract",
+      "shrinking solids or source render sizes",
+      "treating weak alpha as empty",
+      "adding barrels, rope coils or more crates in this atom",
+      "adding the wet-stone/rut layer in this atom"
+    ]
+  },
+  "recommended_actual_view": {
+    "kind": "one bounded real engine west-workyard image after candidate assembly",
+    "camera_center_world_px": [960, 1110],
+    "viewport_px": [1920, 1080],
+    "expected_world_rect_after_left_clamp_px": [0, 570, 1920, 1650],
+    "must_show": [
+      "warehouse approach edge and its real door foot",
+      "grain sacks plus north tally crate as one storage group",
+      "retained rope-shop frontage",
+      "handcart plus south transfer crate as one loading group",
+      "open x=1200 freight spine"
+    ],
+    "art_questions": [
+      "Do cart and sacks read at plausible scale beside 140px adults without looking like indoor miniatures or giant studio props?",
+      "Do the two groups reduce the empty-grey-plaza read while preserving a clear route hierarchy?",
+      "Does warm prop lighting clash with the cold quay enough to require rejection rather than tinting?"
+    ],
+    "not_credited": "The view does not prove the east ships/office, full District 08, wet shoreline, rut layer or final art completion."
+  },
+  "credit_limits": [
+    "No production/runtime file, source PNG, import, walk mask, NPC, portal or save is modified by this contract.",
+    "No engine or network was used and no image was generated.",
+    "The deleted-building yard is still not complete: the separately authored nonblocking wet-stone/rut layer remains a later atom.",
+    "Only an actual candidate Field/local engine view may grant limited visual acceptance."
+  ]
+}

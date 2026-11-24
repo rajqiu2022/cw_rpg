@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "老纸匠"
+text = "从南市南口去城外古寺，找偏西废纸坊檐下的干藤皮和旧木模。收好干料，回来交给左明远，我会替他赶纸。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_paper_hint_repeat"
+entry_node_id = &"start"
+required_story_flag = &"luoyang_paper_artisan_hint"
+blocked_story_flag = &"luoyang_paper_materials_found"
+nodes = Array[Resource]([SubResource("start")])
+

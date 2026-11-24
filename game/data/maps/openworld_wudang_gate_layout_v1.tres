@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+[resource]
+script = ExtResource("1_layout")
+schema_version = 5
+design_size = Vector2i(3072, 2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.135,1.000, 0.865,1.000, 0.775,0.750, 0.690,0.590, 0.655,0.335, 0.345,0.335, 0.310,0.590, 0.225,0.750),
+	PackedVector2Array(0.355,0.385, 0.645,0.385, 0.620,0.090, 0.380,0.090)
+])
+occluders = Array[Dictionary]([
+	{"id":"wudang_gate_arch_foreground","depth_mode":"overlap","alpha_mask_texture_path":"res://art/masks/gate_occlusion_v2/wudang_gate_foreground_mask_v2.svg","cover_polygon":PackedVector2Array(0.190,0.130, 0.810,0.130, 0.810,0.565, 0.190,0.565),"fade_region":PackedVector2Array(0.420,0.445, 0.580,0.445, 0.580,0.545, 0.420,0.545),"actor_faded_alpha":0.42,"z_index":10},
+	{"id":"west_gate_burner","depth_mode":"y_sort","depth_y":0.625,"cover_polygon":PackedVector2Array(0.310,0.485, 0.405,0.485, 0.405,0.635, 0.310,0.635),"z_index":18},
+	{"id":"east_gate_burner","depth_mode":"y_sort","depth_y":0.625,"cover_polygon":PackedVector2Array(0.595,0.485, 0.690,0.485, 0.690,0.635, 0.595,0.635),"z_index":18}
+])
+actor_fade_zones = Array[Dictionary]([])
+blockers = Array[Dictionary]([{"id":"west_gate_pier","pos":Vector2(0.382,0.485),"size":Vector2(0.060,0.210)},{"id":"east_gate_pier","pos":Vector2(0.618,0.485),"size":Vector2(0.060,0.210)},{"id":"west_gate_burner","pos":Vector2(0.357,0.595),"size":Vector2(0.070,0.095)},{"id":"east_gate_burner","pos":Vector2(0.643,0.595),"size":Vector2(0.070,0.095)}])
+portals = Array[Dictionary]([
+	{"id":"return_world","label":"下山 · 返回江湖大地图","pos":Vector2(0.500,0.945),"size":Vector2(0.170,0.080),"action":"world_map","marker_rotation_degrees":180.0},
+	{"id":"to_wudang_taiji_court","label":"进入武当太极场","pos":Vector2(0.500,0.115),"size":Vector2(0.150,0.075),"target_scene":"openworld_wudang_taiji_court","target_pos":Vector2(0.500,0.875)}
+])
+walkable_probes = Array[Dictionary]([{"id":"spawn","pos":Vector2(0.500,0.875)},{"id":"gate_south","pos":Vector2(0.500,0.650)},{"id":"lower_stairs_no_fade","pos":Vector2(0.500,0.575)},{"id":"under_gate","pos":Vector2(0.500,0.500)},{"id":"gate_north","pos":Vector2(0.500,0.370)},{"id":"upper_steps","pos":Vector2(0.500,0.125)}])
+blocked_probes = Array[Dictionary]([{"id":"west_cloud","pos":Vector2(0.055,0.580)},{"id":"east_cliff","pos":Vector2(0.945,0.580)},{"id":"west_gate_pier","pos":Vector2(0.382,0.485)},{"id":"east_gate_pier","pos":Vector2(0.618,0.485)},{"id":"west_gate_burner","pos":Vector2(0.357,0.595)},{"id":"east_gate_burner","pos":Vector2(0.643,0.595)}])

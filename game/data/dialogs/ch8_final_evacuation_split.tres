@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="撤离总录"
+text="按先前约定：行义帮护证人走药圃门，烈云暗线带伤员走旧驿坡。两路互不知道完整名单，途中各有独立接应。"
+on_end="next:done"
+[sub_resource type="Resource" id="done"]
+script=ExtResource("2")
+node_id=&"done"
+speaker="冷孤云"
+text="分路不分证词。两份名单都只到各自接应手里，天明后再在洛阳合验。"
+set_flags=Array[Dictionary]([{"key":"ch8_evacuation_route_split","value":true},{"key":"ch8_final_evacuation_complete","value":true},{"key":"ch8_rear_sanctum_unlocked","value":true}])
+complete_quest=&"q_ch8_main_09_final_evacuation"
+accept_quest=&"q_ch8_main_10_xueying_resolution"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_final_evacuation_split"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("done")])

@@ -1,0 +1,53 @@
+{
+  "status": "ART_RAW_MANUAL_MEASUREMENTS_SOURCE_AUTHOR_INPUT_NOT_PLACEMENT_OR_PHYSICS_ADMISSION",
+  "method": "ART viewed each raw, rendered true-alpha-over-neutral diagnostic and raw-coordinate grid crops. Rectangles are conservative visible opening estimates, not alpha-zero holes: the rooms have baked opaque interior walls. All rectangles half-open raw-pixel coordinates.",
+  "cleanup_plan_not_yet_executed": {"path":"game/build/luoyang_city_finish_20261025i_art01/three_buildings_precise_cleanup_permission_DRYRUN_ONLY.json","sha256":"02302f768d8bd1bf31a776752dd12f5946746594c93ce641a92779071f2090b0"},
+  "rows": [
+    {
+      "id":"chinese_open_ironwork_v2",
+      "raw_path":"assets/raw/luoyang_city_finish_20261025i/chinese_open_ironwork_v2.png",
+      "raw_sha256":"ce9eb745773590cedda2ac448aa9fa6ab03af84cf50abe5a285608822b9ff475",
+      "raw_size":[1682,935],
+      "protected_rect":[104,103,1601,844],
+      "raw_coordinates_A1_after_proposed_cleanup":[111,103,1598,840],
+      "A1_size_after_proposed_cleanup":[1487,737],
+      "conservative_visible_workbay_rect":[235,456,890,746],
+      "conservative_visible_workbay_size":[655,290],
+      "manual_threshold_front_anchor_raw":[560,789],
+      "new_closed_room_portal":false,
+      "limited_note":"Clear height above the front floor is not the foundation/steps height. Forge/bellows are visible at rear. Complete Chinese roof/body/side wall accepted as local module only."
+    },
+    {
+      "id":"pottery_kiln_house_v2",
+      "raw_path":"assets/raw/luoyang_city_finish_20261025i/pottery_kiln_house_v2.png",
+      "raw_sha256":"6dcfd35123df03e5147411c820f6cbbc68dcab9eb8cad583763a067845cf983b",
+      "raw_size":[1558,1010],
+      "protected_rect":[101,119,1454,885],
+      "raw_coordinates_A1_after_proposed_cleanup":[103,119,1447,885],
+      "A1_size_after_proposed_cleanup":[1344,766],
+      "conservative_visible_workbay_rect":[444,535,741,827],
+      "conservative_visible_workbay_size":[297,292],
+      "manual_threshold_front_anchor_raw":[590,844],
+      "limited_note":"At A1width720, opening is approximately159.1 wide/156.4 high: clear height145 can fit but original design width170 cannot be claimed. To preserve width170, uniform >=170/297 and A1width about769.29 must be considered by Source/Root with new reserved lot; do not silently relax old170 or shrink the worker."
+    },
+    {
+      "id":"ordinary_kitchen_rear_body_v2",
+      "raw_path":"assets/raw/luoyang_city_finish_20261025i/ordinary_kitchen_rear_body_v2.png",
+      "raw_sha256":"1f65539478c6e042bbb3726f9a281679759168589b7eb4363dc3f93c52bda935",
+      "raw_size":[1536,1024],
+      "protected_rect":[163,106,1401,899],
+      "raw_coordinates_A1_after_proposed_cleanup":[169,107,1395,897],
+      "A1_size_after_proposed_cleanup":[1226,790],
+      "conservative_closed_wooden_door_rect":[721,544,880,838],
+      "conservative_closed_door_size":[159,294],
+      "manual_threshold_front_anchor_raw":[800,861],
+      "new_portal":false,
+      "required_uniform_for_door145_source_expression":"145.0/294.0",
+      "required_A1_size_source_expressions":["1226.0*(145.0/294.0)","790.0*(145.0/294.0)"],
+      "limited_note":"Old560x330 and exact600width cannot fit145 clear door. Root/Source new A1cap606x390 and foot around1536,410 require independent source-f32 envelope/route checks. Raw gray mist was hidden RGB where alpha0, not an opaque fog requiring deletion."
+    }
+  ],
+  "all_raws_unchanged":true,
+  "no_local_processed_PNGs_written":true,
+  "no_Godot_or_runtime_credit":true
+}

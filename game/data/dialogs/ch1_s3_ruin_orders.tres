@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]皮囊中的转运密令被血浸湿了一角。货单显示药材与兵器分路送走，另一张残页记着几名“活口”被转往竹尾河滩。[/i]"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "赵无忌不是主使。竹尾河滩还有接货的人，这条线不能断。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = ""
+text = "[i]后门的小路通往竹尾河滩。守村人认得往来渡口的货车，可以拿密令上的记号问他。[/i]"
+add_evidence = Array[StringName]([&"ev_ch1_west_ruin_transfer_order"])
+complete_quest = &"q_ch1_main_west_ruin"
+set_flags = Array[Dictionary]([{"key":"chapter1_complete","value":true},{"key":"chapter2_river_lead","value":true}])
+city_outcomes = Array[Dictionary]([{"city":"zhuwei","key":"west_ruin_cleared","value":true}])
+on_end = "chapter_end:1"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s3_ruin_orders"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3")])

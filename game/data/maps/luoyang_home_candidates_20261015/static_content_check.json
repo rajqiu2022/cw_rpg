@@ -1,0 +1,299 @@
+{
+  "status": "STATIC_ONLY_NOT_GODOT",
+  "checks": 82,
+  "failures": 0,
+  "templates": [
+    {
+      "template": "small_home",
+      "route_samples": 51,
+      "shoe_points_per_sample": 875,
+      "blocker_negatives": 3
+    },
+    {
+      "template": "large_study",
+      "route_samples": 58,
+      "shoe_points_per_sample": 875,
+      "blocker_negatives": 4
+    },
+    {
+      "template": "inn_hall",
+      "route_samples": 54,
+      "shoe_points_per_sample": 875,
+      "blocker_negatives": 4
+    }
+  ],
+  "rooms": 9,
+  "pending_plotwall_approaches": [
+    "market_west_ward_frontage",
+    "market_east_ward_frontage"
+  ],
+  "scope": "Only 22 explicit input paths + new candidate content; not a global source/save or runtime audit.",
+  "outdoor_precheck": {
+    "scope": "CPU mask and exact 26 axis-rectangle solids only; no engine/visual/GPU",
+    "doors": [
+      {
+        "id": "inn",
+        "source_foot_uv": [
+          0.5,
+          0.9404296875
+        ],
+        "doorstep_px": [
+          735,
+          830
+        ],
+        "return_px": [
+          735,
+          854
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      {
+        "id": "shop",
+        "source_foot_uv": [
+          0.651041666666667,
+          0.919921875
+        ],
+        "doorstep_px": [
+          2320,
+          850
+        ],
+        "return_px": [
+          2320,
+          874
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      {
+        "id": "north_market_front",
+        "source_foot_uv": [
+          0.499518781900406,
+          0.88362067937851
+        ],
+        "doorstep_px": [
+          1536,
+          630
+        ],
+        "return_px": [
+          1536,
+          654
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      {
+        "id": "southwest_market_front",
+        "source_foot_uv": [
+          0.499442577362061,
+          0.788079440593719
+        ],
+        "doorstep_px": [
+          600,
+          1810
+        ],
+        "return_px": [
+          600,
+          1834
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      {
+        "id": "southeast_market_front",
+        "source_foot_uv": [
+          0.648275852203369,
+          0.912521421909332
+        ],
+        "doorstep_px": [
+          2520,
+          1810
+        ],
+        "return_px": [
+          2520,
+          1834
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      {
+        "id": "market_west_ward_frontage",
+        "source_foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "doorstep_px": [
+          650,
+          1440
+        ],
+        "return_px": [
+          650,
+          1464
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": false
+      },
+      {
+        "id": "market_east_ward_frontage",
+        "source_foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "doorstep_px": [
+          2550,
+          1260
+        ],
+        "return_px": [
+          2550,
+          1284
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": false
+      },
+      {
+        "id": "market_northwest_rear_frontage",
+        "source_foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "doorstep_px": [
+          620,
+          500
+        ],
+        "return_px": [
+          620,
+          524
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      },
+      {
+        "id": "market_northeast_rear_frontage",
+        "source_foot_uv": [
+          0.5,
+          0.8896484375
+        ],
+        "doorstep_px": [
+          2530,
+          500
+        ],
+        "return_px": [
+          2530,
+          524
+        ],
+        "stand": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "near_threshold": {
+          "mask_clear": true,
+          "blocked_by": [],
+          "sample_count": 875
+        },
+        "approach_24_to_48": true
+      }
+    ]
+  },
+  "tooling_refusals_preserved": [
+    "The first optional shapely-based read-only check could not run because shapely is not installed; no dependency installed, replaced only with exact axis-aligned rectangle intersection after asserting every source polygon is a four-corner axis-aligned rectangle.",
+    "The first inline validator invocation failed PowerShell quote parsing; no source change or checks credited.",
+    "The next validator invocation failed the OS GBK default while reading Chinese text; rerun explicitly UTF-8, no production source changes."
+  ],
+  "engine_run": false,
+  "import_run": false,
+  "formal_enabled": false,
+  "remaining": [
+    "Actual room-floor/art scale and exit Physics are pending ROOT key test.",
+    "All nine exterior anchors pending visual actual-door matching and normal route consumer integration.",
+    "Two original plot-wall approaches remain blocked."
+  ],
+  "additional_bgm_static_check": {
+    "date": "2026-10-15",
+    "scope": "Only the 9 NEW candidate SceneScript bgm_path lines are changed.",
+    "checks": 9,
+    "failures": 0,
+    "old_path": "res://art/audio/bgm/bgm_market_lively_v4.wav",
+    "old_effective_fallback": "village_zhuwei",
+    "new_path": "res://art/audio/bgm/wuxia_20261011/city_bianzhou.wav",
+    "approved_audio_sha256": "1EC62FAE51205248CB244A92078E9332369817A5CA0C504C60675EB3518DBE36",
+    "canonical_luoyang_effective_track": "city_bianzhou",
+    "catalog_and_audio_manager_modified": false,
+    "exact_inverse_replacement_checked": true,
+    "home_author_unchanged_sha256": "83448C815954C4EFC4A081E642B591B190F72D6552BF49BD0BD40CA5EDEA96DA",
+    "audio_runtime_or_continuity_claim": false,
+    "original_82_static_checks_retained": true
+  }
+}

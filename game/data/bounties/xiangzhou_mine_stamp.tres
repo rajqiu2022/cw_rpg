@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"xiangzhou_mine_stamp"
+display_name = "铁算盘任敖"
+title = "偷换矿印"
+description = "用假印冒领矿砂，还威吓来查账的矿工。装矿车的伙计认得他留下的戳记；先到西采坑附近打听。"
+board_city = &"xiangzhou"
+recommended_min_level = 7
+recommended_max_level = 9
+enemy_ids = Array[StringName]([&"warrant_xiangzhou_mine_stamp", &"mine_outlaw"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_xiangzhou_mine_valley","label":"襄州矿谷 · 西采坑","pos":Vector2(0.26,0.47)},{"scene_id":&"interior_bandit_cave","label":"竹尾村外 · 废矿洞","pos":Vector2(0.70,0.62)}])
+reward_reputation = 22
+reward_training = 44
+reward_exp = 96
+reward_gold = 105
+reward_items = Array[Dictionary]([{"item_id":&"iron_ore","count":4}])
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_linxi_south_militia_coach_idle_down_4f_v2_runtime.png"

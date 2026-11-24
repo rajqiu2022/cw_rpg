@@ -1,0 +1,54 @@
+tasks:
+  - id: luoyang_20261025i_cave_keeper_elder_idle_v1
+    template: world_expansion_100_20261022
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: true
+    prompt_path: prompts/luoyang_city_finish_20261025i/cave_keeper_elder_idle_v1.txt
+    reference_images: []
+    generation_ready: true
+    vars:
+      asset_prompt: "NEW one ordinary65year bald cavekeeper fullbody, sparse white eyebrows/thin long everyday face, faded ochre-brown patched coarse robe, both hands naturally around small wooden prayerbeads; stationary planted front/slight3quarter,30degree overhead/parallel2.5D thick-painted wuxia/upperleft light. Truealpha square; entire silhouette within central70percent with15percent empty transparency eachside; no floor/shadow/halo/weapon/UI/text. Exact full prompt_path. Root builtin call omits both reference mechanisms."
+
+  - id: luoyang_20261025i_cave_keeper_elder_portrait_v1_edit
+    template: luoyang_innkeeper_portrait_text_20261025h
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: false
+    prompt_path: prompts/luoyang_city_finish_20261025i/cave_keeper_elder_portrait_v1_edit.txt
+    reference_images: []
+    generation_ready: false
+    dependency_task_id: luoyang_20261025i_cave_keeper_elder_idle_v1
+    input_status: WAIT_FOR_ACTUAL_SPRITE_PATH_SHA_AND_ROOT_VIEW
+    bound_edit_input: null
+    vars:
+      asset_prompt: "BLOCKED identity-preserve EDIT until actual newelder sprite exists and sole exactpath/SHA isbound. Same65year ordinary bald thinface/whitebrows/ochrepatchedrobe; one opaque shoulderportrait, no makeover/newperson. Exact prompt_path; no placeholder or nonexistent reference may be used."
+
+  - id: luoyang_20261025i_bell_keeper_middleaged_portrait_v1_edit
+    template: luoyang_innkeeper_portrait_text_20261025h
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: false
+    prompt_path: prompts/luoyang_city_finish_20261025i/bell_keeper_middleaged_portrait_v1_edit.txt
+    reference_images: [game/art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png]
+    generation_ready: true
+    vars:
+      asset_prompt: "IDENTITY-PRESERVE EDIT exact existing160monk626806 into one opaque headshoulderportrait. Same ordinary middleaged shavedhead/plainbrows/grey-brown crosscollar coarse robe/no facialhair. Not newelder/not hero/hairedcivilian/ornatesage. Exact prompt_path. Root view actual sprite then referenced_image_paths only; omit num_last_images_to_include; original bodyfile unchanged."

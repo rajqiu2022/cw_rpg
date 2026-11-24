@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="DialogNode_start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "行脚客"
+text = "天刚亮我就从南驿道赶过来，鞋底的湿泥还没干呢。你要赶路，吃口热饭再走，出了村可没这么好找歇脚处。"
+voice_emotion = "weary"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"interior_inn_traveler_chatter"
+nodes = Array[ExtResource("2_node")]([SubResource("DialogNode_start")])

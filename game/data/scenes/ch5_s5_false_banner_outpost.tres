@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/dialogs/ch5_false_banner_outpost_intro.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch5_s5_false_banner_outpost_layout_v2_modular.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="4_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("4_extent")
+logical_size = Vector2i(2048, 2048)
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch5_s5_false_banner_outpost"
+display_name = "古峰 · 伪旗营地"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
+on_enter_dialog = ExtResource("2_intro")
+on_enter_require_flag = &"ch5_old_case_survivor_heard"
+on_enter_once_flag = &"seen_ch5_false_banner_outpost_intro"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+player_spawn = Vector2(0.50,0.90)
+scene_objects = Array[Dictionary]([
+	{"id":"ch5_poisoned_weapon_sample", "texture":"res://art/props/interactive/ch5_poisoned_weapon_sample_v1.png", "pos":Vector2(0.22,0.69), "render_size_px":Vector2(112,84), "z_index":12, "centered":true, "require_quest_active":"q_ch5_main_05_false_banner_outpost", "hide_flag":"ch5_poisoned_weapon_found"}
+])
+animated_props = Array[Dictionary]([
+	{"id":"ch5_banner_northwest", "type":"texture_sway", "texture":"res://art/props/ambient/prop_ambient_tattered_crimson_banner_v1.png", "pos":Vector2(0.133,0.133), "size":Vector2(0.050,0.107), "speed":0.72, "z_index":104},
+	{"id":"ch5_banner_northeast", "type":"texture_sway", "texture":"res://art/props/ambient/prop_ambient_tattered_crimson_banner_v1.png", "pos":Vector2(0.859,0.370), "size":Vector2(0.045,0.095), "speed":0.84, "z_index":153},
+	{"id":"ch5_banner_southwest", "type":"texture_sway", "texture":"res://art/props/ambient/prop_ambient_tattered_crimson_banner_v1.png", "pos":Vector2(0.221,0.505), "size":Vector2(0.044,0.092), "speed":0.64, "z_index":174},
+	{"id":"ch5_brazier_upper_left", "type":"flame", "pos":Vector2(0.238,0.335), "size":Vector2(0.018,0.043), "speed":1.05, "z_index":26},
+	{"id":"ch5_brazier_upper_right", "type":"flame", "pos":Vector2(0.657,0.333), "size":Vector2(0.018,0.043), "speed":0.92, "z_index":26},
+	{"id":"ch5_tunnel_flame_left", "type":"flame", "pos":Vector2(0.378,0.705), "size":Vector2(0.020,0.048), "speed":1.12, "z_index":27},
+	{"id":"ch5_tunnel_flame_right", "type":"flame", "pos":Vector2(0.420,0.700), "size":Vector2(0.020,0.048), "speed":0.98, "z_index":27},
+	{"id":"ch5_brazier_smoke_left", "type":"smoke", "pos":Vector2(0.238,0.310), "size":Vector2(0.050,0.105), "speed":0.82, "color":"#b9b2a8", "z_index":25},
+	{"id":"ch5_brazier_smoke_right", "type":"smoke", "pos":Vector2(0.657,0.308), "size":Vector2(0.050,0.105), "speed":0.76, "color":"#b9b2a8", "z_index":25},
+	{"id":"ch5_outpost_wind_snow", "type":"snow_drift", "pos":Vector2(0.50,0.48), "size":Vector2(0.98,0.82), "speed":0.82, "opacity":0.36, "count":14, "wind_x":0.36, "color":"#eff4f2", "z_index":30}
+])
+npcs = Array[Dictionary]([
+	{"npc_id":"ch5_false_banner_captain", "npc_name":"伪旗统领", "pos":Vector2(0.51,0.22), "portrait_path":"res://art/characters/ch5/false_banner_captain_field_v1.png", "sprite_path":"res://art/sprites/battle/story_duels_20261121/captain/field_ready.tres", "conversation_base_facing":"left", "dialog_id":"ch5_false_banner_boss_prebattle", "require_flag":"ch5_poisoned_weapon_found", "hide_flag":"ch5_false_banner_captain_defeated", "scale":0.51},
+	{"npc_id":"ch5_false_banner_captain_wounded", "npc_name":"负伤的伪旗统领", "pos":Vector2(0.51,0.24), "portrait_path":"res://art/characters/ch5/false_banner_captain_wounded_field_v1.png", "sprite_path":"res://art/characters/ch5/false_banner_captain_wounded_field_v1.png", "dialog_id":"ch5_false_banner_captain_followup", "require_flag":"ch5_false_banner_captain_defeated", "scale":0.26}
+])
+hotspots = Array[Dictionary]([])
+exits = Array[Dictionary]([
+	{"label":"返回废弃矿道", "pos":Vector2(0.50,0.92), "size":Vector2(0.14,0.12), "target_scene":"ch5_s4_abandoned_mine", "target_pos":Vector2(0.82,0.20)}
+])

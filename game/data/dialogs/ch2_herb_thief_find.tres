@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "三趾脚印到了破庙就断了。那只老猿把偷来的参放在旧道袍旁，没伤人。我得回竹尾河滩告诉沈伯。"
+set_flags = Array[Dictionary]([{"key": "herb_thief_evidence_found", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch2_herb_thief_find"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

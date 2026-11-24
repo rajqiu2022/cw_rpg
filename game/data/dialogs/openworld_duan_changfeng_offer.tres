@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "段长风"
+text = "我在关外雪径的避风岩旁丢了药包。刀匪藏在雪路里，你若不愿冒险，便别去。若肯替我取回，往后江湖路上，我这口刀愿与你一道。"
+
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_duan_changfeng_offer"
+nodes = Array[Resource]([SubResource("start")])

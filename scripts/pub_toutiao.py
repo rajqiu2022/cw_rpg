@@ -4,32 +4,27 @@
 import os, sys, time
 from playwright.sync_api import sync_playwright
 
-TITLE = "我用Claude Code+DeepSeek做武侠RPG：《云影侠传》开发实录（3）"
-CONTENT = """前两篇讲了主菜单场景和主角精灵动画的人工智能生成过程。这回搞背包界面，把整组界面素材体系化地生成出来。
+ARTICLE_MD_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs", "toutiao-article-battle-scene-skills-2026-08-28.md")
+with open(ARTICLE_MD_PATH, "r", encoding="utf-8") as article_file:
+    _article_lines = article_file.read().splitlines()
 
-设计稿与实际素材的差距
+TITLE = next(line[2:].strip() for line in _article_lines if line.startswith("# "))
+_body_lines = []
+for line in _article_lines:
+    if line.startswith("# ") or line.startswith("## ") or line == "---":
+        if line.startswith("## "):
+            _body_lines.append(line[3:].strip())
+        continue
+    if line.startswith("**配图建议**"):
+        break
+    if line.startswith("1. ") or line.startswith("2. ") or line.startswith("3. ") or line.startswith("4. "):
+        continue
+    _body_lines.append(line)
+CONTENT = "\n".join(_body_lines).strip()
 
-最开始有一张背包界面的设计稿，画面里面板、按钮、道具图标一应俱全。但设计稿是示意图，不是素材。抠出来的按钮尺寸不对，道具图标也不能动态加载。第一步：扔掉设计稿，从零生成干净的底图面板。
-
-四种素材，一套风格锚点
-
-背包界面需要四类素材：底图（1280乘720暗色面板，内部完全空白）、Tab按钮（全部、消耗、装备、剧情、材料，每种三个状态，共15张）、功能按钮（使用、装备、丢弃、关闭，每种三个状态，共12张）、道具格子（默认、选中、空，3张）。全部走图像生成接口，提示词统一挂风格锚点：深海军蓝底色，暗金装饰，磨砂暗玻璃质感。
-
-中文不写在提示词里
-
-图像模型生成中文极不稳定。提示词明确写"不要文字，只要装饰框"，拿到纯装饰底框后，用图像处理库加载系统字体精确居中写上中文。文字位置像素级可控。
-
-按钮三种状态的做法
-
-默认态是模型底框加普通文字。选中悬停态叠加半透明青色加高斯模糊发光边框。按下态亮度降到六成五加深色调叠加。三种状态不额外调接口，一张底框出全部。
-
-结果和成本
-
-四类素材共六次接口调用，二十五个变体文件全部由程序生成。界面素材是人工智能生成最能稳定输出的领域，只要风格锚点对，一次就过。"""
-
-COVER = r"F:\Code\RPG_GAME\game\art\ui\inventory\panel_bg.png"
+COVER = r"F:\Code\RPG_GAME\game\screenshots\field_world_map_jianghu_1787672732.png"
 IMAGES = [
-    r"F:\Code\RPG_GAME\game\art\ui\inventory\panel_bg.png",
+    # 正文配图已整理到 docs/toutiao_images_2026-07-24，先留在编辑器中手动多选上传。
 ]
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROFILE = os.path.join(SCRIPT_DIR, ".pw_pub_profile")
@@ -148,6 +143,11 @@ def main():
         for i, img_path in enumerate(IMAGES):
             print(f"[5.{i+1}] Inserting image {os.path.basename(img_path)}...")
             try:
+                page.evaluate("""
+                    document.querySelectorAll('.byte-drawer-mask, .byte-drawer-wrapper').forEach(el => el.remove());
+                    document.querySelectorAll('[class*="drawer"]').forEach(el => el.style.display = 'none');
+                """)
+                page.keyboard.press("Escape")
                 # Click in editor, then find image button in toolbar
                 editor.click()
                 page.wait_for_timeout(500)
@@ -172,10 +172,19 @@ def main():
         # Step 6: Add tags
         print("[6] Setting tags...")
         try:
-            page.locator('input[placeholder*="标签"], [class*="tag"] input').first.fill("Claude Code,DeepSeek,AI游戏开发,武侠RPG,云影侠传")
+            page.locator('input[placeholder*="标签"], [class*="tag"] input').first.fill("AI游戏开发,独立游戏,Godot,武侠RPG,游戏制作")
             page.wait_for_timeout(500)
         except:
             pass
+
+        print("[7] Saving draft...")
+        try:
+            draft_button = page.get_by_text("存草稿", exact=True).last
+            draft_button.click(timeout=8000)
+            page.wait_for_timeout(2000)
+            print("    Draft saved")
+        except Exception as e:
+            print(f"    Draft save skipped: {e}")
 
         print("\n=== 操作完成，浏览器保持打开 ===")
         print("请检查封面和图片是否上传成功，手动点发布/存草稿")

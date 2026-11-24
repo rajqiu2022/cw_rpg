@@ -1,0 +1,32 @@
+tasks:
+  - id: sprite_lengguyun_walk_right_contact_f01_v1
+    template: sprite_protagonist_attack
+    category: sprite/field-rework/isolated
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "冷孤云"
+      character_appearance: "二十岁青年剑客，黑色长发束在脑后，冷灰旧布交领长袍与白色内衬，深灰长裤和短靴，深色腰带，右腰一柄长剑，左腰只有一个青灰酒葫芦；无头巾、额带或红色发带。"
+      attack_name: "右行步态关键帧"
+      attack_desc: "地图探索用右向行走动画的左脚落地接触帧。"
+      frame_index: "1"
+      frame_total: "8"
+      frame_action: "完整全身，身体严格朝画面右方正交侧面，左脚向前落地、右腿在后伸展，双臂自然反向摆动；头、躯干、腰剑和单个酒葫芦稳定。画面中只能有一个角色，四周至少留出角色宽度 25% 的纯白空白。禁止残影、禁止第二个人、禁止任何相邻动画帧、禁止脚尖或衣摆触及画面边缘。"
+      vfx_intensity: "弱"
+      facing: "画面右方正交侧面，禁止45度等距地砖透视"
+
+  - id: sprite_lengguyun_walk_right_passing_f03_v1
+    template: sprite_protagonist_attack
+    category: sprite/field-rework/isolated
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "冷孤云"
+      character_appearance: "二十岁青年剑客，黑色长发束在脑后，冷灰旧布交领长袍与白色内衬，深灰长裤和短靴，深色腰带，右腰一柄长剑，左腰只有一个青灰酒葫芦；无头巾、额带或红色发带。"
+      attack_name: "右行步态关键帧"
+      attack_desc: "地图探索用右向行走动画的双腿交错经过帧。"
+      frame_index: "3"
+      frame_total: "8"
+      frame_action: "完整全身，身体严格朝画面右方正交侧面，双腿在身体下方交错经过，脚尖均不接触画面边缘，双臂自然摆动；头、躯干、腰剑和单个酒葫芦稳定。画面中只能有一个角色，四周至少留出角色宽度 25% 的纯白空白。禁止残影、禁止第二个人、禁止任何相邻动画帧、禁止脚尖或衣摆触及画面边缘。"
+      vfx_intensity: "弱"
+      facing: "画面右方正交侧面，禁止45度等距地砖透视"

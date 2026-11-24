@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"ch5_snow_pass_pursuer"
+display_name = "雪岭截路刀客"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/snow_mine_20261122/ridge/ready.tres"
+battle_actor_scale = 1.0630
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+battle_actor_status_lift = 24.0
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/ridge/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/ridge/ready.tres", "res://art/sprites/battle/snow_mine_20261122/ridge/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/ridge/ready.tres", "res://art/sprites/battle/snow_mine_20261122/ridge/draw.tres", "res://art/sprites/battle/snow_mine_20261122/ridge/strike.tres", "res://art/sprites/battle/snow_mine_20261122/ridge/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/ridge/hit1.tres", "res://art/sprites/battle/snow_mine_20261122/ridge/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/snow_mine_20261122/ridge/kneel.tres", "res://art/sprites/battle/snow_mine_20261122/ridge/down.tres")
+level = 8
+max_hp = 350
+max_mp = 68
+attack = 82
+defense = 15
+speed = 20
+skill_ids = Array[StringName]([&"basic_attack", &"gufeng_fuhu", &"heavy_swing"])
+aggression = 0.72
+drop_gold_min = 40
+drop_gold_max = 62
+drop_exp = 70
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"inner_breath_pill", "chance":0.25, "count":1}])

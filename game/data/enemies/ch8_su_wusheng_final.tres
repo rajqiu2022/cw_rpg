@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch8_su_wusheng_final"
+display_name="苏雾笙·最后一令"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+battle_actor_path="res://art/sprites/battle/ch8/su_wusheng/su_wusheng_ready_01.png"
+battle_actor_scale=0.88
+battle_actor_flip_h=false
+defeat_mode=&"captured"
+ready_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/su_wusheng/su_wusheng_ready_01.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_ready_02.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_ready_03.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_ready_04.png")
+move_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/su_wusheng/su_wusheng_move_01.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_move_02.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_move_03.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_move_04.png")
+attack_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/su_wusheng/su_wusheng_attack_01.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_attack_02.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_attack_03.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_attack_04.png")
+hit_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/su_wusheng/su_wusheng_hit_01.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_hit_02.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_hit_03.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_hit_04.png")
+defeat_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/su_wusheng/su_wusheng_defeat_01.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_defeat_02.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_defeat_03.png","res://art/sprites/battle/ch8/su_wusheng/su_wusheng_defeat_04.png")
+attack_sfx_path="res://art/audio/free/sfx_blade_whoosh_wuxia_v2.wav"
+hit_sfx_path="res://art/audio/free/sfx_hit_body_wuxia_v2.wav"
+defeat_sfx_path="res://art/audio/free/sfx_hit_metal_wuxia_v2.wav"
+level=25
+max_hp=4720
+max_mp=480
+attack=154
+defense=106
+speed=50
+skill_ids=Array[StringName]([&"basic_attack",&"mingwu_wuyin_sanshi",&"ch8_su_teapot_meridian_rain",&"mingwu_yinying_duoming"])
+aggression=0.86
+drop_gold_min=0
+drop_gold_max=0
+drop_exp=320
+drop_items=Array[StringName]([])
+drop_random=Array[Dictionary]([])
+is_chapter_boss=true

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "守村人"
+text = "天亮前有辆炭车去了河滩。我当时没查，后来才在车轴旁捡到一缕白布。"
+add_testimonies = Array[StringName]([&"ts_ch2_gatekeeper_charcoal_cart"])
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "三种说法互相顶着，说明有人把人、车和消息分开走。北林脚印和河滩车辙都要查。"
+set_flags = Array[Dictionary]([{"key": "heard_about_missing_lingyue", "value": true}])
+verify_evidence = Array[StringName]([&"ev_ch2_missing_notices"])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_market_gatekeeper_followup"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2")])

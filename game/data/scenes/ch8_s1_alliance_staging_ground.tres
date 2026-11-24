@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch8_s1_alliance_staging_ground_layout_v2.tres" id="2"]
+[ext_resource type="Resource" path="res://data/dialogs/ch8_alliance_intro.tres" id="3"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="9_extent"]
+
+[sub_resource type="Resource" id="MapExtent"]
+script = ExtResource("9_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script=ExtResource("1")
+scene_id=&"ch8_s1_alliance_staging_ground"
+display_name="茗雾外围 · 会盟集结地"
+streamed_background = SubResource("MapExtent")
+bgm_path="res://art/audio/bgm/bgm_mountain_path_v4.wav"
+on_enter_dialog=ExtResource("3")
+on_enter_require_flag=&"chapter7_complete"
+on_enter_once_flag=&"seen_ch8_alliance_intro"
+is_walkable=true
+map_layout=ExtResource("2")
+player_spawn=Vector2(0.50,0.88)
+animated_props=Array[Dictionary]([{"id":"ch8_muster_fire_left","type":"flame","pos":Vector2(0.304,0.573),"size":Vector2(0.023,0.058),"speed":0.9,"z_index":25},{"id":"ch8_muster_fire_right","type":"flame","pos":Vector2(0.705,0.603),"size":Vector2(0.023,0.058),"speed":1.02,"z_index":25},{"id":"ch8_muster_smoke_left","type":"smoke","pos":Vector2(0.304,0.537),"size":Vector2(0.065,0.145),"speed":0.56,"color":"#bbb7ae","z_index":24},{"id":"ch8_muster_smoke_right","type":"smoke","pos":Vector2(0.705,0.567),"size":Vector2(0.065,0.145),"speed":0.64,"color":"#bbb7ae","z_index":24},{"id":"ch8_muster_cold_mist","type":"mist_drift","pos":Vector2(0.50,0.720),"size":Vector2(0.86,0.14),"speed":0.32,"opacity":0.08,"count":4,"color":"#c6d2cf","z_index":12}])
+npcs=Array[Dictionary]([{"npc_id":"ch8_ash_tea_medic","npc_name":"随军药师","pos":Vector2(0.215,0.565),"sprite_path":"res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f.png","conversation_sprite_paths": {"down": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_down_conversation_1f.png", "up": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_up_conversation_1f.png", "left": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_left_conversation_1f.png", "right": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_right_conversation_1f.png"},"dialog_id":"ch8_ash_tea_medic","scale":0.9,"movement_mode":"idle"},{"npc_id":"ch8_muster_clerk","npc_name":"会盟录事","pos":Vector2(0.42,0.52),"sprite_path":"res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png","dialog_id":"ch8_muster_split","dialog_variants":[{"dialog_id":"ch8_muster_public","require_flags":["ch7_witness_plan_public"]},{"dialog_id":"ch8_muster_luoyang","require_flags":["ch7_witness_plan_luoyang"]}],"scale":0.9},{"npc_id":"ch8_yuewuheng_recruit","npc_name":"悦无姮","pos":Vector2(0.57,0.53),"sprite_path":"res://art/characters/npc_yuewuxing_idle_down_25d_4f.png","portrait_path":"res://art/characters/portrait_yuewuheng_rescue.png","dialog_id":"ch8_yuewuheng_recruit","require_flag":"seen_ch8_alliance_intro","hide_flag":"companion_yuewuheng_joined","scale":0.98,"movement_mode":"idle"}])

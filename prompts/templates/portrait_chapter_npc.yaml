@@ -1,0 +1,22 @@
+id: portrait_chapter_npc
+description: 章节关键 NPC 正式对话立绘
+quality: high
+size: "1024x1024"
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: stylized-concept
+  Asset type: wuxia RPG dialog portrait
+  Subject: {character_name}, {character_desc}.
+  Pose: {pose}. Expression: {expression}.
+  Composition/framing: three-quarter body, centered, full hair and costume silhouette, generous safe padding around the head and hands.
+  Scene/backdrop: a subtle out-of-focus cool mountain or interior background, no readable signs.
+  Constraints: one character only; no text, no watermark, no signature; ancient Chinese wuxia clothing; consistent 2.5D inked comic rendering with the project Style Bible.
+  Avoid: modern clothing, photorealism, chibi, anime school uniform, extra limbs, cropped head, {negative}
+
+variables:
+  character_name: "角色名"
+  character_desc: "年龄、外貌、服装和门派特征"
+  pose: "站姿"
+  expression: "表情"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "老纸匠"
+text = "雨天存纸要架高些，藤皮也得晒透。你若只是挑纸，莫碰台下还没干的浆料。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_artisan_daily"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])
+

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/luoyang_functional_interiors_20261016/cloth_shop_layout.tres" id="2"]
+
+[resource]
+script = ExtResource("1")
+scene_id = &"luoyang_market_north_market_front_interior_20261015"
+display_name = "洛阳南市 · 布庄"
+background_path = "res://art/backgrounds/luoyang_functional_interiors_20261016/interior_cloth_shop_v1.png"
+bgm_path = "res://art/audio/bgm/wuxia_20261011/city_bianzhou.wav"
+is_walkable = true
+actor_positions_are_feet = false
+is_settlement = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.5, 0.6640625)
+player_visual_scale = 1.18
+camera_zoom = 1.0
+npcs = [{"npc_id": "luoyang_functional_cloth_shop_20261016", "npc_name": "布庄伙计", "pos": Vector2(0.7942708333333334, 0.458984375), "source_foot_px": Vector2(1220, 470), "sprite_path": "res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png", "portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_inn_waiter_v1.png", "dialog_id": "luoyang_distinct_rooms_20261016/cloth_daily", "movement_mode": "idle", "scale": 1.0}]
+hotspots = []
+trigger_zones = []
+encounter_enemy_ids = Array[StringName]([])
+encounter_groups = []
+encounter_chance = 0.0
+metadata/functional_interior_revision = "20261016_sourcefeet_legacy42"
+metadata/functional_interior_type = "cloth_shop"
+metadata/functional_interior_status = "CANDIDATE_MATCHED_EXTERNAL_DOOR"

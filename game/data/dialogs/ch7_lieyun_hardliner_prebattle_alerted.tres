@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "烈云强硬派巡守"
+text = "你先碰了茗雾的账簿，再拿他们挑过的说法进峡谷。谁知道你手里的原册还剩几分原样？"
+voice_emotion = "threat"
+on_end = "next:hero"
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "正因两边都可能动过文书，我才不会把原册交给任何一边。要核对，拿你们自己的记录来。"
+on_end = "next:fight"
+[sub_resource type="Resource" id="fight"]
+script = ExtResource("2")
+node_id = &"fight"
+speaker = "烈云封渡寻迹手"
+text = "先封人，再慢慢核。"
+voice_emotion = "threat"
+on_end = "battle_group_then:ch7_lieyun_hardliner_guard,ch7_lieyun_hardliner_tracker:ch7_lieyun_hardliner_victory"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_lieyun_hardliner_prebattle_alerted"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero"), SubResource("fight")])

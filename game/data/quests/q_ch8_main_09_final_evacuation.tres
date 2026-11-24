@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_09_final_evacuation"
+title="最后撤离"
+kind=0
+desc_not_started="主厅后殿仍有终局机关，证人、伤员与封存卷宗必须先离开交战区。"
+desc_in_progress="按第七章确定的见证方案，从主厅西侧门完成最后一轮人员与卷宗撤离。"
+desc_completed="证人、平民与封存卷宗已按既定方案离开主厅，后殿交战不再能用无辜者做人质。通往终局的门已经打开。"
+tracker_hint="茗雾山庄 · 正厅西侧门"
+completion_triggers=Array[String](["flag_set:ch8_final_evacuation_complete"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=280
+reward_gold=80

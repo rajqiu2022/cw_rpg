@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "旁白"
+text = "通往雪岭的窄道被新落的石块封住。古峰守军正在清路，尚可先在营地核对伤者与伪旗。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_snow_pass_blocked"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a")])

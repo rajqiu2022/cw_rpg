@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "寒岭守藏人"
+portrait_path = "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/portrait.png"
+text = "能沿雪径闯到这里，说明你不是只会逞强。石匣里的东西要交给能活着带走它的人——先过我与关外刀匪这一阵。"
+on_end = "battle_group_then:openworld_yanmen_cave_guard,openworld_snow_raider:openworld_yanmen_cave_guard_victory"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_yanmen_cave_guard"
+nodes = Array[Resource]([SubResource("start")])
+

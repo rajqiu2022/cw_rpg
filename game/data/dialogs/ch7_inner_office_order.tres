@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "密令要求保留薛影死籍、继续启用暗号，回收五方残卷并把知情人转入内署。是机构授权，但还没有苏雾笙个人署名。"
+add_evidence = Array[StringName]([&"ev_ch7_inner_office_authorization"])
+set_flags = Array[Dictionary]([{"key":"ch7_inner_office_order_checked", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_inner_office_order"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

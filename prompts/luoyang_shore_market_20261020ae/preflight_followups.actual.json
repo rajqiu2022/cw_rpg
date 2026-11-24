@@ -1,0 +1,237 @@
+{
+  "schema": "luoyang_shore_market_followup_generation_preflight_v1",
+  "passed": true,
+  "manifest": "prompts/luoyang_shore_market_20261020ae/followup_generation_manifest.json",
+  "manifest_sha256": "113462600C97470F535F88CC7E26F812284EF3203FEBB061829CA5C3DB0CB694",
+  "tasks_yaml_sha256": "342B58880E1F1C4B8636856721BB0D6932BCF61C593B8CC6E9A587B7A8AA4588",
+  "calls_made_by_preflight": {
+    "generation": 0,
+    "edit": 0,
+    "network": 0,
+    "engine": 0,
+    "sdk": 0
+  },
+  "tasks": [
+    {
+      "id": "luoyang_shore_market_20261020ae_hawser_knot_right_v2",
+      "kind": "remaining_initial_generate_3_of_4",
+      "prompt_sha256": "9EA77D2D9DA89564FA3789061A795A2A951B3801DBB25E6E6E32CED29F83F28F",
+      "spec_sha256": "FF879267B5FBDDAA735ED3804FB0F7177384ECE6BFE620328754F8FD05B970C6",
+      "output": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_hawser_knot_right_v2.png",
+      "output_exists": false
+    },
+    {
+      "id": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1",
+      "kind": "remaining_initial_generate_4_of_4",
+      "prompt_sha256": "0757A5ACC1995BBCEF333D61A92FB406561D4F56B8AAE3E3E9842C13D439C749",
+      "spec_sha256": "A5E53090567DA8D8990121808A3842C368D486C7D9D31457666FDB1173A639C8",
+      "output": "assets/raw/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png",
+      "output_exists": false
+    },
+    {
+      "id": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v2_halo_extraction_edit",
+      "kind": "single_targeted_edit_not_initial_generation",
+      "prompt_sha256": "118E3D4EC0363D0510D633A607D68B45A012082CC98DDD59D59F8C1474950ED0",
+      "spec_sha256": "240468FBEA9CEF81394F86B79FE295C08E3EB8DB3C90B141D53E1CD3832F3CC0",
+      "output": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v2_halo_extraction_edit.png",
+      "output_exists": false
+    }
+  ],
+  "checks": [
+    {
+      "name": "budget_exact",
+      "passed": true,
+      "detail": {
+        "initial_generation_budget_total": 4,
+        "initial_generation_calls_already_used": 2,
+        "remaining_initial_generation_calls": 2,
+        "targeted_edit_budget": 1,
+        "followup_calls_used": 0
+      }
+    },
+    {
+      "name": "no_retry_or_fallback",
+      "passed": true,
+      "detail": {
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "three_followup_tasks",
+      "passed": true,
+      "detail": 3
+    },
+    {
+      "name": "old_timber_proposal_permanent_no_call",
+      "passed": true,
+      "detail": "HISTORICAL_PROPOSAL_PERMANENT_NOTCALL_NOT_GENERATED"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_hawser_knot_right_v2:unique_registry",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_hawser_knot_right_v2:registry_contract",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_hawser_knot_right_v2:prompt_sha",
+      "passed": true,
+      "detail": "9EA77D2D9DA89564FA3789061A795A2A951B3801DBB25E6E6E32CED29F83F28F"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_hawser_knot_right_v2:spec_sha",
+      "passed": true,
+      "detail": "FF879267B5FBDDAA735ED3804FB0F7177384ECE6BFE620328754F8FD05B970C6"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_hawser_knot_right_v2:spec_contract",
+      "passed": true,
+      "detail": {
+        "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "attempt_budget": 1,
+        "attempts_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_hawser_knot_right_v2:output_absent",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1:unique_registry",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1:registry_contract",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1:prompt_sha",
+      "passed": true,
+      "detail": "0757A5ACC1995BBCEF333D61A92FB406561D4F56B8AAE3E3E9842C13D439C749"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1:spec_sha",
+      "passed": true,
+      "detail": "A5E53090567DA8D8990121808A3842C368D486C7D9D31457666FDB1173A639C8"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1:spec_contract",
+      "passed": true,
+      "detail": {
+        "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "attempt_budget": 1,
+        "attempts_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_market_cross_street_stall_wear_patch_v1:output_absent",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v2_halo_extraction_edit:unique_registry",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v2_halo_extraction_edit:registry_contract",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v2_halo_extraction_edit:prompt_sha",
+      "passed": true,
+      "detail": "118E3D4EC0363D0510D633A607D68B45A012082CC98DDD59D59F8C1474950ED0"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v2_halo_extraction_edit:spec_sha",
+      "passed": true,
+      "detail": "240468FBEA9CEF81394F86B79FE295C08E3EB8DB3C90B141D53E1CD3832F3CC0"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v2_halo_extraction_edit:spec_contract",
+      "passed": true,
+      "detail": {
+        "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "edit",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "attempt_budget": 1,
+        "attempts_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v2_halo_extraction_edit:output_absent",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "rope_anchor_measurement",
+      "passed": true,
+      "detail": {
+        "reason": "South post is nearest the current covered-ferry working line and produces an almost horizontal loaded hawser.",
+        "left_existing_wharf_south_post_wrap_center_world_px": [
+          2189.04,
+          1693.9499545288086
+        ],
+        "right_inside_existing_ferry_left_hull_a16_world_px": [
+          2548.9,
+          1693.7999943489583
+        ],
+        "right_source_px": [
+          342,
+          980
+        ],
+        "right_source_alpha": 141,
+        "horizontal_span_px": 359.8600000000001,
+        "vertical_delta_px": -0.1499601798502681
+      }
+    },
+    {
+      "name": "wet_edit_exact_reference",
+      "passed": true,
+      "detail": "EF5E208E192421FC70D93D62482BB23C251E6EB373BD81B2C8B854C050BCE6BA"
+    },
+    {
+      "name": "rope_is_rope_only",
+      "passed": true,
+      "detail": "single load-bearing knot/hawser, no support object"
+    },
+    {
+      "name": "market_single_connected_ground_patch",
+      "passed": true,
+      "detail": "single connected cross-street/stall-wear patch only"
+    },
+    {
+      "name": "wet_edit_only_extracts_halo",
+      "passed": true,
+      "detail": "targeted halo extraction only"
+    }
+  ],
+  "credit_boundary": "Offline source/registry preflight only; no followup call or runtime credit."
+}

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="戚云笙"
+portrait_path="res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text="我还要留在烈云一段时间，把外部复核真正变成规矩。可我不想余生都只做一块写着“圣姑”的牌位。"
+on_end="next:choice"
+[sub_resource type="Resource" id="choice"]
+script=ExtResource("2")
+node_id=&"choice"
+speaker=""
+text="长期同行最深的是戚云笙。如何回应？"
+choices=Array[Dictionary]([{"text":"先与你完成烈云改革，再携酒走更远的路","next":"together","set_flag":{"ch8_relationship_choice_qi_yunsheng":true}},{"text":"尊重彼此选择，各自完成尚未走完的路","next":"independent","set_flag":{"ch8_relationship_choice_independent":true}}])
+[sub_resource type="Resource" id="together"]
+script=ExtResource("2")
+node_id=&"together"
+speaker="戚云笙"
+portrait_path="res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text="说定了。不是我放下烈云跟你走，也不是你留下替我守盟；等规矩能离开我们照样运转，再一起出峡谷。"
+set_flags=Array[Dictionary]([{"key":"ch8_relationship_qi_yunsheng","value":true},{"key":"ch8_relationship_epilogue_done","value":true},{"key":"ch8_linxi_final_return_open","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"jianghu","key":"relationship_epilogue","value":"qi_yunsheng"}])
+on_end="end"
+[sub_resource type="Resource" id="independent"]
+script=ExtResource("2")
+node_id=&"independent"
+speaker="戚云笙"
+portrait_path="res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text="也好。真正的尊重不是把谁带走。往后你查你的路，我改我的盟，原页仍可互相核验。"
+set_flags=Array[Dictionary]([{"key":"ch8_relationship_independent","value":true},{"key":"ch8_relationship_epilogue_done","value":true},{"key":"ch8_linxi_final_return_open","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"jianghu","key":"relationship_epilogue","value":"independent"}])
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_relationship_qi_yunsheng"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("choice"),SubResource("together"),SubResource("independent")])

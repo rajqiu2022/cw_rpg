@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]湿滑岩台边卡着一只油布包。里面的伤药已经浸坏，只有蜡封的凝气丹还可使用。[/i]"
+on_end = "next:take"
+
+[sub_resource type="Resource" id="node_take"]
+script = ExtResource("2_dnode")
+node_id = &"take"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "水声掩去了脚步声。这条路隐蔽，运货的人很可能从这里经过。"
+give_items = Array[Dictionary]([{"id": "inner_breath_pill", "count": 1}])
+set_flags = Array[Dictionary]([{"key": "looted_zhuwei_cave_water_cache", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_zhuwei_cave_water_cache"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_take")])
+

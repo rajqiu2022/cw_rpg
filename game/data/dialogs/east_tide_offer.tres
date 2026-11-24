@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+
+[sub_resource type="Resource" id="hello"]
+script = ExtResource("node")
+node_id = &"hello"
+speaker = "驿站记事"
+text = "寻船就顺货棚往东走，回南驿道走岸边石路。劳驾让一让，我得把这只结着盐霜的茶箱翻过来。"
+choices = Array[Dictionary]([{"text":"茶箱底下怎么会结盐？","next":"start"},{"text":"多谢指路。","next":"end"}])
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "驿站记事"
+text = "当年我在账上写下「镖师卷货」，凭的是这只空茶箱。今日翻它晾底，竹篾里竟落出一撮盐。能劳你带去认认么？"
+accept_quest = &"q_east_tidesound_blade"
+on_end = "next:sample"
+
+[sub_resource type="Resource" id="sample"]
+script = ExtResource("node")
+node_id = &"sample"
+speaker = "驿站记事"
+text = "这截连着盐壳的篾片你拿好。茶岭送茶的人自己打篾结，盐湾收盐的人天天认盐花。两头都问问。"
+set_flags = Array[Dictionary]([{"key":"tide_case_opened","value":true}])
+add_evidence = Array[StringName]([&"ev_tide_sample"])
+
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_tide_offer"
+
+entry_node_id = &"hello"
+nodes = Array[ExtResource("node")]([SubResource("hello"), SubResource("start"), SubResource("sample")])

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-market-two-shops-20261021ao",
+  "status": "LIMITED_ART_ASSET_ADMISSION_EXPLICIT_NEW_250X268_TARGET_ONLY",
+  "asset": {
+    "path": "assets/processed/luoyang_market_two_shops_20261021ao/facade_luoyang_narrow_scholar_study_single_bay_v3_local_cleanup_padded.png",
+    "png_sha256": "025CC8D522C68FAC81524D5FF47661A13CF3ADC4AC5AB939E5F9CE598AE7ABB6",
+    "png_bytes": 1261747,
+    "rgba8_sha256": "CCED7DA012854FB8405E42136992DB2436E7C7D649CBAD9E43942DD59015ACD0",
+    "source_size_px": [1374, 1153],
+    "complete_a1_bbox_exclusive_px": [290, 182, 1084, 1034],
+    "complete_a1_extent_px": [794, 852],
+    "complete_a1_margins_left_top_right_bottom_px": [290, 182, 290, 119],
+    "source_ground_anchor_px": [650, 930],
+    "a1_bottom_after_ground_anchor_px": 104
+  },
+  "processing_evidence": {
+    "metadata_path": "assets/processed/luoyang_market_two_shops_20261021ao/facade_luoyang_narrow_scholar_study_single_bay_v3_local_cleanup_padded.meta.json",
+    "metadata_sha256": "47EA0893AF6EDA08623C21B0DA6C38024F76D877F15741656D725774A49FA353",
+    "processing_report_path": "game/build/luoyang_market_two_shops_20261021ao_art01/book_v3_local_cleanup_padding_report.json",
+    "processing_report_sha256": "47EA0893AF6EDA08623C21B0DA6C38024F76D877F15741656D725774A49FA353",
+    "independent_result_path": "game/build/luoyang_market_two_shops_20261021ao_qa01/v3_cleanup_independent_result.json",
+    "independent_result_sha256": "CB2CB84C6863A37E84FA3D12C602891EE69CEFC674FE0A0FC5128C24AE9497D1",
+    "independent_checks_passed": 19,
+    "protected_rectangle_rgba_byte_exact": true,
+    "outside_weak_alpha_pixels_zeroed": 245,
+    "bottom_transparent_rows_added": 8,
+    "source_pixels_moved_resized_cropped_rotated_recolored": false
+  },
+  "explicit_new_author_target": {
+    "uniform_scale": 0.31455399061032864,
+    "world_complete_a1_extent_px": [249.75586854460093, 268.0],
+    "conservative_door_world_height_px": 135.25821596244133,
+    "complete_width_over_conservative_door_height": 1.8465116279069768,
+    "world_width_max_px": 250,
+    "world_height_max_px": 268,
+    "conservative_door_height_min_px": 135,
+    "width_over_conservative_door_height_max": 1.85
+  },
+  "visual_review": {
+    "reviewed_actual_processed_png": true,
+    "strengths": [
+      "The whole straight gray-tile roof, pale masonry, dark timber frame, two stone jamb feet, threshold steps, and narrow book window remain complete and coherent.",
+      "The single dark doorway is unobstructed and reads at an adult-usable scale under the explicit new 250x268 target.",
+      "The genuine transparent margins now frame the building cleanly; the previous distant weak-alpha specks no longer inflate the silhouette.",
+      "The straight ridge and small book grille distinguish this study from the curved-roof apothecary without adding a second entrance or baked furniture."
+    ],
+    "limitations": [
+      "The roof remains visually heavy for a narrow single-bay shop, accepted only under the explicit new 268px-height target.",
+      "Extremely thin original red/yellow edge pixels remain along parts of the roof and wall silhouette. They are inside the protected subject and must remain; no further cleanup is authorized or recommended.",
+      "This is an isolated transparent asset review, not a scene composition, side-alley, collision, navigation, portal, NPC, or Field review."
+    ],
+    "decision": "Admit this exact processed PNG as a limited candidate asset for System authoring under the explicit new target only."
+  },
+  "old_failure_boundary": {
+    "raw_v3_old_245_128_1_8_contract_failure_preserved": true,
+    "old_contract_relabelled_as_pass": false,
+    "atlas_split_rejection_preserved": true
+  },
+  "remaining_system_gates": [
+    "expanded placement window and complete A1 body remain inside the map",
+    "side alley remains at least 96px from the apothecary complete A1",
+    "existing NPC, lamp, tree, stall, portal, and route protection remains exact",
+    "source ground anchor and side jamb/base polygons use the same uniform scale",
+    "34x24 player body passes threshold, return foot, and plus-24 approach"
+  ],
+  "credit_boundary": {
+    "asset_art_admitted": true,
+    "system_author_ready_from_art": true,
+    "import_or_canonical_texture_admitted": false,
+    "layout_or_collision_admitted": false,
+    "navigation_or_portal_admitted": false,
+    "scene_or_field_admitted": false,
+    "formal_or_full_market_art_admitted": false,
+    "further_generation_edit_or_cleanup": false
+  }
+}

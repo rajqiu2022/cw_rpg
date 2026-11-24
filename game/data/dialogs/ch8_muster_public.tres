@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="会盟录事"
+text="两名证人都在聚义厅公开名册上。烈云增派明哨，公开性更强，雾林截盟者也更容易找到目标。"
+set_flags=Array[Dictionary]([{"key":"ch8_alliance_mustered","value":true},{"key":"ch8_public_witness_guard_active","value":true}])
+complete_quest=&"q_ch8_main_01_alliance_muster"
+accept_quest=&"q_ch8_main_02_mistwood_blockade"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_muster_public"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

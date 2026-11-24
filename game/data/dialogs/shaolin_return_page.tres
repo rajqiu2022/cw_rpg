@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "少林行脚僧"
+text = "是这张。焦痕里还看得清一笔：抬担过坡，肩沉，息不可闭。纸上说得容易，自己行一遍才知。等你听懂白马寺的裂钟声，再来和我试一试。"
+set_flags = Array[Dictionary]([{"key": "shaolin_burned_script_returned", "value": true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"shaolin_return_page"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

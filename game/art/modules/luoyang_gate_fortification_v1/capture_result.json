@@ -1,0 +1,578 @@
+{
+	"authorization": {
+		"native_mesh_and_project_authored_material": "Existing project resource; not CC0 architecture",
+		"network_or_generation": false,
+		"new_geometry": "Project procedural authoring: rectangular grey-brick wall/parapet/merlon/corner-tower boxes only",
+		"registered_rock_microdetail": "Poly Haven rock_01 CC0-1.0 as already bound by the source wall contract; no new download"
+	},
+	"checkpoint_guard": {
+		"before_first_await": true,
+		"public_api": "PlatformBridge.set_checkpoint_saves_suspended(true)",
+		"restored_before_quit": true,
+		"verified_suspended": true
+	},
+	"consumer_catalog": {
+		"ground_y_definition": "ground_y is the world-space Y assigned to the captured front-centre minimum-mesh-Y foot anchor; it is not PNG bottom and does not imply a collision rectangle.",
+		"ground_y_reference_world_px": 500,
+		"schema_version": 1,
+		"source_catalog": {
+			"last_readback_sha256_by_res_path": {
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.json": "d013ce109db5d750b63eef7b1806f0adea9ff7bf21b4da9cfdebe5e841e256bc",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res": "7205b12f85b88e76b312b53d616303748a2eabd328f491102bc7d75e7abc3c6d",
+				"res://art/modules/luoyang_gate_fortification_v1/source_contract.json": "f62cc3ca2aca93ec6c11edc92d5a735220ee7ace2f998660b29becc562183956",
+				"res://scripts/dev/capture_luoyang_gate_native_fortification_v1.gd": "65121068df07905dd23cd242f67de94ebf1018a5757123f0f5fd862fb1785a30"
+			},
+			"sha256_by_res_path": {
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.json": "d013ce109db5d750b63eef7b1806f0adea9ff7bf21b4da9cfdebe5e841e256bc",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res": "7205b12f85b88e76b312b53d616303748a2eabd328f491102bc7d75e7abc3c6d",
+				"res://art/modules/luoyang_gate_fortification_v1/source_contract.json": "f62cc3ca2aca93ec6c11edc92d5a735220ee7ace2f998660b29becc562183956",
+				"res://scripts/dev/capture_luoyang_gate_native_fortification_v1.gd": "65121068df07905dd23cd242f67de94ebf1018a5757123f0f5fd862fb1785a30"
+			},
+			"unchanged": true
+		},
+		"tower": {
+			"asset_id": "luoyang_gate_corner_tower_v1",
+			"foot_anchor_px": [
+				123.0,
+				323.958984375
+			],
+			"foot_uv": [
+				0.5,
+				0.975780073418675
+			],
+			"ground_y_definition": "For candidate ground_y=500, place texture top-left at [world_x-foot_anchor_px.x, 500-foot_anchor_px.y]; translate support_polygon_px by that same top-left. This is an art placement contract, not collision or Field approval.",
+			"mesh_path": "res://art/modules/luoyang_gate_fortification_v1/luoyang_gate_corner_tower_v1.res",
+			"mesh_sha256": "371c687e3da1fdb649eb44dfe2e5e1f87070e120809b91fa4f4deb7784f12ce5",
+			"render_size_px": [
+				246,
+				332
+			],
+			"source_catalog_key": "source_catalog.sha256_by_res_path",
+			"support_polygon_px": [
+				[
+					10.283203125,
+					229.2744140625
+				],
+				[
+					235.716796875,
+					229.2744140625
+				],
+				[
+					235.716796875,
+					323.958984375
+				],
+				[
+					10.283203125,
+					323.958984375
+				]
+			],
+			"texture_bytes": 71771,
+			"texture_path": "res://art/modules/luoyang_gate_fortification_v1/luoyang_gate_corner_tower_v1.png",
+			"texture_sha256": "624ff65bb097bde7b44a0e1c3322cbfe0278ca97114620000b70752b1d252d55"
+		},
+		"wall": {
+			"asset_id": "luoyang_gate_wall_crenellated_straight_v1",
+			"foot_anchor_px": [
+				328.0,
+				272.3623046875
+			],
+			"foot_uv": [
+				0.5,
+				0.972722516741071
+			],
+			"ground_y_definition": "For candidate ground_y=500, place texture top-left at [world_x-foot_anchor_px.x, 500-foot_anchor_px.y]; translate support_polygon_px by that same top-left. This is an art placement contract, not collision or Field approval.",
+			"mesh_path": "res://art/modules/luoyang_gate_fortification_v1/luoyang_gate_wall_crenellated_straight_v1.res",
+			"mesh_sha256": "bd28cbc364c817d0826c2f9ed6c084519c7ed60ecb9e3268a97d6437507a5720",
+			"render_size_px": [
+				656,
+				280
+			],
+			"source_catalog_key": "source_catalog.sha256_by_res_path",
+			"support_polygon_px": [
+				[
+					13.1199951171875,
+					228.3623046875
+				],
+				[
+					642.880004882813,
+					228.3623046875
+				],
+				[
+					642.880004882813,
+					272.3623046875
+				],
+				[
+					13.1199951171875,
+					272.3623046875
+				]
+			],
+			"texture_bytes": 152577,
+			"texture_path": "res://art/modules/luoyang_gate_fortification_v1/luoyang_gate_wall_crenellated_straight_v1.png",
+			"texture_sha256": "c144d21cb514dcaadfc42456ad9e10e09db61ca5178ff4829c633055e90bdd19"
+		}
+	},
+	"field_or_physics_approved": false,
+	"geometry_and_capture": {
+		"straight": {
+			"clockwise_faces_match_normals": true,
+			"finite_draw_indices_vertices_normals": true,
+			"maximum_m": [
+				2.5,
+				1.98000001907349,
+				0.361250013113022
+			],
+			"minimum_m": [
+				-2.5,
+				0.0,
+				-0.361250013113022
+			],
+			"surface_count": 17,
+			"surfaces": [
+				{
+					"arrays_sha256": "b869b9fb4a085df2a33c4eb99f67e49dd635a4965f4f14e72b9c49221348c089",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_7dj6p",
+					"surface": 0,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "d5c4d34764437774397264af662d7d6bd6d3d311ed0518c48906e68c8c2952c9",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_ijue3",
+					"surface": 1,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "63f012e829d5f53cbefd70a6eecd3ec11f492274b2781e44c0c864a2cce68327",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_l4drp",
+					"surface": 2,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "813e531923ac179646e735a98d06f7a26902a7261941aa234fb883a1c2b86923",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_0b02o",
+					"surface": 3,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "9edfcedfaa918b28e4739468a1d95db65e6919d94de16496bcc0ed7519e0be93",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_c21t6",
+					"surface": 4,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "fc66aa4e8d8903d4706840f646f3edf8b8e774c768113deaf2da07738fd513fc",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_xtnxm",
+					"surface": 5,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "63f6ca9532b92031685eb4a95533a9b4ab4bddfe711dfd9a07787678b90c1ba0",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_ivve7",
+					"surface": 6,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "b7e6154698134f6ec020fb560915abe3b58bddb1f165692deac9fb4271ac323c",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_f0dkb",
+					"surface": 7,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "3e27c670d7617dcf85928b84479f83be0879f835631dc139dfc242e3c4308ba7",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_ejwub",
+					"surface": 8,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "ecb157ac0755a95b7ef2ad6dad4f1cd9b6fa00b52ca47ccfe2c0b4f38dd93246",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_anm4p",
+					"surface": 9,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "4107455966eb2fb4e5094c4e082f7b6557a50b1319aa2acd459ae6eeb7f7cda4",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_et6j8",
+					"surface": 10,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "6aeae51d0ef075de733f752730853667fd56cc87f348015a12b8651f223d25cf",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_xrifg",
+					"surface": 11,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "a753296249fc458ec221bb2421bcacdc54c8a4cd341572355302fa671710dd65",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_iob7g",
+					"surface": 12,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "3e4697928362a22c7a044ed100d2b036a7d80ed43b7c1716cdb096b56c08566f",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_a483l",
+					"surface": 13,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "646b54107f7367c68ea086b889c4600b54a953bdc4eb2c330f3df108d27a0fc4",
+					"indices": 8640,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_a4co0",
+					"surface": 14,
+					"vertices": 5760
+				},
+				{
+					"arrays_sha256": "99dd2c285a5f0f2ba89cf822c3d3e35cf3c42f3f5a4e679105a0cdd9a7fae957",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_b6lg1",
+					"surface": 15,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "dfbdb6df719e58c0004bbbb1b9131b1cd10eaa476aa97533b776396d607c8c2b",
+					"indices": 360,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_a4co0",
+					"surface": 16,
+					"vertices": 240
+				}
+			],
+			"triangles": 3180
+		},
+		"straight_capture": {
+			"actual_crop_rect_px": [
+				440,
+				673,
+				656,
+				280
+			],
+			"actual_min_y_support_polygon_px": [
+				[
+					13.1199951171875,
+					228.3623046875
+				],
+				[
+					642.880004882813,
+					228.3623046875
+				],
+				[
+					642.880004882813,
+					272.3623046875
+				],
+				[
+					13.1199951171875,
+					272.3623046875
+				]
+			],
+			"actual_used_rect_px": [
+				448,
+				681,
+				640,
+				264
+			],
+			"camera": {
+				"ambient_energy": 0.45,
+				"basis_columns": [
+					[
+						1.0,
+						0.0,
+						0.0
+					],
+					[
+						0.0,
+						0.866025447845459,
+						-0.499999970197678
+					],
+					[
+						0.0,
+						0.499999970197678,
+						0.866025447845459
+					]
+				],
+				"position_m": [
+					0.0,
+					33.5999984741211,
+					55.4256248474121
+				],
+				"projection": "orthogonal",
+				"size_m": 12.0,
+				"sun_energy": 0.85,
+				"sun_euler_degrees": [
+					-55,
+					-34,
+					0
+				]
+			},
+			"crop_size_px": [
+				656,
+				280
+			],
+			"foot_anchor_px": [
+				328.0,
+				272.3623046875
+			],
+			"foot_uv": [
+				0.5,
+				0.972722516741071
+			],
+			"nonzero_alpha_pixels": 159744,
+			"raw_canvas_px": [
+				1536,
+				1536
+			],
+			"same_asset_for_left_and_right_without_flip": false
+		},
+		"tower": {
+			"clockwise_faces_match_normals": true,
+			"finite_draw_indices_vertices_normals": true,
+			"maximum_m": [
+				0.901000022888184,
+				1.98000001907349,
+				0.774947226047516
+			],
+			"minimum_m": [
+				-0.901000022888184,
+				0.0,
+				-0.746767342090607
+			],
+			"surface_count": 3,
+			"surfaces": [
+				{
+					"arrays_sha256": "d2ce2f124b8a9ab80a49e883dfd65b106b5c974f1a9571c1559028bc3e4c061c",
+					"indices": 108,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_a4co0",
+					"surface": 0,
+					"vertices": 72
+				},
+				{
+					"arrays_sha256": "3716227ab4bf661a613991101f3c56236353b5f9157dd336388bbda8896ce7aa",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_b6lg1",
+					"surface": 1,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "138e1f359c5736c699cb5ea5478dcd40a5cf5d336003e95d3a52f792e7571e33",
+					"indices": 216,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res::ShaderMaterial_a4co0",
+					"surface": 2,
+					"vertices": 144
+				}
+			],
+			"triangles": 120
+		},
+		"tower_capture": {
+			"actual_crop_rect_px": [
+				645,
+				649,
+				246,
+				332
+			],
+			"actual_min_y_support_polygon_px": [
+				[
+					10.283203125,
+					229.2744140625
+				],
+				[
+					235.716796875,
+					229.2744140625
+				],
+				[
+					235.716796875,
+					323.958984375
+				],
+				[
+					10.283203125,
+					323.958984375
+				]
+			],
+			"actual_used_rect_px": [
+				653,
+				657,
+				230,
+				316
+			],
+			"camera": {
+				"ambient_energy": 0.45,
+				"basis_columns": [
+					[
+						1.0,
+						0.0,
+						0.0
+					],
+					[
+						0.0,
+						0.866025447845459,
+						-0.499999970197678
+					],
+					[
+						0.0,
+						0.499999970197678,
+						0.866025447845459
+					]
+				],
+				"position_m": [
+					0.0,
+					33.5999984741211,
+					55.4256248474121
+				],
+				"projection": "orthogonal",
+				"size_m": 12.0,
+				"sun_energy": 0.85,
+				"sun_euler_degrees": [
+					-55,
+					-34,
+					0
+				]
+			},
+			"crop_size_px": [
+				246,
+				332
+			],
+			"foot_anchor_px": [
+				123.0,
+				323.958984375
+			],
+			"foot_uv": [
+				0.5,
+				0.975780073418675
+			],
+			"nonzero_alpha_pixels": 66706,
+			"raw_canvas_px": [
+				1536,
+				1536
+			],
+			"same_asset_for_left_and_right_without_flip": true
+		}
+	},
+	"input_changes": [],
+	"inputs_sha256_first": {
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.json": "d013ce109db5d750b63eef7b1806f0adea9ff7bf21b4da9cfdebe5e841e256bc",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res": "7205b12f85b88e76b312b53d616303748a2eabd328f491102bc7d75e7abc3c6d",
+		"res://art/modules/luoyang_gate_fortification_v1/source_contract.json": "f62cc3ca2aca93ec6c11edc92d5a735220ee7ace2f998660b29becc562183956",
+		"res://scripts/dev/capture_luoyang_gate_native_fortification_v1.gd": "65121068df07905dd23cd242f67de94ebf1018a5757123f0f5fd862fb1785a30"
+	},
+	"inputs_sha256_last": {
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.json": "d013ce109db5d750b63eef7b1806f0adea9ff7bf21b4da9cfdebe5e841e256bc",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res": "7205b12f85b88e76b312b53d616303748a2eabd328f491102bc7d75e7abc3c6d",
+		"res://art/modules/luoyang_gate_fortification_v1/source_contract.json": "f62cc3ca2aca93ec6c11edc92d5a735220ee7ace2f998660b29becc562183956",
+		"res://scripts/dev/capture_luoyang_gate_native_fortification_v1.gd": "65121068df07905dd23cd242f67de94ebf1018a5757123f0f5fd862fb1785a30"
+	},
+	"outputs": {
+		"res://art/modules/luoyang_gate_fortification_v1/luoyang_gate_corner_tower_v1.png": {
+			"bytes": 71771,
+			"lossless_readback_exact": true,
+			"rgba_sha256": "9784e3c6f4de88bae40e5399268aa6b21116d6c1ea60f485b8c5e94c15d57867",
+			"sha256": "624ff65bb097bde7b44a0e1c3322cbfe0278ca97114620000b70752b1d252d55",
+			"size_px": [
+				246,
+				332
+			]
+		},
+		"res://art/modules/luoyang_gate_fortification_v1/luoyang_gate_corner_tower_v1.res": {
+			"bytes": 39858142,
+			"revision": "B new square terminal geometry; source surface14 masonry and surface15 cornice materials only",
+			"sha256": "371c687e3da1fdb649eb44dfe2e5e1f87070e120809b91fa4f4deb7784f12ce5"
+		},
+		"res://art/modules/luoyang_gate_fortification_v1/luoyang_gate_wall_crenellated_straight_v1.png": {
+			"bytes": 152577,
+			"lossless_readback_exact": true,
+			"rgba_sha256": "e6d6ccb850ebe8322dba724c74d4534510d3de533c0b02ee0e323c3146d6b607",
+			"sha256": "c144d21cb514dcaadfc42456ad9e10e09db61ca5178ff4829c633055e90bdd19",
+			"size_px": [
+				656,
+				280
+			]
+		},
+		"res://art/modules/luoyang_gate_fortification_v1/luoyang_gate_wall_crenellated_straight_v1.res": {
+			"bytes": 40086516,
+			"revision": "A retained source surfaces 0..15; removed tiled cap 16..17; added one crenellation surface using source surface14 material",
+			"sha256": "bd28cbc364c817d0826c2f9ed6c084519c7ed60ecb9e3268a97d6437507a5720"
+		}
+	},
+	"passed_capture_checks": true,
+	"placement_intent_not_runtime": {
+		"bridge_and_guards_unchanged": true,
+		"central_gate_portal_unchanged": [
+			1536,
+			500
+		],
+		"tower_usage": "same symmetric front-facing B asset at the two far ends; no flip and no mid-wall bend",
+		"wall_foot_world_px": [
+			1536,
+			500
+		]
+	},
+	"production_or_formal_approved": false,
+	"reason": "",
+	"run_tag": "gate_native_fortification_v1_root04",
+	"scope": "ONLY TWO NEW GATE FORTIFICATION MODULES; NO city layout, Field, Physics, portal, bridge, guard, water, NPC, save, audio or formal write",
+	"source_mesh_revision": {
+		"source": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res",
+		"source_mesh_or_material_modified": false,
+		"straight_added_crenellation_surface": 16,
+		"straight_removed_old_tile_surfaces": [
+			16,
+			17
+		],
+		"straight_retained_surfaces": [
+			0,
+			1,
+			2,
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10,
+			11,
+			12,
+			13,
+			14,
+			15
+		],
+		"tower_rebuilt_geometry_material_sources": [
+			14,
+			15
+		]
+	},
+	"status": "NATIVE_CANDIDATE_CAPTURED_NOT_FIELD_OR_FORMAL",
+	"visual_review": "PENDING_ART_READBACK"
+}

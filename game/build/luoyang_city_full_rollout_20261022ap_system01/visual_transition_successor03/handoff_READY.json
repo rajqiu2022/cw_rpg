@@ -1,0 +1,47 @@
+{
+  "status": "NEW_BUILD_ONLY_EXPLICIT_SOURCE_DECLARATION_NO_RUNTIME_CREDIT",
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor03/environment_visual_transition_READY.gd",
+    "sha256": "455aa5b2d2b170491f67294ea11cae8ec6c6e23806eb83563cbc49e6fe7f7983",
+    "bytes": 30165
+  },
+  "parent": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/environment_visual_transition_READY.gd",
+    "sha256": "c50dad4d92a505ab27b735dbec3016e1c60e975e795e218f0c2e376dfa8207b2"
+  },
+  "whole_byte_inverse": true,
+  "edits": [
+    {
+      "old": "const IDS=[",
+      "new": "const EXAMINER_SOURCES={\"res://art/portraits/luoyang_city_finish_20261022ap/examiner_mature_v1.png.import\":\"284ed8f2af70e4b9d499fb561cb0ab88f299394690f6c9baf1b99149d85ee2b1\",\"res://.godot/imported/examiner_mature_v1.png-25f2af75a741a5e611494715946e4a2e.ctex\":\"b3140dfd0ebea21c80bab0f310802ffc2e85907a386ea4c614879442f2436cac\",\"res://art/portraits/luoyang_city_finish_20261022ap/examiner_mature_v1.png\":\"4fba998b313e66b60f62804ea8968b25742dc5825a76921743265e6a26031dcc\"}\nconst IDS=["
+    },
+    {
+      "old": "\tif id==&\"ch4_s3_luoyang_market\":\n\t\tfor p: String in data.facade_source_sha256:",
+      "new": "\tif id==&\"ch4_s3_luoyang_market\":\n\t\tfor p: String in EXAMINER_SOURCES: out[p]=true\n\t\tfor p: String in data.facade_source_sha256:"
+    },
+    {
+      "old": "\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n\t\tfor p: String in data.facade_source_sha256:",
+      "new": "\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n\t\tfor p: String in EXAMINER_SOURCES: source_pins[p]=EXAMINER_SOURCES[p]\n\t\tfor p: String in data.facade_source_sha256:"
+    }
+  ],
+  "portrait_declared_sources": {
+    "res://art/portraits/luoyang_city_finish_20261022ap/examiner_mature_v1.png.import": "284ed8f2af70e4b9d499fb561cb0ab88f299394690f6c9baf1b99149d85ee2b1",
+    "res://.godot/imported/examiner_mature_v1.png-25f2af75a741a5e611494715946e4a2e.ctex": "b3140dfd0ebea21c80bab0f310802ffc2e85907a386ea4c614879442f2436cac",
+    "res://art/portraits/luoyang_city_finish_20261022ap/examiner_mature_v1.png": "4fba998b313e66b60f62804ea8968b25742dc5825a76921743265e6a26031dcc"
+  },
+  "source_first_final_actual59": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_qa01/isolate_examiner_portrait_ready01/ap_full_examiner_portrait_import_result_36012.json",
+    "sha256": "ee97525951a2160b8c2bd75e5e8f30273ac38362083ca4bded6b6afb87004d05"
+  },
+  "root_three_leaf_authority": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_root01/examiner_portrait_three_leaf_authorization_READY.json",
+    "sha256": "000b4cb5a742f31cfa8d75e741e5c8f9098581fbc022685609bfe5694dc8f3c2"
+  },
+  "media_current_exact": true,
+  "scope": "Market-only source_paths_for and install first/final3leaf; no other scene portrait declarations; Field exact examiner override remains A148 unchanged",
+  "two_shader_declarations_inherited": {
+    "rect_shader": "8dab8ea0515d4cc94ff89595c287d2513cb3a8d47dcd36edb1d7ed74a796ae53",
+    "artisan_union_shader": "411bceeec31d10025ff17e21e36b416054425e916e04ee39e91038b709acda83"
+  },
+  "no_canonical_or_engine_write": true
+}

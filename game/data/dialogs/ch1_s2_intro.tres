@@ -22,17 +22,19 @@ script = ExtResource("2_dnode")
 node_id = &"b"
 speaker = "冷孤云"
 portrait_path = "res://art/characters/protagonist_portrait.png"
-text = "先在镇上转一圈，看看能问出什么风声。"
+text = "先在村里问清近况。守村人、客栈老板和护商镖师，也许都见过不同的线索。"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
-set_flags = Array[Dictionary]([])
-accept_quest = &""
-complete_quest = &""
+set_flags = Array[Dictionary]([{"key": "entered_zhuwei_village", "value": true}])
+accept_quest = &"q_ch1_main_village_inquiry"
+complete_quest = &"q_ch1_main_zhuwei"
 on_end = "end"
 
 [resource]
 script = ExtResource("1_dscr")
 dialog_id = &"ch1_s2_intro"
+required_story_flag = &"master_training_done"
+required_completed_quest = &"q_ch1_main_training"
 entry_node_id = &"start"
 nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b")])

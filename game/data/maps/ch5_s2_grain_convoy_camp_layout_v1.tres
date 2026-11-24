@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.000, 0.900, 0.180, 0.970, 0.800, 0.900, 0.940, 0.690, 0.900, 0.390, 0.980, 0.000, 0.760, 0.000, 0.720, 0.180, 0.250, 0.180, 0.170, 0.300, 0.070, 0.550, 0.000, 0.670)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"relief_tent", "pos":Vector2(0.145,0.190), "size":Vector2(0.200,0.190)},
+	{"id":"upper_grain_cart", "pos":Vector2(0.455,0.135), "size":Vector2(0.145,0.115)},
+	{"id":"right_grain_cart", "pos":Vector2(0.885,0.310), "size":Vector2(0.170,0.170)}
+]
+interactions = []
+portals = []
+walkable_probes = [
+	{"id":"spawn", "pos":Vector2(0.16,0.82)},
+	{"id":"convoy_battle", "pos":Vector2(0.55,0.52)},
+	{"id":"banner_evidence", "pos":Vector2(0.57,0.25)},
+	{"id":"snow_exit", "pos":Vector2(0.86,0.12)}
+]
+blocked_probes = [
+	{"id":"tent", "pos":Vector2(0.14,0.19)},
+	{"id":"right_cart", "pos":Vector2(0.88,0.31)}
+]

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+enemy_id = &"wild_elite_convoy"
+display_name = "白水截证首领"
+portrait_path = ""
+battle_actor_path = "res://art/characters/battle_masked_killer_boss_v2.png"
+battle_actor_scale = 0.82
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/characters/battle_masked_killer_boss_v2.png", "res://art/characters/battle_masked_killer_boss_v2.png")
+move_frame_paths = PackedStringArray("res://art/characters/battle_masked_killer_boss_v2.png", "res://art/characters/battle_masked_killer_boss_v2.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/masked_killer_boss_attack_f01_v2.png", "res://art/sprites/battle/masked_killer_boss_attack_f02_v2.png", "res://art/sprites/battle/masked_killer_boss_attack_f03_v2.png")
+hit_frame_paths = PackedStringArray("res://art/characters/battle_masked_killer_boss_v2.png", "res://art/characters/battle_masked_killer_boss_v2.png")
+defeat_frame_paths = PackedStringArray("res://art/characters/battle_masked_killer_boss_v2.png", "res://art/characters/battle_masked_killer_boss_v2.png")
+level = 11
+max_hp = 707
+max_mp = 105
+attack = 110
+defense = 22
+speed = 28
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_wuyin_sanshi", &"toxic_needle"])
+aggression = 0.76
+drop_gold_min = 55
+drop_gold_max = 82
+drop_exp = 122

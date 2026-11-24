@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "左明远"
+text = "老纸匠就在纸铺前，我会在这里等消息。先问清能用的原料放在哪里，莫到旁人的货箱里乱翻。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_paper_progress"
+entry_node_id = &"start"
+required_story_flag = &"luoyang_paper_started"
+blocked_story_flag = &"luoyang_paper_helped"
+nodes = Array[Resource]([SubResource("start")])
+

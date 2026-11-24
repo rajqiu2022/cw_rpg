@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_main_02_grain_convoy"
+title = "护住赈粮车队"
+kind = 0
+desc_not_started = "前方护粮营地正遭一队自称烈云盟的人围攻。"
+desc_in_progress = "与古峰守军保护赈粮车队；战后查验袭击者留下的破旗，判断他们是否真属烈云盟。"
+desc_completed = "车队得以继续上山。破旗的针脚、火纹与药粉残留都与此前伪造工坊相似，这又是一场刻意栽赃。"
+tracker_hint = "古峰 · 护粮营地"
+completion_triggers = Array[String](["evidence_acquired:ev_ch5_false_banner_cloth"])
+reward_gold = 85
+reward_exp = 135
+reward_items = Array[Dictionary]([{"item_id":"healing_pill_major", "count":1}, {"item_id":"inner_breath_pill", "count":1}])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch5_grain_convoy_saved", "text":"袭击者已退，赈粮车队与脚夫均被保住。"}, {"trigger":"evidence_acquired:ev_ch5_false_banner_cloth", "text":"破旗使用急制反针，染料里混有伪造工坊同类松脂药粉。"}])

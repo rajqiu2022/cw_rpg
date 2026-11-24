@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch2_courier_fragment"
+display_name = "信使遗落的半张调令"
+description = "半张调令只剩下换装、转移和旧矿洞三个词，落款被撕去。它能缩短追踪时间，却仍不足以证明幕后主使。"
+chapter = 2
+category = &"document"
+source_hint = "密林逃走的信使"
+related_testimony_ids = Array[StringName]([&"ts_ch2_rescued_villager"])
+tags = Array[StringName]([&"courier", &"hideout", &"incomplete"])

@@ -1,0 +1,26 @@
+id: chapter_scene_walkable
+description: 第二至第四章可行走场景整图
+quality: high
+size: "1536x1024"
+reference_images: []
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: stylized-concept
+  Asset type: 2.5D walkable RPG scene background
+  Primary request: {{scene_name}}
+  Scene/backdrop: {{scene_desc}}
+  Composition/framing: 45-degree isometric oblique view, wide horizontal scene, a continuous readable walkable route occupying at least 35 percent of the image, clear entrances and exits, gameplay-safe center area.
+  Lighting/mood: {{lighting}}
+  Color palette: bright saturated wuxia comic colors with clear warm-cool contrast.
+  Key elements: {{key_elements}}
+  Constraints: no characters, no NPCs, no animals, no UI, no text, no signs with writing, no watermark; buildings and vegetation must not block the main route; all objects share one perspective and one shadow direction.
+  Avoid: tileset, atlas, sprite sheet, collage, broken architecture, dense clutter, flat concept-art composition, photorealism, low-poly cartoon, {negative}
+
+variables:
+  scene_name: "场景名称"
+  scene_desc: "场景叙事与空间描述"
+  lighting: "时间、天气、情绪"
+  key_elements: "关键建筑、道路、互动空间、出口"
+

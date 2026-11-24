@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_03_peony_poetry"
+title = "牡丹诗会"
+kind = 1
+desc_not_started = "洛阳街市正办牡丹诗会，题目不问出身，只问如何看待花开花落。"
+desc_in_progress = "向诗会执事正式作答，待录下续句后再领取彩头。"
+desc_completed = "你的续句写花也写城，诗会执事将彩头赠给了你。"
+tracker_hint = "洛阳 · 街市诗会"
+progress_records = Array[Dictionary]([{"trigger":"flag_set:peony_poetry_answered_20261018t", "text":"续句已由执事录下，可以再次交谈领取诗会彩头。"}])
+completion_triggers = Array[String]([])
+reward_gold = 50
+reward_exp = 20
+reward_items = Array[Dictionary]([{"item_id": "phoenix_heart", "count": 1}, {"item_id": "healing_salve", "count": 2}, {"item_id": "phoenix_feather_hat", "count": 1}, {"item_id": "phoenix_claw", "count": 1}])

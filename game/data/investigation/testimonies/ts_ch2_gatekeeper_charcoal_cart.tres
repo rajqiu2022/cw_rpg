@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch2_gatekeeper_charcoal_cart"
+display_name = "守村人漏报的炭车"
+speaker_npc_id = &"zhuwei_gatekeeper_ch2"
+statement = "天亮前有一辆自称空载的炭车驶向河滩，车轴却挂着凌月派常用的白色束袖布。守村人最初没有把它写进出入簿。"
+chapter = 2
+initial_credibility = 55
+related_evidence_ids = Array[StringName]([&"ev_ch2_missing_notices", &"ev_ch2_split_tracks"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch2_hawker_north_route"])

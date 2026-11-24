@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ChapterContentPlan" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/chapter_content_plan.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+chapter = 5
+title = "古峰残雪"
+main_scene_ids = Array[StringName]([&"ch5_s1_relief_road", &"ch5_s2_grain_convoy_camp", &"ch5_s3_snow_pass", &"ch5_s4_abandoned_mine", &"ch5_s5_false_banner_outpost"])
+main_quest_ids = Array[StringName]([&"q_ch5_main_01_relief_route", &"q_ch5_main_02_grain_convoy", &"q_ch5_main_03_snow_pass", &"q_ch5_main_04_mine_survivor", &"q_ch5_main_05_false_banner_outpost", &"q_ch5_main_06_disclosure_choice"])
+side_quest_ids = Array[StringName]([&"q_ch5_side_01_relief_receipt",&"q_ch5_side_02_patrol_blades",&"q_ch5_side_05_mountain_stream"])
+side_quest_decisions = Array[Dictionary]([
+	{"quest_id":"q_ch5_main_01_gufeng_defense", "decision":"migrate", "reason":"保留赈粮与伪旗核心，等待新版场景和证据链接入后替换旧自动击杀结算。"},
+	{"quest_id":"q_ch5_main_02_meet_linghu", "decision":"migrate", "reason":"旧令狐封固定登场不符合新版内部证人设计，暂不进入正式主线。"}
+])
+leveling_scene_ids = Array[StringName]([&"ch5_s1_relief_road"])
+story_battle_groups = Array[Dictionary]([
+	{"id":"relief_road_ambush", "role":"普通拦截", "recommended_level":7, "target_rounds":"4-6", "enemy_ids":[&"ch5_relief_road_raider", &"ch5_relief_road_raider"]},
+	{"id":"grain_convoy_defense", "role":"三人护粮", "recommended_level":7, "target_rounds":"5-7", "enemy_ids":[&"ch5_relief_road_raider", &"ch5_relief_road_raider", &"ch5_false_liuyun_striker"]},
+	{"id":"snow_pass_blockade", "role":"雪岭精英", "recommended_level":8, "target_rounds":"5-7", "enemy_ids":[&"ch5_snow_pass_pursuer", &"ch5_false_liuyun_striker"]},
+	{"id":"mine_witness_hunt", "role":"矿道追猎", "recommended_level":8, "target_rounds":"6-8", "enemy_ids":[&"ch5_mine_tunnel_hunter", &"ch5_false_liuyun_striker"]},
+	{"id":"false_banner_captain", "role":"章末伪旗统领", "recommended_level":9, "target_rounds":"7-10", "enemy_ids":[&"ch5_false_banner_captain", &"ch5_false_liuyun_striker", &"ch5_false_liuyun_striker"]}
+])
+estimated_main_minutes = 90
+estimated_completionist_minutes = 240

@@ -1,0 +1,469 @@
+{
+	"schema_version": 1,
+	"canonical_scene_id": "ch4_s0_luoyang_gate",
+	"status": "ROOT_APPROVED_AUTHORING_REQUIRES_GPU_FIELD_VISUAL",
+	"base_manifest_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json",
+	"base_manifest_sha256": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+	"remove_object_ids": [
+		"east_street_front"
+	],
+	"source_catalog": {
+		"res://scripts/dev/prepare_luoyang_enclosure_v13_remaining_plans.gd": "14babbbc0d0c8deb9a9030171388a8869ce9ad5104c04558cf3929284a0f6ede",
+		"res://scripts/dev/export_luoyang_enclosure_v11_candidate.gd": "7493ecc658d5548c687e3f0d0da041d71e9f8c318215bee7f9f3491f0ba60ea9",
+		"res://art/maps/luoyang_modular_v3/source/canal_warehouse_v3.png": "3bfa2bd8a906ffe8ef069f7933e45255fe569606781c46886dd0dea519e9580b",
+		"res://art/maps/luoyang_modular_v3/source/street_row_v3.png": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+		"res://art/maps/luoyang_modular_v3/source/shop_v1.png": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+		"res://art/maps/luoyang_modular_v3/source/goods_stall_v2.png": "85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0",
+		"res://art/maps/luoyang_enclosure_v11/source/front_wall_v9_candidate.png": "b903c3aef333e0c3880ad0fb2fc83e131336cc381fde8d4f0fa88b59585149fb",
+		"res://scripts/dev/luoyang_gate_market_street_blocks_v13_preview.gd": "2572239a85dad5fa1d04c3ca15ed9ae6e752fadb931d26ad5524307eb39f5674",
+		"res://art/maps/luoyang_modular_v3/source/module_semantics.json": "9a2f68fd3c6c243dd690a04dbdeec8bd8627931aa498337b2fa01957a9c449c2",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/art_contract.json": "bc100b541f74ddaa49391ccb7e8a5161905f3586c243dc74eded840284f8dc5f"
+	},
+	"objects": [
+		{
+			"id": "east_street_front",
+			"world_foot_px": [
+				2370.0,
+				1040.0
+			],
+			"physical_center_px": [
+				2370.0,
+				1040.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						1888.26000976563,
+						991.330017089844
+					],
+					[
+						2852.97998046875,
+						991.330017089844
+					],
+					[
+						2852.97998046875,
+						1040.1240234375
+					],
+					[
+						1888.26000976563,
+						1040.1240234375
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_modular_v3/source/canal_warehouse_v3.png",
+					"uv_polygon_px": [
+						[
+							0.0,
+							0.0
+						],
+						[
+							1774.0,
+							0.0
+						],
+						[
+							1774.0,
+							887.0
+						],
+						[
+							0.0,
+							887.0
+						]
+					],
+					"origin_px": [
+						1820.06005859375,
+						602.280029296875
+					],
+					"scale": 0.62
+				}
+			],
+			"foot_authority": "Registered original source semantic ground point, not alpha bottom/bbox; independently transform original ground solids at same uniform scale"
+		},
+		{
+			"id": "v13_gate_west_plot_wall_0",
+			"world_foot_px": [
+				600.0,
+				1160.0
+			],
+			"physical_center_px": [
+				600.0,
+				1154.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						280.0,
+						1148.0
+					],
+					[
+						920.0,
+						1148.0
+					],
+					[
+						920.0,
+						1160.0
+					],
+					[
+						280.0,
+						1160.0
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_enclosure_v11/source/front_wall_v9_candidate.png",
+					"uv_polygon_px": [
+						[
+							100.0,
+							200.0
+						],
+						[
+							2039.39393939394,
+							200.0
+						],
+						[
+							2039.39393939394,
+							572.0
+						],
+						[
+							100.0,
+							572.0
+						]
+					],
+					"origin_px": [
+						247.0,
+						974.210021972656
+					],
+					"scale": 0.33
+				}
+			],
+			"foot_authority": "Explicit NEW low-wall ground at selected source brickfoot563; ground depth12logical authoring, not alpha roof bbox or imported old collision credit",
+			"source_uv_exclusion": "Exclude original generated terminal pillars and A1 canvas edges; no alpha threshold or bitmap edit",
+			"known_risk": "Selected panel flat terminal cuts require current GPU review, not a finished endcap/native wall claim"
+		},
+		{
+			"id": "v13_gate_west_plot_wall_1",
+			"world_foot_px": [
+				1100.0,
+				1160.0
+			],
+			"physical_center_px": [
+				1100.0,
+				1154.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						1040.0,
+						1148.0
+					],
+					[
+						1160.0,
+						1148.0
+					],
+					[
+						1160.0,
+						1160.0
+					],
+					[
+						1040.0,
+						1160.0
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_enclosure_v11/source/front_wall_v9_candidate.png",
+					"uv_polygon_px": [
+						[
+							100.0,
+							200.0
+						],
+						[
+							463.636363636364,
+							200.0
+						],
+						[
+							463.636363636364,
+							572.0
+						],
+						[
+							100.0,
+							572.0
+						]
+					],
+					"origin_px": [
+						1007.0,
+						974.210021972656
+					],
+					"scale": 0.33
+				}
+			],
+			"foot_authority": "Explicit NEW low-wall ground at selected source brickfoot563; ground depth12logical authoring, not alpha roof bbox or imported old collision credit",
+			"source_uv_exclusion": "Exclude original generated terminal pillars and A1 canvas edges; no alpha threshold or bitmap edit",
+			"known_risk": "Selected panel flat terminal cuts require current GPU review, not a finished endcap/native wall claim"
+		},
+		{
+			"id": "v13_gate_east_plot_wall_0",
+			"world_foot_px": [
+				2145.0,
+				1160.0
+			],
+			"physical_center_px": [
+				2145.0,
+				1154.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						1940.0,
+						1148.0
+					],
+					[
+						2350.0,
+						1148.0
+					],
+					[
+						2350.0,
+						1160.0
+					],
+					[
+						1940.0,
+						1160.0
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_enclosure_v11/source/front_wall_v9_candidate.png",
+					"uv_polygon_px": [
+						[
+							100.0,
+							200.0
+						],
+						[
+							1342.42424242424,
+							200.0
+						],
+						[
+							1342.42424242424,
+							572.0
+						],
+						[
+							100.0,
+							572.0
+						]
+					],
+					"origin_px": [
+						1907.0,
+						974.210021972656
+					],
+					"scale": 0.33
+				}
+			],
+			"foot_authority": "Explicit NEW low-wall ground at selected source brickfoot563; ground depth12logical authoring, not alpha roof bbox or imported old collision credit",
+			"source_uv_exclusion": "Exclude original generated terminal pillars and A1 canvas edges; no alpha threshold or bitmap edit",
+			"known_risk": "Selected panel flat terminal cuts require current GPU review, not a finished endcap/native wall claim"
+		},
+		{
+			"id": "v13_gate_east_plot_wall_1",
+			"world_foot_px": [
+				2670.0,
+				1160.0
+			],
+			"physical_center_px": [
+				2670.0,
+				1154.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						2490.0,
+						1148.0
+					],
+					[
+						2850.0,
+						1148.0
+					],
+					[
+						2850.0,
+						1160.0
+					],
+					[
+						2490.0,
+						1160.0
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_enclosure_v11/source/front_wall_v9_candidate.png",
+					"uv_polygon_px": [
+						[
+							100.0,
+							200.0
+						],
+						[
+							1190.90909090909,
+							200.0
+						],
+						[
+							1190.90909090909,
+							572.0
+						],
+						[
+							100.0,
+							572.0
+						]
+					],
+					"origin_px": [
+						2457.0,
+						974.210021972656
+					],
+					"scale": 0.33
+				}
+			],
+			"foot_authority": "Explicit NEW low-wall ground at selected source brickfoot563; ground depth12logical authoring, not alpha roof bbox or imported old collision credit",
+			"source_uv_exclusion": "Exclude original generated terminal pillars and A1 canvas edges; no alpha threshold or bitmap edit",
+			"known_risk": "Selected panel flat terminal cuts require current GPU review, not a finished endcap/native wall claim"
+		},
+		{
+			"id": "v13_gate_provision_stall",
+			"world_foot_px": [
+				2200.0,
+				1410.0
+			],
+			"physical_center_px": [
+				2200.0,
+				1410.0
+			],
+			"collision_size_px": [
+				0,
+				0
+			],
+			"solid_polygons_px": [
+				[
+					[
+						2078.86010742188,
+						1377.59985351563
+					],
+					[
+						2320.9599609375,
+						1377.59985351563
+					],
+					[
+						2320.9599609375,
+						1410.0
+					],
+					[
+						2078.86010742188,
+						1410.0
+					]
+				]
+			],
+			"blocking": true,
+			"pieces": [
+				{
+					"source": "res://art/maps/luoyang_modular_v3/source/goods_stall_v2.png",
+					"uv_polygon_px": [
+						[
+							0.0,
+							0.0
+						],
+						[
+							1536.0,
+							0.0
+						],
+						[
+							1536.0,
+							1024.0
+						],
+						[
+							0.0,
+							1024.0
+						]
+					],
+					"origin_px": [
+						2061.76000976563,
+						1237.19995117188
+					],
+					"scale": 0.18
+				}
+			],
+			"foot_authority": "Registered original source semantic ground point, not alpha bottom/bbox; independently transform original ground solids at same uniform scale"
+		}
+	],
+	"authoring_observations": {
+		"scope": "TWO_REGION_STREET_BLOCK_CANDIDATE_NOT_ADOPTED",
+		"region": "ch4_s0_luoyang_gate",
+		"generated_images": 0,
+		"new_story_or_interaction": false,
+		"physical_routes_npc_slots_portals_unchanged": true,
+		"fortification_and_ground": "Unchanged; not declared newly finished by this helper",
+		"west_gate_entrance_ground_width": 120.0,
+		"east_gate_entrance_ground_width": 140.0,
+		"low_wall_visible_ridge_foot_height": 113.52,
+		"north_market_front_alpha_gt30_top_expected": 55.14,
+		"north_market_front_weak_alpha0_source_row_expected": 19.63,
+		"actual_gpu_alpha_crop_visual_Field": "PENDING; no prior credit inherited",
+		"known_risks": [
+			"Low-wall end cuts and original source light need actual GPU review",
+			"North roof/weak alpha margins must be reviewed current render",
+			"All transformed source solids need realField player17point/currentY checks",
+			"No claim town fully approved or formally integrated"
+		]
+	},
+	"retained_object_ids": [
+		"south_gate",
+		"south_wall_388",
+		"south_wall_708",
+		"south_wall_1028",
+		"south_wall_2044",
+		"south_wall_2364",
+		"south_wall_2684",
+		"west_street_front",
+		"north_court_boundary",
+		"notice_pavilion",
+		"street_tree_0",
+		"street_tree_1",
+		"street_tree_2",
+		"street_tree_3",
+		"lamp_0",
+		"lamp_1"
+	],
+	"original_gameplay_slots_unchanged": true,
+	"original_routes_unchanged": true,
+	"alpha_bbox_is_not_physical_foot": true,
+	"source_bitmap_modified": false,
+	"additional_walk_support": false,
+	"production_approved": false,
+	"field_approved": false,
+	"visual_approved": false
+}

@@ -1,0 +1,526 @@
+{
+	"checkpoint_guard": {
+		"before_first_await": true,
+		"public_api": "PlatformBridge.set_checkpoint_saves_suspended(true)",
+		"restored_before_quit": true,
+		"verified_suspended": true
+	},
+	"consumer_catalog": {
+		"ground_y_definition": "ground_y is the world-space Y assigned to the captured front-centre minimum-mesh-Y foot anchor; not PNG bottom/collision.",
+		"ground_y_reference_world_px": 500,
+		"schema_version": 1,
+		"source_catalog": {
+			"last_readback_sha256_by_res_path": {
+				"res://.godot/imported/rock_01_arm_2k.jpg-24a96ad79bdc1eed19aa5ac280f55f91.ctex": "55b4b4aed87356ead56bf32ec28ca4c39a804714d20e66d6faf2f713851c3d8d",
+				"res://.godot/imported/rock_01_diff_2k.jpg-f2f68f237a523c754af31e1c3ba77bfc.ctex": "a04212a70bc69ce536ccfc6bbd2040e5e7dc6009ca470b0fd181233332d9cace",
+				"res://.godot/imported/rock_01_nor_gl_2k.jpg-656cdf21c38471bc9ec01a3137e07d69.ctex": "3746c1447ae4630267cc397459f7973c33cb1f694d11d9b559cb7d9e8181b5ee",
+				"res://.godot/imported/south_gate.png-a57c7e4ec6c2a449c5bc5c9456ed39b1.ctex": "eb77c86f927daefd9a0e57edfe4f463ffb4ce52be82d86649b118b3735029099",
+				"res://.godot/imported/worn_bluestone_v2.png-cc6a68e14573ac0b0b51e0099de5fb19.ctex": "03bd39241c5f5b4878188e2fb64069257e2850369c711e8a2a87d48788cee6a0",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/SOURCE.json": "33b0d87d8a159028397b6a7a112b66106e5b78d87130d385a26f7471eed5487a",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg": "a954de58336738e6f963466f1453202ef7e186bd6492106c3b989c39f0d2e23c",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg.import": "61c7d4a5938895f7ba6411f0839b71038a3b7930faa49b366311e6fb04bf6003",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg": "fe9013368539b5604602e64bfa48bef1a2a4c452fcb6894868fb556d0b14501c",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg.import": "4226182873b5033a1c756cab335ad5e3bac7f3cad80b2d5cfba7ad68682f8c9b",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg": "70427a2c81f85c0e1ee4a147e273d028c3d0188bad2583f2509d6df9a3d55b89",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg.import": "79e15a58ff6040e7bcc11d44df3ffbc1c8370f9b918e1412563e8b569d889b1c",
+				"res://art/maps/luoyang_modular_v3/source/generation_record.json": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+				"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png": "7e9c7d892f86ced04ad3b8ad293208e05d87a01afffc2729804e4469f87deb7d",
+				"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png.import": "4f9144ae8c4fc6c17427c65647a23e29bfdcdff96752b53bfde8f27372c2c928",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png": "368cae36b04f983f537f813173a65737a2ac61f2a5be8ded50ef9fb10f709343",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png.import": "46f6e40cf896db8ffe325f70396864913c9da593c7726f6bf29344cdcd513b88",
+				"res://art/modules/luoyang_gate_fortification_v1/capture_result.json": "b7799a4009aa071678e73ae7e37c58a0489531b158d0513f7b2d0912cff1c54a",
+				"res://art/modules/luoyang_gate_fortification_v2_a_retry1/capture_result.json": "41815c493b747d55b0b85f52895b71b3f97106b35634a6f4b82586bce649cf25",
+				"res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.png": "523551c6d8c1f4404ee89d7b9012cefb668ee4d3058eece661837df830eda08d",
+				"res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.res": "74c213aeb1a000441d6732d0bfa35aab63cd40a90f64a015175c11947f457cc0",
+				"res://art/modules/luoyang_gate_fortification_v2_a_retry1/source_contract.json": "9376ec24c799e0d272b10cd10db84c6fb3385686b49cddbbdff8baddb512e788",
+				"res://art/modules/luoyang_gate_fortification_v2_a_weathered1/source_contract.json": "7737f72281420b032927d22e3e8a18fe7e9395546d7a80f939bd4c588c0c442f",
+				"res://scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_retry1.gd": "b29b70c6b77bf0938fd711515a96a9100f6655f14468ee9b15dc8c37c1ca01eb",
+				"res://scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_weathered1.gd": "ac207395a18a8094a3822737a51034f16b85126c33e6de0949eb5c8eef6c7031",
+				"res://scripts/dev/capture_luoyang_gate_native_fortification_v1.gd": "65121068df07905dd23cd242f67de94ebf1018a5757123f0f5fd862fb1785a30"
+			},
+			"sha256_by_res_path": {
+				"res://.godot/imported/rock_01_arm_2k.jpg-24a96ad79bdc1eed19aa5ac280f55f91.ctex": "55b4b4aed87356ead56bf32ec28ca4c39a804714d20e66d6faf2f713851c3d8d",
+				"res://.godot/imported/rock_01_diff_2k.jpg-f2f68f237a523c754af31e1c3ba77bfc.ctex": "a04212a70bc69ce536ccfc6bbd2040e5e7dc6009ca470b0fd181233332d9cace",
+				"res://.godot/imported/rock_01_nor_gl_2k.jpg-656cdf21c38471bc9ec01a3137e07d69.ctex": "3746c1447ae4630267cc397459f7973c33cb1f694d11d9b559cb7d9e8181b5ee",
+				"res://.godot/imported/south_gate.png-a57c7e4ec6c2a449c5bc5c9456ed39b1.ctex": "eb77c86f927daefd9a0e57edfe4f463ffb4ce52be82d86649b118b3735029099",
+				"res://.godot/imported/worn_bluestone_v2.png-cc6a68e14573ac0b0b51e0099de5fb19.ctex": "03bd39241c5f5b4878188e2fb64069257e2850369c711e8a2a87d48788cee6a0",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/SOURCE.json": "33b0d87d8a159028397b6a7a112b66106e5b78d87130d385a26f7471eed5487a",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg": "a954de58336738e6f963466f1453202ef7e186bd6492106c3b989c39f0d2e23c",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg.import": "61c7d4a5938895f7ba6411f0839b71038a3b7930faa49b366311e6fb04bf6003",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg": "fe9013368539b5604602e64bfa48bef1a2a4c452fcb6894868fb556d0b14501c",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg.import": "4226182873b5033a1c756cab335ad5e3bac7f3cad80b2d5cfba7ad68682f8c9b",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg": "70427a2c81f85c0e1ee4a147e273d028c3d0188bad2583f2509d6df9a3d55b89",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg.import": "79e15a58ff6040e7bcc11d44df3ffbc1c8370f9b918e1412563e8b569d889b1c",
+				"res://art/maps/luoyang_modular_v3/source/generation_record.json": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+				"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png": "7e9c7d892f86ced04ad3b8ad293208e05d87a01afffc2729804e4469f87deb7d",
+				"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png.import": "4f9144ae8c4fc6c17427c65647a23e29bfdcdff96752b53bfde8f27372c2c928",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png": "368cae36b04f983f537f813173a65737a2ac61f2a5be8ded50ef9fb10f709343",
+				"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png.import": "46f6e40cf896db8ffe325f70396864913c9da593c7726f6bf29344cdcd513b88",
+				"res://art/modules/luoyang_gate_fortification_v1/capture_result.json": "b7799a4009aa071678e73ae7e37c58a0489531b158d0513f7b2d0912cff1c54a",
+				"res://art/modules/luoyang_gate_fortification_v2_a_retry1/capture_result.json": "41815c493b747d55b0b85f52895b71b3f97106b35634a6f4b82586bce649cf25",
+				"res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.png": "523551c6d8c1f4404ee89d7b9012cefb668ee4d3058eece661837df830eda08d",
+				"res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.res": "74c213aeb1a000441d6732d0bfa35aab63cd40a90f64a015175c11947f457cc0",
+				"res://art/modules/luoyang_gate_fortification_v2_a_retry1/source_contract.json": "9376ec24c799e0d272b10cd10db84c6fb3385686b49cddbbdff8baddb512e788",
+				"res://art/modules/luoyang_gate_fortification_v2_a_weathered1/source_contract.json": "7737f72281420b032927d22e3e8a18fe7e9395546d7a80f939bd4c588c0c442f",
+				"res://scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_retry1.gd": "b29b70c6b77bf0938fd711515a96a9100f6655f14468ee9b15dc8c37c1ca01eb",
+				"res://scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_weathered1.gd": "ac207395a18a8094a3822737a51034f16b85126c33e6de0949eb5c8eef6c7031",
+				"res://scripts/dev/capture_luoyang_gate_native_fortification_v1.gd": "65121068df07905dd23cd242f67de94ebf1018a5757123f0f5fd862fb1785a30"
+			},
+			"unchanged": true
+		},
+		"wall": {
+			"asset_id": "luoyang_gate_wall_light_ashlar_straight_v2_a_weathered1",
+			"foot_anchor_px": [
+				328.0,
+				272.3623046875
+			],
+			"foot_uv": [
+				0.5,
+				0.972722516741071
+			],
+			"ground_y_definition": "For candidate ground_y=500, place texture top-left at [world_x-foot_anchor_px.x,500-foot_anchor_px.y]; translate support_polygon_px by the same top-left. Art placement only; not collision/Field approval.",
+			"mesh_path": "res://art/modules/luoyang_gate_fortification_v2_a_weathered1/luoyang_gate_wall_light_ashlar_straight_v2_a_weathered1.res",
+			"mesh_sha256": "1305ffa04e000cd1f7efbf5b73d2d1e38ba630149797c7b3cd73b78fd734f94a",
+			"render_size_px": [
+				656,
+				280
+			],
+			"source_catalog_key": "source_catalog.sha256_by_res_path",
+			"support_polygon_px": [
+				[
+					13.1199951171875,
+					228.3623046875
+				],
+				[
+					642.880004882813,
+					228.3623046875
+				],
+				[
+					642.880004882813,
+					272.3623046875
+				],
+				[
+					13.1199951171875,
+					272.3623046875
+				]
+			],
+			"texture_bytes": 315027,
+			"texture_path": "res://art/modules/luoyang_gate_fortification_v2_a_weathered1/luoyang_gate_wall_light_ashlar_straight_v2_a_weathered1.png",
+			"texture_sha256": "baa0ecf0408769877731e252637d9ef57c21fd00f26c46f1d5e123965fe18cc3"
+		}
+	},
+	"field_or_physics_approved": false,
+	"geometry_and_capture": {
+		"geometry_arrays_byte_identical_to_retry1": true,
+		"minimum_y_support_bounds_m": {
+			"maximum": [
+				2.46000003814697,
+				0.0,
+				0.34375
+			],
+			"minimum": [
+				-2.46000003814697,
+				0.0,
+				-0.34375
+			],
+			"separate_from_full_draw_bounds": true,
+			"used_index_visits": 18
+		},
+		"retry1_source_wall": {
+			"clockwise_faces_match_normals": true,
+			"finite_draw_indices_vertices_normals": true,
+			"maximum_m": [
+				2.5,
+				1.98000001907349,
+				0.361250013113022
+			],
+			"minimum_m": [
+				-2.5,
+				0.0,
+				-0.361250013113022
+			],
+			"surface_count": 2,
+			"surfaces": [
+				{
+					"arrays_sha256": "2aa2e627dd8c04160786d4d4fee9c07602bae72b3c8a638c762ff19e464433b1",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.res::ShaderMaterial_xuicd",
+					"surface": 0,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "7651892cba2ce2df08e74b759df144fb6dcc35dde0cd1a18b4da3281c6d4dde2",
+					"indices": 5016,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.res::ShaderMaterial_owas1",
+					"surface": 1,
+					"vertices": 3344
+				}
+			],
+			"triangles": 1684
+		},
+		"wall": {
+			"clockwise_faces_match_normals": true,
+			"finite_draw_indices_vertices_normals": true,
+			"maximum_m": [
+				2.5,
+				1.98000001907349,
+				0.361250013113022
+			],
+			"minimum_m": [
+				-2.5,
+				0.0,
+				-0.361250013113022
+			],
+			"surface_count": 2,
+			"surfaces": [
+				{
+					"arrays_sha256": "2aa2e627dd8c04160786d4d4fee9c07602bae72b3c8a638c762ff19e464433b1",
+					"indices": 36,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "",
+					"surface": 0,
+					"vertices": 24
+				},
+				{
+					"arrays_sha256": "7651892cba2ce2df08e74b759df144fb6dcc35dde0cd1a18b4da3281c6d4dde2",
+					"indices": 5016,
+					"material_class": "ShaderMaterial",
+					"material_resource_path": "",
+					"surface": 1,
+					"vertices": 3344
+				}
+			],
+			"triangles": 1684
+		},
+		"wall_capture": {
+			"actual_crop_rect_px": [
+				440,
+				673,
+				656,
+				280
+			],
+			"actual_min_y_support_polygon_px": [
+				[
+					13.1199951171875,
+					228.3623046875
+				],
+				[
+					642.880004882813,
+					228.3623046875
+				],
+				[
+					642.880004882813,
+					272.3623046875
+				],
+				[
+					13.1199951171875,
+					272.3623046875
+				]
+			],
+			"actual_used_rect_px": [
+				448,
+				681,
+				640,
+				264
+			],
+			"camera": {
+				"ambient_energy": 0.45,
+				"basis_columns": [
+					[
+						1.0,
+						0.0,
+						0.0
+					],
+					[
+						0.0,
+						0.866025447845459,
+						-0.499999970197678
+					],
+					[
+						0.0,
+						0.499999970197678,
+						0.866025447845459
+					]
+				],
+				"position_m": [
+					0.0,
+					33.5999984741211,
+					55.4256248474121
+				],
+				"projection": "orthogonal",
+				"size_m": 12.0,
+				"sun_energy": 0.85,
+				"sun_euler_degrees": [
+					-55,
+					-34,
+					0
+				]
+			},
+			"crop_size_px": [
+				656,
+				280
+			],
+			"foot_anchor_px": [
+				328.0,
+				272.3623046875
+			],
+			"foot_uv": [
+				0.5,
+				0.972722516741071
+			],
+			"nonzero_alpha_pixels": 158292,
+			"raw_canvas_px": [
+				1536,
+				1536
+			],
+			"same_asset_for_left_and_right_without_flip": false
+		}
+	},
+	"input_changes": [],
+	"inputs_sha256_first": {
+		"res://.godot/imported/rock_01_arm_2k.jpg-24a96ad79bdc1eed19aa5ac280f55f91.ctex": "55b4b4aed87356ead56bf32ec28ca4c39a804714d20e66d6faf2f713851c3d8d",
+		"res://.godot/imported/rock_01_diff_2k.jpg-f2f68f237a523c754af31e1c3ba77bfc.ctex": "a04212a70bc69ce536ccfc6bbd2040e5e7dc6009ca470b0fd181233332d9cace",
+		"res://.godot/imported/rock_01_nor_gl_2k.jpg-656cdf21c38471bc9ec01a3137e07d69.ctex": "3746c1447ae4630267cc397459f7973c33cb1f694d11d9b559cb7d9e8181b5ee",
+		"res://.godot/imported/south_gate.png-a57c7e4ec6c2a449c5bc5c9456ed39b1.ctex": "eb77c86f927daefd9a0e57edfe4f463ffb4ce52be82d86649b118b3735029099",
+		"res://.godot/imported/worn_bluestone_v2.png-cc6a68e14573ac0b0b51e0099de5fb19.ctex": "03bd39241c5f5b4878188e2fb64069257e2850369c711e8a2a87d48788cee6a0",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/SOURCE.json": "33b0d87d8a159028397b6a7a112b66106e5b78d87130d385a26f7471eed5487a",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg": "a954de58336738e6f963466f1453202ef7e186bd6492106c3b989c39f0d2e23c",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg.import": "61c7d4a5938895f7ba6411f0839b71038a3b7930faa49b366311e6fb04bf6003",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg": "fe9013368539b5604602e64bfa48bef1a2a4c452fcb6894868fb556d0b14501c",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg.import": "4226182873b5033a1c756cab335ad5e3bac7f3cad80b2d5cfba7ad68682f8c9b",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg": "70427a2c81f85c0e1ee4a147e273d028c3d0188bad2583f2509d6df9a3d55b89",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg.import": "79e15a58ff6040e7bcc11d44df3ffbc1c8370f9b918e1412563e8b569d889b1c",
+		"res://art/maps/luoyang_modular_v3/source/generation_record.json": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+		"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png": "7e9c7d892f86ced04ad3b8ad293208e05d87a01afffc2729804e4469f87deb7d",
+		"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png.import": "4f9144ae8c4fc6c17427c65647a23e29bfdcdff96752b53bfde8f27372c2c928",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png": "368cae36b04f983f537f813173a65737a2ac61f2a5be8ded50ef9fb10f709343",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png.import": "46f6e40cf896db8ffe325f70396864913c9da593c7726f6bf29344cdcd513b88",
+		"res://art/modules/luoyang_gate_fortification_v1/capture_result.json": "b7799a4009aa071678e73ae7e37c58a0489531b158d0513f7b2d0912cff1c54a",
+		"res://art/modules/luoyang_gate_fortification_v2_a_retry1/capture_result.json": "41815c493b747d55b0b85f52895b71b3f97106b35634a6f4b82586bce649cf25",
+		"res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.png": "523551c6d8c1f4404ee89d7b9012cefb668ee4d3058eece661837df830eda08d",
+		"res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.res": "74c213aeb1a000441d6732d0bfa35aab63cd40a90f64a015175c11947f457cc0",
+		"res://art/modules/luoyang_gate_fortification_v2_a_retry1/source_contract.json": "9376ec24c799e0d272b10cd10db84c6fb3385686b49cddbbdff8baddb512e788",
+		"res://art/modules/luoyang_gate_fortification_v2_a_weathered1/source_contract.json": "7737f72281420b032927d22e3e8a18fe7e9395546d7a80f939bd4c588c0c442f",
+		"res://scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_retry1.gd": "b29b70c6b77bf0938fd711515a96a9100f6655f14468ee9b15dc8c37c1ca01eb",
+		"res://scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_weathered1.gd": "ac207395a18a8094a3822737a51034f16b85126c33e6de0949eb5c8eef6c7031",
+		"res://scripts/dev/capture_luoyang_gate_native_fortification_v1.gd": "65121068df07905dd23cd242f67de94ebf1018a5757123f0f5fd862fb1785a30"
+	},
+	"inputs_sha256_last": {
+		"res://.godot/imported/rock_01_arm_2k.jpg-24a96ad79bdc1eed19aa5ac280f55f91.ctex": "55b4b4aed87356ead56bf32ec28ca4c39a804714d20e66d6faf2f713851c3d8d",
+		"res://.godot/imported/rock_01_diff_2k.jpg-f2f68f237a523c754af31e1c3ba77bfc.ctex": "a04212a70bc69ce536ccfc6bbd2040e5e7dc6009ca470b0fd181233332d9cace",
+		"res://.godot/imported/rock_01_nor_gl_2k.jpg-656cdf21c38471bc9ec01a3137e07d69.ctex": "3746c1447ae4630267cc397459f7973c33cb1f694d11d9b559cb7d9e8181b5ee",
+		"res://.godot/imported/south_gate.png-a57c7e4ec6c2a449c5bc5c9456ed39b1.ctex": "eb77c86f927daefd9a0e57edfe4f463ffb4ce52be82d86649b118b3735029099",
+		"res://.godot/imported/worn_bluestone_v2.png-cc6a68e14573ac0b0b51e0099de5fb19.ctex": "03bd39241c5f5b4878188e2fb64069257e2850369c711e8a2a87d48788cee6a0",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/SOURCE.json": "33b0d87d8a159028397b6a7a112b66106e5b78d87130d385a26f7471eed5487a",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg": "a954de58336738e6f963466f1453202ef7e186bd6492106c3b989c39f0d2e23c",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg.import": "61c7d4a5938895f7ba6411f0839b71038a3b7930faa49b366311e6fb04bf6003",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg": "fe9013368539b5604602e64bfa48bef1a2a4c452fcb6894868fb556d0b14501c",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg.import": "4226182873b5033a1c756cab335ad5e3bac7f3cad80b2d5cfba7ad68682f8c9b",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg": "70427a2c81f85c0e1ee4a147e273d028c3d0188bad2583f2509d6df9a3d55b89",
+		"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg.import": "79e15a58ff6040e7bcc11d44df3ffbc1c8370f9b918e1412563e8b569d889b1c",
+		"res://art/maps/luoyang_modular_v3/source/generation_record.json": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+		"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png": "7e9c7d892f86ced04ad3b8ad293208e05d87a01afffc2729804e4469f87deb7d",
+		"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png.import": "4f9144ae8c4fc6c17427c65647a23e29bfdcdff96752b53bfde8f27372c2c928",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json": "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png": "368cae36b04f983f537f813173a65737a2ac61f2a5be8ded50ef9fb10f709343",
+		"res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png.import": "46f6e40cf896db8ffe325f70396864913c9da593c7726f6bf29344cdcd513b88",
+		"res://art/modules/luoyang_gate_fortification_v1/capture_result.json": "b7799a4009aa071678e73ae7e37c58a0489531b158d0513f7b2d0912cff1c54a",
+		"res://art/modules/luoyang_gate_fortification_v2_a_retry1/capture_result.json": "41815c493b747d55b0b85f52895b71b3f97106b35634a6f4b82586bce649cf25",
+		"res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.png": "523551c6d8c1f4404ee89d7b9012cefb668ee4d3058eece661837df830eda08d",
+		"res://art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.res": "74c213aeb1a000441d6732d0bfa35aab63cd40a90f64a015175c11947f457cc0",
+		"res://art/modules/luoyang_gate_fortification_v2_a_retry1/source_contract.json": "9376ec24c799e0d272b10cd10db84c6fb3385686b49cddbbdff8baddb512e788",
+		"res://art/modules/luoyang_gate_fortification_v2_a_weathered1/source_contract.json": "7737f72281420b032927d22e3e8a18fe7e9395546d7a80f939bd4c588c0c442f",
+		"res://scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_retry1.gd": "b29b70c6b77bf0938fd711515a96a9100f6655f14468ee9b15dc8c37c1ca01eb",
+		"res://scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_weathered1.gd": "ac207395a18a8094a3822737a51034f16b85126c33e6de0949eb5c8eef6c7031",
+		"res://scripts/dev/capture_luoyang_gate_native_fortification_v1.gd": "65121068df07905dd23cd242f67de94ebf1018a5757123f0f5fd862fb1785a30"
+	},
+	"material_revision": {
+		"bitmap_modified_or_stretched": false,
+		"geometry_or_uv_change": false,
+		"per_block_tone_variation": true,
+		"restrained_warm_mineral_variation": true,
+		"source_chroma_and_luminance_used": true,
+		"worn_bluestone_cracks_used": true
+	},
+	"offline_comparison": {
+		"actual_field_screenshot": false,
+		"canvas_px": [
+			1600,
+			720
+		],
+		"purpose": "Clean explanatory art-scale comparison only; A is unscaled and south_gate uses one uniform 800px-wide authored preview scale.",
+		"source_colour_or_bitmap_modified": false,
+		"south_gate_display_size_px": [
+			800.0,
+			533.333312988281
+		],
+		"south_gate_foot_canvas_px": [
+			1128.0,
+			500.0
+		],
+		"south_gate_source": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/south_gate.png",
+		"south_gate_source_foot_px": [
+			768.0,
+			945.0
+		],
+		"south_gate_source_size_px": [
+			1536,
+			1024
+		],
+		"south_gate_top_left_canvas_px": [
+			728.0,
+			7.81253051757813
+		],
+		"south_gate_uniform_scale": 0.520833333333333,
+		"wall_bitmap_scale": [
+			1.0,
+			1.0
+		],
+		"wall_foot_canvas_px": [
+			400.0,
+			500.0
+		],
+		"wall_right_equals_gate_left_px": [
+			728.0,
+			728.0
+		],
+		"wall_top_left_canvas_px": [
+			72.0,
+			227.6376953125
+		]
+	},
+	"outputs": {
+		"res://art/modules/luoyang_gate_fortification_v2_a_weathered1/luoyang_gate_wall_light_ashlar_straight_v2_a_weathered1.png": {
+			"bytes": 315027,
+			"lossless_readback_exact": true,
+			"rgba_sha256": "c699f4d0c855292acd670f23504e211c46350eaee230be2aef612aa463fa7159",
+			"sha256": "baa0ecf0408769877731e252637d9ef57c21fd00f26c46f1d5e123965fe18cc3",
+			"size_px": [
+				656,
+				280
+			]
+		},
+		"res://art/modules/luoyang_gate_fortification_v2_a_weathered1/luoyang_gate_wall_light_ashlar_straight_v2_a_weathered1.res": {
+			"bytes": 125191,
+			"geometry_arrays_byte_identical_to_retry1": true,
+			"resource_dependencies": [
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_diff_2k.jpg",
+				"res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg",
+				"res://art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg"
+			],
+			"revision": "Material-only child of passed retry1; exact two surface arrays/support, new registered rock+worn-bluestone weathering only",
+			"sha256": "1305ffa04e000cd1f7efbf5b73d2d1e38ba630149797c7b3cd73b78fd734f94a"
+		},
+		"res://art/modules/luoyang_gate_fortification_v2_a_weathered1/luoyang_gate_wall_light_ashlar_v2_a_weathered1_vs_south_gate.png": {
+			"bytes": 1001158,
+			"lossless_readback_exact": true,
+			"rgba_sha256": "0735f566f483252ed8093f981717fe6da2e3379ac6a7e7deb5d732e09f7e9a38",
+			"sha256": "b834ef68a59d47fa52321d9ad73e54e167184a09d261bb2732bc9f940473c9bd",
+			"size_px": [
+				1600,
+				720
+			]
+		}
+	},
+	"passed_capture_checks": true,
+	"passed_retry1_parent": {
+		"actual_crop_px": [
+			656,
+			280
+		],
+		"actual_foot_anchor_px": [
+			328.0,
+			272.3623046875
+		],
+		"contract_sha256": "9376ec24c799e0d272b10cd10db84c6fb3385686b49cddbbdff8baddb512e788",
+		"mesh_sha256": "74c213aeb1a000441d6732d0bfa35aab63cd40a90f64a015175c11947f457cc0",
+		"result_sha256": "41815c493b747d55b0b85f52895b71b3f97106b35634a6f4b82586bce649cf25",
+		"script_sha256": "b29b70c6b77bf0938fd711515a96a9100f6655f14468ee9b15dc8c37c1ca01eb",
+		"transparent_png_sha256": "523551c6d8c1f4404ee89d7b9012cefb668ee4d3058eece661837df830eda08d"
+	},
+	"production_or_formal_approved": false,
+	"reason": "",
+	"run_tag": "root04_20261014",
+	"scope": "ONE material-only A comparison candidate; no tower B, runtime publisher, city layout, Field, Physics, portal, bridge, water, NPC, save, audio or formal write",
+	"source_contract": {
+		"approval_boundary": {
+			"field_or_physics_credit": false,
+			"root_visual_review_required": true,
+			"runtime_or_formal_write": false,
+			"tower_B_included": false
+		},
+		"asset_pack": "luoyang_gate_fortification_v2_a_weathered1",
+		"material_revision": {
+			"ai_generation_or_network": false,
+			"bitmap_edit_or_stretch": false,
+			"change": "Use actual registered rock_01 diffuse chroma/luminance together with project-original worn_bluestone_v2 cracks and cool-grey variation. Preserve light-grey average, introduce restrained warm mineral flecks and per-block tone variation, and increase real rock normal participation.",
+			"geometry_or_uv_change": false,
+			"problem": "retry1 discarded source chroma and compressed rock diffuse to a weak 0.13 luma perturbation around a flat tint, producing a uniform cement/block appearance."
+		},
+		"material_sources": {
+			"poly_haven_rock_01": "Existing CC0-1.0 diffuse/normal/ARM and SOURCE.json already registered by the frozen gate art contract.",
+			"worn_bluestone_v2": {
+				"ctex_path": "game/.godot/imported/worn_bluestone_v2.png-cc6a68e14573ac0b0b51e0099de5fb19.ctex",
+				"ctex_sha256": "03BD39241C5F5B4878188E2FB64069257E2850369C711E8A2A87D48788CEE6A0",
+				"import_path": "game/art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png.import",
+				"import_sha256": "4F9144AE8C4FC6C17427C65647A23E29BFDCDFF96752B53BFDE8F27372C2C928",
+				"license_boundary": "Project-original builtin-imagegen texture recorded by the existing generation_record.json; not CC0 and not newly generated or edited.",
+				"path": "game/art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png",
+				"provenance_path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+				"provenance_sha256": "55C9A621FF125B736DB2DA85350A208A08F530E81BEA1D2C11DC165CF76858C5",
+				"sha256": "7E9C7D892F86CED04AD3B8AD293208E05D87A01AFFFC2729804E4469F87DEB7D"
+			}
+		},
+		"passed_geometry_parent": {
+			"actual_crop_px": [
+				656.0,
+				280.0
+			],
+			"actual_foot_anchor_px": [
+				328.0,
+				272.3623046875
+			],
+			"capture_result": "game/art/modules/luoyang_gate_fortification_v2_a_retry1/capture_result.json",
+			"capture_result_sha256": "41815C493B747D55B0B85F52895B71B3F97106B35634A6F4B82586BCE649CF25",
+			"mesh": "game/art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.res",
+			"mesh_sha256": "74C213AEB1A000441D6732D0BFA35AAB63CD40A90F64A015175C11947F457CC0",
+			"script": "game/scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_retry1.gd",
+			"script_sha256": "B29B70C6B77BF0938FD711515A96A9100F6655F14468EE9B15DC8C37C1CA01EB",
+			"source_contract": "game/art/modules/luoyang_gate_fortification_v2_a_retry1/source_contract.json",
+			"source_contract_sha256": "9376EC24C799E0D272B10CD10DB84C6FB3385686B49CDDBBDFF8BADDB512E788",
+			"transparent_png_sha256": "523551C6D8C1F4404EE89D7B9012CEFB668EE4D3058EECE661837DF830EDA08D"
+		},
+		"schema_version": 1.0,
+		"scope": "Final single A material-only comparison candidate. Geometry is byte-identical to passed retry1; no tower B, runtime publication, Field, gameplay or formal write.",
+		"status": "SOURCE_AUTHORED_CAPTURE_PENDING",
+		"unchanged_capture_contract": {
+			"comparison_seam_tolerance_px": 0.01,
+			"crop_height_px_inclusive": [
+				274.0,
+				288.0
+			],
+			"crop_width_px_inclusive": [
+				650.0,
+				662.0
+			],
+			"foot_anchor_distance_from_v1_max_px": 3.0,
+			"required_actual_crop_px": [
+				656.0,
+				280.0
+			],
+			"support_and_draw_bounds": "Exact retry1 support x±2.46/z±0.34375 and draw z±0.3612500131; six courses, chamfers and eleven merlons unchanged.",
+			"wall_bitmap_scale": [
+				1.0,
+				1.0
+			]
+		}
+	},
+	"status": "A_ONLY_WEATHERED1_NATIVE_CANDIDATE_CAPTURED_NOT_FIELD_OR_FORMAL",
+	"visual_review": "PENDING_ROOT_ACTUAL_GPU_READBACK"
+}

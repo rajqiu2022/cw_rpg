@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch4_zhao_autopsy"
+display_name = "赵思颖的复验结论"
+speaker_npc_id = &"npc_zhao_siying"
+statement = "赵思颖确认旧案至少一名死者的死亡时刻被改写，并指出眼下命案的药粉是近三日新配，不能仅凭毒性归罪烈云盟。"
+chapter = 4
+initial_credibility = 85
+related_evidence_ids = Array[StringName]([&"ev_ch4_forged_death_time", &"ev_ch4_recent_compound_powder"])
+contradicts_testimony_ids = Array[StringName]([])

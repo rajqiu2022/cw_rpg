@@ -1,0 +1,352 @@
+extends SceneTree
+## NEW three-field acceptance entry. No v14 implementation/tests inheritance.
+## Owner manifest is required; this WIP never treats missing resources or
+## preflight-only success as ordinary Field/gameplay/GPU acceptance.
+const RAW := preload("res://tests/helpers/v15_field_raw_oracle.gd")
+const INPUT := preload("res://tests/helpers/v15_input_driver.gd")
+const ALPHA := preload("res://tests/helpers/v15_geometry_oracle.gd")
+const ENCOUNTER_PROBE := preload("res://tests/helpers/v15_outskirts_encounter_probe.gd")
+const FIELD_PROBE := preload("res://tests/helpers/v15_outskirts_field_probe.gd")
+const MATERIAL_PROBE := preload("res://tests/helpers/v15_outskirts_material_probe.gd")
+const FIELD_IDS := {"bamboo": "openworld_v15_bamboo_outskirts", "forest": "openworld_v15_forest_outskirts", "marsh": "openworld_v15_marsh_outskirts"}
+const SOURCE_ENTRIES := {"bamboo": {"id": "linxi_village_scrollmap", "pos": Vector2(.55, .53)}, "forest": {"id": "openworld_xiangzhou_mine_valley", "pos": Vector2(.80, .62)}, "marsh": {"id": "openworld_jinling_reed_marsh", "pos": Vector2(.72, .58)}}
+const PHASES := ["preflight", "field", "links", "full"]
+var checks := 0
+var failures := 0
+var requested_phase := "preflight"
+var manifest_path := ""
+var output := ""
+var before_files: Dictionary
+var after_files: Dictionary
+var original_slot := -1
+var catalog: Dictionary
+var entries: Array[Dictionary] = []
+var owned_oracles: Dictionary = {}
+var evidence: Array[Dictionary] = []
+var runtime_started := false
+var actual_inputs := 0
+var actual_battle_returns := 0
+var screenshots: Array[Dictionary] = []
+var input_driver: RefCounted
+var field_probe: RefCounted
+var encounter_probe: RefCounted
+var material_probe: RefCounted
+var prior_navigation: Dictionary
+var phase_records: Array[Dictionary] = []
+var isolated_slots: Node
+
+func _initialize() -> void:
+	call_deferred("_run")
+
+func _check(ok: bool, label: String) -> void:
+	checks += 1
+	if not ok:
+		failures += 1
+		push_error("[V15 outskirts FAIL] " + label)
+
+func _run() -> void:
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--qa-phase="): requested_phase = argument.trim_prefix("--qa-phase=")
+		elif argument.begins_with("--field-manifest="): manifest_path = argument.trim_prefix("--field-manifest=")
+	_check(requested_phase in PHASES, "explicit known three-field phase; no automatic full loop")
+	_check(manifest_path.is_empty(), "owner three exact art_contract files directly bound; unknown aggregate manifest is not fabricated")
+	_check(DisplayServer.get_name() == "headless" or "--qa-gpu-approved" in OS.get_cmdline_user_args(), "actual GPU requires producer's explicit serial window")
+	output = "res://build/world_map_v15_outskirts_qa/run_%d/" % Time.get_ticks_usec()
+	_check(DirAccess.make_dir_recursive_absolute(ProjectSettings.globalize_path(output)) == OK, "new non-overwriting evidence directory")
+	before_files = _snapshot_normal_files()
+	original_slot = int(root.get_node("SaveManager").get("active_slot"))
+	if failures > 0:
+		await _finish()
+		return
+	var rows: Array[Dictionary] = []
+	for ecology: String in FIELD_IDS:
+		var art_path: String = "res://art/maps/world_map_v15_outskirts/%s/art_contract.json" % ecology
+		var data: Dictionary = _read_object(art_path)
+		_check(int(data.get("schema_version", 0)) == 1 and data.get("status") in ["ART_CANDIDATE_REQUIRES_FIELD_VISUAL_QA", "APPROVED_LOCAL_FIELD"], "actual source contract ready for honest candidate QA; authoring/partial refused")
+		_check(data.get("scene_id") == FIELD_IDS[ecology] and _point(data.get("logical_size_px")) == Vector2(1536, 1024), "actual each owner field schema identity/native size")
+		_check(data.get("pixel_sampling") == "round_world_pixel" and float(data.get("physical_navigation_margin_px", -1)) == 0, "explicit actual native pixel/margin contract, never applied to legacy ordinary scenes")
+		var hashes: Variant = data.get("asset_sha256")
+		_check(hashes is Dictionary and not hashes.is_empty(), "actual source assets are bound by captured hashes")
+		if hashes is Dictionary:
+			for asset: String in hashes:
+				_check(String(hashes[asset]).length() == 64 and FileAccess.file_exists(asset) and FileAccess.get_sha256(asset).to_lower() == String(hashes[asset]).to_lower(), "actual original asset current bytes equal captured source: " + asset)
+		rows.append({"ecology": ecology, "scene_id": FIELD_IDS[ecology], "scene_path": "res://data/scenes/%s.tres" % FIELD_IDS[ecology], "art": data, "art_path": art_path, "source_scene_id": SOURCE_ENTRIES[ecology].id, "source_pos": SOURCE_ENTRIES[ecology].pos})
+	if failures > 0:
+		await _finish()
+		return
+	var names: Dictionary = {}
+	var bases: Dictionary = {}
+	var layouts: Dictionary = {}
+	var topology_fingerprints: Dictionary = {}
+	for row: Variant in rows:
+		_check(row is Dictionary, "field entry is typed object")
+		if not row is Dictionary: continue
+		var entry: Dictionary = row
+		var ecology: String = entry.get("ecology", "")
+		var id: String = entry.get("scene_id", "")
+		var path: String = entry.get("scene_path", "")
+		_check(FIELD_IDS.has(ecology) and not names.has(ecology), "distinct real bamboo/forest/marsh, no invented desert license")
+		_check(id == FIELD_IDS.get(ecology, "INVALID") and path == "res://data/scenes/%s.tres" % id, "exact new owner ordinary scene resource, not old v14 replacement")
+		_check(ResourceLoader.exists(path), "new actual scene resource exists: " + path)
+		names[ecology] = true
+		if not ResourceLoader.exists(path): continue
+		var definition: SceneScript = load(path) as SceneScript
+		_check(definition != null and String(definition.scene_id) == id and definition.map_layout != null, "actual source Field SceneScript and independent layout")
+		if definition == null or definition.map_layout == null: continue
+		_check(not layouts.has(definition.map_layout.resource_path) and not definition.map_layout.resource_path.is_empty(), "three original layouts are actual different resources")
+		_check(definition.map_layout.resource_path == "res://data/maps/%s_layout_v1.tres" % id and definition.map_layout.design_size == Vector2i(1536, 1024), "actual published ordinary layout matches measured new 1536x1024 source canvas")
+		layouts[definition.map_layout.resource_path] = true
+		var bg: String = definition.background_path
+		_check(not bg.is_empty() and "v15" in bg and FileAccess.file_exists(bg), "field owns a new actual original ground base")
+		var image: Image = Image.load_from_file(bg) if FileAccess.file_exists(bg) else null
+		_check(image != null and not image.is_empty(), "new ground PNG independently decodes")
+		var raw_sha: String = FileAccess.get_sha256(bg) if FileAccess.file_exists(bg) else ""
+		_check(not raw_sha.is_empty() and not bases.has(raw_sha), "three ground bases differ in actual bytes, not labels")
+		bases[raw_sha] = true
+		var expected_layout: Resource = _independent_layout(definition.map_layout, entry.art)
+		var oracle: RefCounted = RAW.new()
+		_check(bool(oracle.call("configure", expected_layout, String(entry.art.pixel_sampling), float(entry.art.physical_navigation_margin_px))), "complete original raw navigation and physical source: " + str(oracle.get("errors")))
+		_check(bool(oracle.call("clear", _point(entry.art.get("return_foot_px")))), "source measured ordinary-field spawn has full17 original source clearance")
+		owned_oracles[id] = oracle
+		var native_walk: String = "res://art/maps/world_map_v15_outskirts/%s/walk.png" % ecology
+		_check(definition.map_layout.walkable_mask_path == native_walk and definition.map_layout.walkable_mask_tiles.is_empty(), "ordinary navigation directly binds original own new native walk PNG")
+		var physical_distribution: Array[Dictionary] = []
+		for object: Dictionary in entry.art.get("objects", []): physical_distribution.append({"foot": object.get("world_foot_px"), "size": object.get("render_size_px"), "blocking": object.get("blocking"), "physical_center": object.get("physical_center_px"), "physical_size": object.get("collision_size_px")})
+		var route_shapes: Array = []
+		for route: Dictionary in entry.art.get("routes", []): route_shapes.append(route.get("points_px"))
+		var shape: Dictionary = {"raw_navigation_sha256": FileAccess.get_sha256(native_walk) if FileAccess.file_exists(native_walk) else "MISSING", "land_sha256": FileAccess.get_sha256(entry.art.get("land_path", "")), "routes": route_shapes, "independent_physical_distribution": physical_distribution}
+		# This falsifies copied topology, not an aesthetic/ecology verdict. Scene
+		# IDs/background filenames are deliberately excluded from the fingerprint.
+		var shape_sha: String = JSON.stringify(shape).sha256_text()
+		_check(not topology_fingerprints.has(shape_sha), "actual navigation/road/physical-object distribution is independently different, not only background bytes")
+		topology_fingerprints[shape_sha] = true
+		entry["actual_scene"] = definition
+		entries.append(entry)
+		evidence.append({"scene_id": id, "ecology": ecology, "scene_path": path, "scene_sha256": FileAccess.get_sha256(path), "layout_path": definition.map_layout.resource_path, "layout_sha256": FileAccess.get_sha256(definition.map_layout.resource_path), "ground_path": bg, "ground_sha256": raw_sha, "ground_size": [image.get_width(), image.get_height()] if image != null else [], "topology_layout_fingerprint": shape_sha, "topology_fingerprint_is_not_ecology_visual_approval": true})
+	_check(entries.size() == 3 and bases.size() == 3 and layouts.size() == 3, "all three actual independent grounds/layouts are present")
+	if requested_phase != "preflight" and failures == 0:
+		_check("--outskirts-candidate-preview" in OS.get_cmdline_user_args(), "unadopted ordinary source entrances require explicit candidate preview, not a formal write")
+		if failures == 0: await _runtime_phase()
+	if requested_phase == "full":
+		_check(false, "SOURCE_WIP complete world v15 attachment/64 source authority not in this three-local-field scope")
+	await _finish()
+
+func _point(value: Variant) -> Vector2:
+	if value is Vector2: return value
+	if value is Array and value.size() == 2: return Vector2(float(value[0]), float(value[1]))
+	return Vector2(INF, INF)
+
+func _independent_layout(original: Resource, data: Dictionary) -> Resource:
+	var layout: Resource = original.duplicate(true)
+	var objects: Array[Dictionary] = []
+	for object: Dictionary in data.get("objects", []):
+		var foot: Vector2 = _point(object.get("world_foot_px"))
+		var extent: Vector2 = _point(object.get("render_size_px"))
+		var uv: Vector2 = _point(object.get("foot_uv"))
+		var center: Vector2 = foot - (uv - Vector2(.5, .5)) * extent
+		_check(foot.is_finite() and extent.is_finite() and uv.is_finite() and extent.x > 0 and extent.y > 0, "independent original sourcebody has finite actual foot/size/UV")
+		var entry: Dictionary = {"id": object.get("id"), "pos": center / Vector2(1536, 1024), "render_size_px": extent}
+		if bool(object.get("blocking", false)):
+			entry["collision_size"] = _point(object.get("collision_size_px")) / Vector2(1536, 1024)
+			entry["collision_offset"] = (_point(object.get("physical_center_px")) - center) / Vector2(1536, 1024)
+		objects.append(entry)
+	layout.set("visual_objects", objects)
+	return layout
+
+func _runtime_phase() -> void:
+	var router: Node = root.get_node("SceneRouter")
+	var state: Node = root.get_node("GameState")
+	# Managed public new-game fixture avoids cold12->formal14 cleanup migration;
+	# none of these calls writes a player slot or changes authored enemies.
+	router.call("reset_for_new_game")
+	prior_navigation = router.call("get_navigation_state")
+	state.call("reset_for_new_game")
+	root.get_node("Inventory").call("reset_for_new_game")
+	root.get_node("QuestManager").call("reset_for_new_game")
+	var stats: Resource = state.get("player") as Resource
+	_check(stats != null, "ordinary encounter uses actual legal player stats fixture")
+	if stats == null: return
+	stats.call("gain_exp", 250)
+	stats.set("hp", stats.get("max_hp"))
+	# Lazy actual SaveManager subclass compilation occurs after autoloads exist.
+	# Only its path methods/atomic guard differ from production SaveManager.
+	var slots_script: Script = load("res://tests/helpers/v15_isolated_save_manager.gd") as Script
+	_check(slots_script != null and slots_script.can_instantiate(), "actual owned SaveManager dependency compiles after registered autoloads")
+	if slots_script == null or not slots_script.can_instantiate(): return
+	isolated_slots = slots_script.new() as Node
+	root.add_child(isolated_slots)
+	_check(bool(isolated_slots.call("configure_directory", "user://world_map_v15_qa/outskirts_%d" % Time.get_ticks_usec())), "all actual save/load I/O confined to fresh owned user directory")
+	input_driver = INPUT.new()
+	input_driver.call("configure", self)
+	field_probe = FIELD_PROBE.new()
+	field_probe.call("configure", self, input_driver, _check, _wait_field, _normal_intro, _capture)
+	runtime_started = true
+	for entry: Dictionary in entries:
+		var actual: Dictionary = await field_probe.call("run", entry)
+		phase_records.append(actual)
+		for route: Dictionary in actual.get("routes", []):
+			for driven: Dictionary in (route.get("actual", {}) as Dictionary).get("segments", []): actual_inputs += int(driven.get("physics_samples", 0))
+		_check(_write_checked(String(entry.ecology) + "_ordinary_field.json", actual), "actual loop/negatives/current-alpha evidence checked persistence")
+		var live_definition: Variant = current_scene.get("_current_scene") if is_instance_valid(current_scene) else null
+		if live_definition is SceneScript and live_definition.scene_id == StringName(entry.scene_id):
+			var saved_navigation: Dictionary = router.call("get_navigation_state")
+			_check(bool(isolated_slots.call("save_to_slot", 0)), "actual ordinary scenery navigation saves only to owned slot")
+			_check(bool(isolated_slots.call("load_from_slot", 0)), "actual inherited normal SaveManager loads owned ordinary-field save")
+			var restored: Dictionary = router.call("get_navigation_state")
+			_check(restored.get("current_field_id") == saved_navigation.get("current_field_id") and _point(restored.get("current_field_spawn")).distance_to(_point(saved_navigation.get("current_field_spawn"))) < .00001 and restored.get("world_map_version") == saved_navigation.get("world_map_version"), "owned actual load preserves ordinary field/spawn and source world-side version")
+		if requested_phase in ["links", "full"]:
+			var links: Dictionary = await field_probe.call("run_links", entry)
+			phase_records.append(links)
+			actual_inputs += (links.get("cases", []) as Array).size() * 2
+			_check(_write_checked(String(entry.ecology) + "_source_roundtrip.json", links), "actual Space/mouse source-return records checked persistence")
+			material_probe = MATERIAL_PROBE.new()
+			material_probe.call("configure", self, input_driver, field_probe, isolated_slots, _check, _wait_field, _normal_intro, _capture)
+			var materials: Dictionary = await material_probe.call("run", entry)
+			phase_records.append(materials)
+			for driven: Dictionary in (materials.get("movement", {}) as Dictionary).get("segments", []): actual_inputs += int(driven.get("physics_samples", 0))
+			_check(_write_checked(String(entry.ecology) + "_material_once_only.json", materials), "normal entity/material/capacity/public replay/real isolated-load evidence persisted")
+			material_probe.call("release")
+			material_probe = null
+	# Load a fresh authored bamboo fixture: chance/distance/enemies unmodified.
+	var bamboo: Dictionary = entries[0]
+	for entry: Dictionary in entries:
+		if entry.ecology == "bamboo": bamboo = entry
+	router.call("go_field_smart", StringName(bamboo.scene_id), _point(bamboo.art.return_foot_px) / Vector2(1536, 1024))
+	if await _wait_field(StringName(bamboo.scene_id)) and await _normal_intro() and bool(field_probe.call("bind_current", StringName(bamboo.scene_id))):
+		var route := PackedVector2Array()
+		for point: Variant in bamboo.art.routes[0].points_px: route.append(_point(point))
+		encounter_probe = ENCOUNTER_PROBE.new()
+		encounter_probe.call("configure", self, input_driver, _check, Callable(owned_oracles[bamboo.scene_id], "clear"), Callable(owned_oracles[bamboo.scene_id], "segment"), _wait_field, _normal_intro)
+		var battle: Dictionary = await encounter_probe.call("run", current_scene, route, 151003)
+		if bool(battle.get("returned", false)): actual_battle_returns += 1
+		_check(_write_checked("bamboo_natural_encounter.json", battle), "normal natural Encounter/victory/rewards/exact-return evidence persisted")
+		await _capture("bamboo_after_real_victory")
+		encounter_probe.call("release")
+		encounter_probe = null
+	_check(actual_battle_returns >= 1, "at least one ordinary distance/chance Encounter genuinely wins/rewards/resumes original feet")
+
+func _wait_field(id: StringName) -> bool:
+	var deadline: int = Time.get_ticks_msec() + 30000
+	while Time.get_ticks_msec() < deadline:
+		await process_frame
+		if bool(root.get_node("LoadingManager").get("_transition_active")) or not is_instance_valid(current_scene): continue
+		var definition: Variant = current_scene.get("_current_scene")
+		if definition is SceneScript and definition.scene_id == id and current_scene.get("_player") is Node2D:
+			for settle in 6: await physics_frame
+			await input_driver.call("completed_actor_stage")
+			return true
+	_check(false, "actual normal Field transition reaches exact identity: " + String(id))
+	return false
+
+func _normal_intro() -> bool:
+	var dialog: Node = root.get_node("DialogPlayer")
+	for step in 80:
+		if not bool(dialog.call("is_playing")): return true
+		var node: Resource = dialog.get("_current_node") as Resource
+		if node != null and not (node.get("choices") as Array).is_empty(): dialog.call("choose", 0)
+		else: dialog.call("advance")
+		for settle in 4: await process_frame
+	_check(false, "authored ordinary introduction completes, not suppressed")
+	return false
+
+func _capture(label: String) -> void:
+	if DisplayServer.get_name() == "headless": return
+	_check("--qa-gpu-approved" in OS.get_cmdline_user_args(), "actual screenshot uses serial approved GPU window")
+	await process_frame
+	await RenderingServer.frame_post_draw
+	var image: Image = root.get_texture().get_image()
+	var path: String = output + label + ".png"
+	_check(image != null and image.get_size() == Vector2i(1920, 1080), "actual GPU screenshot is full1920x1080, not synthetic preview")
+	if image == null: return
+	_check(not FileAccess.file_exists(path) and image.save_png(path) == OK, "actual raw screenshot saved to unique evidence path")
+	screenshots.append({"path": path, "sha256": FileAccess.get_sha256(path), "visual_verdict": "ROOT_REVIEW_REQUIRED"})
+
+func _read_object(path: String) -> Dictionary:
+	_check(FileAccess.file_exists(path), "actual source JSON exists: " + path)
+	var raw: Variant = JSON.parse_string(FileAccess.get_file_as_string(path)) if FileAccess.file_exists(path) else null
+	_check(raw is Dictionary, "actual source JSON parses as object")
+	return raw as Dictionary if raw is Dictionary else {}
+
+func _snapshot_normal_files() -> Dictionary:
+	# Fresh at actual process startup, never historical fixed six-file hashes.
+	# A concurrent player's save is reported as an observed change, not falsely
+	# blamed on QA or hidden as unchanged. This test does not call normal saves.
+	var paths: Dictionary = {}
+	var directory: DirAccess = DirAccess.open("user://")
+	_check(directory != null, "normal player directory can be read without any writes")
+	if directory != null:
+		for name: String in directory.get_files():
+			if name.begins_with("save"):
+				var path: String = "user://" + name
+				paths[path] = {"sha256": FileAccess.get_sha256(path), "mtime_unix": FileAccess.get_modified_time(path)}
+	return {"observed_utc": Time.get_datetime_string_from_system(true), "unix": Time.get_unix_time_from_system(), "files": paths}
+
+func _write_checked(name: String, value: Dictionary) -> bool:
+	var path: String = output + name
+	var file: FileAccess = FileAccess.open(path, FileAccess.WRITE)
+	if file == null: return false
+	file.store_string(JSON.stringify(value, "\t"))
+	file.flush()
+	var error: Error = file.get_error()
+	file.close()
+	file = null
+	return error == OK and JSON.parse_string(FileAccess.get_file_as_string(path)) == JSON.parse_string(JSON.stringify(value))
+
+func _finish() -> void:
+	if material_probe != null: material_probe.call("release")
+	material_probe = null
+	if encounter_probe != null: encounter_probe.call("release")
+	encounter_probe = null
+	if field_probe != null: field_probe.call("release")
+	field_probe = null
+	if input_driver != null: input_driver.call("release")
+	input_driver = null
+	if is_instance_valid(isolated_slots):
+		var slot_reference: WeakRef = weakref(isolated_slots)
+		isolated_slots.queue_free()
+		isolated_slots = null
+		for settle in 4: await process_frame
+		_check(slot_reference.get_ref() == null, "actual owned SaveManager released without touching autoload manager")
+	if runtime_started:
+		if is_instance_valid(current_scene):
+			var owned: Node = current_scene
+			var reference: WeakRef = weakref(owned)
+			current_scene = null
+			owned.queue_free()
+			owned = null
+			for settle in 8: await process_frame
+			_check(reference.get_ref() == null, "actual owned ordinary Field/actors released by normal lifecycle")
+		root.get_node("SceneRouter").call("restore_navigation_state", prior_navigation)
+		_check(root.get_node("SceneRouter").call("get_navigation_state") == prior_navigation, "managed ordinary navigation restored without slot I/O")
+		var audio: Node = root.get_node("AudioManager")
+		for operation: String in ["stop_music_sting", "stop_all_sfx", "stop_dialog_audio"]: audio.call(operation)
+		audio.call("stop_bgm", 0.0)
+		audio.call("stop_ambience", 0.0)
+		await create_timer(.20).timeout
+		for settle in 8: await process_frame
+		# Process-exit ownership only; running gameplay cursors were untouched.
+		var cursors: Node = root.get_node_or_null("CursorManager")
+		if cursors != null:
+			var cursor_references: Array[WeakRef] = []
+			for property: String in ["_arrow", "_hand", "_wait"]:
+				var texture: Texture2D = cursors.get(property) as Texture2D
+				if texture != null: cursor_references.append(weakref(texture))
+				texture = null
+			for shape: int in [Input.CURSOR_ARROW, Input.CURSOR_POINTING_HAND, Input.CURSOR_WAIT]: Input.set_custom_mouse_cursor(null, shape)
+			for property: String in ["_arrow", "_hand", "_wait"]: cursors.set(property, null)
+			for settle in 8: await process_frame
+			for reference: WeakRef in cursor_references: _check(reference.get_ref() == null, "process-exit cursor ownership actually releases imported texture")
+	for oracle: RefCounted in owned_oracles.values():
+		_check(bool(oracle.call("verify_sources")), "actual source PNG SHA unchanged throughout phase")
+		oracle.call("release")
+	owned_oracles.clear()
+	for entry: Dictionary in entries: entry.erase("actual_scene")
+	entries.clear()
+	after_files = _snapshot_normal_files()
+	var unchanged: bool = before_files.get("files", {}) == after_files.get("files", {})
+	_check(unchanged, "fresh normal player save SHA+mtime unchanged; concurrent change must remain explicit evidence")
+	_check(int(root.get_node("SaveManager").get("active_slot")) == original_slot, "normal active slot not changed by test")
+	var result: Dictionary = {"schema": 1, "scope": "V15_OUTSKIRTS_PREFLIGHT_ONLY" if requested_phase == "preflight" else "V15_OUTSKIRTS_LIMITED_" + requested_phase.to_upper(), "requested_phase": requested_phase, "source_complete": false, "checks": checks + 1, "failures": failures, "ordinary_Field_executed": runtime_started, "actual_input_count": actual_inputs, "actual_battle_returns": actual_battle_returns, "GPU_screenshots": screenshots, "before_normal_saves": before_files, "after_normal_saves": after_files, "player_saves_unchanged": unchanged, "concurrent_player_updates_not_attributed_to_QA": true, "resources": evidence, "phase_records": phase_records, "executing_script_path": get_script().resource_path, "executing_script_sha256": FileAccess.get_sha256(get_script().resource_path)}
+	_check(_write_checked("result.json", result), "checked honest WIP/preflight result persistence")
+	print("V15_OUTSKIRTS_%s: %d checks / %d failures; NO FULL ACCEPTANCE; output=%s" % [requested_phase.to_upper(), checks, failures, output])
+	quit(0 if failures == 0 else 1)

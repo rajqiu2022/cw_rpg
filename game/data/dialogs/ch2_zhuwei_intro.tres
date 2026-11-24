@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"return_to_main_street"
+text = "[i]天刚亮，竹尾河滩新贴了三张寻人启事，落款都是凌月派。冷孤云拿着废宅密令，去问守村人这里可曾过了一辆货车。[/i]"
+add_evidence = Array[StringName]([&"ev_ch2_missing_notices"])
+on_end = "next:cart_lead"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"cart_lead"
+speaker = "守村人"
+text = "大清早倒是有辆炭车出了村，药铺掌柜和货郎都见过。正巧，凌月派又来报失踪，有人说人进了北林，也有人看见车上挂着她们的白布。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="n3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "冷孤云"
+text = "先把各人的话分开记。谁都可能只看见一角，也可能故意漏掉一角。"
+accept_quest = &"q_ch2_main_01_investigate"
+set_flags = Array[Dictionary]([{"key": "chapter2_started", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_zhuwei_intro"
+required_story_flag = &"chapter1_complete"
+blocked_story_flag = &"chapter2_complete"
+entry_node_id = &"return_to_main_street"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2"), SubResource("n3")])

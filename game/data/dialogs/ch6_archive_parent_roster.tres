@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "原始底册记着：冷氏夫妇负责辨路与救治，幼子在白水驿前交给同行者照看。去向栏整条被裁走，只剩压纸线和半个“同”字。"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "我不是在路上失散的。有人接走了我，又有人把名字裁掉。师父改的是后来的说法，不是这份原册。"
+add_evidence = Array[StringName]([&"ev_ch6_parent_convoy_roster"])
+set_flags = Array[Dictionary]([{"key":"ch6_archive_roster_found", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_archive_parent_roster"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero")])

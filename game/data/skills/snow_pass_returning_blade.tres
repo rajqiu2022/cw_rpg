@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"snow_pass_returning_blade"
+display_name = "断雪回锋"
+icon_path = "res://art/ui/skill/icons_semantic_v2/icon_skill_blade_snow_pass_returning_v1.png"
+description = "迎刃先让半尺，借雪势折腕回斩。单体外功，命中后有六成概率造成三回合流血。"
+origin = "古峰雪岭守路人代代相传的回身刀。早年用于窄道护送驮队：先让开正锋，再借冰坡落势回切追敌。矿道幸存者只记得其中半式，后来由冷孤云在雪岭实战中补全。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 18
+quality = 3
+fixed_damage = 28
+attack_scaling = 128
+effect_value = 0
+hit_count = 1
+animation_id = &"snow_pass_returning_blade"
+motion_style = 2
+required_weapon_type = &"blade"
+martial_category = &"blade"
+damage_type = 0
+base_hit_chance = 0.94
+school = "gufeng"
+inflicted_status = &"bleed"
+status_chance = 0.60
+status_duration = 3
+self_practice_level_cap = 9
+breakthrough_quest = &"q_ch5_side_02_patrol_blades"
+breakthrough_hint = "古峰护粮营的守卫熟悉雪路暗哨。若能沿途拆过三处刀阵，回营复盘，便知冰坡上最后半步该让给谁。"

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "老纸匠"
+text = "既找到了干藤皮和木模，就先回左明远那里报个信。东西交到纸铺，我便替他赶制藤纸。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_paper_ready"
+entry_node_id = &"start"
+required_story_flag = &"luoyang_paper_materials_found"
+blocked_story_flag = &"luoyang_paper_helped"
+nodes = Array[Resource]([SubResource("start")])
+

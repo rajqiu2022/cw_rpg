@@ -1,15 +1,20 @@
-[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
 [ext_resource type="Resource" path="res://data/maps/linxi_tutorial_layout_v2.tres" id="2_map"]
+[ext_resource type="Resource" path="res://data/dialogs/ch6_return_intro.tres" id="3_ch6_intro"]
 
 [resource]
 script = ExtResource("1_scn")
 scene_id = &"linxi_tutorial"
-display_name = "林西村 · 新手关"
+display_name = "林西村 · 师徒院落"
 background_path = "res://art/backgrounds/bg_linxi_tutorial_gatefree_v1.png"
-bgm_path = "res://art/audio/bgm/bgm_calm.wav"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+on_enter_dialog = ExtResource("3_ch6_intro")
+on_enter_require_flag = &"chapter5_complete"
+on_enter_once_flag = &"seen_ch6_return_intro"
 is_walkable = true
+is_settlement = true
 map_layout = ExtResource("2_map")
 player_spawn = Vector2(0.500, 0.680)
 hotspots = []
@@ -36,8 +41,15 @@ npcs = [
   "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
   "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
   "dialog_id": "ch1_tutorial_xingfantian_idle",
+  "dialog_variants": [
+    {"dialog_id":"ch6_master_after_choice", "require_flags":["ch6_master_choice_made"]},
+    {"dialog_id":"ch6_master_confrontation", "require_quest_completed":"q_ch6_main_04_old_convoy_route", "hide_flags":["ch6_master_choice_made"]},
+    {"dialog_id":"ch6_master_after_records", "require_flags":["ch6_archive_records_secured"]},
+    {"dialog_id":"ch6_master_return_followup", "require_flags":["chapter5_complete"]},
+  ],
   "scale": 1.10,
   "require_flag": "master_farewell_done",
+  "hide_flag": "defeated_thug_lone",
 },
 {
   "npc_id": "duqingshan",
@@ -45,6 +57,12 @@ npcs = [
   "pos": Vector2(0.860, 0.400),
   "portrait_path": "res://art/characters/portrait_duqingshan_steady.png",
   "sprite_path": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+  "conversation_sprite_paths": {
+    "down": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+    "up": "res://art/characters/npc_duqingshan_v3_idle_up_25d_4f.png",
+    "left": "res://art/characters/npc_duqingshan_v3_idle_right_25d_4f.png",
+    "right": "res://art/characters/npc_duqingshan_v3_idle_left_25d_4f.png",
+  },
   "dialog_id": "ch1_tutorial_duqingshan_idle",
   "scale": 1.10,
   "hide_flag": "master_farewell_done",
@@ -55,6 +73,12 @@ npcs = [
   "pos": Vector2(0.860, 0.400),
   "portrait_path": "res://art/characters/portrait_duqingshan_steady.png",
   "sprite_path": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+  "conversation_sprite_paths": {
+    "down": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+    "up": "res://art/characters/npc_duqingshan_v3_idle_up_25d_4f.png",
+    "left": "res://art/characters/npc_duqingshan_v3_idle_right_25d_4f.png",
+    "right": "res://art/characters/npc_duqingshan_v3_idle_left_25d_4f.png",
+  },
   "dialog_id": "ch1_tutorial_duqingshan",
   "scale": 1.10,
   "require_flag": "master_farewell_done",
@@ -66,6 +90,12 @@ npcs = [
   "pos": Vector2(0.860, 0.400),
   "portrait_path": "res://art/characters/portrait_duqingshan_steady.png",
   "sprite_path": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+  "conversation_sprite_paths": {
+    "down": "res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png",
+    "up": "res://art/characters/npc_duqingshan_v3_idle_up_25d_4f.png",
+    "left": "res://art/characters/npc_duqingshan_v3_idle_right_25d_4f.png",
+    "right": "res://art/characters/npc_duqingshan_v3_idle_left_25d_4f.png",
+  },
   "dialog_id": "ch1_tutorial_duqingshan_after_sword",
   "scale": 1.10,
   "require_flag": "got_sword",
@@ -80,18 +110,117 @@ npcs = [
   "scale": 1.10,
   "require_flag": "defeated_thug_lone",
   "hide_flag": "master_training_done",
+},
+{
+  "npc_id": "xingfantian_after_training",
+  "npc_name": "刑樊天",
+  "pos": Vector2(0.250, 0.340),
+  "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "dialog_id": "ch1_tutorial_xingfantian_idle",
+  "scale": 1.10,
+  "require_flag": "master_training_done",
+  "hide_flag": "ch8_linxi_final_return_open",
+},
+{
+  "npc_id": "xingfantian_epilogue",
+  "npc_name": "刑樊天",
+  "pos": Vector2(0.250, 0.340),
+  "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "dialog_id": "ch8_linxi_final_return",
+  "scale": 1.10,
+  "require_flag": "ch8_linxi_final_return_open",
+  "require_quest_active": "q_ch8_main_13_aftermath_returns",
+  "hide_flag": "ch8_aftermath_returns_done",
+},
+{
+  "npc_id": "xingfantian_final_unready",
+  "npc_name": "刑樊天",
+  "pos": Vector2(0.250, 0.340),
+  "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "dialog_id": "ch8_master_breakthrough_unready",
+  "scale": 1.10,
+  "require_flag": "chapter8_complete",
+  "hide_flag": "guyun_recollection_available",
+},
+{
+  "npc_id": "xingfantian_guyun_recollection",
+  "npc_name": "刑樊天",
+  "pos": Vector2(0.250, 0.340),
+  "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "dialog_id": "ch8_guyun_recollection",
+  "scale": 1.10,
+  "require_flag": "guyun_recollection_available",
+  "hide_flag": "guyun_master_book_unlocked",
+},
+{
+  "npc_id": "xingfantian_guyun_waiting",
+  "npc_name": "刑樊天",
+  "pos": Vector2(0.250, 0.340),
+  "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "dialog_id": "ch8_guyun_master_waiting",
+  "scale": 1.10,
+  "require_flag": "guyun_master_book_unlocked",
+  "hide_flag": "guyun_master_book_read",
+},
+{
+  "npc_id": "feng_yanqiu_recollection",
+  "npc_name": "封砚秋",
+  "pos": Vector2(0.420, 0.365),
+  "portrait_path": "res://art/characters/portraits/portrait_feng_yanqiu_v1.png",
+  "sprite_path": "res://art/characters/portraits/portrait_feng_yanqiu_v1.png",
+  "dialog_id": "ch8_guyun_recollection",
+  "scale": 0.085,
+  "require_flag": "guyun_recollection_available",
+  "hide_flag": "guyun_master_book_unlocked",
+},
+{
+  "npc_id": "feng_yanqiu_waiting",
+  "npc_name": "封砚秋",
+  "pos": Vector2(0.420, 0.365),
+  "portrait_path": "res://art/characters/portraits/portrait_feng_yanqiu_v1.png",
+  "sprite_path": "res://art/characters/portraits/portrait_feng_yanqiu_v1.png",
+  "dialog_id": "ch8_guyun_feng_waiting",
+  "dialog_variants": [{"dialog_id":"ch8_guyun_feng_ready","require_flags":["guyun_master_book_read"]}],
+  "scale": 0.085,
+  "require_flag": "guyun_master_book_unlocked",
+  "hide_flag": "linxi_master_ultimate_breakthrough",
+},
+{
+  "npc_id": "xingfantian_final_ready",
+  "npc_name": "刑樊天",
+  "pos": Vector2(0.250, 0.340),
+  "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "dialog_id": "ch8_master_ultimate_breakthrough",
+  "scale": 1.10,
+  "require_flag": "linxi_final_breakthrough_available",
+  "hide_flag": "linxi_master_ultimate_breakthrough",
+},
+{
+  "npc_id": "xingfantian_final_after",
+  "npc_name": "刑樊天",
+  "pos": Vector2(0.250, 0.340),
+  "portrait_path": "res://art/characters/portrait_xingfantian_master.png",
+  "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png",
+  "dialog_id": "ch8_master_after_breakthrough",
+  "scale": 1.10,
+  "require_flag": "linxi_master_ultimate_breakthrough",
 }
 ]
 
 exits = [
 {
-  "id": "exit_to_road",
+  "id": "exit_to_center",
   "pos": Vector2(0.900000, 0.895000),
   "size": Vector2(0.125000, 0.120000),
-  "label": "前往村外山道",
-  "target_scene": "ch1_s1_road",
-  "target_pos": Vector2(0.120, 0.835),
-  "require_flag": "got_sword",
+  "label": "前往林西村中心",
+  "target_scene": "linxi_village_center",
+  "target_pos": Vector2(0.120, 0.850),
 }
 ]
 

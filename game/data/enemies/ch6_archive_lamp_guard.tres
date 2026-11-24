@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"ch6_archive_lamp_guard"
+display_name = "掌灯巡守"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/tomb_docks_20261122/spy/ready.tres"
+battle_actor_scale = 1.0019
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/spy/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/spy/ready.tres", "res://art/sprites/battle/tomb_docks_20261122/spy/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/spy/ready.tres", "res://art/sprites/battle/tomb_docks_20261122/spy/draw.tres", "res://art/sprites/battle/tomb_docks_20261122/spy/strike.tres", "res://art/sprites/battle/tomb_docks_20261122/spy/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/spy/hit1.tres", "res://art/sprites/battle/tomb_docks_20261122/spy/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/spy/kneel.tres", "res://art/sprites/battle/tomb_docks_20261122/spy/down.tres")
+level = 14
+max_hp = 225
+max_mp = 90
+attack = 46
+defense = 13
+speed = 43
+aggression = 1.0
+skill_ids = Array[StringName]([&"toxic_needle"])
+drop_gold_min = 12
+drop_gold_max = 12
+drop_exp = 35

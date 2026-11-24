@@ -1,0 +1,37 @@
+{
+  "schema": "luoyang_shore_market_rope_authored_sag_measurement_v1",
+  "status": "SOURCE_ONLY_MEASURED_CANDIDATE_NOT_FIELD_PROOF",
+  "supersedes_for_new_rope_only": "prompts/luoyang_shore_market_20261020ae/rope_successor_anchor_measurement.json",
+  "old_horizontal_measurement_preserved": true,
+  "rope_source": {
+    "path": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_hawser_knot_right_v2.png",
+    "sha256": "7F1623EFC447DC5A10A4D0806FC78390D448D9E45BF442FAB0D8DE6FFD626242",
+    "knot_centroid_source_px": [152.5264485145448, 328.9355325742852],
+    "right_endpoint_source_px": [1958.0, 458.0],
+    "authored_vector_source_px": [1805.4735514854551, 129.06446742571478]
+  },
+  "existing_left_anchor": {
+    "asset": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/dry_loading_wharf.png",
+    "world_px": [2189.04, 1693.9499545288086],
+    "meaning": "unchanged south post wrap centre"
+  },
+  "uniform_transform": {
+    "uniform_scale": 0.208,
+    "rotation_degrees": 0.0,
+    "stretch": false,
+    "source_crop": false,
+    "derived_right_endpoint_world_px": [2564.5784987089746, 1720.7945637537574]
+  },
+  "existing_right_hull_check": {
+    "asset": "game/art/maps/luoyang_harbour_life_20261016/covered_ferry_v1.png",
+    "sha256": "D67140A7AFA0FDFFFFF97DE9E34A0680B0069FC9DBD05BBCF85FB7E4EF989357",
+    "render_top_left_world_px": [2446.3, 1399.7999908447266],
+    "render_uniform_scale": 0.3,
+    "derived_source_sample_px_float": [394.26166236324874, 1069.9819096967693],
+    "nearest_source_sample_px": [394, 1070],
+    "nearest_source_alpha": 252,
+    "criterion": "A>=16",
+    "result": "PASS_ENDPOINT_INSIDE_EXISTING_FERRY_ALPHA"
+  },
+  "credit_boundary": "This is an offline source measurement for one unrotated, uniformly scaled rope candidate. It is not import, layering, Field visibility, interaction, collision, NAV or formal credit."
+}

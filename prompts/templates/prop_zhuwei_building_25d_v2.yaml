@@ -1,0 +1,23 @@
+id: prop_zhuwei_building_25d_v2
+description: Native transparent 2.5D Zhuwei Village building prop.
+quality: high
+size: "1024x1024"
+background: transparent
+prompt_template: |
+  Create one isolated, production-ready 2.5D game building prop for the Zhuwei Village stone-road scene.
+  Use the same grounded pre-rendered wuxia RPG look as a realistic isometric environment: slightly elevated three-quarter camera,
+  believable perspective, physically thick roof tiles, timber framing, plaster texture, soft contact shadow,
+  warm sunlight from upper left and cool green bounce light from bamboo. The building must be compact and human-scale,
+  with the full foundation and both visible feet of the building included. Keep the roof lower and less oversized than a poster illustration.
+
+  This is a single modular Sprite2D prop, not a background or loading illustration.
+  Transparent RGBA background with alpha=0 outside the building and its small contact shadow. Do not draw a checkerboard,
+  white background, grey background, grass, road, trees, extra scenery or a second building.
+  No people, NPCs, text, sign lettering, UI, watermark, gate, arch, doorway frame, collage or crop.
+  Leave generous transparent margin around the object for runtime scaling.
+
+  Building type: {{building_type}}
+  Details: {{details}}
+variables:
+  building_type: "small village cottage"
+  details: "dark grey tile roof, pale plaster walls, exposed dark timber, one small open doorway, two low stone steps, a few clay jars"

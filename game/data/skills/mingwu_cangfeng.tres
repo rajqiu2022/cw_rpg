@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"mingwu_cangfeng"
+display_name = "袖底藏锋"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_shadow_dagger_v1.png"
+description = "佯作收势，袖中暗器回旋。命中有七成概率造成两回合流血。"
+kind = 0
+target = 0
+mp_cost = 9
+quality = 2
+fixed_damage = 12
+attack_scaling = 114
+effect_value = 0
+hit_count = 1
+animation_id = &"mingwu_saofeng"
+martial_category = &"hidden"
+motion_style = 3
+school = "mingwu"
+is_passive = false
+complemented_by = "mingwu_yinying_jue"
+complement_bonus_scaling = 10
+complement_bonus_desc = "配合本门心法，出招更具威力。"
+origin = "从茗雾扫风的收势中悟出。将茗雾扫风练至十重后自行领悟。"
+required_insight = 4
+practice_base_cost = 18
+inflicted_status = &"bleed"
+status_chance = 0.7
+status_duration = 2

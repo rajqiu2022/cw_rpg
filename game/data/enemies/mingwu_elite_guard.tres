@@ -1,22 +1,25 @@
 [gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
-
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
 [resource]
-script = ExtResource("1_enemy")
+script = ExtResource("1")
 enemy_id = &"mingwu_elite_guard"
-display_name = "茗雾精英护卫"
-portrait_path = ""
-level = 14
-max_hp = 240
-max_mp = 0
-attack = 30
-defense = 12
-speed = 13
-skill_ids = Array[StringName]([&"basic_attack", &"mingwu_wuyin_sanshi", &"mingwu_yinying_jue"])
-aggression = 0.65
-drop_gold_min = 80
-drop_gold_max = 140
-drop_exp = 80
-drop_items = Array[StringName]([])
-drop_random = Array[Dictionary]([{ "item_id": "spirit_gathering_dust", "chance": 0.4, "count": 1 }])
+display_name = "茗雾封针使"
+battle_actor_path = "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/ready_01.tres"
+battle_actor_scale = 0.9
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/ready_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/ready_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/ready_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/ready_04.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/move_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/move_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/move_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/move_04.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/attack_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/attack_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/attack_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/attack_04.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/hit_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/hit_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/hit_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/hit_04.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/defeat_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/defeat_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/defeat_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/mingwu_elite_guard/defeat_04.tres")
+level = 13
+max_hp = 735
+max_mp = 55
+attack = 107
+defense = 24
+speed = 32
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_counterseal_needles"])
+aggression = 0.71
+drop_gold_min = 13
+drop_gold_max = 26
+drop_exp = 179

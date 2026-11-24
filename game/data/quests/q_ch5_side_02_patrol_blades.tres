@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch5_side_02_patrol_blades"
+title = "雪路三哨"
+kind = 1
+desc_not_started = "护粮之后，向古峰营地守卫打听统领沿路布下的暗哨。"
+desc_in_progress = "依次击败赈粮路翻车旁、雪岭关坡上、废矿入口里侧的三处哨兵，回护粮营找守卫领甲。"
+desc_completed = "三处暗哨尽除，守卫赠了一领玄铁重甲。"
+tracker_hint = "赈粮路 → 雪岭关 → 废弃矿道 → 护粮营地"
+starts_in_chapter = 5
+completes_in_chapter = 5
+completion_triggers = Array[String](["flag_set:ch5_patrol_paid"])
+reward_gold = 60
+reward_exp = 260
+reward_items = Array[Dictionary]([{"item_id":"dark_iron_armor","count":1}])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch5_patrol_one","text":"赈粮路翻车旁的劫粮哨已清，下一处在雪岭关坡上。"},{"trigger":"flag_set:ch5_patrol_two","text":"雪岭关截路哨已清，去废矿入口里侧找最后一哨。"},{"trigger":"flag_set:ch5_patrol_three","text":"废矿坑道哨已清。回护粮营地找守卫领甲、六十两和二百六十点阅历。"}])

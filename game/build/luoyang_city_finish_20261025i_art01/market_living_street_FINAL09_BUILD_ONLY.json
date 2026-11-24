@@ -1,0 +1,64 @@
+{
+  "status":"ROOT_REQUESTED_ONE_VISIBLE_MARKET_STREET_SIX_EXISTING_INSTANCES_BUILD_ONLY",
+  "ready":false,
+  "supersedes_for_this_playtest":"FINAL08 was too small and is NOT the requested complete visible batch. Use this one six-instance street proposal, not another total-city plan.",
+  "scene_id":"ch4_s3_luoyang_market",
+  "coordinates":"Existing3072x2048 Market design/source feet; preserve current AAF transform and all newer pawnshop repairs.",
+  "existing_actual_overview":"res://build/luoyang_city_finish_20261025i_source01/overview_eight_fields11_ROOT_READY/output_ROOT_READY/94120/ch4_s3_luoyang_market.png",
+  "layout":"A paired two-sided life street: existing cloth/grain and herbal/paper courtyard galleries remain the north frontage; add two small stocked market awnings with low rear plot walls as the south frontage, split by the existing estate access. Keep the public144cross-street in between, the300main street west, and144/96 service lanes. Not six scattered houses.",
+  "street_sections_unchanged_or_made_visible":[
+    {"id":"main","x":[1018,1318],"clear_width":300,"physical_change":false},
+    {"id":"public_cross","y":[1402.5,1546.5],"clear_width":144,"physical_change":false},
+    {"id":"old_east_service","x":[2125,2269],"clear_width":144,"physical_change":false},
+    {"id":"far_east_service","x":[2976,3072],"clear_width":96,"physical_change":false},
+    {"id":"estate_access","x":[2538,2682],"y":[1546.5,1900],"clear_width":144,"old_route_center":2610,"physical_change":false,"purpose":"Make the existing estate route legible with existing stone sampling; no new portal or route migration."}
+  ],
+  "reuse_sources":{
+    "two_original_low_objects":{"path":"res://build/luoyang_city_finish_20261025i_art01/market_connected_workcourts_DESIGN07_BUILD_ONLY.json","sha256":"d7116b6733901a3b4f1555331d4db4a21066d9211744812f0af341a737ed9228","selector":"two_low_objects_candidate_requires_separate_source_geometry_admission; preserve exact source PNG/anchor/true base"},
+    "stall_asset_donor":{"path":"res://data/maps/luoyang_district_life_20261016f/author.json","sha256":"d98c65879681b58feea64158a4d0bde33d2ef9fc6b8a25d7d2f33dc961a9c59c","selector":"assets.stock_goods and assets.herbal_medicine_stall_v1"},
+    "low_wall_texture":{"path":"res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png","sha256":"664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0"}
+  },
+  "six_instances":[
+    {"id":"market09_cloth_grain_storage_sacks","asset":"res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png","sha256":"696ae8db11df69d6d9bb178979c6275102725217d2c0946f3457bc333382b4c3","source_anchor":[768,909],"foot":[1560,1350],"scale":0.09,"depth_foot_y":1350,"true_base_source":[[231,778],[1307,778],[1307,911],[231,911]],"role":"North cloth/grain court's stocked noncentral bay","collision":true},
+    {"id":"market09_herbal_rinse_tub","asset":"res://art/modules/luoyang_assembled_20261016b/quench_tub_v1.png","sha256":"81e74615f03e9deefa7e2592adb271e3c7c995c0e3731c74bc68f6c17cc60ad7","source_anchor":[768,905],"foot":[2448,1350],"scale":0.085,"depth_foot_y":1350,"true_base_source":[[301,790],[438,717],[768,690],[1111,718],[1235,790],[1104,872],[768,905],[435,870]],"role":"North medical sorting yard's noncentral wash bay","collision":true},
+    {
+      "id":"market09_south_cloth_goods_awning","asset":"res://art/modules/luoyang_district_life_20261016f/stock_goods.png","sha256":"85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0",
+      "source_size":[1536,1024],"source_anchor":[768,960],"source_complete_A1":[49,13,1486,1024],"foot":[2404,1810],"scale":0.17,"depth_foot_y":1810,
+      "complete_A1_design":[2281.77,1649.01,2526.06,1820.88],
+      "true_base_source":[[95.0000227107439,779.9998864462327],[1440.000022710744,779.9998864462327],[1440.000022710744,959.999886446233],[95.0000227107439,959.999886446233]],
+      "role":"South cloth/household market frontage with visible fabric, jars and boxed stock. Customers stand south around1850, not underneath a supposedly passable awning.","collision":true,"new_portal_or_service":false
+    },
+    {
+      "id":"market09_south_herbal_awning","asset":"res://art/modules/luoyang_district_life_20261016f/herbal_medicine_stall_v1.png","sha256":"aa8cc2490e5fa27aa2b4071e1ff360e87b15a8ae2af8999bd8040c9cd2da5176",
+      "source_size":[1536,1024],"source_anchor":[768,930],"source_complete_A1":[27,17,1508,1024],"foot":[2828,1810],"scale":0.17,"depth_foot_y":1810,
+      "complete_A1_design":[2702.03,1654.79,2953.8,1825.98],
+      "true_base_source":[[290,824],[1248,824],[1248,860],[1185,931],[350,931],[290,860]],
+      "role":"Different existing herb trays/shelf silhouette on the other side of the estate approach; ordinary market object, not another room entrance.","collision":true,"new_portal_or_service":false
+    },
+    {
+      "id":"market09_south_west_plot_back","asset":"res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png","sha256":"664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0",
+      "source_size":[640,132],"source_anchor":[319,124],"foot":[2410,1610],"scale":0.38,"depth_foot_y":1610,
+      "complete_A1_design":[2290.3,1564.4,2529.7,1611.14],"true_base_source":[[4,112],[634,112],[634,124],[4,124]],
+      "role":"One low back edge immediately south of public cross-street, paired with the awning below, not a barrier across the public road or central estate route.","collision":true
+    },
+    {
+      "id":"market09_south_east_plot_back","asset":"res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png","sha256":"664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0",
+      "source_size":[640,132],"source_anchor":[319,124],"foot":[2820,1610],"scale":0.4,"depth_foot_y":1610,
+      "complete_A1_design":[2694,1562,2946,1611.2],"true_base_source":[[4,112],[634,112],[634,124],[4,124]],
+      "role":"Matching low plot back on the opposite side of the preserved estate144access; actual awning fronts stay south-facing.","collision":true
+    }
+  ],
+  "ground_data_only_no_new_shader":{
+    "existing_spec":"res://build/luoyang_street_materials_20261025f_system01/material_revision02/market_five_use_spec_BUILD.json",
+    "working_stall_court_rects_before":[[1410,1168,620,204],[2360,1168,600,204]],
+    "working_stall_court_rects_after":[[1410,1168,620,234.5],[2360,1168,600,234.5],[2280,1612,258,240],[2682,1612,294,240]],
+    "side_service_alley_add_rect":[2538,1546.5,144,353.5],
+    "exterior_edges_rule":"Use the same existing rect edge algorithm; two north-yard bottom endpoints1372 become1402.5. Add only the four true exterior edges of each new disjoint south yard and of the estate-access stone rect. Existing public road/gate priority wins; stone access does not become private earth. No synthetic line/noise texture.",
+    "unchanged":"Current material textures, tone, sampling, world phase and edge parameters; all existing road/exclusion/priority records preserved except exact added access priority where needed to keep it stone. Do not paint over the144cross-street.",
+    "purpose":"North working courts meet the public street, south stocked plots have real ground footprints, and an unbroken stone approach identifies the existing estate entrance through their central gap."
+  },
+  "keep_exact":"All six real shop doors/returns, old exterior links, task actors/offer points and patrols, all adult scales and the new pawnshop interaction/exit fixes. The old broker22901660 with65patrol and originalestate26101860 remain in place. No rescale of old buildings or automatic actor relocation.",
+  "small_check_boundary":"System only screens six added real bases against the old mask, nearby furniture/NPC bodies and existing estate/service/short courtyard approaches, then one normal Market view/playtest. Original stock drawer/wall alpha/occlusion rules stay. If a specific anchor conflicts, report/exclude that instance; do not auto-snap older doors, task actors or narrow the street. No whole-city proof/re-render/source collector loop.",
+  "not_claimed":"No strict ART pass/actual runtime or under10sec/whole-city completion yet; this is the single visible street increment to implement and hand to the user for playtest.",
+  "ART_execution":{"PNG_edits":0,"image_generation":0,"engine":0,"canonical_write":0}
+}

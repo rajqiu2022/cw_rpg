@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+actor_fade_zones = [
+	{
+		"id": "southwest_baked_roof_actor_fade",
+		"region": PackedVector2Array(0.015, 0.720, 0.115, 0.655, 0.270, 0.700, 0.430, 0.835, 0.365, 0.965, 0.105, 0.995, 0.015, 0.930),
+		"actor_faded_alpha": 0.44
+	}
+]
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.04, 0.74, 0.16, 0.57, 0.28, 0.45, 0.43, 0.39, 0.61, 0.40, 0.77, 0.47, 0.91, 0.58, 0.98, 0.72, 0.98, 0.95, 0.04, 0.95),
+	PackedVector2Array(0.82, 0.64, 0.995, 0.64, 0.995, 0.82, 0.82, 0.82)
+])
+blockers = [
+	{"id": "west_building_row", "pos": Vector2(0.12, 0.25), "size": Vector2(0.30, 0.36)},
+	{"id": "north_building_row", "pos": Vector2(0.54, 0.18), "size": Vector2(0.52, 0.24)},
+	{"id": "east_building_row", "pos": Vector2(0.91, 0.46), "size": Vector2(0.16, 0.34)},
+	{"id": "south_fence_line", "pos": Vector2(0.52, 0.97), "size": Vector2(0.84, 0.06)}
+]
+visual_objects = []
+interactions = [
+	{"id": "village_dojo_spar", "pos": Vector2(0.38, 0.58), "size": Vector2(0.075, 0.10), "action": "dialog:ch1_martial_hall_master", "activation": "interact", "label": "请武馆教头安排切磋"},
+	{"id": "huilan_zhuwei_echo", "pos": Vector2(0.29, 0.63), "size": Vector2(0.08, 0.09), "action": "dialog:huilan_openworld_echo", "activation": "interact", "label": "听檐下双盆回声", "hide_flag": "huilan_echo_understood", "visual_baked": false},
+	{"id": "huilan_zhuwei_trial", "pos": Vector2(0.73, 0.61), "size": Vector2(0.08, 0.09), "action": "dialog:huilan_openworld_final_trial", "activation": "interact", "label": "化解街口双车险局", "require_flag": "huilan_openworld_clues_complete", "hide_flag": "huilan_openworld_trial_complete", "visual_baked": false}
+]
+walkable_probes = [
+	{"id": "zhuwei_spawn_lane", "pos": Vector2(0.24, 0.72)},
+	{"id": "zhuwei_inn_threshold", "pos": Vector2(0.31, 0.54)},
+	{"id": "zhuwei_central_square", "pos": Vector2(0.54, 0.62)},
+	{"id": "zhuwei_west_ruin_road", "pos": Vector2(0.91, 0.84)},
+	{"id": "zhuwei_forest_road", "pos": Vector2(0.945, 0.735)},
+	{"id": "zhuwei_forest_edge_clearance", "pos": Vector2(0.985, 0.735)}
+]
+portals = [
+	{
+		"id": "zhuwei_inn_entry",
+		"pos": Vector2(0.31, 0.48),
+		"size": Vector2(0.11, 0.12),
+		"label": "进入客栈",
+		"target_scene": "interior_inn_hall",
+		"target_pos": Vector2(0.500, 0.590)
+	},
+	{
+		"id": "to_west_ruin",
+		"pos": Vector2(0.91, 0.84),
+		"size": Vector2(0.10, 0.16),
+		"label": "前往城西废宅",
+		"target_scene": "ch1_s3_west_ruin",
+		"target_pos": Vector2(0.12, 0.72),
+		"require_flag": "clue_west_ruin_supply_route",
+		"locked_label": "先调查村外密林与后山洞窟"
+	},
+	{
+		"id": "to_zhuwei_forest",
+		"pos": Vector2(0.945, 0.735),
+		"marker_offset": Vector2(0.012, -0.025),
+		"size": Vector2(0.085, 0.15),
+		"label": "前往后山密林",
+		"locked_label": "后山有危险，暂时封锁，无法进入。",
+		"target_scene": "ch1_s3_zhuwei_forest",
+		"target_pos": Vector2(0.15, 0.86),
+		"require_flag": "zhuwei_village_inquiry_done"
+	},
+	{
+		"id": "return_to_mountain_road",
+		"pos": Vector2(0.080, 0.790),
+		"size": Vector2(0.090, 0.125),
+		"label": "返回林西村外山道",
+		"target_scene": "ch1_s1_road",
+		"target_pos": Vector2(0.820, 0.220)
+	},
+	{
+		"id": "zhuwei_to_world_map",
+		"pos": Vector2(0.520, 0.860),
+		"size": Vector2(0.100, 0.100),
+		"label": "离开竹尾村 · 江湖大地图",
+		"target_scene": "world_map_jianghu",
+		"target_pos": Vector2(0.094401, 0.623047)
+	},
+]

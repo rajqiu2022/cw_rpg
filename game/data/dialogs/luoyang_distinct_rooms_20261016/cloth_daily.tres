@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dialog"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "布庄伙计"
+text = "成匹的布在后架，裁好的放在案边。您先看看花色，别踩着垂下来的布。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dialog")
+dialog_id = &"luoyang_distinct_rooms_20261016_cloth_daily"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

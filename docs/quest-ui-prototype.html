@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>任务卷宗 UI 原型</title>
+  <style>
+    :root {
+      --ink: #08131b;
+      --ink-2: #10232d;
+      --steel: #8fa9b3;
+      --jade: #83d0c0;
+      --ice: #dcecf0;
+      --muted: #849ca6;
+      --gold: #c9b17a;
+      --red: #8f3032;
+      --font: 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      color: var(--ice);
+      background: #1f2224;
+      font-family: var(--font);
+      letter-spacing: 0;
+    }
+
+    button, select { font: inherit; color: inherit; }
+    button { cursor: pointer; }
+
+    .stage {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(55, 91, 104, .26), transparent 48%),
+        #1f2224;
+    }
+
+    .quest-book {
+      position: relative;
+      width: min(1536px, 96vw);
+      aspect-ratio: 3 / 2;
+      border: 2px solid #7195a0;
+      border-radius: 4px;
+      background:
+        linear-gradient(90deg, rgba(21, 62, 70, .5) 1px, transparent 1px) 0 0 / 32px 32px,
+        linear-gradient(rgba(21, 62, 70, .38) 1px, transparent 1px) 0 0 / 32px 32px,
+        radial-gradient(circle at 50% 0%, #173740, #0a171e 56%, #061015);
+      filter: drop-shadow(0 24px 42px rgba(0, 0, 0, .46));
+      overflow: hidden;
+    }
+    .quest-book::before {
+      content: ''; position: absolute; inset: 12px;
+      border: 1px solid rgba(112, 177, 184, .68);
+      box-shadow: inset 0 0 0 5px rgba(3, 12, 16, .62), inset 0 0 35px #000b;
+      pointer-events: none;
+    }
+
+    .close {
+      position: absolute;
+      top: 4.9%; right: 4.9%;
+      width: 46px; height: 46px;
+      border: 0;
+      background: url('../game/art/ui/inventory/buttons/btn_x_normal.png') center / contain no-repeat;
+      font-size: 0;
+    }
+    .close:hover { background-image: url('../game/art/ui/inventory/buttons/btn_x_hover.png'); }
+    .close:active { background-image: url('../game/art/ui/inventory/buttons/btn_x_pressed.png'); }
+
+    .title {
+      position: absolute; z-index: 3;
+      top: 7%; left: 21%; width: 58%; height: 12%;
+      display: grid; place-items: center;
+      margin: 0;
+      border: 1px solid #668b95;
+      border-radius: 3px;
+      background: linear-gradient(180deg, rgba(29, 58, 66, .96), rgba(8, 20, 27, .94));
+      box-shadow: inset 0 0 0 4px rgba(3, 11, 15, .72);
+      text-align: center;
+      font-family: 'STKaiti', 'KaiTi', var(--font);
+      font-size: clamp(22px, 2.35vw, 36px);
+      font-weight: 700;
+      text-shadow: 0 2px 0 #0a1115, 0 0 15px rgba(158, 225, 229, .28);
+    }
+
+    .section-frame {
+      position: absolute; z-index: 1;
+      border: 1px solid #638a92;
+      border-radius: 3px;
+      background: linear-gradient(145deg, rgba(17, 47, 55, .88), rgba(5, 15, 20, .92));
+      box-shadow: inset 0 0 0 5px rgba(2, 11, 15, .68), inset 0 0 26px #0009;
+    }
+    .list-frame { top: 30%; left: 14%; width: 30%; height: 63%; }
+    .detail-frame { top: 30%; left: 46%; width: 48%; height: 63%; }
+
+    .top-tabs {
+      position: absolute; z-index: 3;
+      top: 23%; left: 15.5%;
+      width: 26%; height: 52px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .tab {
+      border: 1px solid #527982;
+      border-radius: 3px;
+      background: linear-gradient(180deg, #183843, #0a1820);
+      font-size: clamp(14px, 1.25vw, 20px);
+      font-weight: 700;
+      text-shadow: 0 2px 2px #061016;
+    }
+    .top-tabs .tab { font-size: clamp(15px, 1.35vw, 21px); }
+    .top-main, .top-side, .status-active, .status-done { background-image: none; }
+    .tab.selected { color: #effff5; text-shadow: 0 0 12px rgba(132, 235, 210, .72); }
+    .tab.selected { border-color: #d3b96d; color: #f1fff7; background: linear-gradient(180deg, #315962, #10272f); }
+    .tab:hover { filter: brightness(1.18); }
+
+    .list-status {
+      position: absolute; z-index: 3;
+      top: 34%; left: 15.7%;
+      width: 25%; height: 34px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    }
+    .list-status .tab {
+      font-size: clamp(12px, 1vw, 16px);
+      background-size: 100% 100%;
+    }
+
+    .chapter-line {
+      position: absolute; z-index: 3;
+      top: 39%; left: 15.7%; width: 25%; height: 34px;
+      display: flex; align-items: center;
+    }
+    .chapter-line select {
+      width: 100%; height: 100%;
+      padding: 0 34px 0 14px;
+      border: 1px solid rgba(143, 190, 196, .75);
+      border-radius: 4px;
+      color: var(--ice);
+      background: linear-gradient(#142b35, #0b1b24);
+      outline: none;
+      appearance: none;
+      background-image: linear-gradient(45deg, transparent 50%, var(--jade) 50%), linear-gradient(135deg, var(--jade) 50%, transparent 50%), linear-gradient(#102832, #102832);
+      background-position: calc(100% - 17px) 50%, calc(100% - 12px) 50%, 100% 0;
+      background-size: 5px 5px, 5px 5px, 38px 100%;
+      background-repeat: no-repeat;
+    }
+    .chapter-line[hidden] { display: none; }
+
+    .summary {
+      position: absolute; z-index: 3; top: 33.5%; left: 49%;
+      color: var(--muted); font-size: clamp(12px, 1vw, 16px);
+    }
+
+    .quest-list {
+      position: absolute; z-index: 3;
+      top: 45%; left: 15.5%; width: 27%; height: 44%;
+      overflow: auto; padding: 4px 8px 12px 4px;
+      scrollbar-color: #4a7b84 #0e1a20;
+    }
+    .quest-row {
+      position: relative;
+      width: 100%; min-height: 68px;
+      margin: 0 0 9px;
+      padding: 11px 18px 9px 42px;
+      border: 0;
+      text-align: left;
+      background: url('../game/art/ui/quest/quest_row_normal.png') center / 100% 100% no-repeat;
+      color: var(--ice);
+    }
+    .quest-row:hover { background-image: url('../game/art/ui/quest/quest_row_hover.png'); }
+    .quest-row.selected { background-image: url('../game/art/ui/quest/quest_row_selected.png'); }
+    .quest-row::before {
+      content: ''; position: absolute; left: 15px; top: 27px;
+      width: 13px; height: 13px; transform: rotate(45deg);
+      border: 1px solid var(--jade); opacity: .9;
+    }
+    .quest-row strong { display: block; font-size: 15px; line-height: 20px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .quest-row span { display: block; margin-top: 2px; color: #a9c7cc; font-size: 12px; line-height: 17px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .detail {
+      position: absolute; z-index: 3; top: 38%; left: 48.5%; width: 42.5%; height: 49%;
+      overflow: auto; padding: 4px 18px 12px;
+    }
+    .detail h2 { margin: 0 0 6px; font-size: clamp(19px, 1.65vw, 27px); }
+    .detail .meta { color: var(--jade); font-size: 14px; }
+    .detail h3 { margin: 23px 0 7px; color: var(--gold); font-size: 15px; }
+    .detail p { max-width: 800px; margin: 0; color: #d2e1e4; font-size: 15px; line-height: 1.75; }
+
+    .rewards { display: flex; gap: 12px; flex-wrap: wrap; }
+    .reward {
+      position: relative; width: 72px; min-height: 88px;
+      padding: 5px; border: 1px solid rgba(125, 191, 190, .52);
+      border-radius: 4px; background: rgba(8, 22, 29, .78);
+      text-align: center;
+    }
+    .reward img { width: 54px; height: 54px; object-fit: contain; display: block; margin: auto; }
+    .reward b { display: block; margin-top: 2px; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .reward em { position: absolute; right: 4px; top: 4px; color: var(--gold); font-size: 11px; font-style: normal; }
+    .reward:hover { border-color: var(--jade); box-shadow: 0 0 16px rgba(105, 220, 199, .3); }
+    .tooltip { display: none; position: absolute; z-index: 5; left: 76px; top: -8px; width: 190px; padding: 10px; text-align: left; border: 1px solid #6faeae; border-radius: 3px; background: #09171f; box-shadow: 0 12px 24px #000b; }
+    .reward:hover .tooltip { display: block; }
+    .tooltip strong { color: var(--gold); font-size: 13px; }
+    .tooltip small { display: block; margin-top: 5px; color: #b9d2d6; line-height: 1.45; }
+
+    .actions {
+      position: absolute; z-index: 4; left: 81%; top: 84%; width: 10%;
+      display: flex; justify-content: flex-end;
+    }
+    .track {
+      width: 128px; height: 40px; border: 0;
+      color: #dcecf0; font-size: 16px; font-weight: 700;
+      text-shadow: 0 2px 2px #061016;
+      background: url('../game/art/ui/quest/tab_normal.png') center / 100% 100% no-repeat;
+    }
+    .track:hover { color: var(--jade); background-image: url('../game/art/ui/quest/tab_hover.png'); }
+    .track:active { color: var(--gold); background-image: url('../game/art/ui/quest/tab_pressed.png'); }
+    .track.tracked { color: var(--jade); background-image: url('../game/art/ui/quest/tab_selected.png'); }
+    [hidden] { display: none !important; }
+
+    @media (max-width: 900px) {
+      .stage { padding: 8px; overflow: auto; }
+      .quest-book { min-width: 760px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <section class="quest-book" aria-label="任务卷宗原型">
+      <button class="close" aria-label="关闭"></button>
+      <h1 class="title">任务卷宗</h1>
+      <div class="section-frame list-frame"></div>
+      <div class="section-frame detail-frame"></div>
+
+      <nav class="top-tabs" aria-label="任务类型">
+        <button class="tab top-main selected" data-kind="main">主线</button>
+        <button class="tab top-side" data-kind="side">支线</button>
+      </nav>
+
+      <div class="list-status" aria-label="任务状态">
+        <button class="tab status-active selected" data-status="active">进行中</button>
+        <button class="tab status-done" data-status="done">已完成</button>
+      </div>
+      <div class="chapter-line">
+        <select aria-label="主线章节">
+          <option>第一章 · 林西村下山</option>
+          <option>第二章 · 竹尾风波</option>
+          <option>第三章 · 入派抉择</option>
+          <option>第四章 · 洛阳奇案</option>
+        </select>
+      </div>
+      <div class="summary">进行中 · 主线　2 项任务</div>
+
+      <div class="quest-list">
+        <button class="quest-row selected" data-kind="main"><strong>山道初试</strong><span>主线 · 第一章 · 林西村外</span></button>
+        <button class="quest-row" data-kind="main"><strong>抵达竹尾村</strong><span>主线 · 第一章 · 竹尾村口</span></button>
+        <button class="quest-row" data-kind="side" hidden><strong>河中女尸案</strong><span>支线 · 竹尾村 · 河畔</span></button>
+        <button class="quest-row" data-kind="side" hidden><strong>竹尾论武</strong><span>支线 · 竹尾村 · 擂台</span></button>
+        <button class="quest-row" data-kind="side" hidden><strong>月下琴声</strong><span>支线 · 竹尾村 · 南巷</span></button>
+        <button class="quest-row" data-kind="side" hidden><strong>漕河风波</strong><span>支线 · 漕河码头</span></button>
+        <button class="quest-row" data-kind="side" hidden><strong>失踪的凌月弟子</strong><span>支线 · 北边密林</span></button>
+        <button class="quest-row" data-kind="side" hidden><strong>药圃失窃</strong><span>支线 · 清风药铺</span></button>
+        <button class="quest-row" data-kind="side" hidden><strong>残局棋局</strong><span>支线 · 竹尾书院</span></button>
+      </div>
+
+      <article class="detail">
+        <h2>山道初试</h2>
+        <div class="meta">第一章 · 林西村下山　主线 · 进行中</div>
+        <h3>描述</h3>
+        <p>一名趁乱劫道的江湖散兵挡住去路。击退他，继续前往竹尾村。</p>
+        <h3>奖励</h3>
+        <div class="rewards">
+          <div class="reward">
+            <img src="../game/art/ui/inventory/icons/icon_ore.png" alt="玄铁碎片"><b>玄铁碎片</b><em>×2</em>
+            <div class="tooltip"><strong>玄铁碎片</strong><small>锻造装备的基础材料。带着山火余温的黑色铁屑。</small></div>
+          </div>
+          <div class="reward">
+            <img src="../game/art/ui/inventory/icons/icon_potion.png" alt="回气散"><b>回气散</b><em>×1</em>
+            <div class="tooltip"><strong>回气散</strong><small>恢复少量内力，战斗中可以立即使用。</small></div>
+          </div>
+          <div class="reward">
+            <img src="../game/art/ui/inventory/icons/icon_key.png" alt="山道地图"><b>山道地图</b><em>×1</em>
+            <div class="tooltip"><strong>山道地图</strong><small>标记竹尾村方向的旧地图，能看出一条废弃近路。</small></div>
+          </div>
+        </div>
+        <h3>其他奖励</h3>
+        <p>金钱 +12　·　经验 +10</p>
+      </article>
+
+      <div class="actions"><button class="track">追踪</button></div>
+    </section>
+  </main>
+  <script>
+    const topTabs = [...document.querySelectorAll('.top-tabs .tab')];
+    const statusTabs = [...document.querySelectorAll('.list-status .tab')];
+    const chapter = document.querySelector('.chapter-line');
+    const summary = document.querySelector('.summary');
+    const track = document.querySelector('.track');
+    const close = document.querySelector('.close');
+
+    function selectTab(group, current) {
+      group.forEach(tab => tab.classList.toggle('selected', tab === current));
+    }
+    topTabs.forEach(tab => tab.addEventListener('click', () => {
+      selectTab(topTabs, tab);
+      const side = tab.dataset.kind === 'side';
+      chapter.hidden = side;
+      document.querySelectorAll('.quest-row').forEach(row => {
+        row.hidden = row.dataset.kind !== tab.dataset.kind;
+      });
+      summary.textContent = side ? '进行中 · 支线　7 项任务' : '进行中 · 主线　2 项任务';
+    }));
+    statusTabs.forEach(tab => tab.addEventListener('click', () => selectTab(statusTabs, tab)));
+    document.querySelector('.chapter-line select').addEventListener('change', event => {
+      summary.textContent = `进行中 · 主线　${event.target.selectedIndex + 1} 项任务`;
+    });
+    document.querySelectorAll('.quest-row').forEach(row => row.addEventListener('click', () => {
+      document.querySelectorAll('.quest-row').forEach(item => item.classList.remove('selected'));
+      row.classList.add('selected');
+      document.querySelector('.detail h2').textContent = row.querySelector('strong').textContent;
+    }));
+    track.addEventListener('click', () => {
+      track.classList.toggle('tracked');
+      track.textContent = track.classList.contains('tracked') ? '取消追踪' : '追踪';
+      track.setAttribute('aria-label', track.classList.contains('tracked') ? '取消追踪' : '追踪');
+    });
+    close.addEventListener('click', () => document.querySelector('.quest-book').style.visibility = 'hidden');
+  </script>
+</body>
+</html>

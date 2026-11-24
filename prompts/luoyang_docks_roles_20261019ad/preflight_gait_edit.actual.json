@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "task_id": "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v2_gait_edit",
+  "passed": true,
+  "scope": "offline targeted-edit registration preflight only",
+  "calls_made": {
+    "generation": 0,
+    "network": 0,
+    "engine": 0,
+    "sdk": 0
+  },
+  "checks": [
+    {
+      "name": "required_sources_exist",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "name": "one_edit_task_registered",
+      "passed": true,
+      "actual": 1
+    },
+    {
+      "name": "v1_source_exact",
+      "passed": true,
+      "actual": {
+        "sha256": "13A645BB16F5D9D41BABE2F1D45B0BF433BC878D14D26CF470CACFECD5BBD4B6",
+        "bytes": 1328848
+      }
+    },
+    {
+      "name": "v1_failure_preserved",
+      "passed": true,
+      "actual": {
+        "task_status": "GENERATED_SOURCE_IDENTITY_LIMITED_ACCEPT_WALK_CYCLE_FAILED_NO_DERIVATIVES",
+        "review_status": "IDENTITY_LIMITED_ACCEPT_WALK_CYCLE_FAIL_NO_DERIVATIVES"
+      }
+    },
+    {
+      "name": "edit_mode_and_reference_exact",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "unknown_execution_metadata",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "single_unused_edit_no_fallback",
+      "passed": true,
+      "actual": 0
+    },
+    {
+      "name": "edit_output_absent",
+      "passed": true,
+      "actual": {
+        "output": false,
+        "metadata": false
+      }
+    },
+    {
+      "name": "transparent_source_only",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "prompt_is_narrow_and_exact",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "name": "spec_scope_matches_prompt",
+      "passed": true,
+      "actual": {
+        "unchanged_poses": [
+          1,
+          2,
+          3
+        ],
+        "changed_poses": [
+          4,
+          5
+        ],
+        "pose_4": "opposite contact: near leg back/toe leaving, far leg forward/heel contact, near arm forward",
+        "pose_5": "opposite-support passing: far leg supports under torso, near leg lifted and passing forward",
+        "preserve_identity_and_costume": true,
+        "preserve_canvas_and_transparency": true,
+        "no_programmatic_alpha_cleanup": true
+      }
+    },
+    {
+      "name": "manifest_one_edit_budget",
+      "passed": true,
+      "actual": {
+        "owner": "producer_ROOT",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "maximum_calls": 3,
+        "calls_used": 1,
+        "calls_per_identity": 1,
+        "targeted_edit_calls_max": 1,
+        "targeted_edit_calls_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false,
+        "call_order_fact": "The carrier builtin call was already started from frozen source contract 30AE7454 before prompts/tasks.yaml registration and local preflight. Store-attendant and rope-seller calls require a passing local preflight first."
+      }
+    },
+    {
+      "name": "static_preflight_historical_pass_preserved",
+      "passed": true,
+      "actual": "A02D851DB7A365FDA746BFEF35F1308D728B70B464E585619C6D25C48BEEE99D"
+    },
+    {
+      "name": "two_static_calls_still_unused",
+      "passed": true,
+      "actual": [
+        {
+          "id": "luoyang_docks_roles_20261019ad_store_attendant_idle_down_1f_v1",
+          "attempts": 0,
+          "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED"
+        },
+        {
+          "id": "luoyang_docks_roles_20261019ad_rope_seller_idle_down_1f_v1",
+          "attempts": 0,
+          "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED"
+        }
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "path": "prompts/tasks.yaml",
+      "sha256": "8F23B09DFBC2DE1CBFE2C20144129605926318D40B3713A880DD622EDBDDF5DE",
+      "bytes": 197020
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/manifest.json",
+      "sha256": "82EA04BBE03F82F9E0BE56B964925939900E56B9060E2C848866AC942721D8B6",
+      "bytes": 2022
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v2_gait_edit.txt",
+      "sha256": "FA0B6A4ACBB4D0821BE2DD2E7BD6ED09965CE0D4733D9D4113FC5AC936EBAB5B",
+      "bytes": 1517
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v2_gait_edit.spec.json",
+      "sha256": "5AC3A4D7A45B2C03069BD4EAF0723B22E00A5843C2B5809917B39849DC8E1D05",
+      "bytes": 2553
+    },
+    {
+      "path": "assets/raw/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v1.png",
+      "sha256": "13A645BB16F5D9D41BABE2F1D45B0BF433BC878D14D26CF470CACFECD5BBD4B6",
+      "bytes": 1328848
+    },
+    {
+      "path": "game/build/luoyang_docks_roles_20261019ad_art01/carrier_v1_actual_art_review.json",
+      "sha256": "59C13953F4AAE34DE3E4BFC19ADD5E114A21BA6CE191345E314E19ED44FA4A00",
+      "bytes": 2362
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/preflight.actual.json",
+      "sha256": "A02D851DB7A365FDA746BFEF35F1308D728B70B464E585619C6D25C48BEEE99D",
+      "bytes": 9579
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/preflight_gait_edit.py",
+      "sha256": "7DE1A47D4F6BBA8894AB3B37E4057246FA0AA454C17FDC65990F83B2FB3ECE38",
+      "bytes": 7588
+    }
+  ],
+  "credit_boundary": "A pass authorizes at most one Root-owned targeted builtin edit. It does not approve v1 gait, v2 gait, alpha cleanup, derivatives, portrait, import, runtime or Field use."
+}

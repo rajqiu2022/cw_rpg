@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="旁白"
+text="一张领药单钉在棚柱上，朱印只剩半片焦茶叶。旁边的小字写着：茗雾叛徒自号烬茶社，假传药令，劫走了给证人止血的黄绳药包。"
+choices=Array[Dictionary]([{"text":"揭下药单，去林中找药。","accept_quest":"q_ch8_side_02_ash_tea","next":"accept"},{"text":"先看别处。","next":"leave"}])
+
+[sub_resource type="Resource" id="accept"]
+script=ExtResource("2")
+node_id=&"accept"
+speaker="旁白"
+text="押车人最后在雾林东边卸过货。西棚药案还留着辟毒的丹砂佩；若有沈青禾同行，也可让她先运青木护元诀。"
+accept_quest=&"q_ch8_side_02_ash_tea"
+set_flags=Array[Dictionary]([{"key":"ch8_ash_tea_taken","value":true}])
+
+[sub_resource type="Resource" id="leave"]
+script=ExtResource("2")
+node_id=&"leave"
+speaker="旁白"
+text="药单仍钉在棚柱上。"
+
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_ash_tea_notice"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("accept"),SubResource("leave")])

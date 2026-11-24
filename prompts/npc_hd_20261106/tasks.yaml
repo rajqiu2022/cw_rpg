@@ -1,0 +1,66 @@
+tasks:
+  - id: npc_seated_man_hd_down_idle_20261106_v1
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/seated_man_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite_sheet/npc_inn_tea_guest_left_seated_idle_down_25d_4f_source_v2.png
+      reference_runtime: game/art/characters/npc_inn_tea_guest_left_seated_idle_down_25d_4f_v2_runtime.png
+      asset_prompt: "Exact prompt_path; stable seated idle, same ordinary identity."
+  - id: npc_seated_woman_hd_down_idle_20261106_v1
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/seated_woman_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite_sheet/npc_inn_tea_guest_right_seated_idle_down_25d_4f_source_v2.png
+      reference_runtime: game/art/characters/npc_inn_tea_guest_right_seated_idle_down_25d_4f_v2_runtime.png
+      asset_prompt: "Exact prompt_path; stable seated idle, same ordinary identity."
+  - id: npc_waiter_hd_down_idle_20261106_face_v2
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/waiter_down_idle_face_v2.txt
+    vars:
+      reference_raw: assets/raw/npc_hd_20261106/npc_waiter_hd_down_idle_20261106_v1.png
+      reference_runtime: assets/raw/sprite_sheet/npc_zhuwei_inn_waiter_idle_down_25d_4f_source_v2.png
+      asset_prompt: "Exact prompt_path; local face correction only."
+  - id: npc_waiter_hd_down_idle_20261106_v1
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/waiter_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite_sheet/npc_zhuwei_inn_waiter_idle_down_25d_4f_source_v2.png
+      reference_runtime: game/art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png
+      asset_prompt: "See exact prompt_path; offline dry-run verifies its bytes before built-in invocation."
+  - id: npc_vendor_hd_down_idle_20261106_v1
+    template: npc_hd_idle_20261106
+    category: npc_hd_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/npc_hd_20261106/vendor_down_idle.txt
+    vars:
+      reference_raw: assets/raw/sprite_sheet/npc_zhuwei_vegetable_vendor_idle_down_25d_4f_source_v2.png
+      reference_runtime: game/art/characters/npc_zhuwei_vegetable_vendor_idle_down_25d_4f_v2_runtime.png
+      asset_prompt: "See exact prompt_path; offline dry-run verifies its bytes before built-in invocation."

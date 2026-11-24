@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_zhuwei_wilds"
+title = "后山兽踪"
+kind = 0
+desc_not_started = "竹尾村外的密林近来猛兽频繁出没。"
+desc_in_progress = "进入竹尾村后山密林，循兽迹找到洞窟。击退洞中的狼后，调查封蜡货筒，查明猛兽躁动的缘由。"
+desc_completed = "洞窟中的物资记号把线索引向了城西废宅。"
+tracker_hint = "竹尾村外 · 后山密林"
+progress_records = Array[Dictionary]([{"trigger":"flag_set:defeated_linxi_wild_beast", "text":"躁动猛兽并非自然迁徙，兽径深处还有人为驱赶的痕迹。"}, {"trigger":"flag_set:zhuwei_cave_unlocked", "text":"密林岩壁后的洞窟已经可以进入。"}, {"trigger":"flag_set:defeated_zhuwei_cave_wolf", "text":"洞中的狼已被击退，接下来调查封蜡货筒。"}])
+completion_triggers = Array[String](["flag_set:clue_west_ruin_supply_route"])
+reward_gold = 30
+reward_exp = 50
+reward_items = Array[Dictionary]([{"id": "healing_pill_minor", "count": 2}])

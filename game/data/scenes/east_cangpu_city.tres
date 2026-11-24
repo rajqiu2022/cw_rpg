@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="scene"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="stream"]
+[ext_resource type="Resource" path="res://data/maps/east_mainland/east_cangpu_city.tres" id="layout"]
+[sub_resource type="Resource" id="EastExtent"]
+script = ExtResource("stream")
+logical_size = Vector2i(3072, 2048)
+[resource]
+script = ExtResource("scene")
+scene_id = &"east_cangpu_city"
+display_name = "东大陆 · 沧浦城"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+is_settlement = true
+actor_positions_are_feet = true
+player_spawn = Vector2(0.51432292, 0.83984375)
+map_layout = ExtResource("layout")
+streamed_background = SubResource("EastExtent")
+npcs = Array[Dictionary]([
+	{"npc_id": "cangpu_postmaster", "dialog_variants": [{"dialog_id": "east_tide_repair", "require_quest_active": "q_east_tidesound_blade", "require_flags": ["tide_blade_found"]}, {"dialog_id": "east_tide_offer", "hide_flags": ["tide_case_opened", "tide_case_closed"]}], "npc_name": "驿站记事", "pos": Vector2(0.67545573, 0.55908203), "sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png", "dialog_id": "east_cangpu_clerk", "portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png", "scale": 0.90, "movement_mode": "patrol", "patrol_axis": Vector2(1, 0.08), "patrol_distance": 133.0, "patrol_speed": 29.0, "walk_sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_right_walk_8f_v3_runtime.png", "invert_patrol_facing": true},
+	{"npc_id": "cangpu_provisioner", "npc_name": "驿市掌柜", "pos": Vector2(0.38671875, 0.51025391), "sprite_path": "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png", "dialog_id": "east_cangpu_provisions", "portrait_path": "res://art/characters/portraits/luoyang_services_20261025h/portrait_innkeeper_v1.png", "scale": 0.89}
+])

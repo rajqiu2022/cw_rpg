@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch8_mechanism_warden"
+display_name="茗雾机关监守"
+battle_actor_path = "res://art/sprites/battle/story_squads_20261121/warden/ready1.tres"
+battle_actor_scale = 0.9742
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/warden/ready1.tres", "res://art/sprites/battle/story_squads_20261121/warden/ready2.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/warden/ready2.tres", "res://art/sprites/battle/story_squads_20261121/warden/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/warden/ready2.tres", "res://art/sprites/battle/story_squads_20261121/warden/step.tres", "res://art/sprites/battle/story_squads_20261121/warden/attack.tres", "res://art/sprites/battle/story_squads_20261121/warden/ready1.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/warden/hit1.tres", "res://art/sprites/battle/story_squads_20261121/warden/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/warden/kneel.tres", "res://art/sprites/battle/story_squads_20261121/warden/down.tres")
+level=14
+max_hp=840
+max_mp=145
+attack=136
+defense=28
+speed=34
+skill_ids=Array[StringName]([&"basic_attack",&"mingwu_wuyin_sanshi",&"toxic_needle"])
+aggression=0.86
+drop_gold_min=80
+drop_gold_max=110
+drop_exp=150

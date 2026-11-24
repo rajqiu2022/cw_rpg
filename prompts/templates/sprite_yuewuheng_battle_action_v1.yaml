@@ -1,0 +1,21 @@
+id: sprite_yuewuheng_battle_action_v1
+description: Yue Wuheng battle action frame locked to the adopted battle sprite.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/characters/battle_yuewuheng_v1.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied image as the exact identity, costume, body-proportion and battle-facing reference for Yue Wuheng. Create ONE single full-body 2.5D wuxia RPG battle action frame facing toward the right side of the screen for the allied lower-left formation. Do not redesign her.
+
+  Preserve the same young Chinese swordswoman, hairstyle, clothing silhouette, colors, sword and accessories from the reference. Hong Kong wuxia comic game art with clean dark ink contours and restrained painted shading.
+
+  Action: {{action}}
+  Composition: 1024x1024, complete figure with feet visible and broad padding. Perfectly flat solid #00ff00 chroma-key background only. No ground, shadow, halo, scenery, text, UI, border, watermark, extra person, extra weapon, gore or blood.
+
+  Avoid: anime cute style, tall-thin anatomy, short-stocky anatomy, western armor, headscarf, red ribbon, spider, web, demon, cropped body.
+
+variables:
+  action: "required"

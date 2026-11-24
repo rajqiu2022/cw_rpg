@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "废仓墙脚的泥里混有白灰和碎瓦，残契还被人改过日期。货不是从水路丢的，有人故意让两帮以为对方抢货。"
+on_end = "next:report"
+
+[sub_resource type="Resource" id="report"]
+script = ExtResource("2")
+node_id = &"report"
+speaker = "漕工头领"
+text = "中间人不见了，假契和泥样却抵赖不了。两帮先停手，把伤者送医。这副玄铜拳套是旧漕卒压舱护身的物件，便作你止住械斗的谢礼。"
+set_flags = Array[Dictionary]([{"key":"canal_feud_resolved","value":true}, {"key":"huilan_water_rule_understood","value":true}])
+complete_quest = &"q_ch4_side_06_canal_grudge"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_canal_report"
+entry_node_id = &"start"
+required_story_flag = &"canal_grudge_evidence_found"
+blocked_story_flag = &"canal_feud_resolved"
+nodes = Array[Resource]([SubResource("start"), SubResource("report")])
+

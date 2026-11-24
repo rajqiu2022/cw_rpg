@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_13_aftermath_returns"
+title="江湖余波"
+kind=0
+desc_not_started="旧案已经形成多方副本，但各城、两盟、伙伴与林西师门仍需要面对公开后的实际结果。"
+desc_in_progress="回访洛阳、烈云、竹尾与林西，确认审理、改革、证人安置和师门终境突破；关系尾声由长期同行记录决定。"
+desc_completed="城市、阵营、证人与师门的长期结果已经结算。旧案没有被一句大团圆抹去，江湖也终于拥有无法由单方删改的共同记录。"
+tracker_hint="江湖大地图 · 终局回访"
+completion_triggers=Array[String](["flag_set:ch8_aftermath_luoyang_done","flag_set:ch8_aftermath_lieyun_done","flag_set:ch8_aftermath_zhuwei_done","flag_set:ch8_relationship_epilogue_done","flag_set:ch8_linxi_final_return_done"])
+require_all_completion_triggers=true
+progress_records=Array[Dictionary]([{"trigger":"flag_set:ch8_aftermath_luoyang_done","text":"洛阳建立多方审理与原卷调阅边界。"},{"trigger":"flag_set:ch8_aftermath_lieyun_done","text":"烈云公开旧部责任并启动外部复核改革。"},{"trigger":"flag_set:ch8_aftermath_zhuwei_done","text":"竹尾确认民间证人与商路未因公示再次受害。"},{"trigger":"flag_set:ch8_relationship_epilogue_done","text":"长期同行关系已经形成尾声，或选择继续独行。"},{"trigger":"flag_set:ch8_linxi_final_return_done","text":"回林西向刑樊天复命，终境突破入口开放。"}])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=400

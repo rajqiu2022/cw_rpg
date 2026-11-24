@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-city-full-rollout-20261022ap",
+  "status": "ART_NOT_READY_ACTUAL_REVIEWED_MINIMUM_VISUAL_SUCCESSOR_PROPOSED",
+  "actual_evidence": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_qa01/artisan_revision2_art_probe/97020_2602/artisan_revision2_native_world1x_initial_idle.png",
+    "sha256": "65e2a37977276cc69be799352e1c2fb3a9cde3c5de325e3725898b5a9e571277",
+    "size_px": [3072, 2048],
+    "observed": true,
+    "scope": "native world 1x visual probe only; no Field, route, dialogue or formal-art admission"
+  },
+  "actual_art_conclusion": {
+    "improved_from_102308": true,
+    "ready": false,
+    "reasons": [
+      "grass remains the dominant field and the buildings still read as isolated props",
+      "the four thin stone strips read as hard pasted tape rather than connected courtyards",
+      "the well sits visually on the strip crossing instead of belonging to a shared paved court",
+      "both workyards use oversized rough earth/rock rectangles whose texture scale overwhelms the 120px adult",
+      "build_linxi_smithy_front has a green roof, arched windows and a western facade language inconsistent with the Luoyang gray-tile buildings",
+      "ap_quarter_life_craft_neighbour_vendor at [1160,1060] is almost entirely hidden by ap_tree_well_w_v2 at [1190,1110]; body-clear geometry is not sufficient visual presence"
+    ]
+  },
+  "minimum_visual_successor": {
+    "inherit_without_change": [
+      "all verified routes and walk masks unless a local replacement solid proves a delta is required",
+      "five portal and route identities",
+      "four NPC identities and feet",
+      "well, notice pavilion, wall openings, brazier, anvil, cloth rack, cart and sacks",
+      "two residences, cloth workshop and south general-shop silhouettes"
+    ],
+    "ground_sections": {
+      "retire": [
+        "ap_smith_workyard_earth_v2",
+        "ap_cloth_workyard_earth_v2"
+      ],
+      "asset": {
+        "texture": "res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png",
+        "sha256": "39c898f7ac8c409b7b244077dd30016c398b21313156c8fc36911ddc859a5c0e",
+        "native_source_size_px": [1536, 1024],
+        "tile_world_size_px": [384, 256],
+        "uniform_scale": 0.25,
+        "z": -28,
+        "rule": "native tiles or Atlas regions only; no bitmap stretch, recolor or new pixels"
+      },
+      "replace_or_add_rects_world_xywh": [
+        {"id": "ap_smith_workyard_stone_v3", "rect": [256, 800, 768, 640], "purpose": "paved west work court; replaces the giant earth patch"},
+        {"id": "ap_shared_well_court_stone_v3", "rect": [1024, 800, 864, 640], "purpose": "turns the well and cross into one shared court rather than a stone tape crossing"},
+        {"id": "ap_cloth_workyard_stone_v3", "rect": [1888, 800, 768, 640], "purpose": "paved east work court; replaces the giant earth patch"},
+        {"id": "ap_residential_forecourt_stone_v3", "rect": [192, 640, 2688, 160], "purpose": "connects both residence thresholds to the full middle court"},
+        {"id": "ap_south_shop_apron_stone_v3", "rect": [1152, 1440, 768, 560], "purpose": "connects the middle court, main street and south shop threshold"}
+      ],
+      "visual_effect": "one continuous urban court network; grass remains only as outer shoulders and planted margins, not beneath building feet or inside workyards"
+    },
+    "smithy_replacement": {
+      "retire_id": "ap_closed_smithy_west",
+      "replacement_id": "ap_closed_smithy_west_chinese_v3",
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png",
+      "sha256": "6097a1d45fa5e829a2130ab2d41df988f0c521a3e14ed102ffdabdc99c848209",
+      "source_size_px": [1039, 696],
+      "complete_a1_xywh_px": [4, 17, 1029, 645],
+      "source_ground_anchor_px": [529.5, 620.0],
+      "world_foot_px": [620, 1290],
+      "world_complete_a1_width_px": 610,
+      "uniform_scale": 0.592808552,
+      "projected_complete_a1_xywh_world_approx": [308.45, 932.53, 610.0, 382.36],
+      "solid_rects_px": [
+        {"role": "left_ground_base", "rect": [52, 548, 354, 72]},
+        {"role": "left_door_jamb", "rect": [406, 548, 42, 72]},
+        {"role": "right_door_jamb", "rect": [611, 548, 43, 72]},
+        {"role": "right_ground_base", "rect": [654, 548, 318, 72]}
+      ],
+      "use": "closed Chinese gray-tile smithy shell; brazier and anvil provide ironworking identity; no new portal",
+      "local_delta_required": "replace only this building's projected solids and recheck its brazier/anvil spacing; other passed geometry is inherited",
+      "why_foot_moves": "the +80px south shift keeps the taller Chinese roof below the residential lane instead of visually covering it"
+    },
+    "npc_visibility_fix": {
+      "keep_npc": {"id": "ap_quarter_life_craft_neighbour_vendor", "foot_px": [1160, 1060]},
+      "move_decoration_only": {
+        "id": "ap_tree_well_w_v2",
+        "from_foot_px": [1190, 1110],
+        "to_foot_px": [1180, 600],
+        "reason": "places the tree in the north grass shoulder behind the residence depth, away from the center route and well, while restoring the resident's full front-facing body silhouette"
+      },
+      "acceptance": "all four resident bodies must be recognisable in the native 1x idle picture; labels alone do not count"
+    },
+    "limited_overlap_and_clearance": {
+      "preserve_route_centers": true,
+      "preserve_npc_feet": true,
+      "preserve_well_foot": [1536, 1100],
+      "preserve_wall_openings": [[640, 800], [1920, 2080]],
+      "recheck_only": [
+        "replacement smithy projected base versus brazier/anvil",
+        "moved tree body versus west residence and residential lane",
+        "ground visual layer ordering; ground adds no collision"
+      ]
+    }
+  },
+  "admission_boundary": {
+    "author_ready": false,
+    "formal_ready": false,
+    "generation_or_cleanup_used": false,
+    "engine_run_by_art": false,
+    "next_required": "System may implement one visual-only successor and local smithy/tree geometry delta, then Root must inspect a new native 1x picture before any art admission."
+  }
+}

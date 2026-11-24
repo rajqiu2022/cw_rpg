@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = &"yuewuheng_moon_return"
+display_name = "回月截锋"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_sword_cross_v1.png"
+description = "侧步让开来势，回身以剑截住对手的前路。单体外功，命中时有 30% 概率附加易伤两回合。"
+mp_cost = 14
+quality = 2
+fixed_damage = 24
+attack_scaling = 118
+animation_id = &"linxi_basic_sword_two"
+required_weapon_type = &"sword"
+martial_category = &"sword"
+school = "lingyue"
+base_hit_chance = 0.94
+inflicted_status = &"vulnerable"
+status_chance = 0.3
+status_duration = 2
+effect_value = 15

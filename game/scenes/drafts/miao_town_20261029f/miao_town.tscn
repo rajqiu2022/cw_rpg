@@ -1,0 +1,5190 @@
+[gd_scene load_steps=97 format=3]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/gate.png" id="gate"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/house_front.png" id="house_front"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/house_side.png" id="house_side"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/house_back.png" id="house_back"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/shop.png" id="shop"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/weaving_house.png" id="weaving_house"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/granary.png" id="granary"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/covered_bridge.png" id="covered_bridge"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/open_bridge.png" id="open_bridge"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/terrace.png" id="terrace"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/stairs.png" id="stairs"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/paddy.png" id="paddy"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/trees.png" id="trees"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/cloth_rack.png" id="cloth_rack"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/ground.png" id="ground"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/path.png" id="path"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/water.png" id="water"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/interior.png" id="interior"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/man_walk.png" id="man_walk"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/woman_walk.png" id="woman_walk"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/man_portrait.png" id="man_portrait"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/woman_portrait.png" id="woman_portrait"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/side_stride.png" id="side_stride"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/table.png" id="table"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/bench.png" id="bench"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/counter.png" id="counter"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/shelf.png" id="shelf"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/cargo.png" id="cargo"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/water_jars.png" id="water_jars"]
+
+[ext_resource type="Script" path="res://scripts/drafts/miao_town_20261029f/town_controller.gd" id="controller"]
+
+[ext_resource type="Script" path="res://scripts/drafts/miao_town_20261029f/resident.gd" id="resident"]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="player"]
+
+[ext_resource type="Script" path="res://scripts/drafts/redrock_luoyang_standard_20261028b/preview_player.gd" id="adapter"]
+
+[ext_resource type="Shader" path="res://art/modules/miao_town_20261029f/ground.gdshader" id="ground_shader"]
+
+[ext_resource type="Shader" path="res://art/modules/miao_town_20261029f/water.gdshader" id="water_shader"]
+
+[ext_resource type="Shader" path="res://art/modules/miao_town_20261029f/occlusion.gdshader" id="occlusion_shader"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/bank_shrub.png" id="bank_shrub"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/moss_patch.png" id="moss_patch"]
+
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/lusheng_rack.png" id="lusheng_rack"]
+
+[sub_resource type="RectangleShape2D" id="hero_body"]
+size = Vector2(35,25)
+
+[sub_resource type="RectangleShape2D" id="npc_body"]
+size = Vector2(25,18)
+
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "SimHei")
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.07,0.10,0.085,0.93)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="ShaderMaterial" id="ground_mat"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("ground")
+shader_parameter/path_tex = ExtResource("path")
+
+[sub_resource type="ShaderMaterial" id="water_mat"]
+shader = ExtResource("water_shader")
+shader_parameter/water_tex = ExtResource("water")
+
+[sub_resource type="ShaderMaterial" id="fade_Town_GateBridge_Foreground_Roof"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Town_MiddleBridge_Foreground_Roof"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Town_MiddleBridge_Foreground_Rail"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Town_UpperBridge_Foreground_Roof"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Town_UpperBridge_Foreground_Rail"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home1"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home2"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home3"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home4"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home5"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home6"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home7"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home8"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home9"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home10"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home11"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home12"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home13"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home14"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home15"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home16"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home17"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home18"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home19"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home20"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home21"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Home22"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_CreekShop1"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_CreekShop2"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_CreekShop3"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_WeavingHouse"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_DyeWorkshop"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Granary1"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Granary2"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Granary3"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Gate"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome1"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome2"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome3"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome4"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome5"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome6"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome7"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome8"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome9"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome10"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome11"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome12"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome13"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome14"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ClusterHome15"]
+shader = ExtResource("occlusion_shader")
+shader_parameter/fade_enabled = 0.0
+
+[node name="MiaoTown" type="Node2D"]
+script = ExtResource("controller")
+
+[node name="Ground" type="Polygon2D" parent="."]
+z_index = -20
+material = SubResource("ground_mat")
+polygon = PackedVector2Array(-1400, -1200, 8400, -1200, 8400, 6600, -1400, 6600)
+
+[node name="Creek" type="Polygon2D" parent="."]
+z_index = -15
+material = SubResource("water_mat")
+polygon = PackedVector2Array(1307.49888, 100, 1327.06247, 200, 1341.2672, 300, 1348.61819, 400, 1348.79462, 500, 1342.67835, 600, 1332.16114, 700, 1319.76713, 800, 1308.16164, 900, 1299.63842, 1000, 1295.68178, 1100, 1296.68561, 1200, 1270.75304, 1300, 1250, 1400, 1250, 1500, 1250, 1600, 1269.22865, 1700, 1311.3932, 1800, 1302.72332, 1900, 1283.83952, 2000, 1258.18056, 2100, 1249.16727, 2200, 1250, 2300, 1250, 2400, 1250, 2500, 1214.5358, 2600, 1199.26508, 2700, 1214.81286, 2800, 1235.19504, 2900, 1257.50493, 3000, 1261.51458, 3100, 1250, 3200, 1250, 3300, 1250, 3400, 1268.15627, 3500, 1312.15659, 3600, 1313.807, 3700, 1312.63378, 3750, 1400, 4030, 1640, 4250, 2050, 4350, 2300, 4277.65783, 2550, 4300.01324, 2800, 4313.57421, 3050, 4312.38163, 3300, 4296.95957, 3550, 4274.08494, 3800, 4253.80958, 4050, 4245.04309, 4300, 4251.63775, 4550, 4270.69566, 4800, 4293.84218, 5050, 4310.90602, 5300, 4314.3888, 5550, 4302.76007, 5800, 4281.12987, 6050, 4259.00316, 6300, 4246.10312, 6550, 4248.09841, 6750, 4260.05556, 6750, 3970.3601, 6550, 3986.01945, 6300, 4000.47754, 6050, 4004.92053, 5800, 3997.88844, 5550, 3981.69205, 5300, 3961.65358, 5050, 3944.35779, 4800, 3935.48818, 4550, 3937.95935, 4300, 3950.95926, 4050, 3970.21606, 3800, 3989.40187, 3550, 4002.21211, 3300, 4004.43726, 3050, 3995.34614, 2800, 3977.92613, 2550, 3957.90155, 2300, 3941.85259, 2050, 3900, 1744.1265, 3750, 1749.02369, 3700, 1758.36258, 3600, 1754.4874, 3500, 1750, 3400, 1750, 3300, 1750, 3200, 1745.44976, 3100, 1715.64493, 3000, 1689.88747, 2900, 1664.52246, 2800, 1642.7664, 2700, 1676.40796, 2600, 1750, 2500, 1750, 2400, 1750, 2300, 1743.08953, 2200, 1687.95067, 2100, 1685.07179, 2000, 1702.74453, 1900, 1718.68902, 1800, 1743.40207, 1700, 1750, 1600, 1750, 1500, 1750, 1400, 1741.4547, 1300, 1730.91921, 1200, 1737.13161, 1100, 1747.59259, 1000, 1761.50383, 900, 1777.04605, 800, 1791.68071, 700, 1802.6032, 600, 1807.26416, 500, 1803.86232, 400, 1791.71636, 300, 1771.44524, 200, 1744.921, 100)
+
+[node name="Town" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="GateBridge" type="Node2D" parent="Town"]
+position = Vector2(1500, 3310)
+metadata/bridge = true
+metadata/label = "有盖木桥：两端平接石路，桥栏独立阻挡。"
+
+[node name="Base" type="Node2D" parent="Town/GateBridge"]
+z_index = -3
+
+[node name="Deck" type="Polygon2D" parent="Town/GateBridge/Base"]
+z_index = 0
+texture = ExtResource("covered_bridge")
+polygon = PackedVector2Array(-931.35, -22.05, 931.35, -22.05, 931.35, 22.05, -931.35, 22.05)
+uv = PackedVector2Array(148, 500, 1922, 500, 1922, 542, 148, 542)
+
+[node name="Under" type="Polygon2D" parent="Town/GateBridge/Base"]
+z_index = 0
+texture = ExtResource("covered_bridge")
+polygon = PackedVector2Array(-931.35, 22.05, 931.35, 22.05, 931.35, 385.35, -931.35, 385.35)
+uv = PackedVector2Array(148, 542, 1922, 542, 1922, 888, 148, 888)
+
+[node name="Foreground" type="Node2D" parent="Town/GateBridge"]
+position = Vector2(0,22)
+
+[node name="Roof" type="Polygon2D" parent="Town/GateBridge/Foreground"]
+z_index = 0
+texture = ExtResource("covered_bridge")
+polygon = PackedVector2Array(-931.35, -568, 931.35, -568, 931.35, -44.05, -931.35, -44.05)
+uv = PackedVector2Array(148, 1, 1922, 1, 1922, 500, 148, 500)
+material = SubResource("fade_Town_GateBridge_Foreground_Roof")
+
+[node name="BackRail" type="StaticBody2D" parent="Town/GateBridge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/GateBridge/BackRail"]
+polygon = PackedVector2Array(-650, -36.05, 650, -36.05, 650, -24.05, -650, -24.05)
+
+[node name="FrontRail" type="StaticBody2D" parent="Town/GateBridge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/GateBridge/FrontRail"]
+polygon = PackedVector2Array(-650, 20.05, 650, 20.05, 650, 34.05, -650, 34.05)
+
+[node name="MiddleBridge" type="Node2D" parent="Town"]
+position = Vector2(1500, 2360)
+metadata/bridge = true
+metadata/label = "露天小桥：连接两岸巷路，桥外为不可行走水域。"
+
+[node name="Base" type="Node2D" parent="Town/MiddleBridge"]
+z_index = -3
+
+[node name="Deck" type="Polygon2D" parent="Town/MiddleBridge/Base"]
+z_index = 0
+texture = ExtResource("open_bridge")
+polygon = PackedVector2Array(-727.62, -33.5, 727.62, -33.5, 727.62, 16.75, -727.62, 16.75)
+uv = PackedVector2Array(273, 328, 2445, 328, 2445, 403, 273, 403)
+
+[node name="Under" type="Polygon2D" parent="Town/MiddleBridge/Base"]
+z_index = 0
+texture = ExtResource("open_bridge")
+polygon = PackedVector2Array(-727.62, 52.93, 727.62, 52.93, 727.62, 265.99, -727.62, 265.99)
+uv = PackedVector2Array(273, 457, 2445, 457, 2445, 775, 273, 775)
+
+[node name="Foreground" type="Node2D" parent="Town/MiddleBridge"]
+position = Vector2(0,22)
+
+[node name="Roof" type="Polygon2D" parent="Town/MiddleBridge/Foreground"]
+z_index = 0
+texture = ExtResource("open_bridge")
+polygon = PackedVector2Array(-727.62, -241.09, 727.62, -241.09, 727.62, -55.5, -727.62, -55.5)
+uv = PackedVector2Array(273, 51, 2445, 51, 2445, 328, 273, 328)
+material = SubResource("fade_Town_MiddleBridge_Foreground_Roof")
+
+[node name="Rail" type="Polygon2D" parent="Town/MiddleBridge/Foreground"]
+z_index = 0
+texture = ExtResource("open_bridge")
+polygon = PackedVector2Array(-727.62, -5.25, 727.62, -5.25, 727.62, 30.93, -727.62, 30.93)
+uv = PackedVector2Array(273, 403, 2445, 403, 2445, 457, 273, 457)
+material = SubResource("fade_Town_MiddleBridge_Foreground_Rail")
+
+[node name="BackRail" type="StaticBody2D" parent="Town/MiddleBridge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/MiddleBridge/BackRail"]
+polygon = PackedVector2Array(-575, -47.5, 575, -47.5, 575, -35.5, -575, -35.5)
+
+[node name="FrontRail" type="StaticBody2D" parent="Town/MiddleBridge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/MiddleBridge/FrontRail"]
+polygon = PackedVector2Array(-575, 14.75, 575, 14.75, 575, 28.75, -575, 28.75)
+
+[node name="UpperBridge" type="Node2D" parent="Town"]
+position = Vector2(1500, 1510)
+metadata/bridge = true
+metadata/label = "露天小桥：连接两岸巷路，桥外为不可行走水域。"
+
+[node name="Base" type="Node2D" parent="Town/UpperBridge"]
+z_index = -3
+
+[node name="Deck" type="Polygon2D" parent="Town/UpperBridge/Base"]
+z_index = 0
+texture = ExtResource("open_bridge")
+polygon = PackedVector2Array(-727.62, -33.5, 727.62, -33.5, 727.62, 16.75, -727.62, 16.75)
+uv = PackedVector2Array(273, 328, 2445, 328, 2445, 403, 273, 403)
+
+[node name="Under" type="Polygon2D" parent="Town/UpperBridge/Base"]
+z_index = 0
+texture = ExtResource("open_bridge")
+polygon = PackedVector2Array(-727.62, 52.93, 727.62, 52.93, 727.62, 265.99, -727.62, 265.99)
+uv = PackedVector2Array(273, 457, 2445, 457, 2445, 775, 273, 775)
+
+[node name="Foreground" type="Node2D" parent="Town/UpperBridge"]
+position = Vector2(0,22)
+
+[node name="Roof" type="Polygon2D" parent="Town/UpperBridge/Foreground"]
+z_index = 0
+texture = ExtResource("open_bridge")
+polygon = PackedVector2Array(-727.62, -241.09, 727.62, -241.09, 727.62, -55.5, -727.62, -55.5)
+uv = PackedVector2Array(273, 51, 2445, 51, 2445, 328, 273, 328)
+material = SubResource("fade_Town_UpperBridge_Foreground_Roof")
+
+[node name="Rail" type="Polygon2D" parent="Town/UpperBridge/Foreground"]
+z_index = 0
+texture = ExtResource("open_bridge")
+polygon = PackedVector2Array(-727.62, -5.25, 727.62, -5.25, 727.62, 30.93, -727.62, 30.93)
+uv = PackedVector2Array(273, 403, 2445, 403, 2445, 457, 273, 457)
+material = SubResource("fade_Town_UpperBridge_Foreground_Rail")
+
+[node name="BackRail" type="StaticBody2D" parent="Town/UpperBridge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/UpperBridge/BackRail"]
+polygon = PackedVector2Array(-575, -47.5, 575, -47.5, 575, -35.5, -575, -35.5)
+
+[node name="FrontRail" type="StaticBody2D" parent="Town/UpperBridge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/UpperBridge/FrontRail"]
+polygon = PackedVector2Array(-575, 14.75, 575, 14.75, 575, 28.75, -575, 28.75)
+
+[node name="Terrace1800_0_1850" type="Node2D" parent="Town"]
+position = Vector2(1850, 1800)
+
+[node name="Art" type="Sprite2D" parent="Town/Terrace1800_0_1850"]
+position = Vector2(0, -399.9)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("terrace")
+centered = false
+region_enabled = true
+region_rect = Rect2(533, 92, 1430.23256, 724)
+
+[node name="Retain1800_0" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Retain1800_0"]
+polygon = PackedVector2Array(1850, 1630, 3080, 1630, 3080, 1808, 1850, 1808)
+
+[node name="Terrace1800_1_3520" type="Node2D" parent="Town"]
+position = Vector2(3520, 1800)
+
+[node name="Art" type="Sprite2D" parent="Town/Terrace1800_1_3520"]
+position = Vector2(0, -399.9)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("terrace")
+centered = false
+region_enabled = true
+region_rect = Rect2(533, 92, 1640, 724)
+
+[node name="Terrace1800_1_4930" type="Node2D" parent="Town"]
+position = Vector2(4930.4, 1800)
+
+[node name="Art" type="Sprite2D" parent="Town/Terrace1800_1_4930"]
+position = Vector2(0, -399.9)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("terrace")
+centered = false
+region_enabled = true
+region_rect = Rect2(533, 92, 115.813953, 724)
+
+[node name="Retain1800_1" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Retain1800_1"]
+polygon = PackedVector2Array(3520, 1630, 5030, 1630, 5030, 1808, 3520, 1808)
+
+[node name="Terrace1800_2_5470" type="Node2D" parent="Town"]
+position = Vector2(5470, 1800)
+
+[node name="Art" type="Sprite2D" parent="Town/Terrace1800_2_5470"]
+position = Vector2(0, -399.9)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("terrace")
+centered = false
+region_enabled = true
+region_rect = Rect2(533, 92, 906.976744, 724)
+
+[node name="Retain1800_2" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Retain1800_2"]
+polygon = PackedVector2Array(5470, 1630, 6250, 1630, 6250, 1808, 5470, 1808)
+
+[node name="Stairs1800_1" type="Node2D" parent="Town"]
+position = Vector2(3300, 1800)
+metadata/label = "石阶：短踏面连接上下平台，侧沿独立阻挡。"
+
+[node name="Base" type="Node2D" parent="Town/Stairs1800_1"]
+z_index = -2
+
+[node name="Treads" type="Polygon2D" parent="Town/Stairs1800_1/Base"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(-139.71564, -406.635071, 141.800948, -406.635071, 141.800948, -220, 186.113744, 0, 186.113744, 127.203791, -186.635071, 127.203791, -186.635071, 0, -139.71564, -220)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="LeftCheek" type="Polygon2D" parent="Town/Stairs1800_1"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(-400.379147, -406.635071, -139.71564, -406.635071, -139.71564, -220, -186.635071, 0, -186.635071, 127.203791, -400.379147, 127.203791)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="RightCheek" type="Polygon2D" parent="Town/Stairs1800_1"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(141.800948, -406.635071, 400.379147, -406.635071, 400.379147, 127.203791, 186.113744, 127.203791, 186.113744, 0, 141.800948, -220)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="LeftSide" type="StaticBody2D" parent="Town/Stairs1800_1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Stairs1800_1/LeftSide"]
+polygon = PackedVector2Array(-165.781991, -220, -139.71564, -220, -186.635071, 0, -220, 0)
+
+[node name="RightSide" type="StaticBody2D" parent="Town/Stairs1800_1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Stairs1800_1/RightSide"]
+polygon = PackedVector2Array(141.800948, -220, 167.867299, -220, 220, 0, 186.113744, 0)
+
+[node name="Stairs1800_2" type="Node2D" parent="Town"]
+position = Vector2(5250, 1800)
+metadata/label = "石阶：短踏面连接上下平台，侧沿独立阻挡。"
+
+[node name="Base" type="Node2D" parent="Town/Stairs1800_2"]
+z_index = -2
+
+[node name="Treads" type="Polygon2D" parent="Town/Stairs1800_2/Base"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(-139.71564, -406.635071, 141.800948, -406.635071, 141.800948, -220, 186.113744, 0, 186.113744, 127.203791, -186.635071, 127.203791, -186.635071, 0, -139.71564, -220)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="LeftCheek" type="Polygon2D" parent="Town/Stairs1800_2"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(-400.379147, -406.635071, -139.71564, -406.635071, -139.71564, -220, -186.635071, 0, -186.635071, 127.203791, -400.379147, 127.203791)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="RightCheek" type="Polygon2D" parent="Town/Stairs1800_2"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(141.800948, -406.635071, 400.379147, -406.635071, 400.379147, 127.203791, 186.113744, 127.203791, 186.113744, 0, 141.800948, -220)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="LeftSide" type="StaticBody2D" parent="Town/Stairs1800_2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Stairs1800_2/LeftSide"]
+polygon = PackedVector2Array(-165.781991, -220, -139.71564, -220, -186.635071, 0, -220, 0)
+
+[node name="RightSide" type="StaticBody2D" parent="Town/Stairs1800_2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Stairs1800_2/RightSide"]
+polygon = PackedVector2Array(141.800948, -220, 167.867299, -220, 220, 0, 186.113744, 0)
+
+[node name="Terrace2900_0_1850" type="Node2D" parent="Town"]
+position = Vector2(1850, 2900)
+
+[node name="Art" type="Sprite2D" parent="Town/Terrace2900_0_1850"]
+position = Vector2(0, -399.9)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("terrace")
+centered = false
+region_enabled = true
+region_rect = Rect2(533, 92, 848.837209, 724)
+
+[node name="Retain2900_0" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Retain2900_0"]
+polygon = PackedVector2Array(1850, 2730, 2580, 2730, 2580, 2908, 1850, 2908)
+
+[node name="Terrace2900_1_3020" type="Node2D" parent="Town"]
+position = Vector2(3020, 2900)
+
+[node name="Art" type="Sprite2D" parent="Town/Terrace2900_1_3020"]
+position = Vector2(0, -399.9)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("terrace")
+centered = false
+region_enabled = true
+region_rect = Rect2(533, 92, 1640, 724)
+
+[node name="Terrace2900_1_4430" type="Node2D" parent="Town"]
+position = Vector2(4430.4, 2900)
+
+[node name="Art" type="Sprite2D" parent="Town/Terrace2900_1_4430"]
+position = Vector2(0, -399.9)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("terrace")
+centered = false
+region_enabled = true
+region_rect = Rect2(533, 92, 522.790698, 724)
+
+[node name="Retain2900_1" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Retain2900_1"]
+polygon = PackedVector2Array(3020, 2730, 4880, 2730, 4880, 2908, 3020, 2908)
+
+[node name="Terrace2900_2_5320" type="Node2D" parent="Town"]
+position = Vector2(5320, 2900)
+
+[node name="Art" type="Sprite2D" parent="Town/Terrace2900_2_5320"]
+position = Vector2(0, -399.9)
+scale = Vector2(0.86, 0.86)
+texture = ExtResource("terrace")
+centered = false
+region_enabled = true
+region_rect = Rect2(533, 92, 1081.39535, 724)
+
+[node name="Retain2900_2" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Retain2900_2"]
+polygon = PackedVector2Array(5320, 2730, 6250, 2730, 6250, 2908, 5320, 2908)
+
+[node name="Stairs2900_1" type="Node2D" parent="Town"]
+position = Vector2(2800, 2900)
+metadata/label = "石阶：短踏面连接上下平台，侧沿独立阻挡。"
+
+[node name="Base" type="Node2D" parent="Town/Stairs2900_1"]
+z_index = -2
+
+[node name="Treads" type="Polygon2D" parent="Town/Stairs2900_1/Base"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(-139.71564, -406.635071, 141.800948, -406.635071, 141.800948, -220, 186.113744, 0, 186.113744, 127.203791, -186.635071, 127.203791, -186.635071, 0, -139.71564, -220)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="LeftCheek" type="Polygon2D" parent="Town/Stairs2900_1"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(-400.379147, -406.635071, -139.71564, -406.635071, -139.71564, -220, -186.635071, 0, -186.635071, 127.203791, -400.379147, 127.203791)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="RightCheek" type="Polygon2D" parent="Town/Stairs2900_1"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(141.800948, -406.635071, 400.379147, -406.635071, 400.379147, 127.203791, 186.113744, 127.203791, 186.113744, 0, 141.800948, -220)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="LeftSide" type="StaticBody2D" parent="Town/Stairs2900_1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Stairs2900_1/LeftSide"]
+polygon = PackedVector2Array(-165.781991, -220, -139.71564, -220, -186.635071, 0, -220, 0)
+
+[node name="RightSide" type="StaticBody2D" parent="Town/Stairs2900_1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Stairs2900_1/RightSide"]
+polygon = PackedVector2Array(141.800948, -220, 167.867299, -220, 220, 0, 186.113744, 0)
+
+[node name="Stairs2900_2" type="Node2D" parent="Town"]
+position = Vector2(5100, 2900)
+metadata/label = "石阶：短踏面连接上下平台，侧沿独立阻挡。"
+
+[node name="Base" type="Node2D" parent="Town/Stairs2900_2"]
+z_index = -2
+
+[node name="Treads" type="Polygon2D" parent="Town/Stairs2900_2/Base"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(-139.71564, -406.635071, 141.800948, -406.635071, 141.800948, -220, 186.113744, 0, 186.113744, 127.203791, -186.635071, 127.203791, -186.635071, 0, -139.71564, -220)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="LeftCheek" type="Polygon2D" parent="Town/Stairs2900_2"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(-400.379147, -406.635071, -139.71564, -406.635071, -139.71564, -220, -186.635071, 0, -186.635071, 127.203791, -400.379147, 127.203791)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="RightCheek" type="Polygon2D" parent="Town/Stairs2900_2"]
+z_index = 0
+texture = ExtResource("stairs")
+polygon = PackedVector2Array(141.800948, -406.635071, 400.379147, -406.635071, 400.379147, 127.203791, 186.113744, 127.203791, 186.113744, 0, 141.800948, -220)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="LeftSide" type="StaticBody2D" parent="Town/Stairs2900_2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Stairs2900_2/LeftSide"]
+polygon = PackedVector2Array(-165.781991, -220, -139.71564, -220, -186.635071, 0, -220, 0)
+
+[node name="RightSide" type="StaticBody2D" parent="Town/Stairs2900_2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Stairs2900_2/RightSide"]
+polygon = PackedVector2Array(141.800948, -220, 167.867299, -220, 220, 0, 186.113744, 0)
+
+[node name="Home1" type="Node2D" parent="Town"]
+position = Vector2(2380, 1050)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home1"]
+material = SubResource("fade_Home1")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home1/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="Home2" type="Node2D" parent="Town"]
+position = Vector2(3070, 960)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-343.370945, -450, 686.74189, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home2"]
+material = SubResource("fade_Home2")
+position = Vector2(-617.559944, -638.504937)
+scale = Vector2(0.634696756, 0.634696756)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home2/Body"]
+polygon = PackedVector2Array(-302.166432, -94.5, 302.166432, -94.5, 302.166432, 0, -302.166432, 0)
+
+[node name="Home3" type="Node2D" parent="Town"]
+position = Vector2(3800, 1020)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-293.251908, -490, 586.503817, 490)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home3"]
+material = SubResource("fade_Home3")
+position = Vector2(-739.862595, -708.442748)
+scale = Vector2(0.748091603, 0.748091603)
+texture = ExtResource("house_side")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home3/Body"]
+polygon = PackedVector2Array(-258.061679, -100, 258.061679, -100, 258.061679, 0, -258.061679, 0)
+
+[node name="Home4" type="Node2D" parent="Town"]
+position = Vector2(4530, 920)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home4"]
+material = SubResource("fade_Home4")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home4"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home4/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="Home5" type="Node2D" parent="Town"]
+position = Vector2(5260, 1110)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-351.00141, -460, 702.002821, 460)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home5"]
+material = SubResource("fade_Home5")
+position = Vector2(-631.283498, -652.693935)
+scale = Vector2(0.648801128, 0.648801128)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home5"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home5/Body"]
+polygon = PackedVector2Array(-308.881241, -96.6, 308.881241, -96.6, 308.881241, 0, -308.881241, 0)
+
+[node name="Home6" type="Node2D" parent="Town"]
+position = Vector2(2590, 1480)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-275.29771, -460, 550.59542, 460)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home6"]
+material = SubResource("fade_Home6")
+position = Vector2(-694.564885, -665.068702)
+scale = Vector2(0.702290076, 0.702290076)
+texture = ExtResource("house_side")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home6"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home6/Body"]
+polygon = PackedVector2Array(-242.261985, -96.6, 242.261985, -96.6, 242.261985, 0, -242.261985, 0)
+
+[node name="Home7" type="Node2D" parent="Town"]
+position = Vector2(4030, 1440)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-264.757853, -450, 529.515707, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home7"]
+material = SubResource("fade_Home7")
+position = Vector2(-568.684555, -595.484293)
+scale = Vector2(0.589005236, 0.589005236)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home7"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home7/Body"]
+polygon = PackedVector2Array(-232.986911, -94.5, 232.986911, -94.5, 232.986911, 0, -232.986911, 0)
+
+[node name="Home8" type="Node2D" parent="Town"]
+position = Vector2(4720, 1500)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-343.370945, -450, 686.74189, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home8"]
+material = SubResource("fade_Home8")
+position = Vector2(-617.559944, -638.504937)
+scale = Vector2(0.634696756, 0.634696756)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home8"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home8/Body"]
+polygon = PackedVector2Array(-302.166432, -94.5, 302.166432, -94.5, 302.166432, 0, -302.166432, 0)
+
+[node name="Home9" type="Node2D" parent="Town"]
+position = Vector2(2280, 2150)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-270.641361, -460, 541.282723, 460)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home9"]
+material = SubResource("fade_Home9")
+position = Vector2(-581.32199, -608.717277)
+scale = Vector2(0.602094241, 0.602094241)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home9"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home9/Body"]
+polygon = PackedVector2Array(-238.164398, -96.6, 238.164398, -96.6, 238.164398, 0, -238.164398, 0)
+
+[node name="Home10" type="Node2D" parent="Town"]
+position = Vector2(3000, 2190)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-269.312977, -450, 538.625954, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home10"]
+material = SubResource("fade_Home10")
+position = Vector2(-679.465649, -650.610687)
+scale = Vector2(0.687022901, 0.687022901)
+texture = ExtResource("house_side")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home10"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home10/Body"]
+polygon = PackedVector2Array(-236.99542, -94.5, 236.99542, -94.5, 236.99542, 0, -236.99542, 0)
+
+[node name="Home11" type="Node2D" parent="Town"]
+position = Vector2(4550, 2150)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-343.370945, -450, 686.74189, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home11"]
+material = SubResource("fade_Home11")
+position = Vector2(-617.559944, -638.504937)
+scale = Vector2(0.634696756, 0.634696756)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home11"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home11/Body"]
+polygon = PackedVector2Array(-302.166432, -94.5, 302.166432, -94.5, 302.166432, 0, -302.166432, 0)
+
+[node name="Home12" type="Node2D" parent="Town"]
+position = Vector2(5450, 2260)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home12"]
+material = SubResource("fade_Home12")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home12"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home12/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="Home13" type="Node2D" parent="Town"]
+position = Vector2(2360, 2580)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-264.757853, -450, 529.515707, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home13"]
+material = SubResource("fade_Home13")
+position = Vector2(-568.684555, -595.484293)
+scale = Vector2(0.589005236, 0.589005236)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home13"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home13/Body"]
+polygon = PackedVector2Array(-232.986911, -94.5, 232.986911, -94.5, 232.986911, 0, -232.986911, 0)
+
+[node name="Home14" type="Node2D" parent="Town"]
+position = Vector2(5550, 2690)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-343.370945, -450, 686.74189, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home14"]
+material = SubResource("fade_Home14")
+position = Vector2(-617.559944, -638.504937)
+scale = Vector2(0.634696756, 0.634696756)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home14"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home14/Body"]
+polygon = PackedVector2Array(-302.166432, -94.5, 302.166432, -94.5, 302.166432, 0, -302.166432, 0)
+
+[node name="Home15" type="Node2D" parent="Town"]
+position = Vector2(620, 1820)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-258.874346, -440, 517.748691, 440)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home15"]
+material = SubResource("fade_Home15")
+position = Vector2(-556.04712, -582.251309)
+scale = Vector2(0.57591623, 0.57591623)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home15"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home15/Body"]
+polygon = PackedVector2Array(-227.809424, -92.4, 227.809424, -92.4, 227.809424, 0, -227.809424, 0)
+
+[node name="Home16" type="Node2D" parent="Town"]
+position = Vector2(600, 2880)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-328.110014, -430, 656.220028, 430)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home16"]
+material = SubResource("fade_Home16")
+position = Vector2(-590.112835, -610.126939)
+scale = Vector2(0.606488011, 0.606488011)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home16"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home16/Body"]
+polygon = PackedVector2Array(-288.736812, -90.3, 288.736812, -90.3, 288.736812, 0, -288.736812, 0)
+
+[node name="Home17" type="Node2D" parent="Town"]
+position = Vector2(2450, 3780)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-252.990838, -430, 505.981675, 430)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home17"]
+material = SubResource("fade_Home17")
+position = Vector2(-543.409686, -569.018325)
+scale = Vector2(0.562827225, 0.562827225)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home17"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home17/Body"]
+polygon = PackedVector2Array(-222.631937, -90.3, 222.631937, -90.3, 222.631937, 0, -222.631937, 0)
+
+[node name="Home18" type="Node2D" parent="Town"]
+position = Vector2(3280, 3740)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-269.312977, -450, 538.625954, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home18"]
+material = SubResource("fade_Home18")
+position = Vector2(-679.465649, -650.610687)
+scale = Vector2(0.687022901, 0.687022901)
+texture = ExtResource("house_side")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home18"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home18/Body"]
+polygon = PackedVector2Array(-236.99542, -94.5, 236.99542, -94.5, 236.99542, 0, -236.99542, 0)
+
+[node name="Home19" type="Node2D" parent="Town"]
+position = Vector2(4430, 3780)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-328.110014, -430, 656.220028, 430)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home19"]
+material = SubResource("fade_Home19")
+position = Vector2(-590.112835, -610.126939)
+scale = Vector2(0.606488011, 0.606488011)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home19"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home19/Body"]
+polygon = PackedVector2Array(-288.736812, -90.3, 288.736812, -90.3, 288.736812, 0, -288.736812, 0)
+
+[node name="Home20" type="Node2D" parent="Town"]
+position = Vector2(5450, 3770)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-252.990838, -430, 505.981675, 430)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home20"]
+material = SubResource("fade_Home20")
+position = Vector2(-543.409686, -569.018325)
+scale = Vector2(0.562827225, 0.562827225)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home20"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home20/Body"]
+polygon = PackedVector2Array(-222.631937, -90.3, 222.631937, -90.3, 222.631937, 0, -222.631937, 0)
+
+[node name="Home21" type="Node2D" parent="Town"]
+position = Vector2(2240, 3000)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-328.110014, -430, 656.220028, 430)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home21"]
+material = SubResource("fade_Home21")
+position = Vector2(-590.112835, -610.126939)
+scale = Vector2(0.606488011, 0.606488011)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home21"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home21/Body"]
+polygon = PackedVector2Array(-288.736812, -90.3, 288.736812, -90.3, 288.736812, 0, -288.736812, 0)
+
+[node name="Home22" type="Node2D" parent="Town"]
+position = Vector2(5900, 2980)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-269.312977, -450, 538.625954, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Home22"]
+material = SubResource("fade_Home22")
+position = Vector2(-679.465649, -650.610687)
+scale = Vector2(0.687022901, 0.687022901)
+texture = ExtResource("house_side")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Home22"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Home22/Body"]
+polygon = PackedVector2Array(-236.99542, -94.5, 236.99542, -94.5, 236.99542, 0, -236.99542, 0)
+
+[node name="CreekShop1" type="Node2D" parent="Town"]
+position = Vector2(2800, 3260)
+metadata/label = "临溪铺面：竹篮、农货与布匹沿檐下陈列。"
+metadata/visual_rect = Rect2(-405.941176, -335, 811.882353, 335)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/CreekShop1"]
+material = SubResource("fade_CreekShop1")
+position = Vector2(-729.117647, -537.970588)
+scale = Vector2(0.656862745, 0.656862745)
+texture = ExtResource("shop")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/CreekShop1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/CreekShop1/Body"]
+polygon = PackedVector2Array(-357.228235, -70.35, 357.228235, -70.35, 357.228235, 0, -357.228235, 0)
+
+[node name="CreekShop2" type="Node2D" parent="Town"]
+position = Vector2(3920, 3300)
+metadata/label = "临溪铺面：竹篮、农货与布匹沿檐下陈列。"
+metadata/visual_rect = Rect2(-405.941176, -335, 811.882353, 335)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/CreekShop2"]
+material = SubResource("fade_CreekShop2")
+position = Vector2(-729.117647, -537.970588)
+scale = Vector2(0.656862745, 0.656862745)
+texture = ExtResource("shop")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/CreekShop2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/CreekShop2/Body"]
+polygon = PackedVector2Array(-357.228235, -70.35, 357.228235, -70.35, 357.228235, 0, -357.228235, 0)
+
+[node name="CreekShop3" type="Node2D" parent="Town"]
+position = Vector2(5100, 3270)
+metadata/label = "临溪铺面：竹篮、农货与布匹沿檐下陈列。"
+metadata/visual_rect = Rect2(-405.941176, -335, 811.882353, 335)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/CreekShop3"]
+material = SubResource("fade_CreekShop3")
+position = Vector2(-729.117647, -537.970588)
+scale = Vector2(0.656862745, 0.656862745)
+texture = ExtResource("shop")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/CreekShop3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/CreekShop3/Body"]
+polygon = PackedVector2Array(-357.228235, -70.35, 357.228235, -70.35, 357.228235, 0, -357.228235, 0)
+
+[node name="WeavingHouse" type="Node2D" parent="Town"]
+position = Vector2(620, 1220)
+metadata/label = "绣坊前厅：从门前空格进入木楼。"
+metadata/visual_rect = Rect2(-318.652174, -420, 637.304348, 420)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/WeavingHouse"]
+material = SubResource("fade_WeavingHouse")
+position = Vector2(-587.086957, -602.608696)
+scale = Vector2(0.608695652, 0.608695652)
+texture = ExtResource("weaving_house")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WeavingHouse"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/WeavingHouse/Body"]
+polygon = PackedVector2Array(-280.413913, -88.2, 280.413913, -88.2, 280.413913, 0, -280.413913, 0)
+
+[node name="DyeWorkshop" type="Node2D" parent="Town"]
+position = Vector2(700, 2250)
+metadata/label = "蜡染作坊：染缸和晾布架置于院边，主巷保持开放。"
+metadata/visual_rect = Rect2(-311.065217, -410, 622.130435, 410)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/DyeWorkshop"]
+material = SubResource("fade_DyeWorkshop")
+position = Vector2(-573.108696, -588.26087)
+scale = Vector2(0.594202899, 0.594202899)
+texture = ExtResource("weaving_house")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/DyeWorkshop"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/DyeWorkshop/Body"]
+polygon = PackedVector2Array(-273.737391, -86.1, 273.737391, -86.1, 273.737391, 0, -273.737391, 0)
+
+[node name="Granary1" type="Node2D" parent="Town"]
+position = Vector2(5750, 1320)
+metadata/label = "抬高粮仓：粮院接田间路，储粮与晾晒分列。"
+metadata/visual_rect = Rect2(-178.239538, -320, 356.479076, 320)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Granary1"]
+material = SubResource("fade_Granary1")
+position = Vector2(-438.210678, -456.681097)
+scale = Vector2(0.461760462, 0.461760462)
+texture = ExtResource("granary")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Granary1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Granary1/Body"]
+polygon = PackedVector2Array(-156.850794, -67.2, 156.850794, -67.2, 156.850794, 0, -156.850794, 0)
+
+[node name="Granary2" type="Node2D" parent="Town"]
+position = Vector2(6000, 1570)
+metadata/label = "抬高粮仓：粮院接田间路，储粮与晾晒分列。"
+metadata/visual_rect = Rect2(-178.239538, -320, 356.479076, 320)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Granary2"]
+material = SubResource("fade_Granary2")
+position = Vector2(-438.210678, -456.681097)
+scale = Vector2(0.461760462, 0.461760462)
+texture = ExtResource("granary")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Granary2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Granary2/Body"]
+polygon = PackedVector2Array(-156.850794, -67.2, 156.850794, -67.2, 156.850794, 0, -156.850794, 0)
+
+[node name="Granary3" type="Node2D" parent="Town"]
+position = Vector2(5920, 3630)
+metadata/label = "抬高粮仓：粮院接田间路，储粮与晾晒分列。"
+metadata/visual_rect = Rect2(-178.239538, -320, 356.479076, 320)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Granary3"]
+material = SubResource("fade_Granary3")
+position = Vector2(-438.210678, -456.681097)
+scale = Vector2(0.461760462, 0.461760462)
+texture = ExtResource("granary")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Granary3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Granary3/Body"]
+polygon = PackedVector2Array(-156.850794, -67.2, 156.850794, -67.2, 156.850794, 0, -156.850794, 0)
+
+[node name="Gate" type="Node2D" parent="Town"]
+position = Vector2(650, 3510)
+metadata/label = "山口寨门：穿过门洞，过木桥进入溪街。"
+metadata/visual_rect = Rect2(-319.548872, -340, 639.097744, 340)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/Gate"]
+material = SubResource("fade_Gate")
+position = Vector2(-616.090226, -563.045113)
+scale = Vector2(0.639097744, 0.639097744)
+texture = ExtResource("gate")
+centered = false
+
+[node name="GateLeft" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/GateLeft"]
+polygon = PackedVector2Array(330, 3440, 520, 3440, 520, 3520, 330, 3520)
+
+[node name="GateRight" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/GateRight"]
+polygon = PackedVector2Array(765, 3440, 980, 3440, 980, 3520, 765, 3520)
+
+[node name="Paddy1" type="Node2D" parent="Town"]
+position = Vector2(5870, 800)
+metadata/label = "小片梯田：生产区与街巷分开。"
+metadata/visual_rect = Rect2(-441.635688, -300, 883.271375, 300)
+z_index = -4
+
+[node name="Art" type="Sprite2D" parent="Town/Paddy1"]
+position = Vector2(-628.438662, -476.208178)
+scale = Vector2(0.557620818, 0.557620818)
+texture = ExtResource("paddy")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Paddy1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Paddy1/Body"]
+polygon = PackedVector2Array(-390, -160, 390, -160, 390, -5, -390, -5)
+
+[node name="Paddy2" type="Node2D" parent="Town"]
+position = Vector2(6120, 1080)
+metadata/label = "小片梯田：生产区与街巷分开。"
+metadata/visual_rect = Rect2(-441.635688, -300, 883.271375, 300)
+z_index = -4
+
+[node name="Art" type="Sprite2D" parent="Town/Paddy2"]
+position = Vector2(-628.438662, -476.208178)
+scale = Vector2(0.557620818, 0.557620818)
+texture = ExtResource("paddy")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Paddy2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Paddy2/Body"]
+polygon = PackedVector2Array(-390, -160, 390, -160, 390, -5, -390, -5)
+
+[node name="DryingRack1" type="Node2D" parent="Town"]
+position = Vector2(300, 1330)
+metadata/label = "晾布架：蓝白蜡染布与染缸沿院边摆放。"
+metadata/visual_rect = Rect2(-149.204152, -160, 298.408304, 160)
+
+[node name="Art" type="Sprite2D" parent="Town/DryingRack1"]
+position = Vector2(-280.138408, -245.536332)
+scale = Vector2(0.276816609, 0.276816609)
+texture = ExtResource("cloth_rack")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/DryingRack1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/DryingRack1/Body"]
+polygon = PackedVector2Array(-131.299654, -33.6, 131.299654, -33.6, 131.299654, 0, -131.299654, 0)
+
+[node name="DryingRack2" type="Node2D" parent="Town"]
+position = Vector2(350, 2370)
+metadata/label = "晾布架：蓝白蜡染布与染缸沿院边摆放。"
+metadata/visual_rect = Rect2(-149.204152, -160, 298.408304, 160)
+
+[node name="Art" type="Sprite2D" parent="Town/DryingRack2"]
+position = Vector2(-280.138408, -245.536332)
+scale = Vector2(0.276816609, 0.276816609)
+texture = ExtResource("cloth_rack")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/DryingRack2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/DryingRack2/Body"]
+polygon = PackedVector2Array(-131.299654, -33.6, 131.299654, -33.6, 131.299654, 0, -131.299654, 0)
+
+[node name="DryingRack3" type="Node2D" parent="Town"]
+position = Vector2(820, 2370)
+metadata/label = "晾布架：蓝白蜡染布与染缸沿院边摆放。"
+metadata/visual_rect = Rect2(-149.204152, -160, 298.408304, 160)
+
+[node name="Art" type="Sprite2D" parent="Town/DryingRack3"]
+position = Vector2(-280.138408, -245.536332)
+scale = Vector2(0.276816609, 0.276816609)
+texture = ExtResource("cloth_rack")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/DryingRack3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/DryingRack3/Body"]
+polygon = PackedVector2Array(-131.299654, -33.6, 131.299654, -33.6, 131.299654, 0, -131.299654, 0)
+
+[node name="LifeProp1" type="Node2D" parent="Town"]
+position = Vector2(520, 1320)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-51.6514954, -80, 103.302991, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp1"]
+position = Vector2(-79.9479844, -97.2691808)
+scale = Vector2(0.104031209, 0.104031209)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp1/Body"]
+polygon = PackedVector2Array(-45.453316, -16.8, 45.453316, -16.8, 45.453316, 0, -45.453316, 0)
+
+[node name="LifeProp2" type="Node2D" parent="Town"]
+position = Vector2(440, 1460)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp2"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp2/Body"]
+polygon = PackedVector2Array(-66.4878049, -10.5, 66.4878049, -10.5, 66.4878049, 0, -66.4878049, 0)
+
+[node name="LifeProp3" type="Node2D" parent="Town"]
+position = Vector2(920, 1280)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-47.9365079, -80, 95.8730159, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp3"]
+position = Vector2(-81.7142857, -122.539683)
+scale = Vector2(0.126984127, 0.126984127)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp3/Body"]
+polygon = PackedVector2Array(-42.184127, -16.8, 42.184127, -16.8, 42.184127, 0, -42.184127, 0)
+
+[node name="LifeProp4" type="Node2D" parent="Town"]
+position = Vector2(430, 2450)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-62.5269784, -85, 125.053957, 85)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp4"]
+position = Vector2(-153.642086, -147.679856)
+scale = Vector2(0.152877698, 0.152877698)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp4"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp4/Body"]
+polygon = PackedVector2Array(-55.023741, -17.85, 55.023741, -17.85, 55.023741, 0, -55.023741, 0)
+
+[node name="LifeProp5" type="Node2D" parent="Town"]
+position = Vector2(1030, 2510)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-51.6514954, -80, 103.302991, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp5"]
+position = Vector2(-79.9479844, -97.2691808)
+scale = Vector2(0.104031209, 0.104031209)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp5"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp5/Body"]
+polygon = PackedVector2Array(-45.453316, -16.8, 45.453316, -16.8, 45.453316, 0, -45.453316, 0)
+
+[node name="LifeProp6" type="Node2D" parent="Town"]
+position = Vector2(1030, 2580)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp6"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp6"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp6/Body"]
+polygon = PackedVector2Array(-66.4878049, -10.5, 66.4878049, -10.5, 66.4878049, 0, -66.4878049, 0)
+
+[node name="LifeProp7" type="Node2D" parent="Town"]
+position = Vector2(3430, 2540)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp7"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp7"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp7/Body"]
+polygon = PackedVector2Array(-66.4878049, -10.5, 66.4878049, -10.5, 66.4878049, 0, -66.4878049, 0)
+
+[node name="LifeProp8" type="Node2D" parent="Town"]
+position = Vector2(4120, 2540)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp8"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp8"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp8/Body"]
+polygon = PackedVector2Array(-66.4878049, -10.5, 66.4878049, -10.5, 66.4878049, 0, -66.4878049, 0)
+
+[node name="LifeProp9" type="Node2D" parent="Town"]
+position = Vector2(4150, 2360)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-51.6514954, -80, 103.302991, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp9"]
+position = Vector2(-79.9479844, -97.2691808)
+scale = Vector2(0.104031209, 0.104031209)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp9"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp9/Body"]
+polygon = PackedVector2Array(-45.453316, -16.8, 45.453316, -16.8, 45.453316, 0, -45.453316, 0)
+
+[node name="LifeProp10" type="Node2D" parent="Town"]
+position = Vector2(2800, 2320)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-47.9365079, -80, 95.8730159, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp10"]
+position = Vector2(-81.7142857, -122.539683)
+scale = Vector2(0.126984127, 0.126984127)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp10"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp10/Body"]
+polygon = PackedVector2Array(-42.184127, -16.8, 42.184127, -16.8, 42.184127, 0, -42.184127, 0)
+
+[node name="LifeProp11" type="Node2D" parent="Town"]
+position = Vector2(4900, 2330)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-47.9365079, -80, 95.8730159, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp11"]
+position = Vector2(-81.7142857, -122.539683)
+scale = Vector2(0.126984127, 0.126984127)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp11"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp11/Body"]
+polygon = PackedVector2Array(-42.184127, -16.8, 42.184127, -16.8, 42.184127, 0, -42.184127, 0)
+
+[node name="LifeProp12" type="Node2D" parent="Town"]
+position = Vector2(5800, 1680)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-62.5269784, -85, 125.053957, 85)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp12"]
+position = Vector2(-153.642086, -147.679856)
+scale = Vector2(0.152877698, 0.152877698)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp12"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp12/Body"]
+polygon = PackedVector2Array(-55.023741, -17.85, 55.023741, -17.85, 55.023741, 0, -55.023741, 0)
+
+[node name="LifeProp13" type="Node2D" parent="Town"]
+position = Vector2(6150, 3670)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-62.5269784, -85, 125.053957, 85)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp13"]
+position = Vector2(-153.642086, -147.679856)
+scale = Vector2(0.152877698, 0.152877698)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp13"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp13/Body"]
+polygon = PackedVector2Array(-55.023741, -17.85, 55.023741, -17.85, 55.023741, 0, -55.023741, 0)
+
+[node name="LifeProp14" type="Node2D" parent="Town"]
+position = Vector2(2180, 3840)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-44.9404762, -75, 89.8809524, 75)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp14"]
+position = Vector2(-76.6071429, -114.880952)
+scale = Vector2(0.119047619, 0.119047619)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp14"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp14/Body"]
+polygon = PackedVector2Array(-39.547619, -15.75, 39.547619, -15.75, 39.547619, 0, -39.547619, 0)
+
+[node name="LifeProp15" type="Node2D" parent="Town"]
+position = Vector2(3710, 3840)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-44.9404762, -75, 89.8809524, 75)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp15"]
+position = Vector2(-76.6071429, -114.880952)
+scale = Vector2(0.119047619, 0.119047619)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp15"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp15/Body"]
+polygon = PackedVector2Array(-39.547619, -15.75, 39.547619, -15.75, 39.547619, 0, -39.547619, 0)
+
+[node name="LifeProp16" type="Node2D" parent="Town"]
+position = Vector2(4900, 3840)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-62.5269784, -85, 125.053957, 85)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp16"]
+position = Vector2(-153.642086, -147.679856)
+scale = Vector2(0.152877698, 0.152877698)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp16"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp16/Body"]
+polygon = PackedVector2Array(-55.023741, -17.85, 55.023741, -17.85, 55.023741, 0, -55.023741, 0)
+
+[node name="LifeProp17" type="Node2D" parent="Town"]
+position = Vector2(980, 3650)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp17"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp17"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp17/Body"]
+polygon = PackedVector2Array(-66.4878049, -10.5, 66.4878049, -10.5, 66.4878049, 0, -66.4878049, 0)
+
+[node name="LifeProp18" type="Node2D" parent="Town"]
+position = Vector2(370, 3640)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-62.5269784, -85, 125.053957, 85)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp18"]
+position = Vector2(-153.642086, -147.679856)
+scale = Vector2(0.152877698, 0.152877698)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp18"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp18/Body"]
+polygon = PackedVector2Array(-55.023741, -17.85, 55.023741, -17.85, 55.023741, 0, -55.023741, 0)
+
+[node name="LifeProp19" type="Node2D" parent="Town"]
+position = Vector2(3540, 3500)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-51.6514954, -80, 103.302991, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp19"]
+position = Vector2(-79.9479844, -97.2691808)
+scale = Vector2(0.104031209, 0.104031209)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp19"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp19/Body"]
+polygon = PackedVector2Array(-45.453316, -16.8, 45.453316, -16.8, 45.453316, 0, -45.453316, 0)
+
+[node name="LifeProp20" type="Node2D" parent="Town"]
+position = Vector2(3540, 3570)
+metadata/label = "街院陈设：置于门侧或院边，桥头与阶口留空。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeProp20"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeProp20"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LifeProp20/Body"]
+polygon = PackedVector2Array(-66.4878049, -10.5, 66.4878049, -10.5, 66.4878049, 0, -66.4878049, 0)
+
+[node name="PlazaTree" type="Node2D" parent="Town"]
+position = Vector2(3370, 2360)
+metadata/label = "芦笙坪树荫：活动场地中央保持开敞。"
+metadata/visual_rect = Rect2(-176.452442, -320, 352.904884, 320)
+
+[node name="Art" type="Sprite2D" parent="Town/PlazaTree"]
+position = Vector2(-354.550129, -452.442159)
+scale = Vector2(0.411311054, 0.411311054)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/PlazaTree"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/PlazaTree/Body"]
+polygon = PackedVector2Array(-45, -32, 45, -32, 45, 8, -45, 8)
+
+[node name="Forest1" type="Node2D" parent="Town"]
+position = Vector2(-100, 260)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest1"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest1/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest2" type="Node2D" parent="Town"]
+position = Vector2(330, 325)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest2"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest2/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest3" type="Node2D" parent="Town"]
+position = Vector2(760, 390)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest3"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest3/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest4" type="Node2D" parent="Town"]
+position = Vector2(1190, 260)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest4"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest4"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest4/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest5" type="Node2D" parent="Town"]
+position = Vector2(1620, 325)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest5"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest5"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest5/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest6" type="Node2D" parent="Town"]
+position = Vector2(2050, 390)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest6"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest6"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest6/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest7" type="Node2D" parent="Town"]
+position = Vector2(2480, 260)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest7"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest7"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest7/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest8" type="Node2D" parent="Town"]
+position = Vector2(2910, 325)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest8"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest8"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest8/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest9" type="Node2D" parent="Town"]
+position = Vector2(3340, 390)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest9"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest9"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest9/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest10" type="Node2D" parent="Town"]
+position = Vector2(3770, 260)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest10"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest10"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest10/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest11" type="Node2D" parent="Town"]
+position = Vector2(4200, 325)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest11"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest11"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest11/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest12" type="Node2D" parent="Town"]
+position = Vector2(4630, 390)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest12"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest12"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest12/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest13" type="Node2D" parent="Town"]
+position = Vector2(5060, 260)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest13"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest13"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest13/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest14" type="Node2D" parent="Town"]
+position = Vector2(5490, 325)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest14"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest14"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest14/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest15" type="Node2D" parent="Town"]
+position = Vector2(5920, 390)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest15"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest15"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest15/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest16" type="Node2D" parent="Town"]
+position = Vector2(6350, 260)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest16"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest16"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest16/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest17" type="Node2D" parent="Town"]
+position = Vector2(-100, 680)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest17"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest17"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest17/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest18" type="Node2D" parent="Town"]
+position = Vector2(6600, 730)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest18"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest18"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest18/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest19" type="Node2D" parent="Town"]
+position = Vector2(-20, 1080)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest19"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest19"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest19/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest20" type="Node2D" parent="Town"]
+position = Vector2(6540, 1130)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest20"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest20"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest20/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest21" type="Node2D" parent="Town"]
+position = Vector2(-100, 1480)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest21"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest21"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest21/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest22" type="Node2D" parent="Town"]
+position = Vector2(6600, 1530)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest22"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest22"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest22/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest23" type="Node2D" parent="Town"]
+position = Vector2(-20, 1880)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest23"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest23"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest23/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest24" type="Node2D" parent="Town"]
+position = Vector2(6540, 1930)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest24"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest24"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest24/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest25" type="Node2D" parent="Town"]
+position = Vector2(-100, 2280)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest25"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest25"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest25/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest26" type="Node2D" parent="Town"]
+position = Vector2(6600, 2330)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest26"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest26"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest26/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest27" type="Node2D" parent="Town"]
+position = Vector2(-20, 2680)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest27"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest27"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest27/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest28" type="Node2D" parent="Town"]
+position = Vector2(6540, 2730)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest28"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest28"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest28/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest29" type="Node2D" parent="Town"]
+position = Vector2(-100, 3080)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest29"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest29"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest29/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest30" type="Node2D" parent="Town"]
+position = Vector2(6600, 3130)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest30"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest30"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest30/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest31" type="Node2D" parent="Town"]
+position = Vector2(-20, 3480)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest31"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest31"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest31/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest32" type="Node2D" parent="Town"]
+position = Vector2(6540, 3530)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest32"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest32"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest32/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest33" type="Node2D" parent="Town"]
+position = Vector2(-100, 3880)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest33"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest33"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest33/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest34" type="Node2D" parent="Town"]
+position = Vector2(6600, 3930)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest34"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest34"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest34/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest35" type="Node2D" parent="Town"]
+position = Vector2(1600, 4750)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest35"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest35"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest35/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest36" type="Node2D" parent="Town"]
+position = Vector2(2030, 4795)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest36"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest36"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest36/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest37" type="Node2D" parent="Town"]
+position = Vector2(2460, 4750)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest37"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest37"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest37/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest38" type="Node2D" parent="Town"]
+position = Vector2(2890, 4795)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest38"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest38"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest38/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest39" type="Node2D" parent="Town"]
+position = Vector2(3320, 4750)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest39"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest39"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest39/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest40" type="Node2D" parent="Town"]
+position = Vector2(3750, 4795)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest40"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest40"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest40/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest41" type="Node2D" parent="Town"]
+position = Vector2(4180, 4750)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest41"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest41"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest41/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest42" type="Node2D" parent="Town"]
+position = Vector2(4610, 4795)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest42"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest42"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest42/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest43" type="Node2D" parent="Town"]
+position = Vector2(5040, 4750)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest43"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest43"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest43/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest44" type="Node2D" parent="Town"]
+position = Vector2(5470, 4795)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-242.622108, -440, 485.244216, 440)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest44"]
+position = Vector2(-487.506427, -622.107969)
+scale = Vector2(0.565552699, 0.565552699)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest44"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest44/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest45" type="Node2D" parent="Town"]
+position = Vector2(5900, 4750)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-253.650386, -460, 507.300771, 460)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest45"]
+position = Vector2(-509.66581, -650.385604)
+scale = Vector2(0.59125964, 0.59125964)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest45"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest45/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="Forest46" type="Node2D" parent="Town"]
+position = Vector2(6330, 4795)
+metadata/label = "山林边界。"
+metadata/visual_rect = Rect2(-231.59383, -420, 463.187661, 420)
+
+[node name="Art" type="Sprite2D" parent="Town/Forest46"]
+position = Vector2(-465.347044, -593.830334)
+scale = Vector2(0.539845758, 0.539845758)
+texture = ExtResource("trees")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Forest46"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/Forest46/Body"]
+polygon = PackedVector2Array(-130, -45, 130, -45, 130, 5, -130, 5)
+
+[node name="WestWeaver" type="CharacterBody2D" parent="Town"]
+position = Vector2(560, 1410)
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("resident")
+identity = "woman"
+route = PackedVector2Array(560, 1410, 900, 1410)
+metadata/portrait = "woman_portrait"
+metadata/label = "绣坊居民：沿院前巷照料布料。"
+
+[node name="Art" type="Sprite2D" parent="Town/WestWeaver"]
+texture = ExtResource("woman_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="Town/WestWeaver"]
+shape = SubResource("npc_body")
+
+[node name="DyeWorker" type="CharacterBody2D" parent="Town"]
+position = Vector2(540, 2450)
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("resident")
+identity = "woman"
+route = PackedVector2Array(540, 2450, 850, 2450)
+metadata/portrait = "woman_portrait"
+metadata/label = "绣坊居民：沿院前巷照料布料。"
+
+[node name="Art" type="Sprite2D" parent="Town/DyeWorker"]
+texture = ExtResource("woman_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="Town/DyeWorker"]
+shape = SubResource("npc_body")
+
+[node name="CreekVendor" type="CharacterBody2D" parent="Town"]
+position = Vector2(2600, 3450)
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("resident")
+identity = "man"
+route = PackedVector2Array(2600, 3450, 3050, 3450)
+metadata/portrait = "man_portrait"
+metadata/label = "普通工匠：沿街候行，工具与货物放在路旁。"
+
+[node name="Art" type="Sprite2D" parent="Town/CreekVendor"]
+texture = ExtResource("man_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="Town/CreekVendor"]
+shape = SubResource("npc_body")
+
+[node name="ClothVendor" type="CharacterBody2D" parent="Town"]
+position = Vector2(4000, 3460)
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("resident")
+identity = "woman"
+route = PackedVector2Array(4000, 3460, 4350, 3460)
+metadata/portrait = "woman_portrait"
+metadata/label = "绣坊居民：沿院前巷照料布料。"
+
+[node name="Art" type="Sprite2D" parent="Town/ClothVendor"]
+texture = ExtResource("woman_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="Town/ClothVendor"]
+shape = SubResource("npc_body")
+
+[node name="PlazaCraftsman" type="CharacterBody2D" parent="Town"]
+position = Vector2(3700, 2560)
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("resident")
+identity = "man"
+route = PackedVector2Array(3700, 2560, 4000, 2560)
+metadata/portrait = "man_portrait"
+metadata/label = "普通工匠：沿街候行，工具与货物放在路旁。"
+
+[node name="Art" type="Sprite2D" parent="Town/PlazaCraftsman"]
+texture = ExtResource("man_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="Town/PlazaCraftsman"]
+shape = SubResource("npc_body")
+
+[node name="UpperResident" type="CharacterBody2D" parent="Town"]
+position = Vector2(3500, 1610)
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("resident")
+identity = "woman"
+route = PackedVector2Array(3500, 1610, 4300, 1610)
+metadata/portrait = "woman_portrait"
+metadata/label = "绣坊居民：沿院前巷照料布料。"
+
+[node name="Art" type="Sprite2D" parent="Town/UpperResident"]
+texture = ExtResource("woman_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="Town/UpperResident"]
+shape = SubResource("npc_body")
+
+[node name="Farmer" type="CharacterBody2D" parent="Town"]
+position = Vector2(5860, 1390)
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("resident")
+identity = "man"
+route = PackedVector2Array(5860, 1390, 6190, 1390)
+metadata/portrait = "man_portrait"
+metadata/label = "普通工匠：沿街候行，工具与货物放在路旁。"
+
+[node name="Art" type="Sprite2D" parent="Town/Farmer"]
+texture = ExtResource("man_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="Town/Farmer"]
+shape = SubResource("npc_body")
+
+[node name="LaneWorker" type="CharacterBody2D" parent="Town"]
+position = Vector2(2250, 2670)
+collision_layer = 4
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("resident")
+identity = "man"
+route = PackedVector2Array(2250, 2670, 2550, 2670)
+metadata/portrait = "man_portrait"
+metadata/label = "普通工匠：沿街候行，工具与货物放在路旁。"
+
+[node name="Art" type="Sprite2D" parent="Town/LaneWorker"]
+texture = ExtResource("man_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="Town/LaneWorker"]
+shape = SubResource("npc_body")
+
+[node name="Player" parent="Town" instance=ExtResource("player")]
+position = Vector2(650,3780)
+z_index = 0
+collision_layer = 2
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("adapter")
+
+[node name="CollisionShape2D" parent="Town/Player" index="1"]
+position = Vector2(0,0)
+shape = SubResource("hero_body")
+
+[node name="WorkshopDoor" type="Marker2D" parent="Town"]
+position = Vector2(590,1255)
+
+[node name="HouseHall" type="Node2D" parent="."]
+visible = false
+position = Vector2(10000,3000)
+
+[node name="Sort" type="Node2D" parent="HouseHall"]
+y_sort_enabled = true
+
+[node name="Floor" type="Polygon2D" parent="HouseHall"]
+z_index = -2
+texture = ExtResource("interior")
+polygon = PackedVector2Array(-604.8, -341.55, 623.7, -341.55, 745.2, 0, -739.8, 0)
+uv = PackedVector2Array(514, 586, 1424, 586, 1514, 839, 414, 839)
+
+[node name="Wall1" type="Polygon2D" parent="HouseHall"]
+z_index = -1
+texture = ExtResource("interior")
+polygon = PackedVector2Array(-792.45, -670.95, 815.4, -670.95, 623.7, -341.55, -604.8, -341.55)
+uv = PackedVector2Array(375, 342, 1566, 342, 1424, 586, 514, 586)
+
+[node name="Wall2" type="Polygon2D" parent="HouseHall"]
+z_index = -1
+texture = ExtResource("interior")
+polygon = PackedVector2Array(-792.45, -670.95, -604.8, -341.55, -739.8, 0, -792.45, 12.15)
+uv = PackedVector2Array(375, 342, 514, 586, 414, 839, 375, 848)
+
+[node name="Wall3" type="Polygon2D" parent="HouseHall"]
+z_index = -1
+texture = ExtResource("interior")
+polygon = PackedVector2Array(623.7, -341.55, 815.4, -670.95, 815.4, 12.15, 745.2, 0)
+uv = PackedVector2Array(1424, 586, 1566, 342, 1566, 848, 1514, 839)
+
+[node name="Back" type="StaticBody2D" parent="HouseHall"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/Back"]
+polygon = PackedVector2Array(-600, -355, 630, -355, 630, -335, -600, -335)
+
+[node name="Left" type="StaticBody2D" parent="HouseHall"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/Left"]
+polygon = PackedVector2Array(-755, 0, -610, -345, -585, -335, -730, 10)
+
+[node name="Right" type="StaticBody2D" parent="HouseHall"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/Right"]
+polygon = PackedVector2Array(750, 0, 635, -345, 610, -335, 725, 10)
+
+[node name="FrontLeft" type="StaticBody2D" parent="HouseHall"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/FrontLeft"]
+polygon = PackedVector2Array(-760, -2, -125, -2, -125, 18, -760, 18)
+
+[node name="FrontRight" type="StaticBody2D" parent="HouseHall"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/FrontRight"]
+polygon = PackedVector2Array(125, -2, 760, -2, 760, 18, 125, 18)
+
+[node name="Exit" type="Marker2D" parent="HouseHall"]
+position = Vector2(0,-40)
+
+[node name="Table" type="Node2D" parent="HouseHall/Sort"]
+position = Vector2(-250, -145)
+metadata/label = "木楼前厅家具。"
+metadata/visual_rect = Rect2(-51.6514954, -80, 103.302991, 80)
+
+[node name="Art" type="Sprite2D" parent="HouseHall/Sort/Table"]
+position = Vector2(-79.9479844, -97.2691808)
+scale = Vector2(0.104031209, 0.104031209)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="HouseHall/Sort/Table"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/Sort/Table/Body"]
+polygon = PackedVector2Array(-45.453316, -16.8, 45.453316, -16.8, 45.453316, 0, -45.453316, 0)
+
+[node name="Bench" type="Node2D" parent="HouseHall/Sort"]
+position = Vector2(-250, -65)
+metadata/label = "木楼前厅家具。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="HouseHall/Sort/Bench"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="HouseHall/Sort/Bench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/Sort/Bench/Body"]
+polygon = PackedVector2Array(-66.4878049, -10.5, 66.4878049, -10.5, 66.4878049, 0, -66.4878049, 0)
+
+[node name="Counter" type="Node2D" parent="HouseHall/Sort"]
+position = Vector2(320, -170)
+metadata/label = "木楼前厅家具。"
+metadata/visual_rect = Rect2(-159.937238, -110, 319.874477, 110)
+
+[node name="Art" type="Sprite2D" parent="HouseHall/Sort/Counter"]
+position = Vector2(-176.736402, -180.188285)
+scale = Vector2(0.230125523, 0.230125523)
+texture = ExtResource("counter")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="HouseHall/Sort/Counter"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/Sort/Counter/Body"]
+polygon = PackedVector2Array(-140.74477, -23.1, 140.74477, -23.1, 140.74477, 0, -140.74477, 0)
+
+[node name="Shelf" type="Node2D" parent="HouseHall/Sort"]
+position = Vector2(-490, -270)
+metadata/label = "木楼前厅家具。"
+metadata/visual_rect = Rect2(-113.233568, -170, 226.467136, 170)
+
+[node name="Art" type="Sprite2D" parent="HouseHall/Sort/Shelf"]
+position = Vector2(-153.339202, -188.755869)
+scale = Vector2(0.199530516, 0.199530516)
+texture = ExtResource("shelf")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="HouseHall/Sort/Shelf"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="HouseHall/Sort/Shelf/Body"]
+polygon = PackedVector2Array(-99.6455399, -35.7, 99.6455399, -35.7, 99.6455399, 0, -99.6455399, 0)
+
+[node name="Keeper" type="CharacterBody2D" parent="HouseHall/Sort"]
+position = Vector2(320,-235)
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("resident")
+identity = "woman"
+metadata/portrait = "woman_portrait"
+
+[node name="Art" type="Sprite2D" parent="HouseHall/Sort/Keeper"]
+texture = ExtResource("woman_walk")
+centered = false
+region_enabled = true
+
+[node name="Foot" type="CollisionShape2D" parent="HouseHall/Sort/Keeper"]
+shape = SubResource("npc_body")
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Boundary"]
+build_mode = 1
+polygon = PackedVector2Array(-250, 4200, -250, 700, 400, 350, 1200, 350, 1200, 450, 1800, 450, 6200, 450, 6460, 900, 6460, 4370, 5900, 4630, 1800, 4630, 900, 4280)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(650,3590)
+zoom = Vector2(0.9,0.9)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+
+[node name="TopPanel" type="Panel" parent="UI"]
+offset_left = 20.0
+offset_top = 18.0
+offset_right = 1020.0
+offset_bottom = 105.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Title" type="Label" parent="UI"]
+offset_left = 40.0
+offset_top = 28.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 28
+text = "苗风山城"
+
+[node name="Status" type="Label" parent="UI"]
+offset_left = 42.0
+offset_top = 70.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 19
+text = "木楼溪街"
+
+[node name="Hint" type="Label" parent="UI"]
+offset_left = 28.0
+offset_top = 1033.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 20
+text = "WASD移动"
+
+[node name="Detail" type="Panel" parent="UI"]
+visible = false
+offset_left = 1100.0
+offset_top = 24.0
+offset_right = 1890.0
+offset_bottom = 590.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Portrait" type="TextureRect" parent="UI/Detail"]
+offset_left = 18.0
+offset_top = 24.0
+offset_right = 260.0
+offset_bottom = 460.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Text" type="Label" parent="UI/Detail"]
+offset_left = 286.0
+offset_top = 28.0
+offset_right = 755.0
+offset_bottom = 540.0
+autowrap_mode = 2
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 23
+
+[node name="ClusterHome1" type="Node2D" parent="Town"]
+position = Vector2(2220, 730)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-343.370945, -450, 686.74189, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome1"]
+material = SubResource("fade_ClusterHome1")
+position = Vector2(-617.559944, -638.504937)
+scale = Vector2(0.634696756, 0.634696756)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome1/Body"]
+polygon = PackedVector2Array(-302.166432, -94.5, 302.166432, -94.5, 302.166432, 0, -302.166432, 0)
+
+[node name="ClusterHome2" type="Node2D" parent="Town"]
+position = Vector2(3160, 665)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-293.251908, -490, 586.503817, 490)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome2"]
+material = SubResource("fade_ClusterHome2")
+position = Vector2(-739.862595, -708.442748)
+scale = Vector2(0.748091603, 0.748091603)
+texture = ExtResource("house_side")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome2/Body"]
+polygon = PackedVector2Array(-258.061679, -100, 258.061679, -100, 258.061679, 0, -258.061679, 0)
+
+[node name="ClusterHome3" type="Node2D" parent="Town"]
+position = Vector2(3880, 730)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-351.00141, -460, 702.002821, 460)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome3"]
+material = SubResource("fade_ClusterHome3")
+position = Vector2(-631.283498, -652.693935)
+scale = Vector2(0.648801128, 0.648801128)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome3/Body"]
+polygon = PackedVector2Array(-308.881241, -96.6, 308.881241, -96.6, 308.881241, 0, -308.881241, 0)
+
+[node name="ClusterHome4" type="Node2D" parent="Town"]
+position = Vector2(4630, 610)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome4"]
+material = SubResource("fade_ClusterHome4")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome4"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome4/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="ClusterHome5" type="Node2D" parent="Town"]
+position = Vector2(5200, 760)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome5"]
+material = SubResource("fade_ClusterHome5")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome5"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome5/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="ClusterHome6" type="Node2D" parent="Town"]
+position = Vector2(3280, 1380)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-275.29771, -460, 550.59542, 460)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome6"]
+material = SubResource("fade_ClusterHome6")
+position = Vector2(-694.564885, -665.068702)
+scale = Vector2(0.702290076, 0.702290076)
+texture = ExtResource("house_side")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome6"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome6/Body"]
+polygon = PackedVector2Array(-242.261985, -96.6, 242.261985, -96.6, 242.261985, 0, -242.261985, 0)
+
+[node name="ClusterHome7" type="Node2D" parent="Town"]
+position = Vector2(2420, 1900)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-343.370945, -450, 686.74189, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome7"]
+material = SubResource("fade_ClusterHome7")
+position = Vector2(-617.559944, -638.504937)
+scale = Vector2(0.634696756, 0.634696756)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome7"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome7/Body"]
+polygon = PackedVector2Array(-302.166432, -94.5, 302.166432, -94.5, 302.166432, 0, -302.166432, 0)
+
+[node name="ClusterHome8" type="Node2D" parent="Town"]
+position = Vector2(4500, 1900)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-351.00141, -460, 702.002821, 460)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome8"]
+material = SubResource("fade_ClusterHome8")
+position = Vector2(-631.283498, -652.693935)
+scale = Vector2(0.648801128, 0.648801128)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome8"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome8/Body"]
+polygon = PackedVector2Array(-308.881241, -96.6, 308.881241, -96.6, 308.881241, 0, -308.881241, 0)
+
+[node name="ClusterHome9" type="Node2D" parent="Town"]
+position = Vector2(2660, 2490)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome9"]
+material = SubResource("fade_ClusterHome9")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome9"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome9/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="ClusterHome10" type="Node2D" parent="Town"]
+position = Vector2(5090, 2330)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-293.251908, -490, 586.503817, 490)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome10"]
+material = SubResource("fade_ClusterHome10")
+position = Vector2(-739.862595, -708.442748)
+scale = Vector2(0.748091603, 0.748091603)
+texture = ExtResource("house_side")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome10"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome10/Body"]
+polygon = PackedVector2Array(-258.061679, -100, 258.061679, -100, 258.061679, 0, -258.061679, 0)
+
+[node name="ClusterHome11" type="Node2D" parent="Town"]
+position = Vector2(3560, 3060)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-343.370945, -450, 686.74189, 450)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome11"]
+material = SubResource("fade_ClusterHome11")
+position = Vector2(-617.559944, -638.504937)
+scale = Vector2(0.634696756, 0.634696756)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome11"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome11/Body"]
+polygon = PackedVector2Array(-302.166432, -94.5, 302.166432, -94.5, 302.166432, 0, -302.166432, 0)
+
+[node name="ClusterHome12" type="Node2D" parent="Town"]
+position = Vector2(4450, 3040)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome12"]
+material = SubResource("fade_ClusterHome12")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome12"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome12/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="ClusterHome13" type="Node2D" parent="Town"]
+position = Vector2(3900, 3690)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome13"]
+material = SubResource("fade_ClusterHome13")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome13"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome13/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="ClusterHome14" type="Node2D" parent="Town"]
+position = Vector2(380, 900)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-351.00141, -460, 702.002821, 460)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome14"]
+material = SubResource("fade_ClusterHome14")
+position = Vector2(-631.283498, -652.693935)
+scale = Vector2(0.648801128, 0.648801128)
+texture = ExtResource("house_back")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome14"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome14/Body"]
+polygon = PackedVector2Array(-308.881241, -96.6, 308.881241, -96.6, 308.881241, 0, -308.881241, 0)
+
+[node name="ClusterHome15" type="Node2D" parent="Town"]
+position = Vector2(620, 3100)
+metadata/label = "木楼住户：门前接同层巷路，支柱下方不通行。"
+metadata/visual_rect = Rect2(-276.524869, -470, 553.049738, 470)
+metadata/fade = true
+
+[node name="Art" type="Sprite2D" parent="Town/ClusterHome15"]
+material = SubResource("fade_ClusterHome15")
+position = Vector2(-593.959424, -621.950262)
+scale = Vector2(0.615183246, 0.615183246)
+texture = ExtResource("house_front")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ClusterHome15"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/ClusterHome15/Body"]
+polygon = PackedVector2Array(-243.341885, -98.7, 243.341885, -98.7, 243.341885, 0, -243.341885, 0)
+
+[node name="CurvedWater1" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/CurvedWater1"]
+polygon = PackedVector2Array(1307.49888, 100, 1319.76135, 160, 1333.49552, 240, 1343.31372, 320, 1348.61819, 400, 1349.30735, 480, 1345.77785, 560, 1338.86744, 640, 1329.7459, 720, 1319.76713, 800, 1310.3003, 880, 1302.56054, 960, 1297.45948, 1040, 1295.49386, 1120, 1296.68561, 1200, 1276.97641, 1280, 1250, 1360, 1250, 1440, 1250, 1476.5, 1750, 1476.5, 1750, 1440, 1750, 1360, 1738.70909, 1280, 1730.91921, 1200, 1735.5435, 1120, 1742.92452, 1040, 1752.82444, 960, 1764.55519, 880, 1777.04605, 800, 1788.96133, 720, 1798.85465, 640, 1805.34135, 560, 1807.26853, 480, 1803.86232, 400, 1794.83441, 320, 1780.4348, 240, 1761.4439, 160, 1744.921, 100)
+
+[node name="CurvedWater2" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/CurvedWater2"]
+polygon = PackedVector2Array(1250, 1524.75, 1250, 1600, 1259.67669, 1680, 1296.08365, 1760, 1311.34095, 1840, 1299.36276, 1920, 1283.83952, 2000, 1263.75237, 2080, 1248.96038, 2160, 1250, 2240, 1250, 2320, 1250, 2326.5, 1750, 2326.5, 1750, 2320, 1750, 2240, 1717.8994, 2160, 1680.11588, 2080, 1685.07179, 2000, 1699.47783, 1920, 1711.53022, 1840, 1730.38494, 1760, 1746.85706, 1680, 1750, 1600, 1750, 1524.75)
+
+[node name="CurvedWater3" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/CurvedWater3"]
+polygon = PackedVector2Array(1250, 2374.75, 1250, 2400, 1250, 2480, 1229.96544, 2560, 1200.83243, 2640, 1201.86352, 2720, 1214.81286, 2800, 1230.86727, 2880, 1248.54395, 2960, 1263.03684, 3040, 1258.71642, 3120, 1250, 3200, 1250, 3280, 1250, 3287.95, 1750, 3287.95, 1750, 3280, 1750, 3200, 1748.0381, 3120, 1730.26691, 3040, 1705.50519, 2960, 1684.67731, 2880, 1664.52246, 2800, 1646.68692, 2720, 1648.26584, 2640, 1707.7976, 2560, 1750, 2480, 1750, 2400, 1750, 2374.75)
+
+[node name="CurvedWater4" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/CurvedWater4"]
+polygon = PackedVector2Array(1250, 3330.05, 1250, 3360, 1250, 3440, 1277.20013, 3520, 1312.15659, 3600, 1314.35878, 3680, 1312.63378, 3750, 1744.1265, 3750, 1751.04548, 3680, 1758.36258, 3600, 1756.21914, 3520, 1750, 3440, 1750, 3360, 1750, 3330.05)
+
+[node name="CurvedWaterBend" type="StaticBody2D" parent="Town"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/CurvedWaterBend"]
+polygon = PackedVector2Array(1312.63378, 3750, 1400, 4030, 1640, 4250, 2050, 4350, 2300, 4277.65783, 2550, 4300.01324, 2800, 4313.57421, 3050, 4312.38163, 3300, 4296.95957, 3550, 4274.08494, 3800, 4253.80958, 4050, 4245.04309, 4300, 4251.63775, 4550, 4270.69566, 4800, 4293.84218, 5050, 4310.90602, 5300, 4314.3888, 5550, 4302.76007, 5800, 4281.12987, 6050, 4259.00316, 6300, 4246.10312, 6550, 4248.09841, 6750, 4260.05556, 6750, 3970.3601, 6550, 3986.01945, 6300, 4000.47754, 6050, 4004.92053, 5800, 3997.88844, 5550, 3981.69205, 5300, 3961.65358, 5050, 3944.35779, 4800, 3935.48818, 4550, 3937.95935, 4300, 3950.95926, 4050, 3970.21606, 3800, 3989.40187, 3550, 4002.21211, 3300, 4004.43726, 3050, 3995.34614, 2800, 3977.92613, 2550, 3957.90155, 2300, 3941.85259, 2050, 3900, 1744.1265, 3750)
+
+[node name="BankCluster0_0" type="Node2D" parent="Town"]
+position = Vector2(1392.01659, 540)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-90.2307692, -72, 180.461538, 72)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster0_0"]
+position = Vector2(-171.615385, -127.076923)
+scale = Vector2(0.153846154, 0.153846154)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster0_1" type="Node2D" parent="Town"]
+position = Vector2(1761.28829, 540)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-90.2307692, -72, 180.461538, 72)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster0_1"]
+position = Vector2(-171.615385, -127.076923)
+scale = Vector2(0.153846154, 0.153846154)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster1_0" type="Node2D" parent="Town"]
+position = Vector2(1358.70803, 850)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-102.762821, -82, 205.525641, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster1_0"]
+position = Vector2(-195.450855, -144.726496)
+scale = Vector2(0.175213675, 0.175213675)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster1_1" type="Node2D" parent="Town"]
+position = Vector2(1724.21762, 850)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-102.762821, -82, 205.525641, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster1_1"]
+position = Vector2(-195.450855, -144.726496)
+scale = Vector2(0.175213675, 0.175213675)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster2_0" type="Node2D" parent="Town"]
+position = Vector2(1340.71268, 1160)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-115.294872, -92, 230.589744, 92)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster2_0"]
+position = Vector2(-219.286325, -162.376068)
+scale = Vector2(0.196581197, 0.196581197)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster2_1" type="Node2D" parent="Town"]
+position = Vector2(1687.89016, 1160)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-115.294872, -92, 230.589744, 92)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster2_1"]
+position = Vector2(-219.286325, -162.376068)
+scale = Vector2(0.196581197, 0.196581197)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster4_0" type="Node2D" parent="Town"]
+position = Vector2(1349.07128, 1780)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-102.762821, -82, 205.525641, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster4_0"]
+position = Vector2(-195.450855, -144.726496)
+scale = Vector2(0.175213675, 0.175213675)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster4_1" type="Node2D" parent="Town"]
+position = Vector2(1679.89273, 1780)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-102.762821, -82, 205.525641, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster4_1"]
+position = Vector2(-195.450855, -144.726496)
+scale = Vector2(0.175213675, 0.175213675)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster5_0" type="Node2D" parent="Town"]
+position = Vector2(1305.81458, 2090)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-115.294872, -92, 230.589744, 92)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster5_0"]
+position = Vector2(-219.286325, -162.376068)
+scale = Vector2(0.196581197, 0.196581197)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster5_1" type="Node2D" parent="Town"]
+position = Vector2(1638.89938, 2090)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-115.294872, -92, 230.589744, 92)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster5_1"]
+position = Vector2(-219.286325, -162.376068)
+scale = Vector2(0.196581197, 0.196581197)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster7_0" type="Node2D" parent="Town"]
+position = Vector2(1245.529, 2710)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-102.762821, -82, 205.525641, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster7_0"]
+position = Vector2(-195.450855, -144.726496)
+scale = Vector2(0.175213675, 0.175213675)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster7_1" type="Node2D" parent="Town"]
+position = Vector2(1599.69578, 2710)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-102.762821, -82, 205.525641, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster7_1"]
+position = Vector2(-195.450855, -144.726496)
+scale = Vector2(0.175213675, 0.175213675)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster8_0" type="Node2D" parent="Town"]
+position = Vector2(1306.13746, 3020)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-115.294872, -92, 230.589744, 92)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster8_0"]
+position = Vector2(-219.286325, -162.376068)
+scale = Vector2(0.196581197, 0.196581197)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster8_1" type="Node2D" parent="Town"]
+position = Vector2(1677.52039, 3020)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-115.294872, -92, 230.589744, 92)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster8_1"]
+position = Vector2(-219.286325, -162.376068)
+scale = Vector2(0.196581197, 0.196581197)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster10_0" type="Node2D" parent="Town"]
+position = Vector2(1360.508, 3640)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-102.762821, -82, 205.525641, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster10_0"]
+position = Vector2(-195.450855, -144.726496)
+scale = Vector2(0.175213675, 0.175213675)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="BankCluster10_1" type="Node2D" parent="Town"]
+position = Vector2(1710.08095, 3640)
+metadata/label = "溪岸石草丛：水边自然阻挡。"
+metadata/visual_rect = Rect2(-102.762821, -82, 205.525641, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/BankCluster10_1"]
+position = Vector2(-195.450855, -144.726496)
+scale = Vector2(0.175213675, 0.175213675)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank0" type="Node2D" parent="Town"]
+position = Vector2(2300, 3976.85259)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-87.724359, -70, 175.448718, 70)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank0"]
+position = Vector2(-166.848291, -123.547009)
+scale = Vector2(0.14957265, 0.14957265)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank1" type="Node2D" parent="Town"]
+position = Vector2(2670, 4002.41645)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-100.25641, -80, 200.512821, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank1"]
+position = Vector2(-190.683761, -141.196581)
+scale = Vector2(0.170940171, 0.170940171)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank2" type="Node2D" parent="Town"]
+position = Vector2(3040, 4029.77802)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-87.724359, -70, 175.448718, 70)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank2"]
+position = Vector2(-166.848291, -123.547009)
+scale = Vector2(0.14957265, 0.14957265)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank3" type="Node2D" parent="Town"]
+position = Vector2(3410, 4039.8983)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-100.25641, -80, 200.512821, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank3"]
+position = Vector2(-190.683761, -141.196581)
+scale = Vector2(0.170940171, 0.170940171)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank4" type="Node2D" parent="Town"]
+position = Vector2(3780, 4025.73529)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-87.724359, -70, 175.448718, 70)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank4"]
+position = Vector2(-166.848291, -123.547009)
+scale = Vector2(0.14957265, 0.14957265)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank5" type="Node2D" parent="Town"]
+position = Vector2(4150, 3997.14404)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-100.25641, -80, 200.512821, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank5"]
+position = Vector2(-190.683761, -141.196581)
+scale = Vector2(0.170940171, 0.170940171)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank6" type="Node2D" parent="Town"]
+position = Vector2(4520, 3974.0192)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-87.724359, -70, 175.448718, 70)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank6"]
+position = Vector2(-166.848291, -123.547009)
+scale = Vector2(0.14957265, 0.14957265)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank7" type="Node2D" parent="Town"]
+position = Vector2(4890, 3972.45174)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-100.25641, -80, 200.512821, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank7"]
+position = Vector2(-190.683761, -141.196581)
+scale = Vector2(0.170940171, 0.170940171)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank8" type="Node2D" parent="Town"]
+position = Vector2(5260, 3993.53234)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-87.724359, -70, 175.448718, 70)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank8"]
+position = Vector2(-166.848291, -123.547009)
+scale = Vector2(0.14957265, 0.14957265)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank9" type="Node2D" parent="Town"]
+position = Vector2(5630, 4022.59248)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-100.25641, -80, 200.512821, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank9"]
+position = Vector2(-190.683761, -141.196581)
+scale = Vector2(0.170940171, 0.170940171)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank10" type="Node2D" parent="Town"]
+position = Vector2(6000, 4039.41125)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-87.724359, -70, 175.448718, 70)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank10"]
+position = Vector2(-166.848291, -123.547009)
+scale = Vector2(0.14957265, 0.14957265)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="SouthBank11" type="Node2D" parent="Town"]
+position = Vector2(6370, 4032.28563)
+metadata/label = "下游石草岸。"
+metadata/visual_rect = Rect2(-100.25641, -80, 200.512821, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthBank11"]
+position = Vector2(-190.683761, -141.196581)
+scale = Vector2(0.170940171, 0.170940171)
+texture = ExtResource("bank_shrub")
+centered = false
+
+[node name="Moss1" type="Node2D" parent="Town"]
+position = Vector2(2169.8411, 1062)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss1"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss2" type="Node2D" parent="Town"]
+position = Vector2(2584.6284, 1042)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss2"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss3" type="Node2D" parent="Town"]
+position = Vector2(2809.03808, 972)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss3"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss4" type="Node2D" parent="Town"]
+position = Vector2(3324.0945, 952)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss4"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss5" type="Node2D" parent="Town"]
+position = Vector2(3577.12855, 1032)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss5"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss6" type="Node2D" parent="Town"]
+position = Vector2(4017.00641, 1012)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss6"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss7" type="Node2D" parent="Town"]
+position = Vector2(4319.8411, 932)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss7"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss8" type="Node2D" parent="Town"]
+position = Vector2(4734.6284, 912)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss8"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss9" type="Node2D" parent="Town"]
+position = Vector2(4993.23893, 1122)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss9"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss10" type="Node2D" parent="Town"]
+position = Vector2(5519.74104, 1102)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss10"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss11" type="Node2D" parent="Town"]
+position = Vector2(2380.77374, 1492)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss11"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss12" type="Node2D" parent="Town"]
+position = Vector2(2793.72031, 1472)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss12"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss13" type="Node2D" parent="Town"]
+position = Vector2(3828.78403, 1452)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss13"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss14" type="Node2D" parent="Town"]
+position = Vector2(4225.92081, 1432)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss14"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss15" type="Node2D" parent="Town"]
+position = Vector2(4459.03808, 1512)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss15"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss16" type="Node2D" parent="Town"]
+position = Vector2(4974.0945, 1492)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss16"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss17" type="Node2D" parent="Town"]
+position = Vector2(2074.31257, 2162)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss17"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss18" type="Node2D" parent="Town"]
+position = Vector2(2480.27461, 2142)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss18"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss19" type="Node2D" parent="Town"]
+position = Vector2(2795.32214, 2202)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss19"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss20" type="Node2D" parent="Town"]
+position = Vector2(3199.2916, 2182)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss20"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss21" type="Node2D" parent="Town"]
+position = Vector2(4289.03808, 2162)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss21"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss22" type="Node2D" parent="Town"]
+position = Vector2(4804.0945, 2142)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss22"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss23" type="Node2D" parent="Town"]
+position = Vector2(5239.8411, 2272)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss23"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss24" type="Node2D" parent="Town"]
+position = Vector2(5654.6284, 2252)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss24"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss25" type="Node2D" parent="Town"]
+position = Vector2(2158.78403, 2592)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss25"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss26" type="Node2D" parent="Town"]
+position = Vector2(2555.92081, 2572)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss26"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss27" type="Node2D" parent="Town"]
+position = Vector2(5289.03808, 2702)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss27"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss28" type="Node2D" parent="Town"]
+position = Vector2(5804.0945, 2682)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss28"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss29" type="Node2D" parent="Town"]
+position = Vector2(423.255497, 1832)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss29"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss30" type="Node2D" parent="Town"]
+position = Vector2(811.567016, 1812)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss30"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss31" type="Node2D" parent="Town"]
+position = Vector2(350.636389, 2892)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss31"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss32" type="Node2D" parent="Town"]
+position = Vector2(842.80141, 2872)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss32"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss33" type="Node2D" parent="Town"]
+position = Vector2(2257.72696, 3792)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss33"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss34" type="Node2D" parent="Town"]
+position = Vector2(2637.21322, 3772)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss34"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss35" type="Node2D" parent="Town"]
+position = Vector2(3075.32214, 3752)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss35"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss36" type="Node2D" parent="Town"]
+position = Vector2(3479.2916, 3732)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss36"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss37" type="Node2D" parent="Town"]
+position = Vector2(4180.63639, 3792)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss37"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss38" type="Node2D" parent="Town"]
+position = Vector2(4672.80141, 3772)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss38"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss39" type="Node2D" parent="Town"]
+position = Vector2(5257.72696, 3782)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss39"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss40" type="Node2D" parent="Town"]
+position = Vector2(5637.21322, 3762)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss40"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss41" type="Node2D" parent="Town"]
+position = Vector2(1990.63639, 3012)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss41"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss42" type="Node2D" parent="Town"]
+position = Vector2(2482.80141, 2992)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss42"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss43" type="Node2D" parent="Town"]
+position = Vector2(5695.32214, 2992)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss43"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss44" type="Node2D" parent="Town"]
+position = Vector2(6099.2916, 2972)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss44"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss45" type="Node2D" parent="Town"]
+position = Vector2(377.824348, 1232)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss45"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss46" type="Node2D" parent="Town"]
+position = Vector2(855.802609, 1212)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss46"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss47" type="Node2D" parent="Town"]
+position = Vector2(463.590435, 2262)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss47"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss48" type="Node2D" parent="Town"]
+position = Vector2(930.188261, 2242)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss48"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss49" type="Node2D" parent="Town"]
+position = Vector2(5614.53795, 1332)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss49"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss50" type="Node2D" parent="Town"]
+position = Vector2(5881.89726, 1312)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss50"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss51" type="Node2D" parent="Town"]
+position = Vector2(5864.53795, 1582)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss51"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss52" type="Node2D" parent="Town"]
+position = Vector2(6131.89726, 1562)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss52"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss53" type="Node2D" parent="Town"]
+position = Vector2(5784.53795, 3642)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss53"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss54" type="Node2D" parent="Town"]
+position = Vector2(6051.89726, 3622)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss54"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss55" type="Node2D" parent="Town"]
+position = Vector2(1959.03808, 742)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss55"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss56" type="Node2D" parent="Town"]
+position = Vector2(2474.0945, 722)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss56"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss57" type="Node2D" parent="Town"]
+position = Vector2(2937.12855, 677)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss57"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss58" type="Node2D" parent="Town"]
+position = Vector2(3377.00641, 657)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss58"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss59" type="Node2D" parent="Town"]
+position = Vector2(3613.23893, 742)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss59"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss60" type="Node2D" parent="Town"]
+position = Vector2(4139.74104, 722)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss60"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss61" type="Node2D" parent="Town"]
+position = Vector2(4419.8411, 622)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss61"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss62" type="Node2D" parent="Town"]
+position = Vector2(4834.6284, 602)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss62"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss63" type="Node2D" parent="Town"]
+position = Vector2(4989.8411, 772)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss63"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss64" type="Node2D" parent="Town"]
+position = Vector2(5404.6284, 752)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss64"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss65" type="Node2D" parent="Town"]
+position = Vector2(3070.77374, 1392)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss65"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss66" type="Node2D" parent="Town"]
+position = Vector2(3483.72031, 1372)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss66"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss67" type="Node2D" parent="Town"]
+position = Vector2(2159.03808, 1912)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss67"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss68" type="Node2D" parent="Town"]
+position = Vector2(2674.0945, 1892)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss68"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss69" type="Node2D" parent="Town"]
+position = Vector2(4233.23893, 1912)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss69"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss70" type="Node2D" parent="Town"]
+position = Vector2(4759.74104, 1892)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss70"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss71" type="Node2D" parent="Town"]
+position = Vector2(2449.8411, 2502)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss71"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss72" type="Node2D" parent="Town"]
+position = Vector2(2864.6284, 2482)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss72"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss73" type="Node2D" parent="Town"]
+position = Vector2(4867.12855, 2342)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss73"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss74" type="Node2D" parent="Town"]
+position = Vector2(5307.00641, 2322)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss74"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss75" type="Node2D" parent="Town"]
+position = Vector2(3299.03808, 3072)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss75"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss76" type="Node2D" parent="Town"]
+position = Vector2(3814.0945, 3052)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss76"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss77" type="Node2D" parent="Town"]
+position = Vector2(4239.8411, 3052)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss77"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss78" type="Node2D" parent="Town"]
+position = Vector2(4654.6284, 3032)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss78"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss79" type="Node2D" parent="Town"]
+position = Vector2(3689.8411, 3702)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss79"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss80" type="Node2D" parent="Town"]
+position = Vector2(4104.6284, 3682)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss80"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss81" type="Node2D" parent="Town"]
+position = Vector2(113.238928, 912)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss81"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss82" type="Node2D" parent="Town"]
+position = Vector2(639.741044, 892)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss82"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss83" type="Node2D" parent="Town"]
+position = Vector2(409.841099, 3112)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss83"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss84" type="Node2D" parent="Town"]
+position = Vector2(824.628403, 3092)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss84"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss85" type="Node2D" parent="Town"]
+position = Vector2(1293.79462, 500)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss85"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss86" type="Node2D" parent="Town"]
+position = Vector2(1872.26416, 500)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss86"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss87" type="Node2D" parent="Town"]
+position = Vector2(1269.77642, 760)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss87"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss88" type="Node2D" parent="Town"]
+position = Vector2(1848.16542, 760)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss88"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss89" type="Node2D" parent="Town"]
+position = Vector2(1243.45235, 1020)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss89"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss90" type="Node2D" parent="Town"]
+position = Vector2(1810.18286, 1020)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss90"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss91" type="Node2D" parent="Town"]
+position = Vector2(1221.97641, 1280)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss91"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss92" type="Node2D" parent="Town"]
+position = Vector2(1803.70909, 1280)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss92"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss93" type="Node2D" parent="Town"]
+position = Vector2(1195, 1540)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss93"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss94" type="Node2D" parent="Town"]
+position = Vector2(1815, 1540)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss94"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss95" type="Node2D" parent="Town"]
+position = Vector2(1256.3932, 1800)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss95"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss96" type="Node2D" parent="Town"]
+position = Vector2(1783.68902, 1800)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss96"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss97" type="Node2D" parent="Town"]
+position = Vector2(1215.51655, 2060)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss97"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss98" type="Node2D" parent="Town"]
+position = Vector2(1738.34355, 2060)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss98"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss99" type="Node2D" parent="Town"]
+position = Vector2(1195, 2320)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss99"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss100" type="Node2D" parent="Town"]
+position = Vector2(1815, 2320)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss100"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss101" type="Node2D" parent="Town"]
+position = Vector2(1167.10245, 2580)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss101"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss102" type="Node2D" parent="Town"]
+position = Vector2(1756.76038, 2580)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss102"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss103" type="Node2D" parent="Town"]
+position = Vector2(1167.54105, 2840)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss103"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss104" type="Node2D" parent="Town"]
+position = Vector2(1739.41012, 2840)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss104"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss105" type="Node2D" parent="Town"]
+position = Vector2(1206.51458, 3100)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss105"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss106" type="Node2D" parent="Town"]
+position = Vector2(1810.44976, 3100)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss106"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss107" type="Node2D" parent="Town"]
+position = Vector2(1195, 3360)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss107"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss108" type="Node2D" parent="Town"]
+position = Vector2(1815, 3360)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss108"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss109" type="Node2D" parent="Town"]
+position = Vector2(1261.06903, 3620)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss109"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss110" type="Node2D" parent="Town"]
+position = Vector2(1822.05101, 3620)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-128.404255, -85, 256.808511, 85)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss110"]
+position = Vector2(-272.31003, -188.343465)
+scale = Vector2(0.258358663, 0.258358663)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss111" type="Node2D" parent="Town"]
+position = Vector2(1257.4046, 3880)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-143.510638, -95, 287.021277, 95)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss111"]
+position = Vector2(-304.346505, -210.50152)
+scale = Vector2(0.288753799, 0.288753799)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="Moss112" type="Node2D" parent="Town"]
+position = Vector2(1799.25178, 3880)
+metadata/label = "林下苔草地被。"
+metadata/visual_rect = Rect2(-113.297872, -75, 226.595745, 75)
+z_index = -16
+metadata/ground_cover = true
+
+[node name="Art" type="Sprite2D" parent="Town/Moss112"]
+position = Vector2(-240.273556, -166.18541)
+scale = Vector2(0.227963526, 0.227963526)
+texture = ExtResource("moss_patch")
+centered = false
+
+[node name="LushengCraftRack" type="Node2D" parent="Town"]
+position = Vector2(3400, 2480)
+metadata/label = "芦笙制作架：竹管、制作台与手工工具。"
+metadata/visual_rect = Rect2(-132.641129, -170, 265.282258, 170)
+
+[node name="Art" type="Sprite2D" parent="Town/LushengCraftRack"]
+position = Vector2(-228.837366, -234.663978)
+scale = Vector2(0.228494624, 0.228494624)
+texture = ExtResource("lusheng_rack")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LushengCraftRack"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/LushengCraftRack/Body"]
+polygon = PackedVector2Array(-116.724194, -30, 116.724194, -30, 116.724194, 0, -116.724194, 0)

@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "id": "luoyang_shore_market_20261020ae_flat_damp_stain_vertical_v4",
+  "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+  "successor_scope": "New wet-only generation after the preserved v1/v2/v3 stone-subject rejection; it is not an edit or retry of those images.",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "transparent_background": true,
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "automatic_retry": false,
+  "cli_network_or_paid_fallback": false,
+  "prompt_path": "prompts/luoyang_shore_market_20261020ae/decal_docks_flat_damp_stain_vertical_v4.txt",
+  "proposed_output_path": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_flat_damp_stain_vertical_v4.png",
+  "requested_canvas_px": [1024, 1536],
+  "intended_runtime_role": "nonblocking flat dampness overlay on the land side of the existing Docks quay; it does not replace the shore structure",
+  "target_world_envelope_px": {
+    "width_range": [80, 100],
+    "height_approx": 400,
+    "placement_domain": "inside the existing land-side quay surface near the wharf; exact placement is measured only after actual output review"
+  },
+  "processing_boundary": "Measure the actual RGBA output before any derivative. A later candidate may use one uniform scale and transparent padding that preserves every A>0 pixel. No threshold cleanup, repaint, crop that loses alpha, rotation, mirroring, nonuniform stretch or local redrawing is authorized.",
+  "acceptance": [
+    "genuine RGBA transparency with large clean margin on all four sides and no broad grey halo",
+    "one connected flat vertical damp-stain film that reads as moisture absorbed into existing paving",
+    "subdued dark grey-blue wetness with restrained thin reflection or no reflection; no bright cyan or cartoon shine",
+    "no stone, brick, rock, curb, wall, ledge, raised outline, thickness, cast shadow or separate object silhouette",
+    "no new floor rectangle, shoreline structure, water body, foam, moss, prop, NPC, text or collision implication",
+    "actual output remains visually plausible at roughly 80–100 by 400 world pixels without hiding the existing quay material"
+  ],
+  "runtime_credit": false,
+  "stop_condition": "This is the only newly authorized wet-only generation. If actual art still violates the flat-stain contract, wet-shore work remains incomplete and no automatic retry is permitted."
+}
+

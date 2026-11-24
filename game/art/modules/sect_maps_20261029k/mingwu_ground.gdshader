@@ -1,0 +1,55 @@
+shader_type canvas_item;
+uniform sampler2D earth_tex:source_color,repeat_enable,filter_linear;
+uniform sampler2D dirt_tex:source_color,repeat_enable,filter_linear;
+uniform sampler2D path_tex:source_color,repeat_enable,filter_linear;
+varying vec2 p;
+void vertex(){p=VERTEX;}
+vec2 folded(vec2 x){return 1.-abs(mod(x,2.)-1.);}
+float segment(vec2 x,vec2 a,vec2 b){vec2 v=b-a;return length(x-a-v*clamp(dot(x-a,v)/max(dot(v,v),.001),0.,1.));}
+void fragment(){float path=0.;
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(1700.0,3600.0),vec2(1700.0,2860.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(1700.0,2860.0),vec2(1950.0,2860.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(1950.0,2860.0),vec2(1950.0,2540.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(1950.0,2540.0),vec2(2450.0,2540.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(2450.0,2540.0),vec2(2450.0,2490.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(2450.0,2490.0),vec2(3300.0,2490.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(3300.0,2490.0),vec2(3300.0,3000.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(3300.0,3000.0),vec2(3800.0,3000.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(3800.0,3000.0),vec2(3800.0,2800.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(3800.0,2800.0),vec2(3800.0,2600.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(3800.0,2600.0),vec2(4050.0,2600.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(4050.0,2600.0),vec2(4050.0,2350.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(4050.0,2350.0),vec2(4050.0,1720.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(4050.0,1720.0),vec2(4080.0,1510.0))));
+path=max(path,1.-smoothstep(54.00,90.00,segment(p,vec2(4080.0,1510.0),vec2(4080.0,1320.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(1950.0,2860.0),vec2(2500.0,2860.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(2500.0,2860.0),vec2(2500.0,1650.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(2500.0,1650.0),vec2(2450.0,1650.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(2450.0,1650.0),vec2(2450.0,1290.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(2450.0,1290.0),vec2(3300.0,1290.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(3300.0,1290.0),vec2(3300.0,3000.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(3300.0,3000.0),vec2(4600.0,3000.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(4600.0,3000.0),vec2(4600.0,2800.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(4600.0,2800.0),vec2(4800.0,2630.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(4800.0,2630.0),vec2(4800.0,1730.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(4800.0,1730.0),vec2(4640.0,1730.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(4640.0,1730.0),vec2(4640.0,1510.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(4640.0,1510.0),vec2(4500.0,1320.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(2500.0,1650.0),vec2(1620.0,1650.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(1620.0,1650.0),vec2(1620.0,1450.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(1620.0,1450.0),vec2(1620.0,1000.0))));
+path=max(path,1.-smoothstep(45.00,75.00,segment(p,vec2(1620.0,1000.0),vec2(2200.0,1000.0))));
+path=max(path,1.-smoothstep(42.00,70.00,segment(p,vec2(1950.0,2540.0),vec2(1050.0,2540.0))));
+path=max(path,1.-smoothstep(42.00,70.00,segment(p,vec2(1050.0,2540.0),vec2(1050.0,2300.0))));
+path=max(path,1.-smoothstep(.85,1.,length((p-vec2(1950.0,2480.0))/vec2(650.0,330.0))));
+path=max(path,1.-smoothstep(.85,1.,length((p-vec2(4220.0,2400.0))/vec2(650.0,350.0))));
+path=max(path,1.-smoothstep(.85,1.,length((p-vec2(4200.0,1230.0))/vec2(650.0,380.0))));
+path=max(path,1.-smoothstep(48.0,80.0,segment(p,vec2(1700.0,2990.0),vec2(1470.0,2935.0))));
+path=max(path,1.-smoothstep(48.0,80.0,segment(p,vec2(1470.0,2935.0),vec2(1460.0,2620.0))));
+path=max(path,1.-smoothstep(48.0,80.0,segment(p,vec2(1460.0,2620.0),vec2(1560.0,2550.0))));
+path=max(path,1.-smoothstep(43.2,72.0,segment(p,vec2(1900.0,2770.0),vec2(2225.0,2720.0))));
+path=max(path,1.-smoothstep(43.2,72.0,segment(p,vec2(2225.0,2720.0),vec2(2485.0,2760.0))));
+path=max(path,1.-smoothstep(43.2,72.0,segment(p,vec2(2485.0,2760.0),vec2(2580.0,2760.0))));
+vec3 grass=texture(earth_tex,folded(p/1350.)).rgb;vec3 stone=texture(path_tex,folded(p/650.)).rgb;float market=1.-smoothstep(0.76,1.0,length((p-vec2(1880.,2690.))/vec2(840.,540.)));
+stone=mix(stone,texture(path_tex,folded(p/330.)).rgb*vec3(1.04,1.,0.93),market);
+COLOR=vec4(mix(grass,stone,path*.94),1.);}

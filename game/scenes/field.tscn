@@ -63,7 +63,7 @@ offset_left = 24.0
 offset_top = -22.0
 offset_right = 520.0
 offset_bottom = 22.0
-text = "冷孤云  Lv.1  HP 0/0  MP 0/0"
+text = "冷孤云  Lv.1  生命 0/0  内力 0/0"
 vertical_alignment = 1
 theme_override_font_sizes/font_size = 18
 
@@ -101,6 +101,7 @@ theme_override_colors/font_color = Color(0.95, 0.83, 0.4, 1)
 theme_override_font_sizes/font_size = 20
 
 [node name="InventoryBtn" type="Button" parent="HUD"]
+visible = false
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 11
@@ -127,7 +128,7 @@ offset_left = -468.0
 offset_top = -22.0
 offset_right = -332.0
 offset_bottom = 22.0
-text = "装备 (E)"
+text = "角色 (C)"
 theme_override_font_sizes/font_size = 18
 
 [node name="SkillBtn" type="Button" parent="HUD"]
@@ -251,7 +252,7 @@ offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-text = "提示：点击场景上的按钮推进剧情  ·  I 背包  ·  E 装备  ·  K 武学  ·  J 任务  ·  Esc 关闭面板"
+text = "提示：点击场景上的按钮推进剧情  ·  C 角色  ·  K 武学  ·  J 任务  ·  Esc 关闭面板"
 theme_override_colors/font_color = Color(0.92, 0.9, 0.82, 1)
 theme_override_font_sizes/font_size = 16
 vertical_alignment = 1

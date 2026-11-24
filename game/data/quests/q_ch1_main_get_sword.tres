@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_get_sword"
+title = "领取佩剑"
+kind = 0
+desc_not_started = "师傅让冷孤云去找杜青衫，取回为下山准备的佩剑。"
+desc_in_progress = "前往师徒院落右侧的铁匠铺，与杜青衫交谈并领取佩剑。"
+desc_completed = "杜青衫把新铸的林西铁剑交给了冷孤云。下山的行装已经备齐。"
+tracker_hint = "林西村 · 师徒院落铁匠铺"
+completion_triggers = Array[String](["flag_set:got_sword"])
+reward_gold = 0
+reward_exp = 5
+reward_items = Array[Dictionary]([])

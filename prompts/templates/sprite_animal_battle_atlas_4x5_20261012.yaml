@@ -1,0 +1,61 @@
+id: sprite_animal_battle_atlas_4x5_20261012
+description: Four independent animal species; wolf reference is rendering style only, never identity.
+quality: high
+size: "1024x1024"
+resolution: "1k"
+background: opaque
+reference_images:
+  - "game/art/sprites/battle/standard_v2/wild_wolf/wild_wolf_ready_01.png"
+require_reference_images: true
+
+# gen_assets maps 1024x1024 to ALAPI 1:1; current channel supports 1k only.
+# Accept the actual returned dimensions only after checking the 4x5 cells.
+# Deliberately NO shared {style_anchor} or {negative} placeholder.
+prompt_template: |
+  Use case: stylized-concept
+  Asset type: original 2.5D semi-realistic RPG enemy battle animation atlas.
+  Image 1 is ONLY a STYLE reference: compact three-quarter side-view game sprite,
+  coherent hand-painted fur/feather material, crisp readable silhouette, warm upper-left
+  lighting and dimensional shading. It is NOT an identity reference. Do NOT depict a wolf
+  or copy its coat, anatomy or action poses. Do NOT use comic ink, cel shading, anime,
+  Hong Kong comic style, photographic scenery or a portrait composition.
+
+  New subject: {animal_name}. {animal_spec}
+  All twenty poses depict this ONE species and the SAME individual, proportions,
+  markings, fur/feather colours, lighting, camera and body scale.
+  Every frame is an ENEMY facing LEFT, head and attack direction toward the left edge.
+  Fixed orthographic side view with slight elevated three-quarter depth, matching the
+  supplied game sprite. No camera rotations, front-facing or right-facing frames.
+
+  Create exactly ONE atlas with 4 equal columns and 5 equal rows on perfectly flat
+  pure #FF00FF magenta, filling a square image at the supported 1k resolution.
+  Exactly twenty distinct FULL-BODY poses, ONE whole animal per cell, no duplicates.
+  No visible grid, cell labels, text or borders. Each cell has clear magenta gutters;
+  paws, talons, tail tips, beak and wing tips must fit entirely inside its own cell.
+  Leave at least 8 percent magenta padding at every cell edge, especially below.
+  Keep the subject centred and the common paw/talon landing baseline consistent.
+  NEVER enlarge crouched or collapsed poses to fill their cells: identical body scale
+  across all twenty poses is essential. All action silhouettes must have room to fit.
+
+  Row 1 READY, columns 1 to 4: {ready_spec}
+  Row 2 MOVE, columns 1 to 4: {move_spec}
+  Row 3 ATTACK, columns 1 to 4: {attack_spec}
+  Row 4 HIT, columns 1 to 4: {hit_spec}
+  Row 5 DEFEAT, columns 1 to 4: {defeat_spec}
+
+  Anatomy and material continuity are mandatory. Each action has a readable temporal
+  progression from preparation through contact/recoil to recovery or a still final pose.
+  No humans, clothing, armour, weapons, magical auras, attack streaks, afterimages,
+  blood, gore, scenery, ground plane, shadows on the magenta, lettering or watermarks.
+  No cut-off extremities, extra heads/limbs/wings, cell overlap, motion blur or
+  per-frame body-size changes. Magenta exists ONLY in the background, not on the animal.
+
+variables:
+  animal_name: "species name"
+  animal_spec: "species-specific original anatomy and markings"
+  ready_spec: "four ready phases"
+  move_spec: "four species-appropriate locomotion phases"
+  attack_spec: "four attack phases"
+  hit_spec: "four recoil phases"
+  defeat_spec: "four defeat phases"
+

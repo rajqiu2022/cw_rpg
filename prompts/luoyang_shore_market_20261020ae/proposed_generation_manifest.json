@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "change_id": "luoyang-shore-market-20261020ae",
+  "status": "PREFLIGHT_TWO_CALLABLE_ONE_GEOMETRY_PENDING_NOT_GENERATED",
+  "owner_if_approved": "producer_ROOT",
+  "execution_backend": "builtin_image_gen",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "maximum_calls": 3,
+  "currently_callable_calls": 2,
+  "calls_used": 0,
+  "calls_per_asset": 1,
+  "automatic_retry": false,
+  "cli_network_or_paid_fallback": false,
+  "tasks_yaml_registered": true,
+  "tasks": [
+    {
+      "id": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v1.txt",
+      "prompt_sha256": "5E9D5F89BC4610FB042A45785F1EC16347CAFC78AA97F5580E198799A54D2F5D",
+      "spec": "prompts/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v1.spec.json",
+      "spec_sha256": "8017CCA059A213A51978F1D4CC0647578A24A6CF6D6B6125FF3205AFB5FD905E",
+      "callable_now": true
+    },
+    {
+      "id": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.txt",
+      "prompt_sha256": "8D408D5FD6B1FE12CE6CB0596B049035A6DD673B0A89DE423FD6F40077164C2B",
+      "spec": "prompts/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.spec.json",
+      "spec_sha256": "F5D57DE616E34901FB1915562FA2F61CD26C1FFB634D26DA9B4C451BE7758F3A",
+      "callable_now": true
+    },
+    {
+      "id": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/prop_docks_mooring_bollard_rope_right_v1.txt",
+      "prompt_sha256": "1CCF586FACEC65CF64AC1AEF44219269F1C59958695861BF79A5323C87DF1D9F",
+      "spec": "prompts/luoyang_shore_market_20261020ae/prop_docks_mooring_bollard_rope_right_v1.spec.json",
+      "spec_sha256": "E75D7660577D7629E47E2030DE0616F4DB3D71E4B67F606FE420EF33CDC651BB",
+      "callable_now": false,
+      "blocked_by": "actual existing rail/mask containment AABB is not yet pinned; no new or widened solid/NAV is authorized"
+    }
+  ],
+  "credit_boundary": "Prompt/spec/task registration and offline preflight only. Wet shore and cart ruts are callable; mooring remains registered but geometry-blocked and must not be called. No generation, source image, derivative, import, runtime placement, Field proof or formal admission exists."
+}

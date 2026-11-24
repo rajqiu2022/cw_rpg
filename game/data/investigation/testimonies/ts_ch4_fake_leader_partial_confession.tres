@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch4_fake_leader_partial_confession"
+display_name = "冒名首领的半份供词"
+speaker_npc_id = &"npc_fake_liuyun_leader"
+statement = "冒名首领承认古寺负责制造各派身份痕迹，却拒绝说出委托人，只反复声称洛阳需要一个人人愿意相信的凶手。"
+chapter = 4
+initial_credibility = 45
+related_evidence_ids = Array[StringName]([&"ev_ch4_forgery_workshop", &"ev_ch4_eighteen_year_roster"])
+contradicts_testimony_ids = Array[StringName]([])

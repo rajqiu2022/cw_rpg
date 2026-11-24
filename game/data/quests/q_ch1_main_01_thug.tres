@@ -5,11 +5,12 @@
 [resource]
 script = ExtResource("1_qdef")
 quest_id = &"q_ch1_main_01_thug"
-title = "风波再起"
+title = "下山试剑"
 kind = 0
-desc_not_started = "回到林西村外，似乎不大太平。"
-desc_in_progress = "击退埋伏在路边的茗雾杀手。"
-desc_completed = "击退了独行茗雾杀手。看来线索没错，茗雾的人确实在林西村一带活动。"
+desc_not_started = "取得铁剑后沿山道下行，留意路边的血迹与动静。"
+desc_in_progress = "击退拦路的江湖散兵，证明自己已经能独自走过第一段江湖路。"
+desc_completed = "散兵已被击退。山道尽头的竹尾村，正在等着你的脚步。"
+tracker_hint = "林西村外 · 山道"
 completion_triggers = Array[String](["enemy_defeated:thug_lone"])
 reward_gold = 12
 reward_exp = 10

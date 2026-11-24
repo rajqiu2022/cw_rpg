@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch4_recent_compound_powder"
+display_name = "三日内新配药粉"
+description = "命案现场药粉看似烈云盟旧毒，辅药却是洛阳药铺近三日才售出的新配方。有人正在用旧名号包装眼下的命案。"
+chapter = 4
+category = &"medicine"
+source_hint = "赵氏医馆药案"
+related_testimony_ids = Array[StringName]([&"ts_ch4_zhao_autopsy"])
+tags = Array[StringName]([&"current_case", &"forgery", &"medicine"])

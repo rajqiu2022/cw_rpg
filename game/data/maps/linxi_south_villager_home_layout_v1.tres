@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.170, 0.390, 0.830, 0.390, 0.860, 0.820, 0.565, 0.820, 0.565, 0.885, 0.435, 0.885, 0.435, 0.820, 0.140, 0.820)])
+visual_objects = []
+blockers = [{"id": "bed", "pos": Vector2(0.255, 0.405), "size": Vector2(0.115, 0.205)}, {"id": "table", "pos": Vector2(0.625, 0.360), "size": Vector2(0.170, 0.120)}, {"id": "cabinet", "pos": Vector2(0.790, 0.540), "size": Vector2(0.075, 0.170)}]
+interactions = []
+portals = [{"id": "return_south", "pos": Vector2(0.500, 0.845), "size": Vector2(0.130, 0.075), "label": "离开民居", "target_scene": "linxi_village_scrollmap", "target_pos": Vector2(0.095, 0.310)}]
+walkable_probes = [{"id": "center", "pos": Vector2(0.500, 0.650)}, {"id": "exit", "pos": Vector2(0.500, 0.845)}]
+blocked_probes = [{"id": "bed", "pos": Vector2(0.255, 0.405)}]

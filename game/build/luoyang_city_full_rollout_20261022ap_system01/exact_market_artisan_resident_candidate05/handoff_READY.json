@@ -1,0 +1,20 @@
+{
+  "status": "NEW_BUILD_ONLY_ROOT_PREAUTHORIZED_ONE_SUCCESS_TAIL_LINE",
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate05/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "c670bb2a7bb7d1abd8d1aba26987454fda4ef7eed4de8da5728e41077911086d",
+    "bytes": 108790
+  },
+  "parent": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate04_retry1/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "7c65d2d1e7eee99b9f0d2f9418428382545ed49c9fc13f883ae0beb376acab2d"
+  },
+  "whole_byte_inverse": true,
+  "old": "\troom.call(\"resident_discard\"); room.free()\n",
+  "new": "\tif _resident_city.excursion_kind==\"ap_artisan\": _portal_return_spawns[_portal_route_key(context.target,context.source_id)]=context.source_spawn\n\troom.call(\"resident_discard\"); room.free()\n",
+  "root_approved_scope": "Only new ap_artisan successful warm tail writes original bound author source_spawn2816,1740 to Market->Artisan paired memory; never actual off-center feet; room/world branch untouched. Original7C65/84CEE/FEF approval preserved as predecessor. No earlier function reparse claim.",
+  "prior_handoff": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/unified_runtime_visual_finish_candidates_v2_READY.json",
+    "sha256": "84cee79025acadd0e87bbba2e0d3cfa4c3f97aa9fdebc973a9417d301a3871ee"
+  }
+}

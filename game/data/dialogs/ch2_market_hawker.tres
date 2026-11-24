@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "货郎"
+text = "那几位女侠买过火折子和止血布。走得急，问的是北林旧猎道。"
+add_testimonies = Array[StringName]([&"ts_ch2_hawker_north_route"])
+set_flags = Array[Dictionary]([{"key": "ch2_market_hawker_heard", "value": true}])
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "北林这条线先记下，但火折子和止血布也可能是故意留下的假方向。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="n3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "货郎"
+text = "要往林子里走，也别空着手。棍刀护具都在货架上，少侠自己挑。"
+on_end = "shop:zhuwei_gear_vendor"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_market_hawker"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2"), SubResource("n3")])

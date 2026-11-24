@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_legend_huilan_redirecting_art"
+title = "回澜移劲"
+kind = 1
+desc_not_started = "江湖几处不起眼的声、势与水路，似乎都在讲同一件事：先让开半分，才能把来力送回去。"
+desc_in_progress = "一股力让开了，并不等于消失了。乡间的声响、山门的钟鸣、棋盘的空位和官署的水路旧事，或许能印证这个道理。不妨多留意寻常人做事的法子，再试试看这些道理能否用在实处。"
+desc_completed = "你没有硬拦相撞的两辆失控货车，而是借绳、坡与车身彼此换力，救下街上行人，并从五种寻常事物中悟成“移花换劲”。"
+tracker_hint = "开放江湖 · 留意声响、走势与水路"
+progress_records = Array[Dictionary]([{"trigger":"flag_set:huilan_echo_understood","text":"竹尾铜盆：回声晚半拍，旧力并未消失。"},{"trigger":"flag_set:huilan_bell_counterforce_understood","text":"凌月逆钟：先顺风，再借钟舌回摆抵消来势。"},{"trigger":"flag_set:huilan_yielding_position_understood","text":"会场让位棋：空出一路，反而改变全局受力。"},{"trigger":"flag_set:huilan_water_rule_understood","text":"洛阳水则：分流不是截断，而是换一个回去的方向。"},{"trigger":"flag_set:huilan_balance_understood","text":"竹尾扁担：换肩时让两端重量彼此接续。"}])
+completion_triggers = Array[String](["flag_set:huilan_echo_understood", "flag_set:huilan_bell_counterforce_understood", "flag_set:huilan_yielding_position_understood", "flag_set:huilan_water_rule_understood", "flag_set:huilan_balance_understood", "flag_set:huilan_openworld_trial_complete"])
+auto_accept_triggers = Array[String](["flag_set:huilan_echo_understood", "flag_set:huilan_bell_counterforce_understood", "flag_set:huilan_yielding_position_understood", "flag_set:huilan_water_rule_understood", "flag_set:huilan_balance_understood"])
+require_all_completion_triggers = true
+chapter_independent = true
+starts_in_chapter = 1
+completes_in_chapter = 8
+milestone_labels = Array[String](["竹尾村·辨铜盆回声", "凌月山门·解逆钟回摆", "武林会场·破解让位棋", "洛阳府衙·读懂含嘉水则", "竹尾村·验证扁担换肩", "竹尾村·化解双车险局"])
+reward_gold = 0
+reward_exp = 200
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([&"huilan_redirecting_art"])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="report"]
+script = ExtResource("2")
+node_id = &"report"
+speaker = "诗会执事"
+text = "你的续句已经录入诗册。这份彩头归你，愿你日后仍记得花落之后的一城人心。"
+set_flags = Array[Dictionary]([{"key":"peony_poetry_won", "value":true}, {"key":"peony_poetry_reported_20261018t", "value":true}])
+complete_quest = &"q_ch4_side_03_peony_poetry"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"luoyang_layout_quest_20261018t/peony_report"
+entry_node_id = &"report"
+nodes = Array[Resource]([SubResource("report")])

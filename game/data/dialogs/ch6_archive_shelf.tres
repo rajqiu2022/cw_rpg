@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="守架巡守"
+text="一枚针只封一路。这把镖撒出去，你们往哪里躲？"
+on_end="battle_group_then:ch6_archive_shelf_guard:ch6_archive_shelf_won"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch6_archive_shelf"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

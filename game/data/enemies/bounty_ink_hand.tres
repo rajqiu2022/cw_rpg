@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"bounty_ink_hand"
+display_name = "墨手温迟"
+battle_actor_path = "res://art/characters/battle_masked_killer_boss_v2.png"
+battle_actor_scale = 0.80
+level = 13
+max_hp = 1080
+max_mp = 150
+attack = 108
+defense = 29
+speed = 21
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_yinying_duoming", &"toxic_needle"])
+aggression = 0.84
+drop_gold_min = 92
+drop_gold_max = 145
+drop_exp = 205

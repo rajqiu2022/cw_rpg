@@ -1,0 +1,290 @@
+{
+  "schema": "ESTATE_GARDEN_20261030A_VISUAL_ONLY_PROPOSAL",
+  "status": "READONLY_ART_DESIGN_NOT_RUNTIME_VALIDATED",
+  "region_id": "luoyang_estate_region_27d",
+  "change_scope": "Visible garden paving and grass/soil finish only. Preserve navigation floor rectangles, solids, all pond/plant sprites/transforms, estate portals and building size.",
+  "source_definition": "game/build/luoyang_estate_garden_20261029q_system01/garden_definition_READY.json",
+  "priority_fixes": [
+    "Retire the legacy north-pointing stone dead stub at x1392..1680/y128..430 from visible paving. Its original walkability remains garden walkability.",
+    "Do not only delete a garden_routes segment: the legacy rear_axis base render is underneath, and would remain visible.",
+    "Replace sharp diagonal Y joints with two broad smooth branches meeting the tapering central path; every join samples one common world-anchored stone material.",
+    "Do not fill a single outer outline of a closed loop; the pond and planted islands must remain holes between path ribbons."
+  ],
+  "material": {
+    "texture": "res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png",
+    "period_px": [
+      384,
+      256
+    ],
+    "world_origin_px": [
+      0,
+      0
+    ],
+    "uv_rule": "uv_px=(world_point-world_origin)/period_px*texture_size; no path-local UV, per-segment rotation, mirrored stone, slope-specific UV or individual repeat reset.",
+    "apply_to": "All visible rear_axis garden span, two loops, south rear_cross joins and service link caps, so old background paving does not show a competing size/phase under a slanted overlay."
+  },
+  "legacy_north_paving": {
+    "owner_hint": "rear_axis visual only",
+    "retire_visible_rect": [
+      1392,
+      128,
+      1680,
+      620
+    ],
+    "keep_navigation": true,
+    "replace_with": "Prefer suppress only old paving render in this garden span, revealing source-phase original soil. If helper-only scope requires cover, match underlying soil texture/world UV first, feather into adjacent lawns, then draw new tapered trunk over it. Never place a different rectangular ground patch.",
+    "no_longer_visible_stone_rect": [
+      1392,
+      128,
+      1680,
+      330
+    ]
+  },
+  "central_trunk": {
+    "visible_rect_unchanged_lower": [
+      1392,
+      620,
+      1680,
+      1464
+    ],
+    "upper_taper_polygon": [
+      [
+        1392,
+        620
+      ],
+      [
+        1446,
+        430
+      ],
+      [
+        1626,
+        430
+      ],
+      [
+        1680,
+        620
+      ]
+    ],
+    "taper_corner_radius_px": 48,
+    "north_branch_hub": {
+      "center": [
+        1536,
+        430
+      ],
+      "radius_px": 90,
+      "role": "Small rounded join of taper and both branch ribbons; not a new disconnected traffic circle or a separate stone texture."
+    },
+    "door_keep": [
+      1536,
+      1450
+    ],
+    "old_axis_navigation_unchanged": true
+  },
+  "route_ribbons": [
+    {
+      "id": "west_pond_u_arc",
+      "width_px": 144,
+      "points": [
+        [
+          1536,
+          430
+        ],
+        [
+          1420,
+          410
+        ],
+        [
+          1300,
+          370
+        ],
+        [
+          1130,
+          340
+        ],
+        [
+          780,
+          340
+        ],
+        [
+          650,
+          365
+        ],
+        [
+          560,
+          430
+        ],
+        [
+          530,
+          520
+        ],
+        [
+          530,
+          960
+        ],
+        [
+          550,
+          1030
+        ],
+        [
+          630,
+          1090
+        ],
+        [
+          740,
+          1136
+        ],
+        [
+          1400,
+          1136
+        ],
+        [
+          1536,
+          1136
+        ]
+      ],
+      "curve_corner_radius_px": 56,
+      "join": "round",
+      "cap": "round",
+      "close_point_list": false,
+      "closure": "Both ends connect to central trunk; whole network is a closed walking circuit, but this individual U ribbon stays open to avoid a filled pond interior."
+    },
+    {
+      "id": "east_flower_u_arc",
+      "width_px": 144,
+      "points": [
+        [
+          1536,
+          430
+        ],
+        [
+          1660,
+          430
+        ],
+        [
+          1740,
+          430
+        ],
+        [
+          1810,
+          390
+        ],
+        [
+          1960,
+          340
+        ],
+        [
+          2300,
+          340
+        ],
+        [
+          2420,
+          365
+        ],
+        [
+          2500,
+          430
+        ],
+        [
+          2530,
+          520
+        ],
+        [
+          2530,
+          950
+        ],
+        [
+          2500,
+          1020
+        ],
+        [
+          2430,
+          1080
+        ],
+        [
+          2340,
+          1136
+        ],
+        [
+          1850,
+          1136
+        ],
+        [
+          1720,
+          1136
+        ],
+        [
+          1536,
+          1136
+        ]
+      ],
+      "curve_corner_radius_px": 56,
+      "join": "round",
+      "cap": "round",
+      "close_point_list": false,
+      "closure": "Both ends connect to central trunk; do not retain old 1750/450-to1136 interior straight segment as a competing rectangular stripe."
+    }
+  ],
+  "junction_rules": [
+    "Create one local round-joined paving footprint at each branch/trunk meeting, or overlap fully opaque same-UV ribbons exactly. No miter spike, triangular filler of another UV or edge-aligned stretched texture.",
+    "Use smooth centerline corner fillets of radius48..64 before offsetting; END_ROUND on each straight segment alone rounds ends but does not make the path centerline a curved route.",
+    "At y1136 join into the existing south cross smoothly with a short rounded bell-mouth; preserve existing cross width144 and centerline1256. No triangular acute connector.",
+    "Keep every garden point unaltered physically; these centerlines are visual proposals within existing positive garden floors, not an instruction to publish new navigation."
+  ],
+  "north_lawn_finish": {
+    "existing_grass_texture": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+    "period_px": [
+      512,
+      512
+    ],
+    "feather_px": 64,
+    "candidate_linking_lawn_polygon": [
+      [
+        1160,
+        150
+      ],
+      [
+        1410,
+        150
+      ],
+      [
+        1640,
+        155
+      ],
+      [
+        1880,
+        180
+      ],
+      [
+        1900,
+        260
+      ],
+      [
+        1740,
+        315
+      ],
+      [
+        1620,
+        330
+      ],
+      [
+        1460,
+        330
+      ],
+      [
+        1310,
+        300
+      ],
+      [
+        1160,
+        270
+      ]
+    ],
+    "rule": "One connected irregular planted/lawn transition across the retired dead stub; inset feather, same world phase as existing lawns. Clip it against new visible road ribbons so road edges remain clean. No new flower/stone colliders or lawn rectangle."
+  },
+  "clearance_boundaries": {
+    "pond_and_planting": "Keep original 29q source-bound collision; no shave to accommodate this visual path. If a new bend visually touches a body, refine only the visible curve within original walkable floor.",
+    "axis_portal_unchanged": true,
+    "base_walkability_unchanged": true
+  },
+  "review_limit": "User's north dead-end and sharp-Y/material seams must disappear in one normal camera pair. No all-city/asset-gallery work or new images requested."
+}

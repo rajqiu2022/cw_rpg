@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="scene"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="stream"]
+[ext_resource type="Resource" path="res://data/maps/east_mainland/east_mainland_overworld.tres" id="layout"]
+[sub_resource type="Resource" id="EastExtent"]
+script = ExtResource("stream")
+logical_size = Vector2i(6144, 8192)
+[resource]
+script = ExtResource("scene")
+scene_id = &"east_mainland_overworld"
+display_name = "江湖大地图 · 东大陆"
+bgm_path = "res://art/audio/bgm/bgm_jianghu_journey_v4.wav"
+is_walkable = true
+is_settlement = false
+actor_positions_are_feet = true
+player_spawn = Vector2(0.59277344, 0.34643555)
+map_layout = ExtResource("layout")
+streamed_background = SubResource("EastExtent")
+npcs = Array[Dictionary]([])

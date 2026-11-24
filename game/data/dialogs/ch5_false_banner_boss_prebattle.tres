@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "伪旗统领"
+portrait_path = "res://art/characters/ch5/false_banner_captain_field_v1.png"
+text = "看懂反针、认出假毒，又能怎样？山下的人只记得烈云旗烧过粮车，不会记得你查过几道针脚。"
+voice_emotion = "threat"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "我不替烈云抹去后来犯的错，也不让你拿那些错遮住今天的栽赃。谁给你的密令？"
+on_end = "next:c"
+[sub_resource type="Resource" id="c"]
+script = ExtResource("2")
+node_id = &"c"
+speaker = "伪旗统领"
+portrait_path = "res://art/characters/ch5/false_banner_captain_field_v1.png"
+text = "先在我这三把刀下活着，再来问落款。"
+voice_emotion = "threat"
+on_end = "battle_group_then:ch5_false_banner_captain,ch5_false_liuyun_striker,ch5_false_liuyun_striker:ch5_false_banner_boss_victory"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_false_banner_boss_prebattle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b"), SubResource("c")])

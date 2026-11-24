@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scene"]
+[ext_resource type="Resource" path="res://data/maps/openworld_lingyue_inner_court_layout_v2.tres" id="2_layout"]
+
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1920, 1280)
+
+[resource]
+script = ExtResource("1_scene")
+scene_id = &"openworld_lingyue_inner_court"
+display_name = "凌月派 · 内庭"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_forest_mystery_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("2_layout")
+player_spawn = Vector2(0.500,0.840)
+player_visual_scale = 0.82
+npcs = []

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]（账册上有一行被水渍晕开的记录：\"北山来客，三更离店。\"）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "clue_inn_north_mountain_guest", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"interior_inn_guest_register"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])

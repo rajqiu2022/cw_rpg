@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "旁白"
+text = "伪旗统领的刀脱手撞上石阶。他单膝跪地，仍用肩背挡住腰间那只封蜡匣。"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "伪旗统领"
+portrait_path = "res://art/characters/ch5/false_banner_captain_wounded_field_v1.png"
+text = "你以为证明旗是假的，烈云就干净了？他们当年也截错过货队，毒死过不该死的人。"
+voice_emotion = "weary"
+on_end = "next:c"
+[sub_resource type="Resource" id="c"]
+script = ExtResource("2")
+node_id = &"c"
+speaker = "冷孤云"
+text = "被栽赃是被栽赃，误信后杀错人是另一笔债。两笔都记，谁也不替谁抵消。"
+on_end = "next:d"
+[sub_resource type="Resource" id="d"]
+script = ExtResource("2")
+node_id = &"d"
+speaker = "唐行舟"
+text = "封蜡匣里只有三项差事，落款被割得太干净。眼下足以拆穿伪旗，却还不能把最终发令者钉死。"
+add_evidence = Array[StringName]([&"ev_ch5_captain_sealed_orders"])
+set_flags = Array[Dictionary]([{"key":"ch5_false_banner_captain_defeated", "value":true}])
+accept_quest = &"q_ch5_main_06_disclosure_choice"
+on_end = "dialog:ch5_disclosure_choice"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_false_banner_boss_victory"
+required_story_flag = &"chapter4_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b"), SubResource("c"), SubResource("d")])

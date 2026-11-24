@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_ask_road"]
+script = ExtResource("2_dnode")
+node_id = &"ask_road"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "货郎大哥，去竹尾村的官道，这两天还好走吗？"
+voice_emotion = "normal"
+on_end = "next:start"
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "走村货郎"
+portrait_path = "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png"
+text = "今早刚从竹尾方向回来。山风里有股铁锈味，官道上却安静得反常，你出村可得留神。"
+voice_emotion = "quiet"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"linxi_center_peddler"
+entry_node_id = &"ask_road"
+nodes = Array[Resource]([SubResource("node_ask_road"), SubResource("node_start")])

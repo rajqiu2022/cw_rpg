@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/shop_def.gd" id="1_shop"]
+
+[resource]
+script = ExtResource("1_shop")
+shop_id = &"zhuwei_gear_vendor"
+display_name = "竹尾行脚货栈"
+greeting = "过林入山都得有趁手家伙，看看再走。"
+stock = Array[StringName]([&"bronze_ring_staff", &"iron_staff", &"iron_great_blade", &"hero_hat", &"dragon_flight_boots", &"wind_walker_boots", &"tiger_roar_blade"])
+sell_back_ratio = 0.4

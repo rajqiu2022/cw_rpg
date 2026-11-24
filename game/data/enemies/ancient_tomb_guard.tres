@@ -1,22 +1,25 @@
 [gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
-
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
 [resource]
-script = ExtResource("1_enemy")
+script = ExtResource("1")
 enemy_id = &"ancient_tomb_guard"
 display_name = "古墓守卫"
-portrait_path = ""
-level = 25
-max_hp = 500
+battle_actor_path = "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/ready_01.tres"
+battle_actor_scale = 0.9
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/ready_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/ready_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/ready_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/ready_04.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/move_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/move_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/move_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/move_04.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/attack_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/attack_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/attack_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/attack_04.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/hit_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/hit_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/hit_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/hit_04.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/defeat_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/defeat_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/defeat_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/defeat_04.tres")
+level = 7
+max_hp = 440
 max_mp = 0
-attack = 48
-defense = 20
-speed = 16
-skill_ids = Array[StringName]([&"basic_attack", &"mingwu_yinying_duoming"])
-aggression = 0.75
-drop_gold_min = 200
-drop_gold_max = 400
-drop_exp = 250
-drop_items = Array[StringName]([])
-drop_random = Array[Dictionary]([])
+attack = 72
+defense = 18
+speed = 13
+skill_ids = Array[StringName]([&"basic_attack", &"tomb_guard_shield_bash"])
+aggression = 0.63
+drop_gold_min = 7
+drop_gold_max = 14
+drop_exp = 100

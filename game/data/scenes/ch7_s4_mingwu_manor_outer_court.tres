@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch7_s4_mingwu_manor_outer_court_layout_v2.tres" id="2"]
+[ext_resource type="Resource" path="res://data/dialogs/ch7_mingwu_outer_intro.tres" id="3"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="9_extent"]
+
+[sub_resource type="Resource" id="MapExtent"]
+script = ExtResource("9_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch7_s4_mingwu_manor_outer_court"
+display_name = "茗雾山庄 · 外院"
+streamed_background = SubResource("MapExtent")
+bgm_path = "res://art/audio/bgm/bgm_forest_mystery_v4.wav"
+on_enter_dialog = ExtResource("3")
+on_enter_require_flag = &"ch7_outer_routes_opened"
+on_enter_once_flag = &"seen_ch7_mingwu_outer_intro"
+is_walkable = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.500,0.875)
+player_visual_scale = 1.0
+animated_props = Array[Dictionary]([{"id":"ch7_outer_court_low_mist","type":"mist_drift","pos":Vector2(0.50,0.700),"size":Vector2(0.76,0.12),"speed":0.28,"opacity":0.06,"count":3,"color":"#cad6d1","z_index":12}])
+npcs = Array[Dictionary]([
+	{"npc_id": "ch7_pulse_medic", "npc_name": "外院老药工", "pos": Vector2(0.355, 0.655), "portrait_path": "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png", "sprite_path": "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f.png", "conversation_sprite_paths": {"down": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_down_conversation_1f.png", "up": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_up_conversation_1f.png", "left": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_left_conversation_1f.png", "right": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_right_conversation_1f.png"}, "dialog_id":"ch7_pulse_case","require_flag":"ch7_inner_routes_opened","dialog_variants":[{"dialog_id":"ch7_pulse_done","require_flags":["ch7_pulse_returned"]},{"dialog_id":"ch7_pulse_reward","require_flags":["ch7_pulse_found"]},{"dialog_id":"ch7_pulse_wait","require_flags":["ch7_pulse_taken"]}],"scale":0.90,"movement_mode":"idle"},
+	{"npc_id":"ch7_mingwu_outer_clerk", "npc_name":"外院录事", "pos":Vector2(0.665,0.430), "sprite_path":"res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png", "dialog_id":"ch7_mingwu_outer_clerk", "dialog_variants":[{"dialog_id":"ch7_inner_routes_open", "require_quest_completed":"q_ch7_main_03_outer_wards", "hide_flags":["ch7_inner_routes_opened"]}], "scale":0.90, "movement_mode":"idle"},
+	{"npc_id":"feng_yanqiu_ch7", "npc_name":"封砚秋", "pos":Vector2(0.710,0.610), "portrait_path":"res://art/characters/portraits/portrait_feng_yanqiu_v1.png", "sprite_path":"res://art/characters/portraits/portrait_feng_yanqiu_v1.png", "dialog_id":"ch7_guyun_mingwu_catalog", "require_flag":"guyun_luoyang_notches_solved", "hide_flag":"guyun_mingwu_catalog_preserved", "sprite_quality":"dedicated_full_body", "scale":0.085, "movement_mode":"idle"}
+])
+hotspots = Array[Dictionary]([])
+exits = Array[Dictionary]([])

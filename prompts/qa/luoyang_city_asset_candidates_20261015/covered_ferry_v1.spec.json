@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "status": "PREPARED_NOT_GENERATED_NOT_GAME_APPROVED",
+  "execution": {
+    "backend": "builtin_image_gen",
+    "owner": "producer",
+    "calls_authorized_here": 0,
+    "cli_allowed": false,
+    "network_runner_allowed": false,
+    "transparent_background": true,
+    "model": null,
+    "model_identity_policy": "Record the actual tool response if disclosed; never infer gpt-image-2 from the built-in tool name.",
+    "metadata_required_after_call": [
+      "actual_tool",
+      "actual_response_metadata_or_not_disclosed",
+      "actual_output_path",
+      "copied_project_candidate_path",
+      "sha256",
+      "dimensions_px",
+      "actual_alpha_observations",
+      "prompt_sha256",
+      "reference_sha256",
+      "cost_if_returned_else_null"
+    ]
+  },
+  "adoption_boundary": "No generation has run. All old PNG/import/mesh/scene/layout/navigation/source catalogs remain unchanged. New pixels cannot inherit old source/anchor/solid proofs.",
+  "post_generation_checks": [
+    "Preserve original returned image bytes and metadata; no overwrite of existing assets.",
+    "Inspect actual alpha/bounds/cropped components and visually compare at current actor scale.",
+    "Measure foot_px/foot_uv, door/boarding anchor, physical foundation polygons and any reachable opening from actual pixels; leave unknown values null before measurement.",
+    "New independent import aliases only after authorization; verify raw/imported fullRGBA and old-source preservation.",
+    "Bind a NEW candidate with its own catalog and actual key Field/Physics/input/fade proof before any formal replacement."
+  ],
+  "id": "luoyang_covered_ferry_realistic_20261015_v1",
+  "name": "洛阳人物尺度写实带篷渡船候选",
+  "prompt_path": "prompts/qa/luoyang_city_asset_candidates_20261015/covered_ferry_v1.prompt.txt",
+  "candidate_output_path": "assets/raw/scene_module/luoyang_city_distinct_20261015/covered_ferry_v1.png",
+  "references": [
+    {
+      "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/native_v12/root_native_docks_v12_01/moored_canal_boat.png",
+      "sha256": "F7600972606DBF8166CE718CF94FA1825F08220DD6752E5309659CC8DF1CE00B",
+      "role": "orientation and 30-degree elevated orthographic camera only; NOT accepted visual quality"
+    },
+    {
+      "path": "game/art/maps/luoyang_modular_v3/source/canal_warehouse_v3.png",
+      "sha256": "3BFA2BD8A906FFE8EF069F7933E45255FE569606781C46886DD0DEA519E9580B",
+      "role": "existing material richness / realistic 3D baked-sprite style, not shape"
+    }
+  ],
+  "geometry": {
+    "foot_px": null,
+    "foot_uv": null,
+    "boarding_foot_px": null,
+    "solid_polygons_px": null,
+    "orientation_target": "long hull axis screen up/down; same original camera, no 45-degree miniature"
+  },
+  "prompt": "Use case: historical-scene\nAsset type: one transparent human-scale 2.5D environment sprite for a realistic Chinese wuxia RPG, NOT a world-map landmark.\nPrimary request: create one convincing wooden covered river ferry, with the material richness and dimensional construction of a high-quality physically based 3D render baked to a sprite.\nInput images: Image 1 is the existing small native ferry: use ONLY its screen orientation and elevated camera, not its flat shading or simplified forms. Image 2 is the current canal warehouse: use its realistic weathered timber, masonry-era material detail and restrained daylight quality, not its building shape.\nScene/backdrop: genuinely transparent RGBA; the boat alone, no water or ground plane.\nSubject: a human-scale Chinese wooden river ferry about 6 to 7 metres long and 2 metres wide. A deep, curved clinker-planked hull with substantial raised gunwales, visible inner ribs, individual worn deck planks, a short open boarding area, a practical woven/reeded curved canopy over the middle, stout timber supports, restrained rope lashings and one attached steering oar. Open sections must show real depth, not a painted oval filled with stripes. The canopy must have readable thickness and woven surface, not a smooth grey plastic half-cylinder. Do not add people, cargo piles or a dock.\nCamera: fixed orthographic city camera, approximately 30 degrees above horizontal. Match Image 1's orientation: long hull axis roughly up-down on screen, bow toward the upper part of the image, stern toward lower part, no 45-degree world-map isometric rotation. Show the top surfaces AND the vertical side of the hull clearly; not a top-down icon.\nLighting/materials: soft upper-left daylight and cool ambient fill, readable brown wood with varied plank tones, worn edges, subtle joints, rope fibres and natural roughness. Believable contact/ambient occlusion only on the boat itself. No surrounding cast-shadow plate.\nComposition: entire hull, canopy, bow, stern and oar inside the canvas, centered with at least 12 percent truly empty transparent margin on every side. One boat, one view, no collage, no measurement marks.\nConstraints: photorealistic pre-rendered 3D game-asset look matching the existing detailed buildings. No outline cartoon, low-poly flat faces, toy scale, painted waterline, ripples, reflections, river, platform, landscape, people, text, logo, UI, watermark, checkerboard, white background or opaque backdrop. Preserve a clean alpha silhouette including ropes and oar. This is an independent NEW asset: do not copy old collision shapes or claim an exact anchor before its actual pixels are inspected."
+}

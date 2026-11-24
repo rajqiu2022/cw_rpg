@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch5_old_case_survivor"
+display_name = "雪岭旧案幸存者证词"
+speaker_npc_id = &"npc_ch5_old_case_survivor"
+statement = "十八年前，五名遇害弟子并非死于烈云盟手中。证人曾看见一队佩反针火纹伪旗的人搬运尸身，又见烈云旧部误信嫁祸，在数月后截错一支货队。两边都有人借旧恨遮掩真正的行凶者。"
+chapter = 5
+initial_credibility = 68
+related_evidence_ids = Array[StringName]([&"ev_ch5_false_banner_cloth", &"ev_ch4_eighteen_year_roster", &"ev_ch4_forgery_workshop"])
+contradicts_testimony_ids = Array[StringName]([])

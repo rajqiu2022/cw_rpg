@@ -1,0 +1,99 @@
+{
+  "status": "BUILD_NOTREADY_ROOT_REVIEW_NO_ENGINE",
+  "pairs": [
+    {
+      "parent": "res://build/luoyang_city_finish_20261025i_system01/wing_door_children02_NOTREADY/wing_door_depth_children_CANDIDATE.gd",
+      "parent_sha256": "2bb4ba8c95208fd7e6eb8879ab4a5c3e4bbbd115df338193e238879ed462f179",
+      "candidate": "res://build/luoyang_city_finish_20261025i_system01/wing_doors_monks04_NOTREADY/wing_door_depth_children_CANDIDATE.gd",
+      "candidate_sha256": "79338ffc2fa4487eccbb0c1be486409730bde9e3c27d33c48735b1cf424f57b4",
+      "hunks": [
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/wing_door_children02_NOTREADY/wing_door_depth_children_CANDIDATE.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_system01/wing_doors_monks04_NOTREADY/wing_door_depth_children_CANDIDATE.gd"
+        },
+        {
+          "old": "\t\treturn {SELF:true,META:true,ATLAS:true,SHELL:true,\"res://art/modules/luoyang_assembled_interiors_20261016g/shell_residential_v1.png.import\":true,\"res://.godot/imported/shell_residential_v1.png-48ef764e649ed02b6d198116074ff76b.ctex\":true}",
+          "new": "\t\tvar result: Dictionary={SELF:true,META:true,ATLAS:true,SHELL:true,\"res://art/modules/luoyang_assembled_interiors_20261016g/shell_residential_v1.png.import\":true,\"res://.godot/imported/shell_residential_v1.png-48ef764e649ed02b6d198116074ff76b.ctex\":true}\n\t\tresult.merge(_monk_paths())\n\t\treturn result"
+        },
+        {
+          "kind": "append",
+          "old": "",
+          "new": "\n# Display-only successor of the two original Task rows. False until Root/ART\n# frozen media are available. No NPCNode, Scene, task row, body or scale writes.\nconst MONK_VISUAL_READY: bool=false\nconst ELDER_PAIR_ADOPTED: bool=false\n# Filled only from ART's actual native-format proof, not raw A1/noise bounds.\nconst ELDER_NATIVE_A1_RECT: Rect2i=Rect2i()\nconst TEMPLE_ID: StringName=&\"ch4_s4_ancient_temple\"\nconst MONK_TASK: String=\"res://scripts/city/luoyang_layout_quest_20261018t.gd\"\nconst MONK_OLD: String=\"res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png\"\nconst MONK_SCALE: float=0.9459459459459459\nconst MONK_IDS: Array[String]=[\"temple_cave_keeper_20261018t\",\"temple_bell_keeper_20261018t\"]\n# Empty values are an explicit NOTREADY data contract, never observed hash pins.\n# Root may adopt only bell portrait while the entire elder pair remains old.\nconst MONK_MEDIA: Dictionary={\n\t\"elder_sprite\":{\"path\":\"\",\"sha256\":\"\",\"import_path\":\"\",\"import_sha256\":\"\",\"ctex_path\":\"\",\"ctex_sha256\":\"\"},\n\t\"elder_portrait\":{\"path\":\"\",\"sha256\":\"\",\"import_path\":\"\",\"import_sha256\":\"\",\"ctex_path\":\"\",\"ctex_sha256\":\"\"},\n\t\"bell_portrait\":{\"path\":\"\",\"sha256\":\"\",\"import_path\":\"\",\"import_sha256\":\"\",\"ctex_path\":\"\",\"ctex_sha256\":\"\"}\n}\n\nstatic func _monk_paths() -> Dictionary:\n\tvar result: Dictionary={}\n\tif not MONK_VISUAL_READY: return result\n\tfor role: String in [\"elder_portrait\",\"bell_portrait\",\"elder_sprite\"]:\n\t\tif role.begins_with(\"elder_\") and not ELDER_PAIR_ADOPTED: continue\n\t\tvar media: Dictionary=MONK_MEDIA[role]\n\t\tfor key: String in [\"path\",\"import_path\",\"ctex_path\"]:\n\t\t\tvar path: String=String(media[key])\n\t\t\tif path.is_empty(): return {}\n\t\t\tresult[path]=true\n\treturn result\n\nstatic func _monk_owner(field: Node) -> Dictionary:\n\tif not READY or not MONK_VISUAL_READY or not is_instance_valid(field) or field.get(\"_scene_rebuilding\")!=true or field.get(\"_field_loading_failed\")==true: return {}\n\tvar scene: Variant=field.get(\"_current_scene\")\n\tvar lease: Variant=field.get(\"_finish25i\")\n\tvar temple: Variant=field.get(\"_temple_session\")\n\tif scene==null or scene.scene_id!=TEMPLE_ID or scene.resource_path!=\"res://data/scenes/luoyang_temple_layout_quest_20261018t/temple.tres\" or scene.map_layout==null or lease==null or not temple is RefCounted or temple.get_script()!=load(\"res://scripts/city/luoyang_temple_assembly_20261016.gd\") or not lease._owned(true,true): return {}\n\tvar state: Dictionary=lease.get(\"_state\")\n\tvar owner: Dictionary=temple.state()\n\tvar key: String=\"TEMPLE_ORIGINAL_INSTANCE:\"+str(temple.get_instance_id())+\":\"+str(scene.get_instance_id())+\":\"+str(scene.map_layout.get_instance_id())\n\tif state.is_empty() or state.get(\"owner_kind\")!=\"TEMPLE_OWN_FIELD_ORIGINAL\" or state.get(\"token\")==0 or state.get(\"token\")!=temple.get_instance_id() or state.get(\"owner_key\")!=key or state.get(\"binding_sha\")!=lease.get_script().BIND_SHA or not state.get(\"field\") is WeakRef or state.field.get_ref()!=field or not state.get(\"scene\") is WeakRef or state.scene.get_ref()!=scene or not state.get(\"layout\") is WeakRef or state.layout.get_ref()!=scene.map_layout or not state.get(\"temple_ref\") is WeakRef or state.temple_ref.get_ref()!=temple: return {}\n\tif temple.get(\"_released\")!=false or temple.get(\"_scene\")!=scene or owner.get(\"released\")!=false or owner.get(\"scene_instance\")!=scene.get_instance_id() or owner.get(\"error\")!=\"\" or not owner.get(\"source_first\") is Dictionary or owner.source_first.is_empty() or var_to_bytes(owner.source_first)!=var_to_bytes(state.get(\"first\")): return {}\n\tvar city: Variant=load(\"res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd\")\n\tif not city._equal_value(temple.get(\"_scene_storage\"),city._transition_storage(scene)) or not city._equal_value(temple.get(\"_layout_storage\"),city._transition_storage(scene.map_layout)) or var_to_bytes(state.get(\"parent_blockers\"))!=var_to_bytes(scene.map_layout.blockers) or var_to_bytes(state.payload.get(\"parent_native_navigation\"))!=var_to_bytes(scene.map_layout.visual_objects): return {}\n\tif field.get(\"_world_size\")!=Vector2(1920,1280) or scene.npc_visual_scale!=1.0 or not scene.actor_positions_are_feet: return {}\n\tfor path: String in [SELF,MONK_TASK,MONK_OLD]:\n\t\tif not state.first.get(path) is String or String(state.first[path]).length()!=64 or FileAccess.get_sha256(path)!=state.first[path]: return {}\n\tfor role: String in [\"elder_portrait\",\"bell_portrait\",\"elder_sprite\"]:\n\t\tif role.begins_with(\"elder_\") and not ELDER_PAIR_ADOPTED: continue\n\t\tvar media: Dictionary=MONK_MEDIA[role]\n\t\tfor pair: Array in [[\"path\",\"sha256\"],[\"import_path\",\"import_sha256\"],[\"ctex_path\",\"ctex_sha256\"]]:\n\t\t\tvar path: String=String(media[pair[0]])\n\t\t\tvar sha: String=String(media[pair[1]])\n\t\t\tif path.is_empty() or sha.length()!=64 or state.first.get(path)!=sha or FileAccess.get_sha256(path)!=sha: return {}\n\t\tvar texture: Texture2D=load(String(media.path)) as Texture2D\n\t\tvar expected_size: Vector2=Vector2(160,160) if role==\"elder_sprite\" else Vector2(1254,1254)\n\t\tif texture==null or texture.resource_path!=media.path or texture.get_size()!=expected_size: return {}\n\t\tif role==\"elder_sprite\":\n\t\t\tif ELDER_NATIVE_A1_RECT.size.x<=0 or ELDER_NATIVE_A1_RECT.size.y<=0 or not Rect2i(0,0,160,160).encloses(ELDER_NATIVE_A1_RECT): return {}\n\t\t\tvar image: Image=texture.get_image()\n\t\t\tif image==null or image.is_empty() or image.get_used_rect()!=ELDER_NATIVE_A1_RECT: return {}\n\treturn state\n\nstatic func _monk_actor_protected(actor: NPCNode) -> Dictionary:\n\treturn {\"npc_id\":actor.npc_id,\"npc_name\":actor.npc_name,\"dialog_id\":actor.dialog_id,\"interaction_action\":actor.interaction_action,\"dialog_variants\":actor.dialog_variants.duplicate(true),\"walk_sprite_path\":actor.walk_sprite_path,\"conversation_sprite_paths\":actor.conversation_sprite_paths.duplicate(true),\"conversation_base_facing\":actor.conversation_base_facing,\"sprite_scale\":actor.sprite_scale,\"movement_mode\":actor.movement_mode,\"patrol_axis\":actor.patrol_axis,\"patrol_distance\":actor.patrol_distance,\"patrol_speed\":actor.patrol_speed,\"invert_patrol_facing\":actor.invert_patrol_facing,\"idle_frame_seconds\":actor.idle_frame_seconds,\"walk_frame_seconds\":actor.walk_frame_seconds,\"position\":actor.position,\"calibrate\":actor._calibrate_adult_body,\"ground_anchored\":actor._ground_anchored}\n\nstatic func project_actor(field: Node,row: Dictionary,actor: NPCNode) -> Dictionary:\n\tif not is_instance_valid(field) or not is_instance_valid(actor): return {\"ok\":false}\n\tvar scene: Variant=field.get(\"_current_scene\")\n\tif scene==null or scene.scene_id!=TEMPLE_ID or not String(row.get(\"npc_id\",\"\")) in MONK_IDS: return {\"ok\":true,\"matched\":false}\n\tvar state: Dictionary=_monk_owner(field)\n\tif state.is_empty() or actor.is_inside_tree() or actor.get_parent()!=null or actor.get_script()!=load(\"res://scripts/field/npc_node.gd\") or field.get(\"_actor_layer\")==null: return {\"ok\":false}\n\tfor previous: Variant in field.get(\"_npc_nodes\"):\n\t\tif is_instance_valid(previous) and previous.npc_id==row.npc_id: return {\"ok\":false}\n\tvar receipt: Dictionary=field.get(\"_city_tasks_receipt\")\n\tif receipt.get(\"matched\")!=true or receipt.get(\"source_scene_id\")!=String(TEMPLE_ID) or receipt.get(\"original_scene_identity\")!=scene.get_instance_id() or receipt.get(\"render_applied\")!=true or not receipt.get(\"phase\") is Dictionary: return {\"ok\":false}\n\tvar phases: Dictionary=receipt.phase\n\tfor kind: String in [\"longmen\",\"baima\"]:\n\t\tif not phases.get(kind) is String or not String(phases[kind]) in [\"not_started\",\"evidence\",\"completed\",\"started\",\"accepted_without_stage\",\"failed\",\"invalid\"]: return {\"ok\":false}\n\tvar task: Variant=load(MONK_TASK)\n\tvar temple: Variant=field.get(\"_temple_session\")\n\tvar expected: Array=temple.get_script().successor_npcs().duplicate(true)\n\tif not task._project_monk(expected,MONK_IDS[0],\"守窟僧\",Vector2(936,900),task._npc_dialog(\"longmen\",phases.longmen)) or not task._project_monk(expected,MONK_IDS[1],\"守钟僧\",Vector2(600,900),task._npc_dialog(\"baima\",phases.baima)): return {\"ok\":false}\n\tvar source: Dictionary={}\n\tfor original: Dictionary in expected:\n\t\tif original.npc_id==row.npc_id: source=original\n\tif source.is_empty() or var_to_bytes(source)!=var_to_bytes(row): return {\"ok\":false}\n\tvar expected_variants: Array[Dictionary]=[]\n\texpected_variants.assign(source.dialog_variants)\n\tif actor.npc_id!=source.npc_id or actor.npc_name!=source.npc_name or actor.dialog_id!=source.dialog_id or actor.interaction_action!=source.interaction_action or var_to_bytes(actor.dialog_variants)!=var_to_bytes(expected_variants) or actor.sprite_path!=MONK_OLD or actor.portrait_path!=MONK_OLD or actor.sprite_scale!=MONK_SCALE or actor._calibrate_adult_body or actor._ground_anchored or actor.position!=source.pos*Vector2(1920,1280) or actor.movement_mode!=\"idle\" or actor.conversation_base_facing!=\"front\" or not actor.walk_sprite_path.is_empty() or not actor.conversation_sprite_paths.is_empty(): return {\"ok\":false}\n\t# Elder portrait belongs only to the new elder body. While that pair is\n\t# unapproved, keep this whole actor unchanged, never pair it to MONK_OLD.\n\tif actor.npc_id==MONK_IDS[0] and not ELDER_PAIR_ADOPTED:\n\t\treturn {\"ok\":true,\"matched\":false,\"elder_pair_pending\":true}\n\tvar protected_before: PackedByteArray=var_to_bytes(_monk_actor_protected(actor))\n\tvar row_before: PackedByteArray=var_to_bytes(row)\n\tvar old_sprite: String=actor.sprite_path\n\tvar old_portrait: String=actor.portrait_path\n\tvar portrait: String=String(MONK_MEDIA.elder_portrait.path) if actor.npc_id==MONK_IDS[0] else String(MONK_MEDIA.bell_portrait.path)\n\tif actor.npc_id==MONK_IDS[0] and ELDER_PAIR_ADOPTED: actor.sprite_path=String(MONK_MEDIA.elder_sprite.path)\n\tactor.portrait_path=portrait\n\tif var_to_bytes(_monk_actor_protected(actor))!=protected_before or var_to_bytes(row)!=row_before or not field.get(\"_finish25i\")._owned(true,true):\n\t\tactor.sprite_path=old_sprite;actor.portrait_path=old_portrait\n\t\treturn {\"ok\":false}\n\treturn {\"ok\":true,\"matched\":true,\"display_only\":true,\"elder_pair_adopted\":ELDER_PAIR_ADOPTED,\"task_phase\":phases.duplicate(true)}\n"
+        }
+      ]
+    },
+    {
+      "parent": "res://build/luoyang_city_finish_20261025i_system01/wing_door_children02_NOTREADY/Field_wing_door_children_CANDIDATE.gd",
+      "parent_sha256": "ec16de7d762c2a3d9fd63d614fec4bdf71a2bf0cc89768311341273b99a47fc7",
+      "candidate": "res://build/luoyang_city_finish_20261025i_system01/wing_doors_monks04_NOTREADY/Field_wing_doors_monks_CANDIDATE.gd",
+      "candidate_sha256": "930fcb08ab07a8eb62c5ca4c1969e4982de40157e7dfba58dba5a7a6926c96ef",
+      "hunks": [
+        {
+          "old": "res://build/luoyang_city_finish_20261025i_system01/wing_door_children02_NOTREADY/wing_door_depth_children_CANDIDATE.gd",
+          "new": "res://build/luoyang_city_finish_20261025i_system01/wing_doors_monks04_NOTREADY/wing_door_depth_children_CANDIDATE.gd"
+        },
+        {
+          "old": "2bb4ba8c95208fd7e6eb8879ab4a5c3e4bbbd115df338193e238879ed462f179",
+          "new": "79338ffc2fa4487eccbb0c1be486409730bde9e3c27d33c48735b1cf424f57b4"
+        },
+        {
+          "old": "\t\t_actor_layer.add_child(npc)\n",
+          "new": "\t\t# Original Temple Task projection has already succeeded. Only display\n\t\t# paths are replaced, after catalog/scale/position and before _ready().\n\t\tif _current_scene.scene_id == &\"ch4_s4_ancient_temple\" and npc.npc_id in [\"temple_cave_keeper_20261018t\",\"temple_bell_keeper_20261018t\"]:\n\t\t\tconst MONK_VISUAL_HELPER: String = \"res://build/luoyang_city_finish_20261025i_system01/wing_doors_monks04_NOTREADY/wing_door_depth_children_CANDIDATE.gd\"\n\t\t\tif FileAccess.get_sha256(MONK_VISUAL_HELPER) != \"79338ffc2fa4487eccbb0c1be486409730bde9e3c27d33c48735b1cf424f57b4\":\n\t\t\t\tnpc.free(); _field_loading_failed=true; push_error(\"[Field] Temple display source changed\"); return\n\t\t\tvar monk_visual: Variant=load(MONK_VISUAL_HELPER)\n\t\t\tvar monk_projection: Dictionary=monk_visual.project_actor(self,d,npc)\n\t\t\tvar old_elder_pending: bool=npc.npc_id==\"temple_cave_keeper_20261018t\" and monk_visual.ELDER_PAIR_ADOPTED==false and monk_projection.get(\"elder_pair_pending\")==true\n\t\t\tif monk_projection.get(\"ok\")!=true or (monk_projection.get(\"matched\")!=true and not old_elder_pending):\n\t\t\t\tnpc.free(); _field_loading_failed=true; push_error(\"[Field] Temple display parent/owner refused\"); return\n\t\t_actor_layer.add_child(npc)\n"
+        }
+      ]
+    }
+  ],
+  "unchanged_NPCNode": {
+    "path": "res://scripts/field/npc_node.gd",
+    "sha256": "67c0f3deafef65445918b5815f4acdcb4cc577206248f20cd67a998930d00bea",
+    "bytes": 21619
+  },
+  "permissions": {
+    "engine": false,
+    "import": false,
+    "canonical_writes": false,
+    "pixel_processing": false
+  },
+  "scope": {
+    "exact_scene": "ch4_s4_ancient_temple",
+    "exact_npc_ids": [
+      "temple_cave_keeper_20261018t",
+      "temple_bell_keeper_20261018t"
+    ],
+    "door_install_functions_body_unchanged": true,
+    "Task_and_scene_rows_not_written": true,
+    "phase_source": "existing _city_tasks_receipt.phase -> original TASK._npc_dialog/_project_monk on T.successor_npcs copy",
+    "actor_placement": "after catalog/scale/position, before add_child/_ready",
+    "changed_actor_properties_only": [
+      "sprite_path (elder only, explicit future adoption)",
+      "portrait_path"
+    ],
+    "scale": 0.9459459459459459,
+    "calibrate_adult_body": false,
+    "frame_canvas": [
+      160,
+      160
+    ],
+    "expected_body_world": [
+      21.189189189189193,
+      27.243243243243242
+    ],
+    "offset": 18.16216216216216,
+    "ground_anchor": "unchanged old set_ground_anchored after add_child/apply_runtime_idle_texture",
+    "media_not_ready": true,
+    "elder_sprite_adopted": false,
+    "portrait_only_fallback_allowed": false,
+    "body_scale_or_NPCNode_changes": false,
+    "current_adoption": "Only bell portrait; entire elder actor stays original until exact elder pair approved"
+  },
+  "pending": {
+    "portraits": "Bell DB102 tuple after Root actual import/promotion only. Elder EAC4 may be separately imported but is NOT source-captured/applied while ELDER_PAIR_ADOPTED=false.",
+    "elder": "Complete old elder-role actor remains unchanged / matchedfalse after full original Task and Weak owner checks. Never bind new elder portrait to middle-aged old6268 sprite.",
+    "ELDER_NATIVE_A1_RECT": "Empty while sprite adoption off. Fill exact fullA1 rect only from Root-admitted actual compact160 native; intended approximately148 high/boot154 is not an actual pixel result and is not hardcoded as observed."
+  },
+  "verification": {
+    "forward_reverse_claim": "must be confirmed by separate physical READONLY receipt",
+    "parse_not_run": true,
+    "actual_runtime_not_run": true
+  }
+}

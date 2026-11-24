@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatusEffectDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/status_effect_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+status_id = &"venom"
+display_name = "烈毒"
+kind = 0
+default_duration = 3
+effect_value = 0.12
+ui_label = "烈毒"
+icon_path = "res://art/ui/status/icons_v1/icon_status_poison_v1.png"
+tooltip_text = "每个自身回合开始损失12%最大生命。与普通毒并存时只受较强的一种。丹砂佩减伤，解毒丹或回春引可解。"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "书案夹层压着两张同样的押运旁注。一张写“幼子另行安置”，另一张却改成“途中失散”。"
+on_end = "next:compare"
+
+[sub_resource type="Resource" id="compare"]
+script = ExtResource("2")
+node_id = &"compare"
+speaker = "冷孤云"
+text = "改字的收锋和师父批我剑谱时一样，但两张纸相差近一年。这里只能证明他改过记录，不能证明他为什么改。"
+add_evidence = Array[StringName]([&"ev_ch6_revised_escort_note"])
+set_flags = Array[Dictionary]([{"key":"ch6_residence_note_found", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_residence_escort_note"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("compare")])

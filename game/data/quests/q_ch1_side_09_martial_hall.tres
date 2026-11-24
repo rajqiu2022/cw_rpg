@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_quest"]
+
+[resource]
+script = ExtResource("1_quest")
+quest_id = &"q_ch1_side_09_martial_hall"
+title = "武馆试剑"
+kind = 1
+desc_not_started = "林西村武馆正在寻人陪练。"
+desc_in_progress = "战胜武馆高阶弟子，证明下山前的剑术已有根基。"
+desc_completed = "教头认可了冷孤云的剑术，往后仍可随时回武馆切磋。"
+completion_triggers = Array[String](["enemy_defeated:linxi_dojo_senior"])
+reward_gold = 20
+reward_exp = 35
+reward_items = Array[Dictionary]([{ "item_id": "healing_salve", "count": 2 }, { "item_id": "inner_breath_pill", "count": 1 }])
+reward_skills = Array[StringName]([&"examiner_staff_sweep"])

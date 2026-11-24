@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "task_id": "luoyang_estate_courtyard_20261021am_low_stone_peony_bed_v3_compact_edit",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "edit",
+  "use_case": "production-game-asset-candidate",
+  "transparent_background": true,
+  "reference_images": [
+    "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_peony_bed_v2.png"
+  ],
+  "reference_sha256": "facd43db0e6bd9e52ef318f4764aa7010f9f5b1e6e418d6778217647c4e6e155",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "attempt_budget": 1,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "raw_output_path": "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_peony_bed_v3_compact_edit.png",
+  "raw_metadata_path": "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_peony_bed_v3_compact_edit.meta.json",
+  "measurement_contract": {
+    "mode": "RGBA",
+    "complete_A1_bbox_required": true,
+    "minimum_true_transparent_margin_each_side_fraction": 0.18,
+    "target_complete_A1_width_to_height_range": [2.35, 2.65],
+    "target_world_complete_A1_width_px": [280, 320],
+    "target_world_complete_A1_height_px": [120, 140],
+    "world_target_basis": "complete_A1_bbox, not transparent canvas",
+    "uniform_scale_only": true,
+    "all_weak_alpha_is_part_of_the_subject_envelope": true,
+    "no_local_cleanup_or_padding_substitute_authorized": true,
+    "solid_semantics": "PENDING actual compact stone-foot measurement; no body is estimated from the failed v2 raw"
+  },
+  "admission_conditions": [
+    "one complete compact grey-stone peony bed with both end caps and all four curb sides",
+    "multiple distinct low peony clusters remain readable without forming a long hedge",
+    "all A1 margins and A1 ratio pass directly in the generated raw",
+    "no external weak-alpha dust, fog, backdrop, floor, scene, or clipped subject",
+    "actual ground anchor and conservative stone-foot solid are measured before scene binding"
+  ],
+  "scope_boundary": "This is the only targeted edit authorized after v2 failed. Root performs the one built-in edit call. No CLI, network fallback, automatic retry, local image cleanup, import, engine run, or formal deployment is authorized."
+}

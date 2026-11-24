@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "NOTREADY_WAITING_SIX_ART_IDENTITIES_AND_IMPORT_PROOFS",
+  "scope": "Presentation only: twelve existing military IDs; no name, primary, movement, body or geometry change.",
+  "frame_contract": {
+    "cell_px": [160, 160],
+    "static_frames": 1,
+    "walk_frames": 8,
+    "derived_idle_frames": 1,
+    "derived_idle_must_be_real_contact_frame": true,
+    "fake_duplicated_idle_animation_allowed": false,
+    "transparent_background": true,
+    "new_portraits_required_this_batch": false,
+    "empty_portrait_means_preserve_existing": true
+  },
+  "calibration_branch_contract": {
+    "canonical_patrol_old_soldier_sergeant": "Keep existing calibrated branch using an existing SMALL_ADULT_FAMILIES basename prefix.",
+    "canonical_commander": "Keep original examiner-based noncalibrated branch; basename must not match SMALL_ADULT_FAMILIES.",
+    "seven_crowd": "Retain original ground marker and Field's existing calibrated branch; do not add a catalog profile.",
+    "npc_node_source_sha256": "67c0f3deafef65445918b5815f4acdcb4cc577206248f20cd67a998930d00bea"
+  },
+  "styles": {
+    "young_gate": {"idle_path": "", "idle_frames": 1, "walk_path": "", "walk_frames": 0, "portrait_path": ""},
+    "patrol": {"idle_path": "", "idle_frames": 1, "walk_path": "", "walk_frames": 8, "idle_source_walk": "", "idle_contact_frame": -1, "portrait_path": ""},
+    "old_soldier": {"idle_path": "", "idle_frames": 1, "walk_path": "", "walk_frames": 0, "portrait_path": ""},
+    "archer": {"idle_path": "", "idle_frames": 1, "walk_path": "", "walk_frames": 8, "idle_source_walk": "", "idle_contact_frame": -1, "portrait_path": ""},
+    "sergeant": {"idle_path": "", "idle_frames": 1, "walk_path": "", "walk_frames": 0, "portrait_path": ""},
+    "commander": {"idle_path": "", "idle_frames": 1, "walk_path": "", "walk_frames": 0, "portrait_path": ""}
+  },
+  "texture_proofs": {},
+  "source_sha256": {},
+  "limitations": [
+    "Not enabled, not deployed, not imported and not an actual Field result.",
+    "Gate sergeant keeps the existing catalog's approved mature portrait; do not bypass that profile.",
+    "Private Shen household guard is not one of these twelve government military identities."
+  ]
+}

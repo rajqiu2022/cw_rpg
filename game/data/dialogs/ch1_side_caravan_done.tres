@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "镖局枪手"
+text = "古道能重新走商了。范掌柜说，下趟也照这条路走。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch1_side_caravan_done"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

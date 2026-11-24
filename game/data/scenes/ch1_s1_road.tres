@@ -1,21 +1,35 @@
-[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
-[ext_resource type="Resource" path="res://data/maps/ch1_s1_road_layout_v4.tres" id="3_map"]
+[ext_resource type="Resource" path="res://data/dialogs/ch1_road_intro.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch1_s1_road_layout_v5.tres" id="3_map"]
 
 [resource]
 script = ExtResource("1_scn")
 scene_id = &"ch1_s1_road"
 display_name = "林西村外 · 山道"
-background_path = "res://art/backgrounds/bg_ch1_s1_road_terrain_base_v1.png"
-bgm_path = "res://art/audio/bgm/bgm_calm.wav"
+background_path = "res://art/backgrounds/bg_ch1_s1_road_cave_entry_v2.png"
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
 is_walkable = true
 map_layout = ExtResource("3_map")
+on_enter_dialog = ExtResource("2_intro")
+on_enter_once_flag = &"seen_ch1_road_intro"
 player_spawn = Vector2(0.120, 0.835)
-encounter_enemy_ids = Array[StringName]([&"bandit_mountain"])
-encounter_step_distance = 620.0
-encounter_chance = 0.2
-encounter_require_flag = &"defeated_thug_lone"
+npcs = [
+	{"npc_id": "ch1_caravan_master_fan", "npc_name": "范掌柜", "pos": Vector2(0.480, 0.430), "portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png", "sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png", "dialog_id": "ch1_side_caravan_road_start", "require_quest_active": "q_ch1_side_06_caravan_escort", "hide_flag": "caravan_escort_done", "sprite_quality": "full_body_reviewed", "scale": 0.92}
+]
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids": [&"bandit_mountain"], "weight": 45.0},
+	{"enemy_ids": [&"thug_lone"], "weight": 20.0},
+	{"enemy_ids": [&"bandit_mountain", &"thug_lone"], "weight": 22.0},
+	{"enemy_ids": [&"bandit_mountain", &"thug_lone", &"bandit_mountain"], "weight": 8.0},
+	{"enemy_ids": [&"wild_elite_road"], "weight": 5.0}
+])
+encounter_allow_full_group_for_solo = true
+encounter_step_distance = 1600.0
+encounter_chance = 0.12
+encounter_require_flag = &"master_training_done"
+encounter_require_flag = &"master_training_done"
 scene_objects = [
 	{
 		"id": "road_supply_box_closed",
@@ -59,7 +73,7 @@ hotspots = [
 		"hide_flag": "defeated_thug_lone"
 	},
 	{
-		"label": "← 回林西村禀告师傅",
+		"label": "← 返回林西村",
 		"pos_x": 0.12,
 		"pos_y": 0.82,
 		"action": "dialog:ch1_road_return_to_village",
@@ -70,7 +84,7 @@ hotspots = [
 		"label": "→ 沿山道继续前行",
 		"pos_x": 0.84,
 		"pos_y": 0.55,
-		"action": "dialog:ch1_road_after_battle",
+		"action": "dialog:ch1_road_to_zhuwei",
 		"require_flag": "master_training_done"
 	}
 ]
@@ -81,7 +95,7 @@ exits = [
 		"label": "查看村口动静",
 		"pos": Vector2(0.845, 0.115),
 		"size": Vector2(0.150, 0.170),
-		"action": "dialog:ch1_road_corpse",
+		"action": "dialog:ch1_road_exit_locked",
 		"hide_flag": "defeated_thug_lone",
 	},
 	{
@@ -89,8 +103,8 @@ exits = [
 		"label": "返回林西村",
 		"pos": Vector2(0.055, 0.780),
 		"size": Vector2(0.090, 0.135),
-		"target_scene": "linxi_tutorial",
-		"target_pos": Vector2(0.880, 0.650),
+		"target_scene": "linxi_village_center",
+		"target_pos": Vector2(0.820, 0.165),
 		"require_flag": "defeated_thug_lone",
 		"hide_flag": "master_training_done",
 	},
@@ -99,7 +113,7 @@ exits = [
 		"label": "前往竹尾村",
 		"pos": Vector2(0.845, 0.115),
 		"size": Vector2(0.150, 0.170),
-		"action": "dialog:ch1_road_after_battle",
+		"action": "dialog:ch1_road_to_zhuwei",
 		"require_flag": "master_training_done",
 	}
 ]
@@ -162,7 +176,7 @@ trigger_zones = [
 		"id": "road_continue_after_battle",
 		"pos": Vector2(0.84, 0.55),
 		"size": Vector2(0.15, 0.22),
-		"action": "dialog:ch1_road_after_battle",
-		"require_flag": "defeated_thug_lone",
+		"action": "dialog:ch1_road_to_zhuwei",
+		"require_flag": "master_training_done",
 	}
 ]

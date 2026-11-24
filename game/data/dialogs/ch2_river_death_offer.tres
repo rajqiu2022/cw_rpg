@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "捕快韩策"
+text = "清溪河漂来一具红衣女尸。仵作说泡了三日，身上却没半根水草。你若肯帮忙，先去河埠头看鞋底与衣角。"
+on_end = "next:accept"
+
+[sub_resource type="Resource" id="accept"]
+script = ExtResource("2_node")
+node_id = &"accept"
+speaker = "冷孤云"
+text = "我先查河岸泥土，再回来与你核对。"
+accept_quest = &"q_ch2_side_03_river_death"
+set_flags = Array[Dictionary]([{"key": "river_death_investigation_started", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch2_river_death_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("accept")])

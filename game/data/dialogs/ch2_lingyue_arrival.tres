@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "凌霜"
+text = "你救我门下弟子，也没有拿一块假令牌就给烈云盟定罪。凌月派承你这份情。"
+faction_trust_changes = Array[Dictionary]([{"id": "lingyue", "delta": 12}])
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "凌霜"
+text = "五派即将在山下召开武林大会，查议数起命案。你既已卷入，不妨亲眼看看各家证词。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="n3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = "悦无姮"
+text = "明日我带你去大会。那里人人都有证词，也人人都有不愿说的部分。今晚先养足精神。"
+companion_trust_changes = Array[Dictionary]([{"id": "yuewuheng", "delta": 5}])
+bond_events = Array[Dictionary]([{"companion": "yuewuheng", "event": "ch2_verified_evidence_together"}])
+set_flags = Array[Dictionary]([{"key": "chapter2_complete", "value": true}])
+complete_quest = &"q_ch2_main_04_report_lingyue"
+on_end = "chapter_end:2"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_lingyue_arrival"
+required_story_flag = &"chapter1_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2"), SubResource("n3")])

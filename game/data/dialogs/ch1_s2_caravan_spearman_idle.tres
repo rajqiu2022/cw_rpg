@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "镖局枪手"
+text = "我负责守主街，镖师盯着山道。等守村人查清近来的动静，商队才好启程。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch1_s2_caravan_spearman_idle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

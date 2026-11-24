@@ -1,0 +1,38 @@
+{
+  "status": "ROOT_APPROVED_SINGLE_MARKET_LIVING_STREET_IMPLEMENTATION",
+  "permission_kind": "TRIAL_PERMISSION_NOT_RESULT",
+  "authorized_by": "root",
+  "admitted": true,
+  "actual_Field_pass": false,
+  "whole_city_ART_pass": false,
+  "loading_target_pass": false,
+  "parent_formal_deployment": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_collision_Gbinding_repair01/pawn_Gbinding25_deployed_ROOT_ACTUAL.json",
+    "sha256": "aaf3125769c2b20bc9fc5bb7485d123026349ae704cb36728c8e9087ea037786"
+  },
+  "scene_ids": ["ch4_s3_luoyang_market"],
+  "scope": {
+    "kind": "ONE_CONNECTED_MARKET_STREET_SEGMENT",
+    "existing_asset_instances": {"minimum": 6, "maximum": 6},
+    "adopted_changes": [
+      "Two workcourt floors reach their street frontage",
+      "Two stocked awnings and two low plot walls form the south frontage",
+      "Six new instances use matching true ground bodies and only their local mask delta",
+      "The existing144px estate access uses shop_front_public_stone rather than changing shader capacity"
+    ]
+  },
+  "final_reviewed_sources": {
+    "ART_author": {"path": "res://build/luoyang_city_finish_20261025i_art01/market_living_street_FINAL09_BUILD_ONLY.json", "sha256": "07f24cc9a80879794c5f3ca0a08467fc315e9604dd0442b7ae72d82c8eb57591"},
+    "System_layout_author": {"path": "res://build/luoyang_market_workcourts_20261026b_system01/author_living_street01_NOTREADY.json", "sha256": "f40371999db51688c2c4f71bf4a7362161f1446f2539e7447389b7c826cf8ceb"},
+    "material_spec": {"path": "res://build/luoyang_market_workcourts_20261026b_system01/market_five_use_spec_street02_NOTREADY.json", "sha256": "1c158b15dd87128346231e008a128ce13dc7f3e9094f8872458da37348633c86"},
+    "material_helper": {"path": "res://build/luoyang_market_workcourts_20261026b_system01/market_purpose_layer_street02_CANDIDATE.gd", "sha256": "b5dc92f52434ef84b1fed33eeb8cb2e3fac37062ab207c53e557727a4adb24a6"},
+    "ENV_candidate": {"path": "res://build/luoyang_market_workcourts_20261026b_system01/ENV_street02_CANDIDATE.gd", "sha256": "1c4812a9e9d80f9f9c532b0e3621953bd15ac29ff3c3dd02f59ee05ebd945bf0"}
+  },
+  "conditions": [
+    "One final data batch; preserve all old bodies, doors, tasks, actors and pawnshop repairs.",
+    "C/Field/Router algorithms unchanged; only unavoidable exact source-pointer successors may propagate.",
+    "Existing assets only: no generation or image editing, no old paused prefetch/elder/patrol/World batch.",
+    "Root alone publishes, imports the new mask, and deploys the required source package.",
+    "Only necessary compilation and one Market entry/movement check. Detailed visual and gameplay acceptance belongs to the user; no whole-city or ten-second-loading claim."
+  ]
+}

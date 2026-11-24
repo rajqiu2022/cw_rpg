@@ -1,0 +1,12 @@
+# Runtime receipts verify source bytes, including line endings.
+game/** -text
+# Keep large runtime maps in LFS, including data received directly by validators.
+game/art/maps/**/*.png filter=lfs diff=lfs merge=lfs -text
+game/**/*.res filter=lfs diff=lfs merge=lfs -text
+"game/art/external/polyhaven/tree_small_02/tree_small_02.bin" filter=lfs diff=lfs merge=lfs -text
+"game/art/maps/world_map_v15_complete_v9c/art_contract.json" filter=lfs diff=lfs merge=lfs -text
+"game/art/maps/world_map_v15_complete_v9c/source_contract.json" filter=lfs diff=lfs merge=lfs -text
+"game/build/world_v9c_ROOT234_before_v9e_material_20261005_01/world_map_v15_complete_v9c_source.json" filter=lfs diff=lfs merge=lfs -text
+"game/data/maps/world_map_v15_complete_v7_source.json" filter=lfs diff=lfs merge=lfs -text
+"game/data/maps/world_map_v15_complete_v8_source.json" filter=lfs diff=lfs merge=lfs -text
+"game/data/maps/world_map_v15_complete_v9c_source.json" filter=lfs diff=lfs merge=lfs -text

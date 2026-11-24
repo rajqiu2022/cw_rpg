@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "status": "FOUR_STATIC_ALIAS_BRANCH_CORRECTION_FROZEN_NOT_IMPORTED_OR_BOUND",
+  "parent_path": "assets/processed/sprite/luoyang_soldier_diversity_20261019y/final_static_admission.json",
+  "parent_sha256": "33b774f5f84d9a0ab63079c283c225620a992406f5a9d27f04bebdd86ec27f5a",
+  "reason": "NPCNode only enables calibrated-adult behavior for SMALL_ADULT_FAMILIES. Commander must preserve the existing captain/examiner non-calibrated branch rather than inherit npc_escort_guard_ calibration.",
+  "aliases": [
+    {
+      "identity": "young_gate_sentry",
+      "path": "game/art/characters/luoyang_soldier_diversity_20261019y/npc_escort_guard_luoyang_young_gate_sentry_idle_down_1f_y1_runtime.png",
+      "sha256": "6b3f1df48197625bac356e5bbc9df977c5cab713cc38643386417a9519eacf7f",
+      "expected_npc_node_calibrated_adult": true
+    },
+    {
+      "identity": "old_veteran",
+      "path": "game/art/characters/luoyang_soldier_diversity_20261019y/npc_escort_guard_luoyang_old_veteran_idle_down_1f_y1_runtime.png",
+      "sha256": "77a23573aa51477d52a7097c2b9ea88afd431214dacf70ba7310bad016752838",
+      "expected_npc_node_calibrated_adult": true
+    },
+    {
+      "identity": "squad_leader",
+      "path": "game/art/characters/luoyang_soldier_diversity_20261019y/npc_escort_guard_luoyang_squad_leader_idle_down_1f_y1_runtime.png",
+      "sha256": "a3b0474d9376297913cfc92a2015a6427cca11b2f19e8ce5a8a9ed65dbbedcc3",
+      "expected_npc_node_calibrated_adult": true
+    },
+    {
+      "identity": "commander",
+      "path": "game/art/characters/luoyang_soldier_diversity_20261019y/npc_luoyang_commander_idle_down_1f_y1_runtime.png",
+      "sha256": "2328192d9c14905753bcb6d4294b6016d02d3139050b5b9813937f12cc7308ec",
+      "expected_npc_node_calibrated_adult": false,
+      "noncal_foot_math": "A>0 foot end152 - cell center80 =72px, exactly matching NPCNode 160*0.45 authored-foot formula before explicit instance scale"
+    }
+  ],
+  "rejected_alias": {
+    "path": "game/art/characters/luoyang_soldier_diversity_20261019y/npc_escort_guard_luoyang_commander_idle_down_1f_y1_runtime.png",
+    "sha256": "2328192d9c14905753bcb6d4294b6016d02d3139050b5b9813937f12cc7308ec",
+    "status": "UNBOUND_PIXEL_IDENTICAL_CANDIDATE_DO_NOT_USE",
+    "reason": "basename would enable the wrong calibrated-adult branch for commander"
+  },
+  "pixel_change_from_parent": false,
+  "import_runtime_field_formal_credit": false
+}

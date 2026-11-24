@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "老漕卒"
+text = "旧刃重见天日，守粮同袍的污名也该洗清了。码头的后生还在走这条水路，旧事不该只剩传言。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_hanjia_after"
+entry_node_id = &"start"
+required_story_flag = &"hanjia_blade_recovered"
+nodes = Array[Resource]([SubResource("start")])
+

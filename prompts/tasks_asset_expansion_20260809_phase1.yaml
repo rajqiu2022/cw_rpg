@@ -1,0 +1,219 @@
+tasks:
+  # NPC portraits, generated before the reference-locked field atlases in phase 2.
+  - id: portrait_linxi_herbalist_subo_v1
+    template: portrait_chapter_npc
+    category: character_portrait/expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "药师苏伯"
+      character_desc: "六十岁清瘦乡村药师，灰白短须，深青粗布长袍，腰挂药囊和木制药匙，沉静慈和，不是武者"
+      pose: "一手托药草束，一手轻扶药囊"
+      expression: "专注温和"
+
+  - id: portrait_linxi_granny_v1
+    template: portrait_chapter_npc
+    category: character_portrait/expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "晒药婆婆"
+      character_desc: "六十五岁健朗村妇，银灰发髻以木簪固定，褐绿粗布短褂，背小竹药篓，手腕缠布，无武器"
+      pose: "双手捧着新晒草药"
+      expression: "慈祥而精明"
+
+  - id: portrait_linxi_village_guard_v1
+    template: portrait_chapter_npc
+    category: character_portrait/expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "巡村壮丁"
+      character_desc: "二十八岁结实村民，短发束巾，靛蓝粗布护身短褂，皮护腕，持朴素长枪，乡勇而非正规军"
+      pose: "长枪竖立身侧，警觉站岗"
+      expression: "认真警惕"
+
+  - id: portrait_linxi_teacher_v1
+    template: portrait_chapter_npc
+    category: character_portrait/expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "村塾先生"
+      character_desc: "五十岁乡村先生，清瘦长脸，灰发束髻，浅褐旧长衫，腰挂旧书袋，手持竹简，无武器"
+      pose: "一手持竹简，一手背在身后"
+      expression: "温和严谨"
+
+  # Leng Guyun weapon variants. The existing sword standard remains unchanged.
+  - id: sprite_lengguyun_field_dao_4dir_master_v1
+    template: sprite_lengguyun_field_weapon_atlas_v1
+    category: sprite/field/weapon_variants/lengguyun
+    priority: 1
+    model: gpt-image-2
+    vars:
+      weapon_name: "dao"
+      weapon_spec: "one practical single-edged Chinese dao in a plain dark scabbard at the right waist; the hilt and scabbard orientation stay consistent across all directions; remove the sword"
+
+  - id: sprite_lengguyun_field_staff_4dir_master_v1
+    template: sprite_lengguyun_field_weapon_atlas_v1
+    category: sprite/field/weapon_variants/lengguyun
+    priority: 1
+    model: gpt-image-2
+    vars:
+      weapon_name: "staff"
+      weapon_spec: "one plain dark hardwood staff carried diagonally behind the shoulder in every direction, no blade or spear tip; remove the sword"
+
+  - id: sprite_lengguyun_field_palm_4dir_master_v1
+    template: sprite_lengguyun_field_weapon_atlas_v1
+    category: sprite/field/weapon_variants/lengguyun
+    priority: 1
+    model: gpt-image-2
+    vars:
+      weapon_name: "unarmed palm"
+      weapon_spec: "completely unarmed relaxed walking state with both hands visible; remove sword, scabbard, dao, staff and every weapon; retain only the wine gourd"
+
+  - id: sprite_lengguyun_battle_dao_atlas_v1
+    template: sprite_lengguyun_weapon_atlas_v1
+    category: sprite/battle/weapon_variants/lengguyun
+    priority: 1
+    model: gpt-image-2
+    vars:
+      weapon_name: "dao"
+      weapon_spec: "one practical single-edged Chinese dao with dark wrapped hilt and plain steel blade, held in both hands when attacking; remove the sword completely"
+      attack_spec: "compact waist draw, broad horizontal cut, heavy diagonal contact, guarded recovery"
+
+  - id: sprite_lengguyun_battle_staff_atlas_v1
+    template: sprite_lengguyun_weapon_atlas_v1
+    category: sprite/battle/weapon_variants/lengguyun
+    priority: 1
+    model: gpt-image-2
+    vars:
+      weapon_name: "staff"
+      weapon_spec: "one plain dark hardwood staff about one head taller than the character, no blade or spear tip, held with two hands; remove the sword completely"
+      attack_spec: "low guard, forward step, sweeping staff contact, balanced recovery"
+
+  - id: sprite_lengguyun_battle_palm_atlas_v1
+    template: sprite_lengguyun_weapon_atlas_v1
+    category: sprite/battle/weapon_variants/lengguyun
+    priority: 1
+    model: gpt-image-2
+    vars:
+      weapon_name: "unarmed palm"
+      weapon_spec: "completely unarmed, both hands visible in open-palm martial stance; remove every sword, dao, staff, scabbard and weapon from the body"
+      attack_spec: "settled palm guard, advancing step, clear open-palm contact, rooted recovery"
+
+  # Full battle atlases for three enemies that already have identity references.
+  - id: sprite_lingyue_guard_battle_atlas_v2
+    template: sprite_battle_atlas_4x5_v1
+    category: sprite/battle/standard_v2_source/lingyue_guard
+    priority: 1
+    model: gpt-image-2
+    vars:
+      reference_path: "assets/raw/sprite/battle/ch2/lingyue-guard/v1/battle_unit_lingyue_guard_ready_v1.png"
+      character_name: "凌月山守卫"
+      character_spec: "young female mountain-sect guard in moon-white and pale-violet uniform; preserve the supplied face, hair and costume"
+      weapon_spec: "one slender straight sword, same sword in every cell"
+      facing_spec: "enemy authored facing screen left"
+      attack_spec: "precise short lunge with a narrow sword thrust"
+
+  - id: sprite_wudang_disciple_battle_atlas_v2
+    template: sprite_battle_atlas_4x5_v1
+    category: sprite/battle/standard_v2_source/wudang_disciple
+    priority: 1
+    model: gpt-image-2
+    vars:
+      reference_path: "game/art/characters/battle_wudang_disciple_v1.png"
+      character_name: "武当弟子"
+      character_spec: "young male Wudang disciple; preserve the supplied face, topknot, blue-grey Taoist robe and calm silhouette"
+      weapon_spec: "one straight jian with a restrained Taoist grip"
+      facing_spec: "enemy authored facing screen left"
+      attack_spec: "circular yielding guard into a controlled two-stage sword cut"
+
+  - id: sprite_masked_killer_elite_battle_atlas_v2
+    template: sprite_battle_atlas_4x5_v1
+    category: sprite/battle/standard_v2_source/masked_killer_elite
+    priority: 1
+    model: gpt-image-2
+    vars:
+      reference_path: "game/art/characters/battle_masked_killer_elite_v1.png"
+      character_name: "蒙面杀手精英"
+      character_spec: "lean masked elite assassin in black layered night clothing; preserve mask, eyes, costume and proportions"
+      weapon_spec: "one short dark dagger in the right hand, no second weapon"
+      facing_spec: "enemy authored facing screen left"
+      attack_spec: "low silent approach, fast dagger slash, close contact, guarded retreat"
+
+  - id: portrait_shenbanzhan_canonical_v1
+    template: portrait_chapter_npc
+    category: character_portrait/expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "沈半盏"
+      character_desc: "五十五岁矮胖圆脸酒馆老板，秃顶周围一圈白发，深褐粗布短袍外罩沾有酒渍的米色围裙，眼神精明但面容和善"
+      pose: "一手托粗陶酒碗，一手搭在围裙前"
+      expression: "笑眯眯而世故"
+
+  - id: ui_skill_icons_expansion_atlas_v1
+    template: ui_icon_atlas_4x4_v1
+    category: ui_icon/skills/expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      icon_kind: "combat skill"
+      cell_manifest: |
+        1 sword arc; 2 crossed defensive forearms; 3 sweeping hardwood staff; 4 tiger-shaped dao force;
+        5 golden iron-body bell; 6 clenched strength fist; 7 mountain-splitting dao; 8 earth-cracking red blade;
+        9 thousand-mountain sword wave; 10 cloud-breaking blue sword; 11 single bright jian; 12 violet inner-aura spiral;
+        13 violet meridian glow; 14 fan of frost needles; 15 single crystal frost needle; 16 moonlit finger strike.
+
+  - id: ui_item_icons_missing_atlas_v1
+    template: ui_icon_atlas_4x4_v1
+    category: ui_icon/items/expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      icon_kind: "inventory item"
+      cell_manifest: |
+        1 broken black mask; 2 bronze faction token; 3 sealed handwritten letter; 4 tied medicinal herb bundle;
+        5 rough iron ore; 6 cracked pale jade fragment; 7 folded testimony document; 8 worn herbal ledger;
+        9 framed evidence statement; 10 planted false-note scrap; 11 cold-blue incense pouch; 12 white jade pendant;
+        13 coiled luminous silk thread; 14 blue spirit stone; 15 rolled village map; 16 dark confession scroll.
+
+  - id: vfx_toxic_needle_4frame_v1
+    template: vfx_4frame_family
+    category: battle_vfx/status_expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      family_name: "toxic needle"
+      frame_1: "one small jade-green poisoned needle enters with a thin trail"
+      frame_2: "a compact green-violet toxic bloom opens at the contact point"
+      frame_3: "the bloom peaks with three sharp poisonous wisps"
+      frame_4: "the poison contracts into a few fading motes"
+      negative: "large smoke cloud, skull symbol, gore"
+
+  - id: vfx_stun_shock_4frame_v1
+    template: vfx_4frame_family
+    category: battle_vfx/status_expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      family_name: "stun shock"
+      frame_1: "a small golden impact spark appears"
+      frame_2: "three angular golden shock lines expand"
+      frame_3: "a bright compact ring and starburst mark the stun"
+      frame_4: "the ring breaks into dim amber fragments"
+      negative: "modern electricity cable, cartoon stars, text"
+
+  - id: vfx_frost_needlestorm_4frame_v1
+    template: vfx_4frame_family
+    category: battle_vfx/status_expansion_20260809
+    priority: 1
+    model: gpt-image-2
+    vars:
+      family_name: "frost needle storm"
+      frame_1: "a fan of tiny ice-blue needles gathers in a crescent"
+      frame_2: "a wide shower of crystal needles launches forward"
+      frame_3: "multiple compact pale-blue ice bursts peak across the target area"
+      frame_4: "the needle storm dissolves into sparse crystalline flakes"
+      negative: "single needle, snow landscape, large opaque fog"

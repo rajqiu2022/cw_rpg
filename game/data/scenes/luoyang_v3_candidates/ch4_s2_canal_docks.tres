@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+
+[ext_resource type="Resource" path="res://data/maps/ch4_s2_canal_docks_layout_v3.tres" id="1_7cfry"]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="2_uwr8c"]
+
+[resource]
+script = ExtResource("2_uwr8c")
+scene_id = &"ch4_s2_canal_docks"
+display_name = "洛阳 · 漕渠码头"
+background_path = "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s2_canal_docks/floor.png"
+bgm_path = "res://art/audio/bgm/bgm_jianghu_journey_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("1_7cfry")
+player_spawn = Vector2(0.110677086, 0.8984375)
+player_visual_scale = 0.91
+camera_zoom = 1.05
+npcs = Array[Dictionary]([{
+"dialog_id": "ch4_canal_battle",
+"hide_flag": "defeated_luoyang_thug",
+"npc_id": "canal_endangered_porter",
+"npc_name": "失踪脚夫",
+"pos": Vector2(0.5957031, 0.5810547),
+"require_flag": "luoyang_case_found_clue",
+"scale": 0.82,
+"sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png"
+}, {
+"dialog_id": "ch4_canal_result",
+"hide_flag": "ch4_canal_witness_saved",
+"npc_id": "canal_saved_porter",
+"npc_name": "获救脚夫",
+"pos": Vector2(0.5957031, 0.5810547),
+"require_flag": "defeated_luoyang_thug",
+"scale": 0.82,
+"sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png"
+}, {
+"dialog_id": "ch4_hanjia_blade_offer",
+"hide_flag": "hanjia_blade_search_started",
+"npc_id": "canal_old_soldier",
+"npc_name": "老漕卒",
+"pos": Vector2(0.6282552, 0.4736328),
+"scale": 0.94,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"
+}])
+metadata/luoyang_layered_revision = 3
+metadata/city_manifest_sha = "5ac079c73a9ab7716c62d7ba540d39a513be93ed17f5feef0effbd2e1ac26cdb"

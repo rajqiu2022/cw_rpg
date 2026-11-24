@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/ch2_s1_market_inn_layout_v2.tres" id="2_map"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1920, 1280)
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch2_s1_market_inn"
+display_name = "竹尾河滩 · 客栈大堂"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+is_settlement = true
+map_layout = ExtResource("2_map")
+player_spawn = Vector2(0.50,0.72)
+npcs = [
+	{"npc_id":"zhuwei_innkeeper_ch2","npc_name":"客栈老板","pos":Vector2(0.25,0.48),"portrait_path":"res://art/characters/portraits/generic/portrait_generic_young_man_v1.png","sprite_path":"res://art/characters/npc_inn_waiter_idle_down_25d_1f.png","dialog_id":"ch2_missing_disciple_offer","scale":0.92},
+	{"npc_id":"zhuwei_chess_elder_ch2","npc_name":"棋叟","pos":Vector2(0.72,0.64),"portrait_path":"res://art/characters/portraits/generic/portrait_generic_older_man_v1.png","sprite_path":"res://art/characters/candidates/npc_inn_guest_seated_1f.png","dialog_id":"ch2_go_puzzle","movement_mode":"seated","scale":0.90},
+	{"npc_id":"zhuwei_guqin_musician_ch2","npc_name":"楚泠","pos":Vector2(0.50,0.55),"portrait_path":"res://art/characters/portraits/generic/portrait_generic_young_woman_v1.png","sprite_path":"res://art/characters/npc_zhuwei_crying_woman_idle_down_25d_4f_v2_runtime.png","dialog_id":"ch2_moon_guqin_offer","dialog_variants":[{"dialog_id":"ch2_moon_guqin_turnin","require_flags":["guqin_investigation_started"]}],"scale":0.92}
+]

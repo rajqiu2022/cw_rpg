@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "冷孤云"
+text = "西栈南沿的桩脚卡着半截旧索。顺索提起沉箱，箱扣从外头劈断，里面一柄刀锈死在横档上。"
+on_end = "next:name"
+
+[sub_resource type="Resource" id="name"]
+script = ExtResource("node")
+node_id = &"name"
+speaker = "冷孤云"
+text = "刀茎有镖局的修刀戳，护手下压着一片铜签：「缆断，货先起，人后渡。」记事手里的底簿上该有同一枚戳。"
+set_flags = Array[Dictionary]([{"key": "tide_blade_found", "value": true}])
+add_evidence = Array[StringName]([&"ev_tide_blade"])
+
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_tide_chest"
+
+nodes = Array[ExtResource("node")]([SubResource("start"), SubResource("name")])

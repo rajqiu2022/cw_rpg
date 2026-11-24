@@ -1,0 +1,352 @@
+{
+  "change_id": "luoyang-city-full-rollout-20261022ap",
+  "status": "ART_SOURCE_READY_VISUAL_SUCCESSOR_REQUIRES_SYSTEM_GEOMETRY_AND_NATIVE_REVIEW",
+  "scope": "Replace the rejected Artisan-only visual arrangement. No canonical write, image processing, import, engine run, collision admission, Field credit or whole-city art claim.",
+  "rejected_probe": {
+    "image_path": "res://build/luoyang_city_full_rollout_20261022ap_qa01/artisan_art_probe/102308_2791/artisan_native_world1x_initial_idle.png",
+    "image_sha256": "4A53004812F693036063B8047694DFFC5C45FC887FCCF777D3EF1B704272FED6",
+    "author_path": "res://build/luoyang_city_full_rollout_20261022ap_system01/artisan_author.json",
+    "author_sha256": "3642C48A9055E7B131DD1645194099A5022EAB3740C66F63A266ECFD7082F0D8",
+    "art_rejection": [
+      "full-map dark tilled mud reads as farmland rather than a Luoyang craft ward",
+      "64x64 road sampling creates flat white tape-like strips",
+      "five buildings repeat one silhouette and leave large purposeless voids",
+      "native_notice is too small and cartoon-flat beside the buildings",
+      "the well is scaled from the complete halo and its strong body becomes unreadably small",
+      "trade props are isolated dots instead of two bounded working yards"
+    ]
+  },
+  "asset_catalog": {
+    "luoyang_courtyard_paving": {
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png",
+      "png_sha256": "39C898F7AC8C409B7B244077DD30016C398B21313156C8FC36911DDC859A5C0E",
+      "source_size_px": [1536, 1024],
+      "render_rule": "uniform_scale_0.25_only",
+      "native_tile_world_px": [384, 256],
+      "semantic": "clean ordered gray-green courtyard stone; never compress the whole source into a 64px tile"
+    },
+    "grass_base": {
+      "texture": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+      "png_or_jpg_sha256": "4272BDDC71A7FA659D1DEEB13A9DF8C42E68A5AC8CDE7523187E4A081E028258",
+      "source_size_px": [2048, 2048],
+      "render_rule": "repeat at 512x512 world tiles; do not stretch once across 3072x2048",
+      "semantic": "quiet inter-block ground under roads and yards"
+    },
+    "bounded_workyard_earth": {
+      "texture": "res://art/external/polyhaven/world_terrain_v14_sixth/brown_mud_03/brown_mud_03_diff_2k.jpg",
+      "source_size_px": [2048, 2048],
+      "render_rule": "repeat at 512x512 world tiles and clip only to the two workyard rectangles",
+      "semantic": "local compacted yard soil, never the full scene background"
+    },
+    "residential_row": {
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s0_luoyang_gate/entities/east_street_front.png",
+      "png_sha256": "B78008DA974BA92C3E66EFC2D5B272BC6249583CBD0A1CB3C3BC7FC61EE12D3B",
+      "source_size_px": [1109, 560],
+      "complete_A1_xywh_px": [12, 4, 1085, 542],
+      "left_door_ground_anchor_px": [439, 444],
+      "right_door_ground_anchor_px": [702.5, 444],
+      "door_clear_height_px": 182,
+      "source_ground_solid_rects_px": [[72, 404, 247, 40], [559, 385, 31, 59], [815, 404, 221, 40]]
+    },
+    "closed_smithy": {
+      "texture": "res://art/modules/building/build_linxi_smithy_front.png",
+      "png_sha256": "18B4E66483CF7E7064AAF327622DABEDFE8E3FC7AD7843CEEDEC4CBE893246AD",
+      "source_size_px": [709, 368],
+      "complete_A1_xywh_px": [8, 11, 701, 326],
+      "source_ground_anchor_px": [358.5, 337],
+      "source_ground_solid_rects_px_candidate": [[34, 309, 646, 28]],
+      "semantic": "closed forge shell; no room portal or fake open door"
+    },
+    "cloth_dye_front": {
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southeast_market_front.png",
+      "png_sha256": "6119E1A2587B6A0B0A7F6547090F6DE0641A644C311758D7B3D608B5C5475A5B",
+      "source_size_px": [870, 583],
+      "complete_A1_xywh_px": [4, 4, 851, 538],
+      "principal_ground_anchor_px": [580.5, 537],
+      "door_clear_height_px": 235,
+      "source_ground_solid_rects_px": [[60, 486, 390, 51], [450, 458, 37, 79], [674, 458, 42, 79], [716, 486, 93, 51]],
+      "semantic": "single visible workshop counter plus one doorway; visually distinct from both residences and smithy"
+    },
+    "carpentry_general_front": {
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southwest_market_front.png",
+      "png_sha256": "D2D082C4E50B82B060AE1E10AEC95201C70D80EEE8C877232BA4AD88FBFA614A",
+      "source_size_px": [897, 453],
+      "complete_A1_xywh_px": [11, 4, 875, 389],
+      "left_door_ground_anchor_px": [343, 359],
+      "door_clear_height_px": 144,
+      "source_ground_solid_rects_px": [[61, 323, 190, 36], [435, 309, 43, 50], [650, 323, 186, 36]],
+      "semantic": "southern focal shop for the retained general-stall/carpentry room, not a pottery claim"
+    },
+    "guild_notice_pavilion": {
+      "texture": "res://art/maps/luoyang_modular_v2/source/notice_pavilion_v2.png",
+      "png_sha256": "523CA1084365D836AB6B687804B6A25020B464F897A764D7C7D9C6632A883CCB",
+      "source_size_px": [1536, 1024],
+      "complete_A1_xywh_px": [39, 13, 1483, 985],
+      "diagnostic_A16_xywh_px_not_for_crop": [103, 16, 1331, 953],
+      "source_ground_anchor_px_candidate": [768, 969],
+      "source_ground_solid_rects_px_candidate": [[280, 890, 170, 79], [1085, 890, 175, 79]],
+      "semantic": "real tiled timber three-sheet guild notice pavilion; open gap between feet remains passable",
+      "native_limit": "complete A1 includes weak dark surround; require actual sprite preview and reject if it reads as a rectangular card"
+    },
+    "shared_well": {
+      "texture": "res://art/modules/linxi_center_well_depth_prop_v1.png",
+      "png_sha256": "86DE8D2E7F439A8B9FAD05B769D32238B441923D3D32BA33BA0406F897F29A8F",
+      "source_size_px": [1536, 1024],
+      "complete_A1_xywh_px": [635, 38, 745, 722],
+      "diagnostic_A16_xywh_px_not_for_crop": [638, 345, 325, 322],
+      "source_ground_anchor_px": [768, 665.6],
+      "source_ground_solid_rects_px": [[673.75, 514.56, 244.36, 133.12]],
+      "semantic": "shared court landmark; render complete A1 at 340 world width so the strong well body is about 148 world px rather than the rejected 70px"
+    },
+    "smith_brazier": {
+      "texture": "res://art/modules/prop/linxi_brazier_forge_v1.png",
+      "png_sha256": "FAC4EDC3FAC2BDC9EE137C659BEA18DD47A0818FD796133A2EEB926C1A5599D8",
+      "source_size_px": [375, 306],
+      "complete_A1_xywh_px": [14, 14, 347, 278],
+      "source_ground_anchor_px_candidate": [187.5, 292],
+      "source_ground_solid_rects_px_candidate": [[38, 258, 300, 34]],
+      "semantic": "compact forge/fire identity inside the west workyard"
+    },
+    "ordered_tree": {
+      "texture": "res://art/modules/luoyang_district_life_20261016f/stock_tree.png",
+      "png_sha256": "E7CDDEEE8D3D9F71A0BF8CC61A0949F328591F2E38AACEF12853AB650F9DF430",
+      "source_size_px": [178, 250],
+      "complete_A1_xywh_px": [4, 4, 170, 242],
+      "source_ground_anchor_px_candidate": [89, 244],
+      "semantic": "four ordered shade trees, not random filler"
+    },
+    "low_wall_atlas": {
+      "texture": "res://art/maps/luoyang_enclosure_v11/source/courtyard_wall_gate_v3.png",
+      "png_sha256": "DBE22E8E6072CBFEE28FD5FB01CBC393F532DE12ED9F356E7EC269FFF5248221",
+      "atlas_region_xywh_px": [220, 300, 480, 430],
+      "source_ground_anchor_px": [240, 398],
+      "uniform_scale": 0.3333333333333333,
+      "render_size_world_px": [160, 143.3333333333333],
+      "source_ground_solid_rect_px": [16, 374, 448, 24],
+      "semantic": "already-proven gray-tile/white-wall low enclosure segment; use only as separated workyard frontage"
+    }
+  },
+  "ground_layers_back_to_front": [
+    {
+      "id": "ap_artisan_grass_base_v2",
+      "asset": "grass_base",
+      "rect_world_xywh": [0, 0, 3072, 2048],
+      "tile_world_size": [512, 512],
+      "z": -30
+    },
+    {
+      "id": "ap_smith_workyard_earth_v2",
+      "asset": "bounded_workyard_earth",
+      "rect_world_xywh": [256, 800, 768, 640],
+      "tile_world_size": [512, 512],
+      "z": -29
+    },
+    {
+      "id": "ap_cloth_workyard_earth_v2",
+      "asset": "bounded_workyard_earth",
+      "rect_world_xywh": [1888, 800, 768, 640],
+      "tile_world_size": [512, 512],
+      "z": -29
+    },
+    {
+      "id": "ap_main_street_paving_v2",
+      "asset": "luoyang_courtyard_paving",
+      "rect_world_xywh": [96, 1568, 2880, 192],
+      "tile_world_size": [384, 256],
+      "clip_last_tile": true,
+      "z": -28
+    },
+    {
+      "id": "ap_cross_street_paving_v2",
+      "asset": "luoyang_courtyard_paving",
+      "rect_world_xywh": [1424, 160, 192, 1408],
+      "tile_world_size": [384, 256],
+      "clip_last_tile": true,
+      "z": -28
+    },
+    {
+      "id": "ap_residential_lane_paving_v2",
+      "asset": "luoyang_courtyard_paving",
+      "rect_world_xywh": [192, 800, 2688, 128],
+      "tile_world_size": [384, 256],
+      "clip_last_tile": true,
+      "z": -28
+    },
+    {
+      "id": "ap_craft_lane_paving_v2",
+      "asset": "luoyang_courtyard_paving",
+      "rect_world_xywh": [192, 1272, 2688, 128],
+      "tile_world_size": [384, 256],
+      "clip_last_tile": true,
+      "z": -28
+    }
+  ],
+  "building_placements": [
+    {
+      "id": "ap_courtyard_home_west",
+      "asset": "residential_row",
+      "source_anchor": "left_door_ground_anchor_px",
+      "foot_world": [650, 650],
+      "complete_A1_world_width": 740,
+      "expected_complete_A1_world_xywh": [358.774, 349.908, 740, 369.659],
+      "purpose": "west residence and kitchen court; retained room identity"
+    },
+    {
+      "id": "ap_courtyard_home_east",
+      "asset": "residential_row",
+      "source_anchor": "right_door_ground_anchor_px",
+      "foot_world": [2290, 650],
+      "complete_A1_world_width": 740,
+      "expected_complete_A1_world_xywh": [1819.06, 349.908, 740, 369.659],
+      "purpose": "east guest residence; only deliberate repeated residence silhouette"
+    },
+    {
+      "id": "ap_closed_smithy_west",
+      "asset": "closed_smithy",
+      "foot_world": [620, 1210],
+      "complete_A1_world_width": 610,
+      "expected_complete_A1_world_xywh": [315.0, 926.32, 610, 283.68],
+      "purpose": "recognizable ironworking shell with no fake room portal"
+    },
+    {
+      "id": "ap_cloth_dye_workshop_east",
+      "asset": "cloth_dye_front",
+      "foot_world": [2350, 1210],
+      "complete_A1_world_width": 620,
+      "expected_complete_A1_world_xywh": [1929.988, 821.68, 620, 391.962],
+      "purpose": "cloth/dye frontage, visibly distinct roof and counter silhouette"
+    },
+    {
+      "id": "ap_carpentry_general_shop_south",
+      "asset": "carpentry_general_front",
+      "source_anchor": "left_door_ground_anchor_px",
+      "foot_world": [1536, 1900],
+      "complete_A1_world_width": 760,
+      "expected_complete_A1_world_xywh": [1247.634, 1591.657, 760, 337.874],
+      "purpose": "south street-end focal general/carpentry shop; retained third room, explicitly not pottery"
+    }
+  ],
+  "prop_and_landmark_placements": [
+    {
+      "id": "ap_shared_well_v2",
+      "asset": "shared_well",
+      "foot_world": [1536, 1100],
+      "complete_A1_world_width": 340,
+      "expected_complete_A1_world_xywh": [1475.302, 813.579, 340, 329.503],
+      "purpose": "central shared well; routes must split around the actual solid"
+    },
+    {
+      "id": "ap_guild_notice_pavilion_v2",
+      "asset": "guild_notice_pavilion",
+      "foot_world": [1140, 1490],
+      "complete_A1_world_width": 360,
+      "expected_complete_A1_world_xywh": [963.034, 1257.93, 360, 239.11],
+      "purpose": "guild notice facing the main street; replaces cartoon native_notice"
+    },
+    {
+      "id": "ap_smith_brazier_v2",
+      "asset": "smith_brazier",
+      "foot_world": [520, 1330],
+      "complete_A1_world_width": 150,
+      "purpose": "forge heat point inside the west workyard"
+    },
+    {
+      "id": "ap_smith_anvil_v2",
+      "asset_ref_contract": "res://build/luoyang_city_full_rollout_20261022ap_art01/artisans_minimal_prop_source_ground_v1.json#artisans_anvil_stump",
+      "foot_world": [800, 1325],
+      "complete_canvas_world_width": 145.92,
+      "purpose": "paired with brazier, not isolated in the public square"
+    },
+    {
+      "id": "ap_carpentry_cart_v2",
+      "asset_ref_contract": "res://build/luoyang_city_full_rollout_20261022ap_art01/artisans_minimal_prop_source_ground_v1.json#artisans_wood_handcart",
+      "foot_world": [430, 1515],
+      "complete_canvas_world_width": 276.48,
+      "purpose": "parked along west service edge, parallel to the lane"
+    },
+    {
+      "id": "ap_cloth_rack_v2",
+      "asset_ref_contract": "res://build/luoyang_city_full_rollout_20261022ap_art01/artisans_minimal_prop_source_ground_v1.json#artisans_cloth_roll_rack",
+      "foot_world": [2200, 1335],
+      "complete_canvas_world_width": 276.48,
+      "purpose": "inside the east cloth yard, not blocking its 160px opening"
+    },
+    {
+      "id": "ap_material_sacks_v2",
+      "asset_ref_contract": "res://build/luoyang_city_full_rollout_20261022ap_art01/artisans_minimal_prop_source_ground_v1.json#artisans_grain_sack_stack",
+      "foot_world": [1120, 1890],
+      "complete_canvas_world_width": 215.04,
+      "purpose": "stock beside the south general shop, outside the portal threshold"
+    },
+    {
+      "id": "ap_tree_nw_v2",
+      "asset": "ordered_tree",
+      "foot_world": [300, 740],
+      "complete_A1_world_width": 150,
+      "purpose": "west residential corner shade"
+    },
+    {
+      "id": "ap_tree_ne_v2",
+      "asset": "ordered_tree",
+      "foot_world": [2772, 740],
+      "complete_A1_world_width": 150,
+      "purpose": "east residential corner shade"
+    },
+    {
+      "id": "ap_tree_well_w_v2",
+      "asset": "ordered_tree",
+      "foot_world": [1190, 1110],
+      "complete_A1_world_width": 150,
+      "purpose": "west edge of the shared-well court"
+    },
+    {
+      "id": "ap_tree_well_e_v2",
+      "asset": "ordered_tree",
+      "foot_world": [1882, 1110],
+      "complete_A1_world_width": 150,
+      "purpose": "east edge of the shared-well court"
+    }
+  ],
+  "workyard_front_wall_segments": [
+    {"id": "ap_smith_wall_w1", "asset": "low_wall_atlas", "foot_world": [400, 1430]},
+    {"id": "ap_smith_wall_w2", "asset": "low_wall_atlas", "foot_world": [560, 1430]},
+    {"id": "ap_smith_wall_e1", "asset": "low_wall_atlas", "foot_world": [880, 1430]},
+    {"id": "ap_cloth_wall_w1", "asset": "low_wall_atlas", "foot_world": [2000, 1430]},
+    {"id": "ap_cloth_wall_e1", "asset": "low_wall_atlas", "foot_world": [2320, 1430]},
+    {"id": "ap_cloth_wall_e2", "asset": "low_wall_atlas", "foot_world": [2480, 1430]}
+  ],
+  "workyard_openings_world": [
+    {"id": "ap_smith_yard_opening", "x_interval": [640, 800], "ground_y": 1430, "minimum_clear_width": 160},
+    {"id": "ap_cloth_yard_opening", "x_interval": [2080, 2240], "ground_y": 1430, "minimum_clear_width": 160}
+  ],
+  "route_successor_requirements": [
+    "Keep the existing outer portal at [2816,1740] and all room target identities.",
+    "Replace the straight central crossing through the enlarged well with two real walk branches around its projected solid; do not make the well non-solid for convenience.",
+    "Retain a continuous 192px main east-west route centered at y=1664.",
+    "Provide one verified branch through each 160px workyard opening and keep every room threshold plus 24px return clear.",
+    "All six low-wall source solids, building bases, well solid and trade-prop hulls require a new geometry/NAV/875+17 check; this ART file grants no collision credit."
+  ],
+  "native_visual_acceptance_for_next_single_probe": [
+    "At least four clearly different building silhouettes are visible among the five buildings; only the two residences may intentionally repeat.",
+    "Dark mud occupies only the two bounded workyards, not the whole frame.",
+    "Roads show readable stone scale from 384x256 source tiles and no flat 64px white tape bands.",
+    "The notice reads as a tiled timber pavilion without a visible rectangular halo card.",
+    "The well strong body is adult-readable and does not become a tiny icon.",
+    "Smith brazier plus anvil and cloth rack plus bounded yard walls form two purposeful work clusters.",
+    "No tree, wall, prop or visual weak-alpha envelope covers a room door, return point, main route or the east exit."
+  ],
+  "adjacent_garden_water_readonly_rejection": {
+    "texture": "res://art/modules/world_map_v13/terrain_mat_coastal_water_v1_candidate.png",
+    "png_sha256": "CFA6C30FCECC075940E6EF6980E455D8E910E51F8B9C467AA0CFD0A4497780B5",
+    "decision": "REJECT_FOR_LUOYANG_GARDEN",
+    "reason": "bright tropical turquoise ocean sparkle conflicts with the subdued gray-green Luoyang river/garden palette; use an already-proven Docks water material only after its exact clean source crop is pinned, never this image"
+  },
+  "not_claimed": [
+    "runtime author implemented",
+    "geometry, NAV, portals or routes pass",
+    "notice weak surround is visually acceptable before native preview",
+    "new pottery asset exists",
+    "Garden water source selected",
+    "Artisan district or whole Luoyang art complete"
+  ]
+}

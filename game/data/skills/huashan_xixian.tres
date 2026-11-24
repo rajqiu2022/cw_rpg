@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"huashan_xixian"
+display_name = "一线穿云"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_sword_slash_v1.png"
+description = "顺着对手收剑的缝隙进锋。单体剑招，穿透 22% 防御。"
+kind = 0
+target = 0
+mp_cost = 9
+quality = 2
+fixed_damage = 12
+attack_scaling = 123
+effect_value = 0
+hit_count = 1
+animation_id = &"huashan_yijian"
+required_weapon_type = &"sword"
+martial_category = &"sword"
+school = "huashan"
+is_passive = false
+complemented_by = "huashan_zixia_shengong"
+complement_bonus_scaling = 10
+complement_bonus_desc = "配合本门心法，出招更具威力。"
+origin = "从华山一剑的收势中悟出。将华山一剑练至十重后自行领悟。"
+required_insight = 4
+practice_base_cost = 18
+defense_pierce_percent = 22

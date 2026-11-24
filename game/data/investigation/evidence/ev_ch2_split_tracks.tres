@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch2_split_tracks"
+display_name = "被扫乱的两路足迹"
+description = "旧猎道上的足迹被树枝扫过，但血点向北，窄车辙却折向河滩。失踪弟子、被掳村民和运送消息的人并不在同一路。"
+chapter = 2
+category = &"trace"
+source_hint = "北林旧猎道断碑后"
+related_testimony_ids = Array[StringName]([&"ts_ch2_apothecary_bound_buyer", &"ts_ch2_gatekeeper_charcoal_cart"])
+tags = Array[StringName]([&"tracks", &"blood", &"cart"])

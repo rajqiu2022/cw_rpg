@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_C_CURRENT_TO_FIXED_B9B_SOURCE_LAYER",
+  "path": "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd",
+  "old_sha256": "b9b68f2e1daddc7dd8f19c683bd932048fda3b547e475001c854d23bfd7965b5",
+  "new_sha256": "f389b2e12e839d9005c3ac7643b69921ea31d9b7cc66d9194be0ab18c0d8b5d1",
+  "whole_inverse_exact": true,
+  "replacements": [
+    {
+      "old": "extends RefCounted\n",
+      "new": "extends RefCounted\nconst YAMEN_COURTS_PATH=\"res://build/luoyang_yamen_courts_20261024c_system01/runtime04_READY/courts_session_READY.gd\"\nconst YAMEN_COURTS_SHA=\"791ae73e97623e71c0a0445f7a60cd14b6bf8f17453e7fa77dd9d0a89a873c4a\"\nstatic var _yamen_courts_handle: Variant=null\nstatic func _yamen_courts_runtime() -> Variant:\n\tif _yamen_courts_handle!=null: return _yamen_courts_handle\n\tif FileAccess.get_sha256(YAMEN_COURTS_PATH)!=YAMEN_COURTS_SHA: return null\n\tvar value: Variant=load(YAMEN_COURTS_PATH)\n\tif not value is GDScript or value.resource_path!=YAMEN_COURTS_PATH: return null\n\t_yamen_courts_handle=value;return value\n"
+    },
+    {
+      "old": "\t\tpaths.merge(district_paths)\n\tif annex_requested(id):",
+      "new": "\t\tpaths.merge(district_paths)\n\tif id==&\"ch4_s1_luoyang_yamen\":\n\t\tvar courts: Variant=_yamen_courts_runtime()\n\t\tif courts==null: return {}\n\t\tvar court_paths: Dictionary=courts.source_paths_for(id)\n\t\tif court_paths.is_empty(): return {}\n\t\tpaths.merge(court_paths)\n\tif annex_requested(id):"
+    },
+    {
+      "old": "static func safe_body(id: StringName, point_px: Vector2) -> bool:\n",
+      "new": "static func safe_body(id: StringName, point_px: Vector2) -> bool:\n\tif id==&\"ch4_s1_luoyang_yamen\":\n\t\tvar courts: Variant=_yamen_courts_runtime()\n\t\tif courts==null: return false\n\t\tvar proof: Dictionary=_transition_validation if _transition_validation.get(\"id\")==id else (_resident_ready if _resident_ready.get(\"id\")==id else {})\n\t\tvar query: Dictionary=courts.safe_body_for_receipt(id,point_px,proof)\n\t\tif query.get(\"matched\",false): return query.get(\"safe\",false)==true\n"
+    }
+  ]
+}

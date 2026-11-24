@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_west_ruin_trace"
+title = "潜入废宅"
+kind = 0
+desc_not_started = "后山洞窟的车辙与货箱暗记都指向城西废宅。"
+desc_in_progress = "进入城西废宅，击败外围守卫，查清这里由谁控制、货物被运往何处。"
+desc_completed = "值守名册确认，赵无忌负责看守废宅并经手转运，但他并非发号施令的人。"
+tracker_hint = "竹尾村 · 城西废宅外院"
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ruin_shipping_marks_found", "text":"破损货箱上的转运暗记与洞窟物资相同。"}, {"trigger":"evidence_acquired:ev_ch1_erased_sixth_companion", "text":"值守册夹层记录过第六名同行者，但姓名与门派被刻意刮去。"}])
+completion_triggers = Array[String](["flag_set:zhao_wuji_identified"])
+reward_gold = 25
+reward_exp = 35
+reward_items = Array[Dictionary]([])

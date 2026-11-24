@@ -13,6 +13,7 @@ signal dialog_ended(dialog_id: StringName)
 const DIALOG_BOX_SCENE_PATH := "res://scenes/ui/dialog_box.tscn"
 const SPEAKER_PORTRAITS := {
 	"悦无姮": "res://art/characters/portrait_yuewuheng_rescue.png",
+	"冷孤云": "res://art/characters/protagonist_portrait.png",
 }
 
 var _current_script: DialogScript = null
@@ -20,6 +21,11 @@ var _current_node: DialogNode = null
 var _is_playing: bool = false
 var _default_portrait: String = ""
 var _default_speaker: String = ""
+var _voice_sequence_id: int = 0
+var _applied_node_effects: Dictionary = {}
+var _pending_side_offer_id: StringName = &""
+var _pending_side_offer_node: DialogNode = null
+var _confirmed_choice_quest: StringName = &""
 
 var _box: Node = null
 
@@ -49,43 +55,125 @@ func play(script: DialogScript) -> void:
 	if script == null:
 		push_warning("[DialogPlayer] null script")
 		return
+	if not can_play_script(script):
+		play(_early_visit_dialog(script))
+		return
 	_current_script = script
 	_is_playing = true
+	_applied_node_effects.clear()
+	_pending_side_offer_id = &""
+	_pending_side_offer_node = null
+	_confirmed_choice_quest = &""
 	EventBus.dialog_started.emit(script.dialog_id)
-	_show_node(script.get_entry_node())
+	_show_node(_conversation_entry(script))
 	_prewarm_voices.call_deferred()
+
+
+func _conversation_entry(script: DialogScript) -> DialogNode:
+	var entry := script.get_entry_node()
+	# Older field and region builders prepend this presentation-only node.
+	# Follow its link so the real opening (including a selected rumor) plays
+	# with the original script identity, choices, and node IDs for voice lookup.
+	if entry == null or entry.node_id != &"npc_opening_20261024b_hero":
+		return entry
+	if entry.text not in ["打扰了，想向你请教几句。", "劳驾，近来街坊有什么新鲜事？"] or not entry.on_end.begins_with("next:"):
+		return entry
+	var next := script.find_node_by_id(StringName(entry.on_end.trim_prefix("next:")))
+	return next if next != null else entry
 
 
 func play_at(script: DialogScript, node_id: StringName) -> void:
 	if script == null: return
+	if not can_play_script(script):
+		play(_early_visit_dialog(script))
+		return
 	_current_script = script
 	_is_playing = true
+	_applied_node_effects.clear()
+	_pending_side_offer_id = &""
+	_pending_side_offer_node = null
+	_confirmed_choice_quest = &""
 	EventBus.dialog_started.emit(script.dialog_id)
 	_show_node(script.find_node_by_id(node_id))
 	_prewarm_voices.call_deferred()
 
 
+func can_play_script(script: DialogScript) -> bool:
+	if script == null:
+		return false
+	if script.required_free_inventory_slots > 0 and Inventory.slots.size() + script.required_free_inventory_slots > Inventory.MAX_SLOTS:
+		return false
+	if script.blocked_story_flag != &"" and bool(GameState.flags.get(String(script.blocked_story_flag), false)):
+		return false
+	if script.required_story_flag != &"" and not bool(GameState.flags.get(String(script.required_story_flag), false)):
+		return false
+	if script.required_completed_quest != &"" and not QuestManager.is_completed(script.required_completed_quest):
+		return false
+	return true
+
+
+func _early_visit_dialog(blocked_script: DialogScript) -> DialogScript:
+	if blocked_script.fallback_dialog_id != &"":
+		var path := "res://data/dialogs/%s.tres" % String(blocked_script.fallback_dialog_id)
+		if ResourceLoader.exists(path):
+			var fallback := load(path) as DialogScript
+			if fallback != blocked_script and can_play_script(fallback):
+				return fallback
+	# Always finish a real dialogue so NPC/field input is released normally.
+	var fallback := DialogScript.new()
+	fallback.dialog_id = &"openworld_early_visit"
+	var line := DialogNode.new()
+	line.node_id = &"start"
+	line.text = "眼下这里并无与你有关的新消息。可以先在附近游历、拜访江湖同道，待有确切线索再来。"
+	if blocked_script.required_free_inventory_slots > 0 and Inventory.slots.size() + blocked_script.required_free_inventory_slots > Inventory.MAX_SLOTS:
+		line.text = "行囊已经放不下了。先腾出一个空位，再来取走箱中物品；东西会留在原处。"
+	if blocked_script.blocked_story_flag != &"" and bool(GameState.flags.get(String(blocked_script.blocked_story_flag), false)):
+		line.text = "这里的事情已经办妥，所得也已收好。不妨继续到别处游历。"
+	fallback.nodes.assign([line])
+	return fallback
+
+
 func advance() -> void:
 	if _current_node == null: return
-	if _current_node.has_choices():
+	if _current_node.has_choices() or _pending_side_offer_id != &"":
 		return
-	AudioManager.stop_all_sfx()
-	_apply_node_side_effects(_current_node)
+	_cancel_node_audio()
 	_resolve_action(_current_node.on_end)
 
 
 func choose(idx: int) -> void:
 	if _current_node == null: return
+	if _pending_side_offer_id != &"":
+		if idx < 0 or idx > 1: return
+		_cancel_node_audio()
+		var offer_id := _pending_side_offer_id
+		var offer_node := _pending_side_offer_node
+		_pending_side_offer_id = &""
+		_pending_side_offer_node = null
+		if idx == 0:
+			QuestManager.accept(offer_id)
+			_resolve_action(offer_node.on_end if offer_node != null else "end")
+		else:
+			_end_dialog()
+		return
 	if not _current_node.has_choices(): return
 	if idx < 0 or idx >= _current_node.choices.size(): return
+	_cancel_node_audio()
 
 	var c: Dictionary = _current_node.choices[idx]
 	if c.has("set_flag"):
 		var flag_dict: Dictionary = c.get("set_flag", {})
 		@warning_ignore("untyped_declaration")
 		for key in flag_dict:
-			GameState.flags[key] = flag_dict[key]
-			EventBus.flag_set.emit(StringName(key), flag_dict[key])
+			_set_dialog_flag(StringName(key), flag_dict[key])
+	if c.has("weather"):
+		WeatherManager.set_weather(StringName(c.get("weather", "clear")), float(c.get("weather_strength", 1.0)))
+	_apply_choice_investigation_effects(c)
+	_confirmed_choice_quest = StringName(c.get("accept_quest", ""))
+	var direct_action: String = String(c.get("action", ""))
+	if not direct_action.is_empty():
+		_resolve_action(direct_action)
+		return
 
 	var next_id: String = String(c.get("next", ""))
 	if next_id == "" or next_id == "end":
@@ -101,29 +189,68 @@ func _show_node(node: DialogNode) -> void:
 		_end_dialog()
 		return
 	_current_node = node
+	AudioManager.play_dialog_node_music(_current_script.dialog_id, node.node_id)
+	var side_offer := _side_offer_for(node)
+	_apply_node_side_effects_once(node, side_offer != null)
+	if node.accept_quest != &"" and node.accept_quest == _confirmed_choice_quest:
+		_confirmed_choice_quest = &""
 	var spk: String = node.speaker
 	if spk == "" and _default_speaker != "":
 		spk = _default_speaker
 	var pp: String = node.portrait_path
-	if pp == "" and _default_portrait != "":
+	# The clicked NPC portrait is only a fallback for that NPC's own lines.
+	# Reusing it after the speaker switches to the protagonist caused NPC faces
+	# to remain visible under protagonist dialogue throughout multi-speaker scripts.
+	if pp == "" and _default_portrait != "" and (node.speaker == "" or spk == _default_speaker):
 		pp = _default_portrait
 	if pp == "" and SPEAKER_PORTRAITS.has(spk):
 		pp = String(SPEAKER_PORTRAITS[spk])
 
 	# 播放对话语音 (如果有)
-	_play_node_voice(spk, String(node.node_id))
+	_voice_sequence_id += 1
+	_play_node_voice(spk, String(node.node_id), _voice_sequence_id)
 
+	var offer_choices: Array[Dictionary] = []
+	var displayed_text := node.text
+	if side_offer != null:
+		_pending_side_offer_id = side_offer.quest_id
+		_pending_side_offer_node = node
+		displayed_text = _build_side_offer_brief(node.text, side_offer)
+		offer_choices = [
+			{"text": "接受委托", "next": "", "accept_quest": side_offer.quest_id},
+			{"text": "暂且不接", "next": "end", "decline_quest": side_offer.quest_id},
+		]
 	text_displayed.emit(
 		spk,
-		node.text,
-		node.has_choices(),
+		displayed_text,
+		node.has_choices() or not offer_choices.is_empty(),
 		pp
 	)
-	if node.has_choices():
+	if not offer_choices.is_empty():
+		choices_displayed.emit(offer_choices)
+	elif node.has_choices():
 		choices_displayed.emit(node.choices)
 
 
-func _apply_node_side_effects(node: DialogNode) -> void:
+func _apply_node_side_effects_once(node: DialogNode, skip_side_offer: bool = false) -> void:
+	if node == null:
+		return
+	var script_id: String = String(_current_script.dialog_id) if _current_script != null else ""
+	var effect_key: String = "%s:%s" % [script_id, String(node.node_id)]
+	if _applied_node_effects.has(effect_key):
+		return
+	_applied_node_effects[effect_key] = true
+	_apply_node_side_effects(node, skip_side_offer)
+
+
+func _set_dialog_flag(key: StringName, value: Variant) -> void:
+	# Conversations are replayable; setting the same flag again is not a new discovery.
+	var previous: Variant = GameState.get_flag(key, null)
+	if typeof(previous) != typeof(value) or previous != value:
+		GameState.set_flag(key, value)
+
+
+func _apply_node_side_effects(node: DialogNode, skip_side_offer: bool = false) -> void:
 	for entry in node.give_items:
 		var iid: StringName = StringName(entry.get("id", ""))
 		var cnt: int = int(entry.get("count", 1))
@@ -137,14 +264,130 @@ func _apply_node_side_effects(node: DialogNode) -> void:
 		var key: String = String(flag_entry.get("key", ""))
 		var value: Variant = flag_entry.get("value", true)
 		if key != "":
-			GameState.flags[key] = value
-			EventBus.flag_set.emit(StringName(key), value)
+			_set_dialog_flag(StringName(key), value)
 
-	if String(node.accept_quest) != "":
+	for skill_id: StringName in node.learn_skills:
+		GameState.learn_skill(skill_id)
+
+	for evidence_id: StringName in node.add_evidence:
+		InvestigationState.acquire_evidence(evidence_id, node.node_id)
+	for evidence_id: StringName in node.verify_evidence:
+		InvestigationState.verify_evidence(evidence_id, StringName(node.speaker))
+	for testimony_id: StringName in node.add_testimonies:
+		InvestigationState.hear_testimony(testimony_id)
+	for testimony_id: StringName in node.verify_testimonies:
+		InvestigationState.verify_testimony(testimony_id, StringName(node.speaker))
+	_apply_trust_changes(node.faction_trust_changes, true)
+	_apply_trust_changes(node.companion_trust_changes, false)
+	_apply_bond_events(node.bond_events)
+	_apply_city_outcomes(node.city_outcomes)
+	_apply_method_flags(node.method_flags)
+	if String(node.weather_id) != "":
+		WeatherManager.set_weather(node.weather_id, node.weather_strength)
+
+	if String(node.accept_quest) != "" and not skip_side_offer:
 		QuestManager.accept(node.accept_quest)
 
 	if String(node.complete_quest) != "":
 		QuestManager.complete(node.complete_quest)
+	# 同一段对话内可能先写入解锁标记、再完成任务；立即兑现奖励，
+	# 避免必须重新进入场景后技能列表才刷新。
+	GameState.reconcile_progression_rewards()
+
+
+func _side_offer_for(node: DialogNode) -> QuestDef:
+	if node == null or node.accept_quest == &"" or node.accept_quest == _confirmed_choice_quest or QuestManager.get_status(node.accept_quest) != QuestDef.Status.NOT_STARTED:
+		return null
+	var quest := QuestManager.load_def(node.accept_quest)
+	return quest if quest != null and quest.kind == QuestDef.Kind.SIDE else null
+
+
+func _build_side_offer_brief(npc_text: String, quest: QuestDef) -> String:
+	var premise := quest.desc_not_started.strip_edges()
+	if premise.is_empty():
+		premise = quest.desc_in_progress.strip_edges()
+	if premise.is_empty():
+		return npc_text
+	return "%s\n\n[i]（对方略作迟疑，才把事情的原委说得更明白。）[/i]\n%s" % [npc_text, premise]
+
+
+func _apply_choice_investigation_effects(choice: Dictionary) -> void:
+	_apply_id_list(choice.get("add_evidence", []), &"evidence")
+	_apply_id_list(choice.get("verify_evidence", []), &"verify_evidence")
+	_apply_id_list(choice.get("add_testimonies", []), &"testimony")
+	_apply_id_list(choice.get("verify_testimonies", []), &"verify_testimony")
+	_apply_trust_changes(choice.get("faction_trust_changes", []), true)
+	_apply_trust_changes(choice.get("companion_trust_changes", []), false)
+	_apply_bond_events(choice.get("bond_events", []))
+	_apply_city_outcomes(choice.get("city_outcomes", []))
+	_apply_method_flags(choice.get("method_flags", []))
+
+
+func _apply_id_list(value: Variant, kind: StringName) -> void:
+	if not value is Array:
+		return
+	for raw_id: Variant in value:
+		var entry_id: StringName = StringName(String(raw_id))
+		match kind:
+			&"evidence": InvestigationState.acquire_evidence(entry_id, &"dialog_choice")
+			&"verify_evidence": InvestigationState.verify_evidence(entry_id, &"dialog_choice")
+			&"testimony": InvestigationState.hear_testimony(entry_id)
+			&"verify_testimony": InvestigationState.verify_testimony(entry_id, &"dialog_choice")
+
+
+func _apply_trust_changes(value: Variant, faction: bool) -> void:
+	if not value is Array:
+		return
+	for raw_entry: Variant in value:
+		if not raw_entry is Dictionary:
+			continue
+		var entry: Dictionary = raw_entry
+		var target_id: StringName = StringName(String(entry.get("id", "")))
+		var delta: int = int(entry.get("delta", 0))
+		if faction:
+			InvestigationState.adjust_faction_trust(target_id, delta)
+		else:
+			InvestigationState.adjust_companion_trust(target_id, delta)
+
+
+func _apply_bond_events(value: Variant) -> void:
+	if not value is Array:
+		return
+	for raw_entry: Variant in value:
+		if not raw_entry is Dictionary:
+			continue
+		var entry: Dictionary = raw_entry
+		InvestigationState.add_bond_event(
+			StringName(String(entry.get("companion", ""))),
+			StringName(String(entry.get("event", "")))
+		)
+
+
+func _apply_city_outcomes(value: Variant) -> void:
+	if not value is Array:
+		return
+	for raw_entry: Variant in value:
+		if not raw_entry is Dictionary:
+			continue
+		var entry: Dictionary = raw_entry
+		InvestigationState.set_city_outcome(
+			StringName(String(entry.get("city", ""))),
+			StringName(String(entry.get("key", ""))),
+			entry.get("value", true)
+		)
+
+
+func _apply_method_flags(value: Variant) -> void:
+	if not value is Array:
+		return
+	for raw_entry: Variant in value:
+		if not raw_entry is Dictionary:
+			continue
+		var entry: Dictionary = raw_entry
+		InvestigationState.set_method_flag(
+			StringName(String(entry.get("key", ""))),
+			entry.get("value", true)
+		)
 
 
 func _resolve_action(action: String) -> void:
@@ -159,40 +402,179 @@ func _resolve_action(action: String) -> void:
 	if cmd == "next":
 		_show_node(_current_script.find_node_by_id(StringName(arg)))
 		return
+	if cmd == "spar":
+		EventBus.dialog_spar_requested.emit(arg)
+		_end_dialog()
+		return
 
 	_end_dialog()
 	SceneRouter.resolve_action(action)
 
 
-func _play_node_voice(speaker: String, node_id: String) -> void:
+func _play_node_voice(speaker: String, node_id: String, sequence_id: int) -> void:
 	if _current_script == null: return
 	var dialog_id: String = String(_current_script.dialog_id)
 	if dialog_id == "": return
-	var ch := dialog_id.substr(0, 3)
-	var safe_spk := speaker.replace("/", "_").replace("\\", "_")
-	var emotion := _detect_emotion(String(_current_node.text)) if _current_node != null else "normal"
+	var ch: String = dialog_id.substr(0, 3)
+	var effective_speaker: String = speaker if not speaker.is_empty() else "旁白"
+	var safe_spk: String = effective_speaker.replace("/", "_").replace("\\", "_")
+	var emotion: String = _node_emotion(_current_node)
+	var segment_kinds: Array[String] = _speech_segment_kinds(String(_current_node.text), effective_speaker)
+	var segments: Array[Dictionary] = []
+	for index in range(segment_kinds.size()):
+		var kind := segment_kinds[index]
+		var segment_path := _segment_voice_path(ch, dialog_id, safe_spk, node_id, index, kind)
+		if _has_playable_voice(segment_path):
+			segments.append({"path": segment_path, "kind": kind})
+	if not segments.is_empty() and segments.size() == segment_kinds.size():
+		await _play_segment_sequence(segments, sequence_id)
+		return
 	# 优先带情感后缀，缺失则回退普通
-	var path := "res://art/audio/voices/%s/%s/%s_%s_e%s.mp3" % [ch, dialog_id, safe_spk, node_id, emotion]
-	if not ResourceLoader.exists(path):
+	var path: String = "res://art/audio/voices/%s/%s/%s_%s_e%s.mp3" % [ch, dialog_id, safe_spk, node_id, emotion]
+	if not _has_playable_voice(path):
 		path = "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, node_id]
-	if ResourceLoader.exists(path):
-		AudioManager.play_voice(path)
-		# 旁白紧随其后播放
-		var narr_path := "res://art/audio/voices/%s/%s/%s_%s_narr.mp3" % [ch, dialog_id, safe_spk, node_id]
-		if ResourceLoader.exists(narr_path):
-			await _play_narration_after(narr_path)
+	var has_voice := _has_playable_voice(path)
+	var narr_path: String = "res://art/audio/voices/%s/%s/%s_%s_narr.mp3" % [ch, dialog_id, safe_spk, node_id]
+	var has_narration := _has_inline_narration(String(_current_node.text)) and _has_playable_voice(narr_path)
+	# An incomplete segmented pack must not silence an available whole line.
+	# If only one format contains the speaker, still play the available audio.
+	if not has_voice and not segments.is_empty():
+		await _play_segment_sequence(segments, sequence_id)
+		return
+	if effective_speaker == "旁白":
+		if has_voice:
+			AudioManager.play_narration(path)
+		return
+	if has_narration and _narration_leads(String(_current_node.text)):
+		AudioManager.play_narration(narr_path)
+		if has_voice:
+			await _play_dialog_after_narration(path, sequence_id)
+		return
+	if has_voice:
+		AudioManager.play_dialog_voice(path)
+	if has_narration:
+		await _play_narration_after(narr_path, sequence_id)
 
 
-func _play_narration_after(narr_path: String) -> void:
+func _has_playable_voice(path: String) -> bool:
+	if not ResourceLoader.exists(path, "AudioStream"):
+		return false
+	var stream := load(path) as AudioStream
+	return stream != null and stream.get_length() > 0.0
+
+
+func _speech_segment_kinds(text: String, speaker: String) -> Array[String]:
+	var kinds: Array[String] = []
+	if speaker == "旁白":
+		kinds.append("narr")
+		return kinds
+	var cursor: int = 0
+	while cursor < text.length():
+		var open_index: int = text.find("（", cursor)
+		var ascii_open_index: int = text.find("(", cursor)
+		if open_index < 0 or (ascii_open_index >= 0 and ascii_open_index < open_index):
+			open_index = ascii_open_index
+		if open_index < 0:
+			if not text.substr(cursor).strip_edges().is_empty():
+				kinds.append("dialog")
+			break
+		if open_index > cursor and not text.substr(cursor, open_index - cursor).strip_edges().is_empty():
+			kinds.append("dialog")
+		var close_index: int = text.find("）", open_index + 1)
+		var ascii_close_index: int = text.find(")", open_index + 1)
+		if close_index < 0 or (ascii_close_index >= 0 and ascii_close_index < close_index):
+			close_index = ascii_close_index
+		if close_index < 0:
+			kinds.append("dialog")
+			break
+		kinds.append("narr")
+		cursor = close_index + 1
+	return kinds
+
+
+func _segment_voice_path(ch: String, dialog_id: String, safe_spk: String, node_id: String, index: int, kind: String) -> String:
+	return "res://art/audio/voices/%s/%s/%s_%s_seg%02d_%s.mp3" % [ch, dialog_id, safe_spk, node_id, index + 1, kind]
+
+
+func _play_segment_sequence(segments: Array[Dictionary], sequence_id: int) -> void:
+	for segment: Dictionary in segments:
+		if sequence_id != _voice_sequence_id or not _is_playing:
+			return
+		var path: String = segment.path
+		if segment.kind == "narr":
+			AudioManager.play_narration(path)
+			while AudioManager.is_narration_playing():
+				await get_tree().process_frame
+				if sequence_id != _voice_sequence_id or not _is_playing:
+					return
+		else:
+			AudioManager.play_dialog_voice(path)
+			while AudioManager.is_voice_playing():
+				await get_tree().process_frame
+				if sequence_id != _voice_sequence_id or not _is_playing:
+					return
+		for _pause_frame: int in range(2):
+			await get_tree().process_frame
+
+
+func _has_inline_narration(text: String) -> bool:
+	var open_index: int = text.find("（")
+	if open_index < 0:
+		open_index = text.find("(")
+	if open_index < 0:
+		return false
+	var close_index: int = text.find("）", open_index + 1)
+	if close_index < 0:
+		close_index = text.find(")", open_index + 1)
+	return close_index > open_index
+
+
+func _play_narration_after(narr_path: String, sequence_id: int) -> void:
 	# 等主语音完全播完（playing 变 false 后再等 3 帧确保 buffer 清空）
 	while AudioManager.is_voice_playing():
 		await get_tree().process_frame
+		if sequence_id != _voice_sequence_id or not _is_playing:
+			return
 	for _i in 5:
 		await get_tree().process_frame
-	AudioManager.play_voice(narr_path)
+		if sequence_id != _voice_sequence_id or not _is_playing:
+			return
+	AudioManager.play_narration(narr_path)
+
+
+func _play_dialog_after_narration(dialog_path: String, sequence_id: int) -> void:
+	while AudioManager.is_narration_playing():
+		await get_tree().process_frame
+		if sequence_id != _voice_sequence_id or not _is_playing:
+			return
+	for _i in 3:
+		await get_tree().process_frame
+		if sequence_id != _voice_sequence_id or not _is_playing:
+			return
+	if ResourceLoader.exists(dialog_path):
+		AudioManager.play_dialog_voice(dialog_path)
+
+
+func _narration_leads(text: String) -> bool:
+	var plain: String = text.strip_edges()
+	while plain.begins_with("[i]") or plain.begins_with("[b]"):
+		plain = plain.substr(3).strip_edges()
+	return plain.begins_with("（") or plain.begins_with("(")
+
+
+func _node_emotion(node: DialogNode) -> String:
+	if node == null:
+		return "normal"
+	if node.voice_emotion != "" and node.voice_emotion != "auto":
+		return node.voice_emotion
+	return _detect_emotion(String(node.text))
 
 
 func _detect_emotion(text: String) -> String:
+	if text.contains("不太平") or text.contains("江湖传言") or text.contains("全死了") or text.contains("出事"):
+		return "concerned"
+	if text.contains("长叹") or text.contains("是时候了") or text.contains("一字一顿"):
+		return "solemn"
 	if text.contains("别过来") or text.contains("救命") or text.contains("饶命") or text.contains("放过"):
 		return "fear"
 	if text.contains("哈哈") or text.contains("太好了") or text.contains("痛快"):
@@ -201,6 +583,8 @@ func _detect_emotion(text: String) -> String:
 		return "sad"
 	if text.contains("把东西留下") or text.contains("受死") or text.contains("识相"):
 		return "threat"
+	if text.contains("住手") or text.contains("混账") or text.contains("该死"):
+		return "angry"
 	return "normal"
 
 
@@ -208,27 +592,41 @@ func _prewarm_voices() -> void:
 	if _current_script == null: return
 	var dialog_id: String = String(_current_script.dialog_id)
 	if dialog_id == "": return
-	var ch := dialog_id.substr(0, 3)
+	var ch: String = dialog_id.substr(0, 3)
 	for node in _current_script.nodes:
-		var spk: String = node.speaker if node.speaker != "" else "旁白"
-		var safe_spk := spk.replace("/", "_").replace("\\", "_")
-		var emotion := _detect_emotion(node.text)
-		var path := "res://art/audio/voices/%s/%s/%s_%s_e%s.mp3" % [ch, dialog_id, safe_spk, String(node.node_id), emotion]
-		if AudioManager._sfx_cache.has(path): continue
-		var stream := load(path) as AudioStream
-		if stream == null:
-			var plain := "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, String(node.node_id)]
-			stream = load(plain) as AudioStream
-		if stream != null:
-			AudioManager._sfx_cache[path] = stream
+		var spk: String = node.speaker if node.speaker != "" else _default_speaker
+		if spk.is_empty():
+			spk = "旁白"
+		var safe_spk: String = spk.replace("/", "_").replace("\\", "_")
+		var emotion: String = _node_emotion(node)
+		var path: String = "res://art/audio/voices/%s/%s/%s_%s_e%s.mp3" % [ch, dialog_id, safe_spk, String(node.node_id), emotion]
+		if not _has_playable_voice(path):
+			path = "res://art/audio/voices/%s/%s/%s_%s.mp3" % [ch, dialog_id, safe_spk, String(node.node_id)]
+		if _has_playable_voice(path):
+			AudioManager.preload_audio(path)
+		var kinds: Array[String] = _speech_segment_kinds(String(node.text), spk)
+		for segment_index: int in range(kinds.size()):
+			var segment_path: String = _segment_voice_path(ch, dialog_id, safe_spk, String(node.node_id), segment_index, kinds[segment_index])
+			if _has_playable_voice(segment_path):
+				AudioManager.preload_audio(segment_path)
+
+
+func _cancel_node_audio() -> void:
+	_voice_sequence_id += 1
+	AudioManager.stop_dialog_audio()
 
 
 func _end_dialog() -> void:
+	_cancel_node_audio()
 	var id: StringName = _current_script.dialog_id if _current_script != null else &""
 
 	_current_script = null
 	_current_node = null
 	_is_playing = false
+	_applied_node_effects.clear()
+	_pending_side_offer_id = &""
+	_pending_side_offer_node = null
+	_confirmed_choice_quest = &""
 	_default_portrait = ""
 	_default_speaker = ""
 	dialog_ended.emit(id)

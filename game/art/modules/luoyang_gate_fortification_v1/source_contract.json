@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "asset_pack": "luoyang_gate_fortification_v1",
+  "status": "SOURCE_AUTHORED_CAPTURE_PENDING",
+  "scope": "Two new native geometry modules only: A straight crenellated wall and B symmetric terminal corner tower.",
+  "source_mesh": {
+    "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.res",
+    "sha256": "7205B12F85B88E76B312B53D616303748A2EABD328F491102BC7D75E7ABC3C6D",
+    "metadata_path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/entities/native_wall_horizontal.json",
+    "metadata_sha256": "D013CE109DB5D750B63EEF7B1806F0ADEA9FF7BF21B4DA9CFDEBE5E841E256BC",
+    "art_contract_path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s0_luoyang_gate/art_contract.json",
+    "art_contract_sha256": "2818F9FCA10D30ABBBBD386FF2B26A3D4ED87F300A9B8EF47F882BCB83F7640D"
+  },
+  "geometry_revision": {
+    "A_straight": "Retain original surfaces 0..15 byte-for-byte, remove only old tiled-cap surfaces 16..17, add a real parapet band plus nine merlons using saved surface14 masonry material.",
+    "B_terminal": "New square terminal tower boxes using saved surface14 masonry and surface15 cornice materials; five merlons; symmetric front-facing asset shared by both far ends without mirroring.",
+    "source_mesh_or_material_edits": false,
+    "sprite_stretching_or_image_generation": false
+  },
+  "capture_contract": {
+    "camera": "Frozen 30-degree orthographic Luoyang native capture camera, 1536x1536 raw canvas, no downsample.",
+    "expected_A_crop_px": [580, 220, 730, 310],
+    "expected_B_crop_px": [180, 220, 390, 340],
+    "transparent_rgba": true,
+    "actual_output_sha_and_dimensions": "PENDING capture_result.json; consumers must reject placeholders before capture.",
+    "consumer_result_schema": {
+      "path": "consumer_catalog",
+      "source_catalog_fields": ["sha256_by_res_path", "last_readback_sha256_by_res_path", "unchanged"],
+      "asset_keys": ["wall", "tower"],
+      "asset_fields": ["asset_id", "mesh_path", "mesh_sha256", "texture_path", "texture_sha256", "texture_bytes", "render_size_px", "foot_uv", "foot_anchor_px", "support_polygon_px", "ground_y_definition", "source_catalog_key"]
+    }
+  },
+  "license_boundary": {
+    "architecture_and_worn_bluestone": "Existing project-native geometry and project original builtin-imagegen material; not CC0 architecture.",
+    "rock_microdetail": "Existing Poly Haven rock_01 CC0-1.0 dependency already bound by the native wall contract; no new download.",
+    "new_geometry": "Project procedural authoring only; no external model, paid asset, network call or generated image."
+  },
+  "placement_boundary": {
+    "candidate_wall_foot_y": 500,
+    "portal_unchanged": [1536, 500],
+    "bridge_guard_water_unchanged": true,
+    "formal_layout_or_scene_write": false,
+    "field_or_physics_credit": false
+  }
+}

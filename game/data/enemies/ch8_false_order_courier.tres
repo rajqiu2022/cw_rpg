@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch8_false_order_courier"
+display_name="茗雾假令传使"
+battle_actor_path = "res://art/sprites/battle/story_duels_20261121/courier/ready.tres"
+battle_actor_flip_h = false
+battle_actor_use_exact_scale = true
+battle_actor_scale = 0.985
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/courier/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/courier/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/courier/attack1.tres", "res://art/sprites/battle/story_duels_20261121/courier/attack2.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/courier/hit1.tres", "res://art/sprites/battle/story_duels_20261121/courier/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/courier/knee.tres", "res://art/sprites/battle/story_duels_20261121/courier/down.tres")
+level=14
+max_hp=900
+max_mp=150
+attack=128
+defense=29
+speed=38
+skill_ids=Array[StringName]([&"basic_attack",&"mingwu_wuyin_sanshi",&"toxic_needle"])
+aggression=0.76
+drop_gold_min=85
+drop_gold_max=115
+drop_exp=160

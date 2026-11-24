@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch4_eighteen_year_roster"
+display_name = "十八年前押运队名册"
+description = "地道暗格中的押运队名册与古冢残页能够互证。名册记录了五派弟子、官差和民夫共同押送一只无名铁匣，关键签押页被人取走。"
+chapter = 4
+category = &"document"
+source_hint = "古寺地道暗格"
+related_testimony_ids = Array[StringName]([&"ts_ch4_fake_leader_partial_confession"])
+tags = Array[StringName]([&"old_case", &"escort_roster", &"missing_signature"])

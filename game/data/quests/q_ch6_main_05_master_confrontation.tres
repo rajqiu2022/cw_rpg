@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch6_main_05_master_confrontation"
+title = "问师改证"
+kind = 0
+desc_not_started = "原册、改写旁注与白水驿换车痕迹已经能放在一起核对。刑樊天必须解释自己改过的那一行。"
+desc_in_progress = "回到师徒院落与刑樊天对质，并决定接下来如何处理他的证词与安全。"
+desc_completed = "刑樊天承认改证是为了藏住冷孤云的去向，却也承认保护不能替代当事人的选择。师徒选择了不同的继续方式。"
+tracker_hint = "林西村 · 师徒院落"
+completion_triggers = Array[String](["flag_set:ch6_master_choice_made"])
+starts_in_chapter = 6
+completes_in_chapter = 6
+reward_gold = 0
+reward_exp = 220
+reward_items = Array[Dictionary]([{"item_id":"xuanshuang_script", "count":1}])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch6_master_choice_made", "text":"刑樊天承认改写去向记录；双方已决定他今后公开作证、暗中协助或先行避险。"}])

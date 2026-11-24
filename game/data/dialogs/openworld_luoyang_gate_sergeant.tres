@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "洛阳门吏"
+text = "南门昼夜开放。城中府衙、南市与漕渠码头各走各的街路；若来查案，先看城门西侧通缉榜，再入府衙核对卷宗。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_luoyang_gate_sergeant"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

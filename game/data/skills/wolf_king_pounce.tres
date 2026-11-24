@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+skill_id = &"wolf_king_pounce"
+display_name = "狼王飞扑"
+icon_path = "res://art/ui/status/icons_v1/icon_status_bleed_v1.png"
+description = "狼王伏身锁住一名对手，随后跃起扑击。命中可能撕开伤口。"
+fixed_damage = 19
+attack_scaling = 128
+animation_id = &"wolf_rending_bite"
+base_hit_chance = 0.94
+inflicted_status = &"bleed"
+status_chance = 0.62
+status_duration = 2
+cast_sfx_path = "res://art/audio/animals/sfx_wolf_attack_20261110.wav"
+

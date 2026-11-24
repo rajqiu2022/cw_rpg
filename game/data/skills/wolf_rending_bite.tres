@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"wolf_rending_bite"
+display_name = "裂创扑咬"
+icon_path = "res://art/ui/status/icons_v1/icon_status_bleed_v1.png"
+description = "头狼贴地扑咬，撕开伤口。伤害：固定 14 + 攻击力 × 110%，45% 概率流血 2 回合。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 0
+quality = 1
+fixed_damage = 14
+attack_scaling = 110
+animation_id = &"wolf_rending_bite"
+cast_sfx_path = "res://art/audio/animals/sfx_wolf_attack_20261110.wav"
+base_hit_chance = 0.92
+inflicted_status = &"bleed"
+status_chance = 0.45
+status_duration = 2
+school = "generic"

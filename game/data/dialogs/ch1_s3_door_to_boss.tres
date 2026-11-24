@@ -22,7 +22,7 @@ script = ExtResource("2_dnode")
 node_id = &"b"
 speaker = "赵无忌"
 portrait_path = ""
-text = "林西村的余孽？\n冷孤云——果然没死透。"
+text = "刑樊天教出来的？难怪外面那些人拦不住你。"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
@@ -36,14 +36,14 @@ script = ExtResource("2_dnode")
 node_id = &"c"
 speaker = "冷孤云"
 portrait_path = "res://art/characters/protagonist_portrait.png"
-text = "五年了。\n今日，到此为止。"
+text = "我只查山道的死人、被掳的村民，还有运进这座废宅的货。你替谁守门？"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
 set_flags = Array[Dictionary]([])
 accept_quest = &""
 complete_quest = &""
-on_end = "battle:boss_zhao_wuji"
+on_end = "scene:ch1_s3_ruin_inner"
 
 [resource]
 script = ExtResource("1_dscr")

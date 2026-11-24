@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+design_size = Vector2i(2304,1536)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.079,0.955, 0.09,0.84, 0.20,0.744, 0.273,0.65, 0.31,0.54, 0.269,0.444, 0.277,0.377, 0.345,0.368, 0.392,0.435, 0.492,0.400, 0.602,0.314, 0.676,0.242, 0.713,0.128, 0.783,0.104, 0.820,0.151, 0.807,0.258, 0.753,0.372, 0.717,0.440, 0.794,0.542, 0.771,0.657, 0.663,0.741, 0.510,0.730, 0.386,0.812, 0.263,0.842, 0.190,0.950)
+])
+metadata/ground_paths = [
+	{"id":"village_cave_trail","points":PackedVector2Array(0.130,0.934,0.144,0.881,0.172,0.823,0.222,0.776,0.291,0.728,0.359,0.657,0.415,0.593,0.490,0.547,0.580,0.483,0.640,0.405,0.695,0.327,0.737,0.247,0.763,0.157),"width_px":161},
+	{"id":"hunting_spur","points":PackedVector2Array(0.418,0.590,0.398,0.546,0.371,0.506,0.345,0.467,0.314,0.423),"width_px":97}
+]
+visual_objects = [
+	{"id":"ground_0","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0,0),"centered":false,"render_size_px":Vector2(768,768),"z_index":-990,"modulate":Color(0.76,0.77,0.67,1)},
+	{"id":"ground_1","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.3333333333,0),"centered":false,"render_size_px":Vector2(768,768),"z_index":-990,"modulate":Color(0.76,0.77,0.67,1)},
+	{"id":"ground_2","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.6666666667,0),"centered":false,"render_size_px":Vector2(768,768),"z_index":-990,"modulate":Color(0.76,0.77,0.67,1)},
+	{"id":"ground_3","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0,0.5),"centered":false,"render_size_px":Vector2(768,768),"z_index":-990,"modulate":Color(0.76,0.77,0.67,1)},
+	{"id":"ground_4","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.3333333333,0.5),"centered":false,"render_size_px":Vector2(768,768),"z_index":-990,"modulate":Color(0.76,0.77,0.67,1)},
+	{"id":"ground_5","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.6666666667,0.5),"centered":false,"render_size_px":Vector2(768,768),"z_index":-990,"modulate":Color(0.76,0.77,0.67,1)},
+	{"id":"north_rock","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.45,0.22),"scale":Vector2(0.41,0.41),"sort_by_feet":true,"depth_sort_foot_y":0.34,"modulate":Color(0.78,0.80,0.72,1)},
+	{"id":"cave_ridge","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.842,0.049),"scale":Vector2(0.4,0.4),"sort_by_feet":true,"depth_sort_foot_y":0.119,"modulate":Color(0.73,0.75,0.70,1),"flip_h":true},
+	{"id":"cave_mouth","texture":"res://art/modules/linxi_mountain_road_20261030g/cave_mouth.png","pos":Vector2(0.751,0.107),"scale":Vector2(0.247,0.247),"sort_by_feet":true,"depth_sort_foot_y":0.161,"modulate":Color(0.86,0.85,0.77,1)},
+	{"id":"east_bluff","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.918,0.392),"scale":Vector2(0.36,0.36),"sort_by_feet":true,"depth_sort_foot_y":0.489,"modulate":Color(0.78,0.80,0.74,1)},
+	{"id":"ore_ridge","texture":"res://art/modules/zhuwei_gather_20261110/mine_slate_rim.png","pos":Vector2(0.425,0.459),"scale":Vector2(0.18,0.18),"sort_by_feet":true,"depth_sort_foot_y":0.493,"modulate":Color(0.84,0.84,0.75,1)},
+	{"id":"west_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.108,0.626),"scale":Vector2(0.31,0.31),"sort_by_feet":true,"depth_sort_foot_y":0.747,"modulate":Color(0.86,0.89,0.78,1)},
+	{"id":"south_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.28,0.861),"scale":Vector2(0.28,0.28),"sort_by_feet":true,"depth_sort_foot_y":0.969,"modulate":Color(0.83,0.88,0.77,1),"flip_h":true},
+	{"id":"east_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.822,0.646),"scale":Vector2(0.33,0.33),"sort_by_feet":true,"depth_sort_foot_y":0.776,"modulate":Color(0.86,0.91,0.82,1),"flip_h":true},
+	{"id":"upper_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.6,0.173),"scale":Vector2(0.22,0.22),"sort_by_feet":true,"depth_sort_foot_y":0.26,"modulate":Color(0.81,0.85,0.74,1)},
+	{"id":"east_woodland_edge","texture":"res://art/modules/miao_town_20261029f/trees.png","pos":Vector2(0.71,0.79),"scale":Vector2(0.30,0.30),"sort_by_feet":true,"depth_sort_foot_y":0.86,"modulate":Color(0.79,0.83,0.73,1)},
+	{"id":"west_woodland_edge","texture":"res://art/modules/miao_town_20261029f/trees.png","pos":Vector2(0.13,0.49),"scale":Vector2(0.27,0.27),"sort_by_feet":true,"depth_sort_foot_y":0.57,"modulate":Color(0.76,0.81,0.74,1)},
+	{"id":"hunting_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.227,0.328),"scale":Vector2(0.25,0.25),"sort_by_feet":true,"depth_sort_foot_y":0.42,"modulate":Color(0.84,0.89,0.77,1)},
+	{"id":"south_scrub","texture":"res://art/modules/ground/road_grass_patch_a.png","pos":Vector2(0.207,0.848),"scale":Vector2(0.2,0.2),"z_index":-20,"modulate":Color(0.78,0.81,0.71,1)},
+	{"id":"forest_hemostatic_herb_visual","texture":"res://art/modules/zhuwei_gather_20261110/woodland_herb.png","pos":Vector2(0.24,0.74),"scale":Vector2(0.051,0.051),"sort_by_feet":true,"depth_sort_foot_y":0.76,"interaction_action":"dialog:ch1_zhuwei_forest_herb","interaction_label":"采集止血草","interaction_size":Vector2(0.09,0.10),"require_quest_active":"q_ch1_side_12_forest_medicine","hide_flag":"zhuwei_forest_herb_collected"}
+]
+blockers = [
+	{"id":"ore_ridge_base","pos":Vector2(0.436,0.483),"size":Vector2(0.120,0.024)},
+	{"id":"cave_back_wall","pos":Vector2(0.766,0.123),"size":Vector2(0.102,0.028)},
+	{"id":"cave_left_foot","pos":Vector2(0.724,0.151),"size":Vector2(0.038,0.031)},
+	{"id":"cave_right_foot","pos":Vector2(0.803,0.157),"size":Vector2(0.041,0.039)}
+]
+interactions = [
+	{"id":"forest_beast_trail","pos":Vector2(0.56,0.46),"size":Vector2(0.11,0.12),"activation":"interact","label":"检查染血兽踪","action":"dialog:ch1_forest_beast_pack_encounter","visual_texture":"res://art/props/interactive/expansion_v1/clue_bloodied_cloth_v1.png","visual_render_size_px":Vector2(74,74),"require_quest_active":"q_ch1_main_zhuwei_wilds","hide_flag":"defeated_linxi_wild_beast"}
+]
+portals = [
+	{"id":"enter_hunting_trail","pos":Vector2(0.314,0.423),"size":Vector2(0.072,0.072),"source_spawn_pos":Vector2(0.371,0.506),"marker_rotation_degrees":180.0,"label":"前往竹尾猎径","target_scene":"adventure_zhuwei_hunting_ground","target_pos":Vector2(0.5,0.9)},
+	{"id":"back_to_zhuwei","pos":Vector2(0.140,0.878),"size":Vector2(0.106,0.101),"source_spawn_pos":Vector2(0.177,0.820),"marker_offset":Vector2(0,0.026042),"label":"返回竹尾村","target_scene":"ch1_s2_qingfeng","target_pos":Vector2(0.757142857,0.134375)},
+	{"id":"enter_beast_cave","pos":Vector2(0.764,0.164),"size":Vector2(0.082,0.070),"source_spawn_pos":Vector2(0.748,0.226),"marker_offset":Vector2(0,0.026042),"marker_rotation_degrees":180.0,"label":"进入后山洞窟","locked_label":"洞穴里极其阴冷，危机四伏，还是暂时不要进入！","target_scene":"ch1_s4_zhuwei_beast_cave","target_pos":Vector2(0.50,0.82),"require_flag":"defeated_linxi_wild_beast"}
+]
+walkable_probes = [{"id":"forest_spawn","pos":Vector2(0.17,0.82)},{"id":"forest_beast","pos":Vector2(0.56,0.46)},{"id":"forest_herb","pos":Vector2(0.24,0.74)},{"id":"forest_cave","pos":Vector2(0.764,0.164)},{"id":"forest_hunting_stairs","pos":Vector2(0.314,0.423)}]

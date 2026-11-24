@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"bianzhou_roaming_thief"
+display_name = "游盗温七"
+title = "江洋大盗"
+description = "曾连夜搬空两家货栈。守夜人见他扛着印有汴州仓记的粮袋，往中原旧驿废马棚方向去了。"
+board_city = &"bianzhou"
+recommended_min_level = 3
+recommended_max_level = 5
+enemy_ids = Array[StringName]([&"warrant_bianzhou_roaming_thief"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 废马棚","pos":Vector2(0.70,0.54)},{"scene_id":&"ch1_s1_road","label":"林西官道 · 残碑北坡","pos":Vector2(0.86,0.47)}])
+reward_reputation = 12
+reward_training = 24
+reward_exp = 48
+reward_gold = 45
+reward_items = Array[Dictionary]([{"item_id":&"grain_sack","count":2}])
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"

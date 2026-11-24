@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ChapterContentPlan" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/chapter_content_plan.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+chapter = 7
+title = "两盟一局"
+main_scene_ids = Array[StringName]([&"ch7_s1_lieyun_valley_ferry", &"ch7_s2_mingwu_tea_town", &"ch7_s3_lieyun_outpost_outer_ward", &"ch7_s4_mingwu_manor_outer_court", &"ch7_s5_lieyun_assembly_hall", &"ch7_s6_mingwu_inner_court", &"ch7_s7_lieyun_resettlement_archive", &"ch7_s8_mingwu_permission_archive", &"ch7_s9_mingwu_seal_audit_room", &"ch7_s10_lieyun_night_transfer_station"])
+main_quest_ids = Array[StringName]([&"q_ch7_main_01_choose_first_route", &"q_ch7_main_02_compare_two_fronts", &"q_ch7_main_03_outer_wards", &"q_ch7_main_04_reform_and_witness", &"q_ch7_main_05_dead_name_live_access", &"q_ch7_main_06_threefold_identity_check", &"q_ch7_main_07_confirm_xueying_identity", &"q_ch7_main_08_inner_office_authorization", &"q_ch7_main_09_protect_witnesses", &"q_ch7_main_10_personal_authorization", &"q_ch7_main_11_disclosure_strategy"])
+side_quest_ids = Array[StringName]([&"q_ch7_side_05_tea_basket",&"q_ch7_side_06_pulse_case"])
+side_quest_decisions = Array[Dictionary]([
+	{"quest_id":"q_ch7_main_01_infiltrate_lieyun", "decision":"migrate", "reason":"旧线固定闯入烈云并立即洗清污名；新版先选择调查顺序，再分别核验烈云与茗雾两侧事实。"},
+	{"quest_id":"q_ch7_main_02_truth_revealed", "decision":"migrate", "reason":"旧线一次展示全部证据并提前点明结论；新版把证据、证词与责任拆到双线调查后汇流。"},
+	{"quest_id":"q_ch7_side_01_linghu_betrayal", "decision":"migrate", "reason":"令狐封改为需要保护条件的有限内部证人，不在本批提前接入。"},
+	{"quest_id":"q_ch7_side_02_cipher_message", "decision":"migrate", "reason":"密信支线等待茗雾信使路线完成后重写。"},
+	{"quest_id":"q_ch7_side_03_proving_ground", "decision":"migrate", "reason":"试炼场等待烈云分舵内区完成后重写。"},
+	{"quest_id":"q_ch7_side_04_red_robe_memory", "decision":"migrate", "reason":"旧日记过早规定感情因果，保留角色材料但不进入现行正典。"}
+])
+leveling_scene_ids = Array[StringName]([])
+story_battle_groups = Array[Dictionary]([
+	{"id":"lieyun_outer_ward_hardliners", "role":"分舵强硬派扣证战", "recommended_level":11, "target_rounds":"6-8", "enemy_ids":[&"ch7_lieyun_hardliner_guard", &"ch7_lieyun_hardliner_tracker"]}
+	,{"id":"mingwu_inner_office_destroyers", "role":"内署灭证战", "recommended_level":12, "target_rounds":"6-8", "enemy_ids":[&"ch7_mingwu_record_guard", &"ch7_mingwu_order_burner"]}
+])
+estimated_main_minutes = 120
+estimated_completionist_minutes = 300

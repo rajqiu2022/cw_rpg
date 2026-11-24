@@ -1,0 +1,43 @@
+id: sprite_battle_atlas_4x5_v1
+description: Reference-locked 4x5 battle sprite atlas following Battle Sprite Standard V2.
+quality: high
+size: "1024x1024"
+
+reference_images:
+  - "{reference_path}"
+require_reference_images: true
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: stylized-concept
+  Asset type: production 2.5D wuxia RPG battle sprite atlas.
+  Input image: strict identity reference for the same character.
+  Subject: {character_name}. {character_spec}
+  Weapon and combat style: {weapon_spec}
+  Facing: {facing_spec}
+
+  Create exactly one strict 4-column by 5-row atlas on a perfectly flat solid #FF00FF chroma-key background.
+  Row 1 READY: four subtle breathing and cloth-motion poses, feet planted.
+  Row 2 MOVE: four compact approach steps, same weapon grip and scale.
+  Row 3 ATTACK: preparation, acceleration, clear contact pose, recovery; {attack_spec}
+  Row 4 HIT: four readable recoil poses without changing identity or dropping the weapon.
+  Row 5 DEFEAT: four progressive falling poses, ending grounded and still.
+
+  Every cell contains exactly one complete full-body character. Keep face, hair, costume, body proportion,
+  weapon, lighting and scale identical across all 20 cells. Center each figure with one shared feet baseline,
+  generous separation between cells, and visible padding beneath the feet. No frame may cross a cell boundary.
+  Crisp Hong Kong wuxia comic ink contours, bright saturated color, readable at mobile-game scale.
+
+  Constraints: no text, labels, grid lines, borders, scenery, ground plane, cast shadow, aura, attack VFX,
+  motion blur, extra person, extra weapon, cropped head, cropped feet, duplicated limbs or neighboring-cell leak.
+  Avoid: {negative}
+
+variables:
+  reference_path: "existing character image"
+  character_name: "character name"
+  character_spec: "identity and costume lock"
+  weapon_spec: "weapon or unarmed style"
+  facing_spec: "allied right-facing or enemy left-facing"
+  attack_spec: "attack movement"
+

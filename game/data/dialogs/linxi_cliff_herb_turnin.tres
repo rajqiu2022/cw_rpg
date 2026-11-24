@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "苏伯，山道石缝里的止血藤取到了。只割了一段根茎，剩下的还留在原处。"
+on_end = "next:finish"
+
+[sub_resource type="Resource" id="node_finish"]
+script = ExtResource("2_dnode")
+node_id = &"finish"
+speaker = "药师苏伯"
+portrait_path = "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text = "叶背、气味都对。你肯给药藤留根，比多采一把更难得。药铺能多备几包伤药，学徒也不必冒险上崖。"
+set_flags = Array[Dictionary]([{"key":"cliff_herb_delivered", "value":true}])
+complete_quest = &"q_ch1_side_02_cliff_herb"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"linxi_cliff_herb_turnin"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_finish")])

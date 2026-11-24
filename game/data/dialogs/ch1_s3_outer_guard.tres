@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "废宅守卫"
+portrait_path = ""
+text = "站住。这里不是你该来的地方。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "battle_group_then:zhuwei_bandit,zhuwei_bandit:ch1_ruin_yard_secured"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s3_outer_guard"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.08,0.96,0.92,0.96,0.91,0.22,0.73,0.12,0.20,0.15,0.07,0.35)])
+blockers = []
+interactions = []
+portals = [{"id":"return_city","label":"返回汴州城","pos":Vector2(0.50,0.925),"size":Vector2(0.16,0.08),"target_scene":"openworld_bianzhou_city","target_pos":Vector2(0.50,0.18)}]
+walkable_probes = [{"id":"arrival","pos":Vector2(0.50,0.88)},{"id":"west_camp","pos":Vector2(0.23,0.60)},{"id":"central_road","pos":Vector2(0.50,0.50)},{"id":"east_ruin","pos":Vector2(0.78,0.45)}]
+blocked_probes = [{"id":"north_cliff","pos":Vector2(0.50,0.05)}]
+

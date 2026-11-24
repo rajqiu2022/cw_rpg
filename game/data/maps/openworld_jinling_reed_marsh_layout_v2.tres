@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.07,0.95,0.93,0.95,0.91,0.22,0.70,0.11,0.24,0.12,0.08,0.30)])
+walkable_mask_path = "res://art/modules/jinling_reed_marsh_20261108/walk_v2.svg"
+visual_objects = [
+	{"id": "moss_0_0", "texture": "res://art/modules/sect_maps_20261029k/quiet_ground.png", "pos": Vector2(0, 0), "centered": false, "render_size_px": Vector2(1024, 1024), "z_index": -999, "modulate": Color(0.86, 0.9, 0.83, 1)},
+	{"id": "moss_1_0", "texture": "res://art/modules/sect_maps_20261029k/quiet_ground.png", "pos": Vector2(0.33333333, 0), "centered": false, "render_size_px": Vector2(1024, 1024), "z_index": -999, "modulate": Color(0.86, 0.9, 0.83, 1)},
+	{"id": "moss_2_0", "texture": "res://art/modules/sect_maps_20261029k/quiet_ground.png", "pos": Vector2(0.66666667, 0), "centered": false, "render_size_px": Vector2(1024, 1024), "z_index": -999, "modulate": Color(0.86, 0.9, 0.83, 1)},
+	{"id": "moss_0_1", "texture": "res://art/modules/sect_maps_20261029k/quiet_ground.png", "pos": Vector2(0, 0.5), "centered": false, "render_size_px": Vector2(1024, 1024), "z_index": -999, "modulate": Color(0.86, 0.9, 0.83, 1)},
+	{"id": "moss_1_1", "texture": "res://art/modules/sect_maps_20261029k/quiet_ground.png", "pos": Vector2(0.33333333, 0.5), "centered": false, "render_size_px": Vector2(1024, 1024), "z_index": -999, "modulate": Color(0.86, 0.9, 0.83, 1)},
+	{"id": "moss_2_1", "texture": "res://art/modules/sect_maps_20261029k/quiet_ground.png", "pos": Vector2(0.66666667, 0.5), "centered": false, "render_size_px": Vector2(1024, 1024), "z_index": -999, "modulate": Color(0.86, 0.9, 0.83, 1)},
+	{"id": "reed_pool", "texture": "res://art/modules/jinling_reed_marsh_20261108/reed_pool_v1.png", "pos": Vector2(0.54036458, 0.49316406), "scale": Vector2(0.56, 0.56), "z_index": -72},
+	{"id": "river_reach", "texture": "res://art/modules/jinling_reed_marsh_20261108/reed_pool_v1.png", "pos": Vector2(0.48502604, 1.05224609), "scale": Vector2(0.87, 0.87), "z_index": -73, "modulate": Color(0.84, 0.91, 0.87, 1)},
+	{"id": "landing_track", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.5, 0.80810547), "scale": Vector2(0.35, 0.35), "z_index": -63, "rotation": 100.0, "modulate": Color(0.82, 0.82, 0.75, 0.62)},
+	{"id": "west_rise", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.40690104, 0.72998047), "scale": Vector2(0.32, 0.32), "z_index": -63, "rotation": -167.0, "modulate": Color(0.82, 0.82, 0.75, 0.62)},
+	{"id": "camp_track_lower", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.30110677, 0.60791016), "scale": Vector2(0.52, 0.52), "z_index": -63, "rotation": 69.0, "modulate": Color(0.82, 0.82, 0.75, 0.62)},
+	{"id": "camp_track_upper", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.25325521, 0.484375), "scale": Vector2(0.38, 0.38), "z_index": -63, "rotation": 100.0, "modulate": Color(0.82, 0.82, 0.75, 0.62)},
+	{"id": "east_bank_track", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.62174479, 0.71777344), "scale": Vector2(0.5, 0.5), "z_index": -63, "rotation": -8.0, "modulate": Color(0.82, 0.82, 0.75, 0.62)},
+	{"id": "east_yard_track", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.75846354, 0.64453125), "scale": Vector2(0.43, 0.43), "z_index": -63, "rotation": -10.0, "modulate": Color(0.82, 0.82, 0.75, 0.62)},
+	{"id": "paper_track", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.80078125, 0.50292969), "scale": Vector2(0.41, 0.41), "z_index": -63, "rotation": 118.0, "modulate": Color(0.82, 0.82, 0.75, 0.62)},
+	{"id": "west_reeds", "texture": "res://art/modules/miao_town_20261029f/bank_shrub.png", "pos": Vector2(0.32552083, 0.47851563), "scale": Vector2(0.19, 0.19), "z_index": -53},
+	{"id": "north_reeds", "texture": "res://art/modules/miao_town_20261029f/bank_shrub.png", "pos": Vector2(0.43619792, 0.34130859), "scale": Vector2(0.17, 0.17), "z_index": -53},
+	{"id": "lower_bank_reeds", "texture": "res://art/modules/miao_town_20261029f/bank_shrub.png", "pos": Vector2(0.63151042, 0.609375), "scale": Vector2(0.19, 0.19), "z_index": -53},
+	{"id": "island_reeds", "texture": "res://art/modules/miao_town_20261029f/bank_shrub.png", "pos": Vector2(0.36132813, 0.61767578), "scale": Vector2(0.16, 0.16), "z_index": -53},
+	{"id": "south_reeds", "texture": "res://art/modules/miao_town_20261029f/bank_shrub.png", "pos": Vector2(0.42154948, 0.91552734), "scale": Vector2(0.2, 0.2), "z_index": -53},
+	{"id": "ferry_east_reeds", "texture": "res://art/modules/miao_town_20261029f/bank_shrub.png", "pos": Vector2(0.64453125, 0.92285156), "scale": Vector2(0.17, 0.17), "z_index": -53},
+	{"id": "mill_bank_reeds", "texture": "res://art/modules/miao_town_20261029f/bank_shrub.png", "pos": Vector2(0.70963542, 0.40136719), "scale": Vector2(0.15, 0.15), "z_index": -53},
+	{"id": "north_bank_reeds", "texture": "res://art/modules/miao_town_20261029f/bank_shrub.png", "pos": Vector2(0.61686198, 0.34667969), "scale": Vector2(0.18, 0.18), "z_index": -53},
+	{"id": "ferry_boat", "texture": "res://art/modules/four_settlements_20261030e/ferry_boat.png", "pos": Vector2(0.57942708, 0.97314453), "scale": Vector2(0.23, 0.23), "z_index": -47},
+	{"id": "south_landing", "texture": "res://art/modules/four_settlements_20261030e/wood_pier.png", "pos": Vector2(0.50130208, 0.92236328), "scale": Vector2(0.225, 0.225), "z_index": -43},
+	{"id": "net_landing", "texture": "res://art/modules/four_settlements_20261030e/wood_pier.png", "pos": Vector2(0.73242188, 0.57470703), "scale": Vector2(0.19, 0.19), "z_index": -43},
+	{"id": "west_willow", "texture": "res://art/modules/four_settlements_20261030e/willow.png", "pos": Vector2(0.14811198, 0.58105469), "scale": Vector2(0.38, 0.38), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.64306641, "collision_size": Vector2(0.0250651, 0.02246094), "collision_offset": Vector2(0, 0.05078125)},
+	{"id": "east_willow", "texture": "res://art/modules/four_settlements_20261030e/willow.png", "pos": Vector2(0.86588542, 0.58349609), "scale": Vector2(0.36, 0.36), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.640625, "collision_size": Vector2(0.02376302, 0.02148438), "collision_offset": Vector2(0, 0.04638672)},
+	{"id": "south_willow", "texture": "res://art/modules/four_settlements_20261030e/willow.png", "pos": Vector2(0.38411458, 0.82763672), "scale": Vector2(0.37, 0.37), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.88989258, "collision_size": Vector2(0.02571615, 0.02197266), "collision_offset": Vector2(0, 0.05126953)},
+	{"id": "north_willow", "texture": "res://art/modules/four_settlements_20261030e/willow.png", "pos": Vector2(0.54361979, 0.22460938), "scale": Vector2(0.44, 0.44), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.30151367, "collision_size": Vector2(0.0296224, 0.02392578), "collision_offset": Vector2(0, 0.06494141)},
+	{"id": "far_willow", "texture": "res://art/modules/four_settlements_20261030e/willow.png", "pos": Vector2(0.71614583, 0.25048828), "scale": Vector2(0.29, 0.29), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.29833984, "collision_size": Vector2(0.01888021, 0.02050781), "collision_offset": Vector2(0, 0.03759766)},
+	{"id": "fishing_camp", "texture": "res://art/modules/riverside_visual_20261101a/shelter_v1.png", "pos": Vector2(0.19628906, 0.32226563), "scale": Vector2(0.405, 0.405), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.41748047, "collision_size": Vector2(0.15299479, 0.04882813), "collision_offset": Vector2(-0.00423177, 0.07080078)},
+	{"id": "paper_workshop", "texture": "res://art/modules/four_settlements_20261030e/repair_shed.png", "pos": Vector2(0.8203125, 0.26123047), "scale": Vector2(0.41, 0.41), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.35473633, "collision_size": Vector2(0.16438802, 0.05126953), "collision_offset": Vector2(-0.00325521, 0.06787109)},
+	{"id": "paper_drying_bench", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/writing_desk_v1.png", "pos": Vector2(0.8968099, 0.38427734), "scale": Vector2(0.15, 0.15), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.40551758, "collision_size": Vector2(0.03645833, 0.01513672), "collision_offset": Vector2(0, 0.01367188)},
+	{"id": "west_net_crates", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png", "pos": Vector2(0.16438802, 0.46875), "scale": Vector2(0.13, 0.13), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.48828125, "collision_size": Vector2(0.03580729, 0.01757813), "collision_offset": Vector2(0.00065104, 0.01074219)},
+	{"id": "wet_cargo_sacks", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png", "pos": Vector2(0.80403646, 0.62255859), "scale": Vector2(0.115, 0.115), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.640625, "collision_size": Vector2(0.03320313, 0.01464844), "collision_offset": Vector2(0, 0.01074219)},
+	{"id": "paper_rinse_trough", "texture": "res://art/modules/redrock_gate_20261023c/trough.png", "pos": Vector2(0.87076823, 0.43701172), "scale": Vector2(0.16, 0.16), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.45288086, "collision_size": Vector2(0.03092448, 0.01708984), "collision_offset": Vector2(0, 0.00732422), "modulate": Color(0.70, 0.77, 0.78, 1)},
+	{"id": "ferry_waypost", "texture": "res://art/modules/prop/prop_zhuwei_road_sign.png", "pos": Vector2(0.45410156, 0.87548828), "scale": Vector2(0.36, 0.36), "z_index": 0, "sort_by_feet": true, "depth_sort_foot_y": 0.90063477, "collision_size": Vector2(0.00846354, 0.00927734), "collision_offset": Vector2(0, 0.02050781)}
+]
+blockers = [{"id":"deep_pool","pos":Vector2(0.54,0.48),"size":Vector2(0.20,0.14)}]
+interactions = []
+portals = [{"id":"return_city","label":"乘舟返回金陵城","pos":Vector2(0.50,0.920),"size":Vector2(0.16,0.08),"target_scene":"openworld_jinling_city","target_pos":Vector2(0.15,0.50)}]
+walkable_probes = [{"id":"arrival","pos":Vector2(0.50,0.88)},{"id":"north_camp","pos":Vector2(0.24,0.43)},{"id":"ship_bay","pos":Vector2(0.72,0.58)},{"id":"paper_mill","pos":Vector2(0.84,0.38)}]
+blocked_probes = [{"id":"deep_pool","pos":Vector2(0.54,0.48)},{"id":"north_water","pos":Vector2(0.50,0.04)},{"id":"west_shallows","pos":Vector2(0.405,0.52)},{"id":"landing_water","pos":Vector2(0.575,0.9375)}]

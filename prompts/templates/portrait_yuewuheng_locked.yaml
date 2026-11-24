@@ -1,0 +1,25 @@
+id: portrait_yuewuheng_locked
+description: 悦无姮锁定角色形象的正式立绘
+quality: high
+size: "1024x1024"
+require_reference_images: true
+reference_images:
+  - "assets/art_validation_v2/character_v2/portrait_yuewuxing_meeting.png"
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: stylized-concept
+  Asset type: transparent-ready RPG dialog portrait
+  Primary request: 悦无姮正式角色立绘，严格保持参考图中的脸型、五官、发型、年龄、服装结构与主色。
+  Subject: 凌月派年轻女侠悦无姮，{{pose}}，神情{{expression}}。
+  Composition/framing: three-quarter body, centered, complete hair and costume silhouette, generous padding, no cropped head or hands.
+  Lighting/mood: crisp comic key light, resolute but warm.
+  Scene/backdrop: perfectly flat solid #00ff00 chroma-key background for background removal, one uniform color with no shadow, gradient, texture, floor plane or lighting variation.
+  Constraints: do not use #00ff00 in the character; no cast shadow, no text, no watermark; preserve identity and costume from the reference image.
+  Avoid: different face, different hairstyle, modern clothing, headband, red hair ribbon, extra weapons, {negative}
+
+variables:
+  pose: "动作"
+  expression: "表情"
+

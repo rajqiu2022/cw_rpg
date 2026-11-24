@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.180, 0.405, 0.820, 0.405, 0.870, 0.760, 0.575, 0.760, 0.575, 0.855, 0.425, 0.855, 0.425, 0.760, 0.130, 0.760)])
+blockers = Array[Dictionary]([
+	{"id":"service_counter", "pos":Vector2(0.340,0.425), "size":Vector2(0.290,0.125)},
+	{"id":"left_tables", "pos":Vector2(0.340,0.660), "size":Vector2(0.190,0.160)},
+	{"id":"right_tables", "pos":Vector2(0.665,0.665), "size":Vector2(0.235,0.175)},
+	{"id":"stairs", "pos":Vector2(0.655,0.345), "size":Vector2(0.180,0.200)}
+])
+interactions = Array[Dictionary]([
+	{"id":"ch6_qiyun_sealed_letter", "pos":Vector2(0.585,0.565), "size":Vector2(0.105,0.085), "activation":"interact", "label":"拆阅陌生火漆手书", "action":"dialog:ch6_qiyun_letter", "interaction_visual_kind":"letter", "visual_texture":"res://art/props/interactive/interaction_letter_sealed_v1.png", "visual_render_size_px":Vector2(72,54), "require_flag":"ch6_ancient_road_letter_unlocked", "hide_flag":"ch6_qiyun_letter_read"}
+])
+portals = Array[Dictionary]([
+	{"id":"return_to_linxi", "pos":Vector2(0.500,0.795), "size":Vector2(0.125,0.075), "label":"返回林西村", "target_scene":"linxi_tutorial", "target_pos":Vector2(0.500,0.760)}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"inn_spawn", "pos":Vector2(0.500,0.590)},
+	{"id":"letter_front", "pos":Vector2(0.540,0.565)},
+	{"id":"inn_exit", "pos":Vector2(0.500,0.795)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"service_counter", "pos":Vector2(0.340,0.425)},
+	{"id":"left_tables", "pos":Vector2(0.340,0.660)},
+	{"id":"right_tables", "pos":Vector2(0.665,0.665)},
+	{"id":"stairs", "pos":Vector2(0.655,0.345)}
+])

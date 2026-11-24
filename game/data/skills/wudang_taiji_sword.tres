@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"wudang_taiji_sword"
+display_name = "太极剑法"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_sword_yinyang_v1.png"
+description = "剑随阴阳圆转，剑气扫向全体敌人。对每名敌人造成固定 44 + 内功攻击 × 120% 的伤害，穿透 24% 防御；配合玄武心经可进一步破防、积累内伤，并在命中后回气养血一次。"
+origin = "武当剑、掌两路共参阴阳后的至高剑理。剑谱只授圆转次序，真正的落点须在问心试炼中自悟。"
+kind = 0
+target = 1
+delivery = 0
+mp_cost = 32
+quality = 4
+required_insight = 7
+practice_base_cost = 44
+fixed_damage = 44
+attack_scaling = 120
+hit_count = 1
+base_hit_chance = 1.0
+animation_id = &"sword_tier_3"
+motion_style = 3
+required_weapon_type = &"sword"
+martial_category = &"sword"
+damage_type = 1
+defense_pierce_percent = 24
+internal_injury_gain = 22
+school = "wudang"
+complemented_by = "wudang_xuanwu_xinjing"
+complement_bonus_scaling = 10
+complement_bonus_desc = "玄武心经贯通剑圈，强化伤害、破防、内伤并回复气血与内力"

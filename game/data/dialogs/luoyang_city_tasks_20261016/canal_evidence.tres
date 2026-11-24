@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "残纸是一张改过日期的交货契，断绳上的白灰也与拖痕相同。货先藏在废仓，再被搬出去，确有人借假契挑起两帮争端。"
+on_end = "next:found"
+
+[sub_resource type="Resource" id="found"]
+script = ExtResource("2")
+node_id = &"found"
+speaker = "冷孤云"
+text = "把残契和泥样收好，回货场交给漕工头领，让他们先停手救人。"
+set_flags = Array[Dictionary]([{"key":"canal_grudge_evidence_found","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_canal_evidence"
+entry_node_id = &"start"
+required_story_flag = &"canal_grudge_warehouse_located"
+blocked_story_flag = &"canal_grudge_evidence_found"
+nodes = Array[Resource]([SubResource("start"), SubResource("found")])
+

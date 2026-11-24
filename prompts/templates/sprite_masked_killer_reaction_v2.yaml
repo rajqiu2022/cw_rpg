@@ -1,0 +1,22 @@
+id: sprite_masked_killer_reaction_v2
+description: Masked killer leader full-body reaction frame matching adopted battle art.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/characters/battle_masked_killer_leader_v1.png"
+  - "F:/Code/RPG_GAME/game/art/sprites/battle/masked_killer_leader_attack_f01.png"
+require_reference_images: true
+
+prompt_template: |
+  Use reference image 1 as the strict identity, costume, body, and palette reference for the masked killer leader. Use reference image 2 only to match the compact combat-sprite ink treatment and source orientation. Create ONE full-body 2.5D wuxia RPG combat animation frame, source character facing right so the runtime enemy flip faces the allied formation.
+
+  Preserve exactly: athletic male assassin; black cloth mask and black head wrap with only sharp eyes exposed; layered charcoal-black robe and trousers; black leather bracers and boots; narrow dark-red inner lining and red cloth accents; waist belt with multiple small throwing daggers; one short straight dagger. Crisp Hong Kong wuxia game ink outlines and restrained cel-painted shading, not photorealistic.
+
+  Reaction: {{reaction}}
+  Composition: one entire character only; mask, head, feet, dagger, cloak tips, and belt daggers fully visible inside the 1024x1024 image with at least 12 percent empty padding around the silhouette. Perfectly flat #00ff00 chroma-key background only: no ground, shadow, halo, scenery, text, UI, border, watermark, effect, second character, blood, or gore.
+
+  Avoid: cropped anatomy, bare face, hooded western ninja armor, red full costume, long sword, extra arms, spider, web, demon.
+
+variables:
+  reaction: "required"

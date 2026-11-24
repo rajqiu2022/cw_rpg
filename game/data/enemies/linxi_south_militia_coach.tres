@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"linxi_south_militia_coach"
+display_name = "林西乡勇教头"
+battle_actor_path = "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/ready_01.png"
+battle_actor_scale = 1.00
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/ready_01.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/ready_02.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/ready_03.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/move_01.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/move_02.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/move_03.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/attack_01.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/attack_02.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/attack_03.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/hit_01.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/hit_02.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/hit_03.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/defeat_01.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/defeat_02.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/defeat_03.png", "res://art/sprites/battle/linxi_spearmen/linxi_south_militia_coach/defeat_04.png")
+level = 2
+max_hp = 240
+max_mp = 32
+attack = 42
+defense = 8
+speed = 12
+skill_ids = Array[StringName]([&"basic_attack", &"heavy_swing"])
+aggression = 0.66
+drop_gold_min = 0
+drop_gold_max = 0
+drop_exp = 0
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([])

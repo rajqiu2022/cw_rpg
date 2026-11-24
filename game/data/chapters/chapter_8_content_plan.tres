@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ChapterContentPlan" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/chapter_content_plan.gd" id="1"]
+[resource]
+script=ExtResource("1")
+chapter=8
+title="雾散之后"
+main_scene_ids=Array[StringName]([&"ch8_s1_alliance_staging_ground",&"ch8_s2_mistwood_blockade",&"ch8_s3_manor_perimeter_encampment",&"ch8_s4_alliance_mechanism_gallery",&"ch8_s5_alliance_ceremonial_platform",&"ch8_s6_mingwu_main_hall",&"ch8_s7_mingwu_rear_sanctum"])
+main_quest_ids=Array[StringName]([&"q_ch8_main_01_alliance_muster",&"q_ch8_main_02_mistwood_blockade",&"q_ch8_main_03_false_order_matrix",&"q_ch8_main_04_drum_mist_mechanisms",&"q_ch8_main_05_final_alliance_roles",&"q_ch8_main_06_first_false_order",&"q_ch8_main_07_su_first_confrontation",&"q_ch8_main_08_su_xueying_authorization",&"q_ch8_main_09_final_evacuation",&"q_ch8_main_10_xueying_resolution",&"q_ch8_main_11_su_final_order",&"q_ch8_main_12_truth_disclosure",&"q_ch8_main_13_aftermath_returns"])
+side_quest_ids=Array[StringName]([&"q_ch8_side_01_camp_supplies",&"q_ch8_side_02_ash_tea"])
+story_battle_groups=Array[Dictionary]([{"id":"mistwood_blockade","role":"会盟首道阻截","recommended_level":13,"target_rounds":"6-8","enemy_ids":[&"ch8_mistwood_blockade_guard",&"ch8_mistwood_signal_burner"]},{"id":"alliance_mechanism_gallery","role":"会盟机关守卫","recommended_level":14,"target_rounds":"6-8","enemy_ids":[&"ch8_mechanism_warden",&"ch8_mist_valve_keeper"]},{"id":"first_false_order","role":"祭台首轮假令阻截","recommended_level":14,"target_rounds":"6-8","enemy_ids":[&"ch8_false_order_courier",&"ch8_false_order_escort"]},{"id":"xueying_last_guard","role":"薛影处置分支死战","recommended_level":15,"target_rounds":"8-10","enemy_ids":[&"ch8_xueying_last_guard"]},{"id":"su_final_order","role":"第三声止杀钟前终局战","recommended_level":25,"target_rounds":"10-12","enemy_ids":[&"ch8_su_wusheng_final"]}])
+estimated_main_minutes=150
+estimated_completionist_minutes=360

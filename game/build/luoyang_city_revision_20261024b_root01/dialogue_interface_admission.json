@@ -1,0 +1,21 @@
+{
+  "status": "ROOT_NPC_PRESENTATION_INTERFACE_FOR_SINGLE_FINAL_INTEGRATION",
+  "reviewed": true,
+  "formal_deployed": false,
+  "helper": {"path": "res://build/luoyang_city_revision_20261024b_dialog01/npc_conversation_CANDIDATE.gd", "sha256": "535fb1d33e32cfddcf1d09535ca2f88aa475264ec149217b3c1dd2af1e79b468"},
+  "Field_before_space_hooks": {"path": "res://build/luoyang_city_revision_20261024b_dialog01/portrait_successor04/Field_final_CANDIDATE.gd", "sha256": "a97631c54e31dff83b49b4b2c80ece5360d7c82f6ce41c576a29f54520dc1a1d"},
+  "UI_candidate": {"path": "res://build/luoyang_city_revision_20261024b_dialog01/fallback_successor02/stage_CANDIDATE/DialogBox_CANDIDATE.gd", "sha256": "fe8165682670f7bcc5689d963b456f5d9503ba7f6abece575ad4f04e82c9c337"},
+  "canonical_UI_expected_after_deploy": {"res://scripts/ui/dialog_box.gd": "fe8165682670f7bcc5689d963b456f5d9503ba7f6abece575ad4f04e82c9c337"},
+  "unchanged_DP": {"path": "res://scripts/autoload/dialog_player.gd", "sha256": "b2738778617e1dc64577f5ad24f1c5b34de3750c899caa7a467bca06a7cb8964", "provenance_receipt": "res://build/luoyang_hall_portal_fix_20261024a_source01/outputs/root_hall_ActorParent_exact22_stage01/receipt.json", "receipt_sha256": "8057916a71eaf433393593abad59b02bcdcec212ed213710231289e64b275392"},
+  "unchanged_existing_hero_media_explicitly_frozen": {
+    "res://art/characters/protagonist_portrait.png": "b173b5bdfb34b3674d598ee2d0330c5ab93b6a3cff1e605a35d13d057f278d2f",
+    "res://art/characters/protagonist_portrait.png.import": "40b61eecf4db90dd9c3e4766b7848abaa354fecb8187f0fc2134c5d6a734ddbc",
+    "res://.godot/imported/protagonist_portrait.png-1b5d339107322436211171f182271706.ctex": "338098af5d9f47c61cc9afd18001c3d9f7154ca490aba145c0eccb236877a035"
+  },
+  "four_family_portrait_source": "Reuse exact 12 PNG/import/ctex source_first entries for portrait_vegetable_seller_v1, portrait_linxi_farmer_v1, portrait_inn_waiter_v1 and portrait_street_merchant_v1 from fixed 805791 receipt. No media change or reimport.",
+  "ordinary_source_policy": "The helper, unchanged DP, new canonical UI and selected existing portraits are explicit ordinary source facts; do not add them to an OWNED exception merely to bypass a changed-file check. Merge only the two approved spatial task-position hooks into the reviewed Field candidate, then perform the exact whole-byte inverse against its canonical parent.",
+  "behavior_scope": ["Real selected walkable NPC interaction boundaries only", "Protagonist portrait and zero-effect short opening before original speaker", "Correct matching family portrait fallback; unknown is empty rather than guessed male", "Strip only authenticated exact zero-effect AP daily menu", "Six source-bound attributed uncertain rumors; no new audio credited", "Keep quest, trade and culture choices and original node IDs/effects", "Keep DP.play gate and original safe fallback; no reward or save-schema change"],
+  "checks": {"pure_helper": 17, "actual_Field_UI_functional_components": 42, "whole_42_run_pass": false, "cleanup_only_natural_exit": 0, "actual_final_NPC_Field_journey_pass": false},
+  "review_notes": "The 42 functional components passed but their original runner failed on freeing a locked signal emitter; retained as whole FAIL. The subsequent residual queue_free check passed without replaying the 42. Actual final live portraits/choices remain required.",
+  "no_formal_or_all_city_completion_credit": true
+}

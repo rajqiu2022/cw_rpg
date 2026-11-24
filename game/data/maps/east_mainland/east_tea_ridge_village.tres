@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="layout"]
+[resource]
+script = ExtResource("layout")
+schema_version = 5
+design_size = Vector2i(3072, 2048)
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.01302083, 0.02441406, 0.9781901, 0.02441406, 0.9781901, 0.97167969, 0.01302083, 0.97167969)])
+metadata/east_lane_tint = Color(0.87, 0.84, 0.76, 1)
+metadata/east_yards = Array[Dictionary]([
+	{"id": "leaf_sorting_yard", "surface": "earth", "repeat_px": 310, "tint": Color(0.87, 0.84, 0.76, 1), "points": PackedVector2Array(0.55338542, 0.52929688, 0.58919271, 0.50195312, 0.65104167, 0.49609375, 0.74218750, 0.49316406, 0.77311198, 0.50781250, 0.78776042, 0.54589844, 0.77473958, 0.57617188, 0.72916667, 0.58837891, 0.65429688, 0.58593750, 0.59244792, 0.59570312, 0.55664062, 0.57812500)},
+	{"id": "cottage_terrace", "surface": "earth", "repeat_px": 310, "tint": Color(0.87, 0.84, 0.76, 1), "points": PackedVector2Array(0.28059896, 0.63476562, 0.37434896, 0.62500000, 0.40039062, 0.64208984, 0.40690104, 0.67871094, 0.37109375, 0.70214844, 0.30957031, 0.69824219, 0.27604167, 0.67871094)}
+])
+metadata/east_routes = Array[Dictionary]([
+	{"id": "ridge_lane", "width_px": 122, "repeat_px": 310, "points": PackedVector2Array(0.42317708, 0.87402344, 0.43294271, 0.77148438, 0.45572917, 0.67871094, 0.48828125, 0.58837891, 0.47851562, 0.52246094, 0.44921875, 0.47558594, 0.42154948, 0.43750000, 0.40690104, 0.37841797), "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png"},
+	{"id": "shop_lane", "width_px": 108, "repeat_px": 310, "points": PackedVector2Array(0.48828125, 0.58837891, 0.53385417, 0.57714844, 0.59895833, 0.57128906, 0.65917969, 0.56396484, 0.72265625, 0.56152344), "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png"},
+	{"id": "picking_lane", "width_px": 80, "repeat_px": 310, "points": PackedVector2Array(0.28157552, 0.43164062, 0.34342448, 0.44335938, 0.42154948, 0.43750000, 0.44921875, 0.47558594, 0.50781250, 0.48339844, 0.54687500, 0.50781250, 0.55501302, 0.57519531), "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png"},
+	{"id": "home_lane", "width_px": 77, "repeat_px": 310, "points": PackedVector2Array(0.45572917, 0.67871094, 0.41015625, 0.69824219, 0.35319010, 0.69580078), "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png"}
+])
+visual_objects = Array[Dictionary]([
+	{"id": "tea_rows", "texture": "res://art/modules/sect_maps_20261029k/tea_rows.png", "pos": Vector2(0.29895109, 0.35052395), "scale": Vector2(0.32445141, 0.32445141), "sort_by_feet": true, "depth_sort_foot_y": 0.40771484},
+	{"id": "upper_tea_rows", "texture": "res://art/modules/sect_maps_20261029k/tea_rows.png", "pos": Vector2(0.34772564, 0.24755400), "scale": Vector2(0.35736677, 0.35736677), "sort_by_feet": true, "depth_sort_foot_y": 0.31054688},
+	{"id": "east_tea_rows", "texture": "res://art/modules/sect_maps_20261029k/tea_rows.png", "pos": Vector2(0.51547091, 0.38458195), "scale": Vector2(0.29467085, 0.29467085), "sort_by_feet": true, "depth_sort_foot_y": 0.43652344},
+	{"id": "lower_tea_rows", "texture": "res://art/modules/sect_maps_20261029k/tea_rows.png", "pos": Vector2(0.41626487, 0.52289144), "scale": Vector2(0.24686520, 0.24686520), "sort_by_feet": true, "depth_sort_foot_y": 0.56640625},
+	{"id": "tea_workshop", "texture": "res://art/modules/sect_maps_20261029k/tea_workshop.png", "pos": Vector2(0.69297185, 0.42576381), "scale": Vector2(0.50595238, 0.50595238), "sort_by_feet": true, "depth_sort_foot_y": 0.51025391, "collision_size": Vector2(0.13444010, 0.04003906), "collision_offset": Vector2(0.00527034, 0.06447056)},
+	{"id": "leaf_trays", "texture": "res://art/modules/east_tea_ridge/leaf_trays.png", "pos": Vector2(0.61220495, 0.52266563), "scale": Vector2(0.11559889, 0.11559889), "sort_by_feet": true, "depth_sort_foot_y": 0.54394531, "collision_size": Vector2(0.04296875, 0.02001953), "collision_offset": Vector2(-0.00022578, 0.01126991)},
+	{"id": "tea_chests", "texture": "res://art/modules/redrock_luoyang_standard_20261028b/cargo.png", "pos": Vector2(0.76110666, 0.50630175), "scale": Vector2(0.10744811, 0.10744811), "sort_by_feet": true, "depth_sort_foot_y": 0.52246094, "collision_size": Vector2(0.02148438, 0.01220703), "collision_offset": Vector2(0.00061209, 0.01005567)},
+	{"id": "stone_house", "texture": "res://art/modules/linxi_house_variety_20261109/herbal_drying_home.png", "pos": Vector2(0.33538327, 0.60004925), "scale": Vector2(0.29740362, 0.29740362), "sort_by_feet": true, "depth_sort_foot_y": 0.66162109, "collision_size": Vector2(0.10026042, 0.04052734), "collision_offset": Vector2(-0.00009681, 0.04130817)},
+	{"id": "ridge_pine", "texture": "res://art/modules/sect_maps_20261029k/wudang_pine.png", "pos": Vector2(0.58801564, 0.27762681), "scale": Vector2(0.29710145, 0.29710145), "sort_by_feet": true, "depth_sort_foot_y": 0.34667969, "collision_size": Vector2(0.03483073, 0.02539062), "collision_offset": Vector2(0.00280467, 0.05635756)},
+	{"id": "tea_guesthouse", "texture": "res://art/modules/miao_town_20261029f/house_side.png", "pos": Vector2(0.75614550, 0.26498308), "scale": Vector2(0.44076433, 0.44076433), "sort_by_feet": true, "depth_sort_foot_y": 0.33105469, "collision_size": Vector2(0.08235677, 0.03662109), "collision_offset": Vector2(0.00394564, 0.04776106)},
+	{"id": "bamboo_thicket", "texture": "res://art/modules/veg/veg_bamboo_cluster_a.png", "pos": Vector2(0.25266859, 0.50522359), "scale": Vector2(0.39583333, 0.39583333), "sort_by_feet": true, "depth_sort_foot_y": 0.54687500, "collision_size": Vector2(0.02376302, 0.01904297), "collision_offset": Vector2(-0.00006443, 0.03212992)},
+	{"id": "empty_leaf_cart", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png", "pos": Vector2(0.70303974, 0.58883231), "scale": Vector2(0.13095238, 0.13095238), "sort_by_feet": true, "depth_sort_foot_y": 0.60839844, "collision_size": Vector2(0.03352865, 0.01562500), "collision_offset": Vector2(0.00008526, 0.01175363)}
+])
+blockers = Array[Dictionary]([
+	{"id": "tea_rows_bed_0", "pos": Vector2(0.24867253, 0.35315219), "size": Vector2(0.02075391, 0.02701121), "walkability_margin": 0.0},
+	{"id": "tea_rows_bed_1", "pos": Vector2(0.27117839, 0.35099130), "size": Vector2(0.02425781, 0.06374646), "walkability_margin": 0.0},
+	{"id": "tea_rows_bed_2", "pos": Vector2(0.29543620, 0.35693376), "size": Vector2(0.02425781, 0.07130960), "walkability_margin": 0.0},
+	{"id": "tea_rows_bed_3", "pos": Vector2(0.32104167, 0.36665780), "size": Vector2(0.02695312, 0.06482691), "walkability_margin": 0.0},
+	{"id": "tea_rows_bed_4", "pos": Vector2(0.34395182, 0.37043937), "size": Vector2(0.01886719, 0.05078108), "walkability_margin": 0.0},
+	{"id": "tea_rows_bed_5", "pos": Vector2(0.35742839, 0.36773825), "size": Vector2(0.00808594, 0.02593077), "walkability_margin": 0.0},
+	{"id": "upper_tea_rows_bed_0", "pos": Vector2(0.29234635, 0.25044888), "size": Vector2(0.02285938, 0.02975148), "walkability_margin": 0.0},
+	{"id": "upper_tea_rows_bed_1", "pos": Vector2(0.31713542, 0.24806876), "size": Vector2(0.02671875, 0.07021350), "walkability_margin": 0.0},
+	{"id": "upper_tea_rows_bed_2", "pos": Vector2(0.34385417, 0.25461409), "size": Vector2(0.02671875, 0.07854391), "walkability_margin": 0.0},
+	{"id": "upper_tea_rows_bed_3", "pos": Vector2(0.37205729, 0.26532462), "size": Vector2(0.02968750, 0.07140356), "walkability_margin": 0.0},
+	{"id": "upper_tea_rows_bed_4", "pos": Vector2(0.39729167, 0.26948983), "size": Vector2(0.02078125, 0.05593279), "walkability_margin": 0.0},
+	{"id": "upper_tea_rows_bed_5", "pos": Vector2(0.41213542, 0.26651468), "size": Vector2(0.00890625, 0.02856142), "walkability_margin": 0.0},
+	{"id": "east_tea_rows_bed_0", "pos": Vector2(0.46980729, 0.38696895), "size": Vector2(0.01884896, 0.02453192), "walkability_margin": 0.0},
+	{"id": "east_tea_rows_bed_1", "pos": Vector2(0.49024740, 0.38500640), "size": Vector2(0.02203125, 0.05789534), "walkability_margin": 0.0},
+	{"id": "east_tea_rows_bed_2", "pos": Vector2(0.51227865, 0.39040342), "size": Vector2(0.02203125, 0.06476428), "walkability_margin": 0.0},
+	{"id": "east_tea_rows_bed_3", "pos": Vector2(0.53553385, 0.39923491), "size": Vector2(0.02447917, 0.05887662), "walkability_margin": 0.0},
+	{"id": "east_tea_rows_bed_4", "pos": Vector2(0.55634115, 0.40266938), "size": Vector2(0.01713542, 0.04612002), "walkability_margin": 0.0},
+	{"id": "east_tea_rows_bed_5", "pos": Vector2(0.56858073, 0.40021619), "size": Vector2(0.00734375, 0.02355065), "walkability_margin": 0.0},
+	{"id": "lower_tea_rows_bed_0", "pos": Vector2(0.37800944, 0.52489119), "size": Vector2(0.01579102, 0.02055201), "walkability_margin": 0.0},
+	{"id": "lower_tea_rows_bed_1", "pos": Vector2(0.39513346, 0.52324703), "size": Vector2(0.01845703, 0.04850274), "walkability_margin": 0.0},
+	{"id": "lower_tea_rows_bed_2", "pos": Vector2(0.41359049, 0.52776847), "size": Vector2(0.01845703, 0.05425731), "walkability_margin": 0.0},
+	{"id": "lower_tea_rows_bed_3", "pos": Vector2(0.43307292, 0.53516719), "size": Vector2(0.02050781, 0.04932482), "walkability_margin": 0.0},
+	{"id": "lower_tea_rows_bed_4", "pos": Vector2(0.45050456, 0.53804448), "size": Vector2(0.01435547, 0.03863778), "walkability_margin": 0.0},
+	{"id": "lower_tea_rows_bed_5", "pos": Vector2(0.46075846, 0.53598927), "size": Vector2(0.00615234, 0.01972993), "walkability_margin": 0.0}
+])
+portals = Array[Dictionary]([
+	{"id": "east_road_return", "label": "返回东大陆驿道", "pos": Vector2(0.42317708, 0.87402344), "size": Vector2(0.04394531, 0.05371094), "target_scene": "east_mainland_overworld", "target_pos": Vector2(0.85481771, 0.18774414), "show_destination_label": true}
+])

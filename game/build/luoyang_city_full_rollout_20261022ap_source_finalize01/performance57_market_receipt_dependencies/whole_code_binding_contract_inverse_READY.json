@@ -1,0 +1,201 @@
+{
+  "status": "ROOT43_MARKET_COMPLETE_PARENT_AND_NECESSARY_LITERAL_SUCCESSORS_BUILD_ONLY",
+  "records": {
+    "adapter": {
+      "target": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance30_domain_parent_copy_candidate01/finite_adapter_domain_copies_CANDIDATE.gd",
+        "sha256": "5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/market_parent_receipt_fix_candidate_epoch01/finite_adapter_market_complete_parent_CANDIDATE.gd",
+        "sha256": "cf2aa3da4f8dbafd30d48d9310d69d7eacb9f17d25e47ce02ca221835eff3736"
+      },
+      "hunks": [
+        {
+          "old": "static func _map_parent(scene: SceneScript,current: Dictionary,data: Dictionary,state: Dictionary,domain: String) -> Dictionary:\n\tif domain not in [\"yamen\",\"market\"]: return {}\n\tif not _state_matches(scene,state,domain) or not _same(data,_packets[domain]): return {}\n\tvar child: Dictionary=data.record.duplicate(true)\n\tfor key: String in [\"assembled_runtime_binding_sha\",\"assembled_parent_task_semantics_preserved\",\"annex_runtime_binding_sha\",\"annex_parent_semantics_unchanged\"]:\n\t\tif not current.has(key): child.erase(key)\n\tif not _same(current,child): return {}\n\tvar parent: Dictionary=_parents[domain].record.duplicate(true)\n\tfor key: String in [\"assembled_runtime_binding_sha\",\"assembled_parent_task_semantics_preserved\",\"annex_runtime_binding_sha\",\"annex_parent_semantics_unchanged\"]:\n\t\tif not current.has(key): parent.erase(key)\n\treturn _copy_parent_pair(parent,domain)",
+          "new": "static func _map_parent(scene: SceneScript,current: Dictionary,data: Dictionary,state: Dictionary,domain: String) -> Dictionary:\n\tif domain not in [\"yamen\",\"market\"]: return {}\n\tif not _state_matches(scene,state,domain) or not _same(data,_packets[domain]): return {}\n\tvar child: Dictionary=data.record.duplicate(true)\n\tfor key: String in [\"assembled_runtime_binding_sha\",\"assembled_parent_task_semantics_preserved\",\"annex_runtime_binding_sha\",\"annex_parent_semantics_unchanged\"]:\n\t\tif not current.has(key): child.erase(key)\n\tif not _same(current,child): return {}\n\tvar parent: Dictionary=_parents[domain].record.duplicate(true)\n\tif domain==\"market\":\n\t\t# AP/AO inverse consumes the complete frozen parent before B strips\n\t\t# the already-verified runtime receipts for its final two comparisons.\n\t\tvar pair: Dictionary=_copy_parent_pair(parent,domain)\n\t\tfor key: String in [\"assembled_runtime_binding_sha\",\"assembled_parent_task_semantics_preserved\",\"annex_runtime_binding_sha\",\"annex_parent_semantics_unchanged\"]:\n\t\t\tif not current.has(key): pair.current_ap_record.erase(key)\n\t\treturn pair\n\tfor key: String in [\"assembled_runtime_binding_sha\",\"assembled_parent_task_semantics_preserved\",\"annex_runtime_binding_sha\",\"annex_parent_semantics_unchanged\"]:\n\t\tif not current.has(key): parent.erase(key)\n\treturn _copy_parent_pair(parent,domain)"
+        }
+      ]
+    },
+    "C": {
+      "target": "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/C_adapter_pin_CANDIDATE.gd",
+        "sha256": "b14a1042421029651fe0283d3daf8f6e52bea96c9047b79095912f1eb45dc9be"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/C_CANDIDATE.gd",
+        "sha256": "1dbd8c1357608a96c04a602f2c0a3c5f4478928bbc969c43963c6f430ef2c2b7"
+      },
+      "hunks": [
+        {
+          "old": "const FINITE_ADAPTER_SHA := \"5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84\"",
+          "new": "const FINITE_ADAPTER_SHA := \"cf2aa3da4f8dbafd30d48d9310d69d7eacb9f17d25e47ce02ca221835eff3736\""
+        }
+      ]
+    },
+    "DT": {
+      "target": "res://scripts/city/luoyang_district_life_20261016f.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/district_projection_subspans_epoch01/DT_diagnostic_CANDIDATE.gd",
+        "sha256": "cfb49f34d0bf68ebb6494b5c2e2a5dc3d98c127940d22c8acccc4c6bd680f0d5"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/DT_CANDIDATE.gd",
+        "sha256": "ff20b43ec134188a1d90b1239593590f199e1483f88be0c715d0b5656e6ba7ed"
+      },
+      "hunks": [
+        {
+          "old": "const FINITE_ADAPTER_SHA := \"5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84\"",
+          "new": "const FINITE_ADAPTER_SHA := \"cf2aa3da4f8dbafd30d48d9310d69d7eacb9f17d25e47ce02ca221835eff3736\""
+        }
+      ]
+    },
+    "Fade": {
+      "target": "res://scripts/city/luoyang_district_life_fade_20261016f.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Fade_adapter_pin_CANDIDATE.gd",
+        "sha256": "58462561e7db2b3f26fd6e5a55b891fc85002d86c51228a771f354b3ca9311a8"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/Fade_CANDIDATE.gd",
+        "sha256": "ad42f13efa29cef61f9a24125e1bdcc9c08003fd0336023ae44026dc1097d526"
+      },
+      "hunks": [
+        {
+          "old": "const FINITE_ADAPTER_SHA := \"5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84\"",
+          "new": "const FINITE_ADAPTER_SHA := \"cf2aa3da4f8dbafd30d48d9310d69d7eacb9f17d25e47ce02ca221835eff3736\""
+        }
+      ]
+    },
+    "B": {
+      "target": "res://scripts/city/luoyang_precomputed_bundle_20261018r.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Bundle_merged_copy_adapter_fade_CANDIDATE.gd",
+        "sha256": "ade264af748e1beaf211d4a5e84d956deb50a312a29570c4e5a1fc73000c6703"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/B_CANDIDATE.gd",
+        "sha256": "2488a13465cc992071440fa223259586dba552259ed0e60e3271ce7a1e7d61ae"
+      },
+      "hunks": [
+        {
+          "old": "const FINITE_ADAPTER_SHA := \"5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84\"",
+          "new": "const FINITE_ADAPTER_SHA := \"cf2aa3da4f8dbafd30d48d9310d69d7eacb9f17d25e47ce02ca221835eff3736\""
+        },
+        {
+          "old": "\tvar next: String=\"58462561e7db2b3f26fd6e5a55b891fc85002d86c51228a771f354b3ca9311a8\"",
+          "new": "\tvar last_published: String=\"58462561e7db2b3f26fd6e5a55b891fc85002d86c51228a771f354b3ca9311a8\"\n\tvar next: String=\"ad42f13efa29cef61f9a24125e1bdcc9c08003fd0336023ae44026dc1097d526\""
+        },
+        {
+          "old": "\tvar candidate: String=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Fade_adapter_pin_CANDIDATE.gd\"",
+          "new": "\tvar candidate: String=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/Fade_CANDIDATE.gd\""
+        },
+        {
+          "old": "and finite_previous in history and delta.get(\"current_before_sha256\")==finite_previous",
+          "new": "and finite_previous in history and last_published in history and delta.get(\"current_before_sha256\")==last_published"
+        }
+      ]
+    },
+    "runtime_contract": {
+      "target": "res://data/luoyang_culture_integration_20261019x/runtime_contract.json",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/runtime_contract_C_literal_READY.json",
+        "sha256": "59cf1ebdac2f8f17b644b00f36e241b8b4e43275a50ec6a8b1eb7d89632e59c1"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/runtime_contract_C_literal_READY.json",
+        "sha256": "d258350b1b72377fb4189918178a1323de9506934d015859a4d5823271961b9b"
+      },
+      "hunks": [
+        {
+          "old": "b14a1042421029651fe0283d3daf8f6e52bea96c9047b79095912f1eb45dc9be",
+          "new": "1dbd8c1357608a96c04a602f2c0a3c5f4478928bbc969c43963c6f430ef2c2b7"
+        }
+      ]
+    },
+    "Coordinator": {
+      "target": "res://scripts/city/luoyang_cultural_sidequests_coordinator_20261019x.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/Coordinator_C_contract_CANDIDATE.gd",
+        "sha256": "fd54339b283735fd3859bd91499405a17a1ac62ba041ad0e3b65db8d9bec77b7"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/Coordinator_CANDIDATE.gd",
+        "sha256": "f7e34c129c7a4e0a35eb8a336325e4b8e03b079578a2ca6f8c27378e88765821"
+      },
+      "hunks": [
+        {
+          "old": "const CONTRACT_SHA := \"59cf1ebdac2f8f17b644b00f36e241b8b4e43275a50ec6a8b1eb7d89632e59c1\"",
+          "new": "const CONTRACT_SHA := \"d258350b1b72377fb4189918178a1323de9506934d015859a4d5823271961b9b\""
+        }
+      ]
+    },
+    "temple_binding": {
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/temple_binding_Culture_literals_READY.json",
+        "sha256": "2682fc0c3bd74e26d26149e56b9c736f7183193ae53c37b46f1754be89488aab"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/temple_binding_three_literals_READY.json",
+        "sha256": "96ef83124598579651061209f667f4926b3658db66d35df98a6bc87303688602"
+      },
+      "hunks": [
+        {
+          "old": "b14a1042421029651fe0283d3daf8f6e52bea96c9047b79095912f1eb45dc9be",
+          "new": "1dbd8c1357608a96c04a602f2c0a3c5f4478928bbc969c43963c6f430ef2c2b7"
+        },
+        {
+          "old": "fd54339b283735fd3859bd91499405a17a1ac62ba041ad0e3b65db8d9bec77b7",
+          "new": "f7e34c129c7a4e0a35eb8a336325e4b8e03b079578a2ca6f8c27378e88765821"
+        },
+        {
+          "old": "59cf1ebdac2f8f17b644b00f36e241b8b4e43275a50ec6a8b1eb7d89632e59c1",
+          "new": "d258350b1b72377fb4189918178a1323de9506934d015859a4d5823271961b9b"
+        }
+      ],
+      "merged189_only3values_other186_whole_same": true
+    },
+    "Temple": {
+      "target": "res://scripts/city/luoyang_temple_assembly_20261016.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/Temple_Culture_binding_CANDIDATE.gd",
+        "sha256": "927bbe01f918c9d0406a817677348b00d7f7bfbd52f5452c19b449f97c29472a"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/Temple_CANDIDATE.gd",
+        "sha256": "a947ec6f1778ed4396f76bf26d89bae9cc40103d68f587a63ead5e7fcf152fea"
+      },
+      "hunks": [
+        {
+          "old": "const BIND_PATH=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance40_culture_C_source_repair/temple_binding_Culture_literals_READY.json\"",
+          "new": "const BIND_PATH=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance57_market_receipt_dependencies/temple_binding_three_literals_READY.json\""
+        },
+        {
+          "old": "const BIND_SHA=\"2682fc0c3bd74e26d26149e56b9c736f7183193ae53c37b46f1754be89488aab\"",
+          "new": "const BIND_SHA=\"96ef83124598579651061209f667f4926b3658db66d35df98a6bc87303688602\""
+        }
+      ]
+    }
+  },
+  "all_whole_byte_forward_inverse": true,
+  "culture_contract_one_C_value_whole_typed_inverse": true,
+  "Temple189_exact3_other186_same": true,
+  "source_FIRST_FINAL_and_all_native_whole_inverse_gates_unchanged": true,
+  "only_runtime_behavior_delta": "System exactMarket adapter branch; all othercode edits sourceSHA/provenance literals only. Yamen unchanged, no22ECA.",
+  "Root_preparation": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_root01/integration43/source_preparation30_approval_READY.json",
+    "sha256": "93e5b14e78f070a5c035fbe5a06d4477c9c622967ff3adb0b8788a18f71708e7"
+  },
+  "Root_EOF": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_root01/integration43/adapter_exact_EOF_transport_preparation_approval_READY.json",
+    "sha256": "25ff1b9474bb50ccc149e75a68959ccb0211c139d15f96c023983ba093ed2387"
+  },
+  "adapter_intermediate": {
+    "sha256": "9fc421182b8143f3fe0711322fe51788b443b5a5132dd7c524d961562b0f0025",
+    "bytes": 31207,
+    "sole_final0A_to_remove_after_actualpatch": true
+  },
+  "engine_Stage_collector_native_decode_formal_calls": 0
+}

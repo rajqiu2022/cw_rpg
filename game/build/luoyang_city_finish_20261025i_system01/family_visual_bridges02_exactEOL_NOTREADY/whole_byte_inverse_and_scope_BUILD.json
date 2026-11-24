@@ -1,0 +1,52 @@
+{
+  "status": "BUILD_NOTREADY_STATIC_WHOLE_BYTE_INVERSE_NOT_ENGINE_OR_RUNTIME_PASS",
+  "parent": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/docks_gallery_family_repair01/closure_READY01/Field_READY.gd",
+    "sha256": "306941a8f477e4ae0ea9926cb799808cc7fb41abcde213226838067475f12f98"
+  },
+  "candidate": {
+    "path": "res://build/luoyang_city_finish_20261025i_system01/family_visual_bridges02_exactEOL_NOTREADY/Field_family_visuals_CANDIDATE.gd",
+    "sha256": "b324bbc4f6f6ec963e0a7598dc8128164a212723b419e921077553c93417395c",
+    "bytes": 266730
+  },
+  "hunks": [
+    {
+      "old": "func _release_finish25i() -> void:\n",
+      "new": "\n# Exact original Family storage + the real finish Weak lease; setup only.\n# This does not grant FINAL, change owner tokens or replace the original match.\nfunc _finish25i_family_visual_setup_matches(family: Variant, kind: String) -> bool:\n\tif _current_scene == null or _current_scene.map_layout == null or _finish25i == null or not _scene_rebuilding or _field_loading_failed or not is_instance_valid(world_container) or not _finish25i._owned(true,true): return false\n\tif _finish25i.get_script() != _finish25i_script() or not family is GDScript: return false\n\tvar expected_path: String = \"res://scripts/city/luoyang_quarters_family_20261022ap.gd\" if kind == \"QUARTER_ORIGINAL\" else (\"res://scripts/city/luoyang_estate_family_20261021am.gd\" if kind == \"ESTATE_ORIGINAL\" else \"\")\n\tif expected_path.is_empty() or family.resource_path != expected_path or not family.matches(_current_scene): return false\n\tvar state: Dictionary = _finish25i.get(\"_state\")\n\tif state.is_empty() or state.get(\"owner_kind\") != kind or state.get(\"released\",true) or not state.get(\"field\") is WeakRef or state.field.get_ref() != self or not state.get(\"scene\") is WeakRef or state.scene.get_ref() != _current_scene or not state.get(\"layout\") is WeakRef or state.layout.get_ref() != _current_scene.map_layout: return false\n\tvar original: Dictionary = family.original_receipt_for(_current_scene)\n\tif original.is_empty() or original.get(\"serial\") != state.get(\"token\") or original.get(\"key\") != state.get(\"owner_key\") or var_to_bytes(original.get(\"source_first\")) != var_to_bytes(state.get(\"first\")): return false\n\tif not state.get(\"first\") is Dictionary or not state.first.has(expected_path) or not state.get(\"payload\") is Dictionary: return false\n\tif state.get(\"binding_sha\") != _finish25i.get_script().BIND_SHA or var_to_bytes(state.get(\"parent_blockers\")) != var_to_bytes(_current_scene.map_layout.blockers) or var_to_bytes(state.payload.get(\"parent_native_navigation\")) != var_to_bytes(_current_scene.map_layout.visual_objects): return false\n\treturn true\n\n# Only restore the original source-bound water visual skipped by finish bodies.\n# Never call native_geometry.install or create a second set of original bodies.\nfunc _finish25i_install_original_garden_water(collision_data: Array) -> bool:\n\tif _current_scene == null or _current_scene.scene_id != &\"luoyang_riverside_garden_20261022ap\": return false\n\tvar family: Variant = load(\"res://scripts/city/luoyang_quarters_family_20261022ap.gd\")\n\tif not _finish25i_family_visual_setup_matches(family,\"QUARTER_ORIGINAL\") or _world_size != Vector2(3072,2048) or not is_instance_valid(_visual_layer) or _visual_layer.get_parent() != world_container: return false\n\tif var_to_bytes(collision_data) != var_to_bytes(_current_scene.map_layout.blockers) or _visual_layer.get_node_or_null(\"APGardenSameCaptureWater\") != null or _visual_layer.get_node_or_null(\"APGardenSameCaptureRiver25h\") != null: return false\n\tvar state: Dictionary = _finish25i.get(\"_state\")\n\tvar native_path: String = \"res://scripts/city/luoyang_quarters_native_geometry_20261022ap.gd\"\n\tvar river_path: String = \"res://build/luoyang_garden_river_20261025h_source01/garden_river_visual_NOTREADY.gd\"\n\tfor path: String in [native_path,river_path]:\n\t\tif not state.first.has(path) or FileAccess.get_sha256(path) != state.first[path]: return false\n\tvar native_geometry: Variant = load(native_path)\n\tif not native_geometry is GDScript or native_geometry.resource_path != native_path or not native_geometry.can_instantiate() or not _current_scene.has_meta(\"ap_garden_river25h\") or not family.garden_river_source_bound_scene(_current_scene): return false\n\tvar checked: Dictionary = native_geometry.garden_water(self,_current_scene,collision_data,family)\n\tif checked.get(\"ok\") != true: return false\n\tvar water: Polygon2D = checked.get(\"node\") as Polygon2D\n\tif not is_instance_valid(water): return false\n\tvar receipt: Variant = water.get_meta(\"garden_river_visual_receipt\",null)\n\tif water.get_parent() != null or water.name != &\"APGardenSameCaptureRiver25h\" or water.z_index != -18 or checked.get(\"river_visual_polygons\") != 1 or checked.get(\"river_physical_water_pieces\") != 2 or not receipt is Dictionary or receipt.get(\"shore_tiles\",0) <= 0 or receipt.get(\"same_native_water_minus_deck_physics_and_mask\") != true or not _finish25i._owned(true,true):\n\t\twater.free();return false\n\t_visual_layer.add_child(water)\n\treturn water.get_parent() == _visual_layer\n\nfunc _release_finish25i() -> void:\n"
+    },
+    {
+      "old": "\t\t_collision_bodies.append_array(finish_bodies.bodies)\n\t\treturn\n",
+      "new": "\t\t_collision_bodies.append_array(finish_bodies.bodies)\n\t\tif _current_scene.scene_id == &\"luoyang_riverside_garden_20261022ap\" and not _finish25i_install_original_garden_water(collision_data):\n\t\t\t_field_loading_failed=true;_scene_rebuilding=false;push_error(\"[Field] Finish25i original source-bound Garden water visual rejected\");return\n\t\treturn\n"
+    },
+    {
+      "old": "\tif (SceneRouter.layered_world_contract(_current_scene) != null or OUTSKIRTS.is_native(_current_scene) or LUOYANG_V3.is_v3(_current_scene)) and _v14_modular_overlap == null:\n",
+      "new": "\tif _current_scene.scene_id == &\"luoyang_estate_riverside_20261021ai\" and _finish25i != null and _v14_modular_overlap == null:\n\t\tvar estate_family: Variant = load(\"res://scripts/city/luoyang_estate_family_20261021am.gd\")\n\t\tif not _finish25i_family_visual_setup_matches(estate_family,\"ESTATE_ORIGINAL\"):\n\t\t\t_field_loading_failed=true;push_error(\"[Field] Estate original Family finish depth owner rejected\");return\n\t\t_v14_modular_overlap=V14_MODULAR_OVERLAP.new();_v14_modular_overlap.configure(world_container);_create_v14_late_depth_refresh()\n\tif (SceneRouter.layered_world_contract(_current_scene) != null or OUTSKIRTS.is_native(_current_scene) or LUOYANG_V3.is_v3(_current_scene)) and _v14_modular_overlap == null:\n"
+    }
+  ],
+  "verification": {
+    "physical_forward_complete_bytes_equal": true,
+    "physical_reverse_complete_bytes_equal": true,
+    "hunk_occurrences_each_exactly_one": true,
+    "preserved_LF_and_all_three_trailing_LF": true,
+    "engine_calls": 0,
+    "canonical_writes": 0
+  },
+  "scope": {
+    "Garden": "Exact original Quarter matches/storage+Weak scene/layout/Field/serial/key/FIRST; original collision_data/native blockers only; strict original NG.garden_water (not NG.install); same old source and fullRGBA/Atlas/16shore constructor, duplicate two-name rejection, original z=-18 and VisualLayer; no navigation/body/mask change.",
+    "Estate": "Exact original Estate Family matches/storage+Weak scene/layout/Field/serial/key/FIRST; instantiate existing V14_MODULAR_OVERLAP, configure original world then retain unchanged finish.admit_depth and ordinary per-prop/actor alpha/depth registration.",
+    "all_others": "No changes; original helper/runtime/NG/Family/culture/portal/Scene/Layout files unchanged."
+  },
+  "root_authority": "Root approved only Garden strict original visual and Estate original V14 setup branch; no actual Field/ART pass claimed.",
+  "future_mechanical_seal": "Source may mechanically replace existing runtime path/SHA literals together with the necessary BIND successor, preserving every function; original parent994E/ED3B proof retained.",
+  "declared_family_source_evidence": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/culture_Router_pin_repair01/unified24_READY01/maps/expected_Family_sources.json",
+    "sha256": "d9ea0812f5add110b27e020575486a6560774841a038ba03d260a6060475261c",
+    "native_geometry": "1d11051c4ed6f90d4555518449d496234efa032d0b43e33b5051e7b58fe0edc5",
+    "river": "435dc272b99e591b2aedf2ca044f17f2a66cd37f113465840d2b51eeaf311fe6"
+  },
+  "preserved_draft01": {
+    "path": "res://build/luoyang_city_finish_20261025i_system01/family_visual_bridges01_NOTREADY/Field_family_visuals_CANDIDATE.gd",
+    "sha256": "44ef4ef225d76a99ea322e3928f55636de3e36726dfec64dcacd60948fa21875",
+    "difference": "Only final two LF missing in unverified working transport; preserved, do not consume."
+  }
+}

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "杜青衫"
+portrait_path = "res://art/characters/portrait_duqingshan_steady.png"
+text = "冷小子，剑已经在炉边候着了。不过你师傅还没发话，我不敢先给你。先去找刑老头，把该说的话说完。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "杜青衫"
+portrait_path = "res://art/characters/portrait_duqingshan_steady.png"
+text = "别看我。我只管打铁，不管师徒离别。你师傅那张冷脸，今天比淬火水还凉。"
+voice_emotion = "concerned"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_tutorial_duqingshan_idle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2")])

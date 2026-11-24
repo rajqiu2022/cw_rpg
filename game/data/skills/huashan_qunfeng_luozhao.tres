@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"huashan_qunfeng_luozhao"
+display_name = "华山剑法·群峰落照"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_sword_cross_v1.png"
+description = "借高处回身挥出横贯战阵的剑光，对敌方全体造成外功伤害。"
+origin = "华山弟子在群峰晚照中归纳出的阵战剑路，威力分散，却能同时压住多名敌人的进势。"
+kind = 0
+target = 1
+delivery = 2
+mp_cost = 14
+quality = 2
+required_insight = 5
+practice_base_cost = 20
+fixed_damage = 10
+attack_scaling = 82
+hit_count = 1
+base_hit_chance = 0.94
+animation_id = &"sword_tier_2"
+motion_style = 1
+required_weapon_type = &"sword"
+martial_category = &"sword"
+damage_type = 0
+school = "huashan"
+complemented_by = "huashan_zixia_shengong"
+complement_bonus_scaling = 7
+complement_bonus_desc = "紫霞真气延展横贯剑光，全体伤害提高"
+

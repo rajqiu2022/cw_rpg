@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "冷孤云"
+text = "告示只说明有人失踪，不能代替证词。先分别问货郎、药铺掌柜，再回守村人处核对炭车去向。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_market_investigation"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

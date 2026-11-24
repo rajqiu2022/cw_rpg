@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "老纸匠"
+text = "旧货箱的藤皮能用。你带来的这块水印木模也怪，鱼鳞纹是十八年前那批官纸才有的。"
+on_end = "next:page"
+
+[sub_resource type="Resource" id="page"]
+script = ExtResource("2_node")
+node_id = &"page"
+speaker = "冷孤云"
+text = "木模夹层藏着最后一页。纸、墨、断口都与前两页相合。"
+give_items = Array[Dictionary]([{"id":"canglong_fragment_lower","count":1}])
+set_flags = Array[Dictionary]([{"key":"luoyang_paper_helped","value":true}, {"key":"canglong_lower_found","value":true}])
+accept_quest = &"q_secret_canglong_three_pages"
+complete_quest = &"q_ch4_side_02_luoyang_paper"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch4_luoyang_paper_turnin"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("page")])

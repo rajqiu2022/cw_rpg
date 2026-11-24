@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch3_main_00_assembly_clues"
+title = "大会验案"
+kind = 0
+desc_not_started = "五派将死者伤势与现场证物摆上长案，等待各方共同复核。"
+desc_in_progress = "依次查看伤口拓图、崭新令牌与旧纸笔迹，再向大会执事汇总。"
+desc_completed = "三项证物互相矛盾：有人正在把不同门派的痕迹拼成一条过于整齐的线索。"
+tracker_hint = "武林大会 · 长案前"
+completion_triggers = Array[String](["flag_set:assembly_evidence_checked"])
+reward_gold = 10
+reward_exp = 25
+reward_items = Array[Dictionary]([])

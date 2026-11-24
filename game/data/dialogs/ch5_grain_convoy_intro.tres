@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "古峰护粮守卫"
+text = "他们穿着烈云盟衣裳，却专挑粮车和脚夫下手。真要寻仇，何必先断灾民口粮？"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "先保住人和粮。旗号真假，打完以后看针脚、兵器和药粉。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_grain_convoy_intro"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

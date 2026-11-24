@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "古峰护粮守卫"
+text = "想去会一会伪旗统领？先替车队拔掉沿路三处暗哨。回赈粮路找翻车旁的劫粮哨，再上雪岭关找坡上的截路哨，最后进废矿找坑道哨。清完回来，我把押车的玄铁重甲给你，再付六十两。"
+accept_quest = &"q_ch5_side_02_patrol_blades"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_patrol_offer"
+nodes = Array[Resource]([SubResource("start")])

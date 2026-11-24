@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 5
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_mask_path = "res://art/navigation_masks/openworld_city_v3/bianzhou_walk_v3.png"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.385,1.000, 0.625,1.000, 0.625,0.000, 0.385,0.000),
+	PackedVector2Array(0.055,0.255, 0.945,0.255, 0.945,0.735, 0.055,0.735),
+	PackedVector2Array(0.225,0.185, 0.775,0.185, 0.835,0.300, 0.800,0.790, 0.205,0.790, 0.165,0.305)
+])
+blockers = Array[Dictionary]([{"id":"central_notice_board","pos":Vector2(0.835,0.395),"size":Vector2(0.115,0.125)}])
+interactions = Array[Dictionary]([{"id":"bianzhou_bounty_board","label":"查看汴州府缉捕榜","pos":Vector2(0.795,0.520),"size":Vector2(0.200,0.260),"activation":"interact","action":"bounty_board:bianzhou","visual_baked":true,"baked_feature":"坊市东侧实体通缉榜","clickable":true}])
+portals = Array[Dictionary]([{"id":"return_world","label":"离开汴州 · 江湖大地图","pos":Vector2(0.505,0.955),"size":Vector2(0.170,0.075),"action":"world_map","marker_rotation_degrees":180.0},{"id":"old_post","label":"出城历练 · 中原旧驿（2～6级）","pos":Vector2(0.505,0.065),"size":Vector2(0.140,0.080),"target_scene":"openworld_bianzhou_old_post","target_pos":Vector2(0.50,0.88)}])
+walkable_probes = Array[Dictionary]([{"id":"arrival","pos":Vector2(0.505,0.900)},{"id":"board_front","pos":Vector2(0.770,0.620)},{"id":"west_market_front","pos":Vector2(0.310,0.520)},{"id":"east_market_front","pos":Vector2(0.700,0.620)},{"id":"north_road","pos":Vector2(0.505,0.100)}])
+blocked_probes = Array[Dictionary]([{"id":"southwest_roof","pos":Vector2(0.100,0.900)},{"id":"southeast_roof","pos":Vector2(0.900,0.900)},{"id":"northwest_shop","pos":Vector2(0.100,0.100)}])

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="offer"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "茗雾断卷客"
+text = "正路我不拦你。但那份底册若从我眼前过去，我的刀可不答应。"
+choices = Array[Dictionary]([{"text":"迎战","action":"battle:ch6_archive_exit_enforcer"},{"text":"暂且离开","next":"end"}])
+[resource]
+script = ExtResource("1")
+dialog_id = &"encounter_ch6_archive_exit_enforcer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("offer")])

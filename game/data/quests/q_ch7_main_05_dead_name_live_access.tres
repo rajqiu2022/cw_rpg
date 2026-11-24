@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_05_dead_name_live_access"
+title = "死名活权"
+kind = 0
+desc_not_started = "录事证明死者暗号仍被使用，需要查清暗号登记人，并确认使用发生在死亡记录之后。"
+desc_in_progress = "前往茗雾权限档案房核对注销册，并在烈云安置档案室询问保存旧渡副签的记档人。"
+desc_completed = "注销册确认暗号登记在薛影名下，旧渡副签证明该权限在死亡记录后仍被调用。现有证据只能证明“薛影名下权限仍活着”，尚不能确认实际使用者。"
+tracker_hint = "茗雾权限档案房 / 烈云安置档案室"
+completion_triggers = Array[String](["evidence_acquired:ev_ch7_mingwu_revoked_access_roll", "testimony_heard:ts_ch7_lieyun_posthumous_code_use"])
+require_all_completion_triggers = true
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 90
+reward_exp = 260
+reward_items = Array[Dictionary]([])
+progress_records = Array[Dictionary]([{"trigger":"evidence_acquired:ev_ch7_mingwu_revoked_access_roll", "text":"茗雾注销册确认该内门暗号原登记在薛影名下，死亡记录后状态应为停用。"}, {"trigger":"testimony_heard:ts_ch7_lieyun_posthumous_code_use", "text":"烈云记档人保存的旧渡副签证明，该暗号在薛影死亡记录之后至少又被调用过一次。"}])

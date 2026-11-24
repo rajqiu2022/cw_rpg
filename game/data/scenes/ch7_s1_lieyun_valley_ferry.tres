@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch7_s1_lieyun_valley_ferry_layout_v1.tres" id="2"]
+[ext_resource type="Resource" path="res://data/dialogs/ch7_lieyun_arrival.tres" id="3"]
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch7_s1_lieyun_valley_ferry"
+display_name = "烈云峡谷 · 旧渡"
+background_path = "res://art/backgrounds/bg_ch7_lieyun_valley_ferry_gameplay_v1.png"
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
+on_enter_dialog = ExtResource("3")
+on_enter_require_flag = &"ch7_dual_route_chosen"
+on_enter_once_flag = &"seen_ch7_lieyun_arrival"
+is_walkable = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.500,0.875)
+player_visual_scale = 1.0
+animated_props = Array[Dictionary]([{"id":"ch7_ferry_river_mist","type":"mist_drift","pos":Vector2(0.50,0.680),"size":Vector2(0.92,0.17),"speed":0.26,"opacity":0.11,"count":5,"color":"#c4d9dc","z_index":12},{"id":"ch7_ferry_water_shimmer_left","type":"water_shimmer","pos":Vector2(0.105,0.590),"size":Vector2(0.180,0.560),"speed":0.52,"opacity":0.18,"count":5,"color":"#afd8e2","z_index":11},{"id":"ch7_ferry_water_shimmer_right","type":"water_shimmer","pos":Vector2(0.895,0.590),"size":Vector2(0.180,0.560),"speed":0.58,"opacity":0.18,"count":5,"color":"#afd8e2","z_index":11},{"id":"ch7_ferry_gate_glow_left","type":"glow","pos":Vector2(0.430,0.130),"size":Vector2(0.038,0.052),"speed":0.64,"color":"#ffac55","z_index":18},{"id":"ch7_ferry_gate_glow_right","type":"glow","pos":Vector2(0.570,0.130),"size":Vector2(0.038,0.052),"speed":0.72,"color":"#ffac55","z_index":18}])
+npcs = Array[Dictionary]([
+	{"npc_id":"ch7_lieyun_gatekeeper", "npc_name":"旧渡守望", "pos":Vector2(0.670,0.365), "sprite_path":"res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png", "dialog_id":"ch7_lieyun_gatekeeper_open", "dialog_variants":[{"dialog_id":"ch7_outer_routes_open", "require_quest_completed":"q_ch7_main_02_compare_two_fronts", "hide_flags":["ch7_outer_routes_opened"]}, {"dialog_id":"ch7_lieyun_gatekeeper_alerted", "require_flags":["ch7_route_first_mingwu"]}], "scale":0.92, "movement_mode":"idle"}
+])
+hotspots = Array[Dictionary]([])
+exits = Array[Dictionary]([])

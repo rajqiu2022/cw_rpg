@@ -1,0 +1,445 @@
+{
+  "schema_version": 1,
+  "status": "BUILD_ONLY_NOT_PUBLISHED_NOT_RUNTIME_ADMITTED",
+  "scene_id": "ch4_s3_luoyang_market",
+  "change_id": "MARKET_ORPHAN_WALL_RETIREMENT_NEW_EPOCH01",
+  "decision": "REMOVE_EXACT_ONE_ORPHAN_VISUAL_AND_ITS_ONE_GROUND_SOLID; do not translate110px panel into roof seam.",
+  "geometry_parent": {
+    "actual_report": {
+      "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/market_alpha_pin_retry6/publication/17536/result.json",
+      "sha256": "0058e2da30d0b0bbccc8579724ff9e916137de583cd3495bd2fdfb6025372511",
+      "bytes": 129803
+    },
+    "actual_author": {
+      "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/market_alpha_pin_retry6/market_author.json",
+      "sha256": "b11f48b8249ab27784aef1dc5b960e9ede7430e381a923c389c6461d95ca7a2e",
+      "bytes": 21385
+    },
+    "native_artifacts": {
+      "res://data/maps/luoyang_full_city_20261022ap/market/ch4_s3_luoyang_market/layout.res": "86d4c53b532ff05ee3b77d99f466d0e80cb8c4baad38fed0429ec3936dea4b84",
+      "res://data/maps/luoyang_full_city_20261022ap/market/ch4_s3_luoyang_market/packet.bin": "edcb58007aff16bb5175ce3424b4e4bddfcb619aaab5ff07d0102f50c6962f80",
+      "res://data/maps/luoyang_full_city_20261022ap/market/ch4_s3_luoyang_market/scene.res": "1d106089aaa40761f8109387333add810ed6e9c9a8fe8a8c0a7b9bd1eb8e17f0"
+    },
+    "walk_png": {
+      "path": "res://data/maps/luoyang_full_city_20261022ap/market/ch4_s3_luoyang_market/walk.png",
+      "sha256": "16da1638c1aeb3c9761d0b988da70aa0f761c29e2a9ab8ec3acdf3fffda214ea",
+      "bytes": 30318
+    },
+    "walk_rgba_sha256": "d161eeabae012793be71e61f9e09e19db7a1a101b1f4e749879a42915328512e",
+    "raw_ground": {
+      "path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/raw_walk.png",
+      "sha256": "0dc78a4affde8a13d1d2f58385b4ac5da102b1718f8e5b48d12dd066b0dedcfa",
+      "bytes": 29455
+    }
+  },
+  "asset_dimensions": {
+    "unchanged_wall_png": {
+      "path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png",
+      "sha256": "664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0",
+      "bytes": 197267
+    },
+    "png_IHDR_size": [
+      640,
+      132
+    ],
+    "retained_Atlas": {
+      "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/market_layout_successor2/west_wall_retained_panel.tres",
+      "sha256": "18cfc03baea345621c5ee3518f016d71c84daef204f408b70c406c7535195482",
+      "bytes": 289
+    },
+    "Atlas_region_xywh": [
+      4,
+      4,
+      110,
+      123
+    ],
+    "world_render_size": [
+      110,
+      123
+    ],
+    "actual17536_A_greater_than_zero_rect": [
+      35.0,
+      1302.0,
+      110.0,
+      121.0
+    ],
+    "pawn_A_greater_than_zero_rect": [
+      161.44801,
+      1411.1953,
+      800.0,
+      501.4577
+    ],
+    "horizontal_gap_at_corner_only": 16.44801000000001,
+    "join_rejected_reason": "Only16.448px corner gap and21.8047px vertical A1 overlap with pawn roof. Closing it sticks panel to eave, not a courtyard boundary; it loses a usable side passage. A meaningful enclosing wall needs additional separately planned segments, not this orphan.",
+    "png_bytes_unchanged": true
+  },
+  "record_delta": {
+    "remove_object_ids": [
+      "v13_market_west_plot_wall"
+    ],
+    "old_native_count": 24,
+    "new_native_count": 23,
+    "change_fields_only": [
+      "objects (remove matching one ordinal)",
+      "walk_path (new candidate PNG path after Root authorizes publication)"
+    ],
+    "old_record_row_author": "Final AP market_alpha_pin_retry6 wall_record(spec), not older layout_successor2 author as a new expected packet.",
+    "whole_inverse_rule": "Insert exact removed Dictionary at recorded original ordinal, restore old walk_path; compare whole typed record."
+  },
+  "visual_delta": {
+    "remove_ids": [
+      "v13_market_west_plot_wall"
+    ],
+    "remove_name": "SceneObject_v13_market_west_plot_wall",
+    "world_foot": [
+      90,
+      1420
+    ],
+    "native_pos_before": [
+      0.029296875,
+      0.664794921875
+    ],
+    "render_size": [
+      110,
+      123
+    ],
+    "whole_inverse_rule": "Insert exact removed native visual Dictionary at original ordinal; all other23 entries byte/value original."
+  },
+  "solid_delta": {
+    "remove_ids": [
+      "v13_market_west_plot_wall_poly_0"
+    ],
+    "polygon_px": [
+      [
+        35.0,
+        1408.0
+      ],
+      [
+        145.0,
+        1408.0
+      ],
+      [
+        145.0,
+        1420.0
+      ],
+      [
+        35.0,
+        1420.0
+      ]
+    ],
+    "expected_native_solid_count_delta": -1,
+    "no_other_solid_envelope_intersects_removed_polygon": [],
+    "independent_geometry_fixture": {
+      "path": "res://build/luoyang_city_full_rollout_20261022ap_qa01/bounded_groups_v5_author_anchors_READY.json",
+      "sha256": "56af9d883a163e6cd0646f6ef4b394e46fc2c29e10baf254fc5d0bc548ee618d",
+      "bytes": 2970093
+    },
+    "district_spec_additions_unchanged": 12,
+    "combined_render_count_before": 36,
+    "combined_render_count_after": 35,
+    "not_36_after_removal": true
+  },
+  "mask_delta_recipe": {
+    "local_pixel_envelope_xywh": [
+      35,
+      1408,
+      111,
+      13
+    ],
+    "candidate_pixels_only": 1443,
+    "output": "future_publication/walk.png (does not exist yet)",
+    "algorithm": "Start from exact parent D161 RGBA bytes. Visit only111x13 integer pixels. For each, reproduce original C._raster_walk_cpu raw-ground pixel, border24px, remaining native polygon membership and ceil-half-open rectangle raster. Validate parent pixel equals same original rule WITH wall first; if not, refuse. Child desired pixel is original RAW value unless another native solid blocks it. Never paint blind-white or use last-run observed mask as expected.",
+    "native_and_DG_separate": "Parent native mask never incorporates DG delta bodies; keep original12DG projection/solids/prefix untouched. Confirm same frozen domain has no other native/DGsolid envelope here.",
+    "full_inverse": "Only changed pixel RGBA overwritten back from parent byte buffer; reconstructed full25MiB array must equal original, proving every other byte unchanged.",
+    "no_full_raster_rebuild": true,
+    "no_image_decode_or_processing_executed_by_this_builder": true
+  },
+  "door_and_path_preservation": {
+    "room_moves": [
+      {
+        "scene_id": "luoyang_functional_pawnshop_candidate_20261016",
+        "old_city": "ch4_s3_luoyang_market",
+        "old_return": [
+          1332,
+          704
+        ],
+        "city": "ch4_s3_luoyang_market",
+        "building_id": "market_west_ward_frontage",
+        "return": [
+          570,
+          1904
+        ],
+        "threshold": [
+          570,
+          1880
+        ],
+        "native_portal_expected": 0,
+        "old_return_foot_px": [
+          1332,
+          704
+        ],
+        "return_foot_px": [
+          570,
+          1904
+        ]
+      },
+      {
+        "scene_id": "luoyang_market_north_market_front_interior_20261015",
+        "old_city": "ch4_s3_luoyang_market",
+        "old_return": [
+          1640,
+          704
+        ],
+        "city": "ch4_s3_luoyang_market",
+        "building_id": "north_market_front",
+        "return": [
+          1640,
+          704
+        ],
+        "threshold": [
+          1640,
+          680
+        ],
+        "native_portal_expected": 1,
+        "old_return_foot_px": [
+          1640,
+          704
+        ],
+        "return_foot_px": [
+          1640,
+          704
+        ]
+      },
+      {
+        "scene_id": "luoyang_market_market_west_ward_frontage_interior_20261015",
+        "old_city": "ch4_s3_luoyang_market",
+        "old_return": [
+          560,
+          1944
+        ],
+        "city": "luoyang_artisan_residential_20261022ap",
+        "building_id": "ap_courtyard_home_west",
+        "return": [
+          650,
+          674
+        ],
+        "threshold": [
+          650,
+          650
+        ],
+        "native_portal_expected": 1,
+        "old_return_foot_px": [
+          560,
+          1944
+        ],
+        "return_foot_px": [
+          650,
+          674
+        ]
+      },
+      {
+        "scene_id": "luoyang_market_market_northwest_rear_frontage_interior_20261015",
+        "old_city": "ch4_s3_luoyang_market",
+        "old_return": [
+          318.08,
+          1944
+        ],
+        "city": "luoyang_artisan_residential_20261022ap",
+        "building_id": "ap_courtyard_home_east",
+        "return": [
+          2290,
+          674
+        ],
+        "threshold": [
+          2290,
+          650
+        ],
+        "native_portal_expected": 1,
+        "old_return_foot_px": [
+          318.08,
+          1944
+        ],
+        "return_foot_px": [
+          2290,
+          674
+        ]
+      },
+      {
+        "scene_id": "luoyang_market_southeast_market_front_interior_20261015",
+        "old_city": "ch4_s3_luoyang_market",
+        "old_return": [
+          840.8,
+          1944
+        ],
+        "city": "luoyang_artisan_residential_20261022ap",
+        "building_id": "ap_carpentry_general_shop_south",
+        "return": [
+          1536,
+          1924
+        ],
+        "threshold": [
+          1536,
+          1900
+        ],
+        "native_portal_expected": 1,
+        "old_return_foot_px": [
+          840.8,
+          1944
+        ],
+        "return_foot_px": [
+          1536,
+          1924
+        ]
+      }
+    ],
+    "adult_door_measurements_inherit_17536": [
+      {
+        "adult_door": 126.72497570456754,
+        "asset": "pawn",
+        "complete_A1": "[P: (4, 17), S: (1029, 645)]",
+        "source_base_jambs": [
+          [
+            52.0,
+            548.0,
+            354.0,
+            72.0
+          ],
+          [
+            406.0,
+            548.0,
+            42.0,
+            72.0
+          ],
+          [
+            611.0,
+            548.0,
+            43.0,
+            72.0
+          ],
+          [
+            654.0,
+            548.0,
+            318.0,
+            72.0
+          ]
+        ],
+        "uniform_scale": 0.7774538386783285
+      },
+      {
+        "adult_door": 149.1186839012926,
+        "asset": "tailor",
+        "complete_A1": "[P: (4, 4), S: (851, 538)]",
+        "source_base_jambs": [
+          [
+            60.0,
+            486.0,
+            390.0,
+            51.0
+          ],
+          [
+            450.0,
+            458.0,
+            37.0,
+            79.0
+          ],
+          [
+            674.0,
+            458.0,
+            42.0,
+            79.0
+          ],
+          [
+            716.0,
+            486.0,
+            93.0,
+            51.0
+          ]
+        ],
+        "uniform_scale": 0.6345475910693302
+      }
+    ],
+    "all_existing_portals_and_targets_unchanged": true,
+    "all_NPC_definitions_positions_primary_culture_dialogues_unchanged": true,
+    "protected_task_feet_px": [
+      [
+        1320,
+        1290
+      ],
+      [
+        1240,
+        1290
+      ],
+      [
+        520,
+        1340
+      ],
+      [
+        1260,
+        1720
+      ],
+      [
+        1320,
+        1230
+      ],
+      [
+        1750,
+        1230
+      ],
+      [
+        2440,
+        1100
+      ],
+      [
+        1740,
+        1370
+      ]
+    ],
+    "affected_old_paths_selection": "Read only fixed ED... parent packet.record.routes and gameplay_slots + frozen DG crowd lanes. Segments whose34x30 conservative sweep envelope intersects removed111x13 domain get exact original875+17/fullbody check; outside inherit17536, not full rerun. pure helper returns selected IDs/segments only, no acceptance claim.",
+    "new_finite_witnesses": [
+      {
+        "id": "former_wall_crossing",
+        "points_px": [
+          [
+            90,
+            1388
+          ],
+          [
+            90,
+            1440
+          ]
+        ],
+        "max_step_px": 4
+      },
+      {
+        "id": "former_wall_stand",
+        "foot_px": [
+          90,
+          1414
+        ],
+        "old_expected": "blocked by original wall",
+        "candidate_expected": "must pass original full34x24+875+17 only after local recompute; not yet verified"
+      }
+    ],
+    "do_not_replay": [
+      "all city collectors",
+      "five room native returns",
+      "original437 geometry samples",
+      "other23native/12DG alpha batches",
+      "A/C full functional groups"
+    ]
+  },
+  "pure_transform_helper": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/market_wall_retirement_epoch01/pure_wall_retirement_candidate.gd",
+    "sha256": "831b6a705990f74e1e98d5de38c26478326d4d11e41b2cd991da4db18a6ab0c7",
+    "bytes": 10404
+  },
+  "not_ready": [
+    "Godot parse",
+    "actual source-first/final finite native transform",
+    "local mask bytes and raw pixel checks",
+    "changed-area fullbody/875+17 witness",
+    "single native/ordinary-camera visual",
+    "sourceonly publication and future narrow ownership successor"
+  ],
+  "not_in_existing_epoch": "No old29 targets, pending23 source fix targets, ENV/HUD/hero/portrait/resident code or metadata modified; this future geometry epoch is separate."
+}

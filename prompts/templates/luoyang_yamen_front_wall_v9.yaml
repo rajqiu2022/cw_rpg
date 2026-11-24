@@ -1,0 +1,32 @@
+id: luoyang_yamen_front_wall_v9
+description: One unified straight front-wall candidate; baked 2.5D RGBA, NOT native/PBR or CC0 scan.
+backend: codex_builtin_imagegen
+model: builtin
+execution_owner: producer
+background: transparent
+transparent_background: true
+reference_images:
+  - game/art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png
+  - game/build/luoyang_yamen_front_line_v8_preview/root_front_line_v8_01/full_new.png
+reference_sha256:
+  - dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221
+  - ec73a548da55645ff62af8b78c475b5a748f58a09dbc4472cb789c0dda641173
+require_reference_images: true
+intended_runtime_width_px: 1150
+desired_native_wall_content_width_px: 3450
+density_status: expectation_only_verify_actual_returned_pixels_before_consumption
+scope: PREVIEW_NOT_ADOPTED
+prompt_template: |
+  Asset type: ONE isolated high-resolution RGBA straight courtyard-wall asset for a realistic Chinese wuxia RPG.
+
+  Reference roles: Image 1 is ONLY the material, tile construction, camera and lighting reference. Match its aged charcoal-grey fired-clay barrel tiles, small round tile-end caps, weathered off-white lime plaster and coursed grey-brick plinth. Do NOT reproduce its central gate or its backward-folding end walls. Image 2 defines ONLY the repaired straight frontage direction and approximate proportions; do NOT copy its blurry corrugated wing roofs or its ground.
+
+  Generate ONE complete, uninterrupted, long straight low courtyard wall, approximately 18 metres long, with a 2.1-metre wall body and shallow traditional grey-tile coping roof. All wall sections must share one coherent construction, tile scale, mortar-course height and material density. Include individually articulated overlapping barrel and pan tiles, crisp modest tile-end caps, restrained ridge and eave thickness, granular old lime plaster with irregular broad weathering and a few natural lower-edge losses exposing correctly coursed grey bricks. A continuous approximately three-course grey-brick plinth runs along the entire bottom. Damage is sparse and irregular, not evenly spaced zigzags, waves, vertical drips or repeated islands.
+
+  Camera: front-facing orthographic parallel view, directly south looking north, exactly 30 degrees elevation. Wall baseline, brick courses, eave and ridge remain horizontal. Show believable roof depth and thickness without diagonal side wings, bends, returns, branches or vanishing points.
+
+  Style and lighting: crisp physically detailed pre-rendered 2.5D architecture, matching Image 1's neutral slightly warm upper-left/front daylight and restrained ambient fill. The ceramic tiles must read as the same construction family as the original main gate roof, not corrugated metal or a smeared grey texture. Keep fine tile edges, joint shadows and plaster grain readable at game scale.
+
+  Composition: one wide wall asset, complete outer silhouette with genuinely transparent margins on all sides. Prefer sufficient native detail for a frontage displayed at 1150 logical pixels wide, ideally at least 3450 pixels of actual wall content; do not substitute blur or upscaled microtexture for native construction detail. No gate, doorway, wooden posts, roofed pavilion, freestanding pillars, ground, paving, scenery, trees, people, props, text, watermark or baked broad ground shadow. No black backdrop or checkerboard pixels. Background is true transparent alpha.
+
+  Deliver the wall only. The original central wooden gate and its roof will be retained separately by the game; do not regenerate them.

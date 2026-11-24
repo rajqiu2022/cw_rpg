@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuheng_rescue.png"
+text = "前头的雾林最容易走散。我从凌月赶来时探过一段路，若你还缺人手，我可以一道过去。"
+choices = Array[Dictionary]([{"text":"正缺一柄剑，并肩走吧","next":"join"},{"text":"先留在这里照应证人","next":"end"}])
+[sub_resource type="Resource" id="join"]
+script = ExtResource("2")
+node_id = &"join"
+speaker = "悦无姮"
+portrait_path = "res://art/characters/portrait_yuewuheng_rescue.png"
+text = "好。剑谱和调息的抄本也带上。回剑时先稳住脚下，等歇下来，我再陪你走一遍。"
+set_flags = Array[Dictionary]([{"key":"companion_yuewuheng_joined","value":true}])
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch8_yuewuheng_recruit"
+nodes = Array[Resource]([SubResource("start"), SubResource("join")])
+required_story_flag = &"seen_ch8_alliance_intro"
+blocked_story_flag = &"companion_yuewuheng_joined"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch1_zhao_gatekeeper"
+display_name = "赵无忌的说辞"
+speaker_npc_id = &"npc_zhao_wuji"
+statement = "交锋中，赵无忌声称自己只负责守门和转货，没有说出真正雇主；负伤后他趁乱逃脱。"
+chapter = 1
+initial_credibility = 40
+related_evidence_ids = Array[StringName]([&"ev_ch1_west_ruin_transfer_order"])

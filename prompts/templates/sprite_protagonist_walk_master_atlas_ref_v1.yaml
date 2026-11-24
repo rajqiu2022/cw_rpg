@@ -1,0 +1,18 @@
+id: sprite_protagonist_walk_master_atlas_ref_v1
+description: Reference-locked protagonist four-direction 8+1 walk atlas.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/characters/protagonist_portrait.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied protagonist portrait as the strict identity reference: preserve his face, head-to-body proportion, black tied hair, dark blue-grey cross-collar robe and leather strap details. Do not copy its portrait crop or pose.
+
+  Create a 1024x1024 2D RPG sprite atlas: four rows by nine isolated cells on a pure white background. One small full-body version of this same character appears in each cell, with white gaps and a shared feet baseline. Rows are down, up, right, left. Columns 1-8 are a walk cycle: left contact, feet together, left passing, feet together, right contact, feet together, right passing, feet together. Column 9 repeats column 1 exactly for loop checking. Passing frames show one foot directly under the torso, never two wide-spread legs.
+
+  Hong Kong wuxia comic game sprite, clean ink outlines, no shadow, no text, no grid, no duplicate character, no motion trail, no crop, and no isometric view.
+  Avoid: {negative}
+
+variables: {}

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.168, 0.523, 0.330, 0.451, 0.466, 0.400, 0.694, 0.425, 0.753, 0.374, 0.805, 0.285, 0.871, 0.294, 0.892, 0.348, 0.844, 0.417, 0.826, 0.505, 0.824, 0.608, 0.889, 0.685, 0.783, 0.790, 0.629, 0.843, 0.555, 0.919, 0.553, 0.958, 0.441, 0.958, 0.437, 0.916, 0.374, 0.858, 0.222, 0.813, 0.139, 0.723, 0.114, 0.628)])
+visual_objects = [
+	{"id": "resting_bed", "texture": "res://art/modules/story_enemies_20261109/cave_adult_bed.png", "pos": Vector2(0.226, 0.568), "scale": Vector2(0.180, 0.180), "sort_by_feet": true, "depth_sort_foot_y": 0.654},
+	{"id": "campfire", "texture": "res://art/modules/bandit_cave_20261109/campfire.png", "pos": Vector2(0.439, 0.491), "scale": Vector2(0.136, 0.136), "sort_by_feet": true, "depth_sort_foot_y": 0.548, "collision_offset": Vector2(0, 0.042), "collision_size": Vector2(0.065, 0.026)},
+	{"id": "storage_crate", "texture": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png", "pos": Vector2(0.845, 0.315), "scale": Vector2(0.62, 0.62), "sort_by_feet": true, "depth_sort_foot_y": 0.350, "collision_offset": Vector2(0, 0.023), "collision_size": Vector2(0.038, 0.020)},
+	{"id": "storage_chest", "texture": "res://art/modules/prop/linxi_supply_chest_small_v1.png", "pos": Vector2(0.878, 0.329), "scale": Vector2(0.41, 0.41), "sort_by_feet": true, "depth_sort_foot_y": 0.355, "collision_offset": Vector2(0, 0.014), "collision_size": Vector2(0.030, 0.017)},
+	{"id": "resting_supplies", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png", "pos": Vector2(0.157, 0.664), "scale": Vector2(0.052, 0.052), "sort_by_feet": true, "depth_sort_foot_y": 0.686, "collision_offset": Vector2(0, 0.016), "collision_size": Vector2(0.042, 0.015)},
+	{"id": "banner_and_goods", "texture": "res://art/modules/bandit_cave_20261109/evidence.png", "pos": Vector2(0.768, 0.392), "scale": Vector2(0.123, 0.123), "sort_by_feet": true, "depth_sort_foot_y": 0.457, "collision_offset": Vector2(0.006, 0.049), "collision_size": Vector2(0.048, 0.024)}
+]
+blockers = [
+	{"id": "bed_head_footprint", "pos": Vector2(0.174, 0.571), "size": Vector2(0.064, 0.049)},
+	{"id": "bed_center_footprint", "pos": Vector2(0.219, 0.599), "size": Vector2(0.064, 0.055)},
+	{"id": "bed_end_footprint", "pos": Vector2(0.271, 0.624), "size": Vector2(0.076, 0.052)}
+]
+interactions = [
+	{"id": "bandit_cave_guard_story", "pos": Vector2(0.50, 0.684), "size": Vector2(0.55, 0.17), "activation": "enter_once", "action": "dialog:interior_bandit_cave_guard", "require_quest_active": "q_ch1_side_10_bandit_cave", "hide_flag": "defeated_bandit_cave_guard"},
+	{"id": "bandit_cave_banner", "pos": Vector2(0.784, 0.489), "size": Vector2(0.075, 0.110), "activation": "interact", "label": "调查旗帜下的货箱", "action": "dialog:interior_bandit_cave_banner", "visual_baked": true, "clickable": true, "require_flag": "defeated_bandit_cave_guard", "hide_flag": "clue_bandit_cave_mist_mark"}
+]
+portals = [
+	{"id": "leave_bandit_cave", "pos": Vector2(0.498, 0.922), "size": Vector2(0.090, 0.056), "label": "离开洞窟", "destination_name": "林西村外 · 山道", "show_destination_label": true, "target_scene": "ch1_s1_road", "target_pos": Vector2(0.700, 0.560)}
+]
+walkable_probes = [
+	{"id": "cave_spawn", "pos": Vector2(0.498, 0.840)},
+	{"id": "cave_guard_approach", "pos": Vector2(0.356, 0.571)},
+	{"id": "bedside_walk", "pos": Vector2(0.337, 0.645)},
+	{"id": "cave_banner", "pos": Vector2(0.784, 0.489)},
+	{"id": "cave_exit", "pos": Vector2(0.498, 0.922)}
+]
+blocked_probes = [
+	{"id": "adult_bed_base", "pos": Vector2(0.271, 0.624)},
+	{"id": "cave_fire", "pos": Vector2(0.439, 0.533)},
+	{"id": "cave_goods", "pos": Vector2(0.774, 0.441)}
+]

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"ch2_tournament_guard"
+display_name = "沈家护院总管"
+battle_actor_path = "res://art/sprites/battle/zhuwei_dojo_20261121/guard_guard_a.tres"
+battle_actor_flip_h = false
+battle_actor_scale = 1.0
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_dojo_20261121/guard_guard_a.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_guard_b.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_dojo_20261121/guard_step_a.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_step_b.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_dojo_20261121/guard_windup.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_extend.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_strike.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_recover.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_dojo_20261121/guard_contact.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_recoil.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_stagger.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_brace.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/zhuwei_dojo_20261121/guard_yield.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_kneel.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_sit.tres", "res://art/sprites/battle/zhuwei_dojo_20261121/guard_down.tres")
+level = 2
+max_hp = 140
+max_mp = 0
+attack = 30
+defense = 5
+speed = 11
+skill_ids = Array[StringName]([&"basic_attack", &"heavy_swing"])
+aggression = 0.55
+drop_gold_min = 12
+drop_gold_max = 18
+drop_exp = 20
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([])

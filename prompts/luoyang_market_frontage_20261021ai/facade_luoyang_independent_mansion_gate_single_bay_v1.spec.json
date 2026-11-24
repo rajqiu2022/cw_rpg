@@ -1,0 +1,49 @@
+{
+  "change_id": "luoyang-market-frontage-20261021ai",
+  "task_id": "luoyang_market_frontage_20261021ai_independent_mansion_gate_single_bay_v1",
+  "asset_role": "south_market_edge_and_future_noble_residence_independent_gate",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate_with_reference",
+  "transparent_background": true,
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "retries_allowed": false,
+  "targeted_edit_budget_after_actual_failure": 1,
+  "targeted_edit_requires_separate_registration": true,
+  "cli_fallback_allowed": false,
+  "network_fallback_allowed": false,
+  "status": "READY_FOR_ROOT_SINGLE_BUILTIN_NOT_GENERATED",
+  "reference_images": [
+    {
+      "path": "assets/processed/luoyang_market_frontage_20261021ah/facade_luoyang_narrow_apothecary_single_bay_v1_padded.png",
+      "png_sha256": "1741A55D449A25481FF26C4F62C595987D8768F8CC72E4229A896C78485AE56D",
+      "role": "camera_lighting_and_grey_tile_aged_timber_plaster_stone_material_reference_only",
+      "must_not_inherit": ["herbs", "medicine_baskets", "shop_window", "building_pixels", "facade_layout", "roof_silhouette"]
+    }
+  ],
+  "prompt_path": "prompts/luoyang_market_frontage_20261021ai/facade_luoyang_independent_mansion_gate_single_bay_v1.txt",
+  "prompt_sha256": "2455656783702D32F49757F09CCD03360594327B93191A523E0B7CEF4D37B4B4",
+  "raw_output_path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_independent_mansion_gate_single_bay_v1.png",
+  "generated_metadata_path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_independent_mansion_gate_single_bay_v1.meta.json",
+  "required_actual_checks": {
+    "single_gatehouse_single_storey_single_narrow_bay": true,
+    "principal_entrance_count": 1,
+    "secondary_door_count": 0,
+    "complete_a1_bbox_width_over_clear_door_height_max": 2.3,
+    "a1_bbox_canvas_width_fraction_range": [0.50, 0.60],
+    "transparent_margin_each_side_min_fraction_at_a1": 0.10,
+    "runtime_feasible_clear_door_height_px_range": [120, 150],
+    "runtime_complete_width_px_max": 380,
+    "unblocked_gate_and_threshold": true,
+    "no_shop_or_apothecary_props": true,
+    "no_long_flanking_walls_or_courtyard_panorama": true,
+    "no_low_alpha_haze_or_edge_contact": true,
+    "record_a1_a16_edges_components_and_weak_alpha": true,
+    "never_threshold_or_erase_alpha": true,
+    "preserve_returned_bytes_exactly": true
+  },
+  "credit_boundary": "One raw independent-gate generation candidate only. Actual alpha and architectural measurement must pass before any edit, import, layout, runtime or formal work."
+}

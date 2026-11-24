@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "外区同时容纳药棚、巡守营房和议事门。愿意公开药册的人没有撤走桌案，右侧兵械架旁却一直有人盯着原册。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_lieyun_outer_intro"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

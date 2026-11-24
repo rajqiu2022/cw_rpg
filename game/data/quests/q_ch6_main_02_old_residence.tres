@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch6_main_02_old_residence"
+title = "旧居暗门"
+kind = 0
+desc_not_started = "刑樊天正屋里仍留着他二十年来使用过的兵器架、批注和旧柜。"
+desc_in_progress = "先检查书案上的押运旁注，再查看被重新挪动过的兵器架。入暗门前可以向正屋门边的送药人打听。"
+desc_completed = "两版旁注证明刑樊天改写过记录；兵器架后的地板藏着通往地下档案室的铁环。"
+tracker_hint = "林西村 · 刑樊天正屋"
+completion_triggers = Array[String](["scene_entered:ch6_s3_underground_archive"])
+starts_in_chapter = 6
+completes_in_chapter = 6
+reward_gold = 40
+reward_exp = 90
+reward_items = Array[Dictionary]([])
+progress_records = Array[Dictionary]([
+	{"trigger":"evidence_acquired:ev_ch6_revised_escort_note", "text":"同一份押运记录被改写过，改字笔势与刑樊天一致。"},
+	{"trigger":"flag_set:ch6_archive_entry_found", "text":"兵器架后的刮痕指向一块带铁环的活动地板。"}
+])

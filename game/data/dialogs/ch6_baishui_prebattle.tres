@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "茗雾截证客"
+text = "你比预想中快。把拓下的轮痕和原册留下，回林西还能继续叫他一声师父。"
+voice_emotion = "threat"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "你们一路凿碑、烧册、拆车，却偏要替我决定该相信谁。十八年前有人这么做，今天到此为止。"
+on_end = "next:fight"
+
+[sub_resource type="Resource" id="fight"]
+script = ExtResource("2")
+node_id = &"fight"
+speaker = "茗雾寻迹者"
+text = "别留伤口给他认路。"
+voice_emotion = "threat"
+on_end = "battle_group_then:ch6_convoy_pursuer,ch6_convoy_tracker:ch6_baishui_victory"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_baishui_prebattle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero"), SubResource("fight")])

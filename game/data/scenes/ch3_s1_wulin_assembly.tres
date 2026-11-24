@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/dialogs/ch3_assembly_intro.tres" id="2"]
+[ext_resource type="Resource" path="res://data/maps/ch3_s1_wulin_assembly_layout_v2.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1536, 1024)
+[resource]
+script = ExtResource("1")
+scene_id = &"ch3_s1_wulin_assembly"
+display_name = "武林大会 · 长案前"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_city_ceremony_v4.wav"
+on_enter_dialog = ExtResource("2")
+on_enter_require_flag = &"chapter2_complete"
+on_enter_once_flag = &"seen_ch3_assembly"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+is_settlement = true
+animated_props = Array[Dictionary]([{"id":"ch3_assembly_red_banner_left","type":"texture_sway","texture":"res://art/props/ambient/prop_ambient_tattered_crimson_banner_v1.png","pos":Vector2(0.417,0.072),"size":Vector2(0.038,0.150),"speed":0.62,"z_index":20},{"id":"ch3_assembly_teal_banner","type":"texture_sway","texture":"res://art/props/ambient/prop_ambient_teal_mist_banner_v1.png","pos":Vector2(0.466,0.088),"size":Vector2(0.038,0.150),"speed":0.68,"z_index":20},{"id":"ch3_assembly_red_banner_right","type":"texture_sway","texture":"res://art/props/ambient/prop_ambient_tattered_crimson_banner_v1.png","pos":Vector2(0.601,0.081),"size":Vector2(0.038,0.150),"speed":0.74,"z_index":20},{"id":"ch3_assembly_teal_banner_right","type":"texture_sway","texture":"res://art/props/ambient/prop_ambient_teal_mist_banner_v1.png","pos":Vector2(0.555,0.088),"size":Vector2(0.036,0.142),"speed":0.80,"z_index":20}])
+npcs = [
+	{"npc_id": "assembly_host", "npc_name": "大会执事", "pos": Vector2(0.50, 0.62), "sprite_path": "res://art/characters/npc_xingfantian_v4_idle_down_25d_4f.png", "dialog_id": "ch3_assembly_intro", "dialog_variants": [{"dialog_id":"ch3_assembly_review", "require_flags":["assembly_clues_complete"], "hide_flags":["assembly_evidence_checked"]}, {"dialog_id":"ch3_assembly_wait", "require_flags":["chapter3_started"]}, {"dialog_id":"ch3_assembly_early_visit", "hide_flags":["chapter2_complete"]}], "scale": 0.95, "hide_flag": "assembly_evidence_checked"}
+]
+hotspots = [
+	{"label":"查看伤口拓图", "pos_x":0.30, "pos_y":0.42, "action":"dialog:ch3_assembly_wound_clue", "require_flag":"chapter3_started", "hide_flag":"assembly_wound_checked"},
+	{"label":"查看崭新令牌", "pos_x":0.48, "pos_y":0.38, "action":"dialog:ch3_assembly_token_clue", "require_flag":"chapter3_started", "hide_flag":"assembly_token_checked"},
+	{"label":"查看旧纸笔迹", "pos_x":0.66, "pos_y":0.42, "action":"dialog:ch3_assembly_paper_clue", "require_flag":"chapter3_started", "hide_flag":"assembly_paper_checked"},
+	{"label":"破解石案上的让位棋", "pos_x":0.38, "pos_y":0.70, "action":"dialog:huilan_openworld_board", "hide_flag":"huilan_yielding_position_understood"},
+ {"label":"前往考校场", "pos_x":0.82, "pos_y":0.72, "action":"scene:ch3_s2_trial_ground", "require_flag":"assembly_evidence_checked"},
+ {"label":"领取洛阳调查令", "pos_x":0.62, "pos_y":0.36, "action":"dialog:ch3_luoyang_dispatch", "require_flag":"joined_faction"},
+ {"label":"武林商会", "pos_x":0.72, "pos_y":0.62, "action":"shop:wulin_trade_hall", "require_flag":"joined_faction"},
+ {"label":"与凌月弟子交谈", "pos_x":0.28, "pos_y":0.58, "action":"dialog:ch3_lingyue_trial", "require_flag":"joined_lingyue"},
+ {"label":"离开会场 · 江湖大地图", "pos_x":0.08, "pos_y":0.82, "action":"world_map"},
+ {"label":"返回武当山门", "pos_x":0.205, "pos_y":0.75, "action":"scene:openworld_wudang_gate"}
+]

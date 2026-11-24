@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="会盟公示总录"
+text="按第七章既定方案，立即公开全部已核验材料。每份抄本编号、落骑缝印，烈云、洛阳、五派与行义帮同时领副本。"
+on_end="next:facts"
+[sub_resource type="Resource" id="facts"]
+script=ExtResource("2")
+node_id=&"facts"
+speaker="冷孤云"
+text="责任清单不得拆开：烈云强硬派误杀货队，茗雾内署维持死籍并发亲令，薛影杀人与回收残卷，苏雾笙以止杀钟制造会盟互杀。旧罪与新罪同卷，不相抵消。"
+on_end="next:witness"
+[sub_resource type="Resource" id="witness"]
+script=ExtResource("2")
+node_id=&"witness"
+speaker="戚云笙"
+portrait_path="res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text="愿意署名的人公开姓名，不愿公开者以核验编号代替；无论是否署名，当前住处和护送路线一律删去。完整公开事实，不等于公开活人的藏身处。"
+on_end="next:arts"
+[sub_resource type="Resource" id="arts"]
+script=ExtResource("2")
+node_id=&"arts"
+speaker="刑樊天"
+portrait_path="res://art/characters/portrait_xingfantian_master.png"
+text="危险点穴图、茶毒配方和控息残式公开来源、危害与使用记录；具体穴位次序和制毒比例分封三匣，由洛阳、五派、行义帮各执一钥。"
+on_end="next:end"
+[sub_resource type="Resource" id="end"]
+script=ExtResource("2")
+node_id=&"end"
+speaker="会盟公示总录"
+text="公示完成。事实全本已经同时送出，证人去向和可复制杀招仍受保护；任何一方都无法再独占旧案。"
+set_flags=Array[Dictionary]([{"key":"ch8_disclosure_full_published","value":true},{"key":"ch8_witness_locations_redacted","value":true},{"key":"ch8_dangerous_arts_public_summary","value":true},{"key":"ch8_evidence_multi_copy","value":true},{"key":"ch8_truth_disclosure_settled","value":true}])
+method_flags=Array[Dictionary]([{"key":"ch8_truth_disclosure_method","value":"full_verified_record"}])
+city_outcomes=Array[Dictionary]([{"city":"luoyang","key":"ch8_public_archive","value":"full_verified_record"}])
+complete_quest=&"q_ch8_main_12_truth_disclosure"
+accept_quest=&"q_ch8_main_13_aftermath_returns"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_truth_disclosure_full"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("facts"),SubResource("witness"),SubResource("arts"),SubResource("end")])

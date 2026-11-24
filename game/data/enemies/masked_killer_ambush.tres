@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"masked_killer_ambush"
+display_name = "蒙面杀手首领"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_01.png"
+battle_actor_scale = 1.05
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_04.png")
+level = 4
+max_hp = 210
+max_mp = 0
+attack = 42
+defense = 8
+speed = 10
+skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle", &"heavy_swing", &"masked_crosscut"])
+aggression = 0.65
+party_reinforcement_ids = Array[StringName]([&"masked_killer_minion"])
+drop_gold_min = 80
+drop_gold_max = 150
+drop_exp = 130
+drop_items = Array[StringName]([&"healing_pill_major"])
+drop_random = Array[Dictionary]([{ "item_id": "antidote_pill", "chance": 0.5, "count": 1 }])
+is_chapter_boss = true

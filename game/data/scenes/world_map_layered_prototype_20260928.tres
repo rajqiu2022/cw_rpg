@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scene"]
+[ext_resource type="Resource" path="res://data/maps/world_map_layered_prototype_20260928_layout.tres" id="2_layout"]
+
+[resource]
+script = ExtResource("1_scene")
+scene_id = &"world_map_layered_prototype_20260928"
+display_name = "中原地形分层试样"
+background_path = "res://art/backgrounds/world_map_v13_proto/central_plain_clean_plate_v1.png"
+bgm_path = "res://art/audio/bgm/bgm_jianghu_journey_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+map_layout = ExtResource("2_layout")
+player_spawn = Vector2(0.185,0.730)
+player_visual_scale = 0.58
+camera_zoom = 1.25
+hotspots = []

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "status": "ART_SOURCE_READY_VISUAL_ONLY_NOT_FIELD_OR_FORMAL",
+  "change_id": "luoyang-estate-courtyard-20261021al",
+  "scope": "Reuse existing project textures for one coherent north-court paving field, two side connectors, and real-material door depth behind the AK hall and wings. No raster creation or modification, no collision, NAV, portal, route, or building-PNG change.",
+  "parent": {
+    "author": "res://build/luoyang_estate_courtyard_20261021ak_system01/author_READY.json",
+    "actual_preview": "res://build/luoyang_estate_courtyard_20261021ak_system01/preview/115536/estate_architecture_actual_sprites.png",
+    "actual_preview_sha256": "3bd94c08f6f0617cd687919e1ccb6fed98ccd0cc90f00fce89d4320b07ec3de0"
+  },
+  "source_assets": {
+    "courtyard_floor": {
+      "path": "res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png",
+      "sha256": "39c898f7ac8c409b7b244077dd30016c398b21313156c8fc36911ddc859a5c0e",
+      "source_size_px": [1536, 1024],
+      "mode": "RGB",
+      "physical_semantics": "ground_visual_only_no_body_no_nav_change",
+      "license_boundary": "existing_project_asset; do not relabel as CC0 or external public-domain art",
+      "atlas_regions": {
+        "north_court": {
+          "xywh": [256, 128, 1024, 768],
+          "raw_rgb_sha256": "fb743821b3f731f14ea44ec0efe3a798642370c3b73c8e4954d35ae6499c22f0",
+          "pure_black_pixels": 0
+        },
+        "west_connector": {
+          "xywh": [0, 256, 384, 384],
+          "raw_rgb_sha256": "dff14daa60e5596cec3baf8e323b6fda3498f3a5776234eb1dbdd788c1fd1022",
+          "pure_black_pixels": 0
+        },
+        "east_connector": {
+          "xywh": [1152, 256, 384, 384],
+          "raw_rgb_sha256": "926d0bcf33b904b1659885baecbaeae34ebbcc9f9dcc179626566e2bd1b2c893",
+          "pure_black_pixels": 0
+        }
+      }
+    },
+    "hall_depth_material": {
+      "path": "res://art/modules/luoyang_assembled_interiors_20261016g/shell_formal_hall_v1.png",
+      "sha256": "b9e589ceed81bd28dd7b3d866aa931fc1f8a6e3f59e426bae94f2a384b2f879a",
+      "source_size_px": [1536, 1024],
+      "mode": "RGB",
+      "atlas_region_xywh": [648, 256, 240, 252],
+      "region_raw_rgb_sha256": "18d3c32fce196afd6619b2efd4a45a855d66b2b9f307a267fb81d95d9f8d774d",
+      "pure_black_pixels": 0,
+      "physical_semantics": "visual_depth_behind_real_door_only_no_body_no_nav_change",
+      "license_boundary": "existing_project_original/generated project asset; no claim that all architecture is CC0"
+    },
+    "wing_depth_material": {
+      "path": "res://art/modules/luoyang_assembled_interiors_20261016g/shell_residential_v1.png",
+      "sha256": "88189e4971ece89443557c76f7762f28fe9c1740e780bfa9ebdeadfa8c034494",
+      "source_size_px": [1536, 1024],
+      "mode": "RGB",
+      "atlas_region_xywh": [432, 208, 160, 240],
+      "region_raw_rgb_sha256": "741fad7f98a66c34244ba2e3bb14e6c7bc5246863b2776124f6b07bba56a16bf",
+      "pure_black_pixels": 0,
+      "physical_semantics": "visual_depth_behind_real_door_only_no_body_no_nav_change",
+      "license_boundary": "existing_project_original/generated project asset; no claim that all architecture is CC0"
+    }
+  },
+  "recommended_visual_rows": [
+    {
+      "id": "estate_al_north_court_floor",
+      "asset": "courtyard_floor",
+      "atlas_region": "north_court",
+      "center_px": [1536, 880],
+      "render_size_px": [1024, 768],
+      "uniform_scale": 1.0,
+      "sort_by_feet": false,
+      "z_index": -9,
+      "reason": "One continuous native paving field joins the hall, wings, corridors, and old axial path without a 64px repeated carpet; bottom overlap with the inherited axial path is 48px."
+    },
+    {
+      "id": "estate_al_west_wing_connector",
+      "asset": "courtyard_floor",
+      "atlas_region": "west_connector",
+      "center_px": [832, 784],
+      "render_size_px": [384, 384],
+      "uniform_scale": 1.0,
+      "sort_by_feet": false,
+      "z_index": -9,
+      "reason": "Native distinct source region connects the court to the west-wing door without stretching or repeating the center crop."
+    },
+    {
+      "id": "estate_al_east_wing_connector",
+      "asset": "courtyard_floor",
+      "atlas_region": "east_connector",
+      "center_px": [2240, 784],
+      "render_size_px": [384, 384],
+      "uniform_scale": 1.0,
+      "sort_by_feet": false,
+      "z_index": -9,
+      "reason": "Native distinct source region mirrors only the route footprint, not the source pixels, and reaches the east-wing door."
+    },
+    {
+      "id": "estate_al_main_hall_door_depth",
+      "asset": "hall_depth_material",
+      "center_px": [1536, 416],
+      "render_size_px": [118, 124],
+      "uniform_scale": 0.49166666666666664,
+      "modulate_rgba": [0.48, 0.44, 0.4, 1.0],
+      "sort_by_feet": false,
+      "z_index": -8,
+      "must_remain_inside_actual_door_clear": true,
+      "actual_door_clear_world_approx_px": [126.94, 131.42],
+      "reason": "Existing formal-hall wall/stone-foot/floor pixels provide material depth; this is not a black rectangle."
+    },
+    {
+      "id": "estate_al_west_wing_door_depth",
+      "asset": "wing_depth_material",
+      "center_px": [700, 770],
+      "render_size_px": [80, 120],
+      "uniform_scale": 0.5,
+      "modulate_rgba": [0.46, 0.42, 0.38, 1.0],
+      "sort_by_feet": false,
+      "z_index": -8,
+      "must_remain_inside_actual_door_clear": true,
+      "actual_door_clear_world_approx_px": [85.72, 128.57]
+    },
+    {
+      "id": "estate_al_east_wing_door_depth",
+      "asset": "wing_depth_material",
+      "center_px": [2222, 770],
+      "render_size_px": [80, 120],
+      "uniform_scale": 0.5,
+      "modulate_rgba": [0.46, 0.42, 0.38, 1.0],
+      "sort_by_feet": false,
+      "z_index": -8,
+      "must_remain_inside_actual_door_clear": true,
+      "actual_door_clear_world_approx_px": [85.72, 128.57]
+    }
+  ],
+  "excluded_or_deferred": [
+    {
+      "path": "res://art/maps/luoyang_modular_v3/ch4_s1_luoyang_yamen/entities/native_wall_horizontal.png",
+      "sha256": "32bcd360e962040b07d926e35387df3df564a02e889e180c16d769e0b0f6870a",
+      "decision": "defer",
+      "reason": "A tall administrative wall strip, not a low garden edge; adding it as a visible object without matching body geometry would be false."
+    },
+    {
+      "path": "res://art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png",
+      "sha256": "dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221",
+      "decision": "defer",
+      "reason": "Full compound gate-and-wall facade, not an independent short wall or flowerbed border."
+    },
+    {
+      "path": "res://art/modules/veg/veg_flower_wild_a.png",
+      "sha256": "96e56f3d2f484d416bd0904bf3ad8f2e6a4ab5958a8d7143a93c22241390213b",
+      "decision": "reject_for_flowerbed",
+      "reason": "Single sparse wild plant cannot honestly read as a low flowerbed or courtyard boundary."
+    },
+    {
+      "path": "res://art/modules/ground/road_stone_grass_edge.png",
+      "sha256": "527d8babc86461c7f37c49bbed9f6d7c348df827b483bfedd1f1e1b8117cacd3",
+      "decision": "reject_for_estate_edge",
+      "reason": "Dark green raised roadside patch and mismatched outline; it would make the court look like a rural road cap rather than a mansion paving edge."
+    }
+  ],
+  "implementation_guards": {
+    "reuse_existing_bytes_only": true,
+    "atlas_regions_only_no_raster_write": true,
+    "all_render_scales_uniform": true,
+    "three_building_pngs_unchanged": true,
+    "no_new_rigid_body_or_nav": true,
+    "no_program_color_rect_as_finished_art": true,
+    "door_depth_not_applied_to_courtyard_gate_or_corridor_openings": true,
+    "short_wall_and_flowerbed_require_separate_art_and_geometry_successor": true
+  },
+  "art_credit_boundary": "This manifest authorizes one visual-only preview attempt. It does not admit the estate as complete art, does not grant Field or formal deployment credit, and does not replace the inherited geometry proof."
+}

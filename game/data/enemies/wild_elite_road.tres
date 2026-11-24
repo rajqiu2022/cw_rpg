@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"wild_elite_road"
+display_name = "拦路刀头"
+portrait_path = "res://art/characters/enemy_thug_angry.png"
+battle_actor_path = "res://art/sprites/battle/standard_v3/bandit_mountain/bandit_mountain_ready_01.png"
+battle_actor_scale = 0.92
+battle_actor_flip_h = true
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v3/bandit_mountain/bandit_mountain_ready_01.png", "res://art/sprites/battle/standard_v3/bandit_mountain/bandit_mountain_ready_02.png", "res://art/sprites/battle/standard_v3/bandit_mountain/bandit_mountain_ready_03.png", "res://art/sprites/battle/standard_v3/bandit_mountain/bandit_mountain_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_move_01.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_move_02.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_move_03.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_attack_01.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_attack_02.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_attack_03.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_hit_01.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_hit_02.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_hit_03.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_defeat_01.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_defeat_02.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_defeat_03.png", "res://art/sprites/battle/standard_v2/bandit_mountain/bandit_mountain_defeat_04.png")
+level = 3
+max_hp = 150
+max_mp = 0
+attack = 26
+defense = 9
+speed = 9
+skill_ids = Array[StringName]([&"basic_attack", &"heavy_swing"])
+aggression = 0.45
+drop_gold_min = 25
+drop_gold_max = 45
+drop_exp = 43

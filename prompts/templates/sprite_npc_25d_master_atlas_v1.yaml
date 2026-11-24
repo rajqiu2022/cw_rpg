@@ -1,0 +1,19 @@
+id: sprite_npc_25d_master_atlas_v1
+description: Reference-locked four-direction 2.5D field-sprite atlas for a major NPC.
+quality: high
+size: "1024x1024"
+
+reference_images:
+  - "{portrait_reference}"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied portrait as the strict character identity reference. Preserve the same face, age, hair, costume colors, silhouette and signature accessories. Character identity requirements: {character_spec} Do not substitute another character or a generic young wanderer. Render the character as a full-body 2.5D Chinese wuxia RPG field sprite, at the same medium adult body proportion and grounded lighting standard as the game's protagonist: subtle sculpted volume, warm upper-left key light, cool ambient fill, matte cloth and leather, restrained comic ink contours. The result must be legible at 160 pixels tall.
+
+  Create exactly one 1024x1024 sprite atlas, four rows by four equal isolated cells, on a perfectly flat #ff00ff chroma-key background. Row order is: 1 down/front, 2 up/back, 3 right, 4 left. Each row is the same walk loop: column 1 neutral planted pose, column 2 left step, column 3 passing pose, column 4 right step. Every character is complete from head to boots, equally scaled, centered in its cell, with a shared feet baseline and at least 18 pixels of empty space under the feet. Keep the body and clothing identical between all cells; only the walking pose and facing may change.
+
+  No ground plane, cast shadow, scenery, frame borders, grid lines, labels, text, UI, weapon duplication, extra arms, cropped body, neighboring-cell overlap, chibi proportions, photorealism, bright studio glow, glossy plastic or long thin legs. {negative}
+
+variables:
+  portrait_reference: ""
+  character_spec: ""

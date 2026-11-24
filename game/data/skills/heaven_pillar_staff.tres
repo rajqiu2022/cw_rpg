@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"heaven_pillar_staff"
+display_name = "擎天镇岳棍"
+icon_path = "res://art/ui/skill/icons_semantic_v2/icon_skill_staff_legendary_v1.png"
+description = "棍势先封四方，再如天柱坠地。对全体敌人造成固定 50 + 外功攻击 × 135% 的伤害，穿透 12% 防御并施加 3 回合虚弱。"
+origin = "边关守桥军士以长杆拒马、撑梁救灾的实战经验演成。棍谱散落在三座旧桥和一份河工名册中，重在封路控阵而非炫技。"
+kind = 0
+target = 1
+delivery = 2
+mp_cost = 38
+quality = 4
+required_insight = 13
+practice_base_cost = 64
+fixed_damage = 50
+attack_scaling = 135
+hit_count = 1
+base_hit_chance = 0.95
+defense_pierce_percent = 12
+animation_id = &"heaven_pillar_staff"
+required_weapon_type = &"staff"
+martial_category = &"staff"
+damage_type = 0
+inflicted_status = &"weaken"
+status_chance = 1.0
+status_duration = 3
+school = "generic"
+self_practice_level_cap = 9
+breakthrough_internal_art = &"huilan_redirecting_art"
+breakthrough_hint = "棍端坠地，反劲顺杆直上两肩。与其硬扛，不如设法让来劲在腰间换个方向，再送回棍梢。"

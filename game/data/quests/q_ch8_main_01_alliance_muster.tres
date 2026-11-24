@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_01_alliance_muster"
+title="会盟点名"
+kind=0
+desc_not_started="第七章证据已经出峡谷，各方在茗雾外围集结。"
+desc_in_progress="向会盟录事确认盟友、证人与后勤路线。"
+desc_completed="证人与盟友名册已按上一章保护方案登记，雾林先遣路开放。"
+tracker_hint="茗雾外围 · 会盟集结地"
+completion_triggers=Array[String](["flag_set:ch8_alliance_mustered"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=180

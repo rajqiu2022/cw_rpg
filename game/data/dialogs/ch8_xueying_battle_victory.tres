@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="旁白"
+text="薛影的最后一记指刺停在半尺之外。旧伤与新伤同时崩开，他跪在止杀钟下，却没有再去碰那根杠杆。"
+on_end="next:last"
+[sub_resource type="Resource" id="last"]
+script=ExtResource("2")
+node_id=&"last"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="原来没有命令，也能选最后一步。把我的亲令证词留下……别再让下一个孩子只剩一个名字。"
+on_end="next:end"
+[sub_resource type="Resource" id="end"]
+script=ExtResource("2")
+node_id=&"end"
+speaker="冷孤云"
+text="你的罪不会因这一句话消失。但这句话会和所有亲令一起留下，证明谁把人训练成了刀。"
+set_flags=Array[Dictionary]([{"key":"ch8_xueying_outcome_dead_battle","value":true},{"key":"ch8_xueying_alive","value":false},{"key":"ch8_xueying_resolution_done","value":true},{"key":"ch8_final_su_gate_open","value":true}])
+complete_quest=&"q_ch8_main_10_xueying_resolution"
+accept_quest=&"q_ch8_main_11_su_final_order"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_xueying_battle_victory"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("last"),SubResource("end")])

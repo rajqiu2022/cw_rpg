@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.37,0.99,0.69,0.99,0.69,0.08,0.43,0.08),PackedVector2Array(0.03,0.31,0.43,0.25,0.46,0.63,0.06,0.71),PackedVector2Array(0.66,0.25,0.96,0.28,0.94,0.64,0.64,0.62),PackedVector2Array(0.20,0.67,0.82,0.67,0.82,0.84,0.18,0.84)])
+blockers = [{"id":"central_notice_board","pos":Vector2(0.535,0.505),"size":Vector2(0.105,0.075)}]
+interactions = [{"id":"bianzhou_bounty_board","label":"查看汴州府缉捕榜","pos":Vector2(0.535,0.555),"size":Vector2(0.14,0.12),"activation":"interact","action":"bounty_board:bianzhou","visual_baked":true,"baked_feature":"中轴广场实体榜亭"}]
+portals = [{"id":"return_world","label":"离开汴州 · 江湖大地图","pos":Vector2(0.535,0.955),"size":Vector2(0.17,0.075),"action":"world_map"},{"id":"old_post","label":"出城历练 · 中原旧驿（2～6级）","pos":Vector2(0.440,0.115),"size":Vector2(0.14,0.08),"target_scene":"openworld_bianzhou_old_post","target_pos":Vector2(0.50,0.88)}]
+walkable_probes = [{"id":"arrival","pos":Vector2(0.535,0.90)},{"id":"board","pos":Vector2(0.535,0.59)},{"id":"west_market","pos":Vector2(0.23,0.48)},{"id":"east_market","pos":Vector2(0.78,0.48)},{"id":"north_gate","pos":Vector2(0.50,0.15)}]
+blocked_probes = [{"id":"west_roof","pos":Vector2(0.10,0.88)},{"id":"east_canal","pos":Vector2(0.92,0.78)}]
+

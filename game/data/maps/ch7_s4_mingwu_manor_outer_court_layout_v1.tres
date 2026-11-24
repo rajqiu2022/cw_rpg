@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536,1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.430,0.995, 0.570,0.995, 0.620,0.820, 0.820,0.720, 0.820,0.260, 0.640,0.205, 0.570,0.115, 0.430,0.115, 0.360,0.205, 0.180,0.260, 0.180,0.720, 0.380,0.820),
+	PackedVector2Array(0.180,0.300, 0.070,0.310, 0.065,0.620, 0.205,0.650, 0.340,0.545, 0.340,0.330),
+	PackedVector2Array(0.660,0.300, 0.815,0.270, 0.935,0.315, 0.935,0.650, 0.790,0.675, 0.655,0.545)
+])
+blockers = Array[Dictionary]([
+	{"id":"left_archive_veranda", "pos":Vector2(0.105,0.455), "size":Vector2(0.175,0.315)},
+	{"id":"right_courier_depot", "pos":Vector2(0.895,0.455), "size":Vector2(0.155,0.325)},
+	{"id":"upper_inner_gate", "pos":Vector2(0.500,0.075), "size":Vector2(0.200,0.095)}
+])
+interactions = Array[Dictionary]([
+	{"id":"ch7_mingwu_transfer_ledger_direct", "pos":Vector2(0.250,0.430), "size":Vector2(0.120,0.105), "activation":"interact", "label":"核对外院转运目录", "action":"dialog:ch7_mingwu_transfer_ledger_direct", "visual_baked":true, "require_quest_active":"q_ch7_main_03_outer_wards", "require_flag":"ch7_route_first_mingwu", "hide_flag":"ch7_mingwu_transfer_ledger_checked"},
+	{"id":"ch7_mingwu_transfer_ledger_alerted", "pos":Vector2(0.250,0.430), "size":Vector2(0.120,0.105), "activation":"interact", "label":"检查被搬空的档案架", "action":"dialog:ch7_mingwu_transfer_ledger_alerted", "visual_baked":true, "require_quest_active":"q_ch7_main_03_outer_wards", "require_flag":"ch7_route_first_lieyun", "hide_flag":"ch7_mingwu_transfer_ledger_checked"}
+])
+portals = Array[Dictionary]([
+	{"id":"return_to_mingwu_tea_town", "pos":Vector2(0.500,0.925), "size":Vector2(0.120,0.105), "label":"返回茗雾茶镇", "target_scene":"ch7_s2_mingwu_tea_town", "target_pos":Vector2(0.500,0.185), "marker_rotation_degrees":180.0},
+	{"id":"enter_mingwu_inner_court", "pos":Vector2(0.500,0.180), "size":Vector2(0.120,0.090), "label":"进入茗雾山庄内院", "locked_label":"内院正在议事，外客请留步。", "target_scene":"ch7_s6_mingwu_inner_court", "target_pos":Vector2(0.500,0.875), "require_flag":"ch7_inner_routes_opened"}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"outer_court_spawn", "pos":Vector2(0.500,0.875)},
+	{"id":"central_court", "pos":Vector2(0.500,0.515)},
+	{"id":"archive_front", "pos":Vector2(0.305,0.430)},
+	{"id":"courier_front", "pos":Vector2(0.700,0.445)},
+	{"id":"inner_gate_front", "pos":Vector2(0.500,0.180)},
+	{"id":"tea_town_return", "pos":Vector2(0.500,0.925)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"left_archive_veranda", "pos":Vector2(0.105,0.455)},
+	{"id":"right_courier_depot", "pos":Vector2(0.895,0.455)},
+	{"id":"upper_inner_gate", "pos":Vector2(0.500,0.075)},
+	{"id":"left_water_channel", "pos":Vector2(0.035,0.700)}
+])

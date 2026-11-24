@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "潮门船头"
+text = "这是东大陆的潮门港。西去的船只停东海埠，往白鹿渡要在那里换船。"
+choices = Array[Dictionary]([{"text":"乘船返回东海埠","action":"scene:openworld_east_sea_port"},{"text":"先不乘船","next":"end"}])
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_tidegate_sail"
+nodes = Array[ExtResource("node")]([SubResource("start")])

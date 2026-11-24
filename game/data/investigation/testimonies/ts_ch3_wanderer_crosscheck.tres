@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch3_wanderer_crosscheck"
+display_name = "五证互校结论"
+speaker_npc_id = &"protagonist"
+statement = "五派证物都只有形似而缺少发力、步序或旧制细节，说明有人搜集各派规制后拼成伪证，不能据此指认任何一派。"
+chapter = 3
+initial_credibility = 85
+related_evidence_ids = Array[StringName]([&"ev_ch3_old_official_paper", &"ev_ch3_reversed_footprints", &"ev_ch3_reversed_moon_stitch"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch3_mingwu_common_artisan"])

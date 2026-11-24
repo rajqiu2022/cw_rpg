@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+
+[ext_resource type="Resource" path="res://data/maps/world_map_jianghu_layout_v14.tres" id="1_qlcjv"]
+[ext_resource type="Resource" path="res://data/dialogs/ch7_route_choice.tres" id="2_cyelj"]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="3_rkyy0"]
+[ext_resource type="Resource" path="res://data/background_sets/world_map_jianghu_v14_streamed.tres" id="4_jxx5f"]
+
+[resource]
+script = ExtResource("3_rkyy0")
+scene_id = &"world_map_jianghu_v14"
+display_name = "江湖行旅图"
+background_path = "res://art/maps/world_map_v14/visual.png"
+streamed_background = ExtResource("4_jxx5f")
+bgm_path = "res://art/audio/bgm/bgm_jianghu_journey_v4.wav"
+on_enter_dialog = ExtResource("2_cyelj")
+on_enter_require_flag = &"chapter6_complete"
+on_enter_once_flag = &"seen_ch7_route_choice"
+is_walkable = true
+map_layout = ExtResource("1_qlcjv")
+player_spawn = Vector2(0.13975695, 0.5839273)
+player_visual_scale = 0.754
+camera_zoom = 1.25

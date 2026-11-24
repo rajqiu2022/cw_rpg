@@ -1,0 +1,25 @@
+id: sprite_enemy_reaction_action
+description: Enemy battle hit or defeat reaction frame on chroma-key background
+quality: medium
+size: "1024x1024"
+reference_images:
+  - "game/art/characters/battle_masked_killer_leader_v1.png"
+require_reference_images: true
+
+prompt_template: |
+  Use case: stylized-concept
+  Asset type: 2.5D wuxia turn-based RPG battle reaction sprite
+  Input image: preserve the same masked killer leader, black head wrap, black light armor, long dark cape, dark-red trim, proportions, and weapon style from the supplied reference.
+  Primary request: create one single full-body reaction frame.
+  Reaction type: {{reaction_type}}
+  Frame action: {{frame_action}}
+  Facing: three-quarter side view facing toward the right side of the screen, suitable for the enemy upper-right battle formation before the runtime horizontal flip.
+  Style: Hong Kong wuxia comic illustration, thick ink contours, hand-painted shading, readable silhouette, consistent with the reference image.
+  Composition: square 1024x1024, complete figure, generous padding, feet visible, no crop.
+  Background: perfectly flat solid #00ff00 chroma-key background, no floor, no shadow, no gradient, no texture.
+  Constraints: preserve identity and costume; no extra characters; no extra weapons; no text; no UI; no border; no watermark; no gore.
+  Avoid: anime cute style, western fantasy armor, 3D render, isometric tile perspective, blood spray, spider, web.
+
+variables:
+  reaction_type: "hurt or defeat"
+  frame_action: "required"

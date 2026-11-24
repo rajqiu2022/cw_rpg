@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/dialogs/ch5_mine_intro.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch5_s4_abandoned_mine_layout_v2_modular.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="4_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("4_extent")
+logical_size = Vector2i(2048, 2048)
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch5_s4_abandoned_mine"
+display_name = "古峰 · 废弃矿道"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_cave_ominous_v4.wav"
+on_enter_dialog = ExtResource("2_intro")
+on_enter_require_flag = &"ch5_snow_pass_cleared"
+on_enter_once_flag = &"seen_ch5_abandoned_mine_intro"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+player_spawn = Vector2(0.49,0.88)
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids": [&"ch5_mine_tunnel_hunter"], "weight": 45.0},
+	{"enemy_ids": [&"ch5_false_liuyun_striker"], "weight": 7.0},
+	{"enemy_ids": [&"dragon_vein_serpent"], "weight": 13.0},
+	{"enemy_ids": [&"ch5_mine_tunnel_hunter", &"ch5_false_liuyun_striker"], "weight": 22.0},
+	{"enemy_ids": [&"ch5_mine_tunnel_hunter", &"ch5_false_liuyun_striker", &"ch5_mine_tunnel_hunter"], "weight": 8.0},
+	{"enemy_ids": [&"wild_elite_hunter"], "weight": 5.0}
+])
+encounter_allow_full_group_for_solo = true
+encounter_step_distance = 720.0
+encounter_chance = 0.12
+encounter_require_flag = &"ch5_mine_hunters_defeated"
+animated_props = Array[Dictionary]([{"id":"ch5_mine_flame_upper_left","type":"flame","pos":Vector2(0.240,0.220),"size":Vector2(0.016,0.040),"speed":0.82,"z_index":23},{"id":"ch5_mine_flame_upper_right","type":"flame","pos":Vector2(0.760,0.245),"size":Vector2(0.016,0.040),"speed":0.94,"z_index":23},{"id":"ch5_mine_flame_lower_left","type":"flame","pos":Vector2(0.290,0.755),"size":Vector2(0.017,0.043),"speed":1.04,"z_index":24},{"id":"ch5_mine_flame_lower_right","type":"flame","pos":Vector2(0.705,0.745),"size":Vector2(0.017,0.043),"speed":0.88,"z_index":24},{"id":"ch5_mine_water_vapor","type":"mist_drift","pos":Vector2(0.50,0.675),"size":Vector2(0.74,0.16),"speed":0.34,"opacity":0.10,"count":4,"color":"#b9cfce","z_index":13}])
+npcs = Array[Dictionary]([
+	{"npc_id":"ch5_patrol_post_3","npc_name":"坑道哨","pos":Vector2(0.50,0.68),"dialog_id":"ch5_patrol_post_3","sprite_path":"res://art/characters/npc_west_ruin_guard_idle_down_25d_4f.png","require_quest_active":"q_ch5_side_02_patrol_blades","hide_flag":"ch5_patrol_three","require_flag":"ch5_patrol_two"}
+])
+hotspots = Array[Dictionary]([
+	{"label":"查看灯架下的焦纸","pos_x":0.51,"pos_y":0.75,"action":"dialog:shaolin_mine_page","require_flag":"shaolin_lay_disciple_met","hide_flag":"shaolin_snow_page_found"},
+	{"label":"击退矿道灭口人", "pos_x":0.50, "pos_y":0.47, "action":"dialog:ch5_mine_hunter_battle", "require_flag":"ch5_snow_pass_cleared", "hide_flag":"ch5_mine_hunters_defeated"},
+	{"label":"询问旧案幸存者", "pos_x":0.25, "pos_y":0.18, "action":"dialog:ch5_mine_survivor_testimony", "require_flag":"ch5_mine_hunters_defeated", "hide_flag":"ch5_old_case_survivor_heard"}
+])
+exits = Array[Dictionary]([
+	{"label":"返回雪岭关", "pos":Vector2(0.49,0.91), "size":Vector2(0.14,0.12), "target_scene":"ch5_s3_snow_pass", "target_pos":Vector2(0.82,0.16)},
+	{"label":"沿北侧旧索道前往伪旗营地", "pos":Vector2(0.82,0.18), "size":Vector2(0.13,0.12), "target_scene":"ch5_s5_false_banner_outpost", "target_pos":Vector2(0.50,0.88), "require_flag":"ch5_old_case_survivor_heard"}
+])

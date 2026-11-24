@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "scope": "TEN_INDEPENDENT_WILD_TRAINING_CANDIDATES_NOT_ACTIVE_NOT_RUNTIME_APPROVAL",
+  "status": "PENDING_ART_ANIMALS_AND_ACTUAL_ENTRY_PROOFS",
+  "activated": false,
+  "world_scene_id": "world_map_jianghu",
+  "world_design_size": [
+    12288,
+    8192
+  ],
+  "bindings": {
+    "res://data/scenes/world_map_jianghu.tres": "685876AC86CB3B739F9B51BE12DA60E4A125480C715DA2D08F9B486D76E5A046",
+    "res://data/maps/world_map_v15_complete_v9c_source.json": "85CED93C4A62361FDF35207DF97D797897C4AB8D17C6D18FC1E87D222199967F",
+    "res://scripts/domain/character_stats.gd": "2E502CB6868981EBED1E4C81B88179467FA4DD2AA55E9F0260CFB6002E0AA6A0",
+    "res://data/enemies/zhuwei_pack_wolf.tres": "3392F28C482524B55B1BB7534D17D09A9B34A378DE916D14DE1C57A5BE0A8E80"
+  },
+  "level_policy": {
+    "production_hard_cap": null,
+    "candidate_range": [
+      1,
+      20
+    ],
+    "growth_unchanged": true,
+    "evidence": "CharacterStats.gain_exp has no level cap; CombatBalanceSimulator 1..20 is its planning range only."
+  },
+  "animal_assets": {
+    "wolf": {
+      "status": "EXISTING_SAME_SPECIES_FIVE_SEQUENCE_FRAMES",
+      "frame_root": "res://art/sprites/battle/standard_v2/wild_wolf",
+      "source_enemy": "zhuwei_pack_wolf",
+      "variants": [
+        "training_wolf_young_lv2",
+        "training_wolf_pack_lv4",
+        "training_wolf_mountain_lv7",
+        "training_wolf_snowridge_lv15"
+      ],
+      "balance_status": "AUTHORED_CANDIDATE_NOT_SIMULATED_OR_PLAYTESTED"
+    },
+    "wild_dog": {
+      "status": "PENDING_AUTHORIZED_DEDICATED_ANIMAL_ASSETS"
+    },
+    "tiger": {
+      "status": "PENDING_AUTHORIZED_DEDICATED_ANIMAL_ASSETS"
+    },
+    "bear": {
+      "status": "PENDING_AUTHORIZED_DEDICATED_ANIMAL_ASSETS"
+    },
+    "eagle": {
+      "status": "PENDING_AUTHORIZED_DEDICATED_ANIMAL_ASSETS"
+    }
+  },
+  "entries": [
+    {
+      "id": "wild_training_linxi_wild_slope",
+      "name": "林西荒坡",
+      "anchor_portal_id": "linxi_village",
+      "proposed_world_foot_px": [
+        2320,
+        4100
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        1,
+        2
+      ],
+      "animal_species": [
+        "wild_dog"
+      ],
+      "ready_enemy_ids": [],
+      "pending_species": [
+        "wild_dog"
+      ],
+      "biome": "grass",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_linxi_wild_slope.tres",
+      "output_layout_path": "res://data/maps/wild_training_linxi_wild_slope_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_zhuwei_wolf_trail",
+      "name": "竹尾狼径",
+      "anchor_portal_id": "zhuwei_village",
+      "proposed_world_foot_px": [
+        6240,
+        4500
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        2,
+        4
+      ],
+      "animal_species": [
+        "wolf"
+      ],
+      "ready_enemy_ids": [
+        "training_wolf_young_lv2",
+        "training_wolf_pack_lv4"
+      ],
+      "pending_species": [],
+      "biome": "bamboo",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_zhuwei_wolf_trail.tres",
+      "output_layout_path": "res://data/maps/wild_training_zhuwei_wolf_trail_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_qinghe_wild_wood",
+      "name": "清河野林",
+      "anchor_portal_id": "qinghe_town",
+      "proposed_world_foot_px": [
+        4950,
+        4440
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        4,
+        6
+      ],
+      "animal_species": [
+        "wild_dog",
+        "wolf"
+      ],
+      "ready_enemy_ids": [
+        "training_wolf_pack_lv4"
+      ],
+      "pending_species": [
+        "wild_dog"
+      ],
+      "biome": "forest",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_qinghe_wild_wood.tres",
+      "output_layout_path": "res://data/maps/wild_training_qinghe_wild_wood_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_luoyang_south_hunting",
+      "name": "洛阳南郊猎场",
+      "anchor_portal_id": "luoyang",
+      "proposed_world_foot_px": [
+        4200,
+        2700
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        6,
+        8
+      ],
+      "animal_species": [
+        "wolf"
+      ],
+      "ready_enemy_ids": [
+        "training_wolf_mountain_lv7"
+      ],
+      "pending_species": [],
+      "biome": "grass",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_luoyang_south_hunting.tres",
+      "output_layout_path": "res://data/maps/wild_training_luoyang_south_hunting_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_xiangzhou_tiger_wood",
+      "name": "襄州虎林",
+      "anchor_portal_id": "xiangzhou",
+      "proposed_world_foot_px": [
+        4480,
+        6080
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        8,
+        10
+      ],
+      "animal_species": [
+        "tiger"
+      ],
+      "ready_enemy_ids": [],
+      "pending_species": [
+        "tiger"
+      ],
+      "biome": "forest",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_xiangzhou_tiger_wood.tres",
+      "output_layout_path": "res://data/maps/wild_training_xiangzhou_tiger_wood_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_wudang_bear_valley",
+      "name": "武当熊谷",
+      "anchor_portal_id": "wudang",
+      "proposed_world_foot_px": [
+        1580,
+        5520
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        10,
+        12
+      ],
+      "animal_species": [
+        "bear"
+      ],
+      "ready_enemy_ids": [],
+      "pending_species": [
+        "bear"
+      ],
+      "biome": "forest",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_wudang_bear_valley.tres",
+      "output_layout_path": "res://data/maps/wild_training_wudang_bear_valley_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_huashan_eagle_cliff",
+      "name": "华山鹰崖",
+      "anchor_portal_id": "huashan",
+      "proposed_world_foot_px": [
+        1020,
+        2400
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        12,
+        14
+      ],
+      "animal_species": [
+        "eagle"
+      ],
+      "ready_enemy_ids": [],
+      "pending_species": [
+        "eagle"
+      ],
+      "biome": "rock",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_huashan_eagle_cliff.tres",
+      "output_layout_path": "res://data/maps/wild_training_huashan_eagle_cliff_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_yanmen_snow_wolf_valley",
+      "name": "雁门雪狼谷",
+      "anchor_portal_id": "yanmen_pass",
+      "proposed_world_foot_px": [
+        3350,
+        710
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        14,
+        16
+      ],
+      "animal_species": [
+        "wolf"
+      ],
+      "ready_enemy_ids": [
+        "training_wolf_snowridge_lv15"
+      ],
+      "pending_species": [],
+      "biome": "snow",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_yanmen_snow_wolf_valley.tres",
+      "output_layout_path": "res://data/maps/wild_training_yanmen_snow_wolf_valley_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_gufeng_tiger_ridge",
+      "name": "古月伏虎岭",
+      "anchor_portal_id": "gufeng",
+      "proposed_world_foot_px": [
+        10480,
+        1450
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        16,
+        18
+      ],
+      "animal_species": [
+        "tiger",
+        "bear"
+      ],
+      "ready_enemy_ids": [],
+      "pending_species": [
+        "tiger",
+        "bear"
+      ],
+      "biome": "rock",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_gufeng_tiger_ridge.tres",
+      "output_layout_path": "res://data/maps/wild_training_gufeng_tiger_ridge_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    },
+    {
+      "id": "wild_training_mingwu_deep_valley",
+      "name": "茗雾深山",
+      "anchor_portal_id": "mingwu",
+      "proposed_world_foot_px": [
+        10800,
+        7640
+      ],
+      "entry_status": "PENDING_ORIGINAL_RAW17_NAV_PHYSICS_AND_EXISTING_PORTAL_PROP_CLEARANCE",
+      "recommended_player_levels": [
+        18,
+        20
+      ],
+      "animal_species": [
+        "bear",
+        "eagle"
+      ],
+      "ready_enemy_ids": [],
+      "pending_species": [
+        "bear",
+        "eagle"
+      ],
+      "biome": "forest",
+      "art_binding": null,
+      "entry_proof": null,
+      "output_scene_path": "res://data/scenes/wild_training_mingwu_deep_valley.tres",
+      "output_layout_path": "res://data/maps/wild_training_mingwu_deep_valley_layout_20261012.tres",
+      "encounter_step_distance": 560,
+      "encounter_chance": 0.16,
+      "full_group_for_solo": false,
+      "world_portal_size_px": [
+        64,
+        48
+      ]
+    }
+  ],
+  "excluded_claims": [
+    "Existing three outskirts are not these ten new IDs.",
+    "Proposed points are not verified reachable or clear.",
+    "Missing animals must never use wolf or human fallback.",
+    "No canonical world writes, save migration, growth edits, or runtime credit."
+  ]
+}

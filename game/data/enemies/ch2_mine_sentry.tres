@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"ch2_mine_sentry"
+display_name = "旧矿洞巡哨"
+battle_actor_path = "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_01.png"
+battle_actor_scale = 0.94
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_01.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_02.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_03.png", "res://art/sprites/battle/standard_v2/masked_killer/masked_killer_defeat_04.png")
+level = 3
+max_hp = 155
+max_mp = 24
+attack = 39
+defense = 7
+speed = 11
+skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle"])
+aggression = 0.66
+drop_gold_min = 8
+drop_gold_max = 14
+drop_exp = 32
+drop_random = Array[Dictionary]([{"item_id":"antidote_pill", "chance":0.20, "count":1}])

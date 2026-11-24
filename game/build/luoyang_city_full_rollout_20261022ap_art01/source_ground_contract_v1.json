@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-city-full-rollout-20261022ap",
+  "status": "ART_SOURCE_GROUND_MEASUREMENT_FROZEN_FOR_SYSTEM_CANDIDATE_BINDING",
+  "coordinate_space": "source PNG pixels; rectangles are [x,y,width,height]",
+  "rules": {
+    "complete_a1_is_visual_bounds_not_collision": true,
+    "solid_rects_are_only_the_visible_ground_base_and_door_jambs": true,
+    "portal_clear_rect_must_not_be_added_to_collision": true,
+    "non_solid_threshold_is_visual_and_portal_measurement_only": true,
+    "support_bridge_rects_are_empty_when_no_safe_ground_support_exists": true,
+    "portal_return_offset_world_px": 24,
+    "system_must_project_all_rects_with_one_uniform_scale": true,
+    "field_geometry_and_875_17_physics_still_required": true
+  },
+  "assets": [
+    {
+      "id": "pawnshop_whole_building",
+      "texture_path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png",
+      "png_sha256": "6097A1D45FA5E829A2130AB2D41DF988F0C521A3E14ED102FFDABDC99C848209",
+      "source_size_px": [1039, 696],
+      "complete_a1_xywh_px": [4, 17, 1029, 645],
+      "strong_a16_xywh_px": [22, 40, 1004, 580],
+      "source_ground_anchor_px": [529.5, 620.0],
+      "principal_door": {
+        "source_clear_xywh_px": [448, 457, 163, 163],
+        "source_lower_clear_xywh_px": [448, 548, 163, 72],
+        "source_threshold_anchor_px": [529.5, 620.0],
+        "portal_return_direction": "south",
+        "single_portal_only": true
+      },
+      "solid_rects_px": [
+        {"role": "left_ground_base", "rect": [52, 548, 354, 72]},
+        {"role": "left_door_jamb", "rect": [406, 548, 42, 72]},
+        {"role": "right_door_jamb", "rect": [611, 548, 43, 72]},
+        {"role": "right_ground_base", "rect": [654, 548, 318, 72]}
+      ],
+      "support_bridge_rects_px": [],
+      "non_solid_visible_threshold_xywh_px": [454, 607, 151, 13],
+      "note": "The two side shop bays remain visual/display frontage. They do not create extra room portals."
+    },
+    {
+      "id": "tailor_whole_building",
+      "texture_path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southeast_market_front.png",
+      "png_sha256": "6119E1A2587B6A0B0A7F6547090F6DE0641A644C311758D7B3D608B5C5475A5B",
+      "source_size_px": [870, 583],
+      "complete_a1_xywh_px": [4, 4, 851, 538],
+      "strong_a16_xywh_px": [15, 27, 838, 510],
+      "source_ground_anchor_px": [580.5, 537.0],
+      "principal_door": {
+        "source_clear_xywh_px": [487, 302, 187, 235],
+        "source_lower_clear_xywh_px": [487, 486, 187, 51],
+        "source_threshold_anchor_px": [580.5, 537.0],
+        "portal_return_direction": "south",
+        "single_portal_only": true
+      },
+      "solid_rects_px": [
+        {"role": "left_ground_base", "rect": [60, 486, 390, 51]},
+        {"role": "left_door_jamb", "rect": [450, 458, 37, 79]},
+        {"role": "right_door_jamb", "rect": [674, 458, 42, 79]},
+        {"role": "right_ground_base", "rect": [716, 486, 93, 51]}
+      ],
+      "support_bridge_rects_px": [],
+      "non_solid_visible_threshold_xywh_px": [487, 510, 187, 27],
+      "note": "The left work counter is not a portal. The right opening is the only room entrance."
+    },
+    {
+      "id": "ordinary_residential_row",
+      "texture_path": "res://art/maps/luoyang_enclosure_v11/ch4_s0_luoyang_gate/entities/east_street_front.png",
+      "png_sha256": "B78008DA974BA92C3E66EFC2D5B272BC6249583CBD0A1CB3C3BC7FC61EE12D3B",
+      "source_size_px": [1109, 560],
+      "complete_a1_xywh_px": [12, 4, 1085, 542],
+      "strong_a16_xywh_px": [14, 82, 1081, 362],
+      "source_ground_anchor_px": [554.5, 444.0],
+      "doors": [
+        {
+          "door_id": "residential_left",
+          "source_clear_xywh_px": [319, 262, 240, 182],
+          "source_lower_clear_xywh_px": [319, 404, 240, 40],
+          "source_threshold_anchor_px": [439.0, 444.0],
+          "portal_return_direction": "south"
+        },
+        {
+          "door_id": "residential_right",
+          "source_clear_xywh_px": [590, 262, 225, 182],
+          "source_lower_clear_xywh_px": [590, 404, 225, 40],
+          "source_threshold_anchor_px": [702.5, 444.0],
+          "portal_return_direction": "south"
+        }
+      ],
+      "solid_rects_px": [
+        {"role": "left_ground_base", "rect": [72, 404, 247, 40]},
+        {"role": "center_ground_jamb", "rect": [559, 385, 31, 59]},
+        {"role": "right_ground_base", "rect": [815, 404, 221, 40]}
+      ],
+      "support_bridge_rects_px": [],
+      "note": "Two genuine open bays can bind home and guest room IDs independently; do not add a third portal to the left window bay."
+    },
+    {
+      "id": "carpentry_or_material_workshop",
+      "texture_path": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southwest_market_front.png",
+      "png_sha256": "D2D082C4E50B82B060AE1E10AEC95201C70D80EEE8C877232BA4AD88FBFA614A",
+      "source_size_px": [897, 453],
+      "complete_a1_xywh_px": [11, 4, 875, 389],
+      "strong_a16_xywh_px": [12, 67, 872, 292],
+      "source_ground_anchor_px": [448.5, 359.0],
+      "doors": [
+        {
+          "door_id": "workshop_left",
+          "source_clear_xywh_px": [251, 215, 184, 144],
+          "source_lower_clear_xywh_px": [251, 323, 184, 36],
+          "source_threshold_anchor_px": [343.0, 359.0],
+          "portal_return_direction": "south"
+        },
+        {
+          "door_id": "workshop_right",
+          "source_clear_xywh_px": [478, 215, 172, 144],
+          "source_lower_clear_xywh_px": [478, 323, 172, 36],
+          "source_threshold_anchor_px": [564.0, 359.0],
+          "portal_return_direction": "south"
+        }
+      ],
+      "solid_rects_px": [
+        {"role": "left_ground_base", "rect": [61, 323, 190, 36]},
+        {"role": "center_ground_jamb", "rect": [435, 309, 43, 50]},
+        {"role": "right_ground_base", "rect": [650, 323, 186, 36]}
+      ],
+      "support_bridge_rects_px": [],
+      "note": "Either bay may host the general-stall room ID; keep the other as a visible workshop bay unless a second real room is authored."
+    }
+  ],
+  "art_measurement_limit": "These rectangles come from direct original-pixel visual measurement and alpha bounds. They are frozen for candidate authoring but do not replace actual scaled-body, route, door-threshold, and native Field checks."
+}

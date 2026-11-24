@@ -1,0 +1,87 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+
+[ext_resource type="Resource" path="res://data/maps/luoyang_enclosure_v11_candidates/ch4_s3_luoyang_market_layout.tres" id="1_ktitu"]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="2_ry1re"]
+
+[resource]
+script = ExtResource("2_ry1re")
+scene_id = &"ch4_s3_luoyang_market"
+display_name = "洛阳 · 南市"
+background_path = "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/ground_v14/root_ground_v14_02/floor.png"
+bgm_path = "res://art/audio/bgm/bgm_market_lively_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("1_ktitu")
+player_spawn = Vector2(0.5, 0.9082031)
+player_visual_scale = 0.91
+camera_zoom = 1.05
+npcs = Array[Dictionary]([{
+"interaction_action": "spar:luoyang_shen_guard:ch2_tournament_guard:沈家护院总管:18:4",
+"npc_id": "spar_luoyang_shen_guard",
+"npc_name": "沈家护院总管 · 可切磋",
+"pos": Vector2(0.12044271, 0.5517578),
+"scale": 0.96,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"
+}, {
+"conversation_base_facing": "left",
+"interaction_action": "spar:luoyang_examiner:wulin_examiner:大会考校官:24:6",
+"npc_id": "spar_luoyang_examiner",
+"npc_name": "大会考校官 · 可切磋",
+"pos": Vector2(0.38085938, 0.40039063),
+"scale": 0.82,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_wulin_examiner_idle_down_4f.png"
+}, {
+"interaction_action": "spar:luoyang_blademaster:wandering_blademaster:流浪刀客:60:15",
+"npc_id": "spar_luoyang_blademaster",
+"npc_name": "流浪刀客 · 可切磋",
+"pos": Vector2(0.44921875, 0.7519531),
+"scale": 0.82,
+"sprite_path": "res://art/characters/npc_linxi_martial_hall_master_idle_down_25d_4f_v2_runtime.png"
+}, {
+"interaction_action": "spar:luoyang_patrol:luoyang_patrol:洛阳巡捕:32:8",
+"npc_id": "spar_luoyang_patrol",
+"npc_name": "洛阳巡捕 · 可切磋",
+"pos": Vector2(0.5566406, 0.7324219),
+"scale": 0.96,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"
+}, {
+"conversation_base_facing": "left",
+"dialog_id": "ch4_guyun_sword_notches",
+"hide_flag": "guyun_luoyang_notches_solved",
+"npc_id": "feng_yanqiu_ch4",
+"npc_name": "封砚秋",
+"portrait_path": "res://art/characters/portraits/portrait_feng_yanqiu_v1.png",
+"pos": Vector2(0.25716147, 0.5029297),
+"require_flag": "guyun_returning_diagram_solved",
+"scale": 0.82,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_wulin_examiner_idle_down_4f.png"
+}, {
+"dialog_id": "ch4_luoyang_paper_offer",
+"hide_flag": "luoyang_paper_started",
+"npc_id": "luoyang_paper_scholar",
+"npc_name": "南市书生",
+"pos": Vector2(0.16927083, 0.6542969),
+"scale": 0.82,
+"sprite_path": "res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png"
+}, {
+"dialog_id": "ch4_peony_poetry",
+"hide_flag": "peony_poetry_won",
+"npc_id": "luoyang_poetry_host",
+"npc_name": "牡丹诗会主持",
+"pos": Vector2(0.41015625, 0.83984375),
+"scale": 0.82,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png"
+}, {
+"interaction_action": "shop:luoyang_armory",
+"npc_id": "luoyang_armorer",
+"npc_name": "军械铺掌柜",
+"pos": Vector2(0.7942708, 0.4638672),
+"scale": 0.82,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png"
+}])
+metadata/luoyang_layered_revision = 3
+metadata/city_manifest_sha = "bc100b541f74ddaa49391ccb7e8a5161905f3586c243dc74eded840284f8dc5f"
+metadata/city_enclosure_manifest_sha = "ba46bfa02e4152918d6696033450bf1f0329be01318f69449a7fad7355a85c84"
+metadata/city_ground_manifest_sha = "559c0ffc87f822873e9fbf04aa9b0ce49d98794a806b29a6efd75c16e3847fae"
+metadata/city_ground_manifest_path = "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/ground_v14/root_ground_v14_02/ground_capture.json"

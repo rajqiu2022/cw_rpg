@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=9 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "考校执事"
+text = "你不借师门名望，也过了这一关。大会先给你一册自选散谱，这只决定眼下从哪一门起步，不会锁住以后。各地武教头、奇遇高人与残卷，仍可让你兼学五系。"
+choices = Array[Dictionary]([{"text":"守林西剑路：继续磨炼本门二式", "next":"sword"}, {"text":"学江湖刀路：重斩", "next":"blade"}, {"text":"学江湖棍路：考校棍·横扫", "next":"staff"}, {"text":"学江湖掌路：回风绵掌", "next":"palm"}, {"text":"学江湖暗器：竹雨穿林", "next":"hidden"}])
+[sub_resource type="Resource" id="sword"]
+script = ExtResource("2_dnode")
+node_id = &"sword"
+speaker = "冷孤云"
+text = "剑路未尽，不必因无人授谱就轻易改弦。"
+learn_skills = Array[StringName]([&"linxi_basic_sword_two"])
+set_flags = Array[Dictionary]([{"key":"wanderer_route_sword", "value":true}])
+on_end = "next:finish"
+[sub_resource type="Resource" id="blade"]
+script = ExtResource("2_dnode")
+node_id = &"blade"
+speaker = "冷孤云"
+text = "先从最朴实的蓄力重斩学起。"
+learn_skills = Array[StringName]([&"heavy_swing"])
+set_flags = Array[Dictionary]([{"key":"wanderer_route_blade", "value":true}])
+on_end = "next:finish"
+[sub_resource type="Resource" id="staff"]
+script = ExtResource("2_dnode")
+node_id = &"staff"
+speaker = "冷孤云"
+text = "长兵先学守中横扫，再谈繁复棍阵。"
+learn_skills = Array[StringName]([&"examiner_staff_sweep"])
+set_flags = Array[Dictionary]([{"key":"wanderer_route_staff", "value":true}])
+on_end = "next:finish"
+[sub_resource type="Resource" id="palm"]
+script = ExtResource("2_dnode")
+node_id = &"palm"
+speaker = "冷孤云"
+text = "兵器可失，掌上功夫总能随身。"
+learn_skills = Array[StringName]([&"circling_breath_palm"])
+set_flags = Array[Dictionary]([{"key":"wanderer_route_palm", "value":true}])
+on_end = "next:finish"
+[sub_resource type="Resource" id="hidden"]
+script = ExtResource("2_dnode")
+node_id = &"hidden"
+speaker = "冷孤云"
+text = "暗器不只求狠，更考验距离、时机与克制。"
+learn_skills = Array[StringName]([&"bamboo_rain_piercing_shot"])
+set_flags = Array[Dictionary]([{"key":"wanderer_route_hidden", "value":true}])
+on_end = "next:finish"
+[sub_resource type="Resource" id="finish"]
+script = ExtResource("2_dnode")
+node_id = &"finish"
+speaker = "考校执事"
+text = "江湖客牌收好。从今日起，多走村镇、多寻武教头，也别错过不留姓名的高人。五类兵器都备得起，五路武功便都学得成。"
+add_testimonies = Array[StringName]([&"ts_ch3_wanderer_crosscheck"])
+verify_testimonies = Array[StringName]([&"ts_ch3_wanderer_crosscheck"])
+set_flags = Array[Dictionary]([{"key":"ch3_wanderer_complete", "value":true}, {"key":"joined_faction", "value":true}])
+complete_quest = &"q_ch3_wanderer_investigate"
+on_end = "scene:ch3_s1_wulin_assembly"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_wanderer_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("sword"), SubResource("blade"), SubResource("staff"), SubResource("palm"), SubResource("hidden"), SubResource("finish")])

@@ -1,0 +1,225 @@
+{
+  "schema": "27D_GROUNDED_REAR_VOLUME_AND_DOOR_DEPTH_CANDIDATE_V1",
+  "status": "BUILD_DESIGN_NOT_PUBLISHED_OR_FORMAL",
+  "scope": "Only exact Gate supply wing and Estate main hall rear floor volumes. Preserve both original front-side bases and legal entrance approach; do not use visible roof/alpha bbox as ground collision. No original PNG edit, new generated image, NPC/quest/action/body-scale change.",
+  "fixed_parent_binding": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/garden_estate_exit_repair_20261027c01/closure_READY01/finish8_binding_READY.json",
+    "adoption": "formal01656F8C"
+  },
+  "proposals": [
+    {
+      "logical_id": "ch4_s0_luoyang_gate",
+      "object_id": "finish_i_gate_east_supply",
+      "fixed_payload": {
+        "path": "res://build/luoyang_seven_fields_layout_20261026c_system01/RESIDUAL02_ROOT_READY/output/113704/ch4_s0_luoyang_gate/payload.bin",
+        "sha256": "92a54b95ee2025c4db630613b0dc396e74f7ff8bd544bb95af053de3e19c9a88"
+      },
+      "foot": [
+        2380,
+        1300
+      ],
+      "source_anchor": [
+        893,
+        1068
+      ],
+      "source_size": [
+        2202,
+        1289
+      ],
+      "uniform_scale": 0.41,
+      "existing_front_ground_world": [
+        [
+          [
+            2195.090087890625,
+            1254.9000244140625
+          ],
+          [
+            2330.389892578125,
+            1254.9000244140625
+          ],
+          [
+            2330.389892578125,
+            1300
+          ],
+          [
+            2195.090087890625,
+            1300
+          ]
+        ],
+        [
+          [
+            2429.610107421875,
+            1254.9000244140625
+          ],
+          [
+            2733.419921875,
+            1254.9000244140625
+          ],
+          [
+            2733.419921875,
+            1300
+          ],
+          [
+            2429.610107421875,
+            1300
+          ]
+        ]
+      ],
+      "append_source_ground_polygon": [
+        [
+          442,
+          800
+        ],
+        [
+          1755,
+          800
+        ],
+        [
+          1755,
+          958
+        ],
+        [
+          442,
+          958
+        ]
+      ],
+      "new_volume_semantics": "New authored rear room ground slab, joining both existing front plinths at source y958. Leaves the original 242px source entrance recess between front bases, not a through-passage across the entire house. Source y800 is NEW floor-depth design, not an old measured or passed rear-body claim.",
+      "world_transform": "Vector2f32(foot) + (Vector2f32(source_point)-Vector2f32(anchor))*scalar(.41), each point independently; then RegionField's declared logical transform.",
+      "door_depth_child": {
+        "parent_id": "finish_i_gate_east_supply",
+        "texture": "res://build/luoyang_estate_courtyard_20261021al_system01/textures/wing_door_depth.tres",
+        "texture_sha256": "61c70b6f98c4c399ae4356ccba9151d2621b6833a8c71ed1b2cf8a79e1ee4efd",
+        "centered": true,
+        "local_position": [
+          -208,
+          168
+        ],
+        "local_scale": [
+          1,
+          1
+        ],
+        "relative_z": -1,
+        "inherit_parent_depth_scale_fade": true,
+        "modulate": [
+          0.46,
+          0.42,
+          0.38,
+          1
+        ],
+        "semantic": "Existing shaded interior shell face behind the transparent doorway, not a new fake functional portal or painted PNG. Existing native wing frame/door/window remains intact."
+      },
+      "keep_source_approach": [
+        2380,
+        1324
+      ],
+      "keep_NPC_foot": [
+        2400,
+        1450
+      ]
+    },
+    {
+      "logical_id": "luoyang_estate_riverside_20261021ai",
+      "object_id": "estate_ak_main_hall",
+      "fixed_payload": {
+        "path": "res://build/luoyang_seven_fields_layout_20261026c_system01/RESIDUAL02_ROOT_READY/output/113704/luoyang_estate_riverside_20261021ai/payload.bin",
+        "sha256": "71dac7a2a6a46dea2be68df124f09d3e19f9520aa7186796f36f4b3e79682b90"
+      },
+      "foot": [
+        1536,
+        520
+      ],
+      "source_anchor": [
+        1279,
+        888
+      ],
+      "source_size": [
+        2560,
+        1072
+      ],
+      "uniform_scale": 0.44548065650644786,
+      "existing_front_ground_world": [
+        [
+          [
+            1199.662109375,
+            481.68865966796875
+          ],
+          [
+            1472.2962646484375,
+            481.68865966796875
+          ],
+          [
+            1472.2962646484375,
+            520
+          ],
+          [
+            1199.662109375,
+            520
+          ]
+        ],
+        [
+          [
+            1599.25830078125,
+            481.68865966796875
+          ],
+          [
+            1873.2288818359375,
+            481.68865966796875
+          ],
+          [
+            1873.2288818359375,
+            520
+          ],
+          [
+            1599.25830078125,
+            520
+          ]
+        ]
+      ],
+      "append_source_ground_polygon": [
+        [
+          524,
+          600
+        ],
+        [
+          2036,
+          600
+        ],
+        [
+          2036,
+          802
+        ],
+        [
+          524,
+          802
+        ]
+      ],
+      "new_volume_semantics": "New enclosed main-hall rear room floor joining the old frontage at y802. The existing central front vestibule/threshold remains clear in front of this slab. This is grounded architectural depth, not the high roof silhouette bbox.",
+      "world_transform": "Use original author's same component scale and point-wise float32 Vector2 foot+(source-anchor)*scale; Region compiler must use same expression as retained old front-base model.",
+      "keep_portal": {
+        "source_foot": [
+          1536,
+          544
+        ],
+        "id_provenance": "existing G.project_portals source-authored real main hall entrance; preserve original target ID and targetUV; Source owns multi-room redesign"
+      },
+      "keep_existing_door_layer": "estate_al_door_main_hall (Atlas hall_door_depth.tres), no duplicate or new z-overlay"
+    }
+  ],
+  "source_media": {
+    "expected_Estate_sources": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/garden_estate_exit_repair_20261027c01/unified32_READY01/maps/expected_Estate_sources.json",
+      "sha256": "a89ac0c99813497cd5410676a905235baaac4fa9ee3167f699cb19157cd6790a"
+    },
+    "inherited_sha256": {
+      "res://build/luoyang_estate_courtyard_20261021al_system01/textures/wing_door_depth.tres": "61c70b6f98c4c399ae4356ccba9151d2621b6833a8c71ed1b2cf8a79e1ee4efd",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/shell_residential_v1.png": "88189e4971ece89443557c76f7762f28fe9c1740e780bfa9ebdeadfa8c034494",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/shell_residential_v1.png.import": "56e7ee073ab3024a1c61e2df2e235f5095486cbddb33f1253a9545d4de226324",
+      "res://.godot/imported/shell_residential_v1.png-48ef764e649ed02b6d198116074ff76b.ctex": "336357ca36ced0b1a85313e59307ae4c8121edf5f8507266d435307509425541",
+      "res://build/luoyang_estate_courtyard_20261021ak_system01/receipts/wing.meta.json": "ea6709f5e4a7c93ccb0feb1c54d41fd50ed0a38292f358aaf4c97fc250bf2fd3"
+    },
+    "Gate_scope_note": "These are inherited media bytes from Estate authority, but Gate source admission must explicitly add any missing media leaves. Do not pretend they were already Gate FIRST."
+  },
+  "acceptance": "Root review new rear-depth design; finite new owned-ground mask black delta and original door approach/fullbody clear, source companion front plinth exact retained; no old whole-city reraster/routes. Root sole actual/render after unified content plan; not executed here.",
+  "engine_calls": 0,
+  "canonical_writes": 0
+}

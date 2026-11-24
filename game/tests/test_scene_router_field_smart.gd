@@ -25,8 +25,8 @@ func _run() -> void:
 	)
 	_expect_eq(
 		SceneRouter.get_field_scene_path(&"ch1_s1_road"),
-		"res://scenes/field.tscn",
-		"classic SceneScript opens field.tscn"
+		"res://scenes/field_walkable.tscn",
+		"mountain road opens field_walkable.tscn"
 	)
 
 	if _failures > 0:

@@ -1,0 +1,194 @@
+{
+  "schema_version": 1,
+  "task_id": "luoyang_city_masterplan_20261019z_overview_v1",
+  "passed": true,
+  "scope": "offline registration and prompt contract only",
+  "calls_made": {
+    "generation": 0,
+    "network": 0,
+    "engine": 0,
+    "sdk": 0
+  },
+  "checks": [
+    {
+      "name": "required_sources_exist",
+      "passed": true,
+      "actual": [
+        "F:\\Code\\RPG_GAME\\prompts\\luoyang_city_masterplan_20261019z\\luoyang_city_masterplan_overview_v1.txt",
+        "F:\\Code\\RPG_GAME\\prompts\\luoyang_city_masterplan_20261019z\\luoyang_city_masterplan_overview_v1.spec.json",
+        "F:\\Code\\RPG_GAME\\prompts\\luoyang_city_masterplan_20261019z\\manifest.json",
+        "F:\\Code\\RPG_GAME\\prompts\\tasks.yaml",
+        "F:\\Code\\RPG_GAME\\docs\\luoyang-city-masterplan-20261019z_art_proposal.md"
+      ]
+    },
+    {
+      "name": "one_registered_task",
+      "passed": true,
+      "actual": 1
+    },
+    {
+      "name": "task_and_spec_id_match",
+      "passed": true,
+      "actual": [
+        "luoyang_city_masterplan_20261019z_overview_v1",
+        "luoyang_city_masterplan_20261019z_overview_v1"
+      ]
+    },
+    {
+      "name": "builtin_generate_only",
+      "passed": true,
+      "actual": [
+        "builtin_image_gen",
+        "generate"
+      ]
+    },
+    {
+      "name": "unknown_execution_metadata_is_honest",
+      "passed": true,
+      "actual": "all model/provider/cost fields null"
+    },
+    {
+      "name": "one_initial_call_only",
+      "passed": true,
+      "actual": {
+        "task_budget": 1,
+        "task_used": 0
+      }
+    },
+    {
+      "name": "optional_edit_is_bounded",
+      "passed": true,
+      "actual": {
+        "owner": "producer_ROOT",
+        "execution_backend": "builtin_image_gen",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "initial_generate_calls_max": 1,
+        "initial_generate_calls_used": 0,
+        "optional_targeted_edit_calls_max": 1,
+        "optional_targeted_edit_calls_used": 0,
+        "automatic_retry": false,
+        "cli_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "no_retry_or_cli_fallback",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "no_input_images",
+      "passed": true,
+      "actual": {
+        "spec": [],
+        "manifest": []
+      }
+    },
+    {
+      "name": "screenshots_are_negative_evidence_only",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "ten_district_order_exact",
+      "passed": true,
+      "actual": [
+        "01 南门瓮城",
+        "02 南北主街",
+        "03 府衙官署",
+        "04 南市商街",
+        "05 西市百工",
+        "06 民居坊巷",
+        "07 世家宅园",
+        "08 漕运码头",
+        "09 洛水园林",
+        "10 城外古寺"
+      ]
+    },
+    {
+      "name": "proposal_has_all_districts",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "name": "proposal_is_authoritative_for_labels",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "large_city_routes_present",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "required_spatial_relationships_present",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "building_diversity_over_15",
+      "passed": true,
+      "actual": {
+        "matched": 27,
+        "required": 16
+      }
+    },
+    {
+      "name": "separate_building_identity_rule",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "fictional_not_reconstruction",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "concept_only_no_runtime_credit",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "output_not_precreated",
+      "passed": true,
+      "actual": {
+        "output": "assets/raw/luoyang_city_masterplan_20261019z/luoyang_city_masterplan_overview_v1.png",
+        "metadata": "assets/raw/luoyang_city_masterplan_20261019z/luoyang_city_masterplan_overview_v1.meta.json"
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "prompts/luoyang_city_masterplan_20261019z/luoyang_city_masterplan_overview_v1.txt",
+      "sha256": "600A97FFDBC669EAB57534F276856EFB72742F93F5B740E7C0C0ACE9F66A809F",
+      "bytes": 5977
+    },
+    {
+      "path": "prompts/luoyang_city_masterplan_20261019z/luoyang_city_masterplan_overview_v1.spec.json",
+      "sha256": "F008E561350528FCE405A0F7BCDF435D2A864E39B5C6A203E88A60D871CDA5E8",
+      "bytes": 2614
+    },
+    {
+      "path": "prompts/luoyang_city_masterplan_20261019z/manifest.json",
+      "sha256": "F5251DF3BE81B606769ACBC9CF5B384DC02A98B07DE2014A5C1975CCE475E36B",
+      "bytes": 1009
+    },
+    {
+      "path": "prompts/tasks.yaml",
+      "sha256": "D94DD2C440B1C4023F45BE25960B33F59B09FBC6942D72534F48DE5D7D48C18F",
+      "bytes": 193250
+    },
+    {
+      "path": "docs/luoyang-city-masterplan-20261019z_art_proposal.md",
+      "sha256": "BC82BFC85BE1CDB38A69D91102545800EBEF9EDB28323A9FD8D2BAF2BE754C91",
+      "bytes": 5810
+    },
+    {
+      "path": "prompts/luoyang_city_masterplan_20261019z/preflight.py",
+      "sha256": "100886DE8D2C1F7D3C1CC0B940846CCA16BAC6412B184707D5FB78AF4D6F2AE7",
+      "bytes": 7880
+    }
+  ],
+  "credit_boundary": "Ready for one Root-owned builtin generation call only; no image, runtime, historical, or gameplay acceptance is granted."
+}

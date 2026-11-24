@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "驿站记事"
+text = "这捆的封签和船单对上了，才好往栈里收。你若寻船，顺货棚往东就是河湾；若回南驿道，沿岸边石路走，不必折回市口。"
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_cangpu_clerk"
+nodes = Array[ExtResource("node")]([SubResource("start")])

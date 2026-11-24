@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.07,0.94,0.92,0.94,0.90,0.27,0.75,0.12,0.28,0.11,0.08,0.32)])
+blockers = [{"id":"mine_cart","pos":Vector2(0.55,0.57),"size":Vector2(0.10,0.08)}]
+interactions = []
+portals = [{"id":"return_city","label":"返回襄州城","pos":Vector2(0.50,0.920),"size":Vector2(0.16,0.08),"target_scene":"openworld_xiangzhou_city","target_pos":Vector2(0.50,0.18)}]
+walkable_probes = [{"id":"arrival","pos":Vector2(0.50,0.88)},{"id":"west_pit","pos":Vector2(0.26,0.47)},{"id":"north_watch","pos":Vector2(0.76,0.36)},{"id":"east_road","pos":Vector2(0.80,0.62)}]
+blocked_probes = [{"id":"north_cliff","pos":Vector2(0.50,0.04)},{"id":"mine_cart","pos":Vector2(0.55,0.57)}]
+

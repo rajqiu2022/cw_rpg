@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"zhuwei_bamboo_guard_art"
+display_name = "竹影养元功"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_guard_v1.png"
+description = "竹尾村药农与护山人合修的养元法。气息如竹节层层相承，平日固本，临阵运功可护住周身要穴。"
+kind = 2
+target = 4
+mp_cost = 12
+quality = 2
+fixed_damage = 0
+attack_scaling = 0
+effect_value = 18
+animation_id = &"zhuwei_bamboo_guard_art"
+school = "generic"
+is_passive = false
+is_internal_art = true
+passive_vitality_bonus = 1
+passive_inner_pool_bonus = 2
+passive_guard_bonus = 1
+passive_vitality_growth = 1
+passive_inner_pool_growth = 1
+active_effect_description = "调匀气息恢复自身生命，并获得一回合护体。"
+active_effect_type = &"heal_guard"
+active_effect_growth = 5
+active_duration_turns = 1
+active_duration_growth = 1
+equip_weapon_categories = Array[StringName]([&"all"])
+equip_damage_scaling_bonus = 5
+equip_damage_scaling_growth = 1

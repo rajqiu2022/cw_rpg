@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/character_stats.gd" id="1_stats"]
+
+[resource]
+script = ExtResource("1_stats")
+character_id = "tang_xingzhou"
+display_name = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+role_title = "游历棍客"
+origin = "洛阳"
+biography = "从洛阳出来游历的年轻武痴，遇见新棍法就挪不动脚。性情爽朗，愿与冷孤云结伴见识江湖。"
+weapon_specialty = &"staff"
+fixed_martial_arts = true
+battle_actor_path = "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_ready_01.png"
+battle_sprite_root = "res://art/sprites/battle/companions_v4/tang_xingzhou"
+battle_sprite_prefix = "tang_xingzhou"
+battle_actor_scale = 0.42
+level = 2
+strength = 10
+agility = 7
+inner_power = 6
+insight = 7
+vitality = 10
+inner_pool = 6
+guard = 8
+skills = Array[StringName]([&"basic_attack", &"tang_staff_sweep", &"tang_staff_breaker", &"defend"])

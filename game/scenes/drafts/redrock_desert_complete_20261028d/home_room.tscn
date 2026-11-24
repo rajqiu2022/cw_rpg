@@ -1,0 +1,76 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/inn_room.png" id="inn_room"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/keeper_sprite.png" id="keeper_sprite"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/counter.png" id="counter"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/table.png" id="table"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/bench.png" id="bench"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/shelf.png" id="shelf"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/bed.png" id="home_bed"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/cloth_rack.png" id="home_cloth_rack"]
+
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "Noto Sans CJK SC")
+
+[node name="HomeRoom" type="Node2D"]
+
+[node name="Architecture" type="Sprite2D" parent="."]
+z_index = -10
+texture = ExtResource("inn_room")
+centered = false
+position = Vector2(-998.4,-968.5)
+scale = Vector2(1.3,1.3)
+
+[node name="Sort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="FloorEdge" type="CollisionPolygon2D" parent="Boundary"]
+build_mode = 1
+polygon = PackedVector2Array(-510.9, -312, 516.1, -312, 626.6, 0, -634.4, 0)
+
+
+[node name="Bed" type="Node2D" parent="Sort"]
+position = Vector2(-330, -155)
+
+[node name="Art" type="Sprite2D" parent="Sort/Bed"]
+position = Vector2(-179.276827, -195.023328)
+scale = Vector2(0.233281493, 0.233281493)
+texture = ExtResource("home_bed")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Sort/Bed"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Sort/Bed/Body"]
+polygon = PackedVector2Array(-140, -70, 140, -70, 140, 0, -140, 0)
+
+[node name="Clothes" type="Node2D" parent="Sort"]
+position = Vector2(340, -225)
+
+[node name="Art" type="Sprite2D" parent="Sort/Clothes"]
+position = Vector2(-127.292818, -156.298343)
+scale = Vector2(0.165745856, 0.165745856)
+texture = ExtResource("home_cloth_rack")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Sort/Clothes"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Sort/Clothes/Body"]
+polygon = PackedVector2Array(-90, -35, 90, -35, 90, 0, -90, 0)
+
+[node name="Exit" type="Marker2D" parent="."]
+position = Vector2(0,-45)

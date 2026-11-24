@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 5
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.205,0.950, 0.795,0.950, 0.885,0.720, 0.915,0.255, 0.665,0.235, 0.625,0.115, 0.375,0.115, 0.335,0.235, 0.085,0.255, 0.115,0.720)
+])
+occluders = Array[Dictionary]([
+	{"id":"west_front_lantern","depth_mode":"y_sort","depth_y":0.790,"cover_polygon":PackedVector2Array(0.305,0.650, 0.385,0.650, 0.385,0.805, 0.305,0.805),"z_index":20},
+	{"id":"east_front_lantern","depth_mode":"y_sort","depth_y":0.790,"cover_polygon":PackedVector2Array(0.615,0.650, 0.695,0.650, 0.695,0.805, 0.615,0.805),"z_index":20},
+	{"id":"west_rear_lion","depth_mode":"y_sort","depth_y":0.285,"cover_polygon":PackedVector2Array(0.315,0.185, 0.390,0.185, 0.390,0.300, 0.315,0.300),"z_index":18},
+	{"id":"east_rear_lion","depth_mode":"y_sort","depth_y":0.285,"cover_polygon":PackedVector2Array(0.610,0.185, 0.685,0.185, 0.685,0.300, 0.610,0.300),"z_index":18}
+])
+actor_fade_zones = Array[Dictionary]([])
+blockers = Array[Dictionary]([
+	{"id":"west_front_lantern","pos":Vector2(0.345,0.755),"size":Vector2(0.060,0.100)},
+	{"id":"east_front_lantern","pos":Vector2(0.655,0.755),"size":Vector2(0.060,0.100)},
+	{"id":"west_rear_lion","pos":Vector2(0.352,0.265),"size":Vector2(0.065,0.065)},
+	{"id":"east_rear_lion","pos":Vector2(0.648,0.265),"size":Vector2(0.065,0.065)},
+	{"id":"west_garden","pos":Vector2(0.205,0.205),"size":Vector2(0.190,0.120)},
+	{"id":"east_garden","pos":Vector2(0.795,0.205),"size":Vector2(0.190,0.120)}
+])
+interactions = Array[Dictionary]([])
+portals = Array[Dictionary]([
+	{"id":"return_lingyue_gate","label":"返回凌月山门","pos":Vector2(0.500,0.925),"size":Vector2(0.160,0.080),"target_scene":"ch2_s4_lingyue_gate","target_pos":Vector2(0.705,0.405),"marker_rotation_degrees":180.0}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"spawn","pos":Vector2(0.500,0.840)},
+	{"id":"open_court","pos":Vector2(0.500,0.520)},
+	{"id":"hall_approach","pos":Vector2(0.500,0.245)},
+	{"id":"west_court","pos":Vector2(0.240,0.520)},
+	{"id":"east_court","pos":Vector2(0.760,0.520)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"west_building","pos":Vector2(0.035,0.400)},
+	{"id":"east_building","pos":Vector2(0.965,0.400)},
+	{"id":"main_hall","pos":Vector2(0.500,0.050)},
+	{"id":"west_garden","pos":Vector2(0.205,0.205)},
+	{"id":"east_garden","pos":Vector2(0.795,0.205)}
+])

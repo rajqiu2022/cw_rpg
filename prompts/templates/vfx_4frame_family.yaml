@@ -1,0 +1,20 @@
+id: vfx_4frame_family
+description: 武侠战斗特效四阶段图集
+quality: medium
+size: "1024x1024"
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: stylized-concept
+  Asset type: 2D wuxia RPG combat visual-effect sprite sheet.
+  Primary request: a four-frame effect for the combat family {family_name}.
+  Layout: a strict 2 by 2 grid, each cell exactly one equal square frame, no borders, no labels, no frame numbers. Read left-to-right then top-to-bottom.
+  Frame 1: {frame_1}.
+  Frame 2: {frame_2}.
+  Frame 3: {frame_3}.
+  Frame 4: {frame_4}.
+  Scene/backdrop: a perfectly flat solid #FF00FF chroma-key background across every cell.
+  Constraints: effect only, no person, no face, no weapon, no UI, no text, no watermark, no shadows, no ground plane; keep all pixels inside each cell with generous safe padding; crisp hand-painted 2.5D wuxia comic effects, readable at mobile scale.
+  Avoid: any #FF00FF inside the effect, extra panels, black background, realistic smoke, photorealism, {negative}
+

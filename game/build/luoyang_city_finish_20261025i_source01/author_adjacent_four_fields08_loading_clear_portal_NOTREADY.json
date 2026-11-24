@@ -1,0 +1,2031 @@
+{
+  "schema_version": 1,
+  "status": "ROOT_APPROVED_DESIGN_AUTHOR_DRAFT_NOT_RUNTIME",
+  "ready": false,
+  "parent_stage": {
+    "path": "res://build/luoyang_city_revision_20261025h_source01/outputs/root_services_garden_exact28_stage05/receipt.json",
+    "sha256": "ebe06a49d65b93102b746688168202efed227ab90a0834fe7bdbc76443bcfef5"
+  },
+  "parent_deployment": {
+    "path": "res://build/luoyang_city_revision_20261025h_root01/service_garden28_deployed_actual.json",
+    "sha256": "7761350ba5a49ebeb94789fcc104d7310c204f28674a499bd9f6b4d2f9ad98ac"
+  },
+  "parent_guard": {
+    "path": "res://build/luoyang_city_revision_20261025h_source01/guard_service_garden28_after_Field_READONLY.json",
+    "sha256": "66d2557bf6078b4b39e87648c37b79bdfbc8523657b275c10686e2d117076146"
+  },
+  "old_OWNED_members": 10,
+  "old_proof_count": 176,
+  "history_depth_limit": 16,
+  "unified_final_source_stage_only": true,
+  "old_native_and_failures_immutable": true,
+  "engine_calls": 0,
+  "collector_calls": 0,
+  "canonical_writes": 0,
+  "group_id": "04_adjacent_finish_domains_keep_passed_cores",
+  "reuse_library": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/adjacent_adopted_asset_library03_SOURCE_ONLY.json",
+    "sha256": "81f24069cfa7d974a189610fea32fa967761db9fff437707041193364575d2d1",
+    "bytes": 18521
+  },
+  "scenes": [
+    {
+      "scene_id": "ch4_s3_luoyang_market",
+      "purpose": "客栈后勤—西街候歇形成连续背街；原45与两作业院不再重排",
+      "placements": [
+        {
+          "id": "finish_i_inn_supplies_sacks",
+          "asset_id": "grain_sack_stack_v1",
+          "foot_px": [
+            420,
+            740
+          ],
+          "scale": 0.12,
+          "purpose": "Inn grain/forage stores inside rear-service gallery",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                355.55999755859375,
+                724.280029296875
+              ],
+              [
+                484.67999267578125,
+                724.280029296875
+              ],
+              [
+                484.67999267578125,
+                740.239990234375
+              ],
+              [
+                355.55999755859375,
+                740.239990234375
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_inn_service_handcart",
+          "asset_id": "wood_handcart_v1",
+          "foot_px": [
+            710,
+            750
+          ],
+          "scale": 0.14,
+          "purpose": "Inn delivery handcart, not a new quest reward",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                576.2999877929688,
+                716.1199951171875
+              ],
+              [
+                635.3800048828125,
+                697.5
+              ],
+              [
+                701.4600219726562,
+                678.4600219726562
+              ],
+              [
+                752.5599975585938,
+                715.5599975585938
+              ],
+              [
+                749.47998046875,
+                736.97998046875
+              ],
+              [
+                726.52001953125,
+                750.1400146484375
+              ],
+              [
+                619.0,
+                738.52001953125
+              ],
+              [
+                576.2999877929688,
+                724.6599731445312
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_inn_low_boundary_west",
+          "asset_id": "low_wall",
+          "foot_px": [
+            330,
+            855
+          ],
+          "scale": 0.5,
+          "purpose": "Low courtyard edge; central145px opening",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                172.5,
+                849.0
+              ],
+              [
+                487.5,
+                849.0
+              ],
+              [
+                487.5,
+                855.0
+              ],
+              [
+                172.5,
+                855.0
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_inn_low_boundary_east",
+          "asset_id": "low_wall",
+          "foot_px": [
+            790,
+            855
+          ],
+          "scale": 0.5,
+          "purpose": "Low courtyard edge; do not intrude on main street",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                632.5,
+                849.0
+              ],
+              [
+                947.5,
+                849.0
+              ],
+              [
+                947.5,
+                855.0
+              ],
+              [
+                632.5,
+                855.0
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        }
+      ],
+      "ground_purpose_rows": [
+        {
+          "id": "inn_delivery_court",
+          "rect_xywh": [
+            180,
+            640,
+            770,
+            232
+          ],
+          "texture_role": "Existing courtyard stone with narrow earth service shoulder",
+          "use": "Real grain/cart and waiting traveller, not an undersized standing gallery"
+        }
+      ],
+      "provisional_changed_domains_xywh": [
+        [
+          200,
+          620,
+          720,
+          560
+        ]
+      ],
+      "preserve": [
+        "all45 render rows and true bodies",
+        "6 doors + two outer + remembered return",
+        "all current task and4 discover/offer interactions",
+        "25f materials outside new court"
+      ],
+      "npc_migrations": [
+        {
+          "npc_id": "district_life_market_traveller",
+          "old_source_origin_px": [
+            2260,
+            1880
+          ],
+          "new_source_origin_px": [
+            760,
+            800
+          ],
+          "same_identity_dialog_task_action_body_scale_speed_mode_and_patrol_distance": true,
+          "old_dynamic_NPC_guard_domain_xyxy": [
+            2236,
+            1856,
+            2284,
+            1944
+          ],
+          "new_dynamic_NPC_guard_domain_xyxy": [
+            736,
+            776,
+            784,
+            864
+          ],
+          "domain_kind": "Conservative footprint-query/swept-actor review domain, NOT a static mask hole or an asserted actual collider",
+          "static_mask_raster_change_from_NPC_itself": false,
+          "actual_final_consumer": "Normal + warm final NPC rows after all historic overrides, immediately before spawn/refresh",
+          "original_DG_author_id": "market_traveller",
+          "actual_id_source_expression": "CROWD.project: district_life_ + source row.id; no new identity or dialogue"
+        }
+      ],
+      "new_domain_status": "Source donor and f32 contact expression fixed; parent-exact local domains and independent QA pending",
+      "source_clearance_basis": {
+        "inn_A1_bottom": 624.18,
+        "apothecary_A1_top": 894.8262195121952,
+        "available_vertical": 270.6462195121952,
+        "unpublished_gallery_removed_not_shrunk": true,
+        "low_wall_real_clear_opening_px": 145
+      },
+      "purpose_rects_are_not_claimed_materialized": true,
+      "actual_purpose_material_renderer_pending": true,
+      "new_source_routes": [
+        {
+          "id": "inn_work_court_to_traveller_approach",
+          "points_px": [
+            [
+              560,
+              880
+            ],
+            [
+              560,
+              800
+            ],
+            [
+              712,
+              800
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "Root-approved remaining-only source route after concrete wall/tree/notice/dry-bank failures; independent result PENDING. Original wholeFAIL retained."
+        }
+      ]
+    },
+    {
+      "scene_id": "luoyang_estate_riverside_20261021ai",
+      "purpose": "西南安静家祠侧庭与东南仆役灶洗庭分工，不复制主厅当祠堂",
+      "placements": [
+        {
+          "id": "finish_i_estate_family_ancestral_wing",
+          "asset_id": "plain_wing",
+          "foot_px": [
+            650,
+            1710
+          ],
+          "scale": 0.44,
+          "purpose": "完整祭祀侧屋外观；须现有祭案/香炉陈设与家族职责绑定，不冒新室内",
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                451.55999755859375,
+                1661.5999755859375
+              ],
+              [
+                596.760009765625,
+                1661.5999755859375
+              ],
+              [
+                596.760009765625,
+                1710.0
+              ],
+              [
+                451.55999755859375,
+                1710.0
+              ]
+            ],
+            [
+              [
+                703.239990234375,
+                1661.5999755859375
+              ],
+              [
+                1029.280029296875,
+                1661.5999755859375
+              ],
+              [
+                1029.280029296875,
+                1710.0
+              ],
+              [
+                703.239990234375,
+                1710.0
+              ]
+            ]
+          ],
+          "source_derived_bound_xyxy_f32": [
+            418.55999755859375,
+            1334.679931640625,
+            1064.47998046875,
+            1712.6400146484375
+          ],
+          "bound_kind": "A1_FROM_FIXED_DONOR",
+          "door_visible_height_px_before_scene_conversion": 156.2,
+          "polygon_PIP_Physics_or_mask_credit": false,
+          "enters_new_room": false
+        },
+        {
+          "id": "finish_i_ancestral_incense_table",
+          "asset_id": "ancestral_incense_altar",
+          "foot_px": [
+            650,
+            1810
+          ],
+          "scale": 0.15,
+          "purpose": "Family incense forecourt; existing actual low altar",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                563.2999877929688,
+                1794.25
+              ],
+              [
+                736.4000244140625,
+                1794.25
+              ],
+              [
+                736.4000244140625,
+                1810.1500244140625
+              ],
+              [
+                563.2999877929688,
+                1810.1500244140625
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_servants_supply_cart",
+          "asset_id": "wood_handcart_v1",
+          "foot_px": [
+            2390,
+            1730
+          ],
+          "scale": 0.14,
+          "purpose": "Servants kitchen/wash courtyard supply tool",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                2256.300048828125,
+                1696.1199951171875
+              ],
+              [
+                2315.3798828125,
+                1677.5
+              ],
+              [
+                2381.4599609375,
+                1658.4599609375
+              ],
+              [
+                2432.56005859375,
+                1695.56005859375
+              ],
+              [
+                2429.47998046875,
+                1716.97998046875
+              ],
+              [
+                2406.52001953125,
+                1730.1400146484375
+              ],
+              [
+                2299.0,
+                1718.52001953125
+              ],
+              [
+                2256.300048828125,
+                1704.6600341796875
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_servants_wash_tub",
+          "asset_id": "wood_wash_tub",
+          "foot_px": [
+            2600,
+            1740
+          ],
+          "scale": 0.085,
+          "purpose": "Real wooden washing tub in servants court",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                2560.304931640625,
+                1730.2249755859375
+              ],
+              [
+                2571.949951171875,
+                1724.02001953125
+              ],
+              [
+                2600.0,
+                1721.7249755859375
+              ],
+              [
+                2629.155029296875,
+                1724.10498046875
+              ],
+              [
+                2639.695068359375,
+                1730.2249755859375
+              ],
+              [
+                2628.56005859375,
+                1737.1949462890625
+              ],
+              [
+                2600.0,
+                1740.0
+              ],
+              [
+                2571.695068359375,
+                1737.0250244140625
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_servants_drying_rack",
+          "asset_id": "household_drying_rack",
+          "foot_px": [
+            2760,
+            1760
+          ],
+          "scale": 0.18,
+          "purpose": "Actual drying rack paired with basin and kitchen",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                2644.43994140625,
+                1739.8399658203125
+              ],
+              [
+                2875.02001953125,
+                1739.8399658203125
+              ],
+              [
+                2875.739990234375,
+                1760.3599853515625
+              ],
+              [
+                2643.719970703125,
+                1760.3599853515625
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        }
+      ],
+      "new_asset_lots": [
+        {
+          "asset_id": "new_plain_kitchen_rear_house",
+          "foot_px": [
+            2520,
+            1640
+          ],
+          "lot_xywh": [
+            2140,
+            1150,
+            720,
+            660
+          ],
+          "max_A1_size_px": [
+            606,
+            390
+          ],
+          "closed_exterior_only": true,
+          "final_uniform_scale": "derive from same fixed ART complete raw door>=145; do not refit canvas"
+        }
+      ],
+      "purpose_courts": [
+        {
+          "id": "ancestral_quiet_forecourt",
+          "rect_xywh": [
+            320,
+            1730,
+            750,
+            170
+          ],
+          "purpose": "Family incense/commemoration forecourt with source-bound existing incense table; no new room or service"
+        },
+        {
+          "id": "servants_wash_dry",
+          "rect_xywh": [
+            2180,
+            1660,
+            680,
+            160
+          ],
+          "purpose": "柴灶/洗晒同一后勤院，门口留144，保东南外通路"
+        }
+      ],
+      "provisional_changed_domains_xywh": [
+        [
+          240,
+          1300,
+          900,
+          600
+        ],
+        [
+          2100,
+          1150,
+          820,
+          700
+        ]
+      ],
+      "preserve": [
+        "Estate111/48 whole parent",
+        "main axis1536 and hall1536544",
+        "south exit15361940",
+        "Garden portal29441840",
+        "old2corridors and flowering courts"
+      ],
+      "npc_migrations": [],
+      "new_domain_status": "Source donor and f32 contact expression fixed; parent-exact local domains and independent QA pending",
+      "new_NPC_rows": [
+        {
+          "npc_id": "luoyang_estate_court_keeper_20261025i",
+          "npc_name": "守院人",
+          "age_presentation": "middle-aged; weathered mature face, not a young hero",
+          "role": "Keeps the family incense forecourt and the footpath clear",
+          "foot_px": [
+            650,
+            1860
+          ],
+          "movement_mode": "idle",
+          "patrol_distance": 0,
+          "conservative_new_domain_prior_NPC_envelope_px": [
+            34,
+            30
+          ],
+          "physical_body_source": "Existing NPCNode _create_body_collision from mature source frame and original sprite_scale; not overridden by this lore row",
+          "sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png",
+          "sprite_sha256": "904ff9885d7c7f7a3337b4db964141c6c1b4a8411cfc31a7b4b888723fd43900",
+          "portrait_path": "res://art/characters/portraits/portrait_linxi_farmer_v1.png",
+          "portrait_sha256": "a4d9b9aa249007f7608ebc11f5252936c445f5e7b471530263992b30e0d59335",
+          "sprite_portrait_visual_review": "Both physically viewed: matching brown coarse robe, bound hair and mature facial hair; existing mature family, not a new exact-face generation proof",
+          "dialog_id": "luoyang_finish25i_estate_court_keeper_daily",
+          "dialog_candidate_path": "res://build/luoyang_city_finish_20261025i_source01/dialogs/estate_court_keeper_daily_hero02_CANDIDATE.tres",
+          "lines": [
+            "供案每日都要拭净，落叶也得及时扫走。人来祭拜，脚下总该有条清净路。",
+            "香灰收在石钵里，不能随手扬到花木上。家里这些细活，急不得，也省不得。"
+          ],
+          "interaction_action": "",
+          "dialog_runtime_binding": "PENDING_UNIFIED_FINISH_DIRECT_COMPLETE_HERO_FIRST_GRAPH_NO_EXTRA_OPENER",
+          "hero_opening_line": "劳驾，这处小院平日由您照看吗？",
+          "new_dynamic_NPC_guard_domain_xyxy": [
+            626,
+            1836,
+            674,
+            1924
+          ]
+        },
+        {
+          "npc_id": "luoyang_estate_kitchen_hand_20261025i",
+          "npc_name": "灶间伙计",
+          "age_presentation": "young adult working attendant; no second young-hero family",
+          "role": "Moves kitchen supplies and keeps the wash/dry courtyard organized",
+          "foot_px": [
+            2520,
+            1780
+          ],
+          "movement_mode": "idle",
+          "patrol_distance": 0,
+          "conservative_new_domain_prior_NPC_envelope_px": [
+            34,
+            30
+          ],
+          "physical_body_source": "Existing NPCNode _create_body_collision from mature source frame and original sprite_scale; not overridden by this lore row",
+          "sprite_path": "res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png",
+          "sprite_sha256": "65b800951a239efa8891e64f16108e0c881ddca87154b77f6338c7dbbcc79781",
+          "portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_inn_waiter_v1.png",
+          "portrait_sha256": "5c7d4f2a6e229bd3234130fd0ad970d9d301260cca0c76ff80deb28b6e0d60d6",
+          "sprite_portrait_visual_review": "Both physically viewed: matching blue headband, blue work jacket and tied hair, existing attendant family",
+          "dialog_id": "luoyang_finish25i_estate_kitchen_hand_daily",
+          "dialog_candidate_path": "res://build/luoyang_city_finish_20261025i_source01/dialogs/estate_kitchen_hand_daily_hero02_CANDIDATE.tres",
+          "lines": [
+            "米袋归米袋，湿柴别搁在灶口。我先把这车送进去，省得挡了后院的路。",
+            "洗净的碗盏晾在东边，油锅另放。忙时东西有定处，大家才不至于转着找。"
+          ],
+          "interaction_action": "",
+          "dialog_runtime_binding": "PENDING_UNIFIED_FINISH_DIRECT_COMPLETE_HERO_FIRST_GRAPH_NO_EXTRA_OPENER",
+          "hero_opening_line": "劳驾，这边后院平时都忙些什么？",
+          "new_dynamic_NPC_guard_domain_xyxy": [
+            2496,
+            1756,
+            2544,
+            1844
+          ]
+        }
+      ],
+      "new_NPC_lore_author": {
+        "path": "res://build/luoyang_city_finish_20261025i_source01/estate_two_residents_lore02_hero_first_NOTREADY.json",
+        "sha256": "11a51cab1c53a25eeec5cd8fdbb528f7d7ad44187d8fcdffe2b3d8d3ca6d8a14"
+      },
+      "new_NPC_count": 2,
+      "old_NPC_count": 0,
+      "purpose_rects_are_not_claimed_materialized": true,
+      "actual_purpose_material_renderer_pending": true,
+      "new_source_routes": [
+        {
+          "id": "ancestral_keeper_approach",
+          "points_px": [
+            [
+              1150,
+              1880
+            ],
+            [
+              1150,
+              1920
+            ],
+            [
+              650,
+              1920
+            ],
+            [
+              650,
+              1908
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "New courtyard/actor approach proposal only, independent mask/body/NPC result pending; no old passed route replay"
+        },
+        {
+          "id": "wash_court_worker_approach",
+          "points_px": [
+            [
+              2190,
+              1820
+            ],
+            [
+              2520,
+              1820
+            ],
+            [
+              2520,
+              1828
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "New courtyard/actor approach proposal only, independent mask/body/NPC result pending; no old passed route replay"
+        }
+      ]
+    },
+    {
+      "scene_id": "luoyang_riverside_garden_20261022ap",
+      "purpose": "只补桥以外两岸石草肩/茶楼庭/植物组团，不动25h真实桥两端与水物理",
+      "ground_purpose_rows": [
+        {
+          "id": "west_bank_pavilion_soft_path",
+          "polyline_world_px": [
+            [
+              520,
+              1520
+            ],
+            [
+              760,
+              1420
+            ],
+            [
+              860,
+              1260
+            ],
+            [
+              1000,
+              1160
+            ]
+          ],
+          "clear_width_px": 144,
+          "surface": "existing fine earth + irregular gravel shoulders",
+          "edges": "flower groups outside walking strip, no opaque river carpet"
+        },
+        {
+          "id": "east_tea_garden_curve",
+          "polyline_world_px": [
+            [
+              2280,
+              1120
+            ],
+            [
+              2440,
+              1180
+            ],
+            [
+              2680,
+              1340
+            ],
+            [
+              2780,
+              1520
+            ]
+          ],
+          "clear_width_px": 144,
+          "surface": "existing fine earth, stone forecourt only at tea-house use"
+        }
+      ],
+      "provisional_changed_domains_xywh": [
+        [
+          400,
+          1180,
+          720,
+          430
+        ],
+        [
+          2160,
+          1080,
+          760,
+          530
+        ]
+      ],
+      "preserve": [
+        "bridge/water pieces and entire deck880976..2192976",
+        "pavilion760760/tea2520650",
+        "4 authored NPC full approach",
+        "2 south public portals"
+      ],
+      "npc_migrations": [],
+      "placements": [
+        {
+          "id": "finish_i_west_bank_peonies_a",
+          "asset_id": "garden_flowerbed",
+          "foot_px": [
+            620,
+            1310
+          ],
+          "scale": 0.14,
+          "purpose": "Low adopted peony bed beside path, not on bridge deck",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                529.7000122070312,
+                1302.5799560546875
+              ],
+              [
+                710.2999877929688,
+                1302.5799560546875
+              ],
+              [
+                710.2999877929688,
+                1310.0
+              ],
+              [
+                529.7000122070312,
+                1310.0
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_west_bank_peonies_b",
+          "asset_id": "garden_flowerbed",
+          "foot_px": [
+            800,
+            1450
+          ],
+          "scale": 0.14,
+          "purpose": "Second bank flower grouping outside walking strip",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                709.7000122070312,
+                1442.5799560546875
+              ],
+              [
+                890.2999877929688,
+                1442.5799560546875
+              ],
+              [
+                890.2999877929688,
+                1450.0
+              ],
+              [
+                709.7000122070312,
+                1450.0
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_teacourt_shade_tree",
+          "asset_id": "garden_tree",
+          "foot_px": [
+            2670,
+            1520
+          ],
+          "scale": 0.8,
+          "purpose": "Adopted tree with original small trunk footprint",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                2660.39990234375,
+                1505.5999755859375
+              ],
+              [
+                2679.60009765625,
+                1505.5999755859375
+              ],
+              [
+                2679.60009765625,
+                1520.0
+              ],
+              [
+                2660.39990234375,
+                1520.0
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_teacourt_low_bench",
+          "asset_id": "garden_rest_bench",
+          "foot_px": [
+            2520,
+            1600
+          ],
+          "scale": 0.12,
+          "purpose": "Actual low bench on tea-garden side, outside bridge and four existing NPC approaches",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                2449.800048828125,
+                1588.3599853515625
+              ],
+              [
+                2590.56005859375,
+                1588.3599853515625
+              ],
+              [
+                2590.56005859375,
+                1600.1199951171875
+              ],
+              [
+                2449.800048828125,
+                1600.1199951171875
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        }
+      ],
+      "new_domain_status": "Source donor and f32 contact expression fixed; parent-exact local domains and independent QA pending",
+      "purpose_rects_are_not_claimed_materialized": true,
+      "actual_purpose_material_renderer_pending": true,
+      "new_source_routes": [
+        {
+          "id": "west_bank_soft_path",
+          "points_px": [
+            [
+              520,
+              1520
+            ],
+            [
+              640,
+              1520
+            ],
+            [
+              640,
+              1420
+            ],
+            [
+              740,
+              1360
+            ],
+            [
+              740,
+              1160
+            ],
+            [
+              860,
+              1160
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "Root-approved remaining-only source route after concrete wall/tree/notice/dry-bank failures; independent result PENDING. Original wholeFAIL retained."
+        },
+        {
+          "id": "east_bank_soft_path",
+          "points_px": [
+            [
+              2280,
+              1120
+            ],
+            [
+              2440,
+              1180
+            ],
+            [
+              2680,
+              1340
+            ],
+            [
+              2780,
+              1520
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "New courtyard/actor approach proposal only, independent mask/body/NPC result pending; no old passed route replay"
+        }
+      ],
+      "new_soft_path_source_override": {
+        "west_polyline_px": [
+          [
+            520,
+            1520
+          ],
+          [
+            640,
+            1520
+          ],
+          [
+            640,
+            1420
+          ],
+          [
+            740,
+            1360
+          ],
+          [
+            860,
+            1260
+          ],
+          [
+            860,
+            1160
+          ]
+        ],
+        "reason": "Stay on west bank, route around added8001450 flowerbed; no bridge/water/source primitive or NPC change",
+        "not_yet_NAV_or_ART_pass": true
+      }
+    },
+    {
+      "scene_id": "ch4_s2_canal_docks",
+      "purpose": "Connected cargo tally, packing and short-storage courts; do not mislabel a desk as an actual scale",
+      "placements": [
+        {
+          "id": "finish_i_docks_weighing_gallery",
+          "asset_id": "open_gallery",
+          "foot_px": [
+            1850,
+            1780
+          ],
+          "scale": 0.36,
+          "purpose": "称量/封包荫廊，两侧保车货144通道，四真实柱脚",
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                1589.719970703125,
+                1765.239990234375
+              ],
+              [
+                1634.3599853515625,
+                1765.239990234375
+              ],
+              [
+                1634.3599853515625,
+                1779.6400146484375
+              ],
+              [
+                1589.719970703125,
+                1779.6400146484375
+              ]
+            ],
+            [
+              [
+                1753.52001953125,
+                1765.239990234375
+              ],
+              [
+                1795.280029296875,
+                1765.239990234375
+              ],
+              [
+                1795.280029296875,
+                1779.6400146484375
+              ],
+              [
+                1753.52001953125,
+                1779.6400146484375
+              ]
+            ],
+            [
+              [
+                1906.8800048828125,
+                1765.239990234375
+              ],
+              [
+                1949.719970703125,
+                1765.239990234375
+              ],
+              [
+                1949.719970703125,
+                1779.6400146484375
+              ],
+              [
+                1906.8800048828125,
+                1779.6400146484375
+              ]
+            ],
+            [
+              [
+                2064.919921875,
+                1765.239990234375
+              ],
+              [
+                2109.56005859375,
+                1765.239990234375
+              ],
+              [
+                2109.56005859375,
+                1779.6400146484375
+              ],
+              [
+                2064.919921875,
+                1779.6400146484375
+              ]
+            ]
+          ],
+          "source_derived_bound_xyxy_f32": [
+            1536.43994140625,
+            1548.1600341796875,
+            2163.919921875,
+            1781.800048828125
+          ],
+          "bound_kind": "A1_FROM_FIXED_DONOR",
+          "door_visible_height_px_before_scene_conversion": null,
+          "polygon_PIP_Physics_or_mask_credit": false,
+          "enters_new_room": false
+        },
+        {
+          "id": "finish_i_docks_tally_desk",
+          "asset_id": "writing_desk_v1",
+          "foot_px": [
+            1180,
+            1240
+          ],
+          "scale": 0.16,
+          "purpose": "Cargo manifest/tally desk, not a weighing-scale asset",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                1098.719970703125,
+                1207.199951171875
+              ],
+              [
+                1260.47998046875,
+                1207.199951171875
+              ],
+              [
+                1268.0,
+                1240.1600341796875
+              ],
+              [
+                1091.6800537109375,
+                1240.1600341796875
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_docks_pack_sacks",
+          "asset_id": "grain_sack_stack_v1",
+          "foot_px": [
+            1810,
+            1700
+          ],
+          "scale": 0.12,
+          "purpose": "Packing stock under existing open gallery",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                1745.56005859375,
+                1684.280029296875
+              ],
+              [
+                1874.6800537109375,
+                1684.280029296875
+              ],
+              [
+                1874.6800537109375,
+                1700.239990234375
+              ],
+              [
+                1745.56005859375,
+                1700.239990234375
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_docks_pack_handcart",
+          "asset_id": "wood_handcart_v1",
+          "foot_px": [
+            2050,
+            1700
+          ],
+          "scale": 0.14,
+          "purpose": "Covered packing/loading handcart",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                1916.300048828125,
+                1666.1199951171875
+              ],
+              [
+                1975.3800048828125,
+                1647.5
+              ],
+              [
+                2041.4599609375,
+                1628.4599609375
+              ],
+              [
+                2092.56005859375,
+                1665.56005859375
+              ],
+              [
+                2089.47998046875,
+                1686.97998046875
+              ],
+              [
+                2066.52001953125,
+                1700.1400146484375
+              ],
+              [
+                1959.0,
+                1688.52001953125
+              ],
+              [
+                1916.300048828125,
+                1674.6600341796875
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        },
+        {
+          "id": "finish_i_docks_short_storage_sacks",
+          "asset_id": "grain_sack_stack_v1",
+          "foot_px": [
+            2120,
+            1960
+          ],
+          "scale": 0.14,
+          "purpose": "Small ordered dry temporary goods stack",
+          "enters_new_room": false,
+          "source_derived_new_ground_polygons_f32": [
+            [
+              [
+                2044.8199462890625,
+                1941.6600341796875
+              ],
+              [
+                2195.4599609375,
+                1941.6600341796875
+              ],
+              [
+                2195.4599609375,
+                1960.280029296875
+              ],
+              [
+                2044.8199462890625,
+                1960.280029296875
+              ]
+            ]
+          ],
+          "polygon_PIP_Physics_or_mask_credit": false
+        }
+      ],
+      "work_bays": [
+        {
+          "id": "shore_tally_bay",
+          "rect_xywh": [
+            1060,
+            1100,
+            460,
+            260
+          ],
+          "purpose": "船货记数与验货停步，现船工路线之外",
+          "actual_assigned_existing_npc": "harbour_life_docks_booking_attendant"
+        },
+        {
+          "id": "weighing_pack_bay",
+          "rect_xywh": [
+            1550,
+            1570,
+            650,
+            300
+          ],
+          "purpose": "Cargo packing/tally before weighing; no physical scale claimed",
+          "actual_assigned_existing_npc": "harbour_life_docks_loading_attendant"
+        },
+        {
+          "id": "temporary_covered_storage",
+          "rect_xywh": [
+            2320,
+            1540,
+            450,
+            310
+          ],
+          "purpose": "既有粮袋/木车的有序短储，不占Garden/Temple支路"
+        }
+      ],
+      "provisional_changed_domains_xywh": [
+        [
+          1040,
+          1050,
+          560,
+          340
+        ],
+        [
+          1480,
+          1500,
+          790,
+          350
+        ],
+        [
+          2290,
+          1480,
+          520,
+          400
+        ]
+      ],
+      "preserve": [
+        "three current frontage bodies/doors145/warehouse638610",
+        "39NAV35solids before exact new bases",
+        "stage-gated canal mud and all task flags",
+        "old shore/water native immutable"
+      ],
+      "npc_migrations": [
+        {
+          "npc_id": "harbour_life_docks_booking_attendant",
+          "old_source_origin_px": [
+            2010,
+            1900
+          ],
+          "new_source_origin_px": [
+            1180,
+            1300
+          ],
+          "same_identity_dialog_task_action_body_scale_speed_mode_and_patrol_distance": true,
+          "old_dynamic_NPC_guard_domain_xyxy": [
+            1986,
+            1876,
+            2034,
+            1964
+          ],
+          "new_dynamic_NPC_guard_domain_xyxy": [
+            1156,
+            1276,
+            1204,
+            1364
+          ],
+          "domain_kind": "Conservative footprint-query/swept-actor review domain, NOT a static mask hole or an asserted actual collider",
+          "static_mask_raster_change_from_NPC_itself": false,
+          "actual_final_consumer": "Normal + warm final NPC rows after all historic overrides, immediately before spawn/refresh"
+        },
+        {
+          "npc_id": "harbour_life_docks_loading_attendant",
+          "old_source_origin_px": [
+            2000,
+            1430
+          ],
+          "new_source_origin_px": [
+            1940,
+            1840
+          ],
+          "same_identity_dialog_task_action_body_scale_speed_mode_and_patrol_distance": true,
+          "old_dynamic_NPC_guard_domain_xyxy": [
+            1976,
+            1406,
+            2024,
+            1494
+          ],
+          "new_dynamic_NPC_guard_domain_xyxy": [
+            1916,
+            1816,
+            1964,
+            1904
+          ],
+          "domain_kind": "Conservative footprint-query/swept-actor review domain, NOT a static mask hole or an asserted actual collider",
+          "static_mask_raster_change_from_NPC_itself": false,
+          "actual_final_consumer": "Normal + warm final NPC rows after all historic overrides, immediately before spawn/refresh"
+        }
+      ],
+      "new_domain_status": "Source donor and f32 contact expression fixed; parent-exact local domains and independent QA pending",
+      "purpose_rects_are_not_claimed_materialized": true,
+      "actual_purpose_material_renderer_pending": true,
+      "new_source_routes": [
+        {
+          "id": "booking_to_cargo_lane",
+          "points_px": [
+            [
+              1180,
+              1348
+            ],
+            [
+              1280,
+              1348
+            ],
+            [
+              1280,
+              1910
+            ],
+            [
+              1430,
+              1910
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "Root-approved remaining-only source route after concrete wall/tree/notice/dry-bank failures; independent result PENDING. Original wholeFAIL retained."
+        },
+        {
+          "id": "packing_attendant_approach",
+          "points_px": [
+            [
+              1430,
+              1910
+            ],
+            [
+              1940,
+              1910
+            ],
+            [
+              1940,
+              1888
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "New courtyard/actor approach proposal only, independent mask/body/NPC result pending; no old passed route replay"
+        },
+        {
+          "id": "short_storage_front",
+          "points_px": [
+            [
+              2060,
+              1910
+            ],
+            [
+              2000,
+              1910
+            ],
+            [
+              2000,
+              2000
+            ],
+            [
+              2120,
+              2000
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "Root-approved remaining-only source route after concrete wall/tree/notice/dry-bank failures; independent result PENDING. Original wholeFAIL retained."
+        }
+      ]
+    }
+  ],
+  "not_finished_until": [
+    "actual same-parent roof/body/NPC/door clearance negative controls",
+    "new domain independent retained-primitive mask union and outside inverse",
+    "exact existing resource tuples + any ART new3 approved files",
+    "limited whole-street GPU review; current coordinates are source design not passed ART"
+  ],
+  "new_asset_gaps": [
+    "Exact visible weighing-scale asset not found among adopted modules; this batch claims cargo tally/packing only",
+    "Kitchen processed PNG permission/import pending, raw data not prematurely published"
+  ],
+  "same_id_NPC_migration_and_new_Estate_NPC_acceptance": "Independent old/new dynamic body, final consumer and affected approaches required; no silent move/resize, no static-mask holes",
+  "remaining07_contract": {
+    "fixed_parent": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/author_adjacent_four_fields05_routes_NOTREADY.json",
+      "sha256": "8b1825f064a2b7287e70329c30000db6daaf2ce5afccb688676b563c84817377"
+    },
+    "four_route_changes": [
+      {
+        "scene_id": "ch4_s3_luoyang_market",
+        "route_id": "inn_work_court_to_traveller_approach",
+        "old": {
+          "id": "inn_work_court_to_traveller_approach",
+          "points_px": [
+            [
+              560,
+              880
+            ],
+            [
+              560,
+              800
+            ],
+            [
+              700,
+              800
+            ],
+            [
+              700,
+              848
+            ],
+            [
+              760,
+              848
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "New courtyard/actor approach proposal only, independent mask/body/NPC result pending; no old passed route replay"
+        },
+        "new": {
+          "id": "inn_work_court_to_traveller_approach",
+          "points_px": [
+            [
+              560,
+              880
+            ],
+            [
+              560,
+              800
+            ],
+            [
+              712,
+              800
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "Root-approved remaining-only source route after concrete wall/tree/notice/dry-bank failures; independent result PENDING. Original wholeFAIL retained."
+        }
+      },
+      {
+        "scene_id": "luoyang_riverside_garden_20261022ap",
+        "route_id": "west_bank_soft_path",
+        "old": {
+          "id": "west_bank_soft_path",
+          "points_px": [
+            [
+              520,
+              1520
+            ],
+            [
+              640,
+              1520
+            ],
+            [
+              640,
+              1420
+            ],
+            [
+              740,
+              1360
+            ],
+            [
+              860,
+              1260
+            ],
+            [
+              860,
+              1160
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "New courtyard/actor approach proposal only, independent mask/body/NPC result pending; no old passed route replay"
+        },
+        "new": {
+          "id": "west_bank_soft_path",
+          "points_px": [
+            [
+              520,
+              1520
+            ],
+            [
+              640,
+              1520
+            ],
+            [
+              640,
+              1420
+            ],
+            [
+              740,
+              1360
+            ],
+            [
+              740,
+              1160
+            ],
+            [
+              860,
+              1160
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "Root-approved remaining-only source route after concrete wall/tree/notice/dry-bank failures; independent result PENDING. Original wholeFAIL retained."
+        }
+      },
+      {
+        "scene_id": "ch4_s2_canal_docks",
+        "route_id": "booking_to_cargo_lane",
+        "old": {
+          "id": "booking_to_cargo_lane",
+          "points_px": [
+            [
+              1180,
+              1348
+            ],
+            [
+              1430,
+              1348
+            ],
+            [
+              1430,
+              1910
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "New courtyard/actor approach proposal only, independent mask/body/NPC result pending; no old passed route replay"
+        },
+        "new": {
+          "id": "booking_to_cargo_lane",
+          "points_px": [
+            [
+              1180,
+              1348
+            ],
+            [
+              1280,
+              1348
+            ],
+            [
+              1280,
+              1910
+            ],
+            [
+              1430,
+              1910
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "Root-approved remaining-only source route after concrete wall/tree/notice/dry-bank failures; independent result PENDING. Original wholeFAIL retained."
+        }
+      },
+      {
+        "scene_id": "ch4_s2_canal_docks",
+        "route_id": "short_storage_front",
+        "old": {
+          "id": "short_storage_front",
+          "points_px": [
+            [
+              2060,
+              1910
+            ],
+            [
+              2800,
+              1910
+            ],
+            [
+              2800,
+              1728
+            ],
+            [
+              2490,
+              1728
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "New courtyard/actor approach proposal only, independent mask/body/NPC result pending; no old passed route replay"
+        },
+        "new": {
+          "id": "short_storage_front",
+          "points_px": [
+            [
+              2060,
+              1910
+            ],
+            [
+              2000,
+              1910
+            ],
+            [
+              2000,
+              2000
+            ],
+            [
+              2120,
+              2000
+            ]
+          ],
+          "player_body_px": [
+            34,
+            24
+          ],
+          "maximum_source_step_px": 4,
+          "scope": "Root-approved remaining-only source route after concrete wall/tree/notice/dry-bank failures; independent result PENDING. Original wholeFAIL retained."
+        }
+      }
+    ],
+    "unpublished_stack_only_spatial_change": {
+      "old": {
+        "id": "finish_i_docks_short_storage_sacks",
+        "asset_id": "grain_sack_stack_v1",
+        "foot_px": [
+          2490,
+          1680
+        ],
+        "scale": 0.14,
+        "purpose": "Small ordered dry temporary goods stack",
+        "enters_new_room": false,
+        "source_derived_new_ground_polygons_f32": [
+          [
+            [
+              2414.820068359375,
+              1661.6600341796875
+            ],
+            [
+              2565.4599609375,
+              1661.6600341796875
+            ],
+            [
+              2565.4599609375,
+              1680.280029296875
+            ],
+            [
+              2414.820068359375,
+              1680.280029296875
+            ]
+          ]
+        ],
+        "polygon_PIP_Physics_or_mask_credit": false
+      },
+      "new": {
+        "id": "finish_i_docks_short_storage_sacks",
+        "asset_id": "grain_sack_stack_v1",
+        "foot_px": [
+          2120,
+          1960
+        ],
+        "scale": 0.14,
+        "purpose": "Small ordered dry temporary goods stack",
+        "enters_new_room": false,
+        "source_derived_new_ground_polygons_f32": [
+          [
+            [
+              2044.8199462890625,
+              1941.6600341796875
+            ],
+            [
+              2195.4599609375,
+              1941.6600341796875
+            ],
+            [
+              2195.4599609375,
+              1960.280029296875
+            ],
+            [
+              2044.8199462890625,
+              1960.280029296875
+            ]
+          ]
+        ],
+        "polygon_PIP_Physics_or_mask_credit": false
+      },
+      "reason": "Root-approved21201960 fully dry-bank candidate, keeping original packing endpoint20601910 clear. Old21401910 proposal retained06 but not used.",
+      "old_polygons": [
+        [
+          [
+            2414.820068359375,
+            1661.6600341796875
+          ],
+          [
+            2565.4599609375,
+            1661.6600341796875
+          ],
+          [
+            2565.4599609375,
+            1680.280029296875
+          ],
+          [
+            2414.820068359375,
+            1680.280029296875
+          ]
+        ]
+      ],
+      "new_polygons": [
+        [
+          [
+            2044.8199462890625,
+            1941.6600341796875
+          ],
+          [
+            2195.4599609375,
+            1941.6600341796875
+          ],
+          [
+            2195.4599609375,
+            1960.280029296875
+          ],
+          [
+            2044.8199462890625,
+            1960.280029296875
+          ]
+        ]
+      ],
+      "source_expression": "Original donor source polygon unchanged scale; final foot21201960, not oldworldpoly+delta",
+      "old_new_closed_domain_xyxy": [
+        2043,
+        1660,
+        2567,
+        1962
+      ],
+      "separate_changed_shape_domains": [
+        [
+          2413,
+          1660,
+          2567,
+          1682
+        ],
+        [
+          2043,
+          1940,
+          2197,
+          1962
+        ]
+      ]
+    },
+    "Estate_extra_kitchen_geometry": {
+      "id": "finish_i_estate_kitchen_rear_house",
+      "consumed_separately_by": "adjacent.derive(new_kitchen) after placements; do NOT append second visual",
+      "foot_px": [
+        2520,
+        1640
+      ],
+      "source_ground_anchor_px": [
+        864,
+        893
+      ],
+      "uniform_numerator_denominator": [
+        145,
+        294
+      ],
+      "processed_raw_polygons_px": [
+        [
+          [
+            327,
+            863
+          ],
+          [
+            1143,
+            920
+          ],
+          [
+            1409,
+            826
+          ],
+          [
+            593,
+            769
+          ]
+        ]
+      ],
+      "source_derived_world_polygons_f32": [
+        [
+          [
+            2255.153076171875,
+            1625.2041015625
+          ],
+          [
+            2657.60205078125,
+            1653.3162841796875
+          ],
+          [
+            2788.79248046875,
+            1606.955810546875
+          ],
+          [
+            2386.343505859375,
+            1578.843505859375
+          ]
+        ]
+      ],
+      "new_closed_domain_xyxy": [
+        2254,
+        1577,
+        2790,
+        1655
+      ],
+      "independent_source_ground_path": "res://build/luoyang_city_finish_20261025i_art01/manual_ground_contacts02.json",
+      "independent_source_ground_sha256": "662fffe926e72d4579947e12615e17e5300d2ea05ad823172f5d83213b214576",
+      "processed_declaration_path": "res://build/luoyang_city_finish_20261025i_art01/three_buildings_processed_source_declarations01_CANDIDATE.json",
+      "processed_declaration_sha256": "5d60e295a201a7f5be85572c47ae76357b8a81c18740802636e5206ebaa2288b"
+    },
+    "old22_polygons_pass_inherited_except_exact_unpublished_stack_replacement": true,
+    "old_four_RGBA_pixel_inverse_components_preserved": true,
+    "new_actor_or_original_NPC_movement": false,
+    "independent_prior_status": "PENDING_FOUR_ROUTES_AND_EXPLICIT_STACK_KITCHEN_SMALL_DOMAINS_ONLY",
+    "superseded06": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/author_adjacent_four_fields06_remaining_routes_dry_stack_NOTREADY.json",
+      "sha256": "bf8b725ea92e82657d07c0563f4f77b3483cfb23f31c4c93134f707b69cb3c13",
+      "retained_not_used_for_new_independent_expected": true
+    },
+    "original_passed_four_route_inheritance": [
+      {
+        "scene_id": "luoyang_estate_riverside_20261021ai",
+        "route_id": "ancestral_keeper_approach",
+        "exact_whole_row_equal_to_passed05": true,
+        "swept_body_bbox_xyxy": [
+          633,
+          1868,
+          1167,
+          1932
+        ],
+        "new_static_delta_domains_tested": [
+          [
+            2254,
+            1577,
+            2790,
+            1655
+          ]
+        ],
+        "intersects_new_static_delta": false,
+        "route_geometry_or_NPC_replay": false
+      },
+      {
+        "scene_id": "luoyang_estate_riverside_20261021ai",
+        "route_id": "wash_court_worker_approach",
+        "exact_whole_row_equal_to_passed05": true,
+        "swept_body_bbox_xyxy": [
+          2173,
+          1808,
+          2537,
+          1840
+        ],
+        "new_static_delta_domains_tested": [
+          [
+            2254,
+            1577,
+            2790,
+            1655
+          ]
+        ],
+        "intersects_new_static_delta": false,
+        "route_geometry_or_NPC_replay": false
+      },
+      {
+        "scene_id": "luoyang_riverside_garden_20261022ap",
+        "route_id": "east_bank_soft_path",
+        "exact_whole_row_equal_to_passed05": true,
+        "swept_body_bbox_xyxy": [
+          2263,
+          1108,
+          2797,
+          1532
+        ],
+        "new_static_delta_domains_tested": [],
+        "intersects_new_static_delta": false,
+        "route_geometry_or_NPC_replay": false
+      },
+      {
+        "scene_id": "ch4_s2_canal_docks",
+        "route_id": "packing_attendant_approach",
+        "exact_whole_row_equal_to_passed05": false,
+        "swept_body_bbox_xyxy": [
+          1413,
+          1876,
+          1957,
+          1922
+        ],
+        "new_static_delta_domains_tested": [
+          [
+            2413,
+            1660,
+            2567,
+            1682
+          ],
+          [
+            2043,
+            1940,
+            2197,
+            1962
+          ]
+        ],
+        "intersects_new_static_delta": false,
+        "route_geometry_or_NPC_replay": true
+      }
+    ]
+  },
+  "loading_attendant08_contract": {
+    "status": "ROOT_APPROVED_BUILD_ONLY_FINITE_LOCAL_CHECK_PENDING_NOT_ACTUAL_PASS",
+    "parent_author": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/author_adjacent_four_fields07_final_dry_bank_routes_NOTREADY.json",
+      "sha256": "fcbfa06b2347bf89e0c86cb4c7817be6781b6e574e01507e6098446afb419d20"
+    },
+    "changed_scene_id": "ch4_s2_canal_docks",
+    "npc_id": "harbour_life_docks_loading_attendant",
+    "prior_actual_failure_preserved": "D2 real Space at the valid sourceportal21401840 intercepted by this NPC at20601840; not a sourcegate failure.",
+    "old_finish_foot_px": [
+      2060,
+      1840
+    ],
+    "new_finish_foot_px": [
+      1940,
+      1840
+    ],
+    "unchanged_original_pre25i_foot_px": [
+      2000,
+      1430
+    ],
+    "only_rechecked_route_id": "packing_attendant_approach",
+    "other_scenes_all_fields_and_Docks_geometry_props_portals_mask_original_NPCs_unchanged": true,
+    "same_identity_body_scale_idle_patrol_dialog_task_and_speed": true,
+    "no_QA_pose_or_interaction_priority_change": true,
+    "new_runtime_payload_delta_only": "npc_migrations loading-attendant row; all other payload keys and geometry/mask bytes retained",
+    "finite_new_check_pending": [
+      "Player34x24",
+      "NPC22.4x28.8",
+      "unchanged39solid/office and mask",
+      "packing approach",
+      "publicportal interaction separation"
+    ],
+    "root_sole_engine_and_deployer": true
+  }
+}

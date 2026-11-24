@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "渡船管事"
+text = "往西是白鹿渡，往东要出外海，在东大陆的潮门港靠岸。替船上照看一程货，便不收你船钱。"
+
+choices = Array[Dictionary]([{"text":"随船前往白鹿渡","action":"scene:openworld_bailu_ferry"},{"text":"暂不乘船","next":"end"},{"text":"搭外海船前往潮门港","action":"scene:east_tidegate_port"}])
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_east_sea_port_boat"
+nodes = Array[Resource]([SubResource("start")])

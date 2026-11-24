@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"bianzhou_black_wolf"
+display_name = "黑狼韩魁"
+title = "劫粮伤民"
+description = "盘踞中原驿道，专抢赈济车队。其人势重，常带一名探子望风。"
+board_city = &"bianzhou"
+recommended_min_level = 4
+recommended_max_level = 6
+enemy_ids = Array[StringName]([&"bounty_black_wolf", &"central_road_scout"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 倒塌粮仓","pos":Vector2(0.80,0.44)},{"scene_id":&"ch4_s0_luoyang_gate","label":"洛阳南郊 · 旧官亭","pos":Vector2(0.30,0.60)}])
+reward_reputation = 14
+reward_training = 26
+reward_exp = 55
+reward_gold = 55
+reward_items = Array[Dictionary]([{"item_id":&"iron_staff","count":1},{"item_id":&"grain_sack","count":2}])
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_linxi_south_militia_coach_idle_down_4f_v2_runtime.png"

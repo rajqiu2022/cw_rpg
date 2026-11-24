@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_main_06_disclosure_choice"
+title = "旧债如何公示"
+kind = 0
+desc_not_started = "现有证据足以证明有人系统冒充烈云，却还不能解释烈云强硬派后来犯下的血债。"
+desc_in_progress = "决定先公开已经证实的栽赃链，还是先安置证人、补齐责任链后再共同公示。"
+desc_completed = "冷孤云选择了证据的公开次序，但没有删去任何一方已经查实的责任。"
+tracker_hint = "古峰 · 伪旗营地"
+completion_triggers = Array[String](["flag_set:ch5_disclosure_choice_made"])
+reward_gold = 120
+reward_exp = 180
+reward_items = Array[Dictionary]([{"item_id":"spirit_gathering_dust", "count":1}])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch5_disclosure_choice_made", "text":"公开次序已定；伪旗栽赃与烈云旧部误报复仍作为两条责任分别保存。"}])

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-market-two-shops-20261021ao",
+  "task_id": "luoyang_market_two_shops_20261021ao_scholar_study_single_bay_v1",
+  "status": "REGISTERED_PREFLIGHTED_NOT_CALLED",
+  "mode": "builtin_generate",
+  "taxonomy": "stylized-concept",
+  "transparent_background": true,
+  "reference_images": [],
+  "zero_reference_reason": "The rejected AI study and accepted AH apothecary both contain edge/style traits that must not be inherited; the new study is specified from text only.",
+  "prompt_path": "prompts/luoyang_market_two_shops_20261021ao/scholar_study_single_bay_v1.txt",
+  "intended_raw_path": "assets/raw/luoyang_market_two_shops_20261021ao/facade_luoyang_narrow_scholar_study_single_bay_v1.png",
+  "attempt_budget": {
+    "initial_generate": 1,
+    "targeted_edit_only_after_measured_failure_and_root_approval": 1,
+    "automatic_retry": 0,
+    "cli_or_network_fallback": 0
+  },
+  "unknown_execution_metadata_until_actual": {
+    "model": null,
+    "provider": null,
+    "cost": null
+  },
+  "acceptance": {
+    "mode": "RGBA",
+    "complete_a1_canvas_width_fraction_min": 0.50,
+    "complete_a1_canvas_width_fraction_max": 0.60,
+    "complete_a1_margin_each_side_min_fraction": 0.10,
+    "generation_target_margin_each_side_fraction": 0.15,
+    "edge_nonzero_pixels_required": 0,
+    "clear_door_height_world_px_min": 120,
+    "clear_door_height_world_px_max": 150,
+    "complete_a1_world_width_px_max": 210,
+    "complete_a1_world_height_px_max": 250,
+    "clear_door_height_over_complete_a1_width_min": 0.55,
+    "complete_a1_width_over_conservative_clear_door_height_max": 1.75,
+    "uniform_scale_formula": "120 / conservative_manual_clear_door_height_px",
+    "world_extent_formula": "complete_A1_source_extent_px * uniform_scale",
+    "ground_anchor": "manual center of the visible stone threshold at the principal doorway",
+    "single_principal_opening": true,
+    "door_approach_clear": true,
+    "all_weak_alpha_included": true,
+    "threshold_or_local_background_cleanup_authorized": false
+  },
+  "proposed_runtime_window_after_actual_measurement": {
+    "door_foot_px": [2245, 1682],
+    "door_return_px": [2245, 1706],
+    "complete_a1_world_ltrb_max": [2140, 1448, 2350, 1698]
+  },
+  "comparison_only_not_generator_inputs": [
+    "assets/processed/luoyang_market_frontage_20261021ah/facade_luoyang_narrow_apothecary_single_bay_v1_padded.png",
+    "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_narrow_scholar_study_single_bay_v2_roof_identity_margin_edit.png",
+    "game/data/scenes/luoyang_assembled_interiors_20261016g/scholar_study_room.tres"
+  ],
+  "credit_boundary": "A successful generated PNG is still only an art candidate. It requires actual A1/door/anchor measurement, isolated import, strict current-formal layout geometry, collision/navigation, paired portal-return, and Field verification."
+}

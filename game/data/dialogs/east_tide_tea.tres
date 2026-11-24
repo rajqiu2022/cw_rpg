@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "送茶脚夫"
+text = "你看这截篾：茶篓怕刮嫩尖，收口向外折。这道勒痕却朝里，还是两股绞的。原封上过茶船，后来叫拖重箱的双股索套过。"
+set_flags = Array[Dictionary]([{"key": "tide_tea_known", "value": true}])
+add_evidence = Array[StringName]([&"ev_tide_lashing"])
+
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_tide_tea"
+
+nodes = Array[ExtResource("node")]([SubResource("start")])

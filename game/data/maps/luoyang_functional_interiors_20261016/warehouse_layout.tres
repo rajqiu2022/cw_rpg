@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.22786458333333334, 0.30859375, 0.8020833333333334, 0.30859375, 0.9290364583333334, 0.73046875, 0.6184895833333334, 0.73046875, 0.6184895833333334, 0.9453125, 0.3938802083333333, 0.9453125, 0.3938802083333333, 0.73046875, 0.07161458333333333, 0.73046875)])
+blockers = [{"id": "left_rear_crates", "ground_polygon": PackedVector2Array(0.10026041666666667, 0.2685546875, 0.22330729166666666, 0.2685546875, 0.22330729166666666, 0.3896484375, 0.10026041666666667, 0.3896484375), "walkability_margin": 0.0},
+{"id": "left_middle_crate_sacks", "ground_polygon": PackedVector2Array(0.06640625, 0.388671875, 0.24739583333333334, 0.388671875, 0.24739583333333334, 0.6328125, 0.06640625, 0.6328125), "walkability_margin": 0.0},
+{"id": "left_front_cargo", "ground_polygon": PackedVector2Array(0.054036458333333336, 0.6357421875, 0.23046875, 0.6357421875, 0.23046875, 0.740234375, 0.054036458333333336, 0.740234375), "walkability_margin": 0.0},
+{"id": "rear_storage_rack", "ground_polygon": PackedVector2Array(0.240234375, 0.2822265625, 0.4498697916666667, 0.2822265625, 0.4498697916666667, 0.3095703125, 0.240234375, 0.3095703125), "walkability_margin": 0.0},
+{"id": "central_back_pillar", "ground_polygon": PackedVector2Array(0.482421875, 0.2841796875, 0.5130208333333334, 0.2841796875, 0.5130208333333334, 0.3095703125, 0.482421875, 0.3095703125), "walkability_margin": 0.0},
+{"id": "weighing_counter", "ground_polygon": PackedVector2Array(0.5481770833333334, 0.2998046875, 0.76171875, 0.2998046875, 0.76171875, 0.3603515625, 0.5481770833333334, 0.3603515625), "walkability_margin": 0.0},
+{"id": "right_rear_sacks", "ground_polygon": PackedVector2Array(0.8053385416666666, 0.3349609375, 0.9055989583333334, 0.3349609375, 0.9055989583333334, 0.4345703125, 0.8053385416666666, 0.4345703125), "walkability_margin": 0.0},
+{"id": "right_middle_cargo", "ground_polygon": PackedVector2Array(0.7298177083333334, 0.4599609375, 0.9114583333333334, 0.4599609375, 0.9114583333333334, 0.6279296875, 0.7298177083333334, 0.6279296875), "walkability_margin": 0.0},
+{"id": "right_front_cargo", "ground_polygon": PackedVector2Array(0.740234375, 0.62890625, 0.9329427083333334, 0.62890625, 0.9329427083333334, 0.740234375, 0.740234375, 0.740234375), "walkability_margin": 0.0}]
+portals = [{"id": "return_warehouse", "pos": Vector2(0.5, 0.8642578125), "size": Vector2(0.07161458333333333, 0.029296875), "target_scene": "ch4_s2_canal_docks", "target_pos": Vector2(0.24544270833333334, 0.2978515625), "auto_trigger": false, "label": "返回码头"}]
+walkable_probes = [{"id": "spawn", "pos": Vector2(0.5, 0.673828125), "source_feet": true}, {"id": "weighing_and_registration", "pos": Vector2(0.6529947916666666, 0.419921875), "source_feet": true}, {"id": "left_cargo_inspection", "pos": Vector2(0.2923177083333333, 0.48828125), "source_feet": true}, {"id": "right_cargo_inspection", "pos": Vector2(0.6822916666666666, 0.5859375), "source_feet": true}, {"id": "loading_aisle", "pos": Vector2(0.5, 0.576171875), "source_feet": true}, {"id": "exit", "pos": Vector2(0.5, 0.8642578125), "source_feet": true}]
+metadata/functional_interior_author = "res://data/maps/luoyang_functional_interiors_20261016/warehouse_author.json"

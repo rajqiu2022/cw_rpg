@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "status": "SOURCE_SPACE_GEOMETRY_GUIDANCE_APOTHECARY_READY_STUDY_MEASURED_BUT_ART_REJECTED",
+  "coordinate_convention": "source PNG pixels; polygons list clockwise points; right and bottom bounds are conceptual edges; System applies one uniform render scale and translation",
+  "player_clearance_requirement_world_px": {
+    "body": [34, 24],
+    "threshold_to_approach_plus_y": 24,
+    "must_pass_full_875_17_body": true
+  },
+  "apothecary": {
+    "texture_path": "assets/processed/luoyang_market_frontage_20261021ah/facade_luoyang_narrow_apothecary_single_bay_v1_padded.png",
+    "texture_sha256": "1741A55D449A25481FF26C4F62C595987D8768F8CC72E4229A896C78485AE56D",
+    "source_size_px": [1907, 1567],
+    "complete_a1_bbox_exclusive_px": [382, 157, 1526, 1410],
+    "source_ground_anchor_px": [904, 1326],
+    "source_ground_anchor_exact_for_projection": true,
+    "a1_bottom_after_anchor_px": 84,
+    "doorway_clear_source_polygon_px": [[704, 1192], [1008, 1192], [1036, 1410], [682, 1410]],
+    "ground_solid_polygons_px": {
+      "left_base_and_jamb": [[568, 1204], [710, 1204], [710, 1326], [683, 1326], [683, 1402], [560, 1402], [560, 1326], [568, 1326]],
+      "right_base_jamb_and_shop_bay": [[1008, 1204], [1250, 1204], [1250, 1402], [1035, 1402], [1035, 1326], [1008, 1326]]
+    },
+    "threshold_walkability": "The visible front step from source y1326 through the A1 bottom is walkable presentation, not a transverse solid. Do not join the two side polygons with a ground strip.",
+    "world_candidate": {
+      "ground_foot_px": [2225, 1420],
+      "uniform_scale": 0.1917,
+      "return_and_plus24_must_remain_clear": true
+    }
+  },
+  "scholar_study_v3": {
+    "texture_path": "assets/raw/luoyang_market_two_shops_20261021ao/facade_luoyang_narrow_scholar_study_single_bay_v3_ratio_margin_edit.png",
+    "texture_sha256": "AB92ED6CB3F4E8EA15E4A9914A8C12C4BB7B7F8BA1793576F541EB1019B27D26",
+    "source_size_px": [1374, 1145],
+    "complete_a1_bbox_exclusive_px": [25, 32, 1313, 1125],
+    "source_ground_anchor_px": [650, 930],
+    "source_ground_anchor_uncertainty_px": [12, 8],
+    "a1_bottom_after_anchor_px": 195,
+    "doorway_clear_source_polygon_px": [[493, 468], [806, 468], [850, 1030], [468, 1030]],
+    "ground_solid_polygons_px": {
+      "left_base_and_jamb": [[344, 874], [493, 874], [493, 930], [468, 930], [468, 1018], [344, 986]],
+      "right_base_jamb_and_book_bay": [[806, 874], [1038, 864], [1038, 986], [850, 1018], [850, 930], [806, 930]]
+    },
+    "threshold_walkability": "The center step and threshold remain a passage; never replace these two side polygons with a full-width base rectangle.",
+    "body_protection": "The side polygons cover the complete visible stone bases and jamb feet rather than a sampled spot-gap. Roof occlusion remains visual and is not converted into a ground solid.",
+    "art_admission": false,
+    "system_binding_authorized": false
+  }
+}

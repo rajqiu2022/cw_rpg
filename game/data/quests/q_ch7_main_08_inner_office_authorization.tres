@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_08_inner_office_authorization"
+title = "死籍密令"
+kind = 0
+desc_not_started = "薛影身份已确认，需要查清谁维持他的死者权限，以及授权的实际目标。"
+desc_in_progress = "在封印审验室查内署密令，在夜航转运栈核对被回收的残卷与知情人路线。"
+desc_completed = "庄主内署维持薛影死籍身份，是为了秘密回收五方残卷并控制知情人。授权链已指向内署，个人签发与最终布局仍需继续核验。"
+tracker_hint = "茗雾封印审验室 / 烈云夜航转运栈"
+completion_triggers = Array[String](["evidence_acquired:ev_ch7_inner_office_authorization", "evidence_acquired:ev_ch7_xueying_retrieval_objectives"])
+require_all_completion_triggers = true
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 100
+reward_exp = 260
+reward_items = Array[Dictionary]([])

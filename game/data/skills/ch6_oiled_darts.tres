@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"ch6_oiled_darts"
+display_name = "油封散镖"
+icon_path = "res://art/ui/skill/icons_semantic_v2/icon_skill_hidden_blood_darts_v1.png"
+description = "向对手撒出一把乌镖，命中者中普通毒两回合。"
+kind = 3
+target = 1
+delivery = 1
+mp_cost = 0
+quality = 2
+fixed_damage = 5
+attack_scaling = 65
+effect_value = 0
+hit_count = 1
+animation_id = &"blood_shadow_scattering_darts"
+required_weapon_type = &"hidden"
+martial_category = &"hidden"
+inflicted_status = &"poison"
+status_chance = 1.0
+status_duration = 2
+school = "generic"
+is_passive = false

@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "封砚秋"
+portrait_path = "res://art/characters/portraits/portrait_feng_yanqiu_v1.png"
+text = "我没有在晨市说实话。我是茗雾外院录事，负责把旧谱改名、拆卷、重新编号。有人命我烧掉这三份目录，我只来得及藏下一份真本。"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "你一路让我辨磨痕、排残图、验剑痕，就是为了确认哪一份目录没有被你们自己改过。"
+on_end = "next:puzzle"
+
+[sub_resource type="Resource" id="puzzle"]
+script = ExtResource("2")
+node_id = &"puzzle"
+speaker = "封砚秋"
+portrait_path = "res://art/characters/portraits/portrait_feng_yanqiu_v1.png"
+text = "甲本封蜡崭新、页码连续；乙本旧蜡开裂、缺一页但穿线孔方向始终一致；丙本没有封蜡，页次被重新抄齐。哪一本最可能是未改过的原目录？"
+choices = Array[Dictionary]([{"text":"甲本，页码完整最可信","next":"wrong"},{"text":"乙本，缺页但装订痕连续","next":"correct"},{"text":"丙本，没有封蜡便无人动过","next":"wrong"}])
+
+[sub_resource type="Resource" id="wrong"]
+script = ExtResource("2")
+node_id = &"wrong"
+speaker = "封砚秋"
+portrait_path = "res://art/characters/portraits/portrait_feng_yanqiu_v1.png"
+text = "重抄最容易做得整齐。原物反而会留下缺页、旧孔和修补，只要这些痕迹彼此说得通。"
+on_end = "next:puzzle"
+
+[sub_resource type="Resource" id="correct"]
+script = ExtResource("2")
+node_id = &"correct"
+speaker = "封砚秋"
+portrait_path = "res://art/characters/portraits/portrait_feng_yanqiu_v1.png"
+text = "乙本。缺失那页原本记着一门旧剑法的全名，余下只剩“孤云”二字和刑樊天师门的旧印。我会保住目录；若我们都活着离开茗雾，带它回林西问他。"
+set_flags = Array[Dictionary]([{"key":"guyun_mingwu_catalog_preserved","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_guyun_mingwu_catalog"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"),SubResource("n2"),SubResource("puzzle"),SubResource("wrong"),SubResource("correct")])

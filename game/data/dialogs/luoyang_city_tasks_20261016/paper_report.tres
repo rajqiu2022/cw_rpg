@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "旧纸坊的干藤皮和木模都找到了，老纸匠已答应替你赶纸。"
+on_end = "next:paper"
+
+[sub_resource type="Resource" id="paper"]
+script = ExtResource("2")
+node_id = &"paper"
+speaker = "左明远"
+text = "多谢。我请人把料送去纸铺，你且稍候。木模的夹层也松了，里面似乎还夹着一页旧纸。"
+on_end = "next:page"
+
+[sub_resource type="Resource" id="page"]
+script = ExtResource("2")
+node_id = &"page"
+speaker = "冷孤云"
+text = "纸、墨、断口都与前两页相合。藤纸送到后，抄案的事便不误了。"
+set_flags = Array[Dictionary]([{"key":"luoyang_paper_helped","value":true}, {"key":"canglong_lower_found","value":true}])
+give_items = Array[Dictionary]([{"id":"canglong_fragment_lower","count":1}])
+accept_quest = &"q_secret_canglong_three_pages"
+complete_quest = &"q_ch4_side_02_luoyang_paper"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_paper_report"
+entry_node_id = &"start"
+required_story_flag = &"luoyang_paper_materials_found"
+blocked_story_flag = &"luoyang_paper_helped"
+nodes = Array[Resource]([SubResource("start"), SubResource("paper"), SubResource("page")])
+

@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="苏雾笙"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+text="你断了鼓、封了雾，也截了第一轮令。可各派旧债都是真的——没有我，他们一样会互相清算。"
+on_end="next:choice"
+[sub_resource type="Resource" id="choice"]
+script=ExtResource("2")
+node_id=&"choice"
+speaker=""
+text="如何回应苏雾笙？"
+choices=Array[Dictionary]([{"text":"先撤百姓与证人，再谈你的江湖","next":"save","set_flag":{"ch8_su_method_save_first":true},"method_flags":[{"key":"ch8_su_confrontation_method","value":"save_first"}]},{"text":"把亲签底令放上祭台，让各派自己看","next":"evidence","set_flag":{"ch8_su_method_evidence_first":true},"method_flags":[{"key":"ch8_su_confrontation_method","value":"evidence_first"}]},{"text":"你究竟想用共同恐惧建立什么秩序","next":"motive","set_flag":{"ch8_su_method_motive_first":true},"method_flags":[{"key":"ch8_su_confrontation_method","value":"motive_first"}]}])
+[sub_resource type="Resource" id="save"]
+script=ExtResource("2")
+node_id=&"save"
+speaker="苏雾笙"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+text="你总把活人放在答案前面。可不让江湖先痛一次，他们永远不会接受同一套规矩。"
+on_end="next:converge"
+[sub_resource type="Resource" id="evidence"]
+script=ExtResource("2")
+node_id=&"evidence"
+speaker="苏雾笙"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+text="底令是真的，旧罪也是真的。你能证明我动过局，却不能证明没有这场局，江湖就会更好。"
+on_end="next:converge"
+[sub_resource type="Resource" id="motive"]
+script=ExtResource("2")
+node_id=&"motive"
+speaker="苏雾笙"
+portrait_path="res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png"
+text="让所有门派先拥有同一个敌人，再由能控制恐惧的人制定秩序。没有共同恐惧，所谓会盟只是一桌旧账。"
+on_end="next:converge"
+[sub_resource type="Resource" id="converge"]
+script=ExtResource("2")
+node_id=&"converge"
+speaker="冷孤云"
+text="真实旧罪不能替你证明极端手段合理。主厅里剩下的令、人与机关，我会一项项拆给你看。"
+set_flags=Array[Dictionary]([{"key":"ch8_su_first_confrontation_done","value":true}])
+complete_quest=&"q_ch8_main_07_su_first_confrontation"
+accept_quest=&"q_ch8_main_08_su_xueying_authorization"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_su_first_confrontation"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("choice"),SubResource("save"),SubResource("evidence"),SubResource("motive"),SubResource("converge")])

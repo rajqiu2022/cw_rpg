@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-estate-courtyard-20261021an-final-gate-material-walls",
+  "status": "FINAL_ART_SOURCE_READY_FOR_SINGLE_GEOMETRY_AND_NATIVE_PREVIEW",
+  "supersedes_horizontal_only": [
+    "game/build/luoyang_estate_courtyard_20261021an_art01/native_perimeter_wall_successor.json",
+    "game/build/luoyang_estate_courtyard_20261021an_art01/native_perimeter_wall_successor_joinfix1.json"
+  ],
+  "actual_probe_rejection": {
+    "image_path": "game/build/luoyang_estate_courtyard_20261021an_system01/revision2_native_walls/probe/87484/estate_native_wall_layout_probe.png",
+    "image_sha256": "522561CCC5AB5B97B681EAD3E0D8B7F7B2E08967029E88B7B9B37F76FE1942FF",
+    "accepted_from_probe": "The full perimeter layout and the small native longitudinal walls are retained.",
+    "rejected_from_probe": "Every native horizontal wall is rejected because its blue-gray plastic panel and white dash stripe do not match the weathered gray tile, timber and white plaster estate architecture."
+  },
+  "protected_parent_scope": {
+    "retain_exactly": [
+      "all 83 pre-AM visuals",
+      "all 20 pre-AM solids",
+      "main hall, both wings, both corridors and the original courtyard gate",
+      "the eight native longitudinal wall rows and their true 160px ground bodies",
+      "four grass-stone shoulders and two admitted peony beds",
+      "all paving, door-depth layers, portals, routes and existing trees except for route recomputation around the wall solids"
+    ],
+    "remove_from_successor": "All twelve blue-gray native horizontal draw rows implied by the parent/joinfix layout; no blue-gray horizontal wall remains.",
+    "unchanged_ground_lines": {
+      "north_y": 520,
+      "south_y": 1150,
+      "north_west_interval": [430, 1200],
+      "north_east_interval": [1873, 2643],
+      "south_west_interval": [990, 1115],
+      "south_east_interval": [1956, 2081]
+    }
+  },
+  "source": {
+    "texture_path": "res://art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png",
+    "png_sha256": "DBE22E8E6072CBFEE28FD5FB01CBC393F532DE12ED9F356E7EC269FFF5248221",
+    "png_bytes": 1859601,
+    "import_path": "res://art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png.import",
+    "import_sha256": "E22B7CFF15F1E8DA3E1B92EA36A0AF99DBC1B96A4F302D258C3A7D9134703DE0",
+    "license_boundary": "Existing project asset already used by the mansion courtyard gate. Reuse is limited to AtlasTexture regions and uniform scene scale; the source PNG and import are not edited.",
+    "visual_reason": "The replacement horizontal walls now share the actual gate's weathered gray tiles, aged white plaster, exposed brick and dark stone plinth, rather than introducing a second wall material family."
+  },
+  "atlas_assets": {
+    "flat_left_full": {
+      "atlas_region_xywh": [220, 300, 480, 430],
+      "source_size_px": [480, 430],
+      "complete_A1_xywh": [0, 0, 480, 398],
+      "ground_anchor_px": [240, 398],
+      "solid_rect_px": [16, 326, 448, 72],
+      "uniform_scale": 0.3333333333333333,
+      "world_complete_A1_relative_to_foot_xywh": [-80, -132.66666666666666, 160, 132.66666666666666],
+      "world_solid_relative_to_foot_xywh": [-74.66666666666667, -24, 149.33333333333334, 24]
+    },
+    "flat_right_full": {
+      "atlas_region_xywh": [1242, 300, 480, 430],
+      "source_size_px": [480, 430],
+      "complete_A1_xywh": [0, 0, 480, 399],
+      "ground_anchor_px": [240, 399],
+      "solid_rect_px": [16, 327, 448, 72],
+      "uniform_scale": 0.3333333333333333,
+      "world_complete_A1_relative_to_foot_xywh": [-80, -133, 160, 133],
+      "world_solid_relative_to_foot_xywh": [-74.66666666666667, -24, 149.33333333333334, 24]
+    },
+    "flat_left_short_130": {
+      "atlas_region_xywh": [265, 300, 390, 430],
+      "source_size_px": [390, 430],
+      "complete_A1_xywh": [0, 0, 390, 398],
+      "ground_anchor_px": [195, 398],
+      "solid_rect_px": [0, 326, 390, 72],
+      "uniform_scale": 0.3333333333333333,
+      "world_complete_A1_relative_to_foot_xywh": [-65, -132.66666666666666, 130, 132.66666666666666],
+      "world_solid_relative_to_foot_xywh": [-65, -24, 130, 24]
+    },
+    "flat_right_short_130": {
+      "atlas_region_xywh": [1287, 300, 390, 430],
+      "source_size_px": [390, 430],
+      "complete_A1_xywh": [0, 0, 390, 399],
+      "ground_anchor_px": [195, 399],
+      "solid_rect_px": [0, 327, 390, 72],
+      "uniform_scale": 0.3333333333333333,
+      "world_complete_A1_relative_to_foot_xywh": [-65, -133, 130, 133],
+      "world_solid_relative_to_foot_xywh": [-65, -24, 130, 24]
+    },
+    "flat_left_short_125": {
+      "atlas_region_xywh": [272, 300, 375, 430],
+      "source_size_px": [375, 430],
+      "complete_A1_xywh": [0, 0, 375, 398],
+      "ground_anchor_px": [188, 398],
+      "solid_rect_px": [0, 326, 375, 72],
+      "uniform_scale": 0.3333333333333333,
+      "world_complete_A1_relative_to_foot_xywh": [-62.666666666666664, -132.66666666666666, 125, 132.66666666666666],
+      "world_solid_relative_to_foot_xywh": [-62.666666666666664, -24, 125, 24]
+    },
+    "flat_right_short_125": {
+      "atlas_region_xywh": [1295, 300, 375, 430],
+      "source_size_px": [375, 430],
+      "complete_A1_xywh": [0, 0, 375, 399],
+      "ground_anchor_px": [187, 399],
+      "solid_rect_px": [0, 327, 375, 72],
+      "uniform_scale": 0.3333333333333333,
+      "world_complete_A1_relative_to_foot_xywh": [-62.333333333333336, -133, 125, 133],
+      "world_solid_relative_to_foot_xywh": [-62.333333333333336, -24, 125, 24]
+    }
+  },
+  "horizontal_components": [
+    {"id":"estate_an3_north_west_0a","asset":"flat_left_full","foot":[510,520],"visual_x_interval":[430,590],"solid_rect_xywh":[435.3333333333333,496,149.33333333333334,24]},
+    {"id":"estate_an3_north_west_0b","asset":"flat_right_full","foot":[670,520],"visual_x_interval":[590,750],"solid_rect_xywh":[595.3333333333334,496,149.33333333333334,24]},
+    {"id":"estate_an3_north_west_1a","asset":"flat_left_full","foot":[830,520],"visual_x_interval":[750,910],"solid_rect_xywh":[755.3333333333334,496,149.33333333333334,24]},
+    {"id":"estate_an3_north_west_1b","asset":"flat_right_full","foot":[990,520],"visual_x_interval":[910,1070],"solid_rect_xywh":[915.3333333333334,496,149.33333333333334,24]},
+    {"id":"estate_an3_north_west_plinth_join","asset":"flat_left_short_130","foot":[1135,520],"visual_x_interval":[1070,1200],"solid_rect_xywh":[1070,496,130,24]},
+    {"id":"estate_an3_north_east_plinth_join","asset":"flat_right_short_130","foot":[1938,520],"visual_x_interval":[1873,2003],"solid_rect_xywh":[1873,496,130,24]},
+    {"id":"estate_an3_north_east_1a","asset":"flat_left_full","foot":[2083,520],"visual_x_interval":[2003,2163],"solid_rect_xywh":[2008.3333333333333,496,149.33333333333334,24]},
+    {"id":"estate_an3_north_east_1b","asset":"flat_right_full","foot":[2243,520],"visual_x_interval":[2163,2323],"solid_rect_xywh":[2168.3333333333335,496,149.33333333333334,24]},
+    {"id":"estate_an3_north_east_2a","asset":"flat_left_full","foot":[2403,520],"visual_x_interval":[2323,2483],"solid_rect_xywh":[2328.3333333333335,496,149.33333333333334,24]},
+    {"id":"estate_an3_north_east_2b","asset":"flat_right_full","foot":[2563,520],"visual_x_interval":[2483,2643],"solid_rect_xywh":[2488.3333333333335,496,149.33333333333334,24]},
+    {"id":"estate_an3_southwest_corridor_gate","asset":"flat_left_short_125","foot":[1052.6666666666667,1150],"visual_x_interval":[990,1115],"solid_rect_xywh":[990,1126,125,24]},
+    {"id":"estate_an3_southeast_gate_corridor","asset":"flat_right_short_125","foot":[2018.3333333333333,1150],"visual_x_interval":[1956,2081],"solid_rect_xywh":[1956,1126,125,24]}
+  ],
+  "drawing_contract": {
+    "north": "Draw all y=520 horizontal wall rows behind the main hall and behind the native longitudinal corner walls. The 130px terminal rows extend under the hall eaves to the measured structural plinth x=1199.714 and x=1873.225, but may not cover facade windows or the central door.",
+    "south": "Draw both y=1150 short walls behind the existing corridor and courtyard-gate sprites, so their terminal seams disappear under existing masonry.",
+    "repetition_control": "Alternate the existing left/right source regions across each 320px run. This uses two different weathering patterns without flipping, stretching, recoloring or creating new pixels.",
+    "collision_truth": "Use only each cropped source's visible stone-base rect. Do not extend collision to the complete-alpha roof width and do not invent an invisible 160px-wide body. Gaps between adjacent 149.333px base solids remain below the adult body width and must still reject an actual crossing probe."
+  },
+  "geometry_acceptance": [
+    "exactly eight existing longitudinal wall rows and twelve replacement horizontal wall rows are present; every rejected blue-gray horizontal row is absent",
+    "north visual intervals equal [430,1200] and [1873,2643]; south intervals equal [990,1115] and [1956,2081]",
+    "the left/right gate-source regions, scales, anchors and base solids equal this author without thresholding or PNG edits",
+    "full perimeter cannot be crossed except through the existing courtyard gate; this must be proved with the adult 875/17 body and Physics, not inferred from rectangle gap size",
+    "main-hall door, two wing doors, central gate and required routes remain clear",
+    "the complete affected geometry, routes, pixels and source rows restore exactly under inverse"
+  ],
+  "art_acceptance_for_final_native_image": [
+    "horizontal walls read as the same weathered gray-tile, white-plaster and stone-base family as the existing courtyard gate",
+    "no blue-gray panels, white dash stripes, doubled roof bands, floating wall pieces or roof-only joins remain",
+    "longitudinal walls remain visually subordinate at their small approved scale and do not read as metal towers",
+    "the courtyard reads as one bounded estate with a clear central gate and adult-scale architecture; the two peony beds remain intact"
+  ],
+  "scope_boundary": "This is the single final ART wall-source author requested after the lightweight probe. ART does not run the engine, deploy production, edit any PNG, regenerate art, or grant Field/formal credit. Root/System may proceed directly to one wall-geometry pass and one native image using this author."
+}

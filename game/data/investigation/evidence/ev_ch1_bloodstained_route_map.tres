@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch1_bloodstained_route_map"
+display_name = "染血的竹尾村路线图"
+description = "散兵行囊里有一张通往竹尾村的地图，边角沾着已经干涸的血。地图可能来自尸体、散兵或第三个人。它指出去向，却不能证明归属。"
+chapter = 1
+category = &"document"
+source_hint = "林西村外山道"
+related_testimony_ids = Array[StringName]([&"ts_ch1_bandit_claim", &"ts_ch1_master_advice"])
+tags = Array[StringName]([&"map", &"blood", &"zhuwei"])

@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(2048, 2048)
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.400,0.99, 0.371,0.82, 0.160,0.799, 0.095,0.730, 0.090,0.555, 0.180,0.435, 0.275,0.350, 0.322,0.160, 0.389,0.108, 0.640,0.103, 0.725,0.172, 0.786,0.275, 0.926,0.335, 0.936,0.536, 0.822,0.625, 0.676,0.692, 0.620,0.826, 0.603,0.99)
+])
+visual_objects = [
+	{"id":"outpost_windpacked_snow_0_0", "texture":"res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos":Vector2(0,0), "centered":false, "render_size_px":Vector2(1024,1024), "modulate":Color(0.81,0.84,0.88,1), "z_index":-100},
+	{"id":"outpost_windpacked_snow_1_0", "texture":"res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos":Vector2(0.5,0), "centered":false, "render_size_px":Vector2(1024,1024), "modulate":Color(0.81,0.84,0.88,1), "z_index":-100},
+	{"id":"outpost_windpacked_snow_0_1", "texture":"res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos":Vector2(0,0.5), "centered":false, "render_size_px":Vector2(1024,1024), "modulate":Color(0.81,0.84,0.88,1), "z_index":-100},
+	{"id":"outpost_windpacked_snow_1_1", "texture":"res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos":Vector2(0.5,0.5), "centered":false, "render_size_px":Vector2(1024,1024), "modulate":Color(0.81,0.84,0.88,1), "z_index":-100},
+	{"id":"outpost_drill_yard", "texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png", "pos":Vector2(0.525,0.385), "scale":Vector2(0.70,0.70), "modulate":Color(0.78,0.79,0.80,0.54), "z_index":-91},
+	{"id":"outpost_gate_trampled_snow", "texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png", "pos":Vector2(0.51,0.755), "scale":Vector2(0.48,0.48), "rotation":80.0, "modulate":Color(0.78,0.79,0.80,0.41), "z_index":-92},
+	{"id":"outpost_ridge_nw", "texture":"res://art/modules/huashan_map_20261029m/granite_crag.png", "pos":Vector2(0.155,0.065), "scale":Vector2(0.51,0.51), "modulate":Color(0.77,0.82,0.88,1), "sort_by_feet":true, "depth_sort_foot_y":0.163},
+	{"id":"outpost_ridge_ne", "texture":"res://art/modules/huashan_map_20261029m/granite_crag.png", "pos":Vector2(0.866,0.104), "scale":Vector2(0.47,0.47), "modulate":Color(0.79,0.84,0.90,1), "sort_by_feet":true, "depth_sort_foot_y":0.200},
+	{"id":"outpost_ridge_east", "texture":"res://art/modules/huashan_map_20261029m/granite_crag.png", "pos":Vector2(0.886,0.681), "scale":Vector2(0.43,0.43), "modulate":Color(0.78,0.82,0.86,1), "sort_by_feet":true, "depth_sort_foot_y":0.763},
+	{"id":"outpost_ridge_west", "texture":"res://art/modules/huashan_map_20261029m/granite_crag.png", "pos":Vector2(0.030,0.809), "scale":Vector2(0.44,0.44), "modulate":Color(0.72,0.78,0.84,1), "sort_by_feet":true, "depth_sort_foot_y":0.893},
+	{"id":"outpost_west_lookout", "texture":"res://art/modules/redrock_luoyang_standard_20261028b/tower.png", "pos":Vector2(0.179,0.160), "scale":Vector2(0.44,0.44), "modulate":Color(0.53,0.65,0.75,1), "sort_by_feet":true, "depth_sort_foot_y":0.274, "collision_offset":Vector2(0.003,0.091), "collision_size":Vector2(0.204,0.050)},
+	{"id":"outpost_east_command", "texture":"res://art/modules/sect_completion_20261030a/lieyun_store.png", "pos":Vector2(0.825,0.379), "scale":Vector2(-0.65,0.65), "modulate":Color(0.91,0.88,0.82,1), "sort_by_feet":true, "depth_sort_foot_y":0.486, "collision_offset":Vector2(0.010,0.085), "collision_size":Vector2(0.228,0.049)},
+	{"id":"outpost_west_armory", "texture":"res://art/modules/four_settlements_20261030e/repair_shed.png", "pos":Vector2(0.190,0.508), "scale":Vector2(0.36,0.36), "modulate":Color(0.76,0.74,0.70,1), "sort_by_feet":true, "depth_sort_foot_y":0.569, "collision_offset":Vector2(0.006,0.044), "collision_size":Vector2(0.217,0.043)},
+	{"id":"outpost_return_gate", "texture":"res://art/modules/sect_completion_20261030a/lieyun_gate.png", "pos":Vector2(0.500,0.824), "scale":Vector2(0.60,0.60), "modulate":Color(0.87,0.88,0.90,1), "sort_by_feet":true, "depth_sort_foot_y":0.924},
+	{"id":"outpost_west_supply", "texture":"res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png", "pos":Vector2(0.125,0.626), "scale":Vector2(0.25,0.25), "sort_by_feet":true, "depth_sort_foot_y":0.648},
+	{"id":"outpost_east_supply", "texture":"res://art/modules/prop/prop_linxi_box_wood_a.png", "pos":Vector2(0.822,0.553), "scale":Vector2(0.60,0.60), "sort_by_feet":true, "depth_sort_foot_y":0.576, "collision_offset":Vector2(0.0,0.012), "collision_size":Vector2(0.032,0.018)},
+	{"id":"outpost_weapon_table", "texture":"res://art/modules/luoyang_assembled_interiors_20261016g/writing_desk_v1.png", "pos":Vector2(0.22,0.707), "scale":Vector2(0.26,0.26), "modulate":Color(0.83,0.80,0.76,1), "sort_by_feet":true, "depth_sort_foot_y":0.733, "collision_offset":Vector2(0,0.019), "collision_size":Vector2(0.100,0.024)},
+	{"id":"ch5_poisoned_weapon_sample", "texture":"res://art/props/interactive/ch5_poisoned_weapon_sample_v1.png", "pos":Vector2(0.22,0.69), "render_size_px":Vector2(112,84), "z_index":12, "centered":true, "sort_by_feet":true, "depth_sort_foot_y":0.741, "require_quest_active":"q_ch5_main_05_false_banner_outpost", "hide_flag":"ch5_poisoned_weapon_found"},
+	{"id":"outpost_brazier_west", "texture":"res://art/modules/prop/linxi_brazier_forge_v1.png", "pos":Vector2(0.238,0.347), "scale":Vector2(0.30,0.30), "z_index":21, "collision_offset":Vector2(0,0.010), "collision_size":Vector2(0.031,0.018)},
+	{"id":"outpost_brazier_east", "texture":"res://art/modules/prop/linxi_brazier_forge_v1.png", "pos":Vector2(0.657,0.345), "scale":Vector2(0.30,0.30), "z_index":21, "collision_offset":Vector2(0,0.010), "collision_size":Vector2(0.031,0.018)},
+	{"id":"outpost_tunnel_light_west", "texture":"res://art/modules/prop/linxi_brazier_forge_v1.png", "pos":Vector2(0.378,0.716), "scale":Vector2(0.27,0.27), "z_index":21, "collision_offset":Vector2(0,0.010), "collision_size":Vector2(0.029,0.017)},
+	{"id":"outpost_tunnel_light_east", "texture":"res://art/modules/prop/linxi_brazier_forge_v1.png", "pos":Vector2(0.420,0.711), "scale":Vector2(0.27,0.27), "z_index":21, "collision_offset":Vector2(0,0.010), "collision_size":Vector2(0.029,0.017)}
+]
+blockers = [
+	{"id":"outpost_gate_left_jamb", "pos":Vector2(0.376,0.903), "size":Vector2(0.100,0.055), "walkability_margin":0.004},
+	{"id":"outpost_gate_right_jamb", "pos":Vector2(0.629,0.912), "size":Vector2(0.098,0.055), "walkability_margin":0.004}
+]
+interactions = [
+	{"id":"inspect_poisoned_weapons", "pos":Vector2(0.22,0.67), "size":Vector2(0.13,0.11), "activation":"interact", "label":"查验淬毒兵刃", "action":"dialog:ch5_false_banner_poisoned_weapons", "visual_baked":true, "require_quest_active":"q_ch5_main_05_false_banner_outpost", "hide_flag":"ch5_poisoned_weapon_found"}
+]
+portals = [
+	{"id":"outpost_return_abandoned_mine", "label":"返回废弃矿道", "pos":Vector2(0.50,0.92), "size":Vector2(0.14,0.12), "target_scene":"ch5_s4_abandoned_mine", "target_pos":Vector2(0.82,0.20)}
+]
+walkable_probes = [
+	{"id":"mine_spawn", "pos":Vector2(0.50,0.90)},
+	{"id":"mine_arrival", "pos":Vector2(0.50,0.88)},
+	{"id":"central_yard", "pos":Vector2(0.50,0.56)},
+	{"id":"weapon_evidence", "pos":Vector2(0.22,0.67)},
+	{"id":"boss_court", "pos":Vector2(0.51,0.22)},
+	{"id":"command_desk", "pos":Vector2(0.78,0.42)}
+]
+blocked_probes = [
+	{"id":"left_watchtower", "pos":Vector2(0.17,0.27)},
+	{"id":"right_command_house", "pos":Vector2(0.86,0.464)},
+	{"id":"left_cliff", "pos":Vector2(0.04,0.70)},
+	{"id":"outpost_gate_left_jamb", "pos":Vector2(0.376,0.903)},
+	{"id":"outpost_gate_right_jamb", "pos":Vector2(0.629,0.912)}
+]

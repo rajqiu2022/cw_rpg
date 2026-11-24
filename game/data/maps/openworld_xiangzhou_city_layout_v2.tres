@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 5
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_mask_path = "res://art/navigation_masks/openworld_city_v3/xiangzhou_walk_v3.png"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.260,1.000, 0.735,1.000, 0.735,0.610, 0.260,0.610),
+	PackedVector2Array(0.035,0.235, 0.585,0.235, 0.585,0.700, 0.035,0.700),
+	PackedVector2Array(0.555,0.000, 0.790,0.000, 0.815,0.690, 0.555,0.690)
+])
+blockers = Array[Dictionary]([{"id":"drill_notice_board","pos":Vector2(0.450,0.610),"size":Vector2(0.190,0.135)}])
+occluders = Array[Dictionary]([{"id":"xiangzhou_lower_tree_canopy","depth_mode":"overlap","alpha_mask_texture_path":"res://art/navigation_masks/openworld_city_v3/xiangzhou_lower_tree_canopy_mask_v1.png","cover_polygon":PackedVector2Array(0.455,0.375, 0.745,0.375, 0.745,0.725, 0.455,0.725),"fade_region":PackedVector2Array(0.485,0.455, 0.690,0.455, 0.690,0.705, 0.485,0.705),"actor_faded_alpha":0.43,"z_index":10}])
+interactions = Array[Dictionary]([{"id":"xiangzhou_bounty_board","label":"查看襄州城缉捕榜","pos":Vector2(0.505,0.640),"size":Vector2(0.180,0.185),"activation":"interact","action":"bounty_board:xiangzhou","visual_baked":true,"baked_feature":"校场南侧实体通缉榜","clickable":true}])
+portals = Array[Dictionary]([{"id":"return_world","label":"离开襄州 · 江湖大地图","pos":Vector2(0.505,0.955),"size":Vector2(0.170,0.075),"action":"world_map","marker_rotation_degrees":180.0},{"id":"mine_valley","label":"前往襄州矿谷（6～10级）","pos":Vector2(0.550,0.070),"size":Vector2(0.140,0.080),"target_scene":"openworld_xiangzhou_mine_valley","target_pos":Vector2(0.50,0.88)}])
+walkable_probes = Array[Dictionary]([{"id":"arrival","pos":Vector2(0.505,0.900)},{"id":"board_front","pos":Vector2(0.505,0.705)},{"id":"drill_square","pos":Vector2(0.270,0.455)},{"id":"river_quay","pos":Vector2(0.620,0.500)},{"id":"north_bridge","pos":Vector2(0.550,0.100)},{"id":"tree_canopy_passage","pos":Vector2(0.590,0.640)}])
+blocked_probes = Array[Dictionary]([{"id":"east_water","pos":Vector2(0.940,0.420)},{"id":"east_market_awning","pos":Vector2(0.800,0.410)},{"id":"drill_yard_target_fence","pos":Vector2(0.310,0.300)},{"id":"central_banner_planter","pos":Vector2(0.455,0.440)},{"id":"notice_board_body","pos":Vector2(0.455,0.610)},{"id":"southwest_roof","pos":Vector2(0.080,0.900)},{"id":"northwest_house","pos":Vector2(0.170,0.100)}])

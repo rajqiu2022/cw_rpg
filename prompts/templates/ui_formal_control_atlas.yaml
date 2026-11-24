@@ -1,0 +1,23 @@
+id: ui_formal_control_atlas
+description: 无文字的寒山玄铁 UI 独立控件图集
+quality: medium
+size: "1536x1024"
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: game UI sprite atlas.
+  Asset type: a clean, flat 2D wuxia RPG control atlas for Godot slicing.
+  Primary request: {control_description}.
+  Rendering: all controls are front-facing, same scale, same perspective, and isolated from each
+  other by generous uniform padding. Every control must have crisp full edges and must be usable
+  after rectangular slicing. Do not let controls overlap or touch. The background is a uniform,
+  opaque near-black matte with no texture variation, so it can be removed or ignored consistently.
+  Materials: matte blue-black forged iron, restrained cold steel trim, subtle teal jade inlay,
+  aged ink-brush ornamental linework only on the controls, small dark crimson accents only when
+  appropriate. Keep control interiors quiet for live Godot text and icons.
+  Constraints: no characters, no item pictures, no numbers, no letters, no Chinese characters,
+  no fake writing, no logo, no watermark, no additional controls or decorative panel.
+  Avoid: warm gold dominance, orange, purple neon, modern web dashboard appearance, paper
+  parchment, photorealism, {negative}
+

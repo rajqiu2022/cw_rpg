@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "论剑执笔人"
+text = "两派争的是剑快还是气长。你若只许说一句，该怎么劝？"
+accept_quest = &"q_ch3_side_05_sword_forum"
+on_end = "next:choice"
+
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("2")
+node_id = &"choice"
+speaker = "冷孤云"
+text = "庄子写庖丁解牛，刀能游刃，是眼、手、气都到。剑理也不该只剩一个字。"
+choices = Array[Dictionary]([
+	{"text":"请双方各换一柄不熟悉的木剑", "next":"exchange"},
+	{"text":"请双方继续各练各的绝招", "next":"retry"}
+])
+
+[sub_resource type="Resource" id="retry"]
+script = ExtResource("2")
+node_id = &"retry"
+speaker = "论剑执笔人"
+text = "这样只会各说各话。论剑要让人看见自己原先没看见的东西。"
+on_end = "next:choice"
+
+[sub_resource type="Resource" id="exchange"]
+script = ExtResource("2")
+node_id = &"exchange"
+speaker = "旁白"
+text = "剑宗弟子被迫放慢，气宗弟子不得不抢先。十招之后，两人都向对方拱了手。"
+on_end = "next:finish"
+
+[sub_resource type="Resource" id="finish"]
+script = ExtResource("2")
+node_id = &"finish"
+speaker = "论剑执笔人"
+text = "今日不排名次，只记一句：门户是来处，不是尽头。"
+set_flags = Array[Dictionary]([{"key":"sword_forum_hosted", "value":true}])
+complete_quest = &"q_ch3_side_05_sword_forum"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch3_sword_forum_side"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("choice"), SubResource("retry"), SubResource("exchange"), SubResource("finish")])

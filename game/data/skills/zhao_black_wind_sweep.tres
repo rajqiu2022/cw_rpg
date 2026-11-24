@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"zhao_black_wind_sweep"
+display_name = "黑风卷地"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_blade_crescent_v1.png"
+description = "赵无忌旋身催动连环刀风。全体伤害：固定 20 + 攻击力 × 80%。"
+kind = 0
+target = 1
+delivery = 2
+mp_cost = 20
+quality = 3
+fixed_damage = 20
+attack_scaling = 80
+effect_value = 0
+animation_id = &"zhao_black_wind_sweep"
+required_weapon_type = &"blade"
+martial_category = &"blade"
+damage_type = 0
+inflicted_status = &"bleed"
+status_chance = 0.6
+status_duration = 3
+school = "generic"

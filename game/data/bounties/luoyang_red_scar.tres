@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"luoyang_red_scar"
+display_name = "赤疤彭六"
+title = "伤吏劫药"
+description = "在洛阳南郊劫走官药，抗捕时伤了两名差役，善用飞针。"
+board_city = &"luoyang"
+recommended_min_level = 4
+recommended_max_level = 6
+enemy_ids = Array[StringName]([&"bounty_red_scar", &"central_road_scout"])
+locations = Array[Dictionary]([{"scene_id":&"ch4_s0_luoyang_gate","label":"洛阳南郊 · 旧官亭","pos":Vector2(0.72,0.68)},{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 破药铺","pos":Vector2(0.30,0.52)}])
+reward_reputation = 14
+reward_training = 28
+reward_exp = 60
+reward_gold = 60
+reward_items = Array[Dictionary]([{"item_id":&"qiyun_jade","count":1},{"item_id":&"herb_bundle","count":2}])
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_duan_changfeng_idle_down_4f_v1_runtime.png"
+

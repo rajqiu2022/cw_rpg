@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"luoyang_seal_thief"
+display_name = "盗印客柳三"
+title = "窃印改牒"
+description = "潜入府库盗走验牒铜印，沿水陆更换藏身处，身边常有两名亡命徒。"
+board_city = &"luoyang"
+recommended_min_level = 7
+recommended_max_level = 9
+enemy_ids = Array[StringName]([&"bounty_seal_thief", &"mine_outlaw", &"central_road_scout"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_xiangzhou_mine_valley","label":"襄州矿谷 · 商队暗仓","pos":Vector2(0.64,0.54)},{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 驿丞旧宅","pos":Vector2(0.76,0.45)}])
+reward_reputation = 22
+reward_training = 44
+reward_exp = 100
+reward_gold = 105
+reward_items = Array[Dictionary]([{"item_id":&"sharp_steel_sword","count":1},{"item_id":&"cloth_roll","count":2}])
+field_sprite_path = "res://art/characters/npc_qi_yunsheng_idle_down_4f_v1_runtime.png"
+

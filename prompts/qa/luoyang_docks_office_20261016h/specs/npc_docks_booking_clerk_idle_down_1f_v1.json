@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "id": "luoyang_docks_office_20261016h_npc_docks_booking_clerk_idle_down_1f_v1",
+  "asset_id": "npc_docks_booking_clerk_idle_down_1f_v1",
+  "name": "码头记货文吏单帧",
+  "kind": "stationary_npc",
+  "status": "PLANNED_WAITING_ROOT_PROMPT_PREFLIGHT_GO",
+  "execution_backend": "builtin_image_gen",
+  "model": null,
+  "provider": null,
+  "attempt_budget": 1,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "transparent_background": true,
+  "intended_size_px": [
+    1024,
+    1024
+  ],
+  "prompt_path": "prompts/qa/luoyang_docks_office_20261016h/prompts/npc_docks_booking_clerk_idle_down_1f_v1.txt",
+  "output_path": "assets/raw/luoyang_docks_office_20261016h/npc_docks_booking_clerk_idle_down_1f_v1.png",
+  "reference_images": [],
+  "runtime_authorization": "NONE_ART_SOURCE_ONLY_NO_GAME_OR_ENGINE_WRITES",
+  "acceptance": [
+    "exact original bytes and tool metadata saved",
+    "actual PNG dimensions/mode/alpha edges/A>=8 and64 bbox measured",
+    "complete subject and genuinely transparent background",
+    "strict margin failures retained; no alpha threshold/crop/pixel edits",
+    "manual source foot and conservative base assigned only after real-image inspection"
+  ],
+  "source_geometry": {
+    "source_ground_anchor_px": null,
+    "ground_base_polygon_px": null,
+    "door_threshold_px": null,
+    "status": "PENDING_ACTUAL_GENERATED_OUTPUT_NOT_INHERITED_FROM_DONOR"
+  },
+  "stationary_only": true,
+  "npc_runtime_caution": "NPCNode accepts square1frame, but arbitrary new path is not automatically alpha-normalized; highres raw MUST NOT be wired at scale1. Any160 fullcanvas derivative/visual140 normalization requires separate Root authorization and SYSTEM validation.",
+  "source_oracle_paths": [
+    "game/scripts/field/npc_node.gd",
+    "game/scripts/city/luoyang_harbour_life_crowd_retry3_20261016.gd"
+  ],
+  "identity_constraints": {}
+}

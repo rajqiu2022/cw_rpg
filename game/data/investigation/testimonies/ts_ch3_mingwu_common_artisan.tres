@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch3_mingwu_common_artisan"
+display_name = "苏雾笙的共匠之说"
+speaker_npc_id = &"npc_su_wusheng"
+statement = "苏雾笙称五派器物常由同一批匠人承制，纹样相近并不稀奇。这解释了相似处，却回避了铜扣尺寸和旧制官纸为何同时出现。"
+chapter = 3
+initial_credibility = 60
+related_evidence_ids = Array[StringName]([&"ev_ch3_old_official_paper", &"ev_ch3_mismatched_copper_button", &"ev_ch3_luoyang_cargo_mark"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch3_wudang_archive_revision", &"ts_ch3_lingyue_stitch_order"])

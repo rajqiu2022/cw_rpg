@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 5
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_mask_path = "res://art/navigation_masks/openworld_city_v3/jinling_walk_v3.png"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.325,1.000, 0.675,1.000, 0.675,0.585, 0.325,0.585),
+	PackedVector2Array(0.115,0.165, 0.870,0.165, 0.870,0.720, 0.115,0.720),
+	PackedVector2Array(0.000,0.000, 0.250,0.000, 0.355,0.300, 0.185,0.390, 0.000,0.235)
+])
+blockers = Array[Dictionary]([
+	{"id":"east_notice_board","pos":Vector2(0.825,0.435),"size":Vector2(0.105,0.145)},
+	{"id":"southwest_bridge_lantern_base","pos":Vector2(0.389,0.748),"size":Vector2(0.023,0.033),"walkability_margin":0.003},
+	{"id":"southeast_bridge_lantern_base","pos":Vector2(0.609,0.748),"size":Vector2(0.023,0.033),"walkability_margin":0.003}
+])
+occluders = Array[Dictionary]([
+	{"id":"southwest_bridge_lantern","depth_mode":"y_sort","depth_y":0.755,"cover_polygon":PackedVector2Array(0.374,0.620, 0.405,0.620, 0.405,0.648, 0.411,0.648, 0.411,0.696, 0.400,0.696, 0.400,0.650, 0.396,0.650, 0.396,0.758, 0.383,0.758, 0.383,0.650, 0.374,0.650),"z_index":18},
+	{"id":"southeast_bridge_lantern","depth_mode":"y_sort","depth_y":0.755,"cover_polygon":PackedVector2Array(0.595,0.620, 0.626,0.620, 0.626,0.648, 0.632,0.648, 0.632,0.696, 0.621,0.696, 0.621,0.650, 0.617,0.650, 0.617,0.758, 0.604,0.758, 0.604,0.650, 0.595,0.650),"z_index":18}
+])
+interactions = Array[Dictionary]([{"id":"jinling_bounty_board","label":"查看金陵府缉捕榜","pos":Vector2(0.790,0.520),"size":Vector2(0.220,0.205),"activation":"interact","action":"bounty_board:jinling","visual_baked":true,"baked_feature":"桥市东侧实体通缉榜","clickable":true}])
+portals = Array[Dictionary]([{"id":"return_world","label":"离开金陵 · 江湖大地图","pos":Vector2(0.500,0.955),"size":Vector2(0.170,0.075),"action":"world_map","marker_rotation_degrees":180.0},{"id":"reed_marsh","label":"乘舟前往江南芦荡（9～13级）","pos":Vector2(0.105,0.105),"size":Vector2(0.140,0.100),"target_scene":"openworld_jinling_reed_marsh","target_pos":Vector2(0.50,0.88)}])
+walkable_probes = Array[Dictionary]([{"id":"arrival","pos":Vector2(0.500,0.900)},{"id":"central_square","pos":Vector2(0.500,0.500)},{"id":"board_front","pos":Vector2(0.735,0.580)},{"id":"west_bridge","pos":Vector2(0.100,0.150)},{"id":"north_market","pos":Vector2(0.500,0.220)}])
+blocked_probes = Array[Dictionary]([{"id":"southwest_water","pos":Vector2(0.150,0.900)},{"id":"southeast_water","pos":Vector2(0.850,0.900)},{"id":"east_house","pos":Vector2(0.930,0.300)},{"id":"northwest_house","pos":Vector2(0.070,0.340)},{"id":"east_quay_fence","pos":Vector2(0.885,0.570)},{"id":"southwest_bridge_lantern_base","pos":Vector2(0.389,0.748)},{"id":"southeast_bridge_lantern_base","pos":Vector2(0.609,0.748)}])

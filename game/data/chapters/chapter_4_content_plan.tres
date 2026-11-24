@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ChapterContentPlan" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/chapter_content_plan.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+chapter = 4
+title = "洛阳疑云"
+main_scene_ids = Array[StringName]([&"ch4_s1_luoyang_yamen", &"ch4_s3_luoyang_market", &"ch4_s2_canal_docks", &"ch4_s4_ancient_temple", &"ch4_s5_temple_tunnel"])
+main_quest_ids = Array[StringName]([&"q_ch4_main_01_luoyang_case", &"q_ch4_main_02_ancient_temple", &"q_ch4_main_03_canal_witness", &"q_ch4_main_04_tunnel_mastermind"])
+side_quest_ids = Array[StringName]([&"q_ch4_side_01_heal_veteran", &"q_ch4_side_02_luoyang_paper", &"q_ch4_side_03_peony_poetry", &"q_ch4_side_04_longmen_mystery", &"q_ch4_side_05_baima_bell", &"q_ch4_side_06_canal_grudge", &"q_ch4_side_07_hanjia_blade"])
+leveling_scene_ids = Array[StringName]([&"ch4_s2_canal_docks", &"ch4_s5_temple_tunnel"])
+story_battle_groups = Array[Dictionary]([
+	{"id":"canal_silencers", "enemy_ids":[&"luoyang_thug", &"luoyang_thug"]},
+	{"id":"temple_ambush", "enemy_ids":[&"temple_ambusher", &"temple_ambusher", &"luoyang_thug"]},
+	{"id":"false_banner_boss", "enemy_ids":[&"fake_liuyun_assassin", &"temple_ambusher", &"temple_ambusher"]}
+])
+estimated_main_minutes = 80
+estimated_completionist_minutes = 220

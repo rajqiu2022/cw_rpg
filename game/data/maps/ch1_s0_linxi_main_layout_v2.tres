@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(3072, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.01, 0.43, 0.36, 0.39, 0.43, 0.35, 0.43, 0.14, 0.53, 0.08, 0.65, 0.10, 0.74, 0.18, 0.98, 0.60, 0.99, 0.88, 0.92, 0.95, 0.01, 0.95)])
+visual_objects = [
+	{
+		"id": "linxi_main_street_tablet",
+		"texture": "res://art/modules/prop/linxi_stone_tablet_v1.png",
+		"pos": Vector2(0.340, 0.640),
+		"scale": Vector2(0.40, 0.40),
+		"z_index": 14
+	}
+]
+blockers = [
+	{"id": "seam_bamboo_footprint", "pos": Vector2(0.500, 0.700), "size": Vector2(0.110, 0.500)},
+	{"id": "smithy_footprint", "pos": Vector2(0.735, 0.270), "size": Vector2(0.175, 0.210)},
+	{"id": "residence_footprint", "pos": Vector2(0.925, 0.260), "size": Vector2(0.145, 0.230)},
+	{"id": "right_cliff_edge", "pos": Vector2(0.985, 0.520), "size": Vector2(0.035, 0.620)}
+]
+interactions = [
+	{
+		"id": "stone_read",
+		"pos": Vector2(0.340, 0.685),
+		"size": Vector2(0.070, 0.085),
+		"action": "dialog:ch1_main_street_stone",
+		"activation": "interact",
+		"hide_flag": "saw_village_stone"
+	}
+]
+portals = [
+	{
+		"id": "exit_to_road",
+		"label": "前往村外官道",
+		"pos": Vector2(0.920, 0.835),
+		"size": Vector2(0.090, 0.120),
+		"target_scene": "ch1_s1_road",
+		"target_pos": Vector2(0.120, 0.835),
+		"require_flag": "got_sword"
+	},
+	{
+		"id": "exit_to_tutorial",
+		"label": "返回武师院",
+		"pos": Vector2(0.016, 0.833),
+		"size": Vector2(0.083, 0.080),
+		"target_scene": "linxi_tutorial",
+		"target_pos": Vector2(0.50, 0.72)
+	},
+	{
+		"id": "enter_martial_hall",
+		"label": "进入林西武馆",
+		"pos": Vector2(0.220, 0.505),
+		"size": Vector2(0.090, 0.100),
+		"target_scene": "interior_martial_hall",
+		"target_pos": Vector2(0.500, 0.650)
+	}
+]

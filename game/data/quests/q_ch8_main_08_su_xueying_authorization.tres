@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_08_su_xueying_authorization"
+title="死士问命"
+kind=0
+desc_not_started="苏雾笙退入山庄主厅，薛影仍守在他与后殿之间。"
+desc_in_progress="在茗雾主厅对质苏雾笙与薛影，查清一纸命令如何把受害者塑造成行凶者。"
+desc_completed="苏雾笙承认以救命、改名与长期服从训练建立薛影的私人执行链；薛影也承认自己明知命令会伤及无辜。受害经历解释了服从，却不能抹去杀人责任。"
+tracker_hint="茗雾山庄 · 正厅"
+completion_triggers=Array[String](["flag_set:ch8_su_xueying_authorization_exposed"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=260

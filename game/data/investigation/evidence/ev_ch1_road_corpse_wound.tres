@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch1_road_corpse_wound"
+display_name = "山道尸体的伤口"
+description = "死者虎口有练剑老茧，后背中剑，衣襟还被人翻找过。这只能证明死者练过剑、遇袭后又被搜身，不能证明拦路散兵就是凶手。"
+chapter = 1
+category = &"corpse"
+source_hint = "林西村外山道"
+related_testimony_ids = Array[StringName]([&"ts_ch1_bandit_claim"])
+tags = Array[StringName]([&"corpse", &"sword_wound", &"searched"])

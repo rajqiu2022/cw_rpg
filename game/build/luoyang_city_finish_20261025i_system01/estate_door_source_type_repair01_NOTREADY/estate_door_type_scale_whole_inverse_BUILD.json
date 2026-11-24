@@ -1,0 +1,42 @@
+{
+  "status": "BUILD_ONLY_NOT_RUN_NOT_DEPLOYED",
+  "pairs": [
+    {
+      "parent": "res://build/luoyang_city_finish_20261025i_source01/visible_doors_boundaries33_repair01/closure_READY01/wing_door_depth_children_READY.gd",
+      "parent_sha256": "bf791197102ff37992e4bdb60cedde7aeed363b20b09c85142836b9c98d1e0bb",
+      "candidate": "res://build/luoyang_city_finish_20261025i_system01/estate_door_source_type_repair01_NOTREADY/wing_door_depth_children_CANDIDATE.gd",
+      "candidate_sha256": "8420804f4400be2b5edffb554c40b61f19f3ad4c26fa9828879ef2297b717008",
+      "hunks": [
+        {
+          "old": "\tif matches!=1 or entry.get(\"texture\")!=WING or entry.get(\"world_foot_px\")!=Vector2(650,1710) or entry.get(\"render_size_px\")!=Vector2(2202,1289)*.44 or entry.get(\"pos\")!=(Vector2(650,1710)+(Vector2(1101,644.5)-Vector2(893,1068))*.44)/Vector2(3072,2048) or entry.get(\"depth_sort_foot_y\")!=1710.0/2048.0 or entry.get(\"sort_by_feet\")!=true: return false\n",
+          "new": "\tvar world_foot: Variant=entry.get(\"world_foot_px\")\n\tif not world_foot is Array or world_foot.size()!=2: return false\n\tfor coordinate: Variant in world_foot:\n\t\tif typeof(coordinate) not in [TYPE_INT,TYPE_FLOAT] or not is_finite(float(coordinate)): return false\n\tif world_foot[0]!=650.0 or world_foot[1]!=1710.0: return false\n\tif matches!=1 or entry.get(\"texture\")!=WING or entry.get(\"render_size_px\")!=Vector2(2202,1289)*.44 or entry.get(\"pos\")!=(Vector2(650,1710)+(Vector2(1101,644.5)-Vector2(893,1068))*.44)/Vector2(3072,2048) or entry.get(\"depth_sort_foot_y\")!=1710.0/2048.0 or entry.get(\"sort_by_feet\")!=true: return false\n"
+        },
+        {
+          "old": " or parent.scale!=Vector2.ONE*.44 or parent.position!=entry.pos*Vector2(3072,2048): return false",
+          "new": " or parent.scale!=Vector2(entry.render_size_px.x/2202.0,entry.render_size_px.y/1289.0) or parent.position!=entry.pos*Vector2(3072,2048): return false"
+        }
+      ]
+    }
+  ],
+  "scope": "Only Estate original Array2 numeric finite source foot6501710 schema; no Array/Vector2 heterogeneous comparison; exact parent scale follows original Field2939-2942 per-component render_size_px/texture size",
+  "unchanged": "Whole payload rows matched by original var_to_bytes, render_size/pos/depth exact source math, family original/Weak/FIRST gates, all Temple and monk functions; no actual renderer or body changes",
+  "source_f32": {
+    "render_size": [
+      968.8800048828125,
+      567.1599731445312
+    ],
+    "Field_scale": [
+      0.4399999976158142,
+      0.4399999678134918
+    ],
+    "rejected_old_assumption": [
+      0.4399999976158142,
+      0.4399999976158142
+    ],
+    "method": "IEEE754f32 source formula not engine observation; exact stage expression replaces old shortcut, no epsilon"
+  },
+  "SELF_and_READY": "Original literals deliberately unchanged for Source single mechanical sealing",
+  "old_actual_FAIL_preserved": "Estate30172",
+  "engine_calls": 0,
+  "canonical_writes": 0
+}

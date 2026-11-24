@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]（木人桩的关节被磨得发亮。上面留着教头刻下的浅痕：先稳身，再出手。）[/i]"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "examined_martial_hall_dummy", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"interior_martial_hall_dummy"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])

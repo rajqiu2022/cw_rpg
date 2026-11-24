@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.08658854, 0.20507812, 0.15559896, 0.20312500, 0.18424479, 0.24609375, 0.23437500, 0.27539062, 0.27473958, 0.31835938, 0.31380208, 0.33984375, 0.52669271, 0.33984375, 0.57942708, 0.30175781, 0.61979167, 0.30468750, 0.69270833, 0.34179688, 0.73828125, 0.38574219, 0.73567708, 0.43066406, 0.68684896, 0.50292969, 0.65104167, 0.54589844, 0.63671875, 0.59863281, 0.66471354, 0.63964844, 0.70377604, 0.66796875, 0.78385417, 0.70410156, 0.84895833, 0.75292969, 0.88671875, 0.77148438, 0.94986979, 0.79980469, 0.93750000, 0.83789062, 0.89518229, 0.85839844, 0.83658854, 0.84960938, 0.77083333, 0.81054688, 0.72786458, 0.75781250, 0.67578125, 0.71777344, 0.62109375, 0.67968750, 0.57161458, 0.65527344, 0.53385417, 0.60937500, 0.55924479, 0.56445312, 0.59830729, 0.51171875, 0.64062500, 0.46484375, 0.64192708, 0.43359375, 0.59830729, 0.41308594, 0.54427083, 0.39648438, 0.32421875, 0.38964844, 0.25130208, 0.40332031, 0.19270833, 0.39453125, 0.14518229, 0.36523438, 0.12955729, 0.32226562, 0.10807292, 0.27929688, 0.08593750, 0.25195312)
+])
+visual_objects = []
+blockers = []
+interactions = [
+	{"id": "cave_water_cache", "pos": Vector2(0.720, 0.690), "size": Vector2(0.105, 0.086), "activation": "interact", "label": "检查油布药包", "action": "dialog:ch1_zhuwei_cave_water_cache", "visual_texture": "res://art/modules/zhuwei_waterway_20261113/oilcloth_parcel.png", "visual_render_size_px": Vector2(80, 53.333333), "visual_z_index": -1, "clickable": true, "hide_flag": "looted_zhuwei_cave_water_cache"}
+]
+portals = [
+	{"id": "water_return_entrance", "pos": Vector2(0.890, 0.805), "size": Vector2(0.100, 0.098), "source_spawn_pos": Vector2(0.820,0.750), "marker_offset": Vector2(0,0.039063), "label": "返回入口营地", "show_destination_label": true, "destination_label_side": -1.0, "marker_rotation_degrees": 180.0, "target_scene": "ch1_s4_zhuwei_beast_cave", "target_pos": Vector2(0.747, 0.334)},
+	{"id": "water_enter_deep_den", "pos": Vector2(0.126, 0.247), "size": Vector2(0.100, 0.098), "source_spawn_pos": Vector2(0.215,0.330), "marker_offset": Vector2(0,0.039063), "label": "通往头狼深窟", "show_destination_label": true, "marker_rotation_degrees": 180.0, "target_scene": "ch1_s4_cave_deep_den", "target_pos": Vector2(0.750, 0.720)}
+]
+walkable_probes = [
+	{"id": "water_spawn", "pos": Vector2(0.820, 0.750)},
+	{"id": "water_right_route", "pos": Vector2(0.626, 0.490)},
+	{"id": "water_stone_crossing", "pos": Vector2(0.455, 0.365)},
+	{"id": "water_left_route", "pos": Vector2(0.220, 0.345)},
+	{"id": "water_deep_exit", "pos": Vector2(0.126, 0.247)}
+]
+blocked_probes = [
+	{"id": "water_pool_center", "pos": Vector2(0.500, 0.500)},
+	{"id": "water_upper_void", "pos": Vector2(0.500, 0.010)},
+	{"id": "water_lower_void", "pos": Vector2(0.500, 0.990)}
+]

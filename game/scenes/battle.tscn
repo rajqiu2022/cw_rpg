@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8battle00000001"]
+[gd_scene load_steps=7 format=3 uid="uid://b8battle00000001"]
 
 [ext_resource type="Script" path="res://scripts/battle/battle_controller.gd" id="1_battle"]
-[ext_resource type="Texture2D" path="res://art/backgrounds/bg_battle_default.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://art/backgrounds/bg_battle_bamboo_day_v1.png" id="2_bg"]
+[ext_resource type="Script" path="res://scripts/battle/battle_vfx_player.gd" id="3_vfx"]
+[ext_resource type="PackedScene" path="res://scenes/battle_actor.tscn" id="4_actor"]
+[ext_resource type="Script" path="res://scripts/battle/battle_formation_view.gd" id="5_formation"]
+[ext_resource type="Script" path="res://scripts/battle/legendary_skill_cinematic.gd" id="6_legendary"]
 
 [node name="Battle" type="Control"]
 layout_mode = 3
@@ -30,7 +34,62 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.25)
+color = Color(0, 0, 0, 0.10)
+
+[node name="BattleVfxLayer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_vfx")
+z_index = 20
+
+[node name="LegendaryCinematicLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="LegendarySkillCinematic" type="Control" parent="LegendaryCinematicLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_legendary")
+
+[node name="FormationView" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("5_formation")
+z_index = 4
+
+[node name="PlayerActor" parent="." instance=ExtResource("4_actor")]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 320.0
+offset_right = 582.0
+offset_bottom = 880.0
+z_index = 5
+
+[node name="EnemyActor" parent="." instance=ExtResource("4_actor")]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -622.0
+offset_top = 110.0
+offset_right = -110.0
+offset_bottom = 670.0
+grow_horizontal = 0
+z_index = 5
 
 [node name="EnemyPortrait" type="TextureRect" parent="."]
 unique_name_in_owner = true
@@ -61,6 +120,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="EnemyHUD" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -137,24 +197,28 @@ modulate = Color(0.5, 0.7, 1, 1)
 
 [node name="LogPanel" type="PanelContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -380.0
-offset_top = -160.0
-offset_right = 380.0
-offset_bottom = 80.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 15
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -840.0
+offset_top = -360.0
+offset_right = -300.0
+offset_bottom = -50.0
+grow_horizontal = 0
+grow_vertical = 0
 self_modulate = Color(1, 1, 1, 0.85)
+clip_contents = true
 
 [node name="BattleLog" type="RichTextLabel" parent="LogPanel"]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
 scroll_following = true
+scroll_active = true
+fit_content = false
+clip_contents = true
 theme_override_font_sizes/normal_font_size = 18
 
 [node name="ActionPanel" type="VBoxContainer" parent="."]
@@ -166,7 +230,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -260.0
-offset_top = -340.0
+offset_top = -500.0
 offset_right = -40.0
 offset_bottom = -40.0
 grow_horizontal = 0
@@ -186,6 +250,13 @@ custom_minimum_size = Vector2(220, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "排云掌  -5MP"
+
+[node name="BtnEquip" type="Button" parent="ActionPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Equip"
 
 [node name="BtnDefend" type="Button" parent="ActionPanel"]
 unique_name_in_owner = true

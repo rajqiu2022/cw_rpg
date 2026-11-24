@@ -1,0 +1,14 @@
+{
+  "status": "ROOT_APPROVES_ONE_EXACT_ADAPTER_EOF_TRANSPORT_PREPARATION_NOT_STAGE_OR_DEPLOYMENT",
+  "approved_by_root": true,
+  "target": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd",
+  "old_sha256": "5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84",
+  "old_bytes": 30746,
+  "candidate_sha256": "cf2aa3da4f8dbafd30d48d9310d69d7eacb9f17d25e47ce02ca221835eff3736",
+  "candidate_bytes": 31206,
+  "patch_intermediate_sha256": "9fc421182b8143f3fe0711322fe51788b443b5a5132dd7c524d961562b0f0025",
+  "patch_intermediate_bytes": 31207,
+  "mechanism": "Previously observed apply_patch adds a sole terminal0A to this no-finalLF file. Use unchanged strictLF patch generator only on in-memory before+one0A and candidate+one0A for this exacttarget, proving full forward/inverse and exact intermediate. All other14GD strict path unchanged. After actualapply_patch and before any engine, require full intermediate SHA/bytes and final sole0A, then Root mechanical EOF formatter removes only that finalbyte from deployed characters, never copies GD candidate; require finalCF2AA/31206. No generic whitespace strip, normalization, new probe or previousStage replay.",
+  "Stage_execution_authorized": false,
+  "deployment_authorized": false
+}

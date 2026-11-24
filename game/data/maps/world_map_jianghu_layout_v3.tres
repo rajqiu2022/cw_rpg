@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(2304, 1536)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.060, 0.080, 0.700, 0.055, 0.910, 0.250, 0.940, 0.720, 0.855, 0.860, 0.105, 0.875, 0.050, 0.600)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = []
+interactions = []
+portals = [
+	{"id": "linxi_village", "label": "林西村", "pos": Vector2(0.160, 0.780), "size": Vector2(0.060, 0.065), "target_scene": "linxi_village_center", "target_pos": Vector2(0.30, 0.76)},
+	{"id": "zhuwei_village", "label": "竹尾村", "pos": Vector2(0.700, 0.790), "size": Vector2(0.060, 0.065), "target_scene": "ch2_s1_zhuwei_market", "target_pos": Vector2(0.50, 0.72)},
+	{"id": "lingyue", "label": "凌月山", "pos": Vector2(0.150, 0.160), "size": Vector2(0.055, 0.065), "target_scene": "ch2_s4_lingyue_gate", "target_pos": Vector2(0.18, 0.76)},
+	{"id": "north_forest", "label": "北林旧道 · 敌人等级 2~5级", "pos": Vector2(0.420, 0.105), "size": Vector2(0.075, 0.070), "target_scene": "ch2_s2_forest_edge", "target_pos": Vector2(0.15, 0.78), "require_flag": "chapter1_complete", "locked_label": "北林旧道 · 完成第一章后开放"},
+	{"id": "wudang", "label": "武当山", "pos": Vector2(0.630, 0.155), "size": Vector2(0.060, 0.065), "target_scene": "ch3_s1_wulin_assembly", "target_pos": Vector2(0.20, 0.72)},
+	{"id": "huashan", "label": "华山", "pos": Vector2(0.100, 0.375), "size": Vector2(0.055, 0.065), "action": "dialog:world_map_huashan_locked", "require_flag": "chapter2_complete", "locked_label": "华山 · 山道未通"},
+	{"id": "zhuwei_cave", "label": "后山洞窟 · 敌人等级 2~3级", "pos": Vector2(0.235, 0.470), "size": Vector2(0.075, 0.070), "target_scene": "ch1_s4_zhuwei_beast_cave", "target_pos": Vector2(0.50, 0.82), "require_flag": "zhuwei_cave_unlocked", "locked_label": "洞穴里阴暗湿冷，未知风险，暂时不进为妙。"},
+	{"id": "gufeng", "label": "古月峰", "pos": Vector2(0.485, 0.405), "size": Vector2(0.060, 0.065), "action": "dialog:world_map_gufeng_locked", "require_flag": "chapter2_complete", "locked_label": "古月峰 · 山路险阻"},
+	{"id": "luoyang", "label": "洛阳", "pos": Vector2(0.705, 0.480), "size": Vector2(0.065, 0.070), "target_scene": "ch4_s1_luoyang_yamen", "target_pos": Vector2(0.18, 0.72)},
+	{"id": "canal", "label": "洛阳漕渠 · 敌人等级 4~7级", "pos": Vector2(0.835, 0.650), "size": Vector2(0.075, 0.070), "target_scene": "ch4_s2_canal_docks", "target_pos": Vector2(0.15, 0.76), "require_flag": "chapter3_complete", "locked_label": "洛阳漕渠 · 尚未开放"},
+	{"id": "temple_tunnel", "label": "古寺地道 · 敌人等级 5~9级", "pos": Vector2(0.885, 0.725), "size": Vector2(0.075, 0.070), "target_scene": "ch4_s5_temple_tunnel", "target_pos": Vector2(0.16, 0.78), "require_flag": "ch4_fake_assassin_captured", "locked_label": "古寺地道 · 入口尚未查明"},
+	{"id": "mingwu", "label": "茗雾山", "pos": Vector2(0.445, 0.785), "size": Vector2(0.060, 0.065), "action": "dialog:world_map_mingwu_locked", "require_flag": "chapter5_complete", "locked_label": "茗雾山 · 雾障封路"}
+]
+walkable_probes = [
+	{"id": "linxi_spawn", "pos": Vector2(0.160, 0.780)},
+	{"id": "north_forest_road", "pos": Vector2(0.420, 0.105)},
+	{"id": "central_crossroad", "pos": Vector2(0.485, 0.405)},
+	{"id": "luoyang_road", "pos": Vector2(0.705, 0.480)},
+	{"id": "zhuwei_road", "pos": Vector2(0.700, 0.790)},
+	{"id": "canal_road", "pos": Vector2(0.835, 0.650)}
+]
+blocked_probes = []

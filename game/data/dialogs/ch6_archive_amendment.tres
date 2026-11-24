@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "右架残页的裁口与第五章封蜡密令完全一致。两处都从装订线内侧下刀，只移走能指向具体发令者的一栏。"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "师父要解释的是他为什么改证；另一个人要解释的是，为什么十八年后还在追着原册灭口。先把两份记录带出去。"
+set_flags = Array[Dictionary]([{"key":"ch6_archive_records_secured", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_archive_amendment"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero")])

@@ -1,0 +1,338 @@
+extends RefCounted
+## Eleven functional room types, independent authored shells and real furniture.
+## No old baked room image is used as a furniture layer. Draft data is readable
+## for authoring/CPU work, but can NEVER authorize a runtime room or doorway.
+const FLAG := "--luoyang-assembled-interiors-20261016g"
+const FORMAL_ENABLED := true
+const SELF := "res://scripts/city/luoyang_assembled_interiors_20261016g.gd"
+const REGISTRY_PATH := "res://data/maps/luoyang_assembled_interiors_20261016g/registry_spacing_dependency_v3.json"
+const REGISTRY_SHA := "959bc6f5408261586a6165bf731347959e6287bea9afa8bfb40f6e4035302ad5"
+const PRIOR_REGISTRY_PATH := "res://data/maps/luoyang_assembled_interiors_20261016g/registry_candidate_three_doors_v2.json"
+const PRIOR_REGISTRY_SHA := "725551952029cfabc92d5d875484a2b09e37fa64a451c3410351036cfa13d144"
+const DISTRICT_SOURCE := "res://scripts/city/luoyang_district_life_20261016f.gd"
+const DISTRICT_OLD_SHA := "2cbea52cd129e49eabfc74983f5172a671bf1f7521cd7f5c639f864ef451a3f5"
+const DISTRICT_NEW_SHA := "6921fa796c419202fc9707559addabdb013ea0b37ec51e6303e9f4923a79fc17"
+const META := "source_feet_assembled_interiors_20261016g"
+const SIZE := Vector2(1536,1024)
+const BODY := Vector2(34,24)
+const TYPES := ["smithy","cloth_shop","inn_hall","general_stall","small_home","scholar_study","guest_room","herbal_shop","warehouse","pawnshop","mansion_reception"]
+const GEOMETRY := preload("res://scripts/city/luoyang_functional_interiors_20261016.gd")
+static var _catalogue_snapshot: Dictionary={}
+static var _authors: Dictionary={}
+static var _scene_sessions: Dictionary={}
+const MAX_SCENE_SESSIONS := 16
+
+static func enabled() -> bool:
+	return FORMAL_ENABLED or FLAG in OS.get_cmdline_user_args()
+
+static func dependency_history(current: Dictionary,prior: Dictionary) -> Dictionary:
+	# Pure, bounded inverse: it cannot authorize a fifth path or alter room data.
+	# The caller separately proves the complete immutable prior file SHA.
+	var revision: Dictionary=current.get("district_spacing_dependency_revision",{})
+	if revision.size()!=7 or revision.get("status")!="AUTHORIZED_SINGLE_SOURCE_DEPENDENCY_NOT_NEW_GEOMETRY_PROOF" or revision.get("prior_registry_path")!=PRIOR_REGISTRY_PATH or revision.get("prior_registry_sha256")!=PRIOR_REGISTRY_SHA or revision.get("path")!=DISTRICT_SOURCE or revision.get("old_sha256")!=DISTRICT_OLD_SHA or revision.get("new_sha256")!=DISTRICT_NEW_SHA or revision.get("changed_source_pin_count")!=11: return {}
+	var normalized: Dictionary=current.duplicate(true)
+	if prior.is_empty() or prior.get("source_sha256",{}).get(DISTRICT_SOURCE)!=DISTRICT_OLD_SHA or normalized.get("source_sha256",{}).get(DISTRICT_SOURCE)!=DISTRICT_NEW_SHA or normalized.source_sha256.get(PRIOR_REGISTRY_PATH)!=PRIOR_REGISTRY_SHA or prior.source_sha256.has(PRIOR_REGISTRY_PATH): return {}
+	normalized.erase("district_spacing_dependency_revision")
+	normalized.source_sha256.erase(PRIOR_REGISTRY_PATH)
+	normalized.source_sha256[DISTRICT_SOURCE]=DISTRICT_OLD_SHA
+	var changed: int=1
+	for id: String in prior.get("rooms",{}):
+		var old_row: Dictionary=prior.rooms[id]
+		if old_row.get("reuse_existing_accepted")==true: continue
+		var row: Dictionary=normalized.get("rooms",{}).get(id,{})
+		if old_row.get("source_sha256",{}).get(DISTRICT_SOURCE)!=DISTRICT_OLD_SHA or row.get("source_sha256",{}).get(DISTRICT_SOURCE)!=DISTRICT_NEW_SHA: return {}
+		row.source_sha256[DISTRICT_SOURCE]=DISTRICT_OLD_SHA
+		changed+=1
+	if changed!=11 or JSON.stringify(normalized,"",true,true)!=JSON.stringify(prior,"",true,true): return {}
+	return prior.duplicate(true)
+
+static func catalogue() -> Dictionary:
+	if not _catalogue_snapshot.is_empty(): return _catalogue_snapshot.duplicate(true)
+	if REGISTRY_SHA.length()!=64 or FileAccess.get_sha256(REGISTRY_PATH)!=REGISTRY_SHA: return {}
+	var raw: Variant=JSON.parse_string(FileAccess.get_file_as_string(REGISTRY_PATH))
+	if not raw is Dictionary or raw.get("coordinate_contract")!=META or raw.get("rooms",{}).size()!=11: return {}
+	if FileAccess.get_sha256(PRIOR_REGISTRY_PATH)!=PRIOR_REGISTRY_SHA or FileAccess.get_sha256(DISTRICT_SOURCE)!=DISTRICT_NEW_SHA: return {}
+	var prior: Variant=JSON.parse_string(FileAccess.get_file_as_string(PRIOR_REGISTRY_PATH))
+	if not prior is Dictionary: return {}
+	var historical: Dictionary=dependency_history(raw,prior)
+	if historical.is_empty(): return {}
+	var seen: Dictionary={}
+	for id: String in raw.rooms:
+		var item: Dictionary=raw.rooms[id]
+		if item.get("scene_id")!=id or item.get("type_id") not in TYPES or seen.has(item.type_id): return {}
+		seen[item.type_id]=true
+	if seen.size()!=TYPES.size(): return {}
+	var cpu: Dictionary=raw.get("geometry_cpu_proof",{})
+	var proof_path: String=String(cpu.get("path",""))
+	var proof_sha: String=String(cpu.get("sha256",""))
+	if proof_sha.length()!=64 or raw.get("source_sha256",{}).get(proof_path)!=proof_sha or FileAccess.get_sha256(proof_path)!=proof_sha: return {}
+	var proof: Variant=JSON.parse_string(FileAccess.get_file_as_string(proof_path))
+	if not proof is Dictionary or proof.get("complete")!=true or proof.get("failures")!=0 or proof.get("checks")!=2140: return {}
+	if JSON.stringify(proof.get("source_before"),"",true,true)!=JSON.stringify(proof.get("source_after"),"",true,true): return {}
+	# Independent exterior combined-geometry receipt grants candidate access,
+	# never runtime Physics/Space credit. All original inputs remain source pins.
+	var exterior: Dictionary=raw.get("exterior_cpu_proof",{})
+	var exterior_path: String=String(exterior.get("path",""))
+	var exterior_sha: String=String(exterior.get("sha256",""))
+	if exterior_sha.length()!=64 or raw.source_sha256.get(exterior_path)!=exterior_sha or FileAccess.get_sha256(exterior_path)!=exterior_sha: return {}
+	var exterior_proof: Variant=JSON.parse_string(FileAccess.get_file_as_string(exterior_path))
+	if not exterior_proof is Dictionary or exterior_proof.get("complete")!=true or exterior_proof.get("checks")!=89 or exterior_proof.get("failures")!=0: return {}
+	if exterior_proof.get("records",[]).size()!=3: return {}
+	if JSON.stringify(exterior_proof.get("source_before"),"",true,true)!=JSON.stringify(exterior_proof.get("source_after"),"",true,true): return {}
+	for path: String in exterior_proof.get("source_before",{}):
+		if historical.source_sha256.get(path)!=exterior_proof.source_before[path].get("sha256"): return {}
+	_catalogue_snapshot=raw.duplicate(true)
+	return raw
+
+static func author_for_id(id: StringName) -> Dictionary:
+	# DRAFT accessor, never a success receipt. Useful before imports are available.
+	if _authors.has(id): return _authors[id].duplicate(true)
+	var row: Dictionary=catalogue().get("rooms",{}).get(String(id),{})
+	var path: String=String(row.get("author_path",""))
+	if path.is_empty() or FileAccess.get_sha256(path)!=row.get("author_sha256"): return {}
+	var data: Variant=JSON.parse_string(FileAccess.get_file_as_string(path))
+	if not data is Dictionary or data.get("coordinate_contract")!=META or data.get("room",{}).get("scene_id")!=String(id): return {}
+	_authors[id]=data.duplicate(true)
+	return data
+
+static func _ready_row(id: StringName) -> Dictionary:
+	var config: Dictionary=catalogue()
+	var row: Dictionary=config.get("rooms",{}).get(String(id),{})
+	if row.get("reuse_existing_accepted")==true: return {}
+	if config.get("status")!="READY_SOURCE_BOUND_ASSEMBLED_INTERIORS" or row.get("runtime_ready")!=true or row.get("door_enabled")!=true: return {}
+	var data: Dictionary=author_for_id(id)
+	if data.is_empty() or not data.get("pending_assets",[]).is_empty() or data.get("assets_ready")!=true: return {}
+	return row
+
+static func known(id: StringName) -> bool:
+	return enabled() and not _ready_row(id).is_empty()
+
+static func source_paths() -> Dictionary:
+	var config: Dictionary=catalogue()
+	if config.is_empty() or config.get("status")!="READY_SOURCE_BOUND_ASSEMBLED_INTERIORS": return {}
+	var result: Dictionary={SELF:true,REGISTRY_PATH:true,"res://scripts/city/luoyang_assembled_interiors_fade_20261016g.gd":true}
+	for path: String in config.get("source_sha256",{}):
+		if not path.begins_with("res://") or ".." in path: return {}
+		result[path]=true
+	for row: Dictionary in config.rooms.values():
+		for key: String in ["author_path","scene_path","layout_path"]: result[String(row[key])]=true
+	return result
+
+static func room_path(id: StringName) -> String:
+	# Cold/request boundary. Never called by the movement/fade hot paths.
+	if not enabled(): return ""
+	if FileAccess.get_sha256(REGISTRY_PATH)!=REGISTRY_SHA: return ""
+	var row: Dictionary=_ready_row(id)
+	if row.is_empty(): return ""
+	var pins: Dictionary=row.get("source_sha256",{})
+	if pins.is_empty(): return ""
+	for path: String in pins:
+		if FileAccess.get_sha256(path)!=pins[path]: return ""
+	var data: Dictionary=author_for_id(id)
+	var used: Dictionary={String(data.get("shell",{}).get("texture","")):true}
+	for item: Dictionary in data.get("furniture",[]): used[String(item.texture)]=true
+	var seen: Dictionary={}
+	for proof: Dictionary in row.get("texture_proofs",[]):
+		var path: String=String(proof.get("texture",""))
+		if seen.has(path) or not used.has(path) or proof.get("full_rgba_exact")!=true or proof.get("params23")!=true: return ""
+		for key: String in ["texture","import_path","compiled_path"]:
+			if not pins.has(String(proof.get(key,""))): return ""
+		seen[path]=true
+	if seen.size()!=used.size(): return ""
+	return String(row.scene_path)
+
+static func return_binding(id: StringName) -> Dictionary:
+	return author_for_id(id).get("room",{}).duplicate(true) if known(id) else {}
+
+static func matches(scene: SceneScript,id: StringName) -> bool:
+	if scene==null or not known(id) or scene.scene_id!=id or not scene.actor_positions_are_feet or scene.get_meta("assembled_room_contract","")!=META: return false
+	var row: Dictionary=_ready_row(id)
+	var data: Dictionary=author_for_id(id)
+	if scene.resource_path!=row.scene_path or scene.map_layout==null or scene.map_layout.resource_path!=row.layout_path or scene.background_path!=data.shell.texture: return false
+	var key: int=scene.get_instance_id()
+	if _scene_sessions.has(key):
+		var session: Dictionary=_scene_sessions[key]
+		if session.scene.get_ref()==scene and session.layout.get_ref()==scene.map_layout:
+			return load("res://scripts/city/luoyang_city_revision_candidate_retry2_20261015.gd").serialized_equal(scene,session.expected)
+	# Fresh setup only: released rooms must not retain their expected resource.
+	# No pruning, disk IO or allocation occurs in is_room/safe_foot frame paths.
+	for stale: int in _scene_sessions.keys():
+		var old: Dictionary=_scene_sessions[stale]
+		if old.scene.get_ref()==null or old.layout.get_ref()==null: _scene_sessions.erase(stale)
+	if _scene_sessions.size()>=MAX_SCENE_SESSIONS: return false
+	if room_path(id).is_empty(): return false
+	var expected: SceneScript=ResourceLoader.load(row.scene_path,"",ResourceLoader.CACHE_MODE_IGNORE) as SceneScript
+	var layout: WalkableMapLayout=ResourceLoader.load(row.layout_path,"",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout
+	if expected==null or layout==null or expected.on_enter_dialog!=null or not expected.hotspots.is_empty() or not expected.trigger_zones.is_empty(): return false
+	expected.map_layout=layout
+	if not load("res://scripts/city/luoyang_city_revision_candidate_retry2_20261015.gd").serialized_equal(scene,expected): return false
+	_scene_sessions[key]={"scene":weakref(scene),"layout":weakref(scene.map_layout),"expected":expected,"author":data.duplicate(true)}
+	return true
+
+static func is_room(scene: SceneScript) -> bool:
+	# Identity predicate only; no file IO/SHA/JSON or ResourceLoader per frame.
+	if scene==null or scene.get_meta("assembled_room_contract","")!=META: return false
+	var session: Dictionary=_scene_sessions.get(scene.get_instance_id(),{})
+	return not session.is_empty() and session.scene.get_ref()==scene and session.layout.get_ref()==scene.map_layout
+
+static func geometry_for(scene: SceneScript) -> Dictionary:
+	if not is_room(scene): return {}
+	var geometry: Dictionary=_scene_sessions[scene.get_instance_id()].author.get("geometry",{}).duplicate(true)
+	# Dispatch marker belongs to the already validated live projection, not an
+	# assumption about an optional raw author key. Do not mutate author/Scene.
+	geometry["coordinate_contract"]=META
+	return geometry
+
+static func dialog_allowed(scene: SceneScript,id: String) -> bool:
+	if not is_room(scene) or id.is_empty() or ".." in id or not matches(scene,scene.scene_id): return false
+	var count: int=0
+	for npc: Dictionary in scene.npcs:
+		if String(npc.get("dialog_id",""))==id: count+=1
+	if count!=1: return false
+	var path: String="res://data/dialogs/"+id+".tres"
+	var row: Dictionary=_ready_row(scene.scene_id)
+	var pin: String=String(row.get("source_sha256",{}).get(path,""))
+	return pin.length()==64 and FileAccess.get_sha256(path)==pin
+
+static func finalize_setup(scene: SceneScript) -> bool:
+	# Once per new-room setup, after actual component creation and before Player.
+	# Hot is_room/safe_foot do not perform SHA. This is not a city C receipt or a
+	# warm-exterior path: it rechecks every fixed per-row source pin and storage
+	# against the same live Scene/layout session established by cold matches.
+	if not is_room(scene) or not matches(scene,scene.scene_id): return false
+	if room_path(scene.scene_id)!=scene.resource_path: return false
+	if not is_room(scene) or not matches(scene,scene.scene_id): return false
+	_scene_sessions[scene.get_instance_id()]["setup_source_finalized"]=true
+	return true
+
+static func compile_geometry(data: Dictionary,world_size: Vector2) -> Dictionary:
+	var result: Dictionary=GEOMETRY.compile_geometry(data,world_size)
+	var forbidden: Array=[]
+	var scale: Vector2=world_size/SIZE
+	var envelope: Array=data.get("actor_clearance_model",{}).get("envelope_world_px",[])
+	if envelope.size()!=4: return {}
+	var bounds:=Rect2(float(envelope[0]),float(envelope[1]),float(envelope[2]),float(envelope[3]))
+	for fixed: Dictionary in data.get("fixed_architecture",[]):
+		var sums:=PackedVector2Array()
+		for raw: Array in fixed.full_visual_projection_px:
+			var p: Vector2=GEOMETRY._v(raw)*scale
+			for offset: Vector2 in [bounds.position,bounds.position+Vector2(bounds.size.x,0),bounds.end,bounds.position+Vector2(0,bounds.size.y)]: sums.append(p-offset)
+		var hull: PackedVector2Array=Geometry2D.convex_hull(sums)
+		var front: float=float(fixed.depth_front_px)*scale.y
+		var clip:=PackedVector2Array([Vector2.ZERO,Vector2(world_size.x,0),Vector2(world_size.x,front),Vector2(0,front)])
+		for polygon: PackedVector2Array in Geometry2D.intersect_polygons(hull,clip): forbidden.append(polygon)
+	result._compiled["world_foot_forbidden"]=forbidden
+	return result
+
+static func safe_foot(data: Dictionary,foot: Vector2,world_size: Vector2,full_samples: bool=false) -> bool:
+	# Pure compatibility adapter only. Node/Player/NPC feet and shape child stay
+	# at zero offset; cancel the legacy helper's mathematical +42 exactly once.
+	if not GEOMETRY.safe_origin(data,foot-Vector2(0,42),world_size,full_samples): return false
+	for polygon: PackedVector2Array in data.get("_compiled",{}).get("world_foot_forbidden",[]):
+		if Geometry2D.is_point_in_polygon(foot,polygon): return false
+		for i: int in range(polygon.size()):
+			if Geometry2D.get_closest_point_to_segment(foot,polygon[i],polygon[(i+1)%polygon.size()])==foot: return false
+	return true
+
+static func safe_motion(data: Dictionary,from: Vector2,to: Vector2,world_size: Vector2) -> bool:
+	if not from.is_finite() or not to.is_finite(): return false
+	var steps: int=maxi(1,ceili(from.distance_to(to)/4.0))
+	for index: int in range(steps+1):
+		if not safe_foot(data,from.lerp(to,float(index)/steps),world_size): return false
+	return true
+
+static func project_objects(scene: SceneScript,world_size: Vector2) -> Array:
+	if not is_room(scene) or not world_size.is_finite() or world_size.x<=0 or world_size.y<=0: return []
+	var data: Dictionary=author_for_id(scene.scene_id)
+	var result: Array=[]
+	for item: Dictionary in data.furniture:
+		var native_size: Vector2=GEOMETRY._v(item.source_size_px)
+		var foot: Vector2=GEOMETRY._v(item.placement_foot_px)
+		var anchor: Vector2=GEOMETRY._v(item.source_ground_anchor_px)
+		var ratio: float=float(item.render_scale)
+		if not foot.is_finite() or not anchor.is_finite() or ratio<=0 or not is_finite(ratio): return []
+		result.append({"id":item.id,"texture":item.texture,"centered":false,"pos":(foot-anchor*ratio)/SIZE,"render_size_px":native_size*ratio*(world_size/SIZE),"sort_by_feet":true,"depth_sort_foot_y":float(item.depth_foot_y)/SIZE.y,"assembled_furniture":true})
+	return result
+
+static func prop_ids(scene: SceneScript) -> Array:
+	var result: Array=[]
+	for item: Dictionary in author_for_id(scene.scene_id).get("furniture",[]): result.append(String(item.id))
+	return result
+
+static func fade_ids(scene: SceneScript) -> Array:
+	var result: Array=[]
+	for item: Dictionary in author_for_id(scene.scene_id).get("furniture",[]):
+		if item.get("height_behavior")=="HIGH_FURNITURE_FADE": result.append(String(item.id))
+	return result
+
+static func room_return(source: StringName,target: StringName,authored: Variant,remembered: Variant) -> Dictionary:
+	var row: Dictionary=return_binding(source)
+	if row.is_empty() or String(target)!=row.city_id or not authored is Vector2 or authored!=GEOMETRY._v(row.return_foot_px)/Vector2(3072,2048): return {}
+	var arrival: Vector2=remembered if remembered is Vector2 else authored
+	var city: Variant=load("res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd")
+	if not arrival.is_finite() or not city.safe_body(target,arrival*Vector2(3072,2048)): return {}
+	return {"spawn":arrival,"source_version":3,"target_version":3,"reason":"source_bound_assembled_room_actual_remembered_outdoor_feet"}
+
+static func project_portals(scene: SceneScript,original: Array) -> Dictionary:
+	# Field calls this INSTEAD OF the legacy functional projection when enabled.
+	# That legacy API's no-argument author() means Smith only and is not a
+	# general-room spawn provider. Never mutate the proven Scene/layout/record.
+	var result: Array=original.duplicate(true)
+	if not enabled() or scene==null or scene.scene_id not in [&"ch4_s3_luoyang_market",&"ch4_s2_canal_docks"]: return {"ok":true,"portals":result}
+	var city: Variant=load("res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd")
+	if not city._records.has(scene.scene_id): return {"ok":false,"portals":[],"error":"NEW room exterior requires actual prepared city record"}
+	var config: Dictionary=catalogue()
+	for row: Dictionary in config.get("rooms",{}).values():
+		if row.get("reuse_existing_accepted")==true: continue
+		if not known(StringName(row.scene_id)): continue
+		var data: Dictionary=author_for_id(StringName(row.scene_id))
+		if data.room.city_id!=String(scene.scene_id): continue
+		var expected: Dictionary=row.get("expected_original_entry",{})
+		var count: int=0
+		for portal: Dictionary in result:
+			if String(portal.get("target_scene",""))!=row.scene_id: continue
+			count+=1
+			if expected.is_empty() or portal.get("id")!=expected.id or portal.get("pos")!=GEOMETRY._v(data.room.return_foot_px)/Vector2(3072,2048) or portal.get("target_pos")!=GEOMETRY._v(expected.target_pos) or portal.get("size")!=Vector2(40.0/3072,32.0/2048) or portal.get("auto_trigger")!=false: return {"ok":false,"portals":[],"error":"Original room portal identity changed"}
+			portal.target_scene_path=row.scene_path; portal.target_pos=GEOMETRY._v(data.geometry.spawn_foot_px)/SIZE
+			portal.label="进入"+String(data.display_name)
+		if row.get("new_exterior_door",{}).is_empty():
+			if count!=1: return {"ok":false,"portals":[],"error":"Existing room doorway not exactly once"}
+			continue
+		if count!=0: return {"ok":false,"portals":[],"error":"New room doorway already exists"}
+		var door: Dictionary=row.new_exterior_door
+		var objects: Array=city._records[scene.scene_id].get("objects",[])
+		var found: int=0
+		for item: Dictionary in objects:
+			if String(item.get("id",""))!=door.building_id: continue
+			found+=1
+			if GEOMETRY._v(item.get("world_foot_px",[]))!=GEOMETRY._v(door.expected_parent_foot_px) or String(item.get("texture",""))!=door.source_texture: return {"ok":false,"portals":[],"error":"New bay actual parent building changed"}
+		if found!=1 or not city.safe_body(scene.scene_id,GEOMETRY._v(door.return_foot_px)): return {"ok":false,"portals":[],"error":"New bay actual source/return native foot refused"}
+		# Only the three source-bound added bays use this explicit native polygon.
+		# Field's V3 ExitZone deliberately rejects a missing polygon, never falling
+		# back to its decorative RectangleShape2D. Keep the reviewed 40x32 extent.
+		if String(row.scene_id) not in ["luoyang_functional_pawnshop_candidate_20261016","luoyang_canal_warehouse_interior_20261016","luoyang_functional_mansion_candidate_20261016"] or GEOMETRY._v(door.entry_size_px)!=Vector2(40,32): return {"ok":false,"portals":[],"error":"New bay exact reviewed 40x32 polygon contract changed"}
+		var city_size: Vector2=Vector2(3072,2048)
+		var door_pos: Vector2=GEOMETRY._v(door.return_foot_px)/city_size
+		var door_size: Vector2=GEOMETRY._v(door.entry_size_px)/city_size
+		# Match Field's pos/size normalized->world native operations exactly.
+		var center: Vector2=Vector2(float(door_pos.x)*city_size.x,float(door_pos.y)*city_size.y)
+		var native_size: Vector2=Vector2(door_size.x*city_size.x,door_size.y*city_size.y)
+		if native_size!=Vector2(40,32) or not city.safe_body(scene.scene_id,center): return {"ok":false,"portals":[],"error":"New bay native world center or exact size refused"}
+		var half: Vector2=native_size*.5
+		var interaction_polygon: PackedVector2Array=PackedVector2Array([center-half,center+Vector2(half.x,-half.y),center+half,center+Vector2(-half.x,half.y)])
+		if interaction_polygon[2]-interaction_polygon[0]!=Vector2(40,32): return {"ok":false,"portals":[],"error":"New bay polygon cannot enlarge reviewed entry"}
+		result.append({"id":door.portal_id,"pos":door_pos,"size":door_size,"interaction_polygon_px":interaction_polygon,"target_scene":row.scene_id,"target_scene_path":row.scene_path,"target_pos":GEOMETRY._v(data.geometry.spawn_foot_px)/SIZE,"auto_trigger":false,"label":door.label,"building_id":door.building_id})
+	# Smith is the exact already accepted room; its source/render/author remain
+	# original. Preserve its historical strict entry and its source-foot spawn.
+	if scene.scene_id==&"ch4_s3_luoyang_market":
+		var smith: Variant=load("res://scripts/city/luoyang_assembled_rooms_20261016b.gd")
+		var accepted: Dictionary=smith.author()
+		if accepted.is_empty() or not smith.sources_match(accepted): return {"ok":false,"portals":[],"error":"Original Smith source rejected"}
+		var count: int=0
+		for portal: Dictionary in result:
+			if String(portal.get("target_scene",""))!=String(smith.ROOM): continue
+			count+=1
+			if portal.get("id")!="enter_shop_room" or portal.get("pos")!=Vector2(2320,874)/Vector2(3072,2048) or portal.get("target_pos")!=Vector2(.5,.625) or portal.get("auto_trigger")!=false or portal.get("size")!=Vector2(40.0/3072,32.0/2048): return {"ok":false,"portals":[],"error":"Original Smith portal changed"}
+			portal.target_scene_path=accepted.room.scene_path; portal.target_pos=GEOMETRY._v(accepted.geometry.spawn_foot_px)/SIZE; portal.label="进入铁匠工坊"
+		if count!=1: return {"ok":false,"portals":[],"error":"Original Smith doorway count"}
+	return {"ok":true,"portals":result,"new_room_portals_are_projection_only":true}

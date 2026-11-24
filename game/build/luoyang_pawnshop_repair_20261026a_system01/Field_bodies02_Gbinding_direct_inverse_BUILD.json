@@ -1,0 +1,15 @@
+{
+  "status": "BUILD_ONLY_TWO_EXACT_G_CALL_RECEIVERS_NO_OTHER_BYTE_CHANGE",
+  "parent_path": "res://scripts/field/field_walkable_controller.gd",
+  "parent_sha256": "9504c55b9f0b664a35a24e830aeb5278152b3d8e732af42a3f17b8b762ebcde2",
+  "candidate_path": "res://build/luoyang_pawnshop_repair_20261026a_system01/Field_bodies02_Gbinding_CANDIDATE.gd",
+  "candidate_sha256": "3f4ce463ec8aeeff06500040e6ca4d1526c1357ba3393def55e84cffb4c82193",
+  "hunks": [
+    {
+      "before": "\t\t\tvar pawn_author: Dictionary=ASSEMBLED_ROOMS.author_for_id(scene.scene_id)\n\t\t\tif not ASSEMBLED_ROOMS.matches(scene,scene.scene_id) or blockers.size()!=6 or var_to_bytes(blockers)!=var_to_bytes(scene.map_layout.blockers) or pawn_author.is_empty() or var_to_bytes(_functional_room_geometry.get(\"furniture_bases\",[]))!=var_to_bytes(pawn_author.geometry.furniture_bases):",
+      "after": "\t\t\tvar pawn_author: Dictionary=ELEVEN_ROOMS.author_for_id(scene.scene_id)\n\t\t\tif not ELEVEN_ROOMS.matches(scene,scene.scene_id) or blockers.size()!=6 or var_to_bytes(blockers)!=var_to_bytes(scene.map_layout.blockers) or pawn_author.is_empty() or var_to_bytes(_functional_room_geometry.get(\"furniture_bases\",[]))!=var_to_bytes(pawn_author.geometry.furniture_bases):"
+    }
+  ],
+  "forward_inverse_exact": true,
+  "unchanged": "Original six-blocker/full storage guards, nine-base local projection, source coordinates, body formulas, all other functions and all QA business remain byte-identical. Failure116020 retained. Only two receiver identifiers ASSEMBLED_ROOMS -> ELEVEN_ROOMS; actual canonical constants at83/84 identify wrapper B vs actual G."
+}

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "晒盐村民"
+text = "茶箱若只沾过咸水，晒干是一层白粉。你这盐壳底下压着黑泥，只有退潮拖底才会这样。记船单的人会写「落潮」。"
+set_flags = Array[Dictionary]([{"key": "tide_salt_known", "value": true}])
+add_evidence = Array[StringName]([&"ev_tide_silt"])
+
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_tide_salt"
+
+nodes = Array[ExtResource("node")]([SubResource("start")])

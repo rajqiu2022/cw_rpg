@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/openworld_wudang_gate_layout_v1.tres" id="2"]
+[resource]
+script = ExtResource("1")
+scene_id = &"openworld_wudang_gate"
+display_name = "武当派 · 山门"
+background_path = "res://art/backgrounds/sect_maps_v5/bg_wudang_gate_v5_3072.png"
+bgm_path = "res://art/audio/bgm/bgm_sect_clouds_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.500,0.875)
+player_visual_scale = 0.70
+camera_zoom = 1.0
+npcs = Array[Dictionary]([{"npc_id":"wudang_gate_disciple","npc_name":"武当守山弟子","pos":Vector2(0.585,0.690),"sprite_path":"res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png","dialog_id":"openworld_wudang_gate_disciple","scale":0.92,"conversation_base_facing":"left"}])

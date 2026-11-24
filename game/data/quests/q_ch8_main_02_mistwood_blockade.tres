@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_02_mistwood_blockade"
+title="雾林断讯"
+kind=0
+desc_not_started="茗雾截盟者正在雾林点燃信号，试图暴露证人转移路线。"
+desc_in_progress="茗雾叛徒结成烬茶社，正借烽烟传讯。集结地西棚药案备有丹砂佩和解毒丹，青禾的青木护元诀也能抵毒。进雾林截住护卫与点烽手，切断证人路线的消息。"
+desc_completed="首道雾林信号已截断，证人与盟友暂未暴露。"
+tracker_hint="茗雾外围 · 雾林阻截场"
+completion_triggers=Array[String](["flag_set:ch8_mistwood_blockade_cleared"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_gold=120
+reward_exp=300

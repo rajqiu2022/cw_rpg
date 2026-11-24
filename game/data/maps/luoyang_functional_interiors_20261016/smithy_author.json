@@ -1,0 +1,580 @@
+{
+  "schema_version": 2,
+  "status": "HAND_AUTHORED_SOURCE_GEOMETRY_CANDIDATE_NOT_ENGINE_VALIDATED",
+  "id": "interior_smithy_v1",
+  "title": "铁匠工坊",
+  "source_image": "assets/raw/luoyang_city_expansion_20261016/interior_smithy_v1.png",
+  "source_sha256": "cec3e9536d23160d22b88489a54a86f998738ef64ddbcfb0f1391825683a4d8f",
+  "source_size_px": [
+    1536,
+    1024
+  ],
+  "coordinates": {
+    "origin": "top_left",
+    "unit": "original_source_raster_pixels",
+    "all_actor_positions": "visible_ground_feet_NOT_legacy_bodycenter",
+    "transform_applied": false,
+    "system_mapping_note": "SYSTEM alone maps source foot F through actual image cover then converts to controller body origin. Do not apply actor offset twice. All polygons below remain unscaled source pixels."
+  },
+  "floor_regions_px": [
+    [
+      [
+        180,
+        350
+      ],
+      [
+        1347,
+        350
+      ],
+      [
+        1450,
+        790
+      ],
+      [
+        948,
+        790
+      ],
+      [
+        948,
+        975
+      ],
+      [
+        591,
+        975
+      ],
+      [
+        591,
+        790
+      ],
+      [
+        86,
+        790
+      ]
+    ]
+  ],
+  "floor_scope": "Accessible primary room floor and central front threshold; black canvas and background-only rear/side spaces excluded.",
+  "furniture_bases": [
+    {
+      "id": "forge_hearth_base",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          235,
+          342
+        ],
+        [
+          477,
+          342
+        ],
+        [
+          477,
+          414
+        ],
+        [
+          235,
+          414
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "炉膛前沿及炉台落地基座，烟囱视觉高处不入阻挡。"
+    },
+    {
+      "id": "bellows_support",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          499,
+          346
+        ],
+        [
+          697,
+          346
+        ],
+        [
+          697,
+          407
+        ],
+        [
+          499,
+          407
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "风箱支架四脚/下层煤筐基座，风箱扇面不整体视作脚座。"
+    },
+    {
+      "id": "anvil_stump",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          331,
+          482
+        ],
+        [
+          461,
+          482
+        ],
+        [
+          461,
+          586
+        ],
+        [
+          331,
+          586
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "砧座树墩实际地面外轮廓。"
+    },
+    {
+      "id": "left_water_bucket",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          274,
+          529
+        ],
+        [
+          329,
+          529
+        ],
+        [
+          329,
+          570
+        ],
+        [
+          274,
+          570
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "砧左木桶接地圈。"
+    },
+    {
+      "id": "left_workbench",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          178,
+          463
+        ],
+        [
+          275,
+          463
+        ],
+        [
+          266,
+          554
+        ],
+        [
+          164,
+          554
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "左墙工具台脚座。"
+    },
+    {
+      "id": "rear_weapon_rack",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          918,
+          319
+        ],
+        [
+          1316,
+          319
+        ],
+        [
+          1316,
+          356
+        ],
+        [
+          918,
+          356
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "后墙刀枪架脚座，不按整排武器高度阻挡。"
+    },
+    {
+      "id": "rear_coal_baskets",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          989,
+          367
+        ],
+        [
+          1132,
+          367
+        ],
+        [
+          1132,
+          407
+        ],
+        [
+          989,
+          407
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "武器架前两煤筐接地。"
+    },
+    {
+      "id": "quench_tub",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1129,
+          388
+        ],
+        [
+          1318,
+          388
+        ],
+        [
+          1318,
+          461
+        ],
+        [
+          1129,
+          461
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "淬火桶椭圆地面接触的保守凸四边形。"
+    },
+    {
+      "id": "quench_front_bench",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1093,
+          435
+        ],
+        [
+          1213,
+          435
+        ],
+        [
+          1213,
+          480
+        ],
+        [
+          1093,
+          480
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "淬火桶前小凳落地四脚。"
+    },
+    {
+      "id": "right_mid_grinding_station",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1250,
+          463
+        ],
+        [
+          1361,
+          463
+        ],
+        [
+          1361,
+          534
+        ],
+        [
+          1250,
+          534
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "右墙锉磨台/小箱基座。"
+    },
+    {
+      "id": "right_lower_workbench",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1332,
+          562
+        ],
+        [
+          1436,
+          562
+        ],
+        [
+          1436,
+          666
+        ],
+        [
+          1332,
+          666
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "右下工作台脚座。"
+    },
+    {
+      "id": "left_front_tool_storage",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          95,
+          754
+        ],
+        [
+          391,
+          754
+        ],
+        [
+          391,
+          802
+        ],
+        [
+          95,
+          802
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "前墙左刀具匣/工具台底座。"
+    },
+    {
+      "id": "right_front_tool_storage",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1142,
+          752
+        ],
+        [
+          1406,
+          752
+        ],
+        [
+          1406,
+          804
+        ],
+        [
+          1142,
+          804
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "前墙右工具架/桶的底座。"
+    }
+  ],
+  "spawn_foot_px": [
+    768,
+    717
+  ],
+  "front_exit": {
+    "id": "front_central_exit",
+    "approach_foot_px": [
+      768,
+      885
+    ],
+    "activation_polygon_px": [
+      [
+        713,
+        870
+      ],
+      [
+        823,
+        870
+      ],
+      [
+        823,
+        900
+      ],
+      [
+        713,
+        900
+      ]
+    ],
+    "return_scene_id": null,
+    "return_foot_px": null,
+    "binding_status": "PENDING_EXACT_MATCHED_EXTERNAL_DOOR"
+  },
+  "npc_slots": [
+    {
+      "id": "smith_slot",
+      "role": "铁匠",
+      "foot_px": [
+        663,
+        448
+      ],
+      "approach_foot_px": [
+        663,
+        522
+      ],
+      "route_from_spawn_feet_px": [
+        [
+          768,
+          717
+        ],
+        [
+          663,
+          610
+        ],
+        [
+          663,
+          522
+        ]
+      ],
+      "status": "NEW_SOURCE_FOOT_CANDIDATE_NO_NPC_RESOURCE_BOUND"
+    }
+  ],
+  "functional_points": [
+    {
+      "id": "forge_workpoint",
+      "foot_px": [
+        492,
+        460
+      ],
+      "purpose": "炉台右前方安全站位，不能站进炉火",
+      "gameplay_action": null
+    },
+    {
+      "id": "anvil_workpoint",
+      "foot_px": [
+        527,
+        555
+      ],
+      "purpose": "砧座右侧",
+      "gameplay_action": null
+    },
+    {
+      "id": "quench_workpoint",
+      "foot_px": [
+        1054,
+        520
+      ],
+      "purpose": "淬火桶左前方",
+      "gameplay_action": null
+    },
+    {
+      "id": "weapon_rack_view",
+      "foot_px": [
+        922,
+        438
+      ],
+      "purpose": "后墙刀枪架前方空地",
+      "gameplay_action": null
+    }
+  ],
+  "required_routes": [
+    {
+      "id": "to_forge",
+      "feet_points_px": [
+        [
+          768,
+          717
+        ],
+        [
+          550,
+          648
+        ],
+        [
+          550,
+          460
+        ],
+        [
+          492,
+          460
+        ]
+      ]
+    },
+    {
+      "id": "to_anvil",
+      "feet_points_px": [
+        [
+          768,
+          717
+        ],
+        [
+          527,
+          650
+        ],
+        [
+          527,
+          555
+        ]
+      ]
+    },
+    {
+      "id": "to_quench",
+      "feet_points_px": [
+        [
+          768,
+          717
+        ],
+        [
+          1000,
+          610
+        ],
+        [
+          1054,
+          520
+        ]
+      ]
+    },
+    {
+      "id": "to_weapon_rack",
+      "feet_points_px": [
+        [
+          768,
+          717
+        ],
+        [
+          881,
+          552
+        ],
+        [
+          922,
+          438
+        ]
+      ]
+    },
+    {
+      "id": "to_exit",
+      "feet_points_px": [
+        [
+          768,
+          717
+        ],
+        [
+          768,
+          885
+        ]
+      ]
+    }
+  ],
+  "nonblocking_ground": [
+    "rug",
+    "floor_pattern",
+    "sunlight",
+    "soft_contact_shadow"
+  ],
+  "validation_required": [
+    "Source PNG SHA/dimensions/native import fullRGBA",
+    "Exact sourcefoot-to-cover/controller mapping",
+    "Full body collision and native Physics using final actual scale",
+    "Spawn to every functional point and exit with <=4px samples",
+    "Furniture negative points collide",
+    "One exact exterior door forward/back return without conflating source foot and body center"
+  ],
+  "notes": [
+    "烟囱上裁是原背景固有限制，本author不补像素、不称完整建筑cutout。",
+    "炉火、武器和铁料不自动产生拾取/锻造功能；这里只给可达功能站位。",
+    "炉面/风箱高投影与砧座地面占地分离。"
+  ],
+  "not_granted": [
+    "No Godot import/compilation/Physics or current source/door runtime acceptance",
+    "No PNG edits/crops/resizing/alpha changes",
+    "No lore/NPC/rewards/canonical source mutation"
+  ]
+}

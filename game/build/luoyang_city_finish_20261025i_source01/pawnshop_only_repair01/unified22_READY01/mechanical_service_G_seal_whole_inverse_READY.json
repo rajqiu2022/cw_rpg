@@ -1,0 +1,44 @@
+{
+  "function_proof": {
+    "path": "res://build/luoyang_pawnshop_repair_20261026a_system01/three_files_direct_parent_whole_inverse_BUILD.json",
+    "sha256": "a262558b30f63958d722ffc08303d942c67c07a5cbfb1a7ab820939f783122e5"
+  },
+  "service_parent": {
+    "path": "res://build/luoyang_pawnshop_repair_20261026a_system01/services02_CANDIDATE.gd",
+    "sha256": "7ce5f198560576f0ef2df35dbd80c00291637b30dde0110bfcb6b6356db0953c"
+  },
+  "service": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_only_repair01/unified22_READY01/services_runtime_READY.gd",
+    "sha256": "4c8371436aac631ea36523626a2696e1871f0a29e9db5fb5e1a64116fcb706e8",
+    "bytes": 25422
+  },
+  "service_hunks": [
+    {
+      "old": "extends RefCounted\n## Exact four-room services. Parent Scene/layout storage is never mutated.\nconst FORMAL_READY := false\nconst SELF := \"res://build/luoyang_pawnshop_repair_20261026a_system01/services02_CANDIDATE.gd\"\nconst AUTHOR := \"res://build/luoyang_pawnshop_repair_20261026a_system01/services_author02_CANDIDATE.json\"\nconst AUTHOR_SHA := \"44053da474186c16863df81e6c266d21e0815c1af2e6d8d4b1a78d0effe1db1e\"\n",
+      "new": "extends RefCounted\n## Exact four-room services. Parent Scene/layout storage is never mutated.\nconst FORMAL_READY := true\nconst SELF := \"res://build/luoyang_city_finish_20261025i_source01/pawnshop_only_repair01/unified22_READY01/services_runtime_READY.gd\"\nconst AUTHOR := \"res://build/luoyang_pawnshop_repair_20261026a_system01/services_author02_CANDIDATE.json\"\nconst AUTHOR_SHA := \"44053da474186c16863df81e6c266d21e0815c1af2e6d8d4b1a78d0effe1db1e\"\n"
+    }
+  ],
+  "G_parent": {
+    "path": "res://build/luoyang_pawnshop_repair_20261026a_system01/G_pawn03_CANDIDATE.gd",
+    "sha256": "41cb14ddfb7b2e8ad20427faab11b8b79bdf5bb1add0170871dc4ddfbcde713b"
+  },
+  "G": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/pawnshop_only_repair01/unified22_READY01/G_READY.gd",
+    "sha256": "c96b399e0cfe4497c871ab1d450e09d44603f88510195597b024e5f04bd8fd84",
+    "bytes": 38014
+  },
+  "G_hunks": [
+    {
+      "old": "const HALL_FIXED=preload(\"res://build/luoyang_hall_portal_fix_20261024a_system01/parent_successor02/mainhall_fixed_columns_ActorLayer_CANDIDATE.gd\")\nconst INDEX=\"res://scripts/city/luoyang_layout_room_index_20261018t.gd\"\nconst SERVICE_PATH=\"res://build/luoyang_pawnshop_repair_20261026a_system01/services02_CANDIDATE.gd\"\nconst SERVICE_SHA=\"7ce5f198560576f0ef2df35dbd80c00291637b30dde0110bfcb6b6356db0953c\"\nconst SERVICE_ROOMS=[\"luoyang_market_inn_interior_20261015\",\"luoyang_functional_pawnshop_candidate_20261016\",\"luoyang_market_market_northeast_rear_frontage_interior_20261015\",\"luoyang_market_shop_interior_20261015\"]\nconst ROOT=\"res://data/maps/luoyang_layout_rooms_20261018t/\"\n",
+      "new": "const HALL_FIXED=preload(\"res://build/luoyang_hall_portal_fix_20261024a_system01/parent_successor02/mainhall_fixed_columns_ActorLayer_CANDIDATE.gd\")\nconst INDEX=\"res://scripts/city/luoyang_layout_room_index_20261018t.gd\"\nconst SERVICE_PATH=\"res://build/luoyang_city_finish_20261025i_source01/pawnshop_only_repair01/unified22_READY01/services_runtime_READY.gd\"\nconst SERVICE_SHA=\"4c8371436aac631ea36523626a2696e1871f0a29e9db5fb5e1a64116fcb706e8\"\nconst SERVICE_ROOMS=[\"luoyang_market_inn_interior_20261015\",\"luoyang_functional_pawnshop_candidate_20261016\",\"luoyang_market_market_northeast_rear_frontage_interior_20261015\",\"luoyang_market_shop_interior_20261015\"]\nconst ROOT=\"res://data/maps/luoyang_layout_rooms_20261018t/\"\n"
+    }
+  ],
+  "author": {
+    "path": "res://build/luoyang_pawnshop_repair_20261026a_system01/services_author02_CANDIDATE.json",
+    "sha256": "44053da474186c16863df81e6c266d21e0815c1af2e6d8d4b1a78d0effe1db1e"
+  },
+  "functions_unchanged_from_reviewed_candidates": true,
+  "only_service_READY_SELF_and_G_path_SHA": true,
+  "canonical_writes": 0,
+  "engine_calls": 0
+}

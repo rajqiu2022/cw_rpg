@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "id": "luoyang_culture_integration_text_20261019x",
+  "status": "SOURCE_TEXT_READY_NOT_FORMAL",
+  "locale": "zh-CN",
+  "scope": "仅文案合同。没有任务副作用、事件授权、旗标、奖励、配音资产或生产调用。",
+  "base_manifest_path": "res://data/luoyang_culture_candidates_20261019w/manifest.json",
+  "contracts": {
+    "original_primary_preserved": true,
+    "original_primary_option_only_if_present": true,
+    "top_level_choice_limit": 4,
+    "nest_culture_topics_when_needed": true,
+    "decline_has_side_effects": false,
+    "reviewing_clues_advances_progress": false,
+    "lines_are_not_event_authority": true,
+    "tracker_contains_place_names_only": true,
+    "numeric_rewards": "UNCHANGED_ZERO_PENDING_APPROVAL",
+    "all_w_resources_read_only": true
+  },
+  "common": {
+    "greeting": "你想问哪一桩事？",
+    "original_primary": "继续原来的话题",
+    "culture_topics": "聊聊城里的事",
+    "leave": "先不打扰",
+    "return_topics": "再问一件事",
+    "back": "返回",
+    "accept_default": "我愿帮忙核对",
+    "decline": "眼下抽不开身，改日再谈",
+    "review_clues": "再看已核对的线索",
+    "not_ready": "线索还没齐，先把能查的查清。",
+    "non_issuer_not_started": "这桩事先向当事人问清原委，再来核对。",
+    "accept_confirmation": "好，若你愿意帮忙，就从能核实的事实查起。",
+    "solve_confirmation": "你的办法我听到了，先逐条核过，再记结果。",
+    "report_confirmation": "这就依原约复核，核妥再记结果。",
+    "retry": "我再对照一下",
+    "completed_no_repeat": "这件事已经记清，往后仍可来聊。",
+    "quest_menu_topic_prefix": "说说",
+    "quest_accept_is_explicit": true
+  },
+  "primary_option_labels": {
+    "luoyang_paper_scholar": "谈谈纸铺的事",
+    "district_life_yamen_petitioner": "继续原来的话题",
+    "district_life_yamen_clerk": "继续原来的话题",
+    "harbour_life_gate_supply_attendant": "聊聊进城的买卖",
+    "harbour_life_docks_booking_attendant": "继续原来的话题",
+    "district_life_market_buyer": "聊聊街坊日常"
+  },
+  "quests": [
+    {
+      "key": "qiangxiang_receipt",
+      "quest_id": "q_ch4_side_08_qiangxiang_receipt",
+      "title": "强项旧事",
+      "topic_label": "问问接状次序",
+      "speaker": "候见乡民",
+      "accept_choice": "我去核对，只记亲见和原件",
+      "decline_reply": "你有你的事。我把副联收好，得空再来问。",
+      "review_topic": "再看接状的线索",
+      "phase_lines": {
+        "not_started": "董宣强项的旧事讲秉公、不屈权势。眼前这桩是咱们核对收条的事，不是重演古案。我的呈状先递，誊册却排到后头，你可愿帮我查明？",
+        "active": "副联、城门见证人的话和原册，得互相对得上。",
+        "ready_to_solve": "三处都核对了，向书办说说你的判断。原联和原册先保留着。",
+        "solved": "你的核对方法已说明，再向书办确认怎样留存复核。",
+        "completed": "受理次序已经补正，原件仍留着。诉状怎样裁断，还得另行查明。"
+      },
+      "missing_clue_lines": {
+        "petition_receipt_time": "先问府衙的候见乡民，征得同意再看他保留的副联。",
+        "gate_order_testimony": "去南城门问货担主人。他亲眼看见了什么，要与听来的话分开。",
+        "registry_original_order": "回府衙找书办，核对保留着原来痕迹的登记册。"
+      },
+      "clue_log_labels": {
+        "petition_receipt_time": "已核对乡民保留的接状副联。",
+        "gate_order_testimony": "已记录城门见证人的亲见范围。",
+        "registry_original_order": "已核对原登记与保留的誊改痕迹。"
+      },
+      "choice_labels": {
+        "preserve_and_correct_registry": "保留副联与证言，按核实的先后补正登记",
+        "follow_power_priority": "按来人的权势高低决定先后",
+        "discard_original_receipt": "丢掉副联，把原册直接重写一遍"
+      },
+      "wrong_feedback": {
+        "follow_power_priority": "权势不是接状的时记。先后若能查明，就照事实记。",
+        "discard_original_receipt": "原件丢了，后来便无从复核。可在旁边补正，不能抹掉原来的痕迹。"
+      },
+      "report_choice": "请把补正与原件一并留存",
+      "report_reply": "原件、证言和补正说明一并留存。先受理不等于先判赢，仍须按事实审理。",
+      "after_reply": "我的状子终于有处可查。你下回路过，我还能把这事讲明白。",
+      "after_other_actor": "接状次序已补正，原件都留着。至于诉状怎样裁断，仍须另行查明。",
+      "tracker_hints": {
+        "not_started": "洛阳 · 府衙外院",
+        "active": "洛阳 · 府衙与南城门",
+        "missing_petition_receipt_time": "洛阳 · 府衙外院",
+        "missing_gate_order_testimony": "洛阳 · 南城门",
+        "missing_registry_original_order": "洛阳 · 府衙外院",
+        "ready_to_solve": "洛阳 · 府衙外院",
+        "solved": "洛阳 · 府衙外院",
+        "completed": "洛阳 · 府衙外院"
+      }
+    },
+    {
+      "key": "luoshu_numbers",
+      "quest_id": "q_ch4_side_09_luoshu_numbers",
+      "title": "河洛九数",
+      "topic_label": "试试河洛九数",
+      "speaker": "南市书生",
+      "accept_choice": "我先问清两份示意，再来试",
+      "decline_reply": "不妨事，纸铺和趣题都各有话可聊，得空再来。",
+      "review_topic": "再看九数的条件",
+      "phase_lines": {
+        "not_started": "我借洛书传说摆了盘算筹趣题。传说不必当真，眼前条件却能一条条验。",
+        "active": "别忙着选数。先看题板，再到城门问另一份示意，朝向也别漏了。",
+        "ready_to_solve": "两份示意的条件都齐了，选一盘能逐项核过的。",
+        "solved": "摆法已核验，再来把解法记录清楚，留给街坊复看。",
+        "completed": "解法已经记下。会算不是为了难倒人，要让后来的人也能验得明白。"
+      },
+      "missing_clue_lines": {
+        "nine_rules": "先向南市书生看清题板上写的完整条件。",
+        "nine_center_pairs": "去南城门问货担主人，他那份示意讲的是中心与相对两格。",
+        "nine_orientation": "回南市确认板面的朝向，不能随着自己站的位置转板。"
+      },
+      "clue_log_labels": {
+        "nine_rules": "已读明题板的用数与逐线验算条件。",
+        "nine_center_pairs": "已核对另一份示意的中心与对位关系。",
+        "nine_orientation": "已确认题板固定的北向与定位条件。"
+      },
+      "choice_labels": {
+        "orient_and_verify_492357816": "按北向排四九二、三五七、八一六，并逐线复核",
+        "numbers_only_without_orientation": "只看和数，不管题面约定的朝向",
+        "use_repeated_digits": "重复使用顺手的数字，把和数凑成十五"
+      },
+      "wrong_feedback": {
+        "numbers_only_without_orientation": "数理可能成立，朝向却仍是这道题的条件。再看板上的定位。",
+        "use_repeated_digits": "题目要求每个数只用一次。横行凑对了，也要查重复、直列和斜线。"
+      },
+      "report_choice": "把这次核过的解法记下来",
+      "report_reply": "按北向逐线验过，解法记下了。这是算筹趣题，不是神迹的凭据。",
+      "after_reply": "纸铺的事、城里的近况或这盘趣题，你想聊哪件都可以。",
+      "after_other_actor": "那盘九数的解法已经记清，街坊还能逐条复核。传说趣谈和眼前算理，分着听便好。",
+      "tracker_hints": {
+        "not_started": "洛阳 · 南市",
+        "active": "洛阳 · 南市与南城门",
+        "missing_nine_rules": "洛阳 · 南市",
+        "missing_nine_center_pairs": "洛阳 · 南城门",
+        "missing_nine_orientation": "洛阳 · 南市",
+        "ready_to_solve": "洛阳 · 南市",
+        "solved": "洛阳 · 南市",
+        "completed": "洛阳 · 南市"
+      }
+    },
+    {
+      "key": "luoshui_letter",
+      "quest_id": "q_ch4_side_10_luoshui_letter",
+      "title": "洛水归信",
+      "topic_label": "问问待交的家书",
+      "speaker": "记货伙计",
+      "accept_choice": "我去核认外封和本人，不拆内信",
+      "decline_reply": "那我先把信收妥。没认清本人，不急着交出去。",
+      "review_topic": "再看领信的约定",
+      "phase_lines": {
+        "not_started": "公开的《洛神赋》节录写文学中的相逢离别，不是真有神女来领信。它和家书的外套混放了，你可愿帮我核认本人？内信封不许拆。",
+        "active": "外封、本人独立说明与原交接条，三处都要核对。",
+        "ready_to_solve": "三处线索已齐，先选妥核认办法；选对也还不算领过信。",
+        "solved": "资格已核清，信仍在码头。请她本人到原记货伙计处按约亲领。",
+        "pickup_waiting": "她本人还没到场，不能把你的一句话当作已经领取。信先收妥。",
+        "pickup_ready": "本人到了，先按原条再核一次外封，然后由原记货伙计亲手交给她。",
+        "collected": "码头本人亲领已经完成。回南市向她确认，不必问信里写了什么。",
+        "completed": "本人领信与南市回访都已确认。私信内容仍只属于收信人。"
+      },
+      "missing_clue_lines": {
+        "letter_envelope_mark": "先请码头记货伙计出示未拆的外封，只看获准看的部分。",
+        "recipient_independent_token": "到南市找采买妇人，请她不受提示地说明原先约定。",
+        "booking_original_entry": "回码头向原记货伙计核对交接条，别拿传阅节录代替登记。"
+      },
+      "clue_log_labels": {
+        "letter_envelope_mark": "已核对获准查看的外封，未拆内信。",
+        "recipient_independent_token": "已记录本人独立说明与领取意愿。",
+        "booking_original_entry": "已核对本人亲领的原交接约定。"
+      },
+      "choice_labels": {
+        "verify_consent_deliver": "核对三处并征得同意，依原约由本人到码头亲领",
+        "open_and_announce": "拆开内信当街宣读，请旁人来认",
+        "leave_with_unverified_stranger": "交给第一个自称认识收信人的陌生人"
+      },
+      "wrong_feedback": {
+        "open_and_announce": "信里的私事不是寻人的告示。先别动封口，核认靠外封、本人和原条。",
+        "leave_with_unverified_stranger": "自称认识，不等于获准领取。原条写的是本人亲领，不能随手转给别人。"
+      },
+      "pickup_topic": "陪她到码头按约亲领",
+      "pickup_offer_recipient_line": "我按约亲自来领。你陪我核对便好，别代我接信。",
+      "pickup_sequence": [
+        {
+          "speaker": "记货伙计",
+          "text": "本人、记号和原条都对，封缝也完好。这封信交给你本人。",
+          "requires_actual_handoff": true
+        },
+        {
+          "speaker": "采买妇人",
+          "text": "我已经亲手接到了，封口仍好。我先回南市，你稍后来，我们再把这桩事说清。",
+          "requires_actual_handoff": true
+        }
+      ],
+      "pickup_not_yet_line": "核认方法虽对，信却还没亲手交出；先别回去报收到。",
+      "pickup_authority_note": "台词不是交接证明；只在真实本人到原Docks记货伙计处、物件实际交接完成后显示完成句并消费pickup事件。必须先交接再记collected，不能玩家自报或播放台词自动触发。",
+      "report_choice": "确认码头亲领后的结果",
+      "report_reply": "我已亲自到码头按约领到，回来也点清了。谢谢你不代领、不擅拆，里头写什么就留给我吧。",
+      "after_reply": "信到人手里，才是团圆。往后路过，你仍可来聊街坊家常，不必总是有差事。",
+      "after_other_actor": "那封家书已由本人领到，南市也回访确认了。私信的事，到此就不必再追问。",
+      "tracker_hints": {
+        "not_started": "洛阳 · 漕渠码头",
+        "active": "洛阳 · 漕渠码头与南市",
+        "missing_letter_envelope_mark": "洛阳 · 漕渠码头",
+        "missing_recipient_independent_token": "洛阳 · 南市",
+        "missing_booking_original_entry": "洛阳 · 漕渠码头",
+        "ready_to_solve": "洛阳 · 漕渠码头",
+        "solved": "洛阳 · 漕渠码头",
+        "pickup_waiting": "洛阳 · 漕渠码头",
+        "pickup_ready": "洛阳 · 漕渠码头",
+        "collected": "洛阳 · 南市",
+        "completed": "洛阳 · 南市"
+      }
+    }
+  ],
+  "history_boundaries": [
+    "强项借秉公精神，不重演杀戮，不以势家出身判实体案件。",
+    "洛书明确为传说，数字条件由题面给，不当作神迹或故宫原文。",
+    "洛神赋是文学，称谓不作为收信身份证明，不把甄后说定为唯一解释。",
+    "不新增文化道具、NPC真名、数值奖励、配音或主线秘密。"
+  ]
+}

@@ -1,0 +1,22 @@
+id: vfx_sword_slash_4frame
+description: 武侠剑气四阶段战斗特效序列图
+quality: medium
+size: "1024x1024"
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: stylized-concept
+  Asset type: 2D wuxia RPG combat visual-effect sprite sheet.
+  Primary request: a four-frame sword aura attack effect for {skill_name}.
+  Layout: a strict 2 by 2 grid, each cell exactly one 512 by 512 frame, no borders, no labels, no frame numbers. Read left-to-right, then top-to-bottom.
+  Frame 1: compact cyan-white sword aura gathering, low intensity.
+  Frame 2: a sharp diagonal sword arc traveling from lower-left to upper-right.
+  Frame 3: bright impact starburst at the upper-right end of the slash, with a few controlled sparks.
+  Frame 4: fading thin cyan trails and two small particles, clearly less bright than frame 3.
+  Scene/backdrop: a perfectly flat solid #FF00FF chroma-key background across every cell.
+  Constraints: effect only, no character, no weapon, no text, no UI, no watermark, no shadows, no ground plane; keep all pixels inside the safe padding of each frame; consistent hand-painted 2.5D wuxia comic effect, bright cyan-white core with cool blue edges.
+  Avoid: fire, skulls, lightning, realistic smoke, photorealism, extra panels, black background, any #FF00FF within the effect, {negative}
+
+variables:
+  skill_name: "林西基础剑法·一式"

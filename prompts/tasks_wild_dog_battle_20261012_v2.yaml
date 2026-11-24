@@ -1,0 +1,20 @@
+# Exactly one authorized dog correction, <=1.2 CNY additional; total batch ceiling7.2 CNY.
+# ROOT sole API caller. No --force. MAX_RETRIES=0; --fallback-model gpt-image-2; --skip-ping.
+tasks:
+  - id: wild_dog_battle_atlas_20261012_v2
+    template: sprite_animal_battle_atlas_fix_4x5_20261012_v2
+    category: sprite_sheet/animal_battle_20261012
+    model: gpt-image-2
+    priority: 1
+    skip: false
+    execution_owner: producer
+    vars:
+      reference_path: "assets/raw/sprite_sheet/animal_battle_20261012/wild_dog_battle_atlas_20261012_v1.png"
+      animal_name: "feral wild dog"
+      animal_spec: "Preserve this lean short-coated brown/charcoal village dog with cream/tan legs and underside, narrow canine muzzle, alert triangular ears and slender long tail. It is a DOG, not a shaggy wolf; keep this individual's coat markings and proportions."
+      corrections: "Fix hit frame 02 looking backwards to the RIGHT: every nose must point LEFT, recoil may lift the muzzle left-up but never look back right. Remove ALL pink/purple/magenta contamination from paws, hindlegs, tail and body; redraw those surfaces in natural brown, charcoal and cream with the same warm light. Magenta ONLY in background; no magenta light reflection or replacement limbs."
+      ready_spec: "four quiet planted poses: neutral alert, inhale chest lift, ear twitch, exhale; all four paws remain naturally coloured and muzzle faces left."
+      move_spec: "leftward trot: front-left/rear-right contact, passing lift, front-right/rear-left contact, passing return; opposed pairs alternate, same natural coat and whole paws."
+      attack_spec: "bite lunge: lower haunches, spring left with jaws open, forward bite contact with forepaws extended, grounded recovery; nose left and all limbs naturally coloured."
+      hit_spec: "flinch muzzle LEFT-UP, shoulder twists while muzzle STILL LEFT-UP and never looking back right, stagger one front paw with nose left-down, settle low alert facing left. Four legs retain brown/cream coat throughout; no pink patch, magenta toe or purple hindleg."
+      defeat_spec: "legs buckle facing left, shoulder drops with head still left, roll onto side with limbs sideways, still dog lying completely on its SIDE with head low and paws not supporting its weight. Preserve natural coat on exposed belly, paws and tail; no blood."

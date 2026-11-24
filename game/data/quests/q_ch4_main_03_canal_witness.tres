@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch4_main_03_canal_witness"
+title = "运河灭口案"
+kind = 0
+desc_not_started = "洛阳命案的货物经城南运河转运，唯一的脚夫失踪。"
+desc_in_progress = "前往运河码头寻找脚夫。行义帮愿意用水陆暗线转移证人；灭口者败退后，决定先保住活证，或由赵思颖救人、自己追截信使。"
+desc_completed = "行义帮保住了活证撤离路线；活证或完整残卷补全了不同部分的线索，原始货单确认药粉、空白腰牌和旧纸被转入城外古寺。"
+tracker_hint = "洛阳 · 漕渠码头"
+completion_triggers = Array[String](["flag_set:ch4_canal_witness_saved"])
+reward_gold = 65
+reward_exp = 125
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([&"luoshui_returning_origin"])

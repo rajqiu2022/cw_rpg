@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"bamboo_rain_piercing_shot"
+display_name = "竹雨穿林"
+icon_path = "res://art/ui/skill/icons_semantic_v2/icon_skill_hidden_bamboo_rain_piercing_shot_v1.png"
+description = "借竹叶摇落遮住起手，三枚短矢循同一道风隙贯出。伤势不重，却能把弩矢余毒送入经络。"
+origin = "悦无姮从密林伏击者的袖弩中拆出夺命毒匣，再将凌月听风辨位的手法化繁为简，教冷孤云以机括、腕劲和风向完成第一轮暗器反击。"
+kind = 0
+target = 0
+delivery = 1
+mp_cost = 8
+quality = 2
+required_insight = 6
+practice_base_cost = 18
+fixed_damage = 10
+attack_scaling = 100
+effect_value = 0
+hit_count = 1
+base_hit_chance = 0.96
+animation_id = &"bamboo_rain_piercing_shot"
+required_weapon_type = &"hidden"
+martial_category = &"hidden"
+damage_type = 0
+inflicted_status = &"poison"
+status_chance = 0.45
+status_duration = 2
+cast_sfx_path = "res://art/audio/free/sfx_blade_light_wuxia_v2.wav"
+impact_sfx_path = "res://art/audio/free/sfx_hit_metal_wuxia_v2.wav"
+school = "generic"
+is_passive = false

@@ -1,0 +1,68 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "索具商"
+portrait_path = ""
+text = "我这几盘绳子，收工前都要理一理。沾湿的摊开晾着，看见起毛就记在心里。"
+voice_emotion = "normal"
+choices = Array[Dictionary]([])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+learn_skills = Array[StringName]([])
+add_evidence = Array[StringName]([])
+verify_evidence = Array[StringName]([])
+add_testimonies = Array[StringName]([])
+verify_testimonies = Array[StringName]([])
+faction_trust_changes = Array[Dictionary]([])
+companion_trust_changes = Array[Dictionary]([])
+bond_events = Array[Dictionary]([])
+city_outcomes = Array[Dictionary]([])
+method_flags = Array[Dictionary]([])
+weather_id = &""
+accept_quest = &""
+complete_quest = &""
+on_end = "next:reply"
+
+[sub_resource type="Resource" id="reply"]
+script = ExtResource("2")
+node_id = &"reply"
+speaker = "索具商"
+portrait_path = ""
+text = "天天摸它们，哪一段磨得快，手一搭就知道。有人回来念叨一句用得顺，我也高兴。"
+voice_emotion = "normal"
+choices = Array[Dictionary]([])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+learn_skills = Array[StringName]([])
+add_evidence = Array[StringName]([])
+verify_evidence = Array[StringName]([])
+add_testimonies = Array[StringName]([])
+verify_testimonies = Array[StringName]([])
+faction_trust_changes = Array[Dictionary]([])
+companion_trust_changes = Array[Dictionary]([])
+bond_events = Array[Dictionary]([])
+city_outcomes = Array[Dictionary]([])
+method_flags = Array[Dictionary]([])
+weather_id = &""
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_docks_roles_20261019ad_rope_seller_daily"
+entry_node_id = &"start"
+required_story_flag = &""
+required_completed_quest = &""
+fallback_dialog_id = &""
+blocked_story_flag = &""
+required_free_inventory_slots = 0
+nodes = Array[Resource]([SubResource("start"), SubResource("reply")])
+metadata/docks_roles_status = "CONTENT_READY_NOT_FORMAL"

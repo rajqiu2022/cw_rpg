@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/openworld_bailu_ferry_layout.tres" id="2"]
+[resource]
+script = ExtResource("1")
+scene_id = &"openworld_bailu_ferry"
+display_name = "白鹿渡 · 接驳栈"
+background_path = "res://art/backgrounds/openworld_ferry_v2/bg_bailu_ferry_gameplay_v2_3072.png"
+bgm_path = "res://art/audio/bgm/bgm_jianghu_journey_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.420,0.830)
+camera_zoom = 1.10
+npcs = Array[Dictionary]([{"npc_id":"openworld_bailu_ferry_boatman","npc_name":"渡船管事","pos":Vector2(0.405,0.615),"sprite_path":"res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png","dialog_id":"openworld_bailu_ferry_boat","scale":0.96},{"npc_id":"duan_changfeng","npc_name":"段长风 · 游历刀客","pos":Vector2(0.360,0.380),"sprite_path":"res://art/characters/street_expansion_v1/npc_duan_changfeng_idle_down_4f_v2_stable.png","dialog_id":"openworld_duan_changfeng_offer","dialog_variants":[{"dialog_id":"openworld_duan_changfeng_join","require_flags":["openworld_snow_medicine_found"],"hide_flags":["companion_duan_changfeng_joined"]},{"dialog_id":"openworld_duan_changfeng_done","require_flags":["companion_duan_changfeng_joined"]}],"scale":0.96,"idle_frame_seconds":0.34,"conversation_base_facing":"right","hide_flag":"companion_duan_changfeng_joined"}])

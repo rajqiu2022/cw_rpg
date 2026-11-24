@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.060,0.930, 0.065,0.570, 0.205,0.370, 0.390,0.270, 0.720,0.260, 0.935,0.390, 0.965,0.720, 0.845,0.890, 0.520,0.940, 0.245,0.930)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"command_platform", "pos":Vector2(0.535,0.190), "size":Vector2(0.250,0.120)},
+	{"id":"command_left_workbench", "pos":Vector2(0.125,0.225), "size":Vector2(0.130,0.115)},
+	{"id":"command_ledger_chest", "pos":Vector2(0.785,0.715), "size":Vector2(0.170,0.135)}
+]
+interactions = [
+	{"id":"ch2_hideout_ledger_chest", "pos":Vector2(0.650,0.710), "size":Vector2(0.090,0.085), "activation":"interact", "label":"靠近打开铺着红布的账箱", "action":"dialog:ch2_hideout_result", "visual_baked":true, "require_flag":"defeated_masked_killer_ambush", "hide_flag":"ch2_hideout_cleared"}
+]
+portals = [
+	{"id":"command_return_workshop", "pos":Vector2(0.105,0.855), "size":Vector2(0.110,0.085), "label":"返回制牌作坊", "marker_rotation_degrees":180.0, "target_scene":"ch2_s5_mine_workshop", "target_pos":Vector2(0.850,0.260)}
+]
+walkable_probes = [
+	{"id":"command_spawn", "pos":Vector2(0.130,0.825)},
+	{"id":"command_center", "pos":Vector2(0.520,0.575)},
+	{"id":"command_leader", "pos":Vector2(0.655,0.455)},
+	{"id":"command_ledger", "pos":Vector2(0.650,0.710)}
+]
+blocked_probes = [
+	{"id":"command_upper_void", "pos":Vector2(0.150,0.120)},
+	{"id":"command_lower_right_wall", "pos":Vector2(0.950,0.930)}
+]

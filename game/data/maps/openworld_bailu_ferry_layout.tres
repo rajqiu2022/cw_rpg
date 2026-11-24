@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 5
+design_size = Vector2i(3072,2048)
+display_at_native_size = true
+walkable_mask_path = "res://art/navigation_masks/openworld_city_v3/bailu_ferry_walk_v3.png"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.080,0.100, 0.500,0.100, 0.700,0.300, 0.660,0.620, 0.475,0.900, 0.220,0.930, 0.070,0.760),
+	PackedVector2Array(0.385,0.245, 0.880,0.245, 0.880,0.395, 0.385,0.395),
+	PackedVector2Array(0.435,0.430, 0.900,0.430, 0.900,0.580, 0.435,0.580),
+	PackedVector2Array(0.340,0.635, 0.790,0.635, 0.790,0.790, 0.340,0.790)
+])
+blockers = [
+	{"id":"ferry_inn","pos":Vector2(0.085,0.225),"size":Vector2(0.170,0.170)},
+	{"id":"central_office","pos":Vector2(0.560,0.355),"size":Vector2(0.170,0.105)},
+	{"id":"open_river","pos":Vector2(0.950,0.620),"size":Vector2(0.100,0.760)}
+]
+portals = [{"id":"return_world","pos":Vector2(0.205,0.075),"size":Vector2(0.105,0.095),"label":"离开白鹿渡 · 江湖大地图","action":"world_map"}]
+walkable_probes = [
+	{"id":"arrival","pos":Vector2(0.420,0.830)},
+	{"id":"landward_gate","pos":Vector2(0.205,0.075)},
+	{"id":"ferry_square","pos":Vector2(0.420,0.430)},
+	{"id":"boatman_apron","pos":Vector2(0.405,0.615)},
+	{"id":"duan_square","pos":Vector2(0.360,0.380)}
+]
+blocked_probes = [
+	{"id":"river","pos":Vector2(0.960,0.650)},
+	{"id":"inn_roof","pos":Vector2(0.080,0.170)},
+	{"id":"ferry_office_roof","pos":Vector2(0.650,0.200)},
+	{"id":"south_roof","pos":Vector2(0.120,0.940)},
+	{"id":"east_open_water","pos":Vector2(0.820,0.520)},
+	{"id":"central_tree_island","pos":Vector2(0.520,0.420)},
+	{"id":"quay_building_roof","pos":Vector2(0.650,0.430)},
+	{"id":"quay_wall","pos":Vector2(0.590,0.650)}
+]

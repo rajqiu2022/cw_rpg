@@ -1,0 +1,68 @@
+# Exact four authorized tasks only. ROOT is the sole API caller.
+# Registry copies in prompts/tasks.yaml are skip:true to prevent unrelated batch runs.
+# Run without --force; MAX_RETRIES=0, --fallback-model gpt-image-2, --skip-ping.
+tasks:
+  - id: wild_dog_battle_atlas_20261012_v1
+    template: sprite_animal_battle_atlas_4x5_20261012
+    category: sprite_sheet/animal_battle_20261012
+    model: gpt-image-2
+    priority: 1
+    skip: false
+    execution_owner: producer
+    vars:
+      animal_name: "feral wild dog"
+      animal_spec: "A lean adult feral village dog with short rusty brown and charcoal fur, tan legs, a narrow canine muzzle, triangular alert ears, a slender long tail; distinctly a short-coated dog, NOT the long shaggy wolf in the style reference."
+      ready_spec: "four quiet four-paw standing poses: neutral alert, inhale chest lift, ear twitch, exhale; paws stay planted."
+      move_spec: "four clear leftward canine trot phases: front-left/rear-right contact, passing lift, front-right/rear-left contact, passing return. Opposed leg pairs really alternate; do not duplicate idle."
+      attack_spec: "four bite-and-lunge poses: lowered haunch wind-up, leftward spring with jaws open, clear forward bite contact with forepaws extended, grounded recovery."
+      hit_spec: "four recoil poses: flinch head back, shoulders twist away, stagger one paw, settle low alert. Same coat and silhouette."
+      defeat_spec: "four collapse phases: legs buckle, shoulder drops, side roll, still body lying on its side; no blood."
+
+  - id: tiger_battle_atlas_20261012_v1
+    template: sprite_animal_battle_atlas_4x5_20261012
+    category: sprite_sheet/animal_battle_20261012
+    model: gpt-image-2
+    priority: 1
+    skip: false
+    execution_owner: producer
+    vars:
+      animal_name: "adult tiger"
+      animal_spec: "A powerful Bengal-type tiger with orange fur, cream underside and cheek ruff, stable dark stripe pattern, broad feline head, round ears, heavy paws and long ringed tail. Muscular horizontal torso; no canine ears or muzzle."
+      ready_spec: "four subtle four-paw crouched-standing poses: alert, breath in, tiny tail curl, breath out; stable paws and stripe pattern."
+      move_spec: "four leftward feline stalking/trot phases with opposed front/rear paws alternating and supple shoulder motion; tail balances, never canine gait."
+      attack_spec: "four pounce-and-claw poses: compress low haunches, launch leftward, forepaw slash and bite contact, land and recover to four paws."
+      hit_spec: "four feline recoil poses: head flinch, shoulder pulls back, forepaw stagger, low recovery. No stripe changes."
+      defeat_spec: "four collapse phases: knees bend, flank lowers, turns onto side, heavy body still and prone; no blood."
+
+  - id: bear_battle_atlas_20261012_v1
+    template: sprite_animal_battle_atlas_4x5_20261012
+    category: sprite_sheet/animal_battle_20261012
+    model: gpt-image-2
+    priority: 1
+    skip: false
+    execution_owner: producer
+    vars:
+      animal_name: "adult brown bear"
+      animal_spec: "A heavy adult brown bear with dark warm-brown fur, rounded ears, short broad muzzle, pronounced shoulder hump, massive paws and a very short tail. Primarily quadrupedal, horizontal back and solid weight; not a humanoid standing boxer."
+      ready_spec: "four planted four-paw breathing poses: neutral watch, chest inhale, slight head turn left, chest exhale; shoulders and mass remain consistent."
+      move_spec: "four heavy leftward quadruped walking phases: front-left/rear-right step, weight transfer, front-right/rear-left step, grounded recovery. Large paws and broad back stay consistent."
+      attack_spec: "four quadrupedal swipe-and-bite poses: brace hind paws and lower head, lift only one forepaw, heavy forward paw swipe with head lunge, return to four-paw stance; do not stand fully upright."
+      hit_spec: "four weighted recoil phases: shoulder flinch, head pulls back, one front paw shifts, mass settles on all four paws."
+      defeat_spec: "four collapse phases: front legs buckle, shoulder contacts ground, hips settle, body lying heavy and still on its side; no blood."
+
+  - id: eagle_battle_atlas_20261012_v1
+    template: sprite_animal_battle_atlas_4x5_20261012
+    category: sprite_sheet/animal_battle_20261012
+    model: gpt-image-2
+    priority: 1
+    skip: false
+    execution_owner: producer
+    vars:
+      animal_name: "large golden eagle"
+      animal_spec: "A realistic golden eagle with layered dark-brown flight feathers, golden nape, hooked charcoal beak, sharp amber eyes, yellow talons, broad feathered wings and fanned tail. One beak, two wings, two legs; never four-legged or mammalian."
+      ready_spec: "four low hovering alert poses: mid wings, lifted wings, controlled downstroke, mid wings return; talons tucked, head always faces left."
+      move_spec: "four distinct leftward flying wingbeat phases: upstroke high, mid-downstroke, powerful full downstroke, wings sweep back into upstroke. Real feather flex and body pitch, not four-legged walking or frozen wings."
+      attack_spec: "four diving talon-strike phases: wings gather and body tips left-down, quick dive with wings swept back, talons extend for contact and beak points left, wings open to recover upward."
+      hit_spec: "four airborne recoil poses: head jolts, wings unevenly flare, tail fans to regain balance, wings return to controlled flight."
+      defeat_spec: "four falling-to-ground phases: flight falters, wings fold and body drops, side landing with wing partly spread, still grounded bird with folded wings; no blood."
+

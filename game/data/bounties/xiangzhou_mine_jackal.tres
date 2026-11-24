@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"xiangzhou_mine_jackal"
+display_name = "矿豺石九"
+title = "私占矿契"
+description = "勾结矿匪强占民窑，惯使厚背刀，已有数名矿工受伤。"
+board_city = &"xiangzhou"
+recommended_min_level = 6
+recommended_max_level = 8
+enemy_ids = Array[StringName]([&"bounty_mine_jackal", &"mine_outlaw"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_xiangzhou_mine_valley","label":"襄州矿谷 · 西采坑","pos":Vector2(0.26,0.47)},{"scene_id":&"interior_bandit_cave","label":"竹尾村外 · 废矿洞","pos":Vector2(0.70,0.62)}])
+reward_reputation = 18
+reward_training = 36
+reward_exp = 80
+reward_gold = 80
+reward_items = Array[Dictionary]([{"item_id":&"dragon_tendon_staff","count":1},{"item_id":&"iron_ore","count":3}])
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_linxi_south_militia_coach_idle_down_4f_v2_runtime.png"
+

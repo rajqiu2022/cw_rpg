@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/dialogs/ch3_trial_intro.tres" id="2"]
+[ext_resource type="Resource" path="res://data/maps/ch3_s2_trial_ground_layout_v2.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1536, 1024)
+[resource]
+script = ExtResource("1")
+scene_id = &"ch3_s2_trial_ground"
+display_name = "武林大会 · 考校场"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_sect_clouds_v4.wav"
+on_enter_once_flag = &"seen_ch3_trial_intro"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+animated_props = Array[Dictionary]([{"id":"ch3_trial_red_banner_left","type":"texture_sway","texture":"res://art/props/ambient/prop_ambient_tattered_crimson_banner_v1.png","pos":Vector2(0.135,0.067),"size":Vector2(0.040,0.145),"speed":0.70,"z_index":20},{"id":"ch3_trial_red_banner_right","type":"texture_sway","texture":"res://art/props/ambient/prop_ambient_tattered_crimson_banner_v1.png","pos":Vector2(0.822,0.060),"size":Vector2(0.040,0.145),"speed":0.82,"z_index":20}])
+npcs = [
+	{"npc_id": "wulin_examiner_trigger", "npc_name": "考校官", "pos": Vector2(0.52, 0.42), "sprite_path": "res://art/characters/street_expansion_v1/npc_wulin_examiner_idle_down_4f.png", "conversation_base_facing": "left", "dialog_id": "ch3_trial_intro", "scale": 0.95, "hide_flag": "defeated_wulin_examiner"},
+	{"npc_id":"spar_wudang_disciple", "npc_name":"武当弟子 · 可切磋", "pos":Vector2(0.18,0.46), "sprite_path":"res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png", "interaction_action":"spar:wulin_wudang:wudang_disciple:武当弟子:24:6", "scale":0.90},
+	{"npc_id":"spar_gufeng_trainee", "npc_name":"古峰试炼者 · 可切磋", "pos":Vector2(0.34,0.46), "sprite_path":"res://art/characters/npc_duqingshan_v3_idle_down_25d_4f.png", "interaction_action":"spar:wulin_gufeng:gufeng_trainee:古峰试炼者:26:6", "scale":0.90},
+	{"npc_id":"spar_lingyue_guard", "npc_name":"凌月守山人 · 可切磋", "pos":Vector2(0.66,0.46), "sprite_path":"res://art/characters/npc_zhuwei_gate_guard_idle_down_25d_4f_v2_runtime.png", "interaction_action":"spar:wulin_lingyue:lingyue_guard:凌月守山人:28:7", "scale":1.08},
+	{"npc_id":"spar_wulin_examiner", "npc_name":"大会考校官 · 可复试", "pos":Vector2(0.82,0.46), "sprite_path":"res://art/characters/street_expansion_v1/npc_wulin_examiner_idle_down_4f.png", "conversation_base_facing":"left", "interaction_action":"spar:wulin_examiner:wulin_examiner:大会考校官:36:9", "require_flag":"defeated_wulin_examiner", "scale":0.90},
+	{"npc_id":"spar_wandering_blademaster", "npc_name":"流浪刀客 · 可切磋", "pos":Vector2(0.90,0.60), "sprite_path":"res://art/characters/npc_linxi_martial_hall_master_idle_down_25d_4f_v2_runtime.png", "interaction_action":"spar:wulin_blademaster:wandering_blademaster:流浪刀客:48:12", "scale":0.92},
+	{"npc_id":"feng_yanqiu_ch3", "npc_name":"封砚秋", "pos":Vector2(0.72,0.62), "portrait_path":"res://art/characters/portraits/portrait_feng_yanqiu_v1.png", "sprite_path":"res://art/characters/portraits/portrait_feng_yanqiu_v1.png", "dialog_id":"ch3_guyun_returning_diagram", "require_flag":"guyun_feng_first_met", "hide_flag":"guyun_returning_diagram_solved", "sprite_quality":"dedicated_full_body", "scale":0.085}
+]
+hotspots = [
+	{"label":"选择门派", "pos_x":0.50, "pos_y":0.28, "action":"dialog:ch3_faction_choice", "require_flag":"assembly_evidence_checked", "hide_flag":"joined_faction"},
+	{"label":"参加资格战", "pos_x":0.52, "pos_y":0.42, "action":"dialog:ch3_trial_intro", "hide_flag":"defeated_wulin_examiner"},
+	{"label":"武当考校", "pos_x":0.20, "pos_y":0.56, "action":"dialog:ch3_wudang_trial", "require_flag":"joined_wudang", "hide_flag":"ch3_wudang_complete"},
+	{"label":"华山考校", "pos_x":0.38, "pos_y":0.56, "action":"dialog:ch3_huashan_trial", "require_flag":"joined_huashan", "hide_flag":"ch3_huashan_complete"},
+	{"label":"古峰考校", "pos_x":0.56, "pos_y":0.56, "action":"dialog:ch3_gufeng_trial", "require_flag":"joined_gufeng", "hide_flag":"ch3_gufeng_complete"},
+	{"label":"凌月考校", "pos_x":0.74, "pos_y":0.56, "action":"dialog:ch3_lingyue_trial", "require_flag":"joined_lingyue", "hide_flag":"ch3_lingyue_complete"},
+	{"label":"茗雾考校", "pos_x":0.90, "pos_y":0.56, "action":"dialog:ch3_mingwu_trial", "require_flag":"joined_mingwu", "hide_flag":"ch3_mingwu_complete"},
+	{"label":"散修考校", "pos_x":0.52, "pos_y":0.56, "action":"dialog:ch3_wanderer_trial", "require_flag":"joined_wanderer", "hide_flag":"ch3_wanderer_complete"},
+	{"label":"武当补给", "pos_x":0.18, "pos_y":0.66, "action":"shop:wudang_supply", "require_flag":"joined_wudang"},
+	{"label":"华山剑庐", "pos_x":0.34, "pos_y":0.66, "action":"shop:huashan_supply", "require_flag":"joined_huashan"},
+	{"label":"古峰铁匠铺", "pos_x":0.50, "pos_y":0.66, "action":"shop:gufeng_smithy", "require_flag":"joined_gufeng"},
+	{"label":"凌月商坊", "pos_x":0.66, "pos_y":0.66, "action":"shop:lingyue_pavilion", "require_flag":"joined_lingyue"},
+	{"label":"茗雾补给", "pos_x":0.82, "pos_y":0.66, "action":"shop:mingwu_supply", "require_flag":"joined_mingwu"},
+	{"label":"江湖货摊", "pos_x":0.82, "pos_y":0.66, "action":"shop:wulin_trade_hall", "require_flag":"joined_wanderer"},
+	{"label":"前往大会长案", "pos_x":0.86, "pos_y":0.82, "action":"scene:ch3_s1_wulin_assembly", "require_flag":"joined_faction"},
+	{"label":"查看棋局", "pos_x":0.18, "pos_y":0.78, "action":"dialog:ch3_weiqi_side", "hide_flag":"weiqu_match_complete"},
+	{"label":"听琴谱故事", "pos_x":0.32, "pos_y":0.78, "action":"dialog:ch3_guqin_side", "hide_flag":"guqin_manual_complete"},
+	{"label":"查看旧谱夹层", "pos_x":0.34, "pos_y":0.72, "action":"dialog:ch3_canglong_fragment_middle", "require_flag":"guqin_manual_translated", "hide_flag":"canglong_middle_found"},
+	{"label":"替丹房守炉", "pos_x":0.66, "pos_y":0.76, "action":"dialog:ch3_alchemy_trial", "hide_flag":"alchemy_trial_survived"},
+	{"label":"参加论剑小会", "pos_x":0.82, "pos_y":0.70, "action":"dialog:ch3_sword_forum_side", "hide_flag":"sword_forum_hosted"},
+	{"label":"拾起书案下的残注", "pos_x":0.74, "pos_y":0.80, "action":"discover_readable:shadow_step_annotations:found_shadow_step_annotations", "hide_flag":"found_shadow_step_annotations"}
+]
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids":[&"linxi_dojo_disciple", &"linxi_dojo_disciple"], "weight":5.0},
+	{"enemy_ids":[&"wulin_examiner", &"linxi_dojo_disciple", &"linxi_dojo_disciple"], "weight":1.0}
+])
+encounter_step_distance = 700.0
+encounter_chance = 0.12

@@ -1,0 +1,122 @@
+[gd_resource type="Resource" script_class="NPCCatalog" load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/npc_catalog.gd" id="1_catalog"]
+[ext_resource type="Script" path="res://scripts/domain/npc_profile.gd" id="2_profile"]
+
+[sub_resource type="Resource" id="guest_left"]
+script = ExtResource("2_profile")
+npc_id = &"inn_guest_left"
+display_name = "茶客"
+scene_ids = [&"interior_inn_hall"]
+default_dialog_id = &"interior_inn_guest_chatter"
+sprite_path = "res://art/characters/npc_inn_tea_guest_left_seated_idle_down_25d_4f_v2_runtime.png"
+movement_mode = "seated"
+role = "guest"
+
+[sub_resource type="Resource" id="guest_right"]
+script = ExtResource("2_profile")
+npc_id = &"inn_guest_right"
+display_name = "行脚客"
+scene_ids = [&"interior_inn_hall"]
+default_dialog_id = &"interior_inn_guest_chatter"
+sprite_path = "res://art/characters/npc_inn_tea_guest_right_seated_idle_down_25d_4f_v2_runtime.png"
+movement_mode = "seated"
+role = "guest"
+
+[sub_resource type="Resource" id="waiter"]
+script = ExtResource("2_profile")
+npc_id = &"inn_waiter_inside"
+display_name = "店小二"
+scene_ids = [&"interior_inn_hall"]
+default_dialog_id = &"ch1_s2_inn_waiter"
+sprite_path = "res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png"
+portrait_path = "res://art/characters/portraits/street_expansion_v1/portrait_inn_waiter_v1.png"
+sprite_scale = 1.02
+role = "waiter"
+
+[sub_resource type="Resource" id="keeper"]
+script = ExtResource("2_profile")
+npc_id = &"innkeeper_inside"
+display_name = "客栈掌柜"
+scene_ids = [&"interior_inn_hall"]
+default_dialog_id = &"ch1_s2_inn_keeper"
+role = "innkeeper"
+
+[sub_resource type="Resource" id="market_vendor"]
+script = ExtResource("2_profile")
+npc_id = &"market_vendor_candidate"
+display_name = "街市菜贩"
+default_dialog_id = &"ch1_s2_vegetable_vendor"
+sprite_path = "res://art/characters/candidates/npc_market_vendor_idle_down_1f.png"
+movement_mode = "idle"
+role = "vendor"
+
+[sub_resource type="Resource" id="seated_guest_candidate"]
+script = ExtResource("2_profile")
+npc_id = &"inn_guest_seated_candidate"
+display_name = "茶客"
+scene_ids = [&"interior_inn_hall"]
+default_dialog_id = &"interior_inn_guest_chatter"
+sprite_path = "res://art/characters/candidates/npc_inn_guest_seated_1f.png"
+movement_mode = "seated"
+role = "guest"
+
+[sub_resource type="Resource" id="street_merchant"]
+script = ExtResource("2_profile")
+npc_id = &"merchant"
+display_name = "行商"
+scene_ids = [&"ch1_s2_qingfeng"]
+default_dialog_id = &"ch1_s2_merchant"
+sprite_path = "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png"
+portrait_path = "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png"
+walk_sprite_path = "res://art/characters/street_expansion_v1/npc_street_merchant_down_walk_8f_v3_runtime.png"
+sprite_scale = 0.88
+movement_mode = "idle"
+role = "merchant"
+
+[sub_resource type="Resource" id="vegetable_vendor_v1"]
+script = ExtResource("2_profile")
+npc_id = &"vegetable_vendor"
+display_name = "卖菜大婶"
+scene_ids = [&"ch1_s2_qingfeng"]
+default_dialog_id = &"ch1_s2_vegetable_vendor"
+sprite_path = "res://art/characters/npc_zhuwei_vegetable_vendor_idle_down_25d_4f_v2_runtime.png"
+portrait_path = "res://art/characters/portraits/street_expansion_v1/portrait_vegetable_seller_v1.png"
+sprite_scale = 1.02
+movement_mode = "idle"
+role = "vendor"
+
+[sub_resource type="Resource" id="street_waiter"]
+script = ExtResource("2_profile")
+npc_id = &"inn_waiter"
+display_name = "店小二"
+scene_ids = [&"ch1_s2_qingfeng"]
+default_dialog_id = &"ch1_s2_inn_waiter"
+sprite_path = "res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png"
+portrait_path = "res://art/characters/portraits/street_expansion_v1/portrait_inn_waiter_v1.png"
+sprite_scale = 1.02
+movement_mode = "idle"
+role = "waiter"
+
+[sub_resource type="Resource" id="escort_guard"]
+script = ExtResource("2_profile")
+npc_id = &"patrol_scout"
+display_name = "护商镖师"
+scene_ids = [&"ch1_s2_qingfeng"]
+default_dialog_id = &"ch1_s2_patrol_scout"
+sprite_path = "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"
+portrait_path = "res://art/characters/portraits/street_expansion_v1/portrait_escort_guard_v1.png"
+sprite_scale = 0.88
+movement_mode = "idle"
+role = "guard"
+
+[sub_resource type="Resource" id="luoyang_gate_sergeant_portrait"]
+script = ExtResource("2_profile")
+npc_id = &"luoyang_gate_sergeant"
+scene_ids = [&"ch4_s0_luoyang_gate"]
+portrait_path = "res://art/characters/portraits/luoyang_20261012/portrait_luoyang_gate_sergeant_mature_20261012_v1.png"
+sprite_scale = 0.0
+
+[resource]
+script = ExtResource("1_catalog")
+profiles = Array[Resource]([SubResource("guest_left"), SubResource("guest_right"), SubResource("waiter"), SubResource("keeper"), SubResource("market_vendor"), SubResource("seated_guest_candidate"), SubResource("street_merchant"), SubResource("vegetable_vendor_v1"), SubResource("street_waiter"), SubResource("escort_guard"), SubResource("luoyang_gate_sergeant_portrait")])

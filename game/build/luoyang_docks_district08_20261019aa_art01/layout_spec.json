@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-docks-district08-20261019aa-art01",
+  "status": "ART_LAYOUT_SOURCE_READY_NO_RUNTIME_NO_ENGINE",
+  "scene_id": "ch4_s2_canal_docks",
+  "design_size_px": [3072, 2048],
+  "scope": "District 08 first finite block: remove two redundant doorless facades, retain the rope shop and every gameplay identity, then reserve a bounded low-prop cargo-yard follow-up. This is not a completed district and grants no Field, navigation, physics, portal, room or visual approval.",
+  "source_basis": [
+    {
+      "path": "res://build/luoyang_harbour_life_publication_20261016/93032_1727/ch4_s2_canal_docks/manifest.json",
+      "sha256": "0470e79beeb5e71842fb3d9fc9b3db44fe356a6c8c5ad7d7e00c585cc8ece5af",
+      "role": "published harbour-life parent"
+    },
+    {
+      "path": "res://build/luoyang_harbour_life_publication_20261016/93032_1727/ch4_s2_canal_docks/layout.tres",
+      "sha256": "49db163a97bac5d0a89087d85300749521c3204b02baa485457accd6d1ef4804",
+      "role": "parent object geometry and alpha measurements"
+    },
+    {
+      "path": "res://data/maps/luoyang_building_spacing_20261017p/author.json",
+      "sha256": "a6eccd68c78947af74de4fed5e1d844f464d316e21d9524688cf5439f92571ad",
+      "role": "current effective predecessor; harbour_main_warehouse remains removed"
+    },
+    {
+      "path": "res://data/maps/luoyang_docks_office_20261016h/author.json",
+      "sha256": "dc8d7ae836735f349360ca0bd69cc0290ebc6461470e7bd3af359ded568ec9e7",
+      "role": "current cargo-office replacement authority"
+    },
+    {
+      "path": "res://art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/ground_v14/root_ground_v14_02/floor.png",
+      "sha256": "494c52dac3edc4d82c8a1cb02691b80c8175e5b25ef351866e3733ff5471aba1",
+      "role": "unchanged current floor; read-only shadow audit source"
+    },
+    {
+      "path": "res://build/luoyang_docks_spacing_ordinary_20261018q/105980_2617/ordinary_docks_spacing_32px.png",
+      "sha256": "acf9ab620c65111f040d4d69cea3e061ac2f7cfe363c86d42eb13c9244ee93fb",
+      "role": "latest reviewed current-layout reference, not a replacement scene"
+    }
+  ],
+  "effective_predecessor": {
+    "object_count": 27,
+    "already_removed_ids": ["harbour_main_warehouse"],
+    "must_not_reintroduce_ids": ["harbour_main_warehouse"],
+    "warning": "The publication parent still enumerates harbour_main_warehouse; apply this contract after the 20261017p spacing successor, not directly to the 28-object parent."
+  },
+  "building_delta": {
+    "remove": [
+      {
+        "id": "harbour_small_cargo_store",
+        "reason": "Exact duplicate of the retained north warehouse, with no independent portal, room or interaction; it compresses the yamen lane and rope-shop frontage without adding a district identity.",
+        "texture_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s2_canal_docks/entities/north_canal_warehouse.png",
+        "texture_sha256": "3bfa2bd8a906ffe8ef069f7933e45255fe569606781c46886dd0dea519e9580b",
+        "world_foot_px": [500, 1130],
+        "render_size_px": [1099.8800048828125, 549.9400024414062],
+        "foot_uv": [0.5, 0.795941375422773],
+        "alpha_world_bbox_gt0_px_approx": [-42.5, 692.28, 1042.5, 1242.22],
+        "solid_polygons_px": [
+          [[18.260009765625, 1081.330078125], [982.97998046875, 1081.330078125], [982.97998046875, 1130.1240234375], [18.260009765625, 1130.1240234375]]
+        ],
+        "has_current_portal_or_room": false,
+        "has_current_interaction": false
+      },
+      {
+        "id": "south_canal_front",
+        "reason": "Generic three-bay row has no current portal, room or interaction and is the exact facade type called out by the masterplan as a false one-building-three-doors solution; its envelope overlaps the other two western buildings.",
+        "texture_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s2_canal_docks/entities/south_canal_front.png",
+        "texture_sha256": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+        "world_foot_px": [560, 1600],
+        "render_size_px": [1029.12, 686.08],
+        "foot_uv": [0.5, 0.8896484375],
+        "alpha_world_bbox_gt0_px_approx": [45.44, 1002.45, 1073.89, 1648.23],
+        "solid_polygons_px": [
+          [[107.08, 1537.02], [1016.27, 1537.02], [1016.27, 1596.65], [107.08, 1596.65]]
+        ],
+        "has_current_portal_or_room": false,
+        "has_current_interaction": false
+      }
+    ],
+    "retain_exact": [
+      {
+        "id": "harbour_rope_shop",
+        "texture_path": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/shop.png",
+        "texture_sha256": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+        "world_foot_px": [720, 1420],
+        "render_size_px": [652.800048828125, 435.20001220703125],
+        "foot_uv": [0.651041666666667, 0.919921875],
+        "alpha_world_bbox_gt0_px_approx": [295.0, 1019.65, 941.0, 1437.85],
+        "solid_polygons_px": [
+          [[375.75, 1304.4000244140625], [851.75, 1304.4000244140625], [851.75, 1420.0], [375.75, 1420.0]]
+        ],
+        "transform_policy": "same foot, scale, source, render size, depth foot and solid polygons"
+      }
+    ],
+    "expected_object_count_after_first_atom": 25
+  },
+  "retain_exact_landmarks": [
+    {
+      "id": "north_canal_warehouse",
+      "world_foot_px": [870, 580],
+      "render_size_px": [1099.8800048828125, 549.9400024414062],
+      "foot_uv": [0.5, 0.795941375422773],
+      "texture_sha256": "3bfa2bd8a906ffe8ef069f7933e45255fe569606781c46886dd0dea519e9580b",
+      "protected_door_foot_px": [754, 610]
+    },
+    {
+      "id": "harbour_cargo_trade_front",
+      "world_foot_px": [1720, 1790],
+      "render_size_px": [749.568, 696.32],
+      "texture_path": "res://art/modules/luoyang_docks_office_20261016h/docks_cargo_office_v1.png",
+      "texture_sha256": "f5c51e9b665960086abbb2a3390deb2d9339240ad7826ac5f8e7be36c48d9e4b"
+    },
+    {
+      "id": "harbour_cargo_ship",
+      "world_foot_px": [2703, 1271],
+      "render_size_px": [491.5199890136719, 737.2799682617188],
+      "foot_uv": [0.7177734375, 0.8958333134651184],
+      "texture_sha256": "d3cfd7f962d6f28ebab88ce1cb69d757e3ed7d4e491c34704b804c655b6a7ee8"
+    },
+    {
+      "id": "harbour_covered_ferry",
+      "world_foot_px": [2653, 1824],
+      "render_size_px": [307.20001220703125, 460.8000183105469],
+      "foot_uv": [0.6728515625, 0.9205729365348816],
+      "texture_sha256": "d67140a7afa0fdfffff97de9e34a0680b0069fc9dbd05bbcf85fb7e4ef989357"
+    }
+  ],
+  "protected_gameplay": {
+    "portals": [
+      {"id": "to_yamen_square", "foot_px": [260, 790], "passage_px": [[260, 808], [260, 790]], "target_unchanged": true},
+      {"id": "to_south_market", "foot_px": [260, 1740], "passage_px": [[260, 1758], [260, 1740]], "target_unchanged": true},
+      {"id": "canal_world_ferry", "foot_px": [2140, 1840], "passage_px": [[2140, 1858], [2140, 1840]], "target_unchanged": true}
+    ],
+    "task_points": [
+      {"id": "warehouse_mud_trace", "visual_foot_px": [940, 690], "interaction_stand_px": [940, 750]},
+      {"id": "canal_feud_chest", "visual_foot_px": [1740, 1250], "interaction_stand_px": [1740, 1310]}
+    ],
+    "npc_feet": [
+      {"id": "harbour_life_docks_store_attendant", "foot_px": [1050, 970], "policy": "retain; semantic role becomes north warehouse yard attendant"},
+      {"id": "harbour_life_docks_rope_seller", "foot_px": [1050, 1410], "policy": "retain"},
+      {"id": "canal_saved_porter", "foot_px": [1830, 1190], "policy": "retain gameplay identity"},
+      {"id": "canal_old_soldier", "foot_px": [1930, 970], "policy": "retain gameplay identity"},
+      {"id": "canal_work_chief", "foot_px": [1740, 1310], "policy": "retain gameplay identity"}
+    ],
+    "moving_lane_envelopes_px": [
+      {"center": [590, 1240], "x_radius": 100, "policy": "no new solid or low prop in full swept body envelope"},
+      {"center": [900, 1930], "x_radius": 140, "policy": "no new solid or low prop in full swept body envelope"}
+    ],
+    "required_routes_px": {
+      "quay_road": [[340, 1840], [1200, 1840], [1200, 1600], [1200, 1250], [1430, 1250], [1900, 1100], [2140, 820], [1840, 790], [1500, 810]],
+      "quay_loop": [[1430, 1250], [1170, 1080], [1110, 800], [1500, 810], [1840, 790], [2140, 820], [1900, 1100], [1430, 1250]],
+      "yamen_exit": [[1110, 800], [260, 790]],
+      "market_exit": [[1200, 1600], [1200, 1740], [260, 1740]],
+      "warehouse_mud": [[1110, 800], [940, 750]],
+      "quay_notice": [[1170, 1080], [1170, 1300], [1200, 1300], [1200, 1570], [1400, 1570]],
+      "world_ferry_quay_approach": [[1200, 1840], [2140, 1840]],
+      "work_chief": [[1430, 1250], [1740, 1310]],
+      "spacing_restore_station": [[1500, 810], [1500, 630]]
+    }
+  },
+  "district_zones": [
+    {
+      "id": "north_warehouse_inspection",
+      "rect_px": [320, 140, 1420, 900],
+      "landmark": "retained north warehouse, real door, mud clue and attendant",
+      "rule": "cargo may frame the edge, but the door foot, clue approach, yamen route and restored spacing route stay clear"
+    },
+    {
+      "id": "western_rope_trade_and_loading_yard",
+      "rect_px": [295, 900, 1080, 1600],
+      "landmark": "retained rope shop plus low loading-yard props",
+      "rule": "no replacement full building; low props must form two edge clusters, never a wall across the yard"
+    },
+    {
+      "id": "east_freight_spine",
+      "rect_px": [1080, 760, 1280, 1760],
+      "landmark": "existing route network",
+      "rule": "minimum 128 px visible clear corridor; actual 875/17 body and Physics checks override the design rectangle"
+    },
+    {
+      "id": "south_market_connector",
+      "rect_px": [260, 1600, 1200, 1840],
+      "landmark": "south-market portal and quay road",
+      "rule": "building-free; low props only after route and moving-lane clearance"
+    },
+    {
+      "id": "east_quay_operations",
+      "rect_px": [1280, 900, 2215, 1900],
+      "landmark": "existing loading shelter, notice, chests, office, wharf and task chest",
+      "rule": "retain current identities and exact geometry in the first atom"
+    }
+  ],
+  "existing_low_prop_anchors_to_retain": [
+    {
+      "id": "harbour_loading_shelter",
+      "world_foot_px": [1610, 1010],
+      "render_size_px": [330.24, 220.16],
+      "solid_polygons_px": [[[1465.305, 971.2999], [1754.48, 971.2999], [1754.48, 1010.0], [1465.305, 1010.0]]],
+      "texture_sha256": "85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0"
+    },
+    {
+      "id": "dock_notice",
+      "world_foot_px": [1400, 1500],
+      "render_size_px": [276.48, 184.32],
+      "solid_polygons_px": [[[1315.76000976563, 1474.26003417969], [1487.66000976563, 1474.26003417969], [1487.66000976563, 1500.00003417969], [1315.76000976563, 1500.00003417969]]],
+      "texture_sha256": "523ca1084365d836ab6b687804b6a25020b464f897a764d7c7d9c6632a883ccb"
+    },
+    {
+      "id": "dry_loading_wharf",
+      "world_foot_px": [2150, 1640],
+      "render_size_px": [120, 247],
+      "solid_polygons_px": [],
+      "texture_sha256": "14838181d1c59e0545d919876e2a01603e32b559320beb6876df8e7726c3ad4e"
+    },
+    {
+      "id_prefix": "district_canal_docks_stock_crate_",
+      "count": 6,
+      "world_feet_px": [[1370, 720], [1280, 940], [1340, 970], [1960, 1490], [2040, 1490], [1880, 1700]],
+      "render_size_px": [117, 118],
+      "source_ground_anchor_px": [58, 101],
+      "local_solid_polygon_px": [[21.250000029802273, 77.27001631259922], [99.37011721730227, 70.76000654697923], [101.67993167043227, 98.68993818759922], [37.00000002980227, 103.09997236728923]],
+      "texture_path": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png",
+      "texture_sha256": "d985d13d8095b2456a7ee4819058af620e777b6b023c8034986ecd2690cabc6b"
+    }
+  ],
+  "same_district_low_prop_followup": {
+    "status": "REQUIRED_AFTER_REMOVE2_BEFORE_DISTRICT08_ART_COMPLETE",
+    "purpose": "The freed western area must read as a working loading yard, not an empty grey plaza.",
+    "first_bounded_proposal": [
+      {
+        "id": "aa_west_yard_crate_0",
+        "asset_path": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png",
+        "asset_sha256": "d985d13d8095b2456a7ee4819058af620e777b6b023c8034986ecd2690cabc6b",
+        "world_foot_px": [1000, 1160],
+        "render_size_px": [117, 118],
+        "solid_polygon_px": [[963.2500000298023, 1136.2700163125992], [1041.3701172173022, 1129.7600065469793], [1043.6799316704323, 1157.6899381875992], [979.0000000298023, 1162.0999723672892]],
+        "intensity": "single crate; yard-edge punctuation, not a barricade",
+        "required_checks": ["full-alpha overlap", "875/17 body clearance", "route segment clearance", "NPC swept-lane clearance"]
+      },
+      {
+        "id": "aa_west_yard_crate_1",
+        "asset_path": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png",
+        "asset_sha256": "d985d13d8095b2456a7ee4819058af620e777b6b023c8034986ecd2690cabc6b",
+        "world_foot_px": [1030, 1530],
+        "render_size_px": [117, 118],
+        "solid_polygon_px": [[993.2500000298023, 1506.2700163125992], [1071.3701172173022, 1499.7600065469793], [1073.6799316704323, 1527.6899381875992], [1009.0000000298023, 1532.0999723672892]],
+        "intensity": "single crate; separates rope-trade edge from the south connector",
+        "required_checks": ["full-alpha overlap", "875/17 body clearance", "route segment clearance", "NPC swept-lane clearance"]
+      }
+    ],
+    "retained_existing_operations_cluster": ["harbour_loading_shelter", "dock_notice", "dry_loading_wharf", "district_canal_docks_stock_crate_0..5", "quay_crate_1950", "quay_crate_2010", "quay_crate_2100"],
+    "withheld_until_measured": [
+      {
+        "asset": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png",
+        "reason": "interior-scale asset has no approved outdoor render scale or dock Field solid yet"
+      },
+      {
+        "asset": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png",
+        "reason": "raw alpha reaches a source edge and has no approved outdoor footprint; do not crop or erase alpha"
+      }
+    ],
+    "density_limit": "At most two new crate-size blockers in the first follow-up. Any shelter, cart, barrel, rope coil or sack addition requires an explicit measured alpha envelope and ground solid; do not fill the yard by repetition."
+  },
+  "floor_and_shadow_audit": {
+    "floor_path": "res://art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/ground_v14/root_ground_v14_02/floor.png",
+    "floor_sha256": "494c52dac3edc4d82c8a1cb02691b80c8175e5b25ef351866e3733ff5471aba1",
+    "readonly_visual_finding": "The 3072x2048 floor contains route toning, tree silhouettes and waterside shading, but no rectangular roof or facade-shaped baked silhouette matching either removed building was identified in their envelopes.",
+    "confidence": "SOURCE_VISUAL_ONLY_NOT_FIELD_PROOF",
+    "first_atom_policy": "Do not repaint, erase, regenerate or rebake the floor. The post-removal GPU view must inspect both freed envelopes. If a hidden architecture-specific remnant appears, stop and prepare a same-source local patch; never scan-color erase it and never rerender the whole city.",
+    "unrelated_old_ship_shadow_region": "out of scope and must remain untouched"
+  },
+  "navigation_policy": {
+    "input_walk_path": "res://build/luoyang_harbour_life_publication_20261016/93032_1727/ch4_s2_canal_docks/walk.png",
+    "input_walk_sha256": "03d33c7f56751a4dde5c5b5dc3c4d3cf132502e95d3986fae752b9c1ee34f7a0",
+    "operation": "restore only pixels owned by the two removed solid polygons against the exact predecessor/base identity; preserve every other byte and existing 20261017p restoration",
+    "forbidden": ["global flood fill", "shrinking retained solids", "route tolerance widening", "reintroducing harbour_main_warehouse", "changing water walkability"]
+  },
+  "acceptance": {
+    "first_atom_cpu": [
+      "effective visual object count 27 to 25 and only the two named IDs disappear",
+      "harbour_main_warehouse remains absent",
+      "rope shop, north warehouse, office, both ships, portals, task props, NPC feet and all non-target objects are byte/field exact",
+      "walk restoration is monotonic and limited to the two removed solids",
+      "all required routes and original 875/17 body checks remain valid",
+      "source pins are checked before and after publication"
+    ],
+    "later_field_visual": [
+      "actual 1920x1080 GPU view shows no three-building overlap and no facade-specific floor ghost",
+      "rope shop remains readable as the western frontage",
+      "north warehouse door, mud clue, both city exits, ferry portal and cargo-office frontage remain visible and reachable",
+      "the freed yard is not claimed artistically complete until the bounded low-prop follow-up is present and visually reviewed"
+    ],
+    "credit_limit": "First atom is a spacing and hierarchy correction only. It is not District 08 completion, not a full dock redesign, and not proof of Field, physics, portal or final art quality."
+  },
+  "known_art_gaps": [
+    "The retained rope shop is a reused market shop, not a unique rope-maker frontage.",
+    "No approved exterior handcart, barrel group, rope coil or sack stack currently has both a docks-scale alpha envelope and Field solid.",
+    "The floor remains one broad grey-stone treatment; a future local wet-stone/loading-wear layer needs its own source and must not be painted by runtime debug geometry.",
+    "The cargo office has no new interior identity in this scope.",
+    "The approved ships and office give the district landmarks, but the western loading yard still needs its bounded low-prop follow-up before visual completion."
+  ],
+  "write_boundary": {
+    "this_art_change_writes": [
+      "res://build/luoyang_docks_district08_20261019aa_art01/layout_spec.json",
+      "docs/luoyang-docks-district08-20261019aa-art.md"
+    ],
+    "not_written": ["production scenes", "runtime scripts", "walk masks", "floor textures", "portal data", "task data", "NPC data", "save data", "imports"],
+    "engine_run": false,
+    "network_used": false,
+    "generated_assets": false
+  }
+}

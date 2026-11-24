@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+[resource]
+script = ExtResource("1_layout")
+schema_version = 5
+design_size = Vector2i(3072, 2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.105,0.705, 0.135,0.255, 0.850,0.255, 0.915,0.710),
+	PackedVector2Array(0.260,1.000, 0.610,1.000, 0.650,0.690, 0.315,0.690),
+	PackedVector2Array(0.075,0.425, 0.355,0.425, 0.355,0.145, 0.075,0.145)
+])
+visual_objects = Array[Dictionary]([
+	{"id":"scree_0_0","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.000000000,0.000000000),"render_size_px":Vector2(1024,1024),"z_index":-999,"centered":false,"modulate":Color(0.74,0.84,0.87,1)},
+	{"id":"scree_1_0","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.333333333,0.000000000),"render_size_px":Vector2(1024,1024),"z_index":-999,"centered":false,"modulate":Color(0.74,0.84,0.87,1)},
+	{"id":"scree_2_0","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.666666667,0.000000000),"render_size_px":Vector2(1024,1024),"z_index":-999,"centered":false,"modulate":Color(0.74,0.84,0.87,1)},
+	{"id":"scree_0_1","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.000000000,0.500000000),"render_size_px":Vector2(1024,1024),"z_index":-999,"centered":false,"modulate":Color(0.74,0.84,0.87,1)},
+	{"id":"scree_1_1","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.333333333,0.500000000),"render_size_px":Vector2(1024,1024),"z_index":-999,"centered":false,"modulate":Color(0.74,0.84,0.87,1)},
+	{"id":"scree_2_1","texture":"res://art/modules/huashan_map_20261029m/granite_ground.png","pos":Vector2(0.666666667,0.500000000),"render_size_px":Vector2(1024,1024),"z_index":-999,"centered":false,"modulate":Color(0.74,0.84,0.87,1)},
+	{"id":"flagstones_0","texture":"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png","pos":Vector2(0.128580729,0.276855469),"render_size_px":Vector2(374,249.3333),"z_index":-80,"centered":false,"modulate":Color(0.83,0.93,0.96,1)},
+	{"id":"flagstones_1","texture":"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png","pos":Vector2(0.250325521,0.276855469),"render_size_px":Vector2(374,249.3333),"z_index":-80,"centered":false,"modulate":Color(0.83,0.93,0.96,1)},
+	{"id":"flagstones_2","texture":"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png","pos":Vector2(0.128580729,0.398600244),"render_size_px":Vector2(374,249.3333),"z_index":-80,"centered":false,"modulate":Color(0.83,0.93,0.96,1)},
+	{"id":"flagstones_3","texture":"res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png","pos":Vector2(0.250325521,0.398600244),"render_size_px":Vector2(374,249.3333),"z_index":-80,"centered":false,"modulate":Color(0.83,0.93,0.96,1)},
+	{"id":"lower_approach","texture":"res://art/modules/world_map_v13/road_stone_northsouth_v1.png","pos":Vector2(0.440104167,0.738),"scale":Vector2(0.58,0.58),"z_index":-90},
+	{"id":"overlook_walk","texture":"res://art/modules/world_map_v13/road_stone_eastwest_v1.png","pos":Vector2(0.504,0.465),"scale":Vector2(0.73,0.73),"z_index":-89,"modulate":Color(0.87,0.93,0.95,1)},
+	{"id":"walk_end_rock","texture":"res://art/modules/sect_maps_20261029k/limestone_mass.png","pos":Vector2(0.682,0.465),"scale":Vector2(0.19,0.19),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.509},
+	{"id":"lower_stair","texture":"res://art/modules/environment_repair_20261031c/mountain_stair_12_v2.png","pos":Vector2(0.440104167,0.683593750),"scale":Vector2(0.28,0.28),"z_index":-40},
+	{"id":"fall_cliff_west","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.564127604,0.070800781),"scale":Vector2(0.42,0.42),"z_index":-12},
+	{"id":"fall_cliff_east","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.882161458,0.094238281),"scale":Vector2(0.42,0.42),"z_index":-12},
+	{"id":"waterfall","texture":"res://art/modules/miao_recompose_20261029g/waterfall.png","pos":Vector2(0.729166667,0.140136719),"scale":Vector2(0.56,0.56),"z_index":-10},
+	{"id":"cliff_west","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.079427083,0.437011719),"scale":Vector2(0.42,0.42),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.520019531},
+	{"id":"cliff_east","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.927734375,0.425781250),"scale":Vector2(0.42,0.42),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.510253906},
+	{"id":"cliff_west_north","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.112955729,0.114746094),"scale":Vector2(0.37,0.37),"z_index":-20},
+	{"id":"cliff_west_lower","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.179687500,0.737304688),"scale":Vector2(0.32,0.32),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.799804688},
+	{"id":"cliff_east_lower","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.742187500,0.751953125),"scale":Vector2(0.38,0.38),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.830078125},
+	{"id":"pavilion","texture":"res://art/modules/luoyang_full_city_20261022ap/pavilion.png","pos":Vector2(0.197916667,0.188476563),"scale":Vector2(0.59,0.59),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.343261719},
+	{"id":"scripture_lodge","texture":"res://art/modules/huashan_map_20261029m/tall_house.png","pos":Vector2(0.915364583,0.185546875),"scale":Vector2(0.53,0.53),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.317382813},
+	{"id":"sword_stele","texture":"res://art/modules/prop/linxi_stone_tablet_v2.png","pos":Vector2(0.690,0.297851563),"scale":Vector2(0.44,0.44),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.330078125},
+	{"id":"north_bench","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png","pos":Vector2(0.443033854,0.328125000),"scale":Vector2(0.16,0.16),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.342285156},
+	{"id":"east_bench","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png","pos":Vector2(0.700846354,0.368652344),"scale":Vector2(0.16,0.16),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.383300781},
+	{"id":"west_pine","texture":"res://art/modules/sect_maps_20261029k/wudang_pine.png","pos":Vector2(0.108398438,0.218261719),"scale":Vector2(0.39,0.39),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.303710938},
+	{"id":"east_pine","texture":"res://art/modules/sect_maps_20261029k/wudang_pine.png","pos":Vector2(0.896809896,0.488281250),"scale":Vector2(0.4,0.4),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.576171875},
+	{"id":"south_pine","texture":"res://art/modules/sect_maps_20261029k/wudang_pine.png","pos":Vector2(0.246093750,0.698242188),"scale":Vector2(0.33,0.33),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.771484375}
+])
+blockers = Array[Dictionary]([{"id":"scripture_hall","pos":Vector2(0.900,0.225),"size":Vector2(0.165,0.205)},{"id":"sword_stele","pos":Vector2(0.690,0.275),"size":Vector2(0.095,0.150)},{"id":"west_pavilion_front","pos":Vector2(0.180,0.400),"size":Vector2(0.220,0.055)},{"id":"north_bench","pos":Vector2(0.443,0.333),"size":Vector2(0.071,0.025)},{"id":"east_bench","pos":Vector2(0.701,0.374),"size":Vector2(0.073,0.024)},{"id":"waterfall_pool","pos":Vector2(0.728,0.238),"size":Vector2(0.215,0.071),"walkability_margin":0.0},{"id":"walk_end_rock_foot","pos":Vector2(0.682,0.494),"size":Vector2(0.064,0.037),"walkability_margin":0.0}])
+portals = Array[Dictionary]([{"id":"return_huashan_sword_terrace","label":"返回华山演武坪","pos":Vector2(0.440,0.925),"size":Vector2(0.175,0.075),"target_scene":"openworld_huashan_sword_terrace","target_pos":Vector2(0.500,0.155),"marker_rotation_degrees":180.0}])
+walkable_probes = Array[Dictionary]([{"id":"spawn","pos":Vector2(0.440,0.860)},{"id":"terrace_center","pos":Vector2(0.500,0.520)},{"id":"pavilion","pos":Vector2(0.245,0.290)},{"id":"elder_approach","pos":Vector2(0.326,0.372)},{"id":"scripture_approach","pos":Vector2(0.790,0.360)}])
+blocked_probes = Array[Dictionary]([{"id":"west_cloud","pos":Vector2(0.030,0.700)},{"id":"waterfall","pos":Vector2(0.820,0.080)},{"id":"hall_roof","pos":Vector2(0.930,0.080)}])

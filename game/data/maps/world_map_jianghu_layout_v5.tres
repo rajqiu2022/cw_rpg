@@ -1,0 +1,72 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 4
+design_size = Vector2i(3072, 2048)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.0766, 0.7856, 0.2065, 0.8742, 0.2234, 0.8494, 0.0935, 0.7608),
+	PackedVector2Array(0.1014, 0.7981, 0.2391, 0.5778, 0.2136, 0.5619, 0.0759, 0.7822),
+	PackedVector2Array(0.2221, 0.5991, 0.3591, 0.4621, 0.3379, 0.4409, 0.2009, 0.5779),
+	PackedVector2Array(0.3365, 0.4789, 0.5076, 0.3876, 0.4935, 0.3611, 0.3224, 0.4524),
+	PackedVector2Array(0.0971, 0.3379, 0.1490, 0.2470, 0.1229, 0.2321, 0.0710, 0.3230),
+	PackedVector2Array(0.1364, 0.2681, 0.1991, 0.1678, 0.1736, 0.1519, 0.1109, 0.2522),
+	PackedVector2Array(0.0759, 0.3330, 0.2296, 0.3567, 0.2341, 0.3270, 0.0804, 0.3033),
+	PackedVector2Array(0.2120, 0.3575, 0.3553, 0.3216, 0.3480, 0.2925, 0.2047, 0.3284),
+	PackedVector2Array(0.3334, 0.3280, 0.4461, 0.2904, 0.4366, 0.2620, 0.3239, 0.2996),
+	PackedVector2Array(0.1647, 0.1816, 0.3080, 0.2175, 0.3153, 0.1884, 0.1720, 0.1525),
+	PackedVector2Array(0.2819, 0.2065, 0.4324, 0.2991, 0.4481, 0.2735, 0.2976, 0.1809),
+	PackedVector2Array(0.4292, 0.2992, 0.6386, 0.1450, 0.6208, 0.1208, 0.4114, 0.2750),
+	PackedVector2Array(0.4110, 0.2774, 0.4833, 0.3980, 0.5090, 0.3826, 0.4367, 0.2620),
+	PackedVector2Array(0.4736, 0.3900, 0.6062, 0.4382, 0.6164, 0.4100, 0.4838, 0.3618),
+	PackedVector2Array(0.5813, 0.4242, 0.7000, 0.5192, 0.7187, 0.4958, 0.6000, 0.4008),
+	PackedVector2Array(0.6080, 0.1550, 0.7720, 0.1550, 0.7720, 0.1250, 0.6080, 0.1250),
+	PackedVector2Array(0.7472, 0.1257, 0.6832, 0.5094, 0.7128, 0.5143, 0.7768, 0.1306),
+	PackedVector2Array(0.2024, 0.8740, 0.4480, 0.7267, 0.4326, 0.7010, 0.1870, 0.8483),
+	PackedVector2Array(0.4128, 0.7285, 0.6045, 0.8187, 0.6172, 0.7915, 0.4255, 0.7013),
+	PackedVector2Array(0.5868, 0.8140, 0.8507, 0.8359, 0.8532, 0.8060, 0.5893, 0.7841),
+	PackedVector2Array(0.4391, 0.7369, 0.5085, 0.5749, 0.4809, 0.5631, 0.4115, 0.7251),
+	PackedVector2Array(0.5050, 0.5920, 0.5050, 0.3680, 0.4750, 0.3680, 0.4750, 0.5920),
+	PackedVector2Array(0.6983, 0.5191, 0.8383, 0.4258, 0.8217, 0.4009, 0.6817, 0.4942),
+	PackedVector2Array(0.8160, 0.4388, 0.9374, 0.3780, 0.9240, 0.3512, 0.8026, 0.4120),
+	PackedVector2Array(0.6815, 0.4949, 0.7509, 0.6569, 0.7785, 0.6451, 0.7091, 0.4831),
+	PackedVector2Array(0.7414, 0.6351, 0.8312, 0.8371, 0.8586, 0.8249, 0.7688, 0.6229)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = []
+interactions = []
+portals = [
+	{"id":"linxi_village", "label":"林西村", "pos":Vector2(0.095,0.780), "size":Vector2(0.050,0.055), "target_scene":"linxi_village_scrollmap", "target_pos":Vector2(0.925,0.500)},
+	{"id":"zhuwei_village", "label":"竹尾村", "pos":Vector2(0.205,0.855), "size":Vector2(0.050,0.055), "target_scene":"ch1_s2_qingfeng", "target_pos":Vector2(0.520,0.790)},
+	{"id":"lingyue", "label":"凌月山", "pos":Vector2(0.180,0.170), "size":Vector2(0.050,0.055), "target_scene":"ch2_s4_lingyue_gate", "target_pos":Vector2(0.110,0.780)},
+	{"id":"huashan", "label":"华山", "pos":Vector2(0.090,0.320), "size":Vector2(0.050,0.055), "action":"dialog:world_map_huashan_locked", "require_flag":"chapter2_complete", "locked_label":"华山 · 山道未通"},
+	{"id":"wudang", "label":"武当山", "pos":Vector2(0.620,0.140), "size":Vector2(0.050,0.055), "target_scene":"ch3_s1_wulin_assembly", "target_pos":Vector2(0.110,0.780)},
+	{"id":"gufeng", "label":"古月峰", "pos":Vector2(0.490,0.380), "size":Vector2(0.050,0.055), "action":"dialog:world_map_gufeng_locked", "require_flag":"chapter2_complete", "locked_label":"古月峰 · 山路险阻"},
+	{"id":"luoyang", "label":"洛阳", "pos":Vector2(0.700,0.500), "size":Vector2(0.055,0.060), "target_scene":"ch4_s1_luoyang_yamen", "target_pos":Vector2(0.110,0.780)},
+	{"id":"mingwu", "label":"茗雾山", "pos":Vector2(0.840,0.820), "size":Vector2(0.050,0.055), "action":"dialog:world_map_mingwu_locked", "require_flag":"chapter5_complete", "locked_label":"茗雾山 · 雾障封路"},
+	{"id":"bailu_ferry", "label":"白鹿渡", "pos":Vector2(0.430,0.720), "size":Vector2(0.050,0.055), "require_flag":"region_bailu_ferry_open", "locked_label":"白鹿渡 · 秋汛封航"},
+	{"id":"qinghe_town", "label":"清河镇", "pos":Vector2(0.600,0.800), "size":Vector2(0.050,0.055), "require_flag":"region_qinghe_town_open", "locked_label":"清河镇 · 官道正在修整"},
+	{"id":"yanmen_pass", "label":"雁门关", "pos":Vector2(0.760,0.140), "size":Vector2(0.050,0.055), "require_flag":"region_yanmen_pass_open", "locked_label":"雁门关 · 边关戒严"},
+	{"id":"east_sea_port", "label":"东海埠", "pos":Vector2(0.920,0.370), "size":Vector2(0.050,0.055), "require_flag":"region_east_sea_port_open", "locked_label":"东海埠 · 风浪封港"}
+]
+walkable_probes = [
+	{"id":"linxi_gate", "pos":Vector2(0.095,0.780)},
+	{"id":"zhuwei_gate", "pos":Vector2(0.205,0.855)},
+	{"id":"western_pass", "pos":Vector2(0.090,0.320)},
+	{"id":"north_bridge", "pos":Vector2(0.430,0.280)},
+	{"id":"central_peak", "pos":Vector2(0.490,0.380)},
+	{"id":"luoyang_gate", "pos":Vector2(0.700,0.500)},
+	{"id":"southeast_road", "pos":Vector2(0.840,0.820)}
+]
+blocked_probes = [
+	{"id":"snow_peak", "pos":Vector2(0.050,0.120)},
+	{"id":"north_bamboo", "pos":Vector2(0.410,0.120)},
+	{"id":"central_river", "pos":Vector2(0.440,0.480)},
+	{"id":"east_sea", "pos":Vector2(0.965,0.600)},
+	{"id":"south_forest", "pos":Vector2(0.500,0.900)}
+]

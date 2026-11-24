@@ -1,0 +1,22 @@
+id: sprite_lengguyun_battle_reaction_v2
+description: Full-body Leng Guyun reaction frame using accepted battle and body-standard references.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/sprites/battle/lengguyun_attack_slash_south_f03.png"
+  - "F:/Code/RPG_GAME/assets/raw/sprite/field-rework/body-standard/sprite_lengguyun_body_standard_v1_a.png"
+require_reference_images: true
+
+prompt_template: |
+  Use reference image 1 as the strict battle-art identity, ink-outline treatment, full-body costume, weapon, and scale reference for Leng Guyun. Use reference image 2 only as the approved body-proportion reference. Create ONE single full-body 2.5D wuxia RPG combat animation frame, facing right for the allied lower-left battle formation.
+
+  Preserve exactly: medium athletic seven-head build; black tied hair; no headband, scarf, ribbon, or ornament; blue-grey cross-collar robe with pale inner collar; diagonal brown leather chest strap; one grey-green double-lobed wine gourd at the left belt; dark boots; a single straight sword. The character must match reference image 1's Hong Kong wuxia comic game style: strong black ink contours, cel-painted restrained shading, not photorealistic and not a portrait.
+
+  Reaction: {{reaction}}
+  Composition: one entire character only, head, both feet, sword tip, gourd, and all cloth hems fully visible inside the 1024x1024 image with at least 12 percent empty padding around the outer silhouette. Perfectly flat #00ff00 chroma-key background only, with no floor, shadow, halo, scenery, text, UI, border, watermark, effects, blood, or second person.
+
+  Avoid: cropped anatomy, bust portrait, live-action realism, tall-thin anatomy, short-stocky anatomy, red accents, forehead band, headscarf, second gourd, western armor, spider, web, demon.
+
+variables:
+  reaction: "required"

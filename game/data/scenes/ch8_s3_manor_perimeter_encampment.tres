@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch8_s3_manor_perimeter_encampment_layout_v2.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="9_extent"]
+
+[sub_resource type="Resource" id="MapExtent"]
+script = ExtResource("9_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script=ExtResource("1")
+scene_id=&"ch8_s3_manor_perimeter_encampment"
+display_name="茗雾山庄 · 外围连营"
+streamed_background = SubResource("MapExtent")
+bgm_path="res://art/audio/bgm/bgm_forest_mystery_v4.wav"
+is_walkable=true
+map_layout=ExtResource("2")
+player_spawn=Vector2(0.50,0.86)
+animated_props=Array[Dictionary]([{"id":"ch8_perimeter_brazier_glow_left","type":"glow","pos":Vector2(0.369,0.294),"size":Vector2(0.045,0.060),"speed":0.66,"color":"#ff9e45","z_index":18},{"id":"ch8_perimeter_brazier_glow_right","type":"glow","pos":Vector2(0.629,0.3),"size":Vector2(0.045,0.060),"speed":0.74,"color":"#ff9e45","z_index":18},{"id":"ch8_perimeter_ground_mist","type":"mist_drift","pos":Vector2(0.50,0.700),"size":Vector2(0.78,0.13),"speed":0.3,"opacity":0.07,"count":3,"color":"#bdcac7","z_index":12}])

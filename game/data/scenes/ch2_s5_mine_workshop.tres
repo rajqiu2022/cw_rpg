@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/ch2_s5_mine_workshop_layout_v3.tres" id="2_map"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch2_s5_mine_workshop"
+display_name = "北林旧矿洞 · 伪牌作坊"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_cave_ominous_v4.wav"
+is_walkable = true
+map_layout = ExtResource("2_map")
+player_spawn = Vector2(0.120, 0.840)
+player_visual_scale = 1.12
+animated_props = Array[Dictionary]([{"id":"workshop_brazier","type":"flame","pos":Vector2(0.685,0.570),"size":Vector2(0.022,0.052),"speed":0.92,"z_index":23},{"id":"workshop_smoke","type":"smoke","pos":Vector2(0.685,0.525),"size":Vector2(0.060,0.120),"speed":0.58,"color":"#b8b2a8","z_index":22},{"id":"workshop_floor_mist","type":"mist_drift","pos":Vector2(0.52,0.70),"size":Vector2(0.72,0.12),"speed":0.34,"opacity":0.07,"count":3,"color":"#aaa79f","z_index":12}])
+npcs = [
+	{"npc_id":"ch2_mine_sentry_pair", "npc_name":"矿洞巡哨", "pos":Vector2(0.665,0.495), "sprite_path":"res://art/characters/npc_west_ruin_guard_idle_down_25d_4f.png", "dialog_id":"ch2_mine_workshop_sentries", "scale":0.92, "hide_flag":"defeated_ch2_mine_sentry"}
+]
+hotspots = Array[Dictionary]([])

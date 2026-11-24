@@ -1,0 +1,23 @@
+id: luoyang_modular_v3_yamen_hall
+description: Adult-scale independent city module. Original builtin generation, NOT CC0.
+backend: codex_builtin_imagegen
+model: builtin
+background: transparent
+transparent_background: true
+reference_images:
+  - game/art/maps/luoyang_modular_v2/source/inn_v1.png
+require_reference_images: true
+intended_runtime_width_px: 1000
+runtime_adult_height_px: 113.5134
+prompt_template: |
+  Use case: historical-scene.
+  Asset type: ONE isolated realistic RGBA architectural module for a Chinese wuxia RPG city INTERIOR.
+  Input images: the existing Luoyang building is a MATERIAL, CAMERA AND LIGHTING reference only, not an edit target, not to be pasted into this asset.
+  Primary request: ONE substantial traditional Chinese magistrate hall, NOT an entire compound: a broad five-bay timber-and-masonry administrative hall with charcoal tiled hip roof, recessed central open doorway, two side service doorways, dark worn pillars and a narrow low stone foundation with three short steps. Restrained dignified civic architecture rather than a palace. Frontage about 16 metres wide; front doorway clear height 2.5 metres. Keep side walls visibly volumetric, natural roof tile courses and deep eave joinery. No writing on fascia, no noticeboard.
+  Style/medium: crisp photorealistic physically detailed pre-rendered game architecture. Individual roof tiles, mortise-and-tenon joinery, subtle worn edges and real material variation, not cartoon, anime, watercolor, flat-color boxes or a plastic toy.
+  Camera: FRONT-FACING ORTHOGRAPHIC parallel view, directly SOUTH looking NORTH, exactly 30 degrees elevation above the horizontal. Front facades horizontal, verticals vertical, no vanishing point, no isometric diagonal facade. Match the reference viewpoint precisely.
+  Composition: complete building, all roof corners, lowest stone shoes and steps inside the image. Leave generous genuinely transparent margins around the ENTIRE silhouette, including underneath. No cropping. Human-scale doorway approximately 150-165 logical pixels tall when the final image is scaled to its intended width; ordinary adult game sprites are 113.5 logical pixels tall.
+  Lighting: neutral slightly warm daylight from upper-left/front with restrained cool ambient fill. Dark aged timber, warm weathered grey stone and charcoal roof tiles matching the reference. Short contact shade directly at solid feet only; no broad baked ground shadow.
+  Text: NONE. No Chinese characters, Latin letters, sign text, seals, labels, decorative pseudo-writing, logos or watermark. Functional signs will be runtime layers.
+  Transparency/constraints: truly transparent alpha=0 background and all open door/window apertures where no internal solid surface is visible. Preserve believable internal shade in recessed interiors, do not fill the open entry with black backdrop. No ground plane, paving patch, terrain, sky, trees, people, background buildings, fog, grey halo, checkerboard pixels, rectangular platform or extra disconnected accessories. Do not render a complete scene. Navigation and street ground are constructed separately.
+

@@ -1,0 +1,920 @@
+{
+  "schema": "27D_TEMPLE_EXACT_STATIONS_V1",
+  "status": "BUILD_ONLY_NOT_FIELD_ADOPTED",
+  "adoption_enabled": false,
+  "parent_art_fragment": {
+    "path": "res://build/luoyang_city_rebuild_20261027d_art01/three_regions_space_fragment01_BUILD_ONLY.json",
+    "sha256": "94AC0E251A633C36F05F725CF54672E134B2B26C75C66FB2E4FBA6261FAB3416"
+  },
+  "source_terminal": {
+    "result_path": "res://build/luoyang_regions_20261027d_source01/terminal_family_cold_output/118568/result.json",
+    "result_sha256": "B5DA96F2738B0802762855450D8DF2E535A6241513399C5AAF75BBF9AA8730E8",
+    "row": 0,
+    "whole_result_passed": false,
+    "component": "Temple cold source extraction only; whole Estate failure retained, no repeated extraction.",
+    "terminal": {
+      "path": "res://build/luoyang_regions_20261027d_source01/terminal_family_cold_output/118568/ch4_s4_ancient_temple_terminal.bin",
+      "sha256": "ACD26A8DF65543A71C6EBA28504570890452837F01F9340B9CA09487599DF876",
+      "bytes": 76432
+    }
+  },
+  "temple_district_patch": {
+    "logical_id": "ch4_s4_ancient_temple",
+    "display_name": "洛阳·城外古寺",
+    "legacy_size_px": [
+      1920,
+      1280
+    ],
+    "legacy_version": 3,
+    "legacy_frame_origin": [
+      576,
+      1370
+    ],
+    "save_fallback_uv": [
+      0.11067708581686,
+      0.904296875
+    ],
+    "actors": {
+      "temple_cave_keeper_20261018t": [
+        1536,
+        420
+      ],
+      "temple_bell_keeper_20261018t": [
+        2450,
+        2950
+      ]
+    },
+    "portals": {
+      "legacy_portal_6": [
+        680,
+        4380
+      ],
+      "legacy_portal_7": [
+        2390,
+        4380
+      ]
+    },
+    "interactions": {
+      "legacy_hotspot_0": [
+        1800,
+        2210
+      ],
+      "legacy_hotspot_1": [
+        1536,
+        200
+      ],
+      "legacy_hotspot_2": [
+        740,
+        3100
+      ],
+      "legacy_hotspot_3": [
+        2000,
+        3200
+      ],
+      "temple_longmen_investigate_20261018t": [
+        910,
+        760
+      ],
+      "temple_baima_investigate_20261018t": [
+        2450,
+        2455
+      ]
+    },
+    "station_transforms": [],
+    "migrations": [
+      {
+        "old_rect": [
+          [
+            0,
+            0
+          ],
+          [
+            960,
+            640
+          ]
+        ],
+        "target_foot_px": [
+          760,
+          760
+        ],
+        "reason": "27d_old_northwest_ruins_to_rear_court"
+      },
+      {
+        "old_rect": [
+          [
+            960,
+            0
+          ],
+          [
+            960.01,
+            640
+          ]
+        ],
+        "target_foot_px": [
+          2450,
+          2480
+        ],
+        "reason": "27d_old_northeast_to_bell_court"
+      },
+      {
+        "old_rect": [
+          [
+            0,
+            640
+          ],
+          [
+            960,
+            460
+          ]
+        ],
+        "target_foot_px": [
+          850,
+          3080
+        ],
+        "reason": "27d_old_west_daily_court"
+      },
+      {
+        "old_rect": [
+          [
+            960,
+            640
+          ],
+          [
+            960.01,
+            460
+          ]
+        ],
+        "target_foot_px": [
+          2220,
+          3080
+        ],
+        "reason": "27d_old_east_sutra_court"
+      },
+      {
+        "old_rect": [
+          [
+            0,
+            1100
+          ],
+          [
+            960,
+            180.01
+          ]
+        ],
+        "target_foot_px": [
+          760,
+          4380
+        ],
+        "reason": "27d_old_market_west_entry_to_new_mountain_gate_west"
+      },
+      {
+        "old_rect": [
+          [
+            960,
+            1100
+          ],
+          [
+            960.01,
+            180.01
+          ]
+        ],
+        "target_foot_px": [
+          2310,
+          4380
+        ],
+        "reason": "27d_old_docks_east_entry_to_new_mountain_gate_east"
+      }
+    ]
+  },
+  "actor_semantics": [
+    {
+      "npc_id": "temple_cave_keeper_20261018t",
+      "source_logical_id": "ch4_s4_ancient_temple",
+      "old_foot_px": [
+        1170,
+        1125
+      ],
+      "new_foot_px": [
+        1536,
+        420
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_distance_px": 0,
+      "policy": "Keep exact original NPC ID, logical Temple provenance, task reducer/dialog/source availability, sprite/portrait/scale/body. No independent-room reassignment or duplicate."
+    },
+    {
+      "npc_id": "temple_bell_keeper_20261018t",
+      "source_logical_id": "ch4_s4_ancient_temple",
+      "old_foot_px": [
+        750,
+        1125
+      ],
+      "new_foot_px": [
+        2450,
+        2950
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_distance_px": 0,
+      "policy": "Keep exact original NPC ID, logical Temple provenance, task reducer/dialog/source availability, sprite/portrait/scale/body. No independent-room reassignment or duplicate."
+    }
+  ],
+  "portal_region_return_feet": {
+    "legacy_portal_6": [
+      760,
+      4380
+    ],
+    "legacy_portal_7": [
+      2310,
+      4380
+    ]
+  },
+  "portal_semantics": [
+    {
+      "id": "legacy_portal_6",
+      "old_foot_px": [
+        212.5,
+        1157.5
+      ],
+      "new_foot_px": [
+        680,
+        4380
+      ],
+      "size_px": [
+        249.59999084472656,
+        179.1999969482422
+      ],
+      "legacy_source_uv": [
+        0.1106770858168602,
+        0.904296875
+      ],
+      "target_scene": "ch4_s3_luoyang_market",
+      "target_pos": [
+        0.11999999731779099,
+        0.75
+      ],
+      "require_flag": "",
+      "hide_flag": "",
+      "policy": "Original external business/target/conditions preserved; only region-side entry/return foot reauthored."
+    },
+    {
+      "id": "legacy_portal_7",
+      "old_foot_px": [
+        1725,
+        1157.5
+      ],
+      "new_foot_px": [
+        2390,
+        4380
+      ],
+      "size_px": [
+        249.59999084472656,
+        179.1999969482422
+      ],
+      "legacy_source_uv": [
+        0.8984375,
+        0.904296875
+      ],
+      "target_scene": "ch4_s2_canal_docks",
+      "target_pos": [
+        0.11999999731779099,
+        0.75
+      ],
+      "require_flag": "",
+      "hide_flag": "",
+      "policy": "Original external business/target/conditions preserved; only region-side entry/return foot reauthored."
+    }
+  ],
+  "interaction_semantics": [
+    {
+      "id": "legacy_hotspot_0",
+      "old_foot_px": [
+        1150,
+        775
+      ],
+      "new_foot_px": [
+        1800,
+        2210
+      ],
+      "source_snapshot_default_active": true,
+      "size_px": [
+        211.1999969482422,
+        153.59999084472656
+      ],
+      "action": "dialog:ch4_temple_ambush",
+      "activation": "interact",
+      "require_flag": "ch4_canal_witness_saved",
+      "hide_flag": "defeated_temple_ambusher",
+      "require_quest_active": "",
+      "context_owner_id": "temple_main_hall",
+      "court": "main_hall_front_court",
+      "purpose": "Original ambush search at the front/east side of main-hall forecourt, not a new automatic trigger.",
+      "semantic_rule": "Context owner is a spatial witness only, NOT a newly invented visual_object_id/hide target. All six original interaction dictionaries/flags/actions kept; never hide the entire hall/wall/wing when investigation completes."
+    },
+    {
+      "id": "legacy_hotspot_1",
+      "old_foot_px": [
+        1300,
+        537.5
+      ],
+      "new_foot_px": [
+        1536,
+        200
+      ],
+      "source_snapshot_default_active": true,
+      "size_px": [
+        211.1999969482422,
+        153.59999084472656
+      ],
+      "action": "dialog:ch4_tunnel_intro",
+      "activation": "interact",
+      "require_flag": "defeated_temple_ambusher",
+      "hide_flag": "chapter4_complete",
+      "require_quest_active": "",
+      "context_owner_id": "temple_broken_wall",
+      "court": "rear_cave_court",
+      "purpose": "Original tunnel lead at rear quiet court. Rear cave keeper remains separate220px away.",
+      "semantic_rule": "Context owner is a spatial witness only, NOT a newly invented visual_object_id/hide target. All six original interaction dictionaries/flags/actions kept; never hide the entire hall/wall/wing when investigation completes."
+    },
+    {
+      "id": "legacy_hotspot_2",
+      "old_foot_px": [
+        212.5,
+        925
+      ],
+      "new_foot_px": [
+        740,
+        3100
+      ],
+      "source_snapshot_default_active": true,
+      "size_px": [
+        211.1999969482422,
+        153.59999084472656
+      ],
+      "action": "dialog:ch4_heal_veteran_turnin",
+      "activation": "interact",
+      "require_flag": "heal_veteran_started",
+      "hide_flag": "healed_veteran",
+      "require_quest_active": "",
+      "context_owner_id": "seven26c_temple_west_pilgrim_bench",
+      "court": "west_monks_daily_court",
+      "purpose": "Original veteran turn-in at a real resting bench forecourt, not a new NPC.",
+      "semantic_rule": "Context owner is a spatial witness only, NOT a newly invented visual_object_id/hide target. All six original interaction dictionaries/flags/actions kept; never hide the entire hall/wall/wing when investigation completes."
+    },
+    {
+      "id": "legacy_hotspot_3",
+      "old_foot_px": [
+        625,
+        675
+      ],
+      "new_foot_px": [
+        2000,
+        3200
+      ],
+      "source_snapshot_default_active": false,
+      "size_px": [
+        211.1999969482422,
+        153.59999084472656
+      ],
+      "action": "dialog:ch4_luoyang_paper_turnin",
+      "activation": "interact",
+      "require_flag": "luoyang_paper_started",
+      "hide_flag": "luoyang_paper_helped",
+      "require_quest_active": "",
+      "context_owner_id": "finish_i_temple_east_sutra_house",
+      "court": "east_sutra_front_court",
+      "purpose": "Original paper donation/turn-in in front of sutra sidecourt, not moved into a new logical room.",
+      "semantic_rule": "Context owner is a spatial witness only, NOT a newly invented visual_object_id/hide target. All six original interaction dictionaries/flags/actions kept; never hide the entire hall/wall/wing when investigation completes."
+    },
+    {
+      "id": "temple_longmen_investigate_20261018t",
+      "old_foot_px": [
+        475,
+        750
+      ],
+      "new_foot_px": [
+        910,
+        760
+      ],
+      "source_snapshot_default_active": false,
+      "size_px": [
+        211.1999969482422,
+        153.59999084472656
+      ],
+      "action": "dialog:luoyang_layout_quest_20261018t/longmen_investigate",
+      "activation": "interact",
+      "require_flag": "longmen_mystery_started_20261018t",
+      "hide_flag": "longmen_mystery_investigated_20261018t",
+      "require_quest_active": "q_ch4_side_04_longmen_mystery",
+      "context_owner_id": "temple_broken_wall",
+      "court": "rear_cave_court",
+      "purpose": "Stone-wall traces and hidden-hole investigation at the existing broken rear wall; no new cliff bitmap or visual condition fabricated.",
+      "semantic_rule": "Context owner is a spatial witness only, NOT a newly invented visual_object_id/hide target. All six original interaction dictionaries/flags/actions kept; never hide the entire hall/wall/wing when investigation completes."
+    },
+    {
+      "id": "temple_baima_investigate_20261018t",
+      "old_foot_px": [
+        1650,
+        837.5
+      ],
+      "new_foot_px": [
+        2450,
+        2455
+      ],
+      "source_snapshot_default_active": false,
+      "size_px": [
+        211.1999969482422,
+        153.59999084472656
+      ],
+      "action": "dialog:luoyang_layout_quest_20261018t/baima_investigate",
+      "activation": "interact",
+      "require_flag": "baima_bell_started_20261018t",
+      "hide_flag": "baima_bell_investigated_20261018t",
+      "require_quest_active": "q_ch4_side_05_baima_bell",
+      "context_owner_id": "temple_ancient_bell",
+      "court": "east_bell_court",
+      "purpose": "Bell/old brick marks investigation next to actual ancient bell, not on a decorative wing door.",
+      "semantic_rule": "Context owner is a spatial witness only, NOT a newly invented visual_object_id/hide target. All six original interaction dictionaries/flags/actions kept; never hide the entire hall/wall/wing when investigation completes."
+    }
+  ],
+  "routes_replace_ids": [
+    "mountain_front",
+    "front_main",
+    "west_house",
+    "east_house",
+    "west_rear",
+    "east_rear",
+    "cave_rear"
+  ],
+  "routes_additions": [
+    {
+      "id": "temple_arrival_axis",
+      "points_px": [
+        [
+          1536,
+          4380
+        ],
+        [
+          1536,
+          3960
+        ],
+        [
+          1536,
+          3320
+        ],
+        [
+          1536,
+          3180
+        ],
+        [
+          1536,
+          3100
+        ]
+      ]
+    },
+    {
+      "id": "temple_west_arrival",
+      "points_px": [
+        [
+          680,
+          4380
+        ],
+        [
+          1536,
+          4380
+        ]
+      ]
+    },
+    {
+      "id": "temple_east_arrival",
+      "points_px": [
+        [
+          2390,
+          4380
+        ],
+        [
+          1536,
+          4380
+        ]
+      ]
+    },
+    {
+      "id": "temple_ambush_search",
+      "points_px": [
+        [
+          1536,
+          3100
+        ],
+        [
+          1536,
+          2500
+        ],
+        [
+          1800,
+          2500
+        ],
+        [
+          1800,
+          2210
+        ]
+      ]
+    },
+    {
+      "id": "temple_hall_entrance",
+      "points_px": [
+        [
+          1800,
+          2210
+        ],
+        [
+          1800,
+          2160
+        ],
+        [
+          1536,
+          2160
+        ],
+        [
+          1536,
+          2084
+        ]
+      ]
+    },
+    {
+      "id": "temple_west_house",
+      "points_px": [
+        [
+          1536,
+          3100
+        ],
+        [
+          850,
+          3100
+        ],
+        [
+          850,
+          2914
+        ]
+      ]
+    },
+    {
+      "id": "temple_east_house",
+      "points_px": [
+        [
+          1536,
+          3100
+        ],
+        [
+          2220,
+          3100
+        ],
+        [
+          2220,
+          2914
+        ]
+      ]
+    },
+    {
+      "id": "temple_veteran_rest",
+      "points_px": [
+        [
+          850,
+          3100
+        ],
+        [
+          740,
+          3100
+        ]
+      ]
+    },
+    {
+      "id": "temple_paper_turnin",
+      "points_px": [
+        [
+          1536,
+          3180
+        ],
+        [
+          2000,
+          3180
+        ],
+        [
+          2000,
+          3200
+        ]
+      ]
+    },
+    {
+      "id": "temple_bell_investigation",
+      "points_px": [
+        [
+          2220,
+          3100
+        ],
+        [
+          2744,
+          3100
+        ],
+        [
+          2744,
+          2455
+        ],
+        [
+          2450,
+          2455
+        ]
+      ]
+    },
+    {
+      "id": "temple_rear_west_bypass",
+      "points_px": [
+        [
+          850,
+          3100
+        ],
+        [
+          328,
+          3100
+        ],
+        [
+          328,
+          1256
+        ],
+        [
+          500,
+          1256
+        ]
+      ]
+    },
+    {
+      "id": "temple_longmen_investigation",
+      "points_px": [
+        [
+          500,
+          1256
+        ],
+        [
+          500,
+          760
+        ],
+        [
+          910,
+          760
+        ]
+      ]
+    },
+    {
+      "id": "temple_tunnel_intro",
+      "points_px": [
+        [
+          500,
+          1256
+        ],
+        [
+          1536,
+          1256
+        ],
+        [
+          1536,
+          1000
+        ],
+        [
+          1740,
+          1000
+        ],
+        [
+          1740,
+          200
+        ],
+        [
+          1536,
+          200
+        ]
+      ]
+    },
+    {
+      "id": "temple_cave_keeper_approach",
+      "points_px": [
+        [
+          1536,
+          1000
+        ],
+        [
+          1740,
+          1000
+        ],
+        [
+          1740,
+          620
+        ],
+        [
+          1536,
+          620
+        ],
+        [
+          1536,
+          520
+        ]
+      ]
+    }
+  ],
+  "room_policy": "Keep94AC three private room branches/furniture definitions. Monks stay outdoors in the same original logical Temple this batch; no room-only duplicate task actor. New interior doors must remain disabled until actual room runtime is source-ready.",
+  "migration_policy": "Six disjoint old-coordinate partitions cover the complete1920x1280 frame, including UV1 edge via0.01px declared outer extension. No extra1.25 scale. Current-version exact region saves keep their actual foot through existing extension.",
+  "dynamic_visual_policy": {
+    "rule": "No new visual conditions, new hidden props or quest overlays. Original six data rows have no visual_object_id; do not add one from this spatial annotation."
+  },
+  "constraints": [
+    "No original owner/plot/render placement or source module rewritten.",
+    "No task condition/default-active/action changed by ART.",
+    "No engine, media editing or generation.",
+    "Source owns one true compile/ground/player/owner check; this authored table is not runtime or complete Temple ART acceptance."
+  ],
+  "door_space_dispatch_distances": {
+    "minimum_required_px": 160,
+    "actors_include_all_potential_source_slots": true,
+    "rows": [
+      {
+        "id": "legacy_portal_6",
+        "branch": "original external",
+        "activation_foot_px": [
+          680,
+          4380
+        ],
+        "activation_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 2275.47797176769
+        },
+        "return_foot_px": [
+          760,
+          4380
+        ],
+        "return_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 2213.820227570432
+        }
+      },
+      {
+        "id": "legacy_portal_7",
+        "branch": "original external",
+        "activation_foot_px": [
+          2390,
+          4380
+        ],
+        "activation_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 1431.2581877495059
+        },
+        "return_foot_px": [
+          2310,
+          4380
+        ],
+        "return_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 1436.8368035375486
+        }
+      },
+      {
+        "id": "temple27d_main_hall_door",
+        "branch": "pending existing94AC room",
+        "activation_foot_px": [
+          1536,
+          2084
+        ],
+        "activation_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 1259.1076204995347
+        },
+        "return_foot_px": [
+          1536,
+          2160
+        ],
+        "return_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 1208.0960226736947
+        }
+      },
+      {
+        "id": "temple27d_monks_house_door",
+        "branch": "pending existing94AC room",
+        "activation_foot_px": [
+          850,
+          2914
+        ],
+        "activation_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 1600.4049487551579
+        },
+        "return_foot_px": [
+          850,
+          2990
+        ],
+        "return_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 1600.4999218994049
+        }
+      },
+      {
+        "id": "temple27d_sutra_house_door",
+        "branch": "pending existing94AC room",
+        "activation_foot_px": [
+          2220,
+          2914
+        ],
+        "activation_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 232.80034364235806
+        },
+        "return_foot_px": [
+          2220,
+          2990
+        ],
+        "return_nearest_npc": {
+          "npc_id": "temple_bell_keeper_20261018t",
+          "distance_px": 233.45235059857504
+        }
+      }
+    ],
+    "method": "Exact authored foot-point distances; both original monks are idle, no patrol/speed/body change. No engine."
+  },
+  "interaction_npc_distances": [
+    {
+      "id": "legacy_hotspot_0",
+      "foot_px": [
+        1800,
+        2210
+      ],
+      "nearest_npc": {
+        "npc_id": "temple_bell_keeper_20261018t",
+        "distance_px": 984.9365461794988
+      },
+      "same_original_action_flags": true
+    },
+    {
+      "id": "legacy_hotspot_1",
+      "foot_px": [
+        1536,
+        200
+      ],
+      "nearest_npc": {
+        "npc_id": "temple_cave_keeper_20261018t",
+        "distance_px": 220
+      },
+      "same_original_action_flags": true
+    },
+    {
+      "id": "legacy_hotspot_2",
+      "foot_px": [
+        740,
+        3100
+      ],
+      "nearest_npc": {
+        "npc_id": "temple_bell_keeper_20261018t",
+        "distance_px": 1716.566340110396
+      },
+      "same_original_action_flags": true
+    },
+    {
+      "id": "legacy_hotspot_3",
+      "foot_px": [
+        2000,
+        3200
+      ],
+      "nearest_npc": {
+        "npc_id": "temple_bell_keeper_20261018t",
+        "distance_px": 514.78150704935
+      },
+      "same_original_action_flags": true
+    },
+    {
+      "id": "temple_longmen_investigate_20261018t",
+      "foot_px": [
+        910,
+        760
+      ],
+      "nearest_npc": {
+        "npc_id": "temple_cave_keeper_20261018t",
+        "distance_px": 712.3734975418444
+      },
+      "same_original_action_flags": true
+    },
+    {
+      "id": "temple_baima_investigate_20261018t",
+      "foot_px": [
+        2450,
+        2455
+      ],
+      "nearest_npc": {
+        "npc_id": "temple_bell_keeper_20261018t",
+        "distance_px": 495
+      },
+      "same_original_action_flags": true
+    }
+  ]
+}

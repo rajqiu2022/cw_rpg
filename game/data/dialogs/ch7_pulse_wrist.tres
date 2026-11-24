@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="内院点腕巡守"
+text="要过这扇门，先把伸向底令的手留下。"
+on_end="battle_group_then:ch7_pulse_wrist_guard:ch7_pulse_wrist_won"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch7_pulse_wrist"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])
+blocked_story_flag=&"ch7_inner_office_destroyers_defeated"

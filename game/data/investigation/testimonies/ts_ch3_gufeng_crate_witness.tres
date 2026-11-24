@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch3_gufeng_crate_witness"
+display_name = "古峰弟子所见货箱"
+speaker_npc_id = &"npc_gu_jianglei"
+statement = "一名古峰弟子说，会盟前夜有人把包着五色布的兵器箱运往后山。他记得车轮沾着河泥，却因饮酒无法确定时辰。"
+chapter = 3
+initial_credibility = 55
+related_evidence_ids = Array[StringName]([&"ev_ch3_composite_technique_marks", &"ev_ch3_luoyang_cargo_mark"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch3_huashan_two_edges"])

@@ -1,0 +1,34 @@
+{
+	"schema": 1,
+	"status": "BUILD_ONLY_ROOT_AUTHORIZED_NARROW_MARKET_RENDER_TEXTURE_BRIDGE",
+	"canonical_written": false,
+	"engine_runs": 0,
+	"geometry_or_media_changes": 0,
+	"parent": {
+		"path": "res://build/luoyang_city_finish_20261025i_source01/gate_texture_repair01/closure_READY02/Field_READY.gd",
+		"sha256": "d80ceb07320ef8340e0261e3a2b8f4fb9d4ce9a51225a9ffb263d486cce0ddde"
+	},
+	"candidate": {
+		"path": "res://build/luoyang_city_finish_20261025i_system01/Field13_market_ground_exact_bridge_CANDIDATE.gd",
+		"sha256": "f84a037eba57d64696fc06fbfd763caf88a987de1090150c379196a5c43f3698"
+	},
+	"hunks": [
+		{
+			"old": "func _spawn_scene_objects(scene_objects: Array, progressive: bool = false) -> void:\n",
+			"new": "func _finish25i_market_ground_texture_matches(entry: Dictionary, texture: Texture2D) -> bool:\n\t# The single retained AE render-only stamp is deliberately absent from NAV.\n\t# Admit only its original prepared owner/cache and exact post24e whole row.\n\tconst STAMP_ID = \"market_ground_ae_cross_street_wear_v1\"\n\tconst STAMP_PATH = \"res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png\"\n\tif _finish25i==null or _current_scene==null or _current_scene.scene_id!=&\"ch4_s3_luoyang_market\" or entry.get(\"id\")!=STAMP_ID or entry.get(\"texture\")!=STAMP_PATH or texture==null or texture.resource_path!=STAMP_PATH or not _finish25i._owned(true,true): return false\n\tvar state: Dictionary=_finish25i.get(\"_state\")\n\tif state.is_empty() or state.get(\"released\",true) or not state.get(\"field\") is WeakRef or state.field.get_ref()!=self or not state.get(\"scene\") is WeakRef or state.scene.get_ref()!=_current_scene or not state.get(\"layout\") is WeakRef or state.layout.get_ref()!=_current_scene.map_layout: return false\n\tvar district: RefCounted=_district_session\n\tif district==null or district.get_script()!=DISTRICT_LIFE or district.get(\"_scene\")!=_current_scene or district.get(\"error\")!=\"\": return false\n\tvar first: Variant=state.get(\"first\")\n\tvar receipt: Variant=district.get(\"_receipt\")\n\tvar prepared: Variant=district.get(\"_market_ground\")\n\tvar district_cache: Variant=district.get(\"_textures\")\n\tif not first is Dictionary or district.get(\"_sources\")!=first or not receipt is Dictionary or receipt.get(\"scene_instance\")!=_current_scene.get_instance_id() or receipt.get(\"owner_token\")!=state.get(\"token\") or not prepared is Dictionary or prepared.get(\"ok\")!=true or prepared.get(\"enabled\")!=true or not district_cache is Dictionary: return false\n\tif first.get(STAMP_PATH)!=\"f8f5603fbcd6c3e40626277465eb505be17393cfb588aed17db623465523205f\" or first.get(\"res://scripts/city/luoyang_market_ground_20261020ae.gd\")!=\"84856fa1dd4d7017178da4a30906b159cf46313b033b19933b40aec505f3d746\" or first.get(\"res://data/maps/luoyang_market_ground_20261020ae/manifest.json\")!=\"0d6d850abc0a33483100dc0b491c8e9e1213a8ef556662c3a9884666408ebe3c\" or prepared.get(\"manifest_sha256\")!=first.get(\"res://data/maps/luoyang_market_ground_20261020ae/manifest.json\"): return false\n\tvar cache: Variant=prepared.get(\"textures\")\n\tvar entries: Variant=prepared.get(\"entries\")\n\tif not cache is Dictionary or not entries is Array or entries.size()!=1 or cache.get(STAMP_PATH)!=texture or district_cache.get(STAMP_PATH)!=texture: return false\n\t# Same insertion order and f32 expressions as original ground.prepare and D296.\n\tvar expected_before: Dictionary={\"id\":STAMP_ID,\"texture\":STAMP_PATH,\"pos\":Vector2(1530,1196)/Vector2(3072,2048),\"render_size_px\":Vector2(958.5997425997426,368),\"centered\":true,\"sort_by_feet\":false,\"z_index\":-998,\"blocking\":false,\"modulate\":Color(1,1,1,.38)}\n\tif var_to_bytes(entries[0])!=var_to_bytes(expected_before): return false\n\tvar expected_after: Dictionary=expected_before.duplicate(true)\n\texpected_after.pos=Vector2(2197,1486)/Vector2(3072,2048)\n\texpected_after.render_size_px=Vector2(2024,777)*(580.0/2024.0)\n\treturn var_to_bytes(entry)==var_to_bytes(expected_after)\n\nfunc _spawn_scene_objects(scene_objects: Array, progressive: bool = false) -> void:\n"
+		},
+		{
+			"old": "\t\tif _district_session!=null and not (_finish25i_gate_texture_matches(d,texture) if _finish25i!=null and gate_object else (_finish25i.texture_matches(String(texture_path),texture) if _finish25i!=null else _district_session.texture_matches(String(texture_path),texture))):\n",
+			"new": "\t\tif _district_session!=null and not (_finish25i_gate_texture_matches(d,texture) if _finish25i!=null and gate_object else (_finish25i_market_ground_texture_matches(d,texture) if _finish25i!=null and _current_scene.scene_id==&\"ch4_s3_luoyang_market\" and d.get(\"id\")==\"market_ground_ae_cross_street_wear_v1\" else (_finish25i.texture_matches(String(texture_path),texture) if _finish25i!=null else _district_session.texture_matches(String(texture_path),texture)))):\n"
+		}
+	],
+	"scope": {
+		"only_scene": "ch4_s3_luoyang_market",
+		"only_id": "market_ground_ae_cross_street_wear_v1",
+		"only_path": "res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png",
+		"source_authority": "repair31_READY03 Market map 1B4DB5E0892A4E27B841B7A576F15F9F6A62077554295064BABA4B068CC4A923; original immutable Ground84856/manifest0D6D/PNG F8F560; original D296 exact whole render suffix expression",
+		"owner": "same finish._owned/revision/WeakField Scene Layout; exact original district instance class Scene sources token; original prepared enabled ground cache and district cache same strong Texture pointer; exact old row then exact source-authored post24e row",
+		"not_allowed": "unknown unregistered texture, different ID/path/row/cache/owner or PNG/geometry; no files or hashes in render helper",
+		"unchanged": "every other path executes previous exact finish texture matcher; Gate bridge/all runtime/physics/Scene/NPC/DP/Router unchanged"
+	}
+}

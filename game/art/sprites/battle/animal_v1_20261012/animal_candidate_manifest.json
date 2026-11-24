@@ -1,0 +1,1300 @@
+{
+  "schema_version": 1,
+  "scope": "ANIMAL_ASSET_CANDIDATE_ONLY_NOT_ENEMYDEF_STATS_OR_RUNTIME_APPROVAL",
+  "runtime_bound": false,
+  "godot_tested": false,
+  "enemy_defs_modified": false,
+  "stats_modified": false,
+  "processor": {
+    "path": "scripts/process_animal_battle_atlas_20261012.py",
+    "sha256": "bbba38464bde45a8ca2f52c21a03aa3b6770d65cd112cb030351f501cddd71e8",
+    "bytes": 8933
+  },
+  "style_reference_only": {
+    "path": "game/art/sprites/battle/standard_v2/wild_wolf/wild_wolf_ready_01.png",
+    "sha256": "f92830a28df2a5cab59620806b13380642c739ebcd0cae4d05067e210fb21063",
+    "bytes": 197648
+  },
+  "independent_qa_report": {
+    "path": "game/build/animal_sprite_independent_qa_20261012/three_species_review_v1.md",
+    "sha256": "0ee48d57b35127f9e3bf99530cd525c3fbb46f8e88fc6be8930faf80223ed27d",
+    "bytes": 4406
+  },
+  "independent_reconstruction": {
+    "path": "game/build/animal_sprite_independent_qa_20261012/three_species_reconstruction_v1.json",
+    "sha256": "887ca684ba4a93da5a19e81c54a6e75ced3d3da076d279bdd98bc6f928f03ea7",
+    "bytes": 13499
+  },
+  "candidate_ready_comparison": {
+    "path": "assets/previews/sprite/animal_battle_20261012/animals_ready_comparison_tiger_bear_eagle_v2.png",
+    "sha256": "7fcde05e99a387010adfe473c7518042db08016dd0bc68709c38767dd610828e",
+    "bytes": 534688
+  },
+  "qa_scope": "552 legacy offline reconstruction checks across dog v1, tiger and bear, plus 296 independent native-alpha eagle v2 checks; tiger, bear and eagle v2 visual candidates accepted; no runtime gameplay approval",
+  "limitations": [
+    "Minor fine fur-edge colour residue retained; not zero-chroma claim",
+    "Animation smoothness, stripe registration, biological accuracy and in-engine combat remain untested",
+    "Dog v1 wrong-facing/pink-paw FAIL, dog v2 wrong-facing FAIL and eagle v1 gutter/final-standing FAIL remain excluded; eagle v2 has separate independent review pins",
+    "Generation metadata records provider/model provenance; not independent provider model verification"
+  ],
+  "animals": [
+    {
+      "species": "tiger",
+      "status": "OFFLINE_CANDIDATE_QA_ACCEPTED_NOT_RUNTIME_BOUND",
+      "raw": {
+        "path": "assets/raw/sprite_sheet/animal_battle_20261012/tiger_battle_atlas_20261012_v1.png",
+        "sha256": "5a3a723dee2c7db7f300e992f99f3cf5faa8b4d68e301cf21734ef2681239d2c",
+        "bytes": 1519974
+      },
+      "generation_metadata": {
+        "path": "assets/raw/sprite_sheet/animal_battle_20261012/tiger_battle_atlas_20261012_v1.meta.json",
+        "sha256": "ea30eda3bd09b48e7e5d565b26196b9867471d6fc729c71cc6737a8a29a7fd15",
+        "bytes": 4790
+      },
+      "generation": {
+        "task_id": "tiger_battle_atlas_20261012_v1",
+        "model": "gpt-image-2",
+        "backend": "alapi",
+        "attempt": 1,
+        "fallback_used": false,
+        "generated_at": "2026-10-12T23:11:22.509668+08:00",
+        "cost": 1.2,
+        "currency": "CNY"
+      },
+      "processing_report": {
+        "path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_processing_report.json",
+        "sha256": "5d585c4582ac3e958bd9d8078c6de3676c67ed818c12b42a28cb599925d56d55",
+        "bytes": 31746
+      },
+      "global_scale": 2.051282051282051,
+      "per_frame_fit": false,
+      "canvas_px": [
+        512,
+        384
+      ],
+      "frame_count": 20,
+      "state_frames": {
+        "ready": [
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_04.png"
+        ],
+        "move": [
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_04.png"
+        ],
+        "attack": [
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_04.png"
+        ],
+        "hit": [
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_04.png"
+        ],
+        "defeat": [
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_04.png"
+        ]
+      },
+      "frames": [
+        {
+          "state": "ready",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_ready_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_01.png",
+          "sha256": "f98f4188eb31436708163a6073c5ac64eadf39c5232e7083392fcaa7cbd2fd72",
+          "bytes": 173992,
+          "rgba_sha256": "cee2efb895784e40594f5fe8b8012c10d83e3207550f762985e35ca70f83176d",
+          "output_content_bbox": [
+            38,
+            111,
+            473,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_ready_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_02.png",
+          "sha256": "99711372865db6fafb19b43f097bb61cff4fd9eba5f63973ae8cb5234153b3a5",
+          "bytes": 167077,
+          "rgba_sha256": "641b5f55f695d22a210662e6cb7788bea12b8f05fc96d2041593ed289c9f99d8",
+          "output_content_bbox": [
+            39,
+            111,
+            472,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_ready_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_03.png",
+          "sha256": "546e2da62bae5c3314ee55f6be048c508eb27c6bbd91405ea55d7e444d043094",
+          "bytes": 167696,
+          "rgba_sha256": "fa4c21b473d8a5189f15c73caf4fcfebf7ee1710b2897178957f70c65498cd36",
+          "output_content_bbox": [
+            38,
+            111,
+            473,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_ready_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_04.png",
+          "sha256": "ba3fcb41150747770de9044b1445d7db9e19a2d6a6f11b050af1c060a721db93",
+          "bytes": 167857,
+          "rgba_sha256": "816eeee708ab94209e8801a7d3f1fcc2f9f710e5157c7bcd0d8361ce9ee959d0",
+          "output_content_bbox": [
+            39,
+            109,
+            472,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_move_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_move_01.png",
+          "sha256": "adc84f536ebcaec94d08c1089c65734d7a1407d4f2f1389bff9eeb1f3d6e56ff",
+          "bytes": 167612,
+          "rgba_sha256": "17afe0ddf757df9c196d04d8d1c3b93f9b5d0961d20ccf59f70b55c7008ebe58",
+          "output_content_bbox": [
+            22,
+            136,
+            490,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_move_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_move_02.png",
+          "sha256": "bc3ed2f8f0da46d8441c2157da5fc897b8c6edc253176fd690ec2a6756f82159",
+          "bytes": 165578,
+          "rgba_sha256": "2afc25746d344163b5faf79ef1bed9dd37655d4734dc714a3e419bce808d870c",
+          "output_content_bbox": [
+            22,
+            142,
+            490,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_move_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_move_03.png",
+          "sha256": "21d6fd46a8b14c91556fbdec17f4eb5cd47622020c6436de8d57b8e0f86ef5eb",
+          "bytes": 164188,
+          "rgba_sha256": "e23b833cc5918430d0fee3c6bff181e6f55d81f4a7596ecf8b9f6a7120c00f57",
+          "output_content_bbox": [
+            24,
+            136,
+            488,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_move_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_move_04.png",
+          "sha256": "25c368ca64a1bbb7d1326eb828585fb372eec16f8d97126ae8c81751e11d5b06",
+          "bytes": 155278,
+          "rgba_sha256": "95b5600c73556f9feedbcb8e72ab89855bbeebd2b995af1b134bdf53f3dff9fb",
+          "output_content_bbox": [
+            31,
+            138,
+            480,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_attack_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_01.png",
+          "sha256": "cd18f654d572c95b83cb39ee1290cb6dda830f00784c3714eaf66b25a145f16b",
+          "bytes": 156682,
+          "rgba_sha256": "99d7f1b1620ac6c5b3f3abcb328bf786b3ce124a166dad1f68491f1df8edcf25",
+          "output_content_bbox": [
+            38,
+            148,
+            473,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_attack_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_02.png",
+          "sha256": "df00addb08eb6c2e7d22ada9c3d7429bd5d6201432dfa6dd54a86dabacd1f018",
+          "bytes": 161791,
+          "rgba_sha256": "b6b85404cb81a8b5f29a3f0e72ed93eaae723fa79e436522e38e9277ca5a7b39",
+          "output_content_bbox": [
+            16,
+            142,
+            496,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_attack_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_03.png",
+          "sha256": "5c35d6da5ece1413bb662e72001ac21134babd56437d0a73d9016f44bd59324a",
+          "bytes": 167370,
+          "rgba_sha256": "86267a5189696577515106747e6574d36cd25d45986f7740444ed57f025e814e",
+          "output_content_bbox": [
+            20,
+            150,
+            492,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_attack_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_04.png",
+          "sha256": "d024b9f6e95087a840a68d4efef58a18700bee7c3046be7791f3b9e0fe2baa8e",
+          "bytes": 156822,
+          "rgba_sha256": "ec266a230f78d55c29505c141b6ddb133d7301f9d1ae3f51351e6a89fe2982b6",
+          "output_content_bbox": [
+            39,
+            146,
+            472,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_hit_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_01.png",
+          "sha256": "05f1528d95e56cf05695a7db775ffbd06a2a7b688fdd5d443d9619116441301a",
+          "bytes": 153219,
+          "rgba_sha256": "e315719b7cca5a53f8591b481026c84216e8fcb99bd05b6d352dcbf001740306",
+          "output_content_bbox": [
+            50,
+            116,
+            462,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_hit_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_02.png",
+          "sha256": "1679eac6ff1704dd9886c8b67816bd1b4e0442d7bf5a6b96f8b6e38d01cbf6ed",
+          "bytes": 155471,
+          "rgba_sha256": "6aa790434eac7fd78c9966b7ec87c43befac88dd6d4e2851102d5183f15a0226",
+          "output_content_bbox": [
+            42,
+            120,
+            469,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_hit_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_03.png",
+          "sha256": "77d7cfef4f0742f204ddbd177ba0f2355748b679a3759ce7b2cb00e4978f8a33",
+          "bytes": 147786,
+          "rgba_sha256": "9d66dc5b589d66fbad9b82f67e85ac2372b2dd630439d55ce46f7254a50a29b4",
+          "output_content_bbox": [
+            45,
+            126,
+            466,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_hit_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_04.png",
+          "sha256": "dc3314446f01facc834aa18e1187cb469bd235515e02ad50c11505767a290a26",
+          "bytes": 147820,
+          "rgba_sha256": "4dc0373eac98199a4cbe349b10cb5699207313953226dbb18664a25365778552",
+          "output_content_bbox": [
+            41,
+            161,
+            470,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_defeat_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_01.png",
+          "sha256": "08659d0c9defd0bc04aeffbe74633973cfe9de71f3f8f6635a116ea451e13f64",
+          "bytes": 147652,
+          "rgba_sha256": "af76493e002f9a392a12bfb1f67b9fe016d0955a003d12d17598615c6ee79cfc",
+          "output_content_bbox": [
+            33,
+            161,
+            478,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_defeat_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_02.png",
+          "sha256": "8801ba70e163402734625fc5ca11804f36dd585386dfd5c94b782716c3c63833",
+          "bytes": 129739,
+          "rgba_sha256": "12e239296da3c671c42b1a32b8ff3f0e6aec87ed2b8ec1253afca6aed34952e6",
+          "output_content_bbox": [
+            29,
+            204,
+            482,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_defeat_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_03.png",
+          "sha256": "5f33296a46ef8d54334435c4e7377f94d24958851f3b810246bdf19cb4285963",
+          "bytes": 112727,
+          "rgba_sha256": "e189fe58169c9252205ade5b8145f413e28518f2ecbb85dfbc13531f172c7d90",
+          "output_content_bbox": [
+            30,
+            233,
+            481,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_defeat_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_04.png",
+          "sha256": "87fd10059cd2b56dc84365e577fba91d77c78df90625621425b5af8d2064bca3",
+          "bytes": 101779,
+          "rgba_sha256": "58a9dba38a1cc44054e78eaaf032af9fa21d1a0953fc0c7e75dba58e9de04fda",
+          "output_content_bbox": [
+            25,
+            249,
+            487,
+            372
+          ],
+          "bottom_margin_px": 12
+        }
+      ]
+    },
+    {
+      "species": "bear",
+      "status": "OFFLINE_CANDIDATE_QA_ACCEPTED_NOT_RUNTIME_BOUND",
+      "raw": {
+        "path": "assets/raw/sprite_sheet/animal_battle_20261012/bear_battle_atlas_20261012_v1.png",
+        "sha256": "adf7eac20849e5793ea60e4dfda5cacc5a97854b8180e1edc7b2608e5d6c12bc",
+        "bytes": 1720617
+      },
+      "generation_metadata": {
+        "path": "assets/raw/sprite_sheet/animal_battle_20261012/bear_battle_atlas_20261012_v1.meta.json",
+        "sha256": "b4db5851cc33fd48a8d0107fc01a622fa92cec3cd87d20efdf8a757805309777",
+        "bytes": 5117
+      },
+      "generation": {
+        "task_id": "bear_battle_atlas_20261012_v1",
+        "model": "gpt-image-2",
+        "backend": "alapi",
+        "attempt": 1,
+        "fallback_used": false,
+        "generated_at": "2026-10-12T23:12:44.136062+08:00",
+        "cost": 1.2,
+        "currency": "CNY"
+      },
+      "processing_report": {
+        "path": "assets/processed/sprite/animal_battle_20261012/bear/bear_processing_report.json",
+        "sha256": "bf4936680d244f06e4837ac28f27768ddfa04bb0075e53f1f91781931642e455",
+        "bytes": 32058
+      },
+      "global_scale": 1.9463087248322148,
+      "per_frame_fit": false,
+      "canvas_px": [
+        512,
+        384
+      ],
+      "frame_count": 20,
+      "state_frames": {
+        "ready": [
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_04.png"
+        ],
+        "move": [
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_04.png"
+        ],
+        "attack": [
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_04.png"
+        ],
+        "hit": [
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_04.png"
+        ],
+        "defeat": [
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_04.png"
+        ]
+      },
+      "frames": [
+        {
+          "state": "ready",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_ready_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_ready_01.png",
+          "sha256": "5d73c64d3f8b90c79848cfe63ddd954d3c0f7d6e6e36ec296edd9e07652953fd",
+          "bytes": 174874,
+          "rgba_sha256": "c517640f3e3c2972439efa67d3633254422fb4c61bdd2cc1c4be25ab2ae67755",
+          "output_content_bbox": [
+            47,
+            84,
+            465,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_ready_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_ready_02.png",
+          "sha256": "68dad548c6769509bc8c01ea6ee232692e58075ab90d51f32d712a28237b2a7a",
+          "bytes": 168708,
+          "rgba_sha256": "2e2b8bdac0208bd2ed7750f67fe555ac09630fce4960e8c1ce8005bb37bdf25b",
+          "output_content_bbox": [
+            62,
+            74,
+            449,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_ready_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_ready_03.png",
+          "sha256": "80377c52df1373a55dc70ef66621a5733b41c86d88b1160cf99a3e690837badb",
+          "bytes": 168087,
+          "rgba_sha256": "916346e1ca189f245c3543df86de3ab499b40614951fa4c81bde4f7234bc904d",
+          "output_content_bbox": [
+            55,
+            80,
+            456,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_ready_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_ready_04.png",
+          "sha256": "23b7d12f0cbce6929cee5a34ad5bea5d4b4d2ba6b49d74e73a10c84c3052ce05",
+          "bytes": 163211,
+          "rgba_sha256": "1022e82ea2bef523cc091a435cc01233c3e88b0b3747f7d882dfb63fe0d3a81a",
+          "output_content_bbox": [
+            58,
+            94,
+            453,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_move_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_move_01.png",
+          "sha256": "cbfddea5da9a03466189cf120f76b3d9a5e87a998a688a1a940f8e48d7cd4036",
+          "bytes": 172749,
+          "rgba_sha256": "baf3f7cba70fcabadd334df94d5a95a406e0d6bc27a11584acd49f8a7162c7df",
+          "output_content_bbox": [
+            37,
+            96,
+            475,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_move_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_move_02.png",
+          "sha256": "d30963254180405c341b0f82f948210a9c343635ae33b603ffe616820e075418",
+          "bytes": 167309,
+          "rgba_sha256": "c2ac33e3415acb24454e36d04ef4ad0cf0dce03e00fbe67bc1f290f91a0a5e4c",
+          "output_content_bbox": [
+            47,
+            94,
+            465,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_move_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_move_03.png",
+          "sha256": "3c09fde96bb24bd4a72f44258e6c7af464a77e847b7c62be092c68e34338bbf6",
+          "bytes": 165792,
+          "rgba_sha256": "d8c8f425da4aeb84652d7f57a73f95119dc206b2dac2b1b98e7b4dd7fd18bc00",
+          "output_content_bbox": [
+            43,
+            100,
+            469,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_move_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_move_04.png",
+          "sha256": "20435e122e51111eb1c8038c0eb94d070c821068540dd7eed2f9d6eb3b9d6ea1",
+          "bytes": 160661,
+          "rgba_sha256": "9d3f45b522cf58ef5c16e8ad21be8d12943d54701549c385568e2ecf78522fdf",
+          "output_content_bbox": [
+            57,
+            100,
+            454,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_attack_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_attack_01.png",
+          "sha256": "72ca6937058b5c486fb22ee090b00e564b170d3ce7dacd8c049ff5bc518f88cb",
+          "bytes": 171153,
+          "rgba_sha256": "3f83ec36b6657fff82f16f489b1b4cb2a4df40566f2e07cb295a8cc955609e82",
+          "output_content_bbox": [
+            47,
+            98,
+            464,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_attack_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_attack_02.png",
+          "sha256": "243fa831d102c295c698072977b7aebdccf45615edefe87a30a17376137324b9",
+          "bytes": 164887,
+          "rgba_sha256": "e0ebf1a8295b68af9a2be92254fa1c0ab55d45c94709fe32c12aaca0fa4e2571",
+          "output_content_bbox": [
+            57,
+            88,
+            454,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_attack_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_attack_03.png",
+          "sha256": "7e10aedd202d8c25f20f9b4b9d71426853ca967bf7de2f969c90312c167d6033",
+          "bytes": 166914,
+          "rgba_sha256": "69703cb98f7b0fe0723c29ada40343f1463aa4e7e97d51a972eaf6e24325e8a8",
+          "output_content_bbox": [
+            34,
+            92,
+            478,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_attack_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_attack_04.png",
+          "sha256": "7696717c9cbe690ad762e306e5586844e5c5a2a6547245013f31946c99d85388",
+          "bytes": 158680,
+          "rgba_sha256": "9b481c3ff90575f1bc9a1f673fcd61327c5d7c35a9c95c932ce0bb94f42f3d16",
+          "output_content_bbox": [
+            70,
+            98,
+            442,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_hit_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_hit_01.png",
+          "sha256": "6d6d2453949fd4d6f6deb374607a0b632b9a580baaa06a01cc99fb7a194286ef",
+          "bytes": 165894,
+          "rgba_sha256": "73309e66fe3fb9072be7c3ebf1781ef92b68fca4c328e7ab29df1e66eb4d332a",
+          "output_content_bbox": [
+            60,
+            80,
+            451,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_hit_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_hit_02.png",
+          "sha256": "7feaeb989c46a2d443a7cfc29262a4778d51f2b9d4a48b0bf73d389781c74bb7",
+          "bytes": 161863,
+          "rgba_sha256": "01a26599b45c07b841d173e8ea8c3745f2ff6231e6a9322a904f3bcd86f43772",
+          "output_content_bbox": [
+            63,
+            80,
+            448,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_hit_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_hit_03.png",
+          "sha256": "001aed4a1bbf6851f0720d048aae05ef526ee2c262536d063ea6ed37f5bdf49a",
+          "bytes": 166036,
+          "rgba_sha256": "a101b1272fc62452c8748df477b1a0eebc2e3ad5d341468dd0964dbbf754102d",
+          "output_content_bbox": [
+            63,
+            90,
+            448,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_hit_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_hit_04.png",
+          "sha256": "843d96acc62f756dbfb92c1486dc17a969b050c63d1e89c52d6dcdef54dd723b",
+          "bytes": 164621,
+          "rgba_sha256": "d8671d3092243bbeeb4780a0e3209035b6747f9ef1a56d7773efd914f5be37a6",
+          "output_content_bbox": [
+            57,
+            90,
+            454,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_defeat_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_defeat_01.png",
+          "sha256": "78001db0da9ad18be8054834001b473370e589d86c96bac392d20a7ec10afcb2",
+          "bytes": 147245,
+          "rgba_sha256": "fa6fc3a37fe0af3ef682dba3a4d9753ab41ebc57815066f37b9ea93164db8bde",
+          "output_content_bbox": [
+            56,
+            148,
+            455,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_defeat_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_defeat_02.png",
+          "sha256": "64139d2b4d6c449b84f07d0ddb18e4fcc1d80db2c00c33342515fc6f9d310a61",
+          "bytes": 135206,
+          "rgba_sha256": "e60b5f3ca18058c96c5fceba92233b7d2b58f2b392c02de5615673c77f7e25c7",
+          "output_content_bbox": [
+            60,
+            166,
+            451,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_defeat_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_defeat_03.png",
+          "sha256": "ac1a7205b770523b06b2d8d0bad205a8dd742847de3e6325c9863f1f3b288b98",
+          "bytes": 126814,
+          "rgba_sha256": "17cd192bcc8cc4fdae6fc90070d878913e28a8461edd78b6c44babf4d6b05f59",
+          "output_content_bbox": [
+            55,
+            181,
+            456,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/bear/bear_defeat_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/bear/bear_defeat_04.png",
+          "sha256": "c3b6c6b11b67519919084cf10a68db68a4f38fda87f8f8dc78795f2717228413",
+          "bytes": 116799,
+          "rgba_sha256": "d758dc5e83bb97ba2959d237f1f7283d4504e5d56f5a91eaad4cb5e6e7d69c47",
+          "output_content_bbox": [
+            40,
+            210,
+            472,
+            372
+          ],
+          "bottom_margin_px": 12
+        }
+      ]
+    },
+    {
+      "species": "eagle",
+      "status": "OFFLINE_CANDIDATE_QA_ACCEPTED_NOT_RUNTIME_BOUND",
+      "source_version": "v2",
+      "input_kind": "ACTUAL_RGBA_NATIVE_ALPHA_ZERO_BACKGROUND_NOT_CHROMA",
+      "chroma_removal_applied": false,
+      "raw": {
+        "path": "assets/raw/sprite_sheet/animal_battle_20261012/eagle_battle_atlas_20261012_v2.png",
+        "sha256": "d5535d8e95d4643b0e22c78c37335b7318f2c212b4ff19e24793eedbc3bf48d6",
+        "bytes": 949130
+      },
+      "generation_metadata": {
+        "path": "assets/raw/sprite_sheet/animal_battle_20261012/eagle_battle_atlas_20261012_v2.meta.json",
+        "sha256": "affbfed45e5dde5023bb1e47b3fed18257417fc3ac66dd8f0a2a5b35efe8d89b",
+        "bytes": 6812
+      },
+      "generation": {
+        "task_id": "eagle_battle_atlas_20261012_v2",
+        "model": "gpt-image-2",
+        "backend": "alapi",
+        "attempt": 1,
+        "fallback_used": false,
+        "generated_at": "2026-10-12T23:37:54.855777+08:00",
+        "cost": 1.2,
+        "currency": "CNY"
+      },
+      "processing_report": {
+        "path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_processing_report.json",
+        "sha256": "b948f52d3b0fce0aa6950555e4468775baab07892d313d45c98a055e50c80f21",
+        "bytes": 38786
+      },
+      "processor": {
+        "path": "scripts/process_animal_native_alpha_atlas_20261012.py",
+        "sha256": "05d347f1cbce755825d1b4db9ba786e7e905c448999ccac73f0b5b192fe1d9f0",
+        "bytes": 10403
+      },
+      "independent_qa_report": {
+        "path": "game/build/animal_sprite_independent_qa_20261012/eagle_v2/review.md",
+        "sha256": "368d3a4f246e6215c0891354ab35b2f28c7071c448e4e400c330b9720196bc41",
+        "bytes": 2673
+      },
+      "independent_reconstruction": {
+        "path": "game/build/animal_sprite_independent_qa_20261012/eagle_reconstruction_v2.json",
+        "sha256": "6110ae9cf3f616d58d134887e5abad745c659a21a5460a3dec4d4ae5a58de3db",
+        "bytes": 5425
+      },
+      "frame_metrics_report": {
+        "path": "game/build/animal_sprite_independent_qa_20261012/eagle_v2/metrics.json",
+        "sha256": "64b8235ab753e236e1df6979dc478a6611667037d1718b5525d5f65eb24e47d1",
+        "bytes": 12812
+      },
+      "visual_review_contact_sheet": {
+        "path": "game/build/animal_sprite_independent_qa_20261012/eagle_v2/contact_sheet.png",
+        "sha256": "8dc740b6ee5accece4e23b4b7f232a35d0043b3c8d30bf50d834302c5fc37844",
+        "bytes": 1824801
+      },
+      "global_scale": 2.0114942528735633,
+      "per_frame_fit": false,
+      "canvas_px": [
+        512,
+        384
+      ],
+      "frame_count": 20,
+      "state_frames": {
+        "ready": [
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_04.png"
+        ],
+        "move": [
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_04.png"
+        ],
+        "attack": [
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_04.png"
+        ],
+        "hit": [
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_04.png"
+        ],
+        "defeat": [
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_01.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_02.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_03.png",
+          "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_04.png"
+        ]
+      },
+      "frames": [
+        {
+          "state": "ready",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_ready_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_01.png",
+          "sha256": "193de5fa0eb4f216f38dfe54d801ca046c326a522240d507005ad6f1004f8cb1",
+          "bytes": 109935,
+          "rgba_sha256": "bb2a6c39de63513eccc54ad71de3f77f4d7a1f027fcc09390ef5af8feb80f5c5",
+          "output_content_bbox": [
+            66,
+            175,
+            446,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_ready_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_02.png",
+          "sha256": "201d0c5b01c68bb90e7ee3b5fe348e0ab409eae73fa506bdf532099987e7f904",
+          "bytes": 141746,
+          "rgba_sha256": "d33e3086faf418a192adda56d12b1bb4b38889a1194222a66d99fa67f608f839",
+          "output_content_bbox": [
+            100,
+            48,
+            412,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_ready_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_03.png",
+          "sha256": "c61ec8f35501031f1bba20fcf8598f533fe8c2614246123f0720f3d3ecee2407",
+          "bytes": 116848,
+          "rgba_sha256": "30804b58ad63f2503cf72dc062c71925921cdcc0a38e1a1a882ad2fa28e06398",
+          "output_content_bbox": [
+            64,
+            131,
+            448,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "ready",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_ready_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_04.png",
+          "sha256": "c3efc4a5ad3986bc9712c953b9c186eed3bd41339c68a46c43b451a154d64112",
+          "bytes": 108520,
+          "rgba_sha256": "504b8aa019df639f8f93ed9978e64e2ff885acd0e48d38dec00860c2336185c7",
+          "output_content_bbox": [
+            77,
+            137,
+            435,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_move_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_move_01.png",
+          "sha256": "031b71adace03915cecc8dbe1f83ad9ee887316dc0e491c7290fd6e0b44e9586",
+          "bytes": 147341,
+          "rgba_sha256": "f8ccc0de0ad4c739b7ba67ea542f1c3167b9f83b0fb5ef7d4fbd237ce6c3472a",
+          "output_content_bbox": [
+            108,
+            22,
+            404,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_move_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_move_02.png",
+          "sha256": "4fef22ee08798b5102be6627c7b65e8b7023202f6f79f9df29fd619deb85f092",
+          "bytes": 111190,
+          "rgba_sha256": "572d78af189d581ad75c87dedf7ece64e757cef49dd9485b6a0211b473cccc6c",
+          "output_content_bbox": [
+            88,
+            129,
+            424,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_move_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_move_03.png",
+          "sha256": "f07e59b92fa684ed3c1f37ce0ed453b069fff769100971a08bdb2d5500128174",
+          "bytes": 115284,
+          "rgba_sha256": "3ea51402471fb53ed586fd80833d2a836734ae06af4f881fdf145ab0d5b8320f",
+          "output_content_bbox": [
+            90,
+            127,
+            422,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "move",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_move_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_move_04.png",
+          "sha256": "e8e004ed50e3113da8d5e0313ad79624a072f1bca95c4372a9000544ea892502",
+          "bytes": 114018,
+          "rgba_sha256": "a6ab1148f47d0c30ab4c80649b31dec05a28ea41dc16fece2b1a8397fc80dc67",
+          "output_content_bbox": [
+            97,
+            108,
+            415,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_attack_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_01.png",
+          "sha256": "54e5d1a0ab4799a0dccecf054e176b0a5f05b62e72acc69f11df8d7cf9641174",
+          "bytes": 111545,
+          "rgba_sha256": "faf9d850ed4eca16104b89b97ec7b5bc29df212db9bc76913dbb5fa9eb5a9e30",
+          "output_content_bbox": [
+            112,
+            111,
+            400,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_attack_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_02.png",
+          "sha256": "b608c5d9bc1595f25c394d916c7dd92adc938de215e1b8d479e1a6082b568b5b",
+          "bytes": 108692,
+          "rgba_sha256": "908ab95cdba1a6e866b9335563f91f170076c648c30d9d1ff642af941d36314d",
+          "output_content_bbox": [
+            105,
+            82,
+            407,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_attack_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_03.png",
+          "sha256": "ca41189cdc521986dfe65512fb75cad06910aaf4b7a55648463ed2737c360622",
+          "bytes": 151961,
+          "rgba_sha256": "e95f82376d37690d6740d34789a61cd28eb17878eb10243d4a856db69a9438ff",
+          "output_content_bbox": [
+            71,
+            76,
+            441,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "attack",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_attack_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_04.png",
+          "sha256": "b60de8108525135989b388cf62e9253f98dbc0fbd84928f10c3845a5e59e3f69",
+          "bytes": 144133,
+          "rgba_sha256": "e7a77454af7a7f40f251f0fdc23f532197008371cfa23967c30a6712269ca428",
+          "output_content_bbox": [
+            63,
+            34,
+            449,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_hit_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_01.png",
+          "sha256": "2b990c925478985a014d4607e2e774c73ea138d5828c9c2ccd22abfec8334ad7",
+          "bytes": 132045,
+          "rgba_sha256": "3d189a402679a0137985dceafa05be387848deab74e373649441b5a9634c228d",
+          "output_content_bbox": [
+            98,
+            82,
+            414,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_hit_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_02.png",
+          "sha256": "647e71e92c7663f1286025de04e8381832cfdba9da2339a1403ded82abf5e672",
+          "bytes": 133135,
+          "rgba_sha256": "4ab5d95e52372c89a2a48eca4bf2f0dfca107437698006d1210a600cf713987c",
+          "output_content_bbox": [
+            86,
+            56,
+            426,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_hit_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_03.png",
+          "sha256": "89f3f97382237fd1ce4a6c1f781f4fa2fb279cba43f0fb399967d581d42a79b1",
+          "bytes": 153309,
+          "rgba_sha256": "c2433b69cfaaa6a5e65cbf5e9b0867ab554eec66f25bc765544ac7fc49dad186",
+          "output_content_bbox": [
+            75,
+            34,
+            437,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "hit",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_hit_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_04.png",
+          "sha256": "f45965140a5c2001b86bce321534edcb1e4cf73308e95f66ceedf7fd4cc0a7c3",
+          "bytes": 103810,
+          "rgba_sha256": "d8ccf3092c52d2e3de678d4fb708a27ffd83c938b8085711a1990f66917e82e9",
+          "output_content_bbox": [
+            79,
+            171,
+            433,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 1,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_01.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_defeat_01.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_01.png",
+          "sha256": "86d483b64416b918455879c0eec03a06917f4a07ea5724654790ca717e55fca2",
+          "bytes": 117071,
+          "rgba_sha256": "6bef607554186ff881580c4aaa4f37997e0410d40c649cc779941f3ae3973754",
+          "output_content_bbox": [
+            95,
+            106,
+            417,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 2,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_02.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_defeat_02.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_02.png",
+          "sha256": "40c2e4b8111261eb4d3255cff67d2eab72c7397190b489fdde4160ef314c6a54",
+          "bytes": 121480,
+          "rgba_sha256": "acd36858954d70822cfe8d9752f05eb56777fdf7afb061376d2ce10cf7d275e3",
+          "output_content_bbox": [
+            104,
+            88,
+            408,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 3,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_03.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_defeat_03.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_03.png",
+          "sha256": "44651a66f8b31309a50129da7db3c2950f984c1642d94059adbcfadf34679a33",
+          "bytes": 99223,
+          "rgba_sha256": "1b7a2d36fabca5c8d2319a658a39b41d35ccc30c542c6b0cd8529a3b987a062c",
+          "output_content_bbox": [
+            63,
+            207,
+            449,
+            372
+          ],
+          "bottom_margin_px": 12
+        },
+        {
+          "state": "defeat",
+          "index": 4,
+          "resource_path": "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_04.png",
+          "source_path": "assets/processed/sprite/animal_battle_20261012/eagle_v2/eagle_defeat_04.png",
+          "path": "game/art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_04.png",
+          "sha256": "a4593d5527418d71530dbf13a9bda5890476fbe0e984b275067a3dff2737390f",
+          "bytes": 79469,
+          "rgba_sha256": "392cd9a429f96dc0cf6dfda675905089d43928bb3d1c5b7535679b4027a6f971",
+          "output_content_bbox": [
+            74,
+            239,
+            438,
+            372
+          ],
+          "bottom_margin_px": 12
+        }
+      ]
+    }
+  ]
+}

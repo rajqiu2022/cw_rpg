@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch2_yue_attackers_method"
+display_name = "悦无姮对伏击者的判断"
+speaker_npc_id = &"npc_yue_wuheng"
+statement = "伏击者佩戴烈云盟令牌，却不用烈云盟惯用的合击步法，毒烟也更像江南水路上的私制配方。"
+chapter = 2
+initial_credibility = 75
+related_evidence_ids = Array[StringName]([&"ev_ch2_fresh_lieyun_token", &"ev_ch2_forgery_ledger"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch2_apothecary_bound_buyer"])

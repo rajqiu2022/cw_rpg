@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "楚泠"
+text = "谷雨观每逢满月便有琴声。若你真想查，先在观外听完整支曲子，别惊动里面的人。"
+accept_quest = &"q_ch2_side_06_moon_guqin"
+set_flags = Array[Dictionary]([{"key": "guqin_investigation_started", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch2_moon_guqin_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

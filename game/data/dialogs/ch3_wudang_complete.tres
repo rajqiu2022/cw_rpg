@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "玄真道长"
+text = "你看得不错。凶手倒踏旧印，又从另一方向补了掌痕。那套身法是模仿，不是铁证。"
+add_evidence = Array[StringName]([&"ev_ch3_reversed_footprints"])
+add_testimonies = Array[StringName]([&"ts_ch3_wudang_archive_revision"])
+on_end = "next:n2"
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "先记下矛盾，不替证据急着认主。武当剑、掌同源于柔劲，我愿两路都从根基学起。"
+verify_evidence = Array[StringName]([&"ev_ch3_reversed_footprints"])
+on_end = "next:finish"
+[sub_resource type="Resource" id="finish"]
+script = ExtResource("2_dnode")
+node_id = &"finish"
+speaker = "玄真道长"
+text = "可以。绕指柔剑、绵掌与揽雀尾的入门谱都交给你。兼修并不冲突，只是每一重都要另耗历练，莫贪多而不求精。"
+set_flags = Array[Dictionary]([{"key": "ch3_wudang_complete", "value": true}, {"key": "joined_faction", "value": true}])
+complete_quest = &"q_ch3_wudang_investigate"
+on_end = "scene:ch3_s1_wulin_assembly"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_wudang_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2"), SubResource("finish")])

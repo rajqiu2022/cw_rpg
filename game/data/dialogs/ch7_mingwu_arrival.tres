@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "茶镇仍在晒茶、过秤、封篓，门面比一路所见都整齐。唯独信使亭前没有一张待发的路引。"
+on_end = "next:broker"
+
+[sub_resource type="Resource" id="broker"]
+script = ExtResource("2")
+node_id = &"broker"
+speaker = "茶镇经手人"
+text = "客人若为买茶，镇上处处可看；若问十八年前的换车簿，须等外院核验身份。近日假文书太多。"
+voice_emotion = "normal"
+on_end = "next:resolve"
+
+[sub_resource type="Resource" id="resolve"]
+script = ExtResource("2")
+node_id = &"resolve"
+speaker = "冷孤云"
+text = "他没有否认换车簿存在，只先把真假文书摆在前面。这里收紧的东西，正是下一步要找的。"
+set_flags = Array[Dictionary]([{"key":"ch7_mingwu_entry_seen", "value":true}, {"key":"ch7_first_route_arrived", "value":true}])
+accept_quest = &"q_ch7_main_02_compare_two_fronts"
+complete_quest = &"q_ch7_main_01_choose_first_route"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_mingwu_arrival"
+required_story_flag = &"ch7_dual_route_chosen"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("broker"), SubResource("resolve")])

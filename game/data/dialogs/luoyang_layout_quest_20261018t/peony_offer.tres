@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="offer"]
+script = ExtResource("2")
+node_id = &"offer"
+speaker = "诗会执事"
+text = "洛阳人爱牡丹，今日不比辞藻，只续一句：花开动城，花落又当如何？愿意入会作答么？"
+accept_quest = &"q_ch4_side_03_peony_poetry"
+on_end = "next:accepted"
+[sub_resource type="Resource" id="accepted"]
+script = ExtResource("2")
+node_id = &"accepted"
+speaker = "冷孤云"
+text = "容我想定一句，再来正式作答。"
+set_flags = Array[Dictionary]([{"key":"peony_poetry_started_20261018t", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"luoyang_layout_quest_20261018t/peony_offer"
+entry_node_id = &"offer"
+nodes = Array[Resource]([SubResource("offer"), SubResource("accepted")])

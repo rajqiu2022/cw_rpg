@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="撤离总录"
+text="按先前约定：洛阳公差接管伤员与平民，封令原卷、抄录副本和交接名册分别封入三匣，由三方同时落印。"
+on_end="next:done"
+[sub_resource type="Resource" id="done"]
+script=ExtResource("2")
+node_id=&"done"
+speaker="冷孤云"
+text="官路能追责，也必须防止单方改卷。三匣不同车、不同人押送，抵城后公开核验封签。"
+set_flags=Array[Dictionary]([{"key":"ch8_evacuation_route_luoyang","value":true},{"key":"ch8_final_evacuation_complete","value":true},{"key":"ch8_rear_sanctum_unlocked","value":true}])
+complete_quest=&"q_ch8_main_09_final_evacuation"
+accept_quest=&"q_ch8_main_10_xueying_resolution"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_final_evacuation_luoyang"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("done")])

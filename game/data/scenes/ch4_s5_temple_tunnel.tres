@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch4_s5_temple_tunnel_layout_v2.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1536, 1024)
+[resource]
+script = ExtResource("1")
+scene_id = &"ch4_s5_temple_tunnel"
+display_name = "古寺·地下运货道"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_cave_ominous_v4.wav"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+player_spawn = Vector2(0.50, 0.84)
+animated_props = Array[Dictionary]([{"id":"ch4_tunnel_flame_left","type":"flame","pos":Vector2(0.325,0.565),"size":Vector2(0.015,0.038),"speed":0.82,"z_index":22},{"id":"ch4_tunnel_flame_right","type":"flame","pos":Vector2(0.675,0.565),"size":Vector2(0.015,0.038),"speed":0.90,"z_index":22},{"id":"ch4_tunnel_flame_center","type":"flame","pos":Vector2(0.584,0.700),"size":Vector2(0.018,0.045),"speed":1.02,"z_index":23},{"id":"ch4_tunnel_low_mist","type":"mist_drift","pos":Vector2(0.50,0.67),"size":Vector2(0.66,0.13),"speed":0.36,"opacity":0.08,"count":3,"color":"#aeb3ad","z_index":12}])
+npcs = Array[Dictionary]([{"npc_id":"fake_liuyun_assassin_tunnel", "npc_name":"伪烈云盟首领", "pos":Vector2(0.50,0.36), "sprite_path":"res://art/sprites/battle/enemy_expansion_20261112/fake_liuyun_assassin/field_idle.tres", "portrait_path":"res://art/sprites/battle/enemy_expansion_20261112/fake_liuyun_assassin/ready_01.tres", "dialog_id":"ch4_tunnel_boss", "hide_flag":"defeated_fake_liuyun_assassin", "scale":0.54, "conversation_base_facing":"left"}])
+hotspots = Array[Dictionary]([
+	{"label":"清点印版与账册", "pos_x":0.50, "pos_y":0.36, "action":"dialog:ch4_tunnel_result", "require_flag":"defeated_fake_liuyun_assassin", "hide_flag":"chapter4_complete"},
+	{"label":"起出水则碑下旧刀", "pos_x":0.30, "pos_y":0.56, "action":"dialog:ch4_hanjia_blade_recover", "require_flag":"hanjia_blade_search_started", "hide_flag":"hanjia_blade_recovered"},
+	{"label":"在石案重排三卷残页", "pos_x":0.72, "pos_y":0.54, "action":"dialog:ch4_canglong_assemble", "require_flag":"canglong_pages_complete", "hide_flag":"canglong_manual_assembled"},
+	{"label":"返回古寺正殿", "pos_x":0.50, "pos_y":0.86, "action":"scene:ch4_s4_ancient_temple"}
+])
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids": [&"luoyang_thug"], "weight": 45.0},
+	{"enemy_ids": [&"temple_ambusher"], "weight": 20.0},
+	{"enemy_ids": [&"luoyang_thug", &"temple_ambusher"], "weight": 22.0},
+	{"enemy_ids": [&"luoyang_thug", &"temple_ambusher", &"luoyang_thug"], "weight": 8.0},
+	{"enemy_ids": [&"wild_elite_temple"], "weight": 5.0}
+])
+encounter_allow_full_group_for_solo = true
+encounter_step_distance = 650.0
+encounter_chance = 0.14

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "夹板里还有两枚横刻木签，斜放的签槽却空了。盖上的粮袋数与底账一袋不差。少的是什么？"
+choices = Array[Dictionary]([{"text":"少的是一袋粮。","next":"retry"},{"text":"少的是临时改道签。","next":"solved"}])
+
+[sub_resource type="Resource" id="retry"]
+script = ExtResource("2")
+node_id = &"retry"
+speaker = "冷孤云"
+text = "粮袋数没有少。再想想驿牌背面的横刻和斜刻。"
+on_end = "next:start"
+
+[sub_resource type="Resource" id="solved"]
+script = ExtResource("2")
+node_id = &"solved"
+speaker = "冷孤云"
+text = "交马有据，唯独改道不留底。这是当夜另换路线的旁证，却还不能断定是谁抽走了签。"
+set_flags = Array[Dictionary]([{"key":"ch6_courier_tally_resolved","value":true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_courier_tally_crate"
+nodes = Array[Resource]([SubResource("start"),SubResource("retry"),SubResource("solved")])

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"qinghe_returning_breath"
+display_name = "回春引"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_healing_v1.png"
+description = "为一名队友恢复内劲四倍加 24 点气血，同时拔去普通毒与烈毒，清除累积内伤，打通闭塞的气脉。气血已满也可施用。"
+active_effect_description = "为一名队友回血、解毒、清内伤并解封脉。"
+kind = 1
+target = 2
+delivery = 2
+mp_cost = 14
+quality = 2
+fixed_damage = 0
+attack_scaling = 0
+effect_value = 24
+animation_id = &"qinghe_returning_breath"
+required_weapon_type = &""
+school = "linxi"
+is_internal_art = true
+passive_inner_pool_bonus = 1
+active_effect_type = &"heal"
+equip_weapon_categories = Array[StringName]([&"all"])
+equip_damage_scaling_bonus = 3
+equip_damage_scaling_growth = 1
+equipped_effect_description = "回息绵长，小幅增强全系招式。"

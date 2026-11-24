@@ -7,6 +7,14 @@ extends Resource
 @export var dialog_id: StringName = ""
 @export var entry_node_id: StringName = &"start"
 @export var nodes: Array[DialogNode] = []
+## Story access is independent from geographical access. These checks also
+## apply to direct NPC interactions and play_at, not only scene introductions.
+@export var required_story_flag: StringName = &""
+@export var required_completed_quest: StringName = &""
+@export var fallback_dialog_id: StringName = &""
+@export var blocked_story_flag: StringName = &""
+## One-time caches must remain available when the backpack cannot hold them.
+@export var required_free_inventory_slots: int = 0
 
 
 func find_node_by_id(node_id: StringName) -> DialogNode:

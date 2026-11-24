@@ -1,7 +1,12 @@
 extends Control
+const EQUIPMENT_STATS := preload("res://scripts/ui/equipment_stat_presentation.gd")
 ## 背包面板
 signal closed
 signal action_committed(action_type: StringName)
+
+const FORMAL_CONFIRM_SCENE := preload("res://scenes/ui/formal_confirm_dialog.tscn")
+const FORMAL_CHOICE_SCENE := preload("res://scenes/ui/formal_choice_menu.tscn")
+const READING_PANEL_SCENE := preload("res://scenes/ui/reading_panel.tscn")
 
 # -- 格子贴图 --
 const CELL_DEFAULT := preload("res://art/ui/inventory/cells/cell_default.png")
@@ -10,13 +15,15 @@ const CELL_EMPTY := preload("res://art/ui/inventory/cells/cell_empty.png")
 
 # -- 回退图标 --
 const ICON_WEAPON := preload("res://art/ui/inventory/icons/icon_sword.png")
+const ICON_HEAD := preload("res://art/ui/inventory/icons/icon_iron_helmet.png")
 const ICON_ARMOR := preload("res://art/ui/inventory/icons/icon_armor.png")
+const ICON_HANDS := preload("res://art/ui/inventory/icons/icon_leather_bracers.png")
 const ICON_POTION := preload("res://art/ui/inventory/icons/icon_potion.png")
 const ICON_ORE := preload("res://art/ui/inventory/icons/icon_ore.png")
 const ICON_SCROLL := preload("res://art/ui/inventory/icons/icon_scroll.png")
 const ICON_KEY := preload("res://art/ui/inventory/icons/icon_key.png")
 const ICON_RING := preload("res://art/ui/inventory/icons/icon_ring.png")
-const ICON_SHOES := preload("res://art/ui/inventory/icons/icon_shoes.png")
+const ICON_SHOES := preload("res://art/ui/inventory/icons/icon_deer_leather_boots.png")
 
 # -- 场景节点 --
 @onready var _close_btn: TextureButton = %CloseBtn
@@ -43,7 +50,7 @@ const TAB_TEX := {
 # -- 品质颜色 --
 const QUALITY_COLORS := {
 	Item.Quality.COMMON: "#c0c8d0", Item.Quality.UNCOMMON: "#1eff00",
-	Item.Quality.RARE: "#0070dd", Item.Quality.EPIC: "#a335ee", Item.Quality.LEGENDARY: "#ff8000",
+	Item.Quality.RARE: "#4d8fff", Item.Quality.EPIC: "#b56cff", Item.Quality.LEGENDARY: "#ff9b38",
 }
 const QUALITY_NAMES := {
 	Item.Quality.COMMON: "凡品", Item.Quality.UNCOMMON: "优质",
@@ -53,15 +60,28 @@ const QUALITY_NAMES := {
 var _current_filter: String = "all"
 var _selected_item: Item = null
 var _selected_count: int = 0
-var _context_menu: PopupMenu = null
+var _selected_instance_id: String = ""
+var _context_menu: FormalChoiceMenu = null
 var _context_slot_index: int = -1
 var _highlighted_cell: TextureRect = null
 var _battle_mode: bool = false
+var _confirm_dialog: FormalConfirmDialog
+var _pending_confirm_action: StringName = &""
+var _pending_confirm_item_id: StringName = &""
+var _pending_confirm_instance_id := ""
+var _reading_panel: ReadingPanel
 
 
 func _ready() -> void:
 	visible = false
 	_setup_button_textures()
+	_confirm_dialog = FORMAL_CONFIRM_SCENE.instantiate() as FormalConfirmDialog
+	_confirm_dialog.name = "InventoryConfirmation"
+	_confirm_dialog.confirmed.connect(_on_confirmation_confirmed)
+	_confirm_dialog.cancelled.connect(_clear_pending_confirmation)
+	add_child(_confirm_dialog)
+	_reading_panel = READING_PANEL_SCENE.instantiate() as ReadingPanel
+	add_child(_reading_panel)
 
 	_close_btn.pressed.connect(close)
 	_setup_tabs()
@@ -71,6 +91,7 @@ func _ready() -> void:
 	_btn_drop.pressed.connect(func(): _on_drop_selected())
 	Inventory.slots_changed.connect(_refresh)
 	GameState.player_changed.connect(_refresh)
+	EventBus.item_read_requested.connect(_on_item_read_requested)
 	_refresh()
 
 
@@ -104,6 +125,12 @@ func set_battle_mode(enabled: bool) -> void:
 
 
 func close() -> void:
+	if _reading_panel != null and _reading_panel.is_open():
+		_reading_panel.close_reader()
+		return
+	if _confirm_dialog != null:
+		_confirm_dialog.close_dialog()
+	_clear_pending_confirmation()
 	visible = false
 
 	emit_signal("closed")
@@ -111,10 +138,19 @@ func close() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_cancel"):
+		if _reading_panel != null and _reading_panel.is_open():
+			_reading_panel.close_reader()
+			get_viewport().set_input_as_handled()
+			return
+		if _confirm_dialog != null and _confirm_dialog.is_open():
+			return
+		if _context_menu != null and _context_menu.is_open():
+			return
 		close()
 		get_viewport().set_input_as_handled()
-	if visible and event is InputEventKey and event.keycode == KEY_E and event.pressed:
-		# E key reserved for equipment view
+	if visible and event is InputEventKey and event.keycode == KEY_C and event.pressed:
+		# C switches from the legacy inventory to the combined character view.
+		EventBus.ui_requested.emit(&"equipment")
 		get_viewport().set_input_as_handled()
 
 
@@ -188,7 +224,7 @@ func _refresh() -> void:
 
 	for i in shown.size():
 		var entry: Dictionary = shown[i]
-		_slot_grid.add_child(_make_slot_cell(entry["item"], entry["count"], i))
+		_slot_grid.add_child(_make_slot_cell(entry["item"], entry["count"], String(entry.get("instance_id", "")), i))
 
 	var total_slots: int = 24
 	for i in range(shown.size(), total_slots):
@@ -196,9 +232,9 @@ func _refresh() -> void:
 
 	if _selected_item == null or not _passes_filter(_selected_item):
 		var first: Dictionary = shown[0]
-		_show_detail(first["item"], first["count"])
+		_show_detail(first["item"], first["count"], String(first.get("instance_id", "")))
 	else:
-		_show_detail(_selected_item, _selected_count)
+		_show_detail(_selected_item, _selected_count, _selected_instance_id)
 
 
 func _filtered_slots() -> Array[Dictionary]:
@@ -220,7 +256,7 @@ func _passes_filter(item: Item) -> bool:
 	return true
 
 
-func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
+func _make_slot_cell(item: Item, count: int, instance_id: String, slot_index: int) -> Control:
 	var cell: TextureRect = TextureRect.new()
 	cell.custom_minimum_size = Vector2(85, 83)
 	cell.texture = CELL_DEFAULT
@@ -228,6 +264,7 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 	cell.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	cell.mouse_filter = Control.MOUSE_FILTER_STOP
 	cell.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	_add_quality_frame(cell, item)
 
 	var icon_tex: Texture2D = _resolve_icon(item)
 	if icon_tex != null:
@@ -241,14 +278,15 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 		cell.add_child(icon)
 
 	var name_lbl: Label = Label.new()
-	name_lbl.text = item.display_name
+	name_lbl.text = _compact_slot_name(item)
 	name_lbl.position = Vector2(2, 48)
 	name_lbl.size = Vector2(81, 32)
 	name_lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	name_lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	name_lbl.clip_text = true
-	name_lbl.add_theme_font_size_override("font_size", 12)
-	name_lbl.add_theme_color_override("font_color", Color(0.8, 0.88, 0.94))
+	name_lbl.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+	name_lbl.add_theme_font_size_override("font_size", 11 if item.display_name.length() > 7 else 12)
+	name_lbl.add_theme_color_override("font_color", Color.from_string(String(QUALITY_COLORS.get(item.quality, "#c0c8d0")), Color(0.8, 0.88, 0.94)))
 	cell.add_child(name_lbl)
 
 	if item.stackable and count > 1:
@@ -261,15 +299,23 @@ func _make_slot_cell(item: Item, count: int, slot_index: int) -> Control:
 
 	cell.set_meta("slot_index", slot_index)
 	# Equipped indicator
-	if item is Equipment and Inventory.get_equipped_id((item as Equipment).slot) == item.item_id:
+	if item is Equipment and Inventory.is_instance_equipped(instance_id):
 		var check := Label.new()
 		check.text = "✓"
 		check.position = Vector2(56, 48)
 		check.add_theme_font_size_override("font_size", 30)
 		check.add_theme_color_override("font_color", Color(1, 0.2, 0.2))
 		cell.add_child(check)
-	cell.gui_input.connect(func(ev: InputEvent): _on_cell_input(ev, item, count, slot_index, cell))
+	cell.gui_input.connect(func(ev: InputEvent): _on_cell_input(ev, item, count, instance_id, slot_index, cell))
 	return cell
+
+
+func _compact_slot_name(item: Item) -> String:
+	if item != null and item.is_readable():
+		# Keep the full manuscript title in the detail/reading panels; inventory
+		# cells use a compact catalogue form so neighbouring slots never overlap.
+		return item.display_name.replace("《", "").replace("》", "·")
+	return item.display_name if item != null else ""
 
 
 func _resolve_icon(item: Item) -> Texture2D:
@@ -278,7 +324,9 @@ func _resolve_icon(item: Item) -> Texture2D:
 	if item is Equipment:
 		match (item as Equipment).slot:
 			Equipment.Slot.WEAPON: return ICON_WEAPON
-			Equipment.Slot.HEAD, Equipment.Slot.ARMOR, Equipment.Slot.HANDS: return ICON_ARMOR
+			Equipment.Slot.HEAD: return ICON_HEAD
+			Equipment.Slot.ARMOR: return ICON_ARMOR
+			Equipment.Slot.HANDS: return ICON_HANDS
 			Equipment.Slot.SHOES: return ICON_SHOES
 			Equipment.Slot.ACCESSORY: return ICON_RING
 	match item.category:
@@ -286,6 +334,26 @@ func _resolve_icon(item: Item) -> Texture2D:
 		Item.Category.MATERIAL: return ICON_ORE
 		Item.Category.KEY_ITEM: return ICON_KEY
 	return ICON_SCROLL
+
+
+func _add_quality_frame(cell: Control, item: Item) -> void:
+	if item == null:
+		return
+	var frame := Panel.new()
+	frame.name = "QualityFrame"
+	frame.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	frame.offset_left = 2.0
+	frame.offset_top = 2.0
+	frame.offset_right = -2.0
+	frame.offset_bottom = -2.0
+	frame.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var border := StyleBoxFlat.new()
+	border.bg_color = Color.TRANSPARENT
+	border.border_color = Color.from_string(String(QUALITY_COLORS.get(item.quality, "#c0c8d0")), Color.WHITE)
+	border.set_border_width_all(3 if item.quality == Item.Quality.LEGENDARY else (2 if item.quality >= Item.Quality.UNCOMMON else 1))
+	border.set_corner_radius_all(4)
+	frame.add_theme_stylebox_override("panel", border)
+	cell.add_child(frame)
 
 
 func _make_empty_cell() -> Control:
@@ -298,18 +366,20 @@ func _make_empty_cell() -> Control:
 	return cell
 
 
-func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cell: TextureRect) -> void:
+func _on_cell_input(ev: InputEvent, item: Item, count: int, instance_id: String, slot_index: int, cell: TextureRect) -> void:
 	if ev is InputEventMouseButton:
 		var mb := ev as InputEventMouseButton
 		if mb.button_index == MOUSE_BUTTON_LEFT and mb.pressed:
 			_highlight_cell(cell)
-			_show_detail(item, count)
+			_show_detail(item, count, instance_id)
+			if mb.double_click and item.is_readable():
+				_open_reading(item)
 		elif mb.button_index == MOUSE_BUTTON_RIGHT and mb.pressed:
 			if item is Equipment:
-				if Inventory.get_equipped_id((item as Equipment).slot) == item.item_id:
+				if Inventory.is_instance_equipped(instance_id):
 					Inventory.unequip((item as Equipment).slot)
 				else:
-					Inventory.equip(item.item_id)
+					Inventory.equip_instance(instance_id)
 				# If not already in equipment mode, switch to it
 				if _current_filter != "equipment":
 					EventBus.ui_requested.emit(&"equipment")
@@ -323,27 +393,31 @@ func _on_cell_input(ev: InputEvent, item: Item, count: int, slot_index: int, cel
 					var old_max_hp: int = p.max_hp
 					var old_max_mp: int = p.max_mp
 					if Inventory.use_item(item.item_id):
-						_show_tip("[color=#a335ee]生命上限 +%d[/color] [color=#a335ee]内力上限 +%d[/color]" % [p.max_hp - old_max_hp, p.max_mp - old_max_mp], true)
+						var max_lines: Array[String] = []
+						if p.max_hp > old_max_hp:
+							max_lines.append(_effect_tip_line("生命值最大值", p.max_hp - old_max_hp))
+						if p.max_mp > old_max_mp:
+							max_lines.append(_effect_tip_line("内力值最大值", p.max_mp - old_max_mp))
+						_show_tip("\n".join(max_lines), true)
 						_refresh()
 				elif item.heal_hp > 0 and p.hp >= p.max_hp and item.heal_mp == 0:
-					_show_tip("[color=#ff6b6b]HP 已满[/color]", true)
+					_show_tip("[color=#ff6b6b]生命已满[/color]", true)
 				elif item.heal_mp > 0 and p.mp >= p.max_mp and item.heal_hp == 0:
-					_show_tip("[color=#64b5f6]MP 已满[/color]", true)
+					_show_tip("[color=#64b5f6]内力已满[/color]", true)
 				elif item.heal_hp > 0 and item.heal_mp > 0 and p.hp >= p.max_hp and p.mp >= p.max_mp:
-					_show_tip("[color=#ff6b6b]HP[/color] [color=#64b5f6]MP[/color] 已满", true)
+					_show_tip("[color=#ff6b6b]生命[/color]与[color=#64b5f6]内力[/color]均已满", true)
 				else:
-					var old_hp := p.hp
-					var old_mp := p.mp
+					var old_hp: int = p.hp
+					var old_mp: int = p.mp
 					if Inventory.use_item(item.item_id):
 						var parts: Array[String] = []
-						if p.hp > old_hp: parts.append("[color=#ff6b6b]HP +%d[/color]" % (p.hp - old_hp))
-						if p.mp > old_mp: parts.append("[color=#64b5f6]MP +%d[/color]" % (p.mp - old_mp))
-						if not parts.is_empty(): _show_tip(" ".join(parts), true)
+						if p.hp > old_hp: parts.append(_effect_tip_line("生命值", p.hp - old_hp))
+						if p.mp > old_mp: parts.append(_effect_tip_line("内力值", p.mp - old_mp))
+						if not parts.is_empty(): _show_tip("\n".join(parts), true)
 						_refresh()
 			else:
 				_context_slot_index = slot_index
-				_context_menu.position = Vector2i(int(get_global_mouse_position().x), int(get_global_mouse_position().y))
-				_context_menu.popup()
+				_show_context_menu(item)
 
 
 func _highlight_cell(cell: TextureRect) -> void:
@@ -400,14 +474,22 @@ func _show_tip(text: String, use_bbcode: bool = false) -> void:
 	tween.parallel().tween_property(panel, "modulate", Color(1,1,1,0), 1.2)
 	tween.tween_callback(panel.queue_free)
 
+
+func _effect_tip_line(label_text: String, amount: int) -> String:
+	return "[color=#e3a64a]%s[/color] [color=#a970ff]+ %d[/color]" % [label_text, amount]
+
 func _on_use_selected() -> void:
-	if _selected_item != null and _selected_item.category == Item.Category.CONSUMABLE:
+	if _selected_item == null:
+		return
+	if _selected_item.is_readable():
+		_open_reading(_selected_item)
+	elif _selected_item.category == Item.Category.CONSUMABLE:
 		_on_use(_selected_item.item_id)
 
 
 func _on_equip_selected() -> void:
 	if _selected_item != null and _selected_item is Equipment:
-		_on_equip(_selected_item.item_id)
+		_on_equip(_selected_item.item_id, _selected_instance_id)
 
 
 
@@ -417,14 +499,13 @@ func _on_equip_selected() -> void:
 
 func _on_drop_selected() -> void:
 	if _selected_item != null:
-		Inventory.remove_item(_selected_item.item_id, 1)
-		_selected_item = null
-		_refresh()
+		_request_drop(_selected_item, _selected_instance_id)
 
 
-func _show_detail(item: Item, count: int) -> void:
+func _show_detail(item: Item, count: int, instance_id: String = "") -> void:
 	_selected_item = item
 	_selected_count = count
+	_selected_instance_id = instance_id
 	var icon_tex: Texture2D = _resolve_icon(item)
 	if _detail_icon != null:
 		_detail_icon.texture = icon_tex
@@ -434,9 +515,14 @@ func _show_detail(item: Item, count: int) -> void:
 	var qn: String = QUALITY_NAMES.get(item.quality, "")
 
 	var lines: Array[String] = []
-	lines.append("[font_size=21][color=%s]%s[/color] [color=#e8e8e8][%s][/color][/font_size]" % [qc, item.display_name, qn])
+	if item.is_readable():
+		lines.append("[font_size=21][color=%s]%s[/color][/font_size]" % [qc, item.display_name])
+	else:
+		lines.append("[font_size=21][color=%s]%s[/color] [color=#e8e8e8][%s][/color][/font_size]" % [qc, item.display_name, qn])
 	lines.append("[font_size=15][color=#8899aa]%s · ×%d[/color][/font_size]" % [_cat_text(item), count])
 	lines.append("[font_size=15][color=#e8e8e8]%s[/color][/font_size]" % item.description)
+	if item.is_readable():
+		lines.append("[font_size=15][color=#e5c06b]可阅读 · 双击或右键选择“阅读”[/color][/font_size]")
 
 	# Consumable effects
 	if item.category == Item.Category.CONSUMABLE:
@@ -451,43 +537,15 @@ func _show_detail(item: Item, count: int) -> void:
 		var eq := item as Equipment
 		lines.append("")
 		lines.append("[font_size=13][color=#8899aa]—— %s ——[/color][/font_size]" % Inventory.slot_display_name(eq.slot))
-		var bonus_lines: Array[String] = []
-		var stat_bonuses: Array[Dictionary] = [
-			{"name": "攻击", "val": eq.atk_bonus},
-			{"name": "防御", "val": eq.def_bonus + eq.get_guard_bonus()},
-			{"name": "速度", "val": eq.speed_bonus},
-			{"name": "筋骨", "val": eq.get_strength_bonus()},
-			{"name": "机敏", "val": eq.get_agility_bonus()},
-			{"name": "内劲", "val": eq.get_inner_power_bonus()},
-			{"name": "悟性", "val": eq.get_insight_bonus()},
-			{"name": "生命", "val": eq.get_vitality_bonus()},
-			{"name": "内力", "val": eq.get_inner_pool_bonus()},
-		]
-		var row: Array[String] = []
-		for s in stat_bonuses:
-			if s["val"] != 0:
-				row.append("[color=%s]%s%+d[/color]" % [_stat_tier_color(s["val"]), s["name"], s["val"]])
-		if not row.is_empty():
-			bonus_lines.append("[font_size=18]%s[/font_size]" % "  ".join(row))
-		# 技能加成
-		if eq.skill_bonus_school != "" and eq.skill_bonus_power > 0:
-			var school_cn := _school_name(eq.skill_bonus_school)
-			bonus_lines.append("[font_size=15][color=#4ecb71]提升%s招式威力 +%d[/color][/font_size]" % [school_cn, eq.skill_bonus_power])
-		var bonus: String = "\n".join(bonus_lines)
-		if bonus != "":
-			lines.append(bonus)
+		var effect_color: String = QUALITY_COLORS.get(eq.quality, "#c0c8d0")
+		lines.append("[font_size=15]%s[/font_size]" % EQUIPMENT_STATS.bbcode(eq, effect_color))
 
 	lines.append("[font_size=14][color=#889999]卖出 %d[/color][/font_size]" % item.sell_price)
 	_detail_label.text = "\n".join(lines)
 
 
 func _stat_tier_color(val: int) -> String:
-	var a := abs(val)
-	if a <= 2: return "#8899aa"
-	if a <= 5: return "#1eff00"
-	if a <= 10: return "#0070dd"
-	if a <= 20: return "#a335ee"
-	return "#ff8000"
+	return EQUIPMENT_STATS.row_color({"value": val}, "#c0c8d0")
 
 
 func _school_name(s: String) -> String:
@@ -499,6 +557,19 @@ func _school_name(s: String) -> String:
 		"mingwu": return "茗雾"
 		"wudang": return "武当"
 	return s
+
+
+func _weapon_style_name(style: StringName) -> String:
+	match style:
+		&"sword": return "剑法"
+		&"blade": return "刀法"
+		&"axe": return "斧法"
+		&"staff": return "棍法"
+		&"dagger": return "短兵武功"
+		&"hidden": return "暗器武功"
+		&"ring": return "奇门武功"
+		&"palm": return "掌法"
+	return "兵器武功"
 
 
 func _cat_text(item: Item) -> String:
@@ -515,6 +586,23 @@ func _on_use(id: StringName) -> bool:
 	if item == null or not item.can_use(_battle_mode):
 		_show_tip("该道具当前无法使用", false)
 		return false
+	if _requires_precious_use_confirmation(item):
+		_pending_confirm_action = &"use"
+		_pending_confirm_item_id = id
+		_pending_confirm_instance_id = ""
+		var target_name := GameState.player.display_name if GameState.player != null else "冷孤云"
+		var quality_color: String = QUALITY_COLORS.get(item.quality, "#b56cff")
+		var message := "[center]是否给 [color=#e5c06b]%s[/color] 使用\n[color=%s]%s[/color]？\n\n[color=#d6c4a4]该物品会永久增加属性或上限，使用后无法撤销。[/color][/center]" % [target_name, quality_color, item.display_name]
+		_confirm_dialog.show_confirm("确认使用珍贵丹药", message, "确认使用", "取消")
+		return false
+	return _use_item_now(id)
+
+
+func _use_item_now(id: StringName) -> bool:
+	var item: Item = Inventory.load_item_by_id(id)
+	if item == null or not item.can_use(_battle_mode):
+		_show_tip("该道具当前无法使用", false)
+		return false
 	var player: CharacterStats = GameState.player
 	if player == null:
 		return false
@@ -525,28 +613,31 @@ func _on_use(id: StringName) -> bool:
 	if not Inventory.use_item(id, _battle_mode):
 		_show_tip("当前状态无法使用该道具", false)
 		return false
-	var parts: Array[String] = ["已使用 %s" % item.display_name]
+	var parts: Array[String] = []
 	if player.hp > old_hp:
-		parts.append("HP +%d" % (player.hp - old_hp))
+		parts.append(_effect_tip_line("生命值", player.hp - old_hp))
 	if player.mp > old_mp:
-		parts.append("内力 +%d" % (player.mp - old_mp))
+		parts.append(_effect_tip_line("内力值", player.mp - old_mp))
 	if player.max_hp > old_max_hp:
-		parts.append("生命上限 +%d" % (player.max_hp - old_max_hp))
+		parts.append(_effect_tip_line("生命值最大值", player.max_hp - old_max_hp))
 	if player.max_mp > old_max_mp:
-		parts.append("内力上限 +%d" % (player.max_mp - old_max_mp))
-	_show_tip("\n".join(parts), false)
+		parts.append(_effect_tip_line("内力值最大值", player.max_mp - old_max_mp))
+	if parts.is_empty():
+		parts.append("[color=#e3a64a]已使用：[/color][color=#a970ff]%s[/color]" % item.display_name)
+	_show_tip("\n".join(parts), true)
 	_refresh()
 	if _battle_mode:
 		action_committed.emit(&"use_item")
 	return true
 
 
-func _on_equip(id: StringName) -> bool:
+func _on_equip(id: StringName, instance_id: String = "") -> bool:
 	var item: Item = Inventory.load_item_by_id(id)
 	if not item is Equipment:
 		_show_tip("请选择可装备的物品", false)
 		return false
-	if not Inventory.equip(id):
+	var equipped_ok: bool = Inventory.equip_instance(instance_id) if instance_id != "" else Inventory.equip(id)
+	if not equipped_ok:
 		_show_tip("装备失败", false)
 		return false
 	_show_tip("已装备 %s" % item.display_name, false)
@@ -557,30 +648,107 @@ func _on_equip(id: StringName) -> bool:
 
 
 func _create_context_menu() -> void:
-	_context_menu = $ContextMenu
-	if _context_menu == null:
-		_context_menu = PopupMenu.new()
-		_context_menu.name = "ContextMenu"
-		add_child(_context_menu)
-	_context_menu.clear()
-	_context_menu.add_item("详情", 0)
-	_context_menu.add_item("使用", 1)
-	_context_menu.add_item("装备", 2)
-	_context_menu.add_item("丢弃", 3)
-	_context_menu.id_pressed.connect(_on_context)
+	var legacy_menu := get_node_or_null("ContextMenu")
+	if legacy_menu != null:
+		legacy_menu.queue_free()
+	_context_menu = FORMAL_CHOICE_SCENE.instantiate() as FormalChoiceMenu
+	_context_menu.name = "ContextMenu"
+	_context_menu.item_selected.connect(_on_context)
+	_context_menu.cancelled.connect(func(): _context_slot_index = -1)
+	add_child(_context_menu)
 
 
-func _on_context(id: int) -> void:
+func _show_context_menu(item: Item) -> void:
+	var options: Array[Dictionary] = [{"id": &"detail", "label": "查看详情"}]
+	if item.is_readable():
+		options.append({"id": &"read", "label": "阅读"})
+	if item.category == Item.Category.CONSUMABLE:
+		options.append({"id": &"use", "label": "使用"})
+	elif item is Equipment:
+		options.append({"id": &"equip", "label": "装备"})
+	options.append({"id": &"drop", "label": "丢弃", "enabled": not item.is_key_item()})
+	_context_menu.show_choices("物品操作", options)
+
+
+func _on_context(id: StringName) -> void:
 	if _context_slot_index < 0: return
 	var entry: Dictionary = _get_slot(_context_slot_index)
 	var item: Item = entry.get("item")
 	if item == null: return
 	_context_slot_index = -1
 	match id:
-		0: _show_detail(item, entry.get("count", 1))
-		1: _on_use(item.item_id)
-		2: _on_equip(item.item_id)
-		3: Inventory.remove_item(item.item_id, 1); _refresh()
+		&"detail": _show_detail(item, int(entry.get("count", 1)), String(entry.get("instance_id", "")))
+		&"read": _open_reading(item)
+		&"use": _on_use(item.item_id)
+		&"equip": _on_equip(item.item_id, String(entry.get("instance_id", "")))
+		&"drop":
+			_request_drop(item, String(entry.get("instance_id", "")))
+
+
+func _on_item_read_requested(item_id: StringName) -> void:
+	if _battle_mode:
+		_show_tip("战斗中无法阅读", false)
+		return
+	var item := Inventory.load_item_by_id(item_id)
+	if item != null and Inventory.has_item(item_id, 1):
+		_open_reading(item)
+
+
+func _open_reading(item: Item) -> void:
+	if _battle_mode:
+		_show_tip("战斗中无法阅读", false)
+		return
+	if item == null or not item.is_readable() or _reading_panel == null:
+		_show_tip("这件物品没有可阅读的内容", false)
+		return
+	_reading_panel.open_item(item)
+
+
+func _requires_precious_use_confirmation(item: Item) -> bool:
+	return (
+		item != null
+		and item.category == Item.Category.CONSUMABLE
+		and item.permanent_growth
+		and item.quality >= Item.Quality.EPIC
+	)
+
+
+func _request_drop(item: Item, instance_id: String = "") -> void:
+	if item == null:
+		return
+	if item.is_key_item():
+		_confirm_dialog.show_notice("无法丢弃", "[center]剧情物品不能丢弃。[/center]")
+		return
+	_pending_confirm_action = &"drop"
+	_pending_confirm_item_id = item.item_id
+	_pending_confirm_instance_id = instance_id
+	var quality_color: String = QUALITY_COLORS.get(item.quality, "#c0c8d0")
+	var message := "[center]是否丢弃\n[color=%s]%s[/color]？\n\n[color=#d6c4a4]丢弃后将从背包中移除，无法撤销。[/color][/center]" % [quality_color, item.display_name]
+	_confirm_dialog.show_confirm("确认丢弃物品", message, "确认丢弃", "取消")
+
+
+func _on_confirmation_confirmed() -> void:
+	var action := _pending_confirm_action
+	var item_id := _pending_confirm_item_id
+	var instance_id := _pending_confirm_instance_id
+	_clear_pending_confirmation()
+	match action:
+		&"use":
+			_use_item_now(item_id)
+		&"drop":
+			if not instance_id.is_empty():
+				Inventory.remove_instance(instance_id)
+			else:
+				Inventory.remove_item(item_id, 1)
+			_selected_item = null
+			_selected_instance_id = ""
+			_refresh()
+
+
+func _clear_pending_confirmation() -> void:
+	_pending_confirm_action = &""
+	_pending_confirm_item_id = &""
+	_pending_confirm_instance_id = ""
 
 
 func _get_slot(idx: int) -> Dictionary:

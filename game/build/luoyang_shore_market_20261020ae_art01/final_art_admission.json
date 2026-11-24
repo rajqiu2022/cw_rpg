@@ -1,0 +1,99 @@
+{
+  "schema": "luoyang_shore_market_final_art_admission_v1",
+  "status": "APPROVED_FOR_LIMITED_FIELD_CANDIDATE_ATTEMPT_NOT_FIELD_OR_FORMAL_CREDIT",
+  "areas": [
+    {
+      "scene_id": "ch4_s2_canal_docks",
+      "approved": true,
+      "visual_only_no_new_rigid_body": true,
+      "overlays": [
+        {
+          "id": "shore_ae_mooring_hawser_v2",
+          "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_docks_hawser_knot_right_v2.png",
+          "center_px": [2361.050498708975, 1709.0433637533572],
+          "render_size_px": [407.472, 167.024],
+          "region_origin_px": [0, 0],
+          "region_size_px": [1959, 803],
+          "opacity": 0.85
+        },
+        {
+          "id": "shore_ae_cart_ruts_v1",
+          "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.png",
+          "center_px": [868.2373678025851, 1546.7743830787308],
+          "render_size_px": [521.1515863689776, 260.5757931844888],
+          "region_origin_px": [0, 0],
+          "region_size_px": [1774, 887],
+          "opacity": 0.32
+        }
+      ]
+    },
+    {
+      "scene_id": "ch4_s3_luoyang_market",
+      "approved": true,
+      "visual_only_no_new_rigid_body": true,
+      "overlays": [
+        {
+          "id": "market_ground_ae_cross_street_wear_v1",
+          "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png",
+          "center_px": [1530.0, 1196.0],
+          "render_size_px": [958.5997425997426, 368.0],
+          "region_origin_px": [0, 0],
+          "region_size_px": [2024, 777],
+          "opacity": 0.38
+        }
+      ]
+    }
+  ],
+  "source_assets": [
+    {
+      "visual_kind": "mooring_rope",
+      "candidate_path": "res://build/luoyang_shore_market_20261020ae_art01/runtime_candidates_v1/textures/decal_docks_hawser_knot_right_v2.png",
+      "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_docks_hawser_knot_right_v2.png",
+      "source_sha256": "7f1623efc447dc5a10a4d0806fc78390d448d9e45bf442fab0d8de6ffd626242",
+      "rgba_sha256": "59fdb44c8cbede9589d427e74272e798012f3c17c2b41e9665d098f04c5868f9",
+      "size": [1959, 803]
+    },
+    {
+      "visual_kind": "cart_ruts",
+      "candidate_path": "res://build/luoyang_shore_market_20261020ae_art01/runtime_candidates_v1/textures/decal_docks_cart_ruts_horizontal_v1.png",
+      "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.png",
+      "source_sha256": "3f4013006fb3fd285cd0ca9306a1028d27e0f6f378ef55c1a25e85f5116e2043",
+      "rgba_sha256": "1913243a26902340e51d8c4c44ebffa1e2a9b282ef6a1dc9f495ed21cfea8932",
+      "size": [1774, 887]
+    },
+    {
+      "visual_kind": "market_wear",
+      "candidate_path": "res://build/luoyang_shore_market_20261020ae_art01/runtime_candidates_v1/textures/decal_market_cross_street_stall_wear_patch_v1.png",
+      "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png",
+      "source_sha256": "f8f5603fbcd6c3e40626277465eb505be17393cfb588aed17db623465523205f",
+      "rgba_sha256": "8abcef823f86c6bbec4c16a46457ffd139e868f459832228346d07e506dd3414",
+      "size": [2024, 777]
+    }
+  ],
+  "rope_source_anchor_basis": {
+    "path": "prompts/luoyang_shore_market_20261020ae/rope_successor_authored_sag_measurement.json",
+    "sha256": "B7CD1D77706D5B5AC9B7AF4CF397A149223271CAD15C505CB596B2ED96B73100",
+    "source_knot_centroid_px": [152.5264485145448, 328.9355325742852],
+    "existing_south_post_world_px": [2189.04, 1693.9499545288086],
+    "uniform_scale": 0.208,
+    "rotation_degrees": 0.0,
+    "derived_endpoint_world_px": [2564.5784987089746, 1720.7945637537574],
+    "existing_ferry_source_sample_px": [394, 1070],
+    "existing_ferry_source_alpha": 252
+  },
+  "approved_preview_basis": {
+    "overlay_v2_report": "game/build/luoyang_shore_market_20261020ae_art01/runtime_candidates_v2_opacity/overlay_admission_v2.json",
+    "overlay_v2_report_sha256": "F3EFCE60EDEF2B56167369E0435D9FF3FD6285E42AF8EB5F660D86B9457FE0CF",
+    "rope_preview_sha256": "63B16BADD9FB49190E3A7FF3413712C7E50C9F394ABD9BCE7C8151FB8637BB02",
+    "ruts_preview_sha256": "F7FFCB8304D96596B70BF3A9DD651A3DA983816FABDD0A34725DDDA379032EBF",
+    "market_preview_sha256": "A7309A8E4220A03703F6A28C7D8D19A52D9A6C2FC88CBB2F308B22059F1C9020"
+  },
+  "wet_shore": {
+    "approved": false,
+    "reason": "Both generated raws retain a broad grey halo; no local alpha processing authority has been granted."
+  },
+  "approval_meaning": "approved=true authorizes only isolated import preparation and a bounded actual Field candidate attempt with the exact seven-key overlay rows. It does not mean the district art is complete or that Field visibility, ordering, collision, NAV, gameplay or formal deployment has passed.",
+  "canonical_pngs_written": false,
+  "engine_run": false,
+  "runtime_or_formal_credit": false
+}

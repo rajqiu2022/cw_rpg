@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "伪旗统领"
+portrait_path = "res://art/characters/ch5/false_banner_captain_wounded_field_v1.png"
+text = "匣里的落款早被上头割走了。你们选先公开还是先保人，都只走完了一半；真正怕见光的人还在后面。"
+voice_emotion = "weary"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_false_banner_captain_followup"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a")])

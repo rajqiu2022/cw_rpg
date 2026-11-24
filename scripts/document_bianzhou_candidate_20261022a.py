@@ -1,0 +1,29 @@
+"""Close the finite isolated trial with paths, checks and explicit remaining work."""
+import json,hashlib
+from pathlib import Path
+import bianzhou_city_remodel_20261022 as b
+
+ROOT=b.ROOT;PARENT=b.BASE;BASE=PARENT/'revision2'
+if (PARENT/'current-candidate.json').is_file() and json.loads((PARENT/'current-candidate.json').read_text('utf-8')).get('status')=='USER_REJECTED_ASSEMBLY_NOT_A_DESIGN_BASELINE':
+    raise RuntimeError('User rejected this assembly. Preserve evidence; do not restore its recommendation or overwrite the rejection.')
+data=json.loads((BASE/'author.json').read_text('utf-8'))
+for path,fact in data['protected_sources'].items():
+    p=ROOT/path;assert b.sha(p)==fact['sha256'] and p.stat().st_size==fact['bytes'] and str(p.stat().st_mtime_ns)==fact['mtime_ns']
+for a in data['assets'].values():assert b.sha(ROOT/a['source'])==b.sha(BASE/a['path'])==a['sha256']
+for p in ['artifacts/navigation-check.json','artifacts/physics-check.json','artifacts/input-check.json','integration_candidate/game/readback.json']:
+    r=json.loads((BASE/p).read_text('utf-8'));assert 'PASS' in r['status'],r
+image=BASE/'artifacts/overview.png';assert image.is_file()
+limits=['街道仍是矩形铺装硬边，缺少连续街墙/院界与自然地面收边；整体城市美术尚未通过。','东侧民居底部有原素材亮色地脚，未获额外处理授权、未局部擦除；源图完整alpha留白失败仍继承。','仅保留原两名交互NPC；生活NPC、室内、任务道具投放不在本试点新增，不能称整城内容丰富度完成。','预览角色沿用旧运行待机图，移动时仍为静态姿态；本批未将40张未规范的新行走帧接入。独立查看统一112px可视高度，待集成Scene仍保原NPC scale .96/.90，不能据此授正式Field同身高或脚锚通过。','独立程序的空格仅显示保留动作；对白、商店、缉捕、剧情、大地图/旧驿切换与BGM播放尚未正式实走。','待集成布局为279地面Sprite＋32场景模块、61边界Atlas；正式导入/Field性能与遮挡仍待验证，不能冒正式可玩。']
+review={'status':'FUNCTIONAL_ISOLATED_TRIAL_NOT_ART_READY','selected_revision':'revision2','native_image':'revision2/artifacts/overview.png','native_image_sha256':b.sha(image),'objects':32,'major_building_alpha_bbox_overlaps':[],'original_sources_unchanged':3,'source_media_copies_unchanged':23,'new_imagegen_calls':0,'game_files_written':0,'os_input_or_production_field_credit':False,'limitations':limits,'own_gpu_capture_processes_observed_natural_exit_0':[40148,101512],'user_editor_observed_untouched':51856,'first_export_test_failure_retained':'revision2/artifacts/export-readback.log','final_export_test':'revision2/artifacts/export-readback-v2.log'}
+b.dump(PARENT/'final-review.json',review)
+b.dump(PARENT/'current-candidate.json',{'status':review['status'],'project':'revision2/project.godot','author':'revision2/author.json','preview':'revision2/artifacts/overview.png','integration_scene':'revision2/integration_candidate/game/data/scenes/openworld_bianzhou_city.tres','integration_layout':'revision2/integration_candidate/game/data/maps/openworld_bianzhou_city_layout_20261022a.tres','formal_enabled':False})
+lines=['# 汴州城模块化改造 · 独立试点候选','','当前选择为 **revision2**；它是可运行的模块装配试点，尚未替换游戏地图，整体美术尚未通过。参考洛阳的功能分区与实体足迹方法，保留汴州现有驿丞、行商、缉捕榜和两出口，未复制洛阳全城或添加剧情设定。','','![修正版原生实图](revision2/artifacts/overview.png)','','## 使用入口','','- [当前选择](current-candidate.json)','- [独立Godot工程](revision2/project.godot)','- [完整作者数据：位置、足迹、原图来源](revision2/author.json)','- [待集成SceneScript](revision2/integration_candidate/game/data/scenes/openworld_bianzhou_city.tres)','- [待集成WalkableMapLayout](revision2/integration_candidate/game/data/maps/openworld_bianzhou_city_layout_20261022a.tres)','- [正式接入待办及导出收据](revision2/integration_candidate/export-receipt.json)','- [最终有限复核](final-review.json)','','独立预览可用Godot 4.6.2运行（不用打开生产编辑器）：','','```powershell',"& 'F:/文件下载/编程工具/Godot_v4.6.2-stable_win64.exe/Godot_v4.6.2-stable_win64.exe' --path 'F:/Code/RPG_GAME/assets/staging/bianzhou_city_20261022a/revision2'",'```','','WASD/方向键移动；Tab切换全景/跟随；空格显示附近保留的action；Esc退出。该程序没有游戏autoload、存档和真正的路由/商店/对白调用。不要把integration_candidate/game目录整体复制进生产工程；其中project.godot、核验脚本、expected.json和domain副本仅用于隔离检查，不是部署内容。','','## 场景内容','','32个模块：6栋主要建筑（货栈、客舍、修具铺、驿馆、民居、茶棚），1坊门、2摊、1榜亭、8件生活物件、6灯、8树。37实体=33模块足迹＋4边界。中轴连接南侧世界地图出口和北侧旧驿；西市行商与货物，东驿馆驿丞与榜亭。建筑的装饰身份不代表新商店或新室内可进入。','','| 模块 | 用途 | 地图脚位（像素） | 原图完整路径 |','|---|---|---|---|']
+for o in data['objects']:
+    a=data['assets'][o['asset']];lines.append('| '+o['id']+' | '+(o['label'] or o['category'])+' | '+str(o['foot_px'])+' | ['+a['source']+'](../../../'+a['source']+') |')
+lines += ['','## 有限验证','','- revision2：8路线共2572个≤4px净空点，完整35×25像素覆盖34×24身体；不是用中心点猜可走。','- 独立Godot原生物理：522段motion查询零碰撞、37/37实体中心负控被拒；不冒生产Field真实移动。','- 注入预览键：W向上位移约16px、Tab跟随、空格显示world_map，37阻挡中心均拒绝；不是操作系统键鼠实测。','- 真实WalkableMapLayout脚本载入待集成布局：311视觉条目，32模块的坐标/尺度/33足迹逐项读回一致。','- 待集成SceneScript仅3处替换（layout路径及两NPC位置），全文逆变换精确返回原字节；BGM、旧背景fallback、名字、对白/商店action不变，两出口原数组整行保持。','- 23份图像副本逐SHA等于源文件；3份汴州原场景/布局的SHA、bytes、mtime_ns首末同。没有本批game/、生产.godot、任务登记、共享图鉴写入或用户进程控制。','- 首版34模块/39实体及其图保留；修正版只移除两裁切墙及对应body、坊门北移215px、泥地纹理尺度.25→.08、主街460→360px。首版画面未获艺术准入。','- 首导出核验脚本因passed类型推断解析失败，原脚本和export-readback.log保留；仅显式bool后继validate_export_v2.gd通过，不回标首失败。','','## 当前限制与下一步','']+['- '+x for x in limits]
+(PARENT/'README.md').write_text('\n'.join(lines)+'\n','utf-8')
+change=ROOT/'docs/changes/bianzhou-city-remodel-20261022a.md'
+change.write_text(change.read_text('utf-8').split('\n## 本次完成检查点')[0],'utf-8')
+with change.open('a',encoding='utf-8') as f:
+    f.write('\n## 本次完成检查点\n\n已产出revision2独立候选：32模块/37实体，6主要建筑与两NPC原功能；8路线2572净空点、522原生motion/37负控、注入预览键与311条目原生布局读回通过。首版裁墙/粗泥地/出生被门压视线保留，修正版有限调整另目录；首导出检查类型推断PARSE失败及仅显式bool后继成功均保。23图像源副本SHA、3汴州源SHA/bytes/mtime_ns保持，候选Scene仅layout路径＋两NPCpos三处全文逆相同。\n\n两个原生渲染进程自然0退出，仅使用独立project.godot；无game/、共享路由/图鉴/tasks或生产缓存写入，也未停/操作editor51856及另线洛阳进程。零新增imagegen调用，全部复用既有原图，不本地删alpha。整体仍NOT_ART_READY，地面硬边、稀疏围合与民居亮脚等限制保留，未正式接入，不授全城或正式任务往返/音频信用。\n\n[独立预览与完整路径](../../assets/staging/bianzhou_city_20261022a/README.md) · [修正版实图](../../assets/staging/bianzhou_city_20261022a/revision2/artifacts/overview.png) · [当前选择](../../assets/staging/bianzhou_city_20261022a/current-candidate.json)。\n')
+print(json.dumps({'status':review['status'],'objects':32,'source_media':23,'protected_sources':3,'game_writes':0}))

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="冷孤云"
+text="鼓声和迷烟都停了。先把护证、撤离、正面突破和官卷留存分给真正能承担的人，再截第一轮假令。"
+accept_quest=&"q_ch8_main_05_final_alliance_roles"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_platform_intro"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

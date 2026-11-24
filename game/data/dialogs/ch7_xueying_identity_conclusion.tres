@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "权限登记在薛影名下，内署双印授权他继续行动，旧教习直接认出面容，死后路线又由同一人连续完成。三证相合。"
+on_end = "next:confirm"
+[sub_resource type="Resource" id="confirm"]
+script = ExtResource("2")
+node_id = &"confirm"
+speaker = "戚云笙"
+portrait_path = "res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text = "实际使用者确认是薛影本人。身份已经定下，谁授权他、为何让他以死者身份行动，才是下一层。"
+set_flags = Array[Dictionary]([{"key":"ch7_xueying_identity_confirmed", "value":true}])
+accept_quest = &"q_ch7_main_07_confirm_xueying_identity"
+complete_quest = &"q_ch7_main_07_confirm_xueying_identity"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_xueying_identity_conclusion"
+required_story_flag = &"chapter6_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("confirm")])

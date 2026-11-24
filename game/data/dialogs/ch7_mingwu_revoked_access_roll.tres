@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "注销册找到了。录事所说的暗号，原登记人是茗雾大弟子薛影；死亡记录入册当日，状态改为停用。"
+on_end = "next:seal"
+[sub_resource type="Resource" id="seal"]
+script = ExtResource("2")
+node_id = &"seal"
+speaker = "冷孤云"
+text = "停用栏后却多了两枚无姓名复核封印。权限链仍在运作，但可能是本人、冒用、共享暗号或内门放行。"
+on_end = "next:record"
+[sub_resource type="Resource" id="record"]
+script = ExtResource("2")
+node_id = &"record"
+speaker = "冷孤云"
+text = "先记“薛影名下权限仍被调用”，不记“薛影本人出现”。真正使用者还要靠副签、更次和目击者来追。"
+add_evidence = Array[StringName]([&"ev_ch7_mingwu_revoked_access_roll"])
+set_flags = Array[Dictionary]([{"key":"ch7_mingwu_revoked_roll_checked", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_mingwu_revoked_access_roll"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("seal"), SubResource("record")])

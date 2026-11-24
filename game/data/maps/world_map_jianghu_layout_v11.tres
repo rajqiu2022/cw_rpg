@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 11
+design_size = Vector2i(2304, 1536)
+display_at_native_size = true
+walkable_mask_path = "res://art/navigation_masks/world_map_jianghu_walk_v11.png"
+walkable_regions = Array[PackedVector2Array]([])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = []
+interactions = []
+portals = [
+	{"id":"yanmen_pass", "label":"雁门关 · 建议8级", "pos":Vector2(0.097656,0.166016), "size":Vector2(0.060,0.065), "show_destination_label":true, "target_scene":"openworld_yanmen_pass", "target_pos":Vector2(0.25,0.78)},
+	{"id":"huashan", "label":"华山", "pos":Vector2(0.338542,0.170898), "size":Vector2(0.058,0.065), "show_destination_label":true, "target_scene":"openworld_huashan_forecourt", "target_pos":Vector2(0.500,0.885)},
+	{"id":"wudang", "label":"武当山", "pos":Vector2(0.520833,0.170898), "size":Vector2(0.058,0.065), "show_destination_label":true, "target_scene":"openworld_wudang_gate", "target_pos":Vector2(0.500,0.875)},
+	{"id":"gufeng", "label":"古峰 · 建议7级", "pos":Vector2(0.680339,0.180664), "size":Vector2(0.058,0.065), "show_destination_label":true, "target_scene":"ch5_s1_relief_road", "target_pos":Vector2(0.52,0.90)},
+	{"id":"lingyue", "label":"凌月山", "pos":Vector2(0.891927,0.200195), "size":Vector2(0.058,0.065), "show_destination_label":true, "destination_label_side":-1.0, "target_scene":"ch2_s4_lingyue_gate", "target_pos":Vector2(0.110,0.780)},
+	{"id":"bianzhou", "label":"汴州城 · 中原大城", "pos":Vector2(0.475260,0.390625), "size":Vector2(0.065,0.070), "show_destination_label":true, "target_scene":"openworld_bianzhou_city", "target_pos":Vector2(0.535,0.900)},
+	{"id":"luoyang", "label":"洛阳城", "pos":Vector2(0.862630,0.410156), "size":Vector2(0.065,0.070), "show_destination_label":true, "destination_label_side":-1.0, "target_scene":"ch4_s0_luoyang_gate", "target_pos":Vector2(0.500,0.900)},
+	{"id":"xiangzhou", "label":"襄州城 · 南北要冲", "pos":Vector2(0.475260,0.551758), "size":Vector2(0.065,0.070), "show_destination_label":true, "target_scene":"openworld_xiangzhou_city", "target_pos":Vector2(0.515,0.900)},
+	{"id":"jinling", "label":"金陵城 · 江南水城", "pos":Vector2(0.722656,0.688477), "size":Vector2(0.065,0.070), "show_destination_label":true, "target_scene":"openworld_jinling_city", "target_pos":Vector2(0.510,0.900)},
+	{"id":"east_sea_port", "label":"东海埠", "pos":Vector2(0.950521,0.473633), "size":Vector2(0.060,0.065), "show_destination_label":true, "destination_label_side":-1.0, "travel_mode":"ferry", "target_scene":"openworld_east_sea_port", "target_pos":Vector2(0.5,0.78)},
+	{"id":"bailu_ferry", "label":"白鹿渡", "pos":Vector2(0.937500,0.541992), "size":Vector2(0.060,0.065), "show_destination_label":true, "destination_label_side":-1.0, "travel_mode":"ferry", "target_scene":"openworld_bailu_ferry", "target_pos":Vector2(0.420,0.730)},
+	{"id":"lieyun_valley", "label":"烈云峡谷", "pos":Vector2(0.911458,0.600586), "size":Vector2(0.060,0.065), "show_destination_label":true, "destination_label_side":-1.0, "target_scene":"ch7_s1_lieyun_valley_ferry", "target_pos":Vector2(0.500,0.875)},
+	{"id":"mingwu", "label":"茗雾茶镇", "pos":Vector2(0.810547,0.844727), "size":Vector2(0.060,0.065), "show_destination_label":true, "destination_label_side":-1.0, "target_scene":"ch7_s2_mingwu_tea_town", "target_pos":Vector2(0.500,0.875)},
+	{"id":"linxi_village", "label":"林西村", "pos":Vector2(0.113932,0.532227), "size":Vector2(0.060,0.065), "show_destination_label":true, "target_scene":"linxi_village_scrollmap", "target_pos":Vector2(0.925,0.500)},
+	{"id":"zhuwei_village", "label":"竹尾村", "pos":Vector2(0.146484,0.717773), "size":Vector2(0.060,0.065), "show_destination_label":true, "target_scene":"ch1_s2_qingfeng", "target_pos":Vector2(0.520,0.790)},
+	{"id":"qinghe_town", "label":"清河镇", "pos":Vector2(0.279948,0.727539), "size":Vector2(0.060,0.065), "show_destination_label":true, "target_scene":"openworld_qinghe_town", "target_pos":Vector2(0.30,0.78)}
+]
+walkable_probes = [
+	{"id":"central_plain_west", "pos":Vector2(0.296224,0.458984)},
+	{"id":"central_plain_center", "pos":Vector2(0.494792,0.458984)},
+	{"id":"central_plain_east", "pos":Vector2(0.690104,0.468750)},
+	{"id":"central_plain_south", "pos":Vector2(0.494792,0.595703)},
+	{"id":"south_bridge_deck", "pos":Vector2(0.683594,0.664062)},
+	{"id":"east_coast_junction", "pos":Vector2(0.911458,0.600586)}
+]
+blocked_probes = [
+	{"id":"northwest_snow_peak", "pos":Vector2(0.029297,0.043945)},
+	{"id":"north_mountain_ridge", "pos":Vector2(0.455729,0.053711)},
+	{"id":"bianzhou_inner_roof", "pos":Vector2(0.403646,0.356445)},
+	{"id":"luoyang_inner_roof", "pos":Vector2(0.911458,0.322266)},
+	{"id":"east_deep_water", "pos":Vector2(0.983073,0.507812)},
+	{"id":"south_deep_water", "pos":Vector2(0.585938,0.878906)},
+	{"id":"south_cloud_edge", "pos":Vector2(0.455729,0.976562)}
+]

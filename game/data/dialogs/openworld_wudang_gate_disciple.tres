@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "武当守山弟子"
+text = "少侠若有意拜入武当，须先赴武林大会取得五派考校名帖，再过我派问心、试武两关。眼下火候尚欠，不妨先在前庭观摩，与同道切磋；待考校有成，再来叩山门。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_wudang_gate_disciple"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

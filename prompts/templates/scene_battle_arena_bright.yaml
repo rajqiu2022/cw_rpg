@@ -1,0 +1,27 @@
+id: scene_battle_arena_bright
+description: Bright, readable turn-based wuxia battle arena background with a fixed 5v5 diagonal formation layout.
+quality: high
+size: "1536x1024"
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: stylized-concept
+  Asset type: 2.5D turn-based wuxia RPG battle background.
+  Scene/backdrop: {scene_description}
+  Style/medium: 1990s Hong Kong wuxia comic, hand-painted 2.5D scenery, crisp ink outlines, saturated but natural colors.
+  Composition/framing: Landscape 3:2, slight elevated side view. Keep the central 55% of the image as a broad, unobstructed, nearly flat combat floor. Keep the lower-left and upper-right formations clearly readable.
+  Lighting/mood: bright daylight, clear sky or soft daylight, high visibility, mid-to-high overall brightness. The foreground and standing zones must never be dark, muddy, fog-obscured, or strongly vignetted.
+  Color palette: clear jade green, warm stone earth, blue sky and restrained cool shadows. Avoid a dark-blue color cast.
+  Constraints:
+  - Environment only: no people, no characters, no NPCs, no monsters, no animals, no silhouettes.
+  - Reserve five clean standing points for the player party along the lower-left diagonal: x 6-26%, y 54-83%.
+  - Reserve five clean standing points for enemies along the upper-right diagonal: x 55-82%, y 16-54%.
+  - Keep the center lane between both formations empty for melee lunges, projectile paths, and battle effects.
+  - Edge scenery may include trees, rocks, cliffs, bridges, banners without text, or architecture, but it must frame the arena and never cover the standing zones.
+  - No text, UI, signage, watermark, frame, logo, or readable symbols.
+  - No night scene, storm, heavy mist, lightning, giant props, close foreground obstruction, or poster-like focal subject.
+  Avoid: {negative}
+
+variables:
+  scene_description: "A sunlit bamboo grove clearing on a mountain road, with a low rocky ridge and distant green mountains."

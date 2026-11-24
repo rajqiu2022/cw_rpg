@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = [
+	PackedVector2Array(0.182,0.494, 0.255,0.443, 0.343,0.416, 0.464,0.328, 0.529,0.305, 0.733,0.286, 0.773,0.260, 0.826,0.180, 0.893,0.069, 0.941,0.040, 0.942,0.103, 0.889,0.206, 0.860,0.255, 0.806,0.331, 0.755,0.392, 0.824,0.413, 0.966,0.363, 0.978,0.397, 0.815,0.470, 0.732,0.524, 0.711,0.622, 0.751,0.736, 0.652,0.811, 0.523,0.865, 0.456,0.941, 0.418,0.995, 0.293,0.995, 0.249,0.942, 0.204,0.895, 0.055,0.861, 0.032,0.827, 0.163,0.807, 0.226,0.830, 0.253,0.735, 0.258,0.647, 0.229,0.589),
+	PackedVector2Array(0.274,0.449, 0.291,0.402, 0.319,0.367, 0.343,0.380, 0.352,0.426, 0.337,0.479),
+	PackedVector2Array(0.576,0.334, 0.588,0.259, 0.655,0.252, 0.672,0.333)
+]
+interactions = [
+	{"id":"market_old_book_stall","pos":Vector2(0.202,0.496),"size":Vector2(0.075,0.075),"action":"discover_readable:qingming_sword_record:found_qingming_sword_record","activation":"interact","label":"翻看旧书摊","interaction_visual_kind":"ledger","visual_render_size_px":Vector2(58,46),"hide_flag":"found_qingming_sword_record"},
+	{"id":"huilan_zhuwei_echo","pos":Vector2(0.331,0.727),"size":Vector2(0.075,0.075),"action":"dialog:huilan_openworld_echo","activation":"interact","label":"听岸边双盆回声","hide_flag":"huilan_echo_understood","visual_baked":false},
+	{"id":"huilan_zhuwei_trial","pos":Vector2(0.687,0.483),"size":Vector2(0.075,0.075),"action":"dialog:huilan_openworld_final_trial","activation":"interact","label":"化解岸边双车险局","require_flag":"huilan_openworld_clues_complete","hide_flag":"huilan_openworld_trial_complete","visual_baked":false}
+]
+portals = [
+	{"id":"market_return_to_ruin_outer","pos":Vector2(0.202,0.878),"size":Vector2(0.042,0.062),"label":"西岸小径 · 前往废宅","target_scene":"ch1_s3_west_ruin","target_pos":Vector2(0.12,0.72),"marker_rotation_degrees":90.0,"require_flag":"chapter1_complete"},
+	{"id":"market_enter_inn","pos":Vector2(0.321,0.433),"size":Vector2(0.053,0.064),"label":"进入客栈","target_scene":"ch2_s1_market_inn","target_pos":Vector2(0.50,0.72)},
+	{"id":"market_enter_training_hall","pos":Vector2(0.619,0.280),"size":Vector2(0.048,0.058),"label":"进入武馆","target_scene":"ch2_s1_market_training_hall","target_pos":Vector2(0.50,0.72)},
+	{"id":"market_to_forest_edge","pos":Vector2(0.914,0.085),"size":Vector2(0.061,0.061),"label":"北岸小径 · 前往北林旧猎道","locked_label":"先在竹尾河滩核对三份证词","target_scene":"ch2_s2_forest_edge","target_pos":Vector2(0.12,0.72),"require_flag":"heard_about_missing_lingyue"},
+	{"id":"market_to_river_camp","pos":Vector2(0.907,0.397),"size":Vector2(0.046,0.062),"label":"沿东岸前往河滩营地","locked_label":"先在竹尾河滩核对三份证词","target_scene":"ch2_s6_river_camp","target_pos":Vector2(0.16,0.78),"require_flag":"heard_about_missing_lingyue"},
+	{"id":"market_world_road","pos":Vector2(0.365,0.956),"size":Vector2(0.068,0.063),"label":"南驿道 · 江湖大地图","target_scene":"world_map_jianghu","marker_rotation_degrees":0.0,"require_flag":"chapter1_complete","show_destination_label":true}
+]
+walkable_probes = [
+	{"id":"arrival","pos":Vector2(0.395,0.82)},
+	{"id":"inn_landing","pos":Vector2(0.349,0.476)},
+	{"id":"training_landing","pos":Vector2(0.649,0.371)},
+	{"id":"world_road","pos":Vector2(0.365,0.956)},
+	{"id":"ruin_alley","pos":Vector2(0.202,0.878)},
+	{"id":"world_arrival","pos":Vector2(0.365,0.905)},
+	{"id":"shore_main_floor","pos":Vector2(0.530,0.547)}
+]
+

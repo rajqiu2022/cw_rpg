@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_11_old_ledger"
+title = "旧账上的云字"
+kind = 1
+desc_not_started = "林西村旧宅里似乎还留着前任私塾先生的药材账册。"
+desc_in_progress = "你找到一页旧药账。数年前有人长期购入止血散与迷香，落款只有一个模糊的“云”字。先把线索收好，日后遇到懂旧账的人再查。"
+desc_completed = "旧药账上的收购记录得到印证，这批药材并非普通商旅所用。"
+completion_triggers = Array[String](["flag_set:linxi_old_ledger_verified"])
+reward_gold = 8
+reward_exp = 18
+reward_items = Array[Dictionary]([{"item_id": "clarity_dew", "count": 1}])
+

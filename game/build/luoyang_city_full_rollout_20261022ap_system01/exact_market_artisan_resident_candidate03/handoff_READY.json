@@ -1,0 +1,44 @@
+{
+  "status": "NEW_BUILD_ONLY_NO_ENGINE_OR_DEPLOY",
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate03/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "9d80b90198fa4b0a3a78c1f81e44e46d06a8e97503819cb2b39895398aecd1e3",
+    "bytes": 108334
+  },
+  "parent": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate02/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "ce3c26fe6ccd702c703e9a84dd2246e2da577f3766928efb625a8aa3d5d1dabd"
+  },
+  "whole_byte_inverse": true,
+  "old": "\t\t\tif zone.get(\"target_spawn_pos\")!=expected_target or zone.get(\"position\")!=(expected_pos/LUOYANG_V3.SIZE)*LUOYANG_V3.SIZE or zone.get(\"is_locked\")!=false or zone.get(\"action\")!=\"\" or zone.get(\"_in_range\")!=true: return false\n\t\t\tif not zone is Area2D or not (zone as Area2D).get_overlapping_bodies().has(field.get(\"_player\")): return false",
+  "new": "\t\t\tif zone.get(\"target_spawn_pos\")!=expected_target or zone.get(\"position\")!=(expected_pos/LUOYANG_V3.SIZE)*LUOYANG_V3.SIZE or zone.get(\"is_locked\")!=false or zone.get(\"action\")!=\"\": return false\n\t\t\tif source==AP_LEASE_MARKET:\n\t\t\t\t# LoadingManager freezes this source before park. REMOVE-mode physics\n\t\t\t\t# overlap can be empty then; use the original exact doorway polygon,\n\t\t\t\t# actual player foot and original safe-foot callable, with no radius.\n\t\t\t\tif zone.get_script().resource_path!=\"res://scripts/field/luoyang_v3_exit_zone.gd\" or not zone.has_method(\"can_enter\") or not zone.call(\"can_enter\"): return false\n\t\t\telse:\n\t\t\t\t# Artisan return is checked before LoadingManager freezes the field.\n\t\t\t\tif zone.get(\"_in_range\")!=true or not zone is Area2D or not (zone as Area2D).get_overlapping_bodies().has(field.get(\"_player\")): return false",
+  "cause": "LoadingManager._hold_source_field disables source before async preloads; REMOVE physics invalidates cached overlaps. Only frozen Market source uses its existing v3 can_enter pure geometric doorway+actual-foot+safe-guard method. Artisan return remains live overlap before freeze.",
+  "original_contract_sources": [
+    {
+      "path": "res://scripts/field/world_v15_exit_zone.gd",
+      "sha256": "19665f50731eb90286372cbd0ebf55b43bf6edf1694e85885d50bb59cbe9e8ef"
+    },
+    {
+      "path": "res://scripts/field/luoyang_v3_exit_zone.gd",
+      "sha256": "a18b3fd92cc0a186912d7fbfa2d6f73bc212b62cc24cc023e0b2f27845f65061"
+    },
+    {
+      "path": "res://scripts/autoload/loading_manager.gd",
+      "sha256": "17d352ab9af088bb187e48efe7aa29de4720cacee2d8693301acd57fd5d9dde2"
+    }
+  ],
+  "prior_handoffs": [
+    {
+      "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate01_retry1/handoff_READY.json",
+      "sha256": "4db3a365226fd8ac03956d0948d667b636a6c4a526ad54acb86fa346d9a4fb2a"
+    },
+    {
+      "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate02/handoff_READY.json",
+      "sha256": "832796a68257c991d842efcb40fb208cee5e38561dd1af70212f3eb757c00d25"
+    }
+  ],
+  "lease_unchanged": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate01_retry1/Resident_exact_market_artisan_READY.gd",
+    "sha256": "faf38e53113431c77a85c3a4068437007c07aa85ef44fb37665704a66aa1e9b4"
+  }
+}

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "两人败退前把新凿子投入白水，却没来得及烧掉窄车铜箍。截证客袖中掉出一小段茶运路签，年份正是十八年前。"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "原册、改字、换车和茶运路已经连起来了。现在该回去问师父：他藏的是谁的名字，又凭什么替我藏。"
+set_flags = Array[Dictionary]([{"key":"ch6_convoy_pursuers_defeated", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_baishui_victory"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero")])

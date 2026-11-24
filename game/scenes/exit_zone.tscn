@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjxl66x6y3hy2"]
 
 [ext_resource type="Script" uid="uid://dvqtmnqeiai8h" path="res://scripts/field/exit_zone.gd" id="1_exit"]
+[ext_resource type="Texture2D" path="res://art/ui/field_hud/portal_arrow_amber_v2.png" id="2_marker"]
 
 [sub_resource type="RectangleShape2D" id="RectShape_Exit"]
 size = Vector2(100, 200)
@@ -24,8 +25,30 @@ script = ExtResource("1_exit")
 shape = SubResource("RectShape_Exit")
 
 [node name="Visual" type="Sprite2D" parent="." unique_id=2054171191]
-modulate = Color(0.5, 0.9, 0.6, 0.3)
+modulate = Color(0.5, 0.95, 0.72, 0.5)
 texture = SubResource("Tex_Exit")
+visible = false
+
+[node name="MarkerVisual" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+scale = Vector2(0.080, 0.080)
+texture = ExtResource("2_marker")
+z_index = 30
+
+[node name="Indicator" type="Label" parent="."]
+offset_left = -66.0
+offset_top = -176.0
+offset_right = 66.0
+offset_bottom = -146.0
+theme_override_colors/font_color = Color(0.93, 0.86, 0.64, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 15
+text = "前往"
+horizontal_alignment = 1
+z_index = 31
+visible = false
 
 [node name="Prompt" type="Label" parent="." unique_id=124820349]
 anchors_preset = 8
@@ -35,12 +58,16 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -50.0
 offset_top = -40.0
-offset_right = 50.0
-offset_bottom = -16.0
-theme_override_colors/font_color = Color(0.6, 1, 0.7, 1)
+offset_right = 150.0
+offset_bottom = -10.0
+theme_override_colors/font_color = Color(0.96, 0.86, 0.54, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
-theme_override_constants/shadow_offset_x = 1
-theme_override_constants/shadow_offset_y = 1
-theme_override_font_sizes/font_size = 14
-text = "→ 前往"
+theme_override_colors/font_outline_color = Color(0.055, 0.04, 0.02, 0.98)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 24
+text = "前往"
 horizontal_alignment = 1
+z_index = 31
+visible = false

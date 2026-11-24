@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "悦无姮"
+text = "白师姐遗物上的月纹左右颠倒。先与守阁师姐交手，看看真正的步法如何落位。"
+on_end = "next:n2"
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "若连落脚方向都错了，那件遗物本就是做给外人看的。"
+on_end = "battle_solo_then:lingyue_guard:ch3_lingyue_complete"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_lingyue_trial"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2")])

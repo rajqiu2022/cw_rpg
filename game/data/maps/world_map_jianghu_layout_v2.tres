@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+# The reviewed source image is 1536x1024. Keep it native; this is a travel
+# board, not a fake 3072px panorama made by scaling a smaller image.
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+# Every polygon follows a visible road corridor. They overlap at junctions so
+# all unlocked destinations remain reachable without walking through scenery.
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.345, 0.380, 0.445, 0.380, 0.530, 0.475, 0.575, 0.510, 0.635, 0.420, 0.710, 0.435, 0.710, 0.535, 0.635, 0.560, 0.570, 0.575, 0.500, 0.540, 0.430, 0.485, 0.345, 0.485),
+	PackedVector2Array(0.330, 0.155, 0.390, 0.165, 0.430, 0.380, 0.345, 0.410, 0.305, 0.285),
+	PackedVector2Array(0.435, 0.100, 0.505, 0.085, 0.525, 0.170, 0.480, 0.405, 0.420, 0.385),
+	PackedVector2Array(0.125, 0.395, 0.420, 0.395, 0.430, 0.485, 0.125, 0.505),
+	PackedVector2Array(0.670, 0.185, 0.810, 0.195, 0.715, 0.470, 0.650, 0.440),
+	PackedVector2Array(0.405, 0.530, 0.500, 0.535, 0.505, 0.775, 0.430, 0.795, 0.390, 0.650),
+	PackedVector2Array(0.165, 0.745, 0.470, 0.735, 0.480, 0.820, 0.165, 0.835)
+])
+visual_objects = []
+blockers = []
+interactions = []
+portals = [
+	{"id": "linxi_village", "label": "林西村", "pos": Vector2(0.390, 0.430), "size": Vector2(0.060, 0.070), "target_scene": "linxi_tutorial", "target_pos": Vector2(0.50, 0.72)},
+	{"id": "zhuwei_village", "label": "竹尾村", "pos": Vector2(0.355, 0.195), "size": Vector2(0.060, 0.070), "target_scene": "ch2_s1_zhuwei_market", "target_pos": Vector2(0.18, 0.72), "require_flag": "chapter1_complete", "locked_label": "竹尾村（沿山道前行）"},
+	{"id": "wudang", "label": "武当山", "pos": Vector2(0.475, 0.125), "size": Vector2(0.060, 0.070), "target_scene": "ch3_s1_wulin_assembly", "target_pos": Vector2(0.20, 0.72), "require_flag": "chapter2_complete", "locked_label": "武当山（待江湖大会开启）"},
+	{"id": "huashan", "label": "华山", "pos": Vector2(0.170, 0.450), "size": Vector2(0.055, 0.070), "action": "dialog:world_map_huashan_locked", "require_flag": "chapter2_complete", "locked_label": "华山（山道未通）"},
+	{"id": "lingyue", "label": "凌月山", "pos": Vector2(0.765, 0.225), "size": Vector2(0.055, 0.070), "target_scene": "ch2_s4_lingyue_gate", "target_pos": Vector2(0.18, 0.76), "require_flag": "ch2_rescue_complete", "locked_label": "凌月山（先查清失踪案）"},
+	{"id": "luoyang", "label": "洛阳", "pos": Vector2(0.650, 0.490), "size": Vector2(0.065, 0.070), "target_scene": "ch4_s1_luoyang_yamen", "target_pos": Vector2(0.18, 0.72), "require_flag": "chapter3_complete", "locked_label": "洛阳（待武林大会后）"},
+	{"id": "gufeng", "label": "古月峰", "pos": Vector2(0.455, 0.775), "size": Vector2(0.060, 0.070), "action": "dialog:world_map_gufeng_locked", "require_flag": "chapter2_complete", "locked_label": "古月峰（山路险阻）"},
+	{"id": "mingwu", "label": "茗雾山", "pos": Vector2(0.210, 0.790), "size": Vector2(0.055, 0.070), "action": "dialog:world_map_mingwu_locked", "require_flag": "chapter5_complete", "locked_label": "茗雾山（雾障封路）"}
+]
+walkable_probes = [
+	{"id": "world_spawn", "pos": Vector2(0.390, 0.430)},
+	{"id": "zhuwei_road", "pos": Vector2(0.355, 0.195)},
+	{"id": "luoyang_road", "pos": Vector2(0.650, 0.490)},
+	{"id": "gufeng_road", "pos": Vector2(0.455, 0.775)}
+]

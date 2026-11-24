@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "task_id": "luoyang_estate_courtyard_20261021am_low_stone_flowerbed_rect_v1",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "use_case": "stylized-concept",
+  "transparent_background": true,
+  "reference_images": [],
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "attempt_budget": 1,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "raw_output_path": "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_flowerbed_rect_v1.png",
+  "raw_metadata_path": "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_flowerbed_rect_v1.meta.json",
+  "measurement_contract": {
+    "mode": "RGBA",
+    "complete_A1_bbox_required": true,
+    "minimum_true_transparent_margin_each_side_fraction": 0.12,
+    "target_complete_A1_width_to_height_range": [3.0, 4.2],
+    "target_world_complete_A1_width_px": [200, 240],
+    "target_world_complete_A1_height_px": [55, 80],
+    "uniform_scale_only": true,
+    "all_weak_alpha_is_part_of_the_subject_envelope": true,
+    "no_threshold_erasure_or_local_cleanup_authorized": true,
+    "solid_semantics": "one low rectangular curb body; conservative solid is derived from actual stone-foot alpha only after generation",
+    "door_and_route_semantics": "decorative edge object; must not cover the central axial path, hall door, wing doors, corridor passages, or courtyard gate"
+  },
+  "admission_conditions": [
+    "one connected low stone bed with four readable masonry sides",
+    "more than one plant cluster and more than one flower cluster; not a single wildflower or bush",
+    "no background rectangle, halo, building, wall, floor, sign, or character",
+    "actual complete A1 envelope and foot support measured before any scene placement",
+    "final Field candidate must add matching bounded physical geometry and preserve every existing route"
+  ],
+  "scope_boundary": "One project-bound raw candidate only. Root performs the sole built-in call. No CLI, network fallback, automatic edit, local image processing, import, engine, or formal deployment is authorized by this spec."
+}

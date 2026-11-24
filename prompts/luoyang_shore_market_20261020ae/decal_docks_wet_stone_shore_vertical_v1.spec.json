@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "id": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1",
+  "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "transparent_background": true,
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "automatic_retry": false,
+  "cli_network_or_paid_fallback": false,
+  "prompt_path": "prompts/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v1.txt",
+  "proposed_output_path": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v1.png",
+  "requested_canvas_px": [1024, 1536],
+  "intended_runtime_role": "nonblocking ground overlay along the land side of the actual x=2215 quay edge",
+  "proposed_world_envelope_px": [[2110, 320], [2215, 320], [2215, 1900], [2110, 1900]],
+  "processing_boundary": "Actual output must be measured first. Later derivative may use one uniform scale and transparent padding/crop that preserves every A>0 source pixel; no threshold cleanup, repaint, rotation, mirroring or nonuniform stretch.",
+  "acceptance": [
+    "RGBA with genuine transparent margin on all four sides and no broad vignette",
+    "single continuous slim vertical wet-stone band near 1:10 width-to-length, with the long right water edge wettest and an irregular leftward fade to dry stone",
+    "cold weathered Luoyang stone style; no bright cyan water, foam, cartoon gloss or black outline",
+    "no object, NPC, boat, wheel rut, text, floor rectangle or collision implication",
+    "actual Field view must show the band following the real shore rather than covering the central plaza"
+  ],
+  "runtime_credit": false
+}

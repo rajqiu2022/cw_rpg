@@ -143,7 +143,7 @@ Web 调度台已支持 Markdown 预览：
 ```powershell
 Godot --headless --path game --script res://tests/test_scene_router_field_smart.gd
 Godot --headless --path game --script res://tests/test_player_walk_animation.gd
-Godot --headless --path game --script res://tests/test_inventory_m5.gd
+Godot --headless --path game res://tests/test_inventory_m5_runner.tscn
 ```
 
 ## 下一步建议

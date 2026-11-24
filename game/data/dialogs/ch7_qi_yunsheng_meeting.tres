@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "戚云笙"
+portrait_path = "res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text = "那封信，你是不是看了不止一遍？我原以为你会先问我为何留玉佩，没想到你先翻了烈云最不愿见光的药册。"
+voice_emotion = "normal"
+on_end = "next:hero"
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "肯让我进门，不等于药册上的人就不用负责。你写的是分开核证，我便照这四个字来。"
+on_end = "next:admit"
+[sub_resource type="Resource" id="admit"]
+script = ExtResource("2")
+node_id = &"admit"
+speaker = "戚云笙"
+portrait_path = "res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text = "药册我早看过。发信前没有公开，是怕它又被当成五派案的凶证。这个理由能解释我的迟疑，不能替我免责。"
+voice_emotion = "solemn"
+on_end = "next:record"
+[sub_resource type="Resource" id="record"]
+script = ExtResource("2")
+node_id = &"record"
+speaker = "戚云笙"
+portrait_path = "res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text = "原页、日期、毒方和强硬派署名都放在左案。你可抄、可验，也可带外人来复核。烈云要洗冤，先得承认自己真正欠下的债。"
+voice_emotion = "solemn"
+add_testimonies = Array[StringName]([&"ts_ch7_qi_yunsheng_open_record"])
+set_flags = Array[Dictionary]([{"key":"ch7_qi_yunsheng_met", "value":true}, {"key":"ch7_qi_reform_testimony_heard", "value":true}])
+on_end = "next:close"
+[sub_resource type="Resource" id="close"]
+script = ExtResource("2")
+node_id = &"close"
+speaker = "冷孤云"
+text = "我记下你的署名，也会核你的原页。另一边若有人肯说出是谁在用死者的权限，这两条线才算真正接上。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_qi_yunsheng_meeting"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero"), SubResource("admit"), SubResource("record"), SubResource("close")])

@@ -1,0 +1,1613 @@
+{
+  "schema_version": 1,
+  "status": "PAWNSHOP_ONLY_CANDIDATE_NOT_FORMAL_OTHER_THREE_SERVICES_UNCHANGED",
+  "coordinates": "SOURCE_FEET_1536_1024",
+  "body_contract": "Existing NPCNode 160px frame / scale1 physical22.4x28.8; visible adult140 only, native room geometry unchanged",
+  "fees": {
+    "meal": 5,
+    "rest": 20
+  },
+  "effects": {
+    "meal": "FLOOR_MAX_QUARTER_MIN_ONE_CLAMP",
+    "rest": "ALL_PARTY_HP_MP_TO_CURRENT_MAX",
+    "full_party": "NO_CHARGE"
+  },
+  "rooms": {
+    "luoyang_market_inn_interior_20261015": {
+      "role": "inn",
+      "npc_id": "luoyang25h_inn_keeper",
+      "npc_name": "客栈掌柜",
+      "foot": [
+        1150,
+        510
+      ],
+      "approach": [
+        1150,
+        600
+      ],
+      "sprite_path": "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png",
+      "portrait_path": "res://art/characters/portraits/luoyang_services_20261025h/portrait_innkeeper_v1.png",
+      "greeting": "客官，热饭热汤、干净客房都备着。价钱和用处先说清，您再决定。",
+      "shop_id": ""
+    },
+    "luoyang_functional_pawnshop_candidate_20261016": {
+      "role": "pawn",
+      "npc_id": "luoyang25h_pawn_keeper",
+      "npc_name": "当铺掌柜",
+      "foot": [
+        768,
+        497
+      ],
+      "approach": [
+        768,
+        585
+      ],
+      "sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png",
+      "portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png",
+      "greeting": "客官想出手旧物，还是挑件合用的？本铺现银买卖，价目都在账上。",
+      "shop_id": "luoyang_services_20261025h/pawn"
+    },
+    "luoyang_market_market_northeast_rear_frontage_interior_20261015": {
+      "role": "herbal",
+      "npc_id": "luoyang25h_herbal_keeper",
+      "npc_name": "药铺药师",
+      "foot": [
+        500,
+        550
+      ],
+      "approach": [
+        500,
+        640
+      ],
+      "sprite_path": "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png",
+      "portrait_path": "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png",
+      "greeting": "出门在外，伤药解药备齐些总是稳妥。客官看看需要哪一味。",
+      "shop_id": "luoyang_services_20261025h/herbal"
+    },
+    "luoyang_market_shop_interior_20261015": {
+      "role": "smith",
+      "npc_id": "luoyang_assembled_smith_20261016b",
+      "npc_name": "铁匠师傅",
+      "foot": [
+        663,
+        448
+      ],
+      "approach": [
+        663,
+        505
+      ],
+      "sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png",
+      "portrait_path": "res://art/characters/portraits/portrait_linxi_farmer_v1.png",
+      "greeting": "客官站在砧台外说话便好。架上的兵器护具都可买卖，挑一件趁手的吧。",
+      "shop_id": "luoyang_services_20261025h/smith"
+    }
+  },
+  "source_sha256": {
+    "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png": "1bcd177ab5bedc88f115438327f93e5ad1a5aaa3ab29c328b5dc11fc7873ac7c",
+    "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png": "2250b7a84dce99f48fa09f2619d3e39c22727aaa969e15b3569177c163c31f15",
+    "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png": "978b73dd07f4a412a8e024a1c3444e9fbd075a974e01b93c1bb72bdc88bc186a",
+    "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png": "2082d5dbe2c73b4d397c091d068901aa0e50a991149856f716b7bc428ef0c3ad",
+    "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png": "f74ac5192e1a7c82d9953be77bfcfe1837aa2edc4a5b1087400f2acfdd605785",
+    "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png": "904ff9885d7c7f7a3337b4db964141c6c1b4a8411cfc31a7b4b888723fd43900",
+    "res://art/characters/portraits/portrait_linxi_farmer_v1.png": "a4d9b9aa249007f7608ebc11f5252936c445f5e7b471530263992b30e0d59335",
+    "res://data/shops/luoyang_services_20261025h/smith.tres": "d3968c3bc817b23f149dc67c8652eb737046603fc94bc8eff8ae246ed9e8ecf7",
+    "res://data/shops/luoyang_services_20261025h/herbal.tres": "c98e1e12bab918f3ddb6a09d96fb0b8da2de9d42da8438fd9f2623633ab4de18",
+    "res://data/shops/luoyang_services_20261025h/pawn.tres": "a6a857a7ceca02ca89619e34898a39292b961d563baceb64f9f6984edf097852",
+    "res://data/items/healing_salve.tres": "c7fbd7f00a379e917e2ee5fb0a76d3536c56f9378cf099412f9819ec5c14ab12",
+    "res://data/items/healing_pill_minor.tres": "8744f4ba0275afa251062c2a80c451905dd135cc06dd08e427b5d4d47e0c768c",
+    "res://data/items/antidote_pill.tres": "5b3e62d9af8c6b618dc3c3735fa8244b377caba7a069a1dc804410522eda3072",
+    "res://data/items/revive_pill.tres": "e6a32c6e3ea84213297db23291fa6e7044c03fe1d79188ae012dd9538ec8dd1e",
+    "res://data/items/inner_breath_pill.tres": "13a51d6e96ab6a9067e3f507d0b7fff22f50fe47ac82c81f14b78b83eeb43169",
+    "res://data/items/anti_weak_powder.tres": "d90773c0afd67d51fc7cf4b1ca274344a251e1b45c0ad2b6667167e25c6cf9b8",
+    "res://data/items/thaw_warm_pill.tres": "ac1f25052e6465e085f07d435ed02ddc134e8208afeb48720780c37744deda87",
+    "res://data/equipment/leather_armor.tres": "f8f34bc6124f8dec64183798de3729334bdb8adc5e62e98da3aeac02cb644f02",
+    "res://data/equipment/iron_helmet.tres": "b33774dc747edb62a178dabccc25f566006d60531d184a0fd7e10b7bbe59f9a1",
+    "res://data/equipment/leather_bracers.tres": "0229286c496ebcadc06f8258a76f4c2160b6006cc102631f47fda77c0c1dbf28",
+    "res://data/equipment/deer_leather_boots.tres": "01c798eaa7d1b1a2ef738aa98c45605c84db2c7666d2093784235cd4cf2d3ca2",
+    "res://data/equipment/iron_wristband.tres": "1072ed936d227005771b57dc5954ad44f1afd497d62cc1ba8a187ee89dbfdb69",
+    "res://data/equipment/cloth_bracers.tres": "1111b76b5ca341faf7a98957bed834c1f9d65085cc1ef87f53c27f89f69edbe9",
+    "res://data/equipment/leather_cap.tres": "5ad68a07e22ac6f0b824837389a0719e76d503cdb30d5ec7ecf9778a285184aa",
+    "res://data/equipment/cloud_crown.tres": "616e47fa92094f6616c83a11db996a4d351a3e3dde72a5e2115e6e0039b3ba67",
+    "res://data/equipment/heart_guard_armor.tres": "019cb91990d03d1da0f1562f8597842eb21c8c6ab22484f708237a68a686ffb1",
+    "res://data/equipment/jade_scale_armor.tres": "e6bafe6d564900c8893a0e2accb3d3398676d03b09c33c01f26d2da0a6a9e7fa",
+    "res://data/equipment/sharp_steel_sword.tres": "d605ae32bacc595908660bdbc6cb57d88167519dc97a7e63451385942791b17e",
+    "res://data/equipment/silk_gloves.tres": "c22221e71f64a1b501563e2dee988ab12488e243e62f6c894697136ab1739ff0",
+    "res://data/equipment/cloth_boots.tres": "41679eb951ac4d874f179592abb60081fb561f9e42f3a6b84522c6fb4af0fd25",
+    "res://data/equipment/iron_knuckles.tres": "4855262e811d47549fc8a93ef3d469cc8868c1c6205f8ca2d60a6f1a9b1b99df",
+    "res://data/equipment/battle_helmet.tres": "84358d54f173a434b9c8a28ce9368f70e7c9865e706a0ecc8e615612d0262a70",
+    "res://data/equipment/dark_iron_armor.tres": "26d2847f428406891f2080930c935a2edbc8b7734e3021c3472b66339bfd2b1d",
+    "res://data/equipment/dark_iron_boots.tres": "04d2dd685fa79047ebf7dcdd0572b14660340ea825304d3d54aa57481270a9e3",
+    "res://data/equipment/diamond_gauntlets.tres": "2726ff2adee6e13508952953b6967086d71330e46e4cd96cc8be7008d5b25796",
+    "res://data/equipment/dragon_horn_crown.tres": "6b56d9bf5ae6f87d7e71abcea6ea47c7c341039cc1749ff30a1946ad0b78458d",
+    "res://data/equipment/dragon_scale_armor.tres": "58005e52a3d2b6cddfc28c651c536790da9b2fb2a4863b27f899dc1ed2cc7370",
+    "res://data/equipment/dragon_scale_bracers.tres": "adb4b40ceda4d591ae3e6ad269ba9ebcfe16f82bbc693ac15b896381984e4d81",
+    "res://data/equipment/dragon_tendon_staff.tres": "051e0b9f1f77604c729610aafe3653e712245993c8d4db9295a2f10199a03dc7",
+    "res://data/equipment/heavy_iron_sword.tres": "28362757293b086969284e3365e6ef93c246876890e315ed056edf53dd0929b9",
+    "res://data/equipment/iron_great_blade.tres": "27aac87d391c5406233cf459ab56bed008a26249d4f09a96b57be1c7ffb253ca",
+    "res://data/equipment/iron_staff.tres": "1b1e83047cbd8098dfbd1784b077379ee737baa9169f1e0edd66d28809bb2342",
+    "res://data/equipment/shaolin_fahua_staff.tres": "05239f2f7e8ce927fffbf0391e8b06161c057fba95e1d7e22c4c5554f4982c83",
+    "res://data/equipment/thunder_gauntlets.tres": "3ef8e0fd85b4948c9502670862b1e038f8f6da294cf7bc853f12a424a9febeaa",
+    "res://data/equipment/tiger_roar_blade.tres": "43bd0c4c4046b26f88da7175b0594fac8cf300ccea3173d4e57b8edffc12bfe6",
+    "res://art/ui/inventory/buttons/btn_x_hover.png": "08bfb1788e6b0f46d7816377bd6581997663480107454353330c9d7f5c6ca069",
+    "res://art/ui/inventory/buttons/btn_x_normal.png": "1456ec79a4f48260cb8b9b7364e0166c8eb9b9eef26f5939954619d8c6fc082a",
+    "res://art/ui/inventory/buttons/btn_x_pressed.png": "b377b64f4fa01d40bb1560ec7e91f8bc1b97d95c322ea8793c073b7f55e7b267",
+    "res://art/ui/inventory/icons/icon_anti_weak_powder.png": "64ba3acf125c0204a90a0a40fa911e52893311d41ad89f5f7421dd59a37ace47",
+    "res://art/ui/inventory/icons/icon_antidote_pill.png": "097a17431b3d4d192ce982bba0293c91e96d86f61aff69bee16f192d7b4c0687",
+    "res://art/ui/inventory/icons/icon_battle_helmet.png": "a9ee5c9a8ff966e4cf118732cfd845119275b09059f5f131375f2cc62db6a6ee",
+    "res://art/ui/inventory/icons/icon_cloth_boots.png": "a5d9942b55de767376e5a9c2fdf798efbce392ce630f6fa07c01f0e1d9d529b5",
+    "res://art/ui/inventory/icons/icon_cloud_crown.png": "991a3cdb5cc2d9d0fb58f42a9b8ec41529ffbd479892536a925073eb14644dec",
+    "res://art/ui/inventory/icons/icon_deer_leather_boots.png": "9bdfe7821c1c47a1a15e2b8743b62050523e4a82014e2cbbffabc605ee556b26",
+    "res://art/ui/inventory/icons/icon_dragon_horn_crown.png": "3a78efe31b007e0c7db899315e1a7fa0a1a65415c95edd51a3f571087de7b355",
+    "res://art/ui/inventory/icons/icon_dragon_scale_armor.png": "d9b4a18ea4029c7c0abcb5f1256997cee8afea5e914e872882edc5b0c370d3e3",
+    "res://art/ui/inventory/icons/icon_dragon_scale_bracers.png": "3df811fca91ad56c553cd76a0212b81cd2071b062b02c63a482f65e7b382e651",
+    "res://art/ui/inventory/icons/icon_dragon_tendon_staff.png": "c026f892e52eac4076ce07ecb8a908c70da5c910986d9632394709279916dfe8",
+    "res://art/ui/inventory/icons/icon_healing_pill_minor.png": "87fa06b93218c8f90312636430b3edd29c07cf50b1d8a43c13c31169345a0447",
+    "res://art/ui/inventory/icons/icon_healing_salve.png": "0da02f6656b6c39fbd184f487a21c8acc92d416233b5eaca20bdcb813ec5f3cd",
+    "res://art/ui/inventory/icons/icon_heart_guard_armor.png": "b5321455e3f62f5925d9bdf3e59e3c4b6a6c476e5ec46e23603bab5cfbf56502",
+    "res://art/ui/inventory/icons/icon_heavy_iron_sword.png": "153d650279dd7772732ae649a3c44bfc78d59d598f2704fac1fdb111a50a0b4e",
+    "res://art/ui/inventory/icons/icon_inner_breath_pill.png": "9790ff7be6c4354735ac35f9e0d5af94e779146977a27badb1f133c04694f146",
+    "res://art/ui/inventory/icons/icon_iron_great_blade.png": "bc8726c521e9060ec8014194419eec72b54530d4becc3317d22cc93cf5cc7f3e",
+    "res://art/ui/inventory/icons/icon_iron_helmet.png": "81dfc47de2dcc38e153c3753bf0eb56833cbd57a12f14b2849ec5228c0a11454",
+    "res://art/ui/inventory/icons/icon_iron_knuckles.png": "3c5faa2708694794440ded6459866ebfad926e90ce6e9fad90c1732469bcb7fa",
+    "res://art/ui/inventory/icons/icon_iron_staff.png": "3e34afc45b273e767fe6eb22da1338839249d3f1f9414e83aa89dc32353825bb",
+    "res://art/ui/inventory/icons/icon_iron_wristband.png": "40c183c4a08985dd4d08dc3f2d36160246d5ddcc3e52c409a067f922d8c172df",
+    "res://art/ui/inventory/icons/icon_jade_scale_armor.png": "18f807a7cb434ae3a89d16b6e6093dfb551860a67846ab39285bbedb2949fe24",
+    "res://art/ui/inventory/icons/icon_leather_armor.png": "444ea48ea86daa026495c0f3e02f8aaaa0e91c3f1d5cc1b6cce6c41846d8c1b8",
+    "res://art/ui/inventory/icons/icon_leather_bracers.png": "be8b7b8843e3dbb252cd9904ea40d195073dc660159f2a73a8cf45e569041c96",
+    "res://art/ui/inventory/icons/icon_leather_cap.png": "8d3f54ae6980c03283a4043b76952792a98c955b434fac9487fc9e537c9dba80",
+    "res://art/ui/inventory/icons/icon_revive_pill.png": "d814893543a50cf26f94208227e364408a03981aeae86e0d57edfcb7924ab08e",
+    "res://art/ui/inventory/icons/icon_shaolin_fahua_staff.png": "3e0091ae634cfbafa0da890c04545b1b3b4118ac0235cd10a65728921b9557b3",
+    "res://art/ui/inventory/icons/icon_sharp_steel_sword.png": "ecd0931cf9270f16f963242e3f785bd50d45738f50ec20cb244140636db2266c",
+    "res://art/ui/inventory/icons/icon_silk_gloves.png": "b6c99e69803ee6c0dd1bfeac98652693113527672d23a1c102bb6a7834b787db",
+    "res://art/ui/inventory/icons/icon_steel_gauntlets.png": "b925e68d7d893a97e094e6e7f6ef7403b103e33f24610e41c01da5a9e00e1658",
+    "res://art/ui/inventory/icons/icon_thaw_warm_pill.png": "5e191470149be9e9b0f71c5cdb5c3479cf8d49ac92d8e12377ee8ca48ac03aa2",
+    "res://art/ui/inventory/icons/icon_thunder_gauntlets.png": "b524bb8e48f33766562b37b3a4d637834b31ca5b26cfced192c45a35fc9cb70e",
+    "res://art/ui/inventory/icons/icon_tiger_roar_blade.png": "614678dd3da65b71b306ea0ea31a74d5aae027a115ef633f9b7d9bfc450291fb",
+    "res://art/ui/shop/buttons_v2/shop_rect_hover.png": "9376a02db233ae97fa1eda7a3cf159a2c2118de8b88ab416b29ff6efbd10d0ab",
+    "res://art/ui/shop/buttons_v2/shop_rect_normal.png": "ec98813c1afafaa3e265bdc4734f9597c171a49a03f89dedf5dd8f73b581dc70",
+    "res://art/ui/shop/buttons_v2/shop_rect_pressed.png": "bf3890d5a2d3ddfc995311b48692f3d97a293deecd2aa60e443a23060abad2af",
+    "res://art/ui/shop/shop_trade_confirm_panel_v1.png": "15d0a5de9f56ac0ccebafbefa671af0c7d8db2c9fb587a2d2c909d1cb2972fce",
+    "res://art/ui/shop/tabs_v1/shop_tab_inactive.png": "098ae770d11c10825e22d9faf86a840c62b5d709ab723fc3be5e26508906e599",
+    "res://art/ui/shop/tabs_v1/shop_tab_selected.png": "bca87582947fd670a1d0926546dbfb3261f2808b0196b612f6a2dd23bf198b4e",
+    "res://art/ui/shop/ui_shop_panel_quest_style_v2.png": "a1d78b35720b4db1e33a1bce72fd6185b302213aad32d0682c32e6165e46b325",
+    "res://scenes/shop.tscn": "773f244352efcd0cf7e9b39b47605e90af83f5411a3c7bf63e2af3c75b624489",
+    "res://scripts/autoload/inventory.gd": "727a2742aff63569f2a4d91ff5b69ac28191d5e146f600084e29e1f9dd76f276",
+    "res://scripts/domain/equipment.gd": "26d703ab90b421af6ed08c22c53173947add367b61429250c77b2fe01d2fdb74",
+    "res://scripts/domain/item.gd": "01857f622de1352454ba92710bf0a41d54525dff2fe114b400025f92a2fd144c",
+    "res://scripts/domain/shop_def.gd": "f4e99a4a159a7501457432d950b0d88618397ec6c678914b38b7c199210b11cb",
+    "res://scripts/ui/shop_ui.gd": "dac1ab50975c8582091df0effb0fc381f9aae9b0c583dc3fd6fdbc02f3413cc4",
+    "res://scripts/ui/wuxia_theme.gd": "2bef5ea479c92f05c3933f867ad5c57ef9e428b682b779949fc947b60d92afd0",
+    "res://art/characters/portraits/luoyang_services_20261025h/portrait_innkeeper_v1.png": "c544c5cc1e9d1f3b587eae4d49565c961bc3f6cb2d11a95424b66ccd61f67969",
+    "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png.import": "8ab4801febc2ad078baa0b5b30690583eae548d277b8b1592bf10d6cdc2710ee",
+    "res://.godot/imported/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png-363e3eaefffe3b29d40c9504e14b7768.ctex": "92b09fdaaf37402a25aa8eb467474220233a9b5e580711a77ab9ddc7a23de768",
+    "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png.import": "9d1d47a7f31c251aa10b00516d2d3d0ba6b19dcfce5be7b9d4898a80a64869ae",
+    "res://.godot/imported/portrait_street_merchant_v1.png-67584f4c2dd94ee82e3319410325d242.ctex": "d45b0b8daff2856e15b88ded5e31347cea4c23e024c3c2478f9e7d8367a087ec",
+    "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png.import": "78eef8ecc00f6bf82409d2b4b8363a4ca531a319c44dbc2889451b314a34c4a4",
+    "res://.godot/imported/npc_street_merchant_idle_down_4f_v3_runtime.png-4fbb3b4b54a36fd3b84442a5c54a0d16.ctex": "316d23346e8f3d08172fa9b6ec5e98c484154e440f6d5a07b384e8d74cec5079",
+    "res://art/ui/inventory/buttons/btn_x_hover.png.import": "f09b46390487097acd942a30dd250b5a5168d653aafa13c82662e252897d6623",
+    "res://.godot/imported/btn_x_hover.png-6cf5ced74519ea837a18b8c298be9826.ctex": "e2c655e120145eb012e45ef3ec2fd59350329fb019b293770328c805672ab600",
+    "res://art/ui/inventory/buttons/btn_x_normal.png.import": "13334561a70b1e51b5e3186a2729fef1a81dbeee982a6e6a4cfe30110a0002dd",
+    "res://.godot/imported/btn_x_normal.png-ea98e79638712eaf267af7b8c2cf9715.ctex": "16cd8a88629acba1aae984a19af72ede31ab2e6c84f0dbbbb53205f634682b50",
+    "res://art/ui/inventory/buttons/btn_x_pressed.png.import": "c607525a6596649683f22fa6de8fd373cebfcaf305501c952066d7d01457652a",
+    "res://.godot/imported/btn_x_pressed.png-de7628cf23f94e7d97493802ae8694a6.ctex": "dac16b9ca308392a911c9c937d4bcaa8278cde00dd847c301b7a325ec6dc7218",
+    "res://art/ui/inventory/icons/icon_cloud_crown.png.import": "fad091fc38560cad183435c835c2c58bef5d29ce328ec91a327ab11da0f44ec9",
+    "res://.godot/imported/icon_cloud_crown.png-f82fdc7370f5d1a5be89b8364d11e403.ctex": "29827b0b05f97b68dc97dedf26ee2f74c8d5344015c2d6c8b6ede56752c79060",
+    "res://art/ui/inventory/icons/icon_deer_leather_boots.png.import": "b76faa5fc0cdbc991cf75775c565e12e7e9e5eb349e3bf771954d8c0f9817ca9",
+    "res://.godot/imported/icon_deer_leather_boots.png-57d70980cc4682a2c67120b0b3506604.ctex": "1be468c6ad7453407f38a0c3ceda6c33159b66528e816680322aba3a530226b6",
+    "res://art/ui/inventory/icons/icon_heart_guard_armor.png.import": "f91c50c33fcbce5187bb1b352db338df702690c87f74d65776819561ed27ee99",
+    "res://.godot/imported/icon_heart_guard_armor.png-bb1427f11c9af66b7c7eac73fbf23058.ctex": "45218e015ebb9ff039148367917341b46dc5444063a900b0c25e562cf5823d81",
+    "res://art/ui/inventory/icons/icon_iron_helmet.png.import": "e3ac8ef9dff37fa41bc6934c971f124f20de13064bdbcabfd72dffceece1f12d",
+    "res://.godot/imported/icon_iron_helmet.png-1288e91a73d1fed0912af394b230499a.ctex": "16a6dfbf4f2b00da1010ee6d9a8d8d08c0de5f1bed4aad7b3b70d45bf04b32ab",
+    "res://art/ui/inventory/icons/icon_iron_wristband.png.import": "59c321e342771e0c94562392591720c89c98506633afb411dd2f09e97319f1e2",
+    "res://.godot/imported/icon_iron_wristband.png-cdfe170ae57985cbc5c383bfb8e8ffd3.ctex": "2a0e1396490833e82f818d690eee7a80914e1cd657620a67c1e64c100b5bca0e",
+    "res://art/ui/inventory/icons/icon_jade_scale_armor.png.import": "3d7e3ab112f63f6ffd2e9859ce789ffd6b73bbefc90ca645455a971ddc7cae49",
+    "res://.godot/imported/icon_jade_scale_armor.png-cf8d796ec78bcb2d9aa341bfa664dafe.ctex": "e5223f264984014915ed69bf91e4e9aa9c25e0aa8dec915c12198da3c5809f3d",
+    "res://art/ui/inventory/icons/icon_leather_armor.png.import": "4246a6218589285c8ef4c5f9c7fbf14b800e226243c90def18d18b542f6b7165",
+    "res://.godot/imported/icon_leather_armor.png-b83ed1b34372646497a4c0fc47ebf59f.ctex": "0580c8b0908cf179e9152d3163ef37ad29738b8bcb40eb39909b7ea4330921af",
+    "res://art/ui/inventory/icons/icon_leather_bracers.png.import": "4c4bf7a707ac5977a12ac1333cace7c9737504379fe11326a130b91f5ba6cfb2",
+    "res://.godot/imported/icon_leather_bracers.png-146f0eca0e5259709f1a924fead4809d.ctex": "19cb8319e663639ab006e27a7d4f6de2cb13f05b097129972a1296a776e40507",
+    "res://art/ui/inventory/icons/icon_leather_cap.png.import": "43f92950c03b72c7b8d4edacf8e29bfd73b76e67e134c57dbaddc59172fca322",
+    "res://.godot/imported/icon_leather_cap.png-0af01e6d5cd302269384cd0e54cbb761.ctex": "04f71cd4203ade55f167fe65a1c856abb5e090640cbab1400296019f801a9181",
+    "res://art/ui/inventory/icons/icon_sharp_steel_sword.png.import": "ee88065511c329f57a222883050a2222d82a6a5f40f9418db85a8b391404dfd7",
+    "res://.godot/imported/icon_sharp_steel_sword.png-e1b1f24c97800f2b9a4b637464d0a908.ctex": "ac477d0290e61da359a4c80179c192486d858311298577a768310e85ca434b06",
+    "res://art/ui/inventory/icons/icon_silk_gloves.png.import": "1a83982098398fb52acd5489cdfee39a91ab74dd253fc15202d82685413e9342",
+    "res://.godot/imported/icon_silk_gloves.png-5a188024acca8c15c1f9354c199a74a1.ctex": "a0c60550477cc1c4bb5bfb233c19eaacfb9f1b26d3d9d71130a68b9fd97c5004",
+    "res://art/ui/shop/buttons_v2/shop_rect_hover.png.import": "7bca029f42c3c2cdba116c213f3cb43422770606cd59d8510354e5ebc6c1d5c2",
+    "res://.godot/imported/shop_rect_hover.png-f26cd0e666950fe28e54e53292e71e88.ctex": "346a6978047f0bb8d0fb9c2105f7522716aec403669fa594c1875abd47532c62",
+    "res://art/ui/shop/buttons_v2/shop_rect_normal.png.import": "bf2b98714ab5342b9c0f471df436ebd743e231600ed3c012811f10be7651b79f",
+    "res://.godot/imported/shop_rect_normal.png-99bd79664188c2669fa216c7351345ed.ctex": "df7e629041d6df1b8ecb222da4124849bbf72495e734e5782f7fecd661c57e70",
+    "res://art/ui/shop/buttons_v2/shop_rect_pressed.png.import": "5eeeced1c549d474d37cbf0a7b004179ac1431227dd9ed94962b1421d123f357",
+    "res://.godot/imported/shop_rect_pressed.png-414da0aa528f0528e09dcdb3d9bd6761.ctex": "7144a875b2fae42a8bc2df007f8951dcf467a9f5182828b6041c96126f317331",
+    "res://art/ui/shop/shop_trade_confirm_panel_v1.png.import": "d9fd9b2a575c801994063ed9b0d2510e9ce8593c045a09c279c5e5f5344523a3",
+    "res://.godot/imported/shop_trade_confirm_panel_v1.png-1110605874ef8ed35f73bda27394c58c.ctex": "25a58aa6685dea01b2980c13dbfd9de1927e8c6862d5f8466b2d9afa02a84ea8",
+    "res://art/ui/shop/tabs_v1/shop_tab_inactive.png.import": "b6dd55b45b6f288a9ece4260685d649d6bf188d8d5debd818d8aad8eb27aa163",
+    "res://.godot/imported/shop_tab_inactive.png-77ba34284f80daaa1f47ae2231c798d4.ctex": "bf3fe6ec06bdf584bf78b7bc2390226fa23a1aea85967ed6f790794fda9b2c6a",
+    "res://art/ui/shop/tabs_v1/shop_tab_selected.png.import": "0846298db9c76ab5acfea279dd4489a50b973fd53df31c6e87aef3e59e221107",
+    "res://.godot/imported/shop_tab_selected.png-11abf6f2fb480f19d2d6a44fb8b3de54.ctex": "28333c678860ecde34954ca906a420aad4e7b015a27d97cbc11870af48172d9b",
+    "res://art/ui/shop/ui_shop_panel_quest_style_v2.png.import": "a7daecc8bb3df206bce05d2edaabbe46e606c93d3a0fc51120de69ff99b1fd5a",
+    "res://.godot/imported/ui_shop_panel_quest_style_v2.png-61aa55c17257e82fe7569d2d536507a5.ctex": "f3de07c241846bdeeaeaaab43b8a639e1b6e93ea9e772b4224bf907569a35aeb",
+    "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png.import": "9fda7773357491b5ac1deba0724d1662733dfe41b63e0caceecea746c45c3bd4",
+    "res://.godot/imported/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png-33c6d428abe09479c4ab453f6f22ab84.ctex": "802b5a16f255986eb98f645718ce307c0156676a52f3e6f91155c4830dd74366",
+    "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png.import": "797208885f59107d9e4aefbe7f8dbb434c73dba6616273ae4b4af1a4172dceea",
+    "res://.godot/imported/portrait_generic_older_man_v1.png-0e6e98ee8462cb92ca318bad21e93849.ctex": "061551874aece8b35da4f26ec4cbc2a435d6e36b0a3424d79e9cbb7d402cc176",
+    "res://art/ui/inventory/icons/icon_anti_weak_powder.png.import": "d69b70124a9553e9c37fef9051ea3ab2f7ebfcf261402ee2b8589be30f37e4e1",
+    "res://.godot/imported/icon_anti_weak_powder.png-5dcf8092bcc7069572d06e75e6533767.ctex": "1041afed4d5086ed6ea5191e5ca5f60eb7ffe6a9c1a4782a2e51d121e3743ade",
+    "res://art/ui/inventory/icons/icon_antidote_pill.png.import": "0d2a63aa12b699924bd82ba927596acc2fb060531fd83333e84b1963346e0e27",
+    "res://.godot/imported/icon_antidote_pill.png-55900ea186a5b0b7892a7103abc76008.ctex": "ffd1b817e6d22c49e9b5098ff437a511355828f63a5281a6fd544259d599202a",
+    "res://art/ui/inventory/icons/icon_healing_pill_minor.png.import": "415da340ab1889f97abcd74bb2ad9ad75260b4c5a3fc88b92f179ce7a2285a6b",
+    "res://.godot/imported/icon_healing_pill_minor.png-dd7571f488d35fdc17d57b7e7365a691.ctex": "11ab99f621de12ecf14e31afb7a4ac235234e564dd3c6933d5957e067cef427e",
+    "res://art/ui/inventory/icons/icon_healing_salve.png.import": "177baadad55499aba3606cf5d05b48225ad57b3bf7b77b3e1ca325c46db07360",
+    "res://.godot/imported/icon_healing_salve.png-ab2d339d13d2222314f8f135d7ef9dda.ctex": "796ee8e672469c1c5b69dd86552adf3c174e37e2e43f6be7c60e3224bceec3ab",
+    "res://art/ui/inventory/icons/icon_inner_breath_pill.png.import": "f25f8829bfd7706918dfb5e457d59fc4300ec13ad4676a70fbd85c42ba5d1a34",
+    "res://.godot/imported/icon_inner_breath_pill.png-794addcafedd503383c26ed3d4904014.ctex": "1f7fa82563d9365befb69a4bf1eb088c5ff9f60a6fddf32e913f713d0764b490",
+    "res://art/ui/inventory/icons/icon_revive_pill.png.import": "0ce8a0d6e928f98ba9ee7c76c162c9f674e0882123e281f1b9e2765101b5380e",
+    "res://.godot/imported/icon_revive_pill.png-eb2ddd5af34b7add9aa303691c79dd7e.ctex": "59c95ce3c2eabd234a17ae03b187dd55b88cf09c5d432586f9b0b4f6a019321e",
+    "res://art/ui/inventory/icons/icon_thaw_warm_pill.png.import": "841b367666e9388c32ad9263d9813b8afbcf63d83650f69e53031751d115295c",
+    "res://.godot/imported/icon_thaw_warm_pill.png-f3cd3d36c66bf1de9582ca208c47beb1.ctex": "13c36895e89920585be2460d415cb64f4d3b6d04d0fb97d6f76e1ef09b4e1b9a",
+    "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png.import": "7f98d6e1c0f12bc117fe9558fa866d089ec0f8f4495d4e2f9ecfbb88c7b660b3",
+    "res://.godot/imported/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png-330111faa36e97a0141e8625fa9af417.ctex": "bda869cfb11f15e51019fdc7ebe415f051d1954a2a9b0f8ccc9796fbac062830",
+    "res://art/characters/portraits/portrait_linxi_farmer_v1.png.import": "c8012672c6e35f999adc947553e02457fbbb3dbfd6eac77894780d6f7223873d",
+    "res://.godot/imported/portrait_linxi_farmer_v1.png-80a08d82a6d98ea99a0d7bd7bf6af1ed.ctex": "39fee57801bebaa75e6c5bb9c67a5ed1fd24d44f5ef879a11f8290fe8a723e51",
+    "res://art/ui/inventory/icons/icon_battle_helmet.png.import": "5c3b3af07f38020aca8760733d0b8ae5ab0ba4c12b76123c1996e60f651f2e34",
+    "res://.godot/imported/icon_battle_helmet.png-1263259bd62007f5b97d67c3537b2713.ctex": "d5869dd1645c06f6cc4d89f2c0968ef66cad8b0def6a581826b8582c9a2f0bb6",
+    "res://art/ui/inventory/icons/icon_cloth_boots.png.import": "94e612307544894ee040be38b88078407d835b46bff2bcef91327e590cfc97e2",
+    "res://.godot/imported/icon_cloth_boots.png-12fe6c887142dcf5221c7902e1301baf.ctex": "83079b81822cf343ea93fa3f00653cb299f322c10f1af2dfb207c58b8905015d",
+    "res://art/ui/inventory/icons/icon_dragon_horn_crown.png.import": "50b9a0b8f6a5c72f6c72c1bd128020b20034155f2144fb703dd20ed789abe620",
+    "res://.godot/imported/icon_dragon_horn_crown.png-326ff36016ccce06ba24a3eaec3c6b96.ctex": "aaf2770843dc124655fa12759c0ef7cda5093e02c9e2f1becea5749a5aaa4476",
+    "res://art/ui/inventory/icons/icon_dragon_scale_armor.png.import": "90cf8cc1ff3fcb655df482e209f8717c8c702e8363f455ce1b49b13ace240386",
+    "res://.godot/imported/icon_dragon_scale_armor.png-bf2c1057cce90df06021e3ce99779a77.ctex": "306842d6adcd0859e0f502beaf29644b14da8a955a50189c6549a4790ada1d12",
+    "res://art/ui/inventory/icons/icon_dragon_scale_bracers.png.import": "cb59233a352e16f09cc37bd3f0c250995c197a049d397fd2b67d0faac4f4ad90",
+    "res://.godot/imported/icon_dragon_scale_bracers.png-de72d8c139cb3e920024d95cf6a1b051.ctex": "afef354820d54436b03d2dc16696d2ac72abf19f4b2bd0ad55cb8b6201f1dde9",
+    "res://art/ui/inventory/icons/icon_dragon_tendon_staff.png.import": "aaa84160a489b541651cd9c9df93fc2148225dd6bc2884ea4c8f8e481a556490",
+    "res://.godot/imported/icon_dragon_tendon_staff.png-765bee33e826c5d1628c569be5bc7862.ctex": "80096c5ed7cfa66651427a79ac5c9f83f1641f7a53183d6918128be68f87b6ac",
+    "res://art/ui/inventory/icons/icon_heavy_iron_sword.png.import": "5c2f5082043a3af68b5a4d3cad1448c1c7243e153b87b19bbb257b82fa41c6ad",
+    "res://.godot/imported/icon_heavy_iron_sword.png-f344e759d2b72c0b3df28cba5d8cf5ac.ctex": "774198cac2dce926a64d12edc6542885e2c0da3dbc1a8bba4a20c7da48811f65",
+    "res://art/ui/inventory/icons/icon_iron_great_blade.png.import": "a61fa73b3df1e2eb23048ebc3aa7ad78a0c0aa0894f43751e014e47c1b2654b7",
+    "res://.godot/imported/icon_iron_great_blade.png-4fe6aff583b05f31644ad722f7cc2b1a.ctex": "cc8b994abf3f7f60d31b55495e2c6720fe303b827a0a6b5bdf70a56868bca03f",
+    "res://art/ui/inventory/icons/icon_iron_knuckles.png.import": "eb264e56d54d829d39127546d74c03f7e829d957fa7d2cf93292b5ae3a2c6387",
+    "res://.godot/imported/icon_iron_knuckles.png-54bc9f09e115ddc7ee16152cae758247.ctex": "776c8ba15257e9a37663eedf2303edd750753a23d62de31701668ca74c1bff40",
+    "res://art/ui/inventory/icons/icon_iron_staff.png.import": "52f80d173a181a5238ad150242de4f96248e57b7bacaec2a092d75bef374fd55",
+    "res://.godot/imported/icon_iron_staff.png-d24fe5c137ca9b343c7ee489fa64d38f.ctex": "26ddb6afadc5ea5da2d183bdc4b28904c4cfba9635c795ac916448baa8d0f3f7",
+    "res://art/ui/inventory/icons/icon_shaolin_fahua_staff.png.import": "e84362bc5f4950d11a92ecebe82924e8307b907b4396883780da292f50a1e7a9",
+    "res://.godot/imported/icon_shaolin_fahua_staff.png-36b9bf0e5a12c0ff400fab79bc55501b.ctex": "0dfd43f474fc22804313ba4592a5952d45b7de8730e02b16d2d2051e6fc85bd4",
+    "res://art/ui/inventory/icons/icon_steel_gauntlets.png.import": "740df01ba1552c453bae6155bdd6b2f6e282bafecc67c2db4076ed1e5bfa3671",
+    "res://.godot/imported/icon_steel_gauntlets.png-3ffe4931a8885dca3f2e0cdb8f1fa0df.ctex": "ada9702f8addf29eda599ccd99bb28d3b066a9346110554fec9d6e4cb6df8e58",
+    "res://art/ui/inventory/icons/icon_thunder_gauntlets.png.import": "25ef92b04ca59a3049d3d35914ebfe9a88e27e105fb20df83906da125f99a72a",
+    "res://.godot/imported/icon_thunder_gauntlets.png-87d25da4683c7174f455223dcd93c094.ctex": "dae68931c740ff032ff5c1806b6373671e5304443276a26092bf30903bba2686",
+    "res://art/ui/inventory/icons/icon_tiger_roar_blade.png.import": "1174587d940e4b0caf22fe95dcd2fbf475c80dbc0f83fb115a2e6efad549a0e6",
+    "res://.godot/imported/icon_tiger_roar_blade.png-0bf6f623a53efd456be727addb7b2a0c.ctex": "69a63c89b02287bcc10955c82ebd99b94130a7c549c0bf8002982437efe8bb2b",
+    "res://art/characters/portraits/luoyang_services_20261025h/portrait_innkeeper_v1.png.import": "4f3de202adc39c053a529d34b1c037f65db4667f247fc43e36069073eb6614b9",
+    "res://.godot/imported/portrait_innkeeper_v1.png-035af5725b3c463f38c7c3abfc9e4a40.ctex": "ce7cf755738ecd0e8dfee3665ff5d7aa6ab4dbf0f8c8fb74272f2fc445174fb7",
+    "res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png": "078b1086cd2003916e73bb9c9f7a5f98d52286eabd765c609cb928e9ea84fc0e",
+    "res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png.import": "bef44b020a74f137e0a7ee53a6ef3301954fb1fb924c5223288bf076ff410462",
+    "res://.godot/imported/cloth_roll_rack_v1.png-91ba09a5807325789368d0e0ce15d0ae.ctex": "25dcf62919756e0384ea800c330cd91ded57b40d80b54032f8b7926d94ac4bee",
+    "res://art/modules/luoyang_assembled_interiors_20261016g/garment_rack_v1.png": "ff279aa1949676a02c84b5e8a24615d4f1570901c1f7013a62814893dc6956b6",
+    "res://art/modules/luoyang_assembled_interiors_20261016g/garment_rack_v1.png.import": "ccd5d5755fb8245d088cc0aa6b96ef4cf4d37784c9278868302fd3ba1cc60974",
+    "res://.godot/imported/garment_rack_v1.png-5cd166c055b04d0dc4c48b85e14b28bf.ctex": "c10e71fcfe1bd8e00936f83a8a986761a0ae9a9d3a4d24dee0cda54a4d38e62e",
+    "res://art/modules/luoyang_assembled_interiors_20261016g/display_cabinet_v1.png": "eb24ddcea90014e140ba2da5fc86bad2981fc8acd20fbed1f6aec2625ec8e955",
+    "res://art/modules/luoyang_assembled_interiors_20261016g/display_cabinet_v1.png.import": "25a960e3701b32cff08fb34da1e0c236ab9537e898af9645784fb172f60cad9c",
+    "res://.godot/imported/display_cabinet_v1.png-f3d3d5f7f11de67dab5fe4587b53e103.ctex": "6057afdbba6436a7fb9984905306ffd3e48e028bdc8f83764eb4b76e61f88e1b",
+    "res://art/modules/luoyang_assembled_interiors_20261016g/warehouse_rack_v1.png": "42cea5501f73de0d12f134f641574855c40eb0b82b44e0db637d00ec320510df",
+    "res://art/modules/luoyang_assembled_interiors_20261016g/warehouse_rack_v1.png.import": "ae577a1dd0e6acb66b21488ff001940600e49bf7fec60b45a9ab84e4c98f2825",
+    "res://.godot/imported/warehouse_rack_v1.png-ae437e891791eb337976bb2feb3f2d1b.ctex": "8ea5eabc16def204bd0ab57461d05e9a5657315d618f5892b8e534e1ee2f3aab",
+    "res://art/characters/street_expansion_v1/npc_vegetable_seller_idle_down_4f.png": "4ca9b367587102238b9cea55c49f02d3f001420f9a05d89e67229265c6e39f96",
+    "res://art/characters/street_expansion_v1/npc_vegetable_seller_idle_down_4f.png.import": "3bfdb654ec2197deb8d88dbc71415644964c3b803b2cbe3b6b28869d70044bd3",
+    "res://.godot/imported/npc_vegetable_seller_idle_down_4f.png-180f30af4aea744e7c0016e61dc65bac.ctex": "bbfb0c37820b2a1b90c35f415a52cc9ac548f3c066dcd5d4c85bb79062237168",
+    "res://art/characters/portraits/street_expansion_v1/portrait_vegetable_seller_v1.png": "645d6aab019f27819de10268fa645ab6c651c6f595d246bb0d160eafe4bdbc4c",
+    "res://art/characters/portraits/street_expansion_v1/portrait_vegetable_seller_v1.png.import": "e36e530ba592f6e7f13735cb1a5d03e9439a17a92306886f6ac5d2fe97ca8e04",
+    "res://.godot/imported/portrait_vegetable_seller_v1.png-f17e4bd7ae933f9d859135fe5eb71027.ctex": "dab39fbe692b88f9f63f2c59dc5df4bc7a70051691048cbc5a568cc1f38ef8af"
+  },
+  "shop_candidate_promotions": [
+    {
+      "source": "res://build/luoyang_indoor_services_20261025h_system01/shops/smith.tres",
+      "target": "res://data/shops/luoyang_services_20261025h/smith.tres"
+    },
+    {
+      "source": "res://build/luoyang_indoor_services_20261025h_system01/shops/herbal.tres",
+      "target": "res://data/shops/luoyang_services_20261025h/herbal.tres"
+    },
+    {
+      "source": "res://build/luoyang_indoor_services_20261025h_system01/shops/pawn.tres",
+      "target": "res://data/shops/luoyang_services_20261025h/pawn.tres"
+    }
+  ],
+  "room_source_scopes": {
+    "luoyang_market_inn_interior_20261015": [
+      "res://.godot/imported/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png-363e3eaefffe3b29d40c9504e14b7768.ctex",
+      "res://.godot/imported/portrait_innkeeper_v1.png-035af5725b3c463f38c7c3abfc9e4a40.ctex",
+      "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png",
+      "res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png.import",
+      "res://art/characters/portraits/luoyang_services_20261025h/portrait_innkeeper_v1.png",
+      "res://art/characters/portraits/luoyang_services_20261025h/portrait_innkeeper_v1.png.import"
+    ],
+    "luoyang_functional_pawnshop_candidate_20261016": [
+      "res://.godot/imported/btn_x_hover.png-6cf5ced74519ea837a18b8c298be9826.ctex",
+      "res://.godot/imported/btn_x_normal.png-ea98e79638712eaf267af7b8c2cf9715.ctex",
+      "res://.godot/imported/btn_x_pressed.png-de7628cf23f94e7d97493802ae8694a6.ctex",
+      "res://.godot/imported/cloth_roll_rack_v1.png-91ba09a5807325789368d0e0ce15d0ae.ctex",
+      "res://.godot/imported/display_cabinet_v1.png-f3d3d5f7f11de67dab5fe4587b53e103.ctex",
+      "res://.godot/imported/garment_rack_v1.png-5cd166c055b04d0dc4c48b85e14b28bf.ctex",
+      "res://.godot/imported/icon_cloud_crown.png-f82fdc7370f5d1a5be89b8364d11e403.ctex",
+      "res://.godot/imported/icon_deer_leather_boots.png-57d70980cc4682a2c67120b0b3506604.ctex",
+      "res://.godot/imported/icon_heart_guard_armor.png-bb1427f11c9af66b7c7eac73fbf23058.ctex",
+      "res://.godot/imported/icon_iron_helmet.png-1288e91a73d1fed0912af394b230499a.ctex",
+      "res://.godot/imported/icon_iron_wristband.png-cdfe170ae57985cbc5c383bfb8e8ffd3.ctex",
+      "res://.godot/imported/icon_jade_scale_armor.png-cf8d796ec78bcb2d9aa341bfa664dafe.ctex",
+      "res://.godot/imported/icon_leather_armor.png-b83ed1b34372646497a4c0fc47ebf59f.ctex",
+      "res://.godot/imported/icon_leather_bracers.png-146f0eca0e5259709f1a924fead4809d.ctex",
+      "res://.godot/imported/icon_leather_cap.png-0af01e6d5cd302269384cd0e54cbb761.ctex",
+      "res://.godot/imported/icon_sharp_steel_sword.png-e1b1f24c97800f2b9a4b637464d0a908.ctex",
+      "res://.godot/imported/icon_silk_gloves.png-5a188024acca8c15c1f9354c199a74a1.ctex",
+      "res://.godot/imported/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png-330111faa36e97a0141e8625fa9af417.ctex",
+      "res://.godot/imported/npc_street_merchant_idle_down_4f_v3_runtime.png-4fbb3b4b54a36fd3b84442a5c54a0d16.ctex",
+      "res://.godot/imported/npc_vegetable_seller_idle_down_4f.png-180f30af4aea744e7c0016e61dc65bac.ctex",
+      "res://.godot/imported/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png-33c6d428abe09479c4ab453f6f22ab84.ctex",
+      "res://.godot/imported/portrait_generic_older_man_v1.png-0e6e98ee8462cb92ca318bad21e93849.ctex",
+      "res://.godot/imported/portrait_linxi_farmer_v1.png-80a08d82a6d98ea99a0d7bd7bf6af1ed.ctex",
+      "res://.godot/imported/portrait_street_merchant_v1.png-67584f4c2dd94ee82e3319410325d242.ctex",
+      "res://.godot/imported/portrait_vegetable_seller_v1.png-f17e4bd7ae933f9d859135fe5eb71027.ctex",
+      "res://.godot/imported/shop_rect_hover.png-f26cd0e666950fe28e54e53292e71e88.ctex",
+      "res://.godot/imported/shop_rect_normal.png-99bd79664188c2669fa216c7351345ed.ctex",
+      "res://.godot/imported/shop_rect_pressed.png-414da0aa528f0528e09dcdb3d9bd6761.ctex",
+      "res://.godot/imported/shop_tab_inactive.png-77ba34284f80daaa1f47ae2231c798d4.ctex",
+      "res://.godot/imported/shop_tab_selected.png-11abf6f2fb480f19d2d6a44fb8b3de54.ctex",
+      "res://.godot/imported/shop_trade_confirm_panel_v1.png-1110605874ef8ed35f73bda27394c58c.ctex",
+      "res://.godot/imported/ui_shop_panel_quest_style_v2.png-61aa55c17257e82fe7569d2d536507a5.ctex",
+      "res://.godot/imported/warehouse_rack_v1.png-ae437e891791eb337976bb2feb3f2d1b.ctex",
+      "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png",
+      "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png.import",
+      "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png",
+      "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png.import",
+      "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png",
+      "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png.import",
+      "res://art/characters/portraits/portrait_linxi_farmer_v1.png",
+      "res://art/characters/portraits/portrait_linxi_farmer_v1.png.import",
+      "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png",
+      "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png.import",
+      "res://art/characters/portraits/street_expansion_v1/portrait_vegetable_seller_v1.png",
+      "res://art/characters/portraits/street_expansion_v1/portrait_vegetable_seller_v1.png.import",
+      "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png",
+      "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png.import",
+      "res://art/characters/street_expansion_v1/npc_vegetable_seller_idle_down_4f.png",
+      "res://art/characters/street_expansion_v1/npc_vegetable_seller_idle_down_4f.png.import",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png.import",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/display_cabinet_v1.png",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/display_cabinet_v1.png.import",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/garment_rack_v1.png",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/garment_rack_v1.png.import",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/warehouse_rack_v1.png",
+      "res://art/modules/luoyang_assembled_interiors_20261016g/warehouse_rack_v1.png.import",
+      "res://art/ui/inventory/buttons/btn_x_hover.png",
+      "res://art/ui/inventory/buttons/btn_x_hover.png.import",
+      "res://art/ui/inventory/buttons/btn_x_normal.png",
+      "res://art/ui/inventory/buttons/btn_x_normal.png.import",
+      "res://art/ui/inventory/buttons/btn_x_pressed.png",
+      "res://art/ui/inventory/buttons/btn_x_pressed.png.import",
+      "res://art/ui/inventory/icons/icon_cloud_crown.png",
+      "res://art/ui/inventory/icons/icon_cloud_crown.png.import",
+      "res://art/ui/inventory/icons/icon_deer_leather_boots.png",
+      "res://art/ui/inventory/icons/icon_deer_leather_boots.png.import",
+      "res://art/ui/inventory/icons/icon_heart_guard_armor.png",
+      "res://art/ui/inventory/icons/icon_heart_guard_armor.png.import",
+      "res://art/ui/inventory/icons/icon_iron_helmet.png",
+      "res://art/ui/inventory/icons/icon_iron_helmet.png.import",
+      "res://art/ui/inventory/icons/icon_iron_wristband.png",
+      "res://art/ui/inventory/icons/icon_iron_wristband.png.import",
+      "res://art/ui/inventory/icons/icon_jade_scale_armor.png",
+      "res://art/ui/inventory/icons/icon_jade_scale_armor.png.import",
+      "res://art/ui/inventory/icons/icon_leather_armor.png",
+      "res://art/ui/inventory/icons/icon_leather_armor.png.import",
+      "res://art/ui/inventory/icons/icon_leather_bracers.png",
+      "res://art/ui/inventory/icons/icon_leather_bracers.png.import",
+      "res://art/ui/inventory/icons/icon_leather_cap.png",
+      "res://art/ui/inventory/icons/icon_leather_cap.png.import",
+      "res://art/ui/inventory/icons/icon_sharp_steel_sword.png",
+      "res://art/ui/inventory/icons/icon_sharp_steel_sword.png.import",
+      "res://art/ui/inventory/icons/icon_silk_gloves.png",
+      "res://art/ui/inventory/icons/icon_silk_gloves.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_hover.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_hover.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_normal.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_normal.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_pressed.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_pressed.png.import",
+      "res://art/ui/shop/shop_trade_confirm_panel_v1.png",
+      "res://art/ui/shop/shop_trade_confirm_panel_v1.png.import",
+      "res://art/ui/shop/tabs_v1/shop_tab_inactive.png",
+      "res://art/ui/shop/tabs_v1/shop_tab_inactive.png.import",
+      "res://art/ui/shop/tabs_v1/shop_tab_selected.png",
+      "res://art/ui/shop/tabs_v1/shop_tab_selected.png.import",
+      "res://art/ui/shop/ui_shop_panel_quest_style_v2.png",
+      "res://art/ui/shop/ui_shop_panel_quest_style_v2.png.import",
+      "res://data/equipment/cloth_bracers.tres",
+      "res://data/equipment/cloud_crown.tres",
+      "res://data/equipment/deer_leather_boots.tres",
+      "res://data/equipment/heart_guard_armor.tres",
+      "res://data/equipment/iron_helmet.tres",
+      "res://data/equipment/iron_wristband.tres",
+      "res://data/equipment/jade_scale_armor.tres",
+      "res://data/equipment/leather_armor.tres",
+      "res://data/equipment/leather_bracers.tres",
+      "res://data/equipment/leather_cap.tres",
+      "res://data/equipment/sharp_steel_sword.tres",
+      "res://data/equipment/silk_gloves.tres",
+      "res://data/shops/luoyang_services_20261025h/pawn.tres",
+      "res://scenes/shop.tscn",
+      "res://scripts/autoload/inventory.gd",
+      "res://scripts/domain/equipment.gd",
+      "res://scripts/domain/item.gd",
+      "res://scripts/domain/shop_def.gd",
+      "res://scripts/ui/shop_ui.gd",
+      "res://scripts/ui/wuxia_theme.gd"
+    ],
+    "luoyang_market_market_northeast_rear_frontage_interior_20261015": [
+      "res://.godot/imported/btn_x_hover.png-6cf5ced74519ea837a18b8c298be9826.ctex",
+      "res://.godot/imported/btn_x_normal.png-ea98e79638712eaf267af7b8c2cf9715.ctex",
+      "res://.godot/imported/btn_x_pressed.png-de7628cf23f94e7d97493802ae8694a6.ctex",
+      "res://.godot/imported/icon_anti_weak_powder.png-5dcf8092bcc7069572d06e75e6533767.ctex",
+      "res://.godot/imported/icon_antidote_pill.png-55900ea186a5b0b7892a7103abc76008.ctex",
+      "res://.godot/imported/icon_healing_pill_minor.png-dd7571f488d35fdc17d57b7e7365a691.ctex",
+      "res://.godot/imported/icon_healing_salve.png-ab2d339d13d2222314f8f135d7ef9dda.ctex",
+      "res://.godot/imported/icon_inner_breath_pill.png-794addcafedd503383c26ed3d4904014.ctex",
+      "res://.godot/imported/icon_revive_pill.png-eb2ddd5af34b7add9aa303691c79dd7e.ctex",
+      "res://.godot/imported/icon_thaw_warm_pill.png-f3cd3d36c66bf1de9582ca208c47beb1.ctex",
+      "res://.godot/imported/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png-33c6d428abe09479c4ab453f6f22ab84.ctex",
+      "res://.godot/imported/portrait_generic_older_man_v1.png-0e6e98ee8462cb92ca318bad21e93849.ctex",
+      "res://.godot/imported/shop_rect_hover.png-f26cd0e666950fe28e54e53292e71e88.ctex",
+      "res://.godot/imported/shop_rect_normal.png-99bd79664188c2669fa216c7351345ed.ctex",
+      "res://.godot/imported/shop_rect_pressed.png-414da0aa528f0528e09dcdb3d9bd6761.ctex",
+      "res://.godot/imported/shop_tab_inactive.png-77ba34284f80daaa1f47ae2231c798d4.ctex",
+      "res://.godot/imported/shop_tab_selected.png-11abf6f2fb480f19d2d6a44fb8b3de54.ctex",
+      "res://.godot/imported/shop_trade_confirm_panel_v1.png-1110605874ef8ed35f73bda27394c58c.ctex",
+      "res://.godot/imported/ui_shop_panel_quest_style_v2.png-61aa55c17257e82fe7569d2d536507a5.ctex",
+      "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png",
+      "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png.import",
+      "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png",
+      "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png.import",
+      "res://art/ui/inventory/buttons/btn_x_hover.png",
+      "res://art/ui/inventory/buttons/btn_x_hover.png.import",
+      "res://art/ui/inventory/buttons/btn_x_normal.png",
+      "res://art/ui/inventory/buttons/btn_x_normal.png.import",
+      "res://art/ui/inventory/buttons/btn_x_pressed.png",
+      "res://art/ui/inventory/buttons/btn_x_pressed.png.import",
+      "res://art/ui/inventory/icons/icon_anti_weak_powder.png",
+      "res://art/ui/inventory/icons/icon_anti_weak_powder.png.import",
+      "res://art/ui/inventory/icons/icon_antidote_pill.png",
+      "res://art/ui/inventory/icons/icon_antidote_pill.png.import",
+      "res://art/ui/inventory/icons/icon_healing_pill_minor.png",
+      "res://art/ui/inventory/icons/icon_healing_pill_minor.png.import",
+      "res://art/ui/inventory/icons/icon_healing_salve.png",
+      "res://art/ui/inventory/icons/icon_healing_salve.png.import",
+      "res://art/ui/inventory/icons/icon_inner_breath_pill.png",
+      "res://art/ui/inventory/icons/icon_inner_breath_pill.png.import",
+      "res://art/ui/inventory/icons/icon_revive_pill.png",
+      "res://art/ui/inventory/icons/icon_revive_pill.png.import",
+      "res://art/ui/inventory/icons/icon_thaw_warm_pill.png",
+      "res://art/ui/inventory/icons/icon_thaw_warm_pill.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_hover.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_hover.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_normal.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_normal.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_pressed.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_pressed.png.import",
+      "res://art/ui/shop/shop_trade_confirm_panel_v1.png",
+      "res://art/ui/shop/shop_trade_confirm_panel_v1.png.import",
+      "res://art/ui/shop/tabs_v1/shop_tab_inactive.png",
+      "res://art/ui/shop/tabs_v1/shop_tab_inactive.png.import",
+      "res://art/ui/shop/tabs_v1/shop_tab_selected.png",
+      "res://art/ui/shop/tabs_v1/shop_tab_selected.png.import",
+      "res://art/ui/shop/ui_shop_panel_quest_style_v2.png",
+      "res://art/ui/shop/ui_shop_panel_quest_style_v2.png.import",
+      "res://data/items/anti_weak_powder.tres",
+      "res://data/items/antidote_pill.tres",
+      "res://data/items/healing_pill_minor.tres",
+      "res://data/items/healing_salve.tres",
+      "res://data/items/inner_breath_pill.tres",
+      "res://data/items/revive_pill.tres",
+      "res://data/items/thaw_warm_pill.tres",
+      "res://data/shops/luoyang_services_20261025h/herbal.tres",
+      "res://scenes/shop.tscn",
+      "res://scripts/autoload/inventory.gd",
+      "res://scripts/domain/equipment.gd",
+      "res://scripts/domain/item.gd",
+      "res://scripts/domain/shop_def.gd",
+      "res://scripts/ui/shop_ui.gd",
+      "res://scripts/ui/wuxia_theme.gd"
+    ],
+    "luoyang_market_shop_interior_20261015": [
+      "res://.godot/imported/btn_x_hover.png-6cf5ced74519ea837a18b8c298be9826.ctex",
+      "res://.godot/imported/btn_x_normal.png-ea98e79638712eaf267af7b8c2cf9715.ctex",
+      "res://.godot/imported/btn_x_pressed.png-de7628cf23f94e7d97493802ae8694a6.ctex",
+      "res://.godot/imported/icon_battle_helmet.png-1263259bd62007f5b97d67c3537b2713.ctex",
+      "res://.godot/imported/icon_cloth_boots.png-12fe6c887142dcf5221c7902e1301baf.ctex",
+      "res://.godot/imported/icon_dragon_horn_crown.png-326ff36016ccce06ba24a3eaec3c6b96.ctex",
+      "res://.godot/imported/icon_dragon_scale_armor.png-bf2c1057cce90df06021e3ce99779a77.ctex",
+      "res://.godot/imported/icon_dragon_scale_bracers.png-de72d8c139cb3e920024d95cf6a1b051.ctex",
+      "res://.godot/imported/icon_dragon_tendon_staff.png-765bee33e826c5d1628c569be5bc7862.ctex",
+      "res://.godot/imported/icon_heavy_iron_sword.png-f344e759d2b72c0b3df28cba5d8cf5ac.ctex",
+      "res://.godot/imported/icon_iron_great_blade.png-4fe6aff583b05f31644ad722f7cc2b1a.ctex",
+      "res://.godot/imported/icon_iron_knuckles.png-54bc9f09e115ddc7ee16152cae758247.ctex",
+      "res://.godot/imported/icon_iron_staff.png-d24fe5c137ca9b343c7ee489fa64d38f.ctex",
+      "res://.godot/imported/icon_shaolin_fahua_staff.png-36b9bf0e5a12c0ff400fab79bc55501b.ctex",
+      "res://.godot/imported/icon_steel_gauntlets.png-3ffe4931a8885dca3f2e0cdb8f1fa0df.ctex",
+      "res://.godot/imported/icon_thunder_gauntlets.png-87d25da4683c7174f455223dcd93c094.ctex",
+      "res://.godot/imported/icon_tiger_roar_blade.png-0bf6f623a53efd456be727addb7b2a0c.ctex",
+      "res://.godot/imported/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png-330111faa36e97a0141e8625fa9af417.ctex",
+      "res://.godot/imported/portrait_linxi_farmer_v1.png-80a08d82a6d98ea99a0d7bd7bf6af1ed.ctex",
+      "res://.godot/imported/shop_rect_hover.png-f26cd0e666950fe28e54e53292e71e88.ctex",
+      "res://.godot/imported/shop_rect_normal.png-99bd79664188c2669fa216c7351345ed.ctex",
+      "res://.godot/imported/shop_rect_pressed.png-414da0aa528f0528e09dcdb3d9bd6761.ctex",
+      "res://.godot/imported/shop_tab_inactive.png-77ba34284f80daaa1f47ae2231c798d4.ctex",
+      "res://.godot/imported/shop_tab_selected.png-11abf6f2fb480f19d2d6a44fb8b3de54.ctex",
+      "res://.godot/imported/shop_trade_confirm_panel_v1.png-1110605874ef8ed35f73bda27394c58c.ctex",
+      "res://.godot/imported/ui_shop_panel_quest_style_v2.png-61aa55c17257e82fe7569d2d536507a5.ctex",
+      "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png",
+      "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png.import",
+      "res://art/characters/portraits/portrait_linxi_farmer_v1.png",
+      "res://art/characters/portraits/portrait_linxi_farmer_v1.png.import",
+      "res://art/ui/inventory/buttons/btn_x_hover.png",
+      "res://art/ui/inventory/buttons/btn_x_hover.png.import",
+      "res://art/ui/inventory/buttons/btn_x_normal.png",
+      "res://art/ui/inventory/buttons/btn_x_normal.png.import",
+      "res://art/ui/inventory/buttons/btn_x_pressed.png",
+      "res://art/ui/inventory/buttons/btn_x_pressed.png.import",
+      "res://art/ui/inventory/icons/icon_battle_helmet.png",
+      "res://art/ui/inventory/icons/icon_battle_helmet.png.import",
+      "res://art/ui/inventory/icons/icon_cloth_boots.png",
+      "res://art/ui/inventory/icons/icon_cloth_boots.png.import",
+      "res://art/ui/inventory/icons/icon_dragon_horn_crown.png",
+      "res://art/ui/inventory/icons/icon_dragon_horn_crown.png.import",
+      "res://art/ui/inventory/icons/icon_dragon_scale_armor.png",
+      "res://art/ui/inventory/icons/icon_dragon_scale_armor.png.import",
+      "res://art/ui/inventory/icons/icon_dragon_scale_bracers.png",
+      "res://art/ui/inventory/icons/icon_dragon_scale_bracers.png.import",
+      "res://art/ui/inventory/icons/icon_dragon_tendon_staff.png",
+      "res://art/ui/inventory/icons/icon_dragon_tendon_staff.png.import",
+      "res://art/ui/inventory/icons/icon_heavy_iron_sword.png",
+      "res://art/ui/inventory/icons/icon_heavy_iron_sword.png.import",
+      "res://art/ui/inventory/icons/icon_iron_great_blade.png",
+      "res://art/ui/inventory/icons/icon_iron_great_blade.png.import",
+      "res://art/ui/inventory/icons/icon_iron_knuckles.png",
+      "res://art/ui/inventory/icons/icon_iron_knuckles.png.import",
+      "res://art/ui/inventory/icons/icon_iron_staff.png",
+      "res://art/ui/inventory/icons/icon_iron_staff.png.import",
+      "res://art/ui/inventory/icons/icon_shaolin_fahua_staff.png",
+      "res://art/ui/inventory/icons/icon_shaolin_fahua_staff.png.import",
+      "res://art/ui/inventory/icons/icon_steel_gauntlets.png",
+      "res://art/ui/inventory/icons/icon_steel_gauntlets.png.import",
+      "res://art/ui/inventory/icons/icon_thunder_gauntlets.png",
+      "res://art/ui/inventory/icons/icon_thunder_gauntlets.png.import",
+      "res://art/ui/inventory/icons/icon_tiger_roar_blade.png",
+      "res://art/ui/inventory/icons/icon_tiger_roar_blade.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_hover.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_hover.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_normal.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_normal.png.import",
+      "res://art/ui/shop/buttons_v2/shop_rect_pressed.png",
+      "res://art/ui/shop/buttons_v2/shop_rect_pressed.png.import",
+      "res://art/ui/shop/shop_trade_confirm_panel_v1.png",
+      "res://art/ui/shop/shop_trade_confirm_panel_v1.png.import",
+      "res://art/ui/shop/tabs_v1/shop_tab_inactive.png",
+      "res://art/ui/shop/tabs_v1/shop_tab_inactive.png.import",
+      "res://art/ui/shop/tabs_v1/shop_tab_selected.png",
+      "res://art/ui/shop/tabs_v1/shop_tab_selected.png.import",
+      "res://art/ui/shop/ui_shop_panel_quest_style_v2.png",
+      "res://art/ui/shop/ui_shop_panel_quest_style_v2.png.import",
+      "res://data/equipment/battle_helmet.tres",
+      "res://data/equipment/cloth_boots.tres",
+      "res://data/equipment/dark_iron_armor.tres",
+      "res://data/equipment/dark_iron_boots.tres",
+      "res://data/equipment/diamond_gauntlets.tres",
+      "res://data/equipment/dragon_horn_crown.tres",
+      "res://data/equipment/dragon_scale_armor.tres",
+      "res://data/equipment/dragon_scale_bracers.tres",
+      "res://data/equipment/dragon_tendon_staff.tres",
+      "res://data/equipment/heavy_iron_sword.tres",
+      "res://data/equipment/iron_great_blade.tres",
+      "res://data/equipment/iron_knuckles.tres",
+      "res://data/equipment/iron_staff.tres",
+      "res://data/equipment/shaolin_fahua_staff.tres",
+      "res://data/equipment/thunder_gauntlets.tres",
+      "res://data/equipment/tiger_roar_blade.tres",
+      "res://data/shops/luoyang_services_20261025h/smith.tres",
+      "res://scenes/shop.tscn",
+      "res://scripts/autoload/inventory.gd",
+      "res://scripts/domain/equipment.gd",
+      "res://scripts/domain/item.gd",
+      "res://scripts/domain/shop_def.gd",
+      "res://scripts/ui/shop_ui.gd",
+      "res://scripts/ui/wuxia_theme.gd"
+    ]
+  },
+  "economy_source_admission": {
+    "proposal_path": "res://build/luoyang_city_revision_20261025h_source01/service_item_shop_sources_PROPOSAL_NOT_ADMITTED.json",
+    "proposal_sha256": "09c49a73ce87a04ebb242a3131505ec55b3ea4c4268deecfddd32e5c63a2ab65",
+    "root_approval": "Root explicitly admitted exact35 existing SKU definitions at unchanged prices plus six actual Shop consumers and49 bounded direct dependencies as NEW ordinary sources; not inherited C972 coverage.",
+    "existing_prices_unchanged": true,
+    "source_membership": "Only exact current service room scope; no stock/media hashing for the other eight interiors."
+  },
+  "media_admission": {
+    "economic_existing_tuples": {
+      "path": "res://build/luoyang_city_revision_20261025h_source01/service_existing_png_tuples_PROPOSAL_NOT_ADMITTED.json",
+      "sha256": "453dc2f7af1021f0c1e40140ca1cdd22bc3fac1e6249b6acb231cbbea591606d",
+      "root_admitted_additional_existing_leaves": 84
+    },
+    "actor_existing_tuples": {
+      "path": "res://build/luoyang_city_revision_20261025h_source01/service_actor_existing_tuples_PROPOSAL_NOT_ADMITTED.json",
+      "sha256": "af32aca745bd46da01276b86cccc1339446eedeef4042567c217eea5e2660e6",
+      "root_admitted_new_ordinary_or_fixed_history": true,
+      "obsolete_vendor_portrait_excluded": true
+    },
+    "new_inn_portrait": {
+      "raw": "res://art/characters/portraits/luoyang_services_20261025h/portrait_innkeeper_v1.png",
+      "sha256": "c544c5cc1e9d1f3b587eae4d49565c961bc3f6cb2d11a95424b66ccd61f67969",
+      "root_raw_art_admitted": true,
+      "import_tuple_admission_complete": true,
+      "root_actual_verifier": "assets/staging/luoyang_innkeeper_portrait_20261025h_import01/innkeeper_portrait_import_result_4696.json",
+      "root_actual_scope": "Root reported natural0/83checks0/153ms, fullRGBA0B3B/1254x1254/23params/mip0/detect0; two ABSENT import leaves promoted. No PNG rewrite."
+    }
+  },
+  "pawn_ambient": [
+    {
+      "role": "ambient",
+      "room_id": "luoyang_functional_pawnshop_candidate_20261016",
+      "npc_id": "luoyang26a_pawn_helper",
+      "npc_name": "当铺伙计",
+      "foot": [
+        970,
+        500
+      ],
+      "sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png",
+      "portrait_path": "res://art/characters/portraits/portrait_linxi_farmer_v1.png",
+      "hero_opening": "伙计，铺里这些东西怎么收拾？",
+      "lines": [
+        "票据和货物都得对清楚，摆错一件，找起来便费事。",
+        "客官慢慢看，我把手上这摞归好，再替掌柜搭把手。"
+      ],
+      "approach": [
+        1050,
+        500
+      ]
+    },
+    {
+      "role": "ambient",
+      "room_id": "luoyang_functional_pawnshop_candidate_20261016",
+      "npc_id": "luoyang26a_pawn_customer_man",
+      "npc_name": "典当客",
+      "foot": [
+        560,
+        660
+      ],
+      "sprite_path": "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png",
+      "portrait_path": "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png",
+      "hero_opening": "这位老丈，也在等掌柜估价？",
+      "lines": [
+        "带了件家中闲着的旧物，先问问价，不急着出手。",
+        "物件用久了，总有些舍不得；还是听掌柜估过再说。"
+      ],
+      "approach": [
+        620,
+        660
+      ]
+    },
+    {
+      "role": "ambient",
+      "room_id": "luoyang_functional_pawnshop_candidate_20261016",
+      "npc_id": "luoyang26a_pawn_customer_woman",
+      "npc_name": "候当老妇",
+      "foot": [
+        1000,
+        615
+      ],
+      "sprite_path": "res://art/characters/street_expansion_v1/npc_vegetable_seller_idle_down_4f.png",
+      "portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_vegetable_seller_v1.png",
+      "hero_opening": "老人家，您也来瞧瞧货品？",
+      "lines": [
+        "来看看有没有家里用得上的旧物，合适才带回去。",
+        "东西结实好用最要紧，样式新旧倒在其次。"
+      ],
+      "approach": [
+        940,
+        615
+      ]
+    }
+  ],
+  "pawn_room_view": {
+    "parent_author_path": "res://data/maps/luoyang_full_city_20261022ap/rooms/luoyang_functional_pawnshop_candidate_20261016/author.json",
+    "furniture": [
+      {
+        "asset_id": "pawn_counter_grille_v1",
+        "depth_foot_y": 555,
+        "height_behavior": "OPAQUE_HIGH_COUNTER",
+        "id": "pawnshop_pawn_counter_grille_0",
+        "placement_foot_px": [
+          768,
+          555
+        ],
+        "render_scale": 0.31,
+        "source_ground_anchor_px": [
+          768,
+          927
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              184,
+              844
+            ],
+            [
+              1349,
+              844
+            ],
+            [
+              1349,
+              931
+            ],
+            [
+              184,
+              931
+            ]
+          ]
+        ],
+        "source_sha256": "73bee302b3c59e8a1f0302e80aa189407c033133d175c100916bf07fadd95708",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/pawn_counter_grille_v1.png",
+        "fade_allowed": false
+      },
+      {
+        "asset_id": "pawn_ticket_cabinet_v1",
+        "depth_foot_y": 440,
+        "height_behavior": "HIGH_FURNITURE_FADE",
+        "id": "pawnshop_pawn_ticket_cabinet_1",
+        "placement_foot_px": [
+          400,
+          440
+        ],
+        "render_scale": 0.25,
+        "source_ground_anchor_px": [
+          768,
+          989
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              463,
+              901
+            ],
+            [
+              1072,
+              901
+            ],
+            [
+              1072,
+              992
+            ],
+            [
+              463,
+              992
+            ]
+          ]
+        ],
+        "source_sha256": "56091452ebf5ec859a5236971888b1d7ab01495357a7c1e25bea04476c8723dc",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/pawn_ticket_cabinet_v1.png"
+      },
+      {
+        "asset_id": "display_cabinet_v1",
+        "depth_foot_y": 440,
+        "height_behavior": "HIGH_FURNITURE_FADE",
+        "id": "pawn_fill01_display_cabinet",
+        "placement_foot_px": [
+          1120,
+          440
+        ],
+        "render_scale": 0.22,
+        "source_ground_anchor_px": [
+          768,
+          985
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              389,
+              902
+            ],
+            [
+              1149,
+              902
+            ],
+            [
+              1149,
+              988
+            ],
+            [
+              389,
+              988
+            ]
+          ]
+        ],
+        "source_sha256": "eb24ddcea90014e140ba2da5fc86bad2981fc8acd20fbed1f6aec2625ec8e955",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/display_cabinet_v1.png"
+      },
+      {
+        "asset_id": "dining_table_v1",
+        "depth_foot_y": 640,
+        "height_behavior": "LOW_OPAQUE_ACTOR_LOCAL_GHOST",
+        "id": "pawnshop_dining_table_3",
+        "placement_foot_px": [
+          420,
+          640
+        ],
+        "render_scale": 0.15,
+        "source_ground_anchor_px": [
+          768,
+          934
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              408,
+              685
+            ],
+            [
+              1130,
+              685
+            ],
+            [
+              1227,
+              934
+            ],
+            [
+              310,
+              934
+            ]
+          ]
+        ],
+        "source_sha256": "6874cc7448d617579e5c6f358333f7d90e403b8738c7762edf5b8886261a2ae6",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png"
+      },
+      {
+        "asset_id": "wood_armchair_v1",
+        "depth_foot_y": 692,
+        "height_behavior": "LOW_OPAQUE_ACTOR_LOCAL_GHOST",
+        "id": "pawnshop_wood_armchair_4",
+        "placement_foot_px": [
+          420,
+          692
+        ],
+        "render_scale": 0.12,
+        "source_ground_anchor_px": [
+          768,
+          965
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              481,
+              751
+            ],
+            [
+              1062,
+              751
+            ],
+            [
+              1064,
+              966
+            ],
+            [
+              479,
+              966
+            ]
+          ]
+        ],
+        "source_sha256": "054cf8bc4d3f8a79cfd869bdb1654be56da9fd7d23ddb73f49c6808d02cb6337",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_armchair_v1.png"
+      },
+      {
+        "asset_id": "wood_armchair_v1",
+        "depth_foot_y": 685,
+        "height_behavior": "LOW_OPAQUE_ACTOR_LOCAL_GHOST",
+        "id": "pawnshop_wood_armchair_5",
+        "placement_foot_px": [
+          1040,
+          685
+        ],
+        "render_scale": 0.12,
+        "source_ground_anchor_px": [
+          768,
+          965
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              481,
+              751
+            ],
+            [
+              1062,
+              751
+            ],
+            [
+              1064,
+              966
+            ],
+            [
+              479,
+              966
+            ]
+          ]
+        ],
+        "source_sha256": "054cf8bc4d3f8a79cfd869bdb1654be56da9fd7d23ddb73f49c6808d02cb6337",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_armchair_v1.png"
+      },
+      {
+        "asset_id": "cloth_roll_rack_v1",
+        "depth_foot_y": 540,
+        "height_behavior": "LOW_OPAQUE_ACTOR_LOCAL_GHOST",
+        "id": "pawn_fill01_cloth_rolls",
+        "placement_foot_px": [
+          245,
+          540
+        ],
+        "render_scale": 0.065,
+        "source_ground_anchor_px": [
+          768,
+          951
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              126,
+              839
+            ],
+            [
+              1407,
+              839
+            ],
+            [
+              1411,
+              953
+            ],
+            [
+              122,
+              953
+            ]
+          ]
+        ],
+        "source_sha256": "078b1086cd2003916e73bb9c9f7a5f98d52286eabd765c609cb928e9ea84fc0e",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png"
+      },
+      {
+        "asset_id": "garment_rack_v1",
+        "depth_foot_y": 650,
+        "height_behavior": "HIGH_FURNITURE_FADE",
+        "id": "pawn_fill01_garments",
+        "placement_foot_px": [
+          220,
+          650
+        ],
+        "render_scale": 0.08,
+        "source_ground_anchor_px": [
+          768,
+          942
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              290,
+              791
+            ],
+            [
+              1246,
+              791
+            ],
+            [
+              1248,
+              944
+            ],
+            [
+              289,
+              944
+            ]
+          ]
+        ],
+        "source_sha256": "ff279aa1949676a02c84b5e8a24615d4f1570901c1f7013a62814893dc6956b6",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/garment_rack_v1.png"
+      },
+      {
+        "asset_id": "warehouse_rack_v1",
+        "depth_foot_y": 590,
+        "height_behavior": "HIGH_FURNITURE_FADE",
+        "id": "pawn_fill01_box_rack",
+        "placement_foot_px": [
+          1250,
+          590
+        ],
+        "render_scale": 0.15,
+        "source_ground_anchor_px": [
+          768,
+          947
+        ],
+        "source_ground_solid_polygons_px": [
+          [
+            [
+              289,
+              840
+            ],
+            [
+              1254,
+              840
+            ],
+            [
+              1254,
+              950
+            ],
+            [
+              289,
+              950
+            ]
+          ]
+        ],
+        "source_sha256": "42cea5501f73de0d12f134f641574855c40eb0b82b44e0db637d00ec320510df",
+        "source_size_px": [
+          1536,
+          1024
+        ],
+        "strict_zero_padding_compliance": false,
+        "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/warehouse_rack_v1.png"
+      }
+    ],
+    "geometry": {
+      "actor_clearance_model": {
+        "coordinate_domain": "actual_world_pixels",
+        "envelope_world_px": [
+          -90,
+          -171,
+          180,
+          181
+        ],
+        "foot_zone_policy": "Minkowski(full_visual_projection_world,negative_actor_bounds), clip foot_y<=column_depth_front, clip canvas. Footpoint-only, never expand native body twice",
+        "linear_half_texel_world": 0.55755,
+        "room_player_visual_scale": 1.18,
+        "source_proof": "res://data/maps/luoyang_assembled_interiors_20261016g/player_envelope_measurement.json"
+      },
+      "actual_world_size_px": [
+        1920,
+        1280
+      ],
+      "coordinate_contract": "source_feet_assembled_interiors_20261016g",
+      "fixed_architecture": [],
+      "floor_regions_px": [
+        [
+          [
+            190,
+            368
+          ],
+          [
+            1305,
+            368
+          ],
+          [
+            1400,
+            702
+          ],
+          [
+            942,
+            702
+          ],
+          [
+            942,
+            852
+          ],
+          [
+            568,
+            852
+          ],
+          [
+            568,
+            702
+          ],
+          [
+            129,
+            702
+          ]
+        ]
+      ],
+      "foot_forbidden_regions_px": [],
+      "front_exit": {
+        "activation_size_px": [
+          100,
+          24
+        ],
+        "approach_foot_px": [
+          768,
+          830
+        ]
+      },
+      "furniture_bases": [
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              586.96,
+              529.27
+            ],
+            [
+              948.11,
+              529.27
+            ],
+            [
+              948.11,
+              556.24
+            ],
+            [
+              586.96,
+              556.24
+            ]
+          ],
+          "id": "pawnshop_pawn_counter_grille_0",
+          "kind": "independent_furniture"
+        },
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              323.75,
+              418
+            ],
+            [
+              476,
+              418
+            ],
+            [
+              476,
+              440.75
+            ],
+            [
+              323.75,
+              440.75
+            ]
+          ],
+          "id": "pawnshop_pawn_ticket_cabinet_1",
+          "kind": "independent_furniture"
+        },
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              1036.6199951171875,
+              421.739990234375
+            ],
+            [
+              1203.8199462890625,
+              421.739990234375
+            ],
+            [
+              1203.8199462890625,
+              440.6600036621094
+            ],
+            [
+              1036.6199951171875,
+              440.6600036621094
+            ]
+          ],
+          "id": "pawn_fill01_display_cabinet",
+          "kind": "independent_furniture"
+        },
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              366,
+              602.65
+            ],
+            [
+              474.3,
+              602.65
+            ],
+            [
+              488.85,
+              640
+            ],
+            [
+              351.3,
+              640
+            ]
+          ],
+          "id": "pawnshop_dining_table_3",
+          "kind": "independent_furniture"
+        },
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              385.56,
+              666.32
+            ],
+            [
+              455.28,
+              666.32
+            ],
+            [
+              455.52,
+              692.12
+            ],
+            [
+              385.32,
+              692.12
+            ]
+          ],
+          "id": "pawnshop_wood_armchair_4",
+          "kind": "independent_furniture"
+        },
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              1005.5599975585938,
+              659.3200073242188
+            ],
+            [
+              1075.280029296875,
+              659.3200073242188
+            ],
+            [
+              1075.52001953125,
+              685.1199951171875
+            ],
+            [
+              1005.3200073242188,
+              685.1199951171875
+            ]
+          ],
+          "id": "pawnshop_wood_armchair_5",
+          "kind": "independent_furniture"
+        },
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              203.27000427246094,
+              532.719970703125
+            ],
+            [
+              286.5350036621094,
+              532.719970703125
+            ],
+            [
+              286.79498291015625,
+              540.1300048828125
+            ],
+            [
+              203.010009765625,
+              540.1300048828125
+            ]
+          ],
+          "id": "pawn_fill01_cloth_rolls",
+          "kind": "independent_furniture"
+        },
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              181.760009765625,
+              637.9199829101562
+            ],
+            [
+              258.239990234375,
+              637.9199829101562
+            ],
+            [
+              258.3999938964844,
+              650.1599731445312
+            ],
+            [
+              181.67999267578125,
+              650.1599731445312
+            ]
+          ],
+          "id": "pawn_fill01_garments",
+          "kind": "independent_furniture"
+        },
+        {
+          "blocking": true,
+          "ground_polygon_px": [
+            [
+              1178.1500244140625,
+              573.9500122070312
+            ],
+            [
+              1322.9000244140625,
+              573.9500122070312
+            ],
+            [
+              1322.9000244140625,
+              590.4500122070312
+            ],
+            [
+              1178.1500244140625,
+              590.4500122070312
+            ]
+          ],
+          "id": "pawn_fill01_box_rack",
+          "kind": "independent_furniture"
+        }
+      ],
+      "negative_points": [
+        {
+          "foot_px": [
+            767.5350000000001,
+            542.755
+          ],
+          "id": "pawnshop_pawn_counter_grille_0",
+          "kind": "independent_furniture"
+        },
+        {
+          "foot_px": [
+            399.875,
+            429.375
+          ],
+          "id": "pawnshop_pawn_ticket_cabinet_1",
+          "kind": "independent_furniture"
+        },
+        {
+          "foot_px": [
+            1120.219970703125,
+            431.1999969482422
+          ],
+          "id": "pawn_fill01_display_cabinet",
+          "kind": "independent_furniture"
+        },
+        {
+          "foot_px": [
+            420.1125,
+            621.325
+          ],
+          "id": "pawnshop_dining_table_3",
+          "kind": "independent_furniture"
+        },
+        {
+          "foot_px": [
+            420.41999999999996,
+            679.22
+          ],
+          "id": "pawnshop_wood_armchair_4",
+          "kind": "independent_furniture"
+        },
+        {
+          "foot_px": [
+            1040.4200134277344,
+            672.2200012207031
+          ],
+          "id": "pawnshop_wood_armchair_5",
+          "kind": "independent_furniture"
+        },
+        {
+          "foot_px": [
+            244.9025001525879,
+            536.4249877929688
+          ],
+          "id": "pawn_fill01_cloth_rolls",
+          "kind": "independent_furniture"
+        },
+        {
+          "foot_px": [
+            220.0199966430664,
+            644.0399780273438
+          ],
+          "id": "pawn_fill01_garments",
+          "kind": "independent_furniture"
+        },
+        {
+          "foot_px": [
+            1250.5250244140625,
+            582.2000122070312
+          ],
+          "id": "pawn_fill01_box_rack",
+          "kind": "independent_furniture"
+        }
+      ],
+      "required_routes": [
+        {
+          "id": "spawn_to_exit",
+          "points_px": [
+            [
+              768,
+              780
+            ],
+            [
+              768,
+              830
+            ]
+          ]
+        },
+        {
+          "id": "pawn26a_counter_front",
+          "points_px": [
+            [
+              768,
+              780
+            ],
+            [
+              768,
+              585
+            ]
+          ]
+        },
+        {
+          "id": "pawn26a_helper_front",
+          "points_px": [
+            [
+              768,
+              780
+            ],
+            [
+              900,
+              730
+            ],
+            [
+              900,
+              580
+            ],
+            [
+              1080,
+              580
+            ],
+            [
+              1080,
+              560
+            ],
+            [
+              1050,
+              500
+            ]
+          ]
+        },
+        {
+          "id": "pawn26a_male_customer",
+          "points_px": [
+            [
+              768,
+              780
+            ],
+            [
+              600,
+              730
+            ],
+            [
+              620,
+              680
+            ],
+            [
+              620,
+              660
+            ]
+          ]
+        },
+        {
+          "id": "pawn26a_female_customer",
+          "points_px": [
+            [
+              768,
+              780
+            ],
+            [
+              900,
+              730
+            ],
+            [
+              900,
+              615
+            ],
+            [
+              940,
+              615
+            ]
+          ]
+        }
+      ],
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "spawn_foot_px": [
+        768,
+        780
+      ],
+      "validation_stations": [
+        {
+          "id": "spawn_to_exit",
+          "foot_px": [
+            768,
+            830
+          ]
+        },
+        {
+          "id": "pawn26a_counter_front",
+          "foot_px": [
+            768,
+            585
+          ]
+        },
+        {
+          "id": "pawn26a_helper_front",
+          "foot_px": [
+            1050,
+            500
+          ]
+        },
+        {
+          "id": "pawn26a_male_customer",
+          "foot_px": [
+            620,
+            660
+          ]
+        },
+        {
+          "id": "pawn26a_female_customer",
+          "foot_px": [
+            940,
+            615
+          ]
+        }
+      ]
+    },
+    "source_design": {
+      "path": "res://build/luoyang_city_finish_20261025i_art01/pawnshop_only_layout01_BUILD_ONLY.json",
+      "sha256": "3d0cf6f7db76f20ee7f242a14f0e1e806ec52579a72eddcd669d0c1bbc79a111"
+    },
+    "scope": "Original Scene/layout/storage/registry continue through G.matches. This is one room display/ground projection, not another owner/source validation layer."
+  },
+  "pawn_change_scope": {
+    "keeper_only_foot_and_approach": true,
+    "new_ambient_count": 3,
+    "no_quests_rewards_flags_audio": true,
+    "old_three_room_scopes_unchanged": true,
+    "stock_and_fees_unchanged": true,
+    "original_counter_opaque": true,
+    "chair_migrations": 1,
+    "replaced_furniture": 1,
+    "new_furniture": 3,
+    "new_media_imports": 0,
+    "existing_media_qualification": "Existing raw/import/ctex reused without import. Female portrait645D tuple inherited current Market manifest; female sprite4CA9 tuple is this task NEW ordinary pawn-scoped admission, not historical captured source."
+  }
+}

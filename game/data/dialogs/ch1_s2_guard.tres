@@ -3,50 +3,52 @@
 [ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
 [ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
 
-[sub_resource type="Resource" id="node_a"]
+[sub_resource type="Resource" id="node_start"]
 script = ExtResource("2_dnode")
 node_id = &"start"
-speaker = "守城兵丁"
+speaker = "守村人"
 portrait_path = ""
-text = "外乡人？\n这年月小心些，茗雾山庄的人最近总来打探消息。"
+text = "外乡人？从林西村来的？你来得正是时候，村口刚贴了一张凌月派弟子失踪的告示。"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
 set_flags = Array[Dictionary]([])
 accept_quest = &""
 complete_quest = &""
-on_end = "next:b"
+on_end = "next:notice"
 
-[sub_resource type="Resource" id="node_b"]
+[sub_resource type="Resource" id="node_notice"]
 script = ExtResource("2_dnode")
-node_id = &"b"
-speaker = "守城兵丁"
+node_id = &"notice"
+speaker = "守村人"
 portrait_path = ""
-text = "听说五年前他们血洗了流云山——\n三个月前，掌门长子无声无息消失了。\n这世道啊……"
+text = "告示上说，失踪的人最后在城西废宅附近出现。最近山匪也突然多了，若要查，先在村里备些药，再去问问护商镖师。"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
 set_flags = Array[Dictionary]([])
 accept_quest = &""
 complete_quest = &""
-on_end = "next:c"
+on_end = "next:hook"
 
-[sub_resource type="Resource" id="node_c"]
+[sub_resource type="Resource" id="node_hook"]
 script = ExtResource("2_dnode")
-node_id = &"c"
+node_id = &"hook"
 speaker = "冷孤云"
 portrait_path = "res://art/characters/protagonist_portrait.png"
-text = "[i]（流云山……正是师父和我五年前最后一战之地。）[/i]"
+text = "（冷孤云望向城西。废宅、山匪和尸体背后的雾纹，像几根尚未收紧的线。）"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
-set_flags = Array[Dictionary]([])
-accept_quest = &""
+set_flags = Array[Dictionary]([{"key": "zhuwei_guard_briefed", "value": true}])
+accept_quest = &"q_ch1_main_village_inquiry"
 complete_quest = &""
 on_end = "end"
 
 [resource]
 script = ExtResource("1_dscr")
 dialog_id = &"ch1_s2_guard"
+required_story_flag = &"master_training_done"
+required_completed_quest = &"q_ch1_main_training"
 entry_node_id = &"start"
-nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b"), SubResource("node_c")])
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_notice"), SubResource("node_hook")])

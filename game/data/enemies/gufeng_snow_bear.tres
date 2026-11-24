@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+enemy_id = &"gufeng_snow_bear"
+display_name = "古峰雪熊"
+battle_actor_path = "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_01.png"
+battle_actor_scale = 1.0
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_01.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_02.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_03.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/bear/bear_move_01.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_02.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_03.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_01.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_02.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_03.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_01.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_02.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_03.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_01.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_02.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_03.png", "res://art/sprites/battle/animal_v1_20261012/bear/bear_defeat_04.png")
+attack_sfx_path = "res://art/audio/animals/sfx_bear_attack_20261110.wav"
+hit_sfx_path = "res://art/audio/animals/sfx_bear_hit_20261110.wav"
+level = 8
+max_hp = 398
+max_mp = 0
+attack = 76
+defense = 22
+speed = 8
+skill_ids = Array[StringName]([&"basic_attack", &"animal_bear_rake"])
+aggression = 0.62
+drop_gold_min = 8
+drop_gold_max = 16
+drop_exp = 67

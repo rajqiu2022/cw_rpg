@@ -1,0 +1,34 @@
+"""Versioned production ledger for four settlement remodels."""
+import json,sys,shutil,hashlib
+from pathlib import Path
+import yaml
+from PIL import Image
+ROOT=Path(__file__).resolve().parents[1]
+NAME='four_settlements_20261030e';RAW=ROOT/'assets/raw'/NAME;STAGE=ROOT/'assets/staging'/NAME;PROJECT=STAGE/'town_project';ART='art/modules/'+NAME
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def save(p,v):p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n','utf-8')
+COMMON='Use case: stylized-concept. Asset type: complete settlement masterplan design reference for a semi-realistic hand-painted 2.5D Chinese wuxia RPG. Elevated orthographic south-facing camera with slight right-side depth, no lens perspective. Crisp detailed miniature environment, restrained natural daylight, no dramatic atmosphere. Entire connected playable settlement visible with an outer margin, no cropped buildings. Human doors have consistent adult proportions across different building widths and heights. Distinct main streets, secondary lanes, courtyard thresholds; no roof interpenetrations. Realistic terrain height changes only where continuous retaining banks and traversable stairs join upper and lower ground. Human figures only tiny scale references, no labels, no UI or text. This is a planning illustration, never a gameplay background. Scene: '
+PLANS={
+ 'bailu_plan':'White Deer Ferry, a quiet inland Chinese river crossing. Composition: river occupies RIGHT third with irregular willow-lined muddy banks, TWO wooden landing piers project right; two small covered ferry boats rest alongside, never blocking decks. North-west landward arrival road bends around a three-building inn courtyard; central willow and modest roofed waiting shelter provide a landmark; customs tally house on raised stone bank at middle-right, shallow stair down to working quay; south-west six fisher cottages of varied size grouped around net-drying yards, a narrow loop links cottages to small market and quay. Worn grey tile, dark timber, soft lime plaster, muted green willow, earth lanes, reeds. Dense but small river village, no palace, no city wall. Clear passenger route separated from two compact cargo groups.',
+ 'donghai_plan':'East Sea Port, a busy Chinese coastal river-mouth harbour. Composition: deep blue-green tidal water on RIGHT and LOWER sides, thick grey stone quay surrounds an L-shaped dry dockyard, two long wood jetties extend east with one tall junk at outer berth and one fishing boat. A stone-and-dark-timber port office on NORTH rise, adjoining two warehouses of clearly different size with freight lane; small weathered watch pavilion by outer breakwater, WEST entry street turns to a compact fish market with awnings, sail-repair shed and five low fisher houses. Real 120px-scale quay rise with continuous masonry seawall and two useful stone stairs to lower timber deck. Slate roofs, salt-weathered off-white walls, pale canvas sails, rust-red ropes and fishing nets. Busy maritime identity, no inland mountain gate, no desert material, no monumental temple. Every building separated by clear lanes, human-size doors.',
+ 'linxi_plan':'Linxi Village, protagonist home village enclosed by bamboo and low wooded foothills. Full village split naturally into THREE connected neighbourhoods: NORTH-WEST quiet master-and-student courtyard with modest training hall, separate bedroom and simple practice yard; CENTRAL old broad tree with well, friendly tiled tavern and smith work shed on opposite sides of winding earth main street; SOUTH-EAST residential hamlet with herb home, small schoolhouse, four farm cottages and vegetable plots. Narrow stream curves along east boundary with one low wooden bridge. Modest grey-tiled timber and pale mud-plaster houses, humble scale, deliberately varied low cottages vs taller tavern, bamboo hedges as connected plot edges. Low north terrace with TWO useful short steps and continuous grassy bank. No artificial city wall or huge ceremonial square. Multiple courtyard doors visible, 150px-scale narrow lanes form connected walk loop.',
+ 'zhuwei_plan':'Zhuwei Village, a busier bamboo-fringed market settlement. SOUTH gate road opens onto compact east-west market street between varied shops: broad two-storey inn with side kitchen WEST, blacksmith and cart-repair yard EAST, five vegetable and cloth stalls attached to street edges, central notice pavilion set aside from route. NORTH a narrow lane rises one low continuous bank to backstreet homes and the route towards bamboo forest; NORTH-WEST a clearly secluded old shuttered house courtyard reached by side lane. Two delivery carts and tied cargo at loading bay, no route blockage. Grey tile, dark warm timber, aged cream plaster, pale woven awnings, bamboo along perimeter, modest creek on east with short bridge. Human doors consistent scale, large shops gain bays not oversized doors. Lively yet slightly anxious village mood conveyed by closed shutters, not new plot characters. Strong street enclosure, 300px-scale main street and 120px side lanes, natural earth and worn stone transitions, no palace.'}
+def prepare():
+ assert not STAGE.exists() and not RAW.exists();RAW.mkdir(parents=True);q=STAGE/'production';(q/'templates').mkdir(parents=True)
+ (q/'templates/plan.yaml').write_text(yaml.safe_dump({'prompt_template':'{asset_prompt}','size':'1536x1024','quality':'high','background':'opaque'}),'utf-8')
+ import gen_assets as render
+ render.TEMPLATES_DIR=q/'templates';rows=[]
+ for key,detail in PLANS.items():
+  prompt=COMMON+detail;assert render.render_template('plan',{'asset_prompt':prompt},{})['prompt']==prompt.strip()
+  p=q/(key+'.txt');p.write_text(prompt,'utf-8');rows.append({'key':key,'kind':'design','prompt':p.relative_to(ROOT).as_posix(),'prompt_sha256':sha(p),'calls':0,'status':'REGISTERED','backend':'builtin_image_gen','model':None,'provider':None,'fallback_used':False})
+ save(RAW/'manifest.json',{'assets':rows});save(STAGE/'preflight.json',{'real_template_renderer_passed':True,'plans':4})
+def start(key):
+ p=RAW/'manifest.json';j=json.loads(p.read_text('utf-8'));r=next(r for r in j['assets'] if r['key']==key);assert r['calls']==0;r['calls']=1;r['status']='CALL_STARTED';save(p,j);print((ROOT/r['prompt']).read_text('utf-8'))
+def record(key,path):
+ p=RAW/'manifest.json';j=json.loads(p.read_text('utf-8'));r=next(r for r in j['assets'] if r['key']==key);assert r['status']=='CALL_STARTED'
+ src=Path(path);dst=RAW/(key+'.png');assert not dst.exists();shutil.copy2(src,dst);im=Image.open(dst)
+ r.update(status='RAW_DESIGN_REFERENCE',output=dst.relative_to(ROOT).as_posix(),source_path=str(src),sha256=sha(dst),mode=im.mode,size=list(im.size));save(p,j);print(dst)
+if __name__=='__main__':
+ if sys.argv[1]=='prepare':prepare()
+ elif sys.argv[1]=='start':start(sys.argv[2])
+ elif sys.argv[1]=='record':record(sys.argv[2],sys.argv[3])

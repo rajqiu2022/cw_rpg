@@ -1,0 +1,948 @@
+extends Node
+
+## 全局游戏状态。挂在 autoload，整个生命周期常驻内存。
+## 仅放跨场景的"会话级"数据；持久化交给 SaveManager。
+
+signal player_changed
+signal ultimate_mastered(skill: Skill)
+signal party_changed
+signal gold_changed(new_amount: int)
+
+var player: CharacterStats
+var party: Array[CharacterStats] = []
+var gold: int = 0
+var current_chapter: int = 1
+var flags: Dictionary = {}
+var player_faction: StringName = &""
+## 已研读招式的熟练层数。0 表示一重、9 表示十重；具体自修上限由 Skill 数据决定。
+var skill_mastery: Dictionary = {}
+var pending_skill_unlocks: Array[StringName] = []
+## 武学研读使用的长期资源。总阅历只增不减，可用阅历在研读时扣除。
+var training_points_total: int = 0
+var training_points_available: int = 0
+## 江湖公议。默认 0；通缉、任务与重要善举提升，不因消费而降低。
+var reputation: int = 0
+var last_faction_join_error: String = ""
+## 城市切磋的永久结算记录；按稳定 spar_id 隔离不同 NPC。
+var sparring_records: Dictionary = {}
+
+const FACTION_SKILLS := {
+	# 考校后传本门根基，武当同时传授原有的玄武桩。
+	"wudang": [&"wudang_xuanwu_ge", &"wudang_mianzhang"],
+	"huashan": [&"huashan_yijian"],
+	"gufeng": [&"gufeng_kaishan_yidao"],
+	"lingyue": [&"lingyue_lingbo_yizhi"],
+	"mingwu": [&"mingwu_saofeng"],
+	# 无门派是正式成长路线，不自动赠送门派武学。
+	"wanderer": [],
+}
+
+const REPUTATION_TITLES := [
+	{"threshold": 0, "title": "无名之辈"},
+	{"threshold": 10, "title": "初露锋芒"},
+	{"threshold": 25, "title": "小有侠名"},
+	{"threshold": 50, "title": "一方少侠"},
+	{"threshold": 90, "title": "江湖俊杰"},
+	{"threshold": 140, "title": "名动州府"},
+	{"threshold": 210, "title": "侠名远播"},
+	{"threshold": 300, "title": "一代豪侠"},
+	{"threshold": 420, "title": "武林名宿"},
+	{"threshold": 600, "title": "天下闻名"},
+]
+
+const FACTION_REPUTATION_REQUIREMENT := 10
+const FACTION_MATERIAL_REQUIREMENTS := {
+	"wudang": {"iron_ore": 2, "timber_bundle": 2},
+	"huashan": {"iron_ore": 3, "cloth_roll": 2},
+	"gufeng": {"iron_ore": 4, "grain_sack": 2},
+	"lingyue": {"herb_bundle": 3, "cloth_roll": 2},
+	"mingwu": {"herb_bundle": 3, "timber_bundle": 2},
+}
+
+const COMPANION_PATHS := {
+	"duan_changfeng": "res://data/companions/duan_changfeng.tres",
+	"tang_xingzhou": "res://data/companions/tang_xingzhou.tres",
+	"shen_qinghe": "res://data/companions/shen_qinghe.tres",
+	"warrant_ferryman_hei": "res://data/companions/warrant_ferryman_hei.tres",
+	"warrant_escort_luo": "res://data/companions/warrant_escort_luo.tres",
+	"yuewuheng": "res://data/companions/yuewuheng.tres",
+}
+
+const BATTLE_PARTY_LIMIT := 5
+const PARTY_RESERVES_KEY := "__party_reserves"
+const COMPANION_KITS := {
+	&"duan_changfeng": {"gear": [&"iron_great_blade", &"leather_armor", &"deer_leather_boots"], "books": [&"snow_pass_returning_blade_manual"]},
+	&"warrant_ferryman_hei": {"gear": [&"bronze_ring_staff", &"leather_armor"]},
+	&"warrant_escort_luo": {"gear": [&"iron_great_blade", &"mountain_armor"]},
+	&"yuewuheng": {"gear": [&"sharp_steel_sword", &"lingyue_silk_robe", &"lingyue_flight_boots"], "books": [&"moon_return_sword_manual", &"moonstep_breath_manual"]},
+}
+
+const LINXI_BASE_ARTS: Array[StringName] = [
+	&"linxi_basic_sword_one",
+	&"linxi_basic_sword_two",
+	&"linxi_inner_breath",
+]
+const LINXI_EVOLVED_ARTS: Array[StringName] = [
+	&"wanxiang_breaking_sword",
+	&"xuanshuang_hidden_current",
+]
+const HUILAN_OPEN_WORLD_CLUE_FLAGS: Array[StringName] = [
+	&"huilan_echo_understood",
+	&"huilan_bell_counterforce_understood",
+	&"huilan_yielding_position_understood",
+	&"huilan_water_rule_understood",
+	&"huilan_balance_understood",
+]
+const GUYUN_PREBOOK_CHAIN_FLAGS: Array[StringName] = [
+	&"guyun_feng_first_met",
+	&"guyun_returning_diagram_solved",
+	&"guyun_luoyang_notches_solved",
+	&"guyun_mingwu_catalog_preserved",
+]
+
+func _ready() -> void:
+	_init_default_player()
+	EventBus.flag_set.connect(_on_flag_set)
+	EventBus.quest_completed.connect(_on_martial_quest_completed)
+	EventBus.player_leveled_up.connect(_on_learning_requirements_changed)
+	EventBus.equipment_changed.connect(_on_equipment_requirements_changed)
+
+
+func _on_flag_set(flag: StringName, value: Variant) -> void:
+	# Registered open-world companions share the normal join/save path.
+	if bool(value) and String(flag).begins_with("companion_") and String(flag).ends_with("_joined"):
+		var companion_id := String(flag).trim_prefix("companion_").trim_suffix("_joined")
+		if COMPANION_PATHS.has(companion_id):
+			add_companion(StringName(companion_id))
+	match String(flag):
+		"joined_faction":
+			if bool(value) and String(player_faction) != "":
+				for skill_id: StringName in FACTION_SKILLS.get(String(player_faction), []):
+					learn_skill(skill_id)
+		"learned_sword_two":
+			if bool(value):
+				learn_skill(&"linxi_basic_sword_two")
+		"learned_inner_breath":
+			if bool(value):
+				learn_skill(&"linxi_inner_breath")
+		"master_training_done":
+			if bool(value):
+				_apply_master_training_rewards()
+		"chapter8_complete":
+			if bool(value):
+				_refresh_linxi_breakthrough_readiness()
+		"guyun_feng_first_met", "guyun_returning_diagram_solved", "guyun_luoyang_notches_solved", "guyun_mingwu_catalog_preserved", "guyun_master_book_unlocked", "guyun_master_book_read":
+			if bool(value):
+				_refresh_linxi_breakthrough_readiness()
+		"linxi_master_ultimate_breakthrough":
+			if bool(value):
+				_apply_linxi_master_breakthrough()
+		"canglong_upper_found", "canglong_middle_found", "canglong_lower_found":
+			if bool(value):
+				_reconcile_canglong_pages()
+		"canglong_manual_assembled":
+			if bool(value):
+				learn_skill(&"canglong_three_turns")
+		"huilan_echo_understood", "huilan_bell_counterforce_understood", "huilan_yielding_position_understood", "huilan_water_rule_understood", "huilan_balance_understood":
+			if bool(value):
+				_refresh_huilan_open_world_readiness()
+		"assembly_wound_checked", "assembly_token_checked", "assembly_paper_checked":
+			if bool(value):
+				_reconcile_assembly_clues()
+
+
+func reconcile_progression_rewards() -> void:
+	## Save migration: old saves may own the progression flag without the new
+	## skills or passive stat bonus introduced by the expanded chapter flow.
+	if bool(flags.get("learned_sword_two", false)):
+		learn_skill(&"linxi_basic_sword_two")
+	if bool(flags.get("learned_inner_breath", false)):
+		learn_skill(&"linxi_inner_breath")
+	if bool(flags.get("master_training_done", false)):
+		_apply_master_training_rewards()
+	_reconcile_linxi_evolved_skill_gate()
+	_refresh_linxi_breakthrough_readiness()
+	if bool(flags.get("linxi_master_ultimate_breakthrough", false)):
+		_apply_linxi_master_breakthrough()
+	_reconcile_canglong_pages()
+	_reconcile_assembly_clues()
+	if bool(flags.get("canglong_manual_assembled", false)):
+		learn_skill(&"canglong_three_turns")
+	_migrate_huilan_open_world_chain()
+	_refresh_huilan_open_world_readiness()
+	_migrate_faction_path_rework()
+	# Quest and inventory state finish restoring later in this load transaction.
+	reconcile_martial_transmissions.call_deferred()
+	for companion_id: String in COMPANION_PATHS:
+		if bool(flags.get("companion_%s_joined" % String(companion_id), false)):
+			_append_companion(StringName(companion_id))
+
+
+func _migrate_faction_path_rework() -> void:
+	## 武当剑、掌不再互斥。旧档保留历史支路旗标，但奖励不再读取它们；
+	## 已完成第三章考校的武当存档补齐两路入门传承，不回收原有招式。
+	if player_faction == &"wudang" and bool(flags.get("ch3_wudang_complete", false)):
+		learn_skill(&"wudang_raozhirou_sword")
+		learn_skill(&"wudang_mianzhang")
+		learn_skill(&"wudang_taiji_chushi")
+	if player_faction == &"wanderer":
+		flags["joined_faction"] = true
+		flags["joined_wanderer"] = true
+
+
+func _refresh_huilan_open_world_readiness() -> void:
+	var ready := true
+	for flag_id: StringName in HUILAN_OPEN_WORLD_CLUE_FLAGS:
+		if not bool(flags.get(String(flag_id), false)):
+			ready = false
+			break
+	_set_progression_flag(&"huilan_openworld_clues_complete", ready)
+
+
+func _migrate_huilan_open_world_chain() -> void:
+	## 旧档的琴、棋、漕渠和双闸节点映射到新版开放世界链；
+	## 只补等价进度，不回收已学武学，也不读取章节完成旗标。
+	if bool(flags.get("guqin_mystery_solved", false)):
+		flags["huilan_echo_understood"] = true
+	if bool(flags.get("weiqi_trick_solved", false)):
+		flags["huilan_echo_understood"] = true
+		flags["huilan_bell_counterforce_understood"] = true
+		flags["huilan_yielding_position_understood"] = true
+	if bool(flags.get("canal_feud_resolved", false)):
+		for index: int in range(4):
+			flags[String(HUILAN_OPEN_WORLD_CLUE_FLAGS[index])] = true
+	if bool(flags.get("huilan_watergate_trial_complete", false)):
+		for flag_id: StringName in HUILAN_OPEN_WORLD_CLUE_FLAGS:
+			flags[String(flag_id)] = true
+		flags["huilan_openworld_trial_complete"] = true
+
+
+func _reconcile_linxi_evolved_skill_gate() -> void:
+	# 旧版本曾在第五、六章任务中提前发放两门终极武学。新规则下它们只能
+	# 由最终章师门突破获得；迁移旧档时先收回提前解锁，保留最终突破存档。
+	if player == null or bool(flags.get("linxi_master_ultimate_breakthrough", false)):
+		return
+	var filtered: Array[StringName] = []
+	for skill_id: StringName in player.skills:
+		if skill_id not in LINXI_EVOLVED_ARTS:
+			filtered.append(skill_id)
+	player.skills = filtered
+	for skill_id: StringName in LINXI_EVOLVED_ARTS:
+		skill_mastery.erase(String(skill_id))
+
+
+func get_party_member(character_id: StringName) -> CharacterStats:
+	for member: CharacterStats in party:
+		if member != null and member.character_id == String(character_id):
+			return member
+	return null
+
+
+func equip_internal_art(skill_id: StringName, character_id: StringName = &"protagonist") -> bool:
+	var member := get_party_member(character_id)
+	if member == null or member.fixed_martial_arts or skill_id not in member.skills:
+		return false
+	var skill := _load_skill(skill_id)
+	if skill == null or not skill.is_internal_art:
+		return false
+	# 悟性既是研习门槛，也是把心法装入当前运功槽的门槛。校验必须放在
+	# GameState，不能只依赖界面禁用，否则存档、GM 或其他入口仍可绕过。
+	if _effective_insight_for(member) < skill.get_required_insight():
+		return false
+	if member.equipped_internal_art == skill_id:
+		return true
+	member.equipped_internal_art = skill_id
+	EventBus.internal_art_equipped.emit(character_id, skill_id)
+	player_changed.emit()
+	party_changed.emit()
+	return true
+
+
+func unequip_internal_art(character_id: StringName = &"protagonist") -> bool:
+	var member := get_party_member(character_id)
+	if member == null or member.fixed_martial_arts or member.equipped_internal_art == &"":
+		return false
+	member.equipped_internal_art = &""
+	EventBus.internal_art_equipped.emit(character_id, &"")
+	player_changed.emit()
+	party_changed.emit()
+	return true
+
+
+func get_equipped_internal_art_id(stats: CharacterStats = null) -> StringName:
+	var member := stats if stats != null else player
+	return member.equipped_internal_art if member != null else &""
+
+
+func get_equipped_internal_art(stats: CharacterStats = null) -> Skill:
+	var skill_id := get_equipped_internal_art_id(stats)
+	return _load_skill(skill_id) if skill_id != &"" else null
+
+
+func is_internal_art_equipped(stats: CharacterStats, skill_id: StringName) -> bool:
+	return stats != null and stats.equipped_internal_art == skill_id
+
+
+func get_equipped_internal_art_bonus(stats: CharacterStats, technique: Skill) -> Dictionary:
+	var internal_art := get_equipped_internal_art(stats)
+	if internal_art == null:
+		return {
+			"scaling": 0, "crit_chance": 0.0, "crit_multiplier": 0.0,
+			"internal_injury": 0, "defense_pierce": 0,
+			"self_hp_restore": 0, "self_mp_restore": 0,
+			"target_status": &"", "target_status_chance": 0.0,
+			"target_status_duration": 0, "target_status_value": 0,
+			"execute_threshold": 0.0, "execute_damage_bonus": 0.0,
+		}
+	var mastery := get_skill_mastery(internal_art.skill_id) if stats != null and stats.character_id == "protagonist" else 0
+	return internal_art.get_equipped_bonus_for(technique, mastery)
+
+
+func reconcile_equipped_internal_arts() -> void:
+	var changed := false
+	for member: CharacterStats in party:
+		if member == null or member.equipped_internal_art == &"":
+			continue
+		var skill := _load_skill(member.equipped_internal_art)
+		var lacks_insight := skill != null and not member.fixed_martial_arts and _effective_insight_for(member) < skill.get_required_insight()
+		if skill == null or not skill.is_internal_art or member.equipped_internal_art not in member.skills or lacks_insight:
+			member.equipped_internal_art = &""
+			changed = true
+	if changed:
+		player_changed.emit()
+		party_changed.emit()
+
+
+func add_companion(character_id: StringName) -> bool:
+	var member := _append_companion(character_id)
+	if member == null:
+		return false
+	if member not in get_battle_party():
+		var reserves: Array = flags.get(PARTY_RESERVES_KEY, [])
+		reserves.append(member.character_id)
+		flags[PARTY_RESERVES_KEY] = reserves
+	var kit: Dictionary = COMPANION_KITS.get(character_id, {})
+	if not kit.is_empty():
+		member.set_recruitment_level(player.level)
+		_grant_companion_kit(member, kit)
+	party_changed.emit()
+	EventBus.companion_joined.emit(character_id, member.display_name)
+	return true
+
+
+func _append_companion(character_id: StringName) -> CharacterStats:
+	if get_party_member(character_id) != null:
+		return null
+	var path: String = String(COMPANION_PATHS.get(String(character_id), ""))
+	if path.is_empty() or not ResourceLoader.exists(path):
+		push_warning("[GameState] companion resource missing: %s" % character_id)
+		return null
+	var template := load(path) as CharacterStats
+	if template == null:
+		return null
+	var member := template.duplicate(true) as CharacterStats
+	member.refresh_derived_stats(true)
+	party.append(member)
+	return member
+
+
+func _grant_companion_kit(member: CharacterStats, kit: Dictionary) -> void:
+	var character_id := StringName(member.character_id)
+	var receipt := "__companion_kit_" + member.character_id
+	if bool(flags.get(receipt, false)):
+		return
+	flags[receipt] = true
+	for item_id: StringName in kit.gear:
+		Inventory.grant_recruit_equipment(character_id, item_id)
+	QuestManager.grant_companion_manuals(member.display_name, kit.get("books", []))
+
+
+func reconcile_recruited_loadouts() -> void:
+	for member in party:
+		var character_id := StringName(member.character_id)
+		if not COMPANION_KITS.has(character_id):
+			continue
+		var template := load(COMPANION_PATHS[member.character_id]) as CharacterStats
+		for skill_id in template.skills:
+			if skill_id not in member.skills:
+				member.skills.append(skill_id)
+		if member.equipped_internal_art == &"":
+			member.equipped_internal_art = template.equipped_internal_art
+		_grant_companion_kit(member, COMPANION_KITS[character_id])
+
+
+func restore_party(saved_party: Array) -> void:
+	party = [player] as Array[CharacterStats]
+	for raw_entry: Variant in saved_party:
+		if not (raw_entry is Dictionary):
+			continue
+		var character_id := StringName((raw_entry as Dictionary).get("character_id", ""))
+		if character_id == &"" or character_id == &"protagonist":
+			continue
+		_append_companion(character_id)
+	party_changed.emit()
+
+
+func get_battle_party() -> Array[CharacterStats]:
+	var reserves: Array = flags.get(PARTY_RESERVES_KEY, [])
+	var deployed: Array[CharacterStats] = []
+	for member in party:
+		if member != null and (member == player or member.character_id not in reserves):
+			deployed.append(member)
+			if deployed.size() == BATTLE_PARTY_LIMIT:
+				break
+	return deployed
+
+
+func set_companion_deployed(character_id: StringName, deployed: bool) -> bool:
+	var member := get_party_member(character_id)
+	if member == null or member == player:
+		return false
+	var current := get_battle_party()
+	if deployed and member not in current and current.size() >= BATTLE_PARTY_LIMIT:
+		return false
+	var reserves: Array = flags.get(PARTY_RESERVES_KEY, []).duplicate()
+	for teammate in party:
+		if teammate != null and teammate not in current and teammate.character_id not in reserves:
+			reserves.append(teammate.character_id)
+	if deployed:
+		reserves.erase(member.character_id)
+	elif member.character_id not in reserves:
+		reserves.append(member.character_id)
+	flags[PARTY_RESERVES_KEY] = reserves
+	party_changed.emit()
+	return true
+
+
+func learn_skill(skill_id: StringName) -> bool:
+	if player == null:
+		return false
+	var skill := _load_skill(skill_id)
+	if skill == null:
+		return false
+	if skill_id in player.skills:
+		if _ensure_internal_art_base_bonus(skill):
+			player.refresh_derived_stats(false)
+			player_changed.emit()
+		return false
+	if get_effective_insight() < skill.get_required_insight():
+		if skill_id not in pending_skill_unlocks:
+			pending_skill_unlocks.append(skill_id)
+		push_warning("[GameState] 悟性不足，无法习得 %s（需要 %d）" % [skill.display_name, skill.get_required_insight()])
+		return false
+	var updated_skills: Array[StringName] = []
+	updated_skills.assign(player.skills)
+	updated_skills.append(skill_id)
+	player.skills = updated_skills
+	pending_skill_unlocks.erase(skill_id)
+	_ensure_internal_art_base_bonus(skill)
+	player.refresh_derived_stats(false)
+	player_changed.emit()
+	EventBus.skill_learned.emit(skill_id, _skill_display_name(skill_id))
+	return true
+
+
+func debug_force_learn_skill(skill_id: StringName) -> bool:
+	## GM/debug-only learning path. It intentionally bypasses the insight gate,
+	## but still uses the normal passive-bonus and UI notification contracts.
+	if not OS.is_debug_build() or player == null:
+		return false
+	var skill := _load_skill(skill_id)
+	if skill == null:
+		return false
+	if skill_id in player.skills:
+		if _ensure_internal_art_base_bonus(skill):
+			player.refresh_derived_stats(false)
+			player_changed.emit()
+		return false
+	var updated_skills: Array[StringName] = []
+	updated_skills.assign(player.skills)
+	updated_skills.append(skill_id)
+	player.skills = updated_skills
+	pending_skill_unlocks.erase(skill_id)
+	_ensure_internal_art_base_bonus(skill)
+	player.refresh_derived_stats(false)
+	player_changed.emit()
+	EventBus.skill_learned.emit(skill_id, skill.display_name)
+	return true
+
+
+func set_flag(key: StringName, value: Variant) -> void:
+	flags[String(key)] = value
+	EventBus.flag_set.emit(key, value)
+
+
+func get_flag(key: StringName, default_value: Variant = false) -> Variant:
+	return flags.get(String(key), default_value)
+
+
+func _skill_display_name(skill_id: StringName) -> String:
+	var skill := _load_skill(skill_id)
+	if skill != null and not skill.display_name.is_empty():
+		return skill.display_name
+	return String(skill_id)
+
+
+func _load_skill(skill_id: StringName) -> Skill:
+	var path: String = "res://data/skills/%s.tres" % String(skill_id)
+	return load(path) as Skill if ResourceLoader.exists(path) else null
+
+
+func _apply_master_training_rewards() -> void:
+	if player == null:
+		return
+	if not bool(flags.get("linxi_master_ultimate_breakthrough", false)):
+		for sid: StringName in [&"linxi_basic_sword_two", &"linxi_inner_breath"]:
+			learn_skill(sid)
+	# 林西吐纳术的常驻属性现在由 Skill 心法契约在“习得”时统一发放。
+	# 保留旧 flag 只用于存档迁移，禁止在师门训练节点重复叠加。
+	player.refresh_derived_stats(false)
+	player_changed.emit()
+
+
+func _ensure_internal_art_base_bonus(skill: Skill) -> bool:
+	if player == null or skill == null or not skill.is_internal_art or not skill.has_passive_attribute_bonus():
+		return false
+	var applied_key := "internal_art_base_applied_%s" % String(skill.skill_id)
+	if bool(flags.get(applied_key, false)):
+		return false
+	# 旧版已经在师门训练节点发过同一组属性；迁移时只补记新标记。
+	if skill.skill_id == &"linxi_inner_breath" and bool(flags.get("linxi_inner_breath_bonus_applied", false)):
+		flags[applied_key] = true
+		return false
+	player.strength += skill.passive_strength_bonus
+	player.agility += skill.passive_agility_bonus
+	player.inner_power += skill.passive_inner_power_bonus
+	player.insight += skill.passive_insight_bonus
+	player.vitality += skill.passive_vitality_bonus
+	player.inner_pool += skill.passive_inner_pool_bonus
+	player.guard += skill.passive_guard_bonus
+	flags[applied_key] = true
+	if skill.skill_id == &"linxi_inner_breath":
+		flags["linxi_inner_breath_bonus_applied"] = true
+	return true
+
+
+func _apply_internal_art_mastery_growth(skill: Skill) -> bool:
+	if player == null or skill == null or not skill.is_internal_art:
+		return false
+	var changed := (
+		skill.passive_strength_growth != 0 or skill.passive_agility_growth != 0
+		or skill.passive_inner_power_growth != 0 or skill.passive_insight_growth != 0
+		or skill.passive_vitality_growth != 0 or skill.passive_inner_pool_growth != 0
+		or skill.passive_guard_growth != 0
+	)
+	if not changed:
+		return false
+	player.strength += skill.passive_strength_growth
+	player.agility += skill.passive_agility_growth
+	player.inner_power += skill.passive_inner_power_growth
+	player.insight += skill.passive_insight_growth
+	player.vitality += skill.passive_vitality_growth
+	player.inner_pool += skill.passive_inner_pool_growth
+	player.guard += skill.passive_guard_growth
+	player.refresh_derived_stats(false)
+	return true
+
+
+func _reconcile_canglong_pages() -> void:
+	## 三卷残页分布在不同章节。统一在状态层合并条件，避免场景热点
+	## 只检查单个 flag 而让玩家漏页时也能提前研读。
+	var all_pages_found := (
+		bool(flags.get("canglong_upper_found", false))
+		and bool(flags.get("canglong_middle_found", false))
+		and bool(flags.get("canglong_lower_found", false))
+	)
+	if not all_pages_found or bool(flags.get("canglong_pages_complete", false)):
+		return
+	flags["canglong_pages_complete"] = true
+	EventBus.flag_set.emit(&"canglong_pages_complete", true)
+
+
+func _reconcile_assembly_clues() -> void:
+	var all_clues_checked := (
+		bool(flags.get("assembly_wound_checked", false))
+		and bool(flags.get("assembly_token_checked", false))
+		and bool(flags.get("assembly_paper_checked", false))
+	)
+	if not all_clues_checked or bool(flags.get("assembly_clues_complete", false)):
+		return
+	flags["assembly_clues_complete"] = true
+	EventBus.flag_set.emit(&"assembly_clues_complete", true)
+
+func _init_default_player() -> void:
+	var stats: CharacterStats = CharacterStats.new()
+	stats.character_id = "protagonist"
+	stats.display_name = "冷孤云"
+	stats.portrait_path = "res://art/characters/protagonist_neutral.png"
+	stats.role_title = "林西剑客"
+	stats.origin = "林西村"
+	stats.biography = "刑樊天的弟子，初次踏出林西村追查官道异变。剑路尚浅，却不肯让无辜者替自己承担代价。"
+	stats.weapon_specialty = &"sword"
+	stats.battle_actor_path = "res://art/sprites/battle/standard_v5/lengguyun/lengguyun_ready_01.png"
+	stats.battle_sprite_root = "res://art/sprites/battle/standard_v5/lengguyun"
+	stats.battle_sprite_prefix = "lengguyun"
+	stats.battle_actor_scale = 0.42
+	stats.level = 1
+
+	## 七项核心属性默认值（v1）
+	stats.strength = 8
+	stats.agility = 7
+	stats.inner_power = 8
+	stats.insight = 6
+	stats.vitality = 10
+	stats.inner_pool = 8
+	stats.guard = 7
+	stats.refresh_derived_stats(true)
+
+	var skill_ids: Array[StringName] = [&"basic_attack", &"linxi_basic_sword_one", &"defend"]
+	stats.skills = skill_ids
+	player = stats
+	party = [stats] as Array[CharacterStats]
+
+func add_gold(amount: int) -> void:
+	gold = max(0, gold + amount)
+	emit_signal("gold_changed", gold)
+	EventBus.gold_changed.emit(gold)
+
+func reset_for_new_game() -> void:
+	flags.clear()
+	player_faction = &""
+	skill_mastery.clear()
+	pending_skill_unlocks.clear()
+	training_points_total = 0
+	training_points_available = 0
+	reputation = 0
+	last_faction_join_error = ""
+	sparring_records.clear()
+	gold = 0
+	current_chapter = 1
+	_init_default_player()
+	emit_signal("player_changed")
+	emit_signal("party_changed")
+
+
+func get_skill_mastery(skill_id: StringName) -> int:
+	var skill := _load_skill(skill_id)
+	var max_mastery := skill.get_max_mastery() if skill != null else 9
+	return clampi(int(skill_mastery.get(String(skill_id), 0)), 0, max_mastery)
+
+
+func get_effective_insight() -> int:
+	if player == null:
+		return 0
+	return player.insight + Inventory.get_insight_bonus()
+
+
+func _effective_insight_for(member: CharacterStats) -> int:
+	if member == null:
+		return 0
+	# 当前装备加成由共享背包为主角结算；固定队友使用自身资源中的悟性。
+	return get_effective_insight() if member == player else member.insight
+
+
+func _on_learning_requirements_changed(_new_level: int) -> void:
+	_reconcile_pending_skills()
+
+
+func _on_equipment_requirements_changed(_slot: int, _item_id: StringName) -> void:
+	_reconcile_pending_skills()
+	reconcile_equipped_internal_arts()
+
+
+func _reconcile_pending_skills() -> void:
+	for skill_id: StringName in pending_skill_unlocks.duplicate():
+		learn_skill(skill_id)
+
+
+func add_training_points(amount: int) -> void:
+	if amount <= 0:
+		return
+	training_points_total += amount
+	training_points_available += amount
+	EventBus.training_points_changed.emit(training_points_total, training_points_available)
+
+
+func add_reputation(amount: int) -> void:
+	if amount == 0:
+		return
+	reputation = maxi(0, reputation + amount)
+	EventBus.reputation_changed.emit(reputation, get_reputation_title())
+	player_changed.emit()
+
+
+func get_reputation_title(value: int = -1) -> String:
+	var resolved := reputation if value < 0 else maxi(0, value)
+	var title := String(REPUTATION_TITLES[0].title)
+	for tier: Dictionary in REPUTATION_TITLES:
+		if resolved < int(tier.threshold):
+			break
+		title = String(tier.title)
+	return title
+
+
+func get_faction_join_requirement_text(faction_id: StringName) -> String:
+	if faction_id == &"wanderer":
+		return "无门派游历不验声望与物资，仍须完成五派考校。"
+	var parts: PackedStringArray = ["声望 %d" % FACTION_REPUTATION_REQUIREMENT]
+	var requirements: Dictionary = FACTION_MATERIAL_REQUIREMENTS.get(String(faction_id), {})
+	for raw_item_id: Variant in requirements:
+		var item_id := StringName(raw_item_id)
+		var item := Inventory.load_item_by_id(item_id)
+		parts.append("%s ×%d" % [item.display_name if item != null else String(item_id), int(requirements[raw_item_id])])
+	return "、".join(parts)
+
+
+func resolve_sparring_result(spar_id: StringName, victory: bool, win_reward: int, loss_reward: int) -> Dictionary:
+	var key := String(spar_id)
+	if key.is_empty():
+		return {"reward": 0, "first_victory": false, "first_loss": false}
+	var record: Dictionary = sparring_records.get(key, {}).duplicate()
+	var already_won := bool(record.get("won", false))
+	var reward := 0
+	var first_victory := false
+	var first_loss := false
+	if not already_won and victory:
+		reward = maxi(0, win_reward)
+		first_victory = true
+		record["won"] = true
+	elif not already_won and not bool(record.get("loss_reward_claimed", false)) and not victory:
+		reward = maxi(0, loss_reward)
+		first_loss = true
+		record["loss_reward_claimed"] = true
+	record["attempts"] = int(record.get("attempts", 0)) + 1
+	sparring_records[key] = record
+	add_training_points(reward)
+	return {
+		"reward": reward,
+		"first_victory": first_victory,
+		"first_loss": first_loss,
+		"already_won": already_won,
+	}
+
+
+func has_sparring_victory(spar_id: StringName) -> bool:
+	return bool((sparring_records.get(String(spar_id), {}) as Dictionary).get("won", false))
+
+
+func get_sparring_records_save_data() -> Dictionary:
+	return sparring_records.duplicate(true)
+
+
+func restore_sparring_records(saved_data: Variant) -> void:
+	sparring_records = saved_data.duplicate(true) if saved_data is Dictionary else {}
+
+
+func restore_party_after_sparring(snapshot: Array) -> void:
+	for raw_entry: Variant in snapshot:
+		if not raw_entry is Dictionary:
+			continue
+		var entry := raw_entry as Dictionary
+		var member := get_party_member(StringName(entry.get("character_id", "")))
+		if member == null:
+			continue
+		member.hp = clampi(int(entry.get("hp", member.hp)), 1, member.max_hp)
+		member.mp = clampi(int(entry.get("mp", member.mp)), 0, member.max_mp)
+	player_changed.emit()
+	party_changed.emit()
+
+
+func reconcile_martial_transmissions() -> void:
+	if player == null:
+		return
+	if bool(flags.get("joined_faction", false)):
+		for starter: StringName in FACTION_SKILLS.get(String(player_faction), []):
+			learn_skill(starter)
+	# 只补这两次师门传艺，不重结旧任务或重复发放阅历、物品。
+	for quest_id: StringName in [&"q_ch6_main_06_ancient_road_letter", &"q_ch7_main_11_disclosure_strategy"]:
+		if QuestManager.is_completed(quest_id):
+			var quest := QuestManager.load_def(quest_id)
+			for reward: StringName in quest.reward_skills_by_faction.get(String(player_faction), []):
+				learn_skill(reward)
+	for known: StringName in player.skills.duplicate():
+		var skill := _load_skill(known)
+		if skill == null:
+			continue
+		if skill.breakthrough_quest != &"" and QuestManager.is_completed(skill.breakthrough_quest):
+			_realize_quest_mastery(skill, false)
+		if skill.mastery_unlock_skill != &"" and get_skill_mastery(known) >= skill.get_max_mastery():
+			learn_skill(skill.mastery_unlock_skill)
+
+
+func _on_martial_quest_completed(quest_id: StringName) -> void:
+	if player == null:
+		return
+	for known: StringName in player.skills.duplicate():
+		var skill := _load_skill(known)
+		if skill != null and skill.breakthrough_quest == quest_id:
+			_realize_quest_mastery(skill, true)
+
+
+func _realize_quest_mastery(skill: Skill, notify: bool) -> void:
+	if get_skill_mastery(skill.skill_id) != skill.get_max_mastery() - 1:
+		return
+	skill_mastery[String(skill.skill_id)] = skill.get_max_mastery()
+	_apply_internal_art_mastery_growth(skill)
+	if skill.mastery_unlock_skill != &"":
+		learn_skill(skill.mastery_unlock_skill)
+	if notify:
+		ultimate_mastered.emit(skill)
+		EventBus.toast_requested.emit("江湖顿悟 · %s第十重" % skill.display_name)
+	player_changed.emit()
+
+
+func get_breakthrough_base_attribute(skill: Skill) -> int:
+	if player != null:
+		match skill.breakthrough_attribute:
+			"insight": return player.insight
+			"inner_pool": return player.inner_pool
+	return 0
+
+
+func get_skill_practice_limit(skill: Skill) -> int:
+	return skill.get_practice_limit(get_equipped_internal_art_id(), get_breakthrough_base_attribute(skill))
+
+
+func get_skill_practice_cost(skill_id: StringName) -> int:
+	var skill := _load_skill(skill_id)
+	if skill == null:
+		return 0
+	return skill.get_practice_cost(get_skill_mastery(skill_id), get_effective_insight(), get_equipped_internal_art_id(), get_breakthrough_base_attribute(skill))
+
+
+func practice_skill(skill_id: StringName) -> bool:
+	if player == null or skill_id not in player.skills:
+		return false
+	var skill := _load_skill(skill_id)
+	if skill == null or get_effective_insight() < skill.get_required_insight():
+		return false
+	var current := get_skill_mastery(skill_id)
+	var cost := get_skill_practice_cost(skill_id)
+	if cost <= 0 or training_points_available < cost:
+		return false
+	training_points_available -= cost
+	skill_mastery[String(skill_id)] = current + 1
+	_apply_internal_art_mastery_growth(skill)
+	if current + 1 == skill.get_max_mastery():
+		if skill.mastery_unlock_skill != &"":
+			learn_skill(skill.mastery_unlock_skill)
+		if skill.breakthrough_internal_art != &"" or skill.breakthrough_attribute != "none":
+			ultimate_mastered.emit(skill)
+	elif skill.breakthrough_quest != &"" and QuestManager.is_completed(skill.breakthrough_quest):
+		_realize_quest_mastery(skill, true)
+	_refresh_linxi_breakthrough_readiness()
+	EventBus.training_points_changed.emit(training_points_total, training_points_available)
+	player_changed.emit()
+	return true
+
+
+func _refresh_linxi_breakthrough_readiness() -> void:
+	if player == null:
+		return
+	var ready := true
+	for skill_id: StringName in LINXI_BASE_ARTS:
+		var skill := _load_skill(skill_id)
+		if skill == null or skill_id not in player.skills or get_skill_mastery(skill_id) < skill.get_self_practice_max_mastery():
+			ready = false
+			break
+	_set_progression_flag(&"linxi_ninth_level_ready", ready)
+	var prebook_chain_ready := true
+	for flag_id: StringName in GUYUN_PREBOOK_CHAIN_FLAGS:
+		if not bool(flags.get(String(flag_id), false)):
+			prebook_chain_ready = false
+			break
+	if ready and prebook_chain_ready and bool(flags.get("chapter8_complete", false)) and not bool(flags.get("guyun_master_book_unlocked", false)):
+		# This is a one-way story reveal. Once Xing Fantian recognizes his
+		# master's catalogue marks, later state changes must not hide the scene.
+		_set_progression_flag(&"guyun_recollection_available", true)
+	_set_progression_flag(
+		&"linxi_final_breakthrough_available",
+		ready and prebook_chain_ready and bool(flags.get("chapter8_complete", false)) and bool(flags.get("guyun_master_recollection_done", false)) and bool(flags.get("guyun_master_book_read", false)) and not bool(flags.get("linxi_master_ultimate_breakthrough", false))
+	)
+
+
+func _apply_linxi_master_breakthrough() -> void:
+	if player == null or not bool(flags.get("chapter8_complete", false)) or not bool(flags.get("guyun_master_recollection_done", false)) or not bool(flags.get("guyun_master_book_read", false)):
+		return
+	for flag_id: StringName in GUYUN_PREBOOK_CHAIN_FLAGS:
+		if not bool(flags.get(String(flag_id), false)):
+			return
+	for skill_id: StringName in LINXI_BASE_ARTS:
+		var base_skill := _load_skill(skill_id)
+		if base_skill == null or skill_id not in player.skills or get_skill_mastery(skill_id) < base_skill.get_self_practice_max_mastery():
+			return
+	# 师傅点破最后一重后，基础剑式与吐纳法不再作为独立条目保留。
+	for skill_id: StringName in LINXI_BASE_ARTS:
+		skill_mastery[String(skill_id)] = 9
+	var kept: Array[StringName] = []
+	for skill_id: StringName in player.skills:
+		if skill_id not in LINXI_BASE_ARTS:
+			kept.append(skill_id)
+	player.skills = kept
+	for evolved_id: StringName in LINXI_EVOLVED_ARTS:
+		_grant_story_skill(evolved_id)
+		var evolved := _load_skill(evolved_id)
+		if evolved != null:
+			skill_mastery[String(evolved_id)] = evolved.get_max_mastery()
+	flags["linxi_final_breakthrough_available"] = false
+	flags["linxi_arts_evolved"] = true
+	player.refresh_derived_stats(false)
+	player_changed.emit()
+
+
+func _grant_story_skill(skill_id: StringName) -> bool:
+	var skill := _load_skill(skill_id)
+	if player == null or skill == null or skill_id in player.skills:
+		return false
+	var updated: Array[StringName] = []
+	updated.assign(player.skills)
+	updated.append(skill_id)
+	player.skills = updated
+	pending_skill_unlocks.erase(skill_id)
+	_ensure_internal_art_base_bonus(skill)
+	EventBus.skill_learned.emit(skill_id, skill.display_name)
+	return true
+
+
+func _set_progression_flag(key: StringName, value: bool) -> void:
+	var string_key := String(key)
+	if bool(flags.get(string_key, false)) == value:
+		return
+	flags[string_key] = value
+	EventBus.flag_set.emit(key, value)
+
+
+func select_faction(faction_id: StringName) -> bool:
+	last_faction_join_error = ""
+	if String(faction_id) not in ["wudang", "huashan", "gufeng", "lingyue", "mingwu", "wanderer"]:
+		last_faction_join_error = "此门路尚未开放。"
+		return false
+	if String(player_faction) != "" and player_faction != faction_id:
+		last_faction_join_error = "你已向别派递过名帖，不能同时改投他门。"
+		return false
+	if faction_id != &"wanderer":
+		if reputation < FACTION_REPUTATION_REQUIREMENT:
+			last_faction_join_error = "门中只收有侠名之士。声望需达到%d；当前为%d（%s）。" % [FACTION_REPUTATION_REQUIREMENT, reputation, get_reputation_title()]
+			return false
+		var requirements: Dictionary = FACTION_MATERIAL_REQUIREMENTS.get(String(faction_id), {})
+		var missing: PackedStringArray = []
+		for raw_item_id: Variant in requirements:
+			var item_id := StringName(raw_item_id)
+			var need := int(requirements[raw_item_id])
+			var owned := Inventory.count_of(item_id)
+			if owned < need:
+				var item := Inventory.load_item_by_id(item_id)
+				missing.append("%s %d/%d" % [item.display_name if item != null else String(item_id), owned, need])
+		if not missing.is_empty():
+			last_faction_join_error = "修缮山门尚缺：%s。可从通缉、委托与野外历练取得。" % "、".join(missing)
+			return false
+		for raw_item_id: Variant in requirements:
+			Inventory.remove_item(StringName(raw_item_id), int(requirements[raw_item_id]))
+	player_faction = faction_id
+	flags["player_faction"] = String(faction_id)
+	flags["joined_faction"] = false
+	flags["faction_application_submitted"] = true
+	for id in ["wudang", "huashan", "gufeng", "lingyue", "mingwu", "wanderer"]:
+		flags["joined_%s" % id] = id == String(faction_id)
+	player_changed.emit()
+	return true

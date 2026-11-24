@@ -1,0 +1,167 @@
+{
+  "schema": 1,
+  "status": "ROOT_REQUESTED_ART_DESIGN_SOURCE_EXECUTABLE_CANDIDATE_NOT_GEOMETRY_OR_ACTUAL_PASS",
+  "ready": false,
+  "intent": "Five existing service compounds, not five randomly added houses. Existing main/front buildings, existing rear bodies/gallery and court supplies remain fixed. Add exactly five existing short-wall pieces total to establish yard backs/returns and legible street boundaries.",
+  "counts": {"lots": 5, "new_existing_asset_instances": 5, "new_roofed_buildings": 0, "new_portals": 0, "new_NPCs": 0, "new_images": 0},
+  "why_no_extra_rear_houses": "Gate already has front service houses and waiting/cart galleries; Yamen has original front annexes plus25i rear houses. Market Inn has only about270.646px between its624.18 A1 bottom and the next pharmacy top894.826, insufficient for another adult-scale390px rear house plus a144px apron. New roofless returns are the minimum coherent first batch.",
+  "authority": {
+    "axis_author": {"path": "res://build/luoyang_city_finish_20261025i_source01/author_gate_yamen_axis09_three_body_substitutions_NOTREADY.json", "sha256": "2b17aa92d9b034fc914fa2c643a41b6301da7218c1422492e5f1128b80083731"},
+    "axis_library": {"path": "res://build/luoyang_city_finish_20261025i_source01/axis_infill_asset_library05_processed_kitchen_SOURCE_ONLY.json", "sha256": "8596f11f72c3d7ad546c35269d4afecedadf83ef77c0dd665aa7c84adc697619"},
+    "adjacent_author": {"path": "res://build/luoyang_city_finish_20261025i_source01/author_adjacent_four_fields07_final_dry_bank_routes_NOTREADY.json", "sha256": "fcbfa06b2347bf89e0c86cb4c7817be6781b6e574e01507e6098446afb419d20"},
+    "yamen_original_two_fronts": "res://build/luoyang_yamen_courts_20261024c_system01/author_courts_NOTREADY.json",
+    "market_actual_effective_rows_readonly": "res://build/luoyang_city_finish_20261025i_source01/publication09/output_ROOT_READY/18720/ch4_s3_luoyang_market/payload.bin",
+    "market_payload_read": "Readonly offline typed decode consumed220476/220476 bytes. Inn effective foot540,600, NOT old candidate_manifest735,830. Inn row is retained through later portal-only successors; Source must bind its current exact parent independently."
+  },
+  "measurement_contract": {
+    "alpha_threshold": "Strict original alpha>0; no thresholding or PNG change",
+    "bbox_format": "xyxy with exclusive right/bottom",
+    "placement_formula": "world = foot + (source_pixel - source_ground_anchor) * uniform_scale",
+    "precision": "Nominal ART arithmetic, not Godot float32/Physics proof. Source recalculates from exact parent and donor, rejects mismatch; never treat printed decimals as a passed runtime oracle.",
+    "verified_complete_A1_sources": {
+      "official_annex": [0, 9, 1506, 1024],
+      "plain_wing": [367, 215, 1835, 1074],
+      "processed_kitchen": [233, 139, 1459, 929],
+      "low_wall": [4, 4, 634, 127],
+      "vertical_wall": [5, 4, 105, 352],
+      "inn": [0, 0, 1535, 1002]
+    },
+    "sources_physically_read": "Existing PNGs read only with Pillow/numpy alpha>0; no renders, resizes, padding, cleanup or output PNG."
+  },
+  "reuse_assets": {
+    "low_wall": {
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png",
+      "source_sha256": "664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0",
+      "source_size_px": [640, 132],
+      "source_ground_anchor_px": [319, 124],
+      "complete_A1_xyxy": [4, 4, 634, 127],
+      "true_ground_polygon_px": [[4,112],[634,112],[634,124],[4,124]],
+      "orientation": "Existing horizontal wall; no rotation/mirroring/crop/stretch"
+    },
+    "vertical_wall": {
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/entities/v11_yamen_west_north_940.png",
+      "source_sha256": "d1a110ea2cbd5c5d9f90b3e151cf4a4375f5b61dfdc73513f241d9a130194ea7",
+      "source_size_px": [111, 358],
+      "source_ground_anchor_px": [54, 336],
+      "complete_A1_xyxy": [5, 4, 105, 352],
+      "true_ground_polygon_px": [[36,176],[72,176],[72,336],[36,336]],
+      "orientation": "Native depth-direction masonry return, not a rotated horizontal sprite"
+    }
+  },
+  "global_protected": [
+    "Every original portal/return foot and polygon, every NPC/body/lane/speed, bridge and water footprint unchanged",
+    "Gate originalx300 public lane: reserve at leastx228..372 as a144px design corridor wherever the new wall row could cross it; no extra wall there",
+    "Gate main axis x1380..1692 and bridge approach stay empty of additions",
+    "Yamen ceremonial court inside old enclosure and its north/south doors receive zero new pieces",
+    "Yamen west public side-alley polyline1201240→2201240→2201180→5501180 preserved; archive routes846750→846680→590680 and2224800→2224680→2664680 preserved",
+    "Market current Inn door and service path, pharmacy full roof envelope, all six shop returns, existing low-wall145px opening preserved",
+    "No visual opacity/Y-sort change may conceal physical/roof overlap. Roofless masonry corner contact must be explicit and bounded, not reclassified unrelated buildings."
+  ],
+  "lots": [
+    {
+      "lot_id": "EDGE04_GATE_WEST_INSPECTION_COMPOUND",
+      "scene_id": "ch4_s0_luoyang_gate",
+      "role": "候检房—等候廊—候检院背界，形成一组官署服务lot，不增加城外普通住宅",
+      "existing_group": [
+        {"id":"finish_i_gate_west_inspection","foot_px":[650,1300],"scale":0.5,"complete_A1_world_xyxy":[168,870.5,921,1378],"adult_door_px":150},
+        {"id":"finish_i_gate_west_waiting_gallery","foot_px":[650,1730],"scale":0.36,"complete_A1_world_xyxy":[336.44,1498.16,963.92,1731.8]},
+        {"id":"finish_i_gate_queue_low_edge_west","foot_px":[500,1450],"scale":0.4},
+        {"id":"finish_i_gate_queue_low_edge_east","foot_px":[900,1450],"scale":0.4}
+      ],
+      "target_enclosure": "Back boundary north of the service house, existing house as inhabited middle frontage, existing split low walls and waiting gallery as south court edge. Keepx300 street outside the new back-wall span; do not add side walls across it.",
+      "new_piece": {"id":"edge04_gate_west_rear_boundary","asset_id":"low_wall","foot_px":[710,740],"scale":1.0,"complete_A1_world_xyxy":[395,620,1025,743],"nominal_true_ground_polygon_world":[[395,728],[1025,728],[1025,740],[395,740]]},
+      "visible_join_rationale": "A continuous low back edge distinguishes this service plot from the broad northern grey ground; it does not need to intersect a roof to look like the same lot. Full A1 gap from existing front-house top870.5 is127.5px.",
+      "forbidden": ["x228..372 public lane", "notice_pavilion foot1160,1490", "main axis", "north court boundary/towers/moat and original row source footprints"],
+      "Source_required_finite_checks": ["New single horizontal ground domain against actual parent north approach routes/NPCs", "Full A1 vs actual northwall/tower and service-house envelopes", "Keep existing145-ish wall opening and front door approach unchanged"],
+      "no_move_fallback": "If actual north approach conflicts, reject this one piece; do not shift original house, gate, lane or notice pavilion."
+    },
+    {
+      "lot_id": "EDGE04_GATE_EAST_PROVISION_COMPOUND",
+      "scene_id": "ch4_s0_luoyang_gate",
+      "role": "军需房—车货廊—后勤背界，同Gate西lot不做第二套民宅",
+      "existing_group": [
+        {"id":"finish_i_gate_east_supply","foot_px":[2380,1300],"scale":0.41,"complete_A1_world_xyxy":[2164.34,950.27,2766.22,1302.46],"adult_door_px":145.55},
+        {"id":"finish_i_gate_east_cart_gallery","foot_px":[2490,1730],"scale":0.36,"complete_A1_world_xyxy":[2176.44,1498.16,2803.92,1731.8]}
+      ],
+      "target_enclosure": "Keep front supply house and south cart gallery as paired ends of one east service yard. Add only the back low-wall edge; retain transfer side opening west of the group.",
+      "new_piece": {"id":"edge04_gate_east_rear_boundary","asset_id":"low_wall","foot_px":[2490,740],"scale":1.0,"complete_A1_world_xyxy":[2175,620,2805,743],"nominal_true_ground_polygon_world":[[2175,728],[2805,728],[2805,740],[2175,740]]},
+      "visible_join_rationale": "Uses one low horizontal line to back the service front without another repeated roof. Full A1 gap to supply-house top950.27 is207.27px; existing2060..2840 front-court material can remain the lot's foreground, not a new polygon.",
+      "forbidden": ["main axis", "east transfer shoulder aroundx2030", "all northwall/tower/moat and existing NPC lanes", "front gallery and vendor stand clearances"],
+      "Source_required_finite_checks": ["One new low-wall base domain only", "Actual north protection and east transfer route", "Full A1 clear of actual trees/lamps and all roof envelopes"],
+      "no_move_fallback": "Reject new back edge if fixed source conflicts; no blind lateral shift toward main axis."
+    },
+    {
+      "lot_id": "EDGE04_YAMEN_WEST_ARCHIVE_COMPOUND",
+      "scene_id": "ch4_s1_luoyang_yamen",
+      "role": "原西侧服务前脸＋已成档案后体＋内侧短院界，保留外侧公共巷",
+      "existing_group": [
+        {"id":"assembled_west_service_annex","foot_px":[590,1000],"scale":0.5,"complete_A1_world_xyxy":[108,570.5,861,1078],"adult_door_px":150},
+        {"id":"finish_i_yamen_west_archive","foot_px":[540,620],"scale":0.4931972789115646,"complete_A1_world_xyxy":[228.792517,248.129252,833.452381,637.755102],"adult_door_px":145},
+        {"id":"finish_i_yamen_archive_case_crate","foot_px":[940,700],"scale":0.7}
+      ],
+      "target_enclosure": "Do not add a third archive house. Use the two existing inhabited bodies as rear/front of a west service plot, retaining archive court/side-alley material; one short southeast return reads the end of this plot before the public waiting forecourt.",
+      "new_piece": {"id":"edge04_yamen_west_court_return","asset_id":"low_wall","foot_px":[800,1160],"scale":0.4,"complete_A1_world_xyxy":[674,1112,926,1161.2],"nominal_true_ground_polygon_world":[[674,1155.2],[926,1155.2],[926,1160],[674,1160]]},
+      "visible_join_rationale": "Full A1 is34px south of original front-annex A1 bottom1078; wall lies east of the590 door apron and west of the original ceremonial enclosure. It bounds a service court, not the ceremonial main axis.",
+      "forbidden": ["inside original ceremonial enclosure", "west door apron centered590,1000 with at least144px forward clear depth", "west public side-alley end550,1180 and original routes", "actual maincourt westwall/side-door gap"],
+      "Source_required_finite_checks": ["Actualwestwall endpoint and door opening, reject if unrelated masonry overlaps", "Single new base domain vs named westpublic/annex approach routes", "Only explicit edge end-cap contact could be accepted; do not fill a gate with a wall"],
+      "no_move_fallback": "Reject this new return on conflict; keep both passed house bodies and public alley fixed."
+    },
+    {
+      "lot_id": "EDGE04_YAMEN_EAST_RUNNER_COMPOUND",
+      "scene_id": "ch4_s1_luoyang_yamen",
+      "role": "原东侧服务前脸＋军差后体＋短院界，以职能院替代重复孤立小屋观感",
+      "existing_group": [
+        {"id":"assembled_east_service_annex","foot_px":[2664,1050],"scale":0.5,"complete_A1_world_xyxy":[2182,620.5,2935,1128],"adult_door_px":150},
+        {"id":"finish_i_yamen_east_runner_house","foot_px":[2530,620],"scale":0.41,"complete_A1_world_xyxy":[2314.34,270.27,2916.22,622.46],"adult_door_px":145.55},
+        {"id":"finish_i_yamen_runner_case_crate","foot_px":[2100,730],"scale":0.7}
+      ],
+      "target_enclosure": "Same compound logic as west without an exact mirrored new rear house. Short southwest plot edge links the street reading of existing front/rear bodies; keep the eastern door apron and northern archive route open.",
+      "new_piece": {"id":"edge04_yamen_east_court_return","asset_id":"low_wall","foot_px":[2390,1210],"scale":0.4,"complete_A1_world_xyxy":[2264,1162,2516,1211.2],"nominal_true_ground_polygon_world":[[2264,1205.2],[2516,1205.2],[2516,1210],[2264,1210]]},
+      "visible_join_rationale": "Full A1 begins34px below existing front-annex bottom1128; its right edge2516 leaves148px nominal horizontal gap to door center2664. Entire new piece stays east of original court rather than encroaching the ceremonial plaza.",
+      "forbidden": ["original court interior and eastwall side gate", "door centered2664,1050 and at least144px forward apron", "archive route2224800→2224680→2664680", "all current crate/NPC feet"],
+      "Source_required_finite_checks": ["New base only against actual eastfront return/service lanes", "Check148px nominal gap using real body sweep, not only anchor distance", "Full A1 vs original eastside wall/trees; no room/portal edits"],
+      "no_move_fallback": "Reject short return if door/public route conflicts; do not shift front/rear bodies."
+    },
+    {
+      "lot_id": "EDGE04_MARKET_INN_BACK_SERVICE_COMPOUND",
+      "scene_id": "ch4_s3_luoyang_market",
+      "role": "客栈后勤货院：客栈主体、粮袋、手车与双短墙形成同一可读院落，不塞新灶屋",
+      "existing_group": [
+        {"id":"inn","foot_px":[540,600],"source_ground_anchor_px":[768,963],"uniform_scale":0.62,"complete_A1_world_xyxy":[63.84,2.94,1015.54,624.18],"door_scale_policy":"existing passed door unchanged"},
+        {"id":"finish_i_inn_supplies_sacks","foot_px":[420,740],"scale":0.12},
+        {"id":"finish_i_inn_service_handcart","foot_px":[710,750],"scale":0.14},
+        {"id":"finish_i_inn_low_boundary_west","foot_px":[330,855],"scale":0.5,"complete_A1_world_xyxy":[172.5,795,487.5,856.5]},
+        {"id":"finish_i_inn_low_boundary_east","foot_px":[790,855],"scale":0.5,"complete_A1_world_xyxy":[632.5,795,947.5,856.5]}
+      ],
+      "target_enclosure": "Inn forms the north back body; existing two horizontal low walls form the south street frontage with145px central cargo entrance; one true depth-direction west return closes the otherwise-floating left end. Grain and cart stay inside, with old traveller760800 untouched.",
+      "new_piece": {"id":"edge04_market_inn_west_service_return","asset_id":"vertical_wall","foot_px":[160,858],"scale":0.7,"complete_A1_world_xyxy":[125.7,625.6,195.7,869.2],"nominal_true_ground_polygon_world":[[147.4,746],[172.6,746],[172.6,858],[147.4,858]]},
+      "explicit_corner_contact": {"existing_id":"finish_i_inn_low_boundary_west","source_ground_world_rect":[172.5,849,315,6],"nominal_base_intersection_xyxy":[172.5,849,172.6,855],"scope":"Only this0.1px-by6px nominal masonry end join; Source float32/raster must assess. It is not permission for roof/house overlap."},
+      "visible_join_rationale": "New complete A1 starts625.6, only1.42px beyond Inn complete A1 bottom624.18; this deliberately uses the exact donor without masking or alpha threshold. The margin is tight and must be independently checked; if f32/actual image consumes it, reject rather than hide or crop. New wall ends869.2, still north of next pharmacy top894.826 by25.626px.",
+      "forbidden": ["Inn complete A1, all current door approach", "pharmacy complete A1 starting894.826", "existing central cargo entrance x487.5..632.5 at855", "traveller760800 and current service paths", "Marketmainstreet/old shop returns"],
+      "Source_required_finite_checks": ["Exact current Inn row/alpha source and f32 complete A1 separation; no using735830 obsolete manifest foot", "Only one wall base against actualInnservice body routes", "Explicit tiny masonry corner with current west low-wall; no independent sprite overlap elsewhere", "New wall x147.4..172.6 vs current path starting200800 using real body34x24, not visual path width", "If tight1.42px envelope fails, do not shiftInn orPharmacy and do not generate/crop a narrower building"],
+      "no_move_fallback": "Reject this one return if any source clearance fails. Keep existing two-wall/cargo lot intact; no blind extra rear house or unbounded alternative placement."
+    }
+  ],
+  "Source_execution_contract": {
+    "finite_scope": "At most the five new primitive wall domains and their named nearby route/body/door guards; inherit all passed parent components. Do not rerun global64walk/world3D or previous full-city geometry.",
+    "new_ground_count_upper_bound": 5,
+    "preserve_original_source_inverse": true,
+    "all_original_rows_unchanged": true,
+    "no_silent_repair": "If a primary anchor fails, return that named lot FAIL with exact constraint. Do not auto-snap, add another wall, move a passed building, reduce adult scale or relax alpha margin.",
+    "publish_only_after_root_source_review": true,
+    "actual_art_acceptance": "Root sole engine after bounded Source proof. Original adult cameras should show connected service-plot edges, no new roof crossing, no obstructed public street/door. Until then this is a design, not a visible completed city."
+  },
+  "Gate_material_appendix_only_NOT_APPLIED": {
+    "spec": "res://build/luoyang_city_finish_20261025i_source01/eight_fields_purpose_surface04_explicit_repeat_NOTREADY.json",
+    "rows": [
+      {"id":"main_gate_ritual_axis","field":"contrast","before":0.67,"candidate":0.60},
+      {"id":"east_inspection_front_court","field":"opacity","before":0.86,"candidate":0.78},
+      {"id":"east_provision_service_shoulder","field":"opacity","before":0.72,"candidate":0.64}
+    ],
+    "geometry_or_shader_algorithm_change": false,
+    "status": "Proposal appendix only; not applied to shader/spec/author and not used to claim full-city density."
+  },
+  "whole_city_credit": false,
+  "engine_calls": 0,
+  "new_visual_result": false
+}

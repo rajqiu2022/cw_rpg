@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_AA_ORDINARY_C_SOURCE_GATE_SUCCESSOR_NO_AUTHOR_GEOMETRY_CHANGE",
+  "path": "res://scripts/city/luoyang_docks_district08_20261019aa.gd",
+  "old_sha256": "13d90a3eff5dd26a9edb310292914e7c0ad1312229fd4ad6e0e2b5761aabf001",
+  "new_sha256": "0fa220574ada95916f7e89cd0bb4a725c07810d4a5b50d35b2069363cb24e612",
+  "whole_inverse_exact": true,
+  "replacements": [
+    {
+      "old": "static func author() -> Dictionary:\n",
+      "new": "const ORDINARY_C_PATH=\"res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd\"\nconst ORDINARY_C_OLD_SHA=\"c68272dd8bb2fd989a7776a1ee970a0d082290927d1fd30734c72d59b1d0fe50\"\nconst ORDINARY_C_NEW_SHA=\"b9b68f2e1daddc7dd8f19c683bd932048fda3b547e475001c854d23bfd7965b5\"\nconst ORDINARY_C_PROOF=\"res://build/luoyang_docks_ordinary_space_20261024b_system01/READY05/C_ordinary_source_wholebyte_proof_READY.json\"\nconst ORDINARY_C_PROOF_SHA=\"213fdb1fec3078970c24b14c004ac47cad5347664a1fd15d271f8a54eda05029\"\nstatic func ordinary_c_source_admitted(path: String,expected: String) -> bool:\n\t# Exact ordinary source edge, never an execution-owned approval.\n\tif path!=ORDINARY_C_PATH or expected!=ORDINARY_C_OLD_SHA or FileAccess.get_sha256(ORDINARY_C_PATH)!=ORDINARY_C_NEW_SHA or FileAccess.get_sha256(ORDINARY_C_PROOF)!=ORDINARY_C_PROOF_SHA: return false\n\tvar proof: Variant=JSON.parse_string(FileAccess.get_file_as_string(ORDINARY_C_PROOF))\n\tif not proof is Dictionary or proof.get(\"schema_version\")!=1 or proof.get(\"status\")!=\"EXACT_DOCKS_ORDINARY_C_SOURCE_SUCCESSOR_NOT_EXECUTION_OWNER\" or proof.get(\"path\")!=ORDINARY_C_PATH or proof.get(\"old_sha256\")!=ORDINARY_C_OLD_SHA or proof.get(\"new_sha256\")!=ORDINARY_C_NEW_SHA or proof.get(\"whole_inverse_exact\")!=true or not proof.get(\"replacements\") is Array or proof.replacements.size()!=2: return false\n\tvar bytes: PackedByteArray=FileAccess.get_file_as_bytes(ORDINARY_C_PATH)\n\tvar inverse: String=bytes.get_string_from_utf8()\n\tif inverse.to_utf8_buffer()!=bytes or b().bytes_sha(bytes)!=ORDINARY_C_NEW_SHA: return false\n\tfor index: int in range(proof.replacements.size()-1,-1,-1):\n\t\tvar row: Variant=proof.replacements[index]\n\t\tif not row is Dictionary or row.size()!=2 or not row.get(\"old\") is String or not row.get(\"new\") is String or row.old.is_empty() or row.new.is_empty() or row.old==row.new or inverse.count(row.new)!=1: return false\n\t\tinverse=inverse.replace(row.new,row.old)\n\treturn b().bytes_sha(inverse.to_utf8_buffer())==ORDINARY_C_OLD_SHA\nstatic func author() -> Dictionary:\n"
+    },
+    {
+      "old": "\t\tif not path.begins_with(\"res://\") or \"..\" in path or String(value.source_sha256[path]).length()!=64 or FileAccess.get_sha256(path)!=value.source_sha256[path]: return {}\n",
+      "new": "\t\tif not path.begins_with(\"res://\") or \"..\" in path or String(value.source_sha256[path]).length()!=64: return {}\n\t\tif FileAccess.get_sha256(path)!=value.source_sha256[path] and not ordinary_c_source_admitted(path,String(value.source_sha256[path])): return {}\n"
+    },
+    {
+      "old": "\tvar paths: Dictionary={SELF:true,INDEX:true,AUTHOR:true}\n",
+      "new": "\tvar paths: Dictionary={SELF:true,INDEX:true,AUTHOR:true,ORDINARY_C_PROOF:true}\n"
+    }
+  ],
+  "author_path": "res://data/maps/luoyang_docks_district08_20261019aa/author.json",
+  "author_sha256": "c3ba8c0a6a00738419a5733bbaa1faf34eef6add10fa89de3d6d7ba08a459c47",
+  "ordinary_C_proof": {
+    "path": "res://build/luoyang_docks_ordinary_space_20261024b_system01/READY05/C_ordinary_source_wholebyte_proof_READY.json",
+    "sha256": "213fdb1fec3078970c24b14c004ac47cad5347664a1fd15d271f8a54eda05029"
+  },
+  "execution_owned": false,
+  "prior_aggregate_proof": {
+    "path": "res://build/luoyang_docks_ordinary_space_20261024b_system01/READY04/AA_ordinary_source_wholebyte_proof_READY.json",
+    "sha256": "3e8c8367414e16d515d3f6b000ac8d122b3854ea6e89accbd45049851e40e987"
+  },
+  "ordinary_successor_history": [
+    {
+      "old_sha256": "45f3be72788ba7a45404e3e2c85da47d283c261672f0a2af9501c9379748672d",
+      "new_sha256": "43236a64e31dcfc0824601ce5b3999d77c0729b8a64662c81fa0d6467ecd1f34",
+      "three_literal_only": true,
+      "author_and_geometry_unchanged": true
+    },
+    {
+      "old_sha256": "43236a64e31dcfc0824601ce5b3999d77c0729b8a64662c81fa0d6467ecd1f34",
+      "new_sha256": "e15efc8679f58b4ddb927f39d86e705c12fa76569ab5851617019599961e3556",
+      "three_literal_only": true,
+      "author_and_geometry_unchanged": true
+    },
+    {
+      "old_sha256": "e15efc8679f58b4ddb927f39d86e705c12fa76569ab5851617019599961e3556",
+      "new_sha256": "0fa220574ada95916f7e89cd0bb4a725c07810d4a5b50d35b2069363cb24e612",
+      "three_literal_only": true,
+      "author_and_geometry_unchanged": true
+    }
+  ]
+}

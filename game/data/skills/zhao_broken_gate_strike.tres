@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"zhao_broken_gate_strike"
+display_name = "断门绝刃"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_blade_heavy_v1.png"
+description = "赵无忌压箱底的单体杀招，刀势沉猛。伤害：固定 30 + 攻击力 × 125%。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 14
+quality = 3
+fixed_damage = 30
+attack_scaling = 125
+effect_value = 0
+animation_id = &"zhao_broken_gate_strike"
+required_weapon_type = &"blade"
+school = "generic"

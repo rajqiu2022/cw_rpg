@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/zhuwei_guard_progress_dialog.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "守村人"
+text = "后山密林的入口就在村东。林中岔路多，沿着新鲜兽迹走便是。"
+on_end = "end"
+
+[sub_resource type="Resource" id="node_after_wolf"]
+script = ExtResource("2_dnode")
+node_id = &"after_wolf"
+speaker = "守村人"
+text = "头狼已经除掉了？村里总算能松口气。你若还没查过狼巢，看看那些货箱和封蜡货筒。野兽可不会把箱子拖进洞里码好。"
+
+[sub_resource type="Resource" id="node_after_evidence"]
+script = ExtResource("2_dnode")
+node_id = &"after_evidence"
+speaker = "守村人"
+text = "原来那些货绕去了城西。那座废宅空了许久，近来夜里却有车进去。你若要追查，从村西过去，小心院里的动静。"
+
+[sub_resource type="Resource" id="node_after_ruin"]
+script = ExtResource("2_dnode")
+node_id = &"after_ruin"
+speaker = "守村人"
+text = "后山和城西都查过了。这几日我会让人多巡视村口，免得还有人趁夜把货运走。"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s2_guard_after_report"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_after_wolf"), SubResource("node_after_evidence"), SubResource("node_after_ruin")])

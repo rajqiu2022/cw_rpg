@@ -1,0 +1,1510 @@
+{
+  "status": "READY_FINAL_BINDING",
+  "layout_version": 30,
+  "assets": {
+    "kitchen": {
+      "texture": "res://art/modules/luoyang_city_finish_20261025i/ordinary_kitchen_rear_body_v2.png",
+      "source_foot": [
+        864,
+        893
+      ],
+      "native_scale": 0.4931972789115646,
+      "source_bounds": [
+        327,
+        769,
+        1082,
+        151
+      ]
+    },
+    "well": {
+      "texture": "res://art/modules/linxi_center_well_depth_prop_v1.png",
+      "source_foot": [
+        768,
+        665.6
+      ],
+      "native_scale": 0.45,
+      "source_bounds": [
+        673.75,
+        514.56,
+        244.36,
+        133.12
+      ]
+    },
+    "laundry": {
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/garment_rack_v1.png",
+      "source_foot": [
+        768,
+        942
+      ],
+      "native_scale": 0.16,
+      "source_bounds": [
+        289,
+        791,
+        959,
+        153
+      ]
+    },
+    "tree": {
+      "texture": "res://art/modules/luoyang_district_life_20261016f/stock_tree.png",
+      "source_foot": [
+        76,
+        243.68115234375
+      ],
+      "native_scale": 0.85,
+      "source_bounds": [
+        64,
+        225.68115234375,
+        24,
+        18
+      ]
+    },
+    "sack": {
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png",
+      "source_foot": [
+        768,
+        909
+      ],
+      "native_scale": 0.14,
+      "source_bounds": [
+        231,
+        778,
+        1076,
+        133
+      ]
+    },
+    "cloth": {
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png",
+      "source_foot": [
+        768,
+        951
+      ],
+      "native_scale": 0.13,
+      "source_bounds": [
+        122,
+        839,
+        1289,
+        114
+      ]
+    },
+    "cart": {
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png",
+      "source_foot": [
+        1094,
+        817
+      ],
+      "native_scale": 0.18,
+      "source_bounds": [
+        139,
+        306,
+        1259,
+        512
+      ]
+    },
+    "crate": {
+      "texture": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png",
+      "source_foot": [
+        58,
+        101
+      ],
+      "native_scale": 1,
+      "source_bounds": [
+        21.25,
+        70.7600065469792,
+        80.4299316704323,
+        32.33996582031
+      ]
+    },
+    "anvil": {
+      "texture": "res://art/modules/luoyang_assembled_20261016b/anvil_stump_v1.png",
+      "source_foot": [
+        730,
+        958
+      ],
+      "native_scale": 0.1,
+      "source_bounds": [
+        402,
+        800,
+        651,
+        158
+      ]
+    },
+    "forge": {
+      "texture": "res://art/modules/prop/linxi_brazier_forge_v1.png",
+      "source_foot": [
+        187.5,
+        292
+      ],
+      "native_scale": 0.4,
+      "source_bounds": [
+        38,
+        258,
+        300,
+        34
+      ]
+    },
+    "fence": {
+      "texture": "res://art/modules/prop/linxi_fence_low_v1.png",
+      "source_foot": [
+        55,
+        240
+      ],
+      "native_scale": 0.4,
+      "source_bounds": [
+        18,
+        156,
+        376,
+        89
+      ],
+      "provenance": "ART04 new manual three-post ground enclosure, not an old source certificate; native oblique view only"
+    },
+    "post_shed": {
+      "texture": "res://art/maps/bianzhou_enclosure_20261028d/post_stable_cartshed_v1_padded.png",
+      "source_foot": [
+        1366,
+        958
+      ],
+      "native_scale": 0.58,
+      "source_bounds": [
+        759,
+        805,
+        1200,
+        155
+      ]
+    }
+  },
+  "objects": [
+    {
+      "id": "housing_w_kitchen",
+      "kind": "building",
+      "asset": "kitchen",
+      "foot": [
+        1050,
+        1320
+      ],
+      "lane": [
+        1450,
+        1530
+      ],
+      "usage": "西住院完整单层灶屋",
+      "district": "05"
+    },
+    {
+      "id": "housing_e_kitchen",
+      "kind": "building",
+      "asset": "kitchen",
+      "foot": [
+        2570,
+        1320
+      ],
+      "lane": [
+        2850,
+        1530
+      ],
+      "usage": "东住院完整单层灶屋",
+      "district": "05"
+    },
+    {
+      "id": "housing_w_well",
+      "kind": "prop",
+      "asset": "well",
+      "foot": [
+        1170,
+        1680
+      ],
+      "lane": [
+        1450,
+        1530
+      ],
+      "usage": "西院公井",
+      "district": "05"
+    },
+    {
+      "id": "housing_e_well",
+      "kind": "prop",
+      "asset": "well",
+      "foot": [
+        2590,
+        1690
+      ],
+      "lane": [
+        2850,
+        1530
+      ],
+      "usage": "东院公井",
+      "district": "05"
+    },
+    {
+      "id": "housing_w_laundry",
+      "kind": "prop",
+      "asset": "laundry",
+      "foot": [
+        1170,
+        1880
+      ],
+      "lane": [
+        1450,
+        1960
+      ],
+      "usage": "西院晾衣",
+      "district": "05"
+    },
+    {
+      "id": "housing_e_laundry",
+      "kind": "prop",
+      "asset": "laundry",
+      "foot": [
+        2600,
+        1880
+      ],
+      "lane": [
+        2850,
+        1960
+      ],
+      "usage": "东院晾衣",
+      "district": "05"
+    },
+    {
+      "id": "city_yard_tree_00",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        300,
+        1430
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "05"
+    },
+    {
+      "id": "city_yard_tree_01",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        1250,
+        1150
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "05"
+    },
+    {
+      "id": "city_yard_tree_02",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        1670,
+        1430
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "05"
+    },
+    {
+      "id": "city_yard_tree_03",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        2790,
+        1740
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "05"
+    },
+    {
+      "id": "city_yard_tree_04",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        4800,
+        3300
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "03"
+    },
+    {
+      "id": "city_yard_tree_05",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        4780,
+        3850
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "03"
+    },
+    {
+      "id": "city_yard_tree_06",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        4300,
+        1450
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "03"
+    },
+    {
+      "id": "city_yard_tree_07",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        5810,
+        1570
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "03"
+    },
+    {
+      "id": "city_yard_tree_08",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        250,
+        2740
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "04"
+    },
+    {
+      "id": "city_yard_tree_09",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        250,
+        3710
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "04"
+    },
+    {
+      "id": "city_yard_tree_10",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        2800,
+        4800
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "06"
+    },
+    {
+      "id": "city_yard_tree_11",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        300,
+        4980
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "06"
+    },
+    {
+      "id": "city_yard_tree_12",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        1650,
+        4940
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "06"
+    },
+    {
+      "id": "city_yard_tree_13",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        4560,
+        4940
+      ],
+      "lane": [
+        3072,
+        2220
+      ],
+      "usage": "院角与城外树庭",
+      "district": "06"
+    },
+    {
+      "id": "city_yard_tree_14",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        620,
+        5600
+      ],
+      "lane": [
+        3072,
+        5910
+      ],
+      "usage": "院角与城外树庭",
+      "district": "01"
+    },
+    {
+      "id": "city_yard_tree_15",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        1400,
+        5800
+      ],
+      "lane": [
+        3072,
+        5910
+      ],
+      "usage": "院角与城外树庭",
+      "district": "01"
+    },
+    {
+      "id": "city_yard_tree_16",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        4800,
+        5600
+      ],
+      "lane": [
+        3072,
+        5910
+      ],
+      "usage": "院角与城外树庭",
+      "district": "01"
+    },
+    {
+      "id": "city_yard_tree_17",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        5400,
+        5800
+      ],
+      "lane": [
+        3072,
+        5910
+      ],
+      "usage": "院角与城外树庭",
+      "district": "01"
+    },
+    {
+      "id": "city_yard_tree_18",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        620,
+        420
+      ],
+      "lane": [
+        3072,
+        650
+      ],
+      "usage": "院角与城外树庭",
+      "district": "08"
+    },
+    {
+      "id": "city_yard_tree_19",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        1500,
+        400
+      ],
+      "lane": [
+        3072,
+        650
+      ],
+      "usage": "院角与城外树庭",
+      "district": "08"
+    },
+    {
+      "id": "city_yard_tree_20",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        4800,
+        430
+      ],
+      "lane": [
+        3072,
+        650
+      ],
+      "usage": "院角与城外树庭",
+      "district": "08"
+    },
+    {
+      "id": "city_yard_tree_21",
+      "kind": "prop",
+      "asset": "tree",
+      "foot": [
+        5540,
+        420
+      ],
+      "lane": [
+        3072,
+        650
+      ],
+      "usage": "院角与城外树庭",
+      "district": "08"
+    },
+    {
+      "id": "checkpoint_waiting_cart",
+      "kind": "prop",
+      "asset": "cart",
+      "foot": [
+        2220,
+        4980
+      ],
+      "lane": [
+        1450,
+        4970
+      ],
+      "usage": "候车位木车",
+      "district": "01"
+    },
+    {
+      "id": "checkpoint_luggage_sacks",
+      "kind": "prop",
+      "asset": "sack",
+      "foot": [
+        1930,
+        4880
+      ],
+      "lane": [
+        1450,
+        4970
+      ],
+      "usage": "候检靠边行李",
+      "district": "01"
+    },
+    {
+      "id": "checkpoint_tally_crate",
+      "kind": "prop",
+      "asset": "crate",
+      "foot": [
+        4170,
+        4960
+      ],
+      "lane": [
+        4510,
+        4970
+      ],
+      "usage": "候检货箱",
+      "district": "01"
+    },
+    {
+      "id": "checkpoint_cloth_bundle",
+      "kind": "prop",
+      "asset": "cloth",
+      "foot": [
+        4370,
+        4930
+      ],
+      "lane": [
+        4510,
+        4970
+      ],
+      "usage": "候车商旅布货",
+      "district": "01"
+    },
+    {
+      "id": "market_w_corner_crate",
+      "kind": "prop",
+      "asset": "crate",
+      "foot": [
+        2620,
+        2880
+      ],
+      "lane": [
+        2850,
+        2900
+      ],
+      "usage": "西街卸货小箱",
+      "district": "02"
+    },
+    {
+      "id": "market_e_food_sacks",
+      "kind": "prop",
+      "asset": "sack",
+      "foot": [
+        3520,
+        2900
+      ],
+      "lane": [
+        3270,
+        3000
+      ],
+      "usage": "东街茶食备货",
+      "district": "02"
+    },
+    {
+      "id": "market_e_cloth",
+      "kind": "prop",
+      "asset": "cloth",
+      "foot": [
+        3460,
+        3820
+      ],
+      "lane": [
+        3270,
+        3790
+      ],
+      "usage": "后街布货退界",
+      "district": "02"
+    },
+    {
+      "id": "market_w_side_crate",
+      "kind": "prop",
+      "asset": "crate",
+      "foot": [
+        2660,
+        3760
+      ],
+      "lane": [
+        2850,
+        3790
+      ],
+      "usage": "铺后周转货箱",
+      "district": "02"
+    },
+    {
+      "id": "post_supply_cloth",
+      "kind": "prop",
+      "asset": "cloth",
+      "foot": [
+        5740,
+        3200
+      ],
+      "lane": [
+        4510,
+        3000
+      ],
+      "usage": "驿馆侧院布货",
+      "district": "03"
+    },
+    {
+      "id": "post_lower_cart",
+      "kind": "prop",
+      "asset": "cart",
+      "foot": [
+        5790,
+        3930
+      ],
+      "lane": [
+        4510,
+        4200
+      ],
+      "usage": "驿馆后勤空车",
+      "district": "03"
+    },
+    {
+      "id": "post_lower_sacks",
+      "kind": "prop",
+      "asset": "sack",
+      "foot": [
+        4850,
+        3830
+      ],
+      "lane": [
+        4510,
+        4200
+      ],
+      "usage": "行李院草料袋",
+      "district": "03"
+    },
+    {
+      "id": "cargo_side_crate_w",
+      "kind": "prop",
+      "asset": "crate",
+      "foot": [
+        300,
+        2740
+      ],
+      "lane": [
+        1280,
+        2780
+      ],
+      "usage": "装卸院短箱",
+      "district": "04"
+    },
+    {
+      "id": "cargo_side_crate_e",
+      "kind": "prop",
+      "asset": "crate",
+      "foot": [
+        1130,
+        2750
+      ],
+      "lane": [
+        1280,
+        2780
+      ],
+      "usage": "装卸院手边货",
+      "district": "04"
+    },
+    {
+      "id": "workshop_metal_anvil",
+      "kind": "prop",
+      "asset": "anvil",
+      "foot": [
+        1620,
+        4990
+      ],
+      "lane": [
+        1450,
+        4970
+      ],
+      "usage": "金工作坊铁砧",
+      "district": "06"
+    },
+    {
+      "id": "workshop_metal_forge",
+      "kind": "prop",
+      "asset": "forge",
+      "foot": [
+        1770,
+        4930
+      ],
+      "lane": [
+        1450,
+        4970
+      ],
+      "usage": "金工院炉具",
+      "district": "06"
+    },
+    {
+      "id": "workshop_wood_cart",
+      "kind": "prop",
+      "asset": "cart",
+      "foot": [
+        1280,
+        4990
+      ],
+      "lane": [
+        1450,
+        4970
+      ],
+      "usage": "木作修车院空车",
+      "district": "06"
+    },
+    {
+      "id": "workshop_wood_crate",
+      "kind": "prop",
+      "asset": "crate",
+      "foot": [
+        1160,
+        4860
+      ],
+      "lane": [
+        1450,
+        4970
+      ],
+      "usage": "木作备件箱",
+      "district": "06"
+    },
+    {
+      "id": "notice_document_crate",
+      "kind": "prop",
+      "asset": "crate",
+      "foot": [
+        4270,
+        1930
+      ],
+      "lane": [
+        4350,
+        2100
+      ],
+      "usage": "办事院文书箱",
+      "district": "07"
+    },
+    {
+      "id": "notice_delivery_crate",
+      "kind": "prop",
+      "asset": "crate",
+      "foot": [
+        5800,
+        1950
+      ],
+      "lane": [
+        4510,
+        2100
+      ],
+      "usage": "北街退界递送箱",
+      "district": "07"
+    },
+    {
+      "id": "north_road_travel_cart",
+      "kind": "prop",
+      "asset": "cart",
+      "foot": [
+        2800,
+        540
+      ],
+      "lane": [
+        3072,
+        650
+      ],
+      "usage": "北门路侧旅车",
+      "district": "08"
+    },
+    {
+      "id": "post_east_stable",
+      "kind": "building",
+      "asset": "post_shed",
+      "foot": [
+        5520,
+        3500
+      ],
+      "lane": [
+        4510,
+        3000
+      ],
+      "usage": "驿馆侧马棚完整灰瓦开放棚，非新可进入房",
+      "district": "03"
+    },
+    {
+      "id": "southeast_cartshed",
+      "kind": "building",
+      "asset": "post_shed",
+      "native_scale": 0.75,
+      "foot": [
+        5300,
+        4940
+      ],
+      "lane": [
+        4510,
+        4970
+      ],
+      "usage": "东南候车后勤院完整双湾车棚，非新服务",
+      "district": "01"
+    },
+    {
+      "id": "housing_w_connected_fence_0",
+      "kind": "prop",
+      "asset": "fence",
+      "foot": [
+        300,
+        1360
+      ],
+      "lane": [
+        1450,
+        1530
+      ],
+      "usage": "沿原斜向接柱的短院栏，留宽院口，不作城市纵墙",
+      "district": "05"
+    },
+    {
+      "id": "housing_w_connected_fence_1",
+      "kind": "prop",
+      "asset": "fence",
+      "foot": [
+        424.8,
+        1337.6
+      ],
+      "lane": [
+        1450,
+        1530
+      ],
+      "usage": "沿原斜向接柱的短院栏，留宽院口，不作城市纵墙",
+      "district": "05"
+    },
+    {
+      "id": "housing_e_connected_fence_0",
+      "kind": "prop",
+      "asset": "fence",
+      "foot": [
+        1740,
+        1360
+      ],
+      "lane": [
+        2850,
+        1530
+      ],
+      "usage": "沿原斜向接柱的短院栏，留宽院口，不作城市纵墙",
+      "district": "05"
+    },
+    {
+      "id": "housing_e_connected_fence_1",
+      "kind": "prop",
+      "asset": "fence",
+      "foot": [
+        1864.8,
+        1337.6
+      ],
+      "lane": [
+        2850,
+        1530
+      ],
+      "usage": "沿原斜向接柱的短院栏，留宽院口，不作城市纵墙",
+      "district": "05"
+    },
+    {
+      "id": "cargo_n_connected_fence_0",
+      "kind": "prop",
+      "asset": "fence",
+      "foot": [
+        300,
+        3450
+      ],
+      "lane": [
+        1280,
+        3750
+      ],
+      "usage": "沿原斜向接柱的短院栏，留宽院口，不作城市纵墙",
+      "district": "04"
+    },
+    {
+      "id": "cargo_n_connected_fence_1",
+      "kind": "prop",
+      "asset": "fence",
+      "foot": [
+        424.8,
+        3427.6
+      ],
+      "lane": [
+        1280,
+        3750
+      ],
+      "usage": "沿原斜向接柱的短院栏，留宽院口，不作城市纵墙",
+      "district": "04"
+    },
+    {
+      "id": "cargo_s_connected_fence_0",
+      "kind": "prop",
+      "asset": "fence",
+      "foot": [
+        300,
+        4130
+      ],
+      "lane": [
+        1280,
+        4200
+      ],
+      "usage": "沿原斜向接柱的短院栏，留宽院口，不作城市纵墙",
+      "district": "04"
+    },
+    {
+      "id": "cargo_s_connected_fence_1",
+      "kind": "prop",
+      "asset": "fence",
+      "foot": [
+        424.8,
+        4107.6
+      ],
+      "lane": [
+        1280,
+        4200
+      ],
+      "usage": "沿原斜向接柱的短院栏，留宽院口，不作城市纵墙",
+      "district": "04"
+    },
+    {
+      "id": "southeast_waiting_cart",
+      "kind": "prop",
+      "asset": "cart",
+      "foot": [
+        4770,
+        4830
+      ],
+      "lane": [
+        4510,
+        4970
+      ],
+      "usage": "车棚前路侧待修空车",
+      "district": "01"
+    },
+    {
+      "id": "southeast_luggage",
+      "kind": "prop",
+      "asset": "sack",
+      "foot": [
+        4750,
+        4630
+      ],
+      "lane": [
+        4510,
+        4970
+      ],
+      "usage": "车棚前靠边行李堆",
+      "district": "01"
+    }
+  ],
+  "ground": [
+    {
+      "id": "post_side_green",
+      "polygon": [
+        [
+          5760,
+          3100
+        ],
+        [
+          5910,
+          3115
+        ],
+        [
+          5900,
+          3350
+        ],
+        [
+          5800,
+          3360
+        ],
+        [
+          5750,
+          3280
+        ]
+      ],
+      "texture": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+      "period": [
+        512,
+        512
+      ],
+      "z": -1080,
+      "feather_px": 32
+    },
+    {
+      "id": "notice_east_green",
+      "polygon": [
+        [
+          5750,
+          1400
+        ],
+        [
+          5905,
+          1410
+        ],
+        [
+          5900,
+          1650
+        ],
+        [
+          5800,
+          1660
+        ],
+        [
+          5745,
+          1520
+        ]
+      ],
+      "texture": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+      "period": [
+        512,
+        512
+      ],
+      "z": -1080,
+      "feather_px": 32
+    },
+    {
+      "id": "north_country_path",
+      "polygon": [
+        [
+          2960,
+          80
+        ],
+        [
+          3190,
+          80
+        ],
+        [
+          3210,
+          300
+        ],
+        [
+          3190,
+          650
+        ],
+        [
+          2940,
+          650
+        ],
+        [
+          2950,
+          390
+        ]
+      ],
+      "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png",
+      "period": [
+        512,
+        512
+      ],
+      "z": -900,
+      "feather_px": 64
+    },
+    {
+      "id": "south_country_path",
+      "polygon": [
+        [
+          2940,
+          5860
+        ],
+        [
+          3205,
+          5860
+        ],
+        [
+          3230,
+          6144
+        ],
+        [
+          2910,
+          6144
+        ],
+        [
+          2925,
+          6010
+        ]
+      ],
+      "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png",
+      "period": [
+        512,
+        512
+      ],
+      "z": -900,
+      "feather_px": 64
+    },
+    {
+      "id": "metalwork_service_lane_real",
+      "polygon": [
+        [
+          1237,
+          4552
+        ],
+        [
+          1333,
+          4552
+        ],
+        [
+          1333,
+          4840
+        ],
+        [
+          1630,
+          4840
+        ],
+        [
+          1630,
+          4896
+        ],
+        [
+          1237,
+          4896
+        ]
+      ],
+      "texture": "res://art/maps/bianzhou_enclosure_20261028d/compacted_earth_tile_v1.png",
+      "period": [
+        512,
+        512
+      ],
+      "z": -980,
+      "usage": "从原南横街边4552沿1285支巷接金工前屋，不把西环虚延到4970"
+    },
+    {
+      "id": "housing_root_grass_0",
+      "polygon": [
+        [
+          200,
+          1390
+        ],
+        [
+          265,
+          1360
+        ],
+        [
+          388,
+          1382
+        ],
+        [
+          408,
+          1450
+        ],
+        [
+          325,
+          1492
+        ],
+        [
+          195,
+          1472
+        ]
+      ],
+      "texture": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+      "period": [
+        512,
+        512
+      ],
+      "z": -1080,
+      "feather_px": 32
+    },
+    {
+      "id": "housing_root_grass_1",
+      "polygon": [
+        [
+          1150,
+          1110
+        ],
+        [
+          1215,
+          1080
+        ],
+        [
+          1338,
+          1102
+        ],
+        [
+          1358,
+          1170
+        ],
+        [
+          1275,
+          1212
+        ],
+        [
+          1145,
+          1192
+        ]
+      ],
+      "texture": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+      "period": [
+        512,
+        512
+      ],
+      "z": -1080,
+      "feather_px": 32
+    },
+    {
+      "id": "housing_root_grass_2",
+      "polygon": [
+        [
+          1570,
+          1390
+        ],
+        [
+          1635,
+          1360
+        ],
+        [
+          1758,
+          1382
+        ],
+        [
+          1778,
+          1450
+        ],
+        [
+          1695,
+          1492
+        ],
+        [
+          1565,
+          1472
+        ]
+      ],
+      "texture": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+      "period": [
+        512,
+        512
+      ],
+      "z": -1080,
+      "feather_px": 32
+    },
+    {
+      "id": "housing_root_grass_3",
+      "polygon": [
+        [
+          2690,
+          1700
+        ],
+        [
+          2755,
+          1670
+        ],
+        [
+          2878,
+          1692
+        ],
+        [
+          2898,
+          1760
+        ],
+        [
+          2815,
+          1802
+        ],
+        [
+          2685,
+          1782
+        ]
+      ],
+      "texture": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+      "period": [
+        512,
+        512
+      ],
+      "z": -1080,
+      "feather_px": 32
+    },
+    {
+      "id": "south_west_cultivated_field_native_uv",
+      "polygon": [
+        [
+          1640.5,
+          5354
+        ],
+        [
+          2279.5,
+          5658.5
+        ],
+        [
+          2029,
+          6050
+        ],
+        [
+          1520.5,
+          5754.5
+        ]
+      ],
+      "texture": "res://art/maps/world_map_v15_complete_v9c/ecology/luoyang_farmland_scene_components.png",
+      "period": [
+        1,
+        1
+      ],
+      "z": -1110,
+      "source_uv": [
+        [
+          80,
+          276
+        ],
+        [
+          506,
+          479
+        ],
+        [
+          339,
+          740
+        ],
+        [
+          0,
+          543
+        ]
+      ],
+      "source_scale": 1.5,
+      "source_foot": [
+        253,
+        740
+      ],
+      "world_foot": [
+        1900,
+        6050
+      ],
+      "feather_px": 80
+    },
+    {
+      "id": "south_east_cultivated_field_native_uv",
+      "polygon": [
+        [
+          4040.5,
+          5354
+        ],
+        [
+          4679.5,
+          5658.5
+        ],
+        [
+          4429,
+          6050
+        ],
+        [
+          3920.5,
+          5754.5
+        ]
+      ],
+      "texture": "res://art/maps/world_map_v15_complete_v9c/ecology/luoyang_farmland_scene_components.png",
+      "period": [
+        1,
+        1
+      ],
+      "z": -1110,
+      "source_uv": [
+        [
+          80,
+          276
+        ],
+        [
+          506,
+          479
+        ],
+        [
+          339,
+          740
+        ],
+        [
+          0,
+          543
+        ]
+      ],
+      "source_scale": 1.5,
+      "source_foot": [
+        253,
+        740
+      ],
+      "world_foot": [
+        4300,
+        6050
+      ],
+      "feather_px": 80
+    }
+  ],
+  "pending": [
+    "true_horizontal_and_longitudinal_city_wall_final_import_and_corner_view",
+    "new_shed_soil_final_import",
+    "final_bounded_new_domains_and_overview"
+  ],
+  "districts": 8,
+  "completion_npc_count": 22,
+  "major_route_policy": "Preserve axis/north-cross/south-cross/west/east rings; no business or destination changes."
+}

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "守村人"
+text = "我记得的事和他们说的不太一样。你先问过货郎与药铺掌柜，再回来，我把天亮前那辆炭车的事一并说清。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_market_gatekeeper_wait"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

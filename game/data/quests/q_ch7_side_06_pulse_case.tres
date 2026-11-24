@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch7_side_06_pulse_case"
+title="反装的脉案"
+kind=1
+desc_not_started="茗雾外院的老药工曾经照料过两名受伤的抄手。"
+desc_in_progress="到外院西侧转运桌下取回反装的脉案，交给老药工辨伤。"
+desc_completed="两名抄手腕上的红痕与巡守的指劲吻合。老药工赠了一枚冰心玉，佩戴可减半新受的内伤。"
+tracker_hint="山庄外院 · 老药工 → 西侧转运桌 → 老药工"
+starts_in_chapter=7
+completes_in_chapter=7
+completion_triggers=Array[String](["flag_set:ch7_pulse_returned"])
+progress_records=Array[Dictionary]([{"trigger":"flag_set:ch7_pulse_found","text":"取回蓝皮脉案，交还外院老药工。"}])
+reward_items=Array[Dictionary]([{"item_id":"ice_heart_jade","count":1}])

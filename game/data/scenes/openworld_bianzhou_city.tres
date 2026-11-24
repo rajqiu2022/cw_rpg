@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/openworld_bianzhou_city_layout_v2.tres" id="2"]
+[resource]
+script = ExtResource("1")
+scene_id = &"openworld_bianzhou_city"
+display_name = "汴州城 · 中轴坊市"
+background_path = "res://art/backgrounds/openworld_cities_v2/bg_bianzhou_market_gameplay_v2_3072.png"
+bgm_path = "res://art/audio/bgm/bgm_city_ceremony_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.505,0.900)
+camera_zoom = 1.10
+npcs = Array[Dictionary]([{"npc_id":"bianzhou_postmaster","npc_name":"汴州驿丞","pos":Vector2(0.62,0.58),"sprite_path":"res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png","dialog_id":"openworld_bianzhou_guide","scale":0.96},{"npc_id":"bianzhou_merchant","npc_name":"中原行商","pos":Vector2(0.31,0.52),"sprite_path":"res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png","interaction_action":"shop:wulin_trade_hall","scale":0.90}])

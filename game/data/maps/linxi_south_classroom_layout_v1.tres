@@ -1,0 +1,94 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = false
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.201823, 0.395508, 0.798828, 0.395508, 0.882161, 0.888672, 0.585938, 0.908203, 0.585938, 0.954102, 0.389323, 0.954102, 0.389323, 0.908203, 0.111328, 0.888672, 0.171224, 0.476563)])
+visual_objects = []
+blockers = [
+	{"id": "teacher_dais", "pos": Vector2(0.488607, 0.355957), "size": Vector2(0.279297, 0.108398)},
+	{"id": "left_scroll_platform", "pos": Vector2(0.273763, 0.343750), "size": Vector2(0.151693, 0.097656)},
+	{"id": "right_books_platform", "pos": Vector2(0.714193, 0.344727), "size": Vector2(0.175781, 0.095703)},
+	{"id": "west_bookcase", "pos": Vector2(0.128255, 0.634766), "size": Vector2(0.095052, 0.277344)},
+	{"id": "west_scroll_jar", "pos": Vector2(0.125651, 0.806152), "size": Vector2(0.050781, 0.116211)},
+	{"id": "east_bookcase", "pos": Vector2(0.861003, 0.675781), "size": Vector2(0.087891, 0.281250)},
+	{"id": "student_desk_l1", "pos": Vector2(0.290039, 0.466309), "size": Vector2(0.103516, 0.102539)},
+	{"id": "student_bench_l1", "pos": Vector2(0.286133, 0.508301), "size": Vector2(0.055339, 0.061523)},
+	{"id": "student_desk_m1", "pos": Vector2(0.441406, 0.466797), "size": Vector2(0.098958, 0.105469)},
+	{"id": "student_bench_m1", "pos": Vector2(0.443034, 0.509277), "size": Vector2(0.060547, 0.063477)},
+	{"id": "student_desk_r1", "pos": Vector2(0.701823, 0.466797), "size": Vector2(0.104167, 0.105469)},
+	{"id": "student_bench_r1", "pos": Vector2(0.705404, 0.509277), "size": Vector2(0.059245, 0.063477)},
+	{"id": "student_desk_l2", "pos": Vector2(0.277669, 0.593262), "size": Vector2(0.110026, 0.114258)},
+	{"id": "student_bench_l2", "pos": Vector2(0.276367, 0.636230), "size": Vector2(0.059245, 0.067383)},
+	{"id": "student_desk_m2", "pos": Vector2(0.437826, 0.593262), "size": Vector2(0.106120, 0.116211)},
+	{"id": "student_bench_m2", "pos": Vector2(0.440430, 0.636719), "size": Vector2(0.060547, 0.068359)},
+	{"id": "student_desk_r2", "pos": Vector2(0.712240, 0.594727), "size": Vector2(0.110677, 0.115234)},
+	{"id": "student_bench_r2", "pos": Vector2(0.714844, 0.637207), "size": Vector2(0.062500, 0.069336)},
+	{"id": "student_desk_l3", "pos": Vector2(0.266276, 0.721680), "size": Vector2(0.118490, 0.117188)},
+	{"id": "student_bench_l3", "pos": Vector2(0.264323, 0.771973), "size": Vector2(0.059896, 0.073242)},
+	{"id": "student_desk_m3", "pos": Vector2(0.432617, 0.721191), "size": Vector2(0.113932, 0.116211)},
+	{"id": "student_bench_m3", "pos": Vector2(0.434245, 0.772949), "size": Vector2(0.062500, 0.073242)},
+	{"id": "student_desk_r3", "pos": Vector2(0.722005, 0.722168), "size": Vector2(0.115885, 0.116211)},
+	{"id": "student_bench_r3", "pos": Vector2(0.722005, 0.773438), "size": Vector2(0.062500, 0.074219)}
+]
+interactions = []
+portals = [{"id": "return_south", "pos": Vector2(0.500, 0.845), "size": Vector2(0.130, 0.075), "label": "离开私塾", "target_scene": "linxi_village_scrollmap", "target_pos": Vector2(0.355, 0.310)}]
+walkable_probes = [
+	{"id": "arrival", "pos": Vector2(0.560000, 0.760000)},
+	{"id": "return_portal", "pos": Vector2(0.500000, 0.845000)},
+	{"id": "entry_threshold_approach", "pos": Vector2(0.488281, 0.888672)},
+	{"id": "entrance_apron", "pos": Vector2(0.488281, 0.881836)},
+	{"id": "aisle_south", "pos": Vector2(0.566406, 0.839844)},
+	{"id": "aisle_row3", "pos": Vector2(0.566406, 0.746094)},
+	{"id": "aisle_row2", "pos": Vector2(0.566406, 0.617188)},
+	{"id": "aisle_row1", "pos": Vector2(0.566406, 0.488281)},
+	{"id": "teacher_front", "pos": Vector2(0.566406, 0.432617)},
+	{"id": "west_south", "pos": Vector2(0.188802, 0.830078)},
+	{"id": "west_row3", "pos": Vector2(0.192708, 0.722656)},
+	{"id": "west_row2", "pos": Vector2(0.196615, 0.605469)},
+	{"id": "west_row1", "pos": Vector2(0.209635, 0.458008)},
+	{"id": "east_south", "pos": Vector2(0.800781, 0.832031)},
+	{"id": "east_row3", "pos": Vector2(0.800781, 0.726563)},
+	{"id": "east_row2", "pos": Vector2(0.794922, 0.598633)},
+	{"id": "east_row1", "pos": Vector2(0.781250, 0.458984)},
+	{"id": "inner_aisle_south", "pos": Vector2(0.356771, 0.834961)},
+	{"id": "inner_aisle_row3", "pos": Vector2(0.356120, 0.729492)},
+	{"id": "inner_aisle_row2", "pos": Vector2(0.358724, 0.604492)},
+	{"id": "inner_aisle_row1", "pos": Vector2(0.365885, 0.468750)},
+	{"id": "southwest_crosswalk", "pos": Vector2(0.276693, 0.834961)},
+	{"id": "south_mid_crosswalk", "pos": Vector2(0.420573, 0.834961)},
+	{"id": "southeast_crosswalk", "pos": Vector2(0.716146, 0.834961)}
+]
+blocked_probes = [
+	{"id": "teacher_dais", "pos": Vector2(0.488607, 0.355957)},
+	{"id": "left_scroll_platform", "pos": Vector2(0.273763, 0.343750)},
+	{"id": "right_books_platform", "pos": Vector2(0.714193, 0.344727)},
+	{"id": "west_bookcase", "pos": Vector2(0.128255, 0.634766)},
+	{"id": "west_scroll_jar", "pos": Vector2(0.125651, 0.806152)},
+	{"id": "east_bookcase", "pos": Vector2(0.861003, 0.675781)},
+	{"id": "student_desk_l1", "pos": Vector2(0.290039, 0.466309)},
+	{"id": "student_bench_l1", "pos": Vector2(0.286133, 0.508301)},
+	{"id": "student_desk_m1", "pos": Vector2(0.441406, 0.466797)},
+	{"id": "student_bench_m1", "pos": Vector2(0.443034, 0.509277)},
+	{"id": "student_desk_r1", "pos": Vector2(0.701823, 0.466797)},
+	{"id": "student_bench_r1", "pos": Vector2(0.705404, 0.509277)},
+	{"id": "student_desk_l2", "pos": Vector2(0.277669, 0.593262)},
+	{"id": "student_bench_l2", "pos": Vector2(0.276367, 0.636230)},
+	{"id": "student_desk_m2", "pos": Vector2(0.437826, 0.593262)},
+	{"id": "student_bench_m2", "pos": Vector2(0.440430, 0.636719)},
+	{"id": "student_desk_r2", "pos": Vector2(0.712240, 0.594727)},
+	{"id": "student_bench_r2", "pos": Vector2(0.714844, 0.637207)},
+	{"id": "student_desk_l3", "pos": Vector2(0.266276, 0.721680)},
+	{"id": "student_bench_l3", "pos": Vector2(0.264323, 0.771973)},
+	{"id": "student_desk_m3", "pos": Vector2(0.432617, 0.721191)},
+	{"id": "student_bench_m3", "pos": Vector2(0.434245, 0.772949)},
+	{"id": "student_desk_r3", "pos": Vector2(0.722005, 0.722168)},
+	{"id": "student_bench_r3", "pos": Vector2(0.722005, 0.773438)},
+	{"id": "back_wall", "pos": Vector2(0.500, 0.150)},
+	{"id": "outside_west", "pos": Vector2(0.020, 0.600)}
+]

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"jinling_night_kite"
+display_name = "夜鹞梁九"
+title = "采花大盗"
+description = "数次夜闯民宅骚扰、威胁住户。巡夜人捡到一枚铜钥，河埠另有目击称他往江南芦荡旧纸坊一带去。"
+board_city = &"jinling"
+recommended_min_level = 10
+recommended_max_level = 12
+enemy_ids = Array[StringName]([&"warrant_jinling_night_kite", &"reed_assassin", &"reed_assassin"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_jinling_reed_marsh","label":"江南芦荡 · 旧纸坊","pos":Vector2(0.84,0.38)},{"scene_id":&"ch7_s1_lieyun_valley_ferry","label":"烈云峡谷 · 水寨暗仓","pos":Vector2(0.66,0.56)}])
+reward_reputation = 32
+reward_training = 64
+reward_exp = 132
+reward_gold = 190
+reward_items = Array[Dictionary]([{"item_id":&"cloth_roll","count":4}])
+field_sprite_path = "res://art/characters/npc_qi_yunsheng_idle_down_4f_v1_runtime.png"

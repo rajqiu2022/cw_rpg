@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536,1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.40,0.99,0.60,0.99,0.84,0.72,0.84,0.18,0.16,0.18,0.16,0.72)])
+blockers = Array[Dictionary]([{"id":"route_table","pos":Vector2(0.50,0.49),"size":Vector2(0.18,0.14)},{"id":"left_tags","pos":Vector2(0.18,0.40),"size":Vector2(0.13,0.28)},{"id":"right_gear","pos":Vector2(0.82,0.42),"size":Vector2(0.13,0.26)}])
+interactions = Array[Dictionary]([{"id":"ch7_route_timeline","pos":Vector2(0.50,0.62),"size":Vector2(0.13,0.10),"activation":"interact","label":"重排死后行动时序","action":"dialog:ch7_posthumous_route_timeline","visual_baked":true,"require_quest_active":"q_ch7_main_06_threefold_identity_check","hide_flag":"ch7_route_timeline_checked"},{"id":"ch7_retrieval_objectives","pos":Vector2(0.72,0.42),"size":Vector2(0.12,0.10),"activation":"interact","label":"拆分五方路包","action":"dialog:ch7_retrieval_objectives","visual_baked":true,"require_quest_active":"q_ch7_main_08_inner_office_authorization","hide_flag":"ch7_retrieval_objectives_checked"}])
+portals = Array[Dictionary]([{"id":"return_to_resettlement_archive","pos":Vector2(0.50,0.92),"size":Vector2(0.13,0.10),"label":"返回安置档案室","target_scene":"ch7_s7_lieyun_resettlement_archive","target_pos":Vector2(0.50,0.18),"marker_rotation_degrees":180.0}])
+walkable_probes = Array[Dictionary]([{"id":"spawn","pos":Vector2(0.50,0.86)},{"id":"timeline_front","pos":Vector2(0.50,0.62)},{"id":"tea_road","pos":Vector2(0.50,0.22)},{"id":"return","pos":Vector2(0.50,0.92)}])
+blocked_probes = Array[Dictionary]([{"id":"route_table","pos":Vector2(0.50,0.49)},{"id":"left_tags","pos":Vector2(0.18,0.40)},{"id":"right_gear","pos":Vector2(0.82,0.42)}])

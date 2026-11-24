@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch8_mistwood_signal_burner"
+poison_weapons=true
+trait_caption="烬茶社叛徒"
+display_name="茗雾点烽手"
+battle_actor_path = "res://art/sprites/battle/story_squads_20261121/signal/ready1.tres"
+battle_actor_scale = 0.8973
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/signal/ready1.tres", "res://art/sprites/battle/story_squads_20261121/signal/ready2.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/signal/ready2.tres", "res://art/sprites/battle/story_squads_20261121/signal/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/signal/ready2.tres", "res://art/sprites/battle/story_squads_20261121/signal/step.tres", "res://art/sprites/battle/story_squads_20261121/signal/attack.tres", "res://art/sprites/battle/story_squads_20261121/signal/ready1.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/signal/hit1.tres", "res://art/sprites/battle/story_squads_20261121/signal/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/signal/kneel.tres", "res://art/sprites/battle/story_squads_20261121/signal/down.tres")
+level=13
+max_hp=560
+max_mp=120
+attack=118
+defense=22
+speed=36
+skill_ids=Array[StringName]([&"basic_attack",&"blood_shadow_scattering_darts",&"toxic_needle"])
+aggression=0.80
+drop_gold_min=55
+drop_gold_max=80
+drop_exp=115

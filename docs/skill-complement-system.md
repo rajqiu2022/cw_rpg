@@ -1,6 +1,6 @@
 # 武功内功互补系统设计
 
-> 最后更新：2026-05-28  
+> 最后更新：2026-08-12
 > 用途：定义外功（攻击技）与内功（Buff/被动）的互补规则，以及装备对武功的加成规则。
 
 ---
@@ -28,7 +28,7 @@
 
 | 内功 | 互补外功 | 互补效果 |
 |------|---------|---------|
-| `gufeng_jingang_li` 金刚力 | 开山一刀、伏虎、裂地 | **power +15**（筋骨化刃：金刚力淬炼筋骨，刀势更沉） |
+| `gufeng_jingang_li` 金刚力 | 开山一刀、伏虎、裂地 | **攻击系数 +15 个百分点**（筋骨化刃：金刚力淬炼筋骨，刀势更沉） |
 
 **设计意图**：古峰是力量型门派，互补收益是简单粗暴的伤害加成。不需要特殊条件——因为古峰的玩家不喜欢花里胡哨。
 
@@ -50,7 +50,7 @@
 
 | 内功 | 互补外功 | 互补效果 |
 |------|---------|---------|
-| `lingyue_yuehua_yin` 月华引 | 凌波一指、寒霜针、寒霜万针 | **power +10** + **中毒伤害 +50%**（月华淬毒：月华引将寒毒炼化，毒发时伤害倍增） |
+| `lingyue_yuehua_yin` 月华引 | 凌波一指、寒霜针、寒霜万针 | **攻击系数 +10 个百分点** + **中毒伤害 +50%**（月华淬毒：月华引将寒毒炼化，毒发时伤害倍增） |
 
 **设计意图**：凌月是毒控型门派，核心特色是淬毒暗器。互补后中毒每回合伤害 +50%，让凌月的持续输出能力大幅提升。
 
@@ -83,12 +83,12 @@
 | 字段 | 类型 | 说明 |
 |------|------|------|
 | `skill_bonus_school` | String | 增强哪个门派（"gufeng"/"huashan"/"lingyue"/"mingwu"/"wudang"/"all"），空字符串表示不增强 |
-| `skill_bonus_power` | int | power 加值（如 +15） |
+| `skill_bonus_scaling` | int | `attack_scaling` 百分点加值（如 +15） |
 | `skill_bonus_crit_mult` | float | 暴击倍率加成（如 0.2 表示 +0.2x） |
 
 ### 门派招牌武器加成
 
-| 装备 | item_id | school | power | crit_mult | 备注 |
+| 装备 | item_id | school | attack_scaling | crit_mult | 备注 |
 |------|---------|--------|-------|-----------|------|
 | 太极真剑 | `wudang_taiji_sword` | wudang | +15 | — | 武当镇派 |
 | 松纹古剑 | `wudang_pine_sword` | wudang | +8 | — | 武当入派 |
@@ -105,8 +105,8 @@
 
 ### 加成规则
 
-1. **同门派叠加**：武器 `skill_bonus_power` + 内功互补 `complement_bonus_power` 可以叠加
-   - 如华山派装紫霞剑（+15）+ 紫霞神功互补 = 华山剑法总 power 加成 +15+专有暴击效果
+1. **同门派叠加**：武器 `skill_bonus_scaling` + 内功互补 `complement_bonus_scaling` 可以叠加
+   - 如华山派装紫霞剑（+15）+ 紫霞神功互补 = 华山剑法攻击系数 +15 个百分点，并获得专有暴击效果
 2. **"all" 门派**：对所有门派技能生效，但不与同门派加成叠加（取最大值）
    - 如装渊冥古剑（all +10）打华山剑法 + 华山快剑（huashan +10），取 max(10, 10) = 10
 3. **饰品也可加成**：理论上 `skill_bonus_school` 不限槽位（当前仅武器使用，预留扩展）
@@ -121,9 +121,9 @@
 player_uses_skill(skill)
   → check: player.skills 包含 skill.complemented_by?
     → YES: 激活互补效果
-      - gufeng: power_mult += complement_bonus_power/100
+      - gufeng: attack_scaling += complement_bonus_scaling
       - huashan: crit_multiplier = 1.5 + 0.3 (crit 时生效)
-      - lingyue: power_mult += 0.10; freeze_chance *= 2
+      - lingyue: attack_scaling += 10; poison_damage *= 1.5
       - mingwu: if enemy.hp_ratio < 0.5: dealt *= 1.2
       - wudang: 在敌方攻击 RESOLVE 阶段 reflect = dealt * 0.15
 ```
@@ -133,7 +133,7 @@ player_uses_skill(skill)
 ```
 player_uses_skill(skill)
   → bonus = Inventory.get_equipped_skill_bonus(skill.school)
-  → power_mult += bonus.power / 100
+  → attack_scaling += bonus.scaling
   → crit_mult += bonus.crit_mult
 ```
 
@@ -141,7 +141,7 @@ player_uses_skill(skill)
 
 ```gdscript
 func get_equipped_skill_bonus(school: String) -> Dictionary:
-    ## 返回 {power: int, crit_mult: float}
+    ## 返回 {scaling: int, crit_mult: float}
     ## 遍历 6 个装备槽，聚合 skill_bonus_school 匹配的加成
 ```
 

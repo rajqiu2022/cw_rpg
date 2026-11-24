@@ -1,0 +1,32 @@
+{
+  "schema": "WORLD_COAST_V16_SOURCE_PLAN_2",
+  "coordinate_space_version": 16,
+  "layout_format_version": 15,
+  "candidate_only": true,
+  "production_approved": false,
+  "output_root": "res://art/maps/world_coast_20261031h/candidate02/",
+  "world_size": [12288,8192],
+  "tile_size": [1536,1024],
+  "halo_px": 192,
+  "shore_width_px": 128,
+  "smooth_closed_bay_samples": 64,
+  "smooth_closed_island_samples": 72,
+  "attempt": "02; retains rejected attempt01 unchanged",
+  "canvas_geometry_domain": [10400,2100,1888,2160],
+  "bianzhou_visual_domain": [7000,1000,1350,1600],
+  "geometry_coordinate_basis": "actual_world_foot_canvas_pixels; RF vertices evaluated at their water-plane projection",
+  "unchanged_cells": "retain exact current effective farmland-resolved visual and original NAV paths",
+  "protected": ["all_16_original_portal_ids", "three_town_portal_ids", "three_adventure_portal_ids", "all_93_original_bridge_rows", "all_5_bridge_passages"],
+  "bianzhou": {"status":"EXACT_NORTH640_PROPOSAL_REQUIRES_FULL_FOOT_PREFLIGHT", "bridge_00_unchanged":true, "compound_and_portal_moved":true, "compound_translation_px":[0,-640], "RF_changed":false, "NAV_terrain_changed":false, "only_conflicting_tree_retirement_allowed":true},
+  "source_sha256": {
+    "res://data/maps/world_map_jianghu_layout_v15.tres":"aeae58273fed2bbfd8145347bab75fbbd934ac2c4efd0f622edb7fa7b1c9f072",
+    "res://data/background_sets/world_map_jianghu_v15_streamed.tres":"3536182ec4eba967e8cd6b5da6b8ca6bb44072022f342d190eb807995a772400",
+    "res://data/scenes/world_map_jianghu_v15.tres":"31c5034e44092f146879e45715b97425c6e899e8ef1c375c94f03b2a35fc9065",
+    "res://data/maps/world_map_v15_complete_v9c_source.json":"85ced93c4a62361fdf35207df97d797897c4ab8d17c6d18fc1e87d222199967f",
+    "res://art/maps/world_map_v15_complete_v9c/terrain_height.rf":"7158eaf91c38ce55541e895b449ee5645a772a2cd037479357eedaf1917e6f4b",
+    "res://art/maps/world_map_v15_complete_v9c/terrain_mesh.res":"1d8a591032193d2f03303a38d610ff5123102726f391d0cfb82ec9fc3d49c0d3",
+    "res://art/maps/world_map_v15_complete_v9c/capture/primary/actual_terrain_material.res":"4b8ec4571d316dfce70c893102c1191fbaf67b79286c1f655e5846db9da5e33a",
+    "res://art/maps/world_map_v15_complete_v9c/capture/primary/actual_water_material.res":"87cedcb26ea48af86616f52a7b81b3e0c2b93c40bab5325e8d99a566bd07e750",
+    "res://scripts/world/world_farmland_visual_patch_resolver_20261015.gd":"4980866c5147eb173959dca506f84d9a7bc860a85ed4c7c41c5ba5abe6eba6de"
+  }
+}

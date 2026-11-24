@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "id": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1",
+  "status": "PREFLIGHT_SOURCE_READY_GEOMETRY_PENDING_NOT_CALLABLE_NOT_GENERATED",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "transparent_background": true,
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "automatic_retry": false,
+  "cli_network_or_paid_fallback": false,
+  "prompt_path": "prompts/luoyang_shore_market_20261020ae/prop_docks_mooring_bollard_rope_right_v1.txt",
+  "proposed_output_path": "assets/raw/luoyang_shore_market_20261020ae/prop_docks_mooring_bollard_rope_right_v1.png",
+  "requested_canvas_px": [1536, 1024],
+  "intended_runtime_role": "one low horizontal timber shore tie for the upper cargo ship; the lower ferry retains the existing dry-wharf posts",
+  "proposed_anchor_px": [2190, 1110],
+  "proposed_rope_end_target": "must be fitted to a measured A>0 point inside the actual left hull edge of harbour_cargo_ship; candidate range x=2420..2480,y=1060..1160 is only a search range, not a centre approximation",
+  "processing_boundary": "Actual output must be measured first and kept at one uniform scale. The native Field coordinates determine the final rope angle; do not rotate, mirror, nonuniformly stretch, repaint, threshold-clean or separate the timber block, rope coil and long rope.",
+  "physics_boundary": "Prefer the low timber block inside the already-blocked x=2215 quay-rail band so the new visual adds no route/NAV restriction. Rope is always nonblocking.",
+  "call_gate": "Do not call generation until System provides an actual existing rail/mask AABB that contains the whole timber block alpha footprint without adding or widening solid/NAV. If that envelope is too narrow, revise toward an along-shore slim beam or a rope-knot decal on an existing proven wharf post before any call.",
+  "acceptance": [
+    "RGBA with genuine transparent margin and no broad background halo",
+    "single complete low horizontal timber mooring block with a visible wrapped hemp rope coil and one long rope extending rightward",
+    "actual Field rope endpoint meets the cargo-ship hull and never floats in open water",
+    "runtime block remains a low horizontal form, reads 65-80px high beside a 140px adult, and stays inside the already blocked quay-rail band",
+    "no tall modern harbour post, stone monument, painted marker or complete dock structure",
+    "no new NPC occlusion, route blockage, ferry portal movement or fake walk support"
+  ],
+  "runtime_credit": false
+}

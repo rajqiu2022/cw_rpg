@@ -1,0 +1,124 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/linxi_village_center_layout_v1.tres" id="2_map"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"linxi_village_center"
+display_name = "林西村 · 村中心"
+background_path = "res://art/backgrounds/bg_linxi_village_center_clean_well_v4.png"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+is_settlement = true
+map_layout = ExtResource("2_map")
+player_spawn = Vector2(0.120, 0.850)
+hotspots = []
+scene_objects = []
+animated_props = []
+npcs = [
+	{
+		"npc_id": "linxi_herbalist",
+		"npc_name": "药师苏伯",
+		"pos": Vector2(0.300, 0.465),
+		"portrait_path": "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png",
+		"sprite_path": "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f.png",
+		"conversation_sprite_paths": {"down": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_down_conversation_1f.png", "up": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_up_conversation_1f.png", "left": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_left_conversation_1f.png", "right": "res://art/characters/conversation_direction_v1/linxi_herbalist/npc_linxi_herbalist_right_conversation_1f.png"},
+		"dialog_id": "linxi_center_herbalist",
+		"dialog_variants": [{"dialog_id": "linxi_center_herbalist_ledger_verify", "require_flags": ["found_linxi_old_ledger"], "hide_flags": ["linxi_old_ledger_verified"]}, {"dialog_id": "linxi_cliff_herb_done", "require_quest_completed": "q_ch1_side_02_cliff_herb"}, {"dialog_id": "linxi_cliff_herb_turnin", "require_flags": ["cliff_herb_collected"], "hide_flags": ["cliff_herb_delivered"]}, {"dialog_id": "linxi_cliff_herb_waiting", "require_quest_active": "q_ch1_side_02_cliff_herb"}, {"dialog_id": "linxi_cliff_herb_offer", "require_flags": ["master_training_done"], "hide_flags": ["cliff_herb_accepted", "cliff_herb_delivered"]}],
+		"sprite_quality": "full_body_reviewed",
+		"scale": 0.90
+	},
+	{
+		"npc_id": "linxi_peddler",
+		"npc_name": "走村货郎",
+		"pos": Vector2(0.430, 0.605),
+		"portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png",
+		"sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png",
+		"walk_sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_right_walk_8f_v3_runtime.png",
+		"dialog_id": "linxi_center_peddler",
+		"movement_mode": "patrol",
+		"patrol_axis": Vector2(1.0, 0.0),
+		"patrol_distance": 68.0,
+		"patrol_speed": 26.0,
+		"invert_patrol_facing": true,
+		"sprite_quality": "full_body_reviewed",
+		"scale": 0.90
+	},
+	{
+		"npc_id": "linxi_granny",
+		"npc_name": "晒药婆婆",
+		"pos": Vector2(0.640, 0.520),
+		"portrait_path": "res://art/characters/portraits/generic/portrait_generic_older_woman_v1.png",
+		"sprite_path": "res://art/characters/npc_zhuwei_vegetable_vendor_idle_down_25d_4f_v2_runtime.png",
+		"conversation_sprite_paths": {"down": "res://art/characters/conversation_direction_v1/linxi_granny/npc_linxi_granny_down_conversation_1f.png", "up": "res://art/characters/conversation_direction_v1/linxi_granny/npc_linxi_granny_up_conversation_1f.png", "left": "res://art/characters/conversation_direction_v1/linxi_granny/npc_linxi_granny_left_conversation_1f.png", "right": "res://art/characters/conversation_direction_v1/linxi_granny/npc_linxi_granny_right_conversation_1f.png"},
+		"dialog_id": "linxi_center_granny",
+		"sprite_quality": "full_body_reviewed",
+		"scale": 0.92
+	},
+	{
+		"npc_id": "linxi_farmer",
+		"npc_name": "归田村民",
+		"pos": Vector2(0.690, 0.405),
+		"portrait_path": "res://art/characters/portraits/portrait_linxi_farmer_v1.png",
+		"sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png",
+		"conversation_sprite_paths": {"down": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_down_conversation_1f.png", "up": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_up_conversation_1f.png", "left": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_left_conversation_1f.png", "right": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_right_conversation_1f.png"},
+		"dialog_id": "linxi_center_farmer",
+		"sprite_quality": "full_body_reviewed",
+		"scale": 0.96
+	},
+	{
+		"npc_id": "linxi_apothecary_apprentice",
+		"npc_name": "药铺学徒",
+		"pos": Vector2(0.245, 0.555),
+		"portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_inn_waiter_v1.png",
+		"sprite_path": "res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png",
+		"conversation_sprite_paths": {"down": "res://art/characters/conversation_direction_v1/linxi_apprentice/npc_linxi_apprentice_down_conversation_1f.png", "up": "res://art/characters/conversation_direction_v1/linxi_apprentice/npc_linxi_apprentice_up_conversation_1f.png", "left": "res://art/characters/conversation_direction_v1/linxi_apprentice/npc_linxi_apprentice_left_conversation_1f.png", "right": "res://art/characters/conversation_direction_v1/linxi_apprentice/npc_linxi_apprentice_right_conversation_1f.png"},
+		"dialog_id": "linxi_center_apothecary_apprentice",
+		"sprite_quality": "full_body_reviewed",
+		"scale": 0.92
+	},
+	{
+		"npc_id": "linxi_herb_gatherer",
+		"npc_name": "采药村妇",
+		"pos": Vector2(0.545, 0.675),
+		"portrait_path": "res://art/characters/portraits/generic/portrait_generic_young_woman_v1.png",
+		"sprite_path": "res://art/characters/npc_zhuwei_crying_woman_idle_down_25d_4f.png",
+		"conversation_sprite_paths": {"down": "res://art/characters/conversation_direction_v1/linxi_herb_gatherer/npc_linxi_herb_gatherer_down_conversation_1f.png", "up": "res://art/characters/conversation_direction_v1/linxi_herb_gatherer/npc_linxi_herb_gatherer_up_conversation_1f.png", "left": "res://art/characters/conversation_direction_v1/linxi_herb_gatherer/npc_linxi_herb_gatherer_left_conversation_1f.png", "right": "res://art/characters/conversation_direction_v1/linxi_herb_gatherer/npc_linxi_herb_gatherer_right_conversation_1f.png"},
+		"dialog_id": "linxi_center_herb_gatherer",
+		"sprite_quality": "full_body_reviewed",
+		"scale": 0.88
+	},
+	{
+		"npc_id": "tang_xingzhou_recruit",
+		"npc_name": "唐行舟",
+		"pos": Vector2(0.330, 0.670),
+		"portrait_path": "res://art/characters/companions/portrait_tang_xingzhou_v2.png",
+		"sprite_path": "res://art/characters/companions/tang_xingzhou_field_v2/npc_tang_xingzhou_staff_dummy_practice_4f_v2.png",
+		"walk_sprite_path": "res://art/characters/companions/tang_xingzhou_field_v2/npc_tang_xingzhou_walk_down_25d_8f.png",
+		"conversation_sprite_paths": {"down": "res://art/characters/companions/tang_xingzhou_field_v2/npc_tang_xingzhou_idle_down_25d_4f.png", "up": "res://art/characters/companions/tang_xingzhou_field_v2/npc_tang_xingzhou_idle_up_25d_4f.png", "left": "res://art/characters/companions/tang_xingzhou_field_v2/npc_tang_xingzhou_idle_left_25d_4f.png", "right": "res://art/characters/companions/tang_xingzhou_field_v2/npc_tang_xingzhou_idle_right_25d_4f.png"},
+		"dialog_id": "linxi_companion_tang_xingzhou",
+		"dialog_variants": [{"dialog_id": "linxi_companion_tang_xingzhou_after_spar", "require_flags": ["tang_xingzhou_sparred"]}],
+		"hide_flag": "companion_tang_xingzhou_joined",
+		"sprite_quality": "full_body_reviewed",
+		"scale": 0.60
+	},
+	{
+		"npc_id": "shen_qinghe_recruit",
+		"npc_name": "沈青禾",
+		"pos": Vector2(0.735, 0.550),
+		"portrait_path": "res://art/characters/companions/portrait_shen_qinghe_v1.png",
+		"sprite_path": "res://art/characters/companions/npc_shen_qinghe_idle_down_25d_4f_v1_runtime.png",
+		"dialog_id": "linxi_companion_shen_qinghe",
+		"dialog_variants": [{"dialog_id": "linxi_companion_shen_qinghe_offer", "require_flags": ["shen_qinghe_reunion_spoken"]}],
+		"hide_flag": "companion_shen_qinghe_joined",
+		"sprite_quality": "full_body_reviewed",
+		"scale": 0.94
+	}
+]
+exits = [
+	{"id": "to_tutorial_courtyard", "pos": Vector2(0.105, 0.865), "size": Vector2(0.135, 0.145), "label": "返回师徒院落", "target_scene": "linxi_tutorial", "target_pos": Vector2(0.865, 0.820)},
+	{"id": "to_mountain_road", "pos": Vector2(0.820, 0.105), "size": Vector2(0.135, 0.145), "label": "前往村外山道", "target_scene": "ch1_s1_road", "target_pos": Vector2(0.120, 0.835), "require_flag": "got_sword"}
+]
+collision_rects = []
+trigger_zones = []

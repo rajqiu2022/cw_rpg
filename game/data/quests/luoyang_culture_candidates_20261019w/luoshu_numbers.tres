@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch4_side_09_luoshu_numbers"
+title = "河洛九数"
+kind = 1
+desc_not_started = "南市书生借洛书传说摆了一个算筹趣题，另一份示意在城门货担主人手中。"
+desc_in_progress = "分别看清题板规则、对位关系与固定朝向，再回南市验证九格摆法。"
+desc_completed = "你按明给的条件核验了九格。书生记录了解法，也说明这只是可验证的趣题，不是神迹证明。"
+tracker_hint = "洛阳 · 南市与南城门"
+progress_records = Array[Dictionary]([])
+completion_triggers = Array[String]([])
+auto_accept_triggers = Array[String]([])
+require_all_completion_triggers = false
+chapter_independent = true
+starts_in_chapter = 4
+completes_in_chapter = 4
+milestone_labels = Array[String]([])
+reward_gold = 0
+reward_exp = 0
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([])
+reward_skills_by_faction = {}
+reward_skills_by_flag = {}
+metadata/culture_candidate_status = "CANDIDATE_NOT_FORMAL"
+metadata/culture_reward_status = "ZERO_PENDING_BALANCE_APPROVAL"
+metadata/culture_event_owner = "FUTURE_COORDINATOR_NOT_DIALOG_SIDE_EFFECTS"

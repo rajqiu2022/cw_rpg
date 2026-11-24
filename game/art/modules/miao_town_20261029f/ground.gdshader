@@ -1,0 +1,58 @@
+shader_type canvas_item;
+uniform sampler2D earth_tex:source_color,repeat_enable,filter_linear;
+uniform sampler2D path_tex:source_color,repeat_enable,filter_linear;
+varying vec2 p;
+void vertex(){p=VERTEX;}
+vec2 folded(vec2 x){return 1.-abs(mod(x,2.)-1.);}
+float segment(vec2 x,vec2 a,vec2 b){vec2 v=b-a;return length(x-a-v*clamp(dot(x-a,v)/max(dot(v,v),.001),0.,1.));}
+void fragment(){float path=0.;
+ path=max(path,1.-smoothstep(59.5,109,segment(p,vec2(600,3310),vec2(2300,3310))));
+ path=max(path,1.-smoothstep(45.5,89,segment(p,vec2(600,2360),vec2(2300,2360))));
+ path=max(path,1.-smoothstep(45.5,89,segment(p,vec2(600,1510),vec2(2300,1510))));
+ path=max(path,1.-smoothstep(73.5,129,segment(p,vec2(3300,1880),vec2(3300,1540))));
+ path=max(path,1.-smoothstep(73.5,129,segment(p,vec2(5250,1880),vec2(5250,1540))));
+ path=max(path,1.-smoothstep(73.5,129,segment(p,vec2(2800,2980),vec2(2800,2640))));
+ path=max(path,1.-smoothstep(73.5,129,segment(p,vec2(5100,2980),vec2(5100,2640))));
+ path=max(path,1.-smoothstep(77,134,segment(p,vec2(650,4070),vec2(650,3650))));
+ path=max(path,1.-smoothstep(77,134,segment(p,vec2(650,3650),vec2(650,3310))));
+ path=max(path,1.-smoothstep(77,134,segment(p,vec2(650,3310),vec2(2300,3310))));
+ path=max(path,1.-smoothstep(77,134,segment(p,vec2(2300,3310),vec2(2300,3450))));
+ path=max(path,1.-smoothstep(77,134,segment(p,vec2(2300,3450),vec2(5800,3450))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(2200,3450),vec2(2200,3070))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(2200,3070),vec2(2800,3070))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(2800,3070),vec2(2800,2970))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(5750,3450),vec2(5750,3060))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(5750,3060),vec2(5100,3060))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(5100,3060),vec2(5100,2970))));
+ path=max(path,1.-smoothstep(80.5,139,segment(p,vec2(2800,2630),vec2(3800,2630))));
+ path=max(path,1.-smoothstep(80.5,139,segment(p,vec2(3800,2630),vec2(3800,2420))));
+ path=max(path,1.-smoothstep(80.5,139,segment(p,vec2(3800,2420),vec2(5100,2420))));
+ path=max(path,1.-smoothstep(80.5,139,segment(p,vec2(5100,2420),vec2(5100,2630))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(3300,1880),vec2(3300,1950))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(3300,1950),vec2(3800,1950))));
+ path=max(path,1.-smoothstep(66.5,119,segment(p,vec2(3800,1950),vec2(3800,2450))));
+ path=max(path,1.-smoothstep(63,114,segment(p,vec2(5250,1880),vec2(5900,1880))));
+ path=max(path,1.-smoothstep(63,114,segment(p,vec2(5900,1880),vec2(5900,2500))));
+ path=max(path,1.-smoothstep(63,114,segment(p,vec2(5900,2500),vec2(5100,2500))));
+ path=max(path,1.-smoothstep(63,114,segment(p,vec2(3300,1540),vec2(3300,1580))));
+ path=max(path,1.-smoothstep(63,114,segment(p,vec2(3300,1580),vec2(5400,1580))));
+ path=max(path,1.-smoothstep(63,114,segment(p,vec2(5400,1580),vec2(6200,1390))));
+ path=max(path,1.-smoothstep(56,104,segment(p,vec2(2300,1580),vec2(3300,1580))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(1050,1180),vec2(1050,3310))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(1050,1410),vec2(590,1410))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(590,1410),vec2(590,1255))));
+ path=max(path,1.-smoothstep(56,104,segment(p,vec2(1050,2450),vec2(550,2450))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(2000,1510),vec2(2300,1510))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(2300,1510),vec2(2300,1580))));
+ path=max(path,1.-smoothstep(56,104,segment(p,vec2(2000,2360),vec2(2060,2360))));
+ path=max(path,1.-smoothstep(56,104,segment(p,vec2(2060,2360),vec2(2060,2660))));
+ path=max(path,1.-smoothstep(56,104,segment(p,vec2(2060,2660),vec2(2800,2660))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(2350,3840),vec2(5770,3840))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(5770,3840),vec2(5770,3450))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(2220,3450),vec2(2220,3840))));
+ path=max(path,1.-smoothstep(52.5,99,segment(p,vec2(2220,3840),vec2(2350,3840))));
+ float plaza=1.-smoothstep(.88,1.,length((p-vec2(3800.,2430.))/vec2(650.,310.)));
+ path=max(path,plaza);
+ vec3 soil=texture(earth_tex,folded(p/900.)).rgb;
+ vec3 stone=texture(path_tex,folded(p/440.)).rgb;
+ COLOR=vec4(mix(soil,stone,path*.96),1.);}

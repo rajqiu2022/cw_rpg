@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="撤离总录"
+text="按先前约定：证人与抄录人不走暗道，由行义帮、烈云先锋和五派见证人共同护送，从西门公开离场。"
+on_end="next:done"
+[sub_resource type="Resource" id="done"]
+script=ExtResource("2")
+node_id=&"done"
+speaker="冷孤云"
+text="让所有人看见谁还活着、谁在护送。公开本身就是保护，但姓名与落脚处仍不得外泄。"
+set_flags=Array[Dictionary]([{"key":"ch8_evacuation_route_public","value":true},{"key":"ch8_final_evacuation_complete","value":true},{"key":"ch8_rear_sanctum_unlocked","value":true}])
+complete_quest=&"q_ch8_main_09_final_evacuation"
+accept_quest=&"q_ch8_main_10_xueying_resolution"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_final_evacuation_public"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("done")])

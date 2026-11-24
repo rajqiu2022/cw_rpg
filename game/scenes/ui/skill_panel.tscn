@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/skill_panel.gd" id="1_skill"]
+[ext_resource type="Texture2D" path="res://art/ui/skill/runtime_v2/panel_bg_v3.png" id="2_bg"]
 
 [node name="SkillPanel" type="Control"]
 visible = false
@@ -18,17 +19,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.5)
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="PanelBg" type="TextureRect" parent="."]
+z_index = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -560.0
-offset_top = -330.0
-offset_right = 560.0
-offset_bottom = 330.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Panel" type="PanelContainer" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -103,9 +124,6 @@ text = "辅助"
 custom_minimum_size = Vector2(64, 36)
 layout_mode = 2
 text = "防御"
-
-[node name="SchoolFilter" type="OptionButton" parent="Panel/Body/SkillToolbar"]
-layout_mode = 2
 
 [node name="Summary" type="Label" parent="Panel/Body/SkillToolbar"]
 layout_mode = 2

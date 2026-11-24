@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_main_01_relief_route"
+title = "雪路急援"
+kind = 0
+desc_not_started = "洛阳缴获的运货路线指向古月峰。山中早雪封路，行义帮赈粮队又遭人截断。"
+desc_in_progress = "沿古峰赈粮路上山，查验翻覆粮车并击退拦路劫粮客。"
+desc_completed = "劫粮客被击退，破车下发现人为割断的绳结。古峰守军赠予百战盔，请你继续赶往前方护粮营地。"
+tracker_hint = "古月峰 · 赈粮路"
+completion_triggers = Array[String](["flag_set:ch5_relief_road_cleared"])
+reward_gold = 70
+reward_exp = 110
+reward_items = Array[Dictionary]([{"item_id":"battle_helmet", "count":1}])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch5_relief_road_cleared", "text":"破车绳索并非风雪磨断，而是被窄刃从内侧齐整割开。"}])

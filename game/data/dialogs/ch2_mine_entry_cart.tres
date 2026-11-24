@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+text = "[i]矿车底层没有矿石，只有剪碎的门派衣料和一把刮去字号的铜坯。这里早已不是采矿场。[/i]"
+set_flags = Array[Dictionary]([{"key":"ch2_mine_cart_checked","value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch2_mine_entry_cart"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a")])
+

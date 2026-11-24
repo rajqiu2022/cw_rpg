@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "id": "luoyang_shore_market_20261020ae_hawser_knot_right_v2",
+  "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+  "successor_of": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "transparent_background": true,
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "automatic_retry": false,
+  "cli_network_or_paid_fallback": false,
+  "prompt_path": "prompts/luoyang_shore_market_20261020ae/decal_docks_hawser_knot_right_v2.txt",
+  "proposed_output_path": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_hawser_knot_right_v2.png",
+  "requested_canvas_px": [1536, 512],
+  "anchor_measurement_path": "prompts/luoyang_shore_market_20261020ae/rope_successor_anchor_measurement.json",
+  "anchor_measurement_sha256": "D604D125541E7211EBDC822CE5D013006F3E3655FA78475FC201928E00C4CFC6",
+  "selected_world_anchors_px": {
+    "left_existing_wharf_south_post_wrap_center": [2189.04, 1693.9499545288086],
+    "right_inside_existing_ferry_left_hull_a16": [2548.9, 1693.7999943489583]
+  },
+  "selected_runtime_span_px": 359.8600000000001,
+  "processing_boundary": "Measure actual output first, then use one uniform scale and transparent padding/crop that preserves every A>0 pixel. Do not stretch the rope to force the anchors, repaint alpha, threshold-clean, rotate, mirror or separate the knot from the hawser.",
+  "physics_boundary": "Entire asset is nonblocking visual overlay. It adds no post, solid, NAV restriction, walk support or interaction. Left knot must cover the already existing south post; right end must be placed under an actual A>=16 ferry hull pixel.",
+  "acceptance": [
+    "RGBA with genuine transparent margin and no broad halo",
+    "one compact load-bearing left knot with tight wraps connected to one rightward hawser",
+    "no new wood, stone, metal support, dock, boat or water pixels",
+    "no floating loose coil, detached loop, second rope or decorative rope pile",
+    "actual placement matches both pinned world anchors without nonuniform stretching",
+    "no new collision, NAV, route, NPC occlusion, ferry portal movement or fake walk support"
+  ],
+  "runtime_credit": false
+}

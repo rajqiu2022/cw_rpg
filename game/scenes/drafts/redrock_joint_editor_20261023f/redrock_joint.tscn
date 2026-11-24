@@ -1,0 +1,146 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://scripts/drafts/redrock_joint_editor_20261023f/joint_preview.gd" id="1"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_joint_editor_20261023f/core.png" id="core"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_joint_editor_20261023f/left.png" id="left"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_joint_editor_20261023f/right.png" id="right"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_joint_editor_20261023f/guard.png" id="guard"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_joint_editor_20261023f/earth.png" id="earth"]
+
+[sub_resource type="RectangleShape2D" id="body"]
+size = Vector2(35, 25)
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "Noto Sans CJK SC")
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.055, 0.07, 0.075, 0.90)
+
+[node name="RedrockJointTrial" type="Node2D"]
+script = ExtResource("1")
+metadata/status = "已接入工程的独立结构草案；未接世界路由"
+
+[node name="Ground" type="Polygon2D" parent="."]
+visible = false
+z_index = -10
+texture = ExtResource("earth")
+polygon = PackedVector2Array(400,1270,680,1140,1500,1180,1850,1010,2290,1010,2460,980,3000,760,4400,400,4950,560,5060,1450,4700,1670,3620,1630,2970,1510,2770,1710,3070,2180,2760,2380,2250,2320,1930,1950,2110,1630,1550,1470,800,1490,480,1410)
+uv = PackedVector2Array(368,1168.4,625.6,1048.8,1380,1085.6,1702,929.2,2106.8,929.2,2263.2,901.6,2760,699.2,4048,368,4554,515.2,4655.2,1334,4324,1536.4,3330.4,1499.6,2732.4,1389.2,2548.4,1573.2,2824.4,2005.6,2539.2,2189.6,2070,2134.4,1775.6,1794,1941.2,1499.6,1426,1352.4,736,1370.8,441.6,1297.2)
+color = Color(0.96,0.90,0.80,1)
+texture_repeat = 3
+
+[node name="Structure" type="Node2D" parent="."]
+[node name="LeftWing" type="Sprite2D" parent="Structure"]
+position = Vector2(325.56534296028883, 457.5451263537908)
+scale = Vector2(0.7711191335740072, 0.7711191335740072)
+texture = ExtResource("left")
+centered = false
+[node name="Core" type="Sprite2D" parent="Structure"]
+position = Vector2(1145.2, 347.6)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("core")
+centered = false
+
+[node name="RightWing" type="Sprite2D" parent="Structure"]
+position = Vector2(3118.209045226131, 361.97587939698496)
+scale = Vector2(1.1819095477386934, 1.1819095477386934)
+texture = ExtResource("right")
+centered = false
+[node name="Collision" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="SurveyActor" type="CharacterBody2D" parent="."]
+position = Vector2(2650, 1550)
+collision_layer = 2
+collision_mask = 1
+motion_mode = 1
+[node name="Foot" type="CollisionShape2D" parent="SurveyActor"]
+shape = SubResource("body")
+[node name="Art" type="Sprite2D" parent="SurveyActor"]
+texture = ExtResource("guard")
+position = Vector2(-94.17118997912317, -150.8141962421712)
+scale = Vector2(0.11691022964509394, 0.11691022964509394)
+centered = false
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(2800, 1250)
+zoom = Vector2(0.37, 0.37)
+
+[node name="UI" type="CanvasLayer" parent="."]
+[node name="Backing" type="Panel" parent="UI"]
+offset_right = 1920.0
+offset_bottom = 108.0
+theme_override_styles/panel = SubResource("panel")
+[node name="Title" type="Label" parent="UI"]
+offset_left = 32.0
+offset_top = 18.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 28
+text = "赤岩关防 · 三块结构试拼"
+[node name="Subtitle" type="Label" parent="UI"]
+offset_left = 34.0
+offset_top = 61.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 18
+text = "左墙翼接岩肩 → 连体关楼核心 → 右转墙翼接岩肩　｜　仅验证建筑结构，不含地形与陈设"
+[node name="Hint" type="Label" parent="UI"]
+offset_left = 34.0
+offset_top = 1028.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 19
+text = "WASD移动　Tab全景/跟随　1左接缝　2右接缝　3门洞　R回起点　F2临时地面　｜　原图未裁切"
+
+
+[node name="CoreWest" type="CollisionPolygon2D" parent="Collision"]
+
+polygon = PackedVector2Array(1546.0, 1214.0, 1906.0, 1172.0, 2326.0, 1232.0, 2464.0, 1280.0, 2464.0, 1328.0, 2332.0, 1342.4, 1900.0, 1311.1999999999998, 1530.4, 1270.4)
+
+[node name="CoreEast" type="CollisionPolygon2D" parent="Collision"]
+
+polygon = PackedVector2Array(2824.0, 1292.0, 3166.0, 1336.4, 3520.0, 1328.0, 3520.0, 1382.0, 3166.0, 1382.0, 2824.0, 1349.6)
+
+[node name="LeftWall" type="CollisionPolygon2D" parent="Collision"]
+
+polygon = PackedVector2Array(996.4389891696751, 1118.394223826715, 1573.2361010830325, 1172.3725631768955, 1573.2361010830325, 1218.639711191336, 1522.342238267148, 1247.1711191335742, 1004.1501805054152, 1180.0837545126356)
+
+[node name="LeftRock" type="CollisionPolygon2D" parent="Collision"]
+
+polygon = PackedVector2Array(603.1682310469314, 1133.8166064981951, 1004.1501805054152, 1203.2173285198558, 1027.2837545126354, 1110.6830324909747, 896.1935018050542, 817.6577617328521, 687.9913357400723, 748.2570397111915)
+
+[node name="RightWall" type="CollisionPolygon2D" parent="Collision"]
+
+polygon = PackedVector2Array(3470.4180904522614, 1321.686432160804, 4554.229145728643, 1455.2422110552764, 4849.7065326633165, 1306.321608040201, 4849.7065326633165, 1367.7809045226131, 4554.229145728643, 1513.1557788944724, 3470.4180904522614, 1379.6)
+
+[node name="RightRock" type="CollisionPolygon2D" parent="Collision"]
+
+polygon = PackedVector2Array(4796.520603015075, 1339.4150753768845, 5109.726633165829, 1422.1487437185929, 5091.997989949748, 831.1939698492463, 4938.349748743718, 748.4603015075377, 4749.244221105528, 996.6613065326633)
+
+[node name="GroundBoundary" type="CollisionPolygon2D" parent="Collision"]
+
+build_mode = 1
+
+polygon = PackedVector2Array(400, 1270, 680, 1140, 1500, 1180, 1850, 1010, 2290, 1010, 2460, 980, 3000, 760, 4400, 400, 4950, 560, 5060, 1450, 4700, 1670, 3620, 1630, 2970, 1510, 2770, 1710, 3070, 2180, 2760, 2380, 2250, 2320, 1930, 1950, 2110, 1630, 1550, 1470, 800, 1490, 480, 1410)
+
+[node name="Background" type="CanvasLayer" parent="."]
+
+layer = -20
+
+[node name="Fill" type="ColorRect" parent="Background"]
+
+anchors_preset = 15
+
+anchor_right = 1.0
+
+anchor_bottom = 1.0
+
+grow_horizontal = 2
+
+grow_vertical = 2
+
+mouse_filter = 2
+
+color = Color(0.13, 0.15, 0.16, 1)

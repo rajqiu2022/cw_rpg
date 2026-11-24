@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="林西送药人"
+text="我来收药碗，在暗门旁扶起个换灯的老仆。他说只让针尖蹭了一下，从台阶上来时，半边手臂已经麻了。你能替我看看，他把擦针的布搁哪儿了？"
+choices=Array[Dictionary]([{"text":"我来找。他进屋后碰过什么？","accept_quest":"q_ch6_side_05_stained_wick","next":"accept"},{"text":"先看别处。","next":"leave"}])
+
+[sub_resource type="Resource" id="accept"]
+script=ExtResource("2")
+node_id=&"accept"
+speaker="林西送药人"
+text="先擦过茶桌，又把一团东西塞进托盘底下。我扶他出去的时候，瞧见布上有两个乌点。"
+accept_quest=&"q_ch6_side_05_stained_wick"
+set_flags=Array[Dictionary]([{"key":"ch6_wick_taken","value":true}])
+
+[sub_resource type="Resource" id="leave"]
+script=ExtResource("2")
+node_id=&"leave"
+speaker="林西送药人"
+text="我就在门边。若要下去，先当心那些针。"
+
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch6_wick_offer"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("accept"),SubResource("leave")])

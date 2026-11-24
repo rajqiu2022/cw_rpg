@@ -1,0 +1,57 @@
+{
+  "status": "BUILD_ONLY_ROOT_SIGNED_TOKEN_TRIAL_PENDING_NOT_PARSED_NOT_SOURCE_PROMOTED",
+  "records": [
+    {
+      "parent": "res://build/luoyang_city_finish_20261025i_source01/original_owner_receipts03_family_weak_snapshot_NOTREADY.gd",
+      "parent_sha256": "9ed1b1166bd1e7b700925e18a55337bb7d2fdb321b00cd3d6ae7cea685ae78d5",
+      "candidate": "res://build/luoyang_city_finish_20261025i_system01/temple_signed_iid_fix01_NOTREADY/original_owner_receipts_signed_Temple_CANDIDATE.gd",
+      "hunks": [
+        {
+          "old": "or token<=0 or first.is_empty(): return {}",
+          "new": "or (token==0 if kind==\"TEMPLE_OWN_FIELD_ORIGINAL\" and scene.scene_id==&\"ch4_s4_ancient_temple\" else token<=0) or first.is_empty(): return {}"
+        }
+      ],
+      "function_bytes_otherwise_unchanged": true,
+      "candidate_sha256": "c9b0ea604faf4e7ae63c2100e8b49e6a5b5f035fe73da8b514013d92dc4e3c86"
+    },
+    {
+      "parent": "res://build/luoyang_city_finish_20261025i_source01/family_visual_material_loading_repair01/closure_READY01/finish8_runtime_READY.gd",
+      "parent_sha256": "c7355bcdc873505a28946d1a64713a89e96e3f5a67e9a4c8776dd91e40c605e9",
+      "candidate": "res://build/luoyang_city_finish_20261025i_system01/temple_signed_iid_fix01_NOTREADY/finish8_runtime_signed_Temple_CANDIDATE.gd",
+      "hunks": [
+        {
+          "old": "or typeof(receipt.get(\"token\")) != TYPE_INT or receipt.token <= 0: return false",
+          "new": "or typeof(receipt.get(\"token\")) != TYPE_INT or (receipt.token == 0 if scene.scene_id == &\"ch4_s4_ancient_temple\" and receipt.owner_kind == \"TEMPLE_OWN_FIELD_ORIGINAL\" else receipt.token <= 0): return false"
+        }
+      ],
+      "function_bytes_otherwise_unchanged": true,
+      "candidate_sha256": "8c4004862795d6d0f421f7d95c06cfd401aada2ff0da48d43c34026cb222f3a2"
+    },
+    {
+      "parent": "res://build/luoyang_city_finish_20261025i_system01/qa_role_new/real_families03_diagnostics_NOTREADY/family_worker05_NOTREADY.gd",
+      "parent_sha256": "42c196fcd7711ef90727f7d6e5ad8896d0f0e358297681b1a8d79ec8718ac32c",
+      "candidate": "res://build/luoyang_city_finish_20261025i_system01/temple_signed_iid_fix01_NOTREADY/family_worker_signed_Temple_CANDIDATE.gd",
+      "hunks": [
+        {
+          "old": "original.get(\"finalized\") == true and token > 0 and key != \"\"",
+          "new": "original.get(\"finalized\") == true and (token != 0 if row.owner_kind == \"TEMPLE\" else token > 0) and key != \"\""
+        }
+      ],
+      "function_bytes_otherwise_unchanged": true,
+      "candidate_sha256": "2df854cec573faf1565c020bf1d941b343fb461ab0f21d4b46316c09df0a84a1"
+    }
+  ],
+  "scope": "Only exactTemple scene + TEMPLE_OWN_FIELD_ORIGINAL kind switches positive-only token to nonzero raw signed IID. C/Quarter/Estate positive serial domain and all original _temple_receipt/session/script/Scene/Layout/storage/FIRST/FINAL/Weak/acquire equal-IID checks byte-identical. No abs/mask/newtoken.",
+  "runtime_destination488": {
+    "changed": false,
+    "reason": "_arrival_contract emits Temple destinations only with kind TEMPLE_DEFERRED_ORIGINAL_PREPARE; authored_arrival482 returns this before destinations-loop488. Remaining pairs are Artisan/Yamen, whose true original serial/token stays positive."
+  },
+  "QA_worker": {
+    "changed": "Only natural original final condition: Temple token raw=session.get_instance_id()!=0; all other original owner serials remain>0. Same exact real T script/state/Scene/sourcefirst/final and lease key/token assertions retained.",
+    "authority": "System-authored runtime selftest expectation repair, not independent newgeometry QA. Original42C1/oldwholeFAILs preserved."
+  },
+  "physical_whole_byte_forward_inverse": true,
+  "header_note": "Candidates preserve original SELF/BIND/FORMAL flags for exact one-function inverse only; they are not referenced by current consumers. Source may mechanically seal new paths/SHA/BIND in separate successors after Root approval. No canonical adoption.",
+  "engine_calls": 0,
+  "canonical_writes": 0
+}

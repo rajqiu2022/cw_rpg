@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch6_side_04_courier_tally"
+title = "三缺一的驿签"
+kind = 1
+desc_not_started = "白水驿旧路北边，残驿的路牌背面似乎还有旧字。"
+desc_in_progress = "旧驿牌记着换马签的交接记号。到翻车东侧，翻看破木箱的夹缝，核对哪一笔和驿牌对得上。"
+desc_completed = "查明缺的是临时改道签，不是粮食出入账。你记下了白水驿的交接规矩。"
+tracker_hint = "林西村外 · 白水驿旧路"
+starts_in_chapter = 6
+completes_in_chapter = 6
+completion_triggers = Array[String](["flag_set:ch6_courier_tally_resolved"])
+reward_gold = 25
+reward_exp = 40
+reward_items = Array[Dictionary]([{"item_id":"cloth_roll","count":2},{"item_id":"life_extend_pill","count":1}])

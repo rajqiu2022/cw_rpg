@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"jinling_water_ghost"
+display_name = "水鬼阮无舟"
+title = "夜劫漕船"
+description = "熟悉水路的私枭头目，夜间凿船劫货，麾下刺客善使暗器。"
+board_city = &"jinling"
+recommended_min_level = 9
+recommended_max_level = 11
+enemy_ids = Array[StringName]([&"bounty_water_ghost", &"reed_smuggler", &"reed_assassin"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_jinling_reed_marsh","label":"江南芦荡 · 沉船湾","pos":Vector2(0.72,0.58)},{"scene_id":&"openworld_bailu_ferry","label":"白鹿渡 · 货栈外街","pos":Vector2(0.40,0.56)}])
+reward_reputation = 30
+reward_training = 66
+reward_exp = 145
+reward_gold = 160
+reward_items = Array[Dictionary]([{"item_id":&"silver_moon_needle","count":1},{"item_id":&"cloth_roll","count":3}])
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_duan_changfeng_idle_down_4f_v1_runtime.png"

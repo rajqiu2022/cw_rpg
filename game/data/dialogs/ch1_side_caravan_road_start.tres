@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "范掌柜"
+text = "护商镖师说你会来。前面转过乱石坡就是最窄的弯道，山匪若要截货，多半会在那里动手。"
+choices = Array[Dictionary]([{"text": "让车队跟紧，现在出发", "next": "fight"}, {"text": "再检查一次货绳", "next": "end"}])
+on_end = "end"
+
+[sub_resource type="Resource" id="node_fight"]
+script = ExtResource("2_dnode")
+node_id = &"fight"
+speaker = ""
+text = "[i]车轮刚驶入弯道，两名山匪便从乱石后冲出，一人扑向货车，一人截住退路。[/i]"
+on_end = "battle_group_then:bandit_mountain,bandit_mountain:ch1_side_caravan_victory"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_side_caravan_road_start"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_fight")])

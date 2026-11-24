@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "俯身绕过车辕，才看得见阴面泥里的半截铜箍。它和原册押车图上的箍纹一致，却套在窄了半掌的轴上。槽木另有两道方向相反的绳痕。"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "铜箍也可能是旧件，但换绑的绳痕和转入茶运小道的窄辙都在这里。押运队大概在白水驿换了车；被押的是不是那孩子，还得找别的证据。"
+add_evidence = Array[StringName]([&"ev_ch6_baishui_transfer_marks"])
+set_flags = Array[Dictionary]([{"key":"ch6_baishui_cart_checked", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_baishui_cart_trace"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero")])

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "霍长空"
+text = "你以气稳剑、以剑导气，两边弟子都该闭嘴想一想。华山先收下这场和气。"
+add_testimonies = Array[StringName]([&"ts_ch3_huashan_two_edges"])
+on_end = "next:n2"
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "路数可以争，临敌时总要同向。"
+set_flags = Array[Dictionary]([{"key": "ch3_huashan_complete", "value": true}, {"key": "joined_faction", "value": true}])
+complete_quest = &"q_ch3_huashan_unity"
+on_end = "scene:ch3_s1_wulin_assembly"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_huashan_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2")])

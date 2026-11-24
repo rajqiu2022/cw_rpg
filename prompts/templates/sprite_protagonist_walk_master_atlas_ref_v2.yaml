@@ -1,0 +1,16 @@
+id: sprite_protagonist_walk_master_atlas_ref_v2
+description: Reference-locked walk atlas with a visible waist wine gourd.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/characters/protagonist_portrait.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied portrait as the strict identity and proportion reference. Preserve the face, black tied hair, dark blue-grey cross-collar robe and leather chest strap. Add one clearly visible small grey-green double-lobed wine gourd tied to the left side of his belt in every frame; it must not be hidden behind the robe, sword, or hand. No second gourd.
+
+  Create a 1024x1024 2D RPG sprite atlas: four rows by nine isolated cells, pure white background, shared feet baseline. Rows are down, up, right, left. Columns 1-8 walk: left contact, feet together, left passing, feet together, right contact, feet together, right passing, feet together. Column 9 repeats column 1. Hong Kong wuxia comic sprite; no text, grid, shadow, trail, crop, duplicate, or isometric view.
+  Avoid: {negative}
+
+variables: {}

@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_mask_path = "res://art/navigation_masks/ch2_zhuwei_market_walk_v1.svg"
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.08, 0.92, 0.14, 0.70, 0.24, 0.52, 0.36, 0.37, 0.56, 0.30, 0.72, 0.38, 0.82, 0.25, 0.94, 0.10, 0.99, 0.10, 0.99, 0.38, 0.85, 0.56, 0.72, 0.66, 0.61, 0.82, 0.43, 0.92, 0.26, 0.98, 0.08, 0.98)])
+occluders = []
+blockers = [
+	{"id": "market_northwest_house", "pos": Vector2(0.24, 0.18), "size": Vector2(0.26, 0.22)},
+	{"id": "market_north_house", "pos": Vector2(0.57, 0.11), "size": Vector2(0.23, 0.14)},
+	{"id": "market_east_house", "pos": Vector2(0.92, 0.45), "size": Vector2(0.13, 0.25)},
+	{"id": "market_southeast_stalls", "pos": Vector2(0.82, 0.88), "size": Vector2(0.22, 0.14)},
+	{"id": "market_west_stalls", "pos": Vector2(0.12, 0.58), "size": Vector2(0.10, 0.16)}
+]
+interactions = [
+	{"id": "market_old_book_stall", "pos": Vector2(0.47, 0.60), "size": Vector2(0.09, 0.10), "action": "discover_readable:qingming_sword_record:found_qingming_sword_record", "activation": "interact", "label": "翻看旧书摊", "interaction_visual_kind": "ledger", "visual_render_size_px": Vector2(58, 46), "hide_flag": "found_qingming_sword_record"},
+	{"id": "huilan_zhuwei_echo", "pos": Vector2(0.29, 0.65), "size": Vector2(0.08, 0.09), "action": "dialog:huilan_openworld_echo", "activation": "interact", "label": "听檐下双盆回声", "hide_flag": "huilan_echo_understood", "visual_baked": false},
+	{"id": "huilan_zhuwei_balance", "pos": Vector2(0.54, 0.58), "size": Vector2(0.08, 0.09), "action": "dialog:huilan_openworld_balance", "activation": "interact", "label": "帮脚夫调整扁担", "hide_flag": "huilan_balance_understood", "visual_baked": false},
+	{"id": "huilan_zhuwei_trial", "pos": Vector2(0.68, 0.53), "size": Vector2(0.08, 0.09), "action": "dialog:huilan_openworld_final_trial", "activation": "interact", "label": "化解街口双车险局", "require_flag": "huilan_openworld_clues_complete", "hide_flag": "huilan_openworld_trial_complete", "visual_baked": false}
+]
+portals = [
+	{"id": "market_return_to_ruin_inner", "pos": Vector2(0.30, 0.90), "size": Vector2(0.10, 0.12), "label": "返回城西废宅内堂", "target_scene": "ch1_s3_ruin_inner", "target_pos": Vector2(0.50, 0.46), "marker_rotation_degrees": 180.0, "require_flag": "chapter1_complete"},
+	{"id": "market_enter_inn", "pos": Vector2(0.24, 0.36), "size": Vector2(0.10, 0.10), "label": "进入晨市客栈", "target_scene": "ch2_s1_market_inn", "target_pos": Vector2(0.50, 0.72)},
+	{"id": "market_enter_training_hall", "pos": Vector2(0.72, 0.28), "size": Vector2(0.10, 0.10), "label": "进入晨市武馆", "target_scene": "ch2_s1_market_training_hall", "target_pos": Vector2(0.50, 0.72)},
+	{"id": "market_to_forest_edge", "pos": Vector2(0.90, 0.20), "size": Vector2(0.10, 0.15), "label": "前往北林旧猎道", "locked_label": "先在晨市核对三份证词", "target_scene": "ch2_s2_forest_edge", "target_pos": Vector2(0.12, 0.72), "require_flag": "heard_about_missing_lingyue"},
+	{"id": "market_to_river_camp", "pos": Vector2(0.56, 0.86), "size": Vector2(0.10, 0.14), "label": "前往河滩营地", "locked_label": "先在晨市核对三份证词", "target_scene": "ch2_s6_river_camp", "target_pos": Vector2(0.16, 0.78), "require_flag": "heard_about_missing_lingyue"}
+]
+walkable_probes = [
+	{"id": "entry", "pos": Vector2(0.50, 0.72)},
+	{"id": "main_square", "pos": Vector2(0.52, 0.50)},
+	{"id": "inn_entry", "pos": Vector2(0.24, 0.36)},
+	{"id": "training_hall_entry", "pos": Vector2(0.72, 0.28)},
+	{"id": "return_ruin", "pos": Vector2(0.30, 0.90)},
+	{"id": "forest_road", "pos": Vector2(0.90, 0.20)},
+	{"id": "river_road", "pos": Vector2(0.56, 0.86)}
+]

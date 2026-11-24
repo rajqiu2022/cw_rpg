@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="终局案卷吏"
+text="三份原卷已经分别入库。苏雾笙由洛阳、五派和行义帮共同看押；任何提审都必须三方同时登记。"
+on_end="next:trial"
+[sub_resource type="Resource" id="trial"]
+script=ExtResource("2")
+node_id=&"trial"
+speaker="冷孤云"
+text="审理不能只盯茗雾。烈云误杀、各派删档和刑樊天改证都列在同一份责任表里，谁提供证据也不能因此跳过自己的那一栏。"
+on_end="next:end"
+[sub_resource type="Resource" id="end"]
+script=ExtResource("2")
+node_id=&"end"
+speaker="终局案卷吏"
+text="已记。府衙只保管其中一份，不拥有最后解释权；民间与门派副本可以随时核对我们的页码和封印。"
+set_flags=Array[Dictionary]([{"key":"ch8_aftermath_luoyang_done","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"luoyang","key":"ch8_joint_trial_active","value":true},{"city":"luoyang","key":"ch8_single_party_custody_forbidden","value":true}])
+on_end="resolve_ch8_relationship_if_ready"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_aftermath_luoyang"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("trial"),SubResource("end")])

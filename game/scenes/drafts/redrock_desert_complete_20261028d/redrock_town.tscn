@@ -1,0 +1,2519 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/drafts/town_layout_20261029r/redrock_controller.gd" id="controller"]
+
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="hero_scene"]
+
+[ext_resource type="Script" path="res://scripts/drafts/redrock_luoyang_standard_20261028b/preview_player.gd" id="hero_adapter"]
+
+[ext_resource type="Shader" path="res://art/modules/redrock_city_life_20261029a/ground.gdshader" id="ground_shader"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/dwelling.png" id="dwelling"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/stable.png" id="stable"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/terrace.png" id="terrace"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/inn.png" id="inn"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/repair_shed.png" id="repair_shed"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/cistern.png" id="cistern"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/water_jars.png" id="water_jars"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/wheelbench.png" id="wheelbench"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/dry_tree.png" id="dry_tree"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/dry_shrub.png" id="dry_shrub"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/ore_cluster.png" id="ore_cluster"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/core.png" id="core"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/left.png" id="left"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/right.png" id="right"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/guard.png" id="guard"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/earth.png" id="earth"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/tower.png" id="tower"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/trough.png" id="trough"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/cargo.png" id="cargo"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/rock.png" id="rock"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/court_wall.png" id="court_wall"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/inn_room.png" id="inn_room"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/keeper_sprite.png" id="keeper_sprite"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/keeper_portrait.png" id="keeper_portrait"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/counter.png" id="counter"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/table.png" id="table"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/bench.png" id="bench"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/shelf.png" id="shelf"]
+
+[ext_resource type="PackedScene" path="res://scenes/drafts/redrock_desert_complete_20261028d/inn_hall.tscn" id="inn_room_scene"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/canyon.png" id="d_canyon"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/stairs.png" id="d_stairs"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/side_house.png" id="d_side_house"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/market.png" id="d_market"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/camel.png" id="d_camel"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/merchant_walk.png" id="d_merchant_walk"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/worker_walk.png" id="d_worker_walk"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/fox.png" id="d_fox"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/waystation.png" id="d_waystation"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/caravan_props.png" id="d_caravan_props"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/merchant_portrait.png" id="d_merchant_portrait"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/worker_portrait.png" id="d_worker_portrait"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/bed.png" id="d_bed"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/cloth_rack.png" id="d_cloth_rack"]
+
+[ext_resource type="Script" path="res://scripts/drafts/redrock_desert_complete_20261028d/ambient_actor.gd" id="ambient"]
+
+[ext_resource type="PackedScene" path="res://scenes/drafts/redrock_desert_complete_20261028d/home_room.tscn" id="home_scene"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/west_bank.png" id="d_west_bank"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/east_bank.png" id="d_east_bank"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_desert_complete_20261028d/north_bank.png" id="d_north_bank"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_city_life_20261029a/sandstone_paving.png" id="life_paving"]
+
+[ext_resource type="Texture2D" path="res://art/modules/desert_city_rework_20261029o/redrock_cliff.png" id="r_redrock_cliff"]
+
+[sub_resource type="RectangleShape2D" id="actor_body"]
+size = Vector2(35, 25)
+
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "Noto Sans CJK SC")
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.10, 0.065, 0.04, 0.90)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="ShaderMaterial" id="ground_material"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("earth")
+shader_parameter/rock_tex = ExtResource("rock")
+shader_parameter/paving_tex = ExtResource("life_paving")
+
+
+
+[node name="RedrockTown" type="Node2D"]
+script = ExtResource("controller")
+metadata/status = "赤岩六区可编辑布局草案；非正式世界入口"
+
+[node name="Ground" type="Polygon2D" parent="."]
+z_index = -20
+material = SubResource("ground_material")
+polygon = PackedVector2Array(-20000, -20000, 24000, -20000, 24000, 24000, -20000, 24000)
+
+[node name="Town" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Gate" type="Node2D" parent="Town"]
+scale = Vector2(0.833333333, 0.833333333)
+position = Vector2(41.666666667, 4030.100000000)
+
+[node name="Body" type="StaticBody2D" parent="Town/Gate"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="LeftWing" type="Sprite2D" parent="Town/Gate"]
+position = Vector2(325.565343, -867.454874)
+scale = Vector2(0.7711191335740072, 0.7711191335740072)
+texture = ExtResource("left")
+centered = false
+
+[node name="Core" type="Sprite2D" parent="Town/Gate"]
+position = Vector2(1145.2, -977.4)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("core")
+centered = false
+
+[node name="RightWing" type="Sprite2D" parent="Town/Gate"]
+position = Vector2(3118.20905, -963.024121)
+scale = Vector2(1.1819095477386934, 1.1819095477386934)
+texture = ExtResource("right")
+centered = false
+
+[node name="CoreWest" type="CollisionPolygon2D" parent="Town/Gate/Body"]
+polygon = PackedVector2Array(1546, -111, 1906, -153, 2326, -93, 2464, -45, 2464, 3, 2332, 17.4, 1900, -13.8, 1530.4, -54.6)
+
+[node name="CoreEast" type="CollisionPolygon2D" parent="Town/Gate/Body"]
+polygon = PackedVector2Array(2824, -33, 3166, 11.4, 3520, 3, 3520, 57, 3166, 57, 2824, 24.6)
+
+[node name="LeftWall" type="CollisionPolygon2D" parent="Town/Gate/Body"]
+polygon = PackedVector2Array(996.438989, -206.605776, 1573.2361, -152.627437, 1573.2361, -106.360289, 1522.34224, -77.8288809, 1004.15018, -144.916245)
+
+[node name="LeftRock" type="CollisionPolygon2D" parent="Town/Gate/Body"]
+polygon = PackedVector2Array(603.168231, -191.183394, 1004.15018, -121.782671, 1027.28375, -214.316968, 896.193502, -507.342238, 687.991336, -576.74296)
+
+[node name="RightWall" type="CollisionPolygon2D" parent="Town/Gate/Body"]
+polygon = PackedVector2Array(3470.41809, -3.31356784, 4554.22915, 130.242211, 4849.70653, -18.678392, 4849.70653, 42.7809045, 4554.22915, 188.155779, 3470.41809, 54.6)
+
+[node name="RightRock" type="CollisionPolygon2D" parent="Town/Gate/Body"]
+polygon = PackedVector2Array(4796.5206, 14.4150754, 5109.72663, 97.1487437, 5091.99799, -493.80603, 4938.34975, -576.539698, 4749.24422, -328.338693)
+
+[node name="Inn" type="Node2D" parent="Town"]
+position = Vector2(1650, 3045)
+metadata/label = "驿舍：独立前厅已接，主门按空格进入并原脚返回。"
+metadata/visual_rect = Rect2(-445.67, -473.96, 891.34, 473.96)
+
+[node name="Art" type="Sprite2D" parent="Town/Inn"]
+position = Vector2(-669.53, -663.38)
+scale = Vector2(0.82, 0.82)
+texture = ExtResource("inn")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Inn"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Inn/Body"]
+polygon = PackedVector2Array(-430, -115, 420, -115, 420, -15, -430, -15)
+
+[node name="Stable" type="Node2D" parent="Town"]
+position = Vector2(3400, 3070)
+metadata/label = "驮兽棚：饮水槽与货垛分列棚侧，前湾留给照料与通行。"
+metadata/visual_rect = Rect2(-528.125, -323.7, 1056.25, 323.7)
+
+[node name="Art" type="Sprite2D" parent="Town/Stable"]
+position = Vector2(-584.675, -462.15)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("stable")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Stable"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Stable/Body"]
+polygon = PackedVector2Array(-510, -120, 490, -120, 490, -86, -510, -86)
+
+[node name="Footprint1" type="CollisionPolygon2D" parent="Town/Stable/Body"]
+polygon = PackedVector2Array(-495, -22, -457, -22, -457, 4, -495, 4)
+
+[node name="Footprint2" type="CollisionPolygon2D" parent="Town/Stable/Body"]
+polygon = PackedVector2Array(-165, -22, -127, -22, -127, 4, -165, 4)
+
+[node name="Footprint3" type="CollisionPolygon2D" parent="Town/Stable/Body"]
+polygon = PackedVector2Array(145, -22, 183, -22, 183, 4, 145, 4)
+
+[node name="Footprint4" type="CollisionPolygon2D" parent="Town/Stable/Body"]
+polygon = PackedVector2Array(458, -22, 496, -22, 496, 4, 458, 4)
+
+[node name="Workshop" type="Node2D" parent="Town"]
+position = Vector2(4350, 2300)
+metadata/label = "修车棚：开放工作湾与后墙，物件可调查。"
+metadata/visual_rect = Rect2(-480.8, -420.8, 961.6, 420.8)
+
+[node name="Art" type="Sprite2D" parent="Town/Workshop"]
+position = Vector2(-732, -587.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("repair_shed")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Workshop"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Workshop/Body"]
+polygon = PackedVector2Array(-470, -115, 460, -115, 460, -85, -470, -85)
+
+[node name="Footprint1" type="CollisionPolygon2D" parent="Town/Workshop/Body"]
+polygon = PackedVector2Array(-450, -28, -410, -28, -410, 2, -450, 2)
+
+[node name="Footprint2" type="CollisionPolygon2D" parent="Town/Workshop/Body"]
+polygon = PackedVector2Array(-210, -28, -170, -28, -170, 2, -210, 2)
+
+[node name="Footprint3" type="CollisionPolygon2D" parent="Town/Workshop/Body"]
+polygon = PackedVector2Array(370, -28, 410, -28, 410, 2, 370, 2)
+
+[node name="WaterWell" type="Node2D" parent="Town"]
+position = Vector2(1100, 2280)
+metadata/label = "蓄水井棚：展示取水设施，未绑定正式饮水服务。"
+metadata/visual_rect = Rect2(-295.75, -474.6, 591.5, 474.6)
+
+[node name="Art" type="Sprite2D" parent="Town/WaterWell"]
+position = Vector2(-537.25, -599.2)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("cistern")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WaterWell"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/WaterWell/Body"]
+polygon = PackedVector2Array(-130, -125, 130, -125, 130, 0, -130, 0)
+
+[node name="Dwelling1" type="Node2D" parent="Town"]
+position = Vector2(1700, 1450)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-375.7, -325.65, 751.4, 325.65)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling1"]
+position = Vector2(-525.2, -548.6)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("dwelling")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling1/Body"]
+polygon = PackedVector2Array(-360.672, -110, 360.672, -110, 360.672, -18, -360.672, -18)
+
+[node name="Dwelling2" type="Node2D" parent="Town"]
+position = Vector2(2550, 1390)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-375.7, -325.65, 751.4, 325.65)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling2"]
+position = Vector2(-488.946246, -476.288396)
+scale = Vector2(0.588737201, 0.588737201)
+texture = ExtResource("d_side_house")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling2/Body"]
+polygon = PackedVector2Array(-360.672, -110, 360.672, -110, 360.672, -18, -360.672, -18)
+
+[node name="Dwelling3" type="Node2D" parent="Town"]
+position = Vector2(3230, 1450)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-352.58, -305.61, 705.16, 305.61)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling3"]
+position = Vector2(-492.88, -514.84)
+scale = Vector2(0.61, 0.61)
+texture = ExtResource("dwelling")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling3/Body"]
+polygon = PackedVector2Array(-338.4768, -110, 338.4768, -110, 338.4768, -18, -338.4768, -18)
+
+[node name="Dwelling4" type="Node2D" parent="Town"]
+position = Vector2(1750, 840)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-346.8, -300.6, 693.6, 300.6)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling4"]
+position = Vector2(-488.946246, -476.288396)
+scale = Vector2(0.588737201, 0.588737201)
+texture = ExtResource("d_side_house")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling4"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling4/Body"]
+polygon = PackedVector2Array(-332.928, -110, 332.928, -110, 332.928, -18, -332.928, -18)
+
+[node name="Dwelling5" type="Node2D" parent="Town"]
+position = Vector2(2650, 840)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-346.8, -300.6, 693.6, 300.6)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling5"]
+position = Vector2(-484.8, -506.4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("dwelling")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling5"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling5/Body"]
+polygon = PackedVector2Array(-332.928, -110, 332.928, -110, 332.928, -18, -332.928, -18)
+
+[node name="Dwelling6" type="Node2D" parent="Town"]
+position = Vector2(870, 1260)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-289, -250.5, 578, 250.5)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling6"]
+position = Vector2(-404, -422)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("dwelling")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling6"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling6/Body"]
+polygon = PackedVector2Array(-277.44, -110, 277.44, -110, 277.44, -18, -277.44, -18)
+
+[node name="Dwelling7" type="Node2D" parent="Town"]
+position = Vector2(850, 800)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-289, -250.5, 578, 250.5)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling7"]
+position = Vector2(-404, -422)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("dwelling")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling7"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling7/Body"]
+polygon = PackedVector2Array(-277.44, -110, 277.44, -110, 277.44, -18, -277.44, -18)
+
+[node name="Dwelling8" type="Node2D" parent="Town"]
+position = Vector2(4300, 1770)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-375.7, -325.65, 751.4, 325.65)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling8"]
+position = Vector2(-488.946246, -476.288396)
+scale = Vector2(0.588737201, 0.588737201)
+texture = ExtResource("d_side_house")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling8"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling8/Body"]
+polygon = PackedVector2Array(-360.672, -110, 360.672, -110, 360.672, -18, -360.672, -18)
+
+[node name="Dwelling9" type="Node2D" parent="Town"]
+position = Vector2(5100, 1800)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-300.56, -260.52, 601.12, 260.52)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling9"]
+position = Vector2(-420.16, -438.88)
+scale = Vector2(0.52, 0.52)
+texture = ExtResource("dwelling")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling9"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling9/Body"]
+polygon = PackedVector2Array(-288.5376, -110, 288.5376, -110, 288.5376, -18, -288.5376, -18)
+
+[node name="Dwelling10" type="Node2D" parent="Town"]
+position = Vector2(4600, 3040)
+metadata/label = "阶街住户：厚石平顶，门前留有行人巷道。"
+metadata/visual_rect = Rect2(-346.8, -300.6, 693.6, 300.6)
+
+[node name="Art" type="Sprite2D" parent="Town/Dwelling10"]
+position = Vector2(-488.946246, -476.288396)
+scale = Vector2(0.588737201, 0.588737201)
+texture = ExtResource("d_side_house")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Dwelling10"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Dwelling10/Body"]
+polygon = PackedVector2Array(-332.928, -110, 332.928, -110, 332.928, -18, -332.928, -18)
+
+[node name="Lookout" type="Node2D" parent="Town"]
+position = Vector2(4350, 850)
+metadata/label = "望关台：远眺外观地标；本轮没有登楼内景。"
+metadata/visual_rect = Rect2(-320.800781, -600, 641.601562, 600)
+
+[node name="Art" type="Sprite2D" parent="Town/Lookout"]
+position = Vector2(-465.527344, -803.320312)
+scale = Vector2(0.5859375, 0.5859375)
+texture = ExtResource("tower")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Lookout"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/Lookout/Body"]
+polygon = PackedVector2Array(-270, -130, 270, -130, 270, -2, -270, -2)
+
+[node name="LowLeft" type="Node2D" parent="Town"]
+position = Vector2(1110, 3750)
+metadata/label = ""
+metadata/visual_rect = Rect2(-700, -343.425414, 1400, 343.425414)
+
+[node name="Art" type="Sprite2D" parent="Town/LowLeft"]
+position = Vector2(-751.049724, -527.513812)
+scale = Vector2(0.773480663, 0.773480663)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LowLeft"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LowLeft/Body"]
+polygon = PackedVector2Array(-672, -247.266298, 672, -247.266298, 672, 0, -672, 0)
+
+[node name="LowRight" type="Node2D" parent="Town"]
+position = Vector2(4700, 3600)
+metadata/label = ""
+metadata/visual_rect = Rect2(-750, -367.955801, 1500, 367.955801)
+
+[node name="Art" type="Sprite2D" parent="Town/LowRight"]
+position = Vector2(-804.696133, -565.19337)
+scale = Vector2(0.828729282, 0.828729282)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LowRight"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LowRight/Body"]
+polygon = PackedVector2Array(-720, -264.928177, 720, -264.928177, 720, 0, -720, 0)
+
+[node name="WaterLedge" type="Node2D" parent="Town"]
+position = Vector2(995, 3000)
+metadata/label = ""
+metadata/visual_rect = Rect2(-675, -331.160221, 1350, 331.160221)
+
+[node name="Art" type="Sprite2D" parent="Town/WaterLedge"]
+position = Vector2(-724.226519, -508.674033)
+scale = Vector2(0.745856354, 0.745856354)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WaterLedge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/WaterLedge/Body"]
+polygon = PackedVector2Array(-648, -238.435359, 648, -238.435359, 648, 0, -648, 0)
+
+[node name="WorkLedge" type="Node2D" parent="Town"]
+position = Vector2(4900, 3010)
+metadata/label = ""
+metadata/visual_rect = Rect2(-710, -348.331492, 1420, 348.331492)
+
+[node name="Art" type="Sprite2D" parent="Town/WorkLedge"]
+position = Vector2(-761.779006, -535.049724)
+scale = Vector2(0.784530387, 0.784530387)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WorkLedge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/WorkLedge/Body"]
+polygon = PackedVector2Array(-681.6, -250.798674, 681.6, -250.798674, 681.6, 0, -681.6, 0)
+
+[node name="LanesLedgeWest" type="Node2D" parent="Town"]
+position = Vector2(1375, 2050)
+metadata/label = ""
+metadata/visual_rect = Rect2(-825, -404.751381, 1650, 404.751381)
+
+[node name="Art" type="Sprite2D" parent="Town/LanesLedgeWest"]
+position = Vector2(-885.165746, -621.712707)
+scale = Vector2(0.91160221, 0.91160221)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LanesLedgeWest"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LanesLedgeWest/Body"]
+polygon = PackedVector2Array(-792, -291.420994, 792, -291.420994, 792, 0, -792, 0)
+
+[node name="LanesLedgeEast" type="Node2D" parent="Town"]
+position = Vector2(2760, 2050)
+metadata/label = ""
+metadata/visual_rect = Rect2(-735, -360.596685, 1470, 360.596685)
+
+[node name="Art" type="Sprite2D" parent="Town/LanesLedgeEast"]
+position = Vector2(-788.60221, -553.889503)
+scale = Vector2(0.812154696, 0.812154696)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LanesLedgeEast"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LanesLedgeEast/Body"]
+polygon = PackedVector2Array(-705.6, -259.629613, 705.6, -259.629613, 705.6, 0, -705.6, 0)
+
+[node name="LookoutLedge" type="Node2D" parent="Town"]
+position = Vector2(4450, 1320)
+metadata/label = ""
+metadata/visual_rect = Rect2(-475, -233.038674, 950, 233.038674)
+
+[node name="Art" type="Sprite2D" parent="Town/LookoutLedge"]
+position = Vector2(-509.640884, -357.955801)
+scale = Vector2(0.524861878, 0.524861878)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LookoutLedge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LookoutLedge/Body"]
+polygon = PackedVector2Array(-456, -167.787845, 456, -167.787845, 456, 0, -456, 0)
+
+[node name="WheelBench" type="Node2D" parent="Town"]
+position = Vector2(4930, 2370)
+metadata/label = "修车工作台：车轮、轴木与木槌；不发任务奖励。"
+metadata/visual_rect = Rect2(-84.0517241, -150, 168.103448, 150)
+
+[node name="Art" type="Sprite2D" parent="Town/WheelBench"]
+position = Vector2(-155.072944, -181.432361)
+scale = Vector2(0.198938992, 0.198938992)
+texture = ExtResource("wheelbench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WheelBench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/WheelBench/Body"]
+polygon = PackedVector2Array(-80, -45, 80, -45, 80, 0, -80, 0)
+
+[node name="WaterJars" type="Node2D" parent="Town"]
+position = Vector2(760, 2340)
+metadata/label = "储水罐：可放置场景实体。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/WaterJars"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WaterJars"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/WaterJars/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="InnCargo" type="Node2D" parent="Town"]
+position = Vector2(2110, 3100)
+metadata/label = "商队货垛：候检与驿舍周转物。"
+metadata/visual_rect = Rect2(-69.8830935, -95, 139.766187, 95)
+
+[node name="Art" type="Sprite2D" parent="Town/InnCargo"]
+position = Vector2(-171.717626, -165.053957)
+scale = Vector2(0.170863309, 0.170863309)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/InnCargo"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/InnCargo/Body"]
+polygon = PackedVector2Array(-60, -45, 60, -45, 60, 0, -60, 0)
+
+[node name="StableTrough" type="Node2D" parent="Town"]
+position = Vector2(3830, 3125)
+metadata/label = "饮水槽：靠棚侧放置，通道保持开放。"
+metadata/visual_rect = Rect2(-85.6653226, -70, 171.330645, 70)
+
+[node name="Art" type="Sprite2D" parent="Town/StableTrough"]
+position = Vector2(-144.233871, -131.391129)
+scale = Vector2(0.141129032, 0.141129032)
+texture = ExtResource("trough")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/StableTrough"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/StableTrough/Body"]
+polygon = PackedVector2Array(-150, -35, 150, -35, 150, 0, -150, 0)
+
+[node name="OreSample" type="Node2D" parent="Town"]
+position = Vector2(5180, 2350)
+metadata/label = "岩矿调查点：仅视觉调查，无新增掉落或Item ID。"
+metadata/visual_rect = Rect2(-145.142436, -145, 290.284872, 145)
+
+[node name="Art" type="Sprite2D" parent="Town/OreSample"]
+position = Vector2(-229.179764, -217.642436)
+scale = Vector2(0.284872299, 0.284872299)
+texture = ExtResource("ore_cluster")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/OreSample"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/OreSample/Body"]
+polygon = PackedVector2Array(-95, -50, 95, -50, 95, 0, -95, 0)
+
+[node name="WaterTree" type="Node2D" parent="Town"]
+position = Vector2(470, 2270)
+metadata/label = ""
+metadata/visual_rect = Rect2(-193.949045, -350, 387.898089, 350)
+
+[node name="Art" type="Sprite2D" parent="Town/WaterTree"]
+position = Vector2(-281.783439, -456.56051)
+scale = Vector2(0.445859873, 0.445859873)
+texture = ExtResource("dry_tree")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WaterTree"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/WaterTree/Body"]
+polygon = PackedVector2Array(-24, -30, 24, -30, 24, 0, -24, 0)
+
+[node name="InnTree" type="Node2D" parent="Town"]
+position = Vector2(790, 2990)
+metadata/label = ""
+metadata/visual_rect = Rect2(-160.700637, -290, 321.401274, 290)
+
+[node name="Art" type="Sprite2D" parent="Town/InnTree"]
+position = Vector2(-233.477707, -378.292994)
+scale = Vector2(0.369426752, 0.369426752)
+texture = ExtResource("dry_tree")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/InnTree"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/InnTree/Body"]
+polygon = PackedVector2Array(-22, -28, 22, -28, 22, 0, -22, 0)
+
+[node name="Shrub1" type="Node2D" parent="Town"]
+position = Vector2(650, 3650)
+metadata/label = ""
+metadata/visual_rect = Rect2(-66.40625, -85, 132.8125, 85)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub1"]
+position = Vector2(-97.8385417, -138.567708)
+scale = Vector2(0.147569444, 0.147569444)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="Shrub2" type="Node2D" parent="Town"]
+position = Vector2(1690, 3830)
+metadata/label = ""
+metadata/visual_rect = Rect2(-59.375, -76, 118.75, 76)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub2"]
+position = Vector2(-87.4791667, -123.895833)
+scale = Vector2(0.131944444, 0.131944444)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="Shrub3" type="Node2D" parent="Town"]
+position = Vector2(5050, 3820)
+metadata/label = ""
+metadata/visual_rect = Rect2(-64.84375, -83, 129.6875, 83)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub3"]
+position = Vector2(-95.5364583, -135.307292)
+scale = Vector2(0.144097222, 0.144097222)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="Shrub4" type="Node2D" parent="Town"]
+position = Vector2(5200, 3030)
+metadata/label = ""
+metadata/visual_rect = Rect2(-57.8125, -74, 115.625, 74)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub4"]
+position = Vector2(-85.1770833, -120.635417)
+scale = Vector2(0.128472222, 0.128472222)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="Shrub5" type="Node2D" parent="Town"]
+position = Vector2(420, 2640)
+metadata/label = ""
+metadata/visual_rect = Rect2(-64.0625, -82, 128.125, 82)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub5"]
+position = Vector2(-94.3854167, -133.677083)
+scale = Vector2(0.142361111, 0.142361111)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="Shrub6" type="Node2D" parent="Town"]
+position = Vector2(510, 1740)
+metadata/label = ""
+metadata/visual_rect = Rect2(-56.25, -72, 112.5, 72)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub6"]
+position = Vector2(-82.875, -117.375)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="Shrub7" type="Node2D" parent="Town"]
+position = Vector2(5400, 2100)
+metadata/label = ""
+metadata/visual_rect = Rect2(-60.15625, -77, 120.3125, 77)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub7"]
+position = Vector2(-88.6302083, -125.526042)
+scale = Vector2(0.133680556, 0.133680556)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="Shrub8" type="Node2D" parent="Town"]
+position = Vector2(4100, 560)
+metadata/label = ""
+metadata/visual_rect = Rect2(-50, -64, 100, 64)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub8"]
+position = Vector2(-73.6666667, -104.333333)
+scale = Vector2(0.111111111, 0.111111111)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="Shrub9" type="Node2D" parent="Town"]
+position = Vector2(1060, 900)
+metadata/label = ""
+metadata/visual_rect = Rect2(-62.5, -80, 125, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/Shrub9"]
+position = Vector2(-92.0833333, -130.416667)
+scale = Vector2(0.138888889, 0.138888889)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="GateSentinel" type="Node2D" parent="Town"]
+position = Vector2(2470, 4190)
+metadata/label = "关门查看员：旧匿名待机精灵；没有新增NPC身份或行走动画。"
+metadata/visual_rect = Rect2(-25.4279749, -112, 50.8559499, 112)
+
+[node name="Art" type="Sprite2D" parent="Town/GateSentinel"]
+position = Vector2(-94.17119, -150.814196)
+scale = Vector2(0.11691023, 0.11691023)
+texture = ExtResource("guard")
+centered = false
+
+[node name="Player" parent="Town" instance=ExtResource("hero_scene")]
+position = Vector2(2250, 4480)
+z_index = 0
+collision_layer = 2
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("hero_adapter")
+
+[node name="CollisionShape2D" parent="Town/Player" index="1"]
+position = Vector2(0, 0)
+shape = SubResource("actor_body")
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Boundary"]
+build_mode = 1
+polygon = PackedVector2Array(600, 400, 4300, 300, 5200, 600, 5600, 1600, 5540, 3250, 5100, 4150, 4250, 4550, 4300, 6300, 3500, 7150, 1800, 7500, 1000, 6800, 1200, 5800, 1800, 5100, 1650, 4200, 300, 4080, 180, 2700, 300, 1100)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(2870,2600)
+zoom = Vector2(0.205,0.205)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+
+[node name="TopPanel" type="Panel" parent="UI"]
+offset_left = 22.0
+offset_top = 18.0
+offset_right = 1120.0
+offset_bottom = 110.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Title" type="Label" parent="UI"]
+offset_left = 42.0
+offset_top = 28.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 28
+text = "赤岩关镇 · 峡谷阶街"
+
+[node name="Status" type="Label" parent="UI"]
+offset_left = 44.0
+offset_top = 72.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 19
+text = "六区连通布局草案 · 关门—驿舍—修坊—水院—民巷—望台"
+
+[node name="Hint" type="Label" parent="UI"]
+offset_left = 30.0
+offset_top = 1034.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 19
+text = "WASD / 方向键移动　Shift快走　Tab全景/跟随　1—6查看分区　R回关外　空格查看物件　Esc关闭说明"
+
+[node name="Detail" type="Panel" parent="UI"]
+visible = false
+offset_left = 1160.0
+offset_top = 28.0
+offset_right = 1895.0
+offset_bottom = 650.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Text" type="Label" parent="UI/Detail"]
+offset_left = 230.0
+offset_top = 20.0
+offset_right = 710.0
+offset_bottom = 590.0
+autowrap_mode = 2
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 22
+
+[node name="InnCourtPhysics" type="StaticBody2D" parent="Town"]
+position = Vector2(1550, 3220)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Wall0" type="CollisionPolygon2D" parent="Town/InnCourtPhysics"]
+polygon = PackedVector2Array(-464.4, -324.9, 522.9, -324.9, 522.9, -301.5, -464.4, -301.5)
+
+[node name="Wall1" type="CollisionPolygon2D" parent="Town/InnCourtPhysics"]
+polygon = PackedVector2Array(-485.1, -322.2, -449.1, -308.7, -579.6, -160.2, -666.9, -83.7, -701.1, -101.7, -633.6, -232.2)
+
+[node name="Wall2" type="CollisionPolygon2D" parent="Town/InnCourtPhysics"]
+polygon = PackedVector2Array(510.3, -322.2, 545.4, -322.2, 689.4, -110.7, 675.9, -83.7, 585.9, -162.9)
+
+[node name="Wall3" type="CollisionPolygon2D" parent="Town/InnCourtPhysics"]
+polygon = PackedVector2Array(-673.2, -123.3, -233.1, -47.7, -233.1, 0.9, -669.6, -79.2)
+
+[node name="Wall4" type="CollisionPolygon2D" parent="Town/InnCourtPhysics"]
+polygon = PackedVector2Array(243.9, -47.7, 684.9, -124.2, 684.9, -79.2, 243.9, 0.9)
+
+[node name="InnCourtBack" type="Node2D" parent="Town"]
+position = Vector2(1550, 2918.5)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/InnCourtBack"]
+position = Vector2(-800.1, -335.7)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1774, 373)
+
+[node name="InnCourtSides" type="Node2D" parent="Town"]
+position = Vector2(1550, 3041.8)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/InnCourtSides"]
+position = Vector2(-800.1, -123.3)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 373, 1774, 137)
+
+[node name="InnCourtFront" type="Node2D" parent="Town"]
+position = Vector2(1550, 3220)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/InnCourtFront"]
+position = Vector2(-800.1, -178.2)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 510, 1774, 377)
+
+[node name="StableCourtPhysics" type="StaticBody2D" parent="Town"]
+position = Vector2(3400, 3240)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Wall0" type="CollisionPolygon2D" parent="Town/StableCourtPhysics"]
+polygon = PackedVector2Array(-464.4, -324.9, 522.9, -324.9, 522.9, -301.5, -464.4, -301.5)
+
+[node name="Wall1" type="CollisionPolygon2D" parent="Town/StableCourtPhysics"]
+polygon = PackedVector2Array(-485.1, -322.2, -449.1, -308.7, -579.6, -160.2, -666.9, -83.7, -701.1, -101.7, -633.6, -232.2)
+
+[node name="Wall2" type="CollisionPolygon2D" parent="Town/StableCourtPhysics"]
+polygon = PackedVector2Array(510.3, -322.2, 545.4, -322.2, 689.4, -110.7, 675.9, -83.7, 585.9, -162.9)
+
+[node name="Wall3" type="CollisionPolygon2D" parent="Town/StableCourtPhysics"]
+polygon = PackedVector2Array(-673.2, -123.3, -233.1, -47.7, -233.1, 0.9, -669.6, -79.2)
+
+[node name="Wall4" type="CollisionPolygon2D" parent="Town/StableCourtPhysics"]
+polygon = PackedVector2Array(243.9, -47.7, 684.9, -124.2, 684.9, -79.2, 243.9, 0.9)
+
+[node name="StableCourtBack" type="Node2D" parent="Town"]
+position = Vector2(3400, 2938.5)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/StableCourtBack"]
+position = Vector2(-800.1, -335.7)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1774, 373)
+
+[node name="StableCourtSides" type="Node2D" parent="Town"]
+position = Vector2(3400, 3061.8)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/StableCourtSides"]
+position = Vector2(-800.1, -123.3)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 373, 1774, 137)
+
+[node name="StableCourtFront" type="Node2D" parent="Town"]
+position = Vector2(3400, 3240)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/StableCourtFront"]
+position = Vector2(-800.1, -178.2)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 510, 1774, 377)
+
+[node name="WaterCourtPhysics" type="StaticBody2D" parent="Town"]
+position = Vector2(1100, 2450)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Wall0" type="CollisionPolygon2D" parent="Town/WaterCourtPhysics"]
+polygon = PackedVector2Array(-464.4, -324.9, 522.9, -324.9, 522.9, -301.5, -464.4, -301.5)
+
+[node name="Wall1" type="CollisionPolygon2D" parent="Town/WaterCourtPhysics"]
+polygon = PackedVector2Array(-485.1, -322.2, -449.1, -308.7, -579.6, -160.2, -666.9, -83.7, -701.1, -101.7, -633.6, -232.2)
+
+[node name="Wall2" type="CollisionPolygon2D" parent="Town/WaterCourtPhysics"]
+polygon = PackedVector2Array(510.3, -322.2, 545.4, -322.2, 689.4, -110.7, 675.9, -83.7, 585.9, -162.9)
+
+[node name="Wall3" type="CollisionPolygon2D" parent="Town/WaterCourtPhysics"]
+polygon = PackedVector2Array(-673.2, -123.3, -233.1, -47.7, -233.1, 0.9, -669.6, -79.2)
+
+[node name="Wall4" type="CollisionPolygon2D" parent="Town/WaterCourtPhysics"]
+polygon = PackedVector2Array(243.9, -47.7, 684.9, -124.2, 684.9, -79.2, 243.9, 0.9)
+
+[node name="WaterCourtBack" type="Node2D" parent="Town"]
+position = Vector2(1100, 2148.5)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/WaterCourtBack"]
+position = Vector2(-800.1, -335.7)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1774, 373)
+
+[node name="WaterCourtSides" type="Node2D" parent="Town"]
+position = Vector2(1100, 2271.8)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/WaterCourtSides"]
+position = Vector2(-800.1, -123.3)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 373, 1774, 137)
+
+[node name="WaterCourtFront" type="Node2D" parent="Town"]
+position = Vector2(1100, 2450)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/WaterCourtFront"]
+position = Vector2(-800.1, -178.2)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 510, 1774, 377)
+
+[node name="WorkCourtPhysics" type="StaticBody2D" parent="Town"]
+position = Vector2(4500, 2470)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Wall0" type="CollisionPolygon2D" parent="Town/WorkCourtPhysics"]
+polygon = PackedVector2Array(-464.4, -324.9, 522.9, -324.9, 522.9, -301.5, -464.4, -301.5)
+
+[node name="Wall1" type="CollisionPolygon2D" parent="Town/WorkCourtPhysics"]
+polygon = PackedVector2Array(-485.1, -322.2, -449.1, -308.7, -579.6, -160.2, -666.9, -83.7, -701.1, -101.7, -633.6, -232.2)
+
+[node name="Wall2" type="CollisionPolygon2D" parent="Town/WorkCourtPhysics"]
+polygon = PackedVector2Array(510.3, -322.2, 545.4, -322.2, 689.4, -110.7, 675.9, -83.7, 585.9, -162.9)
+
+[node name="Wall3" type="CollisionPolygon2D" parent="Town/WorkCourtPhysics"]
+polygon = PackedVector2Array(-673.2, -123.3, -233.1, -47.7, -233.1, 0.9, -669.6, -79.2)
+
+[node name="Wall4" type="CollisionPolygon2D" parent="Town/WorkCourtPhysics"]
+polygon = PackedVector2Array(243.9, -47.7, 684.9, -124.2, 684.9, -79.2, 243.9, 0.9)
+
+[node name="WorkCourtBack" type="Node2D" parent="Town"]
+position = Vector2(4500, 2168.5)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/WorkCourtBack"]
+position = Vector2(-800.1, -335.7)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1774, 373)
+
+[node name="WorkCourtSides" type="Node2D" parent="Town"]
+position = Vector2(4500, 2291.8)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/WorkCourtSides"]
+position = Vector2(-800.1, -123.3)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 373, 1774, 137)
+
+[node name="WorkCourtFront" type="Node2D" parent="Town"]
+position = Vector2(4500, 2470)
+metadata/static_region = true
+
+[node name="Art" type="Sprite2D" parent="Town/WorkCourtFront"]
+position = Vector2(-800.1, -178.2)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("court_wall")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 510, 1774, 377)
+
+[node name="Door" type="Marker2D" parent="Town"]
+position = Vector2(1530, 3110)
+
+[node name="Label" type="Label" parent="Town/Door"]
+offset_left = -85.0
+offset_top = -8.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 18
+text = "驿舍前厅 · 空格"
+
+[node name="InnHall" parent="." instance=ExtResource("inn_room_scene")]
+visible = false
+position = Vector2(9000, 1000)
+
+[node name="Portrait" type="TextureRect" parent="UI/Detail"]
+visible = false
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 214.0
+offset_bottom = 410.0
+texture = ExtResource("keeper_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ApproachRock1" type="Node2D" parent="Town"]
+position = Vector2(1230, 4650)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/ApproachRock1"]
+position = Vector2(-794.059041, -778.118081)
+scale = Vector2(0.996309963, 0.996309963)
+texture = ExtResource("d_canyon")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ApproachRock1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/ApproachRock1/Body"]
+polygon = PackedVector2Array(-300, -115, 300, -115, 300, 0, -300, 0)
+
+[node name="ApproachRock12" type="Node2D" parent="Town"]
+position = Vector2(4140, 4900)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/ApproachRock12"]
+position = Vector2(-794.059041, -778.118081)
+scale = Vector2(0.996309963, 0.996309963)
+texture = ExtResource("d_canyon")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ApproachRock12"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/ApproachRock12/Body"]
+polygon = PackedVector2Array(-300, -115, 300, -115, 300, 0, -300, 0)
+
+[node name="LaneStairs" type="Node2D" parent="Town"]
+position = Vector2(3700, 2045)
+metadata/label = "石阶：上下口留通，沿中央行走。"
+
+[node name="Art" type="Sprite2D" parent="Town/LaneStairs"]
+z_index = -2
+position = Vector2(-709.050773, -649.889625)
+scale = Vector2(0.883002207, 0.883002207)
+texture = ExtResource("d_stairs")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LaneStairs"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/LaneStairs/Body"]
+polygon = PackedVector2Array(-294.039736, -51.2141287, -287.85872, -120.088301, -236.644592, -142.163356, -135.982341, -351.434879, -126.269316, -392.052981, -77.704195, -402.649007, -51.2141288, -384.988963, -52.097131, -354.083886, -76.8211928, -339.072848, -150.110376, -209.271524, -203.090508, -110.375277, -235.76159, -78.5871971, -239.293599, -42.3841066)
+
+[node name="Block1" type="CollisionPolygon2D" parent="Town/LaneStairs/Body"]
+polygon = PackedVector2Array(71.523178, -6.1810161, 76.8211912, -76.8211927, 109.492273, -97.1302434, 196.909491, -311.69978, 204.856511, -362.030906, 239.293597, -371.74393, 278.145694, -356.732892, 283.443708, -163.355409, 157.174392, -73.2891838, 153.642383, -14.128036, 128.918321, -6.48000082e-07)
+
+[node name="LookoutStairs" type="Node2D" parent="Town"]
+position = Vector2(3700, 1325)
+metadata/label = "石阶：上下口留通，沿中央行走。"
+
+[node name="Art" type="Sprite2D" parent="Town/LookoutStairs"]
+z_index = -2
+position = Vector2(-363.388521, -333.068433)
+scale = Vector2(0.452538631, 0.452538631)
+texture = ExtResource("d_stairs")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LookoutStairs"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/LookoutStairs/Body"]
+polygon = PackedVector2Array(-150.695364, -26.2472412, -147.527594, -61.5452544, -121.280353, -72.8587202, -69.6909495, -180.110376, -64.7130245, -200.927153, -39.8233998, -206.357616, -26.2472409, -197.306844, -26.6997795, -181.467992, -39.3708612, -173.774835, -76.9315676, -107.251656, -104.083885, -56.5673295, -120.827815, -40.2759387, -122.637969, -21.7218549)
+
+[node name="Block1" type="CollisionPolygon2D" parent="Town/LookoutStairs/Body"]
+polygon = PackedVector2Array(36.6556288, -3.167771, 39.3708606, -39.3708615, 56.1147899, -49.77925, 100.916114, -159.746137, 104.988962, -185.540839, 122.637969, -190.518764, 142.549668, -182.825608, 145.2649, -83.7196473, 80.551876, -37.560707, 78.7417215, -7.24061868, 66.0706398, -5.8400002e-07)
+
+[node name="WestLaneStairs" type="Node2D" parent="Town"]
+position = Vector2(1300, 1250)
+metadata/label = "石阶：上下口留通，沿中央行走。"
+
+[node name="Art" type="Sprite2D" parent="Town/WestLaneStairs"]
+z_index = -2
+position = Vector2(-327.935982, -300.573951)
+scale = Vector2(0.408388521, 0.408388521)
+texture = ExtResource("d_stairs")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WestLaneStairs"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/WestLaneStairs/Body"]
+polygon = PackedVector2Array(-135.993377, -23.6865338, -133.134657, -55.5408384, -109.448123, -65.7505514, -62.8918319, -162.538631, -58.3995581, -181.324503, -35.9381895, -186.225165, -23.6865339, -178.057395, -24.0949224, -163.763796, -35.529801, -156.821192, -69.4260482, -96.788079, -93.9293595, -51.0485647, -109.039735, -36.3465779, -110.673289, -19.6026486)
+
+[node name="Block1" type="CollisionPolygon2D" parent="Town/WestLaneStairs/Body"]
+polygon = PackedVector2Array(33.0794706, -2.85871919, 35.5298017, -35.5298009, 50.640177, -44.9227369, 91.0706405, -144.161147, 94.7461372, -167.439293, 110.67329, -171.931567, 128.642384, -164.988962, 131.092716, -75.5518759, 72.6931571, -33.8962468, 71.059603, -6.53421588, 59.6247244, 4.56000009e-07)
+
+[node name="WestMarket" type="Node2D" parent="Town"]
+position = Vector2(800, 1660)
+metadata/label = "遮阳商棚：布包、篮筐与货架。"
+
+[node name="Art" type="Sprite2D" parent="Town/WestMarket"]
+position = Vector2(-415.897436, -391.282051)
+scale = Vector2(0.512820513, 0.512820513)
+texture = ExtResource("d_market")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WestMarket"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/WestMarket/Body"]
+polygon = PackedVector2Array(-250, -62, 45, -62, 45, 0, -250, 0)
+
+[node name="Block1" type="CollisionPolygon2D" parent="Town/WestMarket/Body"]
+polygon = PackedVector2Array(210, -35, 245, -35, 245, 0, 210, 0)
+
+[node name="EastMarket" type="Node2D" parent="Town"]
+position = Vector2(5000, 1500)
+metadata/label = "遮阳商棚：布包、篮筐与货架。"
+
+[node name="Art" type="Sprite2D" parent="Town/EastMarket"]
+position = Vector2(-415.897436, -391.282051)
+scale = Vector2(0.512820513, 0.512820513)
+texture = ExtResource("d_market")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/EastMarket"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/EastMarket/Body"]
+polygon = PackedVector2Array(-250, -62, 45, -62, 45, 0, -250, 0)
+
+[node name="Block1" type="CollisionPolygon2D" parent="Town/EastMarket/Body"]
+polygon = PackedVector2Array(210, -35, 245, -35, 245, 0, 210, 0)
+
+[node name="RoadShelter" type="Node2D" parent="Town"]
+position = Vector2(3650, 5790)
+metadata/label = "关外避风小驿：商路休息点。"
+
+[node name="Art" type="Sprite2D" parent="Town/RoadShelter"]
+position = Vector2(-420.080483, -403.34004)
+scale = Vector2(0.523138833, 0.523138833)
+texture = ExtResource("d_waystation")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RoadShelter"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/RoadShelter/Body"]
+polygon = PackedVector2Array(-210, -68, 210, -68, 210, -23, -210, -23)
+
+[node name="Block1" type="CollisionPolygon2D" parent="Town/RoadShelter/Body"]
+polygon = PackedVector2Array(-210, -15, -172, -15, -172, 5, -210, 5)
+
+[node name="Block2" type="CollisionPolygon2D" parent="Town/RoadShelter/Body"]
+polygon = PackedVector2Array(177, -15, 215, -15, 215, 5, 177, 5)
+
+[node name="StableCamel" type="Node2D" parent="Town"]
+position = Vector2(3150, 3175)
+metadata/label = "商队卧驼：普通驮兽。"
+
+[node name="Art" type="Sprite2D" parent="Town/StableCamel"]
+position = Vector2(-273.880682, -231.642045)
+scale = Vector2(0.335227273, 0.335227273)
+texture = ExtResource("d_camel")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/StableCamel"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/StableCamel/Body"]
+polygon = PackedVector2Array(-63, -32, 63, -32, 63, 0, -63, 0)
+
+[node name="StableCamel2" type="Node2D" parent="Town"]
+position = Vector2(3650, 3160)
+metadata/label = "商队卧驼：普通驮兽。"
+
+[node name="Art" type="Sprite2D" parent="Town/StableCamel2"]
+position = Vector2(-273.880682, -231.642045)
+scale = Vector2(0.335227273, 0.335227273)
+texture = ExtResource("d_camel")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/StableCamel2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/StableCamel2/Body"]
+polygon = PackedVector2Array(-63, -32, 63, -32, 63, 0, -63, 0)
+
+[node name="RoadCamel" type="Node2D" parent="Town"]
+position = Vector2(3900, 5940)
+metadata/label = "商队卧驼：普通驮兽。"
+
+[node name="Art" type="Sprite2D" parent="Town/RoadCamel"]
+position = Vector2(-273.880682, -231.642045)
+scale = Vector2(0.335227273, 0.335227273)
+texture = ExtResource("d_camel")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RoadCamel"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/RoadCamel/Body"]
+polygon = PackedVector2Array(-63, -32, 63, -32, 63, 0, -63, 0)
+
+[node name="TravelCargo1" type="Node2D" parent="Town"]
+position = Vector2(550, 1670)
+metadata/label = "商旅货箱：场景调查物件；未新增正式任务或奖励。"
+
+[node name="Art" type="Sprite2D" parent="Town/TravelCargo1"]
+position = Vector2(-164.96614, -145.869074)
+scale = Vector2(0.203160271, 0.203160271)
+texture = ExtResource("d_caravan_props")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/TravelCargo1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/TravelCargo1/Body"]
+polygon = PackedVector2Array(-38, -26, 38, -26, 38, 0, -38, 0)
+
+[node name="TravelCargo2" type="Node2D" parent="Town"]
+position = Vector2(5280, 1490)
+metadata/label = "商旅货箱：场景调查物件；未新增正式任务或奖励。"
+
+[node name="Art" type="Sprite2D" parent="Town/TravelCargo2"]
+position = Vector2(-164.96614, -145.869074)
+scale = Vector2(0.203160271, 0.203160271)
+texture = ExtResource("d_caravan_props")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/TravelCargo2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/TravelCargo2/Body"]
+polygon = PackedVector2Array(-38, -26, 38, -26, 38, 0, -38, 0)
+
+[node name="TravelCargo3" type="Node2D" parent="Town"]
+position = Vector2(3520, 5800)
+metadata/label = "商旅货箱：场景调查物件；未新增正式任务或奖励。"
+
+[node name="Art" type="Sprite2D" parent="Town/TravelCargo3"]
+position = Vector2(-164.96614, -145.869074)
+scale = Vector2(0.203160271, 0.203160271)
+texture = ExtResource("d_caravan_props")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/TravelCargo3"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/TravelCargo3/Body"]
+polygon = PackedVector2Array(-38, -26, 38, -26, 38, 0, -38, 0)
+
+[node name="TravelCargo4" type="Node2D" parent="Town"]
+position = Vector2(2080, 6540)
+metadata/label = "商旅货箱：场景调查物件；未新增正式任务或奖励。"
+
+[node name="Art" type="Sprite2D" parent="Town/TravelCargo4"]
+position = Vector2(-164.96614, -145.869074)
+scale = Vector2(0.203160271, 0.203160271)
+texture = ExtResource("d_caravan_props")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/TravelCargo4"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/TravelCargo4/Body"]
+polygon = PackedVector2Array(-38, -26, 38, -26, 38, 0, -38, 0)
+
+[node name="TravelCargo5" type="Node2D" parent="Town"]
+position = Vector2(4830, 2480)
+metadata/label = "商旅货箱：场景调查物件；未新增正式任务或奖励。"
+
+[node name="Art" type="Sprite2D" parent="Town/TravelCargo5"]
+position = Vector2(-164.96614, -145.869074)
+scale = Vector2(0.203160271, 0.203160271)
+texture = ExtResource("d_caravan_props")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/TravelCargo5"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/TravelCargo5/Body"]
+polygon = PackedVector2Array(-38, -26, 38, -26, 38, 0, -38, 0)
+
+[node name="CompletionShrub1" type="Node2D" parent="Town"]
+position = Vector2(680, 1520)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub1"]
+position = Vector2(-82.875, -117.375)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub2" type="Node2D" parent="Town"]
+position = Vector2(950, 1950)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub2"]
+position = Vector2(-74.8177083, -105.963542)
+scale = Vector2(0.112847222, 0.112847222)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub3" type="Node2D" parent="Town"]
+position = Vector2(1560, 1900)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub3"]
+position = Vector2(-80.5729167, -114.114583)
+scale = Vector2(0.121527778, 0.121527778)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub4" type="Node2D" parent="Town"]
+position = Vector2(2950, 1900)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub4"]
+position = Vector2(-70.2135417, -99.4427083)
+scale = Vector2(0.105902778, 0.105902778)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub5" type="Node2D" parent="Town"]
+position = Vector2(3250, 1900)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub5"]
+position = Vector2(-78.2708333, -110.854167)
+scale = Vector2(0.118055556, 0.118055556)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub6" type="Node2D" parent="Town"]
+position = Vector2(4860, 1030)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub6"]
+position = Vector2(-74.8177083, -105.963542)
+scale = Vector2(0.112847222, 0.112847222)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub7" type="Node2D" parent="Town"]
+position = Vector2(3950, 6100)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub7"]
+position = Vector2(-74.8177083, -105.963542)
+scale = Vector2(0.112847222, 0.112847222)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub8" type="Node2D" parent="Town"]
+position = Vector2(3300, 6550)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub8"]
+position = Vector2(-82.875, -117.375)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub9" type="Node2D" parent="Town"]
+position = Vector2(1440, 6950)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub9"]
+position = Vector2(-69.0625, -97.8125)
+scale = Vector2(0.104166667, 0.104166667)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub10" type="Node2D" parent="Town"]
+position = Vector2(2700, 7280)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub10"]
+position = Vector2(-75.96875, -107.59375)
+scale = Vector2(0.114583333, 0.114583333)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub11" type="Node2D" parent="Town"]
+position = Vector2(1780, 5320)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub11"]
+position = Vector2(-69.0625, -97.8125)
+scale = Vector2(0.104166667, 0.104166667)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="CompletionShrub12" type="Node2D" parent="Town"]
+position = Vector2(4000, 5110)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/CompletionShrub12"]
+position = Vector2(-74.8177083, -105.963542)
+scale = Vector2(0.112847222, 0.112847222)
+texture = ExtResource("dry_shrub")
+centered = false
+
+[node name="OuterTree" type="Node2D" parent="Town"]
+position = Vector2(1760, 5790)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/OuterTree"]
+position = Vector2(-201.273885, -326.11465)
+scale = Vector2(0.318471338, 0.318471338)
+texture = ExtResource("dry_tree")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/OuterTree"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/OuterTree/Body"]
+polygon = PackedVector2Array(-20, -24, 20, -24, 20, 0, -20, 0)
+
+[node name="ShelterTree" type="Node2D" parent="Town"]
+position = Vector2(4130, 5830)
+metadata/label = ""
+
+[node name="Art" type="Sprite2D" parent="Town/ShelterTree"]
+position = Vector2(-185.171975, -300.025478)
+scale = Vector2(0.292993631, 0.292993631)
+texture = ExtResource("dry_tree")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ShelterTree"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Block0" type="CollisionPolygon2D" parent="Town/ShelterTree/Body"]
+polygon = PackedVector2Array(-20, -24, 20, -24, 20, 0, -20, 0)
+
+[node name="Merchant" type="CharacterBody2D" parent="Town"]
+position = Vector2(2140, 3420)
+collision_layer = 5
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("ambient")
+atlas_key = "merchant_walk"
+route = PackedVector2Array(2140, 3420, 2780, 3420, 2780, 3620, 2140, 3620)
+walk_speed = 52.0
+metadata/label = "商旅：正在沿驿舍外街转运货物。"
+
+[node name="Art" type="Sprite2D" parent="Town/Merchant"]
+texture = ExtResource("d_merchant_walk")
+centered = false
+region_enabled = true
+
+[node name="Body" type="CollisionShape2D" parent="Town/Merchant"]
+shape = SubResource("actor_body")
+
+[node name="StoneWorker" type="CharacterBody2D" parent="Town"]
+position = Vector2(4400, 2660)
+collision_layer = 5
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("ambient")
+atlas_key = "worker_walk"
+route = PackedVector2Array(4400, 2660, 4780, 2660)
+walk_speed = 42.0
+metadata/label = "石匠：石料与修车工具放在工作棚边。"
+
+[node name="Art" type="Sprite2D" parent="Town/StoneWorker"]
+texture = ExtResource("d_worker_walk")
+centered = false
+region_enabled = true
+
+[node name="Body" type="CollisionShape2D" parent="Town/StoneWorker"]
+shape = SubResource("actor_body")
+
+[node name="SandFox" type="CharacterBody2D" parent="Town"]
+position = Vector2(1750, 6910)
+collision_layer = 5
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("ambient")
+atlas_key = "fox"
+route = PackedVector2Array(1750, 6910, 2500, 6910)
+walk_speed = 64.0
+metadata/label = "沙狐：普通荒漠动物，未绑定战斗或掉落。"
+
+[node name="Art" type="Sprite2D" parent="Town/SandFox"]
+texture = ExtResource("d_fox")
+centered = false
+region_enabled = true
+
+[node name="Body" type="CollisionShape2D" parent="Town/SandFox"]
+shape = SubResource("actor_body")
+
+[node name="HomeRoom" parent="." instance=ExtResource("home_scene")]
+visible = false
+position = Vector2(12000, 1000)
+
+[node name="HomeDoor" type="Marker2D" parent="Town"]
+position = Vector2(1700, 1545)
+
+[node name="TownWestBank" type="Node2D" parent="Town"]
+position = Vector2(-500, 4000)
+
+[node name="Body" type="StaticBody2D" parent="Town/TownWestBank"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Rock" type="CollisionPolygon2D" parent="Town/TownWestBank/Body"]
+polygon = PackedVector2Array(184.250000000, -3744.000000000, 672.000000000, -3744.000000000, 672.000000000, 0.000000000, 184.250000000, 0.000000000)
+
+[node name="TownEastBank" type="Node2D" parent="Town"]
+position = Vector2(6300, 4200)
+
+[node name="Body" type="StaticBody2D" parent="Town/TownEastBank"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Rock" type="CollisionPolygon2D" parent="Town/TownEastBank/Body"]
+polygon = PackedVector2Array(-714.400000000, -3744.000000000, -194.350000000, -3744.000000000, -194.350000000, 0.000000000, -714.400000000, 0.000000000)
+
+[node name="TownNorthBank" type="Node2D" parent="Town"]
+position = Vector2(2850, 450)
+
+[node name="Body" type="StaticBody2D" parent="Town/TownNorthBank"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Rock" type="CollisionPolygon2D" parent="Town/TownNorthBank/Body"]
+polygon = PackedVector2Array(-2482.18085, -110, 2482.18085, -110, 2482.18085, 0, -2482.18085, 0)
+
+[node name="ApproachWestBank" type="Node2D" parent="Town"]
+position = Vector2(100, 7500)
+
+[node name="Body" type="StaticBody2D" parent="Town/ApproachWestBank"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Rock" type="CollisionPolygon2D" parent="Town/ApproachWestBank/Body"]
+polygon = PackedVector2Array(78.550000000, -3168.000000000, 566.300000000, -3168.000000000, 566.300000000, 0.000000000, 78.550000000, 0.000000000)
+
+[node name="ApproachEastBank" type="Node2D" parent="Town"]
+position = Vector2(5200, 7500)
+
+[node name="Body" type="StaticBody2D" parent="Town/ApproachEastBank"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Rock" type="CollisionPolygon2D" parent="Town/ApproachEastBank/Body"]
+polygon = PackedVector2Array(-602.200000000, -3168.000000000, -82.150000000, -3168.000000000, -82.150000000, 0.000000000, -602.200000000, 0.000000000)
+
+[node name="ApproachSouthRidge" type="Node2D" parent="Town"]
+position = Vector2(2900, 7800)
+
+[node name="Art" type="Sprite2D" parent="Town/ApproachSouthRidge"]
+position = Vector2(-1089.80243, -552.674772)
+texture = ExtResource("d_north_bank")
+centered = false
+scale = Vector2(1.000000000, 1.000000000)
+
+[node name="Body" type="StaticBody2D" parent="Town/ApproachSouthRidge"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Rock" type="CollisionPolygon2D" parent="Town/ApproachSouthRidge/Body"]
+polygon = PackedVector2Array(-963.670213, -110, 963.670213, -110, 963.670213, 0, -963.670213, 0)
+
+[node name="WestGateShoulder" type="Node2D" parent="Town"]
+position = Vector2(500, 4040)
+
+[node name="Art" type="Sprite2D" parent="Town/WestGateShoulder"]
+position = Vector2(-437.387387, -307.207207)
+scale = Vector2(0.45045045, 0.45045045)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WestGateShoulder"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Face" type="CollisionPolygon2D" parent="Town/WestGateShoulder/Body"]
+polygon = PackedVector2Array(-383.198198, -110, 383.198198, -110, 383.198198, 0, -383.198198, 0)
+
+[node name="ApproachWestJoin" type="Node2D" parent="Town"]
+position = Vector2(700, 4750)
+
+[node name="Art" type="Sprite2D" parent="Town/ApproachWestJoin"]
+position = Vector2(-393.648649, -276.486486)
+scale = Vector2(0.405405405, 0.405405405)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ApproachWestJoin"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Face" type="CollisionPolygon2D" parent="Town/ApproachWestJoin/Body"]
+polygon = PackedVector2Array(-344.878378, -99, 344.878378, -99, 344.878378, 0, -344.878378, 0)
+
+[node name="SouthWestJoin" type="Node2D" parent="Town"]
+position = Vector2(1150.000000000, 7480.000000000)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthWestJoin"]
+position = Vector2(-546.734234, -384.009009)
+scale = Vector2(0.563063063, 0.563063063)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/SouthWestJoin"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Face" type="CollisionPolygon2D" parent="Town/SouthWestJoin/Body"]
+polygon = PackedVector2Array(-478.997748, -137.5, 478.997748, -137.5, 478.997748, 0, -478.997748, 0)
+
+[node name="SouthEastJoin" type="Node2D" parent="Town"]
+position = Vector2(4300, 7480)
+
+[node name="Art" type="Sprite2D" parent="Town/SouthEastJoin"]
+position = Vector2(-437.387387, -307.207207)
+scale = Vector2(0.45045045, 0.45045045)
+texture = ExtResource("terrace")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/SouthEastJoin"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Face" type="CollisionPolygon2D" parent="Town/SouthEastJoin/Body"]
+polygon = PackedVector2Array(-383.198198, -110, 383.198198, -110, 383.198198, 0, -383.198198, 0)
+
+[node name="LeftCheek" type="Polygon2D" parent="Town/LaneStairs"]
+position = Vector2(-709.050773, -649.889625)
+scale = Vector2(0.883002207, 0.883002207)
+texture = ExtResource("d_stairs")
+polygon = PackedVector2Array(470, 678, 477, 600, 535, 575, 649, 338, 660, 292, 715, 280, 745, 300, 744, 335, 716, 352, 633, 499, 573, 611, 536, 647, 532, 688)
+uv = PackedVector2Array(470, 678, 477, 600, 535, 575, 649, 338, 660, 292, 715, 280, 745, 300, 744, 335, 716, 352, 633, 499, 573, 611, 536, 647, 532, 688)
+
+[node name="RightCheek" type="Polygon2D" parent="Town/LaneStairs"]
+position = Vector2(-709.050773, -649.889625)
+scale = Vector2(0.883002207, 0.883002207)
+texture = ExtResource("d_stairs")
+polygon = PackedVector2Array(884, 729, 890, 649, 927, 626, 1026, 383, 1035, 326, 1074, 315, 1118, 332, 1124, 551, 981, 653, 977, 720, 949, 736)
+uv = PackedVector2Array(884, 729, 890, 649, 927, 626, 1026, 383, 1035, 326, 1074, 315, 1118, 332, 1124, 551, 981, 653, 977, 720, 949, 736)
+
+[node name="LeftCheek" type="Polygon2D" parent="Town/LookoutStairs"]
+position = Vector2(-363.388521, -333.068433)
+scale = Vector2(0.452538631, 0.452538631)
+texture = ExtResource("d_stairs")
+polygon = PackedVector2Array(470, 678, 477, 600, 535, 575, 649, 338, 660, 292, 715, 280, 745, 300, 744, 335, 716, 352, 633, 499, 573, 611, 536, 647, 532, 688)
+uv = PackedVector2Array(470, 678, 477, 600, 535, 575, 649, 338, 660, 292, 715, 280, 745, 300, 744, 335, 716, 352, 633, 499, 573, 611, 536, 647, 532, 688)
+
+[node name="RightCheek" type="Polygon2D" parent="Town/LookoutStairs"]
+position = Vector2(-363.388521, -333.068433)
+scale = Vector2(0.452538631, 0.452538631)
+texture = ExtResource("d_stairs")
+polygon = PackedVector2Array(884, 729, 890, 649, 927, 626, 1026, 383, 1035, 326, 1074, 315, 1118, 332, 1124, 551, 981, 653, 977, 720, 949, 736)
+uv = PackedVector2Array(884, 729, 890, 649, 927, 626, 1026, 383, 1035, 326, 1074, 315, 1118, 332, 1124, 551, 981, 653, 977, 720, 949, 736)
+
+[node name="LeftCheek" type="Polygon2D" parent="Town/WestLaneStairs"]
+position = Vector2(-327.935982, -300.573951)
+scale = Vector2(0.408388521, 0.408388521)
+texture = ExtResource("d_stairs")
+polygon = PackedVector2Array(470, 678, 477, 600, 535, 575, 649, 338, 660, 292, 715, 280, 745, 300, 744, 335, 716, 352, 633, 499, 573, 611, 536, 647, 532, 688)
+uv = PackedVector2Array(470, 678, 477, 600, 535, 575, 649, 338, 660, 292, 715, 280, 745, 300, 744, 335, 716, 352, 633, 499, 573, 611, 536, 647, 532, 688)
+
+[node name="RightCheek" type="Polygon2D" parent="Town/WestLaneStairs"]
+position = Vector2(-327.935982, -300.573951)
+scale = Vector2(0.408388521, 0.408388521)
+texture = ExtResource("d_stairs")
+polygon = PackedVector2Array(884, 729, 890, 649, 927, 626, 1026, 383, 1035, 326, 1074, 315, 1118, 332, 1124, 551, 981, 653, 977, 720, 949, 736)
+uv = PackedVector2Array(884, 729, 890, 649, 927, 626, 1026, 383, 1035, 326, 1074, 315, 1118, 332, 1124, 551, 981, 653, 977, 720, 949, 736)
+
+[node name="LifeNorthHome" type="Node2D" parent="Town"]
+position = Vector2(3550, 840)
+metadata/label = "阶街住户：主街与屋后巷分开。"
+metadata/visual_rect = Rect2(-375.7, -325.65, 751.4, 325.65)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeNorthHome"]
+position = Vector2(-525.2, -548.6)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("dwelling")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeNorthHome"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeNorthHome/Body"]
+polygon = PackedVector2Array(-360.672, -110, 360.672, -110, 360.672, -18, -360.672, -18)
+
+[node name="LifeEastHome" type="Node2D" parent="Town"]
+position = Vector2(4900, 1000)
+metadata/label = "东巷住户：门前砂岩小坪连接望关街。"
+metadata/visual_rect = Rect2(-375.7, -325.65, 751.4, 325.65)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeEastHome"]
+position = Vector2(-525.2, -548.6)
+scale = Vector2(0.65, 0.65)
+texture = ExtResource("dwelling")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeEastHome"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeEastHome/Body"]
+polygon = PackedVector2Array(-360.672, -110, 360.672, -110, 360.672, -18, -360.672, -18)
+
+[node name="LifeLaneJarsWest" type="Node2D" parent="Town"]
+position = Vector2(2070, 1475)
+metadata/label = "住户储水罐：加盖存水，放在门侧。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeLaneJarsWest"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeLaneJarsWest"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeLaneJarsWest/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="LifeLaneJarsEast" type="Node2D" parent="Town"]
+position = Vector2(2870, 1490)
+metadata/label = "住户储水罐：避开横街，集中放在墙脚。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeLaneJarsEast"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeLaneJarsEast"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeLaneJarsEast/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="LifeNorthCargo" type="Node2D" parent="Town"]
+position = Vector2(2250, 930)
+metadata/label = "行旅货包：暂放屋前，后巷保持通畅。"
+metadata/visual_rect = Rect2(-69.8830935, -95, 139.766187, 95)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeNorthCargo"]
+position = Vector2(-171.717626, -165.053957)
+scale = Vector2(0.170863309, 0.170863309)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeNorthCargo"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeNorthCargo/Body"]
+polygon = PackedVector2Array(-60, -45, 60, -45, 60, 0, -60, 0)
+
+[node name="LifeNorthJars" type="Node2D" parent="Town"]
+position = Vector2(3880, 930)
+metadata/label = "台街储水：有盖陶罐靠近住户。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeNorthJars"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeNorthJars"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeNorthJars/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="LifeEastJars" type="Node2D" parent="Town"]
+position = Vector2(5210, 1060)
+metadata/label = "东巷陶罐：住户日常储水。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeEastJars"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeEastJars"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeEastJars/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="LifeWaterJars1" type="Node2D" parent="Town"]
+position = Vector2(1480, 2260)
+metadata/label = "蓄水院：取水后的陶罐集中放在井棚侧面。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeWaterJars1"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeWaterJars1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeWaterJars1/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="LifeWaterJars2" type="Node2D" parent="Town"]
+position = Vector2(1560, 2310)
+metadata/label = "蓄水院：封盖水罐与取水队列分开。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeWaterJars2"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeWaterJars2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeWaterJars2/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="LifeInnJars" type="Node2D" parent="Town"]
+position = Vector2(1900, 3100)
+metadata/label = "驿舍储水：候行桌边备水。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeInnJars"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeInnJars"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeInnJars/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="LifeWorkStone" type="Node2D" parent="Town"]
+position = Vector2(4920, 2300)
+metadata/label = "修坊材料：待整形的砂岩石料。"
+metadata/visual_rect = Rect2(-145.142436, -145, 290.284872, 145)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeWorkStone"]
+position = Vector2(-229.179764, -217.642436)
+scale = Vector2(0.284872299, 0.284872299)
+texture = ExtResource("ore_cluster")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeWorkStone"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeWorkStone/Body"]
+polygon = PackedVector2Array(-95, -50, 95, -50, 95, 0, -95, 0)
+
+[node name="LifeWorkBench" type="Node2D" parent="Town"]
+position = Vector2(4300, 2360)
+metadata/label = "修坊作业台：车轮与轴木靠工作棚放置。"
+metadata/visual_rect = Rect2(-84.0517241, -150, 168.103448, 150)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeWorkBench"]
+position = Vector2(-155.072944, -181.432361)
+scale = Vector2(0.198938992, 0.198938992)
+texture = ExtResource("wheelbench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeWorkBench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeWorkBench/Body"]
+polygon = PackedVector2Array(-80, -45, 80, -45, 80, 0, -80, 0)
+
+[node name="LifeWorkCargo" type="Node2D" parent="Town"]
+position = Vector2(4710, 2375)
+metadata/label = "修坊周转货：包扎木件放在工作台侧。"
+metadata/visual_rect = Rect2(-69.8830935, -95, 139.766187, 95)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeWorkCargo"]
+position = Vector2(-171.717626, -165.053957)
+scale = Vector2(0.170863309, 0.170863309)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeWorkCargo"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeWorkCargo/Body"]
+polygon = PackedVector2Array(-60, -45, 60, -45, 60, 0, -60, 0)
+
+[node name="LifeStableCargo" type="Node2D" parent="Town"]
+position = Vector2(3860, 3040)
+metadata/label = "马院驮包：货物靠棚边，人行口保持开放。"
+metadata/visual_rect = Rect2(-69.8830935, -95, 139.766187, 95)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeStableCargo"]
+position = Vector2(-171.717626, -165.053957)
+scale = Vector2(0.170863309, 0.170863309)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeStableCargo"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeStableCargo/Body"]
+polygon = PackedVector2Array(-60, -45, 60, -45, 60, 0, -60, 0)
+
+[node name="LifeGateCargo1" type="Node2D" parent="Town"]
+position = Vector2(2850, 3470)
+metadata/label = "候行货包：离开关门主路集中堆放。"
+metadata/visual_rect = Rect2(-69.8830935, -95, 139.766187, 95)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeGateCargo1"]
+position = Vector2(-171.717626, -165.053957)
+scale = Vector2(0.170863309, 0.170863309)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeGateCargo1"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeGateCargo1/Body"]
+polygon = PackedVector2Array(-60, -45, 60, -45, 60, 0, -60, 0)
+
+[node name="LifeGateCargo2" type="Node2D" parent="Town"]
+position = Vector2(3010, 3470)
+metadata/label = "候行货包：沿休息点外侧码放。"
+metadata/visual_rect = Rect2(-69.8830935, -95, 139.766187, 95)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeGateCargo2"]
+position = Vector2(-171.717626, -165.053957)
+scale = Vector2(0.170863309, 0.170863309)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeGateCargo2"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeGateCargo2/Body"]
+polygon = PackedVector2Array(-60, -45, 60, -45, 60, 0, -60, 0)
+
+[node name="LifeLookoutJars" type="Node2D" parent="Town"]
+position = Vector2(4650, 1040)
+metadata/label = "望关台储水：随行用水靠台侧存放。"
+metadata/visual_rect = Rect2(-68.9087302, -115, 137.81746, 115)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeLookoutJars"]
+position = Vector2(-117.464286, -176.150794)
+scale = Vector2(0.182539683, 0.182539683)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeLookoutJars"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint0" type="CollisionPolygon2D" parent="Town/LifeLookoutJars/Body"]
+polygon = PackedVector2Array(-58, -38, 58, -38, 58, 0, -58, 0)
+
+[node name="LifeInnTable" type="Node2D" parent="Town"]
+position = Vector2(1300, 3090)
+metadata/label = "驿舍候行桌：与前厅入口分开。"
+metadata/visual_rect = Rect2(-51.6514954, -80, 103.302991, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeInnTable"]
+position = Vector2(-79.9479844, -97.2691808)
+scale = Vector2(0.104031209, 0.104031209)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeInnTable"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Base" type="CollisionPolygon2D" parent="Town/LifeInnTable/Body"]
+polygon = PackedVector2Array(-59, -27.8, 59, -27.8, 59, 0, -59, 0)
+
+[node name="LifeInnBench" type="Node2D" parent="Town"]
+position = Vector2(1300, 3130)
+metadata/label = "候行长凳：桌前留出行人位置。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeInnBench"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeInnBench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Base" type="CollisionPolygon2D" parent="Town/LifeInnBench/Body"]
+polygon = PackedVector2Array(-75, -18, 75, -18, 75, 0, -75, 0)
+
+[node name="LifeWaterBench" type="Node2D" parent="Town"]
+position = Vector2(930, 2385)
+metadata/label = "井院歇脚凳：放在取水路旁。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeWaterBench"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeWaterBench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Base" type="CollisionPolygon2D" parent="Town/LifeWaterBench/Body"]
+polygon = PackedVector2Array(-75, -18, 75, -18, 75, 0, -75, 0)
+
+[node name="LifeNorthBench" type="Node2D" parent="Town"]
+position = Vector2(2100, 945)
+metadata/label = "住户门前长凳：屋前停坐，巷中通行。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeNorthBench"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeNorthBench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Base" type="CollisionPolygon2D" parent="Town/LifeNorthBench/Body"]
+polygon = PackedVector2Array(-75, -18, 75, -18, 75, 0, -75, 0)
+
+[node name="LifeNorthTable" type="Node2D" parent="Town"]
+position = Vector2(2940, 930)
+metadata/label = "台街小桌：住户门前的生活位置。"
+metadata/visual_rect = Rect2(-51.6514954, -80, 103.302991, 80)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeNorthTable"]
+position = Vector2(-79.9479844, -97.2691808)
+scale = Vector2(0.104031209, 0.104031209)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeNorthTable"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Base" type="CollisionPolygon2D" parent="Town/LifeNorthTable/Body"]
+polygon = PackedVector2Array(-59, -27.8, 59, -27.8, 59, 0, -59, 0)
+
+[node name="LifeGateBench" type="Node2D" parent="Town"]
+position = Vector2(2830, 3590)
+metadata/label = "候关歇脚点：货包与行人主路分开。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeGateBench"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeGateBench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Base" type="CollisionPolygon2D" parent="Town/LifeGateBench/Body"]
+polygon = PackedVector2Array(-75, -18, 75, -18, 75, 0, -75, 0)
+
+[node name="LifeLookoutBench" type="Node2D" parent="Town"]
+position = Vector2(4160, 965)
+metadata/label = "望关台边长凳：面向关镇，台阶上口留空。"
+metadata/visual_rect = Rect2(-75.5543237, -50, 151.108647, 50)
+
+[node name="Art" type="Sprite2D" parent="Town/LifeLookoutBench"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LifeLookoutBench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Base" type="CollisionPolygon2D" parent="Town/LifeLookoutBench/Body"]
+polygon = PackedVector2Array(-75, -18, 75, -18, 75, 0, -75, 0)
+
+[node name="LifeStreetTraveller" type="CharacterBody2D" parent="Town"]
+position = Vector2(2080, 970)
+collision_layer = 5
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("ambient")
+atlas_key = "merchant_walk"
+route = PackedVector2Array(2080, 970, 2350, 970)
+walk_speed = 52.0
+metadata/label = "商旅：沿住户前街行走，货包置于屋前。"
+metadata/life_portrait = "merchant_portrait"
+
+[node name="Art" type="Sprite2D" parent="Town/LifeStreetTraveller"]
+texture = ExtResource("d_merchant_walk")
+centered = false
+region_enabled = true
+
+[node name="Body" type="CollisionShape2D" parent="Town/LifeStreetTraveller"]
+shape = SubResource("actor_body")
+
+[node name="LifeWaterTraveller" type="CharacterBody2D" parent="Town"]
+position = Vector2(1340, 2310)
+collision_layer = 5
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("ambient")
+atlas_key = "merchant_walk"
+route = PackedVector2Array(1340, 2310, 1340, 2360)
+walk_speed = 52.0
+metadata/label = "候水商旅：取水处与驮兽饮水分开。"
+metadata/life_portrait = "merchant_portrait"
+
+[node name="Art" type="Sprite2D" parent="Town/LifeWaterTraveller"]
+texture = ExtResource("d_merchant_walk")
+centered = false
+region_enabled = true
+
+[node name="Body" type="CollisionShape2D" parent="Town/LifeWaterTraveller"]
+shape = SubResource("actor_body")
+
+[node name="LifeWorkHelper" type="CharacterBody2D" parent="Town"]
+position = Vector2(4600, 2315)
+collision_layer = 5
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("ambient")
+atlas_key = "worker_walk"
+route = PackedVector2Array(4600, 2315, 4600, 2395)
+walk_speed = 42.0
+metadata/label = "修坊帮工：在工作棚与材料间照料工具。"
+metadata/life_portrait = "worker_portrait"
+
+[node name="Art" type="Sprite2D" parent="Town/LifeWorkHelper"]
+texture = ExtResource("d_worker_walk")
+centered = false
+region_enabled = true
+
+[node name="Body" type="CollisionShape2D" parent="Town/LifeWorkHelper"]
+shape = SubResource("actor_body")
+
+[node name="LifeGateTraveller" type="CharacterBody2D" parent="Town"]
+position = Vector2(2800, 3380)
+collision_layer = 5
+collision_mask = 1
+motion_mode = 1
+script = ExtResource("ambient")
+atlas_key = "merchant_walk"
+route = PackedVector2Array(2800, 3380, 3120, 3380)
+walk_speed = 52.0
+metadata/label = "候关商旅：在货包边等候同行者。"
+metadata/life_portrait = "merchant_portrait"
+
+[node name="Art" type="Sprite2D" parent="Town/LifeGateTraveller"]
+texture = ExtResource("d_merchant_walk")
+centered = false
+region_enabled = true
+
+[node name="Body" type="CollisionShape2D" parent="Town/LifeGateTraveller"]
+shape = SubResource("actor_body")
+
+[node name="Native0" type="Sprite2D" parent="Town/TownWestBank"]
+position = Vector2(-87.250000000, -3769.650000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_west_bank")
+centered = false
+
+[node name="Native1" type="Sprite2D" parent="Town/TownWestBank"]
+position = Vector2(-87.250000000, -2991.900000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_west_bank")
+centered = false
+
+[node name="Native2" type="Sprite2D" parent="Town/TownWestBank"]
+position = Vector2(-87.250000000, -2214.150000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_west_bank")
+centered = false
+
+[node name="Native3" type="Sprite2D" parent="Town/TownWestBank"]
+position = Vector2(-87.250000000, -1436.400000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_west_bank")
+centered = false
+
+[node name="Native0" type="Sprite2D" parent="Town/TownEastBank"]
+position = Vector2(-1024.850000000, -3767.750000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_east_bank")
+centered = false
+
+[node name="Native1" type="Sprite2D" parent="Town/TownEastBank"]
+position = Vector2(-1024.850000000, -2990.316666667)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_east_bank")
+centered = false
+
+[node name="Native2" type="Sprite2D" parent="Town/TownEastBank"]
+position = Vector2(-1024.850000000, -2212.883333333)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_east_bank")
+centered = false
+
+[node name="Native3" type="Sprite2D" parent="Town/TownEastBank"]
+position = Vector2(-1024.850000000, -1435.450000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_east_bank")
+centered = false
+
+[node name="Native0" type="Sprite2D" parent="Town/ApproachWestBank"]
+position = Vector2(-192.950000000, -3193.650000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_west_bank")
+centered = false
+
+[node name="Native1" type="Sprite2D" parent="Town/ApproachWestBank"]
+position = Vector2(-192.950000000, -2315.025000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_west_bank")
+centered = false
+
+[node name="Native2" type="Sprite2D" parent="Town/ApproachWestBank"]
+position = Vector2(-192.950000000, -1436.400000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_west_bank")
+centered = false
+
+[node name="Native0" type="Sprite2D" parent="Town/ApproachEastBank"]
+position = Vector2(-912.650000000, -3191.750000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_east_bank")
+centered = false
+
+[node name="Native1" type="Sprite2D" parent="Town/ApproachEastBank"]
+position = Vector2(-912.650000000, -2313.600000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_east_bank")
+centered = false
+
+[node name="Native2" type="Sprite2D" parent="Town/ApproachEastBank"]
+position = Vector2(-912.650000000, -1435.450000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("d_east_bank")
+centered = false
+
+[node name="Native0" type="Sprite2D" parent="Town/TownNorthBank"]
+position = Vector2(-2976.500000000, -817.000000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("r_redrock_cliff")
+centered = false
+
+[node name="Native1" type="Sprite2D" parent="Town/TownNorthBank"]
+position = Vector2(-2008.137500000, -817.000000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("r_redrock_cliff")
+centered = false
+
+[node name="Native2" type="Sprite2D" parent="Town/TownNorthBank"]
+position = Vector2(-1039.775000000, -817.000000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("r_redrock_cliff")
+centered = false
+
+[node name="Native3" type="Sprite2D" parent="Town/TownNorthBank"]
+position = Vector2(-71.412500000, -817.000000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("r_redrock_cliff")
+centered = false
+
+[node name="Native4" type="Sprite2D" parent="Town/TownNorthBank"]
+position = Vector2(896.950000000, -817.000000000)
+scale = Vector2(0.950000000, 0.950000000)
+texture = ExtResource("r_redrock_cliff")
+centered = false
+
+[node name="EastGateShoulder" type="Node2D" parent="Town"]
+position = Vector2(4970.000000000, 4150.000000000)
+
+[node name="Art" type="Sprite2D" parent="Town/EastGateShoulder"]
+position = Vector2(-985.050000000, -774.000000000)
+scale = Vector2(0.900000000, 0.900000000)
+texture = ExtResource("r_redrock_cliff")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/EastGateShoulder"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/EastGateShoulder/Body"]
+polygon = PackedVector2Array(-778.050000000, -110.000000000, 778.050000000, -110.000000000, 778.050000000, 0.000000000, -778.050000000, 0.000000000)
+
+[node name="NorthWestJoin" type="Node2D" parent="Town"]
+position = Vector2(200.000000000, 450.000000000)
+
+[node name="Art" type="Sprite2D" parent="Town/NorthWestJoin"]
+position = Vector2(-547.250000000, -430.000000000)
+scale = Vector2(0.500000000, 0.500000000)
+texture = ExtResource("r_redrock_cliff")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/NorthWestJoin"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/NorthWestJoin/Body"]
+polygon = PackedVector2Array(-432.250000000, -110.000000000, 432.250000000, -110.000000000, 432.250000000, 0.000000000, -432.250000000, 0.000000000)
+
+[node name="NorthEastJoin" type="Node2D" parent="Town"]
+position = Vector2(5550.000000000, 520.000000000)
+
+[node name="Art" type="Sprite2D" parent="Town/NorthEastJoin"]
+position = Vector2(-547.250000000, -430.000000000)
+scale = Vector2(0.500000000, 0.500000000)
+texture = ExtResource("r_redrock_cliff")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/NorthEastJoin"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Outline" type="CollisionPolygon2D" parent="Town/NorthEastJoin/Body"]
+polygon = PackedVector2Array(-432.250000000, -110.000000000, 432.250000000, -110.000000000, 432.250000000, 0.000000000, -432.250000000, 0.000000000)

@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="刑樊天"
+portrait_path="res://art/characters/portrait_xingfantian_master.png"
+text="洛阳、烈云、竹尾都走过了？你回来不是为了告诉我赢了，而是要告诉我赢以后留下了什么。"
+on_end="next:report"
+[sub_resource type="Resource" id="report"]
+script=ExtResource("2")
+node_id=&"report"
+speaker="冷孤云"
+text="留下三份不能单方删改的卷、仍需受审的人、愿意承认旧错的盟，也留下不愿立刻原谅的家属。没有天下太平，只有以后更难把真相抹掉。"
+on_end="next:master"
+[sub_resource type="Resource" id="master"]
+script=ExtResource("2")
+node_id=&"master"
+speaker="刑樊天"
+portrait_path="res://art/characters/portrait_xingfantian_master.png"
+text="这就够了。我改过的那一行已经署名认下；往后若有人再问你师承，不必替我遮，也不必只记我的错。"
+on_end="next:end"
+[sub_resource type="Resource" id="end"]
+script=ExtResource("2")
+node_id=&"end"
+speaker="旁白"
+text="师徒旧账在同一张桌上说完。若林西两式与吐纳已自修至九重，章末结算后再与刑樊天交谈，即可完成最终蜕变。"
+set_flags=Array[Dictionary]([{"key":"ch8_linxi_final_return_done","value":true},{"key":"ch8_aftermath_returns_done","value":true}])
+complete_quest=&"q_ch8_main_13_aftermath_returns"
+on_end="chapter_end:8"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_linxi_final_return"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("report"),SubResource("master"),SubResource("end")])

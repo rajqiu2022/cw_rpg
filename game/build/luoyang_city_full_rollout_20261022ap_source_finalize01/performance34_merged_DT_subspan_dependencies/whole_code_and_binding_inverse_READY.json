@@ -1,0 +1,256 @@
+{
+  "status": "AP14_MERGED_COMPONENT_REQUIRED_LITERAL_AND_PASSIVE_DT_SUBSPAN_WHOLE_INVERSES_NOT_STAGED",
+  "records": {
+    "adapter": {
+      "target": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd",
+        "sha256": "999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance30_domain_parent_copy_candidate01/finite_adapter_domain_copies_CANDIDATE.gd",
+        "sha256": "5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84"
+      },
+      "hunks": [
+        {
+          "old": "static func _map_parent(scene: SceneScript,current: Dictionary,data: Dictionary,state: Dictionary,domain: String) -> Dictionary:\n",
+          "new": "static func _copy_parent_pair(parent: Dictionary,domain: String) -> Dictionary:\n\t# Internal exact-domain schema: preserve TWO independent deep copies.\n\t# No source/session credit here; _map_parent calls only after all gates.\n\tif domain==\"yamen\":\n\t\treturn {\"ok\":true,\"current_t_record\":parent.duplicate(true),\"frozen_t_record\":parent.duplicate(true)}\n\tif domain==\"market\":\n\t\treturn {\"ok\":true,\"current_ap_record\":parent.duplicate(true),\"frozen_ap_record\":parent.duplicate(true)}\n\treturn {}\nstatic func _map_parent(scene: SceneScript,current: Dictionary,data: Dictionary,state: Dictionary,domain: String) -> Dictionary:\n\tif domain not in [\"yamen\",\"market\"]: return {}\n"
+        },
+        {
+          "old": "\treturn {\"ok\":true,\"current_t_record\":parent.duplicate(true),\"frozen_t_record\":parent.duplicate(true),\"current_ap_record\":parent.duplicate(true),\"frozen_ap_record\":parent.duplicate(true)}\n",
+          "new": "\treturn _copy_parent_pair(parent,domain)\n"
+        }
+      ],
+      "whole_forward_inverse_listed_order": true
+    },
+    "G": {
+      "target": "res://scripts/city/luoyang_assembled_interiors_20261016g.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/portal_clone_field_timing01/G_local_catalogue_READY.gd",
+        "sha256": "7b1954f9b44fb8e56fc69c29d09d99a66f3730c62a73ec5af692fa475d38e6e5"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/room_known_membership_candidate_epoch01/G_membership_CANDIDATE.gd",
+        "sha256": "0ef50da8075616341d0967e071767e3bbf6db297a6baa1c8788aa0fdb29e8b08"
+      },
+      "hunks": [
+        {
+          "old": "static func overrides(id: StringName) -> bool: return requested() and catalogue().get(\"rooms\",{}).has(String(id))",
+          "new": "static func overrides(id: StringName) -> bool:\n\tif not requested(): return false\n\tif not _config.is_empty() and FileAccess.file_exists(INDEX):\n\t\treturn _config.get(\"rooms\",{}).has(String(id))\n\treturn catalogue().get(\"rooms\",{}).has(String(id))"
+        }
+      ],
+      "whole_forward_inverse_listed_order": true
+    },
+    "C": {
+      "target": "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/C_consumer_READY.gd",
+        "sha256": "8c145ffb7ce25fcbdf59adf59eb1646f91be753246d24d5fe529b6e1b0bca26b"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/C_adapter_pin_CANDIDATE.gd",
+        "sha256": "b14a1042421029651fe0283d3daf8f6e52bea96c9047b79095912f1eb45dc9be"
+      },
+      "hunks": [
+        {
+          "old": "const FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"",
+          "new": "const FINITE_ADAPTER_SHA := \"5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84\""
+        }
+      ],
+      "whole_forward_inverse_listed_order": true
+    },
+    "DT": {
+      "target": "res://scripts/city/luoyang_district_life_20261016f.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/yamen_loading_perf04/District_scalar_timings_READY.gd",
+        "sha256": "39242c343d2e4981c2773b39fd79d84a451aab923a173a099eb8fb9b290acbe2"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/district_projection_subspans_epoch01/DT_diagnostic_CANDIDATE.gd",
+        "sha256": "cfb49f34d0bf68ebb6494b5c2e2a5dc3d98c127940d22c8acccc4c6bd680f0d5"
+      },
+      "hunks": [
+        {
+          "old": "const FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"",
+          "new": "const FINITE_ADAPTER_SHA := \"5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84\""
+        },
+        {
+          "old": "\tloading_started=_loading_clock()\n\tprojected=G.project(data,scene.scene_id)\n\tif scene.has_meta(\"luoyang_layout_quest_20261018t\"):\n\t\tvar t_author: Dictionary=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").layout_author(scene)\n\t\tif t_author.is_empty(): return _reject(\"T_AUTHOR_ABSENT\")\n\t\tprojected=load(\"res://build/luoyang_layout_quest_20261018t_layout_source01/layout_transform_retry2.gd\").district_projection(projected,scene.scene_id,t_author)\n\tif scene.has_meta(\"luoyang_market_full_rollout_20261022ap\"):\n\t\tprojected=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").ap_district_projection(scene,projected)\n\tif projected.is_empty(): return _reject(\"DISTRICT_AUTHOR_PROJECT_REFUSED\")\n\tvar expected: Dictionary=projected.parent.duplicate(true)\n\tvar current: Dictionary=G._c()._records.get(String(scene.scene_id),{}).duplicate(true)\n\t# Only these already-published parent's runtime receipts are outside its\n\t# frozen JSON record. Their values remain explicitly bound, not ignored.\n\tvar receipts: Dictionary={}\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\": receipts={\"assembled_runtime_binding_sha\":load(\"res://scripts/city/luoyang_city_assembled_runtime_20261016b.gd\").BIND_SHA,\"assembled_parent_task_semantics_preserved\":true}\n\telif scene.scene_id==&\"ch4_s1_luoyang_yamen\": receipts={\"annex_runtime_binding_sha\":load(\"res://scripts/city/luoyang_yamen_annex_runtime_20261016.gd\").BIND_SHA,\"annex_parent_semantics_unchanged\":true}\n\telse: receipts={\"harbour_runtime_binding_sha\":load(\"res://scripts/city/luoyang_harbour_life_runtime_20261016.gd\").BIND_SHA,\"harbour_parent_task_semantics_preserved\":true}\n\tfor key: String in receipts:\n\t\tif current.get(key)!=receipts[key]: return _reject(\"DISTRICT_PARENT_RUNTIME_RECEIPT:\"+key)\n\t\tcurrent.erase(key)\n\tif scene.scene_id==&\"ch4_s2_canal_docks\" and scene.has_meta(\"luoyang_docks_district08_20261019aa\"):\n\t\tcurrent=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").restore_parent_record(scene,current,expected)\n\t\tif current.is_empty(): return _reject(\"AA_COMPLETE_REMOVE_TWO_PARENT_MAPPING\")\n\tif scene.has_meta(SPACING.META):\n\t\tcurrent=SPACING.restore_parent_record(current,expected,scene)\n\t\tif current.is_empty(): return _reject(\"DISTRICT_SPACING_EXACT_REMOVE_ONE_PARENT_MAPPING\")\n\tif scene.has_meta(\"luoyang_layout_quest_20261018t\"):\n\t\tcurrent=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").restore_parent_record(scene,current,expected)\n\t\tif current.is_empty(): return _reject(\"T_COMPLETE_REVERSIBLE_PARENT_RECORD\")\n\tif not _same_wire(current,expected): return _reject(\"DISTRICT_COMPLETE_PARENT_RECORD_CHANGED\")\n\tif not _config.get(\"cpu_audit\",{}).get(String(scene.scene_id),{}).get(\"passed\",false): return _reject(\"DISTRICT_CPU_AUDIT_NOT_PASSED\")\n",
+          "new": "\tloading_started=_loading_clock()\n\tvar projection_detail_started: Dictionary=_loading_clock()\n\tprojected=G.project(data,scene.scene_id)\n\t_loading_span(\"projection_detail.g_project\",projection_detail_started)\n\tif scene.has_meta(\"luoyang_layout_quest_20261018t\"):\n\t\tprojection_detail_started=_loading_clock()\n\t\tvar t_author: Dictionary=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").layout_author(scene)\n\t\t_loading_span(\"projection_detail.layout_author\",projection_detail_started)\n\t\tif t_author.is_empty(): return _reject(\"T_AUTHOR_ABSENT\")\n\t\tprojection_detail_started=_loading_clock()\n\t\tprojected=load(\"res://build/luoyang_layout_quest_20261018t_layout_source01/layout_transform_retry2.gd\").district_projection(projected,scene.scene_id,t_author)\n\t\t_loading_span(\"projection_detail.t_transform\",projection_detail_started)\n\tif scene.has_meta(\"luoyang_market_full_rollout_20261022ap\"):\n\t\tprojection_detail_started=_loading_clock()\n\t\tprojected=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").ap_district_projection(scene,projected)\n\t\t_loading_span(\"projection_detail.ap_project\",projection_detail_started)\n\tif projected.is_empty(): return _reject(\"DISTRICT_AUTHOR_PROJECT_REFUSED\")\n\tprojection_detail_started=_loading_clock()\n\tvar expected: Dictionary=projected.parent.duplicate(true)\n\tvar current: Dictionary=G._c()._records.get(String(scene.scene_id),{}).duplicate(true)\n\t# Only these already-published parent's runtime receipts are outside its\n\t# frozen JSON record. Their values remain explicitly bound, not ignored.\n\tvar receipts: Dictionary={}\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\": receipts={\"assembled_runtime_binding_sha\":load(\"res://scripts/city/luoyang_city_assembled_runtime_20261016b.gd\").BIND_SHA,\"assembled_parent_task_semantics_preserved\":true}\n\telif scene.scene_id==&\"ch4_s1_luoyang_yamen\": receipts={\"annex_runtime_binding_sha\":load(\"res://scripts/city/luoyang_yamen_annex_runtime_20261016.gd\").BIND_SHA,\"annex_parent_semantics_unchanged\":true}\n\telse: receipts={\"harbour_runtime_binding_sha\":load(\"res://scripts/city/luoyang_harbour_life_runtime_20261016.gd\").BIND_SHA,\"harbour_parent_task_semantics_preserved\":true}\n\tfor key: String in receipts:\n\t\tif current.get(key)!=receipts[key]: return _reject(\"DISTRICT_PARENT_RUNTIME_RECEIPT:\"+key)\n\t\tcurrent.erase(key)\n\t_loading_span(\"projection_detail.parent_clones_and_receipts\",projection_detail_started)\n\tif scene.scene_id==&\"ch4_s2_canal_docks\" and scene.has_meta(\"luoyang_docks_district08_20261019aa\"):\n\t\tprojection_detail_started=_loading_clock()\n\t\tcurrent=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").restore_parent_record(scene,current,expected)\n\t\t_loading_span(\"projection_detail.b_restore_aa\",projection_detail_started)\n\t\tif current.is_empty(): return _reject(\"AA_COMPLETE_REMOVE_TWO_PARENT_MAPPING\")\n\tif scene.has_meta(SPACING.META):\n\t\tcurrent=SPACING.restore_parent_record(current,expected,scene)\n\t\tif current.is_empty(): return _reject(\"DISTRICT_SPACING_EXACT_REMOVE_ONE_PARENT_MAPPING\")\n\tif scene.has_meta(\"luoyang_layout_quest_20261018t\"):\n\t\tprojection_detail_started=_loading_clock()\n\t\tcurrent=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").restore_parent_record(scene,current,expected)\n\t\t_loading_span(\"projection_detail.b_restore_t\",projection_detail_started)\n\t\tif current.is_empty(): return _reject(\"T_COMPLETE_REVERSIBLE_PARENT_RECORD\")\n\tprojection_detail_started=_loading_clock()\n\tif not _same_wire(current,expected): return _reject(\"DISTRICT_COMPLETE_PARENT_RECORD_CHANGED\")\n\t_loading_span(\"projection_detail.same_wire\",projection_detail_started)\n\tif not _config.get(\"cpu_audit\",{}).get(String(scene.scene_id),{}).get(\"passed\",false): return _reject(\"DISTRICT_CPU_AUDIT_NOT_PASSED\")\n"
+        }
+      ],
+      "whole_forward_inverse_listed_order": true
+    },
+    "Fade": {
+      "target": "res://scripts/city/luoyang_district_life_fade_20261016f.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Fade_consumer_READY.gd",
+        "sha256": "55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Fade_adapter_pin_CANDIDATE.gd",
+        "sha256": "58462561e7db2b3f26fd6e5a55b891fc85002d86c51228a771f354b3ca9311a8"
+      },
+      "hunks": [
+        {
+          "old": "const FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"",
+          "new": "const FINITE_ADAPTER_SHA := \"5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84\""
+        }
+      ],
+      "whole_forward_inverse_listed_order": true
+    },
+    "temple_binding": {
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance05_dependencies/temple_binding_READY.json",
+        "sha256": "e43b17610adf1601d5b10a2a441421432842d92162178a2c8f2b4d019407b375"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/temple_binding_C_literal_READY.json",
+        "sha256": "a5fadbd1466eafa84c0d3a78e96f02a609802af35d2b17848cb9bfb1744b5c9c"
+      },
+      "hunks": [
+        {
+          "old": "8c145ffb7ce25fcbdf59adf59eb1646f91be753246d24d5fe529b6e1b0bca26b",
+          "new": "b14a1042421029651fe0283d3daf8f6e52bea96c9047b79095912f1eb45dc9be"
+        }
+      ],
+      "whole_forward_inverse_listed_order": true,
+      "whole_typed_source_delta_inverse": true,
+      "merged_sources": 189,
+      "only_C_changed_other188_same": true,
+      "original_E43B_EOL_all_preserved": true
+    },
+    "Temple": {
+      "target": "res://scripts/city/luoyang_temple_assembly_20261016.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance05_dependencies/Temple_hash_binding_READY.gd",
+        "sha256": "c345349c17307eca89ecfb05e7f5089edab704ae7d7808e0c65572071805d5e8"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Temple_C_binding_CANDIDATE.gd",
+        "sha256": "9001636cebcc00d955e9293cb242215d2aa7be7a1908e81281a9eec8d87d2e70"
+      },
+      "hunks": [
+        {
+          "old": "const BIND_PATH=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance05_dependencies/temple_binding_READY.json\"",
+          "new": "const BIND_PATH=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/temple_binding_C_literal_READY.json\""
+        },
+        {
+          "old": "const BIND_SHA=\"e43b17610adf1601d5b10a2a441421432842d92162178a2c8f2b4d019407b375\"",
+          "new": "const BIND_SHA=\"a5fadbd1466eafa84c0d3a78e96f02a609802af35d2b17848cb9bfb1744b5c9c\""
+        }
+      ],
+      "whole_forward_inverse_listed_order": true
+    },
+    "B": {
+      "target": "res://scripts/city/luoyang_precomputed_bundle_20261018r.gd",
+      "parent": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance20_canonical_keys_candidate01/Bundle_canonical_keys_wire_CANDIDATE.gd",
+        "sha256": "9d5b9b379f5e7962d91550a95b2b9a12a35b98d7fb4402cdfa5947e7152f9e54"
+      },
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Bundle_merged_copy_adapter_fade_CANDIDATE.gd",
+        "sha256": "ade264af748e1beaf211d4a5e84d956deb50a312a29570c4e5a1fc73000c6703"
+      },
+      "hunks": [
+        {
+          "old": "\tvar child: Dictionary=data.record.duplicate(true); var prior: Dictionary=data.t_parent_record.duplicate(true)\n",
+          "new": "\tvar child: Dictionary={}; var prior: Dictionary=data.t_parent_record.duplicate(true)\n"
+        },
+        {
+          "old": "\t\tcurrent=restored_ap.current_ap_record; child=restored_ap.frozen_ap_record\n",
+          "new": "\t\tcurrent=restored_ap.current_ap_record; child=restored_ap.frozen_ap_record\n\t# A requested finite mapping either supplied independent child or refused.\n\t# Only the unchanged nonfinite path needs this original deep copy.\n\tif not yamen_state.get(\"requested\",false) and not market_state.get(\"requested\",false):\n\t\tchild=data.record.duplicate(true)\n"
+        },
+        {
+          "old": "const FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"",
+          "new": "const FINITE_ADAPTER_SHA := \"5709468d76c2fb4a930fd44d63c14629003b5bc085df8fa5167b009546c2eb84\""
+        },
+        {
+          "old": "\tvar next: String=\"55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6\"\n\tvar candidate: String=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Fade_consumer_READY.gd\"",
+          "new": "\tvar finite_previous: String=\"55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6\"\n\tvar next: String=\"58462561e7db2b3f26fd6e5a55b891fc85002d86c51228a771f354b3ca9311a8\"\n\tvar candidate: String=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Fade_adapter_pin_CANDIDATE.gd\""
+        },
+        {
+          "old": "and previous in history and delta.get(\"current_before_sha256\")==previous and delta.get(\"new_sha256\")==next",
+          "new": "and previous in history and finite_previous in history and delta.get(\"current_before_sha256\")==finite_previous and delta.get(\"new_sha256\")==next"
+        }
+      ],
+      "whole_forward_inverse_listed_order": true
+    }
+  },
+  "all_source_bytes_forward_and_reverse_proven": true,
+  "new_functional_scope_only": "G cached membership, adapter exact-domain two independent copies, B finite initial-child deferral. Other changes are required source/binding literals or exact Fade historical-source chain succession. DT additionally has explicitly Root-requested passive scalar child spans only, with original outer clock/calls/reject expressions unchanged.",
+  "fade_metadata_recipe": {
+    "path": "res://scripts/city/luoyang_district_life_fade_20261016f.gd",
+    "historical_sha256": [
+      "f359a43a88470ff220fa095cbd7f73ea04637c55c2faadd0a3b5f325e4b7a244",
+      "bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf",
+      "3f2d43276f89341a450579fa07a0dd0bb2369d059ad928e7187fb35df59f1ac7",
+      "55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6"
+    ],
+    "current_before_sha256": "55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6",
+    "new_sha256": "58462561e7db2b3f26fd6e5a55b891fc85002d86c51228a771f354b3ca9311a8",
+    "candidate_path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/Fade_adapter_pin_CANDIDATE.gd",
+    "all_other_existing_row_fields_preserved": true
+  },
+  "adapter_binding_DC21_unchanged": true,
+  "Temple_merged189_only_C_changed": true,
+  "no_geometry_receipt_NAV_NPC_quest_FIRST_FINAL_validation_changes": true,
+  "engine_collector_Stage_formal_calls": 0,
+  "DT_relative_6F0A_whole_inverse": true,
+  "DT_direct_3924_whole_inverse": true,
+  "DT_passive_diagnostics_semantics": {
+    "existing_outer": "projection_and_whole_parent_inverse",
+    "original_outer_loading_started_assignment": "Unchanged original loading_started=_loading_clock() immediately before G.project region; unchanged final _loading_span(...,loading_started). No detail clock is assigned to loading_started.",
+    "detail_clock": "One NEW local Dictionary projection_detail_started, used only for passive existing _loading_clock/_loading_span calls.",
+    "records": [
+      {
+        "label": "projection_detail.g_project",
+        "scope": "Original G.project call, includes G.manifest original whole parent SHA/read/JSON parse plus prop projection; not isolated JSON time.",
+        "branch": "Unconditional after original source preparation"
+      },
+      {
+        "label": "projection_detail.layout_author",
+        "scope": "Original B.layout_author call including its whole_bound and finite parent/session/author checks.",
+        "branch": "Existing T metadata branch"
+      },
+      {
+        "label": "projection_detail.t_transform",
+        "scope": "Original transform.district_projection call including original full projected clone and source-prescribed relocations.",
+        "branch": "Existing T metadata branch after original t_author nonempty check"
+      },
+      {
+        "label": "projection_detail.ap_project",
+        "scope": "Original B.ap_district_projection call and original nested checks; no new call on Yamen.",
+        "branch": "Existing AP Market metadata branch only"
+      },
+      {
+        "label": "projection_detail.parent_clones_and_receipts",
+        "scope": "Original expected/current deep clones, exact same receipt selection and field checks/removal.",
+        "branch": "After original projected nonempty check"
+      },
+      {
+        "label": "projection_detail.b_restore_aa",
+        "scope": "First original B.restore_parent_record entry only.",
+        "branch": "Existing Docks AA branch only"
+      },
+      {
+        "label": "projection_detail.b_restore_t",
+        "scope": "Second original B.restore_parent_record entry including nested finite _same, original mapping, symmetric wire checks and clones.",
+        "branch": "Existing T metadata branch only"
+      },
+      {
+        "label": "projection_detail.same_wire",
+        "scope": "Original final DT._same_wire predicate, unchanged expression/function; recorded only after original mismatch check succeeds.",
+        "branch": "Original final whole-record check"
+      }
+    ],
+    "nesting": "Each detail is a sequential child inside the unchanged outer span. Details may contain deeper existing whole_bound/_same/wire/file operations. Do not add details to outer or infer all their cost is removable.",
+    "outer_residual": "Outer minus present children includes diagnostic overhead, original branch/rejection checks, SPACING.restore_parent_record when present, and original CPU-audit check. No child equality-to-outer or zero-cost residual assertion.",
+    "failure_and_absence": "Unexecuted branch labels are absent, not zero-duration. Original early returns are retained verbatim; a stage rejecting before its trailing span may be absent on failure. No new calls, comparisons or data checks introduced.",
+    "observability_only": "Existing _loading_span also appends detail labels into diagnostic order and stores process/physics frame clocks; these are diagnostics only and not source freshness or latency PASS."
+  },
+  "historical_33_proposal_not_overwritten": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance33_merged_code_dependencies/handoff_EXECUTION_AND_SCOPE_PROPOSAL.json",
+    "sha256": "828c57438ff1570dd81ecb4538813af67073b5fbe08b4be6dc958b2c208618c5"
+  }
+}

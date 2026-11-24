@@ -1,0 +1,38 @@
+id: world_map_v15_sect_compounds
+description: Four complete original sect compounds for the independent v15 miniature world. Generated architecture is project-original, not CC0.
+backend: codex_builtin_imagegen
+model: builtin
+transparent_background: true
+quality: high
+runtime_render_width_px: 620
+preserve_source_alpha: true
+doorstep_metadata_status: PENDING_ACTUAL_IMAGE_MEASUREMENT
+
+prompt_template: |
+  Create ONE complete, isolated miniature Chinese wuxia sect compound as a production game environment asset, not a scene background. The compound identity is {compound_identity}. {compound_architecture}
+
+  Projection and consistency: fixed orthographic 2.5D view, looking downward at 45 degrees from directly in front of the compound, no wide-angle distortion, no perspective convergence. The front entrance faces the viewer at the bottom center. Show the complete compound in one coherent view, with the main hall behind the courtyard and side halls arranged around it. Match realistic physically based gray stone, aged dark timber, individually readable weathered roof tiles, restrained natural colors and fine architectural detail. This is a world-map miniature, not an interior or a full-size local scene. Every building must look structurally complete, with convincing columns, walls, roof thickness and base contact; do not use simple box-shaped placeholders or floating roofs.
+
+  Required composition: a substantial closed perimeter or retaining wall, a complete main hall, at least two distinct side halls, one clearly visible practice courtyard and a wide bottom-center entrance with open doorway. Include a short stone stair that ends in a broad, unobstructed stone landing in front of the doorway. The landing must be visibly connected to the courtyard through the open doorway and wide enough for a walking character, not occupied by a pillar, statue, plant or gate leaf. Show only the compound's necessary stone foundations, courtyard and stairs; no surrounding landscape, mountain backdrop, distant city, sky or rectangular ground plate. Leave generous transparent padding around the complete silhouette and beneath the lowest stair. Keep every roof, wall, corner and stair wholly inside the canvas.
+
+  Lighting: soft clear daylight from upper left/front, subdued ambient fill, natural contact darkening confined to the building foundations. No gigantic baked cast shadow outside the compound, no atmospheric haze, no fog, no glow or gray halo around the silhouette. Clean, sharp roof and wall edges, without excessive black outlines or salt-and-pepper texture. Maintain the same projection, daylight, miniature scale and detail density across all four sect assets.
+
+  Output: one large high-resolution RGBA image on a genuinely transparent background, the whole compound comfortably centered. No people, animals, weapons held by characters, arrows, map pins, labels, signage, readable calligraphy, interface, frame, watermark or extra isolated props. Preserve natural alpha edges. Do not add a checkerboard or colored background. Do not flatten a landscape into the asset.
+
+variants:
+  huashan:
+    compound_identity: Huashan sword sect, a complete mountain monastic sword compound
+    compound_architecture: |
+      Use restrained gray stone terraces and dark timber halls with charcoal tiled roofs. The central sword hall stands behind a broad rectangular practice court with subtle worn paving. Include two smaller meditation and teaching halls, a modest bell pavilion and connected retaining walls. Suggest mountain construction through stepped foundations and stone railings within the compound itself, but do not include a cliff or mountain landscape. The front gateway is architectural and substantial, not the entire asset by itself. No fantastical towers or glowing swords.
+  wudang:
+    compound_identity: Wudang Taoist sect, a complete Purple Cloud style temple compound
+    compound_architecture: |
+      Use dignified aged timber Taoist halls on gray stone plinths, muted dark blue-gray roof tiles and modest warm red-brown columns. Place a complete main temple behind a broad practice court, with two side teaching halls, a small incense pavilion and connected low enclosing walls. The courtyard may contain a subtle worn circular eight-part paving arrangement, made of stone with no readable writing. Keep the front doorway and its landing entirely clear. Avoid exaggerated golden palaces, giant statues and fantasy towers.
+  gufeng:
+    compound_identity: Gufeng, a fictional northeastern mountain martial stronghold, not a reconstruction of a historical site
+    compound_architecture: |
+      Use a complete rugged stone-and-dark-timber stronghold: irregular weathered gray masonry perimeter walls, a substantial timber martial hall, two side barrack and teaching halls, a compact training court and a small working brew-house with plain ceramic storage jars inside the walls. Give roofs and masonry a cold mountain-weathered character without painting snow over the entrance. This is a believable inhabited compound, not a lone mountain pass or gate. Do not include mountains, sheer cropped cliff panels or disconnected rocks.
+  lingyue:
+    compound_identity: Lingyue, a fictional southeastern bamboo martial sect compound, not a reconstruction of a historical site
+    compound_architecture: |
+      Use elegant but practical dark timber halls with restrained green-gray tiled roofs and pale stone bases. Include a complete central teaching hall, two side halls, an open staff-practice courtyard and a small crescent-shaped reflecting pond contained within the court's side, away from the clear front entrance. Incorporate a few modest bamboo clumps inside courtyard planters and light timber galleries connecting halls. The perimeter remains a coherent enclosed compound. Do not substitute a giant moon-shaped gateway for the whole complex, and do not add a bamboo forest background.

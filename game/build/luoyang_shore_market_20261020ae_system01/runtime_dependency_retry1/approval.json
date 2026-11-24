@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_AC_EXECUTION_DEPENDENCY_SUCCESSOR_MARKET_ONLY_FOUR_HUNKS",
+  "path": "res://scripts/city/luoyang_district_life_20261016f.gd",
+  "old_sha256": "0137393f3715558887f0c69598c4346e5a2e9cd9b1b9c1091f85ea12a0f6afea",
+  "new_sha256": "c4fb86ebd6d7683a9a7ddc96c6f72f98fe614fc8c6d4ac18424bfe3ebf09d351",
+  "old_snapshot": "res://build/luoyang_shore_market_20261020ae_root01/predeploy_backup/scripts/city/luoyang_district_life_20261016f.gd",
+  "replacements": [
+    {
+      "old": "var _textures: Dictionary={}\n",
+      "new": "var _textures: Dictionary={}\nvar _market_ground: Dictionary={}\n"
+    },
+    {
+      "old": "\tvar npcs:=CROWD.project(projected.spec.crowd)\n",
+      "new": "\tvar npcs:=CROWD.project(projected.spec.crowd)\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\" and scene.has_meta(\"luoyang_layout_quest_20261018t\"):\n\t\tvar ground: Variant=load(\"res://scripts/city/luoyang_market_ground_20261020ae.gd\")\n\t\t_market_ground=ground.prepare(scene,_sources,G.apply_render(parent_render,projected),owner)\n\t\tif _market_ground.get(\"ok\")!=true: return _reject(String(_market_ground.get(\"error\",\"MARKET_GROUND_REFUSED\")))\n\t\tfor path: String in _market_ground.textures:\n\t\t\tif _textures.has(path): return _reject(\"MARKET_GROUND_PARENT_TEXTURE_COLLISION\")\n\t\t\t_textures[path]=_market_ground.textures[path]\n"
+    },
+    {
+      "old": "func render_objects(original: Array) -> Array: return G.apply_render(original,projected) if _scene!=null else []\n",
+      "new": "func render_objects(original: Array) -> Array:\n\tif _scene==null: return []\n\tvar result: Array=G.apply_render(original,projected)\n\tif _scene.scene_id==&\"ch4_s3_luoyang_market\" and not _market_ground.is_empty():\n\t\treturn load(\"res://scripts/city/luoyang_market_ground_20261020ae.gd\").render(result,_market_ground)\n\treturn result\n"
+    },
+    {
+      "old": "func release() -> void:\n",
+      "new": "func release() -> void:\n\t_market_ground.clear()\n"
+    }
+  ],
+  "navigation_source": "func navigation_objects(original: Array) -> Array: return G.apply_render(original,projected) if _scene!=null else []\n",
+  "navigation_unchanged": true,
+  "whole_inverse_exact": true,
+  "scope": "Execution dependency admission only. Immutable AC author85DFF and native packet/proof remain unchanged. Four changes only add Market ground prepare/render/session cleanup; Docks behavior and navigation are unchanged."
+}

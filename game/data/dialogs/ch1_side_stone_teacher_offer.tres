@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "村塾先生"
+text = "村外山道有块旧碑，风雨磨得只剩几笔。我年轻时拓过半张，却始终没弄清它在劝后人什么。你若还要经过那里，可愿替我取一张完整拓本？"
+choices = Array[Dictionary]([{"text": "我经过旧碑时会仔细看看", "next": "accept", "accept_quest": "q_ch1_side_03_stone_inscription"}, {"text": "眼下还顾不上", "next": "end", "decline_quest": "q_ch1_side_03_stone_inscription"}])
+on_end = "end"
+
+[sub_resource type="Resource" id="node_accept"]
+script = ExtResource("2_dnode")
+node_id = &"accept"
+speaker = "村塾先生"
+text = "带些清水，把浮尘慢慢润开，再用纸压住纹路。别用刀刮，碑上每一道旧痕都可能是字。"
+accept_quest = &"q_ch1_side_03_stone_inscription"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_side_stone_teacher_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_accept")])

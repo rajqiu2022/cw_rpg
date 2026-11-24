@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_side_05_tea_basket"
+title = "茶篓差半斤"
+kind = 1
+desc_not_started = "茗雾茶镇歇脚棚有一张未签字的退货单。"
+desc_in_progress = "先查北侧晾架下的原秤签，再去水边查旧绑绳，最后回歇脚棚填写复秤意见。"
+desc_completed = "将退货单更正为‘受潮待复秤’，没有把未经查实的嫌疑算在采茶户头上。"
+tracker_hint = "茗雾山 · 茶镇"
+starts_in_chapter = 7
+completes_in_chapter = 7
+completion_triggers = Array[String](["flag_set:ch7_tea_basket_verified"])
+reward_gold = 45
+reward_exp = 65
+reward_items = Array[Dictionary]([{"item_id":"herb_bundle","count":3}])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch7_tea_basket_tag_seen","text":"原秤签：三篓离架时同重，均是干茶。"},{"trigger":"flag_set:ch7_tea_basket_rope_seen","text":"旧绳靠水的一截受潮，篓底也已发胀，篓口没有添料痕迹。"}])

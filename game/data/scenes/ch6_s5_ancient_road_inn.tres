@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scene"]
+[ext_resource type="Resource" path="res://data/maps/ch6_s5_ancient_road_inn_layout_v2.tres" id="2_layout"]
+
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="9_extent"]
+
+[sub_resource type="Resource" id="MapExtent"]
+script = ExtResource("9_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script = ExtResource("1_scene")
+scene_id = &"ch6_s5_ancient_road_inn"
+display_name = "林西村外 · 古道客栈"
+streamed_background = SubResource("MapExtent")
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+map_layout = ExtResource("2_layout")
+player_spawn = Vector2(0.500,0.590)
+player_visual_scale = 1.18
+animated_props = Array[Dictionary]([{"id":"ch6_inn_lantern_left","type":"glow","pos":Vector2(0.205,0.330),"size":Vector2(0.040,0.055),"speed":0.68,"color":"#ffb057","z_index":18},{"id":"ch6_inn_lantern_right","type":"glow","pos":Vector2(0.795,0.330),"size":Vector2(0.040,0.055),"speed":0.74,"color":"#ffb057","z_index":18},{"id":"ch6_inn_counter_steam","type":"smoke","pos":Vector2(0.300,0.420),"size":Vector2(0.045,0.110),"speed":0.42,"color":"#ded7ca","z_index":16},{"id":"ch6_inn_window_mist","type":"mist_drift","pos":Vector2(0.74,0.275),"size":Vector2(0.28,0.095),"speed":0.28,"opacity":0.05,"count":2,"color":"#e3e7df","z_index":11}])
+npcs = Array[Dictionary]([])
+hotspots = Array[Dictionary]([])
+exits = Array[Dictionary]([])

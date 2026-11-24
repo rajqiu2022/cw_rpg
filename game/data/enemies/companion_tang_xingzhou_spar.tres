@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"companion_tang_xingzhou_spar"
+display_name = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+battle_actor_path = "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_ready_01.png"
+battle_actor_scale = 1.0
+battle_actor_flip_h = true
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_ready_01.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_ready_02.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_ready_03.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_move_01.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_move_02.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_move_03.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_attack_01.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_attack_02.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_attack_03.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_hit_01.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_hit_02.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_hit_03.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_defeat_01.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_defeat_02.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_defeat_03.png", "res://art/sprites/battle/companions_v4/tang_xingzhou/tang_xingzhou_defeat_04.png")
+level = 2
+max_hp = 280
+max_mp = 45
+attack = 46
+defense = 10
+speed = 14
+skill_ids = Array[StringName]([&"basic_attack", &"tang_staff_sweep", &"tang_staff_breaker"])
+aggression = 0.75
+drop_gold_min = 0
+drop_gold_max = 0
+drop_exp = 0
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([])

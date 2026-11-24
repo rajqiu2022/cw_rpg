@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_main_05_false_banner_outpost"
+title = "伪旗归处"
+kind = 0
+desc_not_started = "旧矿北侧索道通往一座临时营地，反针火纹旗和运毒痕迹都汇到那里。"
+desc_in_progress = "先查验营地兵器台，再与伪旗统领及两名突袭手交战，确认栽赃与灭口是否同源。统领以锁甲扛正面攻势，可用林西二式挑开甲缝，也可让唐行舟用破门一棍先手。若三把刀难以招架，可原路返回护粮营地，向守卫打听沿路暗哨。"
+desc_completed = "兵刃、毒粉、伪旗和封蜡密令形成同一筹备链；统领被生擒，但真正发令者仍割去了落款。"
+tracker_hint = "古峰 · 伪旗营地"
+completion_triggers = Array[String](["evidence_acquired:ev_ch5_poisoned_false_banner_blade", "flag_set:ch5_false_banner_captain_defeated"])
+require_all_completion_triggers = true
+reward_gold = 140
+reward_exp = 220
+reward_items = Array[Dictionary]([{"item_id":"antidote_pill", "count":1}, {"item_id":"healing_pill_major", "count":1}])
+progress_records = Array[Dictionary]([{"trigger":"evidence_acquired:ev_ch5_poisoned_false_banner_blade", "text":"营地兵刃、蓝灰毒粉与反针火纹布来自同一批伪装筹备。"}, {"trigger":"flag_set:ch5_false_banner_captain_defeated", "text":"伪旗统领受伤被擒，随身匣中留有一份被割去落款的密令。"}])

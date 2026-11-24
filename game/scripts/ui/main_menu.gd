@@ -35,6 +35,11 @@ const V5_BUTTON_MAP := {
 	},
 }
 
+const SAVE_SLOT_PANEL_SCENE := "res://scenes/ui/save_slot_panel.tscn"
+const FORMAL_CONFIRM_SCENE := "res://scenes/ui/formal_confirm_dialog.tscn"
+const MAIN_MENU_BGM := "res://art/audio/bgm/bgm_title_mountain_dawn_20261114.wav"
+const BACKGROUND_MOTION := "res://shaders/title_background_motion.gdshader"
+
 @onready var fallback_bg: ColorRect = $FallbackBg
 @onready var background: TextureRect = $Background
 @onready var button_panel: VBoxContainer = %ButtonPanel
@@ -45,6 +50,10 @@ const V5_BUTTON_MAP := {
 
 # 文字贴图 TextureRect 引用（用于 disabled 灰化等）
 var _text_rects: Dictionary = {}
+var _confirm_dialog: FormalConfirmDialog
+var _pending_action: StringName = &""
+var _starting_new_game := false
+var _load_panel: SaveSlotPanel
 
 
 func _ready() -> void:
@@ -83,9 +92,9 @@ func _ready() -> void:
 		btn_continue.pressed.connect(_on_continue)
 	if btn_quit != null:
 		btn_quit.pressed.connect(_on_quit)
-	
 	# 7. 存档状态
 	_check_save_state()
+	AudioManager.play_bgm(MAIN_MENU_BGM, 0.7)
 	
 	print("[MainMenu] _ready() DONE ========")
 
@@ -202,7 +211,7 @@ func _apply_frame_text_button(btn: Button, key: String) -> void:
 func _load_tex_path(path: String) -> Texture2D:
 	"""安全加载贴图（按完整路径）"""
 	if ResourceLoader.exists(path):
-		var res = load(path)
+		var res: Resource = load(path)
 		if res is Texture2D:
 			return res
 	return null
@@ -259,9 +268,16 @@ func _try_load_bg() -> void:
 	]
 	for path in paths:
 		if ResourceLoader.exists(path):
-			var tex = load(path)
+			var tex: Resource = load(path)
 			if tex is Texture2D:
 				background.texture = tex
+				# The effect is positioned for this illustration, not for fallback art.
+				if path == "res://art/backgrounds/bg_main_menu_v6_clean.png" and ResourceLoader.exists(BACKGROUND_MOTION):
+					var shader := load(BACKGROUND_MOTION) as Shader
+					if shader != null:
+						var motion := ShaderMaterial.new()
+						motion.shader = shader
+						background.material = motion
 				print("[MainMenu] BG: %s" % path)
 				return
 	print("[MainMenu] No BG found, using solid color")
@@ -275,13 +291,13 @@ func _hide_decorations_safe() -> void:
 		"Title", "Subtitle", "ProtagonistCard", "ProtagonistNameplate",
 		"LeftRoleLabel", "RightRoleLabel", "FooterTip", "Vignette"]
 	for n in names:
-		var node = get_node_or_null(n)
+		var node: Node = get_node_or_null(n)
 		if node != null:
 			node.visible = false
 
 
 func _check_save_state() -> void:
-	var sm = get_node_or_null("/root/SaveManager")
+	var sm: Node = get_node_or_null("/root/SaveManager")
 	if sm == null:
 		print("[MainMenu] SaveManager not found, skip save check")
 		_disable_continue_button()
@@ -305,61 +321,113 @@ func _disable_continue_button() -> void:
 
 
 func _on_new_game() -> void:
+	if _starting_new_game:
+		return
 	print("[MainMenu] New Game pressed")
+	# Keep the remote-pack owner in charge of download progress on Web.
+	if not ContentPackManager.is_scene_ready(SceneRouter.START_FIELD_SCENE):
+		_start_new_game()
+		return
+	var token := LoadingManager.begin_field_preparation("进入林西村")
+	if token == 0:
+		return
+	_starting_new_game = true
+	btn_new_game.disabled = true
+	# The first loading frame must reach the screen before the native route check.
+	if DisplayServer.get_name() != "headless":
+		await RenderingServer.frame_post_draw
+	await get_tree().process_frame
+	if _start_new_game():
+		LoadingManager.finish_field_preparation(token)
+		return
+	await LoadingManager.finish_field_preparation(token)
+	_starting_new_game = false
+	btn_new_game.disabled = false
+	LoadingManager.show_external_failure("林西村地图未能通过加载检查，请重试。", _on_new_game)
+
+
+func _start_new_game() -> bool:
 	if get_node_or_null("/root/GameState") != null:
 		GameState.reset_for_new_game()
 	if get_node_or_null("/root/Inventory") != null:
 		Inventory.reset_for_new_game()
 	if get_node_or_null("/root/QuestManager") != null:
 		QuestManager.reset_for_new_game()
+		BountyManager.reset_for_new_game()
+	if get_node_or_null("/root/InvestigationState") != null:
+		InvestigationState.reset_for_new_game()
+	if get_node_or_null("/root/WeatherManager") != null:
+		WeatherManager.reset_for_new_game()
 	if get_node_or_null("/root/SceneRouter") != null:
-		SceneRouter.go_field_smart(SceneRouter.START_FIELD_SCENE)
+		SceneRouter.reset_for_new_game()
+		return SceneRouter.go_field_smart(SceneRouter.START_FIELD_SCENE)
+	return false
 
 
 func _on_continue() -> void:
+	if is_instance_valid(_load_panel):
+		return
 	print("[MainMenu] Continue pressed")
-	var sm = get_node_or_null("/root/SaveManager")
+	var sm: Node = get_node_or_null("/root/SaveManager")
 	if sm == null:
 		return
-	# Count available saves
-	var slots: Array[int] = []
-	for i in range(SaveManager.SLOT_COUNT):
-		if SaveManager.has_save(i):
-			slots.append(i)
-	if slots.is_empty():
+	# 检查是否有任何存档
+	var has_any := false
+	for z in range(SaveManager.SLOT_COUNT):
+		if SaveManager.has_save(z):
+			has_any = true
+			break
+	if not has_any:
 		return
-	# If only slot 0 has save, load directly (backward compatible)
-	if slots.size() == 1 and slots[0] == 0:
-		if SaveManager.load_from_slot(0):
-			var sid := SaveManager.get_save_field_id(0)
-			if String(sid) == "":
-				sid = SceneRouter.START_FIELD_SCENE
-			SceneRouter.go_field_smart(sid)
+	# 使用 save_slot_panel 做加载选择
+	var packed := load(SAVE_SLOT_PANEL_SCENE) as PackedScene
+	if packed == null:
 		return
-	# Show slot selection popup
-	var popup := PopupMenu.new()
-	popup.name = "SaveSlotSelect"
-	add_child(popup)
-	for slot in slots:
-		var meta := SaveManager.get_slot_meta(slot)
-		var label := "存档 %d - %s" % [slot + 1, SaveManager.format_timestamp(int(meta.get("timestamp", 0)))]
-		popup.add_item(label, slot)
-	popup.id_pressed.connect(func(id: int):
-		if SaveManager.load_from_slot(id):
-			var sid := SaveManager.get_save_field_id(id)
-			if String(sid) == "":
-				sid = SceneRouter.START_FIELD_SCENE
-			SceneRouter.go_field_smart(sid)
-	)
-	popup.position = get_global_mouse_position()
-	popup.popup()
+	_load_panel = packed.instantiate() as SaveSlotPanel
+	_load_panel.closed.connect(_close_load_panel)
+	button_panel.hide()
+	add_child(_load_panel)
+	_load_panel.open(SaveSlotPanel.Mode.LOAD)
+
+
+func _close_load_panel() -> void:
+	_load_panel.queue_free()
+	_load_panel = null
+	button_panel.show()
+	btn_continue.grab_focus()
 
 
 func _on_quit() -> void:
+	if _starting_new_game:
+		return
+	if _confirm_dialog == null:
+		var packed := load(FORMAL_CONFIRM_SCENE) as PackedScene
+		if packed == null:
+			return
+		_confirm_dialog = packed.instantiate() as FormalConfirmDialog
+		_confirm_dialog.name = "MainMenuConfirmation"
+		_confirm_dialog.confirmed.connect(_on_confirmation_confirmed)
+		_confirm_dialog.cancelled.connect(func(): _pending_action = &"")
+		add_child(_confirm_dialog)
 	print("[MainMenu] Quit pressed")
-	get_tree().quit()
+	_pending_action = &"quit"
+	_confirm_dialog.show_confirm("确认离开游戏", "[center]确定要离开《云影侠传》吗？[/center]", "确认离开", "取消")
+
+
+func _on_confirmation_confirmed() -> void:
+	var action := _pending_action
+	_pending_action = &""
+	match action:
+		&"quit": get_tree().quit()
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
+		if is_instance_valid(_load_panel):
+			if not _load_panel.has_pending_confirmation():
+				_load_panel.close()
+				get_viewport().set_input_as_handled()
+			return
+		if _confirm_dialog != null and _confirm_dialog.is_open():
+			return
+		_on_quit()

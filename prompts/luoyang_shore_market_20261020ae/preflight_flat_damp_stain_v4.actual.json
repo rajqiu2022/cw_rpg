@@ -1,0 +1,77 @@
+{
+  "schema": "luoyang_shore_market_flat_damp_stain_v4_preflight_v1",
+  "passed": true,
+  "task_id": "luoyang_shore_market_20261020ae_flat_damp_stain_vertical_v4",
+  "prompt": "prompts/luoyang_shore_market_20261020ae/decal_docks_flat_damp_stain_vertical_v4.txt",
+  "prompt_sha256": "A4AF8536EFDBA4E0DBAA4511D3DC05EEABE00B391FFE70042E7D60F054D13B3A",
+  "spec": "prompts/luoyang_shore_market_20261020ae/decal_docks_flat_damp_stain_vertical_v4.spec.json",
+  "spec_sha256": "3CCE1AB22DBB2455C54DDDBEDA39D828598F95EFCCF612F87BF95164FDFCA846",
+  "tasks_yaml_sha256": "65887EFED5C03B428DAC363797789C35954C238E5A9ADB7261D802ED89D3D72A",
+  "proposed_output": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_flat_damp_stain_vertical_v4.png",
+  "proposed_output_exists": false,
+  "calls_made_by_preflight": {
+    "generation": 0,
+    "edit": 0,
+    "network": 0,
+    "engine": 0,
+    "sdk": 0
+  },
+  "checks": [
+    {
+      "name": "unique_registry",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "registry_contract",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "spec_contract",
+      "passed": true,
+      "detail": {
+        "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "transparent_background": true,
+        "attempt_budget": 1,
+        "attempts_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false,
+        "runtime_credit": false
+      }
+    },
+    {
+      "name": "output_absent",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "flat_wet_only_prompt",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "bounded_world_target",
+      "passed": true,
+      "detail": {
+        "width_range": [
+          80,
+          100
+        ],
+        "height_approx": 400,
+        "placement_domain": "inside the existing land-side quay surface near the wharf; exact placement is measured only after actual output review"
+      }
+    },
+    {
+      "name": "single_call_stop_condition",
+      "passed": true,
+      "detail": "This is the only newly authorized wet-only generation. If actual art still violates the flat-stain contract, wet-shore work remains incomplete and no automatic retry is permitted."
+    }
+  ],
+  "credit_boundary": "Offline registry/source preflight only. Root may make exactly one builtin generation call; no generated-art or runtime credit exists yet."
+}

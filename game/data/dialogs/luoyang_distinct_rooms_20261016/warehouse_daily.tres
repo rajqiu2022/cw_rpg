@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dialog"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "仓房账房"
+text = "货物按入仓先后分架，中央货道得留给搬运的人。查货先对账，不可随手拆箱。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dialog")
+dialog_id = &"luoyang_distinct_rooms_20261016_warehouse_daily"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

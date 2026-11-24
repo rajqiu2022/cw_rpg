@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/equipment.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_id = &"echo_jade"
+display_name = "听风佩"
+description = "两片薄玉悬于同一根丝绳，近身时能从回响分辨真步。佩戴者每段攻击有四成几率必中。"
+icon_path = "res://art/ui/inventory/icons/icon_jade_ring.png"
+category = 3
+stackable = false
+max_stack = 1
+slot = 5
+quality = 2
+buy_price = 180
+sell_price = 45
+usable_in_field = false
+special_effect_type = &"sure_hit"
+special_effect_chance = 0.4
+special_effect_description = "每段攻击有 40% 几率必中。"

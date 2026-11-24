@@ -1,0 +1,50 @@
+id: luoyang_yamen_enclosure_modules_v10
+description: One three-component directional RGBA atlas; baked 2.5D preview, not a complete courtyard or native/PBR material.
+backend: codex_builtin_imagegen
+model: builtin
+execution_owner: producer
+background: transparent
+transparent_background: true
+reference_images:
+  - assets/raw/scene_module/luoyang_yamen_front_v9/front_wall_v9_candidate.png
+  - game/art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png
+reference_sha256:
+  - b903c3aef333e0c3880ad0fb2fc83e131336cc381fde8d4f0fa88b59585149fb
+  - dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221
+require_reference_images: true
+scope: PREVIEW_NOT_ADOPTED
+camera:
+  projection: orthographic
+  yaw_degrees: 0
+  elevation_degrees: 30
+  view_direction: south_to_north
+scale_contract:
+  logical_px_per_metre_east_west: 64
+  logical_px_per_metre_ground_north_south: 32
+  longitudinal_segment_metres: 5
+  longitudinal_segment_ground_projection_logical_px: 160
+  corner_horizontal_arm_metres: 5
+  corner_horizontal_arm_logical_px: 320
+  v9_uniform_source_to_logical_scale: 0.5808080808080808
+  v9_uv_carrier_height_logical_px: 216.06060606060606
+  v9_visible_ridge_to_brick_foot_logical_px: 199.7979797979798
+  desired_native_pixels_per_logical_pixel: 2
+  desired_atlas_canvas_px: [2304, 1024]
+  density_status: EXPECTATION_ONLY_MEASURE_ACTUAL_COMPONENT_ANCHORS_AND_RESOLUTION
+prompt_template: |
+  Use case: stylized-concept
+  Asset type: ONE transparent RGBA architectural module atlas for a fixed-camera realistic Chinese wuxia RPG. This is one atlas asset with exactly THREE isolated components, not three alternative images and not an entire courtyard scene.
+
+  Reference roles: Image 1 is the approved wall MATERIAL AND CONSTRUCTION reference. Match its aged charcoal-grey barrel/pan tiles, modest tile-end caps, weathered off-white lime plaster, coursed grey-brick base, surface-detail density and restrained upper-left/front daylight. Its frontal wall silhouette is NOT the direction for the new longitudinal modules. Image 2 is ONLY the camera, gate-relative scale and traditional construction reference; do NOT copy its diagonal baked side walls or generate its wooden gate, roofed gatehouse or doorway. Neither reference is an edit target.
+
+  Camera for EVERY component: orthographic parallel, directly south looking north, exactly 30 degrees elevation, yaw ZERO. North runs straight upward on the image. A north-south wall recedes vertically on screen without vanishing-point convergence. Its broad east/west plaster side faces are EDGE-ON, not diagonal visible facades. Show the narrow tiled coping roof, ridge, credible wall thickness and south-facing masonry end only where exposed. Do not turn the camera to make the side wall more visible. East-west brick courses and eaves stay horizontal.
+
+  Scale contract: all three components use IDENTICAL pixels per metre and the same wall cross-section as Image 1. At game scale, east-west length projects to 64 logical pixels per metre, north-south ground depth projects to 32 logical pixels per metre. One 5-metre longitudinal run therefore has 160 logical pixels of ground-depth projection, separately from approximately 200 logical pixels of ridge-to-brick-foot visual height. The approximately 216-logical-pixel source carrier height includes transparent breathing room; it is NOT the longitudinal run length. Do not shrink the upright wall height to 160 pixels. Prefer about two native image pixels per logical pixel, with roughly 2304 by 1024 native atlas framing if available; returned resolution and all anchors will be measured rather than assumed or upscaled.
+
+  Component A, placed in the LEFT atlas area: one straight north-south courtyard-wall module with a continuous 5-metre-long roof run, approximately 0.40-metre masonry thickness and modest coping overhang. The roof ridge is vertical on screen. Its SOUTH end has a plain believable narrow masonry end face with the same plaster and brick base as Image 1, not a pillar, wide front wall or doorway. The uninterrupted interior roof region must contain several metres of complete articulated tiles, with no repeated transverse end caps, posts or decorative interrupts. This long interior region will be selected by GPU UV geometry for adjoining runs; the south end face is used only at an exposed end. Keep the far north end construction simple, without a tall ornament or silhouette blocking an adjoining run.
+
+  Component B, placed in the MIDDLE atlas area: a complete SOUTHWEST L-corner, with a 5-metre horizontal arm extending EAST to image-right and a 5-metre longitudinal arm extending NORTH straight upward. Component C, placed in the RIGHT atlas area: a complete SOUTHEAST L-corner, with a 5-metre horizontal arm extending WEST to image-left and a 5-metre longitudinal arm extending NORTH straight upward. Both have the SAME cross-section, ridge height, brick-foot level and tile scale as A and Image 1. Their horizontal arms must be long, straight, detailed wall runs suitable for selecting an interior planar join with the approved front wall, NOT tiny corner ornaments or short stubs. The two corner roofs genuinely turn and meet with credible ridge/hip termination, tile overlap, eave thickness and masonry corner bond; do not simply overlap two roof strips. Render B and C separately under the SAME upper-left/front light. C is not a mirror-flipped lighting copy of B. No extra return, branch, T-junction or diagonal arm.
+
+  Materials and style: crisp physically detailed pre-rendered 2.5D architecture matching Image 1, not a seamless PBR scan. Restrained granular old lime plaster and irregular sparse lower-edge wear exposing grey bricks; continuous matching brick plinth and coherent mortar-course height. Preserve readable tile edges and joint shadows. No corrugated-metal waves, blurry microtexture, evenly spaced zigzag cracks, added noise treatment or colour redesign. Do not redesign the approved front wall.
+
+  Framing and transparency: exactly three separated complete silhouettes, side by side at identical authored scale, with generous genuinely transparent margins and transparent gaps so each module can be measured independently. All end faces and eaves must remain fully inside the canvas. No labels, letters, diagrams, scale bars, ground, paving, cast ground shadow, background, scenery, people, props, gate, main hall, wooden posts, freestanding decorative pillars or watermark. No black backdrop or checkerboard pixels. Use true transparent alpha and deliver only this single module atlas.

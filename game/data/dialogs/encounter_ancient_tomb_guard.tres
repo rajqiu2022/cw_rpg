@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="offer"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "古墓守卫"
+text = "别再碰那批货箱。古墓留着一条退路，你现在离开，还来得及。"
+choices = Array[Dictionary]([{"text":"迎战","action":"battle:ancient_tomb_guard"},{"text":"暂且离开","next":"end"}])
+[resource]
+script = ExtResource("1")
+dialog_id = &"encounter_ancient_tomb_guard"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("offer")])

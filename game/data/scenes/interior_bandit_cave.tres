@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/interior_bandit_cave_layout_v2.tres" id="2_map"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"interior_bandit_cave"
+display_name = "山道·山贼洞窟"
+background_path = "res://art/modules/bandit_cave_20261109/cave_shell.png"
+bgm_path = "res://art/audio/bgm/bgm_cave_ominous_v4.wav"
+is_walkable = true
+map_layout = ExtResource("2_map")
+actor_positions_are_feet = true
+player_spawn = Vector2(0.498, 0.840)
+player_visual_scale = 1.18
+npcs = [
+	{"npc_id": "bandit_cave_guard", "npc_name": "留守山贼", "pos": Vector2(0.357, 0.502), "sprite_path": "res://art/characters/story_enemies_20261109/bandit_cave_guard/ready.png", "hide_flag": "defeated_bandit_cave_guard", "require_quest_active": "q_ch1_side_10_bandit_cave", "scale": 0.34, "portrait_path": "res://art/characters/story_enemies_20261109/bandit_cave_guard/portrait.png", "conversation_base_facing": "left"}
+]

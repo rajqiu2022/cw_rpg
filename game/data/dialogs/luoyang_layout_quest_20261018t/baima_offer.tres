@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="offer"]
+script = ExtResource("2")
+node_id = &"offer"
+speaker = "守钟僧"
+text = "古钟连夜自鸣。寺中不怕鬼神，只怕有人借鬼神伤人。你可愿替我查梁木、钟杵与东墙砖缝？"
+accept_quest = &"q_ch4_side_05_baima_bell"
+on_end = "next:accepted"
+[sub_resource type="Resource" id="accepted"]
+script = ExtResource("2")
+node_id = &"accepted"
+speaker = "冷孤云"
+text = "我先去钟前查明声从何来，查清再回报。"
+set_flags = Array[Dictionary]([{"key":"baima_bell_started_20261018t", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"luoyang_layout_quest_20261018t/baima_offer"
+entry_node_id = &"offer"
+nodes = Array[Resource]([SubResource("offer"), SubResource("accepted")])

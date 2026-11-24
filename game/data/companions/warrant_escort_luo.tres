@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/character_stats.gd" id="1"]
+[resource]
+script = ExtResource("1")
+character_id = "warrant_escort_luo"
+display_name = "罗望"
+role_title = "乔装镖客"
+origin = "金陵水埠"
+biography = "因替脚夫讨薪被诬为劫盐匪。换去镖局衣衫后，他不再报短镖名号，把那块旧腰牌留给了冷孤云。"
+portrait_path = "res://art/characters/portraits/street_expansion_v1/portrait_escort_guard_v1.png"
+weapon_specialty = &"blade"
+fixed_martial_arts = true
+battle_actor_path = "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_ready_01.png"
+battle_sprite_root = "res://art/sprites/battle/standard_v2/thug_lone"
+battle_sprite_prefix = "thug_lone"
+battle_actor_scale = 0.42
+level = 10
+strength = 19
+agility = 16
+vitality = 15
+inner_pool = 13
+guard = 13
+skills = Array[StringName]([&"basic_attack", &"heavy_swing", &"gufeng_kaishan_yidao", &"defend"])

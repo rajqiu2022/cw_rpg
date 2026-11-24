@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "大会执事"
+text = "伤势仿招、令牌拼旧、旧纸新墨。三处破绽不是答案，却足够证明有人想让五派互相猜疑。"
+on_end = "next:end"
+[sub_resource type="Resource" id="end"]
+script = ExtResource("2")
+node_id = &"end"
+speaker = "凌霜"
+text = "先通过考校，取得查案资格。往后的证据，你亲自去找。"
+add_evidence = Array[StringName]([&"ev_ch3_old_official_paper"])
+set_flags = Array[Dictionary]([{"key":"assembly_evidence_checked", "value":true}])
+accept_quest = &"q_ch3_main_01_join_faction"
+complete_quest = &"q_ch3_main_00_assembly_clues"
+on_end = "next:shaolin"
+[sub_resource type="Resource" id="shaolin"]
+script = ExtResource("2")
+node_id = &"shaolin"
+speaker = "少林俗家·岳闻钟"
+text = "方才你查验伤势时，呼吸有一瞬滞在右肋。那不是今日的新伤。若以后路过嵩山，持这枚木叶到罗汉坡找我——先说清楚，我只替你引路，寺里的法门要靠你自己挣来。"
+set_flags = Array[Dictionary]([{"key":"shaolin_lay_disciple_met","value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch3_assembly_review"
+required_story_flag = &"chapter2_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("end"), SubResource("shaolin")])

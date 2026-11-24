@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "伪烈云突袭手"
+text = "烈云盟办事，不留活口。挡路的连同粮车一起烧。"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "真正急着让人看清旗号的，往往不是旗号上的人。"
+on_end = "battle_group_then:ch5_relief_road_raider,ch5_relief_road_raider,ch5_false_liuyun_striker:ch5_grain_convoy_victory"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_grain_convoy_battle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

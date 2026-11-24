@@ -34,7 +34,22 @@ enum Quality {
 @export var usable_in_battle: bool = false
 @export var usable_in_field: bool = true
 
+## 书籍、信件、残页和卷宗可在背包中打开独立阅读界面。
+## 阅读不会消耗物品，也不承担任务状态；线索是否取得仍由物品本身和场景旗标决定。
+@export var readable: bool = false
+@export var read_title: String = ""
+@export_multiline var read_content: String = ""
+@export var read_source: String = ""
+## Optional manual study target.  Reading is always allowed; learning remains
+## gated by the Skill's insight requirement and never consumes the book.
+@export var study_skill_id: StringName = &""
+@export var study_requires_item: StringName = &""
+
 @export var quality: Quality = Quality.COMMON
+
+## 珍贵成长型消耗品：永久增加基础属性或生命/内力上限。
+## 角色界面仅对紫/橙品质且该字段为 true 的物品进行二次确认。
+@export var permanent_growth: bool = false
 
 ## 消耗品效果（简化为统一字段，进阶时再做 effect 列表）
 @export var heal_hp: int = 0
@@ -43,6 +58,10 @@ enum Quality {
 
 func is_key_item() -> bool:
 	return category == Category.KEY_ITEM
+
+
+func is_readable() -> bool:
+	return readable and not read_content.strip_edges().is_empty()
 
 
 func can_use(in_battle: bool) -> bool:

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.0400, 0.9200, 0.0500, 0.6600, 0.2300, 0.4800, 0.4200, 0.2500, 0.8400, 0.1700, 0.9600, 0.3400, 0.8300, 0.6200, 0.9600, 0.9000)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = []
+interactions = []
+portals = []
+walkable_probes = [
+	{"id":"route_0", "pos":Vector2(0.5413, 0.5425)}
+]
+blocked_probes = [
+	{"id":"top_left_margin", "pos":Vector2(0.01, 0.01)},
+	{"id":"top_right_margin", "pos":Vector2(0.99, 0.01)}
+]

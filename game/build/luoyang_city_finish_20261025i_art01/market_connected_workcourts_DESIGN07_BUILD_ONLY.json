@@ -1,0 +1,140 @@
+{
+  "schema":1,
+  "status":"ONE_SELECTED_MARKET_FRONTAGE_WORKCOURT_DESIGN_BUILD_ONLY_NOT_SOURCE_QA_OR_VISIBLE_RESULT",
+  "ready":false,
+  "scene_id":"ch4_s3_luoyang_market",
+  "design_size_px":[3072,2048],
+  "decision":"Complete the existing east-middle pair as two inhabited work compounds facing the south cross-street: complete closed rear house -> real working yard -> open trading gallery/low street wall -> public street, with the original144 service lane between compounds. Do not add a ninth house or resurrect rejected Inn returns.",
+  "visual_increment":"Connect each existing yard's ground to its existing gallery/low-wall frontage; fill one flanking bay per yard with a real occupational supply object. This improves continuous use/street-edge reading, not roof-count density or reference-level whole-city completion.",
+  "fixed_sources":{
+    "space_author":{"path":"res://build/luoyang_city_blocks_20261024e_system01/author_market_block07_paper_foot_NOTREADY.json","sha256":"de1911cceb5fb10e6b3b1aba1fa6d9d34057358841febdd285d25a1a1eb65e95"},
+    "adopted_courtyard_author":{"path":"res://build/luoyang_market_courtyard_links_20261025g_system01/author_courtyard_links02_NOTREADY.json","sha256":"e91631e6b5c5f44a4bbe7d67c1a2519c498ff9e403d9452e2484274dc8032cad"},
+    "adopted_small_asset_library":{"path":"res://build/luoyang_city_finish_20261025i_source01/adjacent_adopted_asset_library03_SOURCE_ONLY.json","sha256":"81f24069cfa7d974a189610fea32fa967761db9fff437707041193364575d2d1"},
+    "adopted_material_spec":{"path":"res://build/luoyang_street_materials_20261025f_system01/material_revision02/market_five_use_spec_BUILD.json","sha256":"2d6e7bc644328ecf80d26f101662a60d757deebb45415c9e33a6a131a17cf9f3"},
+    "current_ENV_readonly_snapshot":{"path":"res://scripts/city/luoyang_environment_layer_20261022ap.gd","sha256":"e83c13d831d576e7d464bb4b2679d1665288a41ad67119d1f400f45ac1f561a3","qualification":"Consumer location evidence only. Root head is changing; Source must bind the later actual frozen current parent, not restore this observed snapshot."}
+  },
+  "units_and_precision":{"placement":"world=foot+(source_pixel-source_ground_anchor)*uniform_scale","A1":"Original complete alpha>0, xyxy exclusive right/bottom; no cleanup/thresholding/crop.","numbers":"ART exact decimal source arithmetic only; no claim of Godot f32 or raster proof."},
+  "existing_asset_contracts":{
+    "annex":{"texture":"res://art/modules/luoyang_district_life_20261016f/official_service_annex_v1.png","sha256":"bf99184255dc104a831bde71f0b12bb76229e5c5c0067cc8bb2c610c44380afa","size":[1536,1024],"anchor":[964,868],"complete_A1":[0,9,1506,1024],"adult_closed_door_source_height":300,"no_official_signage":true},
+    "gallery":{"texture":"res://art/modules/luoyang_estate_components_20261021am/corridor.png","sha256":"a335bb05e3155a1933314525824b90eba098bbd878f1f85d1db60889a549388d","size":[2615,975],"anchor":[1307,807],"complete_A1":[436,163,2179,812],"visible_passage_source_height":357,"true_column_base_rects":[[584,766,124,40],[1039,766,116,40],[1465,766,119,40],[1904,766,124,40]],"adopted_behavior":"Opaque roof / actor-local ghost only; existing behavior unchanged."},
+    "low_wall":{"texture":"res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png","sha256":"664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0","size":[640,132],"anchor":[319,124],"complete_A1":[4,4,634,127]},
+    "side_wall":{"texture":"res://art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/entities/v11_yamen_west_north_940.png","sha256":"d1a110ea2cbd5c5d9f90b3e151cf4a4375f5b61dfdc73513f241d9a130194ea7","size":[111,358],"anchor":[54,336],"complete_A1":[5,4,105,352]},
+    "cloth_rack":{"texture":"res://art/modules/luoyang_assembled_interiors_20261016g/cloth_roll_rack_v1.png","sha256":"078b1086cd2003916e73bb9c9f7a5f98d52286eabd765c609cb928e9ea84fc0e","size":[1536,1024],"anchor":[768,951]},
+    "medicine_table":{"texture":"res://art/modules/luoyang_assembled_interiors_20261016g/medicine_worktable_v1.png","sha256":"0e2cd37e803a79c1f51ae2b62f700664e841feef183f51c3ce0bc3355432b05d","size":[1536,1024],"anchor":[768,905]}
+  },
+  "compounds":[
+    {
+      "id":"MARKET07_CLOTH_GRAIN_WORKCOURT",
+      "lot_bounds_design_xyxy":[1390,807.2,2050,1402.5],
+      "unchanged_rows":[
+        {"id":"market_e_cloth_grain_rear","asset":"annex","foot":[1730,1164],"scale":0.5,"complete_A1_world":[1248,734.5,2001,1242],"closed_door_height":150},
+        {"id":"market_g_cloth_gallery","asset":"gallery","foot":[1720,1372],"scale":0.36,"complete_A1_world":[1406.44,1140.16,2033.92,1373.8],"clear_height":128.52,"existing_intended_rear_join":"25g admitted attached-gallery relationship retained, not re-proved as zero-overlap."},
+        {"id":"market_b_drug_rear_wall_w","asset":"low_wall","foot":[1525,1372],"scale":0.42857142857142855},
+        {"id":"market_b_drug_rear_wall_e","asset":"low_wall","foot":[1915,1372],"scale":0.42857142857142855},
+        {"id":"market_e_court_side_0","asset":"side_wall","foot":[1390,1372],"scale":0.65},
+        {"id":"market_e_court_side_1","asset":"side_wall","foot":[2050,1372],"scale":0.65},
+        {"id":"goods_stall","asset":"cloth_rack","foot":[1735,1308],"scale":0.12,"same_interaction_ID":true}
+      ],
+      "reading":"North closed storage body and southern low-fronted open gallery enclose a real cloth/grain yard. Use the western gallery bay for stored sacks, keeping center1720 and original buyer1735/1420 unobstructed; do not put a freestanding house on the public pavement.",
+      "front_gate_x":[1660,1780],
+      "front_gate_existing_clear_width":120,
+      "retained_gallery_existing_inner_clear_width":111.6,
+      "new_candidate_object_id":"market07_cloth_grain_storage_sacks"
+    },
+    {
+      "id":"MARKET07_HERBAL_PAPER_WORKCOURT",
+      "lot_bounds_design_xyxy":[2340,807.2,2938,1402.5],
+      "unchanged_rows":[
+        {"id":"market_e_herbal_book_rear","asset":"annex","foot":[2700,1164],"scale":0.5,"complete_A1_world":[2218,734.5,2971,1242],"closed_door_height":150},
+        {"id":"market_g_medicine_gallery","asset":"gallery","foot":[2660,1372],"scale":0.36,"complete_A1_world":[2346.44,1140.16,2973.92,1373.8],"clear_height":128.52},
+        {"id":"market_b_book_rear_wall_w","asset":"low_wall","foot":[2470,1372],"scale":0.4126984126984127},
+        {"id":"market_b_book_rear_wall_e","asset":"low_wall","foot":[2829,1372],"scale":0.346031746031746},
+        {"id":"market_e_court_side_2","asset":"side_wall","foot":[2340,1372],"scale":0.65},
+        {"id":"market_e_court_side_3","asset":"side_wall","foot":[2938,1372],"scale":0.65},
+        {"id":"medicine_stall","asset":"medicine_table","foot":[2685,1308],"scale":0.16,"same_interaction_ID":true}
+      ],
+      "reading":"Keep the larger central sorting table as the shop's main work station; add only a low wash-water tub in its western service bay, not a second counter, house or stall. This gives a different occupation silhouette from the cloth yard while using the same street enclosure grammar.",
+      "front_gate_x":[2600,2720],
+      "front_gate_existing_clear_width":120,
+      "retained_gallery_existing_inner_clear_width":111.6,
+      "new_candidate_object_id":"market07_herbal_rinse_water_tub"
+    }
+  ],
+  "selected_render_only_material_delta":{
+    "group_id":"working_stall_court",
+    "rects_before":[[1410,1168,620,204],[2360,1168,600,204]],
+    "rects_after":[[1410,1168,620,234.5],[2360,1168,600,234.5]],
+    "reason":"Both old working floors stop at1372 while the south public street starts1402.5; a30.5px grey gap severs the actual gallery/yard from the street. Extend only their two floor footprints to the original street edge. No invented curb mesh or new masonry.",
+    "exterior_segments_before":[[1410,1168,2030,1168],[1410,1372,2030,1372],[1410,1168,1410,1372],[2030,1168,2030,1372],[2360,1168,2960,1168],[2360,1372,2960,1372],[2360,1168,2360,1372],[2960,1168,2960,1372]],
+    "exterior_segments_after":[[1410,1168,2030,1168],[1410,1402.5,2030,1402.5],[1410,1168,1410,1402.5],[2030,1168,2030,1402.5],[2360,1168,2960,1168],[2360,1402.5,2960,1402.5],[2360,1168,2360,1402.5],[2960,1168,2960,1402.5]],
+    "existing_asset":"road_earth",
+    "existing_source_texture":"res://art/external/polyhaven/world_terrain_v14_sixth/brown_mud_03/brown_mud_03_diff_2k.jpg",
+    "existing_source_texture_sha256":"57a87dae26769677578ab53b8829fe9b1e4dfec1ae1726f2942ce99fc73f400b",
+    "preserve_parameters":{"tone":[0.44,0.365,0.265,1],"contrast":0.58,"core":0.96,"edge":28,"wear":8,"sampling_world_scale":0.1,"world_phase":true},
+    "priority_rects_unchanged":true,
+    "building_exclusions_unchanged":true,
+    "new_shader_or_texture":false,
+    "approx_new_visible_area_before_edge_fade":29890,
+    "priority_cut":"Original two120 gate stoneways continue through the extended ground, and south144 public street wins at1402.5. Do not paint earth over any street/apron priority to fake enclosure.",
+    "source_scope":"One existing spec group, two rectangle heights and matching exterior endpoints only. Renderer algorithm/23 image params/count/material sources unchanged. Source verifies the current actual group before applying this exact data successor.",
+    "geometry_NAV_solid_delta":0,
+    "can_be_implemented_without_new_objects":true
+  },
+  "two_low_objects_candidate_requires_separate_source_geometry_admission":[
+    {
+      "id":"market07_cloth_grain_storage_sacks",
+      "asset":"res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png",
+      "asset_sha256":"696ae8db11df69d6d9bb178979c6275102725217d2c0946f3457bc333382b4c3",
+      "source_size":[1536,1024],"source_anchor":[768,909],"source_complete_A1":[0,8,1442,1024],
+      "foot":[1560,1350],"uniform_scale":0.09,
+      "complete_A1_world":[1490.88,1268.91,1620.66,1360.35],
+      "real_ground_source_polygon":[[231,778],[1307,778],[1307,911],[231,911]],
+      "nominal_ground_world_polygon":[[1511.67,1338.21],[1608.51,1338.21],[1608.51,1350.18],[1511.67,1350.18]],
+      "clearance_notes":{"complete_A1_to_original_center_gate_left":39.34,"nominal_true_base_to_gallery_front_columns_y":7.06,"new_actor_route_claim":false},
+      "explicit_same_lot_front_wall_occlusion":{"existing_wall":"market_b_drug_rear_wall_w","A1_intersection_nominal":[1490.88,1320.5714285714287,1620.66,1360.35],"true_ground_vertical_gap_px":16.677142857142826,"design":"Low courtyard wall may normally hide the bottom of stored bags behind it; no building or original PNG opacity is modified. Strict ground disjointness must pass; this named front-wall depth overlap is not permission to waive other wall/roof intersections."},
+      "semantic":"Closed grain/supply bags in the existing cloth/grain storage compound; not counterfeit quest loot.",
+      "donor":"adjacent03 assets.grain_sack_stack_v1; original warehouse author e703432f930bce1f2cf433edb25b5e6f6e51e170086338e77e8fc9d57664c8e8"
+    },
+    {
+      "id":"market07_herbal_rinse_water_tub",
+      "asset":"res://art/modules/luoyang_assembled_20261016b/quench_tub_v1.png",
+      "asset_sha256":"81e74615f03e9deefa7e2592adb271e3c7c995c0e3731c74bc68f6c17cc60ad7",
+      "source_size":[1536,1024],"source_anchor":[768,905],"source_complete_A1":[0,4,1508,1024],
+      "foot":[2448,1350],"uniform_scale":0.085,
+      "complete_A1_world":[2382.72,1273.415,2510.9,1360.115],
+      "real_ground_source_polygon":[[301,790],[438,717],[768,690],[1111,718],[1235,790],[1104,872],[768,905],[435,870]],
+      "nominal_ground_world_polygon":[[2408.305,1340.225],[2419.95,1334.02],[2448,1331.725],[2477.155,1334.105],[2487.695,1340.225],[2476.56,1347.195],[2448,1350],[2419.695,1347.025]],
+      "clearance_notes":{"complete_A1_to_side_wall_right_edge2373_15":9.57,"complete_A1_to_existing_medicine_table_left2562_12":51.22,"complete_A1_to_center_gate_left2600":89.1,"nominal_true_base_to_gallery_front_columns_y":7.24,"new_actor_route_claim":false},
+      "explicit_same_lot_front_wall_occlusion":{"existing_wall":"market_b_book_rear_wall_w","A1_intersection_nominal":[2382.72,1322.4761904761904,2510.9,1360.115],"true_ground_vertical_gap_px":17.047619047619037,"design":"The old low courtyard wall remains in front of this lower rinse tub; its top/body is partly seen above the wall. Only this normal front-wall depth relationship is intended, never a crossed physical base or opacity trick."},
+      "semantic":"Plain open wooden wash-water tub at a medicinal sorting yard; no new forge, vendor, interaction or magical pool.",
+      "final_anchor_notice":"2448 is this frozen design. Earlier informal2440 note was not an author or accepted geometry; do not implement it.",
+      "donor":"adjacent03 assets.wood_wash_tub; artisan life donor03f0a7fd0b71b2657fa783b253d86001813897f0f16e44793f866d09cce7a9f4"
+    }
+  ],
+  "geometry_admission_rule":"Do not silently draw the two new objects collision-free. Their two real ground contacts must be compared with the actual parent. Preserve every old solid and public-route sweep. At most two explicitly admitted incremental domains inside these two existing working lots; no old source row/body/route moves. If Root's oldNAV requirement means strict whole-image equality, objects remain excluded and only the two material-footprint changes proceed. Never alter the old NAV just to make this plan appear accepted.",
+  "strict_protected_geometry":[
+    {"id":"main_street","rect":[1018,663.2,300,1360.8],"min_clear_width":300},
+    {"id":"north_cross","rect":[220,663.2,2820,144],"min_clear_width":144},
+    {"id":"south_block_cross","rect":[1318,1402.5,1724,144],"min_clear_width":144},
+    {"id":"between_two_courts","rect":[2125,1164,144,208],"min_clear_width":144},
+    {"id":"east_service_lane","rect":[2125,807.2,144,1216.8],"min_clear_width":144},
+    {"id":"far_east_lane","rect":[2976,807.2,96,1216.8],"min_clear_width":96}
+  ],
+  "named_local_route_guards":[
+    {"id":"paper_stall","points":[[1170,1468],[1735,1468],[1735,1378]]},
+    {"id":"herbal_stall","points":[[2197,1468],[2685,1468],[2685,1378]]},
+    {"id":"cloth_gallery_center","points":[[1720,1384],[1720,1340]]},
+    {"id":"medicine_gallery_center","points":[[2660,1384],[2660,1340]]}
+  ],
+  "finite_validation_scope":[
+    "Bind current actual Market payload/project_render, fixed original row IDs and adopted25g/25i source ancestry after Root head stabilizes; do not substitute obsolete Inn foot735830 or assume historical author filename is current runtime payload.",
+    "Material-only successor: whole old spec inverse must be exact after reverting the two heights/four changed edge endpoints per compound; same priority rectangles/exclusions/sampling/source textures/count. NAV/geometry/rooms/portals/NPCs literally unchanged.",
+    "If Root admits objects: only two new true-base polygons, complete original ground/integer-mask support, touched current NPC patrol/body sweeps and named four local routes with original34x24 Player/34x30 NPC. No old all-city route/room/world64 replay.",
+    "For each object compare full A1 to the actual closed rear-house and other supplies/walls; no alpha8 exclusion shortcut. Two exact named old front-low-wall occlusions are explicitly intended and have nominally separate actual bases; all other conservative A1 intersections reject unless Root separately reviews their role. The existing open gallery roof is intentional cover of that same work bay, not a zero-overlap building claim. Its actual four columns remain solid; the7px base gap is not a promised passable route.",
+    "Check original paper/medicine offer points and adjacent patrol positions remain exact; no actor or interaction movement, new job or task reward.",
+    "Root sole actual current-camera view, after finite source admission: see both working floors meet the street without grey sliver/hard new carpet, central stone gate visible, real supplies not floating or concealing a column. Existing source halo/fringe remains untouched and ART may reject if conspicuous.",
+    "Stop on any confirmed conflict; exclude that new object, do not search anchors/shrink/move older objects or crop/clean PNGs. No new generation/import required for these already-adopted original textures."
+  ],
+  "Inn_decision":{"additions":0,"rejected_new_return_stays_rejected":true,"reason":"Inn complete A1 bottom624.18 to Pharmacy top894.826 leaves270.646px, and both attempted returns conflicted with old tree or north_cross735 body sweep. Keep old cargo bags420740/cart710750/two walls330855 and790855/traveller760800 and145 opening. No claim that a third wall or adult house fits this lot."},
+  "completion_boundary":{"new_roofed_buildings":0,"new_wall_instances":0,"selected_new_material_rectangles":0,"selected_existing_rect_footprint_extensions":2,"low_objects_pending_bounded_geometry_admission":2,"new_portals":0,"new_NPCs":0,"new_images":0,"ART_engine_calls":0,"ART_PNG_edits":0,"canonical_writes":0,"whole_city_or_reference_density_pass":false}
+}

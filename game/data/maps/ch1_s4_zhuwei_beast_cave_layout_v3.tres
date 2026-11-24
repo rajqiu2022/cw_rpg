@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_mask_path = "res://art/navigation_masks/ch1_cave_entrance_walk_v1.svg"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.440, 0.965, 0.560, 0.965, 0.610, 0.760, 0.585, 0.610, 0.535, 0.515, 0.465, 0.515, 0.405, 0.610, 0.390, 0.760),
+	PackedVector2Array(0.385, 0.650, 0.285, 0.580, 0.205, 0.475, 0.145, 0.330, 0.185, 0.245, 0.305, 0.240, 0.425, 0.315, 0.500, 0.390, 0.500, 0.515, 0.430, 0.555),
+	PackedVector2Array(0.570, 0.555, 0.500, 0.515, 0.500, 0.390, 0.575, 0.315, 0.700, 0.235, 0.825, 0.245, 0.865, 0.335, 0.815, 0.475, 0.720, 0.585, 0.615, 0.650),
+	PackedVector2Array(0.300, 0.305, 0.345, 0.165, 0.675, 0.150, 0.725, 0.305, 0.600, 0.400, 0.400, 0.400)
+])
+visual_objects = []
+blockers = [
+	{"id": "center_rock_spine", "pos": Vector2(0.500, 0.465), "size": Vector2(0.060, 0.090)},
+	{"id": "left_chasm", "pos": Vector2(0.125, 0.555), "size": Vector2(0.170, 0.155)},
+	{"id": "upper_fire", "pos": Vector2(0.500, 0.220), "size": Vector2(0.075, 0.065)},
+	{"id": "right_mine_cart", "pos": Vector2(0.835, 0.540), "size": Vector2(0.085, 0.080)}
+]
+interactions = [
+	{"id": "cave_left_chest", "pos": Vector2(0.175, 0.290), "size": Vector2(0.105, 0.100), "activation": "interact", "label": "打开旧木箱", "action": "dialog:ch1_zhuwei_cave_chest", "interaction_visual_kind": "chest", "visual_render_size_px": Vector2(76, 62), "hide_flag": "looted_zhuwei_cave_chest"},
+	{"id": "cave_mine_cart", "pos": Vector2(0.735, 0.465), "size": Vector2(0.100, 0.095), "activation": "interact", "label": "检查废弃矿车", "action": "dialog:ch1_env_cave_mine_cart", "visual_texture": "res://art/modules/prop/prop_linxi_cart_wood.png", "visual_render_size_px": Vector2(92, 64), "hide_flag": "examined_cave_mine_cart"}
+]
+portals = [
+	{"id": "leave_beast_cave", "pos": Vector2(0.500, 0.915), "size": Vector2(0.110, 0.070), "label": "返回后山密林", "marker_rotation_degrees": 180.0, "target_scene": "ch1_s3_zhuwei_forest", "target_pos": Vector2(0.749, 0.226)},
+	{"id": "enter_cave_mine_gallery", "pos": Vector2(0.205, 0.265), "size": Vector2(0.100, 0.085), "label": "进入左侧废弃矿道", "marker_rotation_degrees": 90.0, "target_scene": "ch1_s4_cave_mine_gallery", "target_pos": Vector2(0.180, 0.750)},
+	{"id": "enter_cave_waterway", "pos": Vector2(0.800, 0.275), "size": Vector2(0.100, 0.085), "label": "进入右侧地下水道", "marker_rotation_degrees": -90.0, "target_scene": "ch1_s4_cave_waterway", "target_pos": Vector2(0.820, 0.750)}
+]
+walkable_probes = [
+	{"id": "entrance_spawn", "pos": Vector2(0.500, 0.820)},
+	{"id": "central_fork", "pos": Vector2(0.500, 0.560)},
+	{"id": "left_branch", "pos": Vector2(0.205, 0.300)},
+	{"id": "right_branch", "pos": Vector2(0.800, 0.300)},
+	{"id": "forest_exit", "pos": Vector2(0.500, 0.915)}
+]
+blocked_probes = [
+	{"id": "center_rock_spine", "pos": Vector2(0.500, 0.465)},
+	{"id": "left_chasm", "pos": Vector2(0.125, 0.555)},
+	{"id": "upper_fire", "pos": Vector2(0.500, 0.220)},
+	{"id": "right_wall", "pos": Vector2(0.930, 0.500)}
+]

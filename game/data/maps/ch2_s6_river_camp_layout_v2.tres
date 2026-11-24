@@ -1,0 +1,69 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.0300, 0.9400, 0.0400, 0.6600, 0.2500, 0.5300, 0.4500, 0.4000, 0.6400, 0.2700, 0.9600, 0.0500, 0.9700, 0.3600, 0.7600, 0.5000, 0.5500, 0.6500, 0.3200, 0.7800, 0.1400, 0.9200)
+])
+visual_objects = [
+	{"id":"floor_0_0","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(-0.166666667,-0.125),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_1_0","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.166666667,-0.125),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_2_0","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.5,-0.125),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_3_0","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.833333333,-0.125),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_0_1","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(-0.166666667,0.375),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_1_1","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.166666667,0.375),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_2_1","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.5,0.375),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_3_1","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.833333333,0.375),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_0_2","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(-0.166666667,0.875),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_1_2","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.166666667,0.875),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_2_2","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.5,0.875),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"floor_3_2","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.833333333,0.875),"centered":false,"render_size_px":Vector2(512,512),"z_index":-999,"modulate":Color(0.82,0.85,0.76,1)},
+	{"id":"water_reach","texture":"res://art/modules/jinling_reed_marsh_20261108/reed_pool_v1.png","pos":Vector2(0.785,0.785),"scale":Vector2(0.9,0.9),"rotation":-16,"z_index":-95,"modulate":Color(0.83,0.92,0.90,1)},
+	{"id":"bank_track_lower","texture":"res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png","pos":Vector2(0.259,0.72),"scale":Vector2(0.52,0.52),"rotation":-19,"z_index":-90,"modulate":Color(0.82,0.78,0.66,0.92)},
+	{"id":"bank_track_mid","texture":"res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png","pos":Vector2(0.461,0.545),"scale":Vector2(0.48,0.48),"rotation":-24,"z_index":-90,"modulate":Color(0.80,0.77,0.67,0.77)},
+	{"id":"bank_track_upper","texture":"res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png","pos":Vector2(0.733,0.378),"scale":Vector2(0.54,0.54),"rotation":-28,"z_index":-90,"modulate":Color(0.82,0.78,0.67,0.9)},
+	{"id":"bank_track_last","texture":"res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png","pos":Vector2(0.919,0.205),"scale":Vector2(0.42,0.42),"rotation":-26,"z_index":-90,"modulate":Color(0.83,0.81,0.70,0.86)},
+	{"id":"fire_circle","texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png","pos":Vector2(0.535,0.491),"scale":Vector2(0.49,0.49),"rotation":-16,"z_index":-90,"modulate":Color(0.74,0.70,0.64,0.36)},
+	{"id":"bank_beach","texture":"res://art/modules/ground/road_gravel_scatter_a.png","pos":Vector2(0.477,0.681),"scale":Vector2(0.66,0.66),"rotation":-22,"z_index":-90,"modulate":Color(0.74,0.70,0.64,0.7)},
+	{"id":"boat","texture":"res://art/modules/four_settlements_20261030e/ferry_boat.png","pos":Vector2(0.746,0.738),"scale":Vector2(0.23,0.23),"rotation":57,"z_index":-69,"modulate":Color(0.88,0.86,0.80,1)},
+	{"id":"bank_shrub_west","texture":"res://art/modules/miao_town_20261029f/bank_shrub.png","pos":Vector2(0.428,0.724),"scale":Vector2(0.27,0.27),"rotation":12,"z_index":-66,"modulate":Color(0.77,0.84,0.66,1)},
+	{"id":"bank_shrub_east","texture":"res://art/modules/miao_town_20261029f/bank_shrub.png","pos":Vector2(0.889,0.579),"scale":Vector2(0.22,0.22),"rotation":-12,"z_index":-66,"modulate":Color(0.76,0.86,0.69,1)},
+	{"id":"bank_shrub_upper","texture":"res://art/modules/miao_town_20261029f/bank_shrub.png","pos":Vector2(0.843,0.526),"scale":Vector2(0.2,0.2),"rotation":4,"z_index":-66,"modulate":Color(0.76,0.86,0.69,1)},
+	{"id":"camp_cook_shelter","texture":"res://art/modules/riverside_visual_20261101a/shelter_v1.png","pos":Vector2(0.409,0.354),"scale":Vector2(0.29,0.29),"sort_by_feet":true,"depth_sort_foot_y":0.448,"modulate":Color(0.92,0.89,0.82,1)},
+	{"id":"camp_cookfire","texture":"res://art/modules/prop/linxi_brazier_forge_v1.png","pos":Vector2(0.554,0.452),"scale":Vector2(0.26,0.26),"sort_by_feet":true,"depth_sort_foot_y":0.489,"modulate":Color(0.95,0.89,0.81,1)},
+	{"id":"camp_supply_sacks","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png","pos":Vector2(0.531,0.413),"scale":Vector2(0.105,0.105),"sort_by_feet":true,"depth_sort_foot_y":0.438,"modulate":Color(0.92,0.86,0.74,1)},
+	{"id":"camp_supply_crate","texture":"res://art/modules/luoyang_district_life_20261016f/stock_crate.png","pos":Vector2(0.622,0.37),"scale":Vector2(0.59,0.59),"sort_by_feet":true,"depth_sort_foot_y":0.4,"modulate":Color(0.91,0.87,0.77,1)},
+	{"id":"camp_willow","texture":"res://art/modules/four_settlements_20261030e/willow.png","pos":Vector2(0.205,0.472),"scale":Vector2(0.30,0.30),"sort_by_feet":true,"depth_sort_foot_y":0.534,"modulate":Color(0.84,0.93,0.77,1)},
+	{"id":"downstream_willow","texture":"res://art/modules/four_settlements_20261030e/willow.png","pos":Vector2(0.29,0.967),"scale":Vector2(0.31,0.31),"sort_by_feet":true,"depth_sort_foot_y":1.03,"modulate":Color(0.86,0.93,0.81,1)},
+	{"id":"north_screen","texture":"res://art/modules/miao_recompose_20261029g/rock_bank.png","pos":Vector2(0.625,0.182),"scale":Vector2(0.38,0.38),"sort_by_feet":true,"depth_sort_foot_y":0.268,"modulate":Color(0.79,0.84,0.72,1)},
+	{"id":"upper_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.797,0.18),"scale":Vector2(0.37,0.37),"sort_by_feet":true,"depth_sort_foot_y":0.291,"modulate":Color(0.92,0.96,0.86,1)},
+	{"id":"west_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.075,0.591),"scale":Vector2(0.35,0.35),"sort_by_feet":true,"depth_sort_foot_y":0.687,"modulate":Color(0.91,0.96,0.85,1)},
+	{"id":"west_driftwood","texture":"res://art/modules/prop/prop_linxi_barrel_wood_a.png","pos":Vector2(0.17,0.669),"scale":Vector2(0.43,0.43),"sort_by_feet":true,"depth_sort_foot_y":0.694,"modulate":Color(0.84,0.83,0.73,1)},
+	{"id":"ford_stones","texture":"res://art/modules/prop/prop_ruin_rubble_pile.png","pos":Vector2(0.365,0.770),"scale":Vector2(0.52,0.52),"sort_by_feet":true,"depth_sort_foot_y":0.793,"modulate":Color(0.76,0.81,0.75,1)}
+]
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"cook_shelter_foot","pos":Vector2(0.402,0.419),"size":Vector2(0.183,0.043),"walkability_margin":0.0},
+	{"id":"camp_cookfire_base","pos":Vector2(0.554,0.478),"size":Vector2(0.054,0.036),"walkability_margin":0.0},
+	{"id":"camp_supply_sacks_base","pos":Vector2(0.534,0.427),"size":Vector2(0.065,0.024),"walkability_margin":0.0},
+	{"id":"camp_supply_crate_base","pos":Vector2(0.622,0.392),"size":Vector2(0.039,0.024),"walkability_margin":0.0},
+	{"id":"camp_willow_trunk","pos":Vector2(0.205,0.524),"size":Vector2(0.034,0.025),"walkability_margin":0.0},
+	{"id":"west_driftwood_base","pos":Vector2(0.17,0.686),"size":Vector2(0.033,0.026),"walkability_margin":0.0}
+]
+interactions = []
+portals = [
+	{"id":"return_to_zhuwei_riverbank","pos":Vector2(0.10,0.82),"size":Vector2(0.09,0.09),"label":"返回竹尾河滩","target_scene":"ch2_s1_zhuwei_market","target_pos":Vector2(0.866,0.415),"marker_rotation_degrees":90.0}
+]
+walkable_probes = [
+	{"id":"route_0", "pos":Vector2(0.4645, 0.5509)}
+]
+blocked_probes = [
+	{"id":"top_left_margin", "pos":Vector2(0.01, 0.01)},
+	{"id":"top_right_margin", "pos":Vector2(0.99, 0.01)}
+]

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"bianzhou_flying_rope"
+display_name = "飞索高顺"
+title = "截驿盗牍"
+description = "惯用飞索攀车，截取官驿文牍后勒索失主，身旁少有同党。"
+board_city = &"bianzhou"
+recommended_min_level = 2
+recommended_max_level = 4
+enemy_ids = Array[StringName]([&"bounty_gao_shun"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 废马棚","pos":Vector2(0.70,0.54)},{"scene_id":&"ch1_s1_road","label":"林西官道 · 残碑北坡","pos":Vector2(0.86,0.47)}])
+reward_reputation = 10
+reward_training = 18
+reward_exp = 35
+reward_gold = 30
+reward_items = Array[Dictionary]([{"item_id":&"life_extend_pill","count":1}])
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"

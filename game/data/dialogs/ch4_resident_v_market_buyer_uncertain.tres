@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "采买妇人"
+portrait_path = ""
+text = "你正替纸铺跑腿？手艺人的活，急也得照规矩来。"
+voice_emotion = "concerned"
+on_end = "next:reply"
+
+[sub_resource type="Resource" id="reply"]
+script = ExtResource("2")
+node_id = &"reply"
+speaker = "采买妇人"
+portrait_path = ""
+text = "街上说法多，你问过当事人再拿主意。买东西尚且要验看，何况是人家的事。"
+voice_emotion = "concerned"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_resident_v_market_buyer_uncertain"
+entry_node_id = &"start"
+required_story_flag = &"luoyang_paper_started"
+nodes = Array[Resource]([SubResource("start"), SubResource("reply")])

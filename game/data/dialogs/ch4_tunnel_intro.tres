@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "赵思颖"
+text = "正殿香灰下有新鲜车轮印，墙后还透着风。这里运货靠的不是寺门，是地道。"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "外面的人已经惊动，幕后首领会从地道撤走。现在进去。"
+accept_quest = &"q_ch4_main_04_tunnel_mastermind"
+on_end = "scene:ch4_s5_temple_tunnel"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_tunnel_intro"
+required_story_flag = &"chapter3_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

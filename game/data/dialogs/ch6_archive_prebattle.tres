@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "茗雾销卷使"
+text = "退回去。这些只是抄错的废册，留着只会让更多人拿假名字互相寻仇。"
+voice_emotion = "threat"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "若只是错抄，你们不会带火油，也不会带两枚不同的封蜡。把册子放下。"
+on_end = "next:fight"
+
+[sub_resource type="Resource" id="fight"]
+script = ExtResource("2")
+node_id = &"fight"
+speaker = "茗雾焚册客"
+text = "他认得封蜡。动手，别让他带一页出去。"
+voice_emotion = "threat"
+on_end = "battle_group_then:ch6_archive_reclaimer,ch6_archive_burner:ch6_archive_victory"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_archive_prebattle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero"), SubResource("fight")])

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_07_confirm_xueying_identity"
+title = "影归其名"
+kind = 0
+desc_not_started = "三项身份材料已经齐备，需要由聚义厅公开核对结论。"
+desc_in_progress = "回烈云聚义厅与戚云笙逐项核对权限、目击和行动轨迹。"
+desc_completed = "实际使用薛影名下权限、在死亡记录后持续行动的人，确认就是薛影本人。身份已经确认，幕后授权与完整行动动机仍待追查。"
+tracker_hint = "烈云分舵 · 聚义厅"
+completion_triggers = Array[String](["flag_set:ch7_xueying_identity_confirmed"])
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 0
+reward_exp = 160
+reward_items = Array[Dictionary]([])

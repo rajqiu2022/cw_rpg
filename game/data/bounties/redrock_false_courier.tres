@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"redrock_false_courier"
+display_name = "破封卢循"
+title = "冒差截信"
+description = "卢循假扮驿卒，在赤岩官道收了几封急信。被认出来后，他跟着东行车队混进了中原旧驿。"
+board_city = &"redrock"
+recommended_min_level = 5
+recommended_max_level = 7
+enemy_ids = Array[StringName]([&"warrant_redrock_false_courier"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 南来官道","pos":Vector2(0.49,0.71)},{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 废马棚外","pos":Vector2(0.7,0.54)}])
+reward_reputation = 15
+reward_training = 24
+reward_exp = 54
+reward_gold = 90
+field_sprite_path = "res://art/characters/npc_zhuwei_escort_idle_down_25d_4f.png"

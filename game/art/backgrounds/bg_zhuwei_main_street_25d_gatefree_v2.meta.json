@@ -1,0 +1,27 @@
+{
+  "id": "scene_zhuwei_main_street_25d_gatefree_v2",
+  "template": "scene_background_prerendered_arpg",
+  "category": "scene_background/ch1/zhuwei-main-street/v2",
+  "model": "gpt-image-2",
+  "backend": "alapi",
+  "vars": {
+    "scene_name": "Zhuwei Village Main Street, playable 2.5D wuxia RPG level",
+    "scene_desc": "A sunlit bamboo-and-river village market seen from a fixed elevated three-quarter camera. The ground is a broad stone-paved street with irregular slabs, clean walkable lanes and distinct levels. A timber inn and market stalls occupy the upper-left, a small riverside shop occupies the upper-right, a low stone bridge crosses a narrow stream in the distant upper centre, and bamboo groves frame the far edges. The lower-right edge must end in a completely open continuous stone road for a scene exit. Do not include any gate, arch, doorframe, posts, hanging banners, fence across that exit, or any foreground object that blocks it. This must read as a real playable pre-rendered game level, not a loading screen or a flat design illustration.",
+    "time_of_day": "clear late morning with warm sunlight and crisp cast shadows",
+    "weather": "clear",
+    "key_elements": "solid timber houses with visible wall thickness and deep roof overhangs, raised steps, market awnings, bridge, stream, bamboo, barrels, pottery, open central street, open lower-right exit road, no characters, no NPCs, no gate or door frame"
+  },
+  "prompt": "Use the reference image for spatial language only: camera angle, building volume,\nroof overhang, wall height, contact shadows, occlusion, courtyard ground plane,\nclutter scale, fences, barrels, drying racks, and strong separation between\nbuildings and walkable ground.\n\nCreate a complete pre-rendered isometric ARPG environment background for a playable scene.\nThis is a game level screenshot style background, not concept art, not a flat illustration.\n\nScene: Zhuwei Village Main Street, playable 2.5D wuxia RPG level\nDescription: A sunlit bamboo-and-river village market seen from a fixed elevated three-quarter camera. The ground is a broad stone-paved street with irregular slabs, clean walkable lanes and distinct levels. A timber inn and market stalls occupy the upper-left, a small riverside shop occupies the upper-right, a low stone bridge crosses a narrow stream in the distant upper centre, and bamboo groves frame the far edges. The lower-right edge must end in a completely open continuous stone road for a scene exit. Do not include any gate, arch, doorframe, posts, hanging banners, fence across that exit, or any foreground object that blocks it. This must read as a real playable pre-rendered game level, not a loading screen or a flat design illustration.\nTime: clear late morning with warm sunlight and crisp cast shadows\nWeather: clear\nKey elements: solid timber houses with visible wall thickness and deep roof overhangs, raised steps, market awnings, bridge, stream, bamboo, barrels, pottery, open central street, open lower-right exit road, no characters, no NPCs, no gate or door frame\n\nHard gameplay composition rules:\n- 1536x1024 landscape. Keep all important playable content inside the central 16:9 safe area.\n- Fixed isometric / three-quarter top-down camera like an old 2.5D action RPG.\n- Buildings must be solid occluding volumes standing on the ground plane, not painted flat onto the floor.\n- Every building must show visible vertical walls, roof thickness, roof overhangs, beams/posts, stairs, and a dark contact shadow where it meets the ground.\n- Leave a clear walkable courtyard / dirt road network through the center, wide enough for a player character to walk.\n- Use fences, barrels, jars, baskets, drying cloth, grass tufts, stone slabs, and small props to show scale, but keep paths readable.\n- Put larger buildings along the top/left/right edges so they can naturally block movement and cast shadows into the courtyard.\n- No characters, no NPCs, no animals, no cursor, no UI, no text, no logo, no watermark.\n\nVisual target:\n- Pre-rendered 3D diorama feeling with hand-painted wuxia textures.\n- Strong depth cues: occlusion, cast shadows, wall thickness, raised steps, object silhouettes.\n- Muted realistic ground material with stone, dirt, weeds, and worn paths, closer to a game level than a poster.\n- Chinese mountain village architecture, wooden beams, tile / thatch roofs, old fences, rural clutter.\n- Keep a subtle wuxia mood and painterly finish, but do not make it a flat Hong Kong comic background.\n\nNegative: flat concept art, poster illustration, buildings merged with ground,\nno contact shadows, no vertical walls, flat roofs painted on floor, clean empty plaza,\ntop-down 2D tilemap, tileset, atlas, sprite sheet, characters, NPCs, animals, UI,\ntext, watermark, logo, photo-realistic modern 3D, low-poly cartoon, 现代服装，3D CG 渲染感，照片级写实，\n网络红人脸，二次元萌系，迪士尼风，\n水印，签名，文字乱码，\n繁体中文，繁体字，traditional chinese characters，\n错字，简化字写错，\n整体灰暗，雾蒙蒙，低饱和，沉郁压抑，黯淡无光，灰蒙蒙的色调",
+  "size": "1536x1024",
+  "quality": "high",
+  "background": "opaque",
+  "reference_images": [
+    "F:\\Code\\RPG_GAME\\assets\\_style_bible\\scene_reference\\ref_prerendered_arpg_village.png"
+  ],
+  "usage": 1,
+  "cost": 1.2,
+  "currency": "CNY",
+  "generated_at": "2026-07-31T09:45:23.943701+00:00",
+  "attempt": 1,
+  "fallback_used": false
+}

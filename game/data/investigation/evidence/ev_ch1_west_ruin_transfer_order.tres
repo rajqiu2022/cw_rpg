@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch1_west_ruin_transfer_order"
+display_name = "城西废宅转运密令"
+description = "废宅货单把药材与兵器分路转运，另一张残页记录数名活口被送往竹尾河滩。文件没有署名，封蜡近似茗雾山庄旧制，也可能是刻意留下的误导。"
+chapter = 1
+category = &"document"
+source_hint = "竹尾村城西废宅"
+related_testimony_ids = Array[StringName]([&"ts_ch1_zhao_gatekeeper"])
+tags = Array[StringName]([&"transfer_order", &"medicine", &"weapons", &"river"])

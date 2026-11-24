@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]守卫身后的破货箱里混着药材、短兵器和捆人的粗麻绳。箱角的三道斜刻，与后山洞窟中的货箱完全一致。[/i]"
+on_end = "next:n2"
+
+[sub_resource type="Resource" id="node_2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "洞窟只是临时藏货点，废宅才是转运中枢。药材、兵器，还有被掳的人，都从这里分路送走。"
+on_end = "next:n3"
+
+[sub_resource type="Resource" id="node_3"]
+script = ExtResource("2_dnode")
+node_id = &"n3"
+speaker = ""
+text = "[i]箱底压着一张残缺交接单。落款没有姓名，只有“赵堂主验收”五字。[/i]"
+set_flags = Array[Dictionary]([{"key": "ruin_shipping_marks_found", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s3_ruin_shipping_marks"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3")])

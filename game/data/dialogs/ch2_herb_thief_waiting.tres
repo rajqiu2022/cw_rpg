@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "沈伯"
+text = "足印往北林的破庙去了。先看清是谁刨的参，免得错怪了人。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch2_herb_thief_waiting"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

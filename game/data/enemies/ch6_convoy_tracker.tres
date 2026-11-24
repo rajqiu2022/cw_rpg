@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+enemy_id = &"ch6_convoy_tracker"
+display_name = "茗雾寻迹者"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/ch6_mingwu_20261122/tracker/ready.tres"
+battle_actor_scale = 0.9156
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/tracker/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/tracker/ready.tres", "res://art/sprites/battle/ch6_mingwu_20261122/tracker/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/tracker/ready.tres", "res://art/sprites/battle/ch6_mingwu_20261122/tracker/draw.tres", "res://art/sprites/battle/ch6_mingwu_20261122/tracker/strike.tres", "res://art/sprites/battle/ch6_mingwu_20261122/tracker/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/tracker/hit1.tres", "res://art/sprites/battle/ch6_mingwu_20261122/tracker/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/tracker/kneel.tres", "res://art/sprites/battle/ch6_mingwu_20261122/tracker/down.tres")
+level = 10
+max_hp = 420
+max_mp = 90
+attack = 92
+defense = 17
+speed = 26
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_saofeng", &"blood_shadow_scattering_darts"])
+aggression = 0.74
+drop_gold_min = 45
+drop_gold_max = 70
+drop_exp = 85
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"inner_breath_pill", "chance":0.30, "count":1}])

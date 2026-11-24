@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "失踪脚夫"
+text = "这是原始货单。收货人用了烈云盟暗号，可押运人的腰牌新得连汗渍都没有。"
+add_evidence = Array[StringName]([&"ev_ch4_canal_original_manifest"])
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "赵思颖"
+text = "他的内伤拖不得，东岸那名信使却正带着余下文书逃走。你我必须立刻分工。"
+choices = Array[Dictionary]([
+	{
+		"text": "留下救治脚夫，先保住活证",
+		"next": "rescue_first",
+		"add_testimonies": ["ts_ch4_canal_witness_night_transfer"],
+		"companion_trust_changes": [{"id": "zhao_siying", "delta": 8}],
+		"bond_events": [{"companion": "zhao_siying", "event": "ch4_saved_witness_together"}],
+		"city_outcomes": [{"city": "luoyang", "key": "canal_witness_alive", "value": true}],
+		"method_flags": [{"key": "ch4_rescue_witness_first", "value": true}]
+	},
+	{
+		"text": "由你施救，我去截住信使",
+		"next": "pursue_first",
+		"add_evidence": ["ev_ch4_courier_complete_fragment"],
+		"add_testimonies": ["ts_ch4_captured_courier_orders"],
+		"companion_trust_changes": [{"id": "zhao_siying", "delta": 3}],
+		"bond_events": [{"companion": "zhao_siying", "event": "ch4_divided_rescue_and_pursuit"}],
+		"city_outcomes": [{"city": "luoyang", "key": "courier_captured", "value": true}],
+		"method_flags": [{"key": "ch4_pursue_courier_first", "value": true}]
+	}
+])
+[sub_resource type="Resource" id="rescue_first"]
+script = ExtResource("2")
+node_id = &"rescue_first"
+speaker = "失踪脚夫"
+text = "我记得他们换船的次序，也记得领头人故意亮出烈云盟暗号。只要我活着，就能去府衙作证。"
+verify_evidence = Array[StringName]([&"ev_ch4_canal_original_manifest"])
+verify_testimonies = Array[StringName]([&"ts_ch4_canal_witness_night_transfer"])
+on_end = "next:finish"
+[sub_resource type="Resource" id="pursue_first"]
+script = ExtResource("2")
+node_id = &"pursue_first"
+speaker = "冷孤云"
+text = "残卷已经追回，信使也被扣下。赵姑娘还在救人，先把文书与货单合在一起核对。"
+verify_evidence = Array[StringName]([&"ev_ch4_canal_original_manifest", &"ev_ch4_courier_complete_fragment"])
+verify_testimonies = Array[StringName]([&"ts_ch4_captured_courier_orders"])
+on_end = "next:finish"
+[sub_resource type="Resource" id="finish"]
+script = ExtResource("2")
+node_id = &"finish"
+speaker = "冷孤云"
+text = "两条线最终都指向古寺。先把人和文书交给府衙，再去看看是谁急着替江湖选一个凶手。"
+set_flags = Array[Dictionary]([{"key":"ch4_canal_witness_saved","value":true}, {"key":"ch4_canal_investigation_complete","value":true}])
+complete_quest = &"q_ch4_main_03_canal_witness"
+on_end = "scene:ch4_s4_ancient_temple"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_canal_result"
+required_story_flag = &"chapter3_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b"), SubResource("rescue_first"), SubResource("pursue_first"), SubResource("finish")])

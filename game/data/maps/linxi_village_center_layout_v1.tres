@@ -1,0 +1,122 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.025, 0.985, 0.025, 0.600, 0.105, 0.475, 0.235, 0.385, 0.330, 0.285, 0.360, 0.080, 0.945, 0.080, 0.945, 0.950, 0.725, 0.950, 0.610, 0.875, 0.500, 0.920, 0.340, 0.885, 0.180, 0.975),
+	PackedVector2Array(0.680, 0.470, 0.985, 0.470, 0.985, 0.600, 0.680, 0.600)
+])
+visual_objects = [
+	{
+		"id": "village_well",
+		"texture": "res://art/modules/linxi_center_well_depth_prop_v1.png",
+		"pos": Vector2(0.525, 0.455),
+		"scale": Vector2(0.44, 0.40),
+		"sort_by_feet": true,
+		"depth_sort_foot_y": 0.515,
+		"collision_offset": Vector2(0.008, 0.027),
+		"collision_size": Vector2(0.070, 0.052)
+	}
+]
+occluders = [
+	{
+		"id": "southeast_house_foreground",
+		"blocker_id": "southeast_house",
+		"source_texture_path": "res://art/backgrounds/bg_linxi_village_center_25d_v2_three_routes.png",
+		"mask_texture_path": "res://art/backgrounds/bg_linxi_village_center_25d_v3_clean_plate.png",
+		"cover_polygon": PackedVector2Array(0.704, 0.605, 0.868, 0.634, 0.913, 0.695, 0.900, 0.722, 0.900, 0.849, 0.875, 0.884, 0.685, 0.860, 0.650, 0.790, 0.642, 0.700),
+		"fade_region": PackedVector2Array(0.610, 0.720, 0.940, 0.720, 0.940, 0.930, 0.610, 0.930),
+		"isolate_difference": true,
+		"difference_threshold": 0.12,
+		"difference_softness": 0.08,
+		"actor_faded_alpha": 0.46
+	}
+]
+blockers = [
+	{"id": "apothecary_building", "pos": Vector2(0.155, 0.290), "size": Vector2(0.285, 0.190)},
+	{"id": "north_house", "pos": Vector2(0.455, 0.160), "size": Vector2(0.205, 0.205)},
+	{"id": "east_house", "pos": Vector2(0.885, 0.330), "size": Vector2(0.180, 0.200)},
+	{"id": "southeast_house", "pos": Vector2(0.775, 0.745), "size": Vector2(0.235, 0.185)},
+	{"id": "south_fence", "pos": Vector2(0.500, 0.975), "size": Vector2(0.260, 0.050)}
+]
+interactions = [
+	{
+		"id": "linxi_center_well",
+		"pos": Vector2(0.525, 0.545),
+		"size": Vector2(0.120, 0.120),
+		"action": "dialog:linxi_center_well",
+		"activation": "interact"
+	}
+]
+portals = [
+	{
+		"id": "to_tutorial_courtyard",
+		"pos": Vector2(0.105, 0.865),
+		"size": Vector2(0.135, 0.145),
+		"label": "返回师徒院落",
+		"target_scene": "linxi_tutorial",
+		"target_pos": Vector2(0.865, 0.820)
+	},
+	{
+		"id": "to_mountain_road",
+		"pos": Vector2(0.820, 0.105),
+		"marker_offset": Vector2(-0.045, 0.045),
+		"size": Vector2(0.135, 0.145),
+		"label": "前往村外山道",
+		"target_scene": "ch1_s1_road",
+		"target_pos": Vector2(0.120, 0.835),
+		"require_flag": "got_sword",
+		"locked_label": "先向杜师傅领取佩剑"
+	},
+	{
+		"id": "to_linxi_south_district",
+		"pos": Vector2(0.950, 0.525),
+		"marker_offset": Vector2(0.0, 0.0),
+		"size": Vector2(0.085, 0.125),
+		"label": "前往林西村南坊",
+		"target_scene": "linxi_village_scrollmap",
+		"target_pos": Vector2(0.220, 0.600)
+	},
+	{
+		"id": "enter_scholar_house",
+		"pos": Vector2(0.455, 0.310),
+		"size": Vector2(0.090, 0.070),
+		"label": "进入私塾旧宅",
+		"target_scene": "linxi_scholar_house",
+		"target_pos": Vector2(0.500, 0.760)
+	},
+	{
+		"id": "enter_farmer_cottage",
+		"pos": Vector2(0.835, 0.470),
+		"size": Vector2(0.090, 0.075),
+		"label": "进入村民家",
+		"target_scene": "linxi_farmer_cottage",
+		"target_pos": Vector2(0.500, 0.760)
+	},
+	{
+		"id": "enter_herbal_home",
+		"pos": Vector2(0.835, 0.875),
+		"size": Vector2(0.090, 0.075),
+		"label": "进入采药人家",
+		"target_scene": "linxi_herbal_home",
+		"target_pos": Vector2(0.500, 0.760)
+	}
+]
+walkable_probes = [
+	{"id": "courtyard_arrival", "pos": Vector2(0.120, 0.850)},
+	{"id": "south_square", "pos": Vector2(0.330, 0.760)},
+	{"id": "central_square", "pos": Vector2(0.500, 0.620)},
+	{"id": "well_front", "pos": Vector2(0.525, 0.545)},
+	{"id": "apothecary_front", "pos": Vector2(0.280, 0.430)},
+	{"id": "road_arrival", "pos": Vector2(0.820, 0.165)},
+	{"id": "south_district_exit", "pos": Vector2(0.950, 0.525)}
+]
+blocked_probes = [
+	{"id": "northwest_scenery", "pos": Vector2(0.080, 0.120)},
+	{"id": "northwest_roofline", "pos": Vector2(0.250, 0.100)}
+]

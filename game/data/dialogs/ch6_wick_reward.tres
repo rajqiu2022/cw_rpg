@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="林西送药人"
+text="针尾和镖尖上的都是寻常麻毒。这块丹砂佩给你，贴身戴，毒发时能少伤一半气血。若见有人双袖冒青烟，那是另一回事，先护住自己再接招。"
+set_flags=Array[Dictionary]([{"key":"ch6_wick_returned","value":true}])
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch6_wick_reward"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])
+required_free_inventory_slots=1

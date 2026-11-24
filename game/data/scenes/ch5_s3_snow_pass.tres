@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/dialogs/ch5_snow_pass_intro.tres" id="2_intro"]
+[ext_resource type="Resource" path="res://data/maps/ch5_s3_snow_pass_layout_v2.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="98_native_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("98_native_extent")
+logical_size = Vector2i(1920, 1280)
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch5_s3_snow_pass"
+display_name = "古峰 · 雪岭关"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
+on_enter_dialog = ExtResource("2_intro")
+on_enter_require_flag = &"ch5_false_banner_cloth_found"
+on_enter_once_flag = &"seen_ch5_snow_pass_intro"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+player_spawn = Vector2(0.25,0.90)
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids": [&"ch5_snow_pass_pursuer"], "weight": 45.0},
+	{"enemy_ids": [&"ch5_false_liuyun_striker"], "weight": 4.0},
+	{"enemy_ids": [&"gufeng_snow_bear"], "weight": 16.0},
+	{"enemy_ids": [&"ch5_snow_pass_pursuer", &"ch5_false_liuyun_striker"], "weight": 22.0},
+	{"enemy_ids": [&"ch5_snow_pass_pursuer", &"ch5_false_liuyun_striker", &"ch5_snow_pass_pursuer"], "weight": 8.0},
+	{"enemy_ids": [&"wild_elite_snow"], "weight": 5.0}
+])
+encounter_allow_full_group_for_solo = true
+encounter_step_distance = 760.0
+encounter_chance = 0.11
+encounter_require_flag = &"ch5_snow_pass_cleared"
+animated_props = Array[Dictionary]([{"id":"ch5_snow_pass_crosswind","type":"snow_drift","pos":Vector2(0.50,0.46),"size":Vector2(0.98,0.82),"speed":0.95,"opacity":0.46,"count":18,"wind_x":0.46,"color":"#f1f6f4","z_index":31},{"id":"ch5_snow_pass_low_mist","type":"mist_drift","pos":Vector2(0.54,0.710),"size":Vector2(0.86,0.13),"speed":0.40,"opacity":0.08,"count":4,"color":"#e4e9e6","z_index":12}])
+npcs = Array[Dictionary]([
+	{"npc_id":"ch5_patrol_post_2","npc_name":"截路哨","pos":Vector2(0.62,0.61),"dialog_id":"ch5_patrol_post_2","sprite_path":"res://art/characters/npc_west_ruin_guard_idle_down_25d_4f.png","require_quest_active":"q_ch5_side_02_patrol_blades","hide_flag":"ch5_patrol_two","require_flag":"ch5_patrol_one"}
+])
+hotspots = Array[Dictionary]([
+	{"label":"突破雪岭截路者", "pos_x":0.52, "pos_y":0.51, "action":"dialog:ch5_snow_pass_battle", "require_flag":"ch5_false_banner_cloth_found", "hide_flag":"ch5_snow_pass_cleared"}
+])
+exits = Array[Dictionary]([
+	{"label":"返回护粮营地", "pos":Vector2(0.25,0.92), "size":Vector2(0.14,0.12), "target_scene":"ch5_s2_grain_convoy_camp", "target_pos":Vector2(0.84,0.17)},
+	{"label":"进入废弃矿道", "pos":Vector2(0.84,0.12), "size":Vector2(0.12,0.12), "target_scene":"ch5_s4_abandoned_mine", "target_pos":Vector2(0.49,0.88), "require_flag":"ch5_snow_pass_cleared"}
+])

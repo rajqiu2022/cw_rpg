@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536,1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.405,0.995, 0.595,0.995, 0.650,0.820, 0.790,0.700, 0.790,0.230, 0.650,0.155, 0.580,0.105, 0.420,0.105, 0.350,0.155, 0.210,0.230, 0.210,0.700, 0.350,0.820),
+	PackedVector2Array(0.240,0.245, 0.075,0.245, 0.070,0.505, 0.205,0.540, 0.350,0.455, 0.350,0.285),
+	PackedVector2Array(0.650,0.245, 0.820,0.245, 0.930,0.285, 0.930,0.520, 0.795,0.545, 0.650,0.455)
+])
+blockers = Array[Dictionary]([
+	{"id":"left_lower_table", "pos":Vector2(0.305,0.520), "size":Vector2(0.095,0.220)},
+	{"id":"right_lower_table", "pos":Vector2(0.695,0.520), "size":Vector2(0.095,0.220)},
+	{"id":"left_record_table", "pos":Vector2(0.130,0.350), "size":Vector2(0.125,0.130)},
+	{"id":"rear_archive_door", "pos":Vector2(0.500,0.070), "size":Vector2(0.205,0.085)}
+])
+interactions = Array[Dictionary]([])
+portals = Array[Dictionary]([
+	{"id":"return_to_lieyun_outer_ward", "pos":Vector2(0.500,0.925), "size":Vector2(0.130,0.105), "label":"返回分舵外区", "target_scene":"ch7_s3_lieyun_outpost_outer_ward", "target_pos":Vector2(0.500,0.180), "marker_rotation_degrees":180.0},
+	{"id":"enter_lieyun_resettlement_archive", "pos":Vector2(0.500,0.175), "size":Vector2(0.120,0.085), "label":"进入安置档案室", "target_scene":"ch7_s7_lieyun_resettlement_archive", "target_pos":Vector2(0.500,0.875), "require_flag":"ch7_dead_code_routes_opened"}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"hall_spawn", "pos":Vector2(0.500,0.875)},
+	{"id":"council_floor", "pos":Vector2(0.500,0.545)},
+	{"id":"public_records_front", "pos":Vector2(0.245,0.340)},
+	{"id":"witness_desk_front", "pos":Vector2(0.745,0.350)},
+	{"id":"qi_yunsheng_position", "pos":Vector2(0.570,0.250)},
+	{"id":"outer_ward_return", "pos":Vector2(0.500,0.925)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"left_lower_table", "pos":Vector2(0.305,0.520)},
+	{"id":"right_lower_table", "pos":Vector2(0.695,0.520)},
+	{"id":"left_record_table", "pos":Vector2(0.130,0.350)},
+	{"id":"rear_archive_door", "pos":Vector2(0.500,0.070)}
+])

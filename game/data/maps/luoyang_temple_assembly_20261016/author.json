@@ -1,0 +1,1436 @@
+{
+  "status": "READY_SOURCE_FEET_TEMPLE",
+  "scene_id": "ch4_s4_ancient_temple",
+  "coordinate_contract": "source_1536x1024_new_physical_feet_no_legacy42",
+  "texture_count": 9,
+  "ground": {
+    "texture": "res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png"
+  },
+  "assets": [
+    {
+      "id": "ground",
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/courtyard_floor_v1.png",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "source_ground_anchor_px": [
+        0,
+        0
+      ],
+      "source_sha256": "39c898f7ac8c409b7b244077dd30016c398b21313156c8fc36911ddc859a5c0e"
+    },
+    {
+      "id": "hall",
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/temple_hall_v1.png",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "source_ground_anchor_px": [
+        768,
+        880
+      ],
+      "source_sha256": "8868b0d665f7fc24dd117fe06c7b36a0cf7d95f835858bf6e780af249f7880cf"
+    },
+    {
+      "id": "buddha",
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/broken_buddha_v1.png",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "source_ground_anchor_px": [
+        627,
+        1213
+      ],
+      "source_sha256": "4e6bb9f62b99f27f9c8c62b05b521d60fcf3cec723881488e27a7d84e57190da"
+    },
+    {
+      "id": "altar",
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/low_incense_altar_v1.png",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "source_ground_anchor_px": [
+        768,
+        843
+      ],
+      "source_sha256": "a3ff96b7e39de9186471178d6e4535fb970534cd1db72b44eb5212f3818faf3e"
+    },
+    {
+      "id": "wall",
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/broken_vermilion_wall_v1.png",
+      "size_px": [
+        1536,
+        1024
+      ],
+      "source_ground_anchor_px": [
+        768,
+        750
+      ],
+      "source_sha256": "4a87da86e62cdb8a9f59e2cca448db150e44945747be2f41aa14a8de08172447"
+    },
+    {
+      "id": "bell",
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/ancient_bell_v1.png",
+      "size_px": [
+        1254,
+        1254
+      ],
+      "source_ground_anchor_px": [
+        627,
+        1195
+      ],
+      "source_sha256": "0c03b559c093fea233b8efcb01dd7f92177cdb10bf6818518776be9acdaaa0d6"
+    },
+    {
+      "id": "bamboo0",
+      "size_px": [
+        53,
+        92
+      ],
+      "source_ground_anchor_px": [
+        20,
+        87
+      ],
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/reuse_bamboo0.png",
+      "source_identity": "Exact native 45 degree CC0 source; reused only at courtyard edges, not claimed new 30 degree model",
+      "source_sha256": "73e6500323ee2037fbe1cd6897f28e8771ddae5771754668e8089fad78089998"
+    },
+    {
+      "id": "bamboo1",
+      "size_px": [
+        53,
+        105
+      ],
+      "source_ground_anchor_px": [
+        30,
+        99
+      ],
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/reuse_bamboo1.png",
+      "source_identity": "Exact native 45 degree CC0 source; reused only at courtyard edges, not claimed new 30 degree model",
+      "source_sha256": "5e1fe641b7350f3967c8c65afcf65b396a241d6c0d68e796f2bcb2afee3eb403"
+    },
+    {
+      "id": "boulder0",
+      "size_px": [
+        139,
+        119
+      ],
+      "source_ground_anchor_px": [
+        20,
+        51
+      ],
+      "texture": "res://art/modules/ancient_temple_assembled_20261016/reuse_boulder0.png",
+      "source_identity": "Exact native 45 degree CC0 source; reused only at courtyard edges, not claimed new 30 degree model",
+      "source_sha256": "a9e030816202db255f317ac1832ed6c321851c0464ee243dd5bfeb194d7fa97f"
+    }
+  ],
+  "placements": [
+    {
+      "id": "temple_main_hall",
+      "asset_id": "hall",
+      "foot_px": [
+        768,
+        520
+      ],
+      "scale": 0.56,
+      "fade_allowed": true,
+      "role": "closed_hall_front_doors_not_enterable"
+    },
+    {
+      "id": "temple_broken_buddha",
+      "asset_id": "buddha",
+      "foot_px": [
+        380,
+        550
+      ],
+      "scale": 0.2,
+      "fade_allowed": true,
+      "role": "visible_stone_base_near_longmen_mechanism_interaction_not_water_art"
+    },
+    {
+      "id": "temple_low_altar",
+      "asset_id": "altar",
+      "foot_px": [
+        768,
+        650
+      ],
+      "scale": 0.15,
+      "fade_allowed": false,
+      "role": "whole_low_table_opaque_masked_player_ghost"
+    },
+    {
+      "id": "temple_broken_wall",
+      "asset_id": "wall",
+      "foot_px": [
+        450,
+        760
+      ],
+      "scale": 0.2,
+      "fade_allowed": true,
+      "role": "southwest_fragment_keep_both_return_portals_clear"
+    },
+    {
+      "id": "temple_ancient_bell",
+      "asset_id": "bell",
+      "foot_px": [
+        1320,
+        620
+      ],
+      "scale": 0.2,
+      "fade_allowed": true,
+      "role": "real_bell_and_frame_no_walk_under_frame"
+    },
+    {
+      "id": "temple_edge_bamboo_00",
+      "asset_id": "bamboo0",
+      "foot_px": [
+        65,
+        260
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_01",
+      "asset_id": "bamboo1",
+      "foot_px": [
+        110,
+        370
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_02",
+      "asset_id": "bamboo0",
+      "foot_px": [
+        50,
+        490
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_03",
+      "asset_id": "bamboo1",
+      "foot_px": [
+        80,
+        620
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_04",
+      "asset_id": "bamboo0",
+      "foot_px": [
+        140,
+        900
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_05",
+      "asset_id": "bamboo1",
+      "foot_px": [
+        95,
+        985
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_06",
+      "asset_id": "bamboo0",
+      "foot_px": [
+        1460,
+        300
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_07",
+      "asset_id": "bamboo1",
+      "foot_px": [
+        1490,
+        400
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_08",
+      "asset_id": "bamboo0",
+      "foot_px": [
+        1470,
+        510
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_09",
+      "asset_id": "bamboo1",
+      "foot_px": [
+        1450,
+        820
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_10",
+      "asset_id": "bamboo0",
+      "foot_px": [
+        1480,
+        915
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_bamboo_11",
+      "asset_id": "bamboo1",
+      "foot_px": [
+        1430,
+        1000
+      ],
+      "scale": 1.6,
+      "fade_allowed": true,
+      "role": "boundary_vegetation_native_45_degree_reuse"
+    },
+    {
+      "id": "temple_edge_boulder_0",
+      "asset_id": "boulder0",
+      "foot_px": [
+        90,
+        100
+      ],
+      "scale": 0.48,
+      "fade_allowed": false,
+      "role": "small_boundary_stone_conservative_full_lower_ground_base"
+    },
+    {
+      "id": "temple_edge_boulder_1",
+      "asset_id": "boulder0",
+      "foot_px": [
+        1400,
+        100
+      ],
+      "scale": 0.48,
+      "fade_allowed": false,
+      "role": "small_boundary_stone_conservative_full_lower_ground_base"
+    },
+    {
+      "id": "temple_edge_boulder_2",
+      "asset_id": "boulder0",
+      "foot_px": [
+        70,
+        700
+      ],
+      "scale": 0.48,
+      "fade_allowed": false,
+      "role": "small_boundary_stone_conservative_full_lower_ground_base"
+    },
+    {
+      "id": "temple_edge_boulder_3",
+      "asset_id": "boulder0",
+      "foot_px": [
+        1420,
+        960
+      ],
+      "scale": 0.48,
+      "fade_allowed": false,
+      "role": "small_boundary_stone_conservative_full_lower_ground_base"
+    }
+  ],
+  "geometry": {
+    "floor_regions_px": [
+      [
+        [
+          16,
+          16
+        ],
+        [
+          1520,
+          16
+        ],
+        [
+          1520,
+          1008
+        ],
+        [
+          16,
+          1008
+        ]
+      ]
+    ],
+    "furniture_bases": [
+      {
+        "id": "temple_main_hall",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            405.12,
+            475.2
+          ],
+          [
+            1130.32,
+            475.2
+          ],
+          [
+            1130.32,
+            514.4
+          ],
+          [
+            881.12,
+            514.4
+          ],
+          [
+            881.12,
+            520.56
+          ],
+          [
+            654.88,
+            520.56
+          ],
+          [
+            654.88,
+            514.4
+          ],
+          [
+            405.12,
+            514.4
+          ]
+        ]
+      },
+      {
+        "id": "temple_broken_buddha",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            314.6,
+            525.4
+          ],
+          [
+            444.6,
+            525.4
+          ],
+          [
+            457.8,
+            535.4
+          ],
+          [
+            456.6,
+            544.4
+          ],
+          [
+            430.6,
+            550.2
+          ],
+          [
+            329.4,
+            550.2
+          ],
+          [
+            303.4,
+            544.4
+          ],
+          [
+            302.6,
+            535.4
+          ]
+        ]
+      },
+      {
+        "id": "temple_low_altar",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            681.3,
+            634.25
+          ],
+          [
+            854.4,
+            634.25
+          ],
+          [
+            854.4,
+            650.15
+          ],
+          [
+            681.3,
+            650.15
+          ]
+        ]
+      },
+      {
+        "id": "temple_broken_wall",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            304.4,
+            742.4
+          ],
+          [
+            595.6,
+            742.4
+          ],
+          [
+            595.6,
+            760
+          ],
+          [
+            304.4,
+            760
+          ]
+        ]
+      },
+      {
+        "id": "temple_ancient_bell",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1212.2,
+            597
+          ],
+          [
+            1428.2,
+            597
+          ],
+          [
+            1428.2,
+            620.2
+          ],
+          [
+            1212.2,
+            620.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_00",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            57,
+            250.4
+          ],
+          [
+            73,
+            250.4
+          ],
+          [
+            73,
+            263.2
+          ],
+          [
+            57,
+            263.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_01",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            102,
+            360.4
+          ],
+          [
+            118,
+            360.4
+          ],
+          [
+            118,
+            373.2
+          ],
+          [
+            102,
+            373.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_02",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            42,
+            480.4
+          ],
+          [
+            58,
+            480.4
+          ],
+          [
+            58,
+            493.2
+          ],
+          [
+            42,
+            493.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_03",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            72,
+            610.4
+          ],
+          [
+            88,
+            610.4
+          ],
+          [
+            88,
+            623.2
+          ],
+          [
+            72,
+            623.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_04",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            132,
+            890.4
+          ],
+          [
+            148,
+            890.4
+          ],
+          [
+            148,
+            903.2
+          ],
+          [
+            132,
+            903.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_05",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            87,
+            975.4
+          ],
+          [
+            103,
+            975.4
+          ],
+          [
+            103,
+            988.2
+          ],
+          [
+            87,
+            988.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_06",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1452,
+            290.4
+          ],
+          [
+            1468,
+            290.4
+          ],
+          [
+            1468,
+            303.2
+          ],
+          [
+            1452,
+            303.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_07",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1482,
+            390.4
+          ],
+          [
+            1498,
+            390.4
+          ],
+          [
+            1498,
+            403.2
+          ],
+          [
+            1482,
+            403.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_08",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1462,
+            500.4
+          ],
+          [
+            1478,
+            500.4
+          ],
+          [
+            1478,
+            513.2
+          ],
+          [
+            1462,
+            513.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_09",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1442,
+            810.4
+          ],
+          [
+            1458,
+            810.4
+          ],
+          [
+            1458,
+            823.2
+          ],
+          [
+            1442,
+            823.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_10",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1472,
+            905.4
+          ],
+          [
+            1488,
+            905.4
+          ],
+          [
+            1488,
+            918.2
+          ],
+          [
+            1472,
+            918.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_bamboo_11",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1422,
+            990.4
+          ],
+          [
+            1438,
+            990.4
+          ],
+          [
+            1438,
+            1003.2
+          ],
+          [
+            1422,
+            1003.2
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_boulder_0",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            80.4,
+            92.32
+          ],
+          [
+            147.12,
+            92.32
+          ],
+          [
+            147.12,
+            132.64
+          ],
+          [
+            80.4,
+            132.64
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_boulder_1",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1390.4,
+            92.32
+          ],
+          [
+            1457.12,
+            92.32
+          ],
+          [
+            1457.12,
+            132.64
+          ],
+          [
+            1390.4,
+            132.64
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_boulder_2",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            60.4,
+            692.32
+          ],
+          [
+            127.12,
+            692.32
+          ],
+          [
+            127.12,
+            732.64
+          ],
+          [
+            60.4,
+            732.64
+          ]
+        ]
+      },
+      {
+        "id": "temple_edge_boulder_3",
+        "blocking": true,
+        "ground_polygon_px": [
+          [
+            1410.4,
+            952.32
+          ],
+          [
+            1477.12,
+            952.32
+          ],
+          [
+            1477.12,
+            992.64
+          ],
+          [
+            1410.4,
+            992.64
+          ]
+        ]
+      }
+    ]
+  },
+  "interaction_relocations": [
+    {
+      "id": "legacy_hotspot_0",
+      "old_pos_uv": [
+        0.52,
+        0.42
+      ],
+      "new_pos_uv": [
+        0.5989583333333334,
+        0.60546875
+      ],
+      "new_foot_px": [
+        920,
+        620
+      ],
+      "semantic_delta": "POSITION_ONLY_ACTION_FLAGS_QUEST_AND_REWARD_UNCHANGED"
+    },
+    {
+      "id": "legacy_hotspot_1",
+      "old_pos_uv": [
+        0.68,
+        0.3
+      ],
+      "new_pos_uv": [
+        0.6770833333333334,
+        0.419921875
+      ],
+      "new_foot_px": [
+        1040,
+        430
+      ],
+      "semantic_delta": "POSITION_ONLY_ACTION_FLAGS_QUEST_AND_REWARD_UNCHANGED"
+    },
+    {
+      "id": "legacy_hotspot_2",
+      "old_pos_uv": [
+        0.24,
+        0.56
+      ],
+      "new_pos_uv": [
+        0.11067708333333333,
+        0.72265625
+      ],
+      "new_foot_px": [
+        170,
+        740
+      ],
+      "semantic_delta": "POSITION_ONLY_ACTION_FLAGS_QUEST_AND_REWARD_UNCHANGED"
+    },
+    {
+      "id": "legacy_hotspot_3",
+      "old_pos_uv": [
+        0.38,
+        0.34
+      ],
+      "new_pos_uv": [
+        0.3255208333333333,
+        0.52734375
+      ],
+      "new_foot_px": [
+        500,
+        540
+      ],
+      "semantic_delta": "POSITION_ONLY_ACTION_FLAGS_QUEST_AND_REWARD_UNCHANGED"
+    },
+    {
+      "id": "legacy_hotspot_4",
+      "old_pos_uv": [
+        0.78,
+        0.48
+      ],
+      "new_pos_uv": [
+        0.24739583333333334,
+        0.5859375
+      ],
+      "new_foot_px": [
+        380,
+        600
+      ],
+      "semantic_delta": "POSITION_ONLY_ACTION_FLAGS_QUEST_AND_REWARD_UNCHANGED"
+    },
+    {
+      "id": "legacy_hotspot_5",
+      "old_pos_uv": [
+        0.84,
+        0.62
+      ],
+      "new_pos_uv": [
+        0.859375,
+        0.654296875
+      ],
+      "new_foot_px": [
+        1320,
+        670
+      ],
+      "semantic_delta": "POSITION_ONLY_ACTION_FLAGS_QUEST_AND_REWARD_UNCHANGED"
+    }
+  ],
+  "required_routes": [
+    {
+      "id": "default_to_ambush",
+      "points_px": [
+        [
+          768,
+          737.28
+        ],
+        [
+          920,
+          737.28
+        ],
+        [
+          920,
+          620
+        ]
+      ]
+    },
+    {
+      "id": "ambush_to_rear_tunnel_around_east_end",
+      "points_px": [
+        [
+          920,
+          620
+        ],
+        [
+          1160,
+          620
+        ],
+        [
+          1160,
+          430
+        ],
+        [
+          1040,
+          430
+        ]
+      ]
+    },
+    {
+      "id": "default_to_herb_shaded_boundary_stone",
+      "points_px": [
+        [
+          768,
+          737.28
+        ],
+        [
+          650,
+          860
+        ],
+        [
+          200,
+          860
+        ],
+        [
+          170,
+          800
+        ],
+        [
+          170,
+          740
+        ]
+      ]
+    },
+    {
+      "id": "default_to_paper_hint",
+      "points_px": [
+        [
+          768,
+          737.28
+        ],
+        [
+          640,
+          737.28
+        ],
+        [
+          640,
+          680
+        ],
+        [
+          500,
+          680
+        ],
+        [
+          500,
+          540
+        ]
+      ]
+    },
+    {
+      "id": "paper_to_longmen_stone_base",
+      "points_px": [
+        [
+          500,
+          540
+        ],
+        [
+          500,
+          600
+        ],
+        [
+          380,
+          600
+        ]
+      ]
+    },
+    {
+      "id": "ambush_to_real_bell_front",
+      "points_px": [
+        [
+          920,
+          620
+        ],
+        [
+          1080,
+          620
+        ],
+        [
+          1080,
+          690
+        ],
+        [
+          1320,
+          690
+        ],
+        [
+          1320,
+          670
+        ]
+      ]
+    },
+    {
+      "id": "default_to_market_return",
+      "points_px": [
+        [
+          768,
+          737.28
+        ],
+        [
+          650,
+          860
+        ],
+        [
+          153.6,
+          860
+        ],
+        [
+          153.6,
+          819.2
+        ]
+      ]
+    },
+    {
+      "id": "default_to_docks_return",
+      "points_px": [
+        [
+          768,
+          737.28
+        ],
+        [
+          650,
+          860
+        ],
+        [
+          337.92,
+          860
+        ],
+        [
+          337.92,
+          819.2
+        ]
+      ]
+    },
+    {
+      "id": "altar_front_to_behind",
+      "points_px": [
+        [
+          768,
+          700
+        ],
+        [
+          900,
+          700
+        ],
+        [
+          900,
+          606
+        ],
+        [
+          768,
+          606
+        ]
+      ]
+    },
+    {
+      "id": "altar_behind_to_tie",
+      "points_px": [
+        [
+          768,
+          606
+        ],
+        [
+          900,
+          606
+        ],
+        [
+          900,
+          650
+        ]
+      ]
+    },
+    {
+      "id": "altar_tie_to_front",
+      "points_px": [
+        [
+          900,
+          650
+        ],
+        [
+          900,
+          700
+        ],
+        [
+          768,
+          700
+        ]
+      ]
+    },
+    {
+      "id": "hall_front_to_behind_right_end",
+      "points_px": [
+        [
+          768,
+          540
+        ],
+        [
+          1160,
+          540
+        ],
+        [
+          1160,
+          430
+        ],
+        [
+          768,
+          430
+        ]
+      ]
+    },
+    {
+      "id": "hall_behind_to_adjacent_air",
+      "points_px": [
+        [
+          768,
+          430
+        ],
+        [
+          768,
+          400
+        ],
+        [
+          1210,
+          400
+        ],
+        [
+          1250,
+          350
+        ]
+      ]
+    }
+  ],
+  "validation_stations": [
+    {
+      "id": "altar_front",
+      "prop_id": "temple_low_altar",
+      "foot_px": [
+        768,
+        700
+      ],
+      "expected_prop_alpha": 1,
+      "expected_ghost": false
+    },
+    {
+      "id": "altar_behind",
+      "prop_id": "temple_low_altar",
+      "foot_px": [
+        768,
+        606
+      ],
+      "expected_prop_alpha": 1,
+      "expected_ghost": true
+    },
+    {
+      "id": "altar_tie_side",
+      "prop_id": "temple_low_altar",
+      "foot_px": [
+        900,
+        650
+      ],
+      "expected_prop_alpha": 1,
+      "expected_ghost": false
+    },
+    {
+      "id": "altar_return_front",
+      "prop_id": "temple_low_altar",
+      "foot_px": [
+        768,
+        700
+      ],
+      "expected_prop_alpha": 1,
+      "expected_ghost": false
+    },
+    {
+      "id": "hall_front",
+      "prop_id": "temple_main_hall",
+      "foot_px": [
+        768,
+        540
+      ],
+      "expected_prop_alpha": 1
+    },
+    {
+      "id": "hall_behind",
+      "prop_id": "temple_main_hall",
+      "foot_px": [
+        768,
+        430
+      ],
+      "expected_prop_alpha": 0.55
+    },
+    {
+      "id": "hall_adjacent_air",
+      "prop_id": "temple_main_hall",
+      "foot_px": [
+        1250,
+        350
+      ],
+      "expected_prop_alpha": 1,
+      "expected_ghost": false,
+      "alpha_tail_policy": "NO_THRESHOLD_CHANGE_IF_REAL_ALPHA_OVERLAPS_THIS_NEGATIVE_MUST_FAIL"
+    }
+  ],
+  "negative_points": [
+    {
+      "id": "temple_main_hall_base_blocked",
+      "prop_id": "temple_main_hall",
+      "foot_px": [
+        767.72,
+        497.88
+      ],
+      "expected_safe": false
+    },
+    {
+      "id": "temple_broken_buddha_base_blocked",
+      "prop_id": "temple_broken_buddha",
+      "foot_px": [
+        380.20000000000005,
+        537.8
+      ],
+      "expected_safe": false
+    },
+    {
+      "id": "temple_low_altar_base_blocked",
+      "prop_id": "temple_low_altar",
+      "foot_px": [
+        767.8499999999999,
+        642.2
+      ],
+      "expected_safe": false
+    },
+    {
+      "id": "temple_broken_wall_base_blocked",
+      "prop_id": "temple_broken_wall",
+      "foot_px": [
+        450,
+        751.2
+      ],
+      "expected_safe": false
+    },
+    {
+      "id": "temple_ancient_bell_base_blocked",
+      "prop_id": "temple_ancient_bell",
+      "foot_px": [
+        1320.2,
+        608.6
+      ],
+      "expected_safe": false
+    }
+  ],
+  "disabled_original_animated_prop_ids": [
+    "ch4_temple_door_glow",
+    "ch4_temple_incense_smoke"
+  ],
+  "original_animated_prop_delta": "ONLY_DISABLE_OLD_FLOATING_DOOR_GLOW_AND_SMOKE_KEEP_GROUND_MIST",
+  "no_new_temple_hall_interior": true,
+  "no_new_npc_story_or_reward": true,
+  "original_portal_ids": [
+    "legacy_portal_6",
+    "legacy_portal_7"
+  ],
+  "original_return_target_uv": [
+    0.12,
+    0.75
+  ],
+  "preserved_portal_and_default_uv": [
+    [
+      0.1,
+      0.8
+    ],
+    [
+      0.22,
+      0.8
+    ],
+    [
+      0.5,
+      0.72
+    ]
+  ],
+  "current_city_return_feet": {
+    "ch4_s3_luoyang_market": [
+      1536,
+      1860
+    ],
+    "ch4_s2_canal_docks": [
+      2140,
+      1840
+    ]
+  },
+  "mechanism_visual_boundary": "Buddha stone base supplies a visible stone mechanism; no claim that the generated floor or statue contains a water channel.",
+  "geometry_authority": "Hand-authored conservative image ground bases, not native mesh. Requires ROOT CPU full875/17 plus actual Physics; asset alpha original unchanged.",
+  "environment_scope": {
+    "bamboo_groups": 12,
+    "boulders": 4,
+    "source_camera_pitch_degrees": 45,
+    "near_building_camera_match_not_claimed": true,
+    "geometry": "Conservative visible root/lower-stone hand-authored ground bases; never inherited world navigation or scaled player body."
+  },
+  "hall_viewport_fit": {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "cover_world": [
+      1920,
+      1280
+    ],
+    "static_center_crop_source_top": 80,
+    "ground_foot_px": [
+      768,
+      520
+    ],
+    "scale": 0.56,
+    "meaningful_alpha_top_source_y": 115,
+    "meaningful_roof_worldscreen_top_px": 14.5,
+    "alpha_policy": "Original alpha1 tails preserved; fit refers to actual architectural silhouette, no threshold rewrite"
+  }
+}

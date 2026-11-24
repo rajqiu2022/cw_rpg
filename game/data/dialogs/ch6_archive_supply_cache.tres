@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "补给箱里没有文书，只有密封尚好的行路药。刑樊天显然为某次不得不离村的远行准备过它。"
+give_items = Array[Dictionary]([{"id":"healing_pill_major", "count":1}, {"id":"antidote_pill", "count":1}])
+set_flags = Array[Dictionary]([{"key":"ch6_archive_supply_looted", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_archive_supply_cache"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

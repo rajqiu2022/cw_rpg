@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "护商镖师"
+text = "山道上的匪徒清理得怎么样了？商队还不敢恢复通行。"
+on_end = "next:reply"
+
+[sub_resource type="Resource" id="node_reply"]
+script = ExtResource("2_dnode")
+node_id = &"reply"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "还在巡查。等山道安全下来，我会回来告诉你。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_s2_patrol_scout_waiting"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_reply")])

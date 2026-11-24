@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_04_drum_mist_mechanisms"
+title="断鼓封雾"
+kind=0
+desc_not_started="外围阵图指向会盟祭台下方机关廊。"
+desc_in_progress="击退机关守卫，拆除错位鼓阵并关闭迷烟风道。"
+desc_completed="鼓阵、迷烟和机关守卫全部清除，各派不会再因遮蔽首击与假鼓点互相误判。"
+tracker_hint="茗雾山庄 · 会盟机关廊"
+completion_triggers=Array[String](["flag_set:ch8_mechanism_guards_defeated","flag_set:ch8_false_drum_disabled","flag_set:ch8_mist_vents_disabled"])
+require_all_completion_triggers=true
+starts_in_chapter=8
+completes_in_chapter=8
+reward_gold=130
+reward_exp=340

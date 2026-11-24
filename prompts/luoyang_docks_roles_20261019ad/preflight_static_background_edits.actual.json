@@ -1,0 +1,201 @@
+{
+  "schema_version": 1,
+  "batch_id": "luoyang_docks_roles_20261019ad_static_background_extraction_edits",
+  "passed": true,
+  "scope": "offline registration preflight for exactly two targeted background-extraction edits",
+  "calls_made": {
+    "generation": 0,
+    "network": 0,
+    "engine": 0,
+    "sdk": 0
+  },
+  "checks": [
+    {
+      "name": "required_sources_exist",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "name": "store_attendant_source_exact",
+      "passed": true,
+      "actual": {
+        "sha256": "9619304F9C51A2B9231567D18AEED5C0916DF5BD5BD2D75F8A3726591C88EFFD",
+        "bytes": 1545623
+      }
+    },
+    {
+      "name": "store_attendant_source_failure_preserved",
+      "passed": true,
+      "actual": "GENERATED_SOURCE_IDENTITY_LIMITED_ACCEPT_CUTOUT_FAILED_BACKGROUND_HALO_NO_DERIVATIVES"
+    },
+    {
+      "name": "store_attendant_one_edit_registered",
+      "passed": true,
+      "actual": 1
+    },
+    {
+      "name": "store_attendant_edit_reference_exact",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "store_attendant_unknown_metadata",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "store_attendant_one_unused_call_no_fallback",
+      "passed": true,
+      "actual": 0
+    },
+    {
+      "name": "store_attendant_output_absent",
+      "passed": true,
+      "actual": {
+        "output": false,
+        "metadata": false
+      }
+    },
+    {
+      "name": "store_attendant_narrow_prompt",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "name": "store_attendant_source_only_transparent",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "rope_seller_source_exact",
+      "passed": true,
+      "actual": {
+        "sha256": "9092CF7CF2B2DD58359A1B66EB8578F7A65615C829258EBC59392AB28D487A9F",
+        "bytes": 1795774
+      }
+    },
+    {
+      "name": "rope_seller_source_failure_preserved",
+      "passed": true,
+      "actual": "GENERATED_SOURCE_IDENTITY_LIMITED_ACCEPT_CUTOUT_FAILED_BACKGROUND_HALO_NO_DERIVATIVES"
+    },
+    {
+      "name": "rope_seller_one_edit_registered",
+      "passed": true,
+      "actual": 1
+    },
+    {
+      "name": "rope_seller_edit_reference_exact",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "rope_seller_unknown_metadata",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "rope_seller_one_unused_call_no_fallback",
+      "passed": true,
+      "actual": 0
+    },
+    {
+      "name": "rope_seller_output_absent",
+      "passed": true,
+      "actual": {
+        "output": false,
+        "metadata": false
+      }
+    },
+    {
+      "name": "rope_seller_narrow_prompt",
+      "passed": true,
+      "actual": []
+    },
+    {
+      "name": "rope_seller_source_only_transparent",
+      "passed": true,
+      "actual": true
+    },
+    {
+      "name": "review_boundary_exact",
+      "passed": true,
+      "actual": "IDENTITIES_LIMITED_ACCEPT_CUTOUTS_FAILED_BACKGROUND_EXTRACTION_REQUIRED"
+    },
+    {
+      "name": "manifest_two_background_edits",
+      "passed": true,
+      "actual": {
+        "owner": "producer_ROOT",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "maximum_calls": 3,
+        "calls_used": 3,
+        "calls_per_identity": 1,
+        "targeted_edit_calls_max": 1,
+        "targeted_edit_calls_used": 1,
+        "background_extraction_edit_calls_max": 2,
+        "background_extraction_edit_calls_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false,
+        "call_order_fact": "The carrier builtin call was already started from frozen source contract 30AE7454 before prompts/tasks.yaml registration and local preflight. Store-attendant and rope-seller calls require a passing local preflight first."
+      }
+    }
+  ],
+  "sources": [
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/preflight_static_background_edits.py",
+      "sha256": "44174D66D0C5E4032448F3FA829EBAA7FCF55F580B184C89FC79BDAA7D9FB4F3",
+      "bytes": 8009
+    },
+    {
+      "path": "prompts/tasks.yaml",
+      "sha256": "AAD7A17CAAEB6A8AC0D7B2D305F45F6D5EDA71D2F064EC05EEBB93476A48CAFE",
+      "bytes": 199124
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/manifest.json",
+      "sha256": "9B95E37E6B465B936FBCA174469E69289446C04A63F1664FA70867D57ADE2492",
+      "bytes": 2386
+    },
+    {
+      "path": "game/build/luoyang_docks_roles_20261019ad_art01/static_v1_actual_art_review.json",
+      "sha256": "898944184CBCD1E1E431F0343B9FEA96852E4E8A124C7005037F8D0A62D4EE26",
+      "bytes": 2930
+    },
+    {
+      "path": "assets/raw/luoyang_docks_roles_20261019ad/npc_docks_store_attendant_idle_down_1f_v1.png",
+      "sha256": "9619304F9C51A2B9231567D18AEED5C0916DF5BD5BD2D75F8A3726591C88EFFD",
+      "bytes": 1545623
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_store_attendant_idle_down_1f_v2_background_extraction_edit.txt",
+      "sha256": "138C11052DFDEC82E951DC4966D9126C4D77DA8C68A714724A1BA18BBCE8AC1C",
+      "bytes": 1140
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_store_attendant_idle_down_1f_v2_background_extraction_edit.spec.json",
+      "sha256": "5FDD5ED582D138336B6F45B2E68EFD8ABD68B16E7261400AF261D87B26674FEE",
+      "bytes": 2196
+    },
+    {
+      "path": "assets/raw/luoyang_docks_roles_20261019ad/npc_docks_rope_seller_idle_down_1f_v1.png",
+      "sha256": "9092CF7CF2B2DD58359A1B66EB8578F7A65615C829258EBC59392AB28D487A9F",
+      "bytes": 1795774
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_rope_seller_idle_down_1f_v2_background_extraction_edit.txt",
+      "sha256": "CE5D76D5D6D77CA29D7DFF38BB93D6BC774CD3464B69B54D3BDD7ED2DC96ED24",
+      "bytes": 1166
+    },
+    {
+      "path": "prompts/luoyang_docks_roles_20261019ad/npc_docks_rope_seller_idle_down_1f_v2_background_extraction_edit.spec.json",
+      "sha256": "83B0204B41DB6FADEEBDC463B044685F4FEE73562048D07E422B35337023A644",
+      "bytes": 2190
+    }
+  ],
+  "credit_boundary": "A pass authorizes one Root-owned background-extraction edit for each named source only. It grants no cutout, identity, derivative, portrait, import, runtime or Field acceptance."
+}

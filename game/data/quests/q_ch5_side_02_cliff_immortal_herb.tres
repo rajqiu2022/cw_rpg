@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_qdef")
-quest_id = &"q_ch5_side_01_cliff_immortal_herb"
+quest_id = &"q_ch5_side_02_cliff_immortal_herb"
 title = "绝壁仙草"
 kind = 1
 desc_not_started = "在古月峰血战的间隙，一名受伤的古峰派弟子挣扎着告诉你：古疆雷掌门重伤不醒，需要一味叫「七星雪莲」的奇药才能续命。此药只长在古月峰背面无人能攀的冰壁上，三十年一开花。"
@@ -14,3 +14,4 @@ completion_triggers = Array[String](["flag_set:cliff_immortal_herb_collected"])
 reward_gold = 80
 reward_exp = 80
 reward_items = Array[Dictionary]([{"item_id": "nine_revive_pill", "count": 1}, {"item_id": "life_extend_pill", "count": 2}, {"item_id": "leather_scrap", "count": 1}])
+reward_skills_by_faction = {"gufeng": Array[StringName]([&"gufeng_liedi", &"gufeng_jingang_buhuai"])}

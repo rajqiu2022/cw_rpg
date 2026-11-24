@@ -10,7 +10,7 @@ extends Resource
 ##   - status id / display name / duration rule / stack rule
 ##   - per-turn effect / remove condition / UI text / save persistence
 
-enum Kind { POISON, WEAK, BURST, STUN, FREEZE }
+enum Kind { POISON, WEAK, BURST, STUN, FREEZE, BLEED, INTERNAL_INJURY, INTERNAL_LOCK }
 enum StackRule { REPLACE, EXTEND }
 
 @export var status_id: StringName = ""
@@ -42,6 +42,8 @@ enum StackRule { REPLACE, EXTEND }
 
 ## UI 显示用的简短标签（如 "毒" / "弱" / "暴"）
 @export var ui_label: String = ""
+@export var icon_path: String = ""
+@export_multiline var tooltip_text: String = ""
 
 ## save persistence rule：存档时是否保留（中毒等负面通常不跨存档保留）
 @export var persist_across_save: bool = false

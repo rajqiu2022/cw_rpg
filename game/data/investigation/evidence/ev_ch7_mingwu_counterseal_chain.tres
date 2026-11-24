@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch7_mingwu_counterseal_chain"
+display_name = "内署双重复核封印"
+description = "两枚无名复核印分别来自庄主内署与训练录事房，落印时间相同，共同绕过了薛影暗号的死亡注销状态。封印证明权限延续获得山庄内部正式授权，而非外人单纯盗用。"
+chapter = 7
+category = &"physical"
+source_hint = "茗雾封印审验室 · 中央比印台"
+related_testimony_ids = Array[StringName]([&"ts_ch7_mingwu_instructor_recognized_xueying"])
+tags = Array[StringName]([&"counterseal", &"inner_office", &"authorized_override"])

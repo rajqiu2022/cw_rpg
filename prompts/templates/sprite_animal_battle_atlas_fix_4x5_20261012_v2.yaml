@@ -1,0 +1,64 @@
+id: sprite_animal_battle_atlas_fix_4x5_20261012_v2
+description: One targeted identity-preserving edit per rejected animal atlas; original V1 stays archived.
+quality: high
+size: "1024x1024"
+resolution: "1k"
+background: opaque
+reference_images:
+  - "{reference_path}"
+require_reference_images: true
+
+# Current ALAPI channel supports 1k only. ROOT alone calls the API.
+# Do not introduce shared style/negative placeholders or a different model.
+prompt_template: |
+  Use case: precise-object-edit
+  Asset type: original 2.5D semi-realistic RPG enemy battle animation atlas.
+  Image 1 is the EDIT TARGET and identity/style reference for this SAME individual
+  {animal_name}. Keep its anatomy, proportions, markings, natural colours, hand-painted
+  dimensional material, crisp silhouette, warm upper-left lighting and fixed slightly
+  elevated orthographic side-view camera. Do not copy the reference's identified defects.
+  Change ONLY cell fit/clear gutters and the explicitly described action/colour defects.
+  Do not change species, add a wolf, restyle as anime/comic/cel shading, or add scenery.
+  {animal_spec}
+  Mandatory corrections: {corrections}
+
+  Exactly ONE square 1k atlas: FOUR equal columns and FIVE equal rows, twenty cells,
+  ONE complete pose in every cell, read left-to-right then top-to-bottom. No header row,
+  row captions, labels, extra row/column, visible grid, borders, text or watermark.
+  Background is perfectly flat pure #FF00FF magenta and nothing else.
+  Every animal's nose or beak points LEFT in ALL TWENTY frames, including recoil and
+  defeat; left-up or left-down pitch is permitted, looking back RIGHT is not.
+
+  CRITICAL CELL FIT: leave at least SIXTEEN actual source pixels of completely empty
+  magenta INSIDE EVERY edge of EACH cell. Thus adjacent poses have at least 32 pixels
+  of clear magenta between them, and outer canvas padding is at least 16 pixels.
+  Every wing tip, tail tip, paw, talon and head stays inside this inset; NOTHING touches
+  a cell boundary or spills into another row. In particular upward wings must not touch
+  the canvas top and downward wings must not bridge a row boundary. Use ONE uniform
+  isotropic smaller body scale for ALL twenty poses, chosen to fit the widest/tallest
+  action, with ample spare space. Never stretch, clip, resize only one pose or enlarge
+  a collapsed pose. Preserve feather/fur detail and the same body size between states.
+
+  Row 1 READY, four phases: {ready_spec}
+  Row 2 MOVE, four phases: {move_spec}
+  Row 3 ATTACK, four phases: {attack_spec}
+  Row 4 HIT, four phases: {hit_spec}
+  Row 5 DEFEAT, four phases: {defeat_spec}
+
+  Keep material colours physically natural on every limb and underside: NO pink,
+  purple or magenta fur/feathers/paws/talons/tail, no chroma-colour reflected lighting,
+  no magenta patches inside the body. Magenta exists ONLY in empty background.
+  Twenty distinct readable temporal poses; no duplicate idle used as an action.
+  No humans, clothing, armour, weapons, effects, streaks, afterimages, blur, blood,
+  gore, ground plane, cast ground shadows, extra limbs/wings/heads or cropped anatomy.
+
+variables:
+  reference_path: "existing rejected V1 atlas path"
+  animal_name: "same animal identity"
+  animal_spec: "identity invariants"
+  corrections: "only the evidenced defects to fix"
+  ready_spec: "four ready phases"
+  move_spec: "four move phases"
+  attack_spec: "four attack phases"
+  hit_spec: "four left-facing recoil phases"
+  defeat_spec: "four collapse phases with a genuinely prone final pose"

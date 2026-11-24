@@ -1,0 +1,1934 @@
+{
+  "version": 1,
+  "generated_at": "2026-10-14T05:46:59.360Z",
+  "scope": "洛阳素材板试点；已采用=当前源码引用，非完整艺术验收或商业许可审核",
+  "board": {
+    "version": 1,
+    "id": "luoyang-building-reference-board",
+    "title": "洛阳建筑素材板",
+    "description": "现役建筑、材质来源和历史候选集中对照。仅管理与人工参考，不自动调用生成接口、不改正式场景。",
+    "asset_ids": [
+      "luoyang-south-gate",
+      "luoyang-wall-a3",
+      "luoyang-tower-b3",
+      "luoyang-street-row",
+      "luoyang-stone-bridge",
+      "luoyang-inn",
+      "luoyang-shop",
+      "luoyang-goods-stall",
+      "luoyang-north-market",
+      "luoyang-street-tree",
+      "luoyang-magistrate-hall",
+      "luoyang-court-gate",
+      "luoyang-wharf",
+      "luoyang-canal-boat",
+      "luoyang-gate-clerk-portrait",
+      "luoyang-gate-guard-idle",
+      "moat-mossy-rock",
+      "moat-cobblestone",
+      "luoyang-wall-a2-reference",
+      "tiger-ready-candidate"
+    ],
+    "reference_asset_ids": [
+      "luoyang-south-gate",
+      "luoyang-wall-a3",
+      "luoyang-stone-bridge",
+      "luoyang-street-row",
+      "luoyang-gate-clerk-portrait"
+    ],
+    "generation_brief": "保持洛阳现役城楼的正交南向 30°镜头、写实灰瓦与暗木、克制暖日光；用 A3 墙比较砖尺度与落地，用石桥比较石材，用连续街坊比较门高与屋顶细节。后续新增小民房、大宅、豪宅与花园要单体独立透明输出，保完整轮廓与明确脚底；参考图只共享镜头/材质/尺度，不把其元素贴进成品。门吏头像仅作人物画风/身份对照，不用于建筑比例或精灵帧。当前缺口尚未生成，本素材板选图与文字可编辑，但导出 brief 不提交付费任务。"
+  },
+  "assets": [
+    {
+      "id": "luoyang-south-gate",
+      "name": "南城楼",
+      "category": "architecture",
+      "path": "game/art/maps/luoyang_modular_v3/source/south_gate_v1.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "assets/raw/scene_module/luoyang_modular_v1/generation_record.json",
+          "game/art/maps/luoyang_modular_v3/source/generation_record.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s0_luoyang_gate.tres",
+        "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "architecture"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_modular_v3/source/south_gate_v1.png",
+          "exists": true,
+          "bytes": 2903393,
+          "sha256": "368cae36b04f983f537f813173a65737a2ac61f2a5be8ded50ef9fb10f709343",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_modular_v3/source/south_gate_v1.png",
+          "exists": true,
+          "bytes": 2903393,
+          "sha256": "368cae36b04f983f537f813173a65737a2ac61f2a5be8ded50ef9fb10f709343",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "assets/raw/scene_module/luoyang_modular_v1/generation_record.json",
+            "exists": true,
+            "bytes": 6976,
+            "sha256": "0efa9e2cdddd0a9b54308770281866a3386dabab7a11319ae70fd557ff51a208",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+            "exists": true,
+            "bytes": 64655,
+            "sha256": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+            "exists": true,
+            "bytes": 1682,
+            "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres",
+            "exists": true,
+            "bytes": 36258,
+            "sha256": "34b8689b51b3f7637a416e08bca7e069afa43bdf30bdd74654fd2c2dcd945e88",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-wall-a3",
+      "name": "细砌直墙 A3",
+      "category": "fortification",
+      "path": "game/art/modules/luoyang_gate_fortification_v3_a_refined/luoyang_gate_wall_refined_ashlar_v3_a.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/modules/luoyang_gate_fortification_v3_a_refined/source_contract.json",
+          "game/art/modules/luoyang_gate_fortification_v3_a_refined/capture_result.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s0_luoyang_gate.tres",
+        "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "fortification"
+      ],
+      "notes": "现役 Gate layout 直接引用 A3；材质比门楼偏亮、接缝仍待完善。原生构件及纹理依赖的许可不能统一冒称 CC0。",
+      "observed": {
+        "file": {
+          "path": "game/art/modules/luoyang_gate_fortification_v3_a_refined/luoyang_gate_wall_refined_ashlar_v3_a.png",
+          "exists": true,
+          "bytes": 321416,
+          "sha256": "078a873f8892ea8329c4cb923260e5e19aac1f72a358f8c80877d1cb43552435",
+          "dimensions": {
+            "format": "png",
+            "width": 656,
+            "height": 280,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/modules/luoyang_gate_fortification_v3_a_refined/luoyang_gate_wall_refined_ashlar_v3_a.png",
+          "exists": true,
+          "bytes": 321416,
+          "sha256": "078a873f8892ea8329c4cb923260e5e19aac1f72a358f8c80877d1cb43552435",
+          "dimensions": {
+            "format": "png",
+            "width": 656,
+            "height": 280,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/modules/luoyang_gate_fortification_v3_a_refined/source_contract.json",
+            "exists": true,
+            "bytes": 2910,
+            "sha256": "76b6b4ce0296890ff695948ecf7094025ab13b070b73f457fd436ff6713792c8",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/modules/luoyang_gate_fortification_v3_a_refined/capture_result.json",
+            "exists": true,
+            "bytes": 29076,
+            "sha256": "087a0a76d2880e307feae946ab565cff2ba9933ebc83cfaf27bb031afc38235d",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+            "exists": true,
+            "bytes": 1682,
+            "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres",
+            "exists": true,
+            "bytes": 36258,
+            "sha256": "34b8689b51b3f7637a416e08bca7e069afa43bdf30bdd74654fd2c2dcd945e88",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-tower-b3",
+      "name": "角台 B3",
+      "category": "fortification",
+      "path": "game/art/modules/luoyang_gate_fortification_v3_b_refined/luoyang_gate_corner_tower_refined_v3_b.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/modules/luoyang_gate_fortification_v3_b_refined/source_contract.json",
+          "game/art/modules/luoyang_gate_fortification_v3_b_refined/capture_result.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s0_luoyang_gate.tres",
+        "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "fortification"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/modules/luoyang_gate_fortification_v3_b_refined/luoyang_gate_corner_tower_refined_v3_b.png",
+          "exists": true,
+          "bytes": 143187,
+          "sha256": "ed60cc1bf204c7f28af3651e5b27a4ccc0b1ea6d46ead87cab2d1ddf8f7ce411",
+          "dimensions": {
+            "format": "png",
+            "width": 246,
+            "height": 333,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/modules/luoyang_gate_fortification_v3_b_refined/luoyang_gate_corner_tower_refined_v3_b.png",
+          "exists": true,
+          "bytes": 143187,
+          "sha256": "ed60cc1bf204c7f28af3651e5b27a4ccc0b1ea6d46ead87cab2d1ddf8f7ce411",
+          "dimensions": {
+            "format": "png",
+            "width": 246,
+            "height": 333,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/modules/luoyang_gate_fortification_v3_b_refined/source_contract.json",
+            "exists": true,
+            "bytes": 2978,
+            "sha256": "878daf6e54ea42460d6b44e02f376e7d098d7179aa1de8f0dba1e8bdbb7db3db",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/modules/luoyang_gate_fortification_v3_b_refined/capture_result.json",
+            "exists": true,
+            "bytes": 30351,
+            "sha256": "9886e63f733d5cbf333a34513dc34e03fd89f9c67614af3888ecd70b9c285204",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+            "exists": true,
+            "bytes": 1682,
+            "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres",
+            "exists": true,
+            "bytes": 36258,
+            "sha256": "34b8689b51b3f7637a416e08bca7e069afa43bdf30bdd74654fd2c2dcd945e88",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-street-row",
+      "name": "三间连续街坊",
+      "category": "architecture",
+      "path": "game/art/maps/luoyang_modular_v3/source/street_row_v3.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_modular_v3/source/generation_record.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s0_luoyang_gate.tres",
+        "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "architecture"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_modular_v3/source/street_row_v3.png",
+          "exists": true,
+          "bytes": 2859818,
+          "sha256": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_modular_v3/source/street_row_v3.png",
+          "exists": true,
+          "bytes": 2859818,
+          "sha256": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+            "exists": true,
+            "bytes": 64655,
+            "sha256": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+            "exists": true,
+            "bytes": 1682,
+            "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres",
+            "exists": true,
+            "bytes": 36258,
+            "sha256": "34b8689b51b3f7637a416e08bca7e069afa43bdf30bdd74654fd2c2dcd945e88",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-stone-bridge",
+      "name": "南北石桥",
+      "category": "bridge",
+      "path": "game/art/modules/world_map_v13/bridge_stone_northsouth_v1.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "unknown",
+        "evidence_paths": [
+          "game/art/maps/luoyang_gate_fortification_v3_refined/runtime_manifest.json"
+        ],
+        "license_note": "本轮只核实当前工程引用；底层生成/授权记录未定位，不宣称 CC0 或已核商用。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s0_luoyang_gate.tres",
+        "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "bridge"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/modules/world_map_v13/bridge_stone_northsouth_v1.png",
+          "exists": true,
+          "bytes": 2518220,
+          "sha256": "bd2fcd7ef17c2d9f962b59239bfcb95a3561f493d733377b27e3c1214edf50ad",
+          "dimensions": {
+            "format": "png",
+            "width": 1024,
+            "height": 1536,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/modules/world_map_v13/bridge_stone_northsouth_v1.png",
+          "exists": true,
+          "bytes": 2518220,
+          "sha256": "bd2fcd7ef17c2d9f962b59239bfcb95a3561f493d733377b27e3c1214edf50ad",
+          "dimensions": {
+            "format": "png",
+            "width": 1024,
+            "height": 1536,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_gate_fortification_v3_refined/runtime_manifest.json",
+            "exists": true,
+            "bytes": 57009,
+            "sha256": "6800370f5d343c8212332f497990ee50e4ea0dfb2002319794ed9a69f72009d0",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+            "exists": true,
+            "bytes": 1682,
+            "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_gate_fortification_v3_candidates/ch4_s0_luoyang_gate_layout.tres",
+            "exists": true,
+            "bytes": 36258,
+            "sha256": "34b8689b51b3f7637a416e08bca7e069afa43bdf30bdd74654fd2c2dcd945e88",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-inn",
+      "name": "南市客栈",
+      "category": "architecture",
+      "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/inn.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+          "assets/raw/scene_module/luoyang_modular_v1/generation_record.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s3_luoyang_market.tres",
+        "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "architecture"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/inn.png",
+          "exists": true,
+          "bytes": 2689808,
+          "sha256": "661bd90ebc9bf75ebb67064e80633afd3ab7f371184e514574d667e59e2540b9",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/inn.png",
+          "exists": true,
+          "bytes": 2689808,
+          "sha256": "661bd90ebc9bf75ebb67064e80633afd3ab7f371184e514574d667e59e2540b9",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+            "exists": true,
+            "bytes": 64655,
+            "sha256": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+            "dimensions": null
+          },
+          {
+            "path": "assets/raw/scene_module/luoyang_modular_v1/generation_record.json",
+            "exists": true,
+            "bytes": 6976,
+            "sha256": "0efa9e2cdddd0a9b54308770281866a3386dabab7a11319ae70fd557ff51a208",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s3_luoyang_market.tres",
+            "exists": true,
+            "bytes": 4061,
+            "sha256": "2df5059ab647d956e7b37c8bb5f7d0d568d575deac7931b3ccadb5451c6fe8f6",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres",
+            "exists": true,
+            "bytes": 54088,
+            "sha256": "70eed1b355ec18ac6d2a5d781fd1d98975d032e9961118251127ba0076e33de4",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-shop",
+      "name": "南市商铺",
+      "category": "architecture",
+      "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/shop.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+          "assets/raw/scene_module/luoyang_modular_v1/generation_record.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s3_luoyang_market.tres",
+        "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "architecture"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/shop.png",
+          "exists": true,
+          "bytes": 2969661,
+          "sha256": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/shop.png",
+          "exists": true,
+          "bytes": 2969661,
+          "sha256": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+            "exists": true,
+            "bytes": 64655,
+            "sha256": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+            "dimensions": null
+          },
+          {
+            "path": "assets/raw/scene_module/luoyang_modular_v1/generation_record.json",
+            "exists": true,
+            "bytes": 6976,
+            "sha256": "0efa9e2cdddd0a9b54308770281866a3386dabab7a11319ae70fd557ff51a208",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s3_luoyang_market.tres",
+            "exists": true,
+            "bytes": 4061,
+            "sha256": "2df5059ab647d956e7b37c8bb5f7d0d568d575deac7931b3ccadb5451c6fe8f6",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres",
+            "exists": true,
+            "bytes": 54088,
+            "sha256": "70eed1b355ec18ac6d2a5d781fd1d98975d032e9961118251127ba0076e33de4",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-goods-stall",
+      "name": "货摊",
+      "category": "market",
+      "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/goods_stall.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_modular_v2/source/generation_record.json",
+          "game/art/maps/luoyang_modular_v3/source/generation_record.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s3_luoyang_market.tres",
+        "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "market"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/goods_stall.png",
+          "exists": true,
+          "bytes": 2963657,
+          "sha256": "85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/goods_stall.png",
+          "exists": true,
+          "bytes": 2963657,
+          "sha256": "85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_modular_v2/source/generation_record.json",
+            "exists": true,
+            "bytes": 27191,
+            "sha256": "f6b728535f359793f6aef51dd80a34d0d28be77dc28743b9f15d756a8c39778c",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+            "exists": true,
+            "bytes": 64655,
+            "sha256": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s3_luoyang_market.tres",
+            "exists": true,
+            "bytes": 4061,
+            "sha256": "2df5059ab647d956e7b37c8bb5f7d0d568d575deac7931b3ccadb5451c6fe8f6",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres",
+            "exists": true,
+            "bytes": 54088,
+            "sha256": "70eed1b355ec18ac6d2a5d781fd1d98975d032e9961118251127ba0076e33de4",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-north-market",
+      "name": "南市北街面",
+      "category": "architecture",
+      "path": "game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/art_patch.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s3_luoyang_market.tres",
+        "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "architecture"
+      ],
+      "notes": "现役南市布局直接引用的组合街面；原图/建筑生成记录与派生 export 分开，不作新增民房或豪宅。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png",
+          "exists": true,
+          "bytes": 1105346,
+          "sha256": "6097a1d45fa5e829a2130ab2d41df988f0c521a3e14ed102ffdabdc99c848209",
+          "dimensions": {
+            "format": "png",
+            "width": 1039,
+            "height": 696,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png",
+          "exists": true,
+          "bytes": 1105346,
+          "sha256": "6097a1d45fa5e829a2130ab2d41df988f0c521a3e14ed102ffdabdc99c848209",
+          "dimensions": {
+            "format": "png",
+            "width": 1039,
+            "height": 696,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/art_patch.json",
+            "exists": true,
+            "bytes": 31258,
+            "sha256": "ba46bfa02e4152918d6696033450bf1f0329be01318f69449a7fad7355a85c84",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s3_luoyang_market.tres",
+            "exists": true,
+            "bytes": 4061,
+            "sha256": "2df5059ab647d956e7b37c8bb5f7d0d568d575deac7931b3ccadb5451c6fe8f6",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres",
+            "exists": true,
+            "bytes": 54088,
+            "sha256": "70eed1b355ec18ac6d2a5d781fd1d98975d032e9961118251127ba0076e33de4",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-street-tree",
+      "name": "街树",
+      "category": "vegetation",
+      "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/native_tree.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "licensed-derived",
+        "evidence_paths": [
+          "game/art/external/polyhaven/tree_small_02/SOURCE.json",
+          "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/native_tree.json"
+        ],
+        "license_note": "源 Tree Small 02 本地 SOURCE.json 记载 Poly Haven CC0-1.0；登记的是项目烘焙 PNG，许可来源与项目派生处理分列。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s3_luoyang_market.tres",
+        "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "vegetation"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/native_tree.png",
+          "exists": true,
+          "bytes": 77095,
+          "sha256": "e7cddeee8d3d9f71a0bf8cc61a0949f328591f2e38aacef12853ab650f9df430",
+          "dimensions": {
+            "format": "png",
+            "width": 178,
+            "height": 250,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/native_tree.png",
+          "exists": true,
+          "bytes": 77095,
+          "sha256": "e7cddeee8d3d9f71a0bf8cc61a0949f328591f2e38aacef12853ab650f9df430",
+          "dimensions": {
+            "format": "png",
+            "width": 178,
+            "height": 250,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/external/polyhaven/tree_small_02/SOURCE.json",
+            "exists": true,
+            "bytes": 2597,
+            "sha256": "dfb7990a9e568c1fa5a7aeb6e6b90139dee65b62a0ff2d3fc739afa48821768d",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/native_tree.json",
+            "exists": true,
+            "bytes": 2578,
+            "sha256": "4bc622e3c4239d35c24f46a98ece3a9aeb09199dc785459aaa4acb2e751b04e4",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s3_luoyang_market.tres",
+            "exists": true,
+            "bytes": 4061,
+            "sha256": "2df5059ab647d956e7b37c8bb5f7d0d568d575deac7931b3ccadb5451c6fe8f6",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_market_enrichment_v2_candidates/ch4_s3_luoyang_market_layout.tres",
+            "exists": true,
+            "bytes": 54088,
+            "sha256": "70eed1b355ec18ac6d2a5d781fd1d98975d032e9961118251127ba0076e33de4",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-magistrate-hall",
+      "name": "府衙主厅",
+      "category": "architecture",
+      "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s1_luoyang_yamen/entities/magistrate_hall.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_modular_v3/source/generation_record.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s1_luoyang_yamen.tres",
+        "game/data/maps/luoyang_enclosure_v11_candidates/ch4_s1_luoyang_yamen_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "architecture"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s1_luoyang_yamen/entities/magistrate_hall.png",
+          "exists": true,
+          "bytes": 1787560,
+          "sha256": "ede074d22a2901c97dd938df1c0934b1a38d9c1bd61fbc15e55f6a00361fd32a",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s1_luoyang_yamen/entities/magistrate_hall.png",
+          "exists": true,
+          "bytes": 1787560,
+          "sha256": "ede074d22a2901c97dd938df1c0934b1a38d9c1bd61fbc15e55f6a00361fd32a",
+          "dimensions": {
+            "format": "png",
+            "width": 1536,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+            "exists": true,
+            "bytes": 64655,
+            "sha256": "55c9a621ff125b736db2da85350a208a08f530e81bea1d2c11dc165cf76858c5",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s1_luoyang_yamen.tres",
+            "exists": true,
+            "bytes": 2579,
+            "sha256": "5a0c1124a4166087573a1d4d6bc217e496251856cb88a60b6f78ba04019c12f5",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_enclosure_v11_candidates/ch4_s1_luoyang_yamen_layout.tres",
+            "exists": true,
+            "bytes": 47973,
+            "sha256": "6b011c0f0d7a726321ecb1f3c960fe98bbfbecd5a6cffcc3e4152f73bd75ea73",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-court-gate",
+      "name": "府衙南院门",
+      "category": "architecture",
+      "path": "game/art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/entities/south_court_gate.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/art_patch.json",
+          "game/art/maps/luoyang_enclosure_v11/source/v11b_generation_record.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s1_luoyang_yamen.tres",
+        "game/data/maps/luoyang_enclosure_v11_candidates/ch4_s1_luoyang_yamen_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "architecture"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/entities/south_court_gate.png",
+          "exists": true,
+          "bytes": 149899,
+          "sha256": "f8da6b4f6742dc605816b286828626e0b64642b3b37792360515320c39bdd2f4",
+          "dimensions": {
+            "format": "png",
+            "width": 380,
+            "height": 366,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/entities/south_court_gate.png",
+          "exists": true,
+          "bytes": 149899,
+          "sha256": "f8da6b4f6742dc605816b286828626e0b64642b3b37792360515320c39bdd2f4",
+          "dimensions": {
+            "format": "png",
+            "width": 380,
+            "height": 366,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/art_patch.json",
+            "exists": true,
+            "bytes": 49704,
+            "sha256": "2e1f562c429aabc89ebd38f044192e0f8dd71738147cb51b5fba4f9d6b7b50d4",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/maps/luoyang_enclosure_v11/source/v11b_generation_record.json",
+            "exists": true,
+            "bytes": 6579,
+            "sha256": "061ea0f7afb77c91f5fae2db32baf46e8c5c026aea8b858d78012a238d827357",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s1_luoyang_yamen.tres",
+            "exists": true,
+            "bytes": 2579,
+            "sha256": "5a0c1124a4166087573a1d4d6bc217e496251856cb88a60b6f78ba04019c12f5",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_enclosure_v11_candidates/ch4_s1_luoyang_yamen_layout.tres",
+            "exists": true,
+            "bytes": 47973,
+            "sha256": "6b011c0f0d7a726321ecb1f3c960fe98bbfbecd5a6cffcc3e4152f73bd75ea73",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-wharf",
+      "name": "装卸码头",
+      "category": "waterfront",
+      "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/dry_loading_wharf.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/art_patch.json",
+          "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/native_v12/root_native_docks_v12_01/native_capture.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s2_canal_docks.tres",
+        "game/data/maps/luoyang_enclosure_v11_candidates/ch4_s2_canal_docks_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "waterfront"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/dry_loading_wharf.png",
+          "exists": true,
+          "bytes": 27459,
+          "sha256": "14838181d1c59e0545d919876e2a01603e32b559320beb6876df8e7726c3ad4e",
+          "dimensions": {
+            "format": "png",
+            "width": 120,
+            "height": 247,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/dry_loading_wharf.png",
+          "exists": true,
+          "bytes": 27459,
+          "sha256": "14838181d1c59e0545d919876e2a01603e32b559320beb6876df8e7726c3ad4e",
+          "dimensions": {
+            "format": "png",
+            "width": 120,
+            "height": 247,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/art_patch.json",
+            "exists": true,
+            "bytes": 54947,
+            "sha256": "b4b06110c299bf97dad8eb7134d8b0902135b37bc7c7f4952522ce6f30a5cf23",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/native_v12/root_native_docks_v12_01/native_capture.json",
+            "exists": true,
+            "bytes": 16700,
+            "sha256": "967acaa0dcec425957db27ca482fb507569e307cadeadf624518fc9286e2b524",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s2_canal_docks.tres",
+            "exists": true,
+            "bytes": 2236,
+            "sha256": "51527c472d4c4ce33e00f1a07754411cc433f770c5882614187f165a7834b34d",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_enclosure_v11_candidates/ch4_s2_canal_docks_layout.tres",
+            "exists": true,
+            "bytes": 57206,
+            "sha256": "271b1c59d4e3b0f87c67cd59b58cc4fa98487ea7d28d98029981ed77bb63540e",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-canal-boat",
+      "name": "漕渠泊船",
+      "category": "waterfront",
+      "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/moored_canal_boat.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/art_patch.json",
+          "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/native_v12/root_native_docks_v12_01/native_capture.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s2_canal_docks.tres",
+        "game/data/maps/luoyang_enclosure_v11_candidates/ch4_s2_canal_docks_layout.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "waterfront"
+      ],
+      "notes": "当前 canonical→layout→PNG 直接引用；已采用只表示工程现役消费，不代表最终美术质量通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/moored_canal_boat.png",
+          "exists": true,
+          "bytes": 45835,
+          "sha256": "7bc116cd9b6abaf93aa8b2e52833ac1219cd14d0740c63396394e6fbbe5570af",
+          "dimensions": {
+            "format": "png",
+            "width": 193,
+            "height": 291,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/moored_canal_boat.png",
+          "exists": true,
+          "bytes": 45835,
+          "sha256": "7bc116cd9b6abaf93aa8b2e52833ac1219cd14d0740c63396394e6fbbe5570af",
+          "dimensions": {
+            "format": "png",
+            "width": 193,
+            "height": 291,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/art_patch.json",
+            "exists": true,
+            "bytes": 54947,
+            "sha256": "b4b06110c299bf97dad8eb7134d8b0902135b37bc7c7f4952522ce6f30a5cf23",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/native_v12/root_native_docks_v12_01/native_capture.json",
+            "exists": true,
+            "bytes": 16700,
+            "sha256": "967acaa0dcec425957db27ca482fb507569e307cadeadf624518fc9286e2b524",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s2_canal_docks.tres",
+            "exists": true,
+            "bytes": 2236,
+            "sha256": "51527c472d4c4ce33e00f1a07754411cc433f770c5882614187f165a7834b34d",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/maps/luoyang_enclosure_v11_candidates/ch4_s2_canal_docks_layout.tres",
+            "exists": true,
+            "bytes": 57206,
+            "sha256": "271b1c59d4e3b0f87c67cd59b58cc4fa98487ea7d28d98029981ed77bb63540e",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-gate-clerk-portrait",
+      "name": "中年洛阳门吏头像",
+      "category": "portrait",
+      "path": "game/art/characters/portraits/luoyang_20261012/portrait_luoyang_gate_sergeant_mature_20261012_v1.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "generated",
+        "evidence_paths": [
+          "game/art/characters/portraits/luoyang_20261012/portrait_luoyang_gate_sergeant_mature_20261012_v1.meta.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s0_luoyang_gate.tres",
+        "game/data/npcs/npc_catalog.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "portrait"
+      ],
+      "notes": "当前 Gate 的 npc_id=luoyang_gate_sergeant 经 NPC catalog 的 portrait_path 引用；meta 记录 gpt-image-2/fallback_used=false。头像不能作行走或战斗 sprite。",
+      "observed": {
+        "file": {
+          "path": "game/art/characters/portraits/luoyang_20261012/portrait_luoyang_gate_sergeant_mature_20261012_v1.png",
+          "exists": true,
+          "bytes": 2116010,
+          "sha256": "6d67f981b738228a6e8541104be86415b9c6192c51638a8ab672ee8360e9c0aa",
+          "dimensions": {
+            "format": "png",
+            "width": 1024,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/characters/portraits/luoyang_20261012/portrait_luoyang_gate_sergeant_mature_20261012_v1.png",
+          "exists": true,
+          "bytes": 2116010,
+          "sha256": "6d67f981b738228a6e8541104be86415b9c6192c51638a8ab672ee8360e9c0aa",
+          "dimensions": {
+            "format": "png",
+            "width": 1024,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/characters/portraits/luoyang_20261012/portrait_luoyang_gate_sergeant_mature_20261012_v1.meta.json",
+            "exists": true,
+            "bytes": 2628,
+            "sha256": "601726ad91c5d709c6b1e02a3534ed6eb712dcce3db6e3883023947ef7170e17",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+            "exists": true,
+            "bytes": 1682,
+            "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/npcs/npc_catalog.tres",
+            "exists": true,
+            "bytes": 5046,
+            "sha256": "1172cb8394619930bbc5cf9f4b875204f6835955add724113982791eb25354d8",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-gate-guard-idle",
+      "name": "门吏场景待机条",
+      "category": "sprite",
+      "path": "game/art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png",
+      "declared_status": "adopted",
+      "source": {
+        "kind": "unknown",
+        "evidence_paths": [
+          "game/scripts/field/npc_node.gd"
+        ],
+        "license_note": "底层生成记录本轮未定位，来源许可待核；这里只核当前场景 sprite_path。"
+      },
+      "formal_references": [
+        "game/data/scenes/ch4_s0_luoyang_gate.tres"
+      ],
+      "tags": [
+        "洛阳",
+        "sprite"
+      ],
+      "notes": "Gate canonical 的 sprite_path 直接引用；四帧横条，人物身份与头像分开登记。",
+      "sprite_contract_id": "field-npc-idle-strip",
+      "observed": {
+        "file": {
+          "path": "game/art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png",
+          "exists": true,
+          "bytes": 54352,
+          "sha256": "03695af14571f765c9f8721af4d668892216cca6183ebf9ffc9333606da21fa8",
+          "dimensions": {
+            "format": "png",
+            "width": 640,
+            "height": 160,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png",
+          "exists": true,
+          "bytes": 54352,
+          "sha256": "03695af14571f765c9f8721af4d668892216cca6183ebf9ffc9333606da21fa8",
+          "dimensions": {
+            "format": "png",
+            "width": 640,
+            "height": 160,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/scripts/field/npc_node.gd",
+            "exists": true,
+            "bytes": 21585,
+            "sha256": "9da0e3d61185c45568071f40a4f2de4f1f1287a105fd66f4c5a9e162c3af3b72",
+            "dimensions": null
+          }
+        ],
+        "formal": [
+          {
+            "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+            "exists": true,
+            "bytes": 1682,
+            "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+            "dimensions": null
+          }
+        ],
+        "sprite_contract_evidence": [
+          {
+            "path": "game/scripts/field/npc_node.gd",
+            "exists": true,
+            "bytes": 21585,
+            "sha256": "9da0e3d61185c45568071f40a4f2de4f1f1287a105fd66f4c5a9e162c3af3b72",
+            "dimensions": null
+          },
+          {
+            "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+            "exists": true,
+            "bytes": 1682,
+            "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+            "dimensions": null
+          }
+        ]
+      },
+      "sprite_contract": {
+        "id": "field-npc-idle-strip",
+        "name": "场景 NPC 四帧待机横条",
+        "scope": "runtime-source-verified-with-sample",
+        "canvas_px": [
+          160,
+          160
+        ],
+        "layout": "horizontal-square-cells",
+        "directions": [
+          "down"
+        ],
+        "states": [
+          {
+            "id": "idle",
+            "frames": 4,
+            "seconds_per_frame": 0.28
+          }
+        ],
+        "bottom_margin_px": null,
+        "horizontal_anchor": "center",
+        "ground_anchor": "当前 NPC 从首 cell 非零 alpha bounds 的底部求 foot offset；无固定通用底边承诺。",
+        "evidence_paths": [
+          "game/scripts/field/npc_node.gd",
+          "game/data/scenes/ch4_s0_luoyang_gate.tres"
+        ],
+        "notes": "门吏 sample PNG 头实读640×160，即四个160×160 cell；不是所有NPC的强制画布。NPCNode按宽/高推hframes，朝向贴图可另配，不代表所有NPC只支持down/4帧。脚底未做像素测量，不继承Player8px。"
+      }
+    },
+    {
+      "id": "moat-mossy-rock",
+      "name": "石岸苔石材质",
+      "category": "material",
+      "path": "game/art/modules/luoyang_moat_v1/mossy_rock_diff_1k.jpg",
+      "declared_status": "reference",
+      "source": {
+        "kind": "licensed",
+        "evidence_paths": [
+          "game/art/modules/luoyang_moat_v1/source_manifest.json"
+        ],
+        "license_note": "本地 manifest 登记 Poly Haven CC0 1.0、官方 URL、原下载 SHA/MD5；本轮未重新联网核许可。"
+      },
+      "formal_references": [],
+      "tags": [
+        "洛阳",
+        "material"
+      ],
+      "notes": "仅作为材质来源参考，不把源纹理登记为当前场景直接消费或水体效果通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/modules/luoyang_moat_v1/mossy_rock_diff_1k.jpg",
+          "exists": true,
+          "bytes": 1124438,
+          "sha256": "4dbf37f1b0465c9c8914213163923be159716f5b97fb6946437b6c5e143ef540",
+          "dimensions": {
+            "format": "jpeg",
+            "width": 1024,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/modules/luoyang_moat_v1/mossy_rock_diff_1k.jpg",
+          "exists": true,
+          "bytes": 1124438,
+          "sha256": "4dbf37f1b0465c9c8914213163923be159716f5b97fb6946437b6c5e143ef540",
+          "dimensions": {
+            "format": "jpeg",
+            "width": 1024,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/modules/luoyang_moat_v1/source_manifest.json",
+            "exists": true,
+            "bytes": 7890,
+            "sha256": "d111ee013c6212baa1b6e30168df1d3a99d7a806b4e488d399724284d7229721",
+            "dimensions": null
+          }
+        ],
+        "formal": [],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "moat-cobblestone",
+      "name": "石岸铺石材质",
+      "category": "material",
+      "path": "game/art/modules/luoyang_moat_v1/cobblestone_floor_08_diff_1k.jpg",
+      "declared_status": "reference",
+      "source": {
+        "kind": "licensed",
+        "evidence_paths": [
+          "game/art/modules/luoyang_moat_v1/source_manifest.json"
+        ],
+        "license_note": "本地 manifest 登记 Poly Haven CC0 1.0、官方 URL、原下载 SHA/MD5；本轮未重新联网核许可。"
+      },
+      "formal_references": [],
+      "tags": [
+        "洛阳",
+        "material"
+      ],
+      "notes": "仅作为材质来源参考，不把源纹理登记为当前场景直接消费或水体效果通过。",
+      "observed": {
+        "file": {
+          "path": "game/art/modules/luoyang_moat_v1/cobblestone_floor_08_diff_1k.jpg",
+          "exists": true,
+          "bytes": 585727,
+          "sha256": "ec131f7a99a1e7f9df25d4725609c55a6dad1df487630685e9a66ecbf41ec33a",
+          "dimensions": {
+            "format": "jpeg",
+            "width": 1024,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/modules/luoyang_moat_v1/cobblestone_floor_08_diff_1k.jpg",
+          "exists": true,
+          "bytes": 585727,
+          "sha256": "ec131f7a99a1e7f9df25d4725609c55a6dad1df487630685e9a66ecbf41ec33a",
+          "dimensions": {
+            "format": "jpeg",
+            "width": 1024,
+            "height": 1024,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/modules/luoyang_moat_v1/source_manifest.json",
+            "exists": true,
+            "bytes": 7890,
+            "sha256": "d111ee013c6212baa1b6e30168df1d3a99d7a806b4e488d399724284d7229721",
+            "dimensions": null
+          }
+        ],
+        "formal": [],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "luoyang-wall-a2-reference",
+      "name": "旧 A2 风化墙对照",
+      "category": "fortification",
+      "path": "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/luoyang_gate_wall_light_ashlar_straight_v2_a_weathered1.png",
+      "declared_status": "reference",
+      "source": {
+        "kind": "project-derived",
+        "evidence_paths": [
+          "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/source_contract.json",
+          "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/capture_result.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [],
+      "tags": [
+        "洛阳",
+        "fortification"
+      ],
+      "notes": "历史参考，不是现役；规整、偏亮的旧视觉局限保留。",
+      "observed": {
+        "file": {
+          "path": "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/luoyang_gate_wall_light_ashlar_straight_v2_a_weathered1.png",
+          "exists": true,
+          "bytes": 315027,
+          "sha256": "baa0ecf0408769877731e252637d9ef57c21fd00f26c46f1d5e123965fe18cc3",
+          "dimensions": {
+            "format": "png",
+            "width": 656,
+            "height": 280,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/luoyang_gate_wall_light_ashlar_straight_v2_a_weathered1.png",
+          "exists": true,
+          "bytes": 315027,
+          "sha256": "baa0ecf0408769877731e252637d9ef57c21fd00f26c46f1d5e123965fe18cc3",
+          "dimensions": {
+            "format": "png",
+            "width": 656,
+            "height": 280,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/source_contract.json",
+            "exists": true,
+            "bytes": 3641,
+            "sha256": "7737f72281420b032927d22e3e8a18fe7e9395546d7a80f939bd4c588c0c442f",
+            "dimensions": null
+          },
+          {
+            "path": "game/art/modules/luoyang_gate_fortification_v2_a_weathered1/capture_result.json",
+            "exists": true,
+            "bytes": 29995,
+            "sha256": "2dc9dafb87eef0b375cdfa2f6afb4cc8c758815a11b5058617ed04ebf98799ae",
+            "dimensions": null
+          }
+        ],
+        "formal": [],
+        "sprite_contract_evidence": []
+      },
+      "sprite_contract": null
+    },
+    {
+      "id": "tiger-ready-candidate",
+      "name": "虎战斗待机候选首帧",
+      "category": "sprite",
+      "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_01.png",
+      "declared_status": "candidate",
+      "source": {
+        "kind": "generated",
+        "evidence_paths": [
+          "assets/processed/sprite/animal_battle_20261012/tiger/tiger_processing_report.json",
+          "assets/raw/sprite_sheet/animal_battle_20261012/tiger_battle_atlas_20261012_v1.meta.json"
+        ],
+        "license_note": "项目生成/原创或派生素材，不是 CC0；本索引仅登记本地来源，未独立审定商业使用条款。"
+      },
+      "formal_references": [],
+      "tags": [
+        "洛阳",
+        "sprite"
+      ],
+      "notes": "候选帧已入库但本轮未证明 EnemyDef 绑定；不能据图入 game 目录称可战斗。物种比例不用人体 300px。",
+      "sprite_contract_id": "animal-battle-tiger-v1",
+      "observed": {
+        "file": {
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_01.png",
+          "exists": true,
+          "bytes": 173992,
+          "sha256": "f98f4188eb31436708163a6073c5ac64eadf39c5232e7083392fcaa7cbd2fd72",
+          "dimensions": {
+            "format": "png",
+            "width": 512,
+            "height": 384,
+            "measurement": "header-only"
+          }
+        },
+        "preview": {
+          "path": "game/art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_01.png",
+          "exists": true,
+          "bytes": 173992,
+          "sha256": "f98f4188eb31436708163a6073c5ac64eadf39c5232e7083392fcaa7cbd2fd72",
+          "dimensions": {
+            "format": "png",
+            "width": 512,
+            "height": 384,
+            "measurement": "header-only"
+          }
+        },
+        "evidence": [
+          {
+            "path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_processing_report.json",
+            "exists": true,
+            "bytes": 31746,
+            "sha256": "5d585c4582ac3e958bd9d8078c6de3676c67ed818c12b42a28cb599925d56d55",
+            "dimensions": null
+          },
+          {
+            "path": "assets/raw/sprite_sheet/animal_battle_20261012/tiger_battle_atlas_20261012_v1.meta.json",
+            "exists": true,
+            "bytes": 4790,
+            "sha256": "ea30eda3bd09b48e7e5d565b26196b9867471d6fc729c71cc6737a8a29a7fd15",
+            "dimensions": null
+          }
+        ],
+        "formal": [],
+        "sprite_contract_evidence": [
+          {
+            "path": "scripts/process_animal_battle_atlas_20261012.py",
+            "exists": true,
+            "bytes": 8933,
+            "sha256": "bbba38464bde45a8ca2f52c21a03aa3b6770d65cd112cb030351f501cddd71e8",
+            "dimensions": null
+          },
+          {
+            "path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_processing_report.json",
+            "exists": true,
+            "bytes": 31746,
+            "sha256": "5d585c4582ac3e958bd9d8078c6de3676c67ed818c12b42a28cb599925d56d55",
+            "dimensions": null
+          }
+        ]
+      },
+      "sprite_contract": {
+        "id": "animal-battle-tiger-v1",
+        "name": "虎战斗二十帧候选合同",
+        "scope": "candidate-processor-and-report-verified-not-runtime-bound",
+        "canvas_px": [
+          512,
+          384
+        ],
+        "source_atlas_grid": [
+          4,
+          5
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "frames": 4
+          },
+          {
+            "id": "move",
+            "frames": 4
+          },
+          {
+            "id": "attack",
+            "frames": 4
+          },
+          {
+            "id": "hit",
+            "frames": 4
+          },
+          {
+            "id": "defeat",
+            "frames": 4
+          }
+        ],
+        "bottom_margin_px": 12,
+        "horizontal_anchor": "center",
+        "species_ready_target_bounds_px": [
+          460,
+          265
+        ],
+        "normal_human_standing_height_px": null,
+        "enemies_facing": "left",
+        "uniform_scale_across_all_states": true,
+        "max_content_px": [
+          480,
+          350
+        ],
+        "evidence_paths": [
+          "scripts/process_animal_battle_atlas_20261012.py",
+          "assets/processed/sprite/animal_battle_20261012/tiger/tiger_processing_report.json"
+        ],
+        "notes": "460×265是该物种ready尺寸目标；同二十帧一个共享scale，禁止每帧塞满画布。朝向/物种/相位仍须目视，候选不代表已绑定敌人。"
+      }
+    }
+  ],
+  "sprite_contracts": [
+    {
+      "id": "field-player-v7",
+      "name": "现役主角 v7 场景横条",
+      "scope": "runtime-source-verified",
+      "canvas_px": [
+        160,
+        160
+      ],
+      "layout": "horizontal-strip",
+      "directions": [
+        "down",
+        "up",
+        "left",
+        "right"
+      ],
+      "states": [
+        {
+          "id": "idle",
+          "frames": 4,
+          "seconds_per_frame": 0.28
+        },
+        {
+          "id": "walk",
+          "frames": 8,
+          "horizontal_seconds_per_frame": 0.08,
+          "vertical_seconds_per_frame": 0.1
+        }
+      ],
+      "bottom_margin_px": 8,
+      "horizontal_anchor": "center",
+      "ground_anchor": "sprite.position.y = -texture_height * sprite.scale.y * 0.45",
+      "base_visual_scale": 0.945,
+      "evidence_paths": [
+        "game/scripts/field/player.gd"
+      ],
+      "notes": "当前 Player 使用 weapon_variants/lengguyun/v7_idle_stable；旧 MVP 上下四帧方案只属历史。场景倍率另乘，不在本次改动。"
+    },
+    {
+      "id": "field-npc-idle-strip",
+      "name": "场景 NPC 四帧待机横条",
+      "scope": "runtime-source-verified-with-sample",
+      "canvas_px": [
+        160,
+        160
+      ],
+      "layout": "horizontal-square-cells",
+      "directions": [
+        "down"
+      ],
+      "states": [
+        {
+          "id": "idle",
+          "frames": 4,
+          "seconds_per_frame": 0.28
+        }
+      ],
+      "bottom_margin_px": null,
+      "horizontal_anchor": "center",
+      "ground_anchor": "当前 NPC 从首 cell 非零 alpha bounds 的底部求 foot offset；无固定通用底边承诺。",
+      "evidence_paths": [
+        "game/scripts/field/npc_node.gd",
+        "game/data/scenes/ch4_s0_luoyang_gate.tres"
+      ],
+      "notes": "门吏 sample PNG 头实读640×160，即四个160×160 cell；不是所有NPC的强制画布。NPCNode按宽/高推hframes，朝向贴图可另配，不代表所有NPC只支持down/4帧。脚底未做像素测量，不继承Player8px。"
+    },
+    {
+      "id": "human-battle-v2",
+      "name": "人体战斗五状态合同",
+      "scope": "document-and-processor-verified",
+      "canvas_px": [
+        512,
+        384
+      ],
+      "source_atlas_grid": [
+        4,
+        5
+      ],
+      "states": [
+        {
+          "id": "ready",
+          "frames": 4
+        },
+        {
+          "id": "move",
+          "frames": 4
+        },
+        {
+          "id": "attack",
+          "frames": 4
+        },
+        {
+          "id": "hit",
+          "frames": 4
+        },
+        {
+          "id": "defeat",
+          "frames": 4
+        }
+      ],
+      "bottom_margin_px": 12,
+      "horizontal_anchor": "center",
+      "normal_human_standing_height_px": 300,
+      "boss_max_standing_height_px": 330,
+      "allies_facing": "right",
+      "enemies_facing": "left",
+      "uniform_scale_across_all_states": true,
+      "evidence_paths": [
+        "docs/battle-sprite-standard-v2.md",
+        "scripts/process_battle_sprite_atlas.py",
+        "scripts/validate_battle_sprite_sets.py"
+      ],
+      "notes": "每角色独立二十帧；defeat末帧保持，不借别角色。人体高度不得应用动物。"
+    },
+    {
+      "id": "animal-battle-tiger-v1",
+      "name": "虎战斗二十帧候选合同",
+      "scope": "candidate-processor-and-report-verified-not-runtime-bound",
+      "canvas_px": [
+        512,
+        384
+      ],
+      "source_atlas_grid": [
+        4,
+        5
+      ],
+      "states": [
+        {
+          "id": "ready",
+          "frames": 4
+        },
+        {
+          "id": "move",
+          "frames": 4
+        },
+        {
+          "id": "attack",
+          "frames": 4
+        },
+        {
+          "id": "hit",
+          "frames": 4
+        },
+        {
+          "id": "defeat",
+          "frames": 4
+        }
+      ],
+      "bottom_margin_px": 12,
+      "horizontal_anchor": "center",
+      "species_ready_target_bounds_px": [
+        460,
+        265
+      ],
+      "normal_human_standing_height_px": null,
+      "enemies_facing": "left",
+      "uniform_scale_across_all_states": true,
+      "max_content_px": [
+        480,
+        350
+      ],
+      "evidence_paths": [
+        "scripts/process_animal_battle_atlas_20261012.py",
+        "assets/processed/sprite/animal_battle_20261012/tiger/tiger_processing_report.json"
+      ],
+      "notes": "460×265是该物种ready尺寸目标；同二十帧一个共享scale，禁止每帧塞满画布。朝向/物种/相位仍须目视，候选不代表已绑定敌人。"
+    }
+  ],
+  "input_shas": {
+    "catalog": "3f4a5c6aedb571cbbe63134bd28e6f806796691e66f3301556f0477ffc135bc8",
+    "board": "1cdded9796dd0a2b80f776d0ca10028772944d0d600efe264b2b0bf52e62b089",
+    "sprite_contracts": "b8226bdcb2f603d86ca1dd126eb730888dfb61addd948df5474016beb96dbae3"
+  },
+  "summary": {
+    "total": 20,
+    "adopted": 16,
+    "candidate": 1,
+    "reference": 3,
+    "errors": 0
+  },
+  "diagnostics": [],
+  "contract_evidence": [
+    {
+      "path": "game/scripts/field/player.gd",
+      "exists": true,
+      "bytes": 15118,
+      "sha256": "9f283beaa3f8c3c3b5eb36547627e5414d91722078dfc00d08bf2f07f2910419",
+      "dimensions": null
+    },
+    {
+      "path": "game/scripts/field/npc_node.gd",
+      "exists": true,
+      "bytes": 21585,
+      "sha256": "9da0e3d61185c45568071f40a4f2de4f1f1287a105fd66f4c5a9e162c3af3b72",
+      "dimensions": null
+    },
+    {
+      "path": "game/data/scenes/ch4_s0_luoyang_gate.tres",
+      "exists": true,
+      "bytes": 1682,
+      "sha256": "00d0867a56efec29aa509b4366546c8dfbcc2f4d9a73d062acfa756a2252a581",
+      "dimensions": null
+    },
+    {
+      "path": "docs/battle-sprite-standard-v2.md",
+      "exists": true,
+      "bytes": 2546,
+      "sha256": "6c31e6dbbbf3e1676a2b049223957a66e75345a777cb874b108edb17102a372b",
+      "dimensions": null
+    },
+    {
+      "path": "scripts/process_battle_sprite_atlas.py",
+      "exists": true,
+      "bytes": 7681,
+      "sha256": "b8a67ef56850a3690dc1ed6247e599c2c9aac2f8e896e5d65c06bbadd68f81a5",
+      "dimensions": null
+    },
+    {
+      "path": "scripts/validate_battle_sprite_sets.py",
+      "exists": true,
+      "bytes": 3784,
+      "sha256": "3291d5e088960668b0d394714cf50bedeec024b7c453044cbf552be0fd837741",
+      "dimensions": null
+    },
+    {
+      "path": "scripts/process_animal_battle_atlas_20261012.py",
+      "exists": true,
+      "bytes": 8933,
+      "sha256": "bbba38464bde45a8ca2f52c21a03aa3b6770d65cd112cb030351f501cddd71e8",
+      "dimensions": null
+    },
+    {
+      "path": "assets/processed/sprite/animal_battle_20261012/tiger/tiger_processing_report.json",
+      "exists": true,
+      "bytes": 31746,
+      "sha256": "5d585c4582ac3e958bd9d8078c6de3676c67ed818c12b42a28cb599925d56d55",
+      "dimensions": null
+    }
+  ],
+  "limitations": [
+    "已采用只登记索引声明的现役源码引用，不自动证明引用语义、艺术质量或商业许可。",
+    "PNG/JPEG只核文件SHA和头尺寸，不做解码、透明像素、帧锚点或Godot运行验收。",
+    "本地草稿和参考包不修改索引、正式地图或付费任务。"
+  ]
+}

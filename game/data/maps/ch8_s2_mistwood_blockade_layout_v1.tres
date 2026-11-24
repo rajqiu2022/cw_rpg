@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script=ExtResource("1")
+design_size=Vector2i(1536,1024)
+fill_viewport=true
+walkable_regions=Array[PackedVector2Array]([PackedVector2Array(0.42,0.99,0.58,0.99,0.82,0.70,0.72,0.18,0.28,0.18,0.18,0.70)])
+portals=Array[Dictionary]([{"id":"return_to_muster","pos":Vector2(0.50,0.92),"size":Vector2(0.13,0.10),"label":"返回会盟集结地","target_scene":"ch8_s1_alliance_staging_ground","target_pos":Vector2(0.50,0.25)},{"id":"enter_manor_perimeter","pos":Vector2(0.50,0.22),"size":Vector2(0.13,0.10),"label":"进入山庄外围连营","target_scene":"ch8_s3_manor_perimeter_encampment","target_pos":Vector2(0.50,0.86),"require_flag":"ch8_mistwood_blockade_cleared"}])
+walkable_probes=Array[Dictionary]([{"id":"spawn","pos":Vector2(0.50,0.86)},{"id":"battle","pos":Vector2(0.50,0.52)},{"id":"gate","pos":Vector2(0.50,0.22)}])

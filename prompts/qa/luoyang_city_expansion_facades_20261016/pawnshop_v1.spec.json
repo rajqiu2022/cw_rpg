@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "id": "luoyang_exterior_pawnshop_20261016_v1",
+  "status": "GENERATED_VISUAL_CANDIDATE_STRICT_ALPHA_MARGIN_REJECTED_NOT_ADOPTED",
+  "execution_backend": "builtin_image_gen",
+  "model": null,
+  "model_note": "Not disclosed unless actual tool result says otherwise; never label as gpt-image-2 or CC0",
+  "attempt_budget": 1,
+  "transparent_background": true,
+  "intent": "brand_new_image",
+  "tool_input_image_paths": [],
+  "inspected_style_references": [
+    {
+      "path": "game/art/maps/luoyang_modular_v3/source/inn_v1.png",
+      "sha256": "661bd90ebc9bf75ebb67064e80633afd3ab7f371184e514574d667e59e2540b9",
+      "role": "ART-inspected camera/material reference, not tool edit target"
+    },
+    {
+      "path": "game/art/maps/luoyang_modular_v3/source/shop_v1.png",
+      "sha256": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+      "role": "ART-inspected camera/material reference, not tool edit target"
+    }
+  ],
+  "prompt_path": "prompts/qa/luoyang_city_expansion_facades_20261016/pawnshop_v1.prompt.txt",
+  "output_project_path": "assets/raw/luoyang_city_expansion_20261016/facades_v1/exterior_pawnshop_v1.png",
+  "constraints": {
+    "desired_size_px": [
+      1536,
+      1024
+    ],
+    "whole_asset_safe_margin_fraction": 0.1,
+    "no_npcs": true,
+    "no_text": true,
+    "no_terrain_or_surrounding_walls_trees": true,
+    "doorway_unobstructed": true
+  },
+  "checks_required": [
+    "Actual dimensions/format/alpha support/margin",
+    "Full roof/chimney/steps included, no artificial background or halo",
+    "Frontal camera/material/style visual review",
+    "Door semantic foot plus independent physical base authoring, no bbox guess",
+    "Native import fullRGBA and C source/geometry binding before any adoption"
+  ]
+}
+

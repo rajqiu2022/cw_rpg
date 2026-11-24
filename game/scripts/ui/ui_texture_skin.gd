@@ -17,7 +17,7 @@ static func load_texture(path: String) -> Texture2D:
 
 
 static func place_texture(parent: Control, name: String, path: String, rect: Rect2) -> TextureRect:
-	var tex := load_texture(path)
+	var tex: Texture2D = load_texture(path)
 	if tex == null:
 		return null
 	var node: TextureRect = TextureRect.new()
@@ -58,7 +58,7 @@ static func make_texture_button(
 
 
 static func stylebox_texture(path: String, margin: int = 24) -> StyleBoxTexture:
-	var tex := load_texture(path)
+	var tex: Texture2D = load_texture(path)
 	if tex == null:
 		return null
 	var box: StyleBoxTexture = StyleBoxTexture.new()

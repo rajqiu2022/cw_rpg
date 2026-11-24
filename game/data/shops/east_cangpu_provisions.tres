@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/shop_def.gd" id="1_shop"]
+
+[resource]
+script = ExtResource("1_shop")
+shop_id = &"east_cangpu_provisions"
+display_name = "沧浦行栈"
+greeting = "赶路的伤药、护腕都在柜上。"
+stock = Array[StringName]([&"healing_pill_minor", &"blood_activator", &"mana_pill", &"cloth_bracers", &"deer_leather_boots"])
+sell_back_ratio = 0.5

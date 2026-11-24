@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+
+[ext_resource type="Resource" path="res://data/maps/luoyang_enclosure_v11_candidates/ch4_s0_luoyang_gate_layout.tres" id="1_mj310"]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="2_am4ri"]
+
+[resource]
+script = ExtResource("2_am4ri")
+scene_id = &"ch4_s0_luoyang_gate"
+display_name = "洛阳 · 南城门"
+background_path = "res://art/maps/luoyang_enclosure_v11/ch4_s0_luoyang_gate/ground_v14/root_ground_v14_02/floor.png"
+bgm_path = "res://art/audio/bgm/bgm_city_ceremony_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("1_mj310")
+player_spawn = Vector2(0.5, 0.9082031)
+player_visual_scale = 0.91
+camera_zoom = 1.05
+npcs = Array[Dictionary]([{
+"conversation_base_facing": "left",
+"dialog_id": "openworld_luoyang_gate_sergeant",
+"npc_id": "luoyang_gate_sergeant",
+"npc_name": "洛阳门吏",
+"pos": Vector2(0.56640625, 0.7519531),
+"scale": 0.96,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"
+}])
+metadata/luoyang_layered_revision = 3
+metadata/city_manifest_sha = "2818f9fca10d30abbbbd386ff2b26a3d4ed87f300a9b8ef47f882bcb83f7640d"
+metadata/city_enclosure_manifest_sha = "20cb77de45df28def34fdeee5f7c75300182ade0a1f6af338088059e47f05de1"
+metadata/city_ground_manifest_sha = "1976d00447c8c399b92c9c2b1abdd1c8ce09d97f45263e7449b726f16bbaa3d3"
+metadata/city_ground_manifest_path = "res://art/maps/luoyang_enclosure_v11/ch4_s0_luoyang_gate/ground_v14/root_ground_v14_02/ground_capture.json"

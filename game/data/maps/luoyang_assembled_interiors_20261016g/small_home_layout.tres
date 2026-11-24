@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.18098958333333334, 0.3720703125, 0.8177083333333334, 0.3720703125, 0.9016927083333334, 0.6904296875, 0.5755208333333334, 0.6904296875, 0.5755208333333334, 0.87890625, 0.4075520833333333, 0.87890625, 0.4075520833333333, 0.6904296875, 0.09635416666666667, 0.6904296875)])
+visual_objects = [{"id": "small_home_cooking_stove_0", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/cooking_stove_v1.png", "pos": Vector2(0.18390625000000002, 0.3565625), "render_size_px": Vector2(215.04000000000002, 143.36), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.478515625, "assembled_furniture": true},
+{"id": "small_home_dining_table_1", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png", "pos": Vector2(0.31411458333333336, 0.4777734375), "render_size_px": Vector2(215.04000000000002, 143.36), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.60546875, "assembled_furniture": true},
+{"id": "small_home_long_bench_2", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png", "pos": Vector2(0.3291145833333333, 0.5749609375), "render_size_px": Vector2(168.96, 112.64), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.6591796875, "assembled_furniture": true},
+{"id": "small_home_household_bed_3", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/household_bed_v1.png", "pos": Vector2(0.5946354166666666, 0.320263671875), "render_size_px": Vector2(353.28000000000003, 235.52), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.5078125, "assembled_furniture": true},
+{"id": "small_home_wood_wardrobe_4", "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wood_wardrobe_v1.png", "pos": Vector2(0.588125, 0.19834960937499999), "render_size_px": Vector2(353.28000000000003, 235.52), "centered": false, "sort_by_feet": true, "depth_sort_foot_y": 0.41015625, "assembled_furniture": true}]
+blockers = [{"id": "small_home_cooking_stove_0", "ground_polygon": PackedVector2Array(0.20578125, 0.4662109375, 0.30212239583333333, 0.4662109375, 0.3033984375, 0.478515625, 0.20423177083333333, 0.478515625), "walkability_margin": 0.0},
+{"id": "small_home_dining_table_1", "ground_polygon": PackedVector2Array(0.35130208333333335, 0.57142578125, 0.41710937500000006, 0.57142578125, 0.42595052083333335, 0.60546875, 0.34236979166666665, 0.60546875), "walkability_margin": 0.0},
+{"id": "small_home_long_bench_2", "ground_polygon": PackedVector2Array(0.34222005208333334, 0.648759765625, 0.4262239583333334, 0.648759765625, 0.4262239583333334, 0.659287109375, 0.34222005208333334, 0.659287109375), "walkability_margin": 0.0},
+{"id": "small_home_household_bed_3", "ground_polygon": PackedVector2Array(0.64330078125, 0.4503125, 0.77896484375, 0.4503125, 0.7979817708333333, 0.5078125, 0.6215885416666667, 0.5078125), "walkability_margin": 0.0},
+{"id": "small_home_wood_wardrobe_4", "ground_polygon": PackedVector2Array(0.66, 0.38904296875, 0.7465494791666667, 0.38904296875, 0.7465494791666667, 0.410380859375, 0.66, 0.410380859375), "walkability_margin": 0.0},
+{"id": "fixed_column_0", "ground_polygon": PackedVector2Array(0.4856770833333333, 0.3291015625, 0.515625, 0.3291015625, 0.515625, 0.3642578125, 0.4856770833333333, 0.3642578125), "walkability_margin": 0.0}]
+portals = [{"id": "return_assembled_small_home", "pos": Vector2(0.5, 0.859375), "size": Vector2(0.06510416666666667, 0.0234375), "target_scene": "ch4_s3_luoyang_market", "target_pos": Vector2(0.166015625, 0.734375), "auto_trigger": false, "label": "返回洛阳"}]
+metadata/assembled_room_contract = "source_feet_assembled_interiors_20261016g"

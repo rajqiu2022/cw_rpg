@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"canglong_three_turns"
+display_name = "藏龙三转"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_palm_wave_v1.png"
+description = "由上中下三页残卷合成的失传散手。先藏锋换位，再以三转劲贯入一击。伤害：固定 34 + 攻击力 × 135%。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 18
+quality = 3
+required_insight = 9
+practice_base_cost = 36
+fixed_damage = 34
+attack_scaling = 135
+effect_value = 0
+hit_count = 1
+animation_id = &"canglong_three_turns"
+motion_style = 4
+required_weapon_type = &""
+martial_category = &"palm"
+damage_type = 1
+internal_injury_gain = 28
+school = "generic"
+is_passive = false

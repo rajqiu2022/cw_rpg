@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch4_side_08_qiangxiang_receipt"
+title = "强项旧事"
+kind = 1
+desc_not_started = "府衙一位候见乡民希望核对呈状次序。书办提起强项令旧事，却不愿拿名号代替证据。"
+desc_in_progress = "核对接状副联、城门见证人的说法与原登记，再向书办说明矛盾。"
+desc_completed = "原登记的受理次序已经补正，原联与复核说明均被保留。呈状仍须审理，不能把先受理当作已经判赢。"
+tracker_hint = "洛阳 · 府衙与南城门"
+progress_records = Array[Dictionary]([])
+completion_triggers = Array[String]([])
+auto_accept_triggers = Array[String]([])
+require_all_completion_triggers = false
+chapter_independent = true
+starts_in_chapter = 4
+completes_in_chapter = 4
+milestone_labels = Array[String]([])
+reward_gold = 0
+reward_exp = 0
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([])
+reward_skills_by_faction = {}
+reward_skills_by_flag = {}
+metadata/culture_candidate_status = "FORMAL_CULTURE_INTEGRATION_20261019x"
+metadata/culture_reward_status = "ZERO_PENDING_BALANCE_APPROVAL"
+metadata/culture_event_owner = "FUTURE_COORDINATOR_NOT_DIALOG_SIDE_EFFECTS"
+metadata/origin_candidate_path = "res://data/quests/luoyang_culture_candidates_20261019w/qiangxiang_receipt.tres"
+metadata/zero_reward_narrative_only = true

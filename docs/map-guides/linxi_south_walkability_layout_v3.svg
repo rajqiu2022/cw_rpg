@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3388" height="1614" viewBox="0 0 3388 1614">
+  <defs>
+    <pattern id="grass" width="44" height="44" patternUnits="userSpaceOnUse">
+      <rect width="44" height="44" fill="#426044"/>
+      <path d="M4 34l8-14m3 18l7-19m10 15l5-13M2 8l10 6m20-7l8 9" stroke="#547354" stroke-width="3" opacity=".65"/>
+    </pattern>
+    <pattern id="road" width="54" height="34" patternUnits="userSpaceOnUse">
+      <rect width="54" height="34" fill="#d9bd7b"/>
+      <path d="M0 17h54M18 0v17M42 17v17" stroke="#b39863" stroke-width="3" opacity=".72"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="20" stdDeviation="12" flood-color="#17231c" flood-opacity=".6"/>
+    </filter>
+  </defs>
+
+  <rect width="3388" height="1614" fill="url(#grass)"/>
+
+  <!-- Broad continuous road network: dark edge first, then walkable surface. -->
+  <g fill="none" stroke="#6f5b3b" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 807H3388" stroke-width="330"/>
+    <path d="M620 807V0M620 540C970 430 1220 430 1560 520S2180 610 2640 510M2640 510V0" stroke-width="290"/>
+    <path d="M620 807C760 1110 1080 1320 1510 1320H2140C2460 1320 2650 1110 2780 807" stroke-width="300"/>
+    <path d="M1510 520V1320M2640 510C2840 570 3030 690 3388 807" stroke-width="280"/>
+  </g>
+  <g fill="none" stroke="url(#road)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 807H3388" stroke-width="270"/>
+    <path d="M620 807V0M620 540C970 430 1220 430 1560 520S2180 610 2640 510M2640 510V0" stroke-width="230"/>
+    <path d="M620 807C760 1110 1080 1320 1510 1320H2140C2460 1320 2650 1110 2780 807" stroke-width="240"/>
+    <path d="M1510 520V1320M2640 510C2840 570 3030 690 3388 807" stroke-width="220"/>
+  </g>
+
+  <!-- Open plazas; these are guaranteed walkable staging and conversation areas. -->
+  <ellipse cx="620" cy="807" rx="350" ry="270" fill="url(#road)" stroke="#6f5b3b" stroke-width="26"/>
+  <ellipse cx="1510" cy="807" rx="430" ry="300" fill="url(#road)" stroke="#6f5b3b" stroke-width="26"/>
+  <ellipse cx="2780" cy="807" rx="330" ry="250" fill="url(#road)" stroke="#6f5b3b" stroke-width="26"/>
+
+  <!-- Building islands. Every footprint is entirely outside the road network. -->
+  <g filter="url(#shadow)">
+    <g transform="translate(110 90)">
+      <rect width="360" height="280" rx="20" fill="#6d4d35" stroke="#2e2927" stroke-width="22"/>
+      <polygon points="-30,80 180,-30 390,80 330,170 30,170" fill="#313b3c" stroke="#182123" stroke-width="22"/>
+      <rect x="142" y="230" width="76" height="50" fill="#8e6542"/>
+    </g>
+    <g transform="translate(830 70)">
+      <rect width="470" height="260" rx="20" fill="#705039" stroke="#2e2927" stroke-width="22"/>
+      <polygon points="-25,70 235,-35 495,70 430,165 40,165" fill="#354042" stroke="#182123" stroke-width="22"/>
+      <rect x="200" y="210" width="80" height="50" fill="#8e6542"/>
+    </g>
+    <g transform="translate(1740 115)">
+      <rect width="540" height="260" rx="20" fill="#6d4d35" stroke="#2e2927" stroke-width="22"/>
+      <polygon points="-30,80 270,-35 570,80 500,170 40,170" fill="#313b3c" stroke="#182123" stroke-width="22"/>
+      <rect x="228" y="210" width="84" height="50" fill="#8e6542"/>
+    </g>
+    <g transform="translate(2850 120)">
+      <rect width="390" height="270" rx="20" fill="#6d4d35" stroke="#2e2927" stroke-width="22"/>
+      <polygon points="-25,75 195,-30 415,75 360,170 30,170" fill="#354042" stroke="#182123" stroke-width="22"/>
+      <rect x="155" y="220" width="80" height="50" fill="#8e6542"/>
+    </g>
+
+    <g transform="translate(140 1080)">
+      <rect width="430" height="310" rx="20" fill="#6d4d35" stroke="#2e2927" stroke-width="22"/>
+      <polygon points="-25,85 215,-35 455,85 390,185 40,185" fill="#313b3c" stroke="#182123" stroke-width="22"/>
+      <rect x="175" y="0" width="80" height="55" fill="#8e6542"/>
+    </g>
+    <g transform="translate(900 1090)">
+      <rect width="390" height="300" rx="20" fill="#705039" stroke="#2e2927" stroke-width="22"/>
+      <polygon points="-25,85 195,-30 415,85 355,180 35,180" fill="#354042" stroke="#182123" stroke-width="22"/>
+      <rect x="155" y="0" width="80" height="55" fill="#8e6542"/>
+    </g>
+    <g transform="translate(1760 1080)">
+      <rect width="460" height="320" rx="20" fill="#6d4d35" stroke="#2e2927" stroke-width="22"/>
+      <polygon points="-25,90 230,-35 485,90 420,190 40,190" fill="#313b3c" stroke="#182123" stroke-width="22"/>
+      <rect x="190" y="0" width="80" height="55" fill="#8e6542"/>
+    </g>
+    <g transform="translate(2820 1090)">
+      <rect width="420" height="300" rx="20" fill="#705039" stroke="#2e2927" stroke-width="22"/>
+      <polygon points="-25,85 210,-30 445,85 385,180 35,180" fill="#354042" stroke="#182123" stroke-width="22"/>
+      <rect x="170" y="0" width="80" height="55" fill="#8e6542"/>
+    </g>
+  </g>
+
+  <!-- Door approach pads: purple thresholds always touch a walkable road. -->
+  <g fill="#ab82c9" stroke="#4d315f" stroke-width="12">
+    <rect x="267" y="410" width="96" height="42" rx="12"/>
+    <rect x="1017" y="360" width="96" height="42" rx="12"/>
+    <rect x="1962" y="405" width="96" height="42" rx="12"/>
+    <rect x="2997" y="430" width="96" height="42" rx="12"/>
+    <rect x="307" y="1025" width="96" height="42" rx="12"/>
+    <rect x="1047" y="1035" width="96" height="42" rx="12"/>
+    <rect x="1942" y="1025" width="96" height="42" rx="12"/>
+    <rect x="2982" y="1035" width="96" height="42" rx="12"/>
+  </g>
+
+  <!-- NPC anchors: all are on broad roads or plaza centers, never on roofs/gardens. -->
+  <g fill="#ffd25b" stroke="#5b3f17" stroke-width="13">
+    <circle cx="370" cy="620" r="30"/><circle cx="620" cy="760" r="30"/>
+    <circle cx="930" cy="520" r="30"/><circle cx="1260" cy="720" r="30"/>
+    <circle cx="1510" cy="880" r="30"/><circle cx="1910" cy="640" r="30"/>
+    <circle cx="2370" cy="560" r="30"/><circle cx="2780" cy="760" r="30"/>
+    <circle cx="820" cy="1110" r="30"/><circle cx="2290" cy="1200" r="30"/>
+    <circle cx="3050" cy="870" r="30"/>
+  </g>
+
+  <!-- Player entry and scene exits. -->
+  <polygon points="70,807 140,737 210,807 140,877" fill="#5ce5ef" stroke="#164d5b" stroke-width="18"/>
+  <polygon points="3318,807 3248,737 3178,807 3248,877" fill="#ef655e" stroke="#6d231f" stroke-width="18"/>
+  <polygon points="2640,60 2570,130 2640,200 2710,130" fill="#ef655e" stroke="#6d231f" stroke-width="18"/>
+</svg>

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "id": "luoyang_temple_layout_quest_20261018t_successor_binding",
+  "status": "SOURCE_READY_NOT_DEPLOYED",
+  "assets_ready": true,
+  "parent_binding_path": "res://data/maps/luoyang_temple_assembly_20261016/binding_editor_save_recovery_v14.json",
+  "parent_binding_sha256": "2a46baf36fc2667d0c62b789914738b72e30b085906dd066bcf55d594a0cd406",
+  "source_delta": {
+    "res://data/maps/luoyang_temple_layout_quest_20261018t/layout.tres": "2138694bfede79cde8223c0101003bb7885225ae9ea24a66f584a8f9072f1448",
+    "res://data/scenes/luoyang_temple_layout_quest_20261018t/temple.tres": "81fbe0934e11fc6cbab21855e97b7bd956eee52f8b532e445693349786ffd4d9",
+    "res://scripts/city/luoyang_layout_quest_20261018t.gd": "95c7d38fd1c6baddcded5a90d33fea8d696c7aad6ee67df33c6ebf074bc70bfb",
+    "res://scripts/city/luoyang_city_tasks_20261016.gd": "aa079d0190d26b0f8dd290938965eea5fa886a8b8e838d5d96ac3c90c96212df",
+    "res://scripts/city/luoyang_temple_task_adapter_20261016.gd": "11278eb3105dd66caecfc1e35c695ed8c0c571610239c6da1729995e0d724245",
+    "res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png": "6268061eab18d2bf8c1ea0c13873f0d718feb82a119f00a67edf7c52bcb077ad"
+  },
+  "replacement_map": {
+    "res://scripts/city/luoyang_city_tasks_20261016.gd": "res://build/luoyang_layout_quest_20261018t_task_integration_source01/luoyang_city_tasks_20261016_candidate.gd",
+    "res://scripts/city/luoyang_temple_assembly_20261016.gd": "res://build/luoyang_layout_quest_20261018t_task_integration_source01/luoyang_temple_assembly_20261016_candidate.gd",
+    "res://scripts/city/luoyang_temple_task_adapter_20261016.gd": "res://build/luoyang_layout_quest_20261018t_task_integration_source01/luoyang_temple_task_adapter_20261016_candidate.gd",
+    "res://data/quests/q_ch4_side_03_peony_poetry.tres": "res://build/luoyang_layout_quest_20261018t_task_source01/quests/q_ch4_side_03_peony_poetry.tres",
+    "res://data/quests/q_ch4_side_04_longmen_mystery.tres": "res://build/luoyang_layout_quest_20261018t_task_source01/quests/q_ch4_side_04_longmen_mystery.tres",
+    "res://data/quests/q_ch4_side_05_baima_bell.tres": "res://build/luoyang_layout_quest_20261018t_task_source01/quests/q_ch4_side_05_baima_bell.tres"
+  },
+  "semantics": {
+    "two_real_monk_entities_in_scene": true,
+    "legacy_hidden_speaker_hotspots_absent": ["legacy_hotspot_4", "legacy_hotspot_5"],
+    "ordinary_portal_pos_px": [[240, 850], [1296, 850]],
+    "portal_target_scene_and_target_pos_unchanged": true,
+    "same_id_quest_definitions_must_replace_canonical_paths": true,
+    "quest_manager_algorithm_changed": false,
+    "old_temple_geometry_assets_and_author_preserved": true
+  },
+  "explicit_limits": [
+    "This file does not activate the successor.",
+    "The assembly candidate is omitted from source_delta to avoid a self-referential binding hash; source_paths still hashes SELF first and final.",
+    "Runtime import, native Physics, portal return and DialogPlayer acceptance are pending ROOT-owned execution."
+  ]
+}

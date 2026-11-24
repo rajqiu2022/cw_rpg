@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "守村人"
+text = "晨市这几日人来人往，你若只是游历，药铺、棋摊和码头都可去看看。北林近来不太平，没弄清缘由前别独自往深处走。"
+on_end = "next:reply"
+
+[sub_resource type="Resource" id="node_reply"]
+script = ExtResource("2_dnode")
+node_id = &"reply"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "我先在镇上走走，不会擅闯北林。若听见与失踪者有关的消息，再回来找你核对。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch2_market_gatekeeper_early_visit"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_reply")])

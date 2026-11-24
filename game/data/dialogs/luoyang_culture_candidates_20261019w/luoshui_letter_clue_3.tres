@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "记货伙计"
+portrait_path = ""
+text = "原条记着南市采买妇人凭青线双结亲领，没准他人代领。把外封与她独立答复对上，有一处不合就停下。"
+voice_emotion = "normal"
+choices = Array[Dictionary]([])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+learn_skills = Array[StringName]([])
+add_evidence = Array[StringName]([])
+verify_evidence = Array[StringName]([])
+add_testimonies = Array[StringName]([])
+verify_testimonies = Array[StringName]([])
+faction_trust_changes = Array[Dictionary]([])
+companion_trust_changes = Array[Dictionary]([])
+bond_events = Array[Dictionary]([])
+city_outcomes = Array[Dictionary]([])
+method_flags = Array[Dictionary]([])
+weather_id = &""
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_culture_w_luoshui_letter_clue_3"
+entry_node_id = &"start"
+required_story_flag = &""
+required_completed_quest = &""
+fallback_dialog_id = &""
+blocked_story_flag = &""
+required_free_inventory_slots = 0
+nodes = Array[Resource]([SubResource("start")])
+metadata/culture_candidate_status = "CANDIDATE_NOT_FORMAL"
+metadata/culture_event_owner = "FUTURE_COORDINATOR_NOT_DIALOG_SIDE_EFFECTS"

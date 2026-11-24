@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch8_false_order_escort"
+display_name="茗雾护令客"
+battle_actor_path = "res://art/sprites/battle/story_duels_20261121/escort/ready.tres"
+battle_actor_flip_h = false
+battle_actor_use_exact_scale = true
+battle_actor_scale = 1.015
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/escort/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/escort/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/escort/attack1.tres", "res://art/sprites/battle/story_duels_20261121/escort/attack2.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/escort/hit1.tres", "res://art/sprites/battle/story_duels_20261121/escort/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/escort/knee.tres", "res://art/sprites/battle/story_duels_20261121/escort/down.tres")
+level=14
+max_hp=680
+max_mp=135
+attack=122
+defense=25
+speed=36
+skill_ids=Array[StringName]([&"basic_attack",&"mingwu_wuyin_sanshi",&"blood_shadow_scattering_darts"])
+aggression=0.74
+drop_gold_min=65
+drop_gold_max=90
+drop_exp=140

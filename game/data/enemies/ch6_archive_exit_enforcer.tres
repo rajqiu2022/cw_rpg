@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+enemy_id = &"ch6_archive_exit_enforcer"
+display_name = "茗雾断卷客"
+battle_actor_path = "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/ready_01.tres"
+battle_actor_scale = 0.9
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/ready_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/ready_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/ready_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/ready_04.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/move_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/move_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/move_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/move_04.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/attack_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/attack_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/attack_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/attack_04.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/hit_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/hit_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/hit_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/hit_04.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/defeat_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/defeat_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/defeat_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/ch6_archive_exit_enforcer/defeat_04.tres")
+level = 10
+max_hp = 560
+max_mp = 36
+attack = 96
+defense = 20
+speed = 26
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_saofeng", &"toxic_needle"])
+aggression = 0.68
+drop_gold_min = 10
+drop_gold_max = 20
+drop_exp = 141

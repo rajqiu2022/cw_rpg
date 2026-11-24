@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch6_main_06_ancient_road_letter"
+title = "古道留书"
+kind = 0
+desc_not_started = "刑樊天指出桌上的火漆并非自己所留，村外古道客栈还有一封等待冷孤云亲自拆阅的信。"
+desc_in_progress = "前往林西村外的古道客栈，查验陌生火漆、黑玉佩与留书内容。"
+desc_completed = "戚云笙没有要求冷孤云先相信烈云，只邀请他带着原册和玉佩到峡谷旧渡当面核证。第七章调查方向已经打开。"
+tracker_hint = "林西村外 · 古道客栈"
+completion_triggers = Array[String](["flag_set:ch6_qiyun_letter_read"])
+starts_in_chapter = 6
+completes_in_chapter = 6
+reward_gold = 0
+reward_exp = 180
+reward_items = Array[Dictionary]([])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch6_qiyun_letter_read", "text":"取得戚云笙留书与黑玉佩；烈云峡谷旧渡成为下一步调查方向。"}])
+reward_skills_by_faction = {"wudang": Array[StringName]([&"wudang_xuanwu_xinjing"]), "huashan": Array[StringName]([&"huashan_zixia_shengong"]), "gufeng": Array[StringName]([&"gufeng_jingang_li"]), "lingyue": Array[StringName]([&"lingyue_yuehua_yin"]), "mingwu": Array[StringName]([&"mingwu_yinying_jue"])}

@@ -1,0 +1,40 @@
+tasks:
+  - id: yihongyuan_luxury_shell_20261106_v1
+    skip: true
+    template: interior_shell_20261106
+    category: interior_identity_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/interior_identity_20261106/yihongyuan_luxury_shell.txt
+    vars:
+      reference_shell: game/art/modules/luoyang_assembled_interiors_20261016g/shell_inn_hall_v1.png
+      asset_prompt: Exact prompt_path; luxurious permanent Yihongyuan architecture, original doorway and adult scale.
+  - id: inn_premium_shell_20261106_v1
+    skip: true
+    template: interior_shell_20261106
+    category: interior_identity_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/interior_identity_20261106/inn_premium_shell.txt
+    vars:
+      reference_shell: game/art/modules/luoyang_assembled_interiors_20261016g/shell_inn_hall_v1.png
+      asset_prompt: Exact prompt_path; prosperous upper-market inn, not an entertainment salon.
+  - id: inn_common_shell_20261106_v1
+    skip: true
+    template: interior_shell_20261106
+    category: interior_identity_20261106
+    execution_backend: builtin_image_gen
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    transparent_background: true
+    prompt_path: prompts/interior_identity_20261106/inn_common_shell.txt
+    vars:
+      reference_shell: game/art/modules/luoyang_assembled_interiors_20261016g/shell_inn_hall_v1.png
+      asset_prompt: Exact prompt_path; modest roadside inn, plain practical materials and coherent floor.

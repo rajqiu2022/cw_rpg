@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "西棚的杂用单没来得及发下去。守棚的人缺干毡，东侧运名册的手车缺防潮布。我顺路把营里现有的备用料分过去。"
+accept_quest = &"q_ch8_side_01_camp_supplies"
+
+on_end = "next:accepted"
+
+[sub_resource type="Resource" id="accepted"]
+script = ExtResource("2")
+node_id = &"accepted"
+speaker = "冷孤云"
+text = "就按单子做。两处不分先后，做完不必回来回话。"
+set_flags = Array[Dictionary]([{"key":"ch8_camp_supplies_accepted","value":true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch8_camp_supplies_start"
+nodes = Array[Resource]([SubResource("start"), SubResource("accepted")])

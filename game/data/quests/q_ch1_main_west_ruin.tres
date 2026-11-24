@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_main_west_ruin"
+title = "雾纹匪踪"
+kind = 0
+desc_not_started = "值守册确认，赵无忌负责废宅的守门、验货与灭口。"
+desc_in_progress = "进入城西废宅内堂，与赵无忌对质，查出失踪者和转运货物的下一站。"
+desc_completed = "冷孤云重伤赵无忌并将其逼退，自己也受了重伤。赵无忌遗落的货单显示，几名活口被送往竹尾河滩。"
+tracker_hint = "竹尾村 · 城西废宅内堂"
+progress_records = Array[Dictionary]([{"trigger":"flag_set:zhao_wuji_wounded_escape", "text":"赵无忌负伤逃离，内堂遗留了一只裂开的文书皮囊。"}, {"trigger":"evidence_acquired:ev_ch1_west_ruin_transfer_order", "text":"转运密令显示，几名活口被送往竹尾河滩。"}])
+completion_triggers = Array[String](["flag_set:chapter1_complete"])
+reward_gold = 80
+reward_exp = 120
+reward_items = Array[Dictionary]([{"id": "healing_pill_major", "count": 1}, {"id": "inner_breath_pill", "count": 1}])

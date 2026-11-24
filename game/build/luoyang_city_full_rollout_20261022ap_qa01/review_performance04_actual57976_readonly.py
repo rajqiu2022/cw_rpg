@@ -1,0 +1,63 @@
+"""One readonly actual timing/identity audit, deliberately no 3GB payload rehash."""
+import hashlib
+import json
+import re
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[2];QA=Path(__file__).parent;SF=ROOT/'build/luoyang_city_full_rollout_20261022ap_source_finalize01'
+def sha(b):return hashlib.sha256(b).hexdigest()
+def load(p,h):
+    b=p.read_bytes();assert sha(b)==h;return json.loads(b)
+rp=SF/'performance09_yamen_light04/output/57976_2758/result.json'
+rh='06c98f901dae340bf4906b9f372208e5f8c99fe491aa4b6d667501138ee0b6c5';r=load(rp,rh)
+assert r['complete']and r['checks']==2481 and r['failures']==0 and r['elapsed_ms']==29413
+assert r['source_before']==r['source_after']and len(r['source_before'])==1245
+fp=SF/'performance10_yamen_light04_ROOT18/yamen_performance04_fixture_ROOT18_READY.json';fh='1e8926959c79c2819253da70befac4d64ad619770eab838a1f2b1b88e01d97c5';f=load(fp,fh)
+expected=dict(f['source_sha256']);expected['res://'+fp.relative_to(ROOT).as_posix()]=fh
+assert expected=={p:v['sha256']for p,v in r['source_before'].items()}
+small_paths=['res://scripts/city/luoyang_precomputed_bundle_20261018r.gd','res://scripts/city/luoyang_district_life_20261016f.gd','res://scripts/city/luoyang_parallel_source_hash_20261017k.gd','res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd','res://scripts/field/field_walkable_controller.gd','res://scripts/city/luoyang_assembled_interiors_20261016g.gd','res://'+fp.relative_to(ROOT).as_posix()]
+for p in small_paths:
+    q=ROOT/p[6:];b=q.read_bytes();fact=r['source_before'][p]
+    assert sha(b)==fact['sha256']and len(b)==fact['bytes']and int(q.stat().st_mtime)==fact['mtime']
+assert r['players_before']==r['players_after']and len(r['players_before'])==15
+savedir=Path('C:/Users/rajqiu/AppData/Roaming/Godot/app_userdata/云影侠传')
+for p,v in r['players_before'].items():
+    q=savedir/p[7:];assert q.exists()==v['exists']
+    if q.exists():assert sha(q.read_bytes())==v['sha256']and q.stat().st_size==v['bytes']and int(q.stat().st_mtime)==v['mtime']
+e=next(v for v in r['records']if v['kind']=='PERF04_ONE_DEFAULT_ENTRY_RESULT');n=next(v for v in r['records']if v['kind']=='PERF04_NATURAL_C_RECEIPT_SELECTIVE_READ')
+assert n['sources']==f['expected_city_source_sha256']and len(n['sources'])==1221
+assert n['identity']['token']==1 and n['identity']['sources_finalized']and n['identity']['scene_matches']
+assert e['functional_entry_and_natural_owner_ok']and not e['first_under10s']
+ready=e['ready'];draw=e['hidden_canmove_firstdraw'];profile=e['Field_profile'];dt=e['DT_timings_after_frozen_draw'];m=dt['metrics']
+assert ready['elapsed_usec']==14613805 and draw['elapsed_usec']==14753393 and draw['loading_hidden_inactive']and draw['can_move']
+assert ready['usec']-ready['elapsed_usec']==draw['usec']-draw['elapsed_usec']
+assert ready['Field']==draw['Field']==profile['Field_instance']==dt['Field']and ready['Scene']==draw['Scene']==profile['scene_instance']==dt['Scene']==m['scene_instance']
+assert profile['layout_instance']==dt['layout']==m['layout_instance']
+assert profile['transition_token']==m['transition_token']==dt['resident_positive_token']==n['identity']['token']==1
+assert profile['setup_identity_current']and not profile['same_live_transition']and profile['observed_live_transition_token']==0 and not profile['fresh_source_validation_credit']
+assert dt['same_owner']and dt['not_fresh_source_evidence']and m['setup_identity_current']and not m['fresh_source_validation_credit']and m['profile_origin']=='DISTRICT_SETUP_NOT_WARM_RESUME'
+assert dt['captured_after_frozen_draw']['usec']>draw['usec']and dt['getter_read_count']==e['DT_timing_getter_reads']==1
+active=e['last_matching_active_C'];final=e['last_same_token_finalized_C'];assert active==final
+c=final['C'];assert final['same_live_owner']==c['token']==1 and c['source_count']==1221 and c['sources_finalized']and c['active']and c['live_scope']and final['captured']['usec']<draw['usec']
+assert c['live_phase_msec']=={'resolve_total':4224,'source_start_worker':2192,'precomputed_packet_and_materialize':1993}
+ph=profile['phases'];sp=m['spans']
+for v in ph.values():assert v['wall_usec']==v['finished_usec']-v['started_usec']
+for v in sp.values():assert v['wall_usec']==v['finished_usec']-v['started_usec']
+assert ph['setup_total']['wall_usec']==6839818 and ph['district_prepare_and_projection']['wall_usec']==3101980 and ph['complete_source_final_await']['wall_usec']==2551881
+assert sp['projection_and_whole_parent_inverse']['wall_usec']==2863942 and sp['projection_and_whole_parent_inverse']['process_frames']==0
+assert ph['ready_ui']['finished_usec']<ph['setup_total']['started_usec']
+contained=sorted((v['started_usec'],v['finished_usec'],v['wall_usec'])for k,v in ph.items()if k not in ('ready_ui','setup_total'))
+assert all(ph['setup_total']['started_usec']<=a<=b<=ph['setup_total']['finished_usec']for a,b,_ in contained)
+assert all(a[1]<=b[0]for a,b in zip(contained,contained[1:]))
+child=sum(v[2]for v in contained);remainder=ph['setup_total']['wall_usec']-child
+lm=e['LM']['metrics'];assert lm['count']==lm['completed']==26 and lm['complete']and lm['active_requests']==lm['draining_requests']==0 and lm['request_peak']==8
+traces=[v for v in r['records']if v['kind']=='PERF04_PHASE_CLOCK'];assert len(traces)==11 and e['max_observe_gap_usec']==3039342
+process=load(ROOT/'build/luoyang_city_full_rollout_20261022ap_root01/integration19/yamen_performance04_once_process_receipt.json','92537468ec9bc6fb6585c6cfe6d337ff1598f2da3d15b3260851659bd25a4dd8')
+assert process['actual_natural_console_exit_code']==-1073741819 and process['exit_code_from_retained_process_WaitForExit']and not process['process_stopped_by_tool']
+logs={}
+for kind in ('stdout','stderr'):
+    raw=Path(process[kind+'_path']).read_bytes();assert sha(raw)==process[kind+'_sha256'];logs[kind]=raw.decode()
+errors=len(re.findall(r'^ERROR:',logs['stderr'],re.M));warnings=len(re.findall(r'^WARNING:',logs['stderr'],re.M));assert errors==12 and warnings==2 and 'SCRIPT ERROR:'not in logs['stderr']
+assert not list(rp.parent.glob('*.png'))
+out=QA/'performance04_actual57976_independent_timing_identity_exit_review_READY.json'
+result={'status':'FUNCTIONAL_ENTRY_COMPONENT_COMPLETE_PERFORMANCE_AND_PROCESS_FAILED_NOT_WHOLE_PASS','actual_result_sha256':rh,'functional_checks':2481,'functional_failures':0,'actual_scope_elapsed_ms':29413,'true_console_exit':-1073741819,'true_console_exit_hex':'0xC0000005','crash_cause':'NOT_PROVEN_BY_THIS_LOG','source_before_after_declared_expected_SHA_same':1245,'current_small_implementation_fixture_SHA_bytes_seconds_checked':len(small_paths),'all1245_payloads_or_3GB_rehashed':False,'save_before_after_current_SHA_bytes_seconds_same':15,'natural_C_expected_sources':1221,'same_DT_Field_Scene_layout_positive_token_and_postdraw_single_read':True,'DT_and_Field_metrics_freshsource_credit':False,'timing_usec':{'ready':14613805,'hidden_canmove_firstdraw':14753393,'ready_to_draw':draw['elapsed_usec']-ready['elapsed_usec'],'Field_setup_total':6839818,'Field_DT_prepare_projection':3101980,'DT_projection_whole_parent_inverse':2863942,'Field_source_final_await':2551881,'ENV_install':ph['environment_install']['wall_usec'],'readyUI_outside_setup':ph['ready_ui']['wall_usec'],'disjoint_child_sum_inside_setup':child,'uninstrumented_setup_wall_remainder':remainder},'under10':False,'C_nested_msec_not_additive':c['live_phase_msec'],'LM_metrics':lm,'phase_events':len(traces),'max_poll_gap_usec':e['max_observe_gap_usec'],'logs':{'errors':errors,'warnings':warnings,'Script_errors':0,'WASAPI_dummy_and_exit_resource_leaks_preserved':True},'optimization_evidence_boundary':'DT 2.863942s encloses several projection/copy/whole_bound/record inverse/wire-comparison operations and has no intermediate subspan. It supports targeting this synchronous region, not assigning all cost to one function, skipping validation, or a claimed saving. Cross-check fixed-source call graph before proposing reuse.','engine_collector_geometry_decode_or_replay':False,'old_report_or_production_writes':False,'whole_runtime_clean_or_performance_PASS':False}
+assert not out.exists();out.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8');print(json.dumps({'path':str(out),'sha256':sha(out.read_bytes()),'setup_remainder_usec':remainder}))

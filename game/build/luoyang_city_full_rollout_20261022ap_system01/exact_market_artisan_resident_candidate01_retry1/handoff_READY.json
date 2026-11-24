@@ -1,0 +1,108 @@
+{
+  "status": "NEW_BUILD_ONLY_NOT_ENGINE_CHECKED_NOT_DEPLOYED",
+  "targets": [
+    {
+      "canonical": "res://scripts/autoload/scene_router.gd",
+      "parent_sha256": "c3452fd4735cfed1d1bc2b12dbf689b09a46ca093f430ba3ee940241ff443de6",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate01_retry1/Router_exact_market_artisan_resident_READY.gd",
+        "sha256": "b58e939c2ad70912de3fb86e8cb42a7d50ec62706b0c47dde069939dafb98829",
+        "bytes": 107821
+      },
+      "whole_byte_inverse": true,
+      "edits": [
+        {
+          "old": "const RESIDENT_CITY = preload(\"res://scripts/city/luoyang_resident_field_20261016.gd\")",
+          "new": "const RESIDENT_CITY = preload(\"res://scripts/city/luoyang_resident_field_20261016.gd\")\r\nconst AP_RETURN_SHA = preload(\"res://scripts/city/luoyang_parallel_source_hash_20261017k.gd\")\r\nconst AP_LEASE_MARKET := &\"ch4_s3_luoyang_market\"\r\nconst AP_LEASE_ARTISAN := &\"luoyang_artisan_residential_20261022ap\""
+        },
+        {
+          "old": "var _resident_return_state: Dictionary = {}",
+          "new": "var _resident_return_state: Dictionary = {}\r\nvar _ap_return_source_job: RefCounted = null\r\nvar _ap_return_source_task: int = -1"
+        },
+        {
+          "old": "func park_resident_exterior_for_excursion(destination: StringName) -> bool:\n",
+          "new": "func _ap_market_artisan_header() -> Dictionary:\n\t# Two literal existing public links only, with their original author feet.\n\tvar header: Dictionary=AP_QUARTERS.source_header()\n\tif header.is_empty(): return {}\n\tvar forward: Dictionary={};var backward: Dictionary={}\n\tfor row: Dictionary in header.get(\"connections\",[]):\n\t\tif row.get(\"source\")==String(AP_LEASE_MARKET) and row.get(\"target\")==String(AP_LEASE_ARTISAN):\n\t\t\tif not forward.is_empty(): return {}\n\t\t\tforward=row\n\t\tif row.get(\"source\")==String(AP_LEASE_ARTISAN) and row.get(\"target\")==String(AP_LEASE_MARKET):\n\t\t\tif not backward.is_empty(): return {}\n\t\t\tbackward=row\n\tif forward.get(\"id\")!=\"market_to_artisan\" or backward.get(\"id\")!=\"artisan_to_market\" or forward.get(\"kind\")!=\"PUBLIC_QUARTER_LINK\" or backward.get(\"kind\")!=\"PUBLIC_QUARTER_LINK\": return {}\n\tif forward.get(\"source_foot\")!=[1100,1860] or forward.get(\"target_foot\")!=[2816,1740] or backward.get(\"source_foot\")!=[2816,1740] or backward.get(\"target_foot\")!=[1100,1860]: return {}\n\treturn {\"forward\":forward,\"backward\":backward}\n\nfunc _ap_live_pair_portal(field: Node,source: StringName,target: StringName) -> bool:\n\tif not is_instance_valid(field) or not field.is_inside_tree() or not field.get(\"_exit_nodes\") is Array: return false\n\tvar source_scene: SceneScript=field.get(\"_current_scene\") as SceneScript\n\tif source_scene==null or source_scene.scene_id!=source or field.get(\"_world_size\")!=LUOYANG_V3.SIZE: return false\n\tvar expected_pos: Vector2=Vector2(1100,1860) if source==AP_LEASE_MARKET else Vector2(2816,1740)\n\tvar expected_target: Vector2=(Vector2(2816,1740) if source==AP_LEASE_MARKET else Vector2(1100,1860))/LUOYANG_V3.SIZE\n\tvar count: int=0\n\tfor zone: Node in field.get(\"_exit_nodes\"):\n\t\tif is_instance_valid(zone) and zone.get(\"target_scene_id\")==String(target):\n\t\t\tif zone.get(\"target_spawn_pos\")!=expected_target or zone.get(\"position\")!=(expected_pos/LUOYANG_V3.SIZE)*LUOYANG_V3.SIZE or zone.get(\"is_locked\")!=false or zone.get(\"action\")!=\"\" or zone.get(\"_in_range\")!=true: return false\n\t\t\tif not zone is Area2D or not (zone as Area2D).get_overlapping_bodies().has(field.get(\"_player\")): return false\n\t\t\tcount+=1\n\treturn count==1\n\nfunc _park_market_for_exact_artisan() -> bool:\n\tif OS.has_feature(\"web\") or not RESIDENT_CITY.extended_enabled() or not _resident_return.is_empty() or _resident_city.state().occupied: return false\n\tvar field: Node=get_tree().current_scene\n\tif not is_instance_valid(field) or not field.has_method(\"resident_begin_park\") or _ap_market_artisan_header().is_empty() or not _ap_live_pair_portal(field,AP_LEASE_MARKET,AP_LEASE_ARTISAN): return false\n\tvar scene: SceneScript=field.get(\"_current_scene\") as SceneScript\n\tvar foot: Variant=_portal_return_spawns.get(_portal_route_key(AP_LEASE_ARTISAN,AP_LEASE_MARKET))\n\tvar authored: Vector2=Vector2(1100,1860)/LUOYANG_V3.SIZE\n\t# Keep the existing public-link return policy (author portal UV), not a new\n\t# actor movement sample. Actual feet still must be safe and in the real Area.\n\tif scene==null or scene.scene_id!=AP_LEASE_MARKET or not foot is Vector2 or foot!=authored or not LUOYANG_V3.safe_body(AP_LEASE_MARKET,foot*LUOYANG_V3.SIZE): return false\n\tvar actual: Vector2=field.call(\"resident_actual_spawn\")\n\tif not actual.is_finite() or not LUOYANG_V3.safe_body(AP_LEASE_MARKET,actual*LUOYANG_V3.SIZE): return false\n\tvar proof: Dictionary=LUOYANG_V3.resident_receipt(scene)\n\tif proof.is_empty(): return false\n\tvar family: Dictionary=AP_QUARTERS.validation_receipt()\n\tif family.get(\"finalized\")!=true or family.get(\"full_source_hash_passes\")!=2 or family.get(\"source_first\")!=family.get(\"source_final\"): return false\n\tvar loading: Node=get_node_or_null(\"/root/LoadingManager\")\n\tvar mode: int=int(loading.get(\"_source_process_mode\")) if loading!=null and loading.get(\"_source_field\")!=null else field.process_mode\n\tif not _resident_city.stage(field,AP_LEASE_ARTISAN,proof,foot,authored,mode,\"ap_artisan\"): return false\n\tif _resident_city.detach(get_tree()): return true\n\t_resident_city.release(\"AP_ARTISAN_DETACH_REFUSED\");return false\n\nfunc park_resident_exterior_for_excursion(destination: StringName) -> bool:\n\tif destination==AP_LEASE_ARTISAN: return _park_market_for_exact_artisan()\n"
+        },
+        {
+          "old": "\tif public_request:\n\t\tvar retained: SceneScript=_resident_city.field.get(\"_current_scene\") as SceneScript",
+          "new": "\tif public_request and _resident_city.excursion_kind==\"ap_artisan\":\n\t\t_resident_city.release(\"AP_ARTISAN_PUBLIC_RETURN_NOT_AUTHORED\");return false\n\tif public_request:\n\t\tvar retained: SceneScript=_resident_city.field.get(\"_current_scene\") as SceneScript"
+        },
+        {
+          "old": "\telif _resident_city.excursion_kind==\"room\":",
+          "new": "\telif _resident_city.excursion_kind==\"ap_artisan\":\r\n\t\tvar source_node: Node=get_tree().current_scene\r\n\t\tvar source_scene: SceneScript=source_node.get(\"_current_scene\") as SceneScript if is_instance_valid(source_node) else null\r\n\t\tvar expected_source: Vector2=Vector2(2816,1740)/LUOYANG_V3.SIZE\r\n\t\tif _current_field_id!=AP_LEASE_ARTISAN or target!=AP_LEASE_MARKET or not action.is_empty() or _ap_market_artisan_header().is_empty() or source_scene==null or not AP_QUARTERS.matches(source_scene) or not _ap_live_pair_portal(source_node,AP_LEASE_ARTISAN,AP_LEASE_MARKET): _resident_city.release(\"AP_ARTISAN_RETURN_PAIR_DIFFERS\");return false\r\n\t\tif not authored is Vector2 or authored!=_resident_city.authored_exit or not source_spawn is Vector2 or source_spawn!=expected_source or not remembered is Vector2 or remembered!=_resident_city.return_spawn or not LUOYANG_V3.safe_body(target,remembered*LUOYANG_V3.SIZE): _resident_city.release(\"AP_ARTISAN_RETURN_FEET_DIFFERS\");return false\r\n\telif _resident_city.excursion_kind==\"room\":"
+        },
+        {
+          "old": "func _cancel_resident_return(reason: String) -> bool:\n",
+          "new": "func _finish_ap_return_source_job(cancel: bool) -> void:\n\tif _ap_return_source_job!=null and cancel: _ap_return_source_job.call(\"request_cancel\")\n\tif _ap_return_source_task>=0: WorkerThreadPool.wait_for_task_completion(_ap_return_source_task)\n\t_ap_return_source_task=-1;_ap_return_source_job=null\n\nfunc _ap_return_complete_source_sha(context: Dictionary) -> bool:\n\tif not _resident_return_owns(context) or _ap_return_source_task>=0 or _ap_return_source_job!=null: return false\n\tvar expected: Dictionary=_resident_city.receipt.get(\"sources\",{}).duplicate(true)\n\tif expected.is_empty(): return false\n\tvar job: RefCounted=AP_RETURN_SHA.new()\n\tjob.set(\"paths\",expected.keys());job.set(\"worker_limit\",4)\n\t_ap_return_source_job=job\n\tvar started: int=Time.get_ticks_usec()\n\tvar task: int=WorkerThreadPool.add_task(job.run,false,\"Exact AP Market lease complete source SHA\")\n\tif task<0: _finish_ap_return_source_job(true);return false\n\t_ap_return_source_task=task\n\t_resident_return_state.phase=\"VERIFYING_COMPLETE_MARKET_SOURCES\"\n\twhile _ap_return_source_task==task and not WorkerThreadPool.is_task_completed(task):\n\t\tif not _resident_return_owns(context): _finish_ap_return_source_job(true);return false\n\t\tawait get_tree().process_frame\n\tif not _resident_return_owns(context) or _ap_return_source_task!=task: return false\n\tWorkerThreadPool.wait_for_task_completion(task)\n\tvar actual: Dictionary=job.get(\"hashes\")\n\tvar details: Dictionary=job.call(\"debug_state\")\n\t_ap_return_source_task=-1;_ap_return_source_job=null\n\tvar valid: bool=details.get(\"complete\")==true and actual.size()==expected.size() and LUOYANG_V3._equal_value(actual,expected)\n\t_resident_return_state.source_fresh_sha=valid\n\t_resident_return_state.source_hash_passes=1\n\t_resident_return_state.source_count=expected.size()\n\t_resident_return_state.source_sha_ms=(Time.get_ticks_usec()-started)/1000.0\n\t_resident_return_state.source_worker=details\n\t_resident_return_state.source_basis=\"FRESH_COMPLETE_MARKET_SHA_THEN_ORIGINAL_LIVE_IDENTITY_AND_METADATA\"\n\treturn valid\n\nfunc _cancel_resident_return(reason: String) -> bool:\n\t_finish_ap_return_source_job(true)\n"
+        },
+        {
+          "old": "\t_resident_return_state.metadata_ms=(Time.get_ticks_usec()-started)/1000.0\n\tif not valid:",
+          "new": "\t_resident_return_state.metadata_ms=(Time.get_ticks_usec()-started)/1000.0\n\tif valid and _resident_city.excursion_kind==\"ap_artisan\":\n\t\tvalid=await _ap_return_complete_source_sha(context)\n\t\tif not _resident_return_owns(context): return\n\t\t# Full SHA is additional, never a substitute for original live/metadata.\n\t\tvalid=valid and _field_preparation_is_current(loading,int(context.token)) and get_tree().current_scene==context.room and _resident_city.identities_match() and LUOYANG_V3.resident_matches(_resident_city.receipt,scene)\n\tif not valid:"
+        },
+        {
+          "old": "\tvar loading_context := {\"title\": _loading_title_for_field(scene_id)}\n\tif LUOYANG_V3.is_v3(city_scene) or new_world or revision_room:",
+          "new": "\tvar loading_context := {\"title\": _loading_title_for_field(scene_id)}\n\tvar exact_ap_excursion: bool=scene_id==AP_LEASE_ARTISAN and not _ap_market_artisan_header().is_empty() and is_instance_valid(get_tree().current_scene) and (get_tree().current_scene.get(\"_current_scene\") as SceneScript)!=null and (get_tree().current_scene.get(\"_current_scene\") as SceneScript).scene_id==AP_LEASE_MARKET\n\tif LUOYANG_V3.is_v3(city_scene) or new_world or revision_room or exact_ap_excursion:"
+        }
+      ]
+    },
+    {
+      "canonical": "res://scripts/city/luoyang_resident_field_20261016.gd",
+      "parent_sha256": "f1730e461fe6328763cfd70c79b2bbc36c80a2afb7609c364fa7ea7af8acdd7f",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate01_retry1/Resident_exact_market_artisan_READY.gd",
+        "sha256": "faf38e53113431c77a85c3a4068437007c07aa85ef44fb37665704a66aa1e9b4",
+        "bytes": 5131
+      },
+      "whole_byte_inverse": true,
+      "edits": [
+        {
+          "old": "\tif scene==null or not supports_city(scene.scene_id) or kind not in [\"room\",\"world\"] or (kind==\"world\" and not extended_enabled()): return false",
+          "new": "\tif scene==null or not supports_city(scene.scene_id) or kind not in [\"room\",\"world\",\"ap_artisan\"] or (kind==\"world\" and not extended_enabled()): return false\n\tif kind==\"ap_artisan\" and (not extended_enabled() or scene.scene_id!=CITY or id!=&\"luoyang_artisan_residential_20261022ap\" or spawn!=Vector2(1100,1860)/Vector2(3072,2048) or authored!=spawn): return false"
+        }
+      ]
+    }
+  ],
+  "scope": {
+    "pair": [
+      "ch4_s3_luoyang_market",
+      "luoyang_artisan_residential_20261022ap"
+    ],
+    "new_kind": "ap_artisan",
+    "return_policy": "preserve fixed authored public-link portal UV, same as current original E; actual actor must overlap live unlocked ExitZone and safe body",
+    "market_foot": [
+      1100,
+      1860
+    ],
+    "artisan_foot": [
+      2816,
+      1740
+    ],
+    "one_complete_fresh_market_sha_pass_before_attach": true,
+    "original_parallel_worker": "res://scripts/city/luoyang_parallel_source_hash_20261017k.gd",
+    "original_worker_sha256": "80261e1bf9b34400c6aa99959d98502b648589fccf2138231f3907d9826d8b0b",
+    "same_original_field_then_original_identity_and_metadata": true,
+    "original512MiB_limit": true
+  },
+  "control_flow_review": [
+    "original Artisan destination lacked LoadingManager field context; exact outbound context now supplied",
+    "private authored route calls _go_field_smart_prepared, never public _enqueue COLD_CITY_REQUEST",
+    "_transition_to LEAVING_EXCURSION runs before first park; same-room context retains it on subsequent same route",
+    "Artisan field is not C-owned; its exit/discard does not clear retained Market C receipt",
+    "Artisan owns separate Scene/layout/packet/motion/actors; Market detached Field own subtree retained",
+    "other authored targets release lease via original LEAVING_EXCURSION; public returns explicitly do not use this pair lease",
+    "SHA cancellation joins pure-file task/children; ownership loss does not attach; hash or metadata fail original cold fallback remains",
+    "attach/resume failure original rollback and safe-body/full collision resume remain"
+  ],
+  "preserved": [
+    "old room/world branches and public bool contract",
+    "source/mask/geometry/native/NPC/route and authored feet",
+    "34x24 Player body/speed",
+    "original metadata checks before and after attach, C resident_matches, original same-object identity, safe foot and rollback"
+  ],
+  "not_claimed": [
+    "under10s actual result",
+    "Godot parse/worker runtime",
+    "global residency or no-load other routes",
+    "source finalizer closure"
+  ]
+}

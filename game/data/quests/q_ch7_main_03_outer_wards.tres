@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_03_outer_wards"
+title = "外院互证"
+kind = 0
+desc_not_started = "两处入口都已核验，可以分别进入烈云分舵外区与茗雾山庄外院。"
+desc_in_progress = "在烈云外区查隔离药册并突破强硬派扣证，在茗雾外院查缺页转运簿；三项事实缺一不可。"
+desc_completed = "烈云药册证明强硬派另有一次错误报复，茗雾转运簿证明外院曾在同日调动车队。两边都有责任，也都没有单独解释全案。"
+tracker_hint = "烈云分舵外区 / 茗雾山庄外院"
+completion_triggers = Array[String](["evidence_acquired:ev_ch7_lieyun_quarantine_formula", "flag_set:ch7_lieyun_hardliners_defeated", "evidence_acquired:ev_ch7_mingwu_transfer_ledger_gap"])
+require_all_completion_triggers = true
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 100
+reward_exp = 260
+reward_items = Array[Dictionary]([])
+progress_records = Array[Dictionary]([{"trigger":"evidence_acquired:ev_ch7_lieyun_quarantine_formula", "text":"烈云隔离药册记录了一次误判疫货后的毒方封锁，与五派弟子案日期不同。"}, {"trigger":"flag_set:ch7_lieyun_hardliners_defeated", "text":"击退试图扣押原册的烈云强硬派巡守，原册仍由冷孤云保管。"}, {"trigger":"evidence_acquired:ev_ch7_mingwu_transfer_ledger_gap", "text":"茗雾外院转运簿在白水驿换车当日缺页，目录残号仍能证明文书曾存在。"}])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch2_main_03_trace_hideout"
+title = "追查伪令牌"
+kind = 0
+desc_not_started = "蒙面杀手携带的令牌过于崭新，背后应有临时作坊。"
+desc_in_progress = "综合令牌松脂、北行血点、河滩车辙与证人说法，找到北林旧矿洞并搜出制牌账册。"
+desc_completed = "账册证明有人批量准备五派服色与空白令牌，残缺雾纹仍不足以直接指认真正买家。"
+tracker_hint = "竹尾村外 · 山洞"
+completion_triggers = Array[String](["flag_set:ch2_hideout_cleared"])
+reward_gold = 45
+reward_exp = 70
+reward_items = Array[Dictionary]([])

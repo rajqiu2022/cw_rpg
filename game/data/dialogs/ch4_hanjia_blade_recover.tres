@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "旁白"
+text = "水则碑下的淤泥中露出一截刀环。刀背篆着“水能载舟，亦能覆舟”，旁边还压着半张赈粮旧账。"
+on_end = "next:result"
+
+[sub_resource type="Resource" id="result"]
+script = ExtResource("2_node")
+node_id = &"result"
+speaker = "冷孤云"
+text = "刀背铭文与半张赈粮旧账相合。旧主人不是私吞粮饷，而是沉刀保住了假账证据。"
+set_flags = Array[Dictionary]([{"key":"hanjia_blade_recovered","value":true}])
+complete_quest = &"q_ch4_side_07_hanjia_blade"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch4_hanjia_blade_recover"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("result")])

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "漕工头领"
+text = "我会在货场等你。先问老漕卒昨夜的动静，再沿他的线索去查废仓；这里堆的只是待运货，不是要你找的证物。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_canal_progress"
+entry_node_id = &"start"
+required_story_flag = &"canal_grudge_started"
+blocked_story_flag = &"canal_feud_resolved"
+nodes = Array[Resource]([SubResource("start")])
+

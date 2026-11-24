@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "火纹描得很像，背面却是急制反针。旗角还有松脂和封口药粉——与洛阳伪造工坊同类。"
+add_evidence = Array[StringName]([&"ev_ch5_false_banner_cloth"])
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "古峰护粮守卫"
+text = "也就是说，这些人故意让我们以为是烈云盟来抢粮？"
+set_flags = Array[Dictionary]([{"key":"ch5_false_banner_cloth_found", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_false_banner_evidence"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

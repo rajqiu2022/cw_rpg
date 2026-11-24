@@ -1,0 +1,18 @@
+id: sprite_protagonist_walk_right_8f_ref_v4
+description: High-resolution reference-locked right walk 8+1 loop-check strip.
+quality: medium
+size: "1536x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/characters/protagonist_portrait.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied portrait as the exact identity and body-proportion reference. Preserve the black tied hair, dark blue-grey cross-collar robe, leather chest strap, dark boots, sword, and one small grey-green double-lobed wine gourd at the left belt.
+
+  Create one 1536x1024 horizontal RPG walking sprite strip with exactly nine isolated equal cells and pure white gaps. Each cell contains one complete full-body character around 150px high, with the same baseline and ample space around the figure. Strict orthographic side view facing right.
+
+  Frames 1-8: 1 left contact wide, 2 left recoil with feet closing, 3 left passing with one foot directly under torso, 4 right forward swing, 5 right contact wide, 6 right recoil with feet closing, 7 right passing with one foot directly under torso, 8 left forward swing approaching frame 1. Frame 9 must exactly repeat frame 1 for loop checking. The body, belt, sword and gourd remain stable; only limbs, robe hem and hair tip move. No cropped parts, no crossing between cells, no standing pose, no text, grid, shadow, duplicate or trail.
+  Hong Kong wuxia comic game sprite style. Avoid: {negative}
+
+variables: {}

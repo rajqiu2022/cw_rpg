@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_legend_jingang_tempered_meridians"
+title = "涤脉禅关"
+kind = 1
+desc_not_started = "武林大会上，一名少林俗家弟子看出你的吐纳仍有旧伤阻滞，提到古峰护粮营里有位照看伤员的行脚僧。"
+desc_in_progress = "涤脉法不靠偷取经卷。可向古峰护粮营的行脚僧打听，寻回废矿的医案，再从白马古钟的断音参悟行气。"
+desc_completed = "你为行脚僧送回残损医案，又在护粮营以负重吐纳通过禅关，获准研读“易筋经”。"
+tracker_hint = "古峰护粮营 · 寻访行脚僧"
+completion_triggers = Array[String](["flag_set:shaolin_lay_disciple_met", "flag_set:baima_bell_solved", "flag_set:shaolin_burned_script_returned", "flag_set:shaolin_meridian_trial_complete"])
+auto_accept_triggers = Array[String](["flag_set:shaolin_lay_disciple_met"])
+require_all_completion_triggers = true
+starts_in_chapter = 3
+completes_in_chapter = 6
+milestone_labels = Array[String](["武林大会·结识少林俗家", "白马寺·辨清古钟偈语", "废矿与护粮营·送回医案", "古峰护粮营·负重吐纳"])
+reward_gold = 0
+reward_exp = 220
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([&"jingang_tempered_meridians"])

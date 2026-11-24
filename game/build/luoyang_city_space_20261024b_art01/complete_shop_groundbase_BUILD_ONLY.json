@@ -1,0 +1,38 @@
+{
+  "status": "MANUALLY_AUTHORED_FULL_VISIBLE_PLINTH_PROPOSAL_NOT_PHYSICS_OR_COMPLETE_WORLD_FOOTPRINT",
+  "scope": "Two exact processed complete shops only. Extends the earlier thin front-wall strips to the visible integral stone plinths and bookshop right-side ground return. No PNG edits.",
+  "coordinate_system": "All polygons below are ORIGINAL v2 raw source pixel coordinates. Add [196,126] for processed PNG coordinates, then apply the preserved uniform pixel scale and selected source anchor.",
+  "source_anchor_distinction": "Door threshold is the portal approach reference. Front-step ground is the lowest visible stair foot for the sprite ground anchor. They must not be conflated.",
+  "apothecary": {
+    "processed_png_sha256": "8B19A70DCAAED76F0AA5081B089CAF56B584708EF71AD7870A4D0D79EF75ED5A",
+    "door_clear_rect_xyxy": [653,482,907,810],
+    "door_threshold": [780,823],
+    "front_step_ground": [780,922],
+    "left_plinth": [[149,838],[537,838],[537,905],[140,905]],
+    "right_plinth": [[1021,838],[1407,838],[1415,905],[1021,905]],
+    "central_front_stair_open_x_range": [538,1020],
+    "vertex_alpha_samples_only": [[252,253,252,252],[253,252,252,252]],
+    "side_wall_note": "Almost frontal shell: no invented deep side ground block outside the visible stone plinth."
+  },
+  "bookshop": {
+    "processed_png_sha256": "DD49811CE57208DB2D7045F3A61D8515808D8B2604D1816124F688BCB4314EEB",
+    "door_clear_rect_xyxy": [715,535,950,809],
+    "door_threshold": [832.5,823],
+    "front_step_ground": [785,912],
+    "left_plinth": [[143,836],[574,836],[574,886],[143,886]],
+    "right_front_plinth": [[992,835],[1332,835],[1332,886],[992,886]],
+    "right_side_plinth_return": [[1332,832],[1475,798],[1475,830],[1360,886],[1332,886]],
+    "central_front_stair_open_x_range": [575,991],
+    "vertex_alpha_samples_only": [[251,253,252,250],[253,253,253,253],[253,252,252,252,253]],
+    "side_wall_note": "Right side has a visible projecting ground return. Its sloped ground outline must not be replaced by a wide rectangular A1 collision box."
+  },
+  "owner_checks_required": [
+    "Transform these authored polygons into the final world placement, then verify actual source-alpha interior coverage as a separate bounded check; opaque vertices alone are not full-polygon proof.",
+    "Preserve the open central steps and actual door approach, full adult body clearance, adjacent side alley and task/NPC routes.",
+    "The drawn roof is one storey, not a second floor. Only ground-level masonry is proposed as blocking; do not extrude the roof/A1 visual box into a full rectangular solid.",
+    "These plinth polygons are not a claim that the entire back of either building has a complete physical enclosure. If complete back-volume blocking is required, author and validate it separately rather than silently declaring these strips sufficient."
+  ],
+  "engine_runs": 0,
+  "image_edits": 0,
+  "formal_writes": 0
+}

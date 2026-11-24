@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch2_missing_notices"
+display_name = "三张寻人启事"
+description = "三张启事都盖着凌月派印记，纸张和墨色却并非同一批。最早一张写着弟子自行离队，最晚一张改成了失踪。有人在不断修正公开说法。"
+chapter = 2
+category = &"document"
+source_hint = "竹尾村晨市告示栏"
+related_testimony_ids = Array[StringName]([&"ts_ch2_hawker_north_route", &"ts_ch2_gatekeeper_charcoal_cart"])
+tags = Array[StringName]([&"missing_person", &"lingyue", &"timeline"])

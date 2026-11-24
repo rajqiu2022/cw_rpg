@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "守钟僧"
+text = "古钟连夜自鸣。寺中不怕鬼神，只怕有人借鬼神伤人。"
+accept_quest = &"q_ch4_side_05_baima_bell"
+on_end = "next:choice"
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("2")
+node_id = &"choice"
+speaker = "旁白"
+text = "钟楼无脚印，东墙砖缝却在夜风里发出低鸣。"
+choices = Array[Dictionary]([
+	{"text":"用薄纸贴墙，寻找气流", "next":"success"},
+	{"text":"守在钟杵旁等人出现", "next":"retry"}
+])
+[sub_resource type="Resource" id="retry"]
+script = ExtResource("2")
+node_id = &"retry"
+speaker = "守钟僧"
+text = "一夜无人，钟却又响了。若不是人推，便看风从哪里来。"
+on_end = "next:choice"
+[sub_resource type="Resource" id="success"]
+script = ExtResource("2")
+node_id = &"success"
+speaker = "守钟僧"
+text = "纸角在裂缝处连颤三次。补缝之后，古钟终于安静。"
+set_flags = Array[Dictionary]([{"key":"baima_bell_solved", "value":true}])
+complete_quest = &"q_ch4_side_05_baima_bell"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_baima_bell"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("choice"), SubResource("retry"), SubResource("success")])

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+enemy_id = &"ch7_lieyun_hardliner_tracker"
+display_name = "烈云封渡寻迹手"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/ch7_ferry_office_20261122/trail/ready.tres"
+battle_actor_scale = 0.9921
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/trail/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/trail/ready.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/trail/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/trail/ready.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/trail/draw.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/trail/strike.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/trail/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/trail/hit1.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/trail/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/trail/kneel.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/trail/down.tres")
+level = 11
+max_hp = 480
+max_mp = 105
+attack = 104
+defense = 20
+speed = 33
+skill_ids = Array[StringName]([&"basic_attack", &"blood_shadow_scattering_darts", &"toxic_needle"])
+aggression = 0.76
+drop_gold_min = 48
+drop_gold_max = 72
+drop_exp = 96
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"inner_breath_pill", "chance":0.30, "count":1}])

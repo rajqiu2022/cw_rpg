@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "大会执事"
+text = "会盟尚未正式开案，长案上的证物也未解封。少侠可以在山门附近游历、与各地来客交谈，正式考校要等大会传帖。"
+on_end = "next:reply"
+
+[sub_resource type="Resource" id="node_reply"]
+script = ExtResource("2_dnode")
+node_id = &"reply"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "明白。我只访人问路，不碰封存证物。等传帖到了，再按大会规矩入场。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_assembly_early_visit"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_reply")])

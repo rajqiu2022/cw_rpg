@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "观瀑老者"
+text = "水落到石上，折回三次才入潭。年轻人，你走这么远的山路，可曾看见它何时用蛮力？我叫游天鸿。你拜哪门、行到哪一步，都不妨在这里学一段回锋。"
+choices = Array[Dictionary]([{"text":"请前辈指点回锋之理","next":"lesson"},{"text":"先自行看看山水","next":"leave"}])
+[sub_resource type="Resource" id="lesson"]
+script = ExtResource("2")
+node_id = &"lesson"
+speaker = "游天鸿"
+text = "这段剑路叫岚回三叠：第一回卸劲，第二回换线，第三回才穿守势。记住形还不够，要以呼吸串住三剑。悟性达到六，才能领会；眼下未通也不妨先记下，日后再参。"
+learn_skills = Array[StringName]([&"huashan_lanhui_sandie"])
+set_flags = Array[Dictionary]([{"key":"openworld_huashan_lanhui_heard","value":true}])
+on_end = "end"
+[sub_resource type="Resource" id="leave"]
+script = ExtResource("2")
+node_id = &"leave"
+speaker = "游天鸿"
+text = "山路与流水都在这里。想明白了再来，不急。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_huashan_lanhui_lesson"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"),SubResource("lesson"),SubResource("leave")])

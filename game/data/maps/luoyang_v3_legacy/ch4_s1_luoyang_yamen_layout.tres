@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(2304,1536)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.110,0.855, 0.890,0.855, 0.885,0.360, 0.720,0.285, 0.630,0.235, 0.370,0.235, 0.280,0.285, 0.115,0.360),
+	PackedVector2Array(0.055,0.455, 0.945,0.455, 0.945,0.700, 0.055,0.700),
+	PackedVector2Array(0.440,0.995, 0.560,0.995, 0.575,0.790, 0.425,0.790)
+])
+actor_fade_zones = [{"id":"yamen_south_arch","region":PackedVector2Array(0.445,0.845, 0.555,0.845, 0.555,1.000, 0.445,1.000),"actor_faded_alpha":0.43}]
+blockers = [
+	{"id":"hall_stairs","pos":Vector2(0.500,0.165),"size":Vector2(0.275,0.145)},
+	{"id":"drum_tower","pos":Vector2(0.885,0.180),"size":Vector2(0.110,0.230)},
+	{"id":"notice_board_body","pos":Vector2(0.160,0.390),"size":Vector2(0.150,0.080)}
+]
+interactions = [
+	{"id":"yamen_case_board","label":"府衙案情榜 · 查阅卷宗","pos":Vector2(0.160,0.455),"size":Vector2(0.130,0.125),"activation":"interact","action":"dialog:ch4_case_clue","visual_baked":true,"baked_feature":"庭院左侧木制案情榜与证物桌","require_flag":"chapter4_started","hide_flag":"luoyang_case_found_clue"},
+	{"id":"hanjia_water_rule","label":"院心石刻 · 推演含嘉旧水则","pos":Vector2(0.500,0.445),"size":Vector2(0.095,0.085),"activation":"interact","action":"dialog:huilan_openworld_water_rule","visual_baked":true,"baked_feature":"院心方形水纹石刻","hide_flag":"huilan_water_rule_understood"},
+	{"id":"hanjia_rubbing","label":"院心石刻 · 拓下含嘉旧水则","pos":Vector2(0.500,0.445),"size":Vector2(0.095,0.085),"activation":"interact","action":"discover_readable:hanjia_water_rule_rubbing:found_hanjia_water_rule_rubbing","visual_baked":true,"baked_feature":"院心方形水纹石刻","require_flag":"huilan_water_rule_understood","hide_flag":"found_hanjia_water_rule_rubbing"}
+]
+portals = [
+	{"id":"to_city_gate","label":"返回洛阳南城门","pos":Vector2(0.500,0.950),"size":Vector2(0.140,0.085),"target_scene":"ch4_s0_luoyang_gate","target_pos":Vector2(0.500,0.325)},
+	{"id":"to_south_market","label":"前往洛阳南市","pos":Vector2(0.075,0.590),"size":Vector2(0.070,0.130),"target_scene":"ch4_s3_luoyang_market","target_pos":Vector2(0.955,0.355)},
+	{"id":"to_canal_quay","label":"前往漕渠码头","pos":Vector2(0.925,0.590),"size":Vector2(0.070,0.130),"target_scene":"ch4_s2_canal_docks","target_pos":Vector2(0.280,0.520)}
+]
+walkable_probes = [
+	{"id":"gate_entry","pos":Vector2(0.500,0.730)},
+	{"id":"court_center","pos":Vector2(0.500,0.600)},
+	{"id":"case_board_front","pos":Vector2(0.205,0.505)},
+	{"id":"hall_front","pos":Vector2(0.500,0.275)},
+	{"id":"market_exit","pos":Vector2(0.075,0.590)},
+	{"id":"docks_exit","pos":Vector2(0.925,0.590)}
+]
+blocked_probes = [
+	{"id":"hall_roof","pos":Vector2(0.500,0.080)},
+	{"id":"left_garden","pos":Vector2(0.080,0.250)},
+	{"id":"right_tower","pos":Vector2(0.885,0.180)}
+]

@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(2304,1536)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.000,0.315, 1.000,0.315, 1.000,0.555, 0.000,0.555),
+	PackedVector2Array(0.390,0.095, 0.615,0.095, 0.615,0.930, 0.390,0.930)
+])
+blockers = [
+	{"id":"north_hall","pos":Vector2(0.500,0.060),"size":Vector2(0.150,0.090)},
+	{"id":"northwest_shop","pos":Vector2(0.240,0.150),"size":Vector2(0.210,0.145)},
+	{"id":"northeast_shop","pos":Vector2(0.760,0.150),"size":Vector2(0.210,0.145)},
+	{"id":"southwest_market","pos":Vector2(0.190,0.700),"size":Vector2(0.300,0.245)},
+	{"id":"southeast_market","pos":Vector2(0.815,0.715),"size":Vector2(0.275,0.250)},
+	{"id":"southwest_tree_island","pos":Vector2(0.345,0.650),"size":Vector2(0.100,0.185)},
+	{"id":"southeast_tree_island","pos":Vector2(0.655,0.650),"size":Vector2(0.100,0.185)}
+]
+interactions = [
+	{"id":"armory_old_record","label":"军械铺 · 查阅旧档","pos":Vector2(0.715,0.415),"size":Vector2(0.085,0.095),"activation":"interact","action":"discover_readable:luoyang_quench_record:found_luoyang_quench_record","visual_baked":true,"baked_feature":"东街兵器架与柜台","hide_flag":"found_luoyang_quench_record"},
+	{"id":"paper_birdseal","label":"纸铺 · 翻看兵谱封套","pos":Vector2(0.300,0.405),"size":Vector2(0.085,0.095),"activation":"interact","action":"discover_readable:zhouju_birdseal_copy:found_zhouju_birdseal_copy","visual_baked":true,"baked_feature":"西街书纸摊","hide_flag":"found_zhouju_birdseal_copy"},
+	{"id":"zhao_medicine_parcel","label":"义诊摊 · 查看问诊药案","pos":Vector2(0.205,0.515),"size":Vector2(0.085,0.095),"activation":"interact","action":"dialog:ch4_heal_veteran_offer","visual_baked":true,"baked_feature":"西南药材摊","hide_flag":"heal_veteran_started"},
+	{"id":"xuantong_note","label":"军械铺 · 查看旧护具匠札记","pos":Vector2(0.765,0.415),"size":Vector2(0.075,0.090),"activation":"interact","action":"discover_readable:xuantong_scale_weave_note:found_xuantong_scale_weave_note","visual_baked":true,"baked_feature":"东街军械铺护具陈列架","hide_flag":"found_xuantong_scale_weave_note"}
+]
+portals = [
+	{"id":"to_yamen_square","label":"前往府衙外院","pos":Vector2(0.500,0.190),"size":Vector2(0.150,0.080),"target_scene":"ch4_s1_luoyang_yamen","target_pos":Vector2(0.150,0.590)},
+	{"id":"to_city_gate","label":"返回洛阳南城门","pos":Vector2(0.045,0.355),"size":Vector2(0.070,0.105),"target_scene":"ch4_s0_luoyang_gate","target_pos":Vector2(0.350,0.690)},
+	{"id":"to_canal_docks","label":"前往漕渠码头","pos":Vector2(0.955,0.355),"size":Vector2(0.070,0.105),"target_scene":"ch4_s2_canal_docks","target_pos":Vector2(0.280,0.520)},
+	{"id":"to_ancient_temple","label":"出南市 · 城外古寺","pos":Vector2(0.500,0.875),"size":Vector2(0.150,0.080),"target_scene":"ch4_s4_ancient_temple","target_pos":Vector2(0.500,0.720)}
+]
+walkable_probes = [
+	{"id":"west_street","pos":Vector2(0.045,0.355)},
+	{"id":"market_cross","pos":Vector2(0.500,0.435)},
+	{"id":"east_street","pos":Vector2(0.955,0.355)},
+	{"id":"north_plaza","pos":Vector2(0.500,0.220)},
+	{"id":"south_plaza","pos":Vector2(0.500,0.800)}
+]
+blocked_probes = [
+	{"id":"north_roof","pos":Vector2(0.500,0.060)},
+	{"id":"southwest_roof","pos":Vector2(0.150,0.850)},
+	{"id":"southeast_roof","pos":Vector2(0.850,0.850)}
+]

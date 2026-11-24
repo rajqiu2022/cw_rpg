@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_06_first_false_order"
+title="截住首令"
+kind=0
+desc_not_started="苏雾笙的第一轮假令即将从祭台右侧传出。"
+desc_in_progress="击退假令传使与护令客，阻止会盟各派收到互相矛盾的开战命令。"
+desc_completed="第一轮假令被截，祭台上的各派没有因错误命令先行交战。"
+tracker_hint="茗雾山庄 · 会盟祭台"
+completion_triggers=Array[String](["flag_set:ch8_first_false_order_stopped"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_gold=140
+reward_exp=360

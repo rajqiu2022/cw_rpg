@@ -1,0 +1,309 @@
+{
+  "schema": "luoyang_shore_market_20261020ae_offline_generation_preflight_v1",
+  "passed": true,
+  "scope": "exactly three registered Root-only builtin candidates; wet shore and ruts callable, mooring geometry-blocked; no calls",
+  "manifest": "prompts/luoyang_shore_market_20261020ae/proposed_generation_manifest.json",
+  "manifest_sha256": "25ED7C3485CEC11D3447ECA881894087D53EC09B3AD4CCDA97AACE4842E3727E",
+  "tasks_yaml": "prompts/tasks.yaml",
+  "tasks_yaml_sha256": "ECA02CF2F3A4473FABD7457FAB81FCAE14BE0DD9F62490DDACABFB7EF71256BC",
+  "calls_made": {
+    "generation": 0,
+    "network": 0,
+    "engine": 0,
+    "sdk": 0
+  },
+  "tasks": [
+    {
+      "id": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v1.txt",
+      "prompt_sha256": "5E9D5F89BC4610FB042A45785F1EC16347CAFC78AA97F5580E198799A54D2F5D",
+      "spec": "prompts/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v1.spec.json",
+      "spec_sha256": "8017CCA059A213A51978F1D4CC0647578A24A6CF6D6B6125FF3205AFB5FD905E",
+      "proposed_output": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_wet_stone_shore_vertical_v1.png",
+      "output_exists": false,
+      "metadata_exists": false
+    },
+    {
+      "id": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.txt",
+      "prompt_sha256": "8D408D5FD6B1FE12CE6CB0596B049035A6DD673B0A89DE423FD6F40077164C2B",
+      "spec": "prompts/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.spec.json",
+      "spec_sha256": "F5D57DE616E34901FB1915562FA2F61CD26C1FFB634D26DA9B4C451BE7758F3A",
+      "proposed_output": "assets/raw/luoyang_shore_market_20261020ae/decal_docks_cart_ruts_horizontal_v1.png",
+      "output_exists": false,
+      "metadata_exists": false
+    },
+    {
+      "id": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1",
+      "prompt": "prompts/luoyang_shore_market_20261020ae/prop_docks_mooring_bollard_rope_right_v1.txt",
+      "prompt_sha256": "1CCF586FACEC65CF64AC1AEF44219269F1C59958695861BF79A5323C87DF1D9F",
+      "spec": "prompts/luoyang_shore_market_20261020ae/prop_docks_mooring_bollard_rope_right_v1.spec.json",
+      "spec_sha256": "E75D7660577D7629E47E2030DE0616F4DB3D71E4B67F606FE420EF33CDC651BB",
+      "proposed_output": "assets/raw/luoyang_shore_market_20261020ae/prop_docks_mooring_bollard_rope_right_v1.png",
+      "output_exists": false,
+      "metadata_exists": false
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "game/build/luoyang_docks08_formal_field_20261019ab/113316/ordinary_docks08_default_after32px.png",
+      "sha256": "F85A85E460256E7F48E4A59059EBA4123C4745F6ABBA4E8E6BCBACC782822B67",
+      "expected_sha256": "F85A85E460256E7F48E4A59059EBA4123C4745F6ABBA4E8E6BCBACC782822B67"
+    },
+    {
+      "path": "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/dry_loading_wharf.png",
+      "sha256": "14838181D1C59E0545D919876E2A01603E32B559320BEB6876DF8E7726C3AD4E",
+      "expected_sha256": "14838181D1C59E0545D919876E2A01603E32B559320BEB6876DF8E7726C3AD4E"
+    },
+    {
+      "path": "game/art/maps/luoyang_harbour_life_20261016/cargo_ship_v1.png",
+      "sha256": "D3CFD7F962D6F28EBAB88CE1CB69D757E3ED7D4E491C34704B804C655B6A7EE8",
+      "expected_sha256": "D3CFD7F962D6F28EBAB88CE1CB69D757E3ED7D4E491C34704B804C655B6A7EE8"
+    },
+    {
+      "path": "game/art/maps/luoyang_harbour_life_20261016/covered_ferry_v1.png",
+      "sha256": "D67140A7AFA0FDFFFFF97DE9E34A0680B0069FC9DBD05BBCF85FB7E4EF989357",
+      "expected_sha256": "D67140A7AFA0FDFFFFF97DE9E34A0680B0069FC9DBD05BBCF85FB7E4EF989357"
+    }
+  ],
+  "checks": [
+    {
+      "name": "manifest_exact_three_tasks",
+      "passed": true,
+      "detail": 3
+    },
+    {
+      "name": "manifest_task_ids_exact",
+      "passed": true,
+      "detail": [
+        "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1",
+        "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1",
+        "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1"
+      ]
+    },
+    {
+      "name": "manifest_budget_and_no_fallback",
+      "passed": true,
+      "detail": {
+        "maximum_calls": 3,
+        "currently_callable_calls": 2,
+        "calls_used": 0,
+        "calls_per_asset": 1,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "manifest_registered_ready",
+      "passed": true,
+      "detail": {
+        "tasks_yaml_registered": true,
+        "status": "PREFLIGHT_TWO_CALLABLE_ONE_GEOMETRY_PENDING_NOT_GENERATED"
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1:unique_tasks_yaml_id",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1:tasks_yaml_contract",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1:spec_ready_not_called",
+      "passed": true,
+      "detail": {
+        "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "transparent_background": true,
+        "attempt_budget": 1,
+        "attempts_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1:prompt_sha",
+      "passed": true,
+      "detail": "5E9D5F89BC4610FB042A45785F1EC16347CAFC78AA97F5580E198799A54D2F5D"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1:spec_sha",
+      "passed": true,
+      "detail": "8017CCA059A213A51978F1D4CC0647578A24A6CF6D6B6125FF3205AFB5FD905E"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1:output_absent",
+      "passed": true,
+      "detail": {
+        "png_exists": false,
+        "metadata_exists": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_wet_stone_shore_vertical_v1:callability_matches_manifest",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1:unique_tasks_yaml_id",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1:tasks_yaml_contract",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1:spec_ready_not_called",
+      "passed": true,
+      "detail": {
+        "status": "PREFLIGHT_SOURCE_READY_NOT_GENERATED",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "transparent_background": true,
+        "attempt_budget": 1,
+        "attempts_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1:prompt_sha",
+      "passed": true,
+      "detail": "8D408D5FD6B1FE12CE6CB0596B049035A6DD673B0A89DE423FD6F40077164C2B"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1:spec_sha",
+      "passed": true,
+      "detail": "F5D57DE616E34901FB1915562FA2F61CD26C1FFB634D26DA9B4C451BE7758F3A"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1:output_absent",
+      "passed": true,
+      "detail": {
+        "png_exists": false,
+        "metadata_exists": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_cart_ruts_horizontal_v1:callability_matches_manifest",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1:unique_tasks_yaml_id",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1:tasks_yaml_contract",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1:spec_ready_not_called",
+      "passed": true,
+      "detail": {
+        "status": "PREFLIGHT_SOURCE_READY_GEOMETRY_PENDING_NOT_CALLABLE_NOT_GENERATED",
+        "execution_backend": "builtin_image_gen",
+        "execution_mode": "generate",
+        "model": null,
+        "provider": null,
+        "cost": null,
+        "transparent_background": true,
+        "attempt_budget": 1,
+        "attempts_used": 0,
+        "automatic_retry": false,
+        "cli_network_or_paid_fallback": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1:prompt_sha",
+      "passed": true,
+      "detail": "1CCF586FACEC65CF64AC1AEF44219269F1C59958695861BF79A5323C87DF1D9F"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1:spec_sha",
+      "passed": true,
+      "detail": "E75D7660577D7629E47E2030DE0616F4DB3D71E4B67F606FE420EF33CDC651BB"
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1:output_absent",
+      "passed": true,
+      "detail": {
+        "png_exists": false,
+        "metadata_exists": false
+      }
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1:callability_matches_manifest",
+      "passed": true,
+      "detail": false
+    },
+    {
+      "name": "luoyang_shore_market_20261020ae_mooring_bollard_rope_right_v1:geometry_gate_present",
+      "passed": true,
+      "detail": {
+        "call_gate": "Do not call generation until System provides an actual existing rail/mask AABB that contains the whole timber block alpha footprint without adding or widening solid/NAV. If that envelope is too narrow, revise toward an along-shore slim beam or a rope-knot decal on an existing proven wharf post before any call.",
+        "blocked_by": "actual existing rail/mask containment AABB is not yet pinned; no new or widened solid/NAV is authorized"
+      }
+    },
+    {
+      "name": "wet_prompt_direction_and_slim_shape",
+      "passed": true,
+      "detail": "right edge wettest; leftward dry fade; 1:10; no broad floor rectangle"
+    },
+    {
+      "name": "wet_prompt_preserves_weak_alpha_margin",
+      "passed": true,
+      "detail": "weak-alpha moisture fringe retained inside margin"
+    },
+    {
+      "name": "ruts_prompt_pair_and_no_plaza_slab",
+      "passed": true,
+      "detail": "paired parallel ruts only; no cart or road/plaza slab"
+    },
+    {
+      "name": "mooring_prompt_horizontal_low_rightward",
+      "passed": true,
+      "detail": "horizontal timber block, coil, rightward long rope, boat right, 65-80px, blocked rail band"
+    },
+    {
+      "name": "mooring_prompt_excludes_wrong_forms",
+      "passed": true,
+      "detail": "no whole boat/dock or modern tall post"
+    },
+    {
+      "name": "source_pin:game/build/luoyang_docks08_formal_field_20261019ab/113316/ordinary_docks08_default_after32px.png",
+      "passed": true,
+      "detail": "F85A85E460256E7F48E4A59059EBA4123C4745F6ABBA4E8E6BCBACC782822B67"
+    },
+    {
+      "name": "source_pin:game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/entities/dry_loading_wharf.png",
+      "passed": true,
+      "detail": "14838181D1C59E0545D919876E2A01603E32B559320BEB6876DF8E7726C3AD4E"
+    },
+    {
+      "name": "source_pin:game/art/maps/luoyang_harbour_life_20261016/cargo_ship_v1.png",
+      "passed": true,
+      "detail": "D3CFD7F962D6F28EBAB88CE1CB69D757E3ED7D4E491C34704B804C655B6A7EE8"
+    },
+    {
+      "name": "source_pin:game/art/maps/luoyang_harbour_life_20261016/covered_ferry_v1.png",
+      "passed": true,
+      "detail": "D67140A7AFA0FDFFFFF97DE9E34A0680B0069FC9DBD05BBCF85FB7E4EF989357"
+    }
+  ],
+  "credit_boundary": "Offline registration/preflight only. No output asset, import, placement, Field proof or formal admission."
+}

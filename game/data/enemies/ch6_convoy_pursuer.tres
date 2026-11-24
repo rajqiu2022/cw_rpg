@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+enemy_id = &"ch6_convoy_pursuer"
+display_name = "茗雾截证客"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/ch6_mingwu_20261122/pursuer/ready.tres"
+battle_actor_scale = 0.9900
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/pursuer/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/pursuer/ready.tres", "res://art/sprites/battle/ch6_mingwu_20261122/pursuer/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/pursuer/ready.tres", "res://art/sprites/battle/ch6_mingwu_20261122/pursuer/draw.tres", "res://art/sprites/battle/ch6_mingwu_20261122/pursuer/strike.tres", "res://art/sprites/battle/ch6_mingwu_20261122/pursuer/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/pursuer/hit1.tres", "res://art/sprites/battle/ch6_mingwu_20261122/pursuer/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/pursuer/kneel.tres", "res://art/sprites/battle/ch6_mingwu_20261122/pursuer/down.tres")
+level = 10
+max_hp = 520
+max_mp = 105
+attack = 100
+defense = 19
+speed = 28
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_wuyin_sanshi", &"toxic_needle"])
+aggression = 0.76
+drop_gold_min = 55
+drop_gold_max = 82
+drop_exp = 100
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"antidote_pill", "chance":0.35, "count":1}])

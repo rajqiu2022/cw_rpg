@@ -49,7 +49,7 @@ on_end = "next:n4"
 script = ExtResource("2_dnode")
 node_id = &"n4"
 speaker = "悦无姮"
-portrait_path = "res://art/characters/portrait_yuewuxing_meeting.png"
+portrait_path = "res://art/characters/portrait_yuewuheng_rescue.png"
 text = "（咬牙强忍毒发，声音冷得像霜）……五个人杀一个中了毒的，居然还在说话。你们烈云盟的杀手，什么时候这么客气了？"
 choices = []
 give_items = Array[Dictionary]([])
@@ -80,8 +80,8 @@ speaker = ""
 portrait_path = ""
 text = "[i]（五人同时扑上。女子深吸一口气——左手按住肩上的毒伤，右手剑尖微抬。她知道这一剑挡不住五个人。但她没有闭眼。）[/i]"
 choices = Array[Dictionary]([
-	{"text": ""住手！"（拔剑冲出）", "next": "fight", "set_flag": {"chose_fight": true}},
-	{"text": "先观察一下战况", "next": "observe", "set_flag": {"chose_observe": true}}
+	{"text": "「住手！」（拔剑冲出）", "next": "fight", "set_flag": {"chose_fight": true}, "accept_quest": "q_ch1_side_yuewuxing"},
+	{"text": "先观察一下战况", "next": "observe", "set_flag": {"chose_observe": true}, "accept_quest": "q_ch1_side_yuewuxing"}
 ])
 give_items = Array[Dictionary]([])
 give_gold = 0

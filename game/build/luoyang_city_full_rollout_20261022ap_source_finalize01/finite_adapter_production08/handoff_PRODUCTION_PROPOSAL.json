@@ -1,0 +1,877 @@
+{
+  "status": "ROOT_CODE_SCOPE_AUTHORIZED_PRODUCTION_CANDIDATES_PENDING_EXACT_EXECUTION_APPROVAL_AND_SOURCE_STAGE",
+  "code_scope_authority": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_root01/finite_adapter07_code_scope_review_READY.json",
+    "sha256": "24974c70915bff660f610fc6bf276f14c68cb7c69d4021ac4de03db140f020a7"
+  },
+  "ground_authority": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_root01/ground_five_rect_visual_admission_READY.json",
+    "sha256": "657722693680f15564aecc55a3e75929204400e3badcb509abb076259a31d8fe"
+  },
+  "predecessor07_handoff": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_implementation07/handoff_PENDING.json",
+    "sha256": "ad35db6e0ecaf04a9636ddd82dabe98f994ada3201971495b3818170192e7e32"
+  },
+  "adapter": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd",
+    "sha256": "999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90",
+    "bytes": 30356
+  },
+  "binding": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/adapter_binding_READY.json",
+    "sha256": "dc21bb2a5e8d4e1af6944d6a6fe6c864caf29702e4b17b44063ed2369f53ecff",
+    "bytes": 5710474
+  },
+  "adapter_ready_candidate": true,
+  "binding_source_closure_ready_candidate": true,
+  "adapter_exact_inverse_to07": [
+    {
+      "old": "const READY := false",
+      "new": "const READY := true"
+    },
+    {
+      "old": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_implementation07/adapter_binding_SOURCE_CLOSURE_PENDING.json",
+      "new": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/adapter_binding_READY.json"
+    },
+    {
+      "old": "0eca61432c52c7112364949bc421f6d9def44831800bc14ed0325d4b16315d08",
+      "new": "dc21bb2a5e8d4e1af6944d6a6fe6c864caf29702e4b17b44063ed2369f53ecff"
+    },
+    {
+      "old": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_implementation07/finite_adapter_PENDING.gd",
+      "new": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd"
+    }
+  ],
+  "binding_whole_typed_inverse_to07": true,
+  "consumers": [
+    {
+      "domain": "Fade",
+      "target": "res://scripts/city/luoyang_district_life_fade_20261016f.gd",
+      "old_sha256": "3f2d43276f89341a450579fa07a0dd0bb2369d059ad928e7187fb35df59f1ac7",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Fade_consumer_READY.gd",
+        "sha256": "55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6",
+        "bytes": 3941
+      },
+      "forward_hunks": [
+        {
+          "old": "extends \"res://scripts/city/luoyang_city_assembled_fade_20261016b.gd\"\n",
+          "new": "extends \"res://scripts/city/luoyang_city_assembled_fade_20261016b.gd\"\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+        },
+        {
+          "old": "\t_ids=original.get(\"_ids\").duplicate(); _fade_ids=original.get(\"_fade_ids\").duplicate(); original.release()\n",
+          "new": "\t_ids=original.get(\"_ids\").duplicate(); _fade_ids=original.get(\"_fade_ids\").duplicate(); original.release()\n\tvar yamen_native_ids: Array=[]\n\tvar yamen_state: Dictionary=t.finite_yamen_child_state(scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return false\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return false\n\t\tvar admitted: Dictionary=yamen_adapter.finite_parent_visual_admission(scene,parent_objects,yamen_state)\n\t\tif admitted.get(\"ok\")!=true: return false\n\t\tyamen_native_ids=admitted.ids\n"
+        },
+        {
+          "old": "\t\tfor id: String in actual:\n\t\t\tif id not in _ids: return false\n",
+          "new": "\t\tfor id: String in actual:\n\t\t\tif id not in _ids:\n\t\t\t\tif id not in yamen_native_ids: return false\n\t\t\t\t_ids.append(id); _fade_ids.erase(id)\n"
+        },
+        {
+          "old": "and not t.ao_retired_visual_id(scene,id): return false",
+          "new": "and not t.ao_retired_visual_id(scene,id) and not t.finite_market_retired_visual_id(scene,id,parent_objects): return false"
+        }
+      ],
+      "inverse_replacements": [
+        {
+          "old": "and not t.ao_retired_visual_id(scene,id): return false",
+          "new": "and not t.ao_retired_visual_id(scene,id) and not t.finite_market_retired_visual_id(scene,id,parent_objects): return false"
+        },
+        {
+          "old": "\t\tfor id: String in actual:\n\t\t\tif id not in _ids: return false\n",
+          "new": "\t\tfor id: String in actual:\n\t\t\tif id not in _ids:\n\t\t\t\tif id not in yamen_native_ids: return false\n\t\t\t\t_ids.append(id); _fade_ids.erase(id)\n"
+        },
+        {
+          "old": "\t_ids=original.get(\"_ids\").duplicate(); _fade_ids=original.get(\"_fade_ids\").duplicate(); original.release()\n",
+          "new": "\t_ids=original.get(\"_ids\").duplicate(); _fade_ids=original.get(\"_fade_ids\").duplicate(); original.release()\n\tvar yamen_native_ids: Array=[]\n\tvar yamen_state: Dictionary=t.finite_yamen_child_state(scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return false\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return false\n\t\tvar admitted: Dictionary=yamen_adapter.finite_parent_visual_admission(scene,parent_objects,yamen_state)\n\t\tif admitted.get(\"ok\")!=true: return false\n\t\tyamen_native_ids=admitted.ids\n"
+        },
+        {
+          "old": "extends \"res://scripts/city/luoyang_city_assembled_fade_20261016b.gd\"\n",
+          "new": "extends \"res://scripts/city/luoyang_city_assembled_fade_20261016b.gd\"\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+        }
+      ],
+      "whole_source_byte_inverse": true,
+      "crlf_count": 0
+    },
+    {
+      "domain": "DT",
+      "target": "res://scripts/city/luoyang_district_life_20261016f.gd",
+      "old_sha256": "d274d1fcd8f846e6fe8250092d4f83d720b632b174889cfcb1a3b9bacc5752d5",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/DT_consumer_READY.gd",
+        "sha256": "185b51ff7b9256657424ba0681660d6d335f890f6c919260b3f467384d03ac16",
+        "bytes": 17837
+      },
+      "forward_hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+        },
+        {
+          "old": "\tvar npcs:=CROWD.project(projected.spec.crowd)\n",
+          "new": "\tvar yamen_state: Dictionary=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").finite_yamen_child_state(scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return _reject(\"YAMEN_FINITE_SESSION_REFUSED\")\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null or not yamen_adapter.prepare_npc_overlay(scene,_sources,projected,owner,yamen_state): return _reject(\"YAMEN_FINITE_NPC_OVERLAY_REFUSED\")\n\tvar npcs:=CROWD.project(projected.spec.crowd)\n"
+        },
+        {
+          "old": "\treturn result.npcs if result.get(\"ok\")==true else []\n",
+          "new": "\tif result.get(\"ok\")!=true: return []\n\tvar yamen_state: Dictionary=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").finite_yamen_child_state(_scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return []\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return []\n\t\tvar moved: Dictionary=yamen_adapter.project_bound_npcs(_scene,result.npcs,_sources,_receipt,yamen_state)\n\t\treturn moved.npcs if moved.get(\"ok\")==true else []\n\treturn result.npcs\n"
+        }
+      ],
+      "inverse_replacements": [
+        {
+          "old": "\treturn result.npcs if result.get(\"ok\")==true else []\n",
+          "new": "\tif result.get(\"ok\")!=true: return []\n\tvar yamen_state: Dictionary=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").finite_yamen_child_state(_scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return []\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return []\n\t\tvar moved: Dictionary=yamen_adapter.project_bound_npcs(_scene,result.npcs,_sources,_receipt,yamen_state)\n\t\treturn moved.npcs if moved.get(\"ok\")==true else []\n\treturn result.npcs\n"
+        },
+        {
+          "old": "\tvar npcs:=CROWD.project(projected.spec.crowd)\n",
+          "new": "\tvar yamen_state: Dictionary=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").finite_yamen_child_state(scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return _reject(\"YAMEN_FINITE_SESSION_REFUSED\")\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null or not yamen_adapter.prepare_npc_overlay(scene,_sources,projected,owner,yamen_state): return _reject(\"YAMEN_FINITE_NPC_OVERLAY_REFUSED\")\n\tvar npcs:=CROWD.project(projected.spec.crowd)\n"
+        },
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+        }
+      ],
+      "whole_source_byte_inverse": true,
+      "crlf_count": 0
+    },
+    {
+      "domain": "C",
+      "target": "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd",
+      "old_sha256": "c68272dd8bb2fd989a7776a1ee970a0d082290927d1fd30734c72d59b1d0fe50",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/C_consumer_READY.gd",
+        "sha256": "8c145ffb7ce25fcbdf59adf59eb1646f91be753246d24d5fe529b6e1b0bca26b",
+        "bytes": 112179
+      },
+      "forward_hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+        },
+        {
+          "old": "static func _object_render_role_valid(id: StringName, object: Dictionary) -> bool:\n",
+          "new": "static func _object_render_role_valid(id: StringName, object: Dictionary) -> bool:\n\tif object.get(\"role\",\"\")==\"yamen_low_prop\":\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\treturn yamen_adapter!=null and yamen_adapter.native_low_prop_role_valid(id,object)\n"
+        }
+      ],
+      "inverse_replacements": [
+        {
+          "old": "static func _object_render_role_valid(id: StringName, object: Dictionary) -> bool:\n",
+          "new": "static func _object_render_role_valid(id: StringName, object: Dictionary) -> bool:\n\tif object.get(\"role\",\"\")==\"yamen_low_prop\":\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\treturn yamen_adapter!=null and yamen_adapter.native_low_prop_role_valid(id,object)\n"
+        },
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+        }
+      ],
+      "whole_source_byte_inverse": true,
+      "crlf_count": 0
+    },
+    {
+      "domain": "Field_TEXT_ONLY",
+      "target": "res://scripts/field/field_walkable_controller.gd",
+      "old_sha256": "a148154e8db886f508755ab91e7852c6ebe1e168a44d17badad9f3cc267499df",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Field_TEXT_ONLY_consumer_READY.gd",
+        "sha256": "0c9db5be0536c8438b892b0065a25b1ea352762180524be13da52cef534540cb",
+        "bytes": 226001
+      },
+      "forward_hunks": [
+        {
+          "old": "\t\t\t_field_loading_stage = \"正在布置建筑与碰撞 %d/%d……\" % [processed, scene_objects.size()]\n",
+          "new": "\t\t\t_field_loading_stage = \"正在布置建筑与碰撞……\"\n"
+        }
+      ],
+      "inverse_replacements": [
+        {
+          "old": "\t\t\t_field_loading_stage = \"正在布置建筑与碰撞 %d/%d……\" % [processed, scene_objects.size()]\n",
+          "new": "\t\t\t_field_loading_stage = \"正在布置建筑与碰撞……\"\n"
+        }
+      ],
+      "whole_source_byte_inverse": true,
+      "crlf_count": 0
+    },
+    {
+      "domain": "B",
+      "target": "res://scripts/city/luoyang_precomputed_bundle_20261018r.gd",
+      "old_sha256": "8d3b0877b888fe85e2733cdec6c064c6619c0c299d9f4a93d935322ccf97cacc",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/B_consumer_READY.gd",
+        "sha256": "84d230215701757a5e52f6afadc9156df206e87375cbf71534248839366f19bc",
+        "bytes": 52271
+      },
+      "forward_hunks": [
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+        },
+        {
+          "old": "\tif _ap_requested(id) and data.geometry_basis==_ap().BASIS:\n",
+          "new": "\tif id==&\"ch4_s1_luoyang_yamen\" and _finite_native_adapter()!=null and _finite_native_adapter().yamen_packet_requested(id,config,data):\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null or not yamen_adapter.yamen_native_packet_valid(id,data,config,scene): return null\n\t\tprune_sessions()\n\t\t_scene_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(layout),\"data\":data.duplicate(true),\"config\":config.duplicate(true),\"parent\":null}\n\telif id==&\"ch4_s3_luoyang_market\" and _finite_native_adapter()!=null and _finite_native_adapter().market_packet_requested(id,config,data):\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif market_adapter==null or not market_adapter.market_native_packet_valid(id,data,config,scene): return null\n\t\tprune_sessions()\n\t\t_scene_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(layout),\"data\":data.duplicate(true),\"config\":config.duplicate(true),\"parent\":null}\n\telif _ap_requested(id) and data.geometry_basis==_ap().BASIS:\n"
+        },
+        {
+          "old": "\tvar child: Dictionary=data.record.duplicate(true); var prior: Dictionary=data.t_parent_record.duplicate(true)\n",
+          "new": "\tvar child: Dictionary=data.record.duplicate(true); var prior: Dictionary=data.t_parent_record.duplicate(true)\n\tvar yamen_state: Dictionary=finite_yamen_child_state(scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return {}\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return {}\n\t\tvar mapped: Dictionary=yamen_adapter.map_child_to_frozen_t(scene,current,data,yamen_state)\n\t\tif mapped.get(\"ok\")!=true: return {}\n\t\tcurrent=mapped.current_t_record; child=mapped.frozen_t_record\n\tvar market_state: Dictionary=finite_market_child_state(scene)\n\tif market_state.get(\"requested\",false):\n\t\tif market_state.get(\"ok\")!=true: return {}\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif not market_adapter.market_ap_ao_t_chain_proven(scene,data,market_state): return {}\n\t\tvar restored_ap: Dictionary=market_adapter.market_map_child_to_frozen_ap(scene,current,data,market_state)\n\t\tif restored_ap.get(\"ok\")!=true: return {}\n\t\tcurrent=restored_ap.current_ap_record; child=restored_ap.frozen_ap_record\n"
+        },
+        {
+          "old": "\tif _ap_requested(scene.scene_id) and session.data.get(\"geometry_basis\")==_ap().BASIS: return scene.get_meta(_ap().META,\"\")==session.config.get(\"author_sha256\") and session.config.get(\"author_sha256\")==FileAccess.get_sha256(_ap().AUTHOR)\n",
+          "new": "\tif scene.scene_id==&\"ch4_s1_luoyang_yamen\":\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return false\n\t\tif yamen_adapter.yamen_packet_requested(scene.scene_id,session.config,session.data):\n\t\t\treturn yamen_adapter.yamen_session_bound(scene,session.data,session.config)\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif market_adapter==null: return false\n\t\tif market_adapter.market_packet_requested(scene.scene_id,session.config,session.data):\n\t\t\treturn market_adapter.market_session_bound(scene,session.data,session.config)\n\tif _ap_requested(scene.scene_id) and session.data.get(\"geometry_basis\")==_ap().BASIS: return scene.get_meta(_ap().META,\"\")==session.config.get(\"author_sha256\") and session.config.get(\"author_sha256\")==FileAccess.get_sha256(_ap().AUTHOR)\n"
+        },
+        {
+          "old": "static func whole_bound(scene: SceneScript) -> bool:\n",
+          "new": "static func finite_yamen_child_state(scene: SceneScript) -> Dictionary:\n\tif scene==null or scene.scene_id!=&\"ch4_s1_luoyang_yamen\" or scene.map_layout==null: return {}\n\tvar session: Dictionary=_scene_sessions.get(scene.get_instance_id(),{})\n\tif session.is_empty() or session.scene.get_ref()!=scene or session.layout.get_ref()!=scene.map_layout: return {}\n\tvar yamen_adapter: Variant=_finite_native_adapter()\n\tif yamen_adapter==null: return {\"requested\":true,\"ok\":false}\n\tif not yamen_adapter.yamen_packet_requested(scene.scene_id,session.config,session.data): return {}\n\tif not whole_bound(scene): return {\"requested\":true,\"ok\":false}\n\tvar proof: Dictionary=yamen_adapter.yamen_public_session_proof(scene,session.data,session.config)\n\tif proof.get(\"ok\")!=true or typeof(proof.get(\"token\"))!=TYPE_INT or proof.token<=0: return {\"requested\":true,\"ok\":false}\n\treturn {\"requested\":true,\"ok\":true,\"scene_instance\":scene.get_instance_id(),\"layout_instance\":scene.map_layout.get_instance_id(),\"token\":proof.token,\"geometry_basis\":String(session.data.geometry_basis),\"packet_sha256\":String(proof.packet_sha256),\"binding_sha256\":String(proof.binding_sha256)}\nstatic func finite_market_child_state(scene: SceneScript) -> Dictionary:\n\tif scene==null or scene.scene_id!=&\"ch4_s3_luoyang_market\" or scene.map_layout==null: return {}\n\tvar session: Dictionary=_scene_sessions.get(scene.get_instance_id(),{})\n\tif session.is_empty() or session.scene.get_ref()!=scene or session.layout.get_ref()!=scene.map_layout: return {}\n\tvar adapter: Variant=_finite_native_adapter()\n\tif adapter==null: return {\"requested\":true,\"ok\":false}\n\tif not adapter.market_packet_requested(scene.scene_id,session.config,session.data): return {}\n\tif not whole_bound(scene): return {\"requested\":true,\"ok\":false}\n\tvar proof: Dictionary=adapter.market_public_session_proof(scene,session.data,session.config)\n\tif proof.get(\"ok\")!=true or typeof(proof.get(\"token\"))!=TYPE_INT or proof.token<=0: return {\"requested\":true,\"ok\":false}\n\treturn {\"requested\":true,\"ok\":true,\"scene_instance\":scene.get_instance_id(),\"layout_instance\":scene.map_layout.get_instance_id(),\"token\":proof.token,\"geometry_basis\":String(session.data.geometry_basis),\"packet_sha256\":String(proof.packet_sha256),\"binding_sha256\":String(proof.binding_sha256)}\nstatic func finite_market_retired_visual_id(scene: SceneScript,id: String,parent_objects: Array) -> bool:\n\tif id!=\"v13_market_west_plot_wall\": return false\n\tvar state: Dictionary=finite_market_child_state(scene)\n\tif state.get(\"ok\")!=true: return false\n\treturn _finite_native_adapter().market_retired_entry_proven(scene,id,parent_objects,state)\nstatic func whole_bound(scene: SceneScript) -> bool:\n"
+        },
+        {
+          "old": "\tif _ap_requested(scene.scene_id) and data.get(\"geometry_basis\")==_ap().BASIS:\n",
+          "new": "\tif (_ap_requested(scene.scene_id) and data.get(\"geometry_basis\")==_ap().BASIS) or market_state.get(\"ok\")==true:\n"
+        },
+        {
+          "old": "static func ap_packet_valid(data: Dictionary) -> bool:\n",
+          "new": "static func ap_packet_valid(data: Dictionary) -> bool:\n\tvar finite_adapter: Variant=_finite_native_adapter()\n\tvar finite_config: Dictionary=manifest(&\"ch4_s3_luoyang_market\")\n\tif finite_adapter!=null and finite_adapter.market_packet_requested(&\"ch4_s3_luoyang_market\",finite_config,data):\n\t\treturn finite_adapter.market_packet_and_frozen_ap_ao_t_chain_valid(data,finite_config)\n"
+        },
+        {
+          "old": "static func ap_district_projection(scene: SceneScript,original: Dictionary) -> Dictionary:\n",
+          "new": "static func ap_district_projection(scene: SceneScript,original: Dictionary) -> Dictionary:\n\tvar finite_state: Dictionary=finite_market_child_state(scene)\n\tif finite_state.get(\"requested\",false):\n\t\tif finite_state.get(\"ok\")!=true: return {}\n\t\tvar finite_spec: Dictionary=_ap().author()\n\t\tif finite_spec.is_empty() or not _finite_native_adapter().market_district_parent_matches(original,finite_spec,finite_state): return {}\n\t\treturn _ap().project_district(original,finite_spec)\n"
+        },
+        {
+          "old": "\tif ap_basis:\n",
+          "new": "\tvar finite_adapter: Variant=_finite_native_adapter()\n\tvar finite_market_basis: bool=id==&\"ch4_s3_luoyang_market\" and finite_adapter!=null and finite_adapter.market_manifest_requested(id,raw)\n\tvar finite_yamen_basis: bool=id==&\"ch4_s1_luoyang_yamen\" and finite_adapter!=null and finite_adapter.finite_yamen_manifest_requested(id,raw)\n\tif finite_yamen_basis:\n\t\tif not finite_adapter.finite_yamen_manifest_valid(id,raw): return {}\n\telif finite_market_basis:\n\t\tif not finite_adapter.market_manifest_valid(id,raw): return {}\n\telif ap_basis:\n"
+        },
+        {
+          "old": "(ap_basis and path.begins_with(AP_ROOT))",
+          "new": "((ap_basis and path.begins_with(AP_ROOT)) or (finite_market_basis and finite_adapter.market_runtime_authority_path_allowed(raw,path)) or (finite_yamen_basis and finite_adapter.finite_yamen_runtime_authority_path_allowed(raw,path)))"
+        },
+        {
+          "old": "static func _root(id: StringName) -> String:\n",
+          "new": "static func _root(id: StringName) -> String:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return \"\"\n\tif finite.root_requested(id): return finite.root_for(id)\n"
+        },
+        {
+          "old": "static func _entry(id: StringName) -> Dictionary:\n",
+          "new": "static func _artifact_path(id: StringName,suffix: String) -> String:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return \"\"\n\tif finite.root_requested(id): return finite.artifact_path(id,suffix)\n\treturn _root(id)+String(id)+\"/\"+suffix\nstatic func _entry(id: StringName) -> Dictionary:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tif finite.root_requested(id): return finite.entry(id)\n"
+        },
+        {
+          "old": "static func _ap_entry(id: StringName) -> Dictionary:\n",
+          "new": "static func _ap_entry(id: StringName) -> Dictionary:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tif finite.root_requested(id): return finite.entry(id)\n"
+        },
+        {
+          "old": "\tif scene==null or layout==null or scene.scene_id!=id or scene.resource_path!=_root(id)+String(id)+\"/scene.res\" or layout.resource_path!=_root(id)+String(id)+\"/layout.res\": return null\n",
+          "new": "\tif scene==null or layout==null or scene.scene_id!=id or scene.resource_path!=_artifact_path(id,\"scene.res\") or layout.resource_path!=_artifact_path(id,\"layout.res\"): return null\n"
+        },
+        {
+          "old": "\tvar scene:=ResourceLoader.load(_root(id)+String(id)+\"/scene.res\",\"\",ResourceLoader.CACHE_MODE_IGNORE) as SceneScript\n",
+          "new": "\tvar scene:=ResourceLoader.load(_artifact_path(id,\"scene.res\"),\"\",ResourceLoader.CACHE_MODE_IGNORE) as SceneScript\n"
+        },
+        {
+          "old": "\tvar layout:=ResourceLoader.load(_root(id)+String(id)+\"/layout.res\",\"\",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout\n",
+          "new": "\tvar layout:=ResourceLoader.load(_artifact_path(id,\"layout.res\"),\"\",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout\n"
+        },
+        {
+          "old": "\tfor suffix: String in [\"scene.res\",\"layout.res\"]:\n\t\tvar path: String=_root(id)+String(id)+\"/\"+suffix\n",
+          "new": "\tfor suffix: String in [\"scene.res\",\"layout.res\"]:\n\t\tvar path: String=_artifact_path(id,suffix)\n"
+        },
+        {
+          "old": "\tif not _plain(data) or bytes_sha(var_to_bytes(data))!=config.artifacts[_root(id)+String(id)+\"/packet.bin\"]: return null\n",
+          "new": "\tif not _plain(data) or bytes_sha(var_to_bytes(data))!=config.artifacts[_artifact_path(id,\"packet.bin\")]: return null\n"
+        },
+        {
+          "old": "\tvar path: String=_root(_id)+String(_id)+\"/packet.bin\"\n",
+          "new": "\tvar path: String=_artifact_path(_id,\"packet.bin\")\n"
+        },
+        {
+          "old": "\tpaths[INDEX]=true; paths[_root(id)+String(id)+\"/manifest.json\"]=true\n",
+          "new": "\tpaths[INDEX]=true; paths[_artifact_path(id,\"manifest.json\")]=true\n"
+        },
+        {
+          "old": "\tfor suffix: String in [\"scene.res\",\"layout.res\",\"packet.bin\"]:\n\t\tvar path: String=_root(id)+String(id)+\"/\"+suffix\n",
+          "new": "\tfor suffix: String in [\"scene.res\",\"layout.res\",\"packet.bin\"]:\n\t\tvar path: String=_artifact_path(id,suffix)\n"
+        },
+        {
+          "old": "\tif entry.size()!=2 or entry.get(\"manifest_path\")!=_root(id)+String(id)+\"/manifest.json\" or not _hash(entry.get(\"manifest_sha256\")): return {}\n",
+          "new": "\tif entry.size()!=2 or entry.get(\"manifest_path\")!=_artifact_path(id,\"manifest.json\") or not _hash(entry.get(\"manifest_sha256\")): return {}\n"
+        },
+        {
+          "old": "static func layout_author(scene: SceneScript) -> Dictionary:\n\tif not whole_bound(scene): return {}\n",
+          "new": "static func layout_author(scene: SceneScript) -> Dictionary:\n\tif not whole_bound(scene): return {}\n\tvar finite_state: Dictionary=finite_yamen_child_state(scene)\n\tif finite_state.get(\"requested\",false):\n\t\treturn _finite_native_adapter().yamen_layout_author(scene,finite_state) if finite_state.get(\"ok\")==true else {}\n"
+        },
+        {
+          "old": "var _joined: bool=false\n",
+          "new": "var _joined: bool=false\nvar _finite_context: Dictionary={}\nvar _finite_worker_result: Dictionary={}\n"
+        },
+        {
+          "old": "\t_token=token; _id=id; return true\n",
+          "new": "\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return false\n\t_finite_context=finite.prepare_packet_context(token,id,sources,_manifest,FINITE_ADAPTER_SHA)\n\tif _finite_context.get(\"requested\",false) and _finite_context.get(\"ok\")!=true: _error=\"Finite source-first context refused\";return false\n\t_token=token; _id=id; return true\n"
+        },
+        {
+          "old": "\t_data=data\n",
+          "new": "\tif _finite_context.get(\"requested\",false):\n\t\t_finite_worker_result=_finite_native_adapter().validate_packet_worker(_finite_context,data,_manifest.artifacts[path])\n\t\tif _is_cancelled() or _finite_worker_result.get(\"ok\")!=true: _reject(\"Finite packet worker inverse/source proof refused\");return\n\t_data=data\n"
+        },
+        {
+          "old": "\treturn _joined\nfunc packet(",
+          "new": "\tif _joined and _finite_context.get(\"requested\",false):\n\t\t_joined=_finite_native_adapter().accept_joined_native(token,id,_finite_context,_finite_worker_result)\n\t\tif not _joined: _error=\"Finite joined owner/source proof refused\"\n\treturn _joined\nfunc packet("
+        },
+        {
+          "old": "\t_data={}; _manifest={}; _joined=false; _token=0; _id=&\"\"\n",
+          "new": "\t_data={}; _manifest={}; _finite_context.clear(); _finite_worker_result.clear(); _joined=false; _token=0; _id=&\"\"\n"
+        },
+        {
+          "old": "\tvar paths: Dictionary={SELF:true}\n",
+          "new": "\tvar paths: Dictionary={SELF:true}\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tpaths.merge(finite.control_source_paths())\n\tif finite.root_requested(id):\n\t\tvar finite_paths: Dictionary=finite.source_paths_for(id)\n\t\tif finite_paths.is_empty(): return {}\n\t\tpaths.merge(finite_paths)\n"
+        },
+        {
+          "old": "\tvar previous: String=\"bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf\"\n\tvar next: String=\"3f2d43276f89341a450579fa07a0dd0bb2369d059ad928e7187fb35df59f1ac7\"\n\tvar candidate: String=\"res://build/luoyang_market_two_shops_20261021ao_system01/District_fade_READY.gd\"\n",
+          "new": "\tvar older: String=\"bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf\"\n\tvar previous: String=\"3f2d43276f89341a450579fa07a0dd0bb2369d059ad928e7187fb35df59f1ac7\"\n\tvar next: String=\"55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6\"\n\tvar candidate: String=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Fade_consumer_READY.gd\"\n"
+        },
+        {
+          "old": "return history is Array and first in history and previous in history and delta.get(\"current_before_sha256\")==previous",
+          "new": "return history is Array and first in history and older in history and previous in history and delta.get(\"current_before_sha256\")==previous"
+        }
+      ],
+      "inverse_replacements": [
+        {
+          "old": "return history is Array and first in history and previous in history and delta.get(\"current_before_sha256\")==previous",
+          "new": "return history is Array and first in history and older in history and previous in history and delta.get(\"current_before_sha256\")==previous"
+        },
+        {
+          "old": "\tvar previous: String=\"bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf\"\n\tvar next: String=\"3f2d43276f89341a450579fa07a0dd0bb2369d059ad928e7187fb35df59f1ac7\"\n\tvar candidate: String=\"res://build/luoyang_market_two_shops_20261021ao_system01/District_fade_READY.gd\"\n",
+          "new": "\tvar older: String=\"bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf\"\n\tvar previous: String=\"3f2d43276f89341a450579fa07a0dd0bb2369d059ad928e7187fb35df59f1ac7\"\n\tvar next: String=\"55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6\"\n\tvar candidate: String=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Fade_consumer_READY.gd\"\n"
+        },
+        {
+          "old": "\tvar paths: Dictionary={SELF:true}\n",
+          "new": "\tvar paths: Dictionary={SELF:true}\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tpaths.merge(finite.control_source_paths())\n\tif finite.root_requested(id):\n\t\tvar finite_paths: Dictionary=finite.source_paths_for(id)\n\t\tif finite_paths.is_empty(): return {}\n\t\tpaths.merge(finite_paths)\n"
+        },
+        {
+          "old": "\t_data={}; _manifest={}; _joined=false; _token=0; _id=&\"\"\n",
+          "new": "\t_data={}; _manifest={}; _finite_context.clear(); _finite_worker_result.clear(); _joined=false; _token=0; _id=&\"\"\n"
+        },
+        {
+          "old": "\treturn _joined\nfunc packet(",
+          "new": "\tif _joined and _finite_context.get(\"requested\",false):\n\t\t_joined=_finite_native_adapter().accept_joined_native(token,id,_finite_context,_finite_worker_result)\n\t\tif not _joined: _error=\"Finite joined owner/source proof refused\"\n\treturn _joined\nfunc packet("
+        },
+        {
+          "old": "\t_data=data\n",
+          "new": "\tif _finite_context.get(\"requested\",false):\n\t\t_finite_worker_result=_finite_native_adapter().validate_packet_worker(_finite_context,data,_manifest.artifacts[path])\n\t\tif _is_cancelled() or _finite_worker_result.get(\"ok\")!=true: _reject(\"Finite packet worker inverse/source proof refused\");return\n\t_data=data\n"
+        },
+        {
+          "old": "\t_token=token; _id=id; return true\n",
+          "new": "\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return false\n\t_finite_context=finite.prepare_packet_context(token,id,sources,_manifest,FINITE_ADAPTER_SHA)\n\tif _finite_context.get(\"requested\",false) and _finite_context.get(\"ok\")!=true: _error=\"Finite source-first context refused\";return false\n\t_token=token; _id=id; return true\n"
+        },
+        {
+          "old": "var _joined: bool=false\n",
+          "new": "var _joined: bool=false\nvar _finite_context: Dictionary={}\nvar _finite_worker_result: Dictionary={}\n"
+        },
+        {
+          "old": "static func layout_author(scene: SceneScript) -> Dictionary:\n\tif not whole_bound(scene): return {}\n",
+          "new": "static func layout_author(scene: SceneScript) -> Dictionary:\n\tif not whole_bound(scene): return {}\n\tvar finite_state: Dictionary=finite_yamen_child_state(scene)\n\tif finite_state.get(\"requested\",false):\n\t\treturn _finite_native_adapter().yamen_layout_author(scene,finite_state) if finite_state.get(\"ok\")==true else {}\n"
+        },
+        {
+          "old": "\tif entry.size()!=2 or entry.get(\"manifest_path\")!=_root(id)+String(id)+\"/manifest.json\" or not _hash(entry.get(\"manifest_sha256\")): return {}\n",
+          "new": "\tif entry.size()!=2 or entry.get(\"manifest_path\")!=_artifact_path(id,\"manifest.json\") or not _hash(entry.get(\"manifest_sha256\")): return {}\n"
+        },
+        {
+          "old": "\tfor suffix: String in [\"scene.res\",\"layout.res\",\"packet.bin\"]:\n\t\tvar path: String=_root(id)+String(id)+\"/\"+suffix\n",
+          "new": "\tfor suffix: String in [\"scene.res\",\"layout.res\",\"packet.bin\"]:\n\t\tvar path: String=_artifact_path(id,suffix)\n"
+        },
+        {
+          "old": "\tpaths[INDEX]=true; paths[_root(id)+String(id)+\"/manifest.json\"]=true\n",
+          "new": "\tpaths[INDEX]=true; paths[_artifact_path(id,\"manifest.json\")]=true\n"
+        },
+        {
+          "old": "\tvar path: String=_root(_id)+String(_id)+\"/packet.bin\"\n",
+          "new": "\tvar path: String=_artifact_path(_id,\"packet.bin\")\n"
+        },
+        {
+          "old": "\tif not _plain(data) or bytes_sha(var_to_bytes(data))!=config.artifacts[_root(id)+String(id)+\"/packet.bin\"]: return null\n",
+          "new": "\tif not _plain(data) or bytes_sha(var_to_bytes(data))!=config.artifacts[_artifact_path(id,\"packet.bin\")]: return null\n"
+        },
+        {
+          "old": "\tfor suffix: String in [\"scene.res\",\"layout.res\"]:\n\t\tvar path: String=_root(id)+String(id)+\"/\"+suffix\n",
+          "new": "\tfor suffix: String in [\"scene.res\",\"layout.res\"]:\n\t\tvar path: String=_artifact_path(id,suffix)\n"
+        },
+        {
+          "old": "\tvar layout:=ResourceLoader.load(_root(id)+String(id)+\"/layout.res\",\"\",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout\n",
+          "new": "\tvar layout:=ResourceLoader.load(_artifact_path(id,\"layout.res\"),\"\",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout\n"
+        },
+        {
+          "old": "\tvar scene:=ResourceLoader.load(_root(id)+String(id)+\"/scene.res\",\"\",ResourceLoader.CACHE_MODE_IGNORE) as SceneScript\n",
+          "new": "\tvar scene:=ResourceLoader.load(_artifact_path(id,\"scene.res\"),\"\",ResourceLoader.CACHE_MODE_IGNORE) as SceneScript\n"
+        },
+        {
+          "old": "\tif scene==null or layout==null or scene.scene_id!=id or scene.resource_path!=_root(id)+String(id)+\"/scene.res\" or layout.resource_path!=_root(id)+String(id)+\"/layout.res\": return null\n",
+          "new": "\tif scene==null or layout==null or scene.scene_id!=id or scene.resource_path!=_artifact_path(id,\"scene.res\") or layout.resource_path!=_artifact_path(id,\"layout.res\"): return null\n"
+        },
+        {
+          "old": "static func _ap_entry(id: StringName) -> Dictionary:\n",
+          "new": "static func _ap_entry(id: StringName) -> Dictionary:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tif finite.root_requested(id): return finite.entry(id)\n"
+        },
+        {
+          "old": "static func _entry(id: StringName) -> Dictionary:\n",
+          "new": "static func _artifact_path(id: StringName,suffix: String) -> String:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return \"\"\n\tif finite.root_requested(id): return finite.artifact_path(id,suffix)\n\treturn _root(id)+String(id)+\"/\"+suffix\nstatic func _entry(id: StringName) -> Dictionary:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tif finite.root_requested(id): return finite.entry(id)\n"
+        },
+        {
+          "old": "static func _root(id: StringName) -> String:\n",
+          "new": "static func _root(id: StringName) -> String:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return \"\"\n\tif finite.root_requested(id): return finite.root_for(id)\n"
+        },
+        {
+          "old": "(ap_basis and path.begins_with(AP_ROOT))",
+          "new": "((ap_basis and path.begins_with(AP_ROOT)) or (finite_market_basis and finite_adapter.market_runtime_authority_path_allowed(raw,path)) or (finite_yamen_basis and finite_adapter.finite_yamen_runtime_authority_path_allowed(raw,path)))"
+        },
+        {
+          "old": "\tif ap_basis:\n",
+          "new": "\tvar finite_adapter: Variant=_finite_native_adapter()\n\tvar finite_market_basis: bool=id==&\"ch4_s3_luoyang_market\" and finite_adapter!=null and finite_adapter.market_manifest_requested(id,raw)\n\tvar finite_yamen_basis: bool=id==&\"ch4_s1_luoyang_yamen\" and finite_adapter!=null and finite_adapter.finite_yamen_manifest_requested(id,raw)\n\tif finite_yamen_basis:\n\t\tif not finite_adapter.finite_yamen_manifest_valid(id,raw): return {}\n\telif finite_market_basis:\n\t\tif not finite_adapter.market_manifest_valid(id,raw): return {}\n\telif ap_basis:\n"
+        },
+        {
+          "old": "static func ap_district_projection(scene: SceneScript,original: Dictionary) -> Dictionary:\n",
+          "new": "static func ap_district_projection(scene: SceneScript,original: Dictionary) -> Dictionary:\n\tvar finite_state: Dictionary=finite_market_child_state(scene)\n\tif finite_state.get(\"requested\",false):\n\t\tif finite_state.get(\"ok\")!=true: return {}\n\t\tvar finite_spec: Dictionary=_ap().author()\n\t\tif finite_spec.is_empty() or not _finite_native_adapter().market_district_parent_matches(original,finite_spec,finite_state): return {}\n\t\treturn _ap().project_district(original,finite_spec)\n"
+        },
+        {
+          "old": "static func ap_packet_valid(data: Dictionary) -> bool:\n",
+          "new": "static func ap_packet_valid(data: Dictionary) -> bool:\n\tvar finite_adapter: Variant=_finite_native_adapter()\n\tvar finite_config: Dictionary=manifest(&\"ch4_s3_luoyang_market\")\n\tif finite_adapter!=null and finite_adapter.market_packet_requested(&\"ch4_s3_luoyang_market\",finite_config,data):\n\t\treturn finite_adapter.market_packet_and_frozen_ap_ao_t_chain_valid(data,finite_config)\n"
+        },
+        {
+          "old": "\tif _ap_requested(scene.scene_id) and data.get(\"geometry_basis\")==_ap().BASIS:\n",
+          "new": "\tif (_ap_requested(scene.scene_id) and data.get(\"geometry_basis\")==_ap().BASIS) or market_state.get(\"ok\")==true:\n"
+        },
+        {
+          "old": "static func whole_bound(scene: SceneScript) -> bool:\n",
+          "new": "static func finite_yamen_child_state(scene: SceneScript) -> Dictionary:\n\tif scene==null or scene.scene_id!=&\"ch4_s1_luoyang_yamen\" or scene.map_layout==null: return {}\n\tvar session: Dictionary=_scene_sessions.get(scene.get_instance_id(),{})\n\tif session.is_empty() or session.scene.get_ref()!=scene or session.layout.get_ref()!=scene.map_layout: return {}\n\tvar yamen_adapter: Variant=_finite_native_adapter()\n\tif yamen_adapter==null: return {\"requested\":true,\"ok\":false}\n\tif not yamen_adapter.yamen_packet_requested(scene.scene_id,session.config,session.data): return {}\n\tif not whole_bound(scene): return {\"requested\":true,\"ok\":false}\n\tvar proof: Dictionary=yamen_adapter.yamen_public_session_proof(scene,session.data,session.config)\n\tif proof.get(\"ok\")!=true or typeof(proof.get(\"token\"))!=TYPE_INT or proof.token<=0: return {\"requested\":true,\"ok\":false}\n\treturn {\"requested\":true,\"ok\":true,\"scene_instance\":scene.get_instance_id(),\"layout_instance\":scene.map_layout.get_instance_id(),\"token\":proof.token,\"geometry_basis\":String(session.data.geometry_basis),\"packet_sha256\":String(proof.packet_sha256),\"binding_sha256\":String(proof.binding_sha256)}\nstatic func finite_market_child_state(scene: SceneScript) -> Dictionary:\n\tif scene==null or scene.scene_id!=&\"ch4_s3_luoyang_market\" or scene.map_layout==null: return {}\n\tvar session: Dictionary=_scene_sessions.get(scene.get_instance_id(),{})\n\tif session.is_empty() or session.scene.get_ref()!=scene or session.layout.get_ref()!=scene.map_layout: return {}\n\tvar adapter: Variant=_finite_native_adapter()\n\tif adapter==null: return {\"requested\":true,\"ok\":false}\n\tif not adapter.market_packet_requested(scene.scene_id,session.config,session.data): return {}\n\tif not whole_bound(scene): return {\"requested\":true,\"ok\":false}\n\tvar proof: Dictionary=adapter.market_public_session_proof(scene,session.data,session.config)\n\tif proof.get(\"ok\")!=true or typeof(proof.get(\"token\"))!=TYPE_INT or proof.token<=0: return {\"requested\":true,\"ok\":false}\n\treturn {\"requested\":true,\"ok\":true,\"scene_instance\":scene.get_instance_id(),\"layout_instance\":scene.map_layout.get_instance_id(),\"token\":proof.token,\"geometry_basis\":String(session.data.geometry_basis),\"packet_sha256\":String(proof.packet_sha256),\"binding_sha256\":String(proof.binding_sha256)}\nstatic func finite_market_retired_visual_id(scene: SceneScript,id: String,parent_objects: Array) -> bool:\n\tif id!=\"v13_market_west_plot_wall\": return false\n\tvar state: Dictionary=finite_market_child_state(scene)\n\tif state.get(\"ok\")!=true: return false\n\treturn _finite_native_adapter().market_retired_entry_proven(scene,id,parent_objects,state)\nstatic func whole_bound(scene: SceneScript) -> bool:\n"
+        },
+        {
+          "old": "\tif _ap_requested(scene.scene_id) and session.data.get(\"geometry_basis\")==_ap().BASIS: return scene.get_meta(_ap().META,\"\")==session.config.get(\"author_sha256\") and session.config.get(\"author_sha256\")==FileAccess.get_sha256(_ap().AUTHOR)\n",
+          "new": "\tif scene.scene_id==&\"ch4_s1_luoyang_yamen\":\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return false\n\t\tif yamen_adapter.yamen_packet_requested(scene.scene_id,session.config,session.data):\n\t\t\treturn yamen_adapter.yamen_session_bound(scene,session.data,session.config)\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif market_adapter==null: return false\n\t\tif market_adapter.market_packet_requested(scene.scene_id,session.config,session.data):\n\t\t\treturn market_adapter.market_session_bound(scene,session.data,session.config)\n\tif _ap_requested(scene.scene_id) and session.data.get(\"geometry_basis\")==_ap().BASIS: return scene.get_meta(_ap().META,\"\")==session.config.get(\"author_sha256\") and session.config.get(\"author_sha256\")==FileAccess.get_sha256(_ap().AUTHOR)\n"
+        },
+        {
+          "old": "\tvar child: Dictionary=data.record.duplicate(true); var prior: Dictionary=data.t_parent_record.duplicate(true)\n",
+          "new": "\tvar child: Dictionary=data.record.duplicate(true); var prior: Dictionary=data.t_parent_record.duplicate(true)\n\tvar yamen_state: Dictionary=finite_yamen_child_state(scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return {}\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return {}\n\t\tvar mapped: Dictionary=yamen_adapter.map_child_to_frozen_t(scene,current,data,yamen_state)\n\t\tif mapped.get(\"ok\")!=true: return {}\n\t\tcurrent=mapped.current_t_record; child=mapped.frozen_t_record\n\tvar market_state: Dictionary=finite_market_child_state(scene)\n\tif market_state.get(\"requested\",false):\n\t\tif market_state.get(\"ok\")!=true: return {}\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif not market_adapter.market_ap_ao_t_chain_proven(scene,data,market_state): return {}\n\t\tvar restored_ap: Dictionary=market_adapter.market_map_child_to_frozen_ap(scene,current,data,market_state)\n\t\tif restored_ap.get(\"ok\")!=true: return {}\n\t\tcurrent=restored_ap.current_ap_record; child=restored_ap.frozen_ap_record\n"
+        },
+        {
+          "old": "\tif _ap_requested(id) and data.geometry_basis==_ap().BASIS:\n",
+          "new": "\tif id==&\"ch4_s1_luoyang_yamen\" and _finite_native_adapter()!=null and _finite_native_adapter().yamen_packet_requested(id,config,data):\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null or not yamen_adapter.yamen_native_packet_valid(id,data,config,scene): return null\n\t\tprune_sessions()\n\t\t_scene_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(layout),\"data\":data.duplicate(true),\"config\":config.duplicate(true),\"parent\":null}\n\telif id==&\"ch4_s3_luoyang_market\" and _finite_native_adapter()!=null and _finite_native_adapter().market_packet_requested(id,config,data):\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif market_adapter==null or not market_adapter.market_native_packet_valid(id,data,config,scene): return null\n\t\tprune_sessions()\n\t\t_scene_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(layout),\"data\":data.duplicate(true),\"config\":config.duplicate(true),\"parent\":null}\n\telif _ap_requested(id) and data.geometry_basis==_ap().BASIS:\n"
+        },
+        {
+          "old": "extends RefCounted\n",
+          "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+        }
+      ],
+      "whole_source_byte_inverse": true,
+      "crlf_count": 0
+    },
+    {
+      "domain": "ENV",
+      "target": "res://scripts/city/luoyang_environment_layer_20261022ap.gd",
+      "old_sha256": "455aa5b2d2b170491f67294ea11cae8ec6c6e23806eb83563cbc49e6fe7f7983",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/ground_purpose_preview_epoch01/ENV_metadata_retry2_candidate.gd",
+        "sha256": "a751dbd4ce014abd2e808d7c9a947dc0e4a314d4b42930a6392a1d6eb7c20a7d",
+        "bytes": 33446
+      },
+      "forward_hunks": [
+        {
+          "old": "const RECT_TRANSITION_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/environment_rect_color_once_READY.gdshader\"\nconst RECT_TRANSITION_SHADER_SHA=\"8dab8ea0515d4cc94ff89595c287d2513cb3a8d47dcd36edb1d7ed74a796ae53\"\nconst ARTISAN_UNION_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/artisan_ground_union_exterior_READY.gdshader\"\nconst ARTISAN_UNION_SHADER_SHA=\"411bceeec31d10025ff17e21e36b416054425e916e04ee39e91038b709acda83\"\n",
+          "new": "const RECT_TRANSITION_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/environment_rect_color_once_READY.gdshader\"\nconst RECT_TRANSITION_SHADER_SHA=\"8dab8ea0515d4cc94ff89595c287d2513cb3a8d47dcd36edb1d7ed74a796ae53\"\nconst PURPOSE_RECT_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/ground_purpose_visual_epoch01/rect_ground_purpose_candidate.gdshader\"\nconst PURPOSE_RECT_SHADER_SHA=\"e80916d7fa99218e3dc36ee1a83efd49f544ed426739941499c8500f23da14f1\"\nconst ARTISAN_UNION_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/artisan_ground_union_exterior_READY.gdshader\"\nconst ARTISAN_UNION_SHADER_SHA=\"411bceeec31d10025ff17e21e36b416054425e916e04ee39e91038b709acda83\"\n"
+        },
+        {
+          "old": "\tvar out: Dictionary={SELF:true,INDEX:true,AUTHOR:true,RECT_TRANSITION_SHADER:true}\n\tif id==&\"luoyang_artisan_residential_20261022ap\": out[ARTISAN_UNION_SHADER]=true\n\t# The small per-release author owns all four shared materials. Each material\n\t# is loaded only once by a Field setup; there is no per-frame hash or spawn.\n",
+          "new": "\tvar out: Dictionary={SELF:true,INDEX:true,AUTHOR:true,RECT_TRANSITION_SHADER:true}\n\tif id==&\"luoyang_artisan_residential_20261022ap\": out[ARTISAN_UNION_SHADER]=true\n\tif id in [&\"ch4_s1_luoyang_yamen\",&\"ch4_s3_luoyang_market\"]: out[PURPOSE_RECT_SHADER]=true\n\t# The small per-release author owns all four shared materials. Each material\n\t# is loaded only once by a Field setup; there is no per-frame hash or spawn.\n"
+        },
+        {
+          "old": "\tvar source_first: Dictionary={};var textures: Dictionary={};var source_pins: Dictionary=data.source_sha256.duplicate()\n\tsource_pins[RECT_TRANSITION_SHADER]=RECT_TRANSITION_SHADER_SHA\n\tif scene.scene_id==&\"luoyang_artisan_residential_20261022ap\": source_pins[ARTISAN_UNION_SHADER]=ARTISAN_UNION_SHADER_SHA\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n",
+          "new": "\tvar source_first: Dictionary={};var textures: Dictionary={};var source_pins: Dictionary=data.source_sha256.duplicate()\n\tsource_pins[RECT_TRANSITION_SHADER]=RECT_TRANSITION_SHADER_SHA\n\tif scene.scene_id in [&\"ch4_s1_luoyang_yamen\",&\"ch4_s3_luoyang_market\"]: source_pins[PURPOSE_RECT_SHADER]=PURPOSE_RECT_SHADER_SHA\n\tif scene.scene_id==&\"luoyang_artisan_residential_20261022ap\": source_pins[ARTISAN_UNION_SHADER]=ARTISAN_UNION_SHADER_SHA\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n"
+        },
+        {
+          "old": "\tvar rect_transition: Shader=ResourceLoader.load(RECT_TRANSITION_SHADER) as Shader\n\tif rect_transition==null or rect_transition.resource_path!=RECT_TRANSITION_SHADER: return fail(\"AP_ENVIRONMENT_EXACT_RECT_SHADER\")\n\tvar layer:=Node2D.new();layer.name=NAME;layer.z_index=Z\n\tvar count: int=0;var seen: Dictionary={}\n",
+          "new": "\tvar rect_transition: Shader=ResourceLoader.load(RECT_TRANSITION_SHADER) as Shader\n\tif rect_transition==null or rect_transition.resource_path!=RECT_TRANSITION_SHADER: return fail(\"AP_ENVIRONMENT_EXACT_RECT_SHADER\")\n\tvar purpose_shader: Shader=null\n\tif scene.scene_id in [&\"ch4_s1_luoyang_yamen\",&\"ch4_s3_luoyang_market\"]:\n\t\tpurpose_shader=ResourceLoader.load(PURPOSE_RECT_SHADER) as Shader\n\t\tif purpose_shader==null or purpose_shader.resource_path!=PURPOSE_RECT_SHADER: return fail(\"AP_PURPOSE_EXACT_RECT_SHADER\")\n\tvar layer:=Node2D.new();layer.name=NAME;layer.z_index=Z\n\tvar count: int=0;var seen: Dictionary={}\n"
+        },
+        {
+          "old": "\t\t\ttransition.set_shader_parameter(\"ap_core_opacity\",core_opacity)\n\t\t\tsprite.modulate=Color(1.10,1.10,1.08,1.0)\n\t\t\tsprite.material=transition\n\t\t\tsprite.set_meta(\"ap_rect_transition\",{\"whole_author_rect\":true,\"feather_world\":32.0,\"core_opacity\":core_opacity,\"no_tile_edge_feather\":true})\n\t\telif row.has(\"center\"):\n\t\t\tvar asset: Dictionary=data.assets[row.asset]\n",
+          "new": "\t\t\ttransition.set_shader_parameter(\"ap_core_opacity\",core_opacity)\n\t\t\tsprite.modulate=Color(1.10,1.10,1.08,1.0)\n\t\t\tvar purpose: Dictionary=purpose_rect_profile(scene.scene_id,String(row.id))\n\t\t\tif not purpose.is_empty():\n\t\t\t\tif purpose_shader==null: layer.free();return fail(\"AP_PURPOSE_SHADER_NOT_LOADED\",row.id)\n\t\t\t\ttransition.shader=purpose_shader\n\t\t\t\ttransition.set_shader_parameter(\"ap_rect_size_world\",area.size*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_source_to_world\",float(row.uniform_scale)*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_feather_world\",32.0)\n\t\t\t\ttransition.set_shader_parameter(\"ap_edge_widths_world\",purpose.edge_widths*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_wear_world\",purpose.wear*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_world_origin\",area.position*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_material_tone\",purpose.tone)\n\t\t\t\ttransition.set_shader_parameter(\"ap_texture_contrast\",purpose.contrast)\n\t\t\t\ttransition.set_shader_parameter(\"ap_core_opacity\",purpose.core)\n\t\t\t\tsprite.modulate=Color.WHITE\n\t\t\t\tsprite.set_meta(\"ap_purpose_ground_visual_only\",purpose.duplicate())\n\t\t\tsprite.material=transition\n\t\t\tif purpose.is_empty():\n\t\t\t\tsprite.set_meta(\"ap_rect_transition\",{\"whole_author_rect\":true,\"feather_world\":32.0,\"core_opacity\":core_opacity,\"no_tile_edge_feather\":true})\n\t\t\telse:\n\t\t\t\tsprite.set_meta(\"ap_rect_transition\",{\"whole_author_rect\":true,\"legacy_transition_replaced_by_purpose_profile\":true,\"core_opacity\":purpose.core,\"edge_widths_world\":purpose.edge_widths*design_scale,\"wear_world\":purpose.wear*design_scale,\"no_tile_edge_feather\":true})\n\t\telif row.has(\"center\"):\n\t\t\tvar asset: Dictionary=data.assets[row.asset]\n"
+        },
+        {
+          "old": "\tpawn.add_child(sprite)\n\treturn {\"ok\":true,\"id\":\"ap_pawn_dang_sign\",\"parent_id\":\"market_west_ward_frontage\",\"count\":1,\"native_rows_unchanged\":true,\"body_mask_support_unchanged\":true,\"parent_relative_z\":1,\"no_new_actor_registration\":true}\n",
+          "new": "\tpawn.add_child(sprite)\n\treturn {\"ok\":true,\"id\":\"ap_pawn_dang_sign\",\"parent_id\":\"market_west_ward_frontage\",\"count\":1,\"native_rows_unchanged\":true,\"body_mask_support_unchanged\":true,\"parent_relative_z\":1,\"no_new_actor_registration\":true}\n\nstatic func purpose_rect_profile(scene_id: StringName,row_id: String) -> Dictionary:\n\t# Fixed use-oriented settings, not random patches; no author/native mutation.\n\tif scene_id==&\"ch4_s1_luoyang_yamen\":\n\t\tif row_id==\"official_court_axis\": return {\"purpose\":\"official_axis\",\"edge_widths\":Vector4(44,24,44,24),\"wear\":8.0,\"tone\":Color(.56,.57,.54,1),\"contrast\":.46,\"core\":.52}\n\t\tif row_id==\"petition_waiting_court\": return {\"purpose\":\"waiting_court\",\"edge_widths\":Vector4(64,48,64,48),\"wear\":18.0,\"tone\":Color(.55,.555,.525,1),\"contrast\":.40,\"core\":.48}\n\tif scene_id==&\"ch4_s3_luoyang_market\":\n\t\tif row_id==\"market_pawn_clean_paved_forecourt\": return {\"purpose\":\"pawn_forecourt_opaque_core\",\"edge_widths\":Vector4(48,96,64,24),\"wear\":12.0,\"tone\":Color(.54,.555,.525,1),\"contrast\":.34,\"core\":1.0}\n\t\tif row_id==\"market_main_street\": return {\"purpose\":\"market_spine\",\"edge_widths\":Vector4(28,20,28,20),\"wear\":6.0,\"tone\":Color(.56,.57,.54,1),\"contrast\":.46,\"core\":.50}\n\t\tif row_id==\"market_pawn_approach\": return {\"purpose\":\"pawn_public_approach\",\"edge_widths\":Vector4(40,24,40,24),\"wear\":8.0,\"tone\":Color(.55,.56,.53,1),\"contrast\":.42,\"core\":.56}\n\treturn {}\n"
+        }
+      ],
+      "inverse_replacements": [
+        {
+          "old": "\tpawn.add_child(sprite)\n\treturn {\"ok\":true,\"id\":\"ap_pawn_dang_sign\",\"parent_id\":\"market_west_ward_frontage\",\"count\":1,\"native_rows_unchanged\":true,\"body_mask_support_unchanged\":true,\"parent_relative_z\":1,\"no_new_actor_registration\":true}\n",
+          "new": "\tpawn.add_child(sprite)\n\treturn {\"ok\":true,\"id\":\"ap_pawn_dang_sign\",\"parent_id\":\"market_west_ward_frontage\",\"count\":1,\"native_rows_unchanged\":true,\"body_mask_support_unchanged\":true,\"parent_relative_z\":1,\"no_new_actor_registration\":true}\n\nstatic func purpose_rect_profile(scene_id: StringName,row_id: String) -> Dictionary:\n\t# Fixed use-oriented settings, not random patches; no author/native mutation.\n\tif scene_id==&\"ch4_s1_luoyang_yamen\":\n\t\tif row_id==\"official_court_axis\": return {\"purpose\":\"official_axis\",\"edge_widths\":Vector4(44,24,44,24),\"wear\":8.0,\"tone\":Color(.56,.57,.54,1),\"contrast\":.46,\"core\":.52}\n\t\tif row_id==\"petition_waiting_court\": return {\"purpose\":\"waiting_court\",\"edge_widths\":Vector4(64,48,64,48),\"wear\":18.0,\"tone\":Color(.55,.555,.525,1),\"contrast\":.40,\"core\":.48}\n\tif scene_id==&\"ch4_s3_luoyang_market\":\n\t\tif row_id==\"market_pawn_clean_paved_forecourt\": return {\"purpose\":\"pawn_forecourt_opaque_core\",\"edge_widths\":Vector4(48,96,64,24),\"wear\":12.0,\"tone\":Color(.54,.555,.525,1),\"contrast\":.34,\"core\":1.0}\n\t\tif row_id==\"market_main_street\": return {\"purpose\":\"market_spine\",\"edge_widths\":Vector4(28,20,28,20),\"wear\":6.0,\"tone\":Color(.56,.57,.54,1),\"contrast\":.46,\"core\":.50}\n\t\tif row_id==\"market_pawn_approach\": return {\"purpose\":\"pawn_public_approach\",\"edge_widths\":Vector4(40,24,40,24),\"wear\":8.0,\"tone\":Color(.55,.56,.53,1),\"contrast\":.42,\"core\":.56}\n\treturn {}\n"
+        },
+        {
+          "old": "\t\t\ttransition.set_shader_parameter(\"ap_core_opacity\",core_opacity)\n\t\t\tsprite.modulate=Color(1.10,1.10,1.08,1.0)\n\t\t\tsprite.material=transition\n\t\t\tsprite.set_meta(\"ap_rect_transition\",{\"whole_author_rect\":true,\"feather_world\":32.0,\"core_opacity\":core_opacity,\"no_tile_edge_feather\":true})\n\t\telif row.has(\"center\"):\n\t\t\tvar asset: Dictionary=data.assets[row.asset]\n",
+          "new": "\t\t\ttransition.set_shader_parameter(\"ap_core_opacity\",core_opacity)\n\t\t\tsprite.modulate=Color(1.10,1.10,1.08,1.0)\n\t\t\tvar purpose: Dictionary=purpose_rect_profile(scene.scene_id,String(row.id))\n\t\t\tif not purpose.is_empty():\n\t\t\t\tif purpose_shader==null: layer.free();return fail(\"AP_PURPOSE_SHADER_NOT_LOADED\",row.id)\n\t\t\t\ttransition.shader=purpose_shader\n\t\t\t\ttransition.set_shader_parameter(\"ap_rect_size_world\",area.size*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_source_to_world\",float(row.uniform_scale)*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_feather_world\",32.0)\n\t\t\t\ttransition.set_shader_parameter(\"ap_edge_widths_world\",purpose.edge_widths*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_wear_world\",purpose.wear*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_world_origin\",area.position*design_scale)\n\t\t\t\ttransition.set_shader_parameter(\"ap_material_tone\",purpose.tone)\n\t\t\t\ttransition.set_shader_parameter(\"ap_texture_contrast\",purpose.contrast)\n\t\t\t\ttransition.set_shader_parameter(\"ap_core_opacity\",purpose.core)\n\t\t\t\tsprite.modulate=Color.WHITE\n\t\t\t\tsprite.set_meta(\"ap_purpose_ground_visual_only\",purpose.duplicate())\n\t\t\tsprite.material=transition\n\t\t\tif purpose.is_empty():\n\t\t\t\tsprite.set_meta(\"ap_rect_transition\",{\"whole_author_rect\":true,\"feather_world\":32.0,\"core_opacity\":core_opacity,\"no_tile_edge_feather\":true})\n\t\t\telse:\n\t\t\t\tsprite.set_meta(\"ap_rect_transition\",{\"whole_author_rect\":true,\"legacy_transition_replaced_by_purpose_profile\":true,\"core_opacity\":purpose.core,\"edge_widths_world\":purpose.edge_widths*design_scale,\"wear_world\":purpose.wear*design_scale,\"no_tile_edge_feather\":true})\n\t\telif row.has(\"center\"):\n\t\t\tvar asset: Dictionary=data.assets[row.asset]\n"
+        },
+        {
+          "old": "\tvar rect_transition: Shader=ResourceLoader.load(RECT_TRANSITION_SHADER) as Shader\n\tif rect_transition==null or rect_transition.resource_path!=RECT_TRANSITION_SHADER: return fail(\"AP_ENVIRONMENT_EXACT_RECT_SHADER\")\n\tvar layer:=Node2D.new();layer.name=NAME;layer.z_index=Z\n\tvar count: int=0;var seen: Dictionary={}\n",
+          "new": "\tvar rect_transition: Shader=ResourceLoader.load(RECT_TRANSITION_SHADER) as Shader\n\tif rect_transition==null or rect_transition.resource_path!=RECT_TRANSITION_SHADER: return fail(\"AP_ENVIRONMENT_EXACT_RECT_SHADER\")\n\tvar purpose_shader: Shader=null\n\tif scene.scene_id in [&\"ch4_s1_luoyang_yamen\",&\"ch4_s3_luoyang_market\"]:\n\t\tpurpose_shader=ResourceLoader.load(PURPOSE_RECT_SHADER) as Shader\n\t\tif purpose_shader==null or purpose_shader.resource_path!=PURPOSE_RECT_SHADER: return fail(\"AP_PURPOSE_EXACT_RECT_SHADER\")\n\tvar layer:=Node2D.new();layer.name=NAME;layer.z_index=Z\n\tvar count: int=0;var seen: Dictionary={}\n"
+        },
+        {
+          "old": "\tvar source_first: Dictionary={};var textures: Dictionary={};var source_pins: Dictionary=data.source_sha256.duplicate()\n\tsource_pins[RECT_TRANSITION_SHADER]=RECT_TRANSITION_SHADER_SHA\n\tif scene.scene_id==&\"luoyang_artisan_residential_20261022ap\": source_pins[ARTISAN_UNION_SHADER]=ARTISAN_UNION_SHADER_SHA\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n",
+          "new": "\tvar source_first: Dictionary={};var textures: Dictionary={};var source_pins: Dictionary=data.source_sha256.duplicate()\n\tsource_pins[RECT_TRANSITION_SHADER]=RECT_TRANSITION_SHADER_SHA\n\tif scene.scene_id in [&\"ch4_s1_luoyang_yamen\",&\"ch4_s3_luoyang_market\"]: source_pins[PURPOSE_RECT_SHADER]=PURPOSE_RECT_SHADER_SHA\n\tif scene.scene_id==&\"luoyang_artisan_residential_20261022ap\": source_pins[ARTISAN_UNION_SHADER]=ARTISAN_UNION_SHADER_SHA\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n"
+        },
+        {
+          "old": "\tvar out: Dictionary={SELF:true,INDEX:true,AUTHOR:true,RECT_TRANSITION_SHADER:true}\n\tif id==&\"luoyang_artisan_residential_20261022ap\": out[ARTISAN_UNION_SHADER]=true\n\t# The small per-release author owns all four shared materials. Each material\n\t# is loaded only once by a Field setup; there is no per-frame hash or spawn.\n",
+          "new": "\tvar out: Dictionary={SELF:true,INDEX:true,AUTHOR:true,RECT_TRANSITION_SHADER:true}\n\tif id==&\"luoyang_artisan_residential_20261022ap\": out[ARTISAN_UNION_SHADER]=true\n\tif id in [&\"ch4_s1_luoyang_yamen\",&\"ch4_s3_luoyang_market\"]: out[PURPOSE_RECT_SHADER]=true\n\t# The small per-release author owns all four shared materials. Each material\n\t# is loaded only once by a Field setup; there is no per-frame hash or spawn.\n"
+        },
+        {
+          "old": "const RECT_TRANSITION_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/environment_rect_color_once_READY.gdshader\"\nconst RECT_TRANSITION_SHADER_SHA=\"8dab8ea0515d4cc94ff89595c287d2513cb3a8d47dcd36edb1d7ed74a796ae53\"\nconst ARTISAN_UNION_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/artisan_ground_union_exterior_READY.gdshader\"\nconst ARTISAN_UNION_SHADER_SHA=\"411bceeec31d10025ff17e21e36b416054425e916e04ee39e91038b709acda83\"\n",
+          "new": "const RECT_TRANSITION_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/environment_rect_color_once_READY.gdshader\"\nconst RECT_TRANSITION_SHADER_SHA=\"8dab8ea0515d4cc94ff89595c287d2513cb3a8d47dcd36edb1d7ed74a796ae53\"\nconst PURPOSE_RECT_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/ground_purpose_visual_epoch01/rect_ground_purpose_candidate.gdshader\"\nconst PURPOSE_RECT_SHADER_SHA=\"e80916d7fa99218e3dc36ee1a83efd49f544ed426739941499c8500f23da14f1\"\nconst ARTISAN_UNION_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/artisan_ground_union_exterior_READY.gdshader\"\nconst ARTISAN_UNION_SHADER_SHA=\"411bceeec31d10025ff17e21e36b416054425e916e04ee39e91038b709acda83\"\n"
+        }
+      ],
+      "whole_source_byte_inverse": true,
+      "crlf_count": 0
+    },
+    {
+      "domain": "Coordinator",
+      "target": "res://scripts/city/luoyang_cultural_sidequests_coordinator_20261019x.gd",
+      "old_sha256": "71beb2e1181d8e9fe337dcd50571628c289304f3a38e7d054973eaee4e812a87",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Coordinator_contract_READY.gd",
+        "sha256": "496801c501265e4abbc34153f6d3c7e6d48a357701a2c44e5f9b5d976e51e70e",
+        "bytes": 36102
+      },
+      "forward_hunks": [
+        {
+          "old": "16b381c113ebfd0cb89f382eb99366bb703cda6baa40142cc1fbf97343ed74d8",
+          "new": "d1dc0d9e8e797e8b791eed2c445c99ff7dfd1c9be141e0a9f9ed0b7401255974"
+        }
+      ],
+      "inverse_replacements": [
+        {
+          "old": "16b381c113ebfd0cb89f382eb99366bb703cda6baa40142cc1fbf97343ed74d8",
+          "new": "d1dc0d9e8e797e8b791eed2c445c99ff7dfd1c9be141e0a9f9ed0b7401255974"
+        }
+      ],
+      "whole_source_byte_inverse": true
+    },
+    {
+      "domain": "Temple",
+      "target": "res://scripts/city/luoyang_temple_assembly_20261016.gd",
+      "old_sha256": "8e8f8e3c2b1c3f8715c7d7ddaf48f3b14e5c5abcf5b8818ecdb7ee29c1958ff8",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Temple_binding_READY.gd",
+        "sha256": "8f2ebd81fc8f60a0fdf80ea28eaccb449664686944cf1bcef65bed0478ae026a",
+        "bytes": 22786
+      },
+      "forward_hunks": [
+        {
+          "old": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/unified06_dependencies03/temple_binding_READY.json",
+          "new": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/temple_binding_READY.json"
+        },
+        {
+          "old": "1724624c6f85b9c8daa3593d259089ed1b9b8f1e60106f0dff67582d6686d840",
+          "new": "96ec2e4ff6e3b7e911ce6b13bea96a4a88b6f7bdf9b5d680c3a23b7aac2120da"
+        }
+      ],
+      "inverse_replacements": [
+        {
+          "old": "1724624c6f85b9c8daa3593d259089ed1b9b8f1e60106f0dff67582d6686d840",
+          "new": "96ec2e4ff6e3b7e911ce6b13bea96a4a88b6f7bdf9b5d680c3a23b7aac2120da"
+        },
+        {
+          "old": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/unified06_dependencies03/temple_binding_READY.json",
+          "new": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/temple_binding_READY.json"
+        }
+      ],
+      "whole_source_byte_inverse": true
+    }
+  ],
+  "ground_shader": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/ground_purpose_visual_epoch01/rect_ground_purpose_candidate.gdshader",
+    "sha256": "e80916d7fa99218e3dc36ee1a83efd49f544ed426739941499c8500f23da14f1",
+    "bytes": 1958
+  },
+  "contract": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/runtime_contract_READY.json",
+    "sha256": "d1dc0d9e8e797e8b791eed2c445c99ff7dfd1c9be141e0a9f9ed0b7401255974",
+    "bytes": 5422
+  },
+  "temple_binding": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/temple_binding_READY.json",
+    "sha256": "96ec2e4ff6e3b7e911ce6b13bea96a4a88b6f7bdf9b5d680c3a23b7aac2120da",
+    "bytes": 15365
+  },
+  "execution_parent": {
+    "path": "res://data/maps/luoyang_full_city_20261022ap/execution_successor.json",
+    "sha256": "a3880503360b0aa8ef745928e3f5f0effc452fc28cba773e3001122e30315a75"
+  },
+  "execution_proposal": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/execution_successor_PROPOSAL.json",
+    "sha256": "c668a0be6bc051237857dc4d2822308077a808a800f51a27f04f8b75c75f8405",
+    "bytes": 205494
+  },
+  "owned_changed_exactly5": [
+    {
+      "target": "res://scripts/city/luoyang_district_life_20261016f.gd",
+      "old_sha256": "d274d1fcd8f846e6fe8250092d4f83d720b632b174889cfcb1a3b9bacc5752d5",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/DT_consumer_READY.gd",
+        "sha256": "185b51ff7b9256657424ba0681660d6d335f890f6c919260b3f467384d03ac16",
+        "bytes": 17837
+      },
+      "edge": {
+        "path": "res://scripts/city/luoyang_district_life_20261016f.gd",
+        "old_sha256": "d274d1fcd8f846e6fe8250092d4f83d720b632b174889cfcb1a3b9bacc5752d5",
+        "new_sha256": "185b51ff7b9256657424ba0681660d6d335f890f6c919260b3f467384d03ac16",
+        "old_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_system01/District_layout_successor2_candidate.gd",
+        "new_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/DT_consumer_READY.gd",
+        "whole_inverse": true,
+        "replacements": [
+          {
+            "old": "\treturn result.npcs if result.get(\"ok\")==true else []\n",
+            "new": "\tif result.get(\"ok\")!=true: return []\n\tvar yamen_state: Dictionary=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").finite_yamen_child_state(_scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return []\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return []\n\t\tvar moved: Dictionary=yamen_adapter.project_bound_npcs(_scene,result.npcs,_sources,_receipt,yamen_state)\n\t\treturn moved.npcs if moved.get(\"ok\")==true else []\n\treturn result.npcs\n"
+          },
+          {
+            "old": "\tvar npcs:=CROWD.project(projected.spec.crowd)\n",
+            "new": "\tvar yamen_state: Dictionary=load(\"res://scripts/city/luoyang_precomputed_bundle_20261018r.gd\").finite_yamen_child_state(scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return _reject(\"YAMEN_FINITE_SESSION_REFUSED\")\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null or not yamen_adapter.prepare_npc_overlay(scene,_sources,projected,owner,yamen_state): return _reject(\"YAMEN_FINITE_NPC_OVERLAY_REFUSED\")\n\tvar npcs:=CROWD.project(projected.spec.crowd)\n"
+          },
+          {
+            "old": "extends RefCounted\n",
+            "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+          }
+        ]
+      }
+    },
+    {
+      "target": "res://scripts/field/field_walkable_controller.gd",
+      "old_sha256": "a148154e8db886f508755ab91e7852c6ebe1e168a44d17badad9f3cc267499df",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Field_TEXT_ONLY_consumer_READY.gd",
+        "sha256": "0c9db5be0536c8438b892b0065a25b1ea352762180524be13da52cef534540cb",
+        "bytes": 226001
+      },
+      "edge": {
+        "path": "res://scripts/field/field_walkable_controller.gd",
+        "old_sha256": "a148154e8db886f508755ab91e7852c6ebe1e168a44d17badad9f3cc267499df",
+        "new_sha256": "0c9db5be0536c8438b892b0065a25b1ea352762180524be13da52cef534540cb",
+        "old_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_system01/Field_hero_exact_examiner_portrait_candidate_READY.gd",
+        "new_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Field_TEXT_ONLY_consumer_READY.gd",
+        "whole_inverse": true,
+        "replacements": [
+          {
+            "old": "\t\t\t_field_loading_stage = \"正在布置建筑与碰撞 %d/%d……\" % [processed, scene_objects.size()]\n",
+            "new": "\t\t\t_field_loading_stage = \"正在布置建筑与碰撞……\"\n"
+          }
+        ]
+      }
+    },
+    {
+      "target": "res://scripts/city/luoyang_precomputed_bundle_20261018r.gd",
+      "old_sha256": "8d3b0877b888fe85e2733cdec6c064c6619c0c299d9f4a93d935322ccf97cacc",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/B_consumer_READY.gd",
+        "sha256": "84d230215701757a5e52f6afadc9156df206e87375cbf71534248839366f19bc",
+        "bytes": 52271
+      },
+      "edge": {
+        "path": "res://scripts/city/luoyang_precomputed_bundle_20261018r.gd",
+        "old_sha256": "8d3b0877b888fe85e2733cdec6c064c6619c0c299d9f4a93d935322ccf97cacc",
+        "new_sha256": "84d230215701757a5e52f6afadc9156df206e87375cbf71534248839366f19bc",
+        "old_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_system01/B_market_published_retry6_candidate.gd",
+        "new_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/B_consumer_READY.gd",
+        "whole_inverse": true,
+        "replacements": [
+          {
+            "old": "return history is Array and first in history and previous in history and delta.get(\"current_before_sha256\")==previous",
+            "new": "return history is Array and first in history and older in history and previous in history and delta.get(\"current_before_sha256\")==previous"
+          },
+          {
+            "old": "\tvar previous: String=\"bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf\"\n\tvar next: String=\"3f2d43276f89341a450579fa07a0dd0bb2369d059ad928e7187fb35df59f1ac7\"\n\tvar candidate: String=\"res://build/luoyang_market_two_shops_20261021ao_system01/District_fade_READY.gd\"\n",
+            "new": "\tvar older: String=\"bc2958cc8f9a60ac9952891c30037441a62e289d8fee2fa235e6b864abf3a1bf\"\n\tvar previous: String=\"3f2d43276f89341a450579fa07a0dd0bb2369d059ad928e7187fb35df59f1ac7\"\n\tvar next: String=\"55de6f3c7ca77b5c1dd756b723d32b06f0381eb43a022334bff403d70840d6f6\"\n\tvar candidate: String=\"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Fade_consumer_READY.gd\"\n"
+          },
+          {
+            "old": "\tvar paths: Dictionary={SELF:true}\n",
+            "new": "\tvar paths: Dictionary={SELF:true}\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tpaths.merge(finite.control_source_paths())\n\tif finite.root_requested(id):\n\t\tvar finite_paths: Dictionary=finite.source_paths_for(id)\n\t\tif finite_paths.is_empty(): return {}\n\t\tpaths.merge(finite_paths)\n"
+          },
+          {
+            "old": "\t_data={}; _manifest={}; _joined=false; _token=0; _id=&\"\"\n",
+            "new": "\t_data={}; _manifest={}; _finite_context.clear(); _finite_worker_result.clear(); _joined=false; _token=0; _id=&\"\"\n"
+          },
+          {
+            "old": "\treturn _joined\nfunc packet(",
+            "new": "\tif _joined and _finite_context.get(\"requested\",false):\n\t\t_joined=_finite_native_adapter().accept_joined_native(token,id,_finite_context,_finite_worker_result)\n\t\tif not _joined: _error=\"Finite joined owner/source proof refused\"\n\treturn _joined\nfunc packet("
+          },
+          {
+            "old": "\t_data=data\n",
+            "new": "\tif _finite_context.get(\"requested\",false):\n\t\t_finite_worker_result=_finite_native_adapter().validate_packet_worker(_finite_context,data,_manifest.artifacts[path])\n\t\tif _is_cancelled() or _finite_worker_result.get(\"ok\")!=true: _reject(\"Finite packet worker inverse/source proof refused\");return\n\t_data=data\n"
+          },
+          {
+            "old": "\t_token=token; _id=id; return true\n",
+            "new": "\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return false\n\t_finite_context=finite.prepare_packet_context(token,id,sources,_manifest,FINITE_ADAPTER_SHA)\n\tif _finite_context.get(\"requested\",false) and _finite_context.get(\"ok\")!=true: _error=\"Finite source-first context refused\";return false\n\t_token=token; _id=id; return true\n"
+          },
+          {
+            "old": "var _joined: bool=false\n",
+            "new": "var _joined: bool=false\nvar _finite_context: Dictionary={}\nvar _finite_worker_result: Dictionary={}\n"
+          },
+          {
+            "old": "static func layout_author(scene: SceneScript) -> Dictionary:\n\tif not whole_bound(scene): return {}\n",
+            "new": "static func layout_author(scene: SceneScript) -> Dictionary:\n\tif not whole_bound(scene): return {}\n\tvar finite_state: Dictionary=finite_yamen_child_state(scene)\n\tif finite_state.get(\"requested\",false):\n\t\treturn _finite_native_adapter().yamen_layout_author(scene,finite_state) if finite_state.get(\"ok\")==true else {}\n"
+          },
+          {
+            "old": "\tif entry.size()!=2 or entry.get(\"manifest_path\")!=_root(id)+String(id)+\"/manifest.json\" or not _hash(entry.get(\"manifest_sha256\")): return {}\n",
+            "new": "\tif entry.size()!=2 or entry.get(\"manifest_path\")!=_artifact_path(id,\"manifest.json\") or not _hash(entry.get(\"manifest_sha256\")): return {}\n"
+          },
+          {
+            "old": "\tfor suffix: String in [\"scene.res\",\"layout.res\",\"packet.bin\"]:\n\t\tvar path: String=_root(id)+String(id)+\"/\"+suffix\n",
+            "new": "\tfor suffix: String in [\"scene.res\",\"layout.res\",\"packet.bin\"]:\n\t\tvar path: String=_artifact_path(id,suffix)\n"
+          },
+          {
+            "old": "\tpaths[INDEX]=true; paths[_root(id)+String(id)+\"/manifest.json\"]=true\n",
+            "new": "\tpaths[INDEX]=true; paths[_artifact_path(id,\"manifest.json\")]=true\n"
+          },
+          {
+            "old": "\tvar path: String=_root(_id)+String(_id)+\"/packet.bin\"\n",
+            "new": "\tvar path: String=_artifact_path(_id,\"packet.bin\")\n"
+          },
+          {
+            "old": "\tif not _plain(data) or bytes_sha(var_to_bytes(data))!=config.artifacts[_root(id)+String(id)+\"/packet.bin\"]: return null\n",
+            "new": "\tif not _plain(data) or bytes_sha(var_to_bytes(data))!=config.artifacts[_artifact_path(id,\"packet.bin\")]: return null\n"
+          },
+          {
+            "old": "\tfor suffix: String in [\"scene.res\",\"layout.res\"]:\n\t\tvar path: String=_root(id)+String(id)+\"/\"+suffix\n",
+            "new": "\tfor suffix: String in [\"scene.res\",\"layout.res\"]:\n\t\tvar path: String=_artifact_path(id,suffix)\n"
+          },
+          {
+            "old": "\tvar layout:=ResourceLoader.load(_root(id)+String(id)+\"/layout.res\",\"\",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout\n",
+            "new": "\tvar layout:=ResourceLoader.load(_artifact_path(id,\"layout.res\"),\"\",ResourceLoader.CACHE_MODE_IGNORE) as WalkableMapLayout\n"
+          },
+          {
+            "old": "\tvar scene:=ResourceLoader.load(_root(id)+String(id)+\"/scene.res\",\"\",ResourceLoader.CACHE_MODE_IGNORE) as SceneScript\n",
+            "new": "\tvar scene:=ResourceLoader.load(_artifact_path(id,\"scene.res\"),\"\",ResourceLoader.CACHE_MODE_IGNORE) as SceneScript\n"
+          },
+          {
+            "old": "\tif scene==null or layout==null or scene.scene_id!=id or scene.resource_path!=_root(id)+String(id)+\"/scene.res\" or layout.resource_path!=_root(id)+String(id)+\"/layout.res\": return null\n",
+            "new": "\tif scene==null or layout==null or scene.scene_id!=id or scene.resource_path!=_artifact_path(id,\"scene.res\") or layout.resource_path!=_artifact_path(id,\"layout.res\"): return null\n"
+          },
+          {
+            "old": "static func _ap_entry(id: StringName) -> Dictionary:\n",
+            "new": "static func _ap_entry(id: StringName) -> Dictionary:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tif finite.root_requested(id): return finite.entry(id)\n"
+          },
+          {
+            "old": "static func _entry(id: StringName) -> Dictionary:\n",
+            "new": "static func _artifact_path(id: StringName,suffix: String) -> String:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return \"\"\n\tif finite.root_requested(id): return finite.artifact_path(id,suffix)\n\treturn _root(id)+String(id)+\"/\"+suffix\nstatic func _entry(id: StringName) -> Dictionary:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return {}\n\tif finite.root_requested(id): return finite.entry(id)\n"
+          },
+          {
+            "old": "static func _root(id: StringName) -> String:\n",
+            "new": "static func _root(id: StringName) -> String:\n\tvar finite: Variant=_finite_native_adapter()\n\tif finite==null: return \"\"\n\tif finite.root_requested(id): return finite.root_for(id)\n"
+          },
+          {
+            "old": "(ap_basis and path.begins_with(AP_ROOT))",
+            "new": "((ap_basis and path.begins_with(AP_ROOT)) or (finite_market_basis and finite_adapter.market_runtime_authority_path_allowed(raw,path)) or (finite_yamen_basis and finite_adapter.finite_yamen_runtime_authority_path_allowed(raw,path)))"
+          },
+          {
+            "old": "\tif ap_basis:\n",
+            "new": "\tvar finite_adapter: Variant=_finite_native_adapter()\n\tvar finite_market_basis: bool=id==&\"ch4_s3_luoyang_market\" and finite_adapter!=null and finite_adapter.market_manifest_requested(id,raw)\n\tvar finite_yamen_basis: bool=id==&\"ch4_s1_luoyang_yamen\" and finite_adapter!=null and finite_adapter.finite_yamen_manifest_requested(id,raw)\n\tif finite_yamen_basis:\n\t\tif not finite_adapter.finite_yamen_manifest_valid(id,raw): return {}\n\telif finite_market_basis:\n\t\tif not finite_adapter.market_manifest_valid(id,raw): return {}\n\telif ap_basis:\n"
+          },
+          {
+            "old": "static func ap_district_projection(scene: SceneScript,original: Dictionary) -> Dictionary:\n",
+            "new": "static func ap_district_projection(scene: SceneScript,original: Dictionary) -> Dictionary:\n\tvar finite_state: Dictionary=finite_market_child_state(scene)\n\tif finite_state.get(\"requested\",false):\n\t\tif finite_state.get(\"ok\")!=true: return {}\n\t\tvar finite_spec: Dictionary=_ap().author()\n\t\tif finite_spec.is_empty() or not _finite_native_adapter().market_district_parent_matches(original,finite_spec,finite_state): return {}\n\t\treturn _ap().project_district(original,finite_spec)\n"
+          },
+          {
+            "old": "static func ap_packet_valid(data: Dictionary) -> bool:\n",
+            "new": "static func ap_packet_valid(data: Dictionary) -> bool:\n\tvar finite_adapter: Variant=_finite_native_adapter()\n\tvar finite_config: Dictionary=manifest(&\"ch4_s3_luoyang_market\")\n\tif finite_adapter!=null and finite_adapter.market_packet_requested(&\"ch4_s3_luoyang_market\",finite_config,data):\n\t\treturn finite_adapter.market_packet_and_frozen_ap_ao_t_chain_valid(data,finite_config)\n"
+          },
+          {
+            "old": "\tif _ap_requested(scene.scene_id) and data.get(\"geometry_basis\")==_ap().BASIS:\n",
+            "new": "\tif (_ap_requested(scene.scene_id) and data.get(\"geometry_basis\")==_ap().BASIS) or market_state.get(\"ok\")==true:\n"
+          },
+          {
+            "old": "static func whole_bound(scene: SceneScript) -> bool:\n",
+            "new": "static func finite_yamen_child_state(scene: SceneScript) -> Dictionary:\n\tif scene==null or scene.scene_id!=&\"ch4_s1_luoyang_yamen\" or scene.map_layout==null: return {}\n\tvar session: Dictionary=_scene_sessions.get(scene.get_instance_id(),{})\n\tif session.is_empty() or session.scene.get_ref()!=scene or session.layout.get_ref()!=scene.map_layout: return {}\n\tvar yamen_adapter: Variant=_finite_native_adapter()\n\tif yamen_adapter==null: return {\"requested\":true,\"ok\":false}\n\tif not yamen_adapter.yamen_packet_requested(scene.scene_id,session.config,session.data): return {}\n\tif not whole_bound(scene): return {\"requested\":true,\"ok\":false}\n\tvar proof: Dictionary=yamen_adapter.yamen_public_session_proof(scene,session.data,session.config)\n\tif proof.get(\"ok\")!=true or typeof(proof.get(\"token\"))!=TYPE_INT or proof.token<=0: return {\"requested\":true,\"ok\":false}\n\treturn {\"requested\":true,\"ok\":true,\"scene_instance\":scene.get_instance_id(),\"layout_instance\":scene.map_layout.get_instance_id(),\"token\":proof.token,\"geometry_basis\":String(session.data.geometry_basis),\"packet_sha256\":String(proof.packet_sha256),\"binding_sha256\":String(proof.binding_sha256)}\nstatic func finite_market_child_state(scene: SceneScript) -> Dictionary:\n\tif scene==null or scene.scene_id!=&\"ch4_s3_luoyang_market\" or scene.map_layout==null: return {}\n\tvar session: Dictionary=_scene_sessions.get(scene.get_instance_id(),{})\n\tif session.is_empty() or session.scene.get_ref()!=scene or session.layout.get_ref()!=scene.map_layout: return {}\n\tvar adapter: Variant=_finite_native_adapter()\n\tif adapter==null: return {\"requested\":true,\"ok\":false}\n\tif not adapter.market_packet_requested(scene.scene_id,session.config,session.data): return {}\n\tif not whole_bound(scene): return {\"requested\":true,\"ok\":false}\n\tvar proof: Dictionary=adapter.market_public_session_proof(scene,session.data,session.config)\n\tif proof.get(\"ok\")!=true or typeof(proof.get(\"token\"))!=TYPE_INT or proof.token<=0: return {\"requested\":true,\"ok\":false}\n\treturn {\"requested\":true,\"ok\":true,\"scene_instance\":scene.get_instance_id(),\"layout_instance\":scene.map_layout.get_instance_id(),\"token\":proof.token,\"geometry_basis\":String(session.data.geometry_basis),\"packet_sha256\":String(proof.packet_sha256),\"binding_sha256\":String(proof.binding_sha256)}\nstatic func finite_market_retired_visual_id(scene: SceneScript,id: String,parent_objects: Array) -> bool:\n\tif id!=\"v13_market_west_plot_wall\": return false\n\tvar state: Dictionary=finite_market_child_state(scene)\n\tif state.get(\"ok\")!=true: return false\n\treturn _finite_native_adapter().market_retired_entry_proven(scene,id,parent_objects,state)\nstatic func whole_bound(scene: SceneScript) -> bool:\n"
+          },
+          {
+            "old": "\tif _ap_requested(scene.scene_id) and session.data.get(\"geometry_basis\")==_ap().BASIS: return scene.get_meta(_ap().META,\"\")==session.config.get(\"author_sha256\") and session.config.get(\"author_sha256\")==FileAccess.get_sha256(_ap().AUTHOR)\n",
+            "new": "\tif scene.scene_id==&\"ch4_s1_luoyang_yamen\":\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return false\n\t\tif yamen_adapter.yamen_packet_requested(scene.scene_id,session.config,session.data):\n\t\t\treturn yamen_adapter.yamen_session_bound(scene,session.data,session.config)\n\tif scene.scene_id==&\"ch4_s3_luoyang_market\":\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif market_adapter==null: return false\n\t\tif market_adapter.market_packet_requested(scene.scene_id,session.config,session.data):\n\t\t\treturn market_adapter.market_session_bound(scene,session.data,session.config)\n\tif _ap_requested(scene.scene_id) and session.data.get(\"geometry_basis\")==_ap().BASIS: return scene.get_meta(_ap().META,\"\")==session.config.get(\"author_sha256\") and session.config.get(\"author_sha256\")==FileAccess.get_sha256(_ap().AUTHOR)\n"
+          },
+          {
+            "old": "\tvar child: Dictionary=data.record.duplicate(true); var prior: Dictionary=data.t_parent_record.duplicate(true)\n",
+            "new": "\tvar child: Dictionary=data.record.duplicate(true); var prior: Dictionary=data.t_parent_record.duplicate(true)\n\tvar yamen_state: Dictionary=finite_yamen_child_state(scene)\n\tif yamen_state.get(\"requested\",false):\n\t\tif yamen_state.get(\"ok\")!=true: return {}\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null: return {}\n\t\tvar mapped: Dictionary=yamen_adapter.map_child_to_frozen_t(scene,current,data,yamen_state)\n\t\tif mapped.get(\"ok\")!=true: return {}\n\t\tcurrent=mapped.current_t_record; child=mapped.frozen_t_record\n\tvar market_state: Dictionary=finite_market_child_state(scene)\n\tif market_state.get(\"requested\",false):\n\t\tif market_state.get(\"ok\")!=true: return {}\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif not market_adapter.market_ap_ao_t_chain_proven(scene,data,market_state): return {}\n\t\tvar restored_ap: Dictionary=market_adapter.market_map_child_to_frozen_ap(scene,current,data,market_state)\n\t\tif restored_ap.get(\"ok\")!=true: return {}\n\t\tcurrent=restored_ap.current_ap_record; child=restored_ap.frozen_ap_record\n"
+          },
+          {
+            "old": "\tif _ap_requested(id) and data.geometry_basis==_ap().BASIS:\n",
+            "new": "\tif id==&\"ch4_s1_luoyang_yamen\" and _finite_native_adapter()!=null and _finite_native_adapter().yamen_packet_requested(id,config,data):\n\t\tvar yamen_adapter: Variant=_finite_native_adapter()\n\t\tif yamen_adapter==null or not yamen_adapter.yamen_native_packet_valid(id,data,config,scene): return null\n\t\tprune_sessions()\n\t\t_scene_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(layout),\"data\":data.duplicate(true),\"config\":config.duplicate(true),\"parent\":null}\n\telif id==&\"ch4_s3_luoyang_market\" and _finite_native_adapter()!=null and _finite_native_adapter().market_packet_requested(id,config,data):\n\t\tvar market_adapter: Variant=_finite_native_adapter()\n\t\tif market_adapter==null or not market_adapter.market_native_packet_valid(id,data,config,scene): return null\n\t\tprune_sessions()\n\t\t_scene_sessions[scene.get_instance_id()]={\"scene\":weakref(scene),\"layout\":weakref(layout),\"data\":data.duplicate(true),\"config\":config.duplicate(true),\"parent\":null}\n\telif _ap_requested(id) and data.geometry_basis==_ap().BASIS:\n"
+          },
+          {
+            "old": "extends RefCounted\n",
+            "new": "extends RefCounted\nconst FINITE_ADAPTER_PATH := \"res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/finite_adapter_READY.gd\"\nconst FINITE_ADAPTER_SHA := \"999a687a1c6ed70a010e9b46c4c1fe4ce2a86b7cb2ca51b3a745c7e153a15e90\"\nstatic var _finite_adapter_handle: Variant=null\nstatic func _finite_native_adapter() -> Variant:\n\tif _finite_adapter_handle!=null: return _finite_adapter_handle\n\tif FileAccess.get_sha256(FINITE_ADAPTER_PATH)!=FINITE_ADAPTER_SHA: return null\n\tvar value: Variant=load(FINITE_ADAPTER_PATH)\n\tif not value is GDScript or value.resource_path!=FINITE_ADAPTER_PATH: return null\n\t_finite_adapter_handle=value;return value\n"
+          }
+        ]
+      }
+    },
+    {
+      "target": "res://scripts/city/luoyang_cultural_sidequests_coordinator_20261019x.gd",
+      "old_sha256": "71beb2e1181d8e9fe337dcd50571628c289304f3a38e7d054973eaee4e812a87",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Coordinator_contract_READY.gd",
+        "sha256": "496801c501265e4abbc34153f6d3c7e6d48a357701a2c44e5f9b5d976e51e70e",
+        "bytes": 36102
+      },
+      "edge": {
+        "path": "res://scripts/city/luoyang_cultural_sidequests_coordinator_20261019x.gd",
+        "old_sha256": "71beb2e1181d8e9fe337dcd50571628c289304f3a38e7d054973eaee4e812a87",
+        "new_sha256": "496801c501265e4abbc34153f6d3c7e6d48a357701a2c44e5f9b5d976e51e70e",
+        "old_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/unified06_dependencies03/Coordinator_contract_READY.gd",
+        "new_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Coordinator_contract_READY.gd",
+        "whole_inverse": true,
+        "replacements": [
+          {
+            "old": "16b381c113ebfd0cb89f382eb99366bb703cda6baa40142cc1fbf97343ed74d8",
+            "new": "d1dc0d9e8e797e8b791eed2c445c99ff7dfd1c9be141e0a9f9ed0b7401255974"
+          }
+        ]
+      }
+    },
+    {
+      "target": "res://scripts/city/luoyang_temple_assembly_20261016.gd",
+      "old_sha256": "8e8f8e3c2b1c3f8715c7d7ddaf48f3b14e5c5abcf5b8818ecdb7ee29c1958ff8",
+      "candidate": {
+        "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Temple_binding_READY.gd",
+        "sha256": "8f2ebd81fc8f60a0fdf80ea28eaccb449664686944cf1bcef65bed0478ae026a",
+        "bytes": 22786
+      },
+      "edge": {
+        "path": "res://scripts/city/luoyang_temple_assembly_20261016.gd",
+        "old_sha256": "8e8f8e3c2b1c3f8715c7d7ddaf48f3b14e5c5abcf5b8818ecdb7ee29c1958ff8",
+        "new_sha256": "8f2ebd81fc8f60a0fdf80ea28eaccb449664686944cf1bcef65bed0478ae026a",
+        "old_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/unified06_dependencies03/Temple_binding_READY.gd",
+        "new_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Temple_binding_READY.gd",
+        "whole_inverse": true,
+        "replacements": [
+          {
+            "old": "1724624c6f85b9c8daa3593d259089ed1b9b8f1e60106f0dff67582d6686d840",
+            "new": "96ec2e4ff6e3b7e911ce6b13bea96a4a88b6f7bdf9b5d680c3a23b7aac2120da"
+          },
+          {
+            "old": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/unified06_dependencies03/temple_binding_READY.json",
+            "new": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/temple_binding_READY.json"
+          }
+        ]
+      }
+    }
+  ],
+  "other5_owned_rows_whole_typed_identical": true,
+  "old50_proof_pins_exact": true,
+  "new_proof_pins": {
+    "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/DT_consumer_READY.gd": "185b51ff7b9256657424ba0681660d6d335f890f6c919260b3f467384d03ac16",
+    "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Field_TEXT_ONLY_consumer_READY.gd": "0c9db5be0536c8438b892b0065a25b1ea352762180524be13da52cef534540cb",
+    "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/B_consumer_READY.gd": "84d230215701757a5e52f6afadc9156df206e87375cbf71534248839366f19bc",
+    "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Coordinator_contract_READY.gd": "496801c501265e4abbc34153f6d3c7e6d48a357701a2c44e5f9b5d976e51e70e",
+    "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/Temple_binding_READY.gd": "8f2ebd81fc8f60a0fdf80ea28eaccb449664686944cf1bcef65bed0478ae026a",
+    "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/runtime_contract_READY.json": "d1dc0d9e8e797e8b791eed2c445c99ff7dfd1c9be141e0a9f9ed0b7401255974",
+    "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/temple_binding_READY.json": "96ec2e4ff6e3b7e911ce6b13bea96a4a88b6f7bdf9b5d680c3a23b7aac2120da"
+  },
+  "final_proof_pin_count": 57,
+  "whole_execution_typed_inverse_to_A388": true,
+  "dependency_proof": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/finite_adapter_production08/dependency_exact_inverse_READY.json",
+    "sha256": "e171ca96d3acd8d332081a0f8faf7bc1b52df54e7ee8e8b1961cae3d296e788a",
+    "bytes": 5077
+  },
+  "remaining_generated_DAG": [
+    "source metadata/registry",
+    "execution+ENV indices",
+    "Quarter metadata/index",
+    "Market+Yamen finite manifests",
+    "external AP index exact entries",
+    "4 independent expected maps"
+  ],
+  "production_flags_not_deployment_authority": true,
+  "stage_runs": 0,
+  "engine_calls": 0,
+  "canonical_writes": 0
+}

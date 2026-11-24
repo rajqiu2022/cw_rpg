@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ChapterContentPlan" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/chapter_content_plan.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+chapter = 6
+title = "归村问师"
+main_scene_ids = Array[StringName]([&"linxi_tutorial", &"linxi_master_hall", &"ch6_s3_underground_archive", &"ch6_s4_baishui_convoy_route", &"ch6_s5_ancient_road_inn"])
+main_quest_ids = Array[StringName]([&"q_ch6_main_01_homecoming", &"q_ch6_main_02_old_residence", &"q_ch6_main_03_underground_archive", &"q_ch6_main_04_old_convoy_route", &"q_ch6_main_05_master_confrontation", &"q_ch6_main_06_ancient_road_letter"])
+side_quest_ids = Array[StringName]([&"q_ch6_side_04_courier_tally", &"q_ch6_side_05_stained_wick"])
+side_quest_decisions = Array[Dictionary]([
+	{"quest_id":"q_ch6_main_01_return_home", "decision":"migrate", "replacement_id":"q_ch6_main_01_homecoming", "reason":"旧任务以一次击杀直接解释师父身份；新版先回村、观察伤势与旧居痕迹，再逐步取得证据。"},
+	{"quest_id":"q_ch6_main_02_confront_master", "decision":"migrate", "reason":"师徒对质保留到档案与旧押运路线均完成后，不在返乡首轮直接结算。"},
+	{"quest_id":"q_ch6_side_02_home_belongings", "decision":"merge", "replacement_id":"q_ch6_main_02_old_residence", "reason":"旧居遗物并入主线环境调查，删除婚书与亲属关系的过度剧透。"},
+	{"quest_id":"q_ch6_side_01_qi_letter", "decision":"migrate", "replacement_id":"q_ch6_main_06_ancient_road_letter", "reason":"旧支线迁为章节收束主线；保留玉佩和留书，不使用旧版一句话揭底。"},
+	{"quest_id":"q_ch6_side_03_old_friend", "decision":"migrate", "reason":"旧友任务等待旧押运路线场景完成后接入。"}
+])
+leveling_scene_ids = Array[StringName]([])
+story_battle_groups = Array[Dictionary]([
+	{"id":"archive_reclamation", "role":"地下档案夺证战", "recommended_level":10, "target_rounds":"6-8", "enemy_ids":[&"ch6_archive_reclaimer", &"ch6_archive_burner"]},
+	{"id":"baishui_route_interception", "role":"白水旧路截证战", "recommended_level":10, "target_rounds":"6-8", "enemy_ids":[&"ch6_convoy_pursuer", &"ch6_convoy_tracker"]}
+])
+estimated_main_minutes = 100
+estimated_completionist_minutes = 250

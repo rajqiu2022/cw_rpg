@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "令牌边角没有磨损，绳结却旧了半年。新牌配旧绳，是临时凑出来的身份。"
+set_flags = Array[Dictionary]([{"key":"assembly_token_checked", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch3_assembly_token_clue"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="scene"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="stream"]
+[ext_resource type="Resource" path="res://data/maps/east_mainland/east_tea_ridge_village.tres" id="layout"]
+[sub_resource type="Resource" id="EastExtent"]
+script = ExtResource("stream")
+logical_size = Vector2i(3072, 2048)
+[resource]
+script = ExtResource("scene")
+scene_id = &"east_tea_ridge_village"
+display_name = "东大陆 · 茶岭村"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+is_settlement = true
+actor_positions_are_feet = true
+player_spawn = Vector2(0.42317708, 0.8203125)
+map_layout = ExtResource("layout")
+streamed_background = SubResource("EastExtent")
+npcs = Array[Dictionary]([
+	{"npc_id": "tea_ridge_farmer", "npc_name": "茶岭茶农", "pos": Vector2(0.63964844, 0.54882812), "sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png", "dialog_id": "east_tea_ridge_farmer", "portrait_path": "res://art/characters/portraits/portrait_linxi_farmer_v1.png", "scale": 0.96, "conversation_base_facing": "down", "conversation_sprite_paths": {"left": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_left_conversation_1f.png", "right": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_right_conversation_1f.png", "up": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_up_conversation_1f.png", "down": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_down_conversation_1f.png"}},
+	{"npc_id": "tea_ridge_carrier", "dialog_variants": [{"dialog_id": "east_tide_tea", "require_quest_active": "q_east_tidesound_blade", "hide_flags": ["tide_tea_known"]}], "npc_name": "送茶脚夫", "pos": Vector2(0.53873698, 0.57617188), "sprite_path": "res://art/characters/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_idle_down_1f_v1_runtime.png", "dialog_id": "east_tea_ridge_carrier", "portrait_path": "res://art/characters/portraits/luoyang_docks_roles_20261019ad/portrait_docks_strong_carrier_v1.png", "scale": 0.97, "movement_mode": "patrol", "patrol_axis": Vector2(1, -0.10), "patrol_distance": 135.0, "patrol_speed": 31.0, "walk_sprite_path": "res://art/characters/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_walk_right_4f_v1_runtime.png"}
+])

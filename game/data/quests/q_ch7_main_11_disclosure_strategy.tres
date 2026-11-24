@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch7_main_11_disclosure_strategy"
+title="证据何时公开"
+kind=0
+desc_not_started="第七章证据链已经闭合，需要决定公开范围与时机。"
+desc_in_progress="在聚义厅决定完整公开、分阶段公开或联合封存会审。"
+desc_completed="证据公开策略已经确定。所有路线保留烈云旧罪、茗雾授权、薛影身份与证人安全四条事实。"
+tracker_hint="烈云分舵 · 聚义厅"
+completion_triggers=Array[String](["flag_set:ch7_disclosure_strategy_resolved"])
+starts_in_chapter=7
+completes_in_chapter=7
+reward_gold=0
+reward_exp=220
+reward_items=Array[Dictionary]([])
+reward_skills_by_faction = {"wudang": Array[StringName]([&"wudang_taiji_liangyi"]), "huashan": Array[StringName]([&"huashan_jianduan_qianshan"]), "gufeng": Array[StringName]([&"gufeng_liedi"]), "lingyue": Array[StringName]([&"lingyue_hanshuang_wan_zhen"]), "mingwu": Array[StringName]([&"mingwu_yinying_duoming"])}

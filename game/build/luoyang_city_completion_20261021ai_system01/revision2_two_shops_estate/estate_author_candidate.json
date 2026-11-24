@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "status": "SOURCE_BOUND_AI_DRY_ESTATE_GEOMETRY_CANDIDATE",
+  "scene_id": "luoyang_estate_riverside_20261021ai",
+  "design_size": [
+    3072,
+    2048
+  ],
+  "coordinate_contract": "native_world_feet_34x24_3072x2048",
+  "source_sha256": {
+    "res://art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png": "dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221",
+    "res://art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png.import": "e22b7cff15f1e8da3e1b92ea36a0af99dbc1b96a4f302d258c3a7d9134703de0",
+    "res://.godot/imported/courtyard_wall_gate_v3.png-3dd691611dd7a9fd9c8424b5ee017f82.ctex": "e01343a66cc62bd2fa7deaa1193c2562b1ed3b806b5072785c87fe947fcc83df",
+    "res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png": "7e9c7d892f86ced04ad3b8ad293208e05d87a01afffc2729804e4469f87deb7d",
+    "res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png.import": "91af25e369715ec4417c5fae837c1c48bb9e44e0912ac2a63838cd0c0247a448",
+    "res://.godot/imported/worn_bluestone_v2.png-cc6a68e14573ac0b0b51e0099de5fb19.ctex": "b9f2ba05848127f4178fc23988fa11bfbc4267e78a9dc15c99bd75afba76ddec",
+    "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg": "4272bddc71a7fa659d1deeb13a9df8c42e68a5ac8cde7523187e4a081e028258",
+    "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg.import": "9e9098df7cf70add5f44924ea88e5481d0db84e1abef5094c516d981968c15a2",
+    "res://.godot/imported/grass_ground_diff_2k.jpg-e1b2a37866020c637ef23ea7d6f6efa8.ctex": "3415faa4ed584c043abdd8c9fd6fac34a766e1b809175378cfb5cc2a4b0205da",
+    "res://art/modules/luoyang_district_life_20261016f/stock_tree.png": "e7cddeee8d3d9f71a0bf8cc61a0949f328591f2e38aacef12853ab650f9df430",
+    "res://art/modules/luoyang_district_life_20261016f/stock_tree.png.import": "565aa717bcf87828c6a13550d6e78e73c2a3db6f5a331851bd6e03fd0690997c",
+    "res://.godot/imported/stock_tree.png-05788b84425f11097dea0ff80b10ab20.ctex": "4ae69aac90300982b23ca9d8a2bee742ce2cc6e9d7769b9c0cd6a70c20a2df8a",
+    "res://art/maps/luoyang_modular_v3/source/module_semantics.json": "9a2f68fd3c6c243dd690a04dbdeec8bd8627931aa498337b2fa01957a9c449c2"
+  },
+  "ground": {
+    "grass": "res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg",
+    "stone": "res://art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png",
+    "tile_render_size": [
+      1024,
+      1024
+    ],
+    "method": "Reference existing material textures as repeated Sprite tiles; grass6 and center-path stone2, no generated or painted main visual"
+  },
+  "gate": {
+    "id": "estate_mansion_courtyard_gate",
+    "texture": "res://art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png",
+    "source_size": [
+      1942,
+      809
+    ],
+    "ground_anchor": [
+      971,
+      705
+    ],
+    "foot": [
+      1536,
+      1120
+    ],
+    "scale": 0.44,
+    "door_clear_height": 139.92,
+    "semantics_id": "courtyard_wall_gate_v3.png",
+    "physical_policy": "two exact enclosing rectangular jamb/masonry AABBs of the qualified source solids; true transparent central aperture remains open"
+  },
+  "trees": [
+    {
+      "id": "estate_tree_nw",
+      "foot": [
+        900,
+        860
+      ]
+    },
+    {
+      "id": "estate_tree_ne",
+      "foot": [
+        2200,
+        880
+      ]
+    },
+    {
+      "id": "estate_tree_sw",
+      "foot": [
+        820,
+        1480
+      ]
+    },
+    {
+      "id": "estate_tree_se",
+      "foot": [
+        2300,
+        1480
+      ]
+    }
+  ],
+  "tree_asset": {
+    "texture": "res://art/modules/luoyang_district_life_20261016f/stock_tree.png",
+    "source_size": [
+      178,
+      250
+    ],
+    "ground_anchor": [
+      76,
+      243.68115234375
+    ],
+    "collision_size": [
+      24,
+      18
+    ],
+    "scale": 1
+  },
+  "spawn": [
+    1536,
+    1840
+  ],
+  "outer_walk_rect": [
+    64,
+    64,
+    2944,
+    1920
+  ],
+  "market_portal": {
+    "id": "estate_return_market",
+    "foot": [
+      1536,
+      1940
+    ],
+    "target_scene": "ch4_s3_luoyang_market",
+    "target_foot": [
+      2610,
+      1860
+    ],
+    "label": "返回南市宅园巷口",
+    "proposal_not_market_published": true
+  },
+  "mansion_portal": {
+    "id": "estate_enter_mansion_hall",
+    "foot": [
+      1536,
+      1144
+    ],
+    "target_scene": "luoyang_functional_mansion_candidate_20261016",
+    "target_scene_path": "res://data/maps/luoyang_market_frontage_rooms_20261021ai/luoyang_functional_mansion_candidate_20261016/scene.res",
+    "target_spawn": [
+      768,
+      840
+    ],
+    "target_spawn_design_size": [
+      1536,
+      1024
+    ],
+    "label": "进入富家豪宅会客厅",
+    "binding_status": "PENDING_EXACT_ROOM_RETURN_SUCCESSOR"
+  },
+  "routes": [
+    {
+      "id": "gate_to_mansion",
+      "points": [
+        [
+          1536,
+          1940
+        ],
+        [
+          1536,
+          1144
+        ]
+      ]
+    },
+    {
+      "id": "actual_open_arch",
+      "points": [
+        [
+          1536,
+          1144
+        ],
+        [
+          1536,
+          1000
+        ],
+        [
+          1536,
+          900
+        ]
+      ]
+    },
+    {
+      "id": "dry_garden_loop",
+      "points": [
+        [
+          1536,
+          1840
+        ],
+        [
+          2540,
+          1840
+        ],
+        [
+          2540,
+          660
+        ],
+        [
+          600,
+          660
+        ],
+        [
+          600,
+          1840
+        ],
+        [
+          1536,
+          1840
+        ]
+      ]
+    },
+    {
+      "id": "forecourt_to_garden",
+      "points": [
+        [
+          1536,
+          1260
+        ],
+        [
+          2540,
+          1260
+        ],
+        [
+          2540,
+          1840
+        ]
+      ]
+    }
+  ],
+  "npcs": [],
+  "art_credit": "Only minimal dry court/open arch/grass loop. No water, pavilion, curved bridge, mansion outdoor hall, new NPC or complete garden claimed.",
+  "formal_enabled": false
+}

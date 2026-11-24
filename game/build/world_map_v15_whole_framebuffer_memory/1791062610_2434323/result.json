@@ -1,0 +1,614 @@
+{
+	"allocation_sequence": [
+		[
+			8192,
+			8192
+		],
+		"release",
+		"guard",
+		[
+			24576,
+			16384
+		],
+		"release"
+	],
+	"baseline": {
+		"engine_static_memory_bytes": 81268247,
+		"gpu_index": 0,
+		"gpu_name": "NVIDIA GeForce RTX 4080",
+		"gpu_query": {
+			"args": [
+				"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+				"--format=csv,noheader,nounits"
+			],
+			"path": "C:/Windows/System32/nvidia-smi.exe"
+		},
+		"gpu_query_exit": 0,
+		"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8448, 7603",
+		"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+		"host_free_bytes": 64532271104,
+		"host_query_exit": 0,
+		"host_raw_output": "{\"host_free_bytes\":64532271104,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":294572032,\"process_private_bytes\":338325504,\"process_peak_working_set_bytes\":296013824}",
+		"host_total_bytes": 137050136576,
+		"process_peak_working_set_bytes": 296013824,
+		"process_private_bytes": 338325504,
+		"process_working_set_bytes": 294572032,
+		"stage": "baseline_before_square",
+		"ticks_usec": 2435364,
+		"valid": true,
+		"vram_free_bytes": 7972323328,
+		"vram_total_bytes": 17171480576,
+		"vram_used_bytes": 8858370048
+	},
+	"configured_renderer": "gl_compatibility",
+	"display_server": "Windows",
+	"engine_pid": 33824,
+	"executed_fixture_path": "res://scripts/dev/diagnose_world_v15_whole_framebuffer_memory.gd",
+	"executed_fixture_sha256": "fa4a63b9e3413362e0eb14b3de97556fc4ddb82a9c1fa25f5ab06bbc4306c26a",
+	"get_video_adapter_api_version": "3.3.0 NVIDIA 581.29",
+	"get_video_adapter_name": "NVIDIA GeForce RTX 4080",
+	"get_video_adapter_vendor": "NVIDIA",
+	"gl_max_renderbuffer_size": {
+		"available": false,
+		"value": null
+	},
+	"gl_max_texture_size": {
+		"available": false,
+		"value": null
+	},
+	"godot_version": {
+		"build": "official",
+		"hash": "71f334935c000924d403448e698df4441130df18",
+		"hex": 263682,
+		"major": 4,
+		"minor": 6,
+		"patch": 2,
+		"status": "stable",
+		"string": "4.6.2-stable (official)",
+		"timestamp": 0
+	},
+	"no_resize_no_crop_no_ssaa_downgrade": true,
+	"parent_fixture_path": "res://scripts/dev/diagnose_world_v15_backend_caps.gd",
+	"parent_fixture_sha256": "73cc260391873fa7f167a8a29c0099b20b9375de787e90c88fd870dfc40100c7",
+	"proposed_exit_code_not_external_OS_evidence": 1,
+	"schema_version": 1,
+	"scope": "WHOLE_FRAMEBUFFER_MEMORY_NOT_TERRAIN_OR_PROTOCOL_APPROVAL",
+	"square": {
+		"actual_raw_canvas": [
+			8192,
+			8192
+		],
+		"actual_repeat_raw_canvas": [
+			8192,
+			8192
+		],
+		"actual_viewport_node_released": true,
+		"actual_viewport_size": [
+			8192,
+			8192
+		],
+		"after_save_memory": {
+			"engine_static_memory_bytes": 1162600736,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8922, 7129",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 63235969024,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":63235969024,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":1119752192,\"process_private_bytes\":2234396672,\"process_peak_working_set_bytes\":1120096256}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 1120096256,
+			"process_private_bytes": 2234396672,
+			"process_working_set_bytes": 1119752192,
+			"stage": "native_8192x8192_after_source_PNG_save",
+			"ticks_usec": 15232792,
+			"valid": true,
+			"vram_free_bytes": 7475298304,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 9355395072
+		},
+		"allocated": {
+			"engine_static_memory_bytes": 88830232,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8922, 7129",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64514150400,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64514150400,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":314286080,\"process_private_bytes\":979525632,\"process_peak_working_set_bytes\":314286080}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 314286080,
+			"process_private_bytes": 979525632,
+			"process_working_set_bytes": 314286080,
+			"stage": "native_8192x8192_allocated_before_readback",
+			"ticks_usec": 6738940,
+			"valid": true,
+			"vram_free_bytes": 7475298304,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 9355395072
+		},
+		"baseline": {
+			"engine_static_memory_bytes": 81273651,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8433, 7618",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64544837632,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64544837632,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":294580224,\"process_private_bytes\":335572992,\"process_peak_working_set_bytes\":296013824}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 296013824,
+			"process_private_bytes": 335572992,
+			"process_working_set_bytes": 294580224,
+			"stage": "native_8192x8192_before_allocation",
+			"ticks_usec": 4511371,
+			"valid": true,
+			"vram_free_bytes": 7988051968,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8842641408
+		},
+		"byte_comparison_peak_memory": {
+			"engine_static_memory_bytes": 1162587644,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8928, 7123",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 63199776768,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":63199776768,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":1119621120,\"process_private_bytes\":2234257408,\"process_peak_working_set_bytes\":1119621120}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 1119621120,
+			"process_private_bytes": 2234257408,
+			"process_working_set_bytes": 1119621120,
+			"stage": "native_8192x8192_two_images_and_two_RGBA_buffers",
+			"ticks_usec": 11634867,
+			"valid": true,
+			"vram_free_bytes": 7469006848,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 9361686528
+		},
+		"camera": {
+			"keep_aspect": 1,
+			"position": [
+				0,
+				0,
+				10
+			],
+			"projection": 1,
+			"size": 2.0
+		},
+		"dimensions_exact": true,
+		"first_readback_memory": {
+			"engine_static_memory_bytes": 625707108,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8928, 7123",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 63617253376,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":63617253376,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":851169280,\"process_private_bytes\":1696333824,\"process_peak_working_set_bytes\":851169280}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 851169280,
+			"process_private_bytes": 1696333824,
+			"process_working_set_bytes": 851169280,
+			"stage": "native_8192x8192_first_readback",
+			"ticks_usec": 8382914,
+			"valid": true,
+			"vram_free_bytes": 7469006848,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 9361686528
+		},
+		"five_native_color_witnesses_passed": true,
+		"id": "native_8192x8192",
+		"images": [
+			{
+				"path": "res://build/world_map_v15_whole_framebuffer_memory/1791062610_2434323/native_8192x8192_raw.png",
+				"sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5"
+			},
+			{
+				"path": "res://build/world_map_v15_whole_framebuffer_memory/1791062610_2434323/native_8192x8192_raw_repeat.png",
+				"sha256": "d9a06a25a2bd0394d86a2ba246cafe6b5229f8d64f0b0751277da131348a97e5"
+			}
+		],
+		"memory_query_sequence_valid": true,
+		"msaa_enum": 0,
+		"passed": true,
+		"raw_repeat_byte_exact": true,
+		"readback_resized_or_cropped": false,
+		"released": {
+			"engine_static_memory_bytes": 88536987,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8415, 7636",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64043622400,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64043622400,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":321867776,\"process_private_bytes\":582856704,\"process_peak_working_set_bytes\":1120096256}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 1120096256,
+			"process_private_bytes": 582856704,
+			"process_working_set_bytes": 321867776,
+			"stage": "native_8192x8192_released_all_images_and_viewport",
+			"ticks_usec": 17023156,
+			"valid": true,
+			"vram_free_bytes": 8006926336,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8823767040
+		},
+		"requested_canvas": [
+			8192,
+			8192
+		],
+		"scope": "WHOLE_FRAMEBUFFER_MEMORY_NOT_TERRAIN_OR_PROTOCOL_APPROVAL",
+		"two_readbacks_memory": {
+			"engine_static_memory_bytes": 1162582820,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8928, 7123",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 63239139328,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":63239139328,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":1119621120,\"process_private_bytes\":2234257408,\"process_peak_working_set_bytes\":1119621120}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 1119621120,
+			"process_private_bytes": 2234257408,
+			"process_working_set_bytes": 1119621120,
+			"stage": "native_8192x8192_two_readbacks",
+			"ticks_usec": 10101651,
+			"valid": true,
+			"vram_free_bytes": 7469006848,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 9361686528
+		},
+		"witnesses": [
+			{
+				"id": "top_left_red",
+				"pixel": [
+					1,
+					1
+				],
+				"raw_rgba": [
+					0.800000011920929,
+					0.00392156885936856,
+					0.00392156885936856,
+					1.0
+				]
+			},
+			{
+				"id": "top_right_green",
+				"pixel": [
+					8190,
+					1
+				],
+				"raw_rgba": [
+					0.00392156885936856,
+					0.800000011920929,
+					0.00392156885936856,
+					1.0
+				]
+			},
+			{
+				"id": "bottom_left_blue",
+				"pixel": [
+					1,
+					8190
+				],
+				"raw_rgba": [
+					0.00392156885936856,
+					0.00392156885936856,
+					0.800000011920929,
+					1.0
+				]
+			},
+			{
+				"id": "bottom_right_yellow",
+				"pixel": [
+					8190,
+					8190
+				],
+				"raw_rgba": [
+					0.800000011920929,
+					0.800000011920929,
+					0.00392156885936856,
+					1.0
+				]
+			},
+			{
+				"id": "center_magenta",
+				"pixel": [
+					4096,
+					4096
+				],
+				"raw_rgba": [
+					0.800000011920929,
+					0.00392156885936856,
+					0.800000011920929,
+					1.0
+				]
+			}
+		]
+	},
+	"square_measured_deltas": {
+		"gl_enumerated_limit_known": false,
+		"measurement_includes_other_live_GPU_processes": true,
+		"process_peak_delta_bytes": 1898823680,
+		"process_release_delta_bytes": 247283712,
+		"valid": true,
+		"vram_peak_delta_bytes": 519045120,
+		"vram_release_delta_bytes": -18874368
+	},
+	"status": "WHOLE_FRAMEBUFFER_ACTUAL_FAILED",
+	"terrain_or_capture_protocol_approved": false,
+	"whole": {
+		"actual_viewport_node_released": true,
+		"actual_viewport_size": [
+			24576,
+			16384
+		],
+		"allocated": {
+			"engine_static_memory_bytes": 88881704,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 11486, 4565",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64392245248,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64392245248,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":331235328,\"process_private_bytes\":3832614912,\"process_peak_working_set_bytes\":1120096256}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 1120096256,
+			"process_private_bytes": 3832614912,
+			"process_working_set_bytes": 331235328,
+			"stage": "native_24576x16384_allocated_before_readback",
+			"ticks_usec": 21948412,
+			"valid": true,
+			"vram_free_bytes": 4786749440,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 12043943936
+		},
+		"baseline": {
+			"engine_static_memory_bytes": 88548635,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8415, 7636",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64420474880,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64420474880,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":321867776,\"process_private_bytes\":355921920,\"process_peak_working_set_bytes\":1120096256}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 1120096256,
+			"process_private_bytes": 355921920,
+			"process_working_set_bytes": 321867776,
+			"stage": "native_24576x16384_before_allocation",
+			"ticks_usec": 19996751,
+			"valid": true,
+			"vram_free_bytes": 8006926336,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8823767040
+		},
+		"camera": {
+			"keep_aspect": 1,
+			"position": [
+				0,
+				0,
+				10
+			],
+			"projection": 1,
+			"size": 2.0
+		},
+		"first_readback_memory": {
+			"engine_static_memory_bytes": 88887192,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 11486, 4565",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 62819807232,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":62819807232,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":1941860352,\"process_private_bytes\":5220388864,\"process_peak_working_set_bytes\":3552481280}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 3552481280,
+			"process_private_bytes": 5220388864,
+			"process_working_set_bytes": 1941860352,
+			"stage": "native_24576x16384_first_readback",
+			"ticks_usec": 24293493,
+			"valid": true,
+			"vram_free_bytes": 4786749440,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 12043943936
+		},
+		"id": "native_24576x16384",
+		"memory_query_sequence_valid": false,
+		"msaa_enum": 0,
+		"passed": false,
+		"readback_resized_or_cropped": false,
+		"reason": "Actual native framebuffer readback missing",
+		"released": {
+			"engine_static_memory_bytes": 88570623,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8434, 7617",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 64364523520,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":64364523520,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":338866176,\"process_private_bytes\":612536320,\"process_peak_working_set_bytes\":3552518144}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 3552518144,
+			"process_private_bytes": 612536320,
+			"process_working_set_bytes": 338866176,
+			"stage": "native_24576x16384_released_all_images_and_viewport",
+			"ticks_usec": 28421545,
+			"valid": true,
+			"vram_free_bytes": 7987003392,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 8843689984
+		},
+		"requested_canvas": [
+			24576,
+			16384
+		],
+		"scope": "WHOLE_FRAMEBUFFER_MEMORY_NOT_TERRAIN_OR_PROTOCOL_APPROVAL",
+		"two_readbacks_memory": {
+			"engine_static_memory_bytes": 88891476,
+			"gpu_index": 0,
+			"gpu_name": "NVIDIA GeForce RTX 4080",
+			"gpu_query": {
+				"args": [
+					"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+					"--format=csv,noheader,nounits"
+				],
+				"path": "C:/Windows/System32/nvidia-smi.exe"
+			},
+			"gpu_query_exit": 0,
+			"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 11486, 4565",
+			"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+			"host_free_bytes": 62821580800,
+			"host_query_exit": 0,
+			"host_raw_output": "{\"host_free_bytes\":62821580800,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":1941860352,\"process_private_bytes\":5220388864,\"process_peak_working_set_bytes\":3552518144}",
+			"host_total_bytes": 137050136576,
+			"process_peak_working_set_bytes": 3552518144,
+			"process_private_bytes": 5220388864,
+			"process_working_set_bytes": 1941860352,
+			"stage": "native_24576x16384_two_readbacks",
+			"ticks_usec": 26673861,
+			"valid": true,
+			"vram_free_bytes": 4786749440,
+			"vram_total_bytes": 17171480576,
+			"vram_used_bytes": 12043943936
+		}
+	},
+	"whole_estimate": {
+		"method": "actual square peak deltas times six; minimum 8GiB readback RAM",
+		"pixel_ratio": 6,
+		"ram_readback_requirement_bytes": 11392942080,
+		"vram_estimate_bytes": 3114270720,
+		"vram_headroom_bytes": 1073741824
+	},
+	"whole_feasibility_verified": false,
+	"whole_guard_snapshot": {
+		"engine_static_memory_bytes": 88543135,
+		"gpu_index": 0,
+		"gpu_name": "NVIDIA GeForce RTX 4080",
+		"gpu_query": {
+			"args": [
+				"--query-gpu=index,uuid,name,memory.total,memory.used,memory.free",
+				"--format=csv,noheader,nounits"
+			],
+			"path": "C:/Windows/System32/nvidia-smi.exe"
+		},
+		"gpu_query_exit": 0,
+		"gpu_raw_output": "0, GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2, NVIDIA GeForce RTX 4080, 16376, 8415, 7636",
+		"gpu_uuid": "GPU-443a1420-b4dd-3c1a-0d18-80c800f5a9a2",
+		"host_free_bytes": 64053608448,
+		"host_query_exit": 0,
+		"host_raw_output": "{\"host_free_bytes\":64053608448,\"host_total_bytes\":137050136576,\"process_working_set_bytes\":321867776,\"process_private_bytes\":355921920,\"process_peak_working_set_bytes\":1120096256}",
+		"host_total_bytes": 137050136576,
+		"process_peak_working_set_bytes": 1120096256,
+		"process_private_bytes": 355921920,
+		"process_working_set_bytes": 321867776,
+		"stage": "after_square_release_before_whole_guard",
+		"ticks_usec": 18466680,
+		"valid": true,
+		"vram_free_bytes": 8006926336,
+		"vram_total_bytes": 17171480576,
+		"vram_used_bytes": 8823767040
+	},
+	"whole_measured_deltas": {
+		"gl_enumerated_limit_known": false,
+		"measurement_includes_other_live_GPU_processes": true,
+		"process_peak_delta_bytes": 4864466944,
+		"process_release_delta_bytes": 256614400,
+		"valid": false,
+		"vram_peak_delta_bytes": 3220176896,
+		"vram_release_delta_bytes": 19922944
+	},
+	"whole_requested": true,
+	"whole_safety_guard_passed": true,
+	"whole_viewport_allocated": true
+}

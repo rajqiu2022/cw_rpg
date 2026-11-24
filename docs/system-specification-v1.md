@@ -105,17 +105,17 @@ exp: int = 0
 strength: int = 8      # 筋骨 — 物理伤害、HP加成
 agility: int = 7       # 机敏 — 命中、闪避、先手
 inner_power: int = 8   # 内劲 — 武学伤害、MP效率
-insight: int = 6       # 悟性 — 暴击率、成长修正
+insight: int = 6       # 悟性 — 武功心法学习门槛、招式研读阅历折扣
 vitality: int = 10     # 生命 — HP上限
 inner_pool: int = 8    # 内力 — MP上限
 guard: int = 7         # 防御 — 伤害减免
 
 # 派生战斗值（由 refresh_derived_stats 计算）
 max_hp: int            # = 80 + vitality×8 + strength×3
-max_mp: int            # = 20 + inner_pool×6 + inner_power×2 + insight
+max_mp: int            # = 20 + inner_pool×6 + inner_power×2
 attack: int            # = strength×2 + inner_power
 defense: int           # = guard×2 + strength
-speed: int             # = agility×2 + insight
+speed: int             # = agility×2
 
 # 技能
 skills: Array[StringName]  # 已习得技能ID列表
@@ -134,7 +134,7 @@ vitality +2    inner_pool +2    guard +1
 ```
 冷孤云 Lv1:
   筋骨=8, 机敏=7, 内劲=8, 悟性=6, 生命=10, 内力=8, 防御=7
-  → max_hp=184, max_mp=90, attack=24, defense=22, speed=20
+  → max_hp=184, max_mp=84, attack=24, defense=22, speed=14
   技能: basic_attack, linxi_basic_sword_one, defend
 ```
 
@@ -282,10 +282,10 @@ vitality_bonus, inner_pool_bonus, guard_bonus
 
 ```
 # 核心公式
-基础伤害 = ATK × 技能倍率(power/100)
-实际伤害 = max(1, 基础伤害 - DEF)
-暴击伤害 = 实际伤害 × 1.5
-最终伤害 = 暴击伤害 × 虚弱系数
+招式伤害 = fixed_damage + round(ATK × attack_scaling/100)
+暴击伤害 = round(招式伤害 × 暴击倍率)
+实际伤害 = max(1, 暴击伤害 - DEF)  # 防御只结算一次
+最终伤害 = 实际伤害 × 状态/低血量系数
 
 # 虚弱系数（双向）
 敌人HP ≥ 70%  → 1.0
@@ -299,7 +299,7 @@ vitality_bonus, inner_pool_bonus, guard_bonus
 闪避值 = 5 + 机敏×0.8
 
 # 暴击
-暴击率 = min(80%, 5% + 悟性×0.5% + 武器暴击加成)
+暴击率 = min(95%, 5% + 武器暴击加成 + 战斗状态加成)
 ```
 
 ### 6.2 EnemyDef 数据契约
@@ -360,7 +360,10 @@ description: String
 kind: int           # 0=ATTACK, 1=HEAL, 2=BUFF, 3=DEBUFF
 target: int         # 0=ENEMY_SINGLE, 1=ENEMY_ALL, 2=ALLY_SINGLE, 3=ALLY_ALL, 4=SELF
 mp_cost: int
-power: int          # 100=普通攻击基线
+quality: int        # 0=白、1=绿、2=蓝、3=紫、4=橙
+fixed_damage: int   # 招式固定伤害
+attack_scaling: int # 叠加有效攻击的百分比，100=攻击力100%
+effect_value: int   # 治疗/辅助固定效果，不复用伤害字段
 hit_count: int = 1
 animation_id: StringName
 ```

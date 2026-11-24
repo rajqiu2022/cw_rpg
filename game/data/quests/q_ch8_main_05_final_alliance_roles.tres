@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_05_final_alliance_roles"
+title="终局分工"
+kind=0
+desc_not_started="鼓阵与迷烟已停，各方可以在会盟祭台明确职责。"
+desc_in_progress="向会盟总录确认烈云、行义帮、洛阳与主角队伍的终局分工。"
+desc_completed="终局职责已经按证人保护方案落位，第一轮假令传使成为当前目标。"
+tracker_hint="茗雾山庄 · 会盟祭台"
+completion_triggers=Array[String](["flag_set:ch8_allies_assigned"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=200

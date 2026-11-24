@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "驿市掌柜"
+text = "船上风湿，岸上路长。我这柜上常备伤药和护腕。你若还要赶南驿道，先看看缺什么。"
+choices = Array[Dictionary]([{"text": "看看行路用的货", "action": "shop:east_cangpu_provisions"}, {"text": "告辞", "next": "end"}])
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_cangpu_provisions"
+nodes = Array[ExtResource("node")]([SubResource("start")])

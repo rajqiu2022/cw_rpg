@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-market-two-shops-20261021ao",
+  "task_id": "luoyang_market_two_shops_20261021ao_scholar_study_single_bay_v2_current_layout",
+  "status": "REGISTERED_PREFLIGHTED_NOT_CALLED_SUPERSEDES_UNCALLED_V1",
+  "mode": "builtin_generate",
+  "taxonomy": "stylized-concept",
+  "transparent_background": true,
+  "reference_images": [],
+  "zero_reference_reason": "The rejected AI study and accepted AH apothecary are comparison evidence only. Neither is supplied to the generator, preventing inherited red/yellow fringe or copied roof geometry.",
+  "prompt_path": "prompts/luoyang_market_two_shops_20261021ao/scholar_study_single_bay_v2_current_layout.txt",
+  "intended_raw_path": "assets/raw/luoyang_market_two_shops_20261021ao/facade_luoyang_narrow_scholar_study_single_bay_v2_current_layout.png",
+  "attempt_budget": {
+    "initial_generate": 1,
+    "targeted_edit_only_after_measured_failure_and_root_approval": 1,
+    "automatic_retry": 0,
+    "cli_or_network_fallback": 0
+  },
+  "unknown_execution_metadata_until_actual": {
+    "model": null,
+    "provider": null,
+    "cost": null
+  },
+  "acceptance": {
+    "mode": "RGBA",
+    "complete_a1_canvas_width_fraction_min": 0.50,
+    "complete_a1_canvas_width_fraction_max": 0.60,
+    "complete_a1_margin_each_side_min_fraction": 0.10,
+    "generation_target_margin_each_side_fraction": 0.15,
+    "edge_nonzero_pixels_required": 0,
+    "conservative_clear_door_height_world_px_min": 128,
+    "conservative_clear_door_height_world_px_target_for_250_width": 140,
+    "complete_a1_world_width_px_target": [240, 250],
+    "complete_a1_world_width_px_max": 260,
+    "complete_a1_world_height_px_max": 245,
+    "complete_a1_width_over_conservative_clear_door_height_max": 1.8,
+    "uniform_scale_rule": "Choose one uniform scale after actual measurement such that width is within the placement window and max(128, complete_A1_world_width/1.8) is not greater than the conservative measured door height at that scale.",
+    "world_extent_formula": "complete_A1_source_extent_px * uniform_scale",
+    "ground_anchor": "manual center of the visible stone threshold at the principal doorway",
+    "single_principal_opening": true,
+    "door_approach_clear": true,
+    "all_weak_alpha_included": true,
+    "threshold_or_local_background_cleanup_authorized": false
+  },
+  "proposed_runtime_window_after_actual_measurement": {
+    "door_foot_provisional_px": [2572, 1420],
+    "complete_a1_world_ltrb_max": [2442, 1191, 2702, 1436],
+    "coordinates_frozen": false,
+    "actual_anchor_required_before_freeze": true
+  },
+  "layout_source_boundary": {
+    "system_current_formal_message_received": true,
+    "system_exact_json_path": null,
+    "system_exact_json_pin_pending": true,
+    "retire_without_door": "east_plot_wall",
+    "replacement_count_intent": "old eastrow plus east_plot_wall two visuals -> new apothecary plus new scholar-study two visuals; preserve native24 and DG36 totals"
+  },
+  "credit_boundary": "A generated PNG is only an art candidate. It needs actual A1/door/anchor measurement, the pending System exact JSON pin, isolated import, current-formal geometry, collision/navigation, paired portal-return, and Field verification."
+}

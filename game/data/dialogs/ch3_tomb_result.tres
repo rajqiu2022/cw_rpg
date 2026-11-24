@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "他们不是茗雾山庄的人，只是故意穿着最容易辨认的服色。货箱来自洛阳，源头在那里。"
+add_evidence = Array[StringName]([&"ev_ch3_luoyang_cargo_mark"])
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+text = "[i]你将试招记录交给大会执事，并以新门派弟子的身份领下洛阳调查令。[/i]"
+verify_evidence = Array[StringName]([&"ev_ch3_old_official_paper", &"ev_ch3_luoyang_cargo_mark"])
+set_flags = Array[Dictionary]([{"key":"chapter3_complete","value":true}])
+complete_quest = &"q_ch3_main_03_token_conspiracy"
+on_end = "chapter_end:3"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch3_tomb_result"
+required_story_flag = &"chapter2_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

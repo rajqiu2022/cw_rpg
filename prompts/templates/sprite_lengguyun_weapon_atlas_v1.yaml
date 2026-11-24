@@ -1,0 +1,43 @@
+id: sprite_lengguyun_weapon_atlas_v1
+description: Leng Guyun full battle atlas with a specific equipped weapon.
+quality: high
+size: "1024x1024"
+
+reference_images:
+  - "game/art/sprites/battle/standard_v3/lengguyun/lengguyun_ready_01.png"
+  - "game/art/characters/protagonist_portrait.png"
+require_reference_images: true
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: identity-preserve
+  Asset type: production 2.5D wuxia RPG protagonist battle sprite atlas.
+  Input image 1: strict battle-body, scale and costume reference.
+  Input image 2: strict face, hair and identity reference.
+  Primary request: preserve Leng Guyun exactly and change only his equipped combat style to {weapon_name}.
+
+  Identity lock: twenty-year-old lean Chinese swordsman build; black shoulder-length hair half tied in a low
+  ponytail; cold grey worn cross-collar robe, white inner collar, dark cloth belt, dark trousers and boots;
+  the repaired grey-green wine gourd remains tied to the left waist in every cell. Keep the same face,
+  costume, colors, height, lighting and silhouette as the supplied references.
+  Weapon lock: {weapon_spec}
+
+  Create exactly one strict 4-column by 5-row atlas on a perfectly flat solid #FF00FF chroma-key background.
+  Row 1 READY: four right-facing ready poses with restrained breathing.
+  Row 2 MOVE: four short right-facing approach steps.
+  Row 3 ATTACK: preparation, acceleration, contact, recovery; {attack_spec}
+  Row 4 HIT: four right-facing recoil poses while retaining the exact weapon state.
+  Row 5 DEFEAT: four falling poses, ending grounded.
+
+  One complete full-body character per cell, shared feet baseline, identical scale, at least 12 pixels safe
+  space below the feet, generous isolation between cells. No aura or skill effect; this is character motion only.
+  Constraints: change only the weapon/combat style; no sword unless {weapon_name} is sword; no extra weapon,
+  no text, labels, grid, scenery, shadow, ground plane, crop, frame overlap, motion blur or costume drift.
+  Avoid: {negative}
+
+variables:
+  weapon_name: "dao | staff | unarmed palm"
+  weapon_spec: "exact weapon appearance and grip"
+  attack_spec: "four-phase attack motion"
+

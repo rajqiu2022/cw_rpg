@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "金陵水巡"
+text = "金陵桥市繁盛，水巷也最易藏人。东桥头榜文多是水路要犯；揭榜后可从西埠乘舟，去芦荡寻踪。"
+choices = Array[Dictionary]([{"text":"榜亭在何处？","next":"board_location"},{"text":"采买江南补给","action":"shop:lingyue_pavilion"},{"text":"告辞","next":"end"}])
+[sub_resource type="Resource" id="board_location"]
+script = ExtResource("2")
+node_id = &"board_location"
+speaker = "金陵水巡"
+text = "东桥头临街的木榜亭便是。榜文须由揭榜人当面取下，我这里只指路，不代开榜册。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_jinling_guide"
+nodes = Array[Resource]([SubResource("start"), SubResource("board_location")])

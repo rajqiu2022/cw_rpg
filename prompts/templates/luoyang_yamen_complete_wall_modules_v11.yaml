@@ -1,0 +1,62 @@
+id: luoyang_yamen_complete_wall_modules_v11
+description: One coherent four-component enclosure wall kit, including full south L walls, passage ends and north hall joins; not a courtyard bake.
+backend: codex_builtin_imagegen
+model: builtin
+execution_owner: producer
+intent: generate
+background: transparent
+transparent_background: true
+reference_images:
+  - assets/raw/scene_module/luoyang_yamen_front_v9/front_wall_v9_candidate.png
+  - game/build/luoyang_yamen_corner_caps_v10c_preview/root_corner_caps_v10c_01/full_new.png
+  - game/art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png
+reference_sha256:
+  - b903c3aef333e0c3880ad0fb2fc83e131336cc381fde8d4f0fa88b59585149fb
+  - 4a079450d16a0d7705645339f30bcd854fca5c5eb8345b156dc9b19d56caf54b
+  - dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221
+require_reference_images: true
+scope: NEW_ART_CANDIDATE_NOT_ADOPTED
+components_left_to_right: [west_north, west_south_L, east_south_L, east_north]
+camera:
+  projection: orthographic
+  view_direction: south_to_north
+  yaw_degrees: 0
+  elevation_degrees: 30
+intended_world_contract:
+  side_axes_x: [960, 2110]
+  north_depth_window_y: [620, 940]
+  south_depth_window_y: [1200, 1680]
+  open_side_passage_y: [940, 1200]
+  south_visual_brick_foot_y: 1689.5
+  south_ground_depth_reference_y: 1680
+  full_ridge_to_visual_foot_logical_px: 199.7979797979798
+  horizontal_arm_minimum_logical_px: 500
+  south_north_run_minimum_ground_projection_logical_px: 480
+  north_run_minimum_ground_projection_logical_px: 320
+  north_inward_join_logical_px: 64
+  dimensions_status: INTENDED_TARGETS_ONLY_ACTUAL_UNIFORM_ANCHORS_PENDING
+desired_native_pixels_per_logical_pixel: 2
+density_status: EXPECTATION_ONLY_NOT_TOOL_PARAMETER_OR_UPSCALE_CLAIM
+prompt_template: |
+  Use case: stylized-concept
+  Asset type: ONE transparent RGBA atlas of exactly FOUR complete architectural wall components for a fixed-camera Chinese wuxia RPG. This is a coherent wall-construction kit, NOT an entire courtyard scene, ground tile or background painting.
+
+  Reference roles: Image 1 is the approved MATERIAL, tile pitch, wall-height proportions and construction-detail reference. Closely match its small aged charcoal-grey barrel/pan tiles and round tile ends, weathered off-white lime plaster, grey-brick plinth, mortar courses, granular surface density and restrained upper-left/front daylight. Image 2 is ONLY the repaired corner direction and fixed-camera layout reference. Do NOT copy its cropped short north roofs, abrupt roof-texture joins, larger corner tiles, gate or paving. Image 3 is ONLY the camera and gate-relative scale reference; do NOT generate its gate or diagonal folded end walls. None is an edit target. Create a new consistently constructed set, not a collage of these images.
+
+  Camera is identical for all four components: orthographic parallel, directly SOUTH looking NORTH, exactly30 degrees elevation, yawZERO. North-south ridge lines travel straight vertically upward on screen, with no convergence. The broad east/west plaster faces of a north-south wall are edge-on, NOT visible broad diagonal facades. Show its narrow coping roof, real thickness, and an end face only when facing the camera. East-west ridges, eaves and brick courses are horizontal. Never rotate the camera or mirror the lighting to make a wall more visible.
+
+  ONE construction family and ONE authored pixels-per-metre across all components. Crucially, each south L component contains its ENTIRE horizontal wall arm and its genuinely connected curved roof turning north, so straight tiles, curve tiles, ridge, eave and masonry are already continuous within ONE component. No pasted cap, hard vertical material change or change of tile size at the tangent. Match Image 1's tile size, not Image 2's oversized corner tiles. Corners have credible turning ridge/hip joints, coherent overlapping barrel/pan tiles and masonry bonds, not crossed roof strips. West/east handed units are separately lit by the same upper-left/front daylight, not flipped copies.
+
+  Common cross-section: full ridge-to-brick-foot visual height is the reference unit, approximately200 game logical pixels. Eave-to-foot is about0.67 of that height and the grey-brick base about0.19. All exposed end faces and every horizontal/curved/longitudinal roof use this SAME section. A narrow masonry end face is approximately0.13 of the full height in width; the complete north-south coping roof width approximately0.26. Rebuild believable narrow architecture, never squeeze an image or elongate individual bricks/tiles. No tall decorative corner pillars or excess roof bulk. These proportions are construction targets, not instructions to put numbers or diagrams in the image.
+
+  Four isolated components, arranged LEFT TO RIGHT at the SAME scale:
+  FIRST, west-north wall: a straight north-south run with at least320 logical pixels of projected ground-depth length, or1.60 times the common upright height. Its SOUTH end faces the viewer at a side-passage opening and is a complete narrow plaster/grey-brick masonry end with proper coping termination, NOT a cut roof strip or freestanding pillar. At the NORTH end, a short eastward/right inward arm, roughly64 logical pixels long, makes a real continuous roof/masonry join suitable for meeting an existing main hall. Do not generate the hall.
+  SECOND, west-south L wall: one complete southwest corner and full horizontal arm extending EAST to image-right. Its straight horizontal arm is at least500 logical pixels long, or2.50 times the common upright height, with uninterrupted Image1-like plaster and brick base all the way to the gate-facing end. At that end there is NO gate, doorway, timber post or decorative end pillar; it will terminate behind the existing wooden gate post. The genuinely connected corner turns into a continuous NORTH-going wall with at least480 logical pixels of ground-depth projection, or2.40 times the common upright height. Its far NORTH end faces away from the camera at a side-passage opening: finish the roof/end construction honestly without inventing a broad south-facing facade there.
+  THIRD, east-south L wall: the corresponding southeast component with its entire horizontal arm extending WEST to image-left, same minimum500-logical length, and a continuous NORTH-going run of at least480-logical projected depth. Same genuine curved roof continuity and full horizontal wall quality, no material seam between curve and straight arm, no gate-facing end pillar. Correct right-handed construction under the same light, not a mirrored bitmap.
+  FOURTH, east-north wall: the north-south wall corresponding to the first component, with at least320-logical projected depth and the SAME complete south-facing side-passage end. Its NORTH end has the short inward arm extending WEST to image-left to meet the existing hall. Same common section, no hall generation.
+
+  Lengths are projected ground lengths, NOT total silhouette bounding-box heights: at runtime an east-west metre is64 logical pixels and a north-south ground metre projects to32 logical pixels. Longitudinal roof length is independent of upright wall height. Longer continuous runs and gate-facing arms are allowed; the game can select shorter interior UV regions at one UNCHANGED uniform scale. Do not shrink the wall height to fit a run, squash width, introduce repeated caps inside long runs, or use tiny texture swatches. Preserve long clean roof interiors suitable for depth segmentation into independent game objects.
+
+  Finish: crisp detailed pre-rendered2.5D architecture, sparse irregular age and lime-plaster losses exposing grey bricks, coherent mortar-course height and subtle contact/self-shadow. No exaggerated zigzag cracks, corrugated waves, blurry microtexture, colour redesign or added procedural noise. Full silhouettes and all end details inside the canvas. Prefer ample native detail, ideally about two image pixels per game logical pixel if available; actual returned dimensions/density will be measured, not upscaled and claimed native.
+
+  True transparent background, generous outer margins and clear transparent gaps between all four components. Keep them separate: no wall across the intentional east/west side-passage gap, no connected U-shaped whole courtyard and no central entrance wall. No gate, hall, ground, paving, cast ground shadow, scenery, trees, people, props, text, labels, measurements, scale bars, watermark, black backdrop or checkerboard pixels. Deliver ONLY this one four-component RGBA wall atlas.

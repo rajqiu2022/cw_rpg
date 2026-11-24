@@ -1,0 +1,3935 @@
+{
+  "schema_version": 15,
+  "status": "SOURCE_FOOTPRINT_AUTHORING_CANDIDATE_NOT_PUBLISHABLE",
+  "production_approved": false,
+  "source_measurement_parent": "res://data/maps/world_map_v15_portal_measurements_v1.json",
+  "owner_original_image_review": "All16 original images were read with view_image in this source authoring turn",
+  "coordinate_system": "Original source pixels and UV; projected WORLD positions MUST be reconstructed from current actual RF door foot + raw sprite size. Historical planned_world_* are deliberately not copied.",
+  "root_review_required": true,
+  "landmarks": {
+    "yanmen_pass": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_yanmen_pass_v1.png",
+      "source_sha256": "5E1C0DCC645175F82FC46D891E26A094ACBF64135A608950D166D04143D9D218",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        720,
+        795
+      ],
+      "source_doorstep_uv": [
+        0.46875,
+        0.7763671875
+      ],
+      "render_size_px": [
+        620,
+        413.3333333333333
+      ],
+      "threshold_kind": "open_gate",
+      "compound_id": "compound_yanmen_pass",
+      "solid_polygons_source_px": [
+        [
+          [
+            85,
+            410
+          ],
+          [
+            430,
+            420
+          ],
+          [
+            605,
+            550
+          ],
+          [
+            605,
+            803
+          ],
+          [
+            345,
+            777
+          ],
+          [
+            45,
+            722
+          ]
+        ],
+        [
+          [
+            817,
+            579
+          ],
+          [
+            1090,
+            495
+          ],
+          [
+            1456,
+            580
+          ],
+          [
+            1460,
+            840
+          ],
+          [
+            1280,
+            945
+          ],
+          [
+            817,
+            852
+          ]
+        ],
+        [
+          [
+            607,
+            449
+          ],
+          [
+            1050,
+            468
+          ],
+          [
+            817,
+            579
+          ],
+          [
+            605,
+            550
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.055338541666666664,
+            0.400390625
+          ],
+          [
+            0.2799479166666667,
+            0.41015625
+          ],
+          [
+            0.3938802083333333,
+            0.537109375
+          ],
+          [
+            0.3938802083333333,
+            0.7841796875
+          ],
+          [
+            0.224609375,
+            0.7587890625
+          ],
+          [
+            0.029296875,
+            0.705078125
+          ]
+        ],
+        [
+          [
+            0.5319010416666666,
+            0.5654296875
+          ],
+          [
+            0.7096354166666666,
+            0.4833984375
+          ],
+          [
+            0.9479166666666666,
+            0.56640625
+          ],
+          [
+            0.9505208333333334,
+            0.8203125
+          ],
+          [
+            0.8333333333333334,
+            0.9228515625
+          ],
+          [
+            0.5319010416666666,
+            0.83203125
+          ]
+        ],
+        [
+          [
+            0.3951822916666667,
+            0.4384765625
+          ],
+          [
+            0.68359375,
+            0.45703125
+          ],
+          [
+            0.5319010416666666,
+            0.5654296875
+          ],
+          [
+            0.3938802083333333,
+            0.537109375
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          630,
+          745
+        ],
+        [
+          800,
+          775
+        ],
+        [
+          800,
+          855
+        ],
+        [
+          630,
+          830
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.41015625,
+          0.7275390625
+        ],
+        [
+          0.5208333333333334,
+          0.7568359375
+        ],
+        [
+          0.5208333333333334,
+          0.8349609375
+        ],
+        [
+          0.41015625,
+          0.810546875
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          720,
+          823
+        ],
+        [
+          720,
+          795
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          672,
+          787
+        ],
+        [
+          768,
+          787
+        ],
+        [
+          768,
+          827
+        ],
+        [
+          672,
+          827
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          530,
+          757
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        791,
+        238
+      ],
+      "source_click_px": [
+        725,
+        750
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Archway floor remains open. Side stone bases, not snowy roof silhouettes, delimit the threshold.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "huashan": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/maps/world_map_v15/entities/sect_huashan_compound_v1.png",
+      "source_sha256": "38856D5837532C818A8CF2993BB83DD2A9AC6A53C0E3BEE73FE64D39A35AB5D0",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        766,
+        921
+      ],
+      "source_doorstep_uv": [
+        0.4986979166666667,
+        0.8994140625
+      ],
+      "render_size_px": [
+        620,
+        413.3333333333333
+      ],
+      "threshold_kind": "open_gate",
+      "compound_id": "compound_huashan",
+      "solid_polygons_source_px": [
+        [
+          [
+            110,
+            474
+          ],
+          [
+            448,
+            470
+          ],
+          [
+            600,
+            662
+          ],
+          [
+            600,
+            864
+          ],
+          [
+            85,
+            863
+          ]
+        ],
+        [
+          [
+            935,
+            662
+          ],
+          [
+            1110,
+            479
+          ],
+          [
+            1400,
+            472
+          ],
+          [
+            1490,
+            867
+          ],
+          [
+            935,
+            864
+          ]
+        ],
+        [
+          [
+            452,
+            470
+          ],
+          [
+            1100,
+            470
+          ],
+          [
+            1110,
+            663
+          ],
+          [
+            448,
+            663
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.07161458333333333,
+            0.462890625
+          ],
+          [
+            0.2916666666666667,
+            0.458984375
+          ],
+          [
+            0.390625,
+            0.646484375
+          ],
+          [
+            0.390625,
+            0.84375
+          ],
+          [
+            0.055338541666666664,
+            0.8427734375
+          ]
+        ],
+        [
+          [
+            0.6087239583333334,
+            0.646484375
+          ],
+          [
+            0.72265625,
+            0.4677734375
+          ],
+          [
+            0.9114583333333334,
+            0.4609375
+          ],
+          [
+            0.9700520833333334,
+            0.8466796875
+          ],
+          [
+            0.6087239583333334,
+            0.84375
+          ]
+        ],
+        [
+          [
+            0.2942708333333333,
+            0.458984375
+          ],
+          [
+            0.7161458333333334,
+            0.458984375
+          ],
+          [
+            0.72265625,
+            0.6474609375
+          ],
+          [
+            0.2916666666666667,
+            0.6474609375
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          660,
+          821
+        ],
+        [
+          874,
+          821
+        ],
+        [
+          874,
+          985
+        ],
+        [
+          660,
+          985
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.4296875,
+          0.8017578125
+        ],
+        [
+          0.5690104166666666,
+          0.8017578125
+        ],
+        [
+          0.5690104166666666,
+          0.9619140625
+        ],
+        [
+          0.4296875,
+          0.9619140625
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          766,
+          949
+        ],
+        [
+          766,
+          921
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          718,
+          913
+        ],
+        [
+          814,
+          913
+        ],
+        [
+          814,
+          953
+        ],
+        [
+          718,
+          953
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          470,
+          816
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        784,
+        141
+      ],
+      "source_click_px": [
+        765,
+        850
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Front wall masonry is solid on both sides; stair and central open doorway are a separate passage.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "luoyang": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_luoyang_city_v1.png",
+      "source_sha256": "0557A3B0C5B79E85AA718821C1827B31667E8A38057E0B56B176F2D56ED96854",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        768,
+        830
+      ],
+      "source_doorstep_uv": [
+        0.5,
+        0.810546875
+      ],
+      "render_size_px": [
+        720,
+        480
+      ],
+      "threshold_kind": "open_gate",
+      "compound_id": "compound_luoyang",
+      "solid_polygons_source_px": [
+        [
+          [
+            63,
+            501
+          ],
+          [
+            287,
+            441
+          ],
+          [
+            578,
+            520
+          ],
+          [
+            693,
+            587
+          ],
+          [
+            693,
+            837
+          ],
+          [
+            57,
+            798
+          ]
+        ],
+        [
+          [
+            846,
+            587
+          ],
+          [
+            978,
+            520
+          ],
+          [
+            1309,
+            453
+          ],
+          [
+            1485,
+            550
+          ],
+          [
+            1485,
+            812
+          ],
+          [
+            846,
+            837
+          ]
+        ],
+        [
+          [
+            287,
+            441
+          ],
+          [
+            1309,
+            453
+          ],
+          [
+            978,
+            600
+          ],
+          [
+            578,
+            600
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.041015625,
+            0.4892578125
+          ],
+          [
+            0.18684895833333334,
+            0.4306640625
+          ],
+          [
+            0.3763020833333333,
+            0.5078125
+          ],
+          [
+            0.451171875,
+            0.5732421875
+          ],
+          [
+            0.451171875,
+            0.8173828125
+          ],
+          [
+            0.037109375,
+            0.779296875
+          ]
+        ],
+        [
+          [
+            0.55078125,
+            0.5732421875
+          ],
+          [
+            0.63671875,
+            0.5078125
+          ],
+          [
+            0.8522135416666666,
+            0.4423828125
+          ],
+          [
+            0.966796875,
+            0.537109375
+          ],
+          [
+            0.966796875,
+            0.79296875
+          ],
+          [
+            0.55078125,
+            0.8173828125
+          ]
+        ],
+        [
+          [
+            0.18684895833333334,
+            0.4306640625
+          ],
+          [
+            0.8522135416666666,
+            0.4423828125
+          ],
+          [
+            0.63671875,
+            0.5859375
+          ],
+          [
+            0.3763020833333333,
+            0.5859375
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          708,
+          757
+        ],
+        [
+          832,
+          757
+        ],
+        [
+          832,
+          890
+        ],
+        [
+          708,
+          890
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.4609375,
+          0.7392578125
+        ],
+        [
+          0.5416666666666666,
+          0.7392578125
+        ],
+        [
+          0.5416666666666666,
+          0.869140625
+        ],
+        [
+          0.4609375,
+          0.869140625
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          768,
+          858
+        ],
+        [
+          768,
+          830
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          720,
+          822
+        ],
+        [
+          816,
+          822
+        ],
+        [
+          816,
+          862
+        ],
+        [
+          720,
+          862
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          430,
+          760
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        755,
+        453
+      ],
+      "source_click_px": [
+        768,
+        750
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Visible south arch and stone apron, not old arbitrary city centre, define the doorway. No crossing solid side bastions.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "bianzhou": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/city_walled_compound_proto_v1.png",
+      "source_sha256": "F73EFAB30B1629C805AC78E803371E46D7538111A52D30288B57760BC25A3E17",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        730,
+        805
+      ],
+      "source_doorstep_uv": [
+        0.4752604166666667,
+        0.7861328125
+      ],
+      "render_size_px": [
+        720,
+        480
+      ],
+      "threshold_kind": "closed_gate_front_step",
+      "compound_id": "compound_bianzhou",
+      "solid_polygons_source_px": [
+        [
+          [
+            70,
+            598
+          ],
+          [
+            430,
+            420
+          ],
+          [
+            1150,
+            422
+          ],
+          [
+            1460,
+            704
+          ],
+          [
+            1460,
+            806
+          ],
+          [
+            838,
+            835
+          ],
+          [
+            838,
+            772
+          ],
+          [
+            648,
+            772
+          ],
+          [
+            648,
+            821
+          ],
+          [
+            260,
+            777
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.045572916666666664,
+            0.583984375
+          ],
+          [
+            0.2799479166666667,
+            0.41015625
+          ],
+          [
+            0.7486979166666666,
+            0.412109375
+          ],
+          [
+            0.9505208333333334,
+            0.6875
+          ],
+          [
+            0.9505208333333334,
+            0.787109375
+          ],
+          [
+            0.5455729166666666,
+            0.8154296875
+          ],
+          [
+            0.5455729166666666,
+            0.75390625
+          ],
+          [
+            0.421875,
+            0.75390625
+          ],
+          [
+            0.421875,
+            0.8017578125
+          ],
+          [
+            0.16927083333333334,
+            0.7587890625
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          674,
+          788
+        ],
+        [
+          803,
+          788
+        ],
+        [
+          803,
+          859
+        ],
+        [
+          674,
+          859
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.4388020833333333,
+          0.76953125
+        ],
+        [
+          0.5227864583333334,
+          0.76953125
+        ],
+        [
+          0.5227864583333334,
+          0.8388671875
+        ],
+        [
+          0.4388020833333333,
+          0.8388671875
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          730,
+          833
+        ],
+        [
+          730,
+          805
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          682,
+          797
+        ],
+        [
+          778,
+          797
+        ],
+        [
+          778,
+          837
+        ],
+        [
+          682,
+          837
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          505,
+          754
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        759,
+        547
+      ],
+      "source_click_px": [
+        740,
+        740
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Door leaves are CLOSED and remain part of the solid courtyard footprint. Interaction and return are on the outside stair only.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "gufeng": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/maps/world_map_v15/entities/sect_gufeng_compound_v2.png",
+      "source_sha256": "D13E9D8C3BD418D04D8FA7E2D3F1F3E65BF8174E27721B1E1E0BF8BC896EEB3D",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        790,
+        930
+      ],
+      "source_doorstep_uv": [
+        0.5143229166666666,
+        0.908203125
+      ],
+      "render_size_px": [
+        620,
+        413.3333333333333
+      ],
+      "threshold_kind": "open_gate",
+      "compound_id": "compound_gufeng",
+      "solid_polygons_source_px": [
+        [
+          [
+            105,
+            507
+          ],
+          [
+            610,
+            386
+          ],
+          [
+            989,
+            446
+          ],
+          [
+            991,
+            695
+          ],
+          [
+            904,
+            805
+          ],
+          [
+            904,
+            922
+          ],
+          [
+            875,
+            922
+          ],
+          [
+            875,
+            802
+          ],
+          [
+            700,
+            802
+          ],
+          [
+            700,
+            902
+          ],
+          [
+            272,
+            898
+          ],
+          [
+            85,
+            798
+          ]
+        ],
+        [
+          [
+            985,
+            559
+          ],
+          [
+            1440,
+            596
+          ],
+          [
+            1490,
+            827
+          ],
+          [
+            1065,
+            914
+          ],
+          [
+            921,
+            838
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.068359375,
+            0.4951171875
+          ],
+          [
+            0.3971354166666667,
+            0.376953125
+          ],
+          [
+            0.6438802083333334,
+            0.435546875
+          ],
+          [
+            0.6451822916666666,
+            0.6787109375
+          ],
+          [
+            0.5885416666666666,
+            0.7861328125
+          ],
+          [
+            0.5885416666666666,
+            0.900390625
+          ],
+          [
+            0.5696614583333334,
+            0.900390625
+          ],
+          [
+            0.5696614583333334,
+            0.783203125
+          ],
+          [
+            0.4557291666666667,
+            0.783203125
+          ],
+          [
+            0.4557291666666667,
+            0.880859375
+          ],
+          [
+            0.17708333333333334,
+            0.876953125
+          ],
+          [
+            0.055338541666666664,
+            0.779296875
+          ]
+        ],
+        [
+          [
+            0.6412760416666666,
+            0.5458984375
+          ],
+          [
+            0.9375,
+            0.58203125
+          ],
+          [
+            0.9700520833333334,
+            0.8076171875
+          ],
+          [
+            0.693359375,
+            0.892578125
+          ],
+          [
+            0.599609375,
+            0.818359375
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          726,
+          829
+        ],
+        [
+          858,
+          829
+        ],
+        [
+          858,
+          985
+        ],
+        [
+          726,
+          985
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.47265625,
+          0.8095703125
+        ],
+        [
+          0.55859375,
+          0.8095703125
+        ],
+        [
+          0.55859375,
+          0.9619140625
+        ],
+        [
+          0.47265625,
+          0.9619140625
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          790,
+          958
+        ],
+        [
+          790,
+          930
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          742,
+          922
+        ],
+        [
+          838,
+          922
+        ],
+        [
+          838,
+          962
+        ],
+        [
+          742,
+          962
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          564,
+          864
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        518,
+        190
+      ],
+      "source_click_px": [
+        790,
+        815
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Rough lower retaining walls and lodge bases are solid; central lower stone steps remain wide and separate.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "linxi_village": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_linxi_village_v1.png",
+      "source_sha256": "010CC622F0BC30A53AD6B15401505FE59D85BCB7928971F260702C359C60CBE7",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        765,
+        895
+      ],
+      "source_doorstep_uv": [
+        0.498046875,
+        0.8740234375
+      ],
+      "render_size_px": [
+        440,
+        293.3333333333333
+      ],
+      "threshold_kind": "fence_gap",
+      "compound_id": "compound_linxi_village",
+      "solid_polygons_source_px": [
+        [
+          [
+            195,
+            414
+          ],
+          [
+            572,
+            460
+          ],
+          [
+            676,
+            685
+          ],
+          [
+            647,
+            900
+          ],
+          [
+            275,
+            866
+          ],
+          [
+            195,
+            660
+          ]
+        ],
+        [
+          [
+            902,
+            658
+          ],
+          [
+            1427,
+            543
+          ],
+          [
+            1470,
+            742
+          ],
+          [
+            1330,
+            879
+          ],
+          [
+            866,
+            913
+          ],
+          [
+            866,
+            775
+          ]
+        ],
+        [
+          [
+            559,
+            415
+          ],
+          [
+            1055,
+            419
+          ],
+          [
+            1080,
+            555
+          ],
+          [
+            633,
+            580
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.126953125,
+            0.404296875
+          ],
+          [
+            0.3723958333333333,
+            0.44921875
+          ],
+          [
+            0.4401041666666667,
+            0.6689453125
+          ],
+          [
+            0.4212239583333333,
+            0.87890625
+          ],
+          [
+            0.17903645833333334,
+            0.845703125
+          ],
+          [
+            0.126953125,
+            0.64453125
+          ]
+        ],
+        [
+          [
+            0.5872395833333334,
+            0.642578125
+          ],
+          [
+            0.9290364583333334,
+            0.5302734375
+          ],
+          [
+            0.95703125,
+            0.724609375
+          ],
+          [
+            0.8658854166666666,
+            0.8583984375
+          ],
+          [
+            0.5638020833333334,
+            0.8916015625
+          ],
+          [
+            0.5638020833333334,
+            0.7568359375
+          ]
+        ],
+        [
+          [
+            0.3639322916666667,
+            0.4052734375
+          ],
+          [
+            0.6868489583333334,
+            0.4091796875
+          ],
+          [
+            0.703125,
+            0.5419921875
+          ],
+          [
+            0.412109375,
+            0.56640625
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          687,
+          765
+        ],
+        [
+          849,
+          765
+        ],
+        [
+          865,
+          953
+        ],
+        [
+          676,
+          953
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.447265625,
+          0.7470703125
+        ],
+        [
+          0.552734375,
+          0.7470703125
+        ],
+        [
+          0.5631510416666666,
+          0.9306640625
+        ],
+        [
+          0.4401041666666667,
+          0.9306640625
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          765,
+          923
+        ],
+        [
+          765,
+          895
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          717,
+          887
+        ],
+        [
+          813,
+          887
+        ],
+        [
+          813,
+          927
+        ],
+        [
+          717,
+          927
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          541,
+          847
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        650,
+        220
+      ],
+      "source_click_px": [
+        750,
+        875
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "The open front bamboo-fence gap is the approach. Houses and front fence feet block, not the empty dirt courtyard.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "qinghe_town": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_qinghe_town_v1.png",
+      "source_sha256": "69CB9C41C7B3A1403A6716B2EB10DC072EC76F6C6A1C7983674CCB35C3C2D9DE",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        640,
+        875
+      ],
+      "source_doorstep_uv": [
+        0.4166666666666667,
+        0.8544921875
+      ],
+      "render_size_px": [
+        460,
+        306.6666666666667
+      ],
+      "threshold_kind": "front_dry_steps",
+      "compound_id": "compound_qinghe_town",
+      "solid_polygons_source_px": [
+        [
+          [
+            263,
+            448
+          ],
+          [
+            540,
+            471
+          ],
+          [
+            600,
+            661
+          ],
+          [
+            538,
+            764
+          ],
+          [
+            341,
+            695
+          ]
+        ],
+        [
+          [
+            1059,
+            560
+          ],
+          [
+            1244,
+            684
+          ],
+          [
+            1219,
+            813
+          ],
+          [
+            1090,
+            898
+          ],
+          [
+            923,
+            793
+          ]
+        ],
+        [
+          [
+            699,
+            294
+          ],
+          [
+            1071,
+            375
+          ],
+          [
+            1034,
+            512
+          ],
+          [
+            866,
+            520
+          ],
+          [
+            700,
+            438
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.17122395833333334,
+            0.4375
+          ],
+          [
+            0.3515625,
+            0.4599609375
+          ],
+          [
+            0.390625,
+            0.6455078125
+          ],
+          [
+            0.3502604166666667,
+            0.74609375
+          ],
+          [
+            0.22200520833333334,
+            0.6787109375
+          ]
+        ],
+        [
+          [
+            0.689453125,
+            0.546875
+          ],
+          [
+            0.8098958333333334,
+            0.66796875
+          ],
+          [
+            0.7936197916666666,
+            0.7939453125
+          ],
+          [
+            0.7096354166666666,
+            0.876953125
+          ],
+          [
+            0.6009114583333334,
+            0.7744140625
+          ]
+        ],
+        [
+          [
+            0.455078125,
+            0.287109375
+          ],
+          [
+            0.697265625,
+            0.3662109375
+          ],
+          [
+            0.6731770833333334,
+            0.5
+          ],
+          [
+            0.5638020833333334,
+            0.5078125
+          ],
+          [
+            0.4557291666666667,
+            0.427734375
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          531,
+          848
+        ],
+        [
+          725,
+          822
+        ],
+        [
+          761,
+          930
+        ],
+        [
+          567,
+          973
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.345703125,
+          0.828125
+        ],
+        [
+          0.4720052083333333,
+          0.802734375
+        ],
+        [
+          0.4954427083333333,
+          0.908203125
+        ],
+        [
+          0.369140625,
+          0.9501953125
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          640,
+          903
+        ],
+        [
+          640,
+          875
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          592,
+          867
+        ],
+        [
+          688,
+          867
+        ],
+        [
+          688,
+          907
+        ],
+        [
+          592,
+          907
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          1100,
+          670
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        931,
+        207
+      ],
+      "source_click_px": [
+        680,
+        790
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "The village approach is the south stone landing before the painted bridge. Painted river pixels do not create world walk support.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "zhuwei_village": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_zhuwei_village_v1.png",
+      "source_sha256": "92DDF4D0AB30550EE6F5D7517257C2DB2BC03B636568AD050447CC9A43665FB0",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        770,
+        900
+      ],
+      "source_doorstep_uv": [
+        0.5013020833333334,
+        0.87890625
+      ],
+      "render_size_px": [
+        440,
+        293.3333333333333
+      ],
+      "threshold_kind": "fence_gap",
+      "compound_id": "compound_zhuwei_village",
+      "solid_polygons_source_px": [
+        [
+          [
+            175,
+            503
+          ],
+          [
+            496,
+            532
+          ],
+          [
+            598,
+            729
+          ],
+          [
+            624,
+            832
+          ],
+          [
+            672,
+            925
+          ],
+          [
+            486,
+            884
+          ],
+          [
+            301,
+            758
+          ]
+        ],
+        [
+          [
+            947,
+            615
+          ],
+          [
+            1365,
+            551
+          ],
+          [
+            1463,
+            742
+          ],
+          [
+            1320,
+            888
+          ],
+          [
+            886,
+            929
+          ],
+          [
+            886,
+            783
+          ]
+        ],
+        [
+          [
+            641,
+            359
+          ],
+          [
+            1121,
+            382
+          ],
+          [
+            1086,
+            596
+          ],
+          [
+            688,
+            594
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.11393229166666667,
+            0.4912109375
+          ],
+          [
+            0.3229166666666667,
+            0.51953125
+          ],
+          [
+            0.3893229166666667,
+            0.7119140625
+          ],
+          [
+            0.40625,
+            0.8125
+          ],
+          [
+            0.4375,
+            0.9033203125
+          ],
+          [
+            0.31640625,
+            0.86328125
+          ],
+          [
+            0.19596354166666666,
+            0.740234375
+          ]
+        ],
+        [
+          [
+            0.6165364583333334,
+            0.6005859375
+          ],
+          [
+            0.888671875,
+            0.5380859375
+          ],
+          [
+            0.9524739583333334,
+            0.724609375
+          ],
+          [
+            0.859375,
+            0.8671875
+          ],
+          [
+            0.5768229166666666,
+            0.9072265625
+          ],
+          [
+            0.5768229166666666,
+            0.7646484375
+          ]
+        ],
+        [
+          [
+            0.4173177083333333,
+            0.3505859375
+          ],
+          [
+            0.7298177083333334,
+            0.373046875
+          ],
+          [
+            0.70703125,
+            0.58203125
+          ],
+          [
+            0.4479166666666667,
+            0.580078125
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          694,
+          764
+        ],
+        [
+          865,
+          752
+        ],
+        [
+          865,
+          967
+        ],
+        [
+          699,
+          967
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.4518229166666667,
+          0.74609375
+        ],
+        [
+          0.5631510416666666,
+          0.734375
+        ],
+        [
+          0.5631510416666666,
+          0.9443359375
+        ],
+        [
+          0.455078125,
+          0.9443359375
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          770,
+          928
+        ],
+        [
+          770,
+          900
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          722,
+          892
+        ],
+        [
+          818,
+          892
+        ],
+        [
+          818,
+          932
+        ],
+        [
+          722,
+          932
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          566,
+          862
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        927,
+        221
+      ],
+      "source_click_px": [
+        765,
+        850
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Front bamboo gate gap and stones are open; surrounding bamboo fences and house bases remain solid.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "wudang": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/maps/world_map_v15/entities/sect_wudang_compound_v1.png",
+      "source_sha256": "0CF39BB9D6979B152903402128CA05E9838C3A41DDAD9FFCE2BAF43BFF26C7E8",
+      "source_size_px": [
+        1421,
+        1107
+      ],
+      "source_doorstep_px": [
+        711,
+        1031
+      ],
+      "source_doorstep_uv": [
+        0.5003518648838846,
+        0.931345980126468
+      ],
+      "render_size_px": [
+        620,
+        482.9978888106967
+      ],
+      "threshold_kind": "open_gate",
+      "compound_id": "compound_wudang",
+      "solid_polygons_source_px": [
+        [
+          [
+            57,
+            482
+          ],
+          [
+            425,
+            435
+          ],
+          [
+            532,
+            685
+          ],
+          [
+            562,
+            937
+          ],
+          [
+            562,
+            1018
+          ],
+          [
+            254,
+            982
+          ],
+          [
+            34,
+            950
+          ]
+        ],
+        [
+          [
+            863,
+            688
+          ],
+          [
+            1042,
+            431
+          ],
+          [
+            1300,
+            480
+          ],
+          [
+            1385,
+            951
+          ],
+          [
+            983,
+            976
+          ],
+          [
+            863,
+            1018
+          ]
+        ],
+        [
+          [
+            425,
+            435
+          ],
+          [
+            1042,
+            431
+          ],
+          [
+            1000,
+            703
+          ],
+          [
+            455,
+            703
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.04011259676284307,
+            0.43541102077687444
+          ],
+          [
+            0.29908515130190005,
+            0.39295392953929537
+          ],
+          [
+            0.37438423645320196,
+            0.6187895212285456
+          ],
+          [
+            0.39549612948627727,
+            0.8464317976513098
+          ],
+          [
+            0.39549612948627727,
+            0.919602529358627
+          ],
+          [
+            0.17874736101337085,
+            0.8870822041553749
+          ],
+          [
+            0.023926812104152005,
+            0.8581752484191508
+          ]
+        ],
+        [
+          [
+            0.6073187895847995,
+            0.6214995483288166
+          ],
+          [
+            0.733286418015482,
+            0.3893405600722674
+          ],
+          [
+            0.9148486980999296,
+            0.43360433604336046
+          ],
+          [
+            0.9746657283603096,
+            0.8590785907859079
+          ],
+          [
+            0.6917663617171006,
+            0.8816621499548328
+          ],
+          [
+            0.6073187895847995,
+            0.919602529358627
+          ]
+        ],
+        [
+          [
+            0.29908515130190005,
+            0.39295392953929537
+          ],
+          [
+            0.733286418015482,
+            0.3893405600722674
+          ],
+          [
+            0.7037297677691766,
+            0.6350496838301717
+          ],
+          [
+            0.32019704433497537,
+            0.6350496838301717
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          623,
+          935
+        ],
+        [
+          811,
+          935
+        ],
+        [
+          811,
+          1084
+        ],
+        [
+          623,
+          1084
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.43842364532019706,
+          0.8446251129177959
+        ],
+        [
+          0.5707248416608023,
+          0.8446251129177959
+        ],
+        [
+          0.5707248416608023,
+          0.979223125564589
+        ],
+        [
+          0.43842364532019706,
+          0.979223125564589
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          711,
+          1059
+        ],
+        [
+          711,
+          1031
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          663,
+          1023
+        ],
+        [
+          759,
+          1023
+        ],
+        [
+          759,
+          1063
+        ],
+        [
+          663,
+          1063
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          323,
+          925
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        702,
+        157
+      ],
+      "source_click_px": [
+        711,
+        965
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "The visible front stone steps end near original canvas bottom. Source bytes and original framing are retained; no invented crop/margin.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "xiangzhou": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_xiangzhou_city_v1.png",
+      "source_sha256": "0C580B50539F53188B002B8B95837061D04ED05A73C141C6E7A545809F190B2D",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        775,
+        875
+      ],
+      "source_doorstep_uv": [
+        0.5045572916666666,
+        0.8544921875
+      ],
+      "render_size_px": [
+        720,
+        480
+      ],
+      "threshold_kind": "open_gate",
+      "compound_id": "compound_xiangzhou",
+      "solid_polygons_source_px": [
+        [
+          [
+            35,
+            598
+          ],
+          [
+            370,
+            414
+          ],
+          [
+            1125,
+            414
+          ],
+          [
+            1480,
+            635
+          ],
+          [
+            1480,
+            760
+          ],
+          [
+            911,
+            829
+          ],
+          [
+            837,
+            829
+          ],
+          [
+            837,
+            728
+          ],
+          [
+            719,
+            728
+          ],
+          [
+            719,
+            829
+          ],
+          [
+            534,
+            840
+          ],
+          [
+            160,
+            766
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.022786458333333332,
+            0.583984375
+          ],
+          [
+            0.24088541666666666,
+            0.404296875
+          ],
+          [
+            0.732421875,
+            0.404296875
+          ],
+          [
+            0.9635416666666666,
+            0.6201171875
+          ],
+          [
+            0.9635416666666666,
+            0.7421875
+          ],
+          [
+            0.5930989583333334,
+            0.8095703125
+          ],
+          [
+            0.544921875,
+            0.8095703125
+          ],
+          [
+            0.544921875,
+            0.7109375
+          ],
+          [
+            0.4680989583333333,
+            0.7109375
+          ],
+          [
+            0.4680989583333333,
+            0.8095703125
+          ],
+          [
+            0.34765625,
+            0.8203125
+          ],
+          [
+            0.10416666666666667,
+            0.748046875
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          723,
+          824
+        ],
+        [
+          833,
+          824
+        ],
+        [
+          850,
+          936
+        ],
+        [
+          706,
+          936
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.470703125,
+          0.8046875
+        ],
+        [
+          0.5423177083333334,
+          0.8046875
+        ],
+        [
+          0.5533854166666666,
+          0.9140625
+        ],
+        [
+          0.4596354166666667,
+          0.9140625
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          775,
+          903
+        ],
+        [
+          775,
+          875
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          727,
+          867
+        ],
+        [
+          823,
+          867
+        ],
+        [
+          823,
+          907
+        ],
+        [
+          727,
+          907
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          488,
+          782
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        800,
+        568
+      ],
+      "source_click_px": [
+        778,
+        780
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Front gate leaves appear open. Keep actual narrow arch/fan-shaped forecourt clear while enclosing the city body.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "jinling": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/city_jinling_river_v1.png",
+      "source_sha256": "4A4CEA49ECA9AF9B81EE763758A8C6D25C69B76F4D5813C575FA05232F7C0755",
+      "source_size_px": [
+        1374,
+        1145
+      ],
+      "source_doorstep_px": [
+        680,
+        1070
+      ],
+      "source_doorstep_uv": [
+        0.4949053857350801,
+        0.9344978165938864
+      ],
+      "render_size_px": [
+        720,
+        600
+      ],
+      "threshold_kind": "closed_gate_front_step",
+      "compound_id": "compound_jinling",
+      "solid_polygons_source_px": [
+        [
+          [
+            103,
+            733
+          ],
+          [
+            444,
+            402
+          ],
+          [
+            1120,
+            405
+          ],
+          [
+            1300,
+            729
+          ],
+          [
+            1246,
+            909
+          ],
+          [
+            819,
+            1003
+          ],
+          [
+            765,
+            1003
+          ],
+          [
+            765,
+            975
+          ],
+          [
+            601,
+            975
+          ],
+          [
+            601,
+            1001
+          ],
+          [
+            355,
+            958
+          ],
+          [
+            162,
+            900
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.07496360989810771,
+            0.640174672489083
+          ],
+          [
+            0.3231441048034934,
+            0.35109170305676857
+          ],
+          [
+            0.8151382823871907,
+            0.3537117903930131
+          ],
+          [
+            0.9461426491994177,
+            0.6366812227074236
+          ],
+          [
+            0.9068413391557496,
+            0.7938864628820961
+          ],
+          [
+            0.5960698689956332,
+            0.8759825327510917
+          ],
+          [
+            0.5567685589519651,
+            0.8759825327510917
+          ],
+          [
+            0.5567685589519651,
+            0.851528384279476
+          ],
+          [
+            0.43740902474526927,
+            0.851528384279476
+          ],
+          [
+            0.43740902474526927,
+            0.874235807860262
+          ],
+          [
+            0.25836972343522563,
+            0.8366812227074236
+          ],
+          [
+            0.11790393013100436,
+            0.7860262008733624
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          614,
+          992
+        ],
+        [
+          746,
+          992
+        ],
+        [
+          746,
+          1120
+        ],
+        [
+          614,
+          1120
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.4468704512372635,
+          0.8663755458515284
+        ],
+        [
+          0.5429403202328966,
+          0.8663755458515284
+        ],
+        [
+          0.5429403202328966,
+          0.9781659388646288
+        ],
+        [
+          0.4468704512372635,
+          0.9781659388646288
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          680,
+          1098
+        ],
+        [
+          680,
+          1070
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          632,
+          1062
+        ],
+        [
+          728,
+          1062
+        ],
+        [
+          728,
+          1102
+        ],
+        [
+          632,
+          1102
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          446,
+          923
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        688,
+        754
+      ],
+      "source_click_px": [
+        680,
+        990
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "City front gate leaves are CLOSED; lawful approach stops on the exterior stair. Internal painted canals are not walk-support authority.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "bailu_ferry": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_bailu_ferry_v1.png",
+      "source_sha256": "49842BB82C79C386FD51DB483EBFAAE6F58BCCA650387B112C74891C1C3075E1",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        720,
+        925
+      ],
+      "source_doorstep_uv": [
+        0.46875,
+        0.9033203125
+      ],
+      "render_size_px": [
+        520,
+        346.6666666666667
+      ],
+      "threshold_kind": "dry_landing_to_deck",
+      "compound_id": "compound_bailu_ferry",
+      "solid_polygons_source_px": [
+        [
+          [
+            113,
+            425
+          ],
+          [
+            476,
+            465
+          ],
+          [
+            619,
+            590
+          ],
+          [
+            574,
+            615
+          ],
+          [
+            421,
+            538
+          ],
+          [
+            119,
+            494
+          ]
+        ],
+        [
+          [
+            483,
+            811
+          ],
+          [
+            561,
+            807
+          ],
+          [
+            599,
+            896
+          ],
+          [
+            549,
+            928
+          ],
+          [
+            448,
+            916
+          ]
+        ],
+        [
+          [
+            866,
+            676
+          ],
+          [
+            955,
+            700
+          ],
+          [
+            978,
+            854
+          ],
+          [
+            881,
+            910
+          ],
+          [
+            847,
+            830
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.07356770833333333,
+            0.4150390625
+          ],
+          [
+            0.3098958333333333,
+            0.4541015625
+          ],
+          [
+            0.4029947916666667,
+            0.576171875
+          ],
+          [
+            0.3736979166666667,
+            0.6005859375
+          ],
+          [
+            0.2740885416666667,
+            0.525390625
+          ],
+          [
+            0.07747395833333333,
+            0.482421875
+          ]
+        ],
+        [
+          [
+            0.314453125,
+            0.7919921875
+          ],
+          [
+            0.365234375,
+            0.7880859375
+          ],
+          [
+            0.3899739583333333,
+            0.875
+          ],
+          [
+            0.357421875,
+            0.90625
+          ],
+          [
+            0.2916666666666667,
+            0.89453125
+          ]
+        ],
+        [
+          [
+            0.5638020833333334,
+            0.66015625
+          ],
+          [
+            0.6217447916666666,
+            0.68359375
+          ],
+          [
+            0.63671875,
+            0.833984375
+          ],
+          [
+            0.5735677083333334,
+            0.888671875
+          ],
+          [
+            0.5514322916666666,
+            0.810546875
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          607,
+          820
+        ],
+        [
+          833,
+          820
+        ],
+        [
+          833,
+          984
+        ],
+        [
+          607,
+          984
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.3951822916666667,
+          0.80078125
+        ],
+        [
+          0.5423177083333334,
+          0.80078125
+        ],
+        [
+          0.5423177083333334,
+          0.9609375
+        ],
+        [
+          0.3951822916666667,
+          0.9609375
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          720,
+          953
+        ],
+        [
+          720,
+          925
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          672,
+          917
+        ],
+        [
+          768,
+          917
+        ],
+        [
+          768,
+          957
+        ],
+        [
+          672,
+          957
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          519,
+          851
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        360,
+        155
+      ],
+      "source_click_px": [
+        730,
+        865
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Land-side stone landing is the entrance. Boardwalk/piling solids are measured separately; the adjacent boat NEVER whites water.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "east_sea_port": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_east_sea_port_v1.png",
+      "source_sha256": "D3193ECBA1F28E7CB71E787D4A0BBF31C640BD4F300DEF51512991859825EDD1",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        600,
+        500
+      ],
+      "source_doorstep_uv": [
+        0.390625,
+        0.48828125
+      ],
+      "render_size_px": [
+        560,
+        373.3333333333333
+      ],
+      "threshold_kind": "gate_front_deck",
+      "compound_id": "compound_east_sea_port",
+      "solid_polygons_source_px": [
+        [
+          [
+            160,
+            367
+          ],
+          [
+            270,
+            348
+          ],
+          [
+            474,
+            409
+          ],
+          [
+            487,
+            469
+          ],
+          [
+            400,
+            487
+          ],
+          [
+            153,
+            455
+          ]
+        ],
+        [
+          [
+            613,
+            352
+          ],
+          [
+            804,
+            359
+          ],
+          [
+            843,
+            422
+          ],
+          [
+            744,
+            453
+          ],
+          [
+            666,
+            488
+          ],
+          [
+            643,
+            412
+          ]
+        ],
+        [
+          [
+            804,
+            532
+          ],
+          [
+            939,
+            583
+          ],
+          [
+            1005,
+            724
+          ],
+          [
+            947,
+            740
+          ],
+          [
+            834,
+            630
+          ]
+        ],
+        [
+          [
+            1188,
+            766
+          ],
+          [
+            1422,
+            847
+          ],
+          [
+            1442,
+            917
+          ],
+          [
+            1240,
+            839
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.10416666666666667,
+            0.3583984375
+          ],
+          [
+            0.17578125,
+            0.33984375
+          ],
+          [
+            0.30859375,
+            0.3994140625
+          ],
+          [
+            0.3170572916666667,
+            0.4580078125
+          ],
+          [
+            0.2604166666666667,
+            0.4755859375
+          ],
+          [
+            0.099609375,
+            0.4443359375
+          ]
+        ],
+        [
+          [
+            0.3990885416666667,
+            0.34375
+          ],
+          [
+            0.5234375,
+            0.3505859375
+          ],
+          [
+            0.548828125,
+            0.412109375
+          ],
+          [
+            0.484375,
+            0.4423828125
+          ],
+          [
+            0.43359375,
+            0.4765625
+          ],
+          [
+            0.4186197916666667,
+            0.40234375
+          ]
+        ],
+        [
+          [
+            0.5234375,
+            0.51953125
+          ],
+          [
+            0.611328125,
+            0.5693359375
+          ],
+          [
+            0.654296875,
+            0.70703125
+          ],
+          [
+            0.6165364583333334,
+            0.72265625
+          ],
+          [
+            0.54296875,
+            0.615234375
+          ]
+        ],
+        [
+          [
+            0.7734375,
+            0.748046875
+          ],
+          [
+            0.92578125,
+            0.8271484375
+          ],
+          [
+            0.9388020833333334,
+            0.8955078125
+          ],
+          [
+            0.8072916666666666,
+            0.8193359375
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          506,
+          435
+        ],
+        [
+          701,
+          435
+        ],
+        [
+          726,
+          526
+        ],
+        [
+          571,
+          588
+        ],
+        [
+          499,
+          550
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.3294270833333333,
+          0.4248046875
+        ],
+        [
+          0.4563802083333333,
+          0.4248046875
+        ],
+        [
+          0.47265625,
+          0.513671875
+        ],
+        [
+          0.3717447916666667,
+          0.57421875
+        ],
+        [
+          0.3248697916666667,
+          0.537109375
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          600,
+          528
+        ],
+        [
+          600,
+          500
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          552,
+          492
+        ],
+        [
+          648,
+          492
+        ],
+        [
+          648,
+          532
+        ],
+        [
+          552,
+          532
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          328,
+          448
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        430,
+        189
+      ],
+      "source_click_px": [
+        510,
+        405
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Original gate-front stone deck and its lower short steps define entry. The remote southeast wood pier is not the door or automatic navigation.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "mingwu": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/maps/world_map_v15/entities/sect_mingwu_compound_v2.png",
+      "source_sha256": "06111C60195AFD77B989B4230D416464C5FD51F237F04FC03456E142D915E947",
+      "source_size_px": [
+        1374,
+        1145
+      ],
+      "source_doorstep_px": [
+        688,
+        991
+      ],
+      "source_doorstep_uv": [
+        0.5007278020378457,
+        0.8655021834061135
+      ],
+      "render_size_px": [
+        560,
+        466.66666666666663
+      ],
+      "threshold_kind": "open_gate",
+      "compound_id": "compound_mingwu",
+      "solid_polygons_source_px": [
+        [
+          [
+            91,
+            500
+          ],
+          [
+            376,
+            438
+          ],
+          [
+            581,
+            540
+          ],
+          [
+            581,
+            895
+          ],
+          [
+            582,
+            938
+          ],
+          [
+            125,
+            955
+          ],
+          [
+            60,
+            892
+          ]
+        ],
+        [
+          [
+            794,
+            748
+          ],
+          [
+            1099,
+            464
+          ],
+          [
+            1291,
+            636
+          ],
+          [
+            1325,
+            917
+          ],
+          [
+            886,
+            942
+          ],
+          [
+            794,
+            940
+          ]
+        ],
+        [
+          [
+            376,
+            438
+          ],
+          [
+            1099,
+            464
+          ],
+          [
+            1099,
+            696
+          ],
+          [
+            591,
+            723
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.06622998544395925,
+            0.4366812227074236
+          ],
+          [
+            0.27365356622998543,
+            0.38253275109170304
+          ],
+          [
+            0.4228529839883552,
+            0.47161572052401746
+          ],
+          [
+            0.4228529839883552,
+            0.7816593886462883
+          ],
+          [
+            0.42358078602620086,
+            0.8192139737991266
+          ],
+          [
+            0.09097525473071325,
+            0.834061135371179
+          ],
+          [
+            0.043668122270742356,
+            0.7790393013100436
+          ]
+        ],
+        [
+          [
+            0.5778748180494906,
+            0.6532751091703056
+          ],
+          [
+            0.7998544395924309,
+            0.4052401746724891
+          ],
+          [
+            0.9395924308588064,
+            0.5554585152838428
+          ],
+          [
+            0.9643377001455604,
+            0.8008733624454148
+          ],
+          [
+            0.6448326055312955,
+            0.8227074235807861
+          ],
+          [
+            0.5778748180494906,
+            0.8209606986899564
+          ]
+        ],
+        [
+          [
+            0.27365356622998543,
+            0.38253275109170304
+          ],
+          [
+            0.7998544395924309,
+            0.4052401746724891
+          ],
+          [
+            0.7998544395924309,
+            0.6078602620087337
+          ],
+          [
+            0.43013100436681223,
+            0.6314410480349345
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          605,
+          916
+        ],
+        [
+          776,
+          916
+        ],
+        [
+          785,
+          1043
+        ],
+        [
+          602,
+          1043
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.4403202328966521,
+          0.8
+        ],
+        [
+          0.5647743813682679,
+          0.8
+        ],
+        [
+          0.5713245997088792,
+          0.9109170305676856
+        ],
+        [
+          0.438136826783115,
+          0.9109170305676856
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          688,
+          1019
+        ],
+        [
+          688,
+          991
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          640,
+          983
+        ],
+        [
+          736,
+          983
+        ],
+        [
+          736,
+          1023
+        ],
+        [
+          640,
+          1023
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          453,
+          902
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        427,
+        177
+      ],
+      "source_click_px": [
+        688,
+        880
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Tea garden screen walls/lodges are solid; central roof-gate stair and straight lower opening are independently accessible.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "lingyue": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/maps/world_map_v15/entities/sect_lingyue_compound_v2.png",
+      "source_sha256": "F606865BC66FF57202C72C05A15A61F65C85E3787E4013B29FAB3B043A6AC6CE",
+      "source_size_px": [
+        1312,
+        1199
+      ],
+      "source_doorstep_px": [
+        617,
+        1105
+      ],
+      "source_doorstep_uv": [
+        0.47027439024390244,
+        0.9216013344453712
+      ],
+      "render_size_px": [
+        620,
+        566.6006097560976
+      ],
+      "threshold_kind": "open_gate",
+      "compound_id": "compound_lingyue",
+      "solid_polygons_source_px": [
+        [
+          [
+            67,
+            509
+          ],
+          [
+            333,
+            520
+          ],
+          [
+            486,
+            747
+          ],
+          [
+            495,
+            952
+          ],
+          [
+            494,
+            1012
+          ],
+          [
+            332,
+            955
+          ],
+          [
+            167,
+            820
+          ],
+          [
+            47,
+            717
+          ]
+        ],
+        [
+          [
+            797,
+            737
+          ],
+          [
+            1148,
+            615
+          ],
+          [
+            1230,
+            749
+          ],
+          [
+            1242,
+            878
+          ],
+          [
+            887,
+            1034
+          ],
+          [
+            745,
+            1069
+          ],
+          [
+            735,
+            985
+          ],
+          [
+            748,
+            874
+          ]
+        ],
+        [
+          [
+            654,
+            528
+          ],
+          [
+            1137,
+            508
+          ],
+          [
+            1112,
+            615
+          ],
+          [
+            784,
+            664
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.051067073170731704,
+            0.4245204336947456
+          ],
+          [
+            0.2538109756097561,
+            0.43369474562135113
+          ],
+          [
+            0.3704268292682927,
+            0.6230191826522101
+          ],
+          [
+            0.37728658536585363,
+            0.7939949958298582
+          ],
+          [
+            0.37652439024390244,
+            0.8440366972477065
+          ],
+          [
+            0.2530487804878049,
+            0.7964970809007507
+          ],
+          [
+            0.12728658536585366,
+            0.6839032527105922
+          ],
+          [
+            0.035823170731707314,
+            0.5979983319432861
+          ]
+        ],
+        [
+          [
+            0.6074695121951219,
+            0.6146788990825688
+          ],
+          [
+            0.875,
+            0.5129274395329442
+          ],
+          [
+            0.9375,
+            0.6246872393661385
+          ],
+          [
+            0.9466463414634146,
+            0.7322768974145121
+          ],
+          [
+            0.6760670731707317,
+            0.8623853211009175
+          ],
+          [
+            0.5678353658536586,
+            0.8915763135946623
+          ],
+          [
+            0.5602134146341463,
+            0.8215179316096747
+          ],
+          [
+            0.5701219512195121,
+            0.7289407839866555
+          ]
+        ],
+        [
+          [
+            0.49847560975609756,
+            0.44036697247706424
+          ],
+          [
+            0.8666158536585366,
+            0.42368640533778146
+          ],
+          [
+            0.8475609756097561,
+            0.5129274395329442
+          ],
+          [
+            0.5975609756097561,
+            0.5537948290241869
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          551,
+          975
+        ],
+        [
+          685,
+          975
+        ],
+        [
+          701,
+          1169
+        ],
+        [
+          536,
+          1169
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.41996951219512196,
+          0.8131776480400333
+        ],
+        [
+          0.5221036585365854,
+          0.8131776480400333
+        ],
+        [
+          0.5342987804878049,
+          0.9749791492910759
+        ],
+        [
+          0.40853658536585363,
+          0.9749791492910759
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          617,
+          1133
+        ],
+        [
+          617,
+          1105
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          569,
+          1097
+        ],
+        [
+          665,
+          1097
+        ],
+        [
+          665,
+          1137
+        ],
+        [
+          569,
+          1137
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          424,
+          984
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        929,
+        152
+      ],
+      "source_click_px": [
+        617,
+        965
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "Raised bamboo buildings, pond and platform bases block; only the front stair/deck passage is entry. Painted pond remains nonwalkable without actual native support.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    },
+    "lieyun_valley": {
+      "status": "SOURCE_FOOTPRINT_AUTHORED_REQUIRES_ROOT_REVIEW",
+      "source": "res://art/modules/world_map_v13/landmark_lieyun_gorge_v1.png",
+      "source_sha256": "2447BE85686C9B65E2EDCB3C6376FB2DA68B9127D02D4F3BA5464FDA87920A85",
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "source_doorstep_px": [
+        760,
+        930
+      ],
+      "source_doorstep_uv": [
+        0.4947916666666667,
+        0.908203125
+      ],
+      "render_size_px": [
+        560,
+        373.3333333333333
+      ],
+      "threshold_kind": "trail_mouth",
+      "compound_id": "compound_lieyun_valley",
+      "solid_polygons_source_px": [
+        [
+          [
+            245,
+            693
+          ],
+          [
+            529,
+            423
+          ],
+          [
+            675,
+            611
+          ],
+          [
+            700,
+            894
+          ],
+          [
+            636,
+            970
+          ],
+          [
+            395,
+            944
+          ],
+          [
+            182,
+            894
+          ]
+        ],
+        [
+          [
+            858,
+            626
+          ],
+          [
+            1240,
+            442
+          ],
+          [
+            1341,
+            788
+          ],
+          [
+            1114,
+            908
+          ],
+          [
+            893,
+            970
+          ],
+          [
+            839,
+            884
+          ]
+        ]
+      ],
+      "solid_polygons_uv": [
+        [
+          [
+            0.15950520833333334,
+            0.6767578125
+          ],
+          [
+            0.3444010416666667,
+            0.4130859375
+          ],
+          [
+            0.439453125,
+            0.5966796875
+          ],
+          [
+            0.4557291666666667,
+            0.873046875
+          ],
+          [
+            0.4140625,
+            0.947265625
+          ],
+          [
+            0.2571614583333333,
+            0.921875
+          ],
+          [
+            0.11848958333333333,
+            0.873046875
+          ]
+        ],
+        [
+          [
+            0.55859375,
+            0.611328125
+          ],
+          [
+            0.8072916666666666,
+            0.431640625
+          ],
+          [
+            0.873046875,
+            0.76953125
+          ],
+          [
+            0.7252604166666666,
+            0.88671875
+          ],
+          [
+            0.5813802083333334,
+            0.947265625
+          ],
+          [
+            0.5462239583333334,
+            0.86328125
+          ]
+        ]
+      ],
+      "passage_polygon_source_px": [
+        [
+          683,
+          813
+        ],
+        [
+          834,
+          813
+        ],
+        [
+          843,
+          986
+        ],
+        [
+          683,
+          986
+        ]
+      ],
+      "passage_polygon_uv": [
+        [
+          0.4446614583333333,
+          0.7939453125
+        ],
+        [
+          0.54296875,
+          0.7939453125
+        ],
+        [
+          0.548828125,
+          0.962890625
+        ],
+        [
+          0.4446614583333333,
+          0.962890625
+        ]
+      ],
+      "passage_path_source_px": [
+        [
+          760,
+          958
+        ],
+        [
+          760,
+          930
+        ]
+      ],
+      "interaction_polygon_source_px": [
+        [
+          712,
+          922
+        ],
+        [
+          808,
+          922
+        ],
+        [
+          808,
+          962
+        ],
+        [
+          712,
+          962
+        ]
+      ],
+      "solid_ground_source_probes_px": [
+        [
+          509,
+          906
+        ]
+      ],
+      "roof_or_high_face_source_probe_px": [
+        1059,
+        343
+      ],
+      "source_click_px": [
+        760,
+        895
+      ],
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "physics_navigation_status": "NOT_RUN",
+      "world_fields_status": "PENDING_SAME_RF_PROJECTED_ASSEMBLY",
+      "notes": "There is no building door: a real visible gorge trail mouth, flanked by rock feet. Roof negative is not applicable; use high exposed rock-face click instead.",
+      "measurement_method": "Owner inspected original PNG; traced visible occupied-ground baselines and explicit stair/gate gap. Polygons are authored 2D physical footprints, not raw roof alpha bounds, RGB-background extraction, inferred native3D or prior PASS."
+    }
+  }
+}

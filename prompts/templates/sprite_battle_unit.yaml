@@ -1,0 +1,30 @@
+id: sprite_battle_unit
+description: 战斗编队单位全身精灵（单帧正式资源）
+quality: high
+size: "1024x1024"
+
+prompt_template: |
+  {style_anchor}
+
+  生成一张用于 2.5D 回合制 RPG 战斗编队的正式角色精灵图。
+  角色：{{character_name}}
+  外貌与服装：{{character_appearance}}
+  姿态：{{pose}}
+  战斗状态：{{combat_state}}
+  朝向：身体朝向画面右侧，略微侧身，适合放在战斗场景左下或右上编队。
+
+  画面要求：
+  - 1024×1024 正方形，角色全身完整入画，头发、武器、衣摆不能被裁切
+  - 角色占画面高度约 78%，脚下留出透明空间，不要地面
+  - 港式武侠漫画厚涂质感，墨线清晰，人物立体，衣物褶皱和材质清楚
+  - 纯色 #00ff00 背景，背景必须完全均匀，无阴影、无光晕、无地面、无纹理
+  - 不要文字、不要招式名、不要 UI、不要边框、不要水印
+  - 不要额外人物，不要多余武器，不要重复肢体
+
+  反向：{negative}
+
+variables:
+  character_name: "必填"
+  character_appearance: "必填"
+  pose: "必填"
+  combat_state: "待机/准备攻击/攻击/受击/胜利之一"

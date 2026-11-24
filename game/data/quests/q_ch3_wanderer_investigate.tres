@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch3_wanderer_investigate"
+title = "散修·五证互校"
+kind = 0
+desc_not_started = "你决定不入五派，以江湖客身份独立核对大会证词。"
+desc_in_progress = "对照五派口供与现场痕迹，找出各方都刻意略去的共同矛盾，再通过散修考校。"
+desc_completed = "你证明相似招式不足以指认真凶，并选择一门江湖武功作为新的研习方向。"
+tracker_hint = "武林大会 · 考校场"
+completion_triggers = Array[String](["flag_set:ch3_wanderer_complete"])
+reward_gold = 45
+reward_exp = 60

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShopDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/shop_def.gd" id="1_shop"]
+
+[resource]
+script = ExtResource("1_shop")
+shop_id = &"linxi_apothecary"
+display_name = "林西药铺"
+greeting = "伤药在这边。丹砂佩避毒，冰心玉护脉，都是戴在身上的药佩。"
+stock = Array[StringName]([&"healing_salve", &"healing_pill_minor", &"antidote_pill", &"inner_breath_pill", &"cinnabar_pendant", &"ice_heart_jade", &"clarity_dew"])
+sell_back_ratio = 0.4

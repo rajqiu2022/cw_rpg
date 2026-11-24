@@ -1,0 +1,46 @@
+{
+  "status": "SYSTEM_EXACT_THREE_ORIGINAL_FAMILY_DIRECT_ENTRY_BUILD_NOT_RUN",
+  "parent": {
+    "path": "res://build/luoyang_city_revision_20261024e_source01/runtime_ready03/Router_READY.gd",
+    "sha256": "908f2254539010557b7ebfdc1cb77f86f6a05b068d1386741268b39a9cadeb51"
+  },
+  "target": "res://scripts/autoload/scene_router.gd",
+  "candidate": {
+    "path": "res://build/luoyang_city_finish_20261025i_system01/family_direct_entry01_NOTREADY/Router_family_direct_exactEOL_CANDIDATE.gd",
+    "sha256": "e983a3b2b8c3cc031262100755c1f9e2f37c03a618d1a0a4cf268f8c6ccd3745",
+    "bytes": 110629
+  },
+  "hunks": [
+    {
+      "old": "\tif not OUTSKIRTS.biome_for(scene_id).is_empty() or LUOYANG_V3.owns_id(scene_id):\n\t\tgo_field_smart(scene_id)\n",
+      "new": "\tif not OUTSKIRTS.biome_for(scene_id).is_empty() or LUOYANG_V3.owns_id(scene_id) or scene_id in AP_QUARTERS.IDS or scene_id==ESTATE_AM.ID:\n\t\tgo_field_smart(scene_id)\n"
+    },
+    {
+      "old": "\tif LUOYANG_V3.owns_id(scene_id) and not OS.has_feature(\"web\"):\n\t\treturn _enqueue_public_city(scene_id,player_spawn,pending_action,spawn_version,local_spawn_version)\n\treturn _go_field_smart_prepared(scene_id,player_spawn,pending_action,spawn_version,local_spawn_version)\n",
+      "new": "\tif LUOYANG_V3.owns_id(scene_id) and not OS.has_feature(\"web\"):\n\t\treturn _enqueue_public_city(scene_id,player_spawn,pending_action,spawn_version,local_spawn_version)\n\t# Exact original Family direct-entry lifecycle. Portal joint preparation keeps\n\t# its existing private path; no source receipt/token is invented here.\n\tif scene_id in AP_QUARTERS.IDS:\n\t\tif not AP_QUARTERS.validation_begin(): return false\n\t\tvar direct_quarter: SceneScript=_load_field_scene_def(scene_id)\n\t\tif direct_quarter==null or not direct_quarter.is_walkable or not AP_QUARTERS.validation_finish(): return false\n\telif scene_id==ESTATE_AM.ID:\n\t\tif not ESTATE_AM.validation_begin(): return false\n\t\tvar direct_estate: SceneScript=_load_field_scene_def(scene_id)\n\t\tif direct_estate==null or not direct_estate.is_walkable or not ESTATE_AM.validation_finish(): return false\n\treturn _go_field_smart_prepared(scene_id,player_spawn,pending_action,spawn_version,local_spawn_version)\n"
+    },
+    {
+      "old": "\tvar target_scene := SCENE_FIELD_WALKABLE if LUOYANG_V3.is_v3(city_scene) else get_field_scene_path(scene_id)\n",
+      "new": "\tvar target_scene := SCENE_FIELD_WALKABLE if LUOYANG_V3.is_v3(city_scene) else get_field_scene_path(scene_id)\n\tif target_scene.is_empty(): return false\n"
+    },
+    {
+      "old": "\tif not OUTSKIRTS.biome_for(scene_id).is_empty() or LUOYANG_V3.owns_id(scene_id):\n\t\tgo_field_smart(scene_id, player_spawn)\n",
+      "new": "\tif not OUTSKIRTS.biome_for(scene_id).is_empty() or LUOYANG_V3.owns_id(scene_id) or scene_id in AP_QUARTERS.IDS or scene_id==ESTATE_AM.ID:\n\t\tgo_field_smart(scene_id, player_spawn)\n"
+    },
+    {
+      "old": "\tif scene_def != null and scene_def.is_walkable and ResourceLoader.exists(SCENE_FIELD_WALKABLE):\n\t\treturn SCENE_FIELD_WALKABLE\n\treturn SCENE_FIELD\n",
+      "new": "\tif scene_def != null and scene_def.is_walkable and ResourceLoader.exists(SCENE_FIELD_WALKABLE):\n\t\treturn SCENE_FIELD_WALKABLE\n\t# A declared native Family may never silently become a guessed flat classic scene.\n\tif scene_id in AP_QUARTERS.IDS or scene_id==ESTATE_AM.ID: return \"\"\n\treturn SCENE_FIELD\n"
+    }
+  ],
+  "diagnosis": "Original alias API already exists. Public direct Family cold entry never executes original validation_begin, leaving serial0 rejected by new original-owner ensure; get_field_scene_path incorrectly falls to classic, which guesses missing flat tres. Quarter/Garden and Estate share cause. Private prepared joint portal lifecycle already executes begin/final and is unchanged.",
+  "scope": "Exact original AP2+Estate1 only; public go_field/go_field_walkable delegate to smart. Original begin->whole matches/ensure->original FINAL before routing. All failed original gates reject and no classic fallback. No Scene/Layout/source/Weak/geometry/arrival/body/save changes; no current hash authority.",
+  "engine_calls": 0,
+  "Stage_calls": 0,
+  "canonical_writes": 0,
+  "whole_byte_forward_inverse_COMMAND_ACTUAL": true,
+  "original13CRLF_byte_positions_outside_hunks_preserved": true,
+  "old_bytes": 109646,
+  "old_CRLF_count": 13,
+  "candidate_CRLF_count": 13,
+  "normalized_draft_preserved_not_consumable": true
+}

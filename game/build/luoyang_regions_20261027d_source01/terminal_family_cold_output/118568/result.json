@@ -1,0 +1,232 @@
+{
+	"Field_instances": 0,
+	"PNG_pixel_decodes": 0,
+	"canonical_writes": 0,
+	"elapsed_ms": 2376,
+	"errors": [
+		{
+			"detail": "estate_an3_north_west_0a",
+			"error": "TERMINAL_PNG_DIMENSIONS_OR_ATLAS_NEEDS_EXPLICIT_ADAPTER",
+			"logical_id": "luoyang_estate_riverside_20261021ai"
+		}
+	],
+	"legacy_owner_prepare_calls": 0,
+	"module_sources": {
+		"res://build/luoyang_city_rectification_20261027d_system01/logical_terminal_projector03_market_task_space.gd": "819ecab34a6e5d4c57f4a5de562fcf710b63563aa22f85615a49bd779fae1d90",
+		"res://build/luoyang_city_rectification_20261027d_system01/pure_family_portal_projection.gd": "8562827857c99ec81658853c832844bfdd3e6171e3305e4da069a76e3043042c",
+		"res://build/luoyang_regions_20261027d_source01/region_compiler.gd": "55899bec695743c7229e19f6c156b03de467a7f147b9651a32e21e4e254b5e04",
+		"res://build/luoyang_regions_20261027d_source01/terminal_adapter04_family.gd": "be1624766f03b3a22cd6828f22ed08edbec7c4229787368db1928fe28c7e608f",
+		"res://build/luoyang_regions_20261027d_source01/terminal_family_cold_worker_NOTREADY.gd": "61ad9cb09643af24081354644dea1a763d382354a62f6286b5e44b4ac7771324"
+	},
+	"output_directory": "res://build/luoyang_regions_20261027d_source01/terminal_family_cold_output/118568",
+	"passed": false,
+	"rows": [
+		{
+			"actors": [
+				{
+					"default_active": true,
+					"foot_px": [
+						1170.0,
+						1125.0
+					],
+					"half_body": [
+						17.0,
+						15.0
+					],
+					"movement_mode": "idle",
+					"npc_id": "temple_cave_keeper_20261018t",
+					"patrol_axis": "(1.0, 0.0)",
+					"patrol_distance": 0,
+					"phase_exclusive_group": "",
+					"role": "守窟僧"
+				},
+				{
+					"default_active": true,
+					"foot_px": [
+						750.0,
+						1125.0
+					],
+					"half_body": [
+						17.0,
+						15.0
+					],
+					"movement_mode": "idle",
+					"npc_id": "temple_bell_keeper_20261018t",
+					"patrol_axis": "(1.0, 0.0)",
+					"patrol_distance": 0,
+					"phase_exclusive_group": "",
+					"role": "守钟僧"
+				}
+			],
+			"complete_owner_solids_typed_sequence": true,
+			"interactions": [
+				{
+					"action": "dialog:ch4_temple_ambush",
+					"default_active": true,
+					"foot_px": [
+						1150.0,
+						775.0
+					],
+					"id": "legacy_hotspot_0",
+					"size_px": [
+						211.199996948242,
+						153.599990844727
+					]
+				},
+				{
+					"action": "dialog:ch4_tunnel_intro",
+					"default_active": true,
+					"foot_px": [
+						1300.0,
+						537.5
+					],
+					"id": "legacy_hotspot_1",
+					"size_px": [
+						211.199996948242,
+						153.599990844727
+					]
+				},
+				{
+					"action": "dialog:ch4_heal_veteran_turnin",
+					"default_active": true,
+					"foot_px": [
+						212.5,
+						925.0
+					],
+					"id": "legacy_hotspot_2",
+					"size_px": [
+						211.199996948242,
+						153.599990844727
+					]
+				},
+				{
+					"action": "dialog:ch4_luoyang_paper_turnin",
+					"default_active": false,
+					"foot_px": [
+						625.0,
+						675.0
+					],
+					"id": "legacy_hotspot_3",
+					"size_px": [
+						211.199996948242,
+						153.599990844727
+					]
+				},
+				{
+					"action": "dialog:luoyang_layout_quest_20261018t/longmen_investigate",
+					"default_active": false,
+					"foot_px": [
+						475.0,
+						750.0
+					],
+					"id": "temple_longmen_investigate_20261018t",
+					"size_px": [
+						211.199996948242,
+						153.599990844727
+					]
+				},
+				{
+					"action": "dialog:luoyang_layout_quest_20261018t/baima_investigate",
+					"default_active": false,
+					"foot_px": [
+						1650.0,
+						837.5
+					],
+					"id": "temple_baima_investigate_20261018t",
+					"size_px": [
+						211.199996948242,
+						153.599990844727
+					]
+				}
+			],
+			"logical_id": "ch4_s4_ancient_temple",
+			"portals": [
+				{
+					"foot_px": [
+						212.5,
+						1157.5
+					],
+					"id": "legacy_portal_6",
+					"label": "返回洛阳街市",
+					"legacy_source_uv": [
+						0.11067708581686,
+						0.904296875
+					],
+					"target_pos": "(0.12, 0.75)",
+					"target_scene": "ch4_s3_luoyang_market"
+				},
+				{
+					"foot_px": [
+						1725.0,
+						1157.5
+					],
+					"id": "legacy_portal_7",
+					"label": "返回漕渠码头",
+					"legacy_source_uv": [
+						0.8984375,
+						0.904296875
+					],
+					"target_pos": "(0.12, 0.75)",
+					"target_scene": "ch4_s2_canal_docks"
+				}
+			],
+			"render_count": 29,
+			"solid_count": 31,
+			"source_resource_unmodified": true,
+			"source_sha256": {
+				"res://.godot/imported/ancient_bell_v1.png-990d0a27d407bb7d953f0121dcb4b4a1.ctex": "f33ad40561007326916854c7afebaf6b8a038ec2bbc1528ec34f05c969da4cd9",
+				"res://.godot/imported/bell_keeper_middleaged_portrait_v1.png-dfd804c7c980ca74f0d6add383a9d03f.ctex": "1ba3f20995a12381f8622aa193b7fc4d53761020c416e6b034fa92d134c7e5f0",
+				"res://.godot/imported/broken_buddha_v1.png-b1f527710486594c148d7eb11cd25749.ctex": "6ef528245ca8ea3735e5a7d99dc03430a080a214fcb558170ba3b6fabcbfa635",
+				"res://.godot/imported/broken_vermilion_wall_v1.png-1542df5108b6263654b02a07cc6814f4.ctex": "9202ae9e1c6e7f4f3333d60602f921376c835b0583244dd84bed840cc5a0ec55",
+				"res://.godot/imported/long_bench_v1.png-cd86fe53f4df55b35601d4ac0f853d00.ctex": "46e6431d4cada1184bef8276ea701b31e1fd23c00e52f09305b66cc19a05d86a",
+				"res://.godot/imported/low_incense_altar_v1.png-bcfb83639ebe279330fafb2624ef49b0.ctex": "04f93d2dccd1772a67b0187a26c3e17b6748efa7d9acb90d1b0eaefa761f3624",
+				"res://.godot/imported/npc_temple_gate_monk_idle_down_1f_v1.png-5a32dda14a63529913ae5db13222be4d.ctex": "caada462bfc70d556977b07873d86cd0ed9a959e8ac4fd6ab269632dfa5d25dc",
+				"res://.godot/imported/peony_bed.png-493ef3a84ac35b1ff0de71e75098066d.ctex": "de8327cebdf3275f3431685a31ac5a8e8264b71345cb6cccb43321853a35aa76",
+				"res://.godot/imported/reuse_bamboo0.png-fa998caf7a6946bcf9e36f81f0603bde.ctex": "0858f4577c802387a8dc906280888c2c79f6e5719d66a71b4612841aad73c9e0",
+				"res://.godot/imported/reuse_bamboo1.png-3d31bf6b33793688f76691fefaa78881.ctex": "085f88601c2dbc16b05723866d9e24ec7f401aa6ee785ba4739ebd9eae649509",
+				"res://.godot/imported/reuse_boulder0.png-927d88e245fc6f7fbdc29aa90f270c52.ctex": "66cbdb4c358c93caffbd973b53b29bdb6de02132119b210dafba928c150bbff6",
+				"res://.godot/imported/temple_hall_v1.png-d33e1d2d9182d6d9809f85fefa814fc2.ctex": "7c071cfa99eed3f58fcbd71ecf01215851f625edf3dddcf1d57be97fe0a39134",
+				"res://.godot/imported/v13_market_west_plot_wall.png-a714f8ecb52fec604c157c8669ecf318.ctex": "f486a9e848843aa564ea32cac7cf84b56b3c858237a25018de5b007c6951c6a9",
+				"res://.godot/imported/wing.png-932369d54e69cf52c193108f9d75057e.ctex": "106c4ebfe060baf491c4089481f075f855922165640ae666eac59708ad6a819a",
+				"res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png": "6268061eab18d2bf8c1ea0c13873f0d718feb82a119f00a67edf7c52bcb077ad",
+				"res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png.import": "55fdbb3fd6e7aa8e179635e028a5de7930d32c2213d03f0ddc943dd1aedd6732",
+				"res://art/characters/portraits/luoyang_city_finish_20261025i/bell_keeper_middleaged_portrait_v1.png": "db102e07a46e1115b78358636aeb1bf135f78bbc501a89c18124a5aa7d6a9108",
+				"res://art/characters/portraits/luoyang_city_finish_20261025i/bell_keeper_middleaged_portrait_v1.png.import": "566f5cdd4768d694f9e571285b75d15754bd9179de685a284b9446be47c2558b",
+				"res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png": "664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0",
+				"res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png.import": "43970f2cafe7e4bf3dc1c56876d94cc7166d7bc82690bd3baac9c96174a72144",
+				"res://art/modules/ancient_temple_assembled_20261016/ancient_bell_v1.png": "0c03b559c093fea233b8efcb01dd7f92177cdb10bf6818518776be9acdaaa0d6",
+				"res://art/modules/ancient_temple_assembled_20261016/ancient_bell_v1.png.import": "4db1c18b1e174f267a933b287f391f575263826615fda70d773fb74f14efff87",
+				"res://art/modules/ancient_temple_assembled_20261016/broken_buddha_v1.png": "4e6bb9f62b99f27f9c8c62b05b521d60fcf3cec723881488e27a7d84e57190da",
+				"res://art/modules/ancient_temple_assembled_20261016/broken_buddha_v1.png.import": "3357b777e57719af2296e2a9d95aeb22e3273013b6c78e782a1c53991b863f11",
+				"res://art/modules/ancient_temple_assembled_20261016/broken_vermilion_wall_v1.png": "4a87da86e62cdb8a9f59e2cca448db150e44945747be2f41aa14a8de08172447",
+				"res://art/modules/ancient_temple_assembled_20261016/broken_vermilion_wall_v1.png.import": "caaf811186a859dc65aadddb1b7ebb8dc3fdfffbb2fee102d5f2f9db425dd388",
+				"res://art/modules/ancient_temple_assembled_20261016/low_incense_altar_v1.png": "a3ff96b7e39de9186471178d6e4535fb970534cd1db72b44eb5212f3818faf3e",
+				"res://art/modules/ancient_temple_assembled_20261016/low_incense_altar_v1.png.import": "4f5a130508f44a0611ed73ca1ac050d913cf8bcf02dd2419abcbbd2140b19650",
+				"res://art/modules/ancient_temple_assembled_20261016/reuse_bamboo0.png": "73e6500323ee2037fbe1cd6897f28e8771ddae5771754668e8089fad78089998",
+				"res://art/modules/ancient_temple_assembled_20261016/reuse_bamboo0.png.import": "952fe26949faffce0feb68ff55ddff8c4d52055e56effb518fcd6b8d83bb0f16",
+				"res://art/modules/ancient_temple_assembled_20261016/reuse_bamboo1.png": "5e1fe641b7350f3967c8c65afcf65b396a241d6c0d68e796f2bcb2afee3eb403",
+				"res://art/modules/ancient_temple_assembled_20261016/reuse_bamboo1.png.import": "603ec2c90ebc75316ba83615a4eb7ee85a8390047509badf441a13d1c697120c",
+				"res://art/modules/ancient_temple_assembled_20261016/reuse_boulder0.png": "a9e030816202db255f317ac1832ed6c321851c0464ee243dd5bfeb194d7fa97f",
+				"res://art/modules/ancient_temple_assembled_20261016/reuse_boulder0.png.import": "45bc1372e3ff4285900b379966554598e1528a655aa80f88b3cef04408f40096",
+				"res://art/modules/ancient_temple_assembled_20261016/temple_hall_v1.png": "8868b0d665f7fc24dd117fe06c7b36a0cf7d95f835858bf6e780af249f7880cf",
+				"res://art/modules/ancient_temple_assembled_20261016/temple_hall_v1.png.import": "788c770093db3f2184abd04e241e2a08e0238a237582ce291ccb7ee03cf1c82f",
+				"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png": "41759460141f9a6ba742d5df9d2de3fce10ba040af5a86fa8f31bd540877108e",
+				"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png.import": "0ac61d2725a0731b2e7dddcb897da5169b4fe15aa55bdd47b0cf3f90f15dd87e",
+				"res://art/modules/luoyang_estate_components_20261021am/peony_bed.png": "eaf4125dcb4288852427a036ef90f31b505965b60eef4fab148f7fdc0058dc4c",
+				"res://art/modules/luoyang_estate_components_20261021am/peony_bed.png.import": "75fcb6461c82db398021d09cecd46286620ed0666921c8c8351f9cad8411e9aa",
+				"res://art/modules/luoyang_estate_components_20261021am/wing.png": "7e1783a9ea26ad9aa4a09c0cf5e0bf966645ee81cbe3ab6ef5d7e9a4880fee75",
+				"res://art/modules/luoyang_estate_components_20261021am/wing.png.import": "19d6ab9f4754449bd2ff41d06832780b33078884c7a68e2423d38941ff9c4252",
+				"res://build/luoyang_city_finish_20261025i_source01/author_temple_source_compiled03_NOTREADY.json": "0a8ab1db61b0f8109b26c2b82921be17869278a4f02934b96c47230775e102a3",
+				"res://build/luoyang_seven_fields_layout_20261026c_system01/ROOT_READY01/output/84060/ch4_s4_ancient_temple/payload.bin": "7aec080562af1334982979f5769327e85d0e35ffa508e1fc4b4e3b070461d3bb",
+				"res://data/maps/luoyang_temple_layout_quest_20261018t/layout.tres": "2138694bfede79cde8223c0101003bb7885225ae9ea24a66f584a8f9072f1448",
+				"res://data/scenes/luoyang_temple_layout_quest_20261018t/temple.tres": "81fbe0934e11fc6cbab21855e97b7bd956eee52f8b532e445693349786ffd4d9"
+			},
+			"terminal": {
+				"bytes": 76432,
+				"path": "res://build/luoyang_regions_20261027d_source01/terminal_family_cold_output/118568/ch4_s4_ancient_temple_terminal.bin",
+				"sha256": "acd26a8df65543a71c6eba28504570890452837f01f9340b9ca09487599df876"
+			}
+		}
+	],
+	"runtime_admission": false
+}

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "赵思颖"
+text = "城外老卒旧伤复发，寻常止血药压不住。古寺背阴石缝里有一味石菖蒲。"
+accept_quest = &"q_ch4_side_01_heal_veteran"
+set_flags = Array[Dictionary]([{"key":"heal_veteran_started", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_heal_veteran_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

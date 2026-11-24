@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="茗雾机关监守"
+text="鼓点和雾阀只差一声令。你拆一处，我们便在另一处先开会盟。"
+on_end="battle_group_then:ch8_mechanism_warden,ch8_mist_valve_keeper:ch8_mechanism_victory"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_mechanism_prebattle"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

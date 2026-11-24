@@ -1,0 +1,59 @@
+{
+  "scope": "local parsing and candidate prompt contract only; no generation or runtime verification",
+  "status": "PROMPT_READY_PORTRAIT_FIRST",
+  "generation_called": false,
+  "generator_cli_called": false,
+  "network_called": false,
+  "engine_called": false,
+  "production_data_modified": false,
+  "npc_id": "luoyang_paper_artisan_20261016",
+  "identity_source": {
+    "path": "game/data/luoyang_city_tasks_20261016/overlay.json",
+    "sha256": "9E654F67BE48A8DA93232E0F2B66E109CDD769577FB53545F72F81885E90A3BB",
+    "existing_name": "老纸匠",
+    "specific_age_or_wardrobe_canon_found": false,
+    "visual_design_candidate": "约58岁，灰白鬓短须、木簪、褪靛蓝短衫与米灰围裳"
+  },
+  "templates": [
+    {
+      "path": "prompts/templates/luoyang_resident_paperworker_20261019v_portrait.yaml",
+      "sha256": "DF981C896A15E7CBE1466F96BCD9C8DFD1334789353D9ABDB3C010E8999410C7",
+      "format": "JSON-compatible YAML",
+      "parse_valid": true,
+      "unresolved_template_variables": 0,
+      "prompt_chars": 2625,
+      "reference_exists": true,
+      "reference_visually_inspected": true,
+      "model": null,
+      "provider": null,
+      "attempt_limit": 1,
+      "auto_retry": false,
+      "transparent_background": true
+    },
+    {
+      "path": "prompts/templates/luoyang_resident_paperworker_20261019v_idle4f.yaml",
+      "sha256": "EE3AFE00B1F37938B93B6AFAB1D547EA61423756117910C426C44B2143C58DC6",
+      "format": "JSON-compatible YAML",
+      "parse_valid": true,
+      "unresolved_template_variables": 0,
+      "prompt_chars": 2929,
+      "reference_exists": false,
+      "reference_requirement": "MUST use actual saved, inspected and accepted independent portrait candidate; planned path is not a generated-file assertion",
+      "blocked_before_portrait_acceptance": true,
+      "model": null,
+      "provider": null,
+      "attempt_limit": 1,
+      "auto_retry": false,
+      "transparent_background": true,
+      "runtime_admission": false
+    }
+  ],
+  "not_granted": [
+    "generated-image quality",
+    "actual alpha or output dimensions",
+    "same-person identity across actual outputs",
+    "640x160 processed strip",
+    "Godot import or canonical binding",
+    "NPC/dialogue/voice/quest runtime acceptance"
+  ]
+}

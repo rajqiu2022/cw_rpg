@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="冷孤云"
+text="三套旗令分别命令不同门派在同一时刻“反击”，鼓点又把第一击嫁给另一方。烟筒会遮住真正出手者——这就是会盟互杀局。"
+set_flags=Array[Dictionary]([{"key":"ch8_false_order_matrix_checked","value":true},{"key":"ch8_mechanism_gallery_open","value":true}])
+accept_quest=&"q_ch8_main_04_drum_mist_mechanisms"
+complete_quest=&"q_ch8_main_03_false_order_matrix"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_false_order_matrix"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

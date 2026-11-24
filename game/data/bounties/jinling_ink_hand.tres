@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"jinling_ink_hand"
+display_name = "墨手温迟"
+title = "伪印夺契"
+description = "擅造官印、篡改田契，败露后连伤追吏。内劲阴柔，随从皆藏毒针。"
+board_city = &"jinling"
+recommended_min_level = 11
+recommended_max_level = 13
+enemy_ids = Array[StringName]([&"bounty_ink_hand", &"reed_assassin", &"reed_assassin"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_jinling_reed_marsh","label":"江南芦荡 · 旧纸坊","pos":Vector2(0.84,0.38)},{"scene_id":&"ch7_s1_lieyun_valley_ferry","label":"烈云峡谷 · 水寨暗仓","pos":Vector2(0.66,0.56)}])
+reward_reputation = 38
+reward_training = 84
+reward_exp = 190
+reward_gold = 220
+reward_items = Array[Dictionary]([{"item_id":&"qingming_sword","count":1},{"item_id":&"herb_bundle","count":4}])
+field_sprite_path = "res://art/characters/npc_qi_yunsheng_idle_down_4f_v1_runtime.png"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_12_truth_disclosure"
+title="旧案见光"
+kind=0
+desc_not_started="苏雾笙已被控制，亲令、死籍、烈云药册、五派旧卷和存活证词需要进入正式公示。"
+desc_in_progress="返回会盟祭台，根据第七章既定的公开策略，决定已核验旧案、证人身份和危险武学分别公开到什么范围。"
+desc_completed="旧案公示与责任清单已经形成多方副本，任何一派都不能再独占、删改或以复仇名义替代审理。"
+tracker_hint="茗雾山庄 · 会盟祭台"
+completion_triggers=Array[String](["flag_set:ch8_truth_disclosure_settled"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=300

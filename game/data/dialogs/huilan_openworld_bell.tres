@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "守山弟子"
+text = "这口旧钟逆风便乱响。门中人总想拉紧钟绳，越拉，钟舌撞得越凶。你若能让它停稳，便替我省下半日。"
+on_end = "next:choice"
+
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("2")
+node_id = &"choice"
+speaker = "冷孤云"
+text = "钟身向东摆，钟舌正往西追。此刻该动哪一处？"
+choices = Array[Dictionary]([{"text":"把钟身死死拉回中央","next":"wrong"},{"text":"顺着东摆放绳，再借钟舌回摆收绳","next":"right"},{"text":"立刻向西猛拽钟舌","next":"wrong"}])
+
+[sub_resource type="Resource" id="wrong"]
+script = ExtResource("2")
+node_id = &"wrong"
+speaker = "守山弟子"
+text = "两股力正好撞在一处，响得更凶。先顺一程，再借回摆。"
+on_end = "next:choice"
+
+[sub_resource type="Resource" id="right"]
+script = ExtResource("2")
+node_id = &"right"
+speaker = "守山弟子"
+text = "停了。你不是消掉风力，只把钟身与钟舌的来势换了先后。这个‘逆’字，比蛮力难学。"
+set_flags = Array[Dictionary]([{"key":"huilan_bell_counterforce_understood","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"huilan_openworld_bell"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"),SubResource("choice"),SubResource("wrong"),SubResource("right")])

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+enemy_id = &"jinling_reed_tiger"
+display_name = "芦林斑虎"
+battle_actor_path = "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_01.png"
+battle_actor_scale = 1.0
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_01.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_02.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_03.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_01.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_02.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_03.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_01.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_02.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_03.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_01.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_02.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_03.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_01.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_02.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_03.png", "res://art/sprites/battle/animal_v1_20261012/tiger/tiger_defeat_04.png")
+attack_sfx_path = "res://art/audio/animals/sfx_tiger_attack_20261110.wav"
+hit_sfx_path = "res://art/audio/animals/sfx_tiger_hit_20261110.wav"
+level = 10
+max_hp = 650
+max_mp = 0
+attack = 80
+defense = 19
+speed = 19
+skill_ids = Array[StringName]([&"basic_attack", &"animal_tiger_pounce"])
+aggression = 0.62
+drop_gold_min = 10
+drop_gold_max = 20
+drop_exp = 89

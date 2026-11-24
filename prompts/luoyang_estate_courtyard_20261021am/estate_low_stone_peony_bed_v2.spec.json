@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "task_id": "luoyang_estate_courtyard_20261021am_low_stone_peony_bed_v2",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "use_case": "production-game-asset-candidate",
+  "transparent_background": true,
+  "reference_images": [],
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "attempt_budget": 1,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "raw_output_path": "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_peony_bed_v2.png",
+  "raw_metadata_path": "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_peony_bed_v2.meta.json",
+  "measurement_contract": {
+    "mode": "RGBA",
+    "complete_A1_bbox_required": true,
+    "minimum_true_transparent_margin_each_side_fraction": 0.15,
+    "target_complete_A1_width_to_height_range": [2.2, 2.8],
+    "target_world_complete_A1_width_px": [280, 320],
+    "target_world_complete_A1_height_px": [110, 160],
+    "world_target_basis": "complete_A1_bbox, not transparent canvas",
+    "uniform_scale_formula": "world_complete_A1_width / source_complete_A1_width",
+    "uniform_scale_only": true,
+    "all_weak_alpha_is_part_of_the_subject_envelope": true,
+    "no_threshold_erasure_or_local_cleanup_authorized": true,
+    "solid_semantics": "one low rectangular curb body; derive a conservative foot body from actual stone-foot pixels only after generation",
+    "placement_intent": {
+      "planned_group_centers_px": [[1110, 1030], [1962, 1030]],
+      "protected_central_axis_x_px": [1344, 1728],
+      "rule": "both instances stay clear of hall, wing, corridor, and gate apertures; actual source ground anchor and solid remain PENDING measurement"
+    }
+  },
+  "admission_conditions": [
+    "one connected low masonry bed with all four curb sides readable",
+    "multiple natural peony leaf and blossom clusters; not a grass tuft, lone bush, or rural mound",
+    "no backdrop, halo, scenery, building, sign, furniture, person, or tall occluder",
+    "actual A1 envelope, conservative ground anchor, and curb foot are measured before placement",
+    "one actual whole-courtyard native-sprite preview is reviewed before art or formal credit"
+  ],
+  "scope_boundary": "Root performs at most one built-in generation call for this asset. No reference image, CLI, network fallback, automatic edit, local image cleanup, import, engine run, or formal deployment is authorized by this spec."
+}

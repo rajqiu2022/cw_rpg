@@ -2,6 +2,8 @@ extends Control
 
 signal closed
 
+const FORMAL_CHOICE_SCENE := preload("res://scenes/ui/formal_choice_menu.tscn")
+
 const UI_THEME := preload("res://scripts/ui/wuxia_theme.gd")
 const SKILL_DIR := "res://data/skills/"
 const ATTR_ICON_ATLAS_PATH := "res://art/ui/icon/ui_cold_wuxia_attribute_icons_v1.png"
@@ -12,13 +14,17 @@ const ATTR_ICON_REGIONS := {
 	"悟性": Rect2(794, 55, 195, 203),
 	"防御": Rect2(38, 293, 202, 207),
 }
+const QUALITY_COLORS: Array[Color] = [
+	Color("d6dadd"), Color("67c587"), Color("6aa9e9"), Color("b58ae6"), Color("e6a14f")
+]
+const PANEL_BG_INSET := 15.0
 
 # Runtime overlay coordinates are kept here for quick visual tuning against panel_bg_v3.
-const RUNTIME_FACTION_CENTER_X := 206.0
-const RUNTIME_FACTION_CREST_SIZE := 92.0
-const RUNTIME_FILTER_X := 136.0
-const RUNTIME_LIST_X := 148.0
-const RUNTIME_LIST_WIDTH := 200.0
+const RUNTIME_FACTION_CENTER_X := 126.0
+const RUNTIME_FACTION_CREST_SIZE := 96.0
+const RUNTIME_FILTER_X := 50.0
+const RUNTIME_LIST_X := 50.0
+const RUNTIME_LIST_WIDTH := 285.0
 
 @onready var skill_list: VBoxContainer = %SkillList
 @onready var detail: RichTextLabel = %Detail
@@ -28,6 +34,8 @@ var _skills: Array[Skill] = []
 var _attr_icon_atlas: Texture2D = null
 var _filter_mode := "all"
 var _school_filter: String = "all"
+var _school_filter_button: Button
+var _school_choice_menu: FormalChoiceMenu
 var _selected_skill_id: StringName = &""
 var _quick_skill_id: StringName = &""
 var _summary_label: Label = null
@@ -41,21 +49,35 @@ var _runtime_detail: RichTextLabel = null
 var _runtime_selected_id: StringName = &""
 var _runtime_group: String = "move"
 var _runtime_route: String = "all"
-var _runtime_insight: int = 120
 var _runtime_count_label: Label = null
-var _runtime_resource_label: Label = null
+var _runtime_total_resource_label: Label = null
+var _runtime_available_resource_label: Label = null
 var _runtime_name_label: Label = null
 var _runtime_meta_label: Label = null
 var _runtime_power_label: Label = null
+var _runtime_stat_title_labels: Array[Label] = []
+var _runtime_stat_value_labels: Array[Label] = []
 var _runtime_upgrade_label: Label = null
-var _runtime_cost_label: Label = null
+var _runtime_cost_label: RichTextLabel = null
 var _runtime_upgrade_btn: Button = null
+var _runtime_equip_btn: Button = null
 var _runtime_primary_buttons: Array[Button] = []
 var _runtime_primary_text_images: Array[TextureRect] = []
 var _runtime_category_buttons: Array[Button] = []
 
 
 func _ready() -> void:
+	GameState.ultimate_mastered.connect(_on_ultimate_mastered)
+	_school_choice_menu = FORMAL_CHOICE_SCENE.instantiate() as FormalChoiceMenu
+	_school_choice_menu.name = "SchoolChoiceMenu"
+	_school_choice_menu.item_selected.connect(_set_school_filter)
+	add_child(_school_choice_menu)
+	if not EventBus.skill_learned.is_connected(_on_runtime_skill_learned):
+		EventBus.skill_learned.connect(_on_runtime_skill_learned)
+	if not EventBus.training_points_changed.is_connected(_on_training_points_changed):
+		EventBus.training_points_changed.connect(_on_training_points_changed)
+	if not EventBus.equipment_changed.is_connected(_on_equipment_changed):
+		EventBus.equipment_changed.connect(_on_equipment_changed)
 	if ResourceLoader.exists(ATTR_ICON_ATLAS_PATH):
 		_attr_icon_atlas = load(ATTR_ICON_ATLAS_PATH)
 	_load_skills()
@@ -65,10 +87,30 @@ func _ready() -> void:
 
 func open() -> void:
 	visible = true
+	_load_skills()
 	_refresh_runtime_v2()
 
 
+func _on_runtime_skill_learned(_skill_id: StringName, _display_name: String) -> void:
+	_load_skills()
+	if visible:
+		_refresh_runtime_v2()
+
+
+func _on_training_points_changed(_total: int, _available: int) -> void:
+	if visible:
+		_refresh_runtime_v2()
+
+
+func _on_equipment_changed(_slot: int, _item_id: StringName) -> void:
+	if visible:
+		_refresh_runtime_v2()
+
+
 func close() -> void:
+	var flourish := get_node_or_null("MasteryFlourish")
+	if flourish != null:
+		flourish.queue_free()
 	visible = false
 	emit_signal("closed")
 
@@ -116,25 +158,47 @@ func _apply_toolbar_style(toolbar: HBoxContainer) -> void:
 	_attach_filter_button(toolbar, "BtnSupport", "support", "辅助")
 	_attach_filter_button(toolbar, "BtnDefense", "defense", "防御")
 
-	var sf: OptionButton = toolbar.get_node_or_null("SchoolFilter") as OptionButton
-	if sf != null:
-		sf.add_item("全部流派", 0)
-		sf.set_item_metadata(0, "all")
-		var idx: int = 1
-		for school in ["linxi", "gufeng", "huashan", "lingyue", "mingwu", "wudang", "generic"]:
-			sf.add_item(school, idx)
-			sf.set_item_metadata(idx, school)
-			idx += 1
-		sf.item_selected.connect(func(i: int):
-			_school_filter = str(sf.get_item_metadata(i))
-			_refresh_list()
-		)
+	if _school_filter_button == null:
+		var insert_index := maxi(0, toolbar.get_child_count() - 1)
+		_school_filter_button = Button.new()
+		_school_filter_button.name = "SchoolFilterButton"
+		_school_filter_button.custom_minimum_size = Vector2(150, 36)
+		_school_filter_button.text = "全部流派"
+		_school_filter_button.tooltip_text = "筛选流派"
+		toolbar.add_child(_school_filter_button)
+		toolbar.move_child(_school_filter_button, insert_index)
+		_apply_btn_textures(_school_filter_button, "tab")
+		_school_filter_button.pressed.connect(_open_school_choice_menu)
 
 	_summary_label = toolbar.get_node_or_null("Summary") as Label
 	if _summary_label != null:
 		UI_THEME.style_label(_summary_label, 16, UI_THEME.MUTED, false)
 
 	_update_filter_highlights()
+
+
+func _open_school_choice_menu() -> void:
+	if _school_choice_menu == null:
+		return
+	var names := {
+		"all": "全部流派", "linxi": "林西", "gufeng": "孤峰", "huashan": "华山",
+		"lingyue": "凌月", "mingwu": "茗雾", "wudang": "武当", "generic": "通用",
+	}
+	var options: Array[Dictionary] = []
+	for school: String in ["all", "linxi", "gufeng", "huashan", "lingyue", "mingwu", "wudang", "generic"]:
+		options.append({"id": StringName(school), "label": names[school]})
+	_school_choice_menu.show_choices("选择流派", options, StringName(_school_filter))
+
+
+func _set_school_filter(school_id: StringName) -> void:
+	_school_filter = String(school_id)
+	var names := {
+		"all": "全部流派", "linxi": "林西", "gufeng": "孤峰", "huashan": "华山",
+		"lingyue": "凌月", "mingwu": "茗雾", "wudang": "武当", "generic": "通用",
+	}
+	if _school_filter_button != null:
+		_set_button_caption(_school_filter_button, names.get(_school_filter, "全部流派"))
+	_refresh_list()
 
 
 func _update_filter_highlights() -> void:
@@ -217,7 +281,9 @@ func _set_filter(mode: String) -> void:
 func _apply_visual_style() -> void:
 	var dim: ColorRect = get_node_or_null("Dim") as ColorRect
 	if dim != null:
-		dim.color = Color(0.005, 0.010, 0.016, 0.58)
+		# Keep the field readable around the generated panel; the old heavy veil
+		# made the narrow outer area read as an extra black border.
+		dim.color = Color(0.005, 0.010, 0.016, 0.34)
 	var panel: PanelContainer = get_node_or_null("Panel") as PanelContainer
 	if panel != null:
 		# Keep the interactive layout inside the plain 1280x720 frame.  The
@@ -330,20 +396,29 @@ func _make_skill_row(skill: Skill) -> Control:
 		row.add_child(icon)
 	var btn: Button = Button.new()
 	var mastery := GameState.get_skill_mastery(skill.skill_id)
-	var total_power := skill.power + mastery * 2
-	var atk := _player_effective_attack()
-	var dmg_low := int(atk * total_power * 0.85 / 100.0)
-	var dmg_high := int(atk * total_power * 1.15 / 100.0)
-	btn.text = "%s  ·  %s\n⚔ %d-%d  · 消耗 %d · %d%%" % [
-		skill.display_name,
-		_kind_text(skill.kind),
-		dmg_low, dmg_high,
-		skill.mp_cost, total_power,
-	]
+	var total_scaling := _skill_attack_scaling(skill, mastery)
+	var atk := _player_effective_attack(skill)
+	if _uses_damage_formula(skill):
+		var damage_range := BattleFormula.estimate_damage_range(atk, skill.fixed_damage, total_scaling)
+		btn.text = "%s  ·  %s\n⚔ %d-%d  · 固定%d + 攻击×%d%%" % [
+			skill.display_name, _kind_text(skill.kind),
+			damage_range.x, damage_range.y, skill.fixed_damage, total_scaling,
+		]
+	elif skill.kind == Skill.Kind.HEAL:
+		btn.text = "%s  ·  治疗\n♥ 恢复约 %d  · 固定%d + 内劲×4" % [
+			skill.display_name, _skill_effect_preview(skill), skill.get_effect_value(),
+		]
+	else:
+		btn.text = "%s  ·  %s\n◆ %s" % [
+			skill.display_name, _kind_text(skill.kind), _non_damage_effect_text(skill),
+		]
 	btn.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	btn.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	btn.custom_minimum_size = Vector2(0, 74)
 	UI_THEME.style_button(btn, 16, _kind_accent(skill))
+	var quality_color := QUALITY_COLORS[clampi(skill.quality, 0, QUALITY_COLORS.size() - 1)]
+	btn.add_theme_color_override("font_color", quality_color)
+	btn.add_theme_color_override("font_hover_color", quality_color.lightened(0.16))
 	var captured_id: StringName = skill.skill_id
 	btn.pressed.connect(func(): _select_skill(captured_id))
 	row.add_child(btn)
@@ -364,7 +439,7 @@ func _show_selected() -> void:
 
 
 func _show_empty() -> void:
-	detail.text = "[b]武学[/b]\n\n当前分类下暂无招式。"
+	detail.text = "武学\n\n当前分类下暂无招式。"
 	if _quick_btn != null:
 		_quick_btn.disabled = true
 	if _practice_btn != null:
@@ -373,10 +448,17 @@ func _show_empty() -> void:
 
 func _show_skill(skill: Skill) -> void:
 	var mastery := GameState.get_skill_mastery(skill.skill_id)
-	var total_power := skill.power + mastery * 2
-	var atk := _player_effective_attack()
-	var dmg_low := int(atk * total_power * 0.85 / 100.0)
-	var dmg_high := int(atk * total_power * 1.15 / 100.0)
+	var is_mind := _runtime_is_mind(skill)
+	var total_scaling := _skill_attack_scaling(skill, mastery)
+	var atk := _player_effective_attack(skill)
+	var combat_line := ""
+	if _uses_damage_formula(skill):
+		var damage_range := BattleFormula.estimate_damage_range(atk, skill.fixed_damage, total_scaling)
+		combat_line = "[color=#ffb14a]伤害：%d - %d[/color]（固定 %d + 当前攻击力 %d × %d%%）" % [damage_range.x, damage_range.y, skill.fixed_damage, atk, total_scaling]
+	elif skill.kind == Skill.Kind.HEAL:
+		combat_line = "[color=#72d2a6]治疗：约 %d[/color]（固定 %d + 当前内劲 %d × 4）" % [_skill_effect_preview(skill), skill.get_effect_value(), _player_inner_power()]
+	else:
+		combat_line = "[color=#9fd3d0]效果：%s[/color]" % _non_damage_effect_text(skill)
 
 	if _quick_btn != null:
 		_quick_btn.disabled = false
@@ -385,16 +467,38 @@ func _show_skill(skill: Skill) -> void:
 		else:
 			_set_button_caption(_quick_btn, "设为快捷招式")
 	if _practice_btn != null:
-		_practice_btn.disabled = mastery >= 3
-		_set_button_caption(_practice_btn, "研读完成" if mastery >= 3 else "研读招式 (%d/3)" % mastery)
-	detail.text = "[b]%s[/b]\n[color=#9fd3d0]%s · %s · 熟练 %d/3（威力 +%d%%）[/color]\n\n[b]战斗参数[/b]\n[color=#ffb14a]伤害：%d - %d[/color]（当前攻击力 %d × 威力 %d%%）\n目标：%s\n内力消耗：%d\n攻击段数：%d\n动画：%s\n\n[b]招式说明[/b]\n%s\n\n[b]使用建议[/b]\n%s" % [
+		var required := skill.get_required_insight()
+		var cost := GameState.get_skill_practice_cost(skill.skill_id)
+		var insight_ok := GameState.get_effective_insight() >= required
+		var self_cap := GameState.get_skill_practice_limit(skill)
+		_practice_btn.disabled = mastery >= self_cap or not insight_ok or GameState.training_points_available < cost
+		_set_button_caption(_practice_btn, _practice_lock_text(skill) if mastery < skill.get_max_mastery() and mastery >= self_cap else ("研读完成" if mastery >= self_cap else "研读%s · %d 阅历" % ["心法" if is_mind else "招式", cost]))
+	var quality_hex := QUALITY_COLORS[clampi(skill.quality, 0, QUALITY_COLORS.size() - 1)].to_html(false)
+	if is_mind:
+		detail.text = "[color=#%s]%s[/color]\n[color=#9fd3d0]心法 · 境界 %d/%d[/color]\n悟性要求：%d（当前 %d） · 下次研读：%s\n\n常驻功效\n%s\n\n主动运功\n%s\n\n心法说明\n%s" % [
+			quality_hex,
+			skill.display_name,
+			skill.get_display_level(mastery),
+			skill.max_level,
+			skill.get_required_insight(),
+			GameState.get_effective_insight(),
+			"已完成" if mastery >= skill.get_max_mastery() else (_practice_lock_text(skill) if mastery >= GameState.get_skill_practice_limit(skill) else "%d 阅历" % GameState.get_skill_practice_cost(skill.skill_id)),
+			_passive_effect_text(skill, mastery),
+			_active_effect_text(skill, mastery),
+			skill.description,
+		]
+		return
+	detail.text = "[color=#%s]%s[/color]\n[color=#9fd3d0]%s · %s · 境界 %d/%d[/color]\n悟性要求：%d（当前 %d） · 下次研读：%s\n\n战斗参数\n%s\n目标：%s\n内力消耗：%d\n攻击段数：%d\n动画：%s\n\n招式说明\n%s\n\n使用建议\n%s" % [
+		quality_hex,
 		skill.display_name,
 		_kind_text(skill.kind),
 		_quick_text(skill),
-		mastery,
-		mastery * 2,
-		dmg_low, dmg_high,
-		atk, total_power,
+		skill.get_display_level(mastery),
+		skill.max_level,
+		skill.get_required_insight(),
+		GameState.get_effective_insight(),
+		"已完成" if mastery >= skill.get_max_mastery() else (_practice_lock_text(skill) if mastery >= GameState.get_skill_practice_limit(skill) else "%d 阅历" % GameState.get_skill_practice_cost(skill.skill_id)),
+		combat_line,
 		_target_text(skill.target),
 		skill.mp_cost,
 		skill.hit_count,
@@ -411,12 +515,116 @@ func _find_skill(skill_id: StringName) -> Skill:
 	return null
 
 
-func _player_effective_attack() -> int:
+func _player_effective_attack(skill: Skill = null) -> int:
 	var p: CharacterStats = GameState.player
 	if p == null: return 10
-	var core: int = (p.strength * 2 + p.inner_power) + (Inventory.get_strength_bonus() * 2 + Inventory.get_inner_power_bonus())
-	var legacy: int = p.attack + Inventory.get_atk_bonus()
-	return max(legacy, core)
+	var final_attack_bonus := Inventory.get_atk_bonus()
+	if skill != null and skill.damage_type == Skill.DamageType.INTERNAL:
+		return BattleFormula.calc_internal_attack(p.inner_power, Inventory.get_inner_power_bonus(), final_attack_bonus)
+	return BattleFormula.calc_external_attack(p.strength, Inventory.get_strength_bonus(), final_attack_bonus)
+
+
+func _skill_attack_scaling(skill: Skill, mastery: int = -1) -> int:
+	if mastery < 0:
+		mastery = GameState.get_skill_mastery(skill.skill_id)
+	var total := skill.get_attack_scaling() + mastery * 2
+	var gear_bonus := Inventory.get_equipped_skill_bonus(skill.school, skill.get_bonus_weapon_style())
+	total += int(gear_bonus.get("scaling", 0))
+	var player: CharacterStats = GameState.player
+	if player != null and skill.complemented_by != "" and player.equipped_internal_art == StringName(skill.complemented_by):
+		total += skill.get_complement_scaling_bonus()
+	if player != null:
+		total += int(GameState.get_equipped_internal_art_bonus(player, skill).get("scaling", 0))
+	return total
+
+
+func _equipped_effect_text(skill: Skill, mastery: int) -> String:
+	var lines := skill.get_equipped_effect_lines(mastery)
+	return "无额外装备加成" if lines.is_empty() else "\n".join(lines)
+
+
+func _uses_damage_formula(skill: Skill) -> bool:
+	return skill.kind == Skill.Kind.ATTACK or skill.kind == Skill.Kind.DEBUFF
+
+
+func _player_inner_power() -> int:
+	var player: CharacterStats = GameState.player
+	return player.inner_power + Inventory.get_inner_power_bonus() if player != null else 0
+
+
+func _skill_effect_preview(skill: Skill, mastery: int = -1) -> int:
+	if mastery < 0:
+		mastery = GameState.get_skill_mastery(skill.skill_id)
+	return maxi(0, skill.get_active_effect_value(mastery) + _player_inner_power() * 4)
+
+
+func _non_damage_effect_text(skill: Skill) -> String:
+	if skill.get_effect_value() > 0:
+		return "固定效果 %d，并附加状态" % skill.get_effect_value()
+	return "状态/被动效果（详见招式说明）"
+
+
+func _passive_effect_text(skill: Skill, mastery: int) -> String:
+	var lines := skill.get_passive_effect_lines(mastery)
+	if lines.is_empty():
+		return "无常驻属性加成"
+	return "\n".join(lines)
+
+
+func _active_effect_text(skill: Skill, mastery: int, next_mastery: int = -1, preview_hex: String = "") -> String:
+	if not skill.has_active_effect():
+		return "无主动运功（不会出现在战斗招式中）"
+	var text := skill.active_effect_description.strip_edges()
+	if text.is_empty():
+		text = _non_damage_effect_text(skill)
+	var active_value := skill.get_active_effect_value(mastery)
+	var next_value := skill.get_active_effect_value(next_mastery) if next_mastery >= 0 else active_value
+	if maxi(active_value, next_value) > 0 and (skill.kind == Skill.Kind.HEAL or skill.active_effect_type == &"heal_guard"):
+		text += "\n恢复生命：%d + 内劲 × 4" % active_value
+		text += _next_stat_suffix("%d + 内劲 × 4" % active_value, "%d + 内劲 × 4" % next_value, preview_hex)
+	elif maxi(active_value, next_value) > 0 and skill.active_effect_type == &"redirect":
+		text += "\n化解并返还：%d%%" % active_value
+		text += _next_stat_suffix("%d%%" % active_value, "%d%%" % next_value, preview_hex)
+	elif maxi(active_value, next_value) > 0:
+		text += "\n效果数值：%d" % active_value
+		text += _next_stat_suffix(str(active_value), str(next_value), preview_hex)
+	var duration := skill.get_active_duration(mastery)
+	var next_duration := skill.get_active_duration(next_mastery) if next_mastery >= 0 else duration
+	if maxi(duration, next_duration) > 0:
+		text += "\n持续：%d 回合" % duration
+		text += _next_stat_suffix("%d 回合" % duration, "%d 回合" % next_duration, preview_hex)
+	text += "\n内力消耗：%d" % skill.mp_cost
+	return text
+
+
+func _next_stat_suffix(current: String, next: String, hex: String) -> String:
+	if hex.is_empty() or current == next:
+		return ""
+	return "  [color=#%s]→ %s[/color]" % [hex, next]
+
+
+func _split_progress_stat(line: String) -> PackedStringArray:
+	return line.split("：" if line.contains("：") else " ", true, 1)
+
+
+func _preview_stat_lines(current: PackedStringArray, following: PackedStringArray, empty_text: String, hex: String) -> String:
+	var next_by_name := {}
+	for line in following:
+		var parts := _split_progress_stat(line)
+		if parts.size() == 2:
+			next_by_name[parts[0]] = parts[1]
+	var result := PackedStringArray()
+	for line in current:
+		var parts := _split_progress_stat(line)
+		if parts.size() == 2 and not hex.is_empty():
+			var next: String = next_by_name.get(parts[0], "无")
+			line += _next_stat_suffix(parts[1], next, hex)
+			next_by_name.erase(parts[0])
+		result.append(line)
+	if not hex.is_empty():
+		for label: String in next_by_name:
+			result.append("%s%s" % [label, _next_stat_suffix("", next_by_name[label], hex)])
+	return empty_text if result.is_empty() else "\n".join(result)
 
 
 func _set_quick_skill() -> void:
@@ -433,7 +641,13 @@ func _practice_selected() -> void:
 	if GameState.practice_skill(skill.skill_id):
 		_show_selected()
 	else:
-		detail.text += "\n\n[color=#9fd3d0]这门招式已经研读至当前上限。[/color]"
+		var required := skill.get_required_insight()
+		if GameState.get_effective_insight() < required:
+			detail.text += "\n\n[color=#e6a14f]悟性不足，需要 %d 点悟性。[/color]" % required
+		elif GameState.get_skill_mastery(skill.skill_id) >= GameState.get_skill_practice_limit(skill):
+			detail.text += "\n\n[color=#9fd3d0]这门招式已经研读至当前上限。[/color]"
+		else:
+			detail.text += "\n\n[color=#e6a14f]阅历不足，还需 %d 点。[/color]" % GameState.get_skill_practice_cost(skill.skill_id)
 
 
 func _update_summary() -> void:
@@ -525,8 +739,9 @@ func _target_text(target: int) -> String:
 
 func _make_skill_icon(skill: Skill) -> TextureRect:
 	var tex: Texture2D = null
-	if skill.icon_path != "" and ResourceLoader.exists(skill.icon_path):
-		tex = load(skill.icon_path)
+	var resolved_icon_path := _resolved_skill_icon_path(skill)
+	if not resolved_icon_path.is_empty() and ResourceLoader.exists(resolved_icon_path):
+		tex = load(resolved_icon_path)
 	elif _attr_icon_atlas != null:
 		var icon_key := "内劲"
 		if _is_defense_skill(skill):
@@ -616,9 +831,12 @@ func _runtime_button(parent: Node, text_value: String, position: Vector2, size: 
 	var normal := _runtime_texture(normal_name)
 	if normal != null:
 		button.add_theme_stylebox_override("normal", _runtime_stylebox(normal, content_left))
+		# 禁用态若没有专门资源，至少保留正式按钮轮廓，不能退化成裸文字。
+		button.add_theme_stylebox_override("disabled", _runtime_stylebox(normal, content_left))
 	var hover := _runtime_texture(hover_name if hover_name != "" else normal_name)
 	if hover != null:
 		button.add_theme_stylebox_override("hover", _runtime_stylebox(hover, content_left))
+		button.add_theme_stylebox_override("focus", _runtime_stylebox(hover, content_left))
 	var pressed := _runtime_texture(pressed_name if pressed_name != "" else hover_name)
 	if pressed != null:
 		button.add_theme_stylebox_override("pressed", _runtime_stylebox(pressed, content_left))
@@ -638,94 +856,193 @@ func _setup_runtime_v2() -> void:
 	_runtime_root.anchor_top = 0.5
 	_runtime_root.anchor_right = 0.5
 	_runtime_root.anchor_bottom = 0.5
-	_runtime_root.offset_left = -640.0
-	_runtime_root.offset_top = -360.0
-	_runtime_root.offset_right = 640.0
-	_runtime_root.offset_bottom = 360.0
+	# Keep the runtime overlay in the native 1536x1024 coordinate space of the generated frame.
+	_runtime_root.offset_left = -768.0
+	_runtime_root.offset_top = -512.0
+	_runtime_root.offset_right = 768.0
+	_runtime_root.offset_bottom = 512.0
+	_runtime_root.pivot_offset = Vector2(768.0, 512.0)
+	_runtime_root.scale = Vector2.ONE
 	add_child(_runtime_root)
+	var panel_art := get_node_or_null("PanelBg") as TextureRect
+	if panel_art != null:
+		var source_texture := panel_art.texture
+		if source_texture != null:
+			var cropped_texture := AtlasTexture.new()
+			cropped_texture.atlas = source_texture
+			cropped_texture.region = Rect2(
+				PANEL_BG_INSET,
+				PANEL_BG_INSET,
+				source_texture.get_width() - PANEL_BG_INSET * 2.0,
+				source_texture.get_height() - PANEL_BG_INSET * 2.0
+			)
+			cropped_texture.filter_clip = true
+			panel_art.texture = cropped_texture
+		panel_art.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+		# Crop only the baked black gutter. Keeping the cropped texture at its
+		# native size and original inset preserves every runtime overlay coordinate.
+		panel_art.offset_left = -768.0 + PANEL_BG_INSET
+		panel_art.offset_top = -512.0 + PANEL_BG_INSET
+		panel_art.offset_right = 768.0 - PANEL_BG_INSET
+		panel_art.offset_bottom = 512.0 - PANEL_BG_INSET
+		panel_art.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		panel_art.stretch_mode = TextureRect.STRETCH_SCALE
+		panel_art.pivot_offset = Vector2(768.0 - PANEL_BG_INSET, 512.0 - PANEL_BG_INSET)
+		panel_art.scale = Vector2.ONE
+		panel_art.modulate = Color(1.08, 1.10, 1.10, 1.0)
 
-	var title := _runtime_label(_runtime_root, "", Vector2(280, 34), Vector2(720, 70), 34, UI_THEME.GOLD_LIGHT)
-	_runtime_image(_runtime_root, "res://art/ui/skill/text_only_runtime_v1/title_wuxue_text.png", Vector2(591, 42), Vector2(98, 50))
-	var close_runtime := _runtime_button(_runtime_root, "", Vector2(1140, 22), Vector2(58, 58), "res://art/ui/inventory/buttons/btn_x_normal.png", "res://art/ui/inventory/buttons/btn_x_hover.png", "res://art/ui/inventory/buttons/btn_x_pressed.png", 16, 0.0)
+	var title := _runtime_label(_runtime_root, "", Vector2(350, 42), Vector2(836, 84), 28, UI_THEME.GOLD_LIGHT)
+	title.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	# The generated title contains generous transparent padding. Use a smaller
+	# centered canvas so the visible glyphs match the task-panel hierarchy.
+	_runtime_image(_runtime_root, "res://art/ui/skill/text_only_runtime_v1/title_wuxue_text.png", Vector2(684, 60), Vector2(168, 94))
+	var close_runtime := _runtime_button(_runtime_root, "", Vector2(1460, 48), Vector2(64, 64), "res://art/ui/inventory/buttons/btn_x_normal.png", "res://art/ui/inventory/buttons/btn_x_hover.png", "res://art/ui/inventory/buttons/btn_x_pressed.png", 16, 0.0)
 	close_runtime.flat = false
 	close_runtime.pressed.connect(close)
 
+	var faction_id := String(GameState.player_faction)
+	var faction_names := {"": "无门派", "wanderer": "无门派", "huashan": "华山派", "wudang": "武当派", "gufeng": "古月峰", "lingyue": "凌月派", "mingwu": "茗雾山庄"}
+	var faction_texture := "faction_none.png" if faction_id.is_empty() or faction_id == "wanderer" else "faction_%s.png" % faction_id
 	var faction_crest := TextureRect.new()
-	faction_crest.texture = _runtime_texture("faction_huashan.png")
+	faction_crest.texture = _runtime_texture(faction_texture)
+	if faction_crest.texture == null:
+		faction_crest.texture = _runtime_texture("faction_badge.png")
 	faction_crest.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	faction_crest.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	_runtime_rect(faction_crest, Vector2(RUNTIME_FACTION_CENTER_X - RUNTIME_FACTION_CREST_SIZE * 0.5, 49), Vector2(RUNTIME_FACTION_CREST_SIZE, RUNTIME_FACTION_CREST_SIZE))
+	# The no-faction artwork uses a square 256x256 canvas while the five faction
+	# crests use tall ~300x370 canvases. With the shared centered slot its visible
+	# pixels sit about eight pixels lower, so correct only that asset here.
+	var faction_crest_position := Vector2(72, 58)
+	if faction_id.is_empty() or faction_id == "wanderer":
+		faction_crest_position.y -= 8.0
+	_runtime_rect(faction_crest, faction_crest_position, Vector2(190, 190))
 	faction_crest.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_runtime_root.add_child(faction_crest)
-	var faction_name := _runtime_label(_runtime_root, "华山派", Vector2(RUNTIME_FACTION_CENTER_X - 69.0, 136), Vector2(138, 24), 18, UI_THEME.GOLD_LIGHT)
+	var faction_name := _runtime_label(_runtime_root, String(faction_names.get(faction_id, "江湖门派")), Vector2(58, 238), Vector2(218, 32), 22, UI_THEME.GOLD_LIGHT)
 	faction_name.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	faction_name.z_index = 5
 
-	_runtime_resource_label = _runtime_label(_runtime_root, "总阅历 360\n可用阅历 120", Vector2(980, 42), Vector2(170, 68), 13, UI_THEME.JADE)
-	_runtime_resource_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_runtime_total_resource_label = _runtime_label(_runtime_root, "", Vector2(1278, 72), Vector2(166, 40), 14, UI_THEME.JADE)
+	_runtime_total_resource_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_runtime_total_resource_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_runtime_available_resource_label = _runtime_label(_runtime_root, "", Vector2(1278, 124), Vector2(166, 40), 14, UI_THEME.JADE)
+	_runtime_available_resource_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_runtime_available_resource_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
-	var primary_move := _runtime_button(_runtime_root, "", Vector2(225, 145), Vector2(400, 50), "primary_tab_normal.png", "primary_tab_selected.png", "primary_tab_selected.png", 20, 0.0)
-	var primary_mind := _runtime_button(_runtime_root, "", Vector2(650, 145), Vector2(400, 50), "primary_tab_normal.png", "primary_tab_selected.png", "primary_tab_selected.png", 20, 0.0)
-	var move_text_image := _runtime_image(_runtime_root, "res://art/ui/skill/text_only_runtime_v1/tab_zhaoshi_text.png", Vector2(398, 150), Vector2(84, 38))
-	var mind_text_image := _runtime_image(_runtime_root, "res://art/ui/skill/text_only_runtime_v1/tab_xinfa_text.png", Vector2(823, 150), Vector2(84, 38))
+	var primary_move := _runtime_button(_runtime_root, "", Vector2(280, 190), Vector2(490, 74), "primary_tab_normal.png", "primary_tab_selected.png", "primary_tab_selected.png", 20, 0.0)
+	var primary_mind := _runtime_button(_runtime_root, "", Vector2(790, 190), Vector2(490, 74), "primary_tab_normal.png", "primary_tab_selected.png", "primary_tab_selected.png", 20, 0.0)
+	var move_text_image := _runtime_image(_runtime_root, "res://art/ui/skill/text_only_runtime_v1/tab_zhaoshi_text.png", Vector2(455, 200), Vector2(140, 58))
+	var mind_text_image := _runtime_image(_runtime_root, "res://art/ui/skill/text_only_runtime_v1/tab_xinfa_text.png", Vector2(965, 200), Vector2(140, 58))
 	_runtime_primary_text_images = [move_text_image, mind_text_image]
 	_runtime_primary_buttons = [primary_move, primary_mind]
+	for primary_button in _runtime_primary_buttons:
+		var selected_mark := ColorRect.new()
+		selected_mark.name = "SelectedMark"
+		selected_mark.color = UI_THEME.JADE
+		selected_mark.position = Vector2(56.0, 68.0)
+		selected_mark.size = Vector2(378.0, 3.0)
+		selected_mark.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		selected_mark.visible = false
+		primary_button.add_child(selected_mark)
 	primary_move.pressed.connect(func(): _runtime_group = "move"; _runtime_route = "all"; _refresh_runtime_v2())
 	primary_mind.pressed.connect(func(): _runtime_group = "mind"; _runtime_route = "general"; _refresh_runtime_v2())
 
-	var category_names: Array[String] = ["全部", "剑法", "棍法", "掌法", "刀法"]
-	var category_routes: Array[String] = ["all", "sword", "staff", "palm", "blade"]
+	var category_names: Array[String] = ["全部", "剑", "刀", "棍", "掌", "暗器"]
+	var category_routes: Array[String] = ["all", "sword", "blade", "staff", "palm", "hidden"]
 	for i in range(category_names.size()):
-		var x := RUNTIME_FILTER_X + float(i) * 42.0
-		var category := _runtime_button(_runtime_root, category_names[i], Vector2(x, 200), Vector2(43, 32), "secondary_tab_0%d.png" % (i + 1), "secondary_tab_0%d.png" % (i + 1), "secondary_tab_0%d.png" % (i + 1), 12)
+		var x := 58.0 + float(i) * 54.0
+		# The generated kit contains five interchangeable secondary-tab frames.
+		# Reuse the fifth frame for the new hidden-weapon tab instead of referring
+		# to a non-existent secondary_tab_06 texture.
+		var tab_art_index := mini(i + 1, 5)
+		var tab_art := "secondary_tab_0%d.png" % tab_art_index
+		var category := _runtime_button(_runtime_root, category_names[i], Vector2(x, 286), Vector2(50, 42), tab_art, tab_art, tab_art, 13)
 		category.flat = false
 		_runtime_category_buttons.append(category)
 		var route := category_routes[i]
 		category.pressed.connect(func(): _runtime_route = route; _refresh_runtime_v2())
 
-	_runtime_count_label = _runtime_label(_runtime_root, "", Vector2(RUNTIME_LIST_X + 4.0, 235), Vector2(RUNTIME_LIST_WIDTH, 24), 13, UI_THEME.MUTED)
+	_runtime_count_label = _runtime_label(_runtime_root, "", Vector2(62, 338), Vector2(320, 30), 16, UI_THEME.MUTED)
 	var scroll := ScrollContainer.new()
-	_runtime_rect(scroll, Vector2(RUNTIME_LIST_X, 263), Vector2(RUNTIME_LIST_WIDTH, 370))
+	_runtime_rect(scroll, Vector2(58, 376), Vector2(328, 560))
 	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	scroll.mouse_filter = Control.MOUSE_FILTER_STOP
 	_runtime_list = VBoxContainer.new()
+	_runtime_list.name = "RuntimeSkillList"
 	_runtime_list.add_theme_constant_override("separation", 8)
 	_runtime_list.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	scroll.add_child(_runtime_list)
 	_runtime_root.add_child(scroll)
 
-	var stat_positions: Array[Vector2] = [Vector2(476, 292), Vector2(686, 292), Vector2(896, 292)]
+	var stat_positions: Array[Vector2] = [Vector2(470, 330), Vector2(690, 330), Vector2(910, 330)]
 	for stat_position in stat_positions:
 		var stat := TextureRect.new()
 		stat.texture = _runtime_texture("stat_cell.png")
 		stat.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 		stat.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-		_runtime_rect(stat, stat_position, Vector2(200, 62))
+		_runtime_rect(stat, stat_position, Vector2(200, 68))
 		_runtime_root.add_child(stat)
-	_runtime_power_label = _runtime_label(_runtime_root, "", Vector2(686, 309), Vector2(200, 28), 17, Color(0.90, 0.96, 0.96, 1.0))
-	_runtime_power_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_runtime_label(_runtime_root, "内力消耗", Vector2(476, 297), Vector2(200, 20), 11, UI_THEME.MUTED).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_runtime_label(_runtime_root, "威力倍率", Vector2(686, 297), Vector2(200, 20), 11, UI_THEME.MUTED).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	_runtime_label(_runtime_root, "攻击段数", Vector2(896, 297), Vector2(200, 20), 11, UI_THEME.MUTED).horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_runtime_stat_title_labels.clear()
+	_runtime_stat_value_labels.clear()
+	for index in range(stat_positions.size()):
+		var stat_x := stat_positions[index].x
+		var title_label := _runtime_label(_runtime_root, "", Vector2(stat_x, 336), Vector2(200, 22), 13, UI_THEME.MUTED)
+		title_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		var value_label := _runtime_label(_runtime_root, "", Vector2(stat_x, 357), Vector2(200, 32), 16, Color(0.90, 0.96, 0.96, 1.0))
+		value_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		value_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		_runtime_stat_title_labels.append(title_label)
+		_runtime_stat_value_labels.append(value_label)
+	_runtime_power_label = _runtime_stat_value_labels[1]
 
 	_runtime_detail = RichTextLabel.new()
+	_runtime_detail.name = "RuntimeSkillDetail"
 	_runtime_detail.bbcode_enabled = true
 	_runtime_detail.fit_content = false
-	_runtime_detail.scroll_active = false
-	_runtime_detail.add_theme_font_size_override("normal_font_size", 15)
+	_runtime_detail.scroll_active = true
+	_runtime_detail.clip_contents = true
+	_runtime_detail.add_theme_font_size_override("normal_font_size", 16)
+	_runtime_detail.add_theme_constant_override("line_separation", 2)
 	_runtime_detail.add_theme_color_override("default_color", Color(0.84, 0.91, 0.93, 1.0))
-	_runtime_rect(_runtime_detail, Vector2(476, 370), Vector2(710, 170))
+	# 上方详情框在底图中止于 y=755；留出内边距，禁止长心法说明压入升级区。
+	_runtime_rect(_runtime_detail, Vector2(438, 430), Vector2(970, 320))
 	_runtime_root.add_child(_runtime_detail)
-	_runtime_upgrade_label = _runtime_label(_runtime_root, "", Vector2(420, 582), Vector2(420, 32), 17, Color(0.90, 0.96, 0.96, 1.0))
-	_runtime_cost_label = _runtime_label(_runtime_root, "", Vector2(420, 612), Vector2(420, 24), 13, UI_THEME.MUTED)
-	_runtime_upgrade_btn = _runtime_button(_runtime_root, "提升招式", Vector2(980, 570), Vector2(220, 64), "upgrade_normal.png", "upgrade_hover.png", "upgrade_pressed.png", 15, 0.0)
+	_runtime_upgrade_label = _runtime_label(_runtime_root, "", Vector2(438, 820), Vector2(560, 38), 20, Color(0.90, 0.96, 0.96, 1.0))
+	_runtime_cost_label = RichTextLabel.new()
+	_runtime_cost_label.name = "RuntimePracticeRequirement"
+	_runtime_cost_label.bbcode_enabled = true
+	_runtime_cost_label.fit_content = false
+	_runtime_cost_label.scroll_active = false
+	_runtime_cost_label.clip_contents = true
+	_runtime_cost_label.add_theme_font_size_override("normal_font_size", 15)
+	_runtime_cost_label.add_theme_color_override("default_color", UI_THEME.MUTED)
+	_runtime_rect(_runtime_cost_label, Vector2(438, 862), Vector2(610, 42))
+	_runtime_root.add_child(_runtime_cost_label)
+	_runtime_equip_btn = _runtime_button(_runtime_root, "装备心法", Vector2(950, 820), Vector2(220, 80), "upgrade_normal.png", "upgrade_hover.png", "upgrade_pressed.png", 17, 72.0)
+	_runtime_equip_btn.name = "RuntimeEquipInternalArtButton"
+	_runtime_equip_btn.flat = false
+	_runtime_equip_btn.pressed.connect(_runtime_toggle_internal_art)
+	_runtime_upgrade_btn = _runtime_button(_runtime_root, "提升招式", Vector2(1190, 820), Vector2(220, 80), "upgrade_normal.png", "upgrade_hover.png", "upgrade_pressed.png", 17, 72.0)
+	_runtime_upgrade_btn.name = "RuntimeUpgradeSkillButton"
 	_runtime_upgrade_btn.flat = false
-	_runtime_upgrade_btn.position = Vector2(900, 580)
-	_runtime_upgrade_btn.size = Vector2(180, 50)
 	_runtime_upgrade_btn.pressed.connect(_runtime_upgrade_selected)
+	var upgrade_disabled := _runtime_texture("upgrade_disabled.png")
+	if upgrade_disabled != null:
+		_runtime_equip_btn.add_theme_stylebox_override("disabled", _runtime_stylebox(upgrade_disabled))
+		_runtime_upgrade_btn.add_theme_stylebox_override("disabled", _runtime_stylebox(upgrade_disabled))
 
 
 func _runtime_route_for(skill: Skill) -> String:
+	# 普通攻击随当前武器换图，但它是通用战斗动作，不属于任何兵器流派。
+	if skill.skill_id == &"basic_attack":
+		return "all"
+	# 治疗、纯增益和心法先按功效归入心法；名称里即使带“剑、刀”等字样，
+	# 也不能再被武器关键词重新分流。
+	if _runtime_is_mind(skill):
+		return "general"
+	var explicit := String(skill.get_martial_category())
+	if explicit in ["sword", "blade", "staff", "palm", "hidden"]:
+		return explicit
 	var value := (String(skill.skill_id) + " " + skill.display_name + " " + skill.description).to_lower()
 	if value.contains("sword") or value.contains("剑"):
 		return "sword"
@@ -735,12 +1052,15 @@ func _runtime_route_for(skill: Skill) -> String:
 		return "palm"
 	if value.contains("blade") or value.contains("刀"):
 		return "blade"
+	if value.contains("needle") or value.contains("hidden") or value.contains("针") or value.contains("暗器") or value.contains("飞镖"):
+		return "hidden"
 	return "general"
 
 
 func _runtime_skill_texture(skill: Skill) -> Texture2D:
-	if skill.icon_path != "" and ResourceLoader.exists(skill.icon_path):
-		return load(skill.icon_path)
+	var resolved_icon_path := _resolved_skill_icon_path(skill)
+	if not resolved_icon_path.is_empty() and ResourceLoader.exists(resolved_icon_path):
+		return load(resolved_icon_path)
 	if _attr_icon_atlas == null:
 		return null
 	var icon_key: String = "内劲"
@@ -759,8 +1079,30 @@ func _runtime_skill_texture(skill: Skill) -> Texture2D:
 	return atlas_texture
 
 
+func _resolved_skill_icon_path(skill: Skill) -> String:
+	if skill == null:
+		return ""
+	if skill.skill_id != &"basic_attack":
+		return skill.icon_path
+	var weapon := Inventory.get_equipped(Equipment.Slot.WEAPON)
+	var weapon_type := Equipment.normalize_weapon_type(weapon.weapon_type) if weapon != null else &""
+	match weapon_type:
+		&"blade", &"axe":
+			return "res://art/ui/skill/icons_semantic_v1/icon_skill_basic_blade_v1.png"
+		&"staff":
+			return "res://art/ui/skill/icons_semantic_v1/icon_skill_basic_staff_v1.png"
+		&"sword":
+			return "res://art/ui/skill/icons_semantic_v1/icon_skill_basic_sword_v1.png"
+		_:
+			return "res://art/ui/skill/icons_semantic_v1/icon_skill_basic_unarmed_v1.png"
+
+
 func _runtime_is_mind(skill: Skill) -> bool:
-	return skill.kind != Skill.Kind.ATTACK or String(skill.skill_id).contains("zixia") or String(skill.skill_id).contains("xinjing")
+	if skill.skill_id == &"defend":
+		return false
+	# 没有伤害的治疗/增益属于运功心法，不再混入剑、刀、棍、掌、暗器招式。
+	var non_damage_support := not _uses_damage_formula(skill) and skill.kind in [Skill.Kind.HEAL, Skill.Kind.BUFF]
+	return skill.is_internal_art or skill.is_passive or non_damage_support or String(skill.skill_id).contains("zixia") or String(skill.skill_id).contains("xinjing")
 
 
 func _runtime_visible(skill: Skill) -> bool:
@@ -778,6 +1120,8 @@ func _refresh_runtime_v2() -> void:
 		return
 	for child in _runtime_list.get_children():
 		child.queue_free()
+	_runtime_total_resource_label.text = "总阅历 %d" % GameState.training_points_total
+	_runtime_available_resource_label.text = "可用阅历 %d" % GameState.training_points_available
 	var visible_skills: Array[Skill] = []
 	for skill in _skills:
 		if _runtime_visible(skill):
@@ -788,15 +1132,20 @@ func _refresh_runtime_v2() -> void:
 		_runtime_primary_buttons[index].add_theme_stylebox_override("normal", _runtime_stylebox(_runtime_texture("primary_tab_selected.png" if primary_active else "primary_tab_normal.png")))
 		_runtime_primary_buttons[index].add_theme_stylebox_override("hover", _runtime_stylebox(_runtime_texture("primary_tab_selected.png" if primary_active else "primary_tab_normal.png")))
 		_runtime_primary_text_images[index].modulate = Color(1.0, 1.0, 1.0, 1.0) if primary_active else Color(0.48, 0.58, 0.60, 1.0)
+		var mark := _runtime_primary_buttons[index].get_node_or_null("SelectedMark") as ColorRect
+		if mark != null:
+			mark.visible = primary_active
 	for index in range(_runtime_category_buttons.size()):
-		var active_route: String = "general" if _runtime_group == "mind" and index == 0 else ("all" if _runtime_group == "move" and index == 0 else ["sword", "staff", "palm", "blade"][index - 1] if index > 0 else "")
-		_runtime_category_buttons[index].text = "通用" if _runtime_group == "mind" and index == 0 else ("全部" if _runtime_group == "move" and index == 0 else ["剑法", "棍法", "掌法", "刀法"][index - 1] if index > 0 else "")
+		var active_route: String = "general" if _runtime_group == "mind" and index == 0 else ("all" if _runtime_group == "move" and index == 0 else ["sword", "blade", "staff", "palm", "hidden"][index - 1] if index > 0 else "")
+		_runtime_category_buttons[index].text = "通用" if _runtime_group == "mind" and index == 0 else ("全部" if _runtime_group == "move" and index == 0 else ["剑", "刀", "棍", "掌", "暗器"][index - 1] if index > 0 else "")
 		var category_active := active_route == _runtime_route
 		_runtime_category_buttons[index].disabled = false
 		_runtime_category_buttons[index].add_theme_color_override("font_color", UI_THEME.GOLD_LIGHT if category_active else UI_THEME.MUTED)
 		_runtime_category_buttons[index].add_theme_color_override("font_hover_color", UI_THEME.GOLD_LIGHT)
 	if visible_skills.is_empty():
-		_runtime_detail.text = "[b]当前分类下暂无已习得武学。[/b]"
+		_runtime_detail.text = "当前分类下暂无已习得武学。"
+		_runtime_equip_btn.visible = false
+		_runtime_upgrade_btn.disabled = true
 		return
 	if _runtime_selected_id == &"" or not visible_skills.any(func(skill: Skill): return skill.skill_id == _runtime_selected_id):
 		_runtime_selected_id = visible_skills[0].skill_id
@@ -807,14 +1156,16 @@ func _refresh_runtime_v2() -> void:
 
 func _runtime_make_row(skill: Skill) -> Button:
 	var row := Button.new()
-	row.text = "%s\n%s · %s" % [skill.display_name, "心法" if _runtime_is_mind(skill) else _kind_text(skill.kind), "Lv.1"]
+	var equipped_mark := " · 已装备" if skill.is_internal_art and GameState.player != null and GameState.player.equipped_internal_art == skill.skill_id else ""
+	row.text = ""
 	row.alignment = HORIZONTAL_ALIGNMENT_LEFT
 	row.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	row.custom_minimum_size = Vector2(190, 70)
+	row.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	row.add_theme_font_size_override("font_size", 14)
-	row.add_theme_color_override("font_color", Color(0.88, 0.95, 0.96, 1.0))
-	row.add_theme_stylebox_override("normal", _runtime_stylebox(_runtime_texture("skill_row_selected.png" if skill.skill_id == _runtime_selected_id else "skill_row_normal.png"), 58.0))
-	row.add_theme_stylebox_override("hover", _runtime_stylebox(_runtime_texture("skill_row_selected.png"), 58.0))
+	row.add_theme_color_override("font_color", QUALITY_COLORS[clampi(skill.quality, 0, QUALITY_COLORS.size() - 1)])
+	row.add_theme_stylebox_override("normal", _runtime_stylebox(_runtime_texture("skill_row_selected.png" if skill.skill_id == _runtime_selected_id else "skill_row_normal.png"), 72.0))
+	row.add_theme_stylebox_override("hover", _runtime_stylebox(_runtime_texture("skill_row_selected.png"), 72.0))
 	var icon := TextureRect.new()
 	icon.texture = _runtime_skill_texture(skill)
 	icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
@@ -822,6 +1173,22 @@ func _runtime_make_row(skill: Skill) -> Button:
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_runtime_rect(icon, Vector2(8, 9), Vector2(48, 48))
 	row.add_child(icon)
+	var name_label := Label.new()
+	name_label.text = skill.display_name
+	name_label.position = Vector2(80, 7)
+	name_label.size = Vector2(190, 27)
+	name_label.add_theme_font_size_override("font_size", 15)
+	name_label.add_theme_color_override("font_color", QUALITY_COLORS[clampi(skill.quality, 0, QUALITY_COLORS.size() - 1)])
+	name_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	row.add_child(name_label)
+	var meta_label := Label.new()
+	meta_label.text = "%s · Lv.%d%s" % ["心法" if _runtime_is_mind(skill) else _kind_text(skill.kind), GameState.get_skill_mastery(skill.skill_id) + 1, equipped_mark]
+	meta_label.position = Vector2(80, 34)
+	meta_label.size = Vector2(190, 25)
+	meta_label.add_theme_font_size_override("font_size", 13)
+	meta_label.add_theme_color_override("font_color", Color("9fd3d0"))
+	meta_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	row.add_child(meta_label)
 	row.pressed.connect(func(): _runtime_selected_id = skill.skill_id; _refresh_runtime_v2())
 	return row
 
@@ -833,20 +1200,215 @@ func _runtime_show_selected() -> void:
 			skill = item
 			break
 	if skill == null:
+		_runtime_equip_btn.visible = false
 		return
-	_runtime_power_label.text = "%d%%" % skill.power
-	_runtime_detail.text = "[b]战斗参数[/b]\n内力消耗：%d    攻击段数：%d\n\n[b]招式说明[/b]\n%s" % [skill.mp_cost, skill.hit_count, skill.description]
-	_runtime_upgrade_label.text = "招式内容 Lv.1"
-	_runtime_cost_label.text = "消耗阅历 30    ·    升级后威力 +10%"
-	_runtime_upgrade_btn.disabled = _runtime_insight < 30
+	var mastery := GameState.get_skill_mastery(skill.skill_id)
+	var is_mind := _runtime_is_mind(skill)
+	var required := skill.get_required_insight()
+	var effective_insight := GameState.get_effective_insight()
+	var meets_insight := effective_insight >= required
+	var scaling := _skill_attack_scaling(skill, mastery)
+	var effect_line := ""
+	var quality := QUALITY_COLORS[clampi(skill.quality, 0, QUALITY_COLORS.size() - 1)]
+	var quality_hex := quality.to_html(false)
+	var next_mastery := mastery + 1 if mastery < skill.get_max_mastery() else -1
+	var preview_hex := quality.darkened(0.22).to_html(false) if next_mastery >= 0 else ""
+	var next_legend := "" if next_mastery < 0 else "  [color=#%s]→ 下一级 Lv.%d[/color]" % [preview_hex, skill.get_display_level(next_mastery)]
+	if is_mind:
+		_runtime_stat_title_labels[0].text = "常驻功效"
+		_runtime_stat_title_labels[1].text = "主动功效"
+		_runtime_stat_title_labels[2].text = "心法层次"
+		var passive_lines := skill.get_passive_effect_lines(mastery)
+		_runtime_stat_value_labels[0].text = "无" if passive_lines.is_empty() else "%d 项属性" % passive_lines.size()
+		if not skill.has_active_effect():
+			_runtime_stat_value_labels[1].text = "无主动运功"
+		elif skill.active_effect_type == &"redirect":
+			_runtime_stat_value_labels[1].text = "返还 %d%%" % skill.get_active_effect_value(mastery)
+		else:
+			_runtime_stat_value_labels[1].text = "效果 %d" % skill.get_active_effect_value(mastery) if skill.get_active_effect_value(mastery) > 0 else "运功增益"
+		_runtime_stat_value_labels[2].text = "Lv.%d" % (mastery + 1)
+		_runtime_detail.text = "[color=#%s]◆ %s[/color]%s\n\n[color=#%s]常驻功效（习得即生效）[/color]\n[color=#%s]%s[/color]\n\n[color=#%s]装备功效（仅当前装备心法生效）[/color]\n[color=#%s]%s[/color]\n\n[color=#%s]主动运功[/color]\n[color=#%s]%s[/color]\n\n[color=#7fc4c1]心法说明[/color]\n%s" % [
+			quality_hex,
+			skill.display_name,
+			(" · [color=#e6a14f]已装备[/color]" if GameState.player != null and GameState.player.equipped_internal_art == skill.skill_id else "") + next_legend,
+			quality_hex,
+			quality_hex,
+			_preview_stat_lines(passive_lines, skill.get_passive_effect_lines(next_mastery) if next_mastery >= 0 else passive_lines, "无常驻属性加成", preview_hex),
+			quality_hex,
+			quality_hex,
+			_preview_stat_lines(skill.get_equipped_effect_lines(mastery), skill.get_equipped_effect_lines(next_mastery) if next_mastery >= 0 else PackedStringArray(), "无额外装备加成", preview_hex),
+			quality_hex,
+			quality_hex,
+			_active_effect_text(skill, mastery, next_mastery, preview_hex),
+			skill.description,
+		]
+		_runtime_upgrade_label.text = "心法内容 Lv.%d" % (mastery + 1)
+		_runtime_upgrade_btn.text = "提升心法"
+		_runtime_equip_btn.visible = skill.is_internal_art
+		var is_equipped := GameState.player != null and GameState.player.equipped_internal_art == skill.skill_id
+		# 已装备时始终允许卸下；未装备时必须满足悟性门槛。
+		_runtime_equip_btn.disabled = not skill.is_internal_art or (not is_equipped and not meets_insight)
+		_runtime_equip_btn.text = "卸下心法" if is_equipped else "装备心法"
+	else:
+		_runtime_equip_btn.visible = false
+		_runtime_stat_title_labels[0].text = "内力消耗"
+		_runtime_stat_title_labels[1].text = "固定 + 攻击系数"
+		_runtime_stat_title_labels[2].text = "命中率"
+		_runtime_stat_value_labels[0].text = "%d" % skill.mp_cost
+		_runtime_stat_value_labels[2].text = "%d%%" % int(round(skill.base_hit_chance * 100.0))
+	if not is_mind:
+		if _uses_damage_formula(skill):
+			var preview := BattleFormula.estimate_damage_range(_player_effective_attack(skill), skill.fixed_damage, scaling)
+			_runtime_power_label.text = "%d + %d%%" % [skill.fixed_damage, scaling]
+			effect_line = "预计伤害：%d - %d（固定 %d + %s × %d%%）" % [preview.x, preview.y, skill.fixed_damage, "内功" if skill.damage_type == Skill.DamageType.INTERNAL else "外功", scaling]
+			if next_mastery >= 0:
+				var next_scaling := _skill_attack_scaling(skill, next_mastery)
+				var next_damage := BattleFormula.estimate_damage_range(_player_effective_attack(skill), skill.fixed_damage, next_scaling)
+				effect_line += _next_stat_suffix("", "%d - %d（系数 %d%%）" % [next_damage.x, next_damage.y, next_scaling], preview_hex)
+		elif skill.kind == Skill.Kind.HEAL:
+			_runtime_power_label.text = "治疗 %d" % _skill_effect_preview(skill)
+			effect_line = "预计治疗：%d（固定 %d + 内劲 × 4）" % [_skill_effect_preview(skill), skill.get_active_effect_value(mastery)]
+			if next_mastery >= 0:
+				effect_line += _next_stat_suffix(str(_skill_effect_preview(skill, mastery)), str(_skill_effect_preview(skill, next_mastery)), preview_hex)
+		else:
+			_runtime_power_label.text = "效果 %d" % skill.get_effect_value() if skill.get_effect_value() > 0 else "状态"
+			effect_line = _non_damage_effect_text(skill)
+		_runtime_detail.text = "[color=#%s]◆ %s[/color]\n[color=#%s]%s[/color]\n伤害类型：[color=#%s]%s[/color]    目标：[color=#%s]%s[/color]    命中率：[color=#%s]%d%%[/color]\n内力消耗：%d    攻击段数：%d    破防：[color=#%s]%d%%[/color]\n%s\n\n[color=#7fc4c1]招式源流[/color]\n%s\n\n[color=#7fc4c1]招式说明[/color]\n%s\n\n[color=#7fc4c1]使用要诀[/color]\n%s" % [
+			quality_hex, skill.display_name + next_legend, quality_hex, effect_line,
+			quality_hex, "内功" if skill.damage_type == Skill.DamageType.INTERNAL else "外功", quality_hex, _target_text(skill.target),
+			quality_hex, int(round(skill.base_hit_chance * 100.0)), skill.mp_cost, skill.hit_count, quality_hex, skill.defense_pierce_percent,
+			_status_detail_text(skill, quality_hex), _skill_origin_text(skill), skill.description, _advice_text(skill)
+		]
+		_runtime_upgrade_label.text = "招式内容 Lv.%d" % (mastery + 1)
+		_runtime_upgrade_btn.text = "提升招式"
+	var practice_cost := GameState.get_skill_practice_cost(skill.skill_id)
+	var self_cap := GameState.get_skill_practice_limit(skill)
+	if skill.mastery_unlock_skill != &"":
+		var followup := GameState._skill_display_name(skill.mastery_unlock_skill)
+		_runtime_detail.text += "\n\n[color=#e9bc70]十重领悟[/color]　%s" % followup
+	if not skill.breakthrough_hint.is_empty():
+		var note := "[color=#e9bc70]行功手记[/color]　" + skill.breakthrough_hint
+		if mastery < skill.get_max_mastery() - 1 and skill.breakthrough_quest != &"" and QuestManager.is_completed(skill.breakthrough_quest):
+			note += "\n[color=#9fd3d0]已有这段阅历，练至九重便可领悟末式。[/color]"
+		if mastery == skill.get_max_mastery() - 1:
+			_runtime_detail.text = note + "\n\n" + _runtime_detail.text
+			_runtime_detail.scroll_to_line(0)
+			if skill.breakthrough_quest != &"":
+				_runtime_upgrade_btn.text = "待历练顿悟"
+				_runtime_upgrade_btn.disabled = true
+				_runtime_cost_label.text = "完成手记所指的支线，自悟末式 · 无需阅历"
+				return
+			if skill.breakthrough_attribute != "none":
+				_runtime_upgrade_btn.text = "参悟第十重"
+				var progress := _attribute_progress(skill)
+				if mastery >= self_cap:
+					_runtime_cost_label.text = progress
+				else:
+					_runtime_cost_label.text = "%s · 消耗 %d 阅历" % [progress, practice_cost]
+				_runtime_upgrade_btn.disabled = mastery >= self_cap or not meets_insight or GameState.training_points_available < practice_cost
+				return
+			_runtime_upgrade_btn.text = "尝试破境"
+			var trial_cost := skill.get_rank_cost(mastery, effective_insight)
+			_runtime_cost_label.text = "运转当前心法试演末式 · 成功消耗 %d 阅历" % trial_cost
+			_runtime_upgrade_btn.disabled = not meets_insight or GameState.training_points_available < trial_cost
+			return
+		_runtime_detail.text += "\n\n" + note
+	if mastery >= skill.get_max_mastery():
+		_runtime_cost_label.text = "已达%d重圆满" % skill.max_level
+	elif mastery >= self_cap:
+		_runtime_cost_label.text = _practice_lock_text(skill)
+	elif not meets_insight:
+		_runtime_cost_label.text = "需要悟性 %d（当前 %d）" % [required, effective_insight]
+	else:
+		_runtime_cost_label.text = "消耗阅历 %d · 当前可用 %d" % [practice_cost, GameState.training_points_available]
+	_runtime_upgrade_btn.disabled = mastery >= self_cap or not meets_insight or GameState.training_points_available < practice_cost
+
+
+func _attribute_progress(skill: Skill) -> String:
+	return "%s %d / %d" % [skill.breakthrough_attribute_label(), GameState.get_breakthrough_base_attribute(skill), skill.breakthrough_attribute_min]
+
+
+func _practice_lock_text(skill: Skill) -> String:
+	if skill.breakthrough_attribute != "none":
+		return _attribute_progress(skill)
+	if skill.breakthrough_quest != &"":
+		return "九重已成 · 循手记寻访"
+	if skill.breakthrough_internal_art != &"":
+		return "九重已成 · 参看行功手记"
+	return "九重已成 · 返回师门突破"
+
+
+func _skill_origin_text(skill: Skill) -> String:
+	if not skill.origin.strip_edges().is_empty():
+		return skill.origin.strip_edges()
+	var school_names := {"linxi":"林西一脉", "huashan":"华山派", "wudang":"武当派", "gufeng":"古月峰", "lingyue":"凌月派", "mingwu":"茗雾山庄", "shaolin":"少林", "xingyi":"行义帮", "wanderer":"江湖游侠"}
+	var school_name := String(school_names.get(skill.school, "江湖散传"))
+	return "源自%s的武学传承，具体来历仍有待在剧情与残卷中查证。" % school_name
+
+
+func _status_detail_text(skill: Skill, quality_hex: String) -> String:
+	var lines: Array[String] = []
+	if skill.skill_crit_chance_bonus > 0.0:
+		lines.append("招式暴击率 +%d%%" % int(round(skill.skill_crit_chance_bonus * 100.0)))
+	if skill.internal_injury_gain > 0:
+		lines.append("内伤积累 +%d" % skill.internal_injury_gain)
+	if skill.inflicted_status != &"" and skill.status_duration > 0:
+		var names := {&"poison":"中毒", &"bleed":"流血", &"weaken":"虚弱", &"vulnerable":"易伤", &"armor_break":"破防"}
+		lines.append("%s：%d%%概率，持续%d回合" % [String(names.get(skill.inflicted_status, skill.inflicted_status)), int(round(skill.status_chance * 100.0)), skill.status_duration])
+	var player: CharacterStats = GameState.player
+	if player != null:
+		var art := GameState.get_equipped_internal_art(player)
+		var bonus := GameState.get_equipped_internal_art_bonus(player, skill)
+		var synergy_lines: Array[String] = []
+		if int(bonus.get("self_hp_restore", 0)) > 0:
+			synergy_lines.append("回复生命%d" % int(bonus.self_hp_restore))
+		if int(bonus.get("self_mp_restore", 0)) > 0:
+			synergy_lines.append("回复内力%d" % int(bonus.self_mp_restore))
+		if int(bonus.get("defense_pierce", 0)) > 0:
+			synergy_lines.append("额外破防%d%%" % int(bonus.defense_pierce))
+		if StringName(bonus.get("target_status", &"")) != &"":
+			var synergy_names := {&"poison":"中毒", &"bleed":"流血", &"weaken":"虚弱", &"vulnerable":"易伤", &"armor_break":"破防"}
+			synergy_lines.append("附加%s" % String(synergy_names.get(StringName(bonus.target_status), bonus.target_status)))
+		if float(bonus.get("execute_damage_bonus", 0.0)) > 0.0:
+			synergy_lines.append("残血增伤%d%%" % int(round(float(bonus.execute_damage_bonus) * 100.0)))
+		if art != null and not synergy_lines.is_empty():
+			lines.append("%s协同：%s" % [art.display_name, "、".join(synergy_lines)])
+	return "" if lines.is_empty() else "[color=#%s]附加效果：%s[/color]" % [quality_hex, "；".join(lines)]
+
+
+func _on_ultimate_mastered(skill: Skill) -> void:
+	if not is_visible_in_tree():
+		return
+	var previous := get_node_or_null("MasteryFlourish")
+	if previous != null:
+		remove_child(previous)
+		previous.queue_free()
+	var flourish := preload("res://scripts/ui/mastery_flourish.gd").new()
+	flourish.name = "MasteryFlourish"
+	add_child(flourish)
+	flourish.celebrate(skill)
 
 
 func _runtime_upgrade_selected() -> void:
-	if _runtime_insight < 30:
+	if _runtime_selected_id == &"":
 		return
-	_runtime_insight -= 30
-	_runtime_resource_label.text = "总阅历 360\n可用阅历 %d" % _runtime_insight
-	_runtime_cost_label.text = "消耗阅历 30    ·    已提升，当前威力 +10%"
+	if GameState.practice_skill(_runtime_selected_id):
+		_refresh_runtime_v2()
+	else:
+		var skill := _find_skill(_runtime_selected_id)
+		if skill != null and skill.breakthrough_internal_art != &"" and GameState.get_skill_mastery(skill.skill_id) == skill.get_max_mastery() - 1:
+			_runtime_cost_label.text = "气路未通，收功调息。此次未耗阅历。"
+
+
+func _runtime_toggle_internal_art() -> void:
+	var skill := _find_skill(_runtime_selected_id)
+	if skill == null or not skill.is_internal_art or GameState.player == null:
+		return
+	if GameState.player.equipped_internal_art == skill.skill_id:
+		GameState.unequip_internal_art()
+	else:
+		GameState.equip_internal_art(skill.skill_id)
+	_refresh_runtime_v2()
 
 
 
@@ -887,5 +1449,7 @@ func _set_button_caption(btn: Button, label_text: String) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_cancel"):
+		if _school_choice_menu != null and _school_choice_menu.is_open():
+			return
 		close()
 		get_viewport().set_input_as_handled()

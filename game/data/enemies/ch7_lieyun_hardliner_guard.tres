@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+enemy_id = &"ch7_lieyun_hardliner_guard"
+display_name = "烈云强硬派巡守"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/ch7_ferry_office_20261122/patrol/ready.tres"
+battle_actor_scale = 1.0284
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/patrol/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/patrol/ready.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/patrol/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/patrol/ready.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/patrol/draw.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/patrol/strike.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/patrol/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/patrol/hit1.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/patrol/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/patrol/kneel.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/patrol/down.tres")
+level = 11
+max_hp = 620
+max_mp = 120
+attack = 112
+defense = 22
+speed = 29
+skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle", &"heavy_swing"])
+aggression = 0.80
+drop_gold_min = 58
+drop_gold_max = 86
+drop_exp = 112
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"antidote_pill", "chance":0.35, "count":1}])

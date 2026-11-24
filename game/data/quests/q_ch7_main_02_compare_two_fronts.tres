@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_02_compare_two_fronts"
+title = "双线求证"
+kind = 0
+desc_not_started = "只看一方提供的材料不足以判定旧案责任。"
+desc_in_progress = "分别到达烈云峡谷旧渡与茗雾茶镇，观察两边如何回应同一批原册与封蜡证据。"
+desc_completed = "两处入口均已踏查。烈云愿分开核对旧罪与栽赃，茗雾则已转移部分外院文书；下一步必须深入两侧内部。"
+tracker_hint = "烈云旧渡 / 茗雾茶镇"
+completion_triggers = Array[String](["flag_set:ch7_lieyun_entry_seen", "flag_set:ch7_mingwu_entry_seen"])
+require_all_completion_triggers = true
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 60
+reward_exp = 160
+reward_items = Array[Dictionary]([])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch7_lieyun_entry_seen", "text":"烈云旧渡允许持黑玉佩者在外区核验，但内门仍保持戒备。"}, {"trigger":"flag_set:ch7_mingwu_entry_seen", "text":"茗雾茶镇表面照常交易，信使亭与外院文书却已经收紧。"}])

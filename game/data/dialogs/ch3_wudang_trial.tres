@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "武当弟子"
+text = "脚印先落右足，掌痕与转身方向却相反。若要复现，先接我这一轮推手。"
+on_end = "next:n2"
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "正好。我也想看看，是证词错了，还是有人倒着走过。"
+on_end = "battle_solo_then:wudang_disciple:ch3_wudang_complete"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_wudang_trial"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2")])

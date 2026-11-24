@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1"]
+[resource]
+script = ExtResource("1")
+skill_id = &"tomb_guard_shield_bash"
+display_name = "镇门盾震"
+icon_path = "res://art/ui/status/icons_v1/icon_status_bleed_v1.png"
+description = "以盾压近，命中有 45% 概率虚弱两回合。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 0
+quality = 1
+fixed_damage = 12
+attack_scaling = 103
+base_hit_chance = 0.93
+animation_id = &"heavy_swing"
+inflicted_status = &"weaken"
+status_chance = 0.45
+status_duration = 2
+school = "generic"

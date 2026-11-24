@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/openworld_qinghe_town_layout.tres" id="2"]
+[resource]
+script = ExtResource("1")
+scene_id = &"openworld_qinghe_town"
+display_name = "清河镇 · 行旅街"
+background_path = "res://art/backgrounds/bg_ch2_zhuwei_market.png"
+bgm_path = "res://art/audio/bgm/bgm_market_lively_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.30,0.78)
+npcs = Array[Dictionary]([{"npc_id":"qinghe_supply","npc_name":"行旅货郎","pos":Vector2(0.40,0.62),"sprite_path":"res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png","dialog_id":"openworld_qinghe_supply","scale":0.92}])

@@ -1,0 +1,90 @@
+{
+  "change_id": "luoyang-city-full-rollout-20261022ap",
+  "status": "ART_LIMITED_READY_AFTER_ONE_WOODWORK_SCALE_FIX_AND_ACTUAL_RECHECK",
+  "scope": "Actual 3072x2048 native revision3 image review plus a single-building uniform-scale successor. No engine, PNG, canonical, route, NPC, prop or layout write.",
+  "actual_evidence": {
+    "result_path": "game/build/luoyang_city_full_rollout_20261022ap_qa01/artisan_revision3_art_probe/119068_2664/result.json",
+    "result_sha256": "F3EAE60BCA1658456038397074940F2D6C051AD58A448A8E88A3A4C6B6D22942",
+    "checks": 401,
+    "failures": 0,
+    "image_path": "game/build/luoyang_city_full_rollout_20261022ap_qa01/artisan_revision3_art_probe/119068_2664/artisan_revision3_native_world1x_initial_idle.png",
+    "image_sha256": "8E2A8583E252610A3B2C77D727CF998CD1846AAB4B2167CEECB3152C2ED2266C",
+    "art_review": "Compared with the rejected revision2 frame, revision3 has a coherent stone work-quarter, four readable resident bodies, Chinese rooflines, a visible well court and distinct residential, woodwork, cloth and south-shop silhouettes. It is a material improvement. The west woodwork building is still visibly toy-scaled because its current main doorway is below the 120-world adult threshold."
+  },
+  "frozen_inputs": {
+    "author_path": "game/build/luoyang_city_full_rollout_20261022ap_system01/artisan_revision3/author_READY2.json",
+    "author_sha256": "4571AC87C4DD854B36A494D48CE9B754E4AD07C0804C51EF5C2439B8F2301FB9",
+    "art_parent_path": "game/build/luoyang_city_full_rollout_20261022ap_art01/artisan_visual_successor_v2.json",
+    "art_parent_sha256": "D9AA1F3A7C49B71B8C0D449FDED47045E410EE7EB832D54FBD3BFDD05022AC3D"
+  },
+  "five_building_door_audit": [
+    {
+      "ids": ["ap_courtyard_home_west", "ap_courtyard_home_east"],
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s0_luoyang_gate/entities/east_street_front.png",
+      "complete_A1_source_width_px": 1085,
+      "complete_A1_world_width": 740,
+      "uniform_scale": 0.6820276497695853,
+      "source_door_clear_height_px": 182,
+      "world_door_clear_height": 124.12903225806451,
+      "adult_120_pass": true
+    },
+    {
+      "id": "ap_woodwork_court_west_chinese_v3",
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/north_market_front.png",
+      "texture_sha256": "6097A1D45FA5E829A2130AB2D41DF988F0C521A3E14ED102FFDABDC99C848209",
+      "complete_A1_source_width_px": 1029,
+      "current_complete_A1_world_width": 610,
+      "current_uniform_scale": 0.5928085519922255,
+      "root_measured_reference_door_at_world_width_800": 126.725,
+      "current_world_door_clear_height": 96.6278125,
+      "adult_120_pass": false
+    },
+    {
+      "id": "ap_cloth_dye_workshop_east",
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southeast_market_front.png",
+      "complete_A1_source_width_px": 851,
+      "complete_A1_world_width": 620,
+      "uniform_scale": 0.7285546415981199,
+      "source_door_clear_height_px": 235,
+      "world_door_clear_height": 171.21034077555817,
+      "adult_120_pass": true
+    },
+    {
+      "id": "ap_carpentry_general_shop_south",
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/southwest_market_front.png",
+      "complete_A1_source_width_px": 875,
+      "complete_A1_world_width": 760,
+      "uniform_scale": 0.8685714285714285,
+      "source_door_clear_height_px": 144,
+      "world_door_clear_height": 125.07428571428571,
+      "adult_120_pass": true
+    }
+  ],
+  "only_author_change_requested": {
+    "id": "ap_woodwork_court_west_chinese_v3",
+    "foot_world_unchanged": [620, 1290],
+    "complete_A1_world_width_old": 610,
+    "complete_A1_world_width_new": 780,
+    "uniform_scale_new": 0.7580174927113703,
+    "world_door_clear_height_new": 123.556875,
+    "adult_120_pass": true,
+    "full_canvas_render_size_world_new": [787.5801749271137, 527.5801749271137],
+    "expected_complete_A1_world_xywh_new": [221.66180758017492, 832.9154518950437, 780, 488.9212827988339],
+    "required_implementation": [
+      "Apply one uniform scale derived from complete A1 width; do not nonuniformly stretch the PNG.",
+      "Keep foot [620,1290], all other four buildings, all props, all NPC feet and all scene layout coordinates unchanged.",
+      "Reproject this building's four source solid rectangles with the new uniform scale and rerun only the affected geometry, route and native-frame checks.",
+      "Do not use the current 96.6278125-world door as a valid adult entrance."
+    ]
+  },
+  "art_acceptance_after_fix": [
+    "The west woodwork doorway is at least 120 world high and no longer reads as a miniature door beside the 140-high adults.",
+    "The larger west shell does not cover the fixed woodwork NPC, workyard opening, west trees, stone lane or neighboring residence in the actual native frame.",
+    "The other four buildings retain their current source, complete-A1 scale and foot positions."
+  ],
+  "limits": [
+    "The 119068 geometry result is not art completion by itself.",
+    "This file authorizes no additional props, building moves, terrain changes, PNG processing, engine run, canonical publication or whole-city art claim.",
+    "A new actual image is still required after the one scale change."
+  ]
+}

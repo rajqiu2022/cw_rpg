@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "古峰护粮守卫"
+text = "多谢少侠。前营还有两车粮和十几名脚夫，他们若再被围，山上今晚就要断炊。"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "绳结是从内侧割断的，他们早知道车队怎么绑粮。先赶去前营，这里回头再细查。"
+set_flags = Array[Dictionary]([{"key":"ch5_relief_road_cleared", "value":true}])
+complete_quest = &"q_ch5_main_01_relief_route"
+accept_quest = &"q_ch5_main_02_grain_convoy"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_relief_road_victory"
+required_story_flag = &"chapter4_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

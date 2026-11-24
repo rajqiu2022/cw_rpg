@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "MEASURED_ACTUAL_SOURCE",
+  "approval": "RAW_SOURCE_MEASURED_NOT_FIELD_VISUAL_APPROVED",
+  "source_modified": false,
+  "coordinate_recipe": "normalized original PNG coordinates, projected by actual scale and world foot; no alpha threshold edit",
+  "modules": {
+    "street_row_v3.png": {
+      "source_sha256": "c012d6d3698a8ce00d3f3f32202614a1d2743dc5773c53e5521fd99821da0303",
+      "source_size_px": [1536,1024],
+      "foot_uv": [0.5,0.8896484375],
+      "measured_source_foot_px": [768,911],
+      "visible_center_door_height_px": 228,
+      "recommended_scale": 0.67,
+      "solid_polygons_uv": [[[0.059895833333333336,0.7978515625],[0.943359375,0.7978515625],[0.943359375,0.884765625],[0.059895833333333336,0.884765625]]],
+      "semantic_role": "continuous inhabited frontage ground masonry and interior; not a pass-through courtyard; no roof or weak contact tail used as collision",
+      "ground_entity_probes_px": [[110,882],[568,881],[1004,881],[1421,881]],
+      "door_step_probe_px": [768,911],
+      "source_provenance": "original builtin-imagegen, not CC0; exact actual call record generation_record_20261004.json"
+    },
+    "courtyard_wall_gate_v3.png": {
+      "source_sha256": "dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221",
+      "source_size_px": [1942,809],
+      "foot_uv": [0.5,0.8714462299134734],
+      "measured_source_foot_px": [971,705],
+      "visible_center_door_height_px": 318,
+      "recommended_scale": 0.5,
+      "solid_polygons_uv": [[[0.08341915550978372,0.7070457354758962],[0.43151390319258504,0.7070457354758962],[0.43151390319258504,0.8745364647713226],[0.08341915550978372,0.8584672435105068]],[[0.5669412976313079,0.7070457354758962],[0.9309989701338826,0.7070457354758962],[0.9309989701338826,0.8584672435105068],[0.5669412976313079,0.8745364647713226]]],
+      "semantic_role": "two independent masonry/jamb ground solids; genuine source-alpha open central gate remains physically passable",
+      "transparent_hole_probes_px": [[971,420],[971,600],[971,690]],
+      "ground_entity_probes_px": [[777,681],[1150,681],[470,661],[1480,661]],
+      "source_provenance": "original builtin-imagegen, not CC0"
+    },
+    "yamen_hall_v3c.png": {
+      "source_sha256": "ede074d22a2901c97dd938df1c0934b1a38d9c1bd61fbc15e55f6a00361fd32a",
+      "source_size_px": [1536,1024],
+      "foot_uv": [0.5,0.765625],
+      "measured_source_foot_px": [768,784],
+      "visible_center_door_height_px": 142,
+      "recommended_scale": 1.06,
+      "solid_polygons_uv": [[[0.16861979166666666,0.6875],[0.8313802083333334,0.6875],[0.8313802083333334,0.7548828125],[0.5813802083333334,0.7548828125],[0.5813802083333334,0.763671875],[0.4114583333333333,0.763671875],[0.4114583333333333,0.7548828125],[0.16861979166666666,0.7548828125]]],
+      "strong_alpha_bbox_xyxy": [190,227,1346,787],
+      "canvas_edge_max_alpha": [0,0,0,0],
+      "supersedes_raw_sources": ["yamen_hall_v3.png","yamen_hall_v3b.png"],
+      "source_padding_edit_record": "assets/raw/scene_module/luoyang_modular_v3/yamen_padding_edit_c_20261004.json",
+      "semantic_role": "hall base and central short stone stairs; interior is solid, approach is in front of stair foot; no cropped roof source adopted",
+      "ground_entity_probes_px": [[390,754],[1130,754],[746,771]],
+      "door_step_probe_px": [768,784],
+      "source_provenance": "original builtin-imagegen with root actual padding-only edit; original raw bytes preserved, not CC0"
+    },
+    "canal_warehouse_v3.png": {
+      "source_sha256": "3bfa2bd8a906ffe8ef069f7933e45255fe569606781c46886dd0dea519e9580b",
+      "source_size_px": [1774,887],
+      "foot_uv": [0.5,0.7959413754227734],
+      "measured_source_foot_px": [887,706],
+      "visible_ground_door_height_px": 249,
+      "recommended_scale": 0.62,
+      "solid_polygons_uv": [[[0.06200676437429538,0.7074408117249155],[0.939120631341601,0.7074408117249155],[0.939120631341601,0.7961668545659526],[0.06200676437429538,0.7961668545659526]]],
+      "semantic_role": "warehouse masonry/door-interior floor volume, front quay remains outside solid; no openback assumption",
+      "ground_entity_probes_px": [[332,683],[907,683],[1533,683]],
+      "door_step_probe_px": [700,701],
+      "source_provenance": "original builtin-imagegen, not CC0"
+    }
+  }
+}

@@ -1,0 +1,65 @@
+tasks:
+  - id: ch1_bg_mountain_road_release_v1
+    template: chapter_scene_walkable
+    category: scene_background/ch1
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "第一章林西村外山道，无文字纯场景"
+      scene_desc: "初春山道穿过竹林和浅色岩壁，中央保留连续开阔土石道路，远处能看见竹尾村屋顶，无人物。"
+      lighting: "晴朗上午，竹影和暖阳形成明亮冷暖对比。"
+      key_elements: "左侧石碑与山壁，中央路边留出调查物位置，右上方村口出口轮廓清晰；所有石碑均无文字。"
+
+  - id: ch1_bg_zhuwei_main_street_release_v1
+    template: chapter_scene_walkable
+    category: scene_background/ch1
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "第一章竹尾村主街，无文字纯场景"
+      scene_desc: "明亮的江南山村主街，青瓦木楼、客栈外廊、杂货棚和石板路构成可探索的小型集市，无人物。"
+      lighting: "午前清亮阳光，木结构暖色与山林冷青色对比鲜明。"
+      key_elements: "左侧客栈交谈空地，中部商人位置，右侧守卫位置，右下城西出口；招牌、旗帜、告示均为空白材质，无文字符号。"
+
+  - id: ch1_bg_west_ruin_release_v1
+    template: chapter_scene_walkable
+    category: scene_background/ch1
+    priority: 1
+    model: gpt-image-2
+    vars:
+      scene_name: "第一章竹尾村城西废宅，无文字纯场景"
+      scene_desc: "一座被荒草和竹影包围的废弃木宅，断墙、旧木箱和半开的内堂大门围出清楚的探索区域，无人物。"
+      lighting: "午后侧光，明亮可读但带轻微悬疑。"
+      key_elements: "左下旧木箱调查点，中部可交谈空地，右侧内堂入口，左下回村出口；门牌、残纸和木牌均无文字无符号。"
+
+  - id: ch1_portrait_shenbanzhan_friendly_release_v1
+    template: portrait_chapter_npc_medium
+    category: character_portrait/ch1
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "沈半盏"
+      character_desc: "四十多岁的竹尾村客栈掌柜，男性，微胖而精神，短须，灰蓝粗布长衫外罩深棕马甲，腰间挂一串旧钥匙，市井但可靠"
+      pose: "一手端着温茶，另一手自然抬起招呼客人"
+      expression: "亲切、精明、略带担忧"
+
+  - id: ch1_portrait_vendor_neutral_release_v1
+    template: portrait_chapter_npc_medium
+    category: character_portrait/ch1
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "游商"
+      character_desc: "三十多岁的男性江湖游商，瘦高，皮肤微深，黑发束成低髻，青褐色旅行斗篷、旧皮革腰包与卷起的货布，神情谨慎"
+      pose: "一手托着小木匣，另一手掀开斗篷一角展示货物"
+      expression: "谨慎、机敏、友善"
+
+  - id: ch1_sprite_vendor_idle_release_v1
+    template: sprite_npc_idle_4f_v1
+    category: sprite_sheet/ch1
+    priority: 1
+    model: gpt-image-2
+    vars:
+      character_name: "竹尾村游商"
+      character_appearance: "三十多岁的瘦高男性游商，低髻黑发，青褐色旅行斗篷，旧皮革腰包，手持合拢小木匣；90年代港式武侠漫画游戏精灵风格"
+      direction_label: "正下方"

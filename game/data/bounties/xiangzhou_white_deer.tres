@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"xiangzhou_white_deer"
+display_name = "白额鹿侯七"
+title = "叛营掠械"
+description = "边营逃卒，盗走军械后聚众为盗。棍法刚猛，手下多是亡命之徒。"
+board_city = &"xiangzhou"
+recommended_min_level = 8
+recommended_max_level = 10
+enemy_ids = Array[StringName]([&"bounty_border_deer", &"mine_brute", &"mine_outlaw"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_xiangzhou_mine_valley","label":"襄州矿谷 · 北哨台","pos":Vector2(0.76,0.36)},{"scene_id":&"openworld_jinling_reed_marsh","label":"江南芦荡 · 北岸废寨","pos":Vector2(0.24,0.43)}])
+reward_reputation = 24
+reward_training = 50
+reward_exp = 110
+reward_gold = 115
+reward_items = Array[Dictionary]([{"item_id":&"tiger_roar_blade","count":1},{"item_id":&"timber_bundle","count":3}])
+field_sprite_path = "res://art/characters/npc_linxi_martial_hall_master_idle_down_25d_4f_v2_runtime.png"
+

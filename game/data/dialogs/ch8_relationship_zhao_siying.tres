@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="赵思颖"
+text="案卷会留在府衙，伤和病却不会等案卷审完。洛阳城外还有很多人，只知道亲人死了，不知道该怎样继续活。"
+on_end="next:choice"
+[sub_resource type="Resource" id="choice"]
+script=ExtResource("2")
+node_id=&"choice"
+speaker=""
+text="长期同行最深的是赵思颖。如何回应？"
+choices=Array[Dictionary]([{"text":"与你沿驿路行医，也继续替无名者查案","next":"together","set_flag":{"ch8_relationship_choice_zhao_siying":true}},{"text":"各守自己的路，仍在需要时彼此相助","next":"independent","set_flag":{"ch8_relationship_choice_independent":true}}])
+[sub_resource type="Resource" id="together"]
+script=ExtResource("2")
+node_id=&"together"
+speaker="赵思颖"
+text="那就先从下一座没有医馆的驿站开始。剑不必挂起，知道什么时候不拔剑也很重要。"
+set_flags=Array[Dictionary]([{"key":"ch8_relationship_zhao_siying","value":true},{"key":"ch8_relationship_epilogue_done","value":true},{"key":"ch8_linxi_final_return_open","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"jianghu","key":"relationship_epilogue","value":"zhao_siying"}])
+on_end="end"
+[sub_resource type="Resource" id="independent"]
+script=ExtResource("2")
+node_id=&"independent"
+speaker="赵思颖"
+text="好。你走江湖，我守医路；遇到不能只靠药或只靠剑的事，再写信给对方。"
+set_flags=Array[Dictionary]([{"key":"ch8_relationship_independent","value":true},{"key":"ch8_relationship_epilogue_done","value":true},{"key":"ch8_linxi_final_return_open","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"jianghu","key":"relationship_epilogue","value":"independent"}])
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_relationship_zhao_siying"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("choice"),SubResource("together"),SubResource("independent")])

@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"openworld_yanmen_cave_guard"
+display_name = "寒岭守藏人"
+portrait_path = "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/portrait.png"
+battle_actor_path = "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_01.tres"
+battle_actor_scale = 0.98
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_01.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_02.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_03.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_04.tres")
+move_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_01.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/reaction_01.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_02.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/reaction_01.tres")
+attack_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/attack_01.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/attack_02.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/attack_03.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/attack_04.tres")
+hit_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_01.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/reaction_02.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/reaction_02.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/ready_01.tres")
+defeat_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/reaction_02.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/reaction_03.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/reaction_04.tres", "res://art/characters/story_enemies_20261109/openworld_yanmen_cave_guard/reaction_04.tres")
+level = 10
+max_hp = 520
+max_mp = 72
+attack = 88
+defense = 22
+speed = 23
+skill_ids = Array[StringName]([&"basic_attack", &"heavy_swing"])
+aggression = 0.70
+drop_gold_min = 45
+drop_gold_max = 64
+drop_exp = 88
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"healing_pill_major","chance":0.28,"count":1}])

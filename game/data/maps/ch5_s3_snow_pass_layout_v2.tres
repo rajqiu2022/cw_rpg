@@ -1,0 +1,74 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_mask_path = "res://art/navigation_masks/ch5_snow_pass_walk_v1.svg"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.18,1.00, 0.15,0.70, 0.28,0.55, 0.42,0.40, 0.72,0.34, 0.82,0.08, 0.92,0.06, 0.80,0.42, 0.98,0.90, 0.88,1.00, 0.64,0.62, 0.32,0.62, 0.32,1.00)
+])
+visual_objects = [
+	{"id": "snow_gravel_0_0", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0, 0), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.89, 0.93, 0.96, 1)},
+	{"id": "snow_gravel_1_0", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0.333333333, 0), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.89, 0.93, 0.96, 1)},
+	{"id": "snow_gravel_2_0", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0.666666667, 0), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.89, 0.93, 0.96, 1)},
+	{"id": "snow_gravel_0_1", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0, 0.5), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.89, 0.93, 0.96, 1)},
+	{"id": "snow_gravel_1_1", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0.333333333, 0.5), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.89, 0.93, 0.96, 1)},
+	{"id": "snow_gravel_2_1", "texture": "res://art/modules/yanmen_rebuild_20261030e/snow_gravel.png", "pos": Vector2(0.666666667, 0.5), "centered": false, "render_size_px": Vector2(640, 640), "z_index": -999, "modulate": Color(0.89, 0.93, 0.96, 1)},
+	{"id": "camp_entrance_snow_road", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.220151671, 0.7846544), "scale": Vector2(0.278828334, 0.278828334), "rotation": -80.212611974, "z_index": -61, "modulate": Color(0.77, 0.8, 0.82, 0.83)},
+	{"id": "terrace_lower_curve", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.322164888, 0.557376014), "scale": Vector2(0.317376853, 0.317376853), "rotation": 8.815698814, "z_index": -60, "modulate": Color(0.77, 0.8, 0.82, 0.83)},
+	{"id": "terrace_east_slope", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.62691707, 0.642772717), "scale": Vector2(0.387340267, 0.387340267), "rotation": 44.591468193, "z_index": -62, "modulate": Color(0.74, 0.77, 0.79, 0.71)},
+	{"id": "east_lookout_snow_track", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.836307762, 0.853053879), "scale": Vector2(0.263414251, 0.263414251), "rotation": 75.810136466, "z_index": -62, "modulate": Color(0.74, 0.77, 0.79, 0.71)},
+	{"id": "upper_snow_causeway", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.601151813, 0.427791529), "scale": Vector2(0.326148436, 0.326148436), "rotation": 3.721412177, "z_index": -60, "modulate": Color(0.77, 0.8, 0.82, 0.83)},
+	{"id": "mine_saddle_rise", "texture": "res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png", "pos": Vector2(0.786381863, 0.243795119), "scale": Vector2(0.234869737, 0.234869737), "rotation": -29.87700379, "z_index": -60, "modulate": Color(0.77, 0.8, 0.82, 0.83)},
+	{"id": "terrace_snow_trodden", "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png", "pos": Vector2(0.495833333, 0.515625), "scale": Vector2(0.51, 0.51), "rotation": -9, "z_index": -66, "modulate": Color(0.77, 0.8, 0.82, 0.49)},
+	{"id": "mine_rock_threshold", "texture": "res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png", "pos": Vector2(0.831770833, 0.14453125), "scale": Vector2(0.28, 0.28), "rotation": -24, "z_index": -66, "modulate": Color(0.72, 0.74, 0.75, 0.61)},
+	{"id": "snow_west_wall_low", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.0578125, 0.640625), "scale": Vector2(0.37, 0.37), "sort_by_feet": true, "depth_sort_foot_y": 0.75546875, "modulate": Color(0.83, 0.86, 0.9, 1)},
+	{"id": "snow_west_wall_high", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.130208333, 0.384375), "scale": Vector2(0.39, 0.39), "sort_by_feet": true, "depth_sort_foot_y": 0.4953125, "modulate": Color(0.73, 0.77, 0.8, 1)},
+	{"id": "snow_upper_spur", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.367708333, 0.27421875), "scale": Vector2(-0.4, 0.4), "sort_by_feet": true, "depth_sort_foot_y": 0.403125, "modulate": Color(0.83, 0.86, 0.9, 1)},
+	{"id": "snow_top_shoulder", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.615104167, 0.10546875), "scale": Vector2(-0.34, 0.34), "sort_by_feet": true, "depth_sort_foot_y": 0.21796875, "modulate": Color(0.73, 0.77, 0.8, 1)},
+	{"id": "snow_far_east_wall", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.980729167, 0.38984375), "scale": Vector2(-0.38, 0.38), "sort_by_feet": true, "depth_sort_foot_y": 0.51953125, "modulate": Color(0.83, 0.86, 0.9, 1)},
+	{"id": "snow_east_foreground", "texture": "res://art/modules/miao_recompose_20261029g/rock_bank.png", "pos": Vector2(0.992708333, 0.69921875), "scale": Vector2(0.28, 0.28), "sort_by_feet": true, "depth_sort_foot_y": 0.7828125, "modulate": Color(0.73, 0.77, 0.8, 1)},
+	{"id": "snow_center_rock_spine", "texture": "res://art/modules/huashan_map_20261029m/granite_crag.png", "pos": Vector2(0.472916667, 0.625), "scale": Vector2(0.24, 0.24), "sort_by_feet": true, "depth_sort_foot_y": 0.703125, "modulate": Color(0.83, 0.86, 0.9, 1)},
+	{"id": "snow_lower_spine_bank", "texture": "res://art/modules/miao_recompose_20261029g/rock_bank.png", "pos": Vector2(0.4828125, 0.859375), "scale": Vector2(0.37, 0.37), "sort_by_feet": true, "depth_sort_foot_y": 0.9640625, "modulate": Color(0.73, 0.77, 0.8, 1)},
+	{"id": "snow_upper_broken_crate", "texture": "res://art/modules/luoyang_district_life_20261016f/stock_crate.png", "pos": Vector2(0.669270833, 0.32265625), "scale": Vector2(0.54, 0.54), "sort_by_feet": true, "depth_sort_foot_y": 0.34609375, "modulate": Color(0.72, 0.73, 0.75, 1)},
+	{"id": "snow_pass_old_watch_shelter", "texture": "res://art/modules/riverside_visual_20261101a/shelter_v1.png", "pos": Vector2(0.660, 0.257), "scale": Vector2(0.195, 0.195), "sort_by_feet": true, "depth_sort_foot_y": 0.318, "modulate": Color(0.76, 0.78, 0.81, 1)},
+	{"id": "snow_west_lookout_pine", "texture": "res://art/modules/sect_maps_20261029k/wudang_pine.png", "pos": Vector2(0.0953125, 0.40546875), "scale": Vector2(0.25, 0.25), "sort_by_feet": true, "depth_sort_foot_y": 0.5109375, "modulate": Color(0.77, 0.81, 0.82, 1)},
+	{"id": "snow_north_lookout_pine", "texture": "res://art/modules/sect_maps_20261029k/wudang_pine.png", "pos": Vector2(0.611979167, 0.19609375), "scale": Vector2(0.23, 0.23), "sort_by_feet": true, "depth_sort_foot_y": 0.2890625, "modulate": Color(0.72, 0.77, 0.78, 1)},
+	{"id": "snow_lower_pine", "texture": "res://art/modules/sect_maps_20261029k/wudang_pine.png", "pos": Vector2(0.338541667, 0.85), "scale": Vector2(0.22, 0.22), "sort_by_feet": true, "depth_sort_foot_y": 0.93984375, "modulate": Color(0.72, 0.77, 0.78, 1)},
+	{"id": "snow_east_pine", "texture": "res://art/modules/sect_maps_20261029k/wudang_pine.png", "pos": Vector2(0.865625, 0.53359375), "scale": Vector2(0.23, 0.23), "sort_by_feet": true, "depth_sort_foot_y": 0.6265625, "modulate": Color(0.72, 0.77, 0.78, 1)},
+	{"id": "mine_mouth", "texture": "res://art/modules/linxi_mountain_road_20261030g/cave_mouth.png", "pos": Vector2(0.8283125, 0.066875), "scale": Vector2(0.22, 0.22), "sort_by_feet": true, "depth_sort_foot_y": 0.121875, "modulate": Color(0.82, 0.86, 0.89, 1)},
+	{"id": "mine_left_threshold_stone", "texture": "res://art/modules/prop/linxi_stone_tablet_v2.png", "pos": Vector2(0.772395833, 0.215625), "scale": Vector2(0.26, 0.26), "sort_by_feet": true, "depth_sort_foot_y": 0.24765625, "modulate": Color(0.82, 0.86, 0.89, 1)},
+	{"id": "mine_snow_rubble", "texture": "res://art/modules/prop/prop_ruin_rubble_pile.png", "pos": Vector2(0.876041667, 0.23125), "scale": Vector2(0.32, 0.32), "rotation": 13, "z_index": -18, "modulate": Color(0.83, 0.87, 0.9, 0.83)},
+	{"id": "lower_snow_rubble", "texture": "res://art/modules/prop/prop_ruin_rubble_pile.png", "pos": Vector2(0.586979167, 0.70703125), "scale": Vector2(0.37, 0.37), "rotation": -10, "z_index": -18, "modulate": Color(0.83, 0.87, 0.9, 0.83)},
+	{"id": "east_snow_rubble", "texture": "res://art/modules/prop/prop_ruin_rubble_pile.png", "pos": Vector2(0.880729167, 0.64609375), "scale": Vector2(0.37, 0.37), "rotation": 7, "z_index": -18, "modulate": Color(0.82, 0.86, 0.89, 0.83)},
+	{"id": "snow_scrub_west", "texture": "res://art/modules/redrock_luoyang_standard_20261028b/dry_shrub.png", "pos": Vector2(0.158854167, 0.7171875), "scale": Vector2(0.13, 0.13), "rotation": 0, "z_index": -20, "modulate": Color(0.73, 0.76, 0.77, 0.79)},
+	{"id": "snow_scrub_lookout", "texture": "res://art/modules/redrock_luoyang_standard_20261028b/dry_shrub.png", "pos": Vector2(0.606770833, 0.6125), "scale": Vector2(0.12, 0.12), "rotation": 0, "z_index": -20, "modulate": Color(0.73, 0.76, 0.77, 0.73)},
+	{"id": "snow_scrub_upper", "texture": "res://art/modules/redrock_luoyang_standard_20261028b/dry_shrub.png", "pos": Vector2(0.8109375, 0.2984375), "scale": Vector2(0.16, 0.16), "rotation": 0, "z_index": -20, "modulate": Color(0.73, 0.76, 0.77, 0.84)}
+]
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"center_rock_spine", "pos":Vector2(0.47,0.72), "size":Vector2(0.20,0.12)},
+	{"id":"upper_camp_debris", "pos":Vector2(0.67,0.31), "size":Vector2(0.10,0.10)}
+]
+interactions = [
+	{"id":"legacy_hotspot_0", "pos":Vector2(0.52,0.51), "size":Vector2(0.11,0.12), "action":"dialog:ch5_snow_pass_battle", "activation":"interact", "require_flag":"ch5_false_banner_cloth_found", "hide_flag":"ch5_snow_pass_cleared"}
+]
+portals = [
+	{"id":"return_grain_convoy_camp", "label":"返回护粮营地", "pos":Vector2(0.25,0.92), "size":Vector2(0.14,0.12), "target_scene":"ch5_s2_grain_convoy_camp", "target_pos":Vector2(0.84,0.17)},
+	{"id":"enter_abandoned_mine", "label":"进入废弃矿道", "pos":Vector2(0.84,0.12), "size":Vector2(0.12,0.12), "target_scene":"ch5_s4_abandoned_mine", "target_pos":Vector2(0.49,0.88), "require_flag":"ch5_snow_pass_cleared"}
+]
+walkable_probes = [
+	{"id":"camp_spawn", "pos":Vector2(0.25,0.90)},
+	{"id":"battle_terrace", "pos":Vector2(0.52,0.51)},
+	{"id":"mine_exit", "pos":Vector2(0.84,0.13)},
+	{"id":"lower_right_path", "pos":Vector2(0.86,0.84)}
+]
+blocked_probes = [
+	{"id":"cliff_void", "pos":Vector2(0.18,0.28)},
+	{"id":"center_rock_spine", "pos":Vector2(0.47,0.72)}
+]

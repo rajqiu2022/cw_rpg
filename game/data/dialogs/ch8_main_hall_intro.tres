@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="旁白"
+text="主厅没有预想中的满堂宾客。西侧门后挤着待撤的证人与伤员，右侧封令柜尚有余火；薛影站在庄主台前，像一道只等口令落下的影子。"
+on_end="next:warning"
+[sub_resource type="Resource" id="warning"]
+script=ExtResource("2")
+node_id=&"warning"
+speaker="冷孤云"
+text="先拆清这道命令链，再把人撤出去。后殿的账，不能拿他们的命来结。"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_main_hall_intro"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("warning")])

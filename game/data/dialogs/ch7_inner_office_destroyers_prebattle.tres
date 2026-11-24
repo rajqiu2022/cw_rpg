@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="茗雾内署护档使"
+text="查到机构密令便该停手。个人押记若见光，山庄再无回旋余地。"
+voice_emotion="threat"
+on_end="next:fight"
+[sub_resource type="Resource" id="fight"]
+script=ExtResource("2")
+node_id=&"fight"
+speaker="冷孤云"
+text="正因再无回旋，才不能让你们把签发者烧掉。"
+on_end="battle_group_then:ch7_mingwu_record_guard,ch7_mingwu_order_burner:ch7_inner_office_destroyers_victory"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch7_inner_office_destroyers_prebattle"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("fight")])

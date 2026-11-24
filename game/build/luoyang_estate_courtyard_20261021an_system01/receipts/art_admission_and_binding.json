@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-estate-courtyard-20261021an",
+  "status": "ART_APPROVED_FOR_NATIVE_CANDIDATE_ASSEMBLY_ONLY",
+  "processed_asset": {
+    "path": "assets/processed/luoyang_estate_courtyard_20261021am/estate_low_stone_peony_bed_v3_compact_clean_padded.png",
+    "png_sha256": "EAF4125DCB4288852427A036EF90F31B505965B60EEF4FAB148F7FDC0058DC4C",
+    "rgba8_sha256": "135D68779B507736485D1DF0056B94165D97EA1A46DBD516C9BC2856519E027E",
+    "source_size_px": [2108, 881],
+    "complete_A1_bbox_xyxy": [380, 159, 1728, 722],
+    "complete_A1_size_px": [1348, 563],
+    "ground_anchor_px": [1054, 709],
+    "stone_foot_solid_rect_xywh": [409, 656, 1290, 53],
+    "uniform_scale": 0.22997032640949555,
+    "uniform_scale_formula": "310 / 1348",
+    "render_canvas_size_world_px": [484.7774480712166, 202.60385756676558],
+    "complete_A1_relative_to_ground_foot_xywh": [-155.0, -126.48367952522256, 310.0, 129.473293768546],
+    "complete_A1_bottom_relative_to_ground_foot_px": 2.9896142433234423,
+    "stone_foot_solid_relative_to_ground_foot_xywh": [-148.33086053412464, -12.188427299703264, 296.6617210682493, 12.188427299703264],
+    "binding_rule": "For every source-space rect, world_xy = ground_foot + (source_xy - ground_anchor_px) * uniform_scale and world_size = source_size * uniform_scale. Do not assume the A1 bottom equals the ground foot.",
+    "pixel_integrity": "Root processor and independent verifier passed; protected subject RGBA is byte-exact, only pre-authorized external alpha 1..7 pixels were zeroed, and the transparent canvas was reframed without subject resize, crop, rotation, recolor, or redraw."
+  },
+  "evidence": {
+    "source_raw_png": "assets/raw/luoyang_estate_courtyard_20261021am/estate_low_stone_peony_bed_v3_compact_edit.png",
+    "source_raw_png_sha256": "D90E93E72BE474F49B88D107086239ACB7454CB53FA09A09B6248F806670F741",
+    "processing_report": "game/build/luoyang_estate_courtyard_20261021am_art01/v3_cleanup_processing_report.json",
+    "processing_report_sha256": "C304FD08F6BC12CA844679980ED4CE61B11FCCD702A2C462F16B7B1566FEBC60",
+    "verification_report": "game/build/luoyang_estate_courtyard_20261021am_art01/v3_cleanup_verification_and_measurement.json",
+    "verification_report_sha256": "82647A05B0B538105CDCDF6D626F0D14CA523E7EDDC4331A20BB173ADBFF3675",
+    "enclosure_author_plan": "game/build/luoyang_estate_courtyard_20261021am_art01/enclosure_ground_edge_author_plan.json",
+    "enclosure_author_plan_sha256": "C2F8F7EA3B1A52D18E15203612BF3A999913B1D4549A6F3F622E81E351311A70"
+  },
+  "peony_instances": [
+    {
+      "id": "estate_an_west_peony_bed",
+      "ground_foot_px": [1160, 1328],
+      "world_complete_A1_bbox_xywh": [1005.0, 1201.5163204747774, 310.0, 129.473293768546],
+      "world_stone_foot_solid_rect_xywh": [1011.6691394658753, 1315.8115727002967, 296.6617210682493, 12.188427299703264],
+      "central_axis_clearance_px": 29.0
+    },
+    {
+      "id": "estate_an_east_peony_bed",
+      "ground_foot_px": [1912, 1328],
+      "world_complete_A1_bbox_xywh": [1757.0, 1201.5163204747774, 310.0, 129.473293768546],
+      "world_stone_foot_solid_rect_xywh": [1763.6691394658753, 1315.8115727002967, 296.6617210682493, 12.188427299703264],
+      "central_axis_clearance_px": 29.0
+    }
+  ],
+  "assembly_components": {
+    "masonry_connector_count": 6,
+    "grass_stone_shoulder_count": 4,
+    "peony_bed_count": 2,
+    "component_source": "Use the six masonry and four grass-stone rows byte-for-byte from the pinned enclosure_author_plan; replace only its conditional raw peony rows with the measured processed rows in this successor.",
+    "protected_central_axis_x_px": [1344, 1728],
+    "protected_cross_route_y_px": 700
+  },
+  "route_successor": {
+    "points_px": [[1536, 1260], [1536, 1420], [2540, 1420], [2540, 1840]],
+    "rule": "Preserve the original 1536,1260 start. The historical three-point AM successor that began at y=1420 is not the final route."
+  },
+  "art_review": {
+    "subject_intact": true,
+    "visual_identity": "A compact grey-stone peony bed with readable pink and off-white peonies; appropriate as a paired formal forecourt accent rather than loose vegetation.",
+    "known_limit": "Small red/yellow fringe pixels remain around some leaves and petals by design because the authorization did not permit further subject-edge alteration. Their visibility must be judged in the native whole-courtyard preview.",
+    "actual_acceptance_required": [
+      "both 310px beds read at adult scale and do not dominate the gate or corridors",
+      "six walls visibly connect hall, wings, corridors, and gate without floating seams",
+      "four shoulders and two beds form paired forecourt gardens while leaving the central approach open",
+      "all building doors and the four-point route remain visually and physically clear",
+      "edge fringe is not materially visible at native scene scale"
+    ]
+  },
+  "scope_boundary": "This admits the cleaned peony asset and the 6-wall + 4-shoulder + 2-bed author package to one native candidate assembly. It does not grant import, engine, collision, navigation, Field, formal deployment, or whole-estate art-complete credit."
+}

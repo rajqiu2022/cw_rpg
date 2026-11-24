@@ -1,0 +1,32 @@
+{
+  "schema": "FIELD11_TWO_FIXED_SOURCE_KEYS_SINGLE_HUNK_FULL_BYTE_INVERSE_V1",
+  "status": "BUILD_ONLY_STATIC_FULL_FORWARD_REVERSE_VERIFIED",
+  "parent": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/gate_texture_repair01/closure_READY01/Field_READY.gd",
+    "sha256": "3ebf2301b4564633a4d8323ca8d04d949414a8f244f81c1155ac4ff0b0fa11a9"
+  },
+  "candidate": {
+    "path": "res://build/luoyang_city_finish_20261025i_system01/Field11_gate_fixed_source_keys_CANDIDATE.gd",
+    "sha256": "d80ceb07320ef8340e0261e3a2b8f4fb9d4ce9a51225a9ffb263d486cce0ddde"
+  },
+  "replacements": [
+    {
+      "old": "not first.has(GATE_MOAT_RUNTIME.resource_path) or not first.has(GATE_FORTIFICATION.resource_path)",
+      "new": "not first.has(\"res://scripts/city/luoyang_gate_moat_runtime_20261013.gd\") or not first.has(\"res://scripts/city/luoyang_gate_fortification_contract_20261013.gd\")"
+    }
+  ],
+  "physical_verification": {
+    "forward": true,
+    "reverse": true,
+    "old_sha": "3ebf2301b4564633a4d8323ca8d04d949414a8f244f81c1155ac4ff0b0fa11a9",
+    "new_sha": "d80ceb07320ef8340e0261e3a2b8f4fb9d4ce9a51225a9ffb263d486cce0ddde",
+    "old_bytes": 258021,
+    "new_bytes": 258084,
+    "old_unique": true,
+    "new_unique": true
+  },
+  "scope": "Only illegal .resource_path on two preload class symbols becomes the two already-fixed exact original C FIRST source keys. gate.get_script()==GATE_MOAT_RUNTIME and every row/Weak/manifest/texture/base/region gate retained. No generic allowance, IO/hash/render change.",
+  "preserved": "BB8A/3EBF predecessors and Root40516 parse wholeFAIL preserved; no earlier business test credit invented.",
+  "engine_calls": 0,
+  "production_writes": 0
+}

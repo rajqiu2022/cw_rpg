@@ -1,0 +1,55 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "药师苏伯"
+portrait_path = "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text = "山路湿滑，跌打伤药要随身带着。要添些药么？"
+voice_emotion = "warm"
+choices = Array[Dictionary]([{"text": "购买", "next": "buy"}, {"text": "不用了", "next": "leave"}])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[sub_resource type="Resource" id="node_buy"]
+script = ExtResource("2_dnode")
+node_id = &"buy"
+speaker = "药师苏伯"
+portrait_path = "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text = "都是乡里常用的药，你慢慢挑。"
+voice_emotion = "warm"
+choices = Array[Dictionary]([])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "shop:linxi_apothecary"
+
+[sub_resource type="Resource" id="node_leave"]
+script = ExtResource("2_dnode")
+node_id = &"leave"
+speaker = "药师苏伯"
+portrait_path = "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text = "也好。出村前记得把伤药备齐。"
+voice_emotion = "warm"
+choices = Array[Dictionary]([])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"linxi_center_herbalist"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_buy"), SubResource("node_leave")])

@@ -1,0 +1,61 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=10 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "考校执事"
+text = "五派各有所长。递交入门名帖须有声望十点，并备齐各派修缮山门所需物资，随后还要亲自完成入门考校；未过考校前不会传授本门武学。你也可以不拜山门，以江湖客身份继续追查。道路一经确认，不可随意更改。"
+choices = Array[Dictionary]([{"text": "武当：剑掌兼修", "next": "wudang"}, {"text": "华山：百变剑路", "next": "huashan"}, {"text": "古峰：重刀破阵", "next": "gufeng"}, {"text": "凌月：轻身长棍", "next": "lingyue"}, {"text": "茗雾：身法暗器", "next": "mingwu"}, {"text": "不入门派：江湖自修", "next": "wanderer"}])
+[sub_resource type="Resource" id="wudang"]
+script = ExtResource("2_dnode")
+node_id = &"wudang"
+speaker = "玄真道长"
+text = "武当剑法与拳掌都以柔劲、守中为根。名帖需声望十点、铁矿石两块、坚木料两份；物资用于修补练功架与山道。备齐后还须还原练功场旧脚印，考校通过才正式入门。"
+faction_trust_changes = Array[Dictionary]([{"id": "wudang", "delta": 15}])
+method_flags = Array[Dictionary]([{"key": "ch3_access_wudang_archive", "value": true}])
+on_end = "join_faction:wudang"
+[sub_resource type="Resource" id="huashan"]
+script = ExtResource("2_dnode")
+node_id = &"huashan"
+speaker = "霍长空"
+text = "华山以剑立派。名帖需声望十点、铁矿石三块、粗布卷两份，用于整修剑架与门旗；随后还要在实战中说清剑与气如何相济。"
+faction_trust_changes = Array[Dictionary]([{"id": "huashan", "delta": 15}])
+method_flags = Array[Dictionary]([{"key": "ch3_access_huashan_wound_records", "value": true}])
+on_end = "join_faction:huashan"
+[sub_resource type="Resource" id="gufeng"]
+script = ExtResource("2_dnode")
+node_id = &"gufeng"
+speaker = "古疆雷"
+text = "古峰不问出身，只看胆气和分寸。名帖需声望十点、铁矿石四块、行粮两袋；缴齐后再过重甲考校。"
+faction_trust_changes = Array[Dictionary]([{"id": "gufeng", "delta": 15}])
+method_flags = Array[Dictionary]([{"key": "ch3_access_gufeng_porters", "value": true}])
+on_end = "join_faction:gufeng"
+[sub_resource type="Resource" id="lingyue"]
+script = ExtResource("2_dnode")
+node_id = &"lingyue"
+speaker = "凌霜"
+text = "凌月以轻身御长棍，讲究点扫相济。名帖需声望十点、药材三束、粗布卷两份；随后从白晚晴遗物上的错纹查起，完成入门考校。"
+faction_trust_changes = Array[Dictionary]([{"id": "lingyue", "delta": 15}])
+method_flags = Array[Dictionary]([{"key": "ch3_access_lingyue_relics", "value": true}])
+on_end = "join_faction:lingyue"
+[sub_resource type="Resource" id="mingwu"]
+script = ExtResource("2_dnode")
+node_id = &"mingwu"
+speaker = "苏雾笙"
+text = "身在雾中，更要辨得方向。名帖需声望十点、药材三束、坚木料两份；缴齐后通过影廊考校，我才授你茗雾步法。"
+faction_trust_changes = Array[Dictionary]([{"id": "mingwu", "delta": 15}])
+method_flags = Array[Dictionary]([{"key": "ch3_access_mingwu_shadow_corridor", "value": true}])
+on_end = "join_faction:mingwu"
+[sub_resource type="Resource" id="wanderer"]
+script = ExtResource("2_dnode")
+node_id = &"wanderer"
+speaker = "考校执事"
+text = "不入门墙，也不是拒绝江湖。你须独自核对五派口供，再过散修考校；此后可凭机缘、委托与残卷自择武学。"
+method_flags = Array[Dictionary]([{"key": "ch3_access_wanderer_records", "value": true}])
+on_end = "join_faction:wanderer"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_faction_choice"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("wudang"), SubResource("huashan"), SubResource("gufeng"), SubResource("lingyue"), SubResource("mingwu"), SubResource("wanderer")])

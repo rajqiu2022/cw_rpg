@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"bianzhou_wronged_ferryman"
+display_name = "石渡何平"
+title = "沉舟劫粮"
+description = "仓吏称船工何平在沉船后夺了粮，渡口却有两户人家来替他求情。旧驿有人见过他。"
+board_city = &"bianzhou"
+recommended_min_level = 5
+recommended_max_level = 7
+enemy_ids = Array[StringName]([&"warrant_ferryman_hei"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 废马棚外","pos":Vector2(0.70,0.54)},{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 南来官道","pos":Vector2(0.49,0.71)}])
+reward_reputation = 16
+reward_training = 24
+reward_exp = 65
+reward_gold = 86
+field_sprite_path = "res://art/characters/street_expansion_v1/npc_linxi_south_militia_coach_idle_down_4f_v2_runtime.png"

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "戚云笙邀我去峡谷旧渡，白水驿的换车痕迹却通向茗雾茶镇。两边都值得查，先后却会改变他们的防备。"
+accept_quest = &"q_ch7_main_01_choose_first_route"
+on_end = "next:choice"
+
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("2")
+node_id = &"choice"
+speaker = ""
+text = "先从哪一侧开始核证？另一条路线不会关闭，但消息可能先一步传过去。"
+choices = Array[Dictionary]([
+	{"text":"先去烈云峡谷，核对戚云笙的邀请", "next":"lieyun", "set_flag":{"ch7_dual_route_chosen":true, "ch7_route_first_lieyun":true, "ch7_mingwu_alerted_by_lieyun_first":true}, "method_flags":[{"key":"ch7_investigation_order", "value":"lieyun_first"}]},
+	{"text":"先查茗雾茶镇，追封蜡与换车线索", "next":"mingwu", "set_flag":{"ch7_dual_route_chosen":true, "ch7_route_first_mingwu":true, "ch7_lieyun_suspicious_by_mingwu_first":true}, "method_flags":[{"key":"ch7_investigation_order", "value":"mingwu_first"}]}
+])
+
+[sub_resource type="Resource" id="lieyun"]
+script = ExtResource("2")
+node_id = &"lieyun"
+speaker = "冷孤云"
+text = "先确认留书的人愿意公开什么，也确认她没有说什么。茗雾那边若收紧文书，变化本身也是线索。"
+on_end = "scene:ch7_s1_lieyun_valley_ferry"
+
+[sub_resource type="Resource" id="mingwu"]
+script = ExtResource("2")
+node_id = &"mingwu"
+speaker = "冷孤云"
+text = "先追改车与封蜡。烈云若因此起疑，我再拿查到的事实去旧渡，不靠玉佩换信任。"
+on_end = "scene:ch7_s2_mingwu_tea_town"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_route_choice"
+required_story_flag = &"chapter6_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("choice"), SubResource("lieyun"), SubResource("mingwu")])

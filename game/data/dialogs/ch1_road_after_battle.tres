@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+[gd_resource type="Resource" script_class="DialogScript" load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
 [ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
@@ -8,7 +8,7 @@ script = ExtResource("2_dnode")
 node_id = &"start"
 speaker = "冷孤云"
 portrait_path = "res://art/characters/protagonist_portrait.png"
-text = "（收剑入鞘，呼吸微促）……这是我第一次用铁剑。\n（看了看地上的尸体，又看了看倒下的散兵）两个人都不是好人——但也不该死在路边。"
+text = "（收剑入鞘，呼吸微促）……这是我第一次用铁剑。\n（看了看身份不明的尸体，又看了看倒下的散兵）一个拔刀杀人，一个来历成谜。先别急着替任何人下定论。"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
@@ -27,16 +27,33 @@ choices = []
 give_items = Array[Dictionary]([{"id": "cloth_armor", "count": 1}, {"id": "zhuwei_map", "count": 1}])
 give_gold = 8
 set_flags = Array[Dictionary]([{"key": "looted_thug_corpse", "value": true}])
+add_evidence = Array[StringName]([&"ev_ch1_bloodstained_route_map"])
 accept_quest = &""
 complete_quest = &""
-on_end = "next:n3"
+on_end = "next:bury"
+
+[sub_resource type="Resource" id="node_bury"]
+script = ExtResource("2_dnode")
+node_id = &"bury"
+speaker = ""
+text = "[i]（冷孤云把那位不知姓名的路人安葬在竹丛边，拾来一块青石，立在坟前。）[/i]"
+on_end = "next:farewell"
+
+[sub_resource type="Resource" id="node_farewell"]
+script = ExtResource("2_dnode")
+node_id = &"farewell"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "还不知道你叫什么。这块石头先替你守着，等查清了，我再来告诉你。"
+set_flags = Array[Dictionary]([{"key": "road_stranger_buried", "value": true}])
+on_end = "next:n4"
 
 [sub_resource type="Resource" id="node_3"]
 script = ExtResource("2_dnode")
 node_id = &"n3"
 speaker = ""
 portrait_path = ""
-text = "[i]（地图标注了林西村到竹尾村的路线。竹尾村的位置上被人用炭笔画了一个圈，旁边有两个歪歪扭扭的字——）[/i]\n[color=#cc6644]「快走」[/color]"
+text = "[i]（地图标注了林西村到竹尾村的路线。路边石碑上新刻着两个字——）[/i]\n[color=#cc6644]「小心」[/color]"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
@@ -50,13 +67,13 @@ script = ExtResource("2_dnode")
 node_id = &"n4"
 speaker = "冷孤云"
 portrait_path = "res://art/characters/protagonist_portrait.png"
-text = ""快走"？写这张地图的人——也是被追杀的。跟石碑上刻"小心"的，很可能是同一个。\n（你将地图收入怀中）竹尾村。不管发生什么事，那里有答案。"
+text = "地图上的血迹已经干了，画图的人却未必就是死者。\n（你按住仍在发疼的右肩）只凭这一式继续赶路，下一次未必还能活着。先回去向师傅禀告，再作打算。"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
-set_flags = Array[Dictionary]([{"key": "defeated_thug_lone", "value": true}, {"key": "ready_for_zhuwei", "value": true}])
-accept_quest = &"q_ch1_main_zhuwei"
-complete_quest = &"q_ch1_main_road"
+set_flags = Array[Dictionary]([{"key": "defeated_thug_lone", "value": true}])
+accept_quest = &"q_ch1_main_return_master"
+complete_quest = &""
 on_end = "next:n5"
 
 [sub_resource type="Resource" id="node_5"]
@@ -64,17 +81,17 @@ script = ExtResource("2_dnode")
 node_id = &"n5"
 speaker = ""
 portrait_path = ""
-text = "[i]（你沿着山道快步前行。竹林渐密，天色渐暗——竹尾村的密林就在前方。）[/i]"
+text = "[i]（你收好地图，沿原路折返林西村。山风从背后追来，像是在催促你尽快把消息带回去。）[/i]"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
 set_flags = Array[Dictionary]([])
 accept_quest = &""
 complete_quest = &""
-on_end = "scene:ch1_s3_zhuwei_forest"
+on_end = "end"
 
 [resource]
 script = ExtResource("1_dscr")
 dialog_id = &"ch1_road_after_battle"
 entry_node_id = &"start"
-nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_4"), SubResource("node_5")])
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_2"), SubResource("node_3"), SubResource("node_bury"), SubResource("node_farewell"), SubResource("node_4"), SubResource("node_5")])

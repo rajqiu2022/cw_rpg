@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch4_main_04_tunnel_mastermind"
+title = "古寺地道"
+kind = 0
+desc_not_started = "古寺正殿只是掩护，真正的据点藏在地道深处。"
+desc_in_progress = "穿过机关地道，击败冒名首领与护卫，留下活口交由府衙审问。"
+desc_completed = "古寺工坊证明有人批量伪造五派身份，十八年前押运队名册则缺失关键签押页。缴获的巡闸棍由守渠老卒辨认，他补全了棍上所载的翻云棍阵。"
+tracker_hint = "古寺 · 地下运货道"
+completion_triggers = Array[String](["flag_set:chapter4_complete"])
+reward_gold = 90
+reward_exp = 160
+reward_items = Array[Dictionary]([{"item_id": "luoshui_canal_staff", "count": 1}])
+reward_skills = Array[StringName]([&"rolling_cloud_staff_storm"])

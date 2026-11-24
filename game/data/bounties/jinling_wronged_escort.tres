@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"jinling_wronged_escort"
+display_name = "短镖罗望"
+title = "劫盐伤役"
+description = "盐船东主控告罗望劫银打伤胥役，却不肯让自己的装船脚夫上堂。巡船人在芦荡见过此人。"
+board_city = &"jinling"
+recommended_min_level = 10
+recommended_max_level = 12
+enemy_ids = Array[StringName]([&"warrant_escort_luo"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_jinling_reed_marsh","label":"江南芦荡 · 旧纸坊外","pos":Vector2(0.79,0.40)},{"scene_id":&"openworld_jinling_reed_marsh","label":"江南芦荡 · 渔棚小路","pos":Vector2(0.55,0.70)}])
+reward_reputation = 28
+reward_training = 48
+reward_exp = 110
+reward_gold = 168
+field_sprite_path = "res://art/characters/npc_zhuwei_escort_idle_down_25d_4f.png"

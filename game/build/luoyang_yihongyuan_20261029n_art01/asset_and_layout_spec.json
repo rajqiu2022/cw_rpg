@@ -1,0 +1,347 @@
+{
+  "schema": 1,
+  "status": "READONLY_ART_LORE_RECOMMENDATION_NOT_ENGINE_OR_CANON_APPROVAL",
+  "exterior": {
+    "raw": "assets/raw/luoyang_yihongyuan_20261029n/yihongyuan_exterior_v1.png",
+    "processed": "assets/processed/luoyang_yihongyuan_20261029n/yihongyuan_exterior_v1_padded.png",
+    "processed_size_px": [
+      1441,
+      1206
+    ],
+    "source_ground_anchor_px": [
+      664,
+      1010
+    ],
+    "anchor_world_contact_px": [
+      5206.18,
+      4174.42
+    ],
+    "uniform_scale": 1.1521231617647059,
+    "source_clear_threshold_px": [
+      664,
+      922
+    ],
+    "source_clear_opening_polygon_px": [
+      [
+        580,
+        749
+      ],
+      [
+        748,
+        748
+      ],
+      [
+        748,
+        923
+      ],
+      [
+        580,
+        917
+      ]
+    ],
+    "source_foundation_edge_segments_px": [
+      [
+        [
+          230,
+          951
+        ],
+        [
+          1090,
+          1028
+        ]
+      ],
+      [
+        [
+          1090,
+          1028
+        ],
+        [
+          1259,
+          912
+        ]
+      ]
+    ],
+    "source_closed_footprint_proposal_px": [
+      [
+        230,
+        951
+      ],
+      [
+        400,
+        834
+      ],
+      [
+        1259,
+        912
+      ],
+      [
+        1090,
+        1028
+      ]
+    ],
+    "source_walk_channel_to_subtract_px": [
+      [
+        580,
+        917
+      ],
+      [
+        748,
+        923
+      ],
+      [
+        760,
+        1070
+      ],
+      [
+        567,
+        1064
+      ]
+    ],
+    "measurement": "Manual native image observations +/-8 source px, no runtime approval. New generated geometry not pixel-identical to old; do not reuse old source UV. Every padded coordinate is raw annotation plus exactly [32,32].",
+    "door_visible_height_source_px": 174,
+    "door_visible_width_source_px": 168
+  },
+  "room": {
+    "background": "res://art/modules/luoyang_assembled_interiors_20261016g/shell_inn_hall_v1.png",
+    "native_size_px": [
+      1536,
+      1024
+    ],
+    "personally_viewed": true,
+    "new_interior_generation_needed": false,
+    "reason": "Existing full-depth two-storey wooden gallery, warm plank floor, dark timber and grey brick match Luoyang. Furnish instead of another empty shell.",
+    "layout": "Main hall is public tea/conversation floor. Screened east table is a quiet side sitting bay, not a separate fully enclosed room. North rear passage/backstage reserved, do not portray upper gallery as walkable before stairs/collision implementation. If actual independent backstage/side rooms are added, reuse shell_residential_v1.png as a separate room with honest doors, not place fake door sprites in one room.",
+    "player_spawn_px": [
+      768,
+      850
+    ],
+    "exit_foot_px": [
+      768,
+      945
+    ],
+    "keep_clear_aisle_rect": [
+      680,
+      580,
+      850,
+      950
+    ],
+    "target_adult_visible_height_px": [
+      112,
+      126
+    ]
+  },
+  "furniture": [
+    {
+      "asset_id": "inn_counter_v1",
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/inn_counter_v1.png",
+      "source_ground_anchor_px": [
+        768,
+        781
+      ],
+      "foot_px": [
+        1160,
+        560
+      ],
+      "scale": 0.24,
+      "purpose": "Reception counter; matron stays behind it."
+    },
+    {
+      "asset_id": "wine_tea_shelf_v1",
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/wine_tea_shelf_v1.png",
+      "source_ground_anchor_px": [
+        768,
+        944
+      ],
+      "foot_px": [
+        1150,
+        480
+      ],
+      "scale": 0.21,
+      "purpose": "Tea/wine storage, not empty wall."
+    },
+    {
+      "asset_id": "dining_table_v1",
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png",
+      "source_ground_anchor_px": [
+        768,
+        934
+      ],
+      "foot_px": [
+        400,
+        620
+      ],
+      "scale": 0.16,
+      "purpose": "Public tea table."
+    },
+    {
+      "asset_id": "dining_table_v1",
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png",
+      "source_ground_anchor_px": [
+        768,
+        934
+      ],
+      "foot_px": [
+        1070,
+        740
+      ],
+      "scale": 0.16,
+      "purpose": "East quiet sitting bay."
+    },
+    {
+      "asset_id": "folding_screen_v1",
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/folding_screen_v1.png",
+      "source_ground_anchor_px": [
+        768,
+        953
+      ],
+      "foot_px": [
+        980,
+        650
+      ],
+      "scale": 0.19,
+      "purpose": "Back/side edge of quiet bay; keep center aisle clear."
+    },
+    {
+      "asset_id": "timber_stair_v1",
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/timber_stair_v1.png",
+      "source_ground_anchor_px": [
+        715,
+        961
+      ],
+      "foot_px": [
+        265,
+        535
+      ],
+      "scale": 0.28,
+      "purpose": "Connect visual upper gallery; not certified traversable."
+    }
+  ],
+  "furniture_geometry_source": [
+    "game/data/maps/luoyang_assembled_interiors_20261016g/inn_hall_author_route_retry1.json",
+    "game/data/maps/luoyang_assembled_interiors_20261016g/scholar_study_author.json"
+  ],
+  "npcs": [
+    {
+      "role": "掌事",
+      "adult": true,
+      "foot_px": [
+        1150,
+        495
+      ],
+      "sprite": "res://art/modules/redrock_luoyang_standard_20261028b/keeper_sprite.png",
+      "portrait": "res://art/modules/redrock_luoyang_standard_20261028b/keeper_portrait.png",
+      "frames": 1,
+      "personally_viewed_pair": true,
+      "appearance": "Ordinary broad-faced grey-streaked middle-aged woman in blue-grey wrap and brown apron, complete feet; reuse visual only, independent NPC ID.",
+      "dialogue": {
+        "hero": "借这里歇歇脚，不知可方便？",
+        "npc": "坐吧，茶水在桌上。过道留宽些，伙计端着热壶来回走。"
+      }
+    },
+    {
+      "role": "堂中伙计",
+      "adult": true,
+      "foot_px": [
+        900,
+        650
+      ],
+      "sprite": "res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png",
+      "portrait": "res://art/characters/portraits/street_expansion_v1/portrait_inn_waiter_v1.png",
+      "frames": 4,
+      "frame_size_px": [
+        160,
+        160
+      ],
+      "personally_viewed_pair": true,
+      "appearance": "Full feet blue-grey tunic, cap and apron, tea tray; do not use cropped legacy street_expansion waiter.",
+      "dialogue": {
+        "hero": "你这壶茶，端了一路也没洒。",
+        "npc": "客人多，手就练稳了。窗边那桌刚添过水，坐下慢慢喝。"
+      }
+    },
+    {
+      "role": "歇脚商客",
+      "adult": true,
+      "foot_px": [
+        520,
+        780
+      ],
+      "sprite": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png",
+      "portrait": "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png",
+      "frames": 4,
+      "frame_size_px": [
+        160,
+        160
+      ],
+      "personally_viewed_pair": true,
+      "appearance": "Ordinary middle-aged weathered man, straw hat, brown travel clothing and shoulder bag.",
+      "dialogue": {
+        "hero": "一路过来，可有新鲜见闻？",
+        "npc": "有人夸南市新货，也有人嫌价高。生意人的话，你听一半，再去亲眼瞧瞧。"
+      }
+    },
+    {
+      "role": "闲坐文人",
+      "adult": true,
+      "foot_px": [
+        610,
+        520
+      ],
+      "sprite": "res://art/characters/npc_luoyang_paper_scholar_idle_down_25d_1f_20261024.png",
+      "portrait": "res://art/characters/portraits/luoyang_scholar_20261024c/paper_scholar_v1.png",
+      "frames": 1,
+      "personally_viewed_pair": true,
+      "appearance": "Book-holding cap and pale robe; one relatively handsome minority, NOT musician or playing animation.",
+      "dialogue": {
+        "hero": "这里的传闻，可有什么来历？",
+        "npc": "街坊说熟的故事，到了不同人嘴里，总会添几句。热闹归热闹，别都当真事。"
+      }
+    },
+    {
+      "role": "年长茶客",
+      "adult": true,
+      "foot_px": [
+        400,
+        685
+      ],
+      "sprite": "res://art/characters/npc_inn_tea_guest_left_seated_idle_down_25d_4f_v2_runtime.png",
+      "portrait": null,
+      "frames": 4,
+      "frame_size_px": [
+        160,
+        160
+      ],
+      "personally_viewed_pair": false,
+      "appearance": "Complete older man with greenish plain robe and built-in chair; do not add second chair under sprite.",
+      "dialogue": null,
+      "reason": "No exact matching portrait found. Keep silent ambient seated visitor for this batch or commission true same-person portrait; generic older_man brown robe/beard does NOT match."
+    },
+    {
+      "role": "静坐女客",
+      "adult": true,
+      "foot_px": [
+        1070,
+        798
+      ],
+      "sprite": "res://art/characters/npc_inn_tea_guest_right_seated_idle_down_25d_4f_v2_runtime.png",
+      "portrait": null,
+      "frames": 4,
+      "frame_size_px": [
+        160,
+        160
+      ],
+      "personally_viewed_pair": false,
+      "appearance": "Adult woman in muted pale-green dress with built-in chair. Not a generated music performance pose.",
+      "dialogue": null,
+      "reason": "No exact matching portrait found; generic young_woman is travel-green and a different face. Do not silently fallback to generic male portrait. Can be silent adult ambient visitor."
+    }
+  ],
+  "lore_constraints": [
+    "All lines are proposed non-canonical local chatter, no quest/flags/rewards/economy writes.",
+    "Hero starts with current GameState player portrait/neutral pose, then matching NPC portrait; do not begin with an NPC choice menu.",
+    "Four of six residents can speak with visually matched portraits; two seated guests remain ambient until matching portraits supplied.",
+    "No found native instrument/musician sprite: leave a future performer position, do not label the book-holding scholar as performing or invent a guqin from writing desk.",
+    "No direct allegation about a faction or culprit; rumours are explicitly attributed hearsay and self-judged.",
+    "No sexual scene, forced encounter, named courtesan canon or surprise relationship progression."
+  ]
+}

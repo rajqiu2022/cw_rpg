@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"central_road_raider"
+display_name = "驿道劫匪"
+battle_actor_path = "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_ready_01.png"
+battle_actor_scale = 1.00
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/thug_lone/thug_lone_ready_01.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_ready_02.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_ready_03.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/thug_lone/thug_lone_move_01.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_move_02.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_move_03.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/thug_lone/thug_lone_attack_01.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_attack_02.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_attack_03.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/thug_lone/thug_lone_hit_01.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_hit_02.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_hit_03.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/standard_v2/thug_lone/thug_lone_defeat_01.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_defeat_02.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_defeat_03.png", "res://art/sprites/battle/standard_v2/thug_lone/thug_lone_defeat_04.png")
+level = 3
+max_hp = 245
+max_mp = 22
+attack = 38
+defense = 8
+speed = 8
+skill_ids = Array[StringName]([&"basic_attack", &"heavy_swing"])
+drop_gold_min = 16
+drop_gold_max = 29
+drop_exp = 42
+drop_random = Array[Dictionary]([{"item_id":"grain_sack","chance":0.58,"count":1},{"item_id":"cloth_roll","chance":0.34,"count":1}])
+

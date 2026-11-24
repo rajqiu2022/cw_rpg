@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch4_s0_luoyang_gate_layout_v1.tres" id="2"]
+[resource]
+script = ExtResource("1")
+scene_id = &"ch4_s0_luoyang_gate"
+display_name = "洛阳 · 南城门"
+background_path = "res://art/backgrounds/bg_luoyang_south_gate_v1.png"
+bgm_path = "res://art/audio/bgm/bgm_city_ceremony_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.500,0.900)
+camera_zoom = 1.05
+npcs = Array[Dictionary]([{"npc_id":"luoyang_gate_sergeant","npc_name":"洛阳门吏","pos":Vector2(0.665,0.545),"sprite_path":"res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png","dialog_id":"openworld_luoyang_gate_sergeant","scale":0.96,"conversation_base_facing":"left"}])

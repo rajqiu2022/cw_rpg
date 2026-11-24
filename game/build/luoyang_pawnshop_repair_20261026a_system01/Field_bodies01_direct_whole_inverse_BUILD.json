@@ -1,0 +1,15 @@
+{
+  "status": "BUILD_ONLY_ONE_EXACT_PAWN_LOCAL_BLOCKERS_HUNK_NO_ENGINE",
+  "parent_path": "res://scripts/field/field_walkable_controller.gd",
+  "parent_sha256": "bdda1c86ecd701e257668c43c106b1d01e641e8e47adbde4b6c6a59e369d3f55",
+  "candidate_path": "res://build/luoyang_pawnshop_repair_20261026a_system01/Field_bodies01_CANDIDATE.gd",
+  "candidate_sha256": "9504c55b9f0b664a35a24e830aeb5278152b3d8e732af42a3f17b8b762ebcde2",
+  "hunks": [
+    {
+      "before": "\t\tif visual_objects.size()!=ASSEMBLED_ROOMS.prop_ids(scene).size() or visual_objects.is_empty():\n\t\t\t_field_loading_failed=true; _scene_rebuilding=false; push_error(\"[Field] Source-bound furniture projection count refused\"); return\n",
+      "after": "\t\tif visual_objects.size()!=ASSEMBLED_ROOMS.prop_ids(scene).size() or visual_objects.is_empty():\n\t\t\t_field_loading_failed=true; _scene_rebuilding=false; push_error(\"[Field] Source-bound furniture projection count refused\"); return\n\t\tif scene.scene_id==&\"luoyang_functional_pawnshop_candidate_20261016\":\n\t\t\t# Keep original six serialized blockers/storage as the parent identity.\n\t\t\t# The same source-bound room view must also supply the real nine bodies.\n\t\t\tvar pawn_author: Dictionary=ASSEMBLED_ROOMS.author_for_id(scene.scene_id)\n\t\t\tif not ASSEMBLED_ROOMS.matches(scene,scene.scene_id) or blockers.size()!=6 or var_to_bytes(blockers)!=var_to_bytes(scene.map_layout.blockers) or pawn_author.is_empty() or var_to_bytes(_functional_room_geometry.get(\"furniture_bases\",[]))!=var_to_bytes(pawn_author.geometry.furniture_bases):\n\t\t\t\t_field_loading_failed=true; _scene_rebuilding=false; push_error(\"[Field] Pawn original blocker identity refused\"); return\n\t\t\tvar pawn_blockers: Array=[]\n\t\t\tfor pawn_base: Dictionary in pawn_author.geometry.furniture_bases:\n\t\t\t\tvar pawn_poly:=PackedVector2Array()\n\t\t\t\tfor pawn_point: Variant in pawn_base.ground_polygon_px:\n\t\t\t\t\tpawn_poly.append(Vector2(float(pawn_point[0]),float(pawn_point[1]))/Vector2(1536,1024))\n\t\t\t\tpawn_blockers.append({\"id\":pawn_base.id,\"ground_polygon\":pawn_poly,\"walkability_margin\":0.0})\n\t\t\tif pawn_blockers.size()!=visual_objects.size():\n\t\t\t\t_field_loading_failed=true; _scene_rebuilding=false; push_error(\"[Field] Pawn furniture/body view differs\"); return\n\t\t\tblockers=pawn_blockers\n"
+    }
+  ],
+  "semantics": "Original G.matches proves both original whole Scene/layout storage including six native blockers. Exact local blockers equal those original six. Same fixed pawn author view nine bases then use original room_successors normalization polygon / Vector2(1536,1024); original Field body constructor consumes local blockers. No original Scene/layout/storage mutation, no other11room branch, no new owner/source validation layer.",
+  "forward_inverse_exact": true
+}

@@ -1,0 +1,79 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.275, 0.430, 0.715, 0.430, 0.775, 0.785, 0.585, 0.785, 0.585, 0.842, 0.415, 0.842, 0.415, 0.785, 0.225, 0.785, 0.225, 0.600)])
+visual_objects = [
+	{
+		"id": "hero_supply_chest_closed",
+		"texture": "res://art/modules/prop/linxi_supply_chest_small_v1.png",
+		"pos": Vector2(0.610, 0.625),
+		"scale": Vector2(0.52, 0.52),
+		"z_index": 14,
+		"collision_size": Vector2(0.055, 0.026),
+		"collision_offset": Vector2(0.0, 0.014),
+		"interaction_action": "dialog:ch1_hero_bedroom_supply_chest",
+		"interaction_label": "打开师傅留下的木箱",
+		"interaction_size": Vector2(0.130, 0.120),
+		"interaction_offset": Vector2(0.0, 0.010),
+		"prompt_offset": Vector2(-0.070, -0.105),
+		"hide_flag": "looted_hero_bedroom_supply_chest"
+	}
+]
+blockers = [
+	{"id": "bed", "pos": Vector2(0.285, 0.605), "size": Vector2(0.105, 0.235)},
+	{"id": "writing_desk", "pos": Vector2(0.355, 0.370), "size": Vector2(0.145, 0.095)},
+	{"id": "weapon_rack", "pos": Vector2(0.620, 0.365), "size": Vector2(0.105, 0.145)},
+	{"id": "side_cabinet", "pos": Vector2(0.750, 0.630), "size": Vector2(0.065, 0.180)},
+	{"id": "bedside_table", "pos": Vector2(0.235, 0.715), "size": Vector2(0.070, 0.070)}
+]
+interactions = [
+	{
+		"id": "hero_bed",
+		"pos": Vector2(0.385, 0.625),
+		"size": Vector2(0.110, 0.170),
+		"activation": "interact",
+		"action": "dialog:ch1_hero_bedroom_bed",
+		"label": "查看木床"
+	},
+	{
+		"id": "hero_bedding",
+		"pos": Vector2(0.385, 0.515),
+		"size": Vector2(0.115, 0.105),
+		"activation": "interact",
+		"action": "dialog:ch1_hero_bedroom_bedding",
+		"label": "翻看被褥"
+	},
+	{
+		"id": "hero_desk_note",
+		"pos": Vector2(0.390, 0.445),
+		"size": Vector2(0.125, 0.100),
+		"activation": "interact",
+		"action": "dialog:ch1_hero_bedroom_note",
+		"label": "查看桌上纸条"
+	}
+]
+portals = [
+	{
+		"id": "return_to_courtyard",
+		"pos": Vector2(0.500, 0.805),
+		"size": Vector2(0.120, 0.070),
+		"label": "返回练武场",
+		"target_scene": "linxi_tutorial",
+		"target_pos": Vector2(0.515, 0.370)
+	}
+]
+walkable_probes = [
+	{"id": "bedroom_center", "pos": Vector2(0.500, 0.610)},
+	{"id": "supply_chest", "pos": Vector2(0.535, 0.625)},
+	{"id": "bedroom_door", "pos": Vector2(0.500, 0.800)}
+]
+blocked_probes = [
+	{"id": "bed", "pos": Vector2(0.285, 0.605)}
+]

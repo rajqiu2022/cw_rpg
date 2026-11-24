@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "大会乐师"
+text = "我重抄旧谱时，发现夹层里还有一页。字不像曲谱，气口却正好藏在减字谱的拍子里。"
+on_end = "next:page"
+
+[sub_resource type="Resource" id="page"]
+script = ExtResource("2_node")
+node_id = &"page"
+speaker = "冷孤云"
+text = "这是中篇。以琴拍记吐纳，难怪只照图练会气逆。还差一页收势。"
+give_items = Array[Dictionary]([{"id":"canglong_fragment_middle","count":1}])
+set_flags = Array[Dictionary]([{"key":"canglong_middle_found","value":true}])
+accept_quest = &"q_secret_canglong_three_pages"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch3_canglong_fragment_middle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("page")])

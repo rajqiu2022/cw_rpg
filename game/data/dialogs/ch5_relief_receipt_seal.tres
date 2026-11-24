@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "车辕内侧压着两张湿封签，编号正是三号车缺的两袋。泥里有粮壳，封口没有割痕；车夫在签背记了‘雪水浸袋，卸入东棚晾晒’。"
+set_flags = Array[Dictionary]([{"key":"ch5_relief_receipt_wet_seal","value":true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_relief_receipt_seal"
+nodes = Array[Resource]([SubResource("start")])

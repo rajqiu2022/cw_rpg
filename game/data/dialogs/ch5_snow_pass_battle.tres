@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "雪岭追兵"
+text = "烈云盟封路，外人退下！再往前一步，便把命留在雪里。"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "真烈云旧部不会把火纹缝反。让路，或者把谁让你们来灭口说清楚。"
+on_end = "battle_group_then:ch5_snow_pass_pursuer,ch5_false_liuyun_striker:ch5_snow_pass_victory"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_snow_pass_battle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

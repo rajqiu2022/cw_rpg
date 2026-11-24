@@ -1,0 +1,89 @@
+{
+  "schema": 1,
+  "id": "luoyang_layout_quest_20261018t_task_integration_source01",
+  "status": "SOURCE_READY_NOT_DEPLOYED",
+  "scope": [
+    "city_tasks_actual_namespace_dispatch_and_authorization",
+    "three_same_id_quest_def_canonical_replacements",
+    "temple_actual_successor_scene_layout_and_adapter",
+    "two_persistent_interactive_monk_entities",
+    "two_separated_ordinary_temple_exit_positions"
+  ],
+  "production_before": {
+    "res://scripts/city/luoyang_city_tasks_20261016.gd": "27944bbb516bce10fad01b02efd714f1ce63029adcdaf83e701445962d34e13c",
+    "res://scripts/city/luoyang_temple_assembly_20261016.gd": "5d934e3167f9e4e8011583a48df9daacb9d066d08bd9d2b4d0f93659dd8ef5eb",
+    "res://scripts/city/luoyang_temple_task_adapter_20261016.gd": "e8d3537f5aa8e7ec1e071586f692bc2f52f4a5cab822732f4f4195e9141fc122",
+    "res://data/quests/q_ch4_side_03_peony_poetry.tres": "e8f5bed6647764d9db6a20a637bfc9474e6e2ad7f53febb1bf0bc97cfc4e81cc",
+    "res://data/quests/q_ch4_side_04_longmen_mystery.tres": "31e1edfd84e9dae73c7fa57ddacad11313c6c298fbcb6d26d50d74fd252d51d7",
+    "res://data/quests/q_ch4_side_05_baima_bell.tres": "eea29b62fec37433bb25acd0dd98b9a11918c9f5fe3ffedf8441b4b57a1798e9"
+  },
+  "candidate_core": {
+    "res://build/luoyang_layout_quest_20261018t_task_integration_source01/luoyang_city_tasks_20261016_candidate.gd": "aa079d0190d26b0f8dd290938965eea5fa886a8b8e838d5d96ac3c90c96212df",
+    "res://build/luoyang_layout_quest_20261018t_task_integration_source01/luoyang_temple_assembly_20261016_candidate.gd": "cf529fac0af3d8a3135c76e8734af9671fbf1d4d962f1855a89a70d981a3856e",
+    "res://build/luoyang_layout_quest_20261018t_task_integration_source01/luoyang_temple_task_adapter_20261016_candidate.gd": "11278eb3105dd66caecfc1e35c695ed8c0c571610239c6da1729995e0d724245",
+    "res://build/luoyang_layout_quest_20261018t_task_integration_source01/task_runtime_binding.json": "28c74795ce107f9e6a5f845394dad7e7ffe0969a45502d8c46aa128ce8a4406e",
+    "res://build/luoyang_layout_quest_20261018t_task_integration_source01/temple_successor_binding.json": "0e4a2bc420f0dde63d5609240f837de891af64d6d48ef7e6e733c6249ccae105",
+    "res://build/luoyang_layout_quest_20261018t_task_integration_source01/source_delta.json": "a8aa479600d96ee235151637a4ca892a65f63cdcecb6bc7e541b225653de40b1"
+  },
+  "actual_successor_resources": {
+    "res://scripts/city/luoyang_layout_quest_20261018t.gd": "95c7d38fd1c6baddcded5a90d33fea8d696c7aad6ee67df33c6ebf074bc70bfb",
+    "res://data/maps/luoyang_temple_layout_quest_20261018t/layout.tres": "2138694bfede79cde8223c0101003bb7885225ae9ea24a66f584a8f9072f1448",
+    "res://data/scenes/luoyang_temple_layout_quest_20261018t/temple.tres": "81fbe0934e11fc6cbab21855e97b7bd956eee52f8b532e445693349786ffd4d9",
+    "res://art/characters/luoyang_layout_quest_20261018t/npc_temple_gate_monk_idle_down_1f_v1.png": "6268061eab18d2bf8c1ea0c13873f0d718feb82a119f00a67edf7c52bcb077ad"
+  },
+  "canonical_quest_candidates": {
+    "res://data/quests/q_ch4_side_03_peony_poetry.tres": {
+      "candidate": "res://build/luoyang_layout_quest_20261018t_task_source01/quests/q_ch4_side_03_peony_poetry.tres",
+      "sha256": "b8048767c8ee62ef61156e5e98e71cfab94b00239f8d3f5e7bc8686d046f594c"
+    },
+    "res://data/quests/q_ch4_side_04_longmen_mystery.tres": {
+      "candidate": "res://build/luoyang_layout_quest_20261018t_task_source01/quests/q_ch4_side_04_longmen_mystery.tres",
+      "sha256": "9fabaa5bd92cf7a5c14dc05489c100f7222f3cf8eb7263e054cab97ec82dd38e"
+    },
+    "res://data/quests/q_ch4_side_05_baima_bell.tres": {
+      "candidate": "res://build/luoyang_layout_quest_20261018t_task_source01/quests/q_ch4_side_05_baima_bell.tres",
+      "sha256": "0a60f548af721cb645d91b7e1e01f5bf3e7d9e7535c17e044d3a4de73b414410"
+    }
+  },
+  "runtime_contract": {
+    "dialog_namespace": "luoyang_layout_quest_20261018t/",
+    "same_id_quest_defs_resolve_only_from_canonical_paths": true,
+    "task_readiness_fails_before_all_six_replacements": true,
+    "quest_manager_algorithm_changed": false,
+    "temple_npcs": [
+      {"npc_id": "temple_cave_keeper_20261018t", "name": "守窟僧", "foot_px": [936, 900], "investigation_foot_px": [380, 600], "distance_px": 631.772110812119},
+      {"npc_id": "temple_bell_keeper_20261018t", "name": "守钟僧", "foot_px": [600, 900], "investigation_foot_px": [1320, 670], "distance_px": 755.843899227876}
+    ],
+    "temple_portals": [
+      {"id": "legacy_portal_6", "source_foot_px": [240, 850], "target_scene": "ch4_s3_luoyang_market", "target_pos": [0.12, 0.75]},
+      {"id": "legacy_portal_7", "source_foot_px": [1296, 850], "target_scene": "ch4_s2_canal_docks", "target_pos": [0.12, 0.75]}
+    ],
+    "legacy_hidden_speaker_hotspots_absent": ["legacy_hotspot_4", "legacy_hotspot_5"]
+  },
+  "unchanged_algorithms": [
+    "res://scripts/autoload/quest_manager.gd",
+    "res://scripts/autoload/scene_router.gd",
+    "res://scripts/field/field_walkable_controller.gd",
+    "res://scripts/city/luoyang_enclosure_v11_candidate_contract.gd"
+  ],
+  "external_final_freeze_interface": {
+    "purpose": "Allow the layout bundle owner to rebase parent C/District source pins once, without altering this task core.",
+    "file": "res://build/luoyang_layout_quest_20261018t_task_integration_source01/temple_successor_binding.json",
+    "core_has_no_pending_runtime_placeholder": true
+  },
+  "runtime_acceptance_pending": [
+    "proper source load and reviewed atomic replacement",
+    "actual DialogPlayer dispatch through CityTasks namespace authorization",
+    "Temple two NPC render and entity-foot interaction",
+    "875+17 and Physics checks for monk, investigation and portal feet",
+    "ordinary portal transition and paired-return",
+    "offer refusal and acceptance have no reward; legacy solved does not complete; post-accept evidence gates report; reward grants exactly once",
+    "source-first/source-final guards and all 15 saves"
+  ],
+  "explicit_limits": [
+    "No production script or canonical QuestDef has been replaced by this source package.",
+    "No engine, Field, Physics, portal or imported-texture credit is claimed.",
+    "The same correct-identity monk sprite is a temporary portrait, not final portrait-art credit.",
+    "This candidate does not redesign unrelated quests or the whole city."
+  ]
+}

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch8_s2_mistwood_blockade_layout_v2.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="9_extent"]
+
+[sub_resource type="Resource" id="MapExtent"]
+script = ExtResource("9_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script=ExtResource("1")
+scene_id=&"ch8_s2_mistwood_blockade"
+display_name="茗雾外围 · 雾林阻截场"
+streamed_background = SubResource("MapExtent")
+bgm_path="res://art/audio/bgm/bgm_forest_mystery_v4.wav"
+is_walkable=true
+map_layout=ExtResource("2")
+player_spawn=Vector2(0.50,0.86)
+encounter_groups=Array[Dictionary]([
+	{"enemy_ids":[&"ch8_mistwood_blockade_guard"],"weight":45.0},
+	{"enemy_ids":[&"ch8_mistwood_signal_burner"],"weight":20.0},
+	{"enemy_ids":[&"ch8_mistwood_blockade_guard",&"ch8_mistwood_signal_burner"],"weight":22.0},
+	{"enemy_ids":[&"ch8_mistwood_blockade_guard",&"ch8_mistwood_signal_burner",&"ch8_mistwood_signal_burner"],"weight":8.0},
+	{"enemy_ids":[&"wild_elite_mistwood"],"weight":5.0}
+])
+encounter_allow_full_group_for_solo=true
+encounter_step_distance=320.0
+encounter_chance=0.32
+encounter_require_flag=&"ch8_alliance_mustered"
+animated_props=Array[Dictionary]([{"id":"ch8_signal_brazier_flame","type":"flame","pos":Vector2(0.314,0.318),"size":Vector2(0.022,0.055),"speed":0.86,"z_index":25,"hide_flag":"ch8_mistwood_blockade_cleared"},{"id":"ch8_signal_brazier_smoke","type":"smoke","pos":Vector2(0.314,0.284),"size":Vector2(0.065,0.145),"speed":0.62,"color":"#bfc4bf","z_index":24,"hide_flag":"ch8_mistwood_blockade_cleared"},{"id":"ch8_lower_lantern_glow_left","type":"glow","pos":Vector2(0.376,0.738),"size":Vector2(0.030,0.045),"speed":0.72,"color":"#ffad4d","z_index":18},{"id":"ch8_lower_lantern_glow_right","type":"glow","pos":Vector2(0.626,0.792),"size":Vector2(0.030,0.045),"speed":0.8,"color":"#ffad4d","z_index":18}])
+npcs=Array[Dictionary]([{"npc_id":"ch8_mistwood_blockers","npc_name":"茗雾截盟使","pos":Vector2(0.50,0.48),"sprite_path":"res://art/characters/npc_west_ruin_guard_idle_down_25d_4f.png","dialog_id":"ch8_mistwood_prebattle","require_quest_active":"q_ch8_main_02_mistwood_blockade","hide_flag":"ch8_mistwood_blockade_cleared","scale":0.96}])

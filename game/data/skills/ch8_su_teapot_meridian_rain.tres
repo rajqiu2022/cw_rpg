@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1"]
+[resource]
+script=ExtResource("1")
+skill_id=&"ch8_su_teapot_meridian_rain"
+display_name="壶雨封脉"
+icon_path="res://art/ui/skill/icons_semantic_v1/icon_skill_poison_needles_v1.png"
+description="苏雾笙以壶嘴分出三线茶劲，向全队落下壶雨。架势未稳者受重击，命中有 58% 概率附茶毒。蓄势时防御可卸去八成冲击并挡下茶毒，令庄主短暂露出破绽；用装备与心法都能增幅的招式追击更重。"
+origin="苏雾笙把日常斟茶练成杀招，以茶香遮住壶内机簧声。此式只用于终局Boss，不作为玩家可学习武学投放。"
+kind=0
+target=1
+delivery=1
+mp_cost=34
+quality=4
+fixed_damage=149
+attack_scaling=168
+hit_count=1
+animation_id=&"toxic_needle"
+motion_style=1
+martial_category=&"hidden"
+damage_type=1
+base_hit_chance=0.96
+inflicted_status=&"poison"
+status_chance=0.58
+status_duration=3
+cast_sfx_path="res://art/audio/free/sfx_blade_whoosh_wuxia_v2.wav"
+impact_sfx_path="res://art/audio/free/sfx_hit_body_wuxia_v2.wav"
+school="mingwu"

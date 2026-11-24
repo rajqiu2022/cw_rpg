@@ -202,15 +202,15 @@ horizontal_alignment = 1
 
 [node name="GoldLabel" type="Label" parent="PlayerInfoPanel" unique_id=1614108572]
 layout_mode = 0
-offset_left = 167.0
+offset_left = 142.0
 offset_top = 108.99999
-offset_right = 221.0
+offset_right = 264.0
 offset_bottom = 126.0
 theme_override_colors/font_color = Color(0.88, 0.8, 0.5, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.72)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 11
 text = "9999999"
 horizontal_alignment = 1
 
@@ -246,15 +246,16 @@ theme_override_constants/shadow_offset_y = 2
 theme_override_font_sizes/font_size = 15
 text = "当前场景"
 
-[node name="QuestSummaryPanel" type="Control" parent="." unique_id=858656735]
+[node name="QuestSummaryPanel" type="PanelContainer" parent="." unique_id=858656735]
 anchors_preset = 0
-offset_left = 1364.0
-offset_top = 808.0
-offset_right = 1900.0
-offset_bottom = 1060.0
+offset_left = -44.0
+offset_top = 70.0
+offset_right = 360.0
+offset_bottom = 330.0
 mouse_filter = 2
 
 [node name="QuestPanelArt" type="TextureRect" parent="QuestSummaryPanel" unique_id=1786538562]
+visible = false
 layout_mode = 0
 offset_left = 24.0
 offset_top = -3.0
@@ -266,20 +267,17 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="QuestSummary" type="RichTextLabel" parent="QuestSummaryPanel" unique_id=155400379]
-layout_mode = 0
-offset_left = 101.0
-offset_top = 25.0
-offset_right = 531.0
-offset_bottom = 175.0
+layout_mode = 2
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.9, 0.9, 0.85, 0.95)
-theme_override_font_sizes/normal_font_size = 18
-theme_override_font_sizes/bold_font_size = 20
+theme_override_font_sizes/normal_font_size = 16
+theme_override_font_sizes/bold_font_size = 18
 bbcode_enabled = true
-text = "[color=#8fa7ad]暂无追踪任务[/color]"
+text = "[color=#e0b064][font_size=18]当前主线[/font_size][/color]\n[color=#b9c4c3]暂无进行中的主线任务[/color]\n\n[color=#78bdbe][font_size=18]追踪支线[/font_size][/color]\n[color=#b9c4c3]未追踪支线（按 J 选择）[/color]"
 scroll_active = false
 
 [node name="BtnInventory" type="TextureButton" parent="." unique_id=368952323]
+visible = false
 layout_mode = 0
 offset_left = 1650.0
 offset_top = 154.0

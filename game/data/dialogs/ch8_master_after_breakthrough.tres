@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "第十重不是多背一招，而是知道何时出剑、何时藏锋。去吧。等事情了结，再回来陪我喝一壶。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch8_master_after_breakthrough"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])

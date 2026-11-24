@@ -19,7 +19,7 @@ DEPLOY_MAP = {
     "scene_ch1_s1_road.png": "bg_ch1_s1_road.png",
     "scene_zhuwei_main_street.png": "bg_zhuwei_main_street.png",
     "scene_west_ruin.png": "bg_west_ruin.png",
-    "scene_battle_bamboo_road.png": "bg_battle_default.png",
+    "scene_battle_bamboo_road.png": "bg_battle_default_v2.png",
 }
 
 

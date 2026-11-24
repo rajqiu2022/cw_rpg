@@ -1,0 +1,738 @@
+{
+  "change_id": "luoyang-layout-quest-20261018t",
+  "status": "NEEDS_PUBLICATION",
+  "coordinate_contract": "native_world_groundfeet_3072x2048_body34x24",
+  "geometry_basis": "PARENT_PUBLISHED_PLUS_T_LAYOUT_PROOF",
+  "formal_enabled": false,
+  "artifact_root": "res://data/maps/luoyang_layout_bundle_20261018t_retry1/",
+  "parent_root": "res://data/maps/luoyang_precomputed_bundle_20261018r3/",
+  "history_is_immutable": true,
+  "districts": {
+    "ch4_s3_luoyang_market": {
+      "parent_manifest_sha256": "2366dcb6461de06ef1be98f489171fb5cdf93140a3535530bbe7eedd08b159bc",
+      "remove_ids": [
+        "southwest_market_front",
+        "southeast_market_front",
+        "market_northwest_rear_frontage",
+        "market_northeast_rear_frontage",
+        "assembled_market_backlane_row",
+        "assembled_market_warehouse_edge"
+      ],
+      "moves": [
+        {
+          "id": "inn",
+          "old_foot_px": [
+            735,
+            830
+          ],
+          "new_foot_px": [
+            550,
+            740
+          ]
+        },
+        {
+          "id": "north_market_front",
+          "old_foot_px": [
+            1536,
+            630
+          ],
+          "new_foot_px": [
+            1640,
+            680
+          ]
+        },
+        {
+          "id": "shop",
+          "old_foot_px": [
+            2320,
+            850
+          ],
+          "new_foot_px": [
+            2750,
+            740
+          ]
+        },
+        {
+          "id": "market_west_ward_frontage",
+          "old_foot_px": [
+            510,
+            1480
+          ],
+          "new_foot_px": [
+            560,
+            1920
+          ]
+        },
+        {
+          "id": "market_east_ward_frontage",
+          "old_foot_px": [
+            2550,
+            1260
+          ],
+          "new_foot_px": [
+            2540,
+            1680
+          ]
+        }
+      ],
+      "five_building_ids": [
+        "inn",
+        "north_market_front",
+        "shop",
+        "market_west_ward_frontage",
+        "market_east_ward_frontage"
+      ],
+      "minimum_north_alpha_gap_px": 96,
+      "street_reserves": [
+        {
+          "id": "north_south_main",
+          "rect_px": [
+            1472,
+            800,
+            128,
+            1224
+          ]
+        },
+        {
+          "id": "east_west_cross",
+          "rect_px": [
+            220,
+            1012,
+            2620,
+            96
+          ]
+        },
+        {
+          "id": "west_front_lane",
+          "rect_px": [
+            220,
+            1928,
+            1252,
+            96
+          ]
+        },
+        {
+          "id": "east_front_lane",
+          "rect_px": [
+            1600,
+            1692,
+            1350,
+            96
+          ]
+        }
+      ],
+      "ground_capture_policy": {
+        "floor_unchanged": true,
+        "floor_sha256": "78d4c0cedb57af87fae276f382d87ca98c40513b564ff8d69f164ed627718daa",
+        "actual_native_caster_ids": [
+          "street_tree_0",
+          "street_tree_1",
+          "street_tree_2",
+          "street_tree_3"
+        ],
+        "building_pngs_are_not_native_floor_casters": true,
+        "new_capture_required": false
+      },
+      "route_replacements": [
+        {
+          "id": "inn_and_paper",
+          "points_px": [
+            [
+              1000,
+              1060
+            ],
+            [
+              1000,
+              900
+            ],
+            [
+              550,
+              900
+            ],
+            [
+              550,
+              764
+            ]
+          ]
+        },
+        {
+          "id": "armory",
+          "points_px": [
+            [
+              2090,
+              1060
+            ],
+            [
+              2750,
+              1060
+            ],
+            [
+              2750,
+              764
+            ]
+          ]
+        },
+        {
+          "id": "room_inn_approach",
+          "points_px": [
+            [
+              1000,
+              1060
+            ],
+            [
+              1000,
+              900
+            ],
+            [
+              550,
+              900
+            ],
+            [
+              550,
+              764
+            ]
+          ]
+        },
+        {
+          "id": "room_shop_approach",
+          "points_px": [
+            [
+              2090,
+              1060
+            ],
+            [
+              2750,
+              1060
+            ],
+            [
+              2750,
+              764
+            ]
+          ]
+        },
+        {
+          "id": "room_north_market_front_approach",
+          "points_px": [
+            [
+              1536,
+              770
+            ],
+            [
+              1640,
+              770
+            ],
+            [
+              1640,
+              704
+            ]
+          ]
+        },
+        {
+          "id": "north_street_to_yamen",
+          "points_px": [
+            [
+              1536,
+              770
+            ],
+            [
+              2200,
+              770
+            ],
+            [
+              2200,
+              160
+            ],
+            [
+              2090,
+              160
+            ]
+          ]
+        },
+        {
+          "id": "room_southeast_market_front_approach",
+          "points_px": [
+            [
+              1536,
+              1860
+            ],
+            [
+              1536,
+              1976
+            ],
+            [
+              840.8,
+              1976
+            ],
+            [
+              840.8,
+              1944
+            ]
+          ]
+        },
+        {
+          "id": "room_westward_approach",
+          "points_px": [
+            [
+              1180,
+              1380
+            ],
+            [
+              1100,
+              1380
+            ],
+            [
+              1100,
+              1976
+            ],
+            [
+              560,
+              1976
+            ],
+            [
+              560,
+              1944
+            ]
+          ]
+        },
+        {
+          "id": "room_eastward_approach",
+          "points_px": [
+            [
+              2090,
+              1060
+            ],
+            [
+              1536,
+              1060
+            ],
+            [
+              1536,
+              1860
+            ],
+            [
+              2540,
+              1860
+            ],
+            [
+              2540,
+              1704
+            ]
+          ]
+        },
+        {
+          "id": "room_northwestrear_approach",
+          "points_px": [
+            [
+              220,
+              1060
+            ],
+            [
+              80,
+              1060
+            ],
+            [
+              80,
+              1976
+            ],
+            [
+              318.08,
+              1976
+            ],
+            [
+              318.08,
+              1944
+            ]
+          ]
+        },
+        {
+          "id": "room_northeastrear_approach",
+          "points_px": [
+            [
+              2090,
+              1060
+            ],
+            [
+              1536,
+              1060
+            ],
+            [
+              1536,
+              1860
+            ],
+            [
+              2298.08,
+              1860
+            ],
+            [
+              2298.08,
+              1704
+            ]
+          ]
+        }
+      ],
+      "additional_routes": [
+        {
+          "id": "t_west_three_bays",
+          "points_px": [
+            [
+              318.08,
+              1944
+            ],
+            [
+              318.08,
+              1976
+            ],
+            [
+              840.8,
+              1976
+            ],
+            [
+              840.8,
+              1944
+            ]
+          ]
+        },
+        {
+          "id": "t_east_three_bays",
+          "points_px": [
+            [
+              2298.08,
+              1704
+            ],
+            [
+              2298.08,
+              1740
+            ],
+            [
+              2820.8,
+              1740
+            ],
+            [
+              2820.8,
+              1704
+            ]
+          ]
+        },
+        {
+          "id": "t_pawn_front",
+          "points_px": [
+            [
+              1536,
+              770
+            ],
+            [
+              1332,
+              770
+            ],
+            [
+              1332,
+              704
+            ]
+          ]
+        }
+      ],
+      "protected_task_feet_px": [
+        [
+          1320,
+          1290
+        ],
+        [
+          1240,
+          1290
+        ],
+        [
+          520,
+          1340
+        ],
+        [
+          1260,
+          1720
+        ],
+        [
+          1320,
+          1230
+        ],
+        [
+          1750,
+          1230
+        ],
+        [
+          2440,
+          1100
+        ]
+      ],
+      "crowd_moves": [
+        {
+          "id": "market_guest",
+          "old_foot_px": [
+            850,
+            1810
+          ],
+          "new_foot_px": [
+            1140,
+            1810
+          ],
+          "distance_px": 70
+        }
+      ],
+      "npc_policy": "Only the explicit ambient guest lane moves. All quest NPCs and every other crowd field remain identical."
+    },
+    "ch4_s1_luoyang_yamen": {
+      "parent_manifest_sha256": "966c888629953546b108de5fc1893b7537ee0b4b6d88b74a17575e458819e221",
+      "remove_ids": [],
+      "moves": [
+        {
+          "id": "street_tree_0",
+          "old_foot_px": [
+            350,
+            1500
+          ],
+          "new_foot_px": [
+            300,
+            550
+          ]
+        },
+        {
+          "id": "street_tree_1",
+          "old_foot_px": [
+            2730,
+            1520
+          ],
+          "new_foot_px": [
+            2800,
+            520
+          ]
+        }
+      ],
+      "route_replacements": [],
+      "additional_routes": [
+        {
+          "id": "t_official_hall_approach",
+          "points_px": [
+            [
+              1536,
+              740
+            ],
+            [
+              1536,
+              700
+            ],
+            [
+              1536,
+              660
+            ]
+          ]
+        }
+      ],
+      "ground_capture_policy": {
+        "floor_unchanged": true,
+        "restore_actual_caster_feet": true,
+        "new_capture_required": false
+      }
+    }
+  },
+  "room_moves": [
+    {
+      "type_id": "inn_hall",
+      "scene_id": "luoyang_market_inn_interior_20261015",
+      "building_id": "inn",
+      "old_return_foot_px": [
+        735,
+        854
+      ],
+      "return_foot_px": [
+        550,
+        764
+      ]
+    },
+    {
+      "type_id": "smithy",
+      "scene_id": "luoyang_market_shop_interior_20261015",
+      "building_id": "shop",
+      "old_return_foot_px": [
+        2320,
+        874
+      ],
+      "return_foot_px": [
+        2750,
+        764
+      ]
+    },
+    {
+      "type_id": "cloth_shop",
+      "scene_id": "luoyang_market_north_market_front_interior_20261015",
+      "building_id": "north_market_front",
+      "old_return_foot_px": [
+        1536,
+        654
+      ],
+      "return_foot_px": [
+        1640,
+        704
+      ]
+    },
+    {
+      "type_id": "pawnshop",
+      "scene_id": "luoyang_functional_pawnshop_candidate_20261016",
+      "building_id": "north_market_front",
+      "old_return_foot_px": [
+        1228,
+        654
+      ],
+      "return_foot_px": [
+        1332,
+        704
+      ]
+    },
+    {
+      "type_id": "guest_room",
+      "scene_id": "luoyang_market_market_northwest_rear_frontage_interior_20261015",
+      "building_id": "market_west_ward_frontage",
+      "source_bay_px": [
+        320,
+        911
+      ],
+      "old_return_foot_px": [
+        620,
+        524
+      ],
+      "return_foot_px": [
+        318.08,
+        1944
+      ]
+    },
+    {
+      "type_id": "small_home",
+      "scene_id": "luoyang_market_market_west_ward_frontage_interior_20261015",
+      "building_id": "market_west_ward_frontage",
+      "source_bay_px": [
+        768,
+        911
+      ],
+      "old_return_foot_px": [
+        510,
+        1504
+      ],
+      "return_foot_px": [
+        560,
+        1944
+      ]
+    },
+    {
+      "type_id": "general_stall",
+      "scene_id": "luoyang_market_southeast_market_front_interior_20261015",
+      "building_id": "market_west_ward_frontage",
+      "source_bay_px": [
+        1288,
+        911
+      ],
+      "old_return_foot_px": [
+        2680,
+        1724
+      ],
+      "return_foot_px": [
+        840.8,
+        1944
+      ]
+    },
+    {
+      "type_id": "herbal_shop",
+      "scene_id": "luoyang_market_market_northeast_rear_frontage_interior_20261015",
+      "building_id": "market_east_ward_frontage",
+      "source_bay_px": [
+        320,
+        911
+      ],
+      "old_return_foot_px": [
+        2530,
+        524
+      ],
+      "return_foot_px": [
+        2298.08,
+        1704
+      ]
+    },
+    {
+      "type_id": "scholar_study",
+      "scene_id": "luoyang_market_market_east_ward_frontage_interior_20261015",
+      "building_id": "market_east_ward_frontage",
+      "source_bay_px": [
+        768,
+        911
+      ],
+      "old_return_foot_px": [
+        2550,
+        1284
+      ],
+      "return_foot_px": [
+        2540,
+        1704
+      ]
+    },
+    {
+      "type_id": "mansion_reception",
+      "scene_id": "luoyang_functional_mansion_candidate_20261016",
+      "building_id": "market_east_ward_frontage",
+      "source_bay_px": [
+        1288,
+        911
+      ],
+      "old_return_foot_px": [
+        2830.8,
+        1284
+      ],
+      "return_foot_px": [
+        2820.8,
+        1704
+      ]
+    }
+  ],
+  "entry_size_px": [
+    40,
+    32
+  ],
+  "label_revisions": [
+    {
+      "type_id": "general_stall",
+      "old": "一般档口",
+      "new": "档口"
+    },
+    {
+      "type_id": "small_home",
+      "old": "普通民宅",
+      "new": "民宅"
+    }
+  ],
+  "bench_proposal": {
+    "path": "res://build/luoyang_layout_quest_20261018t_art_source01/placement_proposal.json",
+    "sha256": "b7b9313e1433902683c088af6f13d64b05d386c415614bb85db68efdabf5df99"
+  },
+  "official_hall": {
+    "scene_id": "luoyang_yamen_official_hall_20261018t",
+    "city_id": "ch4_s1_luoyang_yamen",
+    "building_id": "magistrate_hall",
+    "display_name": "府衙正堂",
+    "return_foot_px": [
+      1536,
+      660
+    ],
+    "entry_size_px": [
+      40,
+      32
+    ],
+    "source_template_type": "mansion_reception",
+    "independent_type": true,
+    "no_new_npc_or_plot": true
+  },
+  "city_route_retry": {
+    "prior_author_path": "res://build/luoyang_layout_quest_20261018t_layout_source01/author.json",
+    "prior_author_sha256": "607e4dc6c86531b93df23ba42e0b7c5518d0da6c0449f8062a792d20ac407256",
+    "failed_city_publication_path": "res://build/luoyang_layout_quest_publication_20261018t/42808/result.json",
+    "failed_city_publication_sha256": "835d49fc1766de927de3c40017540903d79799fe48ab9af069301a68b9132663",
+    "only_route_ids": [
+      "room_eastward_approach",
+      "room_northeastrear_approach"
+    ],
+    "no_geometry_or_body_change": true
+  }
+}

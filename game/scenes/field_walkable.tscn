@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/field/field_walkable_controller.gd" id="1_ctrl"]
+[ext_resource type="Script" path="res://scripts/field/field_sprite_footprints.gd" id="footprints"]
 
 [node name="FieldWalkable" type="Control"]
+mouse_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_ctrl")
 
 [node name="Background" type="TextureRect" parent="."]
+mouse_filter = 2
 unique_name_in_owner = true
 z_index = -200
 layout_mode = 1
@@ -23,10 +26,22 @@ grow_vertical = 2
 expand_mode = 5
 stretch_mode = 6
 
+[node name="WorldBackdrop" type="ColorRect" parent="."]
+z_index = -4096
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="WorldContainer" type="Node2D" parent="."]
+script = ExtResource("footprints")
 unique_name_in_owner = true
 z_index = -100
-y_sort_enabled = true
+y_sort_enabled = false
 
 [node name="HotspotsContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -57,6 +72,19 @@ theme_override_font_sizes/font_size = 22
 text = "临溪镇"
 horizontal_alignment = 2
 
+[node name="SystemBtn" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 52.0
+grow_horizontal = 0
+text = "菜单"
+
 [node name="PlayerInfo" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
@@ -65,7 +93,7 @@ offset_left = 24.0
 offset_top = 20.0
 offset_right = 560.0
 offset_bottom = 58.0
-text = "冷孤云  Lv.1  HP 0/0  MP 0/0"
+text = "冷孤云  Lv.1  生命 0/0  内力 0/0"
 theme_override_font_sizes/font_size = 18
 vertical_alignment = 1
 
@@ -89,6 +117,7 @@ layout_mode = 2
 text = "[ J ] 任务日志"
 
 [node name="InventoryBtn" type="Button" parent="HUD"]
+visible = false
 unique_name_in_owner = true
 layout_mode = 2
 text = "[ I ] 背包"
@@ -96,7 +125,7 @@ text = "[ I ] 背包"
 [node name="EquipmentBtn" type="Button" parent="HUD"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "[ E ] 装备"
+text = "[ C ] 角色"
 
 [node name="SkillBtn" type="Button" parent="HUD"]
 unique_name_in_owner = true

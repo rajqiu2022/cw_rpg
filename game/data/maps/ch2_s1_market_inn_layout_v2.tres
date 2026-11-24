@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.16,0.40, 0.84,0.40, 0.88,0.78, 0.58,0.78, 0.58,0.88, 0.42,0.88, 0.42,0.78, 0.12,0.78)])
+visual_objects = [
+	{"id":"stage_matte","texture":"res://build/qingfeng_inn_20261108_runtime01/stage_matte.tres","pos":Vector2(0.5,0.5),"render_size_px":Vector2(4096,2304),"z_index":-900},
+	{"id":"shell_main","texture":"res://build/qingfeng_inn_20261108_runtime01/shell_main.tres","pos":Vector2(0.023333333,0.0546875),"centered":false,"scale":Vector2(1.1,1.1),"z_index":-40},
+	{"id":"shell_front_left","texture":"res://build/qingfeng_inn_20261108_runtime01/shell_front_left.tres","pos":Vector2(0.023333333,0.79203125),"centered":false,"scale":Vector2(1.1,1.1),"z_index":0,"render_layer":"foreground"},
+	{"id":"shell_threshold","texture":"res://build/qingfeng_inn_20261108_runtime01/shell_door_floor.tres","pos":Vector2(0.433541666,0.79203125),"centered":false,"scale":Vector2(1.1,1.1),"z_index":-40},
+	{"id":"shell_front_right","texture":"res://build/qingfeng_inn_20261108_runtime01/shell_front_right.tres","pos":Vector2(0.5653125,0.79203125),"centered":false,"scale":Vector2(1.1,1.1),"z_index":0,"render_layer":"foreground"},
+	{"id":"service_counter","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/inn_counter_v1.png","pos":Vector2(0.28,0.517),"scale":Vector2(0.216,0.216),"sort_by_feet":true,"depth_sort_foot_y":0.575,"collision_size":Vector2(0.145,0.025),"collision_offset":Vector2(0,0.045)},
+	{"id":"tea_wine_shelf","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/wine_tea_shelf_v1.png","pos":Vector2(0.352,0.409),"scale":Vector2(0.17,0.17),"sort_by_feet":true,"depth_sort_foot_y":0.476,"collision_size":Vector2(0.098,0.022),"collision_offset":Vector2(0,0.06)},
+	{"id":"left_guest_table","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png","pos":Vector2(0.335,0.668),"scale":Vector2(0.172,0.172),"sort_by_feet":true,"depth_sort_foot_y":0.731,"collision_size":Vector2(0.088,0.034),"collision_offset":Vector2(0,0.045)},
+	{"id":"left_guest_bench","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png","pos":Vector2(0.34,0.757),"scale":Vector2(0.1,0.1),"sort_by_feet":true,"depth_sort_foot_y":0.782,"collision_size":Vector2(0.083,0.012),"collision_offset":Vector2(0,0.019)},
+	{"id":"chess_corner_table","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png","pos":Vector2(0.72,0.568),"scale":Vector2(0.147,0.147),"sort_by_feet":true,"depth_sort_foot_y":0.618,"collision_size":Vector2(0.08,0.023),"collision_offset":Vector2(0,0.034)},
+	{"id":"right_tea_table","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/dining_table_v1.png","pos":Vector2(0.82,0.7),"scale":Vector2(0.145,0.145),"sort_by_feet":true,"depth_sort_foot_y":0.751,"collision_size":Vector2(0.074,0.028),"collision_offset":Vector2(0,0.039)},
+	{"id":"rear_screen","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/folding_screen_v1.png","pos":Vector2(0.65,0.409),"scale":Vector2(0.155,0.155),"sort_by_feet":true,"depth_sort_foot_y":0.47,"collision_size":Vector2(0.123,0.016),"collision_offset":Vector2(0,0.055)}
+]
+blockers = [
+	{"id":"west_support","pos":Vector2(0.270,0.469),"size":Vector2(0.028,0.027),"walkability_margin":0.0},
+	{"id":"east_support","pos":Vector2(0.737,0.469),"size":Vector2(0.028,0.027),"walkability_margin":0.0}
+]
+portals = [{"id":"return_market","pos":Vector2(0.50,0.82),"size":Vector2(0.13,0.08),"label":"返回竹尾河滩","target_scene":"ch2_s1_zhuwei_market","target_pos":Vector2(0.349,0.476),"marker_rotation_degrees":180.0}]
+walkable_probes = [{"id":"spawn","pos":Vector2(0.50,0.72)}, {"id":"counter","pos":Vector2(0.47,0.52)}, {"id":"exit","pos":Vector2(0.50,0.82)}]

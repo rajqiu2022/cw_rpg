@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = ""
+text = "靠窗的旧桌上压着一封未拆的火漆手书。火漆边缘刻有残缺云纹，与白水驿押运车上的旧印并不相同。"
+on_end = "next:jade"
+
+[sub_resource type="Resource" id="jade"]
+script = ExtResource("2_node")
+node_id = &"jade"
+speaker = "冷孤云"
+text = "信下还有一枚黑玉佩。背面刻着五个字——“放剑山中人”。"
+on_end = "next:letter"
+
+[sub_resource type="Resource" id="letter"]
+script = ExtResource("2_node")
+node_id = &"letter"
+speaker = ""
+text = "“你手里的原册只能说明有人改过路，不能说明谁在路尽头等你。烈云分舵愿把自己犯过的错，与被栽下的罪分开给你看。若你仍愿按证据说话，持玉佩来峡谷旧渡。——戚云笙”"
+on_end = "next:resolve"
+
+[sub_resource type="Resource" id="resolve"]
+script = ExtResource("2_node")
+node_id = &"resolve"
+speaker = "冷孤云"
+text = "她没有替烈云喊冤，也没有要我把原册交出去。那就带着两边都不愿公开的东西，去当面核证。"
+give_items = Array[Dictionary]([{"id":"qiyun_letter", "count":1}, {"id":"qiyun_jade", "count":1}])
+set_flags = Array[Dictionary]([{"key":"ch6_qiyun_letter_read", "value":true}, {"key":"chapter7_investigation_unlocked", "value":true}])
+complete_quest = &"q_ch6_main_06_ancient_road_letter"
+on_end = "chapter_end:6"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch6_qiyun_letter"
+required_story_flag = &"chapter5_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("jade"), SubResource("letter"), SubResource("resolve")])

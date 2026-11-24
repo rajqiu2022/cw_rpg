@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]矿道侧壁的木箱已经受潮，锁扣却还完整。箱内压着一包止血药和几枚旧钱。[/i]"
+on_end = "next:take"
+
+[sub_resource type="Resource" id="node_take"]
+script = ExtResource("2_dnode")
+node_id = &"take"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "矿道里有人走过，但没有带走这些救急之物。先收好再往深处查。"
+give_items = Array[Dictionary]([{"id": "healing_pill_minor", "count": 1}])
+give_gold = 15
+set_flags = Array[Dictionary]([{"key": "looted_zhuwei_cave_mine_cache", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_zhuwei_cave_mine_cache"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_take")])
+

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/ch2_s1_zhuwei_market_layout_v4.tres" id="2_map"]
+[ext_resource type="Resource" path="res://data/dialogs/ch2_zhuwei_intro.tres" id="3_intro"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"ch2_s1_zhuwei_market"
+display_name = "竹尾河滩"
+background_path = "res://art/backgrounds/bg_zhuwei_riverbank_20261116.png"
+bgm_path = "res://art/audio/bgm/bgm_market_lively_v4.wav"
+on_enter_dialog = ExtResource("3_intro")
+on_enter_require_flag = &"chapter1_complete"
+on_enter_once_flag = &"seen_ch2_zhuwei_intro"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("2_map")
+player_spawn = Vector2(0.395, 0.82)
+npcs = [
+	{"npc_id": "zhuwei_huilan_porter", "npc_name": "挑担脚夫", "pos": Vector2(0.523, 0.628), "portrait_path": "res://art/characters/portraits/luoyang_docks_roles_20261019ad/portrait_docks_strong_carrier_v1.png", "sprite_path": "res://art/characters/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_idle_down_1f_v1_runtime.png", "dialog_id": "huilan_openworld_balance", "dialog_variants": [{"dialog_id": "huilan_openworld_balance_done", "require_flags": ["huilan_balance_understood"]}], "scale": 0.98},
+	{"npc_id": "zhuwei_gatekeeper_ch2", "npc_name": "守村人", "pos": Vector2(0.396, 0.788), "portrait_path": "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png", "sprite_path": "res://art/characters/npc_zhuwei_gate_guard_idle_down_25d_4f_v2_runtime.png", "dialog_id": "ch2_zhuwei_intro", "dialog_variants": [{"dialog_id":"ch8_aftermath_zhuwei","require_quest_active":"q_ch8_main_13_aftermath_returns","hide_flags":["ch8_aftermath_zhuwei_done"]}, {"dialog_id": "ch2_market_gatekeeper_done", "require_flags": ["heard_about_missing_lingyue"]}, {"dialog_id": "ch2_market_gatekeeper_followup", "require_flags": ["chapter2_started", "ch2_market_hawker_heard", "ch2_market_apothecary_heard"]}, {"dialog_id": "ch2_market_gatekeeper_wait", "require_flags": ["chapter2_started"]}, {"dialog_id": "ch2_market_gatekeeper_early_visit", "hide_flags": ["chapter1_complete"]}], "sprite_quality": "full_body_reviewed", "scale": 1.10, "idle_frame_seconds": 0.95},
+	{"npc_id": "zhuwei_hawker_ch2", "npc_name": "货郎", "pos": Vector2(0.499, 0.395), "portrait_path": "res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png", "sprite_path": "res://art/characters/npc_zhuwei_merchant_idle_down_25d_4f_v3_runtime.png", "dialog_id": "ch2_market_hawker", "sprite_quality": "full_body_reviewed", "scale": 0.95},
+	{"npc_id": "zhuwei_apothecary_ch2", "npc_name": "药铺掌柜", "pos": Vector2(0.681, 0.385), "portrait_path": "res://art/characters/portraits/generic/portrait_generic_older_man_v1.png", "sprite_path": "res://art/characters/npc_linxi_martial_hall_master_idle_down_25d_4f_v2_runtime.png", "dialog_id": "ch2_market_apothecary", "sprite_quality": "full_body_reviewed", "scale": 1.02},
+	{"npc_id": "zhuwei_ginseng_farmer_ch2", "npc_name": "参农沈伯", "pos": Vector2(0.390, 0.580), "portrait_path": "res://art/characters/portraits/portrait_linxi_farmer_v1.png", "sprite_path": "res://art/characters/conversation_direction_v1/linxi_farmer/npc_linxi_farmer_down_conversation_1f.png", "dialog_id": "ch2_herb_thief_offer", "dialog_variants": [{"dialog_id": "ch2_herb_thief_done", "require_quest_completed": "q_ch2_side_04_herb_thief"}, {"dialog_id": "ch2_herb_thief_complete", "require_quest_active": "q_ch2_side_04_herb_thief", "require_flags": ["herb_thief_evidence_found"]}, {"dialog_id": "ch2_herb_thief_waiting", "require_quest_active": "q_ch2_side_04_herb_thief"}], "sprite_quality": "full_body_reviewed", "scale": 0.95},
+	{"npc_id": "zhuwei_constable_ch2", "npc_name": "捕快韩策", "pos": Vector2(0.315, 0.773), "portrait_path": "res://art/characters/portraits/generic/portrait_generic_young_man_v1.png", "sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png", "dialog_id": "ch2_river_death_offer", "dialog_variants": [{"dialog_id": "ch2_river_death_turnin", "require_flags": ["river_death_investigation_started"]}], "sprite_quality": "full_body_reviewed", "scale": 0.95},
+	{"npc_id": "zhuwei_tournament_host_ch2", "npc_name": "沈晚棠", "pos": Vector2(0.585, 0.476), "portrait_path": "res://art/characters/portraits/generic/portrait_generic_young_woman_v1.png", "sprite_path": "res://art/characters/npc_zhuwei_vegetable_vendor_idle_down_25d_4f_v2_runtime.png", "dialog_id": "ch2_tournament_offer", "dialog_variants": [{"dialog_id": "ch2_tournament_after", "require_flags": ["canglong_upper_found"]}, {"dialog_id": "ch2_canglong_fragment_upper", "require_flags": ["tournament_won"], "hide_flags": ["canglong_upper_found"]}, {"dialog_id": "ch2_tournament_complete", "require_flags": ["defeated_ch2_tournament_guard"]}], "sprite_quality": "full_body_reviewed", "scale": 0.92},
+	{"npc_id": "zhuwei_boatman_ch2", "npc_name": "船夫赵大江", "pos": Vector2(0.670, 0.602), "portrait_path": "res://art/characters/portraits/generic/portrait_generic_young_man_v1.png", "sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png", "dialog_id": "ch2_boat_gang_offer", "dialog_variants": [{"dialog_id": "ch2_boat_gang_turnin", "require_flags": ["boat_gang_investigation_started"]}], "sprite_quality": "full_body_reviewed", "scale": 0.98},
+	{"npc_id":"feng_yanqiu_ch2", "npc_name":"封砚秋", "pos":Vector2(0.725, 0.493), "portrait_path":"res://art/characters/portraits/portrait_feng_yanqiu_v1.png", "sprite_path":"res://art/characters/portraits/portrait_feng_yanqiu_v1.png", "dialog_id":"ch2_guyun_feng_first_meeting", "hide_flag":"guyun_feng_first_met", "sprite_quality":"dedicated_full_body", "scale":0.085}
+]
+hotspots = []

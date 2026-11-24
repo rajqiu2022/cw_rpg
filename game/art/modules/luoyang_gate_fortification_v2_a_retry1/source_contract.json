@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "asset_pack": "luoyang_gate_fortification_v2_a_retry1",
+  "status": "SOURCE_AUTHORED_CAPTURE_PENDING",
+  "scope": "One NEW retry of straight wall A only. Correct the native draw-depth and minimum-Y support baseline exposed by root01; no threshold change, tower B, runtime publication, Field or formal write.",
+  "preserved_failure": {
+    "original_script": "game/scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a.gd",
+    "original_script_sha256": "47113E00FEB4E108A95E0ADB2A8B7362AFB704D013BAA71FFB6674BF4F8C6695",
+    "original_contract": "game/art/modules/luoyang_gate_fortification_v2_a/source_contract.json",
+    "original_contract_sha256": "A1DC57BF8DBA164AE227136C21D84353DF3F2E776DE092B1F7EFC9A689F60893",
+    "root01_logs": "game/build/luoyang_gate_wall_ashlar_v2_20261013_root01/",
+    "root01_actual_crop_px": [656, 285],
+    "root01_actual_foot_anchor_px": [328.0, 277.4111328125],
+    "frozen_v1_foot_anchor_px": [328.0, 272.3623046875],
+    "failure_px": 5.048828125,
+    "reason": "Original retry geometry used full source ±0.39138749 m Z bounds from removed tile-cap surfaces instead of the v1 straight wall's actual draw bounds and minimum-Y support. The unchanged <=3 px foot guard correctly rejected it."
+  },
+  "actual_v1_baseline": {
+    "capture_result": "game/art/modules/luoyang_gate_fortification_v1/capture_result.json",
+    "capture_result_sha256": "B7799A4009AA071678E73AE7E37C58A0489531B158D0513F7B2D0912CFF1C54A",
+    "draw_bounds_m": {
+      "minimum": [-2.5, 0.0, -0.361250013113022],
+      "maximum": [2.5, 1.98000001907349, 0.361250013113022]
+    },
+    "minimum_y_support_bounds_m": {
+      "minimum": [-2.46, 0.0, -0.34375],
+      "maximum": [2.46, 0.0, 0.34375]
+    },
+    "body_origin_m": [0.0, 0.0, -0.34375],
+    "meaning": "Draw bounds and minimum-Y support are separate measured contracts. This retry does not claim preservation of the removed full-source tile-cap ±0.39138749 m bounds."
+  },
+  "geometry_contract": {
+    "unchanged_visual_direction": "Six alternating staggered ashlar courses, real recessed joints, shallow front bevels, independent light-grey rock microdetail material, narrow cap/parapet and eleven narrow merlons.",
+    "only_geometry_correction": "All visible non-support blocks use the measured v1 straight draw depth ±0.361250013113022 m. The low support plinth alone uses the measured minimum-Y hull x±2.46 m and z±0.34375 m.",
+    "bitmap_stretch_or_ai_edit": false
+  },
+  "capture_contract": {
+    "camera": "Inherited unchanged v1 30-degree orthographic GPU capture and BODY_ORIGIN.",
+    "expected_A_crop_width_px_inclusive": [650, 662],
+    "expected_A_crop_height_px_inclusive": [274, 288],
+    "foot_anchor_distance_from_v1_max_px": 3.0,
+    "guards_changed": false,
+    "actual_output_sha_and_dimensions": "PENDING retry1 capture_result.json; fail rather than widen any guard."
+  },
+  "comparison_contract": {
+    "canvas_px": [1600, 720],
+    "wall_bitmap_scale": [1.0, 1.0],
+    "wall_foot_canvas_px": [400.0, 500.0],
+    "south_gate_uniform_preview_scale": 0.5208333333333334,
+    "south_gate_foot_canvas_px": [1128.0, 500.0],
+    "actual_field_screenshot": false
+  },
+  "license_and_scope_boundary": {
+    "rock_microdetail": "Existing registered Poly Haven rock_01 CC0-1.0 files; no new download.",
+    "architecture": "Existing project-original south_gate plus project procedural geometry; not CC0 architecture.",
+    "network_generation_or_bitmap_edit": false,
+    "tower_B_included": false,
+    "runtime_or_formal_write": false,
+    "field_or_physics_credit": false
+  }
+}

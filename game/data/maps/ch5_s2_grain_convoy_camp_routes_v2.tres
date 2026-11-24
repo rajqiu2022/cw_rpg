@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.000, 0.900, 0.180, 0.970, 0.800, 0.900, 0.940, 0.690, 0.900, 0.390, 0.980, 0.000, 0.760, 0.000, 0.720, 0.180, 0.250, 0.180, 0.170, 0.300, 0.070, 0.550, 0.000, 0.670)
+])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"relief_tent", "pos":Vector2(0.145,0.190), "size":Vector2(0.200,0.190)},
+	{"id":"upper_grain_cart", "pos":Vector2(0.455,0.135), "size":Vector2(0.145,0.115)},
+	{"id":"right_grain_cart", "pos":Vector2(0.885,0.310), "size":Vector2(0.170,0.170)}
+]
+interactions = [
+	{"id":"legacy_hotspot_0", "pos":Vector2(0.56,0.53), "size":Vector2(0.11,0.12), "action":"dialog:ch5_grain_convoy_battle", "activation":"interact", "require_flag":"ch5_relief_road_cleared", "hide_flag":"ch5_grain_convoy_saved"},
+	{"id":"legacy_hotspot_1", "pos":Vector2(0.57,0.25), "size":Vector2(0.11,0.12), "action":"dialog:ch5_false_banner_evidence", "activation":"interact", "require_flag":"ch5_grain_convoy_saved", "hide_flag":"ch5_false_banner_cloth_found"}
+]
+portals = [
+	{"id":"return_relief_road", "label":"返回赈粮路", "pos":Vector2(0.08,0.82), "size":Vector2(0.12,0.12), "target_scene":"ch5_s1_relief_road", "target_pos":Vector2(0.84,0.17)},
+	{"id":"enter_snow_pass", "label":"前往雪岭关", "pos":Vector2(0.86,0.12), "size":Vector2(0.12,0.16), "target_scene":"ch5_s3_snow_pass", "target_pos":Vector2(0.25,0.88), "require_flag":"ch5_false_banner_cloth_found"},
+	{"id":"legacy_portal_2", "label":"返回江湖大地图", "pos":Vector2(0.255,0.89), "size":Vector2(0.10,0.10), "action":"world_map"}
+]
+walkable_probes = [
+	{"id":"spawn", "pos":Vector2(0.16,0.82)},
+	{"id":"convoy_battle", "pos":Vector2(0.55,0.52)},
+	{"id":"banner_evidence", "pos":Vector2(0.57,0.25)},
+	{"id":"snow_exit", "pos":Vector2(0.86,0.12)}
+]
+blocked_probes = [
+	{"id":"tent", "pos":Vector2(0.14,0.19)},
+	{"id":"right_cart", "pos":Vector2(0.88,0.31)}
+]

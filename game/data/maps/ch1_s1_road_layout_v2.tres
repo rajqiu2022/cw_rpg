@@ -1,0 +1,86 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+# The current reviewed road source is 1536x1024. Keep it native until the
+# terrain-only modular replacement is approved; never scale it to fake width.
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.76, 0.03, 0.93, 0.03, 0.91, 0.22, 0.85, 0.40, 0.80, 0.60, 0.72, 0.82, 0.68, 1.0, 0.18, 1.0, 0.08, 0.78, 0.08, 0.58, 0.18, 0.50, 0.38, 0.50, 0.47, 0.40, 0.61, 0.34, 0.72, 0.25)])
+visual_objects = [
+	{
+		"id": "road_supply_box_closed",
+		"texture": "res://art/modules/prop/prop_linxi_box_wood_a.png",
+		"pos": Vector2(0.525, 0.455),
+		"scale": Vector2(0.55, 0.55),
+		"z_index": 14,
+		"collision_size": Vector2(0.075, 0.045),
+		"collision_offset": Vector2(0.0, 0.025),
+		"interaction_action": "dialog:ch1_road_supply_box",
+		"interaction_label": "打开木箱",
+		"interaction_size": Vector2(0.13, 0.13),
+		"interaction_offset": Vector2(0.0, 0.015),
+		"prompt_offset": Vector2(-0.057, -0.095),
+		"hide_flag": "looted_road_supply_box"
+	},
+	{
+		"id": "road_supply_box_open",
+		"texture": "res://art/modules/prop/prop_linxi_box_wood_open.png",
+		"pos": Vector2(0.525, 0.455),
+		"scale": Vector2(0.55, 0.55),
+		"z_index": 14,
+		"collision_size": Vector2(0.075, 0.045),
+		"collision_offset": Vector2(0.0, 0.025),
+		"require_flag": "looted_road_supply_box"
+	}
+]
+blockers = []
+interactions = [
+	{
+		"id": "road_stone_read",
+		"pos": Vector2(0.20, 0.62),
+		"size": Vector2(0.12, 0.16),
+		"action": "dialog:ch1_road_stone",
+		"activation": "interact",
+		"hide_flag": "saw_stone_warning"
+	},
+	{
+		"id": "road_corpse",
+		"pos": Vector2(0.50, 0.74),
+		"size": Vector2(0.16, 0.16),
+		"action": "dialog:ch1_road_corpse",
+		"activation": "interact",
+		"hide_flag": "defeated_thug_lone"
+	}
+]
+portals = [
+	{
+		"id": "exit_to_jianghu",
+		"label": "前往江湖",
+		"pos": Vector2(0.115, 0.885),
+		"size": Vector2(0.105, 0.105),
+		"target_scene": "world_map_jianghu",
+		"target_pos": Vector2(0.390, 0.430),
+		"require_flag": "defeated_thug_lone",
+		"locked_label": "江湖路口（击退山贼后开放）"
+	},
+	{
+		"id": "exit_to_zhuwei_blocked",
+		"label": "查看村口动静",
+		"pos": Vector2(0.845, 0.115),
+		"size": Vector2(0.150, 0.170),
+		"action": "dialog:ch1_road_corpse",
+		"hide_flag": "defeated_thug_lone"
+	},
+	{
+		"id": "exit_to_zhuwei",
+		"label": "前往竹尾村",
+		"pos": Vector2(0.845, 0.115),
+		"size": Vector2(0.150, 0.170),
+		"action": "dialog:ch1_road_after_battle",
+		"require_flag": "defeated_thug_lone"
+	}
+]

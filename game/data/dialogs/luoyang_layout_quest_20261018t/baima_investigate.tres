@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "旁白"
+text = "钟楼地面没有脚印。夜风沿东墙一道暗缝掠过，钟舌随之轻轻偏转。"
+on_end = "next:choice"
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("2")
+node_id = &"choice"
+speaker = "冷孤云"
+text = "要确认是不是风在作怪，应当怎样查？"
+choices = Array[Dictionary]([{"text":"用薄纸贴墙，寻找气流", "next":"success"}, {"text":"守在钟杵旁等人出现", "next":"retry"}])
+[sub_resource type="Resource" id="retry"]
+script = ExtResource("2")
+node_id = &"retry"
+speaker = "旁白"
+text = "等了许久无人出现，钟舌却又随风轻撞。问题仍在东墙。"
+on_end = "next:choice"
+[sub_resource type="Resource" id="success"]
+script = ExtResource("2")
+node_id = &"success"
+speaker = "冷孤云"
+text = "薄纸在裂缝处连颤三次。风穿暗缝形成共鸣，正好推动钟舌。回去告诉守钟僧。"
+set_flags = Array[Dictionary]([{"key":"baima_bell_investigated_20261018t", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"luoyang_layout_quest_20261018t/baima_investigate"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("choice"), SubResource("retry"), SubResource("success")])

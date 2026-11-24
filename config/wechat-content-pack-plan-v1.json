@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "releaseScope": "chapters-1-3-trial",
+  "strategy": "small-code-package-plus-cdn-data",
+  "latestMeasuredBuild": {
+    "date": "2026-08-25",
+    "scope": "common-plus-chapters-1-3-pcks",
+    "fullProjectPckMiB": 430.49,
+    "commonPckBytes": 73338460,
+    "commonPckBrotliBytes": 71909096,
+    "chapterPackBytes": {
+      "chapter1_start": 108505180,
+      "chapter1_late": 49203648,
+      "chapter2": 19406488,
+      "chapter3": 15432892
+    },
+    "wasmBrotliBytes": 6608968,
+    "mainPackageBytes": 1028057,
+    "totalCodePackageBytes": 7637025,
+    "status": "code-package-pass-four-content-packs-browser-cache-pass-device-validation-required"
+  },
+  "bootstrap": {
+    "budgetBytes": 4194304,
+    "contents": [
+      "微信入口与screen-adapter",
+      "启动封面和最小加载UI",
+      "版本清单与CDN地址",
+      "不包含PCK数据包"
+    ]
+  },
+  "wasmSubpackage": {
+    "budgetBytes": 10485760,
+    "source": "game/build/wechat_web/index.wasm",
+    "transformerCompression": "brotli"
+  },
+  "remoteData": {
+    "source": "game/build/wechat_web/index.pck",
+    "mountAtStartup": true,
+    "currentState": "公共资源包+第一章双阶段包+第二章包+第三章包正在重新生成",
+    "targetState": "HTTPS CDN托管并完成微信真机缓存/挂载验收",
+    "downloadPolicy": "公共包由转换器启动挂载；进入章节场景前下载、SHA-256校验、缓存并挂载章节PCK",
+    "packs": [
+      {
+        "id": "common",
+        "pckBytes": 73338460,
+        "brotliBytes": 71909096,
+        "contains": ["autoload与通用场景", "正式基础UI", "主角基础资源", "通用战斗资源", "共享图标与字体"]
+      },
+      {
+        "id": "chapter1_start",
+        "pckBytes": 108505180,
+        "sceneIds": ["linxi_tutorial", "linxi_village_center", "linxi_master_courtyard", "linxi_main_street", "ch1_s1_road"]
+      },
+      {
+        "id": "chapter1_late",
+        "pckBytes": 49203648,
+        "sceneIds": ["ch1_s2_qingfeng", "ch1_s3_zhuwei_forest", "ch1_s4_zhuwei_beast_cave", "ch1_s4_cave_mine_gallery", "ch1_s4_cave_waterway", "ch1_s4_cave_deep_den", "ch1_s3_west_ruin", "ch1_s3_ruin_inner", "interior_bandit_cave", "interior_inn_hall", "interior_martial_hall"]
+      },
+      {
+        "id": "chapter2",
+        "pckBytes": 19406488,
+        "sceneIds": ["ch2_s1_zhuwei_market", "ch2_s1_market_inn", "ch2_s1_market_training_hall", "ch2_s2_forest_edge", "ch2_s3_forest_ambush", "ch2_s5_bandit_cave", "ch2_s6_river_camp", "ch2_s4_lingyue_gate"]
+      },
+      {
+        "id": "chapter3",
+        "pckBytes": 15432892,
+        "sceneIds": ["ch3_s1_wulin_assembly", "ch3_s2_trial_ground", "ch3_s3_faction_training", "ch3_s4_forbidden_tomb"]
+      }
+    ]
+  },
+  "releaseGates": {
+    "mainPackageMaxBytes": 4194304,
+    "totalCodePackageMaxBytes": 31457280,
+    "requireHttpsCdnForExperienceVersion": true,
+    "requireRealDeviceSaveRoundTrip": true,
+    "requireAllChapterRouteTestsGreen": true
+  }
+}

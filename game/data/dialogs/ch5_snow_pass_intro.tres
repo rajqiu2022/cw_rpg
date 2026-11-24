@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "唐行舟"
+text = "这条雪路只够两人并肩。前头那几处新扎的火纹旗，像是故意让山下看见。"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "不追旗，先看路。若他们守的是旧矿道，里面一定还有不愿见光的人或证词。"
+accept_quest = &"q_ch5_main_03_snow_pass"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_snow_pass_intro"
+required_story_flag = &"chapter4_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

@@ -1,0 +1,9 @@
+Use case: stylized-concept
+Asset type: one independently placeable 2.5D wuxia smithy furniture sprite, not a full room.
+Style/medium: photorealistic 3D-rendered historical Chinese workshop prop; physically textured dark worn hardwood, dull wrought iron and grey stone, realistic material thickness, not outline cartoon, not low-poly toy.
+Camera: fixed front-facing orthographic game camera looking downward about 40 degrees, near-zero horizontal yaw. Show the top and front of the object; verticals remain vertical, no dramatic wide-angle.
+Lighting: soft neutral daylight from upper left, subtle ambient occlusion confined to the object and a narrow contact shadow directly below its feet. No background haze or vignette.
+Composition: landscape1536x1024 RGBA canvas. One complete object centered, entire object including tips/handles/support legs confined within x230..1306,y130..894. At least 12% genuinely empty alpha0 transparent padding on ALL four edges. Object should occupy most of this inner rectangle without stretching. Do not put pixels on the canvas border.
+Background: actual alpha transparency, no background plane, no grey fog, no atmospheric aura, no white/black/checkerboard backdrop, no drop-shadow disk, no detached ground tile.
+Constraints: no people, letters, labels, watermark, neighboring props, room walls, floors, extra barrels or scenery. Do not add a measurement guide, anchor mark, text, bounding box or shadow halo. Preserve material detail without glow.
+Subject: ONE simple broad rectangular hardwood blacksmith workbench, four stout timber legs, lower cross brace and a few small iron tools lying entirely on its thick tabletop. Table long axis horizontal left-to-right, front apron and two front leg feet clearly visible. No stool, no stool behind, no cupboard, no wall hung equipment, no floor patch. Allow the player to walk behind its upper visual tabletop while collision occupies only the actual floor-leg footprint.

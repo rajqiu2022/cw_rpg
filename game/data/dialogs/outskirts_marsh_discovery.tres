@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+text = "南泽干地的旧货篓覆着芦叶，里面有一卷未受潮的布。河风带来远处橹声，冷孤云收好布卷后继续沿堤探路。"
+give_items = Array[Dictionary]([{"id":"cloth_roll","count":1}])
+set_flags = Array[Dictionary]([{"key":"outskirts_marsh_material_found","value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"outskirts_marsh_discovery"
+entry_node_id = &"start"
+blocked_story_flag = &"outskirts_marsh_material_found"
+required_free_inventory_slots = 1
+nodes = Array[Resource]([SubResource("start")])

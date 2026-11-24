@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch8_side_01_camp_supplies"
+title = "营里两件小事"
+kind = 1
+desc_not_started = "会盟集结地的西棚还有一张未处理的杂用单。"
+desc_in_progress = "在西棚粮袋旁备干毡，到东侧运册手车旁盖油布。两处不分先后，不用自掏物资。"
+desc_completed = "干毡交给了守棚人，名册也已遮好防潮。"
+tracker_hint = "茗雾外围 · 会盟集结地"
+starts_in_chapter = 8
+completes_in_chapter = 8
+completion_triggers = Array[String](["flag_set:ch8_camp_supplies_west_done","flag_set:ch8_camp_supplies_east_done"])
+require_all_completion_triggers = true
+reward_gold = 30
+reward_exp = 70
+reward_items = Array[Dictionary]([{"item_id":"timber_bundle","count":2},{"item_id":"life_extend_pill","count":1}])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch8_camp_supplies_west_done","text":"西棚：备用干毡已备好，赈粮封签原样。"},{"trigger":"flag_set:ch8_camp_supplies_east_done","text":"东侧手车：油布已绑牢，未翻阅名册。"}])

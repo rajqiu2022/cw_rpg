@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch3_luoyang_cargo_mark"
+display_name = "洛阳漕运行记"
+description = "古冢货箱印着洛阳漕运行记，箱内装有五派制式兵器、试招记录和一小叠旧制官纸。货物流向指向洛阳，却仍不足以确认幕后委托人。"
+chapter = 3
+category = &"cargo_mark"
+source_hint = "大会后山封禁石窟"
+related_testimony_ids = Array[StringName]([&"ts_ch3_gufeng_crate_witness", &"ts_ch3_mingwu_common_artisan"])
+tags = Array[StringName]([&"luoyang", &"cargo", &"forgery"])

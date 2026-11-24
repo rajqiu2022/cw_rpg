@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"tang_staff_breaker"
+display_name = "破门一棍"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_staff_sweep_v1.png"
+description = "凝劲于棍端直取甲缝。造成固定 18 + 攻击力 × 115% 的伤害，命中后降低目标 35% 防御，持续两回合。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 9
+quality = 2
+fixed_damage = 18
+attack_scaling = 115
+effect_value = 35
+inflicted_status = &"armor_break"
+status_chance = 1.0
+status_duration = 2
+animation_id = &"tang_staff_breaker"
+required_weapon_type = &"staff"
+school = "wanderer"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_04_longmen_mystery"
+title = "龙门谜踪"
+kind = 1
+desc_not_started = "龙门石壁每逢夜雨便有铜钱叩石，传言众说纷纭。"
+desc_in_progress = "先查验石壁水槽与暗缝，再把实际机关回报给守窟僧。"
+desc_completed = "怪声来自旧工匠留下的水位机关。暗槽里封着一卷排水图和一根缠满兽筋的短棍，图上说工匠观河水绕石回旋，才悟出以柔卸力的缠劲。后人把它夸作“龙筋”，其实是一件由治水经验生出的练手兵器。"
+tracker_hint = "洛阳城外 · 龙门石壁"
+progress_records = Array[Dictionary]([{"trigger":"flag_set:longmen_mystery_investigated_20261018t", "text":"水涨时浮木托起铜钱叩石，怪声来自旧水位机关。应回报守窟僧。"}])
+completion_triggers = Array[String]([])
+reward_gold = 30
+reward_exp = 35
+reward_items = Array[Dictionary]([{"item_id": "yuanming_ancient_jade", "count": 1}, {"item_id": "diamond_powder", "count": 2}, {"item_id": "dragon_tendon_staff", "count": 1}])

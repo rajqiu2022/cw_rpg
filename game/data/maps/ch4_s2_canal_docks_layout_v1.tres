@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(2304,1536)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.000,0.250, 0.580,0.250, 0.670,0.335, 0.650,0.650, 0.550,0.820, 0.220,0.900, 0.000,0.760),
+	PackedVector2Array(0.480,0.285, 0.870,0.285, 0.870,0.430, 0.480,0.430),
+	PackedVector2Array(0.445,0.500, 0.835,0.500, 0.835,0.650, 0.445,0.650),
+	PackedVector2Array(0.375,0.690, 0.745,0.690, 0.745,0.835, 0.375,0.835)
+])
+blockers = [
+	{"id":"upper_warehouse","pos":Vector2(0.325,0.155),"size":Vector2(0.220,0.165)},
+	{"id":"middle_shed","pos":Vector2(0.570,0.455),"size":Vector2(0.115,0.095)},
+	{"id":"water","pos":Vector2(0.925,0.600),"size":Vector2(0.150,0.750)}
+]
+interactions = [
+	{"id":"canal_feud_chest","label":"码头货箱 · 查看争执货箱","pos":Vector2(0.590,0.600),"size":Vector2(0.090,0.095),"activation":"interact","action":"dialog:ch4_canal_grudge_offer","interaction_visual_kind":"chest","hide_flag":"canal_grudge_started"},
+	{"id":"canal_warehouse_mud","label":"仓栈外 · 核对废仓泥样","pos":Vector2(0.370,0.350),"size":Vector2(0.085,0.095),"activation":"interact","action":"dialog:ch4_canal_grudge_turnin","interaction_visual_kind":"stain","require_flag":"canal_grudge_started","hide_flag":"canal_feud_resolved"}
+]
+portals = [
+	{"id":"to_yamen_square","label":"返回府衙外院","pos":Vector2(0.080,0.300),"size":Vector2(0.080,0.120),"target_scene":"ch4_s1_luoyang_yamen","target_pos":Vector2(0.850,0.590)},
+	{"id":"to_south_market","label":"返回洛阳南市","pos":Vector2(0.085,0.730),"size":Vector2(0.080,0.120),"target_scene":"ch4_s3_luoyang_market","target_pos":Vector2(0.955,0.355)},
+	{"id":"canal_world_ferry","label":"码头驿路 · 江湖大地图","pos":Vector2(0.300,0.865),"size":Vector2(0.130,0.080),"action":"world_map"}
+]
+walkable_probes = [
+	{"id":"upper_road","pos":Vector2(0.150,0.330)},
+	{"id":"middle_quay","pos":Vector2(0.500,0.580)},
+	{"id":"upper_pier","pos":Vector2(0.780,0.350)},
+	{"id":"middle_pier","pos":Vector2(0.740,0.575)},
+	{"id":"lower_pier","pos":Vector2(0.650,0.760)},
+	{"id":"world_exit","pos":Vector2(0.300,0.865)}
+]
+blocked_probes = [
+	{"id":"warehouse_roof","pos":Vector2(0.325,0.120)},
+	{"id":"open_water","pos":Vector2(0.950,0.600)},
+	{"id":"lower_roof","pos":Vector2(0.150,0.940)}
+]

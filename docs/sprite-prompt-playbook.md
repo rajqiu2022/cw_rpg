@@ -1,5 +1,43 @@
 # 主角 Sprite 提示词手记（v0.3）
 
+## 2026-10-30m 五方向World桥图
+
+独立promptset在assets/staging/world_bridges_20261030m/production；旧原93组件合成仅reference_only几何，不登记为生成美术。分别为5原方向生成完整原生桥，素材/朝向参照分开，不能把长石桥style图的长宽比误带到短宽桥；04前三稿拒，V4真实踏面与rail/立面分量另测才采用。所有图仅单一等比和微转，不拉伸；原RGB/主体RGBA保，框外A1+RGBA0补白按通用许可。看见灰halo须先查A0隐藏RGB，不以预览器颜色当不透明证；多余V5编辑明确弃用，9调用如实登记。当前五图和完整prompt见docs/changes/world-bridges-sect-adoption-20261030m.md。
+
+## 2026-10-30l 采药与采矿劳动动作
+
+独立登记`assets/staging/gather_actions_20261030l/production/prompts/tasks.yaml`及`templates/gather_action_4f.yaml`，原根tasks不改；项目renderer预检2组齐套真实v7右/下待机参考，内置各1次/无CLI或fallback。四帧明确准备/俯身或举镐/采摘或落镐/收势，锁七头身、蓝灰长袍/高马尾/酒葫芦/腰间鞘剑，同一右向微俯视而非方向turnaround。实际2172×724每格543；每格保护框外A1仅194/623点→0并各边32透明留白成607×788，不缩放或重画原RGB。按真实站姿128.52px定同一动作内scale，蹲下不能逐帧等高放大；每帧另设源脚，保持物理脚不变。左向运行镜像并公开说明。两GIF为按runtime配置脚锚的诊断图，不替代正式sheet。model/provider/cost工具未披露null；完整prompt/原图/当前消费者/处理证据见[本轮记录](changes/gather-actions-audio-20261030l.md)。
+
+## 2026-10-28b 赤岩院界/前厅/普通掌柜配对
+
+独立`assets/staging/redrock_luoyang_standard_20261028b/production/prompts/tasks.yaml`登记4ID与本地templates；内置各1次/无fallback、原PNG保持。女掌柜约48岁圆脸略壮、灰蓝工作衫与赭色围裙、低髻，非美颜年轻模板；portrait派发前真实renderer补已成sprite身份锚，另存portrait-reference-preflight，不能只沿建筑风格参考凭空重画脸。院界是整体U图，但工程按三个原生region脚层渲染，未本地裁片；A1仍全FAIL，只布局候选。详docs/redrock-luoyang-standard-20261028b.md。
+
+## 2026-10-28a 赤岩六区装配补图
+
+独立`assets/staging/redrock_town_20261028a/production/prompts/tasks.yaml`及`templates/redrock_town_module_20261028a.yaml`登记民居、牲口棚、层台岩坎3ID，各内置一次/无fallback或CLI；真实renderer先预检，根tasks保持。参考已选总规与25a驿舍锁平顶/红砂岩/上左光，不把概念裁成背景。3原图A1失败原样供布局草案，不清弱alpha/扩画布，也不将工程中有副本说成正式美术准入；大岩台实际比例必须按成图足体检查，提示词5:1不替代测量。工程路径与证据详`docs/redrock-town-20261028a.md`。
+
+## 2026-10-25a 赤岩场景组件独立队列
+
+`assets/staging/redrock_desert_life_20261025a/production/prompts/tasks.yaml`与`templates/redrock_desert_placeable_20261025a.yaml`登记8条，一图一ID，内置各一次，无CLI/fallback/重试；项目renderer仅本进程切模板目录，预检8项。参考已选总规（生活用途）和连体核心（相机材质），明确平顶/赤砂岩/小木构/透明场景实体，不把物件做背包图标。原图留白仍全FAIL，不能按提示词写了20%就声称满足。井棚和工作台alpha最大254，只报告实际值，不为满足测试改为255；诊断alpha128范围不替代A>0准入。详`docs/redrock-desert-life-20261025a.md`。
+
+## 2026-10-25 NPC外貌：普通人优先，避免全员俊美
+
+用户明确要求NPC不全部帅气漂亮。居民、店主、工匠和军士默认普通、自然、有生活经历的面容，不套主角式俊美脸/精修妆容。每名先确定年龄段、体型、脸型、肤色与衣着/职业特点，适度保留皱纹、晒痕、胡茬、发量差异；不是给同一张脸只换衣服。俊美只作少数角色特征，不擅改主角或已有关键角色辨识设计。
+
+提示词描述具体人而非抽象“丑”：例如“中年圆脸、略胖、短胡茬、神情和气、干净旧布衫的掌柜”“年长瘦脸、额纹、略有晒痕、整洁围裙的手艺人”。禁止把普通人一律画成邋遢、滑稽或凶恶，也不将年长/贫穷等同反派。保持港漫厚涂与同一光照画法；精灵、头像和立绘应是同一个年龄、脸型与服装身份。验收看是否摆脱模板脸且职业可辨，不能仅凭新增文件宣称已替换。此节是后续制作规则，不代表已有NPC资源已更新。
+
+## 2026-10-23b 并行制作使用独立art任务工作区
+
+赤岩地表/坡道/护栏/脚锚修订5条任务位于`assets/staging/redrock_gate_20261023b/production/prompts/tasks.yaml`与其`templates/`；每条真实参考存在后调用同一项目renderer，在本进程指向独立模板目录，既有生成器源码与根tasks首末SHA保持。各ID内置一次，无CLI自动重试；新PNG在`assets/raw/redrock_ground_resources_20261023b/`。这是独立登记，不宣称工程根任务已合并。图像与运行限制见`docs/redrock-ground-parallel-20261023b.md`，后续批次需保单写权。
+
+## 2026-10-23 赤岩关口组件与关卒首批模板
+
+`redrock_cutout_20261023a.yaml`用于本批13条skip任务：6地图组件＋关卒idle，再引用idle做4下行帧和同人portrait，另登记一次关门净口修正版。按阶段真实reference存在后render_template预检，每ID内置1次，无CLI/fallback/自动重试。模板size/quality是登记请求，工具实际画幅不同照实记录，不冒尺寸或具体模型已固定。13完整A>0边距均失败；walk显著轮廓高/脚底差26/27px，非运行atlas；关门修正版门底仍不足320。原图不处理，细节见`docs/redrock-gate-resources-20261023a.md`。
+
+## 2026-10-22 补充：门派与西域总规模板（非精灵）
+
+`prompts/templates/sect_western_masterplan_20261022d.yaml`对应4个`*_plan_20261022d_overview_v1`任务：武当/茗雾/绿洲/赤岩，均skip、内置各1次、无CLI/自动重试，render_template预检通过。完整提示词在`prompts/sect_western_map_designs_20261022d/`；这是不透明整体设计，不继承本文精灵镜头/切格/alpha规则，也不代表NPC待机行走完成。设计来源/限制见`docs/sect-western-map-designs-20261022d.md`。模型工具未披露留空，不将模板size/quality宣称为内置可控参数或具体模型证明。概念小人包头造型不延用正式角色资源。
+
 > 2026-04-28：参考 [《游戏元素拆分 gpt-image2》](https://mp.weixin.qq.com/s/eLTx7bCpckLHfefR2M9l4Q) 的**分段结构化**写法，适配本项目 **港漫厚涂 2.5D**（非像素块），并与 `prompts/templates/_shared.yaml` 的 `style_anchor` 一致。
 > 2026-04-30：sprite 仍未最终解决前，先按 `docs/sprite-cost-optimization-plan.md` 做零成本 QA / GIF / dry-run，再决定是否付费出图。
 
@@ -32,6 +70,16 @@
 **参考图防烧钱**：凡是依赖用户上传参考图的 sheet / strip 模板，必须设置 `require_reference_images: true`。如果参考图丢失，宁可 dry-run 报错，也不要静默无参考出图。
 
 ## 2. 如何跑图
+
+### 2.0.1 角色比例总控图（2026-07-28）
+
+当 field 待机、行走和战斗资源出现身高或身材漂移时，禁止继续直接生成多方向图集。先用
+`sprite_protagonist_body_standard_v1.yaml` 生成单一全身中性站姿候选，绑定主角立绘与已采用战斗攻击帧作为参考。
+
+- 单图只验收：脸、发型、袍服、剑、单个灰绿酒葫芦及七头身中等体型。
+- 该图获目视通过后，必须作为右走、上下走和四向待机的共同参考图。
+- 不通过不得复制到 `game/art/**`，也不得用旧待机图拉伸或复用来补方向。
+- ALAPI 偶尔会返回与 prompt 无关的文档/信息图；即使 PNG 与 meta 已落盘，仍必须人工审图后再采用。
 
 ```powershell
 Set-Location F:\Code\RPG_GAME

@@ -40,7 +40,7 @@ text = "[i]（茗雾山庄的踪迹？看来要往城西走一趟。）[/i]"
 choices = []
 give_items = Array[Dictionary]([])
 give_gold = 0
-set_flags = Array[Dictionary]([{"key": "rumour_west_ruin", "value": true}])
+set_flags = Array[Dictionary]([{"key": "zhuwei_inn_clue", "value": true}])
 accept_quest = &""
 complete_quest = &""
 on_end = "end"
@@ -48,5 +48,7 @@ on_end = "end"
 [resource]
 script = ExtResource("1_dscr")
 dialog_id = &"ch1_s2_inn_keeper"
+required_story_flag = &"master_training_done"
+required_completed_quest = &"q_ch1_main_training"
 entry_node_id = &"start"
 nodes = Array[Resource]([SubResource("node_a"), SubResource("node_b"), SubResource("node_c")])

@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_mask_path = "res://art/navigation_masks/ch1_cave_mine_walk_v1.svg"
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.055, 0.920, 0.070, 0.620, 0.180, 0.475, 0.335, 0.390, 0.525, 0.455, 0.500, 0.640, 0.315, 0.775, 0.225, 0.930),
+	PackedVector2Array(0.170, 0.500, 0.235, 0.245, 0.420, 0.135, 0.615, 0.255, 0.550, 0.450, 0.350, 0.535, 0.265, 0.635),
+	PackedVector2Array(0.480, 0.500, 0.555, 0.270, 0.720, 0.155, 0.930, 0.105, 0.955, 0.305, 0.805, 0.430, 0.615, 0.535),
+	PackedVector2Array(0.390, 0.570, 0.570, 0.455, 0.770, 0.515, 0.720, 0.720, 0.505, 0.840, 0.285, 0.705),
+	PackedVector2Array(0.245, 0.670, 0.410, 0.575, 0.610, 0.545, 0.910, 0.485, 0.940, 0.735, 0.675, 0.785, 0.430, 0.865, 0.250, 0.840)
+])
+visual_objects = []
+blockers = [
+	{"id": "mine_center_pillar", "pos": Vector2(0.505, 0.505), "size": Vector2(0.105, 0.115)},
+	{"id": "mine_cart_block", "pos": Vector2(0.755, 0.640), "size": Vector2(0.090, 0.070)}
+]
+interactions = [
+	{"id": "cave_mine_cache", "pos": Vector2(0.245, 0.285), "size": Vector2(0.105, 0.095), "activation": "interact", "label": "打开矿道旧箱", "action": "dialog:ch1_zhuwei_cave_mine_cache", "interaction_visual_kind": "chest", "visual_render_size_px": Vector2(74, 60), "hide_flag": "looted_zhuwei_cave_mine_cache"}
+]
+portals = [
+	{"id": "mine_return_entrance", "pos": Vector2(0.115, 0.825), "size": Vector2(0.100, 0.075), "label": "返回入口营地", "marker_rotation_degrees": 180.0, "target_scene": "ch1_s4_zhuwei_beast_cave", "target_pos": Vector2(0.300, 0.390)},
+	{"id": "mine_enter_deep_den", "pos": Vector2(0.890, 0.205), "size": Vector2(0.100, 0.075), "label": "通往头狼深窟", "marker_rotation_degrees": 0.0, "target_scene": "ch1_s4_cave_deep_den", "target_pos": Vector2(0.250, 0.720)}
+]
+walkable_probes = [
+	{"id": "mine_spawn", "pos": Vector2(0.180, 0.750)},
+	{"id": "mine_left_loop", "pos": Vector2(0.300, 0.310)},
+	{"id": "mine_lower_loop", "pos": Vector2(0.590, 0.675)},
+	{"id": "mine_lower_corridor", "pos": Vector2(0.355, 0.755)},
+	{"id": "mine_lower_right_room", "pos": Vector2(0.650, 0.700)},
+	{"id": "mine_lower_right_far_side", "pos": Vector2(0.865, 0.610)},
+	{"id": "mine_deep_exit", "pos": Vector2(0.890, 0.205)}
+]
+blocked_probes = [
+	{"id": "mine_center_pillar", "pos": Vector2(0.505, 0.505)},
+	{"id": "mine_upper_void", "pos": Vector2(0.500, 0.060)},
+	{"id": "mine_lower_void", "pos": Vector2(0.800, 0.900)}
+]

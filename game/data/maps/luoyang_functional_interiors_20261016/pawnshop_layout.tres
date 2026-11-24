@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.13802083333333334, 0.505859375, 0.595703125, 0.505859375, 0.595703125, 0.37109375, 0.8359375, 0.37109375, 0.9440104166666666, 0.849609375, 0.615234375, 0.849609375, 0.615234375, 0.9521484375, 0.384765625, 0.9521484375, 0.384765625, 0.849609375, 0.054036458333333336, 0.849609375)])
+blockers = [{"id": "high_transaction_counter", "ground_polygon": PackedVector2Array(0.09765625, 0.43359375, 0.560546875, 0.43359375, 0.560546875, 0.50390625, 0.09765625, 0.50390625), "walkability_margin": 0.0},
+{"id": "secure_gate_post", "ground_polygon": PackedVector2Array(0.568359375, 0.4208984375, 0.5885416666666666, 0.4208984375, 0.5885416666666666, 0.458984375, 0.568359375, 0.458984375), "walkability_margin": 0.0},
+{"id": "appraisal_table", "ground_polygon": PackedVector2Array(0.603515625, 0.384765625, 0.74609375, 0.384765625, 0.74609375, 0.443359375, 0.603515625, 0.443359375), "walkability_margin": 0.0},
+{"id": "rear_lock_cabinet", "ground_polygon": PackedVector2Array(0.7532552083333334, 0.3310546875, 0.853515625, 0.3310546875, 0.853515625, 0.3740234375, 0.7532552083333334, 0.3740234375), "walkability_margin": 0.0},
+{"id": "right_long_bench", "ground_polygon": PackedVector2Array(0.8489583333333334, 0.587890625, 0.9244791666666666, 0.587890625, 0.9388020833333334, 0.68359375, 0.859375, 0.68359375), "walkability_margin": 0.0},
+{"id": "right_small_table", "ground_polygon": PackedVector2Array(0.8971354166666666, 0.7041015625, 0.9466145833333334, 0.7041015625, 0.9466145833333334, 0.7646484375, 0.8971354166666666, 0.7646484375), "walkability_margin": 0.0},
+{"id": "right_vase_and_tools", "ground_polygon": PackedVector2Array(0.9205729166666666, 0.779296875, 0.9563802083333334, 0.779296875, 0.9563802083333334, 0.8466796875, 0.9205729166666666, 0.8466796875), "walkability_margin": 0.0},
+{"id": "left_large_jars_and_rack", "ground_polygon": PackedVector2Array(0.039713541666666664, 0.6220703125, 0.10611979166666667, 0.6220703125, 0.10872395833333333, 0.8447265625, 0.039713541666666664, 0.8447265625), "walkability_margin": 0.0},
+{"id": "left_storage_chest", "ground_polygon": PackedVector2Array(0.115234375, 0.7216796875, 0.18294270833333334, 0.7216796875, 0.18294270833333334, 0.7900390625, 0.115234375, 0.7900390625), "walkability_margin": 0.0},
+{"id": "left_tall_tool_bucket", "ground_polygon": PackedVector2Array(0.125, 0.5205078125, 0.14908854166666666, 0.5205078125, 0.14908854166666666, 0.58203125, 0.125, 0.58203125), "walkability_margin": 0.0}]
+portals = []
+walkable_probes = [{"id": "spawn", "pos": Vector2(0.5, 0.76171875), "source_feet": true}, {"id": "transaction_counter", "pos": Vector2(0.4166666666666667, 0.5615234375), "source_feet": true}, {"id": "appraisal_station", "pos": Vector2(0.6868489583333334, 0.5078125), "source_feet": true}, {"id": "waiting_bench", "pos": Vector2(0.7975260416666666, 0.634765625), "source_feet": true}, {"id": "exit", "pos": Vector2(0.5, 0.8642578125), "source_feet": true}]
+metadata/functional_interior_author = "res://data/maps/luoyang_functional_interiors_20261016/pawnshop_author.json"

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.160, 0.390, 0.840, 0.390, 0.855, 0.820, 0.565, 0.820, 0.565, 0.885, 0.435, 0.885, 0.435, 0.820, 0.145, 0.820)])
+visual_objects = []
+blockers = [{"id": "bed", "pos": Vector2(0.252, 0.445), "size": Vector2(0.095, 0.110)}, {"id": "writing_desk", "pos": Vector2(0.565, 0.390), "size": Vector2(0.170, 0.105)}, {"id": "book_cabinet", "pos": Vector2(0.795, 0.500), "size": Vector2(0.090, 0.190)}, {"id": "tea_table", "pos": Vector2(0.655, 0.800), "size": Vector2(0.150, 0.140)}]
+interactions = [{"id": "old_ledger", "pos": Vector2(0.565, 0.455), "size": Vector2(0.150, 0.115), "activation": "interact", "action": "dialog:linxi_scholar_house_ledger", "label": "查看桌上旧账", "interaction_visual_kind": "ledger", "visual_render_size_px": Vector2(72, 72), "hide_flag": "found_linxi_old_ledger"}]
+portals = [{"id": "return_center", "pos": Vector2(0.500, 0.845), "size": Vector2(0.130, 0.075), "label": "离开旧宅", "target_scene": "linxi_village_center", "target_pos": Vector2(0.455, 0.335)}]
+walkable_probes = [{"id": "center", "pos": Vector2(0.500, 0.625)}, {"id": "desk", "pos": Vector2(0.565, 0.485)}, {"id": "exit", "pos": Vector2(0.500, 0.845)}]
+blocked_probes = [{"id": "bed", "pos": Vector2(0.252, 0.445)}, {"id": "writing_desk", "pos": Vector2(0.565, 0.390)}, {"id": "tea_table", "pos": Vector2(0.655, 0.800)}]

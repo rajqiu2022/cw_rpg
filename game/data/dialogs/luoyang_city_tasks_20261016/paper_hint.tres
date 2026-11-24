@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "老纸匠"
+text = "鲜藤皮都被雨泡坏了，城外古寺旁那处废纸坊，檐下却还存过一捆晒干的老藤皮。先从南市南口出城，到古寺再找。"
+on_end = "next:detail"
+
+[sub_resource type="Resource" id="detail"]
+script = ExtResource("2")
+node_id = &"detail"
+speaker = "老纸匠"
+text = "旧坊在寺院偏西。认那副废木模和檐下的干料，不要翻供桌。木模上若有鱼鳞水纹，也一并带回来，我能辨它的年份。"
+set_flags = Array[Dictionary]([{"key":"luoyang_paper_artisan_hint","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_paper_hint"
+entry_node_id = &"start"
+required_story_flag = &"luoyang_paper_started"
+blocked_story_flag = &"luoyang_paper_artisan_hint"
+nodes = Array[Resource]([SubResource("start"), SubResource("detail")])
+

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="DialogNode_1"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "运粮脚夫"
+text = "这几袋新米要送去药铺后院。村里人多，肩上的担子也就轻些。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"linxi_scrollmap_porter"
+nodes = Array[ExtResource("2_node")]([SubResource("DialogNode_1")])

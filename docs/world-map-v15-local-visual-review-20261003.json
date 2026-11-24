@@ -1,0 +1,23 @@
+{
+  "version": 15,
+  "reviewer": "/root",
+  "reviewer_role": "producer/root",
+  "review_method": "actual_png_individual_review",
+  "scope": "four_architecture_local_samples_and_one_plain_seam_only",
+  "production_approved": false,
+  "candidate_full_terrain_approved": false,
+  "formal_map_unchanged": true,
+  "reviewed_assets_sha256": {
+    "game/build/world_map_v15_compound_seam_preview_v1/huashan_scene.png": "edc997678dbdda6f69e921886caa3494cae8a079afafdcc3f14f2db2ce0d10b2",
+    "game/build/world_map_v15_compound_seam_preview_v1/wudang_scene.png": "36c04b8c67532189067404f749f8047ba3f22cf37f293d2ee32ee541563bba54",
+    "game/build/world_map_v15_compound_seam_preview_v1/gufeng_scene.png": "17620304e58f44528283116c1ce0c96491c721569f5fc6088e7947b97ed5938f",
+    "game/build/world_map_v15_compound_seam_preview_v1/lingyue_scene.png": "b2cdc1559374a673a44c23fea522fb5e2c2eb69ee27fead083043669c8e88ca8",
+    "game/build/world_map_v15_compound_seam_preview_v1/cross_seam_c3_c4_scene.png": "71e72e3297cafa2bf3506d8dd99d09081f8eefc5427c38d8afe5d188afc3d055"
+  },
+  "architecture_verdict": "APPROVED_FOR_CONTINUED_V15_AUTHORING",
+  "architecture_observations": "Four complete distinct compounds have coherent main halls, side halls, courts, south entrance and readable stairs. Actual alpha shows no opaque grey exterior in native ground composites. No PNG change requested.",
+  "terrain_verdict": "FAIL_REQUIRES_SOURCE_REVISION",
+  "terrain_observations": "Huashan platform produces an artificial circular concave shoulder. Gufeng and Lingyue routes have unnatural trench-like margins. Surroundings lack actual snow/bamboo/wetland dressing and dense rough-gravel appearance needs balancing. Plain seam sample appears continuous but proves only this one source window, not 64 tiles/112 adjacencies.",
+  "next_required_samples": ["huashan_revised_ground", "gufeng_or_lingyue_revised_road_shoulder", "northern_snow", "southern_independent_bamboo", "wetland_reeds_and_shallow_water", "actual_supported_native_bridge", "river_bank"],
+  "excluded_claims": ["sixteen_doorway_input_acceptance", "complete_64_chunk_visual_acceptance", "full_navigation_route_pass", "production_activation", "all_scene_depth_fixed", "global_60fps"]
+}

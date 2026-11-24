@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.18, 0.405, 0.82, 0.405, 0.87, 0.76, 0.575, 0.76, 0.575, 0.855, 0.425, 0.855, 0.425, 0.76, 0.13, 0.76)])
+visual_objects = []
+blockers = [
+	{"id": "service_counter", "pos": Vector2(0.34, 0.425), "size": Vector2(0.29, 0.125)},
+	{"id": "left_tables", "pos": Vector2(0.34, 0.66), "size": Vector2(0.19, 0.16)},
+	{"id": "right_tables", "pos": Vector2(0.665, 0.665), "size": Vector2(0.235, 0.175)},
+	{"id": "stairs", "pos": Vector2(0.655, 0.345), "size": Vector2(0.18, 0.2)}
+]
+interactions = []
+portals = []
+walkable_probes = [{"id": "inn_hall_spawn", "pos": Vector2(0.5, 0.59)}, {"id": "inn_hall_exit", "pos": Vector2(0.5, 0.795)}]
+blocked_probes = [{"id": "service_counter", "pos": Vector2(0.34, 0.425)}, {"id": "left_tables", "pos": Vector2(0.34, 0.66)}, {"id": "right_tables", "pos": Vector2(0.665, 0.665)}, {"id": "stairs", "pos": Vector2(0.655, 0.345)}]
+metadata/luoyang_home_candidate_only = true
+metadata/home_template_id = "inn_hall"

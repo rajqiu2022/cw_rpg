@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "货担主人"
+portrait_path = ""
+text = "码头的争执办妥了？做买卖的人，求的就是把货和账说清。"
+voice_emotion = "normal"
+on_end = "next:reply"
+
+[sub_resource type="Resource" id="reply"]
+script = ExtResource("2")
+node_id = &"reply"
+speaker = "货担主人"
+portrait_path = ""
+text = "往后我也让收货人当面点过，省得只靠一句听说。"
+voice_emotion = "normal"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_resident_v_gate_supply_after"
+entry_node_id = &"start"
+required_story_flag = &"canal_feud_resolved"
+required_completed_quest = &"q_ch4_side_06_canal_grudge"
+nodes = Array[Resource]([SubResource("start"), SubResource("reply")])

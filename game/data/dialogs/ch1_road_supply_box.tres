@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+portrait_path = ""
+text = "[i]（路旁木箱的搭扣已经松脱。箱盖下压着一张褪色药铺封条。）[/i]"
+choices = []
+give_items = Array[Dictionary]([{"id": "healing_pill_minor", "count": 1}])
+give_gold = 0
+set_flags = Array[Dictionary]([{"key": "looted_road_supply_box", "value": true}])
+accept_quest = &""
+complete_quest = &""
+on_end = "next:found"
+
+[sub_resource type="Resource" id="node_found"]
+script = ExtResource("2_dnode")
+node_id = &"found"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "一颗小还丹。先收好，前面的山道未必太平。"
+choices = []
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_road_supply_box"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_found")])

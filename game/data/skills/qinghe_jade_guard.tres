@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"qinghe_jade_guard"
+display_name = "青木护元诀"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_guard_v1.png"
+description = "沈青禾家传吐纳心法。常驻时自身防御提高；运功时为全队恢复气血、施加一次护体，另使每人三个自身回合内所受毒伤减少六成。"
+kind = 2
+target = 3
+delivery = 2
+mp_cost = 18
+quality = 2
+fixed_damage = 0
+attack_scaling = 0
+effect_value = 16
+animation_id = &"qinghe_jade_guard"
+required_weapon_type = &""
+school = "linxi"
+is_passive = false
+is_internal_art = true
+passive_guard_bonus = 3
+passive_guard_growth = 1
+active_effect_description = "全队回血并获得一次护体，另可抵御六成毒伤，持续三个自身回合。"
+active_effect_type = &"heal_guard"
+active_effect_growth = 6
+active_duration_turns = 1
+active_duration_growth = 1
+equip_weapon_categories = Array[StringName]([&"sword"])
+equip_damage_scaling_bonus = 5
+equip_damage_scaling_growth = 1
+synergy_skill_ids = Array[StringName]([&"qinghe_swallow_sword"])
+synergy_damage_scaling_bonus = 5

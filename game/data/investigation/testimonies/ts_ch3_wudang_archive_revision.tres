@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch3_wudang_archive_revision"
+display_name = "武当档案的删改"
+speaker_npc_id = &"npc_xuanzhen"
+statement = "陆青云死后，练剑场记录曾按长老会命令誊抄一次。玄真道长承认改过记录，却不肯在会盟上公开批准誊抄者的名字。"
+chapter = 3
+initial_credibility = 75
+related_evidence_ids = Array[StringName]([&"ev_ch3_old_official_paper", &"ev_ch3_reversed_footprints"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch3_mingwu_common_artisan"])

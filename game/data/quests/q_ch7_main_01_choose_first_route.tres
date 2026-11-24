@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_01_choose_first_route"
+title = "两路先后"
+kind = 0
+desc_not_started = "戚云笙的留书指向烈云峡谷，白水驿旧路和茗雾封蜡又指向茶镇。先查哪一边，会惊动另一边。"
+desc_in_progress = "选择先赴烈云峡谷旧渡，或先查茗雾茶镇，并抵达所选入口。"
+desc_completed = "第一处入口已经核验。另一条路线仍然开放，但对方已可能收到消息。"
+tracker_hint = "江湖大地图 · 两盟入口"
+completion_triggers = Array[String](["flag_set:ch7_first_route_arrived"])
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 0
+reward_exp = 120
+reward_items = Array[Dictionary]([])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch7_first_route_arrived", "text":"已抵达首选调查入口；另一侧的警戒状态将读取调查顺序。"}])

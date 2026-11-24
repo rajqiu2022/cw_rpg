@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "赵思颖"
+text = "纸张水印来自城外旧寺，药粉却是近三日才配出的。有人在用旧名号包装新案。"
+add_evidence = Array[StringName]([&"ev_ch4_forged_death_time", &"ev_ch4_recent_compound_powder"])
+add_testimonies = Array[StringName]([&"ts_ch4_zhao_autopsy"])
+on_end = "next:b"
+
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "两条线索指向同一批人。先去漕渠码头找运货脚夫，再追到古寺。"
+verify_evidence = Array[StringName]([&"ev_ch4_forged_death_time", &"ev_ch4_recent_compound_powder"])
+verify_testimonies = Array[StringName]([&"ts_ch4_zhao_autopsy"])
+companion_trust_changes = Array[Dictionary]([{"id": "zhao_siying", "delta": 5}])
+bond_events = Array[Dictionary]([{"companion": "zhao_siying", "event": "ch4_joint_autopsy"}])
+set_flags = Array[Dictionary]([{"key":"luoyang_case_found_clue","value":true}])
+complete_quest = &"q_ch4_main_01_luoyang_case"
+accept_quest = &"q_ch4_main_02_ancient_temple"
+on_end = "next:c"
+
+[sub_resource type="Resource" id="c"]
+script = ExtResource("2")
+node_id = &"c"
+speaker = "赵思颖"
+text = "码头夜里换了三拨守卫。先救出目击脚夫，才能找到古寺真正的暗门。"
+accept_quest = &"q_ch4_main_03_canal_witness"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_case_clue"
+required_story_flag = &"chapter3_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b"), SubResource("c")])

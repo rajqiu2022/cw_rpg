@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("2")
+node_id = &"choice"
+speaker = "诗会执事"
+text = "花开动城，花落又当如何？"
+choices = Array[Dictionary]([{"text":"人去香仍在，一城记旧春", "next":"success"}, {"text":"名花只配富贵人家", "next":"retry"}])
+[sub_resource type="Resource" id="retry"]
+script = ExtResource("2")
+node_id = &"retry"
+speaker = "诗会执事"
+text = "花在城中开，也在市井开。再想想洛阳为何记得它。"
+on_end = "next:choice"
+[sub_resource type="Resource" id="success"]
+script = ExtResource("2")
+node_id = &"success"
+speaker = "诗会执事"
+text = "好。不是把典故背出来，而是把城里人的心意接住了。我先把续句录下，你再来取诗会彩头。"
+set_flags = Array[Dictionary]([{"key":"peony_poetry_answered_20261018t", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"luoyang_layout_quest_20261018t/peony_investigate"
+entry_node_id = &"choice"
+nodes = Array[Resource]([SubResource("choice"), SubResource("retry"), SubResource("success")])

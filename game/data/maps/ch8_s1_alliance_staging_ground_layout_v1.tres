@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script=ExtResource("1")
+design_size=Vector2i(1536,1024)
+fill_viewport=true
+walkable_regions=Array[PackedVector2Array]([PackedVector2Array(0.40,0.99,0.60,0.99,0.86,0.72,0.80,0.20,0.20,0.20,0.14,0.72)])
+portals=Array[Dictionary]([{"id":"enter_mistwood","pos":Vector2(0.50,0.20),"size":Vector2(0.13,0.10),"label":"进入茗雾外围雾林","target_scene":"ch8_s2_mistwood_blockade","target_pos":Vector2(0.50,0.86),"require_flag":"ch8_alliance_mustered"}])
+walkable_probes=Array[Dictionary]([{"id":"spawn","pos":Vector2(0.50,0.88)},{"id":"muster","pos":Vector2(0.50,0.55)},{"id":"exit","pos":Vector2(0.50,0.22)}])

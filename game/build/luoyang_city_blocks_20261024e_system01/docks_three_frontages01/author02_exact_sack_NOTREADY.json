@@ -1,0 +1,301 @@
+{
+  "status": "DOCKS_THREE_EXISTING_FRONTAGES_BUILD_NOTREADY",
+  "ready": false,
+  "scene_id": "ch4_s2_canal_docks",
+  "native_count_before": 29,
+  "native_count_after": 29,
+  "district_additions_preserved": 10,
+  "combined_visuals_before": 39,
+  "combined_visuals_after": 39,
+  "fixed_parent_packet": {
+    "path": "res://data/maps/luoyang_docks_workyard_20261019ac/runtime/ch4_s2_canal_docks/packet.bin",
+    "sha256": "1cb6bbf9825d538c982fcdf1171c5f3e268854be54796c3684c91502da14f221"
+  },
+  "fixed_source_manifests": {
+    "market": {
+      "path": "res://art/maps/luoyang_city_revision_retry2_20261015/ch4_s3_luoyang_market/candidate_manifest.json",
+      "sha256": "e103039fcf1d332fbb9cebe289cee88bcdb82c4c5fc28274e3737be489dc62f3"
+    },
+    "docks": {
+      "path": "res://art/maps/luoyang_city_revision_v1_20261015/ch4_s2_canal_docks/candidate_manifest.json",
+      "sha256": "fae2b99d98499fc255c9c5607b9811fd29d6b539a2969cec0937884f29f02451"
+    }
+  },
+  "basis_readback": {
+    "path": "res://build/luoyang_city_revision_20261024b_root01/ratio_readback_READY/output/result.json",
+    "sha256": "a789e73761b3ef903759d36ca5a30b341104fe224da75830a568eef4833c680c"
+  },
+  "changes": [
+    {
+      "id": "north_canal_warehouse",
+      "source_manifest": "docks",
+      "source_id": "north_canal_warehouse",
+      "source_foot": [
+        870,
+        580
+      ],
+      "old_foot": [
+        870,
+        580
+      ],
+      "new_foot": [
+        754,
+        580
+      ],
+      "old_ratio": 1,
+      "new_ratio": 1,
+      "texture": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s2_canal_docks/entities/north_canal_warehouse.png",
+      "texture_sha256": "3bfa2bd8a906ffe8ef069f7933e45255fe569606781c46886dd0dea519e9580b",
+      "source_size": [
+        1774,
+        887
+      ],
+      "source_anchor": [
+        887,
+        706
+      ],
+      "alpha_A0_xywh": [
+        12,
+        0,
+        1750,
+        887
+      ],
+      "new_alpha_A0_xyxy": [
+        211.5,
+        142.28,
+        1296.5,
+        692.22
+      ],
+      "door_height_preserved": 154.38
+    },
+    {
+      "id": "harbour_rope_shop",
+      "source_manifest": "market",
+      "source_id": "shop",
+      "source_foot": [
+        2320,
+        850
+      ],
+      "old_foot": [
+        720,
+        1420
+      ],
+      "new_foot": [
+        600,
+        1510
+      ],
+      "old_ratio": 0.85,
+      "new_ratio": 0.9294871794871795,
+      "source_uniform_scale": 0.46474358974358976,
+      "texture": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/shop.png",
+      "texture_sha256": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_anchor": [
+        1000,
+        942
+      ],
+      "source_door_top": [
+        1000,
+        630
+      ],
+      "source_door_bottom": [
+        1000,
+        942
+      ],
+      "source_door_height": 312,
+      "new_door_height": 145,
+      "alpha_A0_xywh": [
+        0,
+        0,
+        1520,
+        984
+      ],
+      "new_alpha_A0_xyxy": [
+        135.25641025641022,
+        1072.2115384615386,
+        841.6666666666667,
+        1529.5192307692307
+      ],
+      "public_inspection_foot": [
+        600,
+        1558
+      ],
+      "no_new_room_or_portal": true
+    },
+    {
+      "id": "harbour_quay_supply_shop",
+      "source_manifest": "market",
+      "source_id": "shop",
+      "source_foot": [
+        2320,
+        850
+      ],
+      "old_foot": [
+        1930,
+        530
+      ],
+      "new_foot": [
+        1860,
+        640
+      ],
+      "old_ratio": 0.8,
+      "new_ratio": 0.9294871794871795,
+      "source_uniform_scale": 0.46474358974358976,
+      "texture": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s3_luoyang_market/entities/shop.png",
+      "texture_sha256": "02d474a76c6deaf995eff97be9cb343bf1b0f6ae26a42a72e716308f38d23883",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_anchor": [
+        1000,
+        942
+      ],
+      "source_door_top": [
+        1000,
+        630
+      ],
+      "source_door_bottom": [
+        1000,
+        942
+      ],
+      "source_door_height": 312,
+      "new_door_height": 145,
+      "alpha_A0_xywh": [
+        0,
+        0,
+        1520,
+        984
+      ],
+      "new_alpha_A0_xyxy": [
+        1395.2564102564102,
+        202.21153846153845,
+        2101.6666666666665,
+        659.5192307692307
+      ],
+      "public_inspection_foot": [
+        1860,
+        688
+      ],
+      "no_new_room_or_portal": true
+    }
+  ],
+  "warehouse_room_scalar_migration": {
+    "room_id": "luoyang_canal_warehouse_interior_20261016",
+    "frozen_author_path": "res://data/maps/luoyang_layout_rooms_20261018t/luoyang_canal_warehouse_interior_20261016/author.json",
+    "old_return_foot": [
+      754,
+      610
+    ],
+    "new_return_foot": [
+      638,
+      610
+    ],
+    "source_door_step": [
+      700,
+      701
+    ],
+    "old_world_door_step": [
+      754.06,
+      576.9
+    ],
+    "new_world_door_step": [
+      638.06,
+      576.9
+    ],
+    "old_approach": [
+      [
+        754,
+        670
+      ],
+      [
+        754,
+        640
+      ],
+      [
+        754,
+        610
+      ]
+    ],
+    "new_approach": [
+      [
+        638,
+        670
+      ],
+      [
+        638,
+        640
+      ],
+      [
+        638,
+        610
+      ]
+    ],
+    "room_geometry_recompile": false,
+    "apply_after_original_G_gate": true
+  },
+  "source_clearance_only": {
+    "warehouse_full_alpha_left_margin": 211.5,
+    "supply_to_warehouse_full_alpha_gap": 98.75641025641016,
+    "supply_to_canal_rail_full_alpha_gap": 97.33333333333348,
+    "rope_to_sack_visual_y_gap": 96.11153846153854,
+    "not_NAV_or_Physics_credit": true
+  },
+  "preserved_protected_feet": [
+    [
+      260,
+      790
+    ],
+    [
+      260,
+      1740
+    ],
+    [
+      2140,
+      1840
+    ],
+    [
+      940,
+      750
+    ],
+    [
+      1740,
+      1310
+    ],
+    [
+      1830,
+      1190
+    ],
+    [
+      1930,
+      970
+    ]
+  ],
+  "unchanged_district": true,
+  "unchanged_NPC_identity_and_positions": true,
+  "old3base_retired_new3base_added": true,
+  "mask_rule": "Only old/new3 primitive union closed domains, re-evaluate all retained native + DG obstacles from frozen sources; never white-brush overlap.",
+  "runtime_rule": "Overlay effective physical solids/navigation/C safe-body same source; original native packet/B whole inverse stays intact.",
+  "pending": [
+    "Root source/plot approval",
+    "Exact parent29 typed comparison and final DG39 renderer inheritance",
+    "Independent local mask prior",
+    "Finite 3front approaches + warehouse real portal/return scalar proof + protected/NPC lanes",
+    "One real visual trial"
+  ],
+  "execution": {
+    "engine": 0,
+    "packet_decode": 0,
+    "PNG_decode": 0,
+    "formal_write": 0
+  },
+  "sack_alpha_source": {
+    "path": "res://build/luoyang_docks_workyard_20261019ac_art01/layout_contract.json",
+    "sha256": "2004f7fe1c2b56e163c4e514eda49248d951a7d9d0645b32129d2a7754f04bdf",
+    "pointer": "/placements/0/alpha_nonzero_aabb_px",
+    "bottom_y": 976.1
+  }
+}

@@ -1,0 +1,98 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.020, 0.990, 0.020, 0.760, 0.110, 0.610, 0.230, 0.510, 0.350, 0.400, 0.470, 0.340, 0.570, 0.350, 0.640, 0.420, 0.650, 0.510, 0.610, 0.590, 0.700, 0.660, 0.820, 0.620, 0.900, 0.770, 0.950, 0.950, 0.800, 1.000, 0.540, 0.980, 0.340, 0.980, 0.150, 1.000),
+	PackedVector2Array(0.580, 0.620, 0.590, 0.500, 0.610, 0.410, 0.680, 0.290, 0.750, 0.150, 0.840, 0.030, 0.990, 0.020, 0.990, 0.270, 0.920, 0.400, 0.840, 0.550, 0.750, 0.680, 0.660, 0.680),
+	PackedVector2Array(0.300, 0.590, 0.300, 0.500, 0.350, 0.410, 0.450, 0.340, 0.560, 0.340, 0.620, 0.400, 0.630, 0.500, 0.690, 0.590, 0.680, 0.660, 0.610, 0.620, 0.570, 0.570, 0.500, 0.550, 0.410, 0.570)
+])
+visual_objects = [{
+"id": "road_stone_tablet_visual",
+"texture": "res://art/modules/prop/linxi_stone_tablet_v2.png",
+"pos": Vector2(0.255, 0.655),
+"scale": Vector2(0.34, 0.34),
+"z_index": 14,
+"collision_size": Vector2(0.045, 0.050),
+"collision_offset": Vector2(0.0, 0.030)
+}, {
+"id": "road_corpse_visual",
+	"texture": "res://art/characters/prop_corpse_v2.png",
+"pos": Vector2(0.565, 0.630),
+	"render_size_px": Vector2(145, 56),
+"z_index": 14,
+"hide_flag": "defeated_thug_lone"
+}, {
+"id": "road_supply_box_closed",
+"texture": "res://art/modules/prop/chest_normal_closed_v1.png",
+"pos": Vector2(0.500, 0.565),
+"scale": Vector2(0.24, 0.24),
+"z_index": 14,
+"collision_size": Vector2(0.060, 0.045),
+"collision_offset": Vector2(0.0, 0.025),
+"interaction_action": "dialog:ch1_road_supply_box",
+"interaction_label": "打开宝箱",
+"interaction_size": Vector2(0.115, 0.115),
+"interaction_offset": Vector2(0.0, 0.015),
+"prompt_offset": Vector2(-0.057, -0.095),
+"hide_flag": "looted_road_supply_box"
+}]
+blockers = [{"id": "central_ridge_upper", "pos": Vector2(0.625, 0.325), "size": Vector2(0.065, 0.095)}, {"id": "central_ridge_lower", "pos": Vector2(0.680, 0.920), "size": Vector2(0.120, 0.100)}]
+interactions = [{
+"id": "road_stone_read",
+"pos": Vector2(0.255, 0.670),
+"size": Vector2(0.105, 0.120),
+"action": "dialog:ch1_road_stone",
+"activation": "interact",
+"hide_flag": "saw_stone_warning"
+}, {
+"id": "road_corpse",
+"pos": Vector2(0.565, 0.630),
+"size": Vector2(0.135, 0.125),
+"action": "dialog:ch1_road_corpse",
+"activation": "interact",
+"hide_flag": "defeated_thug_lone"
+}]
+portals = [{
+"id": "return_to_linxi",
+"label": "返回林西村",
+"pos": Vector2(0.090, 0.855),
+"size": Vector2(0.105, 0.105),
+"target_scene": "linxi_village_center",
+"target_pos": Vector2(0.820, 0.165),
+	"require_flag": "defeated_thug_lone",
+"hide_flag": "master_training_done",
+"locked_label": "先检查尸体上的线索"
+}, {
+"id": "exit_to_zhuwei_blocked",
+"label": "检查竹尾村方向",
+"destination_name": "竹尾村",
+"pos": Vector2(0.82, 0.14),
+"size": Vector2(0.120, 0.130),
+"action": "dialog:ch1_road_exit_locked",
+"hide_flag": "defeated_thug_lone"
+}, {
+"id": "exit_to_zhuwei",
+"label": "前往竹尾村",
+"destination_name": "竹尾村",
+"pos": Vector2(0.82, 0.14),
+"size": Vector2(0.120, 0.130),
+	"action": "dialog:ch1_road_to_zhuwei",
+	"require_flag": "master_training_done",
+	"locked_label": "先回林西村向师傅复命"
+}, {
+"id": "bandit_cave_entry",
+"label": "进入山寨洞窟",
+"pos": Vector2(0.705, 0.585),
+"size": Vector2(0.105, 0.105),
+"target_scene": "interior_bandit_cave",
+"target_pos": Vector2(0.500, 0.620),
+	"require_flag": "rumour_bandit_cave"
+}]
+walkable_probes = [{"id": "road_spawn", "pos": Vector2(0.120, 0.835)}, {"id": "stone_shoulder", "pos": Vector2(0.255, 0.705)}, {"id": "lower_clearing_crossing", "pos": Vector2(0.360, 0.720)}, {"id": "center_road_bridge_left", "pos": Vector2(0.360, 0.500)}, {"id": "center_road_bridge_mid", "pos": Vector2(0.480, 0.430)}, {"id": "center_road_bridge_right", "pos": Vector2(0.590, 0.500)}, {"id": "supply_chest", "pos": Vector2(0.500, 0.565)}, {"id": "right_road_lower", "pos": Vector2(0.680, 0.640)}, {"id": "right_road_mid", "pos": Vector2(0.755, 0.395)}, {"id": "right_road_upper", "pos": Vector2(0.835, 0.220)}, {"id": "zhuwei_approach", "pos": Vector2(0.895, 0.105)}]
+blocked_probes = [{"id": "west_cliff", "pos": Vector2(0.020, 0.400)}, {"id": "east_bamboo", "pos": Vector2(0.950, 0.640)}, {"id": "central_ridge_upper", "pos": Vector2(0.640, 0.300)}, {"id": "central_ridge_lower", "pos": Vector2(0.680, 0.920)}]

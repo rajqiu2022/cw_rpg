@@ -10,7 +10,7 @@ speaker = ""
 portrait_path = ""
 text = "[i]在尸体身上你寻得一张地图，一件破旧的粗布麻衣，几两碎银。[/i]"
 choices = []
-give_items = Array[Dictionary]([{"id": "chapter1_map", "count": 1}, {"id": "cloth_armor", "count": 1}])
+give_items = Array[Dictionary]([{"id": "zhuwei_map", "count": 1}, {"id": "cloth_armor", "count": 1}])
 give_gold = 8
 set_flags = Array[Dictionary]([{"key": "looted_thug_corpse", "value": true}])
 accept_quest = &""
@@ -43,7 +43,7 @@ give_gold = 0
 set_flags = Array[Dictionary]([])
 accept_quest = &""
 complete_quest = &""
-on_end = "scene:ch1_s2_qingfeng_walkable"
+on_end = "scene:ch1_s2_qingfeng"
 
 [resource]
 script = ExtResource("1_dscr")

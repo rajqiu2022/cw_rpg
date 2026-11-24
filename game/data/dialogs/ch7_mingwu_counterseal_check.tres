@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "两枚复核印分别属于庄主内署和训练录事房，同刻落下，共同绕过死亡注销。此事不是外人偷一枚暗号便能完成。"
+add_evidence = Array[StringName]([&"ev_ch7_mingwu_counterseal_chain"])
+set_flags = Array[Dictionary]([{"key":"ch7_counterseal_checked", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_mingwu_counterseal_check"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

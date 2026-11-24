@@ -1,0 +1,16 @@
+$ErrorActionPreference='Stop'
+$taskRoot='F:/Code/RPG_GAME';$qaRoot=Join-Path $taskRoot 'game/build/luoyang_gate_lowwalls_20261029m_qa01'
+function Fact([string]$p){if(-not[IO.File]::Exists($p)){return [ordered]@{exists=$false}};$i=Get-Item -LiteralPath $p;return [ordered]@{exists=$true;sha256=(Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash.ToLowerInvariant();bytes=$i.Length;utc_ticks=$i.LastWriteTimeUtc.Ticks.ToString()}}
+function NewBytes([string]$p,[byte[]]$b){[IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($p))|Out-Null;$s=[IO.File]::Open($p,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None);try{$s.Write($b,0,$b.Length)}finally{$s.Dispose()}}
+$priorPath="$taskRoot/game/build/luoyang_entry_20261029l_qa01/final_guard_ROOT_ACTUAL.json"
+$prior=Get-Content -LiteralPath $priorPath -Raw|ConvertFrom-Json
+$paths=@($prior.sources.PSObject.Properties|ForEach-Object Name)+@('game/scripts/city/luoyang_environment_layer_20261022ap.gd','game/scripts/city/luoyang_environment_index_20261022ap.gd','game/data/maps/luoyang_full_city_20261022ap/environment.json','game/build/luoyang_city_finish_20261025i_source01/region_integration_20261027d01/closure_READY01/finish8_runtime_READY.gd','game/build/luoyang_city_finish_20261025i_source01/region_integration_20261027d01/closure_READY01/finish8_binding_READY.json')
+$sources=[ordered]@{};$backups=@();$diff=@();$saves=[ordered]@{}
+foreach($relative in ($paths|Select-Object -Unique)){$p=Join-Path $taskRoot $relative;$f=Fact $p;if(-not$f.exists){throw "Missing current source: $relative"};$sources[$relative]=$f;$copy=Join-Path $qaRoot ('source_before/'+$relative);NewBytes $copy ([IO.File]::ReadAllBytes($p));[IO.File]::SetLastWriteTimeUtc($copy,[DateTime]::new([long]$f.utc_ticks,[DateTimeKind]::Utc));$copied=Fact $copy;if($copied.sha256-cne$f.sha256-or$copied.bytes-ne$f.bytes-or$copied.utc_ticks-cne$f.utc_ticks){throw 'Exact backup differs'};$backups+=@{source=$relative;path=$copy;fact=$copied}}
+foreach($entry in $prior.sources.PSObject.Properties){$now=$sources[$entry.Name];if($now.sha256-cne$entry.Value.sha256-or$now.bytes-ne$entry.Value.bytes){$diff+=@{path=$entry.Name;previous=$entry.Value;now=$now}}}
+foreach($entry in $prior.registered_save_paths.PSObject.Properties){$saves[$entry.Name]=Fact $entry.Name}
+$procs=@(Get-CimInstance Win32_Process -Filter "Name LIKE '%Godot%'"|Select-Object ProcessId,Name)
+$output=Join-Path $qaRoot 'baseline_before_ACTUAL.json'
+$result=[ordered]@{status='TWO_GATE_LOW_WALLS_ONLY_READONLY_BEFORE';utc=[DateTime]::UtcNow.ToString('o');sources=$sources;exact_backups=$backups;registered_save_paths=$saves;previous_guard_sha256=(Fact $priorPath).sha256;previous75_differences=$diff;godot_processes=$procs;editor51856_present=(@($procs|Where-Object ProcessId -eq 51856).Count-eq1);save_contents_read=$false;save_writes=0;production_writes=0;engine_calls=0;processes_stopped=0}
+NewBytes $output ([Text.UTF8Encoding]::new($false).GetBytes(($result|ConvertTo-Json -Depth 30)+"`n"))
+[ordered]@{path=$output;sha256=(Fact $output).sha256;sources=$sources.Count;backups=$backups.Count;registered_saves=$saves.Count;previous75_differences=$diff.Count;engine_calls=0}|ConvertTo-Json -Compress

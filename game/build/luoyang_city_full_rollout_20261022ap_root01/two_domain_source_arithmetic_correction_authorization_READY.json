@@ -1,0 +1,29 @@
+{
+  "status": "ROOT_APPROVES_ONLY_TWO_FIXED_SOURCE_ORACLE_ARITHMETIC_CORRECTIONS_FOR_NEW_BUILD_INPUT",
+  "date": "2026-10-23",
+  "old_input_sha256": "7b1da122d0342d2a6db4be264237422343bf3d2564060b1908225d4f0fc04dc2",
+  "independent_source_recipe_sha256": "f8952820d003d5784fd40cb4614323056cc282b8a09e0cb489633d4e5c760899",
+  "source_expression_diagnostic_sha256": "098be798dc517d9ee4c55ec09dc7bce9460ebadd738be21b9a7caa24ed675709",
+  "failed_actual_preserved": "res://build/luoyang_city_full_rollout_20261022ap_system01/finite_two_domain_publication_epoch04/output/runs/38992_1718/result.json",
+  "readonly_native_diagnostic": "res://build/luoyang_city_full_rollout_20261022ap_system01/native_primitive_diagnostic_epoch01/output/112732_1680/result.json",
+  "actual_diagnostic_credit": "Record-derived31 native polygons exactly equal stored31 in original order; fixed independent oracle differs in the two rows below. No geometry acceptance.",
+  "source_author_sha256": "b11f48b8249ab27784aef1dc5b960e9ede7430e381a923c389c6461d95ca7a2e",
+  "source_transform_sha256": "0f824ccecc46e0aefde5b1fcb867978ac3d87d3b61347899bc10973374646a8a",
+  "original_tree_manifest_sha256": "eac64463aa3bc00835114b0856e6e00a98d57c38d0fd6e8de472f329cd28bd13",
+  "changes": [
+    {"id": "market_west_ward_frontage_solid_2", "vertices": [1, 2], "axis": 0, "old": 666.7930297851562, "new": 666.79296875, "basis": "Each original source rectangle corner independently uses foot+(point-anchor)*scale in Vector2 float32, not transformed low plus transformed size."},
+    {"id": "assembled_market_tree_group_a_rect", "vertices": [2, 3], "axis": 1, "old": 980.0, "new": 979.9999389648438, "basis": "Original physical center plus declared delta, then low=center-size*.5 and high=low+size, not translating previously rounded rectangle corners."}
+  ],
+  "constraints": {
+    "expected_values_derived_from_immutable_source_not_actual": true,
+    "no_epsilon_or_numeric_tolerance": true,
+    "all_counts_IDs_kinds_vertex_order_unchanged": true,
+    "whole_typed_input_inverse_except_two_rows_new_output_prefix_and_explicit_provenance": true,
+    "publisher_behavior_unchanged_except_new_input_path_hash_and_new_output": true,
+    "local_RGBA_expected_inherited_without_redecode": ["fd90e07e91e864f5da54624f83ac0dd47f7cee8ea488c0a1ef6dd869a94ddf6a", "3b9cf5b43231a2ac4f8c3f6f53e4307a2c2adf7aeca77f3d9d17d4f12dcc7874"],
+    "no_canonical_source_or_artifact_write": true,
+    "no_runtime_or_ART_admission": true,
+    "no_replay_of_old_successful_domains": true
+  },
+  "next": "Prepare a new immutable input/publisher. Root must inspect exact inverse and run it once; do not rerun original04 or the completed native diagnostic."
+}

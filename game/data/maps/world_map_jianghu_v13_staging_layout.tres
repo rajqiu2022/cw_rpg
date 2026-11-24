@@ -1,0 +1,172 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 13
+design_size = Vector2i(4608, 3072)
+display_at_native_size = true
+tiles = Array[Dictionary]([
+	{"id":"r0c0", "row":0, "col":0, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_00_northwest_snow_v1.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_00_northwest.svg", "logical_rect":Rect2(0,0,1536,1024), "status":"STAGING_QA"},
+	{"id":"r0c1", "row":0, "col":1, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_01_northcentral_ridge_v1.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_01_northcentral.svg", "logical_rect":Rect2(1536,0,1536,1024), "status":"STAGING_QA"},
+	{"id":"r0c2", "row":0, "col":2, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_02_northeast_misty_ridge_v1.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_02_northeast.svg", "logical_rect":Rect2(3072,0,1536,1024), "status":"STAGING_QA"},
+	{"id":"r1c0", "row":1, "col":0, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_10_centralwest_plain_v1.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_10_centralwest.svg", "logical_rect":Rect2(0,1024,1536,1024), "status":"STAGING_QA"},
+	{"id":"r1c1", "row":1, "col":1, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_11_central_heartland_v1.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_11_heartland.svg", "logical_rect":Rect2(1536,1024,1536,1024), "status":"STAGING_QA"},
+	{"id":"r1c2", "row":1, "col":2, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_12_centraleast_double_cove_v2_candidate.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_12_centraleast.svg", "logical_rect":Rect2(3072,1024,1536,1024), "status":"STAGING_COAST_REVIEW"},
+	{"id":"r2c0", "row":2, "col":0, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_20_southwest_bamboo_v1.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_20_southwest.svg", "logical_rect":Rect2(0,2048,1536,1024), "status":"STAGING_QA"},
+	{"id":"r2c1", "row":2, "col":1, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_21_jiangnan_waterland_v1.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_21_jiangnan.svg", "logical_rect":Rect2(1536,2048,1536,1024), "status":"STAGING_QA"},
+	{"id":"r2c2", "row":2, "col":2, "terrain_path":"res://art/backgrounds/world_map_v13_tiles/tile_22_southeast_tea_canyon_v1.png", "navigation_path":"res://data/maps/world_map_v13_nav/walk_22_southeast.svg", "logical_rect":Rect2(3072,2048,1536,1024), "status":"STAGING_QA"}
+])
+walkable_mask_tiles = Array[Dictionary]([
+	{"id":"r0c0", "path":"res://data/maps/world_map_v13_nav/walk_00_northwest.svg", "logical_rect":Rect2(0,0,1536,1024)},
+	{"id":"r0c1", "path":"res://data/maps/world_map_v13_nav/walk_01_northcentral.svg", "logical_rect":Rect2(1536,0,1536,1024)},
+	{"id":"r0c2", "path":"res://data/maps/world_map_v13_nav/walk_02_northeast.svg", "logical_rect":Rect2(3072,0,1536,1024)},
+	{"id":"r1c0", "path":"res://data/maps/world_map_v13_nav/walk_10_centralwest.svg", "logical_rect":Rect2(0,1024,1536,1024)},
+	{"id":"r1c1", "path":"res://data/maps/world_map_v13_nav/walk_11_heartland.svg", "logical_rect":Rect2(1536,1024,1536,1024)},
+	{"id":"r1c2", "path":"res://data/maps/world_map_v13_nav/walk_12_centraleast.svg", "logical_rect":Rect2(3072,1024,1536,1024)},
+	{"id":"r2c0", "path":"res://data/maps/world_map_v13_nav/walk_20_southwest.svg", "logical_rect":Rect2(0,2048,1536,1024)},
+	{"id":"r2c1", "path":"res://data/maps/world_map_v13_nav/walk_21_jiangnan.svg", "logical_rect":Rect2(1536,2048,1536,1024)},
+	{"id":"r2c2", "path":"res://data/maps/world_map_v13_nav/walk_22_southeast.svg", "logical_rect":Rect2(3072,2048,1536,1024)}
+])
+walkable_regions = Array[PackedVector2Array]([])
+travel_routes = Array[Dictionary]([
+	{"id":"yanmen_gate_road", "portal_id":"yanmen_pass", "points":PackedVector2Array(0.130208, 0.260417, 0.135, 0.292, 0.141059, 0.329427), "width_px":62, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"huashan_gate_road", "portal_id":"huashan", "points":PackedVector2Array(0.271267, 0.273438, 0.281, 0.303, 0.295, 0.326), "width_px":60, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"wudang_gate_road", "portal_id":"wudang", "points":PackedVector2Array(0.441840, 0.276693, 0.448, 0.302, 0.454, 0.322), "width_px":48, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"gufeng_pass_road", "portal_id":"gufeng", "points":PackedVector2Array(0.550347, 0.266927, 0.550, 0.303, 0.553, 0.327), "width_px":60, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"lingyue_gate_road", "portal_id":"lingyue", "points":PackedVector2Array(0.788194, 0.266927, 0.784, 0.302, 0.777, 0.327), "width_px":60, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"bianzhou_gate_road", "portal_id":"bianzhou", "points":PackedVector2Array(0.227865, 0.444010, 0.227865, 0.458, 0.242, 0.472, 0.265, 0.480), "width_px":50, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"linxi_village_road", "portal_id":"linxi_village", "points":PackedVector2Array(0.086806, 0.554688, 0.086806, 0.570, 0.115, 0.570, 0.140, 0.560), "width_px":42, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"luoyang_south_gate_road", "portal_id":"luoyang", "points":PackedVector2Array(0.561198, 0.496094, 0.557, 0.521, 0.540, 0.545), "width_px":70, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"xiangzhou_gate_road", "portal_id":"xiangzhou", "points":PackedVector2Array(0.424479, 0.554688, 0.445, 0.555, 0.459, 0.558), "width_px":48, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"east_sea_land_road", "portal_id":"east_sea_port", "points":PackedVector2Array(0.905382, 0.421224, 0.905, 0.445, 0.873, 0.445, 0.846, 0.451), "width_px":45, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_COAST_ROUTE_QA"},
+	{"id":"bailu_land_road", "portal_id":"bailu_ferry", "points":PackedVector2Array(0.909722, 0.580729, 0.886, 0.574, 0.865, 0.566), "width_px":42, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_COAST_ROUTE_QA"},
+	{"id":"zhuwei_village_road", "portal_id":"zhuwei_village", "points":PackedVector2Array(0.119358, 0.780599, 0.119358, 0.795, 0.146, 0.795, 0.154, 0.790), "width_px":42, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"qinghe_town_road", "portal_id":"qinghe_town", "points":PackedVector2Array(0.206163, 0.813151, 0.206163, 0.827, 0.235, 0.827, 0.242, 0.820), "width_px":42, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"jinling_north_bridge_south_gate", "portal_id":"jinling", "points":PackedVector2Array(0.499132, 0.689453, 0.499132, 0.750, 0.505, 0.754, 0.530, 0.755, 0.550, 0.760, 0.550, 0.790, 0.550, 0.860, 0.550, 0.880, 0.530, 0.883, 0.500, 0.881, 0.496094, 0.871745), "width_px":32, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_BRIDGE_ROUTE_QA"},
+	{"id":"jinling_west_bridge_south_gate", "portal_id":"jinling", "points":PackedVector2Array(0.345486, 0.813802, 0.380, 0.813802, 0.400, 0.816, 0.418, 0.825, 0.428, 0.846, 0.445, 0.870, 0.460, 0.880, 0.480, 0.881, 0.496094, 0.880, 0.496094, 0.871745), "width_px":42, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_BRIDGE_ROUTE_QA"},
+	{"id":"mingwu_tea_road", "portal_id":"mingwu", "points":PackedVector2Array(0.788194, 0.790365, 0.788194, 0.803, 0.768, 0.810, 0.755, 0.805), "width_px":42, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"},
+	{"id":"lieyun_gorge_road", "portal_id":"lieyun_valley", "points":PackedVector2Array(0.872830, 0.894531, 0.865, 0.908, 0.840, 0.908, 0.820, 0.880), "width_px":42, "texture":"res://art/modules/world_map_v13/road_tile_dirt_horizontal_v1_candidate.png", "validation_status":"PENDING_ROUTE_VISUAL_QA"}
+])
+visual_objects = Array[Dictionary]([
+	{"id":"northwest_foothill_seam", "texture":"res://art/modules/world_map_v13/seam_north_foothill_west_v1.png", "pos":Vector2(0.166667,0.333333), "render_size_px":Vector2(1536,430), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"northcentral_foothill_seam", "texture":"res://art/modules/world_map_v13/seam_north_foothill_center_v1.png", "pos":Vector2(0.500000,0.333333), "render_size_px":Vector2(1536,430), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"northeast_foothill_seam", "texture":"res://art/modules/world_map_v13/seam_north_foothill_east_v1.png", "pos":Vector2(0.833333,0.333333), "render_size_px":Vector2(1536,430), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"southwest_bamboo_seam", "texture":"res://art/modules/world_map_v13/seam_south_bamboo_fields_v1.png", "pos":Vector2(0.166667,0.666667), "render_size_px":Vector2(1536,430), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"heartland_jiangnan_river_seam", "texture":"res://art/modules/world_map_v13/seam_south_jiangnan_river_v1.png", "pos":Vector2(0.500000,0.666667), "render_size_px":Vector2(1536,430), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"southeast_coast_seam", "texture":"res://art/modules/world_map_v13/seam_south_eastcoast_v1.png", "pos":Vector2(0.833333,0.666667), "render_size_px":Vector2(1536,430), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"northwest_snowline_vertical_seam", "texture":"res://art/modules/world_map_v13/seam_vertical_snowline_north_v1.png", "pos":Vector2(0.333333,0.166667), "render_size_px":Vector2(400,1024), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"northeast_mist_vertical_seam", "texture":"res://art/modules/world_map_v13/seam_vertical_mist_ridge_north_v1.png", "pos":Vector2(0.666667,0.166667), "render_size_px":Vector2(400,1024), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"central_plain_vertical_seam", "texture":"res://art/modules/world_map_v13/seam_vertical_central_plain_v1.png", "pos":Vector2(0.333333,0.500000), "render_size_px":Vector2(400,1024), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"central_coast_vertical_seam", "texture":"res://art/modules/world_map_v13/seam_vertical_central_coast_v1_candidate.png", "pos":Vector2(0.666667,0.500000), "render_size_px":Vector2(400,1024), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"bamboo_wetland_vertical_seam", "texture":"res://art/modules/world_map_v13/seam_vertical_bamboo_wetland_v1.png", "pos":Vector2(0.333333,0.833333), "render_size_px":Vector2(400,1024), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"south_estuary_vertical_seam", "texture":"res://art/modules/world_map_v13/seam_south_estuary_vertical_v1.png", "pos":Vector2(0.666667,0.833333), "render_size_px":Vector2(400,1024), "render_layer":"visual", "validation_status":"PENDING_SEAM_NAV_VISUAL_QA"},
+	{"id":"south_bridge_dry_approach", "texture":"res://art/modules/world_map_v13/bridgehead_jiangnan_northsouth_v1.png", "pos":Vector2(0.499132,0.705000), "render_size_px":Vector2(205,230), "render_layer":"visual", "validation_status":"PENDING_BRIDGEHEAD_ALIGNMENT"},
+	{"id":"yanmen_landmark", "portal_id":"yanmen_pass", "texture":"res://art/modules/world_map_v13/landmark_yanmen_pass_v1.png", "pos":Vector2(0.130208,0.220000), "render_size_px":Vector2(350,235), "sort_by_feet":true, "depth_sort_foot_y":0.241, "collision_size":Vector2(0.047,0.025), "collision_offset":Vector2(0.0,-0.027)},
+	{"id":"huashan_landmark", "portal_id":"huashan", "texture":"res://art/modules/world_map_v13/landmark_huashan_gate_v1.png", "pos":Vector2(0.271267,0.226000), "render_size_px":Vector2(280,245), "sort_by_feet":true, "depth_sort_foot_y":0.248, "collision_size":Vector2(0.030,0.020), "collision_offset":Vector2(0.0,-0.027)},
+	{"id":"wudang_landmark", "portal_id":"wudang", "texture":"res://art/modules/world_map_v13/landmark_wudang_gate_v1.png", "pos":Vector2(0.441840,0.223000), "render_size_px":Vector2(320,270), "sort_by_feet":true, "depth_sort_foot_y":0.246, "collision_size":Vector2(0.035,0.022), "collision_offset":Vector2(0.0,-0.028)},
+	{"id":"gufeng_landmark", "portal_id":"gufeng", "texture":"res://art/modules/world_map_v13/landmark_gufeng_pass_v1.png", "pos":Vector2(0.550347,0.225000), "render_size_px":Vector2(320,220), "sort_by_feet":true, "depth_sort_foot_y":0.246, "collision_size":Vector2(0.042,0.022), "collision_offset":Vector2(0.0,-0.028)},
+	{"id":"lingyue_landmark", "portal_id":"lingyue", "texture":"res://art/modules/world_map_v13/landmark_lingyue_gate_v1.png", "pos":Vector2(0.788194,0.220000), "render_size_px":Vector2(315,260), "sort_by_feet":true, "depth_sort_foot_y":0.243, "collision_size":Vector2(0.038,0.022), "collision_offset":Vector2(0.0,-0.028)},
+	{"id":"bianzhou_landmark", "portal_id":"bianzhou", "texture":"res://art/modules/world_map_v13/city_walled_compound_proto_v1.png", "pos":Vector2(0.227865,0.405000), "render_size_px":Vector2(490,330), "sort_by_feet":true, "depth_sort_foot_y":0.432, "collision_size":Vector2(0.075,0.025), "collision_offset":Vector2(0.0,-0.028), "validation_status":"PENDING_ART_REVIEW"},
+	{"id":"linxi_landmark", "portal_id":"linxi_village", "texture":"res://art/modules/world_map_v13/landmark_linxi_village_v1.png", "pos":Vector2(0.086806,0.505000), "render_size_px":Vector2(315,235), "sort_by_feet":true, "depth_sort_foot_y":0.533, "collision_size":Vector2(0.050,0.024), "collision_offset":Vector2(0.0,0.025)},
+	{"id":"luoyang_landmark", "portal_id":"luoyang", "texture":"res://art/modules/world_map_v13/landmark_luoyang_city_v1.png", "pos":Vector2(0.561198,0.423000), "render_size_px":Vector2(520,345), "sort_by_feet":true, "depth_sort_foot_y":0.464, "collision_size":Vector2(0.080,0.028), "collision_offset":Vector2(0.0,0.021)},
+	{"id":"xiangzhou_landmark", "portal_id":"xiangzhou", "texture":"res://art/modules/world_map_v13/landmark_xiangzhou_city_v1.png", "pos":Vector2(0.424479,0.480000), "render_size_px":Vector2(440,300), "sort_by_feet":true, "depth_sort_foot_y":0.527, "collision_size":Vector2(0.070,0.028), "collision_offset":Vector2(0.0,0.032)},
+	{"id":"jinling_landmark", "portal_id":"jinling", "texture":"res://art/modules/world_map_v13/city_jinling_river_v1.png", "pos":Vector2(0.496094,0.813151), "render_size_px":Vector2(450,300), "sort_by_feet":true, "depth_sort_foot_y":0.860, "collision_size":Vector2(0.070,0.020), "collision_offset":Vector2(0.0,0.028)},
+	{"id":"east_sea_landmark", "portal_id":"east_sea_port", "texture":"res://art/modules/world_map_v13/landmark_east_sea_port_v1.png", "pos":Vector2(0.927083,0.400065), "render_size_px":Vector2(350,235), "sort_by_feet":true, "depth_sort_foot_y":0.425, "collision_size":Vector2(0.040,0.022), "collision_offset":Vector2(-0.024,-0.013), "validation_status":"PENDING_COAST_ALIGNMENT"},
+	{"id":"bailu_landmark", "portal_id":"bailu_ferry", "texture":"res://art/modules/world_map_v13/landmark_bailu_ferry_v1.png", "pos":Vector2(0.916233,0.536784), "render_size_px":Vector2(330,235), "sort_by_feet":true, "depth_sort_foot_y":0.565, "collision_size":Vector2(0.030,0.018), "collision_offset":Vector2(-0.015,0.008), "validation_status":"PENDING_COAST_ALIGNMENT"},
+	{"id":"zhuwei_landmark", "portal_id":"zhuwei_village", "texture":"res://art/modules/world_map_v13/landmark_zhuwei_village_v1.png", "pos":Vector2(0.119358,0.730000), "render_size_px":Vector2(350,235), "sort_by_feet":true, "depth_sort_foot_y":0.761, "collision_size":Vector2(0.060,0.025), "collision_offset":Vector2(0.0,0.029)},
+	{"id":"qinghe_landmark", "portal_id":"qinghe_town", "texture":"res://art/modules/world_map_v13/landmark_qinghe_town_v1.png", "pos":Vector2(0.206163,0.768000), "render_size_px":Vector2(335,245), "sort_by_feet":true, "depth_sort_foot_y":0.801, "collision_size":Vector2(0.055,0.023), "collision_offset":Vector2(0.0,0.025)},
+	{"id":"mingwu_landmark", "portal_id":"mingwu", "texture":"res://art/modules/world_map_v13/landmark_mingwu_tea_town_v1.png", "pos":Vector2(0.788194,0.742000), "render_size_px":Vector2(320,235), "sort_by_feet":true, "depth_sort_foot_y":0.775, "collision_size":Vector2(0.055,0.023), "collision_offset":Vector2(0.0,0.025)},
+	{"id":"lieyun_landmark", "portal_id":"lieyun_valley", "texture":"res://art/modules/world_map_v13/landmark_lieyun_gorge_v1.png", "pos":Vector2(0.872830,0.845000), "render_size_px":Vector2(325,235), "sort_by_feet":true, "depth_sort_foot_y":0.878, "collision_size":Vector2(0.055,0.023), "collision_offset":Vector2(0.0,0.025)},
+	{"id":"north_south_stone_bridge", "texture":"res://art/modules/world_map_v13/bridge_stone_northsouth_v1.png", "pos":Vector2(0.499132,0.666667), "render_size_px":Vector2(140,350), "render_layer":"visual", "validation_status":"PENDING_BRIDGE_ALIGNMENT"},
+	{"id":"east_west_stone_bridge", "texture":"res://art/modules/world_map_v13/bridge_stone_eastwest_v1.png", "pos":Vector2(0.333333,0.813802), "render_size_px":Vector2(280,110), "render_layer":"visual", "validation_status":"PENDING_BRIDGE_ALIGNMENT"}
+])
+occluders = Array[Dictionary]([])
+actor_fade_zones = Array[Dictionary]([])
+blockers = Array[Dictionary]([
+	{"id":"yanmen_wall_foot", "pos":Vector2(0.130208,0.211), "size":Vector2(0.074,0.043), "walkability_margin":0.004},
+	{"id":"huashan_gate_foot", "pos":Vector2(0.271267,0.216), "size":Vector2(0.056,0.044), "walkability_margin":0.004},
+	{"id":"wudang_gate_foot", "pos":Vector2(0.441840,0.215), "size":Vector2(0.065,0.046), "walkability_margin":0.004},
+	{"id":"gufeng_rock_foot", "pos":Vector2(0.550347,0.211), "size":Vector2(0.064,0.044), "walkability_margin":0.004},
+	{"id":"lingyue_gate_foot", "pos":Vector2(0.788194,0.208), "size":Vector2(0.064,0.043), "walkability_margin":0.004},
+	{"id":"bianzhou_city_foot", "pos":Vector2(0.227865,0.406), "size":Vector2(0.097,0.059), "walkability_margin":0.004},
+	{"id":"linxi_village_foot", "pos":Vector2(0.086806,0.519), "size":Vector2(0.065,0.049), "walkability_margin":0.004},
+	{"id":"luoyang_city_foot", "pos":Vector2(0.561198,0.444), "size":Vector2(0.105,0.059), "walkability_margin":0.004},
+	{"id":"xiangzhou_city_foot", "pos":Vector2(0.424479,0.503), "size":Vector2(0.089,0.060), "walkability_margin":0.004},
+	{"id":"jinling_city_foot", "pos":Vector2(0.496094,0.835), "size":Vector2(0.080,0.055), "walkability_margin":0.004},
+	{"id":"east_sea_port_foot", "pos":Vector2(0.903083,0.387065), "size":Vector2(0.046,0.027), "walkability_margin":0.004},
+	{"id":"bailu_ferry_foot", "pos":Vector2(0.901233,0.544784), "size":Vector2(0.040,0.028), "walkability_margin":0.004},
+	{"id":"zhuwei_village_foot", "pos":Vector2(0.119358,0.744), "size":Vector2(0.070,0.052), "walkability_margin":0.004},
+	{"id":"qinghe_town_foot", "pos":Vector2(0.206163,0.780), "size":Vector2(0.065,0.046), "walkability_margin":0.004},
+	{"id":"mingwu_tea_foot", "pos":Vector2(0.788194,0.755), "size":Vector2(0.065,0.047), "walkability_margin":0.004},
+	{"id":"lieyun_gorge_foot", "pos":Vector2(0.872830,0.855), "size":Vector2(0.060,0.046), "walkability_margin":0.004}
+])
+interactions = Array[Dictionary]([])
+portals = Array[Dictionary]([
+	{"id":"yanmen_pass", "label":"雁门关", "pos":Vector2(0.130208,0.260417), "size":Vector2(0.019,0.018), "target_scene":"openworld_yanmen_pass", "target_pos":Vector2(0.25,0.78), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r0c0", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"huashan", "label":"华山派", "pos":Vector2(0.271267,0.273438), "size":Vector2(0.019,0.018), "target_scene":"openworld_huashan_forecourt", "target_pos":Vector2(0.5,0.885), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r0c0", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"wudang", "label":"武当派", "pos":Vector2(0.441840,0.276693), "size":Vector2(0.019,0.018), "target_scene":"openworld_wudang_gate", "target_pos":Vector2(0.5,0.875), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r0c1", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"gufeng", "label":"古峰", "pos":Vector2(0.550347,0.266927), "size":Vector2(0.019,0.018), "target_scene":"ch5_s1_relief_road", "target_pos":Vector2(0.52,0.90), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r0c1", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"lingyue", "label":"凌月派", "pos":Vector2(0.788194,0.266927), "size":Vector2(0.019,0.018), "target_scene":"ch2_s4_lingyue_gate", "target_pos":Vector2(0.11,0.78), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r0c2", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"bianzhou", "label":"汴州城", "pos":Vector2(0.227865,0.444010), "size":Vector2(0.019,0.018), "target_scene":"openworld_bianzhou_city", "target_pos":Vector2(0.535,0.900), "tile":"r1c0", "staging_pending_asset":true, "validation_status":"PENDING_ART_REVIEW"},
+	{"id":"linxi_village", "label":"林西村", "pos":Vector2(0.086806,0.554688), "size":Vector2(0.019,0.018), "target_scene":"linxi_village_scrollmap", "target_pos":Vector2(0.925,0.5), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r1c0", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"luoyang", "label":"洛阳城", "pos":Vector2(0.561198,0.496094), "size":Vector2(0.019,0.018), "target_scene":"ch4_s0_luoyang_gate", "target_pos":Vector2(0.5,0.900), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r1c1", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"xiangzhou", "label":"襄州城", "pos":Vector2(0.424479,0.554688), "size":Vector2(0.019,0.018), "target_scene":"openworld_xiangzhou_city", "target_pos":Vector2(0.515,0.900), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r1c1", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"east_sea_port", "label":"东海埠", "pos":Vector2(0.905382,0.421224), "size":Vector2(0.019,0.018), "target_scene":"openworld_east_sea_port", "target_pos":Vector2(0.5,0.78), "show_destination_label":true, "marker_offset":Vector2(-0.020,0), "tile":"r1c2", "staging_pending_asset":true, "validation_status":"PENDING_COAST_ALIGNMENT"},
+	{"id":"bailu_ferry", "label":"白鹿渡", "pos":Vector2(0.909722,0.580729), "size":Vector2(0.019,0.018), "target_scene":"openworld_bailu_ferry", "target_pos":Vector2(0.420,0.730), "show_destination_label":true, "marker_offset":Vector2(-0.020,0), "tile":"r1c2", "staging_pending_asset":true, "validation_status":"PENDING_COAST_ALIGNMENT"},
+	{"id":"zhuwei_village", "label":"竹尾村", "pos":Vector2(0.119358,0.780599), "size":Vector2(0.019,0.018), "target_scene":"ch1_s2_qingfeng", "target_pos":Vector2(0.52,0.79), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r2c0", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"qinghe_town", "label":"清河镇", "pos":Vector2(0.206163,0.813151), "size":Vector2(0.019,0.018), "target_scene":"openworld_qinghe_town", "target_pos":Vector2(0.30,0.78), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r2c0", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"jinling", "label":"金陵城", "pos":Vector2(0.496094,0.871745), "size":Vector2(0.019,0.018), "target_scene":"openworld_jinling_city", "target_pos":Vector2(0.510,0.900), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r2c1", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"mingwu", "label":"茗雾山庄", "pos":Vector2(0.788194,0.790365), "size":Vector2(0.019,0.018), "target_scene":"ch7_s2_mingwu_tea_town", "target_pos":Vector2(0.5,0.875), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r2c2", "validation_status":"PENDING_DEPTH_QA"},
+	{"id":"lieyun_valley", "label":"烈云峡谷", "pos":Vector2(0.872830,0.894531), "size":Vector2(0.019,0.018), "target_scene":"ch7_s1_lieyun_valley_ferry", "target_pos":Vector2(0.5,0.875), "show_destination_label":true, "marker_offset":Vector2(0.020,0), "tile":"r2c2", "validation_status":"PENDING_DEPTH_QA"}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"r0c0_southern_foothill", "pos":Vector2(0.130208,0.247396)},
+	{"id":"r0c1_south_valley", "pos":Vector2(0.441840,0.253906)},
+	{"id":"r0c2_left_valley", "pos":Vector2(0.788194,0.250651)},
+	{"id":"r1c0_dry_plain", "pos":Vector2(0.086806,0.554688)},
+	{"id":"r1c1_heartland", "pos":Vector2(0.561198,0.496094)},
+	{"id":"r1c2_landward_port", "pos":Vector2(0.909722,0.580729)},
+	{"id":"r2c0_village_clearing", "pos":Vector2(0.119358,0.780599)},
+	{"id":"r2c1_jinling_ground", "pos":Vector2(0.496094,0.871745)},
+	{"id":"r2c2_tea_valley", "pos":Vector2(0.788194,0.790365)},
+	{"id":"bridge_north_approach", "pos":Vector2(0.499132,0.643880)},
+	{"id":"bridge_south_approach", "pos":Vector2(0.499132,0.689453)},
+	{"id":"bridge_west_approach", "pos":Vector2(0.321181,0.813802)},
+	{"id":"bridge_east_approach", "pos":Vector2(0.345486,0.813802)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"r0c0_snow_peak", "pos":Vector2(0.090,0.060)},
+	{"id":"r0c1_ridge", "pos":Vector2(0.480,0.050)},
+	{"id":"r0c2_waterfall", "pos":Vector2(0.950,0.100)},
+	{"id":"r1c0_west_river", "pos":Vector2(0.015,0.500)},
+	{"id":"r1c1_south_river", "pos":Vector2(0.610,0.650)},
+	{"id":"r1c2_open_sea", "pos":Vector2(0.975,0.510)},
+	{"id":"r2c0_bamboo", "pos":Vector2(0.010,0.830)},
+	{"id":"r2c1_river", "pos":Vector2(0.600,0.680)},
+	{"id":"luoyang_city_roof", "pos":Vector2(0.561198,0.444)},
+	{"id":"xiangzhou_city_roof", "pos":Vector2(0.424479,0.503)},
+	{"id":"jinling_city_roof", "pos":Vector2(0.496094,0.835)},
+	{"id":"r2c2_cliff", "pos":Vector2(0.990,0.900)},
+	{"id":"bridge_north_water", "pos":Vector2(0.475,0.665)},
+	{"id":"bridge_west_water", "pos":Vector2(0.333,0.775)},
+	{"id":"west_bridge_upstream_west_bank", "pos":Vector2(0.330,0.790)},
+	{"id":"west_bridge_upstream_east_bank", "pos":Vector2(0.336,0.790)},
+	{"id":"west_bridge_downstream_west_bank", "pos":Vector2(0.330,0.840)},
+	{"id":"west_bridge_downstream_east_bank", "pos":Vector2(0.336,0.840)},
+	{"id":"north_bridge_west_of_deck_north_bank", "pos":Vector2(0.480,0.663)},
+	{"id":"north_bridge_west_of_deck_south_bank", "pos":Vector2(0.480,0.670)},
+	{"id":"north_bridge_east_of_deck_north_bank", "pos":Vector2(0.515,0.663)},
+	{"id":"north_bridge_east_of_deck_south_bank", "pos":Vector2(0.515,0.670)}
+])
+seam_crossing_probes = Array[Dictionary]([
+	{"id":"northwest_to_northcentral", "from":"r0c0", "to":"r0c1", "from_pos":Vector2(0.330729,0.276693), "to_pos":Vector2(0.335938,0.276693), "status":"PENDING_VISUAL_SEAM"},
+	{"id":"northcentral_to_northeast", "from":"r0c1", "to":"r0c2", "from_pos":Vector2(0.664063,0.276693), "to_pos":Vector2(0.669271,0.276693), "status":"PENDING_VISUAL_SEAM"},
+	{"id":"northwest_to_centralwest", "from":"r0c0", "to":"r1c0", "from_pos":Vector2(0.141059,0.329427), "to_pos":Vector2(0.141059,0.337240), "status":"PENDING_VISUAL_SEAM"},
+	{"id":"centralwest_to_heartland", "from":"r1c0", "to":"r1c1", "from_pos":Vector2(0.330729,0.488281), "to_pos":Vector2(0.335938,0.488281), "status":"PENDING_VISUAL_SEAM"},
+	{"id":"heartland_to_eastcoast", "from":"r1c1", "to":"r1c2", "from_pos":Vector2(0.664063,0.488281), "to_pos":Vector2(0.669271,0.488281), "status":"PENDING_VISUAL_SEAM"},
+	{"id":"eastcoast_to_southeast", "from":"r1c2", "to":"r2c2", "from_pos":Vector2(0.861979,0.662760), "to_pos":Vector2(0.861979,0.670573), "status":"PENDING_VISUAL_SEAM"},
+	{"id":"heartland_to_jiangnan_bridge", "from":"r1c1", "to":"r2c1", "from_pos":Vector2(0.499132,0.662760), "to_pos":Vector2(0.499132,0.670573), "status":"PENDING_BRIDGE_ALIGNMENT"},
+	{"id":"southwest_to_jiangnan_bridge", "from":"r2c0", "to":"r2c1", "from_pos":Vector2(0.330729,0.813802), "to_pos":Vector2(0.335938,0.813802), "status":"PENDING_BRIDGE_ALIGNMENT"}
+])

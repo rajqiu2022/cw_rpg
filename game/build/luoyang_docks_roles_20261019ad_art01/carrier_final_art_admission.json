@@ -1,0 +1,61 @@
+{
+  "schema": "luoyang_docks_carrier_final_art_admission_v1",
+  "status": "CARRIER_THREE_PNG_LIMITED_ART_ACCEPT_NO_RUNTIME_OR_LOOP_CREDIT",
+  "source": {
+    "path": "assets/raw/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v2_gait_edit.png",
+    "sha256": "22C3F7ED01A1640A4DF51F9B1580D41E4B8456FF8E667D9C8EAA709C22B88671"
+  },
+  "preserved_failed_predecessor": {
+    "path": "assets/raw/luoyang_docks_roles_20261019ad/npc_docks_strong_carrier_posepack_idle1_right4_v1.png",
+    "sha256": "13A645BB16F5D9D41BABE2F1D45B0BF433BC878D14D26CF470CACFECD5BBD4B6",
+    "decision": "FAILED_GAIT: repeated support/contact pose; retained as source evidence and not admitted."
+  },
+  "mechanical_report": {
+    "path": "game/build/luoyang_docks_roles_20261019ad_carrier_mechanical_root01/mechanical_derivative_report.json",
+    "sha256": "2CED8169D001F71C5A409B42AC23C62D6A7BE3C001DB768781E06CFAD514DBD4",
+    "passed": true
+  },
+  "admitted_candidate_pngs": [
+    {
+      "kind": "idle_down_1f",
+      "path": "game/build/luoyang_docks_roles_20261019ad_carrier_mechanical_root01/npc_docks_strong_carrier_idle_down_1f_v1_runtime.png",
+      "sha256": "194F94B26A9DA82C704288E034B1EA5AEE561ECD37C20E8AE19B7C3A20613522",
+      "size_px": [160, 160]
+    },
+    {
+      "kind": "walk_right_4f",
+      "path": "game/build/luoyang_docks_roles_20261019ad_carrier_mechanical_root01/npc_docks_strong_carrier_walk_right_4f_v1_runtime.png",
+      "sha256": "53E331017AE6EACC569D4B35E241557221E151C59135F44C274F8AC0EAC8CA55",
+      "size_px": [640, 160],
+      "hframes": 4
+    },
+    {
+      "kind": "same_person_portrait",
+      "path": "game/build/luoyang_docks_roles_20261019ad_carrier_mechanical_root01/portrait_docks_strong_carrier_v1.png",
+      "sha256": "D4CB63840E3D3AAA686B6FE3C24C033B7174251EE8896209D0860B08960E004F",
+      "size_px": [512, 512]
+    }
+  ],
+  "preview_evidence": {
+    "report_path": "game/build/luoyang_docks_roles_20261019ad_carrier_preview_root01/carrier_walk_preview_report.json",
+    "report_sha256": "FE31F4E93A798442029317B6266344C60A8A34F232DDC557574BF71A32E0BD1A",
+    "contact_sheet_path": "game/build/luoyang_docks_roles_20261019ad_carrier_preview_root01/carrier_walk_right_4f_equal_scale_contactsheet.png",
+    "contact_sheet_sha256": "F13E5D3A8807A9F48D3AF9FD00A1E3DF9B7C12207D8C031C2EA1F56E38BEB40B",
+    "contact_sheet_art_review": "LIMITED_ACCEPT: the four equal-scale still cells show first contact, passing, opposite contact and opposite passing silhouettes clearly enough to test as a coarse four-frame rightward walk. F0 and F2 read as opposite support phases; F1 and F3 remain simpler transitions.",
+    "gif_path": "game/build/luoyang_docks_roles_20261019ad_carrier_preview_root01/carrier_walk_right_4f_mechanical_preview.gif",
+    "gif_sha256": "4063C7131B0B087027858CD1E8F53C9AB367A71AD5EA531FEFC0F802B8726B45",
+    "gif_art_review": "NOT_OBSERVED_BY_ART: the GIF is a packaging artifact only and grants no loop, timing or foot-slide credit.",
+    "preview_frame_duration_ms": 160,
+    "intended_runtime_frame_duration_s": 0.12,
+    "timing_note": "The review GIF timing differs from the intended runtime timing and must not be represented as a gameplay simulation."
+  },
+  "art_decision": "LIMITED_ACCEPT_CARRIER_ONLY: the strong blue-grey short-jacket identity, broad build and same-person portrait are clear; no broad halo panel is visible in the three mechanical PNGs; the four still poses are sufficiently distinct for a bounded candidate. This admits only the three listed PNGs for import and Docks candidate testing, with shared source scale and sole row y=152.",
+  "known_limits": [
+    "The view remains shallow side/three-quarter rather than strongly top-down.",
+    "The walk has four coarse phases, not eight frames and not a fully reviewed fluid loop.",
+    "Weak reddish edge pixels from the source remain intentionally preserved; no threshold cleanup is authorized.",
+    "No actual game import, Field movement, collision, dialogue portrait display or runtime timing has been reviewed here.",
+    "Before formal use, a real Docks Field run must show four naturally advancing frames at the unchanged 0.12-second runtime timing and receive a separate limited visual review."
+  ],
+  "credit_boundary": "No GIF loop-quality claim, no eight-frame claim, no import proof, no runtime binding, no Field acceptance and no formal production admission. The store-attendant and rope-seller are excluded from this admission."
+}

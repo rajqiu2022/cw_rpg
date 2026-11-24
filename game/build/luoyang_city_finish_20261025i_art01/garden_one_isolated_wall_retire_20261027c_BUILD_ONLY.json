@@ -1,0 +1,219 @@
+{
+  "status": "BUILD_ONLY_RETIRE_ONE_ISOLATED_GARDEN_WALL_NO_ENGINE_OR_FORMAL",
+  "scene_id": "luoyang_riverside_garden_20261022ap",
+  "current_formal_context": "CE38EF86, Garden inherited unchanged from seven26c",
+  "decision": "Remove only this isolated transverse wall; do not enlarge it or add another arbitrary boundary. Existing peony bed already contains its own raised edging; the wall does not join pavilion/tea-house enclosure or guide the ring path.",
+  "evidence": {
+    "user_screenshot": "C:/Users/rajqiu/AppData/Local/Temp/codex-clipboard-cfb43bf9-778b-456a-9621-b65a86f6e4b4.png",
+    "visible_wall_width_design_px": 315,
+    "expected_complete_A1_xyxy": [
+      92.5,
+      1400,
+      407.5,
+      1461.5
+    ],
+    "identification": "315px source-width and wall/peony/return-route relation match western new dry-bank row, not the eastern .35 wall."
+  },
+  "source_author": {
+    "path": "res://build/luoyang_seven_fields_layout_20261026c_system01/author_seven_fields_NOTREADY.json",
+    "sha256": "E624A5E578F92FADBE2BE2407D6B09BE33D8E6B514C24AA99C3F59A9427B1845",
+    "selector": [
+      "scenes",
+      "luoyang_riverside_garden_20261022ap",
+      "placements",
+      0
+    ],
+    "exact_row": {
+      "id": "seven26c_garden_west_dry_outer_edge",
+      "asset_id": "low_wall",
+      "foot": [
+        250,
+        1460
+      ],
+      "uniform_scale": 0.5
+    }
+  },
+  "payload": {
+    "path": "res://build/luoyang_seven_fields_layout_20261026c_system01/ROOT_READY01/output/84060/luoyang_riverside_garden_20261022ap/payload.bin",
+    "sha256": "04F51DDE6D18E2A8C59B055098FC29E3008345969D4E9AB082471B0CC6850435",
+    "exact_remove_rows": {
+      "effective_navigation": [
+        {
+          "index": 60,
+          "row": {
+            "id": "seven26c_garden_west_dry_outer_edge",
+            "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png",
+            "pos": [
+              0.08154296875,
+              0.69873046875
+            ],
+            "render_size_px": [
+              320,
+              66
+            ],
+            "centered": true,
+            "sort_by_feet": true,
+            "depth_sort_foot_y": 0.712890625,
+            "world_foot_px": [
+              250,
+              1460
+            ],
+            "physical_center_px": [
+              250,
+              1460
+            ],
+            "collision_size_px": [
+              0,
+              0
+            ],
+            "city_v3_solid_polygons_px": [
+              [
+                [
+                  92.5,
+                  1454
+                ],
+                [
+                  407.5,
+                  1454
+                ],
+                [
+                  407.5,
+                  1460
+                ],
+                [
+                  92.5,
+                  1460
+                ]
+              ]
+            ],
+            "blocking": true,
+            "district_life_fade": false
+          }
+        }
+      ],
+      "visual_additions": [
+        {
+          "index": 4,
+          "row": {
+            "id": "seven26c_garden_west_dry_outer_edge",
+            "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png",
+            "pos": [
+              0.08154296875,
+              0.69873046875
+            ],
+            "render_size_px": [
+              320,
+              66
+            ],
+            "centered": true,
+            "sort_by_feet": true,
+            "depth_sort_foot_y": 0.712890625,
+            "world_foot_px": [
+              250,
+              1460
+            ],
+            "physical_center_px": [
+              250,
+              1460
+            ],
+            "collision_size_px": [
+              0,
+              0
+            ],
+            "city_v3_solid_polygons_px": [
+              [
+                [
+                  92.5,
+                  1454
+                ],
+                [
+                  407.5,
+                  1454
+                ],
+                [
+                  407.5,
+                  1460
+                ],
+                [
+                  92.5,
+                  1460
+                ]
+              ]
+            ],
+            "blocking": true,
+            "district_life_fade": false
+          }
+        }
+      ],
+      "solid_matches": [
+        {
+          "index": 20,
+          "polygon": [
+            [
+              92.5,
+              1454
+            ],
+            [
+              407.5,
+              1454
+            ],
+            [
+              407.5,
+              1460
+            ],
+            [
+              92.5,
+              1460
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "mask": {
+    "old": {
+      "path": "res://build/luoyang_seven_fields_layout_20261026c_system01/ROOT_READY01/output/84060/luoyang_riverside_garden_20261022ap/walk_overlay.png",
+      "sha256": "6D086D6FE437EE4A388401D8E5534957E75A4BEDF824BCE530978891D0CDE010"
+    },
+    "pre_seven_fixed_parent": {
+      "path": "res://build/luoyang_city_finish_20261025i_source01/publication11/output_ROOT_READY/109200/luoyang_riverside_garden_20261022ap/walk_overlay.png",
+      "sha256": "1E7F52627918ED958511DB372BFB5DF6B59B78077249944B1DD22853F0DAB649A"
+    },
+    "retired_ground_polygon": [
+      [
+        92.5,
+        1454
+      ],
+      [
+        407.5,
+        1454
+      ],
+      [
+        407.5,
+        1460
+      ],
+      [
+        92.5,
+        1460
+      ]
+    ],
+    "rule": "Restore only pixels owned by this retired ground using frozen pre-seven support while retaining every other current solid and support domain. Never fill a rectangle white or restore complete parent mask; record exact changed coordinates/original RGBA for byte inverse. The visible A1 wall/roof rectangle is not a collision domain.",
+    "pixel_count": "pending System finite raster; not claimed computed by ART"
+  },
+  "preserve_ids": [
+    "seven26c_garden_west_shade_tree",
+    "seven26c_garden_west_dry_peonies",
+    "seven26c_garden_west_dry_bench",
+    "seven26c_garden_east_dry_outer_edge",
+    "seven26c_garden_east_dry_peonies",
+    "seven26c_garden_east_dry_bench"
+  ],
+  "preserve": "All peony beds/planting/path materials/ring route/bridges/water/portals/NPCs/camera; exit issue handled independently by System. Do not propagate removal to other city walls.",
+  "inverse_contract": "Payload kept fields/other row order typed-exact; reinsert this exact navigation row at60, visual_additions row at4 and solid polygon at20 reconstructs original payload structure. Save exact original raster bytes for the changed retired-wall pixels; original PNG never edited.",
+  "ART_actual": {
+    "engine": 0,
+    "pixel_edits": 0,
+    "canonical": 0,
+    "new_images": 0
+  }
+}

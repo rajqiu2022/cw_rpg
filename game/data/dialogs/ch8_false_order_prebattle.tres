@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=8 format=3]
+[ext_resource type="Script" path="res://scripts/field/altar_dialogue.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="assembly"]
+script=ExtResource("2")
+node_id=&"assembly"
+speaker="烈云护使"
+text="证人已经到位。守住退路，谁来也得先对印。"
+on_end="next:declare"
+[sub_resource type="Resource" id="declare"]
+script=ExtResource("2")
+node_id=&"declare"
+speaker="茗雾假令传使"
+text="奉会盟手令，拿下两名证人！五派若再袒护，一并按通敌论处！"
+on_end="next:challenge"
+[sub_resource type="Resource" id="challenge"]
+script=ExtResource("2")
+node_id=&"challenge"
+speaker="五派代表"
+text="且慢！副卷上只有半枚朱印，谁准你在祭台拿人？"
+on_end="next:draw"
+[sub_resource type="Resource" id="draw"]
+script=ExtResource("2")
+node_id=&"draw"
+speaker="茗雾护令客"
+text="令在这里，刀也在这里。让开！"
+on_end="next:shield"
+[sub_resource type="Resource" id="shield"]
+script=ExtResource("2")
+node_id=&"shield"
+speaker="冷孤云"
+text="证人在我身后。要动他们，先把你手里那半枚印交出来。"
+on_end="field_cutscene:altar_false_order_battle"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_false_order_prebattle"
+entry_node_id=&"assembly"
+blocked_story_flag=&"ch8_first_false_order_stopped"
+nodes=Array[Resource]([SubResource("assembly"),SubResource("declare"),SubResource("challenge"),SubResource("draw"),SubResource("shield")])

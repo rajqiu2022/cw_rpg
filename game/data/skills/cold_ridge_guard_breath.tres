@@ -1,0 +1,43 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"cold_ridge_guard_breath"
+display_name = "寒岭守元诀"
+icon_path = "res://art/ui/skill/icons_semantic_v2/icon_skill_guard_cold_ridge_breath_v1.png"
+description = "护住丹田一息，使周身真气如寒岭合围。习得后提升生命、内功与防御；主动运功可在两回合内强化守势。"
+origin = "古峰旧矿工在冰层断裂与矿尘闭塞中留下的护息法。它不求劲力外放，只教人在极寒与缺氧中守住一口元气。旧案幸存者将残诀藏在矿灯夹层，直到追杀者再入矿道才交出。"
+kind = 2
+target = 4
+delivery = 0
+mp_cost = 18
+quality = 3
+required_insight = 8
+fixed_damage = 0
+attack_scaling = 0
+effect_value = 20
+hit_count = 1
+animation_id = &"cold_ridge_guard_breath"
+martial_category = &""
+damage_type = 1
+base_hit_chance = 1.0
+school = "gufeng"
+is_passive = false
+is_internal_art = true
+passive_vitality_bonus = 2
+passive_inner_pool_bonus = 2
+passive_guard_bonus = 2
+passive_vitality_growth = 1
+passive_inner_pool_growth = 1
+passive_guard_growth = 1
+active_effect_description = "运功后两回合内提高防御，首回合额外稳住内息。"
+active_effect_type = &"guard"
+active_effect_growth = 3
+active_duration_turns = 2
+equip_weapon_categories = Array[StringName]([&"blade", &"all"])
+equip_damage_scope = "all"
+equip_damage_scaling_bonus = 6
+equip_damage_scaling_growth = 1
+equipped_effect_description = "全系招式伤害略增；刀系运劲更稳。"

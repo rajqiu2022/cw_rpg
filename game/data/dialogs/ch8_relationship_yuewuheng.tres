@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="悦无姮"
+portrait_path="res://art/characters/portrait_yuewuxing_meeting.png"
+text="从竹尾救人到今日公示，我们并肩时最多说的是下一步去哪，很少说路走完以后怎么办。"
+on_end="next:choice"
+[sub_resource type="Resource" id="choice"]
+script=ExtResource("2")
+node_id=&"choice"
+speaker=""
+text="长期同行最深的是悦无姮。如何回应？"
+choices=Array[Dictionary]([{"text":"此案已结，下一段路仍可双剑同行","next":"together","set_flag":{"ch8_relationship_choice_yuewuheng":true}},{"text":"各守自己的路，仍以江湖故交相见","next":"independent","set_flag":{"ch8_relationship_choice_independent":true}}])
+[sub_resource type="Resource" id="together"]
+script=ExtResource("2")
+node_id=&"together"
+speaker="悦无姮"
+portrait_path="res://art/characters/portrait_yuewuxing_meeting.png"
+text="那便不定归处。哪里有人拿名号压过事实，我们就往哪里去。"
+set_flags=Array[Dictionary]([{"key":"ch8_relationship_yuewuheng","value":true},{"key":"ch8_relationship_epilogue_done","value":true},{"key":"ch8_linxi_final_return_open","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"jianghu","key":"relationship_epilogue","value":"yuewuheng"}])
+on_end="end"
+[sub_resource type="Resource" id="independent"]
+script=ExtResource("2")
+node_id=&"independent"
+speaker="悦无姮"
+portrait_path="res://art/characters/portrait_yuewuxing_meeting.png"
+text="好。同行过的路不会因为分开就作废；下次相见，我们仍可把背后交给对方。"
+set_flags=Array[Dictionary]([{"key":"ch8_relationship_independent","value":true},{"key":"ch8_relationship_epilogue_done","value":true},{"key":"ch8_linxi_final_return_open","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"jianghu","key":"relationship_epilogue","value":"independent"}])
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_relationship_yuewuheng"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("choice"),SubResource("together"),SubResource("independent")])

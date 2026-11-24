@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Equipment" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/equipment.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+item_id = &"cinnabar_pendant"
+display_name = "丹砂佩"
+description = "赤玉佩里封着药师配的辟毒香。佩戴者受到的淬毒兵器伤害与毒发伤害均减半，对烈毒同样有效。"
+icon_path = "res://art/ui/inventory/icons/icon_crimson_jade_pendant.png"
+slot = 5
+quality = 2
+buy_price = 120
+sell_price = 30
+special_effect_type = &"poison_resist"
+special_effect_value = 50
+special_effect_description = "毒性攻击和普通毒、烈毒的持续伤害降低50%。"

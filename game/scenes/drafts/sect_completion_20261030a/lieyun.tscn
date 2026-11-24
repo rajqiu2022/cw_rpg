@@ -1,0 +1,2030 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/drafts/sect_maps_20261029k/terrain.gd" id="21_e33cm"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/terrace.png" id="22_2x108"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/stairs.png" id="23_6ik51"]
+[ext_resource type="Script" path="res://scripts/drafts/redrock_luoyang_standard_20261028b/preview_player.gd" id="adapter"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/bench.png" id="bench"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/cargo.png" id="cargo"]
+[ext_resource type="Script" path="res://scripts/drafts/sect_completion_20261030a/controller.gd" id="controller"]
+[ext_resource type="Texture2D" path="res://art/modules/huashan_map_20261029m/granite_crag.png" id="crag"]
+[ext_resource type="Shader" path="res://art/modules/miao_town_20261029f/occlusion.gdshader" id="fade_shader"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/ground.png" id="ground"]
+[ext_resource type="Shader" path="res://art/modules/sect_completion_20261030a/lieyun_ground.gdshader" id="ground_shader"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_completion_20261030a/lieyun_hall.png" id="lieyun_hall"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_completion_20261030a/lieyun_store.png" id="lieyun_store"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/path.png" id="path"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="player"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_maps_20261029k/quiet_ground.png" id="quiet_ground"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/table.png" id="table"]
+[ext_resource type="Texture2D" path="res://art/modules/miao_town_20261029f/water.png" id="water"]
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/water_jars.png" id="water_jars"]
+[ext_resource type="Shader" path="res://art/modules/lieyun_checkpoint/ferry_current.gdshader" id="water_shader"]
+[ext_resource type="Texture2D" path="res://art/modules/sect_maps_20261029k/wudang_pine.png" id="wudang_pine"]
+
+[ext_resource type="Texture2D" path="res://art/modules/lieyun_checkpoint/sealed_ferry.png" id="sealed_ferry"]
+[ext_resource type="Texture2D" path="res://art/modules/lieyun_checkpoint/ferry_sentry.png" id="ferry_sentry"]
+[ext_resource type="Texture2D" path="res://art/modules/lieyun_checkpoint/inspection_rail.png" id="inspection_rail"]
+
+[ext_resource type="Script" path="res://art/modules/lieyun_checkpoint/ferry_river.gd" id="river_mesh"]
+[ext_resource type="Texture2D" path="res://art/modules/huashan_map_20261029m/granite_ground.png" id="river_bed"]
+
+[sub_resource type="ShaderMaterial" id="ground_mat"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("quiet_ground")
+shader_parameter/dirt_tex = ExtResource("ground")
+shader_parameter/path_tex = ExtResource("path")
+
+[sub_resource type="ShaderMaterial" id="fade_MainHall"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_FerryStore"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_EastStore"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_UpperStore"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_WestHouse"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_GuardLodge"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Freight0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Freight2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Freight3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Freight4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Freight5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge6"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge7"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge8"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Ridge9"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Pine0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Pine1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Pine2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Pine3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Pine4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_Pine5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge6"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge7"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge8"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_ConnectedRidge9"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_LowerStore"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_SideResidence"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_RiverRocks0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_RiverRocks1"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_RiverRocks2"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_RiverRocks3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_RiverRocks4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_RiverRocks5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_CargoGroup0"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_CargoGroup3"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_CargoGroup4"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="fade_CargoGroup5"]
+shader = ExtResource("fade_shader")
+shader_parameter/hero_foot = Vector2(2600, 3730)
+shader_parameter/fade_enabled = 0.0
+
+[sub_resource type="ShaderMaterial" id="water_mat"]
+shader = ExtResource("water_shader")
+shader_parameter/water_tex = ExtResource("water")
+shader_parameter/bed_tex = ExtResource("river_bed")
+
+[sub_resource type="StyleBoxFlat" id="panel"]
+bg_color = Color(0.06, 0.09, 0.08, 0.92)
+corner_radius_top_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "SimHei")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rnie0"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("quiet_ground")
+shader_parameter/dirt_tex = ExtResource("ground")
+shader_parameter/path_tex = ExtResource("path")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcfcy"]
+shader = ExtResource("ground_shader")
+shader_parameter/earth_tex = ExtResource("quiet_ground")
+shader_parameter/dirt_tex = ExtResource("ground")
+shader_parameter/path_tex = ExtResource("path")
+
+[node name="SectMap" type="Node2D" unique_id=900754650]
+script = ExtResource("controller")
+layout_path = "res://art/modules/sect_completion_20261030a/lieyun.json"
+metadata/terrain_baked = true
+
+[node name="Ground" type="Polygon2D" parent="." unique_id=1793643751]
+z_index = -20
+material = SubResource("ground_mat")
+polygon = PackedVector2Array(-1000, -1000, 5800, -1000, 5800, 5000, -1000, 5000)
+
+[node name="Town" type="Node2D" parent="." unique_id=819967603]
+
+[node name="Boundary0" type="StaticBody2D" parent="Town" unique_id=1177798575]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary0" unique_id=1920187959]
+polygon = PackedVector2Array(90, 90, 4710, 90, 4710, 110, 90, 110)
+
+[node name="Boundary1" type="StaticBody2D" parent="Town" unique_id=1221188741]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary1" unique_id=1718624299]
+polygon = PackedVector2Array(4690, 90, 4710, 90, 4710, 3910, 4690, 3910)
+
+[node name="Boundary2" type="StaticBody2D" parent="Town" unique_id=1705547788]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary2" unique_id=1617971003]
+polygon = PackedVector2Array(90, 3890, 4710, 3890, 4710, 3910, 90, 3910)
+
+[node name="Boundary3" type="StaticBody2D" parent="Town" unique_id=1336676787]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Boundary3" unique_id=153599880]
+polygon = PackedVector2Array(90, 90, 110, 90, 110, 3910, 90, 3910)
+
+[node name="SealedLanding" type="Node2D" parent="Town"]
+position = Vector2(1120, 3085)
+z_index = 771
+z_as_relative = false
+metadata/label = "封渡的木船，橹和篙已经收上岸，跳板上系着新封绳。"
+metadata/visual_rect = Rect2(-392.5, -391.8275, 785, 391.8275)
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/SealedLanding"]
+position = Vector2(-399.22473, -392.27584)
+scale = Vector2(0.44831525, 0.44831525)
+texture = ExtResource("sealed_ferry")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/SealedLanding"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/SealedLanding/Body"]
+polygon = PackedVector2Array(-329.7, -97, 329.7, -97, 329.7, 0, -329.7, 0)
+
+[node name="RoadSentry" type="Node2D" parent="Town"]
+position = Vector2(3040, 3050)
+z_index = 762
+z_as_relative = false
+metadata/label = "旧渡守望的验路棚，亭前还留着通往山寨的查验道。"
+metadata/visual_rect = Rect2(-220.0, -323.6641, 440, 323.6641)
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/RoadSentry"]
+position = Vector2(-223.05344, -324.88550)
+scale = Vector2(0.30534351, 0.30534351)
+texture = ExtResource("ferry_sentry")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RoadSentry"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/RoadSentry/Body"]
+polygon = PackedVector2Array(-189.2, -66, 189.2, -66, 189.2, 0, -189.2, 0)
+
+[node name="FerryApproachRail" type="Node2D" parent="Town"]
+position = Vector2(2445, 3190)
+z_index = 798
+z_as_relative = false
+metadata/label = "查验道西侧的临时路障。"
+metadata/visual_rect = Rect2(-110.0, -75.6910, 220, 75.6910)
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/FerryApproachRail"]
+position = Vector2(-116.01727, -75.90211)
+scale = Vector2(0.10556622, 0.10556622)
+texture = ExtResource("inspection_rail")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/FerryApproachRail"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/FerryApproachRail/Body"]
+polygon = PackedVector2Array(-94.6, -30, 94.6, -30, 94.6, 0, -94.6, 0)
+
+[node name="SentryRail" type="Node2D" parent="Town"]
+position = Vector2(2795, 3135)
+z_index = 784
+z_as_relative = false
+metadata/label = "靠近守望棚的第二道路障。"
+metadata/visual_rect = Rect2(-117.5, -80.8517, 235, 80.8517)
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/SentryRail"]
+position = Vector2(-123.92754, -81.07726)
+scale = Vector2(0.11276392, 0.11276392)
+texture = ExtResource("inspection_rail")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/SentryRail"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/SentryRail/Body"]
+polygon = PackedVector2Array(-101.05, -32, 101.05, -32, 101.05, 0, -101.05, 0)
+
+[node name="MainHall" type="Node2D" parent="Town" unique_id=274305666]
+z_index = 248
+z_as_relative = false
+position = Vector2(3100, 990)
+metadata/label = "木石寨厅：台前通往原有分舵区域。"
+metadata/visual_rect = Rect2(-441.29718, -385, 882.59436, 385)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 240.0
+
+[node name="Art" type="Sprite2D" parent="Town/MainHall" unique_id=1588826697]
+material = SubResource("fade_MainHall")
+position = Vector2(-559.94495, -806.60376)
+scale = Vector2(0.6053459, 0.6053459)
+texture = ExtResource("lieyun_hall")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/MainHall" unique_id=2066122613]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/MainHall/Body" unique_id=1305225027]
+polygon = PackedVector2Array(-370.68964, -96.25, 370.68964, -96.25, 370.68964, 0, -370.68964, 0)
+
+[node name="FerryStore" type="Node2D" parent="Town" unique_id=901001168]
+z_index = 715
+z_as_relative = false
+position = Vector2(1570, 2860)
+metadata/label = "木石货舍：沿屋前货路通行。"
+metadata/visual_rect = Rect2(-292.27972, -430, 584.55945, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/FerryStore" unique_id=232185153]
+material = SubResource("fade_FerryStore")
+position = Vector2(-577.94403, -585.76227)
+scale = Vector2(0.6013986, 0.6013986)
+texture = ExtResource("lieyun_store")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/FerryStore" unique_id=1438148726]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/FerryStore/Body" unique_id=707343462]
+polygon = PackedVector2Array(-245.51497, -107.5, 245.51497, -107.5, 245.51497, 0, -245.51497, 0)
+
+[node name="EastStore" type="Node2D" parent="Town" unique_id=1251107362]
+z_index = 543
+z_as_relative = false
+position = Vector2(4080, 2170)
+metadata/label = "木石货舍：沿屋前货路通行。"
+metadata/visual_rect = Rect2(-292.27972, -430, 584.55945, 430)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/EastStore" unique_id=1186823817]
+material = SubResource("fade_EastStore")
+position = Vector2(-577.94403, -705.76227)
+scale = Vector2(0.6013986, 0.6013986)
+texture = ExtResource("lieyun_store")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/EastStore" unique_id=2057356139]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/EastStore/Body" unique_id=286446584]
+polygon = PackedVector2Array(-245.51497, -107.5, 245.51497, -107.5, 245.51497, 0, -245.51497, 0)
+
+[node name="UpperStore" type="Node2D" parent="Town" unique_id=820843265]
+z_index = 258
+z_as_relative = false
+position = Vector2(3940, 1030)
+metadata/label = "木石货舍：沿屋前货路通行。"
+metadata/visual_rect = Rect2(-292.27972, -430, 584.55945, 430)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 240.0
+
+[node name="Art" type="Sprite2D" parent="Town/UpperStore" unique_id=636019912]
+material = SubResource("fade_UpperStore")
+position = Vector2(-577.94403, -825.76227)
+scale = Vector2(0.6013986, 0.6013986)
+texture = ExtResource("lieyun_store")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/UpperStore" unique_id=1092533301]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/UpperStore/Body" unique_id=1426694916]
+polygon = PackedVector2Array(-245.51497, -107.5, 245.51497, -107.5, 245.51497, 0, -245.51497, 0)
+
+[node name="WestHouse" type="Node2D" parent="Town" unique_id=610074270]
+z_index = 478
+z_as_relative = false
+position = Vector2(2180, 1910)
+metadata/label = "木石货舍：沿屋前货路通行。"
+metadata/visual_rect = Rect2(-292.27972, -430, 584.55945, 430)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/WestHouse" unique_id=1397567941]
+material = SubResource("fade_WestHouse")
+position = Vector2(-577.94403, -705.76227)
+scale = Vector2(0.6013986, 0.6013986)
+texture = ExtResource("lieyun_store")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/WestHouse" unique_id=1441321171]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/WestHouse/Body" unique_id=700318556]
+polygon = PackedVector2Array(-245.51497, -107.5, 245.51497, -107.5, 245.51497, 0, -245.51497, 0)
+
+[node name="GuardLodge" type="Node2D" parent="Town" unique_id=1795790935]
+z_index = 518
+z_as_relative = false
+position = Vector2(3340, 2070)
+metadata/label = "分舵前院值守厅"
+metadata/visual_rect = Rect2(-389.71698, -340, 779.43396, 340)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/GuardLodge" unique_id=883129936]
+material = SubResource("fade_GuardLodge")
+position = Vector2(-494.49686, -620.3773)
+scale = Vector2(0.5345912, 0.5345912)
+texture = ExtResource("lieyun_hall")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/GuardLodge" unique_id=657239616]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/GuardLodge/Body" unique_id=1243004187]
+polygon = PackedVector2Array(-327.36227, -85, 327.36227, -85, 327.36227, 0, -327.36227, 0)
+
+[node name="RiverBank" type="StaticBody2D" parent="Town" unique_id=1024833369]
+z_as_relative = false
+collision_layer = 8
+collision_mask = 0
+metadata/common_layer = true
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/RiverBank" unique_id=255776755]
+polygon = PackedVector2Array(198, -700, 199, -677, 197, -655, 194, -632, 203, -609, 222, -586, 213, -564, 214, -541, 214, -518, 214, -495, 214, -473, 227, -450, 241, -427, 227, -405, 230, -382, 231, -359, 233, -336, 238, -314, 252, -291, 260, -268, 245, -245, 252, -223, 256, -200, 261, -179, 269, -157, 281, -136, 290, -114, 277, -93, 283, -71, 295, -50, 299, -29, 311, -7, 321, 14, 333, 36, 326, 57, 325, 79, 346, 100, 353, 122, 368, 145, 383, 168, 398, 190, 399, 212, 406, 235, 436, 258, 447, 280, 461, 302, 471, 325, 477, 348, 471, 370, 470, 392, 488, 415, 478, 437, 468, 459, 455, 480, 436, 502, 411, 524, 388, 546, 387, 568, 364, 589, 337, 611, 318, 633, 293, 655, 272, 676, 254, 698, 258, 720, 249, 742, 226, 764, 219, 786, 204, 809, 195, 831, 186, 853, 193, 875, 190, 897, 169, 919, 168, 941, 163, 964, 163, 986, 166, 1008, 179, 1030, 186, 1052, 176, 1075, 192, 1098, 207, 1120, 224, 1142, 245, 1165, 269, 1188, 285, 1210, 283, 1232, 306, 1255, 323, 1278, 335, 1300, 349, 1322, 363, 1345, 368, 1368, 360, 1390, 381, 1412, 392, 1435, 399, 1458, 408, 1480, 411, 1502, 407, 1525, 393, 1548, 406, 1570, 403, 1593, 391, 1616, 379, 1639, 360, 1662, 334, 1685, 308, 1708, 309, 1731, 288, 1754, 268, 1777, 252, 1800, 234, 1821, 215, 1842, 196, 1863, 199, 1884, 187, 1905, 164, 1926, 155, 1947, 143, 1968, 136, 1989, 132, 2010, 148, 2032, 173, 2054, 175, 2077, 196, 2099, 216, 2121, 235, 2143, 255, 2166, 277, 2188, 294, 2210, 277, 2231, 267, 2252, 259, 2273, 242, 2294, 231, 2316, 220, 2337, 219, 2358, 200, 2379, 184, 2400, 197, 2421, 205, 2443, 221, 2464, 242, 2486, 266, 2507, 283, 2529, 283, 2550, 310, 2572, 339, 2593, 363, 2615, 393, 2637, 417, 2658, 436, 2680, 435, 2700, 446, 2720, 470, 2740, 475, 2760, 478, 2780, 477, 2802, 468, 2824, 450, 2846, 426, 2868, 428, 2890, 414, 2910, 388, 2930, 369, 2950, 344, 2970, 324, 2990, 303, 3010, 292, 3030, 305, 3050, 303, 3070, 297, 3090, 302, 3110, 301, 3130, 305, 3150, 309, 3170, 326, 3190, 359, 3210, 374, 3230, 390, 3250, 417, 3270, 433, 3290, 450, 3310, 463, 3332, 488, 3354, 505, 3376, 493, 3398, 493, 3420, 484, 3440, 467, 3460, 452, 3480, 437, 3500, 432, 3520, 411, 3540, 385, 3561, 380, 3581, 368, 3602, 360, 3623, 357, 3644, 358, 3664, 362, 3685, 347, 3707, 355, 3729, 376, 3751, 387, 3774, 405, 3796, 415, 3818, 419, 3840, 398, 3862, 388, 3883, 392, 3905, 379, 3927, 372, 3948, 361, 3970, 349, 3992, 325, 4013, 305, 4035, 311, 4057, 301, 4078, 293, 4100, 288, 4122, 279, 4144, 265, 4167, 251, 4189, 264, 4211, 259, 4233, 250, 4256, 247, 4278, 237, 4300, 227, 4322, 217, 4344, 232, 4367, 228, 4389, 215, 4411, 212, 4433, 201, 4456, 194, 4478, 187, 4500, 937, 4500, 961, 4478, 973, 4456, 986, 4433, 1018, 4411, 1047, 4389, 1070, 4367, 1078, 4344, 1104, 4322, 1122, 4300, 1135, 4278, 1168, 4256, 1191, 4233, 1206, 4211, 1207, 4189, 1223, 4167, 1235, 4144, 1237, 4122, 1257, 4100, 1260, 4078, 1250, 4057, 1227, 4035, 1214, 4013, 1203, 3992, 1175, 3970, 1165, 3948, 1146, 3927, 1116, 3905, 1085, 3883, 1063, 3862, 1058, 3840, 1035, 3818, 1022, 3796, 1009, 3774, 979, 3751, 958, 3729, 948, 3707, 960, 3685, 962, 3664, 975, 3644, 1002, 3623, 1012, 3602, 1029, 3581, 1055, 3561, 1091, 3540, 1128, 3520, 1153, 3500, 1195, 3480, 1234, 3460, 1254, 3440, 1281, 3420, 1313, 3398, 1351, 3376, 1369, 3354, 1373, 3332, 1381, 3310, 1358, 3290, 1330, 3270, 1310, 3250, 1286, 3230, 1260, 3210, 1221, 3190, 1190, 3170, 1166, 3150, 1125, 3130, 1097, 3110, 1083, 3090, 1068, 3070, 1054, 3050, 1032, 3030, 1029, 3010, 1041, 2990, 1046, 2970, 1073, 2950, 1110, 2930, 1139, 2910, 1160, 2890, 1175, 2868, 1212, 2846, 1243, 2824, 1263, 2802, 1293, 2780, 1299, 2760, 1290, 2740, 1270, 2720, 1253, 2700, 1247, 2680, 1218, 2658, 1193, 2637, 1171, 2615, 1130, 2593, 1091, 2572, 1059, 2550, 1048, 2529, 1025, 2507, 999, 2486, 991, 2464, 967, 2443, 947, 2421, 940, 2400, 953, 2379, 974, 2358, 983, 2337, 1011, 2316, 1032, 2294, 1039, 2273, 1054, 2252, 1071, 2231, 1088, 2210, 1081, 2188, 1071, 2166, 1064, 2143, 1034, 2121, 1016, 2099, 1005, 2077, 999, 2054, 978, 2032, 958, 2010, 953, 1989, 927, 1968, 912, 1947, 908, 1926, 902, 1905, 891, 1884, 869, 1863, 866, 1842, 862, 1821, 854, 1800, 873, 1777, 892, 1754, 909, 1731, 914, 1708, 938, 1685, 960, 1662, 977, 1639, 1013, 1616, 1033, 1593, 1043, 1570, 1044, 1548, 1066, 1525, 1080, 1502, 1092, 1480, 1121, 1458, 1130, 1435, 1133, 1412, 1133, 1390, 1151, 1368, 1158, 1345, 1159, 1322, 1171, 1300, 1159, 1278, 1142, 1255, 1125, 1232, 1123, 1210, 1108, 1188, 1087, 1165, 1080, 1142, 1051, 1120, 1025, 1098, 1008, 1075, 1006, 1052, 995, 1030, 979, 1008, 977, 986, 953, 964, 935, 941, 928, 919, 929, 897, 921, 875, 903, 853, 903, 831, 887, 809, 877, 786, 883, 764, 894, 742, 899, 720, 894, 698, 913, 676, 923, 655, 935, 633, 968, 611, 999, 589, 1025, 568, 1035, 546, 1060, 524, 1081, 502, 1090, 480, 1117, 459, 1134, 437, 1138, 415, 1124, 392, 1117, 370, 1112, 348, 1089, 325, 1086, 302, 1071, 280, 1046, 258, 1014, 235, 996, 212, 986, 190, 963, 168, 964, 145, 957, 122, 945, 100, 938, 79, 947, 57, 968, 36, 975, 14, 999, -7, 1021, -29, 1027, -50, 1040, -71, 1057, -93, 1087, -114, 1099, -136, 1109, -157, 1126, -179, 1118, -200, 1112, -223, 1113, -245, 1125, -268, 1122, -291, 1114, -314, 1117, -336, 1098, -359, 1090, -382, 1090, -405, 1096, -427, 1084, -450, 1071, -473, 1069, -495, 1047, -518, 1042, -541, 1043, -564, 1044, -586, 1028, -609, 1016, -632, 1014, -655, 995, -677, 997, -700)
+
+[node name="Freight0" type="Node2D" parent="Town" unique_id=1844409175]
+z_index = 765
+z_as_relative = false
+position = Vector2(1590, 3000)
+metadata/label = "渡口与寨院日用陈设"
+metadata/visual_rect = Rect2(-69.883095, -95, 139.76619, 95)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Freight0" unique_id=444394610]
+material = SubResource("fade_Freight0")
+position = Vector2(-171.71762, -165.05396)
+scale = Vector2(0.17086332, 0.17086332)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Freight0" unique_id=199498985]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Freight0/Body" unique_id=1064289492]
+polygon = PackedVector2Array(-58.701797, -23.75, 58.701797, -23.75, 58.701797, 0, -58.701797, 0)
+
+[node name="Freight2" type="Node2D" parent="Town" unique_id=2059476886]
+z_index = 563
+z_as_relative = false
+position = Vector2(3500, 2250)
+metadata/label = "渡口与寨院日用陈设"
+metadata/visual_rect = Rect2(-47.93651, -80, 95.87302, 80)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/Freight2" unique_id=742794710]
+material = SubResource("fade_Freight2")
+position = Vector2(-81.71429, -242.53967)
+scale = Vector2(0.12698413, 0.12698413)
+texture = ExtResource("water_jars")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Freight2" unique_id=1406762576]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Freight2/Body" unique_id=242025175]
+polygon = PackedVector2Array(-40.266666, -20, 40.266666, -20, 40.266666, 0, -40.266666, 0)
+
+[node name="Freight3" type="Node2D" parent="Town" unique_id=396388975]
+z_index = 585
+z_as_relative = false
+position = Vector2(3570, 2340)
+metadata/label = "渡口与寨院日用陈设"
+metadata/visual_rect = Rect2(-63.465633, -42, 126.93127, 42)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/Freight3" unique_id=1605703221]
+material = SubResource("fade_Freight3")
+position = Vector2(-71.38138, -193.10422)
+scale = Vector2(0.09312639, 0.09312639)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Freight3" unique_id=986582631]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Freight3/Body" unique_id=1198051879]
+polygon = PackedVector2Array(-53.31113, -10.5, 53.31113, -10.5, 53.31113, 0, -53.31113, 0)
+
+[node name="Freight4" type="Node2D" parent="Town" unique_id=1604939794]
+z_index = 513
+z_as_relative = false
+position = Vector2(2100, 2050)
+metadata/label = "渡口与寨院日用陈设"
+metadata/visual_rect = Rect2(-58.107933, -90, 116.215866, 90)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/Freight4" unique_id=760612200]
+material = SubResource("fade_Freight4")
+position = Vector2(-89.94148, -229.42783)
+scale = Vector2(0.11703511, 0.11703511)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Freight4" unique_id=705810866]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Freight4/Body" unique_id=1787597046]
+polygon = PackedVector2Array(-48.81066, -22.5, 48.81066, -22.5, 48.81066, 0, -48.81066, 0)
+
+[node name="Freight5" type="Node2D" parent="Town" unique_id=479108621]
+z_index = 298
+z_as_relative = false
+position = Vector2(3410, 1190)
+metadata/label = "渡口与寨院日用陈设"
+metadata/visual_rect = Rect2(-63.465633, -42, 126.93127, 42)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 240.0
+
+[node name="Art" type="Sprite2D" parent="Town/Freight5" unique_id=1547149460]
+material = SubResource("fade_Freight5")
+position = Vector2(-71.38138, -313.10422)
+scale = Vector2(0.09312639, 0.09312639)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Freight5" unique_id=1077873584]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Freight5/Body" unique_id=1486037782]
+polygon = PackedVector2Array(-53.31113, -10.5, 53.31113, -10.5, 53.31113, 0, -53.31113, 0)
+
+[node name="Ridge0" type="Node2D" parent="Town" unique_id=519762142]
+z_index = 250
+z_as_relative = false
+position = Vector2(1400, 1000)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge0" unique_id=534281025]
+material = SubResource("fade_Ridge0")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge0" unique_id=2114290920]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge0/Body" unique_id=1973203162]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge1" type="Node2D" parent="Town" unique_id=1620741688]
+z_index = 425
+z_as_relative = false
+position = Vector2(1540, 1700)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge1" unique_id=43796478]
+material = SubResource("fade_Ridge1")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge1" unique_id=1835901217]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge1/Body" unique_id=333210057]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge2" type="Node2D" parent="Town" unique_id=1627981538]
+z_index = 613
+z_as_relative = false
+position = Vector2(1300, 2450)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge2" unique_id=227441507]
+material = SubResource("fade_Ridge2")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge2" unique_id=1700222352]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge2/Body" unique_id=980070457]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge3" type="Node2D" parent="Town" unique_id=912159690]
+z_index = 125
+z_as_relative = false
+position = Vector2(2100, 500)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge3" unique_id=1695614732]
+material = SubResource("fade_Ridge3")
+position = Vector2(-632.5714, -677.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge3" unique_id=318775502]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge3/Body" unique_id=2037954427]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge4" type="Node2D" parent="Town" unique_id=619600218]
+z_index = 75
+z_as_relative = false
+position = Vector2(3100, 300)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge4" unique_id=2125905022]
+material = SubResource("fade_Ridge4")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge4" unique_id=1284961629]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge4/Body" unique_id=304868665]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge5" type="Node2D" parent="Town" unique_id=1670707237]
+z_index = 125
+z_as_relative = false
+position = Vector2(4230, 500)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 2
+metadata/elevation = 240.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge5" unique_id=1211403840]
+material = SubResource("fade_Ridge5")
+position = Vector2(-632.5714, -797.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge5" unique_id=584270634]
+collision_layer = 64
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge5/Body" unique_id=1427576490]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge6" type="Node2D" parent="Town" unique_id=34734777]
+z_index = 338
+z_as_relative = false
+position = Vector2(4580, 1350)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge6" unique_id=839338225]
+material = SubResource("fade_Ridge6")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge6" unique_id=1424028717]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge6/Body" unique_id=1913252266]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge7" type="Node2D" parent="Town" unique_id=1361207652]
+z_index = 575
+z_as_relative = false
+position = Vector2(4590, 2300)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge7" unique_id=670902715]
+material = SubResource("fade_Ridge7")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge7" unique_id=737761208]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge7/Body" unique_id=9081926]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge8" type="Node2D" parent="Town" unique_id=1070367658]
+z_index = 800
+z_as_relative = false
+position = Vector2(4500, 3200)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge8" unique_id=223930330]
+material = SubResource("fade_Ridge8")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge8" unique_id=1791942152]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge8/Body" unique_id=1256973295]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Ridge9" type="Node2D" parent="Town" unique_id=1943068345]
+z_index = 883
+z_as_relative = false
+position = Vector2(1760, 3820)
+metadata/label = "峡谷岩脊"
+metadata/visual_rect = Rect2(-489.7143, -480, 979.4286, 480)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Ridge9" unique_id=111582218]
+material = SubResource("fade_Ridge9")
+position = Vector2(-632.5714, -557.7143)
+scale = Vector2(0.5714286, 0.5714286)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Ridge9" unique_id=1266409852]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Ridge9/Body" unique_id=899910497]
+polygon = PackedVector2Array(-210, -70, 210, -70, 210, 0, -210, 0)
+
+[node name="Pine0" type="Node2D" parent="Town" unique_id=441663327]
+z_index = 525
+z_as_relative = false
+position = Vector2(1220, 2100)
+metadata/label = "峡畔松树"
+metadata/visual_rect = Rect2(-204.02556, -310, 408.05112, 310)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Pine0" unique_id=444828279]
+material = SubResource("fade_Pine0")
+position = Vector2(-326.83707, -368.4345)
+scale = Vector2(0.33013844, 0.33013844)
+texture = ExtResource("wudang_pine")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Pine0" unique_id=1917603946]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Pine0/Body" unique_id=1218996874]
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, 0, -30, 0)
+
+[node name="Pine1" type="Node2D" parent="Town" unique_id=149585547]
+z_index = 838
+z_as_relative = false
+position = Vector2(1920, 3590)
+metadata/label = "峡畔松树"
+metadata/visual_rect = Rect2(-204.02556, -310, 408.05112, 310)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Pine1" unique_id=1077333232]
+material = SubResource("fade_Pine1")
+position = Vector2(-326.83707, -368.4345)
+scale = Vector2(0.33013844, 0.33013844)
+texture = ExtResource("wudang_pine")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Pine1" unique_id=1371023075]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Pine1/Body" unique_id=894449729]
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, 0, -30, 0)
+
+[node name="Pine2" type="Node2D" parent="Town" unique_id=198457112]
+z_index = 713
+z_as_relative = false
+position = Vector2(2200, 2850)
+metadata/label = "峡畔松树"
+metadata/visual_rect = Rect2(-204.02556, -310, 408.05112, 310)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Pine2" unique_id=1139673119]
+material = SubResource("fade_Pine2")
+position = Vector2(-326.83707, -368.4345)
+scale = Vector2(0.33013844, 0.33013844)
+texture = ExtResource("wudang_pine")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Pine2" unique_id=118950801]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Pine2/Body" unique_id=803967783]
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, 0, -30, 0)
+
+[node name="Pine3" type="Node2D" parent="Town" unique_id=1562578107]
+z_index = 700
+z_as_relative = false
+position = Vector2(4390, 2800)
+metadata/label = "峡畔松树"
+metadata/visual_rect = Rect2(-204.02556, -310, 408.05112, 310)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/Pine3" unique_id=184328361]
+material = SubResource("fade_Pine3")
+position = Vector2(-326.83707, -368.4345)
+scale = Vector2(0.33013844, 0.33013844)
+texture = ExtResource("wudang_pine")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Pine3" unique_id=1764096965]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Pine3/Body" unique_id=61855516]
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, 0, -30, 0)
+
+[node name="Pine4" type="Node2D" parent="Town" unique_id=464577929]
+z_index = 438
+z_as_relative = false
+position = Vector2(4360, 1750)
+metadata/label = "峡畔松树"
+metadata/visual_rect = Rect2(-204.02556, -310, 408.05112, 310)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/Pine4" unique_id=1953723668]
+material = SubResource("fade_Pine4")
+position = Vector2(-326.83707, -488.4345)
+scale = Vector2(0.33013844, 0.33013844)
+texture = ExtResource("wudang_pine")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Pine4" unique_id=1419407497]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Pine4/Body" unique_id=771604739]
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, 0, -30, 0)
+
+[node name="Pine5" type="Node2D" parent="Town" unique_id=1764472820]
+z_index = 295
+z_as_relative = false
+position = Vector2(2020, 1180)
+metadata/label = "峡畔松树"
+metadata/visual_rect = Rect2(-204.02556, -310, 408.05112, 310)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/Pine5" unique_id=1946108729]
+material = SubResource("fade_Pine5")
+position = Vector2(-326.83707, -488.4345)
+scale = Vector2(0.33013844, 0.33013844)
+texture = ExtResource("wudang_pine")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/Pine5" unique_id=566296236]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/Pine5/Body" unique_id=749422769]
+polygon = PackedVector2Array(-30, -25, 30, -25, 30, 0, -30, 0)
+
+[node name="ConnectedRidge0" type="Node2D" parent="Town" unique_id=1139679152]
+z_index = 165
+z_as_relative = false
+position = Vector2(1470, 660)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge0" unique_id=1262932856]
+material = SubResource("fade_ConnectedRidge0")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge0" unique_id=1211882401]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge0/Body" unique_id=1423967259]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge1" type="Node2D" parent="Town" unique_id=1538795475]
+z_index = 120
+z_as_relative = false
+position = Vector2(2200, 480)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge1" unique_id=2078910368]
+material = SubResource("fade_ConnectedRidge1")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge1" unique_id=658628781]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge1/Body" unique_id=912286649]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge2" type="Node2D" parent="Town" unique_id=993977794]
+z_index = 88
+z_as_relative = false
+position = Vector2(2750, 350)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge2" unique_id=1132070462]
+material = SubResource("fade_ConnectedRidge2")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge2" unique_id=1703202150]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge2/Body" unique_id=1420898720]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge3" type="Node2D" parent="Town" unique_id=779470543]
+z_index = 88
+z_as_relative = false
+position = Vector2(3500, 350)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge3" unique_id=326112783]
+material = SubResource("fade_ConnectedRidge3")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge3" unique_id=1116815313]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge3/Body" unique_id=848830158]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge4" type="Node2D" parent="Town" unique_id=879904728]
+z_index = 103
+z_as_relative = false
+position = Vector2(4000, 410)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge4" unique_id=1125255413]
+material = SubResource("fade_ConnectedRidge4")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge4" unique_id=949346631]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge4/Body" unique_id=407474701]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge5" type="Node2D" parent="Town" unique_id=777183290]
+z_index = 218
+z_as_relative = false
+position = Vector2(4550, 870)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge5" unique_id=666567695]
+material = SubResource("fade_ConnectedRidge5")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge5" unique_id=249887123]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge5/Body" unique_id=214741562]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge6" type="Node2D" parent="Town" unique_id=455824201]
+z_index = 400
+z_as_relative = false
+position = Vector2(4570, 1600)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge6" unique_id=734062058]
+material = SubResource("fade_ConnectedRidge6")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge6" unique_id=1988661031]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge6/Body" unique_id=1235830451]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge7" type="Node2D" parent="Town" unique_id=1784787261]
+z_index = 500
+z_as_relative = false
+position = Vector2(4580, 2000)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge7" unique_id=2047688618]
+material = SubResource("fade_ConnectedRidge7")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge7" unique_id=1847545769]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge7/Body" unique_id=1338352774]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge8" type="Node2D" parent="Town" unique_id=521563120]
+z_index = 675
+z_as_relative = false
+position = Vector2(4580, 2700)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge8" unique_id=1501757814]
+material = SubResource("fade_ConnectedRidge8")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge8" unique_id=1021898513]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge8/Body" unique_id=1445712873]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="ConnectedRidge9" type="Node2D" parent="Town" unique_id=465957454]
+z_index = 900
+z_as_relative = false
+position = Vector2(4470, 3600)
+metadata/label = "连续峡壁"
+metadata/visual_rect = Rect2(-438.7024, -430, 877.4048, 430)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/ConnectedRidge9" unique_id=929410158]
+material = SubResource("fade_ConnectedRidge9")
+position = Vector2(-566.6786, -499.61905)
+scale = Vector2(0.5119048, 0.5119048)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/ConnectedRidge9" unique_id=915963947]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/ConnectedRidge9/Body" unique_id=1391318377]
+polygon = PackedVector2Array(-220, -65, 220, -65, 220, 0, -220, 0)
+
+[node name="LowerStore" type="Node2D" parent="Town" unique_id=92666405]
+z_index = 740
+z_as_relative = false
+position = Vector2(3400, 2960)
+metadata/label = "寨院居舍与仓房"
+metadata/visual_rect = Rect2(-265.0909, -390, 530.1818, 390)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/LowerStore" unique_id=924124861]
+material = SubResource("fade_LowerStore")
+position = Vector2(-524.1818, -531.2727)
+scale = Vector2(0.54545456, 0.54545456)
+texture = ExtResource("lieyun_store")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/LowerStore" unique_id=52959983]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/LowerStore/Body" unique_id=891724952]
+polygon = PackedVector2Array(-222.67636, -97.5, 222.67636, -97.5, 222.67636, 0, -222.67636, 0)
+
+[node name="SideResidence" type="Node2D" parent="Town" unique_id=1036627277]
+z_index = 325
+z_as_relative = false
+position = Vector2(2060, 1300)
+metadata/label = "寨院居舍与仓房"
+metadata/visual_rect = Rect2(-265.0909, -390, 530.1818, 390)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/SideResidence" unique_id=77381577]
+material = SubResource("fade_SideResidence")
+position = Vector2(-524.1818, -651.2727)
+scale = Vector2(0.54545456, 0.54545456)
+texture = ExtResource("lieyun_store")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/SideResidence" unique_id=1278253912]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/SideResidence/Body" unique_id=815574557]
+polygon = PackedVector2Array(-222.67636, -97.5, 222.67636, -97.5, 222.67636, 0, -222.67636, 0)
+
+[node name="RiverRocks0" type="Node2D" parent="Town" unique_id=542074206]
+z_index = 213
+z_as_relative = false
+position = Vector2(1090, 850)
+metadata/label = "峡溪岸石"
+metadata/visual_rect = Rect2(-265.2619, -260, 530.5238, 260)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/RiverRocks0" unique_id=766904570]
+material = SubResource("fade_RiverRocks0")
+position = Vector2(-342.64285, -302.09525)
+scale = Vector2(0.30952382, 0.30952382)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RiverRocks0" unique_id=620801724]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/RiverRocks0/Body" unique_id=1105092693]
+polygon = PackedVector2Array(-120, -35, 120, -35, 120, 0, -120, 0)
+
+[node name="RiverRocks1" type="Node2D" parent="Town" unique_id=2361332]
+z_index = 338
+z_as_relative = false
+position = Vector2(1070, 1350)
+metadata/label = "峡溪岸石"
+metadata/visual_rect = Rect2(-265.2619, -260, 530.5238, 260)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/RiverRocks1" unique_id=1683462106]
+material = SubResource("fade_RiverRocks1")
+position = Vector2(-342.64285, -302.09525)
+scale = Vector2(0.30952382, 0.30952382)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RiverRocks1" unique_id=1873821265]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/RiverRocks1/Body" unique_id=1319644516]
+polygon = PackedVector2Array(-120, -35, 120, -35, 120, 0, -120, 0)
+
+[node name="RiverRocks2" type="Node2D" parent="Town" unique_id=591932952]
+z_index = 460
+z_as_relative = false
+position = Vector2(1110, 1840)
+metadata/label = "峡溪岸石"
+metadata/visual_rect = Rect2(-265.2619, -260, 530.5238, 260)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/RiverRocks2" unique_id=1953863833]
+material = SubResource("fade_RiverRocks2")
+position = Vector2(-342.64285, -302.09525)
+scale = Vector2(0.30952382, 0.30952382)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RiverRocks2" unique_id=1720198712]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/RiverRocks2/Body" unique_id=1498312387]
+polygon = PackedVector2Array(-120, -35, 120, -35, 120, 0, -120, 0)
+
+[node name="RiverRocks3" type="Node2D" parent="Town" unique_id=1644685716]
+z_index = 570
+z_as_relative = false
+position = Vector2(1140, 2280)
+metadata/label = "峡溪岸石"
+metadata/visual_rect = Rect2(-265.2619, -260, 530.5238, 260)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/RiverRocks3" unique_id=741241859]
+material = SubResource("fade_RiverRocks3")
+position = Vector2(-342.64285, -302.09525)
+scale = Vector2(0.30952382, 0.30952382)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RiverRocks3" unique_id=131777189]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/RiverRocks3/Body" unique_id=839110602]
+polygon = PackedVector2Array(-120, -35, 120, -35, 120, 0, -120, 0)
+
+[node name="RiverRocks4" type="Node2D" parent="Town" unique_id=108754115]
+z_index = 650
+z_as_relative = false
+position = Vector2(1160, 2600)
+metadata/label = "峡溪岸石"
+metadata/visual_rect = Rect2(-265.2619, -260, 530.5238, 260)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/RiverRocks4" unique_id=161252913]
+material = SubResource("fade_RiverRocks4")
+position = Vector2(-342.64285, -302.09525)
+scale = Vector2(0.30952382, 0.30952382)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RiverRocks4" unique_id=361272514]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/RiverRocks4/Body" unique_id=1630825638]
+polygon = PackedVector2Array(-120, -35, 120, -35, 120, 0, -120, 0)
+
+[node name="RiverRocks5" type="Node2D" parent="Town" unique_id=915544650]
+z_index = 850
+z_as_relative = false
+position = Vector2(1030, 3570)
+metadata/label = "峡溪岸石"
+metadata/visual_rect = Rect2(-265.2619, -260, 530.5238, 260)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/RiverRocks5" unique_id=2131265786]
+material = SubResource("fade_RiverRocks5")
+position = Vector2(-342.64285, -302.09525)
+scale = Vector2(0.30952382, 0.30952382)
+texture = ExtResource("crag")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/RiverRocks5" unique_id=487123697]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/RiverRocks5/Body" unique_id=1779332028]
+polygon = PackedVector2Array(-120, -35, 120, -35, 120, 0, -120, 0)
+
+[node name="CargoGroup0" type="Node2D" parent="Town" unique_id=757838455]
+z_index = 685
+z_as_relative = false
+position = Vector2(1670, 2980)
+metadata/label = "分散货堆，留人行通道"
+metadata/visual_rect = Rect2(-55.170864, -75, 110.34173, 75)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/CargoGroup0" unique_id=1737196668]
+material = SubResource("fade_CargoGroup0")
+position = Vector2(-135.56654, -130.30576)
+scale = Vector2(0.13489209, 0.13489209)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/CargoGroup0" unique_id=103322409]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/CargoGroup0/Body" unique_id=2140184401]
+polygon = PackedVector2Array(-46.343525, -18.75, 46.343525, -18.75, 46.343525, 0, -46.343525, 0)
+
+[node name="CargoGroup3" type="Node2D" parent="Town" unique_id=1194864918]
+z_index = 763
+z_as_relative = false
+position = Vector2(3500, 3050)
+metadata/label = "分散货堆，留人行通道"
+metadata/visual_rect = Rect2(-55.170864, -75, 110.34173, 75)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/CargoGroup3" unique_id=1429480434]
+material = SubResource("fade_CargoGroup3")
+position = Vector2(-135.56654, -130.30576)
+scale = Vector2(0.13489209, 0.13489209)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/CargoGroup3" unique_id=1553508921]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/CargoGroup3/Body" unique_id=1872440926]
+polygon = PackedVector2Array(-46.343525, -18.75, 46.343525, -18.75, 46.343525, 0, -46.343525, 0)
+
+[node name="CargoGroup4" type="Node2D" parent="Town" unique_id=193069452]
+z_index = 773
+z_as_relative = false
+position = Vector2(3580, 3090)
+metadata/label = "分散货堆，留人行通道"
+metadata/visual_rect = Rect2(-55.170864, -75, 110.34173, 75)
+metadata/fade = true
+metadata/terrain_level = 0
+metadata/elevation = 0.0
+
+[node name="Art" type="Sprite2D" parent="Town/CargoGroup4" unique_id=1058912609]
+material = SubResource("fade_CargoGroup4")
+position = Vector2(-135.56654, -130.30576)
+scale = Vector2(0.13489209, 0.13489209)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/CargoGroup4" unique_id=1130866572]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/CargoGroup4/Body" unique_id=1838789590]
+polygon = PackedVector2Array(-46.343525, -18.75, 46.343525, -18.75, 46.343525, 0, -46.343525, 0)
+
+[node name="CargoGroup5" type="Node2D" parent="Town" unique_id=1473037440]
+z_index = 583
+z_as_relative = false
+position = Vector2(4150, 2330)
+metadata/label = "分散货堆，留人行通道"
+metadata/visual_rect = Rect2(-55.170864, -75, 110.34173, 75)
+metadata/fade = true
+metadata/terrain_level = 1
+metadata/elevation = 120.0
+
+[node name="Art" type="Sprite2D" parent="Town/CargoGroup5" unique_id=486816769]
+material = SubResource("fade_CargoGroup5")
+position = Vector2(-135.56654, -250.30576)
+scale = Vector2(0.13489209, 0.13489209)
+texture = ExtResource("cargo")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Town/CargoGroup5" unique_id=1913953350]
+collision_layer = 32
+collision_mask = 0
+
+[node name="Shape" type="CollisionPolygon2D" parent="Town/CargoGroup5/Body" unique_id=1760321395]
+polygon = PackedVector2Array(-46.343525, -18.75, 46.343525, -18.75, 46.343525, 0, -46.343525, 0)
+
+[node name="Player" type="CharacterBody2D" parent="Town" unique_id=1599463407 instance=ExtResource("player")]
+z_index = 933
+z_as_relative = false
+position = Vector2(2600, 3730)
+collision_layer = 2
+collision_mask = 24
+script = ExtResource("adapter")
+
+[node name="River" type="MeshInstance2D" parent="." unique_id=785329279]
+z_index = -15
+material = SubResource("water_mat")
+script = ExtResource("river_mesh")
+
+[node name="Camera" type="Camera2D" parent="." unique_id=2146516770]
+position = Vector2(2600, 3540)
+zoom = Vector2(0.9, 0.9)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1045332016]
+
+[node name="Top" type="Panel" parent="UI" unique_id=385502888]
+offset_left = 18.0
+offset_top = 12.0
+offset_right = 1080.0
+offset_bottom = 102.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Title" type="Label" parent="UI" unique_id=1037384188]
+offset_left = 34.0
+offset_top = 22.0
+offset_right = 1800.0
+offset_bottom = 60.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 30
+text = "烈云谷 · 峡渡寨院"
+
+[node name="Status" type="Label" parent="UI" unique_id=282953450]
+offset_left = 34.0
+offset_top = 63.0
+offset_right = 1800.0
+offset_bottom = 101.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 20
+text = "旧渡口 · 关寨门 · 驮货场 · 分舵前院 · 木石寨厅 · 东侧货路"
+
+[node name="Hint" type="Label" parent="UI" unique_id=1368692120]
+offset_left = 34.0
+offset_top = 1038.0
+offset_right = 1800.0
+offset_bottom = 1076.0
+theme_override_colors/font_color = Color(0.96, 0.94, 0.83, 1)
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 22
+text = "WASD / 方向键移动　Shift快走　Tab全景/跟随　空格查看　R回山口　Esc关闭说明"
+
+[node name="Detail" type="Panel" parent="UI" unique_id=486041476]
+visible = false
+offset_left = 400.0
+offset_top = 760.0
+offset_right = 1500.0
+offset_bottom = 1000.0
+theme_override_styles/panel = SubResource("panel")
+
+[node name="Text" type="Label" parent="UI/Detail" unique_id=1269600329]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 1075.0
+offset_bottom = 215.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 3
+
+[node name="Terrain" type="Node2D" parent="." unique_id=1142637318]
+script = ExtResource("21_e33cm")
+
+[node name="Platform1" type="Polygon2D" parent="Terrain" unique_id=375162398]
+z_index = -8
+material = SubResource("ShaderMaterial_rnie0")
+position = Vector2(0, -120)
+polygon = PackedVector2Array(1700, 500, 4400, 500, 4400, 2500, 1700, 2500)
+
+[node name="Platform2" type="Polygon2D" parent="Terrain" unique_id=2120463201]
+z_index = -7
+material = SubResource("ShaderMaterial_gcfcy")
+position = Vector2(0, -240)
+polygon = PackedVector2Array(2350, 500, 4250, 500, 4250, 1350, 2350, 1350)
+
+[node name="Cliff0" type="StaticBody2D" parent="Terrain" unique_id=901215229]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@54" type="CollisionPolygon2D" parent="Terrain/Cliff0" unique_id=936346417]
+polygon = PackedVector2Array(1700, 495, 4400, 495, 4400, 505, 1700, 505)
+
+[node name="Cliff1" type="StaticBody2D" parent="Terrain" unique_id=299668772]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@55" type="CollisionPolygon2D" parent="Terrain/Cliff1" unique_id=693688479]
+polygon = PackedVector2Array(4405, 500, 4405, 2500, 4395, 2500, 4395, 500)
+
+[node name="Cliff2" type="StaticBody2D" parent="Terrain" unique_id=271440413]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@56" type="CollisionPolygon2D" parent="Terrain/Cliff2" unique_id=1805661248]
+polygon = PackedVector2Array(4400, 2505, 4155, 2505, 4155, 2495, 4400, 2495)
+
+[node name="Cliff3" type="StaticBody2D" parent="Terrain" unique_id=414630124]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@57" type="CollisionPolygon2D" parent="Terrain/Cliff3" unique_id=704212554]
+polygon = PackedVector2Array(3845, 2505, 2755, 2505, 2755, 2495, 3845, 2495)
+
+[node name="Cliff4" type="StaticBody2D" parent="Terrain" unique_id=1288122862]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@58" type="CollisionPolygon2D" parent="Terrain/Cliff4" unique_id=1316757751]
+polygon = PackedVector2Array(2445, 2505, 1700, 2505, 1700, 2495, 2445, 2495)
+
+[node name="@Polygon2D@59" type="Polygon2D" parent="Terrain" unique_id=2002913276]
+z_index = 623
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(4400, 2380, 4250, 2380, 4250, 2500, 4400, 2500)
+uv = PackedVector2Array(493, 397, 707.2857, 397, 707.2857, 547, 493, 547)
+
+[node name="@Polygon2D@60" type="Polygon2D" parent="Terrain" unique_id=1806373345]
+z_index = 623
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(3750, 2380, 3450, 2380, 3450, 2500, 3750, 2500)
+uv = PackedVector2Array(493, 397, 921.5714, 397, 921.5714, 547, 493, 547)
+
+[node name="@Polygon2D@61" type="Polygon2D" parent="Terrain" unique_id=1681995244]
+z_index = 623
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(3450, 2380, 3150, 2380, 3150, 2500, 3450, 2500)
+uv = PackedVector2Array(843, 397, 1271.5714, 397, 1271.5714, 547, 843, 547)
+
+[node name="@Polygon2D@62" type="Polygon2D" parent="Terrain" unique_id=1126515956]
+z_index = 623
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(3150, 2380, 2850, 2380, 2850, 2500, 3150, 2500)
+uv = PackedVector2Array(1193, 397, 1621.5714, 397, 1621.5714, 547, 1193, 547)
+
+[node name="@Polygon2D@63" type="Polygon2D" parent="Terrain" unique_id=1536062772]
+z_index = 623
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(2350, 2380, 2133.3333, 2380, 2133.3333, 2500, 2350, 2500)
+uv = PackedVector2Array(493, 397, 802.5239, 397, 802.5239, 547, 493, 547)
+
+[node name="@Polygon2D@64" type="Polygon2D" parent="Terrain" unique_id=524524384]
+z_index = 623
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(2133.3333, 2380, 1916.6666, 2380, 1916.6666, 2500, 2133.3333, 2500)
+uv = PackedVector2Array(843, 397, 1152.5238, 397, 1152.5238, 547, 843, 547)
+
+[node name="@Polygon2D@65" type="Polygon2D" parent="Terrain" unique_id=590119985]
+z_index = 623
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(1916.6666, 2380, 1700, 2380, 1700, 2500, 1916.6666, 2500)
+uv = PackedVector2Array(1193, 397, 1502.5238, 397, 1502.5238, 547, 1193, 547)
+
+[node name="Cliff5" type="StaticBody2D" parent="Terrain" unique_id=1981781776]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@66" type="CollisionPolygon2D" parent="Terrain/Cliff5" unique_id=1025293793]
+polygon = PackedVector2Array(1695, 2500, 1695, 500, 1705, 500, 1705, 2500)
+
+[node name="Cliff6" type="StaticBody2D" parent="Terrain" unique_id=1040826951]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@67" type="CollisionPolygon2D" parent="Terrain/Cliff6" unique_id=1523246665]
+polygon = PackedVector2Array(2350, 495, 4250, 495, 4250, 505, 2350, 505)
+
+[node name="Cliff7" type="StaticBody2D" parent="Terrain" unique_id=1495805623]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@68" type="CollisionPolygon2D" parent="Terrain/Cliff7" unique_id=2055507731]
+polygon = PackedVector2Array(4255, 500, 4255, 1350, 4245, 1350, 4245, 500)
+
+[node name="Cliff8" type="StaticBody2D" parent="Terrain" unique_id=1990155828]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@69" type="CollisionPolygon2D" parent="Terrain/Cliff8" unique_id=294782822]
+polygon = PackedVector2Array(4250, 1355, 4055, 1355, 4055, 1345, 4250, 1345)
+
+[node name="Cliff9" type="StaticBody2D" parent="Terrain" unique_id=812544767]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@70" type="CollisionPolygon2D" parent="Terrain/Cliff9" unique_id=269632217]
+polygon = PackedVector2Array(3745, 1355, 3255, 1355, 3255, 1345, 3745, 1345)
+
+[node name="Cliff10" type="StaticBody2D" parent="Terrain" unique_id=723407293]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@71" type="CollisionPolygon2D" parent="Terrain/Cliff10" unique_id=473717520]
+polygon = PackedVector2Array(2945, 1355, 2350, 1355, 2350, 1345, 2945, 1345)
+
+[node name="@Polygon2D@72" type="Polygon2D" parent="Terrain" unique_id=1560462489]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(4250, 1110, 4150, 1110, 4150, 1230, 4250, 1230)
+uv = PackedVector2Array(493, 397, 635.8571, 397, 635.8571, 547, 493, 547)
+
+[node name="@Polygon2D@73" type="Polygon2D" parent="Terrain" unique_id=295291407]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(3650, 1110, 3350, 1110, 3350, 1230, 3650, 1230)
+uv = PackedVector2Array(493, 397, 921.5714, 397, 921.5714, 547, 493, 547)
+
+[node name="@Polygon2D@74" type="Polygon2D" parent="Terrain" unique_id=2012079602]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(2850, 1110, 2600, 1110, 2600, 1230, 2850, 1230)
+uv = PackedVector2Array(493, 397, 850.1429, 397, 850.1429, 547, 493, 547)
+
+[node name="@Polygon2D@75" type="Polygon2D" parent="Terrain" unique_id=1228990527]
+z_index = 336
+z_as_relative = false
+texture = ExtResource("22_2x108")
+polygon = PackedVector2Array(2600, 1110, 2350, 1110, 2350, 1230, 2600, 1230)
+uv = PackedVector2Array(843, 397, 1200.1428, 397, 1200.1428, 547, 843, 547)
+
+[node name="Cliff11" type="StaticBody2D" parent="Terrain" unique_id=953544923]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@76" type="CollisionPolygon2D" parent="Terrain/Cliff11" unique_id=813402765]
+polygon = PackedVector2Array(2345, 1350, 2345, 500, 2355, 500, 2355, 1350)
+
+[node name="WardRise" type="Node2D" parent="Terrain" unique_id=671085370]
+position = Vector2(2600, 2672.5)
+
+[node name="@Polygon2D@77" type="Polygon2D" parent="Terrain/WardRise" unique_id=1520396930]
+z_index = -4
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(-201, -585, 204, -585, 204, -316.5, 267.75, 0, 267.75, 183, -268.5, 183, -268.5, 0, -201, -316.5)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="@Polygon2D@78" type="Polygon2D" parent="Terrain/WardRise" unique_id=227999103]
+z_index = 674
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(-576, -585, -201, -585, -201, -316.5, -268.5, 0, -268.5, 183, -576, 183)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="@Polygon2D@79" type="Polygon2D" parent="Terrain/WardRise" unique_id=1140242512]
+z_index = 674
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(204, -585, 576, -585, 576, 183, 267.75, 183, 267.75, 0, 204, -316.5)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="RampRail0-1" type="StaticBody2D" parent="Terrain" unique_id=237599661]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@80" type="CollisionPolygon2D" parent="Terrain/RampRail0-1" unique_id=1740852387]
+polygon = PackedVector2Array(2450, 2478, 2450, 2694.5, 2440, 2694.5, 2440, 2478)
+
+[node name="RampRail01" type="StaticBody2D" parent="Terrain" unique_id=1449962221]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@81" type="CollisionPolygon2D" parent="Terrain/RampRail01" unique_id=809877678]
+polygon = PackedVector2Array(2760, 2478, 2760, 2694.5, 2750, 2694.5, 2750, 2478)
+
+[node name="FreightRise" type="Node2D" parent="Terrain" unique_id=665200708]
+position = Vector2(4000, 2672.5)
+
+[node name="@Polygon2D@82" type="Polygon2D" parent="Terrain/FreightRise" unique_id=1219652911]
+z_index = -4
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(-201, -585, 204, -585, 204, -316.5, 267.75, 0, 267.75, 183, -268.5, 183, -268.5, 0, -201, -316.5)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="@Polygon2D@83" type="Polygon2D" parent="Terrain/FreightRise" unique_id=1469329380]
+z_index = 674
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(-576, -585, -201, -585, -201, -316.5, -268.5, 0, -268.5, 183, -576, 183)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="@Polygon2D@84" type="Polygon2D" parent="Terrain/FreightRise" unique_id=527869700]
+z_index = 674
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(204, -585, 576, -585, 576, 183, 267.75, 183, 267.75, 0, 204, -316.5)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="RampRail1-1" type="StaticBody2D" parent="Terrain" unique_id=462743473]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@85" type="CollisionPolygon2D" parent="Terrain/RampRail1-1" unique_id=1335049351]
+polygon = PackedVector2Array(3850, 2478, 3850, 2694.5, 3840, 2694.5, 3840, 2478)
+
+[node name="RampRail11" type="StaticBody2D" parent="Terrain" unique_id=1919846113]
+collision_layer = 48
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@86" type="CollisionPolygon2D" parent="Terrain/RampRail11" unique_id=305501668]
+polygon = PackedVector2Array(4160, 2478, 4160, 2694.5, 4150, 2694.5, 4150, 2478)
+
+[node name="HallRise" type="Node2D" parent="Terrain" unique_id=34275819]
+position = Vector2(3100, 1402.5)
+
+[node name="@Polygon2D@87" type="Polygon2D" parent="Terrain/HallRise" unique_id=740579125]
+z_index = -4
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(-201, -585, 204, -585, 204, -316.5, 267.75, 0, 267.75, 183, -268.5, 183, -268.5, 0, -201, -316.5)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="@Polygon2D@88" type="Polygon2D" parent="Terrain/HallRise" unique_id=6598696]
+z_index = 387
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(-576, -585, -201, -585, -201, -316.5, -268.5, 0, -268.5, 183, -576, 183)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="@Polygon2D@89" type="Polygon2D" parent="Terrain/HallRise" unique_id=599180342]
+z_index = 387
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(204, -585, 576, -585, 576, 183, 267.75, 183, 267.75, 0, 204, -316.5)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="RampRail2-1" type="StaticBody2D" parent="Terrain" unique_id=1339842445]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@90" type="CollisionPolygon2D" parent="Terrain/RampRail2-1" unique_id=2039058376]
+polygon = PackedVector2Array(2950, 1328, 2950, 1544.5, 2940, 1544.5, 2940, 1328)
+
+[node name="RampRail21" type="StaticBody2D" parent="Terrain" unique_id=1731773885]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@91" type="CollisionPolygon2D" parent="Terrain/RampRail21" unique_id=655929774]
+polygon = PackedVector2Array(3260, 1328, 3260, 1544.5, 3250, 1544.5, 3250, 1328)
+
+[node name="SideRise" type="Node2D" parent="Terrain" unique_id=1265381588]
+position = Vector2(3900, 1402.5)
+
+[node name="@Polygon2D@92" type="Polygon2D" parent="Terrain/SideRise" unique_id=1613923898]
+z_index = -4
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(-201, -585, 204, -585, 204, -316.5, 267.75, 0, 267.75, 183, -268.5, 183, -268.5, 0, -201, -316.5)
+uv = PackedVector2Array(694, 89, 1234, 89, 1234, 447, 1319, 869, 1319, 1113, 604, 1113, 604, 869, 694, 447)
+
+[node name="@Polygon2D@93" type="Polygon2D" parent="Terrain/SideRise" unique_id=1998790264]
+z_index = 387
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(-576, -585, -201, -585, -201, -316.5, -268.5, 0, -268.5, 183, -576, 183)
+uv = PackedVector2Array(194, 89, 694, 89, 694, 447, 604, 869, 604, 1113, 194, 1113)
+
+[node name="@Polygon2D@94" type="Polygon2D" parent="Terrain/SideRise" unique_id=784136048]
+z_index = 387
+z_as_relative = false
+texture = ExtResource("23_6ik51")
+polygon = PackedVector2Array(204, -585, 576, -585, 576, 183, 267.75, 183, 267.75, 0, 204, -316.5)
+uv = PackedVector2Array(1234, 89, 1730, 89, 1730, 1113, 1319, 1113, 1319, 869, 1234, 447)
+
+[node name="RampRail3-1" type="StaticBody2D" parent="Terrain" unique_id=1133515432]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@95" type="CollisionPolygon2D" parent="Terrain/RampRail3-1" unique_id=1017367178]
+polygon = PackedVector2Array(3750, 1328, 3750, 1544.5, 3740, 1544.5, 3740, 1328)
+
+[node name="RampRail31" type="StaticBody2D" parent="Terrain" unique_id=298981699]
+collision_layer = 96
+collision_mask = 0
+
+[node name="@CollisionPolygon2D@96" type="CollisionPolygon2D" parent="Terrain/RampRail31" unique_id=1887917406]
+polygon = PackedVector2Array(4060, 1328, 4060, 1544.5, 4050, 1544.5, 4050, 1328)

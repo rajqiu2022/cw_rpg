@@ -1,0 +1,118 @@
+{
+  "status": "ROOT_APPROVED_BUILD_ONLY_THREE_VISUAL_CANDIDATES_NOT_ENGINE_CHECKED_NOT_SOURCE_CLOSED_NOT_DEPLOYED",
+  "candidates": [
+    {
+      "id": "HUD_readability",
+      "candidate_path": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_finish_candidates01_retry1/field_primary_hud_readability_READY.gd",
+      "candidate_sha256": "b673121841860c0d7ca501eed9a9c792fe2364f8714f04955b8036f8cdf5487c",
+      "parent_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_finish_candidates01_retry1/HUD_readability_parent.gd",
+      "parent_sha256": "9232f5a427461b127178e16eef1851e7d3960592e0dccd852f79bd714000a8ab",
+      "original_source": "res://scripts/ui/field_primary_hud.gd",
+      "wholebyte_inverse": true,
+      "exact_hunks": [
+        {
+          "before": "@onready var _quest_panel: PanelContainer = $QuestSummaryPanel",
+          "after": "@onready var _quest_panel: PanelContainer = $QuestSummaryPanel\nvar _quest_backplate: StyleBoxFlat = null\nvar _quest_backplate_hovered: bool = false\nvar _quest_backplate_pinned: bool = false"
+        },
+        {
+          "before": "_quest_summary.text = \"%s\\n\\n%s\" % [main_block, side_block]",
+          "after": "_quest_summary.text = \"%s\\n\\n%s\" % [main_block, side_block]\n\t_sync_quest_backplate_bounds.call_deferred()"
+        },
+        {
+          "before": "func _setup_quest_tracker_style() -> void:\n\tif not is_instance_valid(_quest_panel):\n\t\treturn\n\tvar panel_style := StyleBoxEmpty.new()\n\tpanel_style.content_margin_left = 18.0\n\tpanel_style.content_margin_right = 18.0\n\tpanel_style.content_margin_top = 15.0\n\tpanel_style.content_margin_bottom = 15.0\n\t_quest_panel.add_theme_stylebox_override(\"panel\", panel_style)",
+          "after": "func _setup_quest_tracker_style() -> void:\n\tif not is_instance_valid(_quest_panel) or not is_instance_valid(_quest_summary):\n\t\treturn\n\t# User-requested plain readability backing, not a replacement art frame.\n\t_quest_backplate = StyleBoxFlat.new()\n\t_quest_backplate.bg_color = Color(0.0, 0.0, 0.0, 0.0)\n\t_quest_backplate.content_margin_left = 18.0\n\t_quest_backplate.content_margin_right = 18.0\n\t_quest_backplate.content_margin_top = 15.0\n\t_quest_backplate.content_margin_bottom = 15.0\n\t_quest_panel.add_theme_stylebox_override(\"panel\", _quest_backplate)\n\t_quest_panel.mouse_filter = Control.MOUSE_FILTER_IGNORE\n\t_quest_summary.mouse_filter = Control.MOUSE_FILTER_IGNORE\n\t_quest_summary.fit_content = true\n\t_quest_summary.resized.connect(_sync_quest_backplate_bounds)\n\t_sync_quest_backplate_bounds.call_deferred()\n\n\nfunc _sync_quest_backplate_bounds() -> void:\n\tif not is_instance_valid(_quest_panel) or not is_instance_valid(_quest_summary):\n\t\treturn\n\t# The real wrapped text determines height; the original width/layout stay.\n\tvar height: float = maxf(1.0, float(_quest_summary.get_content_height())) + 30.0\n\tif not is_equal_approx(_quest_panel.size.y, height):\n\t\t_quest_panel.size.y = height\n\t_quest_backplate_hovered = _quest_panel.is_visible_in_tree() and _quest_panel.get_global_rect().has_point(get_global_mouse_position())\n\t_update_quest_backplate()\n\n\nfunc _update_quest_backplate() -> void:\n\tif _quest_backplate != null:\n\t\t_quest_backplate.bg_color = Color(0.0, 0.0, 0.0, 0.62 if _quest_backplate_hovered or _quest_backplate_pinned else 0.0)\n\n\nfunc _input(event: InputEvent) -> void:\n\t# Observe pointer movement without changing GUI mouse filters. Only the\n\t# explicit local left press is handled, so it cannot also click the map.\n\tif not is_instance_valid(_quest_panel) or not _quest_panel.is_visible_in_tree() or DialogPlayer.is_playing():\n\t\treturn\n\tif event is InputEventMouseMotion:\n\t\t_quest_backplate_hovered = _quest_panel.get_global_rect().has_point(event.position)\n\t\t_update_quest_backplate()\n\telif event is InputEventMouseButton and event.device >= 0 and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:\n\t\tif not _quest_panel.get_global_rect().has_point(event.position):\n\t\t\treturn\n\t\t_quest_backplate_pinned = not _quest_backplate_pinned\n\t\t_quest_backplate_hovered = true\n\t\t_update_quest_backplate()\n\t\tget_viewport().set_input_as_handled()"
+        },
+        {
+          "before": "_quest_panel.visible = false\n\thide_right_menu_now()",
+          "after": "_quest_panel.visible = false\n\t_quest_backplate_hovered = false\n\t_update_quest_backplate()\n\thide_right_menu_now()"
+        },
+        {
+          "before": "_quest_panel.visible = true\n\trestore_right_menu()",
+          "after": "_quest_panel.visible = true\n\t_sync_quest_backplate_bounds.call_deferred()\n\trestore_right_menu()"
+        }
+      ]
+    },
+    {
+      "id": "Hero_visual_only",
+      "candidate_path": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_finish_candidates01_retry1/Field_hero_visual_only_READY.gd",
+      "candidate_sha256": "c089d5c3473159a50b1a58803f599fb93cdf30f517d8b88589922b6c87cd2d3f",
+      "parent_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_finish_candidates01_retry1/Hero_visual_only_parent.gd",
+      "parent_sha256": "24b5159b01470b571955f68a2762b9e979fc45703168e86cb8da157defea1179",
+      "original_source": "res://scripts/field/field_walkable_controller.gd",
+      "wholebyte_inverse": true,
+      "exact_hunks": [
+        {
+          "before": "_player.set_visual_scale_multiplier(_current_scene.player_visual_scale)",
+          "after": "var visual_multiplier: float = _current_scene.player_visual_scale\n\t\t# Exact eight-city visual scope. Body/speed/scene data and foot anchor stay.\n\t\tif _current_scene.scene_id in [&\"ch4_s0_luoyang_gate\",&\"ch4_s1_luoyang_yamen\",&\"ch4_s3_luoyang_market\",&\"ch4_s2_canal_docks\",&\"ch4_s4_ancient_temple\",&\"luoyang_estate_riverside_20261021ai\",&\"luoyang_artisan_residential_20261022ap\",&\"luoyang_riverside_garden_20261022ap\"]:\n\t\t\tvisual_multiplier *= 1.12\n\t\t_player.set_visual_scale_multiplier(visual_multiplier)"
+        }
+      ]
+    },
+    {
+      "id": "ENV_pawn_core",
+      "candidate_path": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_finish_candidates01_retry1/environment_pawn_core_transition_READY.gd",
+      "candidate_sha256": "a8516e6499091fd5c2a695180f6a8e184d380336e08a71155b0fac9223d920f3",
+      "parent_snapshot": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_finish_candidates01_retry1/ENV_pawn_core_parent.gd",
+      "parent_sha256": "4245e7d5268c8a5509e46cf46f4ff737c1178843c5f3c2f4f8d650d662b2fbfc",
+      "original_source": "res://build/luoyang_city_full_rollout_20261022ap_system01/environment_rect_transition_candidate_READY.gd",
+      "wholebyte_inverse": true,
+      "exact_hunks": [
+        {
+          "before": "transition.set_shader_parameter(\"ap_core_opacity\",0.66)",
+          "after": "var core_opacity: float=1.0 if scene.scene_id==&\"ch4_s3_luoyang_market\" and row.id==\"market_pawn_clean_paved_forecourt\" else 0.66\n\t\t\ttransition.set_shader_parameter(\"ap_core_opacity\",core_opacity)"
+        },
+        {
+          "before": "\"feather_world\":32.0,\"core_opacity\":0.66,\"no_tile_edge_feather\":true",
+          "after": "\"feather_world\":32.0,\"core_opacity\":core_opacity,\"no_tile_edge_feather\":true"
+        }
+      ]
+    }
+  ],
+  "HUD": {
+    "canonical_files_if_later_adopted": 1,
+    "tscn_unchanged": true,
+    "black_alpha": 0.62,
+    "plain_StyleBoxFlat_user_explicit_exception": true,
+    "hover_or_local_left_click_pin_toggle": true,
+    "only_local_original_left_press_handled": true,
+    "Esc_J_rightclick_wheel_and_map_outside_rect_untouched": true,
+    "hidden_or_dialog_playing_ignores_pointer": true,
+    "actual_wrapped_content_height_plus_padding": 30,
+    "existing_width_and_text_logic_unchanged": true,
+    "no_narrow_title_atlas": true
+  },
+  "Hero": {
+    "exact_eight_ids": [
+      "ch4_s0_luoyang_gate",
+      "ch4_s1_luoyang_yamen",
+      "ch4_s3_luoyang_market",
+      "ch4_s2_canal_docks",
+      "ch4_s4_ancient_temple",
+      "luoyang_estate_riverside_20261021ai",
+      "luoyang_artisan_residential_20261022ap",
+      "luoyang_riverside_garden_20261022ap"
+    ],
+    "visual_multiplier_factor": 1.12,
+    "no_Player_gd_delta": true,
+    "body_34x24_speed_and_physical_feet_unchanged": true,
+    "original_anchor_formula_unchanged": true,
+    "all_other_scenes_and_rooms_unchanged": true
+  },
+  "ENV": {
+    "only_pawn_forecourt_core_opacity": 1.0,
+    "other_ten_rects_core_opacity": 0.66,
+    "all_rect_feather_world": 32.0,
+    "shader_DA5141_unchanged": true,
+    "all_four_wholealpha_stamps_unchanged": true,
+    "author19_and_native_unchanged": true
+  },
+  "portrait": "Separate art-owned production remains pending; no portrait placeholder or runtime binding included",
+  "forbidden_actions_not_taken": [
+    "canonical write",
+    "source closure or deployment",
+    "Godot/check-only/run",
+    "new media/image editing/import",
+    "NAV/body/door/NPC/task changes",
+    "old candidate/proof overwrites"
+  ],
+  "next": "Root first finishes B/D/E remaining actual. These candidates require a later single tightly scoped source successor and bounded HUD/hero/ENV visual verification; no claim of runtime or visual acceptance."
+}

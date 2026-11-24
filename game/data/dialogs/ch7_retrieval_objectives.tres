@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "五组路包分别对应五派残卷，路线又贴着后续灭口地点。薛影的目标是回收旧案材料并控制知情人，不只是复仇。"
+add_evidence = Array[StringName]([&"ev_ch7_xueying_retrieval_objectives"])
+set_flags = Array[Dictionary]([{"key":"ch7_retrieval_objectives_checked", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_retrieval_objectives"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

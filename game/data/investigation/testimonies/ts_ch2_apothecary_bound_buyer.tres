@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch2_apothecary_bound_buyer"
+display_name = "药铺掌柜的可疑客人"
+speaker_npc_id = &"npc_ch2_apothecary"
+statement = "一名手背带勒痕的男子购买解毒散，自称遭凌月弟子劫掠；他的伤势和说辞都像受害者。"
+chapter = 2
+initial_credibility = 45
+related_evidence_ids = Array[StringName]([&"ev_ch2_split_tracks"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch2_hawker_north_route", &"ts_ch2_yue_attackers_method"])

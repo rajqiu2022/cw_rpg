@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]石缝里长着一簇叶缘泛红的止血草。冷孤云小心割下一束，收进布囊。[/i]"
+set_flags = Array[Dictionary]([{"key": "zhuwei_forest_herb_collected", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_zhuwei_forest_herb"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])

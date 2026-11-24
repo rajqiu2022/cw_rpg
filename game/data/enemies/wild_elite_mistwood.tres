@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"wild_elite_mistwood"
+poison_weapons=true
+trait_caption="烬茶社叛徒"
+display_name="茗雾截盟统领"
+battle_actor_path="res://art/characters/battle_masked_killer_boss_v2.png"
+battle_actor_scale=0.82
+level=15
+max_hp=1034
+max_mp=135
+attack=141
+defense=29
+speed=32
+skill_ids=Array[StringName]([&"basic_attack",&"mingwu_wuyin_sanshi",&"toxic_needle"])
+aggression=0.84
+drop_gold_min=70
+drop_gold_max=100
+drop_exp=135

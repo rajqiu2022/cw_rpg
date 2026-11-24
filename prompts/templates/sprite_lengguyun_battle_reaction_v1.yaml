@@ -1,0 +1,22 @@
+id: sprite_lengguyun_battle_reaction_v1
+description: Leng Guyun battle hit or defeat reaction frame using the adopted battle pose as reference.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/characters/battle_lengguyun_v1.png"
+  - "F:/Code/RPG_GAME/game/art/characters/protagonist_portrait.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied battle sprite as the strict identity, costume, body-proportion, and battle-facing reference for Leng Guyun. Use the portrait only for face identity. Create ONE single full-body 2.5D wuxia RPG battle reaction frame, facing toward the right side of the screen for the allied lower-left formation.
+
+  Preserve exactly: seven-head medium athletic body, black tied hair with no headband, dark blue-grey cross-collar robe, pale inner collar, diagonal brown leather chest strap, waist sword, one grey-green double-lobed wine gourd at the left belt, and dark boots. Hong Kong wuxia comic game art, thick clear ink contours, restrained painted shading.
+
+  Reaction: {{reaction}}
+  Composition: 1024x1024, full figure complete with feet visible and broad transparent-safe padding. Perfectly flat #00ff00 chroma-key background only: no ground, shadow, halo, texture, scenery, text, UI, border, watermark, another person, extra weapon, gore or blood.
+
+  Avoid: front portrait composition, tall-thin anatomy, short-stocky anatomy, red ribbon, forehead band, headscarf, second gourd, western armor, spider, web, demon.
+
+variables:
+  reaction: "required"

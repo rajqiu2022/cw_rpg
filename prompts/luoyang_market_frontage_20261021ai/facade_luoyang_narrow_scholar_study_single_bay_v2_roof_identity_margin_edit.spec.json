@@ -1,0 +1,60 @@
+{
+  "change_id": "luoyang-market-frontage-20261021ai",
+  "task_id": "luoyang_market_frontage_20261021ai_narrow_scholar_study_single_bay_v2_roof_identity_margin_edit",
+  "asset_role": "south_market_independent_narrow_scholar_study_facade_targeted_successor",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "edit",
+  "transparent_background": true,
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "network_fallback_allowed": false,
+  "status": "READY_FOR_ROOT_SINGLE_TARGETED_EDIT_NOT_EXECUTED",
+  "edit_target": {
+    "path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_narrow_scholar_study_single_bay_v1.png",
+    "png_sha256": "111D02FF18C8B4C4D4A4AC1821A8F81209A3C14833764EC0847CA3185CAE85DF",
+    "png_bytes": 1507658,
+    "role": "only_edit_target",
+    "preserve_original_file": true
+  },
+  "failed_raw_metadata": {
+    "path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_narrow_scholar_study_single_bay_v1.meta.json",
+    "sha256": "35594E5E1ED7A453C00EB1A56E548C6196C1BCE5888A1AD1EE98799D8410C784"
+  },
+  "prompt_path": "prompts/luoyang_market_frontage_20261021ai/facade_luoyang_narrow_scholar_study_single_bay_v2_roof_identity_margin_edit.txt",
+  "prompt_sha256": "A19A6F21E8148BDFBB8C1DCE05A0733D595EF95F74E7F17F9995F26731334848",
+  "raw_output_path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_narrow_scholar_study_single_bay_v2_roof_identity_margin_edit.png",
+  "generated_metadata_path": "assets/raw/luoyang_market_frontage_20261021ai/facade_luoyang_narrow_scholar_study_single_bay_v2_roof_identity_margin_edit.meta.json",
+  "required_preservation": {
+    "single_storey_single_narrow_bay": true,
+    "principal_entrance_count": 1,
+    "doorway_and_threshold_unblocked": true,
+    "door_position_and_approximate_clear_height": true,
+    "upper_left_camera_and_daylight": true,
+    "aged_timber_pale_plaster_stone_material_scale": true
+  },
+  "required_targeted_changes": {
+    "low_pitch_straight_ridge_hard_gable_roof": true,
+    "no_upturned_flying_eave_silhouette": true,
+    "two_narrow_pale_grey_brick_front_piers": true,
+    "one_extremely_narrow_book_lattice_window": true,
+    "remove_red_yellow_fringe_and_detached_low_alpha_specks": true,
+    "true_transparent_margin_each_side_min_fraction_at_a1": 0.10,
+    "a1_bbox_canvas_width_fraction_range": [0.50, 0.60]
+  },
+  "required_actual_checks": {
+    "complete_a1_bbox_width_over_clear_door_height_max": 2.3,
+    "runtime_feasible_clear_door_height_px_range": [120, 150],
+    "runtime_complete_width_px_max": 380,
+    "no_low_alpha_haze_or_edge_contact": true,
+    "no_apothecary_props_or_roof_identity": true,
+    "record_a1_a16_edges_components_and_weak_alpha": true,
+    "returned_raw_bytes_must_be_preserved": true,
+    "alpha_threshold_cleanup_is_forbidden": true
+  },
+  "credit_boundary": "Exactly one targeted builtin edit of the preserved failed scholar raw. No further retry is authorized. Actual output must be measured before import, layout, runtime or formal credit."
+}

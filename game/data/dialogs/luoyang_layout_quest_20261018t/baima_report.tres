@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="report"]
+script = ExtResource("2")
+node_id = &"report"
+speaker = "守钟僧"
+text = "薄纸既在东墙连颤三次，便不是人推钟杵。把暗缝补好，今夜古钟应能安静。多谢少侠。"
+set_flags = Array[Dictionary]([{"key":"baima_bell_solved", "value":true}, {"key":"baima_bell_reported_20261018t", "value":true}])
+complete_quest = &"q_ch4_side_05_baima_bell"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"luoyang_layout_quest_20261018t/baima_report"
+entry_node_id = &"report"
+nodes = Array[Resource]([SubResource("report")])

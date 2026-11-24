@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch6_main_04_old_convoy_route"
+title = "白水旧路"
+kind = 0
+desc_not_started = "地下原册把最后可核对的地点指向白水驿。那里是十八年前押运队更换车马的中途站。"
+desc_in_progress = "从档案室后门进入旧押运路线，核对里程碑与翻覆货车，并阻止追兵再次清理现场。"
+desc_completed = "旧路证明押运队在白水驿换过窄车，随后驶入茶运小道；截证者仍在追索这条路线。"
+tracker_hint = "林西村外 · 白水驿旧路"
+completion_triggers = Array[String](["flag_set:ch6_baishui_milestone_checked", "evidence_acquired:ev_ch6_baishui_transfer_marks", "flag_set:ch6_convoy_pursuers_defeated"])
+require_all_completion_triggers = true
+starts_in_chapter = 6
+completes_in_chapter = 6
+reward_gold = 110
+reward_exp = 180
+reward_items = Array[Dictionary]([{"item_id":"spirit_gathering_dust", "count":1}])
+progress_records = Array[Dictionary]([
+	{"trigger":"flag_set:ch6_baishui_milestone_checked", "text":"旧里程显示白水驿距林西十二里，正好对应原册最后一次交接时辰。"},
+	{"trigger":"evidence_acquired:ev_ch6_baishui_transfer_marks", "text":"官车铜箍装在窄轴上，车槽有两次换绳磨痕；押运队曾在此换车。"},
+	{"trigger":"flag_set:ch6_convoy_pursuers_defeated", "text":"追兵携带新凿子与火油，仍在沿十八年前路线清除石刻和车痕。"}
+])

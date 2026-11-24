@@ -1,0 +1,125 @@
+{
+  "schema_version": 1,
+  "id": "luoyang_city_life_dialogs_20261021ai",
+  "status": "CANDIDATE_TEXT_ONLY_NOT_BOUND",
+  "formal_enabled": false,
+  "topic_policy": {
+    "kind": "secondary_daily_life",
+    "label": "聊聊日常",
+    "preserve_primary": true,
+    "preserve_culture": true,
+    "priority": "primary and culture before secondary daily life",
+    "no_runtime_hook": true
+  },
+  "rows": [
+    {
+      "npc_id": "harbour_life_gate_waiting_merchant_a",
+      "npc_name": "候检商人",
+      "scene_id": "ch4_s0_luoyang_gate",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/gate_waiting_merchant_daily.tres",
+      "dialog_id": "ch4_life_ai_gate_waiting_merchant_daily"
+    },
+    {
+      "npc_id": "harbour_life_gate_pack_carrier_a",
+      "npc_name": "挑夫",
+      "scene_id": "ch4_s0_luoyang_gate",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/gate_pack_carrier_daily.tres",
+      "dialog_id": "ch4_life_ai_gate_pack_carrier_daily"
+    },
+    {
+      "npc_id": "harbour_life_gate_waiting_traveller_a",
+      "npc_name": "候检旅人",
+      "scene_id": "ch4_s0_luoyang_gate",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/gate_waiting_traveller_daily.tres",
+      "dialog_id": "ch4_life_ai_gate_waiting_traveller_daily"
+    },
+    {
+      "npc_id": "district_life_yamen_south_runner",
+      "npc_name": "传递书办",
+      "scene_id": "ch4_s1_luoyang_yamen",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/yamen_south_runner_daily.tres",
+      "dialog_id": "ch4_life_ai_yamen_south_runner_daily"
+    },
+    {
+      "npc_id": "district_life_yamen_guest",
+      "npc_name": "候见百姓",
+      "scene_id": "ch4_s1_luoyang_yamen",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/yamen_guest_daily.tres",
+      "dialog_id": "ch4_life_ai_yamen_guest_daily"
+    },
+    {
+      "npc_id": "district_life_market_herb_buyer",
+      "npc_name": "菜贩",
+      "scene_id": "ch4_s3_luoyang_market",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/market_herb_buyer_daily.tres",
+      "dialog_id": "ch4_life_ai_market_herb_buyer_daily"
+    },
+    {
+      "npc_id": "district_life_market_shop_attendant",
+      "npc_name": "铺中伙计",
+      "scene_id": "ch4_s3_luoyang_market",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/market_shop_attendant_daily.tres",
+      "dialog_id": "ch4_life_ai_market_shop_attendant_daily"
+    },
+    {
+      "npc_id": "district_life_market_farmer",
+      "npc_name": "入城乡民",
+      "scene_id": "ch4_s3_luoyang_market",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/market_farmer_daily.tres",
+      "dialog_id": "ch4_life_ai_market_farmer_daily"
+    },
+    {
+      "npc_id": "district_life_market_tea_guest",
+      "npc_name": "茶客",
+      "scene_id": "ch4_s3_luoyang_market",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/market_tea_guest_daily.tres",
+      "dialog_id": "ch4_life_ai_market_tea_guest_daily"
+    },
+    {
+      "npc_id": "harbour_life_docks_goods_broker",
+      "npc_name": "货行商人",
+      "scene_id": "ch4_s2_canal_docks",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/docks_goods_broker_daily.tres",
+      "dialog_id": "ch4_life_ai_docks_goods_broker_daily"
+    },
+    {
+      "npc_id": "harbour_life_docks_loading_attendant",
+      "npc_name": "装卸伙计",
+      "scene_id": "ch4_s2_canal_docks",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/docks_loading_attendant_daily.tres",
+      "dialog_id": "ch4_life_ai_docks_loading_attendant_daily"
+    },
+    {
+      "npc_id": "harbour_life_docks_departing_merchant",
+      "npc_name": "行脚商",
+      "scene_id": "ch4_s2_canal_docks",
+      "dialog_path": "res://build/luoyang_city_completion_20261021ai_lore01/dialogs/docks_departing_merchant_daily.tres",
+      "dialog_id": "ch4_life_ai_docks_departing_merchant_daily"
+    }
+  ],
+  "identity_source_paths": [
+    "res://scripts/city/luoyang_harbour_life_crowd_retry3_20261016.gd",
+    "res://data/maps/luoyang_district_life_20261016f/author.json",
+    "res://scripts/city/luoyang_district_life_crowd_20261016f.gd"
+  ],
+  "credit_boundary": {
+    "candidate_npcs": 12,
+    "candidate_dialogs": 12,
+    "candidate_text_nodes": 24,
+    "canonical_writes": false,
+    "binding": false,
+    "engine_validation": false,
+    "voice": false,
+    "portrait": false,
+    "full_city_complete": false
+  },
+  "no_task_side_effects": true,
+  "notes": [
+    "Only existing authored identities; not additional residents.",
+    "Existing culture5 and carrier3 identities deliberately excluded.",
+    "Same NPC speaks two linked short lines per resource, following existing daily-dialog convention.",
+    "Unspecified side-effect exports remain their empty/zero defaults in current DialogNode schema.",
+    "No historical custom/date/dynasty claims; descriptions are ordinary fictional daily labour.",
+    "Loader/path acceptance and runtime secondary topic integration remain Root/System work."
+  ]
+}

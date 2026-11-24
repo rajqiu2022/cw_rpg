@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "我先到茶镇，外院还没来得及收净目录。白水驿换车当日连续缺了两页，前后索引却仍在。"
+on_end = "next:record"
+[sub_resource type="Resource" id="record"]
+script = ExtResource("2")
+node_id = &"record"
+speaker = "冷孤云"
+text = "窄轴车、灰蜡封口、茶运支线。有人调过车，也有人后来抽走正文，但缺页还不能说明车上之人的最终去向。"
+add_evidence = Array[StringName]([&"ev_ch7_mingwu_transfer_ledger_gap"])
+set_flags = Array[Dictionary]([{"key":"ch7_mingwu_transfer_ledger_checked", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_mingwu_transfer_ledger_direct"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("record")])

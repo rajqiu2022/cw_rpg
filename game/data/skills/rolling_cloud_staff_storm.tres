@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"rolling_cloud_staff_storm"
+display_name = "翻云棍阵"
+icon_path = "res://art/ui/skill/icons_semantic_v2/icon_skill_staff_storm_v1.png"
+description = "长棍连扫如云层翻卷，压住群敌步法。造成全体外功伤害，并有较高概率施加虚弱。"
+kind = 0
+target = 1
+delivery = 2
+mp_cost = 22
+quality = 3
+required_insight = 8
+practice_base_cost = 38
+fixed_damage = 24
+attack_scaling = 95
+hit_count = 1
+base_hit_chance = 0.93
+animation_id = &"rolling_cloud_staff_storm"
+required_weapon_type = &"staff"
+martial_category = &"staff"
+damage_type = 0
+inflicted_status = &"weaken"
+status_chance = 0.6
+status_duration = 2
+school = "wanderer"
+mastery_unlock_skill = &"heaven_pillar_staff"

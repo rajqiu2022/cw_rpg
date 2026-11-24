@@ -1,0 +1,49 @@
+
+  - id: luoyang_20261025i_chinese_open_ironwork_v2_edit
+    template: world_expansion_100_20261022
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: true
+    prompt_path: prompts/luoyang_city_finish_20261025i/chinese_open_ironwork_v2_edit.txt
+    reference_images:
+      - assets/raw/luoyang_city_finish_20261025i/chinese_open_ironwork_v1.png
+    vars:
+      asset_prompt: "EDIT existing Chinese ironwork: lower roof/taller walls, complete A1ratio1.80–1.88; clear workbay >=.28 A1width wide, >=.24 A1width high; forge rear/front floor clear. Same identity/material/camera/style. Whole A>0 inside central66% both axes/true alpha. Root one builtin EDIT/old raw retained/no local processing. Exact prompt_path rendered offline."
+
+  - id: luoyang_20261025i_pottery_kiln_house_v2_textonly
+    template: world_expansion_100_20261022
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: true
+    prompt_path: prompts/luoyang_city_finish_20261025i/pottery_kiln_house_v2_textonly.txt
+    reference_images: []
+    vars:
+      asset_prompt: "NEW complete Chinese pottery house full roof/tall body/right wall/chimney; clear rectangular workdoor >=.28 A1width wide and >=.24 A1width high, A1ratio1.80–1.88. Enclosed work-window/compact earthen kiln rear. Whole A>0 inside central66% both axes/true alpha; no ground yard/people/signs/halo. Parallel modest overhead2.5D/thick-painted wuxia/upper-left light. New call omit both reference mechanisms. Exact prompt_path rendered offline."
+
+  - id: luoyang_20261025i_ordinary_kitchen_rear_body_v2_textonly
+    template: world_expansion_100_20261022
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: true
+    prompt_path: prompts/luoyang_city_finish_20261025i/ordinary_kitchen_rear_body_v2_textonly.txt
+    reference_images: []
+    vars:
+      asset_prompt: "NEW complete ordinary Chinese kitchen/residence rear house, full grey-tile roof/tall walls/right side/chimney, closed adult door and closed window. Full A1ratio1.80–1.88, rectangular doorheight >=.30 A1width and >=.54 A1height. Whole A>0 inside central66% both axes/true alpha. Upper-left light/almost-frontal parallel2.5D/thick-painted wuxia. No yard/props/people/text/halo. Closed door not portal. New call omit both reference mechanisms. Exact prompt_path rendered offline."

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="旁白"
+text="走完三地回访，冷孤云发现没有哪一段关系足以替另一段做决定。并肩过的人仍是故交，往后的路却可以由自己独行。"
+on_end="next:end"
+[sub_resource type="Resource" id="end"]
+script=ExtResource("2")
+node_id=&"end"
+speaker="冷孤云"
+text="不因结局而强求归宿。先回林西，把师父和我各自欠下的最后一段话说完。"
+set_flags=Array[Dictionary]([{"key":"ch8_relationship_independent","value":true},{"key":"ch8_relationship_epilogue_done","value":true},{"key":"ch8_linxi_final_return_open","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"jianghu","key":"relationship_epilogue","value":"independent"}])
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_relationship_independent"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("end")])

@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "id": "luoyang_docks_office_20261016h",
+  "status": "THREE_FIRST_ATTEMPT_SOURCE_CANDIDATES_ONLY",
+  "call_budget": 3,
+  "calls_used": 3,
+  "retries_used": 0,
+  "png_edits": 0,
+  "game_writes_by_art": 0,
+  "engine_runs_by_art": 0,
+  "preflight_path": "prompts/qa/luoyang_docks_office_20261016h/preflight.json",
+  "preflight_sha256": "D5AA6DB8699D1CDE33B662D1373EA5328529208AF4A2B8319C3477368B3E35A2",
+  "preflight_preserved_as_historical": true,
+  "root_followup": "Root approved exactly3 builtin calls and separately SYSTEM fullcanvas one-pass LANCZOS160 NPC derivatives. Field harbour_life_ground_anchored already explicitly forces adult normalization; early generic NPCNode family-only caution does not override that Field injection.",
+  "known_limits": [
+    "All3 strict10pct transparent margins FAIL and retained; no sprite-sheet compliance claim.",
+    "NPC actual1254square differs requested1024square; original square singleframe remains intact.",
+    "Building uniform-footprint door only103px; explicit nonuniform .488/.68 candidate yields panel≈143.48px, actual roof/body aesthetic pending.",
+    "Allsourcefeet/base are manual image-guided candidates, not Physics/GPU evidence.",
+    "No office entrance/room, no animation or additional views; original stationary IDs/roles/feet and tasks stay SYSTEM scope."
+  ],
+  "assets": [
+    {
+      "id": "docks_cargo_office_v1",
+      "kind": "building",
+      "path": "assets/raw/luoyang_docks_office_20261016h/docks_cargo_office_v1.png",
+      "metadata_path": "assets/raw/luoyang_docks_office_20261016h/docks_cargo_office_v1.meta.json",
+      "sha256": "F5C51E9B665960086ABBB2A3390DEB2D9339240AD7826AC5F8E7BE36C48D9E4B",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "prompt_path": "prompts/qa/luoyang_docks_office_20261016h/prompts/docks_cargo_office_v1.txt",
+      "prompt_sha256": "11E31E62E771298885767822424032653997FBFFD3414B9F8116B2B684FAEFDC",
+      "strict_zero_alpha_10pct_margin_pass": false
+    },
+    {
+      "id": "npc_docks_loader_idle_down_1f_v1",
+      "kind": "stationary_npc",
+      "path": "assets/raw/luoyang_docks_office_20261016h/npc_docks_loader_idle_down_1f_v1.png",
+      "metadata_path": "assets/raw/luoyang_docks_office_20261016h/npc_docks_loader_idle_down_1f_v1.meta.json",
+      "sha256": "5A69099BA1E263910291C07F7EB5B32AD4055CF8A8575D8EFB6481639BE3DD02",
+      "actual_size_px": [
+        1254,
+        1254
+      ],
+      "prompt_path": "prompts/qa/luoyang_docks_office_20261016h/prompts/npc_docks_loader_idle_down_1f_v1.txt",
+      "prompt_sha256": "F6DCED8F5BEAA820AFA70291C7A18721728AD1A2A813D970917DD2E676FCACEF",
+      "strict_zero_alpha_10pct_margin_pass": false
+    },
+    {
+      "id": "npc_docks_booking_clerk_idle_down_1f_v1",
+      "kind": "stationary_npc",
+      "path": "assets/raw/luoyang_docks_office_20261016h/npc_docks_booking_clerk_idle_down_1f_v1.png",
+      "metadata_path": "assets/raw/luoyang_docks_office_20261016h/npc_docks_booking_clerk_idle_down_1f_v1.meta.json",
+      "sha256": "592D93215055B7C280C8007A3380C927EFCA60DD238B640AAD8D87454017B6C5",
+      "actual_size_px": [
+        1254,
+        1254
+      ],
+      "prompt_path": "prompts/qa/luoyang_docks_office_20261016h/prompts/npc_docks_booking_clerk_idle_down_1f_v1.txt",
+      "prompt_sha256": "5CC64A7B3C23FA1A9E226975DDEA88DE276BE1E63D22B6E166F673DDC10B4BE6",
+      "strict_zero_alpha_10pct_margin_pass": false
+    }
+  ]
+}

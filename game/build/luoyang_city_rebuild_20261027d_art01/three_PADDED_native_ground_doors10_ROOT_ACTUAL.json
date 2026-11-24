@@ -1,0 +1,1069 @@
+{
+  "schema": "27D_THREE_PADDED_NATIVE_GROUND_DOORS_V1",
+  "status": "ROOT_EXECUTED_USER_AUTHORIZED_PROCESSING_NATIVE_CANDIDATES_NOT_IMPORTED_NOT_ADOPTED",
+  "adoption_enabled": false,
+  "actual_receipt": {
+    "path": "res://build/luoyang_city_rebuild_20261027d_art01/three_RAW_cleanup08_ROOT_ONLY_OUTPUT/receipt.json",
+    "sha256": "2df1fe289e62f001c6c5080cfc81c4448a1b46aa576edd271a2bc9bdac78ebe5"
+  },
+  "permission": {
+    "path": "res://build/luoyang_city_rebuild_20261027d_art01/three_RAW_cleanup08_PERMISSION_ROOT.json",
+    "sha256": "c3d358fce1b0fc33d07afc101a6ce0b48d61a08019d6d4687098201b9a7c34b2",
+    "status": "USER_APPROVED_AND_ROOT_EXECUTED_THIS_EXACT_THREE_IMAGE_BATCH"
+  },
+  "geometry_parent": {
+    "path": "res://build/luoyang_city_rebuild_20261027d_art01/three_RAW_ground_door_annotations04_READONLY_BUILD.json",
+    "sha256": "49a6f374343f551a86d9a4b449b243f25edfc5532175f6bd3272dbcea523f07d"
+  },
+  "rows": [
+    {
+      "id": "east_shop_residence_v1",
+      "protected_subject_rect_xyxy": [
+        193,
+        141,
+        1223,
+        1217
+      ],
+      "annotation_method": "Manual original-native visible stone foundation, jamb and stair observations, +/-8source px. Not alpha bbox, not Source physical geometry pass.",
+      "render_transform": {
+        "uniform_scale": 0.8,
+        "source_anchor_px": [
+          1055,
+          1114
+        ],
+        "target_foot_px": [
+          2520,
+          3100
+        ],
+        "policy": "Keep this existing27d transform unchanged; measured contact anchor below does not reposition the artwork."
+      },
+      "ground_contact": {
+        "visible_front_step_contact_anchor_px": [
+          1059,
+          1122
+        ],
+        "world_contact_anchor_px": [
+          2523.2,
+          3106.4
+        ],
+        "visible_foundation_edge_segments_px": [
+          [
+            [
+              258,
+              967
+            ],
+            [
+              637,
+              1202
+            ]
+          ],
+          [
+            [
+              637,
+              1202
+            ],
+            [
+              1165,
+              1082
+            ]
+          ]
+        ],
+        "closed_ground_footprint_proposal_px": [
+          [
+            258,
+            967
+          ],
+          [
+            788,
+            845
+          ],
+          [
+            1165,
+            1082
+          ],
+          [
+            637,
+            1202
+          ]
+        ],
+        "closed_ground_footprint_world_proposal_px": [
+          [
+            1882.4,
+            2982.4
+          ],
+          [
+            2306.4,
+            2884.8
+          ],
+          [
+            2608,
+            3074.4
+          ],
+          [
+            2185.6,
+            3170.4
+          ]
+        ],
+        "occluded_rear_corner_proposal_px": [
+          788,
+          845
+        ],
+        "rear_corner_basis": "Inferred closed footprint from actual visible side/front foundation edge directions; rear corner is occluded and is not claimed as directly measured RGBA.",
+        "not_roof_bbox": true,
+        "body_mode": "Closed footprint minus explicit front walk channel only; outside side/rear walls stay solid. Stairs in door channel are walkable entrance surface, not a full black strip."
+      },
+      "door": {
+        "clear_opening_source_polygon_px": [
+          [
+            979,
+            821
+          ],
+          [
+            1081,
+            797
+          ],
+          [
+            1081,
+            1022
+          ],
+          [
+            979,
+            1051
+          ]
+        ],
+        "clear_threshold_source_px": [
+          1030,
+          1038
+        ],
+        "clear_threshold_world_px": [
+          2500,
+          3039.2
+        ],
+        "vertical_clear_height_source_px": 225,
+        "conservative_vertical_clear_height_world_px": 173.60000000000002,
+        "clear_image_horizontal_width_source_px": 102,
+        "clear_image_horizontal_width_world_px": 81.60000000000001,
+        "front_walk_channel_source_polygon_px": [
+          [
+            979,
+            1051
+          ],
+          [
+            1081,
+            1022
+          ],
+          [
+            1113,
+            1125
+          ],
+          [
+            1001,
+            1156
+          ]
+        ],
+        "front_walk_channel_world_proposal_px": [
+          [
+            2459.2,
+            3049.6
+          ],
+          [
+            2540.8,
+            3026.4
+          ],
+          [
+            2566.4,
+            3108.8
+          ],
+          [
+            2476.8,
+            3133.6
+          ]
+        ],
+        "front_stair_contact_source_px": [
+          1059,
+          1122
+        ],
+        "public_outward_image_vector": [
+          0.23,
+          0.97
+        ],
+        "activation_foot_px": [
+          2520,
+          3160
+        ],
+        "return_approach_foot_px": [
+          2520,
+          3224
+        ],
+        "channel_rule": "Subtract explicit measured doorway/stair channel from the closed body; do not make an entire wall or rear half walkable. Portal remains on public side. Retain dark backwall visual, no background hole."
+      },
+      "orientation_and_purpose": "East/right-front oblique complete cloth/residential house; main street is to image-right, not a cardinal90-degree billboard.",
+      "padding_contract": {
+        "status": "ROOT_EXECUTED_THIS_BATCH_PERMISSION_NOT_PENDING",
+        "integer_offset_px": [
+          87,
+          4
+        ],
+        "uniform_unchanged": true,
+        "world_target_foot_unchanged": true,
+        "raw_unchanged": true,
+        "protected_RGBA_and_all_RGB_unchanged": true,
+        "only_outside_weak_alpha_removed": 831,
+        "source_coordinates_all_shifted_by_same_offset": true,
+        "no_resampling_rotation_crop_or_redrawing": true
+      },
+      "raw_original": {
+        "path": "assets/raw/luoyang_city_rebuild_20261027d/east_shop_residence_v1.png",
+        "sha256": "68A9501E4A8CF74742D01E0169C7FD92E8408F2C12E897EAE9586D42DAEE6EE3",
+        "size_px": [
+          1176,
+          1338
+        ]
+      },
+      "native": {
+        "texture": "res://build/luoyang_city_rebuild_20261027d_art01/three_RAW_cleanup08_ROOT_ONLY_OUTPUT/east_shop_residence_v1_padded.png",
+        "absolute_path": "F:\\Code\\RPG_GAME\\game\\build\\luoyang_city_rebuild_20261027d_art01\\three_RAW_cleanup08_ROOT_ONLY_OUTPUT\\east_shop_residence_v1_padded.png",
+        "sha256": "3cc57f69e054f041ebd86abfd4af8e713689afb538fb011a4aa39ce3d7ad4411",
+        "size_px": [
+          1350,
+          1346
+        ],
+        "complete_A1": [
+          201,
+          149,
+          1215,
+          1211
+        ],
+        "four_margins_ratio": [
+          0.14888888888888888,
+          0.11069836552748885,
+          0.1,
+          0.10029717682020803
+        ]
+      },
+      "clean_intermediate": {
+        "path": "F:\\Code\\RPG_GAME\\game\\build\\luoyang_city_rebuild_20261027d_art01\\three_RAW_cleanup08_ROOT_ONLY_OUTPUT\\east_shop_residence_v1_clean.png",
+        "sha256": "9be9a9730a25bba9e8f9d484bf31e608d4addbd9c0bde4f925b9eea6bf5475cb"
+      },
+      "source_closed_footprint_before_door_difference": [
+        [
+          258,
+          967
+        ],
+        [
+          788,
+          845
+        ],
+        [
+          1165,
+          1082
+        ],
+        [
+          637,
+          1202
+        ]
+      ],
+      "source_door_walk_channel_to_subtract": [
+        [
+          979,
+          1051
+        ],
+        [
+          1081,
+          1022
+        ],
+        [
+          1113,
+          1125
+        ],
+        [
+          1001,
+          1156
+        ]
+      ],
+      "source_geometry_is_manual_proposal_not_physics_pass": true,
+      "catalog_state": {
+        "raw": "ORIGINAL_GEN1_MARGIN_FAIL_RETAINED_AS_HISTORY",
+        "padded": "USER_AUTHORIZED_PROCESSED_CANDIDATE_A1_MARGIN_PASS",
+        "imported": false,
+        "formal_bound": false,
+        "engine_run": false
+      },
+      "world_invariant_checks": [
+        {
+          "old_world": [
+            2520,
+            3100
+          ],
+          "padded_world": [
+            2520,
+            3100
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            2500,
+            3039.2
+          ],
+          "padded_world": [
+            2500,
+            3039.2
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            1882.4,
+            2982.4
+          ],
+          "padded_world": [
+            1882.4,
+            2982.4
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            2306.4,
+            2884.8
+          ],
+          "padded_world": [
+            2306.4,
+            2884.8
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            2608,
+            3074.4
+          ],
+          "padded_world": [
+            2608,
+            3074.4
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            2185.6,
+            3170.4
+          ],
+          "padded_world": [
+            2185.6,
+            3170.4
+          ],
+          "equal_within_1e_9": true
+        }
+      ]
+    },
+    {
+      "id": "west_shop_residence_v1",
+      "protected_subject_rect_xyxy": [
+        135,
+        163,
+        1213,
+        1311
+      ],
+      "annotation_method": "Manual original-native visible stone foundation, jamb and stair observations, +/-8source px. Not alpha bbox, not Source physical geometry pass.",
+      "render_transform": {
+        "uniform_scale": 0.95,
+        "source_anchor_px": [
+          331,
+          1105
+        ],
+        "target_foot_px": [
+          3620,
+          3260
+        ],
+        "policy": "Keep this existing27d transform unchanged; measured contact anchor below does not reposition the artwork."
+      },
+      "ground_contact": {
+        "visible_front_step_contact_anchor_px": [
+          331,
+          1129
+        ],
+        "world_contact_anchor_px": [
+          3620,
+          3282.8
+        ],
+        "visible_foundation_edge_segments_px": [
+          [
+            [
+              194,
+              1035
+            ],
+            [
+              801,
+              1299
+            ]
+          ],
+          [
+            [
+              801,
+              1299
+            ],
+            [
+              1183,
+              1166
+            ]
+          ]
+        ],
+        "closed_ground_footprint_proposal_px": [
+          [
+            194,
+            1035
+          ],
+          [
+            573,
+            869
+          ],
+          [
+            1183,
+            1166
+          ],
+          [
+            801,
+            1299
+          ]
+        ],
+        "closed_ground_footprint_world_proposal_px": [
+          [
+            3489.85,
+            3193.5
+          ],
+          [
+            3849.9,
+            3035.8
+          ],
+          [
+            4429.4,
+            3317.95
+          ],
+          [
+            4066.5,
+            3444.3
+          ]
+        ],
+        "occluded_rear_corner_proposal_px": [
+          573,
+          869
+        ],
+        "rear_corner_basis": "Inferred closed footprint from actual visible side/front foundation edge directions; rear corner is occluded and is not claimed as directly measured RGBA.",
+        "not_roof_bbox": true,
+        "body_mode": "Closed footprint minus explicit front walk channel only; outside side/rear walls stay solid. Stairs in door channel are walkable entrance surface, not a full black strip."
+      },
+      "door": {
+        "clear_opening_source_polygon_px": [
+          [
+            296,
+            826
+          ],
+          [
+            405,
+            866
+          ],
+          [
+            405,
+            1056
+          ],
+          [
+            296,
+            1015
+          ]
+        ],
+        "clear_threshold_source_px": [
+          351,
+          1039
+        ],
+        "clear_threshold_world_px": [
+          3639,
+          3197.3
+        ],
+        "vertical_clear_height_source_px": 189,
+        "conservative_vertical_clear_height_world_px": 171.95,
+        "clear_image_horizontal_width_source_px": 109,
+        "clear_image_horizontal_width_world_px": 103.55,
+        "front_walk_channel_source_polygon_px": [
+          [
+            296,
+            1015
+          ],
+          [
+            405,
+            1056
+          ],
+          [
+            386,
+            1191
+          ],
+          [
+            268,
+            1150
+          ]
+        ],
+        "front_walk_channel_world_proposal_px": [
+          [
+            3586.75,
+            3174.5
+          ],
+          [
+            3690.3,
+            3213.45
+          ],
+          [
+            3672.25,
+            3341.7
+          ],
+          [
+            3560.15,
+            3302.75
+          ]
+        ],
+        "front_stair_contact_source_px": [
+          331,
+          1129
+        ],
+        "public_outward_image_vector": [
+          -0.2,
+          0.98
+        ],
+        "activation_foot_px": [
+          3620,
+          3320
+        ],
+        "return_approach_foot_px": [
+          3620,
+          3384
+        ],
+        "channel_rule": "Subtract explicit measured doorway/stair channel from the closed body; do not make an entire wall or rear half walkable. Portal remains on public side. Retain dark backwall visual, no background hole."
+      },
+      "orientation_and_purpose": "West/left-front oblique complete ironshop/residential house with actual rear lean-to; street is to image-left. The lean-to is same compound, not a second unrelated facade.",
+      "padding_contract": {
+        "status": "ROOT_EXECUTED_THIS_BATCH_PERMISSION_NOT_PENDING",
+        "integer_offset_px": [
+          81,
+          65
+        ],
+        "uniform_unchanged": true,
+        "world_target_foot_unchanged": true,
+        "raw_unchanged": true,
+        "protected_RGBA_and_all_RGB_unchanged": true,
+        "only_outside_weak_alpha_removed": 473,
+        "source_coordinates_all_shifted_by_same_offset": true,
+        "no_resampling_rotation_crop_or_redrawing": true
+      },
+      "raw_original": {
+        "path": "assets/raw/luoyang_city_rebuild_20261027d/west_shop_residence_v1.png",
+        "sha256": "0ECC57A5A83F05CC589FF1FCF3FB4CEF483CB479A3BDA9E6B2E660F2343F92B5",
+        "size_px": [
+          1185,
+          1327
+        ]
+      },
+      "native": {
+        "texture": "res://build/luoyang_city_rebuild_20261027d_art01/three_RAW_cleanup08_ROOT_ONLY_OUTPUT/west_shop_residence_v1_padded.png",
+        "absolute_path": "F:\\Code\\RPG_GAME\\game\\build\\luoyang_city_rebuild_20261027d_art01\\three_RAW_cleanup08_ROOT_ONLY_OUTPUT\\west_shop_residence_v1_padded.png",
+        "sha256": "61e3a11dda705657ee194ce5aba8a7d84868dd605d611011aaa63dde1723a433",
+        "size_px": [
+          1347,
+          1457
+        ],
+        "complete_A1": [
+          138,
+          163,
+          1212,
+          1311
+        ],
+        "four_margins_ratio": [
+          0.10244988864142539,
+          0.11187371310912834,
+          0.10022271714922049,
+          0.10020590253946465
+        ]
+      },
+      "clean_intermediate": {
+        "path": "F:\\Code\\RPG_GAME\\game\\build\\luoyang_city_rebuild_20261027d_art01\\three_RAW_cleanup08_ROOT_ONLY_OUTPUT\\west_shop_residence_v1_clean.png",
+        "sha256": "8811a5518d22606de1a3740fabc1341a4a3dc95017efc078a93178dfc8f8d4d7"
+      },
+      "source_closed_footprint_before_door_difference": [
+        [
+          194,
+          1035
+        ],
+        [
+          573,
+          869
+        ],
+        [
+          1183,
+          1166
+        ],
+        [
+          801,
+          1299
+        ]
+      ],
+      "source_door_walk_channel_to_subtract": [
+        [
+          296,
+          1015
+        ],
+        [
+          405,
+          1056
+        ],
+        [
+          386,
+          1191
+        ],
+        [
+          268,
+          1150
+        ]
+      ],
+      "source_geometry_is_manual_proposal_not_physics_pass": true,
+      "catalog_state": {
+        "raw": "ORIGINAL_GEN1_MARGIN_FAIL_RETAINED_AS_HISTORY",
+        "padded": "USER_AUTHORIZED_PROCESSED_CANDIDATE_A1_MARGIN_PASS",
+        "imported": false,
+        "formal_bound": false,
+        "engine_run": false
+      },
+      "world_invariant_checks": [
+        {
+          "old_world": [
+            3620,
+            3260
+          ],
+          "padded_world": [
+            3620,
+            3260
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            3639,
+            3197.3
+          ],
+          "padded_world": [
+            3639,
+            3197.3
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            3489.85,
+            3193.5
+          ],
+          "padded_world": [
+            3489.85,
+            3193.5
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            3849.9,
+            3035.8
+          ],
+          "padded_world": [
+            3849.9,
+            3035.8
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            4429.4,
+            3317.95
+          ],
+          "padded_world": [
+            4429.4,
+            3317.95
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            4066.5,
+            3444.3
+          ],
+          "padded_world": [
+            4066.5,
+            3444.3
+          ],
+          "equal_within_1e_9": true
+        }
+      ]
+    },
+    {
+      "id": "spring_house_complete_v1",
+      "protected_subject_rect_xyxy": [
+        153,
+        128,
+        1394,
+        1122
+      ],
+      "annotation_method": "Manual original-native visible stone foundation, jamb and stair observations, +/-8source px. Not alpha bbox, not Source physical geometry pass.",
+      "render_transform": {
+        "uniform_scale": 1.03,
+        "source_anchor_px": [
+          702,
+          1080
+        ],
+        "target_foot_px": [
+          5200,
+          4160
+        ],
+        "policy": "Keep this existing27d transform unchanged; measured contact anchor below does not reposition the artwork."
+      },
+      "ground_contact": {
+        "visible_front_step_contact_anchor_px": [
+          708,
+          1094
+        ],
+        "world_contact_anchor_px": [
+          5206.18,
+          4174.42
+        ],
+        "visible_foundation_edge_segments_px": [
+          [
+            [
+              222,
+              1025
+            ],
+            [
+              1180,
+              1110
+            ]
+          ],
+          [
+            [
+              1180,
+              1110
+            ],
+            [
+              1368,
+              979
+            ]
+          ]
+        ],
+        "closed_ground_footprint_proposal_px": [
+          [
+            222,
+            1025
+          ],
+          [
+            412,
+            894
+          ],
+          [
+            1368,
+            979
+          ],
+          [
+            1180,
+            1110
+          ]
+        ],
+        "closed_ground_footprint_world_proposal_px": [
+          [
+            4705.6,
+            4103.35
+          ],
+          [
+            4901.3,
+            3968.42
+          ],
+          [
+            5885.98,
+            4055.97
+          ],
+          [
+            5692.34,
+            4190.9
+          ]
+        ],
+        "occluded_rear_corner_proposal_px": [
+          412,
+          894
+        ],
+        "rear_corner_basis": "Inferred closed footprint from actual visible side/front foundation edge directions; rear corner is occluded and is not claimed as directly measured RGBA.",
+        "not_roof_bbox": true,
+        "body_mode": "Closed footprint minus explicit front walk channel only; outside side/rear walls stay solid. Stairs in door channel are walkable entrance surface, not a full black strip."
+      },
+      "door": {
+        "clear_opening_source_polygon_px": [
+          [
+            617,
+            804
+          ],
+          [
+            800,
+            801
+          ],
+          [
+            800,
+            994
+          ],
+          [
+            617,
+            987
+          ]
+        ],
+        "clear_threshold_source_px": [
+          708,
+          994
+        ],
+        "clear_threshold_world_px": [
+          5206.18,
+          4071.42
+        ],
+        "vertical_clear_height_source_px": 183,
+        "conservative_vertical_clear_height_world_px": 180.25,
+        "clear_image_horizontal_width_source_px": 183,
+        "clear_image_horizontal_width_world_px": 188.49,
+        "front_walk_channel_source_polygon_px": [
+          [
+            617,
+            987
+          ],
+          [
+            800,
+            994
+          ],
+          [
+            813,
+            1158
+          ],
+          [
+            603,
+            1151
+          ]
+        ],
+        "front_walk_channel_world_proposal_px": [
+          [
+            5112.45,
+            4064.21
+          ],
+          [
+            5300.94,
+            4071.42
+          ],
+          [
+            5314.33,
+            4240.34
+          ],
+          [
+            5098.03,
+            4233.13
+          ]
+        ],
+        "front_stair_contact_source_px": [
+          708,
+          1094
+        ],
+        "public_outward_image_vector": [
+          0,
+          1
+        ],
+        "activation_foot_px": [
+          5200,
+          4250
+        ],
+        "return_approach_foot_px": [
+          5200,
+          4330
+        ],
+        "channel_rule": "Subtract explicit measured doorway/stair channel from the closed body; do not make an entire wall or rear half walkable. Portal remains on public side. Retain dark backwall visual, no background hole."
+      },
+      "orientation_and_purpose": "Front-facing two-storey social/performance landmark, one actual central public entrance; side lattices are windows, not two extra portals.",
+      "padding_contract": {
+        "status": "ROOT_EXECUTED_THIS_BATCH_PERMISSION_NOT_PENDING",
+        "integer_offset_px": [
+          83,
+          66
+        ],
+        "uniform_unchanged": true,
+        "world_target_foot_unchanged": true,
+        "raw_unchanged": true,
+        "protected_RGBA_and_all_RGB_unchanged": true,
+        "only_outside_weak_alpha_removed": 472,
+        "source_coordinates_all_shifted_by_same_offset": true,
+        "no_resampling_rotation_crop_or_redrawing": true
+      },
+      "raw_original": {
+        "path": "assets/raw/luoyang_city_rebuild_20261027d/spring_house_complete_v1.png",
+        "sha256": "64A50BEB1CA3E23D53D209A3B391C911CE5C061DC441A1638FFB8C96AB16D5BE",
+        "size_px": [
+          1374,
+          1145
+        ]
+      },
+      "native": {
+        "texture": "res://build/luoyang_city_rebuild_20261027d_art01/three_RAW_cleanup08_ROOT_ONLY_OUTPUT/spring_house_complete_v1_padded.png",
+        "absolute_path": "F:\\Code\\RPG_GAME\\game\\build\\luoyang_city_rebuild_20261027d_art01\\three_RAW_cleanup08_ROOT_ONLY_OUTPUT\\spring_house_complete_v1_padded.png",
+        "sha256": "684e76ba53658d547fbade6279f5d9c28664e5dc768adf275691ed92cdefd98e",
+        "size_px": [
+          1540,
+          1277
+        ],
+        "complete_A1": [
+          161,
+          128,
+          1386,
+          1122
+        ],
+        "four_margins_ratio": [
+          0.10454545454545454,
+          0.10023492560689115,
+          0.1,
+          0.12137823022709475
+        ]
+      },
+      "clean_intermediate": {
+        "path": "F:\\Code\\RPG_GAME\\game\\build\\luoyang_city_rebuild_20261027d_art01\\three_RAW_cleanup08_ROOT_ONLY_OUTPUT\\spring_house_complete_v1_clean.png",
+        "sha256": "2f0cda5057b75546717da57c13b7394c3e63f87e8b00be4e246b99b65abac0fa"
+      },
+      "source_closed_footprint_before_door_difference": [
+        [
+          222,
+          1025
+        ],
+        [
+          412,
+          894
+        ],
+        [
+          1368,
+          979
+        ],
+        [
+          1180,
+          1110
+        ]
+      ],
+      "source_door_walk_channel_to_subtract": [
+        [
+          617,
+          987
+        ],
+        [
+          800,
+          994
+        ],
+        [
+          813,
+          1158
+        ],
+        [
+          603,
+          1151
+        ]
+      ],
+      "source_geometry_is_manual_proposal_not_physics_pass": true,
+      "catalog_state": {
+        "raw": "ORIGINAL_GEN1_MARGIN_FAIL_RETAINED_AS_HISTORY",
+        "padded": "USER_AUTHORIZED_PROCESSED_CANDIDATE_A1_MARGIN_PASS",
+        "imported": false,
+        "formal_bound": false,
+        "engine_run": false
+      },
+      "world_invariant_checks": [
+        {
+          "old_world": [
+            5200,
+            4160
+          ],
+          "padded_world": [
+            5200,
+            4160
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            5206.18,
+            4071.42
+          ],
+          "padded_world": [
+            5206.18,
+            4071.42
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            4705.6,
+            4103.35
+          ],
+          "padded_world": [
+            4705.6,
+            4103.35
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            4901.3,
+            3968.42
+          ],
+          "padded_world": [
+            4901.3,
+            3968.42
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            5885.98,
+            4055.97
+          ],
+          "padded_world": [
+            5885.98,
+            4055.97
+          ],
+          "equal_within_1e_9": true
+        },
+        {
+          "old_world": [
+            5692.34,
+            4190.9
+          ],
+          "padded_world": [
+            5692.34,
+            4190.9
+          ],
+          "equal_within_1e_9": true
+        }
+      ]
+    }
+  ],
+  "iron_task_binding": {
+    "interaction_id": "armory_old_record",
+    "semantic_owner_id": "shop",
+    "record_activation_foot_px": [
+      4140,
+      3510
+    ],
+    "new_raw_equivalent_source_px": [
+      797.3684210526316,
+      1303.157894736842
+    ],
+    "note": "On public ironshop apron beyond the front body, not inside the opaque rear. New bitmap does not prove a separate legible record prop; source keeps original readable action/hide and logical owner semantics.",
+    "padded_native_equivalent_source_px": [
+      878.3684210526316,
+      1368.157894736842
+    ]
+  },
+  "constraints": [
+    "Only source pixel coordinates shift; source lengths/heights, outward vectors, uniform .8/.95/1.03, worldfeet, activation/return feet and source logical identity remain unchanged.",
+    "Manual inferred closed footprint minus door walk-channel still requires Source polygon difference and finite body checks; cleanup/padding is not a geometry or runtime pass.",
+    "No RAW overwritten; no further image processing, image generation, import, engine or canonical binding in this handoff.",
+    "Old04 annotations and pending08 plan remain historical unchanged; actual permission and receipt supersede their pending status only for these derived outputs."
+  ]
+}

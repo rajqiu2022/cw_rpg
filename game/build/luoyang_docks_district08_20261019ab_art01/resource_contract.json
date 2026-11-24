@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "contract_id": "luoyang_docks_district08_20261019ab_art01",
+  "status": "READONLY_ART_PROPOSAL_NOT_RUNTIME_NOT_FIELD",
+  "scope": "District 08 west workyard follow-up after aa remove2/retain1; reuse only, no source image edits",
+  "design_size_px": [3072, 2048],
+  "frozen_inputs": {
+    "aa_layout_contract": {
+      "path": "game/build/luoyang_docks_district08_20261019aa_art01/layout_spec.json",
+      "sha256": "281C64FFA5B081468D53E1E08CD3184D7CFF40221659F6F6F575CDFBB0C34942"
+    },
+    "aa_local_visual_review": {
+      "path": "game/build/luoyang_docks_district08_20261019aa_preview/73528/art_review.md",
+      "sha256": "B800B4A47261829651F388DD311F07D4FC3C0EBA41362F560C710D6812D3D0CC"
+    },
+    "aa_local_preview": {
+      "path": "game/build/luoyang_docks_district08_20261019aa_preview/73528/west_block_before_after.png",
+      "sha256": "3C89DD819CBFD50BA420007F073B5B3E8C8D34F18002BCF680A84931F0BB172A",
+      "credit": "local five-ID art preview only; not Field"
+    }
+  },
+  "protected": {
+    "north_warehouse_door_foot_px": [754, 610],
+    "portals_px": {
+      "to_yamen": [260, 790],
+      "to_south_market": [260, 1740],
+      "ferry": [2140, 1840]
+    },
+    "task_points_px": {
+      "warehouse_mud_trace": [940, 690],
+      "warehouse_mud_stand": [940, 750]
+    },
+    "npc_feet_px": {
+      "store_attendant": [1050, 970],
+      "rope_seller": [1050, 1410],
+      "saved_porter": [1830, 1190],
+      "old_soldier": [1930, 970],
+      "chief": [1740, 1310]
+    },
+    "moving_domains": [
+      {"center_px": [590, 1240], "radius_px": 100},
+      {"center_px": [900, 1930], "radius_px": 140}
+    ],
+    "routes_px": {
+      "quay_road": [[340, 1840], [1200, 1840], [1200, 1600], [1200, 1250], [1430, 1250], [1900, 1100], [2140, 820], [1840, 790], [1500, 810]],
+      "quay_loop": [[1430, 1250], [1170, 1080], [1110, 800], [1500, 810], [1840, 790], [2140, 820], [1900, 1100], [1430, 1250]],
+      "yamen_exit": [[1110, 800], [260, 790]],
+      "market_exit": [[1200, 1600], [1200, 1740], [260, 1740]],
+      "warehouse_mud": [[1110, 800], [940, 750]],
+      "notice": [[1170, 1080], [1170, 1300], [1200, 1300], [1200, 1570], [1400, 1570]],
+      "ferry": [[1200, 1840], [2140, 1840]],
+      "chief": [[1430, 1250], [1740, 1310]],
+      "spacing_restore": [[1500, 810], [1500, 630]]
+    }
+  },
+  "candidate_classes": [
+    {
+      "class_id": "wood_handcart",
+      "admission": "USABLE_CONDITIONALLY_PENDING_ROUTE_PHYSICS_AND_FIELD_VISUAL",
+      "source": {
+        "path": "game/art/modules/luoyang_assembled_interiors_20261016g/wood_handcart_v1.png",
+        "sha256": "0CCD655D3A3D406130C811FEB6D240646A10A20AE612811BDED334B9B98BFE76",
+        "bytes": 1717277,
+        "size_px": [1536, 1024],
+        "meta_path": "assets/raw/luoyang_interiors_assembly_20261016g/wood_handcart_v1.meta.json",
+        "meta_sha256": "449C38741A8B734D96F856A87CF82A1216EB0F8F5C7377F1FC3DCDB5CA9B8CE6",
+        "license_boundary": "project generated; not CC0; model/provider/cost undisclosed",
+        "png_modified": false
+      },
+      "alpha": {
+        "mode": "RGBA",
+        "extrema": [0, 254],
+        "bbox_nonzero_source_px": [39, 21, 1424, 992],
+        "bbox_alpha_ge8_source_px": [139, 171, 1400, 818],
+        "edge_alpha_nonzero": false,
+        "policy": "preserve every source pixel including A1 tails; no crop, erasure or threshold cleanup"
+      },
+      "placement": {
+        "foot_px": [820, 1590],
+        "source_scale": 0.18,
+        "render_size_px": [276.48, 184.32],
+        "foot_uv": [0.7122395833333334, 0.7978515625],
+        "alpha_nonzero_aabb_px": [630.1, 1446.72, 879.4, 1621.5],
+        "alpha_ge8_aabb_px": [648.1, 1473.72, 875.08, 1590.18],
+        "ground_solid_polygon_px": [[648.1, 1546.44], [724.06, 1522.5], [809.02, 1498.02], [874.72, 1545.72], [870.76, 1573.26], [841.24, 1590.18], [703.0, 1575.24], [648.1, 1557.42]],
+        "solid_required": true,
+        "orientation": "keep original 3/4 diagonal; do not rotate or mirror bitmap"
+      },
+      "art_reason": "A single complete cart establishes loading work and occupies the former south-front empty slab without repeating another building or crate wall.",
+      "limitations": "Warm studio-lit generated component against the cooler dock floor; must be judged in actual Field before publication. Static obstacle only, not pushable gameplay."
+    },
+    {
+      "class_id": "grain_sack_stack",
+      "admission": "USABLE_CONDITIONALLY_PENDING_ROUTE_PHYSICS_AND_FIELD_VISUAL",
+      "source": {
+        "path": "game/art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png",
+        "sha256": "696AE8DB11DF69D6D9BB178979C6275102725217D2C0946F3457BC333382B4C3",
+        "bytes": 2414641,
+        "size_px": [1536, 1024],
+        "meta_path": "assets/raw/luoyang_interiors_assembly_20261016g/grain_sack_stack_v1.meta.json",
+        "meta_sha256": "DFC0EC9EA86A8130570DC0E3F808FA84A4C76FD93F738670618DD7549D2E7FB8",
+        "license_boundary": "project generated; not CC0; model/provider/cost undisclosed",
+        "png_modified": false
+      },
+      "alpha": {
+        "mode": "RGBA",
+        "extrema": [0, 254],
+        "bbox_nonzero_source_px": [0, 8, 1442, 1024],
+        "bbox_alpha_ge8_source_px": [192, 153, 1341, 911],
+        "edge_alpha_nonzero": {"left": 1, "bottom": 14, "maximum_alpha": 1},
+        "policy": "preserve weak left/bottom A1 pixels; no crop, erasure or threshold cleanup"
+      },
+      "placement": {
+        "foot_px": [760, 960],
+        "source_scale": 0.14,
+        "render_size_px": [215.04, 143.36],
+        "foot_uv": [0.5, 0.8876953125],
+        "alpha_nonzero_aabb_px": [652.48, 833.86, 854.36, 976.1],
+        "alpha_ge8_aabb_px": [679.36, 854.16, 840.22, 960.28],
+        "ground_solid_polygon_px": [[684.82, 941.66], [835.46, 941.66], [835.46, 960.28], [684.82, 960.28]],
+        "solid_required": true
+      },
+      "art_reason": "Five sacks on one low pallet read as stored grain and give the warehouse frontage a distinct material family instead of another wooden box.",
+      "limitations": "The whole stack is one obstacle; gaps between sacks are not walkable. Warm source lighting needs actual Field comparison."
+    },
+    {
+      "class_id": "existing_quay_crate_pair",
+      "admission": "AA_ACCESSORY_PROPOSAL_RETAINED_BUT_NOT_SUFFICIENT_RICHNESS",
+      "source": {
+        "path": "game/art/modules/luoyang_district_life_20261016f/stock_crate.png",
+        "sha256": "D985D13D8095B2456A7EE4819058AF620E777B6B023C8034986ECD2690CABC6B",
+        "bytes": 14801,
+        "size_px": [117, 118],
+        "license_boundary": "project generated module GPU UV export; not CC0",
+        "donor_object_id": "quay_crate_2010",
+        "donor_manifest_sha256": "0470E79BEEB5E71842FB3D9FC9B3DB44FE356A6C8C5AD7D7E00C585CC8ECE5AF"
+      },
+      "alpha": {
+        "bbox_nonzero_source_px": [13, 32, 103, 103],
+        "bbox_alpha_ge8_source_px": [13, 32, 103, 103],
+        "edge_alpha_nonzero": false,
+        "policy": "unchanged source; do not duplicate beyond the two aa accessory positions in this atom"
+      },
+      "placement": {
+        "source_scale": 1.0,
+        "render_size_px": [117, 118],
+        "foot_uv": [0.49572649572649574, 0.8559322033898306],
+        "instances": [
+          {
+            "foot_px": [1000, 1160],
+            "alpha_nonzero_aabb_px": [955, 1091, 1045, 1162],
+            "ground_solid_polygon_px": [[963.25, 1136.2700163125992], [1041.3701172173023, 1129.7600065469792], [1043.6799316704323, 1157.6899381875992], [979.0, 1162.0999723672892]]
+          },
+          {
+            "foot_px": [1030, 1530],
+            "alpha_nonzero_aabb_px": [985, 1461, 1075, 1532],
+            "ground_solid_polygon_px": [[993.25, 1506.2700163125992], [1071.3701172173023, 1499.7600065469792], [1073.6799316704323, 1527.6899381875992], [1009.0, 1532.0999723672892]]
+          }
+        ],
+        "solid_required": true
+      },
+      "art_reason": "Keeps aa's two small cargo markers, but they remain subordinate to cart and sacks and must not become a crate pile solution."
+    },
+    {
+      "class_id": "cart_rut_and_wet_stone_local_ground_layer",
+      "admission": "MISSING_AUTHORED_LAYER_SOURCE_MATERIALS_ONLY",
+      "source_materials": [
+        {
+          "path": "game/art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png",
+          "sha256": "7E9C7D892F86CED04AD3B8AD293208E05D87A01AFFFC2729804E4469F87DEB7D",
+          "bytes": 3539914,
+          "license_boundary": "project original builtin-generated stone albedo; not CC0",
+          "generation_record_path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+          "generation_record_sha256": "55C9A621FF125B736DB2DA85350A208A08F530E81BEA1D2C11DC165CF76858C5"
+        },
+        {
+          "path": "game/art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_nor_gl_2k.jpg",
+          "sha256": "70427A2C81F85C0E1EE4A147E273D028C3D0188BAD2583F2509D6DF9A3D55B89",
+          "bytes": 2989093,
+          "license_boundary": "Poly Haven rock_01 CC0; normal microdetail only"
+        },
+        {
+          "path": "game/art/external/polyhaven/world_terrain_v14_sixth/rock_01/rock_01_arm_2k.jpg",
+          "sha256": "A954DE58336738E6F963466F1453202EF7E186BD6492106C3B989C39F0D2E23C",
+          "bytes": 925560,
+          "license_boundary": "Poly Haven rock_01 CC0; ARM microdetail only"
+        }
+      ],
+      "source_license_record": {
+        "path": "game/art/external/polyhaven/world_terrain_v14_sixth/rock_01/SOURCE.json",
+        "sha256": "33B0D87D8A159028397B6A7A112B66106E5B78D87130D385A26F7471EED5487A"
+      },
+      "authoring_envelope_px": [[620, 1450], [1120, 1450], [1120, 1640], [620, 1640]],
+      "render_and_collision": {
+        "render_role": "low-contrast irregular wheel wear plus damp joint darkening under the south workyard props",
+        "solid": false,
+        "navigation_change": false,
+        "interaction": false,
+        "forbidden": "no runtime debug draw, no flat programmatic color patch, no use of warehouse_mud_trace quest evidence, no full-floor rebake in this atom"
+      },
+      "art_reason": "A local nonblocking ground layer is the missing link between cart, sacks and stone quay, but no finished reusable rut/wet-stone raster currently exists."
+    }
+  ],
+  "explicit_gaps_and_rejections": [
+    {
+      "item": "rope_coil",
+      "status": "MISSING_REUSABLE_ASSET",
+      "reason": "No standalone licensed rope-coil image with measured alpha/foot contract was found. The rope shop building is not a substitute. New generation or native authoring needs separate authorization."
+    },
+    {
+      "item": "true_wood_barrel",
+      "status": "CURRENT_NAMED_ASSET_REJECTED_FOR_THIS_DOCK_BATCH",
+      "examined_path": "game/art/modules/prop/prop_linxi_barrel_wood_a.png",
+      "sha256": "8E4B449763EFFCBE53E70C8D04271E70038C3D932302ABCA30FAF3A97767C336",
+      "reason": "The pixels read as a covered woven basket/chest rather than a stave barrel, and the hand-painted linework does not match the current realistic dock props. Renaming it would not fix the visual identity."
+    },
+    {
+      "item": "cart_rut_and_wet_stone_finished_overlay",
+      "status": "MISSING_AUTHORED_OUTPUT",
+      "reason": "Only approved source materials exist; this contract does not fabricate or publish a ground image."
+    }
+  ],
+  "implementation_order": [
+    "1. Bind one handcart and one grain-sack stack with the exact measured scale, foot, alpha envelope and conservative solids above.",
+    "2. Keep aa's two crates as secondary accents only.",
+    "3. Run exact route, 875/17 body, moving-domain and actual Field visual checks before any runtime/formal credit.",
+    "4. Author the ground-only wear/wet layer as a separate later atom; it must remain nonblocking and source-pinned."
+  ],
+  "credit_limits": [
+    "No engine run, import, runtime binding, Field image, route proof or formal publication is credited here.",
+    "This is not completion of District 08; office, ships, ferry, NPCs and existing routes remain protected background.",
+    "The two aa crates are usable accessories but do not by themselves satisfy dock richness.",
+    "No source PNG was edited and no alpha was erased."
+  ]
+}

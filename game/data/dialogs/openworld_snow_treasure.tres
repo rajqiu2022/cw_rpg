@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "石匣里横放着一柄玄铁重剑，旁边是装订完整的《寒岭守元诀》。重剑可以立即装备；秘籍只收入行囊，需打开阅读并达到悟性八点，才能自行领悟。"
+set_flags = Array[Dictionary]([{"key":"openworld_snow_treasure_found","value":true}])
+give_items = Array[Dictionary]([{"id":"heavy_iron_sword","count":1},{"id":"cold_ridge_guard_breath_manual","count":1}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_snow_treasure"
+required_free_inventory_slots = 2
+nodes = Array[Resource]([SubResource("start")])
+blocked_story_flag = &"openworld_snow_treasure_found"

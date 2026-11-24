@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "冷孤云"
+text = "鞋底沾的是河岸红土，衣角却有潥阳白砂。她不是在河里遇害，是被人从岸上推下去的。"
+set_flags = Array[Dictionary]([{"key": "river_death_case_solved", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch2_river_death_turnin"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"ch5_false_banner_captain"
+display_name = "伪旗统领"
+portrait_path = "res://art/characters/ch5/false_banner_captain_field_v1.png"
+battle_actor_status_lift = 58.0
+attack_sfx_path = "res://art/audio/free/sfx_blade_whoosh_wuxia_v2.wav"
+hit_sfx_path = "res://art/audio/free/sfx_hit_body_wuxia_v2.wav"
+defeat_sfx_path = "res://art/audio/free/sfx_hit_metal_wuxia_v2.wav"
+battle_actor_path = "res://art/sprites/battle/story_duels_20261121/captain/ready.tres"
+battle_actor_flip_h = false
+battle_actor_use_exact_scale = true
+battle_actor_scale = 1.03
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/captain/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/captain/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/captain/attack1.tres", "res://art/sprites/battle/story_duels_20261121/captain/attack2.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/captain/hit1.tres", "res://art/sprites/battle/story_duels_20261121/captain/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/story_duels_20261121/captain/knee.tres", "res://art/sprites/battle/story_duels_20261121/captain/down.tres")
+level = 9
+max_hp = 620
+max_mp = 130
+attack = 82
+defense = 20
+trait_caption = "锁甲阵"
+breakable_armor = 48
+speed = 22
+skill_ids = Array[StringName]([&"basic_attack", &"ch5_false_banner_signal", &"zhao_broken_gate_strike"])
+aggression = 0.68
+drop_gold_min = 90
+drop_gold_max = 130
+drop_exp = 150
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"healing_pill_major", "chance":0.45, "count":1}, {"item_id":"inner_breath_pill", "chance":0.45, "count":1}])
+is_chapter_boss = true

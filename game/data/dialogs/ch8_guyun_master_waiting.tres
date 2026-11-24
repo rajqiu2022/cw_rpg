@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "刑樊天"
+portrait_path = "res://art/characters/portrait_xingfantian_master.png"
+text = "去正屋兵器架前的暗门。地下室最上层那只旧木匣，我守了半生，却直到今日才知道师父把什么留在里面。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch8_guyun_master_waiting"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

@@ -1,0 +1,44 @@
+{
+  "id": "yihongyuan27n_interior",
+  "display_name": "怡红院·接待厅与雅座",
+  "world_size_px": [1536, 1024],
+  "shell": {
+    "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/shell_inn_hall_v1.png",
+    "source_size_px": [1536, 1024],
+    "position_px": [0, 0],
+    "uniform_scale": 1,
+    "note": "Native complete two-storey hall, no canvas stretching. Upper gallery is visual only. No garden claimed on wooden flooring."
+  },
+  "zones": [
+    {"id": "public_hall", "display_name": "接待大厅", "rect": [[320, 580], [620, 240]]},
+    {"id": "screened_east_seating", "display_name": "屏风雅座", "rect": [[920, 620], [340, 190]]},
+    {"id": "backstage_tea_preparation", "display_name": "后台备茶区", "rect": [[830, 448], [450, 125]]}
+  ],
+  "entry_foot_px": [768, 850],
+  "exit_foot_px": [768, 920],
+  "exit_source_spawn_px": [768, 890],
+  "central_clear_aisle": [[680, 580], [170, 370]],
+  "source_floor_polygon_px": [[240, 448], [1292, 448], [1400, 822], [898, 822], [898, 941], [650, 941], [650, 822], [122, 822]],
+  "door": {"id": "yihongyuan27n_exit", "target_region": "luoyang_civic_market_region_27d", "target_logical": "ch4_s3_luoyang_market", "label": "返回怡红院门前"},
+  "lore_spec": "res://build/luoyang_yihongyuan_20261029n_art01/asset_and_layout_spec.json",
+  "furniture_donors": [
+    {"path": "res://data/maps/luoyang_assembled_interiors_20261016g/inn_hall_author.json", "logical_id": "luoyang_market_inn_interior_20261015"},
+    {"path": "res://data/maps/luoyang_assembled_interiors_20261016g/mansion_reception_author.json", "logical_id": "luoyang_functional_mansion_candidate_20261016"}
+  ],
+  "furniture_instances": [
+    {"id": "yihongyuan_reception_counter", "donor_logical_id": "luoyang_market_inn_interior_20261015", "donor_owner_id": "inn_hall_inn_counter_0", "target_foot_px": [1160, 560]},
+    {"id": "yihongyuan_tea_shelf", "donor_logical_id": "luoyang_market_inn_interior_20261015", "donor_owner_id": "inn_hall_wine_tea_shelf_1", "target_foot_px": [1150, 480]},
+    {"id": "yihongyuan_public_table", "donor_logical_id": "luoyang_market_inn_interior_20261015", "donor_owner_id": "inn_hall_dining_table_2", "target_foot_px": [400, 620]},
+    {"id": "yihongyuan_quiet_table", "donor_logical_id": "luoyang_market_inn_interior_20261015", "donor_owner_id": "inn_hall_dining_table_4", "target_foot_px": [1070, 740]},
+    {"id": "yihongyuan_quiet_screen", "donor_logical_id": "luoyang_functional_mansion_candidate_20261016", "donor_owner_id": "mansion_reception_folding_screen_6", "target_foot_px": [1170, 640]},
+    {"id": "yihongyuan_backstage_desk", "donor_logical_id": "luoyang_functional_mansion_candidate_20261016", "donor_owner_id": "mansion_reception_writing_desk_4", "target_foot_px": [900, 525]},
+    {"id": "yihongyuan_guest_chair", "donor_logical_id": "luoyang_functional_mansion_candidate_20261016", "donor_owner_id": "mansion_reception_wood_armchair_5", "target_foot_px": [1260, 760]},
+    {"id": "yihongyuan_gallery_stair_visual", "donor_logical_id": "luoyang_market_inn_interior_20261015", "donor_owner_id": "inn_hall_timber_stair_6", "target_foot_px": [265, 535]}
+  ],
+  "future_story_anchors": [
+    {"id": "yihongyuan_future_reception", "foot_px": [1040, 610], "enabled": false},
+    {"id": "yihongyuan_future_private_conversation", "foot_px": [1200, 740], "enabled": false},
+    {"id": "yihongyuan_future_backstage", "foot_px": [900, 580], "enabled": false}
+  ],
+  "policy": "Four talking ordinary adults plus two ambient adults from the approved Art/Lore source. No quests, rewards, invented musician or traversable upper floor."
+}

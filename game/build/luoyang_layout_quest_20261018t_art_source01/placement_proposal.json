@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "change_id": "luoyang-layout-quest-20261018t",
+  "status": "ART_READ_ONLY_PROPOSAL_ROOT_ACCEPTED_LAYOUT_AND_RUNTIME_VALIDATION_PENDING",
+  "room_scene_id": "luoyang_market_market_northeast_rear_frontage_interior_20261015",
+  "coordinate_domain": "source_room_feet_1536x1024_actual_world1920x1280_factor1.25",
+  "replace_id": "herbal_shop_wood_armchair_4",
+  "proposed_id": "herbal_shop_consultation_bench_4",
+  "asset_id": "long_bench_v1",
+  "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png",
+  "source_sha256": "41759460141F9A6BA742D5DF9D2DE3FCE10BA040AF5A86FA8F31BD540877108E",
+  "source_size_px": [
+    1536,
+    1024
+  ],
+  "source_ground_anchor_px": [
+    768,
+    784
+  ],
+  "source_ground_solid_polygons_px": [
+    [
+      [
+        183,
+        687
+      ],
+      [
+        1356,
+        687
+      ],
+      [
+        1356,
+        785
+      ],
+      [
+        183,
+        785
+      ]
+    ]
+  ],
+  "placement_foot_px": [
+    1120,
+    665
+  ],
+  "render_scale": 0.075,
+  "depth_foot_y": 665,
+  "height_behavior": "LOW_OPAQUE_ACTOR_LOCAL_GHOST",
+  "transformed_source_room_base_polygon": [
+    [
+      1076.125,
+      657.725
+    ],
+    [
+      1164.1,
+      657.725
+    ],
+    [
+      1164.1,
+      665.075
+    ],
+    [
+      1076.125,
+      665.075
+    ]
+  ],
+  "actual_world_base_polygon": [
+    [
+      1345.15625,
+      822.15625
+    ],
+    [
+      1455.125,
+      822.15625
+    ],
+    [
+      1455.125,
+      831.34375
+    ],
+    [
+      1345.15625,
+      831.34375
+    ]
+  ],
+  "visual_estimate_alpha_ge64_source_room_rect": [
+    1068.775,
+    631.25,
+    102.225,
+    33.825
+  ],
+  "visual_estimate_alpha_ge64_actual_world_size": [
+    127.78125,
+    42.28125
+  ],
+  "table_unchanged": {
+    "id": "herbal_shop_dining_table_3",
+    "placement_foot_px": [
+      1120,
+      625
+    ],
+    "render_scale": 0.12
+  },
+  "waiting_bench_unchanged": {
+    "id": "herbal_shop_long_bench_5",
+    "placement_foot_px": [
+      860,
+      690
+    ],
+    "render_scale": 0.11
+  },
+  "no_rotation": true,
+  "no_bitmap_edit": true,
+  "no_generation": true,
+  "notes": [
+    "无靠背长凳不再出现椅背朝桌；原正面朝南扶手椅位于桌南侧是问题来源。",
+    "新.075为本次明确作者比例建议，比旧source_geometry建议范围.09..12略小；不是偷偷把原合同范围或strict_padding失败改PASS。",
+    "尺寸是原A>=64 bbox的比例估算，不是用阈值裁图；运行保留完整RGBA原canvas/alpha1尾迹。",
+    "Layout owner需同步替换asset/provenance来源、furniture_base、depth、负点、接近路线/验证站与source闭包；不得沿用旧扶手椅base。",
+    "原桌及候诊凳、NPC/出口/功能不变；Physics/路径与实机美术仍待，不冒已正式。"
+  ],
+  "shadow": {
+    "source_floor": "res://art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/ground_v14/root_ground_v14_02/floor.png",
+    "source_floor_sha256": "84141347A9838B810E09172B90F92299CB73E165B51DB45064816CDAE5419287",
+    "capture_metadata": "res://art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/ground_v14/root_ground_v14_02/ground_capture.json",
+    "capture_metadata_sha256": "1FD971708AC0375E557749F8175B804AC58D71409E717E7BE88CAB7EB78E181F",
+    "cause": "floor烘焙保留原native树0/1 caster，assembled作者搬树而未搬烘影；不是独立影子节点",
+    "current_move_author": "res://data/maps/luoyang_city_assembled_20261016b/author_retry2.json",
+    "current_move_author_sha256": "C38C1E2A59CBA1F12AE5CD11DFE6C74C3DEA38FE151ABEDBE0835CDAD0AAD28B",
+    "root_accepted_strategy": "两原树回原nativefoot，不新增图、不复制树遮影；相应render/solid/route需布局owner同步",
+    "return_native_feet": [
+      {
+        "id": "street_tree_0",
+        "current_foot_px": [
+          350,
+          1500
+        ],
+        "proposed_foot_px": [
+          300,
+          550
+        ]
+      },
+      {
+        "id": "street_tree_1",
+        "current_foot_px": [
+          2730,
+          1520
+        ],
+        "proposed_foot_px": [
+          2800,
+          520
+        ]
+      }
+    ],
+    "keep_existing": [
+      {
+        "id": "street_tree_2",
+        "foot_px": [
+          330,
+          1770
+        ]
+      },
+      {
+        "id": "street_tree_3",
+        "foot_px": [
+          2720,
+          1760
+        ]
+      }
+    ],
+    "preserve_added_garden_trees": true,
+    "native_tree_texture": "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s1_luoyang_yamen/entities/native_tree.png",
+    "native_tree_size_px": [
+      178,
+      250
+    ],
+    "native_tree_foot_uv": [
+      0.426966292134831,
+      0.974724609375
+    ],
+    "native_tree_source_foot_px": [
+      76,
+      243.68115234375
+    ],
+    "native_tree_collision_size_px": [
+      24,
+      18
+    ],
+    "native_tree_physical_center_offset_px": [
+      0,
+      -9
+    ],
+    "native_tree_license_evidence": "原native_tree.json/ground_capture/PolyHaven TreeSmall02已登记来源，非新生成家具许可",
+    "no_floor_modification": true
+  }
+}

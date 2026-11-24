@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch8_xueying_last_guard"
+display_name="薛影·最后一令"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+battle_actor_path="res://art/sprites/battle/ch8/xueying/xueying_ready_01.png"
+battle_actor_scale=0.88
+battle_actor_flip_h=false
+defeat_mode=&"story_resolution"
+ready_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/xueying/xueying_ready_01.png","res://art/sprites/battle/ch8/xueying/xueying_ready_02.png","res://art/sprites/battle/ch8/xueying/xueying_ready_03.png","res://art/sprites/battle/ch8/xueying/xueying_ready_04.png")
+move_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/xueying/xueying_move_01.png","res://art/sprites/battle/ch8/xueying/xueying_move_02.png","res://art/sprites/battle/ch8/xueying/xueying_move_03.png","res://art/sprites/battle/ch8/xueying/xueying_move_04.png")
+attack_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/xueying/xueying_attack_01.png","res://art/sprites/battle/ch8/xueying/xueying_attack_02.png","res://art/sprites/battle/ch8/xueying/xueying_attack_03.png","res://art/sprites/battle/ch8/xueying/xueying_attack_04.png")
+hit_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/xueying/xueying_hit_01.png","res://art/sprites/battle/ch8/xueying/xueying_hit_02.png","res://art/sprites/battle/ch8/xueying/xueying_hit_03.png","res://art/sprites/battle/ch8/xueying/xueying_hit_04.png")
+defeat_frame_paths=PackedStringArray("res://art/sprites/battle/ch8/xueying/xueying_defeat_01.png","res://art/sprites/battle/ch8/xueying/xueying_defeat_02.png","res://art/sprites/battle/ch8/xueying/xueying_defeat_03.png","res://art/sprites/battle/ch8/xueying/xueying_defeat_04.png")
+attack_sfx_path="res://art/audio/free/sfx_palm_burst_wuxia_v2.wav"
+hit_sfx_path="res://art/audio/free/sfx_hit_body_wuxia_v2.wav"
+defeat_sfx_path="res://art/audio/free/sfx_hit_free_v1.wav"
+level=15
+max_hp=1850
+max_mp=280
+attack=108
+defense=35
+trait_caption="移形步"
+evasion_penalty=0.45
+speed=48
+skill_ids=Array[StringName]([&"basic_attack",&"mingwu_wuyin_sanshi",&"toxic_needle",&"ch8_xueying_shadow_fan"])
+aggression=0.84
+drop_gold_min=120
+drop_gold_max=170
+drop_exp=260
+drop_items=Array[StringName]([])
+drop_random=Array[Dictionary]([{"item_id":"healing_pill_major","chance":0.55,"count":1}])
+is_chapter_boss=true

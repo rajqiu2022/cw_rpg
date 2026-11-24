@@ -1,0 +1,24 @@
+{
+  "status": "NEW_BUILD_ONLY_NOT_ENGINE_CHECKED",
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate02/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "ce3c26fe6ccd702c703e9a84dd2246e2da577f3766928efb625a8aa3d5d1dabd",
+    "bytes": 107833
+  },
+  "parent": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate01_retry1/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "b58e939c2ad70912de3fb86e8cb42a7d50ec62706b0c47dde069939dafb98829"
+  },
+  "old": "WorkerThreadPool.add_task(job.run,false,\"Exact AP Market lease complete source SHA\")",
+  "new": "WorkerThreadPool.add_task(Callable(job,\"run\"),false,\"Exact AP Market lease complete source SHA\")",
+  "whole_byte_inverse": true,
+  "prior_handoff": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate01_retry1/handoff_READY.json",
+    "sha256": "4db3a365226fd8ac03956d0948d667b636a6c4a526ad54acb86fa346d9a4fb2a"
+  },
+  "lease_unchanged": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate01_retry1/Resident_exact_market_artisan_READY.gd",
+    "sha256": "faf38e53113431c77a85c3a4068437007c07aa85ef44fb37665704a66aa1e9b4"
+  },
+  "reason": "Explicit existing run Callable on RefCounted-typed job; no reliance on a statically undeclared member; no worker implementation change."
+}

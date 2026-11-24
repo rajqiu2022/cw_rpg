@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+enemy_id = &"wild_elite_western_lion"
+display_name = "西域雄狮"
+battle_actor_path = "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/ready_01.tres"
+battle_actor_scale = 1.05
+battle_actor_flip_h = false
+attack_sfx_path = "res://art/audio/animals/enemy_expansion_20261112/lion_attack.wav"
+hit_sfx_path = "res://art/audio/animals/enemy_expansion_20261112/lion_hit.wav"
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/ready_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/ready_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/ready_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/ready_04.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/move_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/move_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/move_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/move_04.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/attack_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/attack_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/attack_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/attack_04.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/hit_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/hit_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/hit_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/hit_04.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/defeat_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/defeat_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/defeat_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/wild_elite_western_lion/defeat_04.tres")
+level = 12
+max_hp = 810
+max_mp = 0
+attack = 108
+defense = 22
+speed = 21
+skill_ids = Array[StringName]([&"basic_attack", &"animal_lion_sweep"])
+aggression = 0.72
+drop_gold_min = 12
+drop_gold_max = 24
+drop_exp = 172

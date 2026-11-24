@@ -1,0 +1,28 @@
+shared: {}
+tasks:
+  - id: luoyang_yihongyuan_sign_edit_20261029n_v1
+    template: luoyang_yihongyuan_sign_edit_20261029n
+    category: luoyang_yihongyuan_20261029n
+    execution_backend: builtin_image_gen
+    skip: true
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    model: null
+    provider: null
+    cost: null
+    transparent_background: true
+    prompt_path: prompts/luoyang_yihongyuan_20261029n/sign_edit_prompt.txt
+    edit_target: game/art/maps/luoyang_city_rebuild_20261027d/spring_house_complete_v1_padded.png
+    edit_target_sha256: 684e76ba53658d547fbade6279f5d9c28664e5dc768adf275691ed92cdefd98e
+    reference_images:
+      - game/art/maps/luoyang_city_rebuild_20261027d/spring_house_complete_v1_padded.png
+    vars:
+      asset_prompt: |
+        Use case: text-localization.
+        Asset type: existing complete transparent-background 2.5D Chinese wuxia RPG building sprite, a local sign lettering edit only.
+        Input image 1 is the EDIT TARGET, not a general style reference: the provided two-storey grey-tile, reddish-brown timber building with four red lanterns and a single central entrance.
+        Primary request: replace ONLY the two characters on the existing dark wood plaque above the main entrance. The new plaque must read exactly three simplified Chinese characters, left to right: 怡 红 院. Text (verbatim): "怡红院".
+        Keep the same plaque outer border, dark wood board, pale-gold brush-calligraphy style and lighting. Fit all three characters clearly within the existing board by natural lettering spacing; do not widen, move, rebuild or add a second sign. Remove the old lettering "春楼" completely. No other new text.
+        Strict invariants: preserve the entire building silhouette, fixed camera angle and projection, every roof ridge and eave, both storeys, balcony lattice, four red lanterns, muted red curtains, main door location and usable opening, closed side/rear walls, foundation, front steps, timber and brick textures, colors, upper-left daylight and all architectural proportions. Preserve canvas framing and transparent margins. Do not zoom, crop, rescale, rotate, mirror, add ground or add cast shadows.
+        Background: genuinely transparent RGBA, preserve existing transparency; no black or white matte, no fog, checkerboard painting or scenery. No people, furniture outside the building, erotic imagery, watermark, English or additional signage. All visible differences should be restricted to the lettering inside the existing main plaque.

@@ -1,0 +1,20 @@
+id: luoyang_modular_v2_goods_stall
+description: Coherent standalone cloth-and-goods street stall for human-scale Luoyang. Built-in only; NOT CC0.
+backend: codex_builtin_imagegen
+model: builtin
+size: "1536x1024"
+background: transparent
+transparent_background: true
+quality: high
+reference_images:
+  - game/art/maps/luoyang_modular_v1/source/shop_v1.png
+require_reference_images: true
+prompt_template: |
+  Use case: historical-scene.
+  Asset type: ONE isolated transparent RGBA market stall for a realistic Chinese wuxia RPG city INTERIOR, not a whole market background or world-map miniature.
+  Input images: the existing Luoyang workshop is a MATERIAL, SCALE AND LIGHTING reference only, not an edit target. Do not copy its building or stone steps.
+  Primary request: one complete believable modest street merchant's stall, a weathered dark-timber counter under a shallow faded tan linen awning held by four slim wooden uprights with visible practical joinery. The front counter has neatly folded muted indigo and undyed linen bolts, two small closed ceramic jars and a shallow woven basket of wrapped parcels. A low wooden storage chest is tucked INSIDE the stall under the counter, not a separate object outside its footprint. Cloth sags gently between poles, seams and tied cords visible. Show fine wood grain, rubbed counter corners, realistic cloth weave and ceramic surface; not flat box props or a picturesque diorama full of clutter.
+  Composition/framing: fixed FRONT-FACING ORTHOGRAPHIC camera directly SOUTH looking NORTH at 30 degrees elevation above horizontal, true parallel projection, horizontal counter front and no perspective convergence. Complete awning, all posts, counter legs and all lowest feet in the frame; generous 10% transparent padding on every side. Compact coherent footprint, open space beneath the front counter, no huge ground slab. Real awning about 2.5 metres high and stall about 3.8 metres wide; intended logical width roughly 260-340 pixels, beside a 113.5-pixel adult. Counter height about one metre, not chest-high to a giant.
+  Lighting/mood: neutral upper-left/front daylight with restrained cool ambient, naturally muted dark wood, warm aged tan linen and grey-brown pottery. Local interior self-shadows are allowed; only tiny ground-contact shade under each foot, no large outside cast shadow.
+  Text: NONE. No shop labels, price tags, Chinese calligraphy, Latin letters, stamps, branding or icons.
+  Constraints: crisp photorealistic physically detailed pre-rendered game prop, human-scale not a toy. One coherent stall, no merchant or customer, no people, animals, food piles, weapons, street scenery, trees, paving plane, wall, whole shop building or disconnected loose props. True alpha=0 background and gaps, no white/grey/black backdrop, smoky halo, checkerboard pixels, heavy outlines, cropped poles or feet, painterly look, cartoon, anime, UI, logo or watermark.

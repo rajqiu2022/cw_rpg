@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "密道出口藏在白水驿旧路下方。河声盖住了脚步，驿舍早塌，里程碑和翻覆货车却还留在原处。"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "十八年足够让木头腐烂，却抹不掉车轴宽窄和石上的刻痕。先按原册的时辰重走一遍。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_baishui_route_intro"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero")])

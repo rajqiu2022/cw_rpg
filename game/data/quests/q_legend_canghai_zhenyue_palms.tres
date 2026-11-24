@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_legend_canghai_zhenyue_palms"
+title = "沧浪义约"
+kind = 1
+desc_not_started = "竹尾河滩的旧船夫认出你帮助过穷苦船户，暗中留下行义帮的半枚竹符。"
+desc_in_progress = "行义帮不看门第，只看人在饥荒、洪水与强权面前如何选择。践行竹尾、洛阳与古峰的三桩义约后，去护粮营找行义帮粮秤人合验竹符。"
+desc_completed = "你护住漕粮、救下灾民并通过三场义约。行义帮传功长老终于将镇帮掌法“盘龙十七式”相授。"
+tracker_hint = "城镇与河道 · 完成行义约"
+completion_triggers = Array[String](["flag_set:boat_feud_resolved", "flag_set:ch4_canal_witness_saved", "flag_set:xingyi_grain_convoy_saved", "flag_set:xingyi_three_oaths_complete"])
+auto_accept_triggers = Array[String](["flag_set:boat_feud_resolved"])
+require_all_completion_triggers = true
+starts_in_chapter = 2
+completes_in_chapter = 6
+milestone_labels = Array[String](["竹尾河滩·护住船户", "洛阳漕渠·保全活口", "古峰灾道·护送赈粮", "古峰护粮营·请粮秤人核验三桩义约"])
+reward_gold = 0
+reward_exp = 220
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([&"canghai_zhenyue_palms"])

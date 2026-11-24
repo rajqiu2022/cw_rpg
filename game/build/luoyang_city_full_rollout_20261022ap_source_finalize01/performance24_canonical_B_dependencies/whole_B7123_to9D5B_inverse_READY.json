@@ -1,0 +1,27 @@
+{
+  "status": "DIRECT_DEPLOYED_AP13_B7123_TO_CANONICAL9D5B_WHOLE_SOURCE_BYTE_INVERSE_NOT_DEPLOYMENT",
+  "parent": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance11_symmetric_wire_candidate01/Bundle_symmetric_record_wire_READY.gd",
+    "sha256": "71231a35e8026dd6269038d7b991a80f25b0667e45fab0772075fe89d930ac57"
+  },
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance20_canonical_keys_candidate01/Bundle_canonical_keys_wire_CANDIDATE.gd",
+    "sha256": "9d5b9b379f5e7962d91550a95b2b9a12a35b98d7fb4402cdfa5947e7152f9e54"
+  },
+  "hunks": [
+    {
+      "old": "static func _symmetric_record_wire_equal(left: Variant,right: Variant) -> bool:\n",
+      "new": "static func _numeric_leaf_record_wire_success(left: Variant,right: Variant,depth: int=0) -> bool:\n\t# Only a sufficient whole-tree success condition; never replace the fallback.\n\tif depth>=64: return false\n\tvar left_type: int=typeof(left);var right_type: int=typeof(right)\n\tif left_type in [TYPE_INT,TYPE_FLOAT] and right_type in [TYPE_INT,TYPE_FLOAT]:\n\t\tif (left_type==TYPE_FLOAT and not is_finite(left)) or (right_type==TYPE_FLOAT and not is_finite(right)): return false\n\t\tif left_type==right_type and left==right: return true\n\t\t# Exact old JSON writer/parser semantics at this finite numeric leaf,\n\t\t# not an epsilon, implicit coercion, or native geometry normalization.\n\t\treturn equal(_wire(left),_wire(right))\n\tif left_type!=right_type: return false\n\tif left is Dictionary:\n\t\tif left.size()!=right.size(): return false\n\t\tfor key: Variant in right:\n\t\t\tif typeof(key)!=TYPE_STRING: return false\n\t\tfor key: Variant in left:\n\t\t\tif typeof(key)!=TYPE_STRING or not right.has(key) or not _numeric_leaf_record_wire_success(left[key],right[key],depth+1): return false\n\t\treturn true\n\tif left is Array:\n\t\tif left.size()!=right.size(): return false\n\t\tfor index: int in left.size():\n\t\t\tif not _numeric_leaf_record_wire_success(left[index],right[index],depth+1): return false\n\t\treturn true\n\tmatch left_type:\n\t\tTYPE_NIL,TYPE_BOOL,TYPE_STRING: return left==right\n\treturn false\nstatic func _canonical_keys_record_wire_success(left: Variant,right: Variant,depth: int=0) -> bool:\n\tif depth>=64: return false\n\tvar left_type: int=typeof(left);var right_type: int=typeof(right)\n\tif left_type in [TYPE_INT,TYPE_FLOAT] and right_type in [TYPE_INT,TYPE_FLOAT]:\n\t\tif (left_type==TYPE_FLOAT and not is_finite(left)) or (right_type==TYPE_FLOAT and not is_finite(right)): return false\n\t\tif left_type==right_type and left==right: return true\n\t\treturn equal(_wire(left),_wire(right))\n\tif left_type in [TYPE_STRING,TYPE_STRING_NAME] and right_type in [TYPE_STRING,TYPE_STRING_NAME]:\n\t\tif left_type==right_type and left==right: return true\n\t\t# Restricted StringName scalar contract is checked by the old leaf codec.\n\t\treturn equal(_wire(left),_wire(right))\n\tif left_type!=right_type: return false\n\tif left is Dictionary:\n\t\tif left.size()!=right.size(): return false\n\t\tvar all_string: bool=true\n\t\tfor key: Variant in left:\n\t\t\tif typeof(key) not in [TYPE_STRING,TYPE_STRING_NAME]: return false\n\t\t\tif typeof(key)!=TYPE_STRING: all_string=false\n\t\tfor key: Variant in right:\n\t\t\tif typeof(key) not in [TYPE_STRING,TYPE_STRING_NAME]: return false\n\t\t\tif typeof(key)!=TYPE_STRING: all_string=false\n\t\tif all_string:\n\t\t\t# Keep the original all-String path free of canonical-index allocation.\n\t\t\tfor key: String in left:\n\t\t\t\tif not right.has(key) or not _canonical_keys_record_wire_success(left[key],right[key],depth+1): return false\n\t\t\treturn true\n\t\tvar left_index: Dictionary={};var right_index: Dictionary={}\n\t\tfor key: Variant in left:\n\t\t\tvar canonical: String=String(key)\n\t\t\tif left_index.has(canonical): return false\n\t\t\tleft_index[canonical]=left[key]\n\t\tfor key: Variant in right:\n\t\t\tvar canonical: String=String(key)\n\t\t\tif right_index.has(canonical): return false\n\t\t\tright_index[canonical]=right[key]\n\t\tif left_index.size()!=right_index.size(): return false\n\t\tfor key: String in left_index:\n\t\t\tif not right_index.has(key) or not _canonical_keys_record_wire_success(left_index[key],right_index[key],depth+1): return false\n\t\treturn true\n\tif left is Array:\n\t\tif left.size()!=right.size(): return false\n\t\tfor index: int in left.size():\n\t\t\tif not _canonical_keys_record_wire_success(left[index],right[index],depth+1): return false\n\t\treturn true\n\tmatch left_type:\n\t\tTYPE_NIL,TYPE_BOOL: return left==right\n\treturn false\nstatic func _symmetric_record_wire_equal(left: Variant,right: Variant) -> bool:\n"
+    },
+    {
+      "old": "if _strict_record_json_equal(left,right): return true\n\treturn equal(_wire(left),_wire(right))",
+      "new": "if _canonical_keys_record_wire_success(left,right): return true\n\treturn equal(_wire(left),_wire(right))"
+    }
+  ],
+  "whole_forward_and_inverse_in_authority_validator_order": true,
+  "previous_strict_helper_unchanged": true,
+  "symmetric_wrapper_only_numeric_and_StringName_domain_success_extension": true,
+  "old_full_wire_fallback_DT_non_symmetric_owner_source_FIRST_FINAL_copies_unchanged": true,
+  "no_intermediate_3F002_formal_edge_or_proof_adoption": true,
+  "Stage_engine_collector_formal_calls": 0
+}

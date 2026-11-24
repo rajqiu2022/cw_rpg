@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "截路哨"
+text = "山下的哨断了信。把路封住，别让他摸到矿里！"
+on_end = "battle_group_then:ch5_snow_pass_pursuer,ch5_relief_road_raider:ch5_patrol_post_2_won"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_patrol_post_2"
+nodes = Array[Resource]([SubResource("start")])

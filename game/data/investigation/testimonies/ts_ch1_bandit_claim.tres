@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch1_bandit_claim"
+display_name = "散兵的威胁"
+speaker_npc_id = &"enemy_thug_lone"
+statement = "散兵暗示地上的死者是被他所杀，并以此威胁冷孤云。"
+chapter = 1
+initial_credibility = 25
+related_evidence_ids = Array[StringName]([&"ev_ch1_road_corpse_wound"])

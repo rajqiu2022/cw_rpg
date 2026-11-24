@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "旧渡守望"
+text = "茶镇的信使比你早到半刻。外渡仍让你查，内门却要多核一道原册封口。不是拒客，是我们也怕被人借证灭口。"
+voice_emotion = "concerned"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_lieyun_gatekeeper_alerted"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

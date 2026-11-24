@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_11_su_final_order"
+title="最后一令"
+kind=0
+desc_not_started="薛影已经不再执行庄主亲令，苏雾笙独自守在后殿止杀钟前。"
+desc_in_progress="在第三声止杀钟传出前击败苏雾笙，阻止预先缓存的假令驱使外场各派再次互杀。"
+desc_completed="苏雾笙战败，第三声止杀钟没有响起；外场假令失去最后启动信号。他揭露的旧罪仍需追责，但不能再被用来制造新的无辜死者。"
+tracker_hint="茗雾山庄 · 后殿止杀钟"
+completion_triggers=Array[String](["enemy_defeated:ch8_su_wusheng_final"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_exp=520
+reward_items=Array[Dictionary]([{"id":"suwusheng_teapot","count":1}])

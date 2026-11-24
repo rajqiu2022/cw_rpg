@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536,1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.435,0.995, 0.565,0.995, 0.610,0.760, 0.770,0.665, 0.775,0.425, 0.625,0.315, 0.570,0.125, 0.430,0.125, 0.375,0.315, 0.225,0.425, 0.230,0.665, 0.390,0.760),
+	PackedVector2Array(0.265,0.425, 0.090,0.405, 0.070,0.665, 0.235,0.700, 0.355,0.590, 0.360,0.465),
+	PackedVector2Array(0.645,0.420, 0.810,0.370, 0.925,0.430, 0.920,0.660, 0.780,0.695, 0.650,0.590)
+])
+blockers = Array[Dictionary]([
+	{"id":"left_drying_tables", "pos":Vector2(0.165,0.565), "size":Vector2(0.135,0.145)},
+	{"id":"right_courier_pavilion", "pos":Vector2(0.850,0.550), "size":Vector2(0.125,0.160)},
+	{"id":"upper_manor_gate", "pos":Vector2(0.500,0.085), "size":Vector2(0.205,0.090)}
+])
+interactions = Array[Dictionary]([
+	{"id":"ch7_mingwu_courier_table", "pos":Vector2(0.725,0.520), "size":Vector2(0.115,0.105), "activation":"interact", "label":"查看清洗过的封蜡槽", "action":"dialog:ch7_mingwu_courier_table", "visual_baked":true, "hide_flag":"ch7_mingwu_courier_checked"}
+])
+portals = Array[Dictionary]([
+	{"id":"return_to_world_map", "pos":Vector2(0.500,0.930), "size":Vector2(0.120,0.105), "label":"返回江湖大地图", "target_scene":"world_map_jianghu", "target_pos":Vector2(0.813802,0.874023), "marker_rotation_degrees":180.0},
+	{"id":"enter_mingwu_outer_court", "pos":Vector2(0.500,0.185), "size":Vector2(0.120,0.090), "label":"进入茗雾山庄外院", "locked_label":"庄主外出，山庄暂不接待外客。", "target_scene":"ch7_s4_mingwu_manor_outer_court", "target_pos":Vector2(0.500,0.875), "require_flag":"ch7_outer_routes_opened"}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"mingwu_spawn", "pos":Vector2(0.500,0.875)},
+	{"id":"tea_market_square", "pos":Vector2(0.500,0.535)},
+	{"id":"tea_shed_front", "pos":Vector2(0.285,0.505)},
+	{"id":"courier_table_front", "pos":Vector2(0.680,0.520)},
+	{"id":"manor_gate_front", "pos":Vector2(0.500,0.185)},
+	{"id":"world_return", "pos":Vector2(0.500,0.930)}
+])
+blocked_probes = Array[Dictionary]([
+	{"id":"left_drying_tables", "pos":Vector2(0.165,0.565)},
+	{"id":"right_courier_pavilion", "pos":Vector2(0.850,0.550)},
+	{"id":"upper_manor_gate", "pos":Vector2(0.500,0.085)},
+	{"id":"right_water_channel", "pos":Vector2(0.955,0.700)}
+])

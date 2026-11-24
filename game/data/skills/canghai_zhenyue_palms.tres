@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"canghai_zhenyue_palms"
+display_name = "盘龙十七式"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_palm_wave_v1.png"
+description = "行义帮镇帮掌法。对全体敌人造成固定 52 + 内功攻击 × 135% 的伤害并施加 2 回合虚弱；劲脉相合时可强化穿透、内伤与气血续航。"
+origin = "行义帮历代护河人从决堤洪峰与夯石固岸中悟出十七重掌势。全篇不载姓名，只以十七幅运劲图相传；须完成帮中长链考验，得到三位传功人的认可后方能学全。"
+kind = 0
+target = 1
+delivery = 2
+mp_cost = 34
+quality = 4
+required_insight = 10
+practice_base_cost = 60
+fixed_damage = 52
+attack_scaling = 135
+effect_value = 0
+hit_count = 3
+animation_id = &"canghai_zhenyue_palms"
+motion_style = 1
+required_weapon_type = &""
+martial_category = &"palm"
+damage_type = 1
+internal_injury_gain = 36
+inflicted_status = &"weaken"
+status_chance = 1.0
+status_duration = 2
+school = "xingyi"
+is_passive = false
+self_practice_level_cap = 9
+breakthrough_internal_art = &"jingang_tempered_meridians"
+breakthrough_hint = "第十七掌尚未送出，逆劲先顶到胸口。再催内力反会伤脉，须有既能深蓄内功、又善于舒解经脉郁结的吐纳底子。"

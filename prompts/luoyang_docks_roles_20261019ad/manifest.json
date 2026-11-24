@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "batch_id": "luoyang_docks_roles_20261019ad",
+  "status": "CARRIER_THREE_PNG_LIMITED_ART_ACCEPT_STATIC_BACKGROUND_EDITS_FAILED_PENDING_USER_LOCAL_TOOL_DECISION",
+  "generation": {
+    "owner": "producer_ROOT",
+    "execution_backend": "builtin_image_gen",
+    "execution_mode": "generate",
+    "model": null,
+    "provider": null,
+    "cost": null,
+    "maximum_calls": 3,
+    "calls_used": 3,
+    "calls_per_identity": 1,
+    "targeted_edit_calls_max": 1,
+    "targeted_edit_calls_used": 1,
+    "background_extraction_edit_calls_max": 2,
+    "background_extraction_edit_calls_used": 2,
+    "automatic_retry": false,
+    "cli_network_or_paid_fallback": false,
+    "call_order_fact": "The carrier builtin call was already started from frozen source contract 30AE7454 before prompts/tasks.yaml registration and local preflight. Store-attendant and rope-seller calls require a passing local preflight first."
+  },
+  "task_ids_in_order": [
+    "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v1",
+    "luoyang_docks_roles_20261019ad_store_attendant_idle_down_1f_v1",
+    "luoyang_docks_roles_20261019ad_rope_seller_idle_down_1f_v1"
+  ],
+  "targeted_edit_task_id": "luoyang_docks_roles_20261019ad_strong_carrier_posepack_idle1_right4_v2_gait_edit",
+  "background_extraction_edit_task_ids": [
+    "luoyang_docks_roles_20261019ad_store_attendant_idle_down_1f_v2_background_extraction_edit",
+    "luoyang_docks_roles_20261019ad_rope_seller_idle_down_1f_v2_background_extraction_edit"
+  ],
+  "chief_excluded": true,
+  "input_images": [],
+  "transparent_background": true,
+  "runtime_credit": false,
+  "animation_credit": "LIMITED four-frame still-pose candidate only; ART reviewed the equal-scale contact sheet but did not observe the GIF or grant loop, timing, Field or formal credit",
+  "portrait_rule": "Each portrait must be a recorded deterministic crop from the same identity's untouched actual raw; generic or separately generated faces are forbidden.",
+  "alpha_rule": "All source A>0 pixels must remain represented during pose extraction. No threshold deletion, repaint, inpainting or per-pose scale fitting.",
+  "static_rule": "Store attendant and rope seller are single-frame stationary candidates and never receive walk credit.",
+  "carrier_final_art_admission": "game/build/luoyang_docks_roles_20261019ad_art01/carrier_final_art_admission.json",
+  "static_v2_failure_review": "game/build/luoyang_docks_roles_20261019ad_art01/static_v2_background_extraction_actual_art_review.json",
+  "credit_boundary": "Carrier only has limited art admission for three mechanical PNGs; no import, runtime binding, Field identity, loop-quality or formal production credit. Both static identities remain blocked by visible halo pending explicit user permission for a separate local background-removal successor."
+}

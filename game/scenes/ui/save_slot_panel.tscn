@@ -1,0 +1,88 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/save_slot_panel.gd" id="1_script"]
+
+[node name="SaveSlotPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -400.0
+offset_right = 600.0
+offset_bottom = 400.0
+mouse_filter = 2
+
+[node name="SlotHeading" type="Label" parent="Content"]
+offset_left = 88.0
+offset_top = 153.0
+offset_right = 343.0
+offset_bottom = 195.0
+
+[node name="SlotContainer" type="VBoxContainer" parent="Content"]
+offset_left = 88.0
+offset_top = 225.0
+offset_right = 343.0
+offset_bottom = 516.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="TitleLabel" type="Label" parent="Content"]
+offset_left = 459.0
+offset_top = 173.0
+offset_right = 1087.0
+offset_bottom = 219.0
+
+[node name="Timestamp" type="Label" parent="Content"]
+offset_left = 459.0
+offset_top = 253.0
+offset_right = 1087.0
+offset_bottom = 292.0
+
+[node name="Progress" type="Label" parent="Content"]
+offset_left = 459.0
+offset_top = 324.0
+offset_right = 1087.0
+offset_bottom = 364.0
+autowrap_mode = 3
+
+[node name="Description" type="Label" parent="Content"]
+offset_left = 459.0
+offset_top = 382.0
+offset_right = 1087.0
+offset_bottom = 520.0
+autowrap_mode = 3
+
+[node name="BtnHBox" type="HBoxContainer" parent="Content"]
+offset_left = 663.0
+offset_top = 640.0
+offset_right = 1087.0
+offset_bottom = 698.0
+alignment = 2
+theme_override_constants/separation = 16
+mouse_filter = 2
+
+[node name="BtnConfirm" type="Button" parent="Content/BtnHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(188, 43)
+disabled = true
+theme_override_font_sizes/font_size = 20
+text = "确认"
+
+[node name="BtnCancel" type="Button" parent="Content/BtnHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(188, 43)
+theme_override_font_sizes/font_size = 20
+text = "返回"

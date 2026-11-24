@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=11 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="西侧两路都已空，封令柜也有人接手。庄主给我的最后一令，已经没有可以威胁的人。你还要我做什么？"
+on_end="next:choice"
+[sub_resource type="Resource" id="choice"]
+script=ExtResource("2")
+node_id=&"choice"
+speaker=""
+text="证人已撤、亲令在册。如何处置薛影？"
+choices=Array[Dictionary]([{"text":"放下针套，随洛阳与五派共审伏法","next":"surrender","set_flag":{"ch8_xueying_choice_surrender":true},"method_flags":[{"key":"ch8_xueying_resolution_method","value":"surrender"}]},{"text":"活着把每道亲令说完，由三方共同核验","next":"testify","set_flag":{"ch8_xueying_choice_testify":true},"method_flags":[{"key":"ch8_xueying_resolution_method","value":"testify"}]},{"text":"若你仍把最后一令当作自己的命，就来死战","next":"battle","set_flag":{"ch8_xueying_choice_dead_battle":true},"method_flags":[{"key":"ch8_xueying_resolution_method","value":"dead_battle"}]}])
+[sub_resource type="Resource" id="surrender"]
+script=ExtResource("2")
+node_id=&"surrender"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="我不求赦。竹尾、洛阳、北道，哪一笔该问，就一笔一笔问。针套和后殿令都留在这里。"
+on_end="next:surrender_end"
+[sub_resource type="Resource" id="surrender_end"]
+script=ExtResource("2")
+node_id=&"surrender_end"
+speaker="旁白"
+text="薛影解下针套，双手离开机关杠杆。行义帮与洛阳公差共同接押，任何一方都不能单独带走他。"
+set_flags=Array[Dictionary]([{"key":"ch8_xueying_outcome_surrender","value":true},{"key":"ch8_xueying_alive","value":true},{"key":"ch8_xueying_resolution_done","value":true},{"key":"ch8_final_su_gate_open","value":true}])
+complete_quest=&"q_ch8_main_10_xueying_resolution"
+accept_quest=&"q_ch8_main_11_su_final_order"
+on_end="end"
+[sub_resource type="Resource" id="testify"]
+script=ExtResource("2")
+node_id=&"testify"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="我会从第一道亲令说起，也会说哪些人不是任务，却因为看见了我而死。作证以后，该伏的法仍旧伏。"
+on_end="next:testify_end"
+[sub_resource type="Resource" id="testify_end"]
+script=ExtResource("2")
+node_id=&"testify_end"
+speaker="冷孤云"
+text="证词不会替你减去死者。它只让发令者不能再把每一条命都推给一件工具。"
+verify_testimonies=Array[StringName]([&"ts_ch8_xueying_personal_orders"])
+set_flags=Array[Dictionary]([{"key":"ch8_xueying_outcome_testify","value":true},{"key":"ch8_xueying_alive","value":true},{"key":"ch8_xueying_resolution_done","value":true},{"key":"ch8_final_su_gate_open","value":true}])
+complete_quest=&"q_ch8_main_10_xueying_resolution"
+accept_quest=&"q_ch8_main_11_su_final_order"
+on_end="end"
+[sub_resource type="Resource" id="battle"]
+script=ExtResource("2")
+node_id=&"battle"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="那便不再为庄主，也不再为一个死人的名字。这一次，是我自己选。"
+on_end="battle_group_then:ch8_xueying_last_guard:ch8_xueying_battle_victory"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_xueying_resolution_choice"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("choice"),SubResource("surrender"),SubResource("surrender_end"),SubResource("testify"),SubResource("testify_end"),SubResource("battle")])

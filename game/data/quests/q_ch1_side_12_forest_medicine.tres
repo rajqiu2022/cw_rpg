@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch1_side_12_forest_medicine"
+title = "林间止血草"
+kind = 1
+desc_not_started = "卖菜大婶需要一束生长在后山林缘的止血草。"
+desc_in_progress = "在竹尾村外的后山密林寻找止血草，带回主街交给卖菜大婶。"
+desc_completed = "止血草已经交给卖菜大婶，村里暂时不缺外伤药材了。"
+tracker_hint = "竹尾村外 · 后山密林"
+completion_triggers = Array[String](["flag_set:zhuwei_forest_herb_delivered"])
+reward_gold = 20
+reward_exp = 25
+reward_items = Array[Dictionary]([{"id": "healing_salve", "count": 2}])
+reward_skills = Array[StringName]([&"herbal_breathing_guide"])

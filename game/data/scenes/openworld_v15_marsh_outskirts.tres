@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/openworld_v15_marsh_outskirts_layout_v1.tres" id="2"]
+[resource]
+script = ExtResource("1")
+scene_id = &"openworld_v15_marsh_outskirts"
+display_name = "金陵南泽 · 建议10～11级"
+background_path = "res://art/maps/world_map_v15_outskirts/marsh/ground.png"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.5,0.9)
+player_visual_scale = 0.91
+npc_visual_scale = 0.91
+camera_zoom = 1.1
+encounter_enemy_ids = Array[StringName]([&"reed_smuggler", &"reed_assassin"])
+encounter_groups = Array[Dictionary]([
+	{"enemy_ids": [&"reed_smuggler"], "weight": 45.0},
+	{"enemy_ids": [&"reed_assassin"], "weight": 20.0},
+	{"enemy_ids": [&"reed_smuggler", &"reed_assassin"], "weight": 22.0},
+	{"enemy_ids": [&"reed_smuggler", &"reed_assassin", &"reed_smuggler"], "weight": 8.0},
+	{"enemy_ids": [&"wild_elite_marsh"], "weight": 5.0}
+])
+encounter_allow_full_group_for_solo = true
+encounter_step_distance = 255.0
+encounter_chance = 0.44

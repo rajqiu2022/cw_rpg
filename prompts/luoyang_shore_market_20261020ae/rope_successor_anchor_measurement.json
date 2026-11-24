@@ -1,0 +1,119 @@
+{
+  "schema": "luoyang_shore_market_rope_successor_anchor_measurement_v1",
+  "passed": true,
+  "method": "Read-only projection from pinned native wharf post source plus actual published ferry transform; ferry right endpoint is the leftmost A>=16 pixel at the selected rope row.",
+  "source_pins": {
+    "game/scripts/dev/luoyang_docks_native_structures_v12_preview.gd": "845B0683567C6156967D25293096F791A6F8744E206CE61E59834E6F5EBE44E4",
+    "game/art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/native_v12/root_native_docks_v12_01/dry_loading_wharf.json": "E6E21C336B06376FD1FED432A93700FE3176507B6AE6B222F33BE1FA44AD7F0E",
+    "game/art/maps/luoyang_harbour_life_20261016/components-author-v1.json": "920A06CA4E2390C831215C643C9BDE5263F85D64CA1B3472CFA9A52021D8B2BB",
+    "game/build/luoyang_harbour_life_publication_20261016/93032_1727/ch4_s2_canal_docks/layout.tres": "49DB163A97BAC5D0A89087D85300749521C3204B02BAA485457ACCD6D1EF4804",
+    "game/art/maps/luoyang_harbour_life_20261016/covered_ferry_v1.png": "D67140A7AFA0FDFFFFF97DE9E34A0680B0069FC9DBD05BBCF85FB7E4EF989357"
+  },
+  "wharf_projection": {
+    "world_foot_px": [
+      2150.0,
+      1640.0
+    ],
+    "post_source_local_m": {
+      "x": 0.61,
+      "tie_y": 0.47,
+      "z_values": [
+        -2.5,
+        2.5
+      ]
+    },
+    "logical_px_per_m": {
+      "x": 64.0,
+      "ground_z": 32.0,
+      "vertical_y": 55.425628662109375
+    },
+    "native_post_wrap_anchors_world_px": {
+      "north": [
+        2189.04,
+        1533.9499545288086
+      ],
+      "south": [
+        2189.04,
+        1693.9499545288086
+      ]
+    }
+  },
+  "actual_ferry_transform": {
+    "physical_center_px": [
+      2653.0,
+      1824.0
+    ],
+    "source_ground_anchor_px": [
+      689.0,
+      1414.0
+    ],
+    "uniform_scale": 0.3,
+    "world_origin_px": [
+      2446.3,
+      1399.7999815885416
+    ],
+    "render_size_px": [
+      307.2,
+      460.80002
+    ]
+  },
+  "candidate_pairs": {
+    "north_post_to_ferry": {
+      "left_world_px": [
+        2189.04,
+        1533.9499545288086
+      ],
+      "right_hull": {
+        "source_px": [
+          251,
+          447
+        ],
+        "source_y_float_before_round": 447.1665570592857,
+        "alpha": 117,
+        "alpha_floor": 16,
+        "world_px": [
+          2521.6000000000004,
+          1533.899987408854
+        ]
+      }
+    },
+    "south_post_to_ferry": {
+      "left_world_px": [
+        2189.04,
+        1693.9499545288086
+      ],
+      "right_hull": {
+        "source_px": [
+          342,
+          980
+        ],
+        "source_y_float_before_round": 980.499867244472,
+        "alpha": 141,
+        "alpha_floor": 16,
+        "world_px": [
+          2548.9,
+          1693.7999943489583
+        ]
+      }
+    }
+  },
+  "selected_pair": {
+    "reason": "South post is nearest the current covered-ferry working line and produces an almost horizontal loaded hawser.",
+    "left_existing_wharf_south_post_wrap_center_world_px": [
+      2189.04,
+      1693.9499545288086
+    ],
+    "right_inside_existing_ferry_left_hull_a16_world_px": [
+      2548.9,
+      1693.7999943489583
+    ],
+    "right_source_px": [
+      342,
+      980
+    ],
+    "right_source_alpha": 141,
+    "horizontal_span_px": 359.8600000000001,
+    "vertical_delta_px": -0.1499601798502681
+  },
+  "credit_boundary": "Coordinate/source proof only. No rope image, import, placement, collision, NAV, Field or formal credit."
+}

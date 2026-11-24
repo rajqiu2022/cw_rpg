@@ -1,0 +1,36 @@
+id: luoyang_yamen_enclosure_modules_v10b
+description: One targeted edit of V10 atlas; rebuild narrow common wall cross-section, never anisotropically compress pixels.
+backend: codex_builtin_imagegen
+model: builtin
+execution_owner: producer
+intent: edit
+background: transparent
+transparent_background: true
+reference_images:
+  - assets/raw/scene_module/luoyang_yamen_enclosure_v10/enclosure_modules_v10_candidate.png
+  - assets/raw/scene_module/luoyang_yamen_front_v9/front_wall_v9_candidate.png
+  - game/art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png
+reference_sha256:
+  - 7711bdf86226b47dc8e96899b051130900f1cf276c3bd2ae48180ca066292002
+  - b903c3aef333e0c3880ad0fb2fc83e131336cc381fde8d4f0fa88b59585149fb
+  - dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221
+require_reference_images: true
+scope: PREVIEW_NOT_ADOPTED
+iteration_limit: 1
+prompt_template: |
+  Use case: precise-object-edit
+  Asset type: ONE corrected transparent RGBA architecture atlas with the SAME three components as Image 1. Make one targeted construction/proportion correction, not a new courtyard design.
+
+  Input roles: Image 1 is the EDIT TARGET, the current three-component atlas. Image 2 is the approved front-wall MATERIAL and wall-height/cross-section reference, never an edit target. Image 3 is ONLY the camera/gate-relative scale reference, never an edit target; do not copy its diagonal folded wings or wooden gate.
+
+  Preserve Image 1's realistic aged grey barrel/pan tiles, tile-end detail, granular old lime plaster, grey-brick base, sparse irregular wear, upper-left/front daylight, neutral colour and crisp construction quality. Keep exactly A straight north-south wall on the left, B southwest L-corner in the middle with eastward/right arm, and C southeast L-corner on the right with westward/left arm. Keep the light physically consistent on both corners, not mirror-flipped. Keep transparent separation and complete silhouettes. Do not regenerate the approved front wall or gate.
+
+  Change ONLY the wall cross-section by REBUILDING the construction. The current upright end wall is much too broad: its end-face-width to full ridge-to-brick-foot height ratio is about0.40. The required narrow masonry end-face ratio is about0.13; the complete coping roof width is about0.26 of that full upright height. Reconstruct narrower masonry, narrower roof slopes, real overlapping barrel/pan tiles, credible narrow ridge and corner bonds. Do NOT horizontally squeeze, stretch or perspective-warp the existing bitmap; individual tiles and bricks must retain believable undistorted proportions. Do not merely hide the wide wall with transparency or paste a small texture swatch on it.
+
+  All THREE modules must have ONE identical wall cross-section and common authored scale: A's exposed south end must have exactly the same full ridge-to-brick-foot height as the horizontal walls of B and C, not its current roughly14-percent shorter height. Use Image 2's relative vertical construction: full ridge-to-brick-foot height is the reference unit; eave-to-foot height is about0.67 of that unit and the grey-brick plinth height about0.19. A, B and C share these heights, masonry thickness, coping width, tile scale and mortar-course height. No tall end pillars or cap posts.
+
+  Camera is unchanged: orthographic parallel, directly south looking north, exactly30 degrees elevation, yawZERO. North-south ridge lines run vertically upward on screen with no convergence. Broad east/west plaster faces remain edge-on, NOT diagonal visible facades. East-west brick courses and eaves remain horizontal. Do not rotate the camera to show a broader side face.
+
+  Lengths are separate from height: take common full upright height as200 game logical pixels. Keep a continuous north-south roof run in A, B and C long enough to select at least160 logical pixels of projected ground depth, or0.80 of that height. Keep each B/C horizontal arm long enough to select at least320 logical pixels of length, or1.60 times that height. Longer runs are allowed and useful: the game will select shorter interior UV regions at UNCHANGED uniform scale, not shrink the entire arm to a nominal5 metres. These ground-run lengths are measured from the corner ridge junction to the far arm end, NOT the total upright silhouette bounding-box height. Complete A's south end face and both genuine roof-turning corners; no tiny corner stubs, overlapping crossed roof strips, repeated end caps inside the run, extra returns, branches or T-junctions. Keep sufficiently long continuous roof and planar horizontal-arm interiors for later GPU UV joins.
+
+  Output one atlas only, preferably with at least two native pixels per game logical pixel if available. Do not enlarge a low-resolution image and describe it as native detail. Actual dimensions and all three component anchors will be measured. Generous genuinely transparent outer margins and clear transparent gaps; no clipped eaves. Preserve true alpha. No ground, paving, cast ground shadow, scenery, hall, gate, doorway, timber posts, freestanding pillars, people, props, labels, diagrams, scale bars, watermark, black backdrop or checkerboard pixels. Keep the material, light, style and fixed camera unchanged; only rebuild the narrow common wall section while preserving sufficiently long UV-selectable arm interiors.

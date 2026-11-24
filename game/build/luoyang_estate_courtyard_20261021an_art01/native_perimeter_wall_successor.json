@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "change_id": "luoyang-estate-courtyard-20261021an-wall-successor",
+  "status": "ART_AUTHOR_READY_FOR_ONE_NATIVE_PREVIEW_AND_GEOMETRY_PASS",
+  "supersedes_only": [
+    "estate_am_northwest_hall_wing_wall",
+    "estate_am_northeast_hall_wing_wall",
+    "estate_am_west_wing_corridor_return_wall",
+    "estate_am_east_wing_corridor_return_wall",
+    "estate_am_southwest_corridor_gate_wall",
+    "estate_am_southeast_corridor_gate_wall"
+  ],
+  "reason": "The first actual native preview proved that six cropped gate fragments touched roofs or alpha corners rather than forming a ground-continuous enclosure. They are replaced by real project-native horizontal and longitudinal masonry modules with explicit ground footprints.",
+  "protected_existing_scope": {
+    "unchanged_visual_count": 83,
+    "unchanged_existing_solid_count": 20,
+    "unchanged_building_and_gate_ids": [
+      "estate_ak_main_hall",
+      "estate_ak_west_wing",
+      "estate_ak_east_wing",
+      "estate_ak_west_corridor",
+      "estate_ak_east_corridor",
+      "estate_mansion_courtyard_gate"
+    ],
+    "unchanged_forecourt_rows": "Keep the four grass-stone shoulders and the two admitted peony beds from ART admission C3B0E9C6 exactly unchanged."
+  },
+  "native_sources": {
+    "vertical_wall": {
+      "texture_path": "res://art/maps/luoyang_modular_v3_street_detail_proposal/root_material_v1/ch4_s1_luoyang_yamen/entities/native_wall_vertical.png",
+      "png_sha256": "CB6459F007EE978688768B9146C808B7CBAC9BD454C5FA27C0AF70DD2EF542A6",
+      "import_sha256": "7D2292A3872B356710EF6F650A05D1DD759B0EF83B3C4BD03CC995E19C4D2D31",
+      "metadata_path": "res://art/maps/luoyang_modular_v3_street_detail_proposal/root_material_v1/ch4_s1_luoyang_yamen/entities/native_wall_vertical.json",
+      "metadata_sha256": "76E833181928C65AD221C31439DC1CEDE04E0C923BC6E06F0E48F2F81AD4EB0A",
+      "source_size_px": [96, 282],
+      "complete_A1_bbox_xyxy": [4, 4, 92, 278],
+      "ground_anchor_px": [48.0, 275.68115234374994],
+      "uniform_scale": 1.0,
+      "world_complete_A1_relative_to_foot_xywh": [-44.0, -271.68115234374994, 88.0, 274.0],
+      "world_ground_solid_relative_to_foot_xywh": [-41.6, -159.808, 83.2, 160.0],
+      "solid_derivation": "Metadata used bounds x[-0.65,+0.65]m and z[-2.5,+2.5]m at 64px/m X and 32px/m ground Z, relative to actual support z=2.494m. This is the real longitudinal ground run, not a sprite-bottom strip."
+    },
+    "horizontal_wall": {
+      "texture_path": "res://art/maps/luoyang_modular_v3_street_detail_proposal/root_material_v1/ch4_s1_luoyang_yamen/entities/native_wall_horizontal.png",
+      "png_sha256": "4B962796EBA8F920D6678744DFBD9D20F4821769320EEE23C9BA4C25E6D40734",
+      "import_sha256": "FAD29005094F44B69EC82722DC71FC0FAAC4B911724DA964CE0DADB999F04E8F",
+      "metadata_path": "res://art/maps/luoyang_modular_v3_street_detail_proposal/root_material_v1/ch4_s1_luoyang_yamen/entities/native_wall_horizontal.json",
+      "metadata_sha256": "15AC8326E39A3322B8D3FBFD4CF5F3580507ABAE485F8736A5F86F6BDDA35F46",
+      "source_size_px": [333, 138],
+      "complete_A1_bbox_xyxy": [4, 4, 329, 134],
+      "ground_anchor_px": [167.0, 131.68115234375006],
+      "uniform_scale": 1.0,
+      "world_complete_A1_relative_to_foot_xywh": [-163.0, -127.68115234375006, 325.0, 130.0],
+      "world_ground_solid_relative_to_foot_xywh": [-160.0, -29.4, 320.0, 36.8],
+      "solid_derivation": "Metadata used bounds x[-2.5,+2.5]m and z[-0.575,+0.575]m relative to actual support z=0.34375m."
+    },
+    "horizontal_interior_crops": {
+      "short_86": {
+        "atlas_region_xywh": [124, 0, 86, 138],
+        "local_ground_anchor_px": [43.0, 131.68115234375006],
+        "world_ground_solid_relative_to_foot_xywh": [-43.0, -29.4, 86.0, 36.8],
+        "purpose": "Use unchanged central masonry pixels to close only the remaining 86px hall-side interval; no resize or nonuniform scale."
+      },
+      "short_125": {
+        "atlas_region_xywh": [104, 0, 125, 138],
+        "local_ground_anchor_px": [63.0, 131.68115234375006],
+        "world_ground_solid_relative_to_foot_xywh": [-62.5, -29.4, 125.0, 36.8],
+        "purpose": "Use unchanged central masonry pixels between corridor and gate; no resize or nonuniform scale."
+      }
+    },
+    "license_boundary": "Both walls are project-original native masonry captures. Their metadata explicitly says the geometry is not CC0. This author reuses existing pixels/resources only and does not modify either PNG."
+  },
+  "layout_logic": {
+    "outer_west_wall_center_x": 430,
+    "outer_east_wall_center_x": 2642,
+    "north_ground_line_y": 520,
+    "side_ground_intervals_y": [[520, 680], [680, 840], [840, 1000], [1000, 1160]],
+    "south_connector_ground_line_y": 1150,
+    "explanation": "The estate becomes one perimeter instead of six gap patches. The main hall closes the north centre; native horizontal walls run from its sides to the two outer longitudinal walls; each longitudinal wall is four exact 160px ground modules; the existing two corridors plus the gate close the south facade, with one short native horizontal connector at each corridor-to-gate seam. Wings remain inside the enclosure and are not used as fake wall endpoints."
+  },
+  "wall_components": [
+    {"id":"estate_an2_west_side_0","asset":"vertical_wall","foot":[430,680],"solid_rect_xywh":[388.4,520.192,83.2,160.0]},
+    {"id":"estate_an2_west_side_1","asset":"vertical_wall","foot":[430,840],"solid_rect_xywh":[388.4,680.192,83.2,160.0]},
+    {"id":"estate_an2_west_side_2","asset":"vertical_wall","foot":[430,1000],"solid_rect_xywh":[388.4,840.192,83.2,160.0]},
+    {"id":"estate_an2_west_side_3","asset":"vertical_wall","foot":[430,1160],"solid_rect_xywh":[388.4,1000.192,83.2,160.0]},
+    {"id":"estate_an2_east_side_0","asset":"vertical_wall","foot":[2642,680],"solid_rect_xywh":[2600.4,520.192,83.2,160.0]},
+    {"id":"estate_an2_east_side_1","asset":"vertical_wall","foot":[2642,840],"solid_rect_xywh":[2600.4,680.192,83.2,160.0]},
+    {"id":"estate_an2_east_side_2","asset":"vertical_wall","foot":[2642,1000],"solid_rect_xywh":[2600.4,840.192,83.2,160.0]},
+    {"id":"estate_an2_east_side_3","asset":"vertical_wall","foot":[2642,1160],"solid_rect_xywh":[2600.4,1000.192,83.2,160.0]},
+    {"id":"estate_an2_north_west_0","asset":"horizontal_wall","foot":[590,520],"ground_x_interval":[430,750],"solid_rect_xywh":[430,490.6,320,36.8]},
+    {"id":"estate_an2_north_west_1","asset":"horizontal_wall","foot":[910,520],"ground_x_interval":[750,1070],"solid_rect_xywh":[750,490.6,320,36.8]},
+    {"id":"estate_an2_north_west_2","asset":"horizontal_short_86","foot":[1113,520],"ground_x_interval":[1070,1156],"solid_rect_xywh":[1070,490.6,86,36.8]},
+    {"id":"estate_an2_north_east_0","asset":"horizontal_short_86","foot":[1959,520],"ground_x_interval":[1916,2002],"solid_rect_xywh":[1916,490.6,86,36.8]},
+    {"id":"estate_an2_north_east_1","asset":"horizontal_wall","foot":[2162,520],"ground_x_interval":[2002,2322],"solid_rect_xywh":[2002,490.6,320,36.8]},
+    {"id":"estate_an2_north_east_2","asset":"horizontal_wall","foot":[2482,520],"ground_x_interval":[2322,2642],"solid_rect_xywh":[2322,490.6,320,36.8]},
+    {"id":"estate_an2_southwest_corridor_gate","asset":"horizontal_short_125","foot":[1052.5,1150],"ground_x_interval":[990,1115],"solid_rect_xywh":[990,1120.6,125,36.8]},
+    {"id":"estate_an2_southeast_gate_corridor","asset":"horizontal_short_125","foot":[2018.5,1150],"ground_x_interval":[1956,2081],"solid_rect_xywh":[1956,1120.6,125,36.8]}
+  ],
+  "visual_contact_contract": [
+    "North west/east short walls terminate on the measured main-hall A1 sides x=1156 and x=1916 at its real foot line y=520; no roof-corner-only join.",
+    "The west/east side walls overlap the outer corridors in draw depth near y=1000..1160, so the pavilions hide the terminal seam; their real 160px-long ground solids remain continuous behind the corridor bodies.",
+    "The two short south walls overlap the gate/corridor lower masonry on y=1120.6..1157.4 and overlap the terminal side-wall solids through the corridor bodies; no open character-width seam is allowed.",
+    "Native preview must show a single enclosing outline. Any visible floating wall, roof-only junction, doubled tile ridge, or wall drawn over a building door is a failure."
+  ],
+  "route_contract": {
+    "central_axis_x_px": [1344, 1728],
+    "main_hall_to_gate_axis": [[1536, 544], [1536, 700], [1536, 1120], [1536, 1260]],
+    "forecourt_to_garden": [[1536,1260],[1536,1420],[2540,1420],[2540,1840]],
+    "rule": "The enclosure deliberately blocks passage through the outer perimeter. Building-door routes stay inside or exit through the existing gate; System must recompute any route that previously crossed the old six isolated wall fragments. Do not preserve a route by weakening the longitudinal wall solids."
+  },
+  "actual_acceptance": [
+    "one native whole-scene preview shows a continuous perimeter around the hall, wings, corridors and gate",
+    "vertical modules retain true longitudinal perspective and a 160px ground body; no gate end-cap is reused as a fake side wall",
+    "adult-scale wall height is compatible with the gate and does not visually dwarf the one-storey buildings",
+    "all three building doors and the central gate opening remain visibly clear",
+    "the two admitted peony beds remain correctly scaled and do not intersect the central approach",
+    "geometry verifies the new 16 wall solids, affected route replacements and exact inverse restoration before any deployment"
+  ],
+  "scope_boundary": "One native candidate successor only. No PNG edit, image generation, import, engine execution by ART, formal deployment, or whole-estate completion credit. The failed six-fragment preview and all AM evidence remain intact."
+}

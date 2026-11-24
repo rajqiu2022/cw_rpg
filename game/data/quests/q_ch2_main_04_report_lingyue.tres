@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch2_main_04_report_lingyue"
+title = "山门复命"
+kind = 0
+desc_not_started = "将获救弟子与伪令牌账册带回凌月派。"
+desc_in_progress = "前往凌月派山门，与凌霜核对失踪弟子和账册记录。"
+desc_completed = "凌月派确认令牌为伪造，并邀请你前往武林大会当面对质。获救弟子将竹尾护山人合修的养元口诀相赠。"
+tracker_hint = "凌月山 · 山门"
+completion_triggers = Array[String](["flag_set:chapter2_complete"])
+reward_gold = 55
+reward_exp = 85
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([&"zhuwei_bamboo_guard_art"])

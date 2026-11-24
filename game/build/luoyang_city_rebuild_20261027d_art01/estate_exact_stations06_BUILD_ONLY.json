@@ -1,0 +1,736 @@
+{
+  "schema": "27D_ESTATE_EXACT_STATIONS_V1",
+  "status": "BUILD_ONLY_NOT_FIELD_ADOPTED",
+  "adoption_enabled": false,
+  "parent_art_fragment": {
+    "path": "res://build/luoyang_city_rebuild_20261027d_art01/three_regions_space_fragment01_BUILD_ONLY.json",
+    "sha256": "94AC0E251A633C36F05F725CF54672E134B2B26C75C66FB2E4FBA6261FAB3416"
+  },
+  "parent_resident_mapping_sha256": "79F114E0C6742FCE856142F6A4D754295ED9CB5B4E1141696FAF1D2C458C4EEA",
+  "source_terminal": {
+    "result_path": "res://build/luoyang_regions_20261027d_source01/terminal_family_residual_output/115484/result.json",
+    "result_sha256": "1715CB212F5958FFA8B72E83B58236CE58BB3CB312BD01E919CA35530968CBDE",
+    "terminal": {
+      "path": "res://build/luoyang_regions_20261027d_source01/terminal_family_residual_output/115484/luoyang_estate_riverside_20261021ai_terminal.bin",
+      "sha256": "46384F9F5E2CA9A304599008248857EA9982E1EA5C630A571F0E72A2DDC6552F",
+      "bytes": 273772
+    },
+    "render": 125,
+    "solid": 63,
+    "potential_actors": 2,
+    "portals": 3,
+    "interactions": 0,
+    "atlas_and_JPG_facts": "Inherit actual successful Estate06 source facts; no fresh extraction or media conversion."
+  },
+  "estate_district_patch": {
+    "logical_id": "luoyang_estate_riverside_20261021ai",
+    "display_name": "洛阳·沈氏宅园",
+    "legacy_size_px": [
+      3072,
+      2048
+    ],
+    "legacy_version": 3,
+    "legacy_frame_origin": [
+      0,
+      1400
+    ],
+    "save_fallback_uv": [
+      0.5,
+      0.947265625
+    ],
+    "actors": {
+      "luoyang_estate_kitchen_hand_20261025i": [
+        2480,
+        3380
+      ]
+    },
+    "actor_ids_moved_to_rooms": [
+      "luoyang_estate_court_keeper_20261025i"
+    ],
+    "portals": {
+      "estate_return_market": [
+        1536,
+        3890
+      ],
+      "estate_enter_mansion_hall": [
+        1536,
+        1984
+      ],
+      "estate_to_garden": [
+        2910,
+        3700
+      ]
+    },
+    "interactions": {},
+    "station_transforms": [],
+    "migrations": [
+      {
+        "old_rect": [
+          [
+            0,
+            0
+          ],
+          [
+            1000,
+            900
+          ]
+        ],
+        "target_foot_px": [
+          774,
+          2400
+        ],
+        "reason": "27d_old_west_wing_court_to_actual_west_entry"
+      },
+      {
+        "old_rect": [
+          [
+            1000,
+            0
+          ],
+          [
+            1072,
+            900
+          ]
+        ],
+        "target_foot_px": [
+          1536,
+          2060
+        ],
+        "reason": "27d_old_main_hall_or_room_return_to_new_single_hall_apron"
+      },
+      {
+        "old_rect": [
+          [
+            2072,
+            0
+          ],
+          [
+            1000.01,
+            900
+          ]
+        ],
+        "target_foot_px": [
+          2296,
+          2400
+        ],
+        "reason": "27d_old_east_wing_court_to_actual_east_entry"
+      },
+      {
+        "old_rect": [
+          [
+            0,
+            900
+          ],
+          [
+            1200,
+            840
+          ]
+        ],
+        "target_foot_px": [
+          650,
+          3500
+        ],
+        "reason": "27d_old_west_daily_area_to_ancestral_court"
+      },
+      {
+        "old_rect": [
+          [
+            1200,
+            900
+          ],
+          [
+            800,
+            840
+          ]
+        ],
+        "target_foot_px": [
+          1536,
+          2780
+        ],
+        "reason": "27d_old_inner_axis_to_new_guest_forecourt"
+      },
+      {
+        "old_rect": [
+          [
+            2000,
+            900
+          ],
+          [
+            1072.01,
+            840
+          ]
+        ],
+        "target_foot_px": [
+          2740,
+          3480
+        ],
+        "reason": "27d_old_kitchen_area_to_new_servants_court"
+      },
+      {
+        "old_rect": [
+          [
+            0,
+            1740
+          ],
+          [
+            2200,
+            308.01
+          ]
+        ],
+        "target_foot_px": [
+          1536,
+          3890
+        ],
+        "reason": "27d_old_market_entry_to_new_outer_gate_arrival"
+      },
+      {
+        "old_rect": [
+          [
+            2200,
+            1740
+          ],
+          [
+            872.01,
+            308.01
+          ]
+        ],
+        "target_foot_px": [
+          2830,
+          3700
+        ],
+        "reason": "27d_old_public_garden_entry_to_new_east_outer_link"
+      }
+    ]
+  },
+  "outdoor_actor_exclusions": [
+    {
+      "npc_id": "luoyang_estate_court_keeper_20261025i",
+      "reason": "Moved once to actual living hall; not deleted from business source, no outdoor clone or fallback this adopted branch."
+    }
+  ],
+  "room_resident_reassignments": [
+    {
+      "room_id": "estate27d_living_hall",
+      "operation": "MOVE_EXACT_SOURCE_ACTOR_ONCE_NOT_CLONE",
+      "npc_id": "luoyang_estate_court_keeper_20261025i",
+      "source_npc_id": "luoyang_estate_court_keeper_20261025i",
+      "source_logical_id": "luoyang_estate_riverside_20261021ai",
+      "original_foot_px": [
+        650,
+        1860
+      ],
+      "foot_px": [
+        1240,
+        1140
+      ],
+      "source_snapshot_default_active": true,
+      "suppress_source_outdoor_instance": true,
+      "purpose": "Original ordinary court keeper beside reception-hall entrance. Do not rename as house owner or invent steward dialog.",
+      "preserve_fields": [
+        "npc_name",
+        "dialog_id",
+        "dialog_variants",
+        "interaction_action",
+        "sprite_path",
+        "portrait_path",
+        "scale",
+        "movement_mode",
+        "body",
+        "original_daily_business_context",
+        "availability"
+      ]
+    }
+  ],
+  "actor_semantics": [
+    {
+      "npc_id": "luoyang_estate_court_keeper_20261025i",
+      "old_foot_px": [
+        650,
+        1860
+      ],
+      "target_scene": "estate27d_living_hall",
+      "new_foot_px": [
+        1240,
+        1140
+      ],
+      "source_logical_id": "luoyang_estate_riverside_20261021ai",
+      "movement_mode": "idle",
+      "patrol_distance_px": 0,
+      "half_body_px": [
+        17,
+        15
+      ],
+      "source_snapshot_default_active": true,
+      "policy": "Exactly one instance, inside actual room. Keep original ordinary face and ancestral-cleaning daily lines."
+    },
+    {
+      "npc_id": "luoyang_estate_kitchen_hand_20261025i",
+      "old_foot_px": [
+        2520,
+        1780
+      ],
+      "target_scene": "luoyang_estate_region_27d",
+      "new_foot_px": [
+        2480,
+        3380
+      ],
+      "source_logical_id": "luoyang_estate_riverside_20261021ai",
+      "movement_mode": "idle",
+      "patrol_distance_px": 0,
+      "half_body_px": [
+        17,
+        15
+      ],
+      "source_snapshot_default_active": true,
+      "policy": "Stay in actual kitchen/cart/washing court, retain original firewood/rice/bowl lines."
+    }
+  ],
+  "portal_region_return_feet": {
+    "estate_return_market": [
+      1536,
+      3810
+    ],
+    "estate_enter_mansion_hall": [
+      1536,
+      2060
+    ],
+    "estate_to_garden": [
+      2830,
+      3700
+    ]
+  },
+  "portal_semantics": [
+    {
+      "id": "estate_return_market",
+      "old_foot_px": [
+        1536,
+        1940
+      ],
+      "new_foot_px": [
+        1536,
+        3890
+      ],
+      "target_scene": "ch4_s3_luoyang_market",
+      "legacy_source_uv": [
+        0.5,
+        0.947265625
+      ],
+      "purpose": "Actual outer gate forecourt returns to South Market; original target flags/action kept."
+    },
+    {
+      "id": "estate_enter_mansion_hall",
+      "old_foot_px": [
+        1536,
+        544
+      ],
+      "new_foot_px": [
+        1536,
+        1984
+      ],
+      "target_scene": "luoyang_functional_mansion_candidate_20261016",
+      "legacy_source_uv": [
+        0.5,
+        0.265625
+      ],
+      "purpose": "Legacy identity maps to ONE new actual living hall entry, not an additional door."
+    },
+    {
+      "id": "estate_to_garden",
+      "old_foot_px": [
+        2944,
+        1840
+      ],
+      "new_foot_px": [
+        2910,
+        3700
+      ],
+      "target_scene": "luoyang_riverside_garden_20261022ap",
+      "legacy_source_uv": [
+        0.958333313465118,
+        0.8984375
+      ],
+      "purpose": "Existing PUBLIC riverside Garden remains external. This is never the new private rear garden."
+    }
+  ],
+  "portal_replacements": [
+    {
+      "legacy_id": "estate_enter_mansion_hall",
+      "final_room_portal_id": "estate27d_hall_door",
+      "final_exterior_foot_px": [
+        1536,
+        1984
+      ],
+      "target_room": "estate27d_living_hall",
+      "target_foot_px": [
+        960,
+        1260
+      ],
+      "room_return_foot_px": [
+        1536,
+        2060
+      ],
+      "legacy_target_alias": "luoyang_functional_mansion_candidate_20261016",
+      "policy": "One physical Area2D/arrow only: suppress legacy external hall Node when RoomEntry adopts the existing94AC hall door. Keep legacy alias/source provenance for arrivals."
+    }
+  ],
+  "existing_room_portals": [
+    {
+      "id": "estate27d_hall_door",
+      "foot_px": [
+        1536,
+        1984
+      ],
+      "size_px": [
+        144,
+        32
+      ],
+      "target_scene": "estate27d_living_hall",
+      "target_foot_px": [
+        960,
+        1260
+      ],
+      "source_spawn_px": [
+        1536,
+        2060
+      ],
+      "label": "进入会客正厅"
+    },
+    {
+      "id": "estate27d_west_door",
+      "foot_px": [
+        774,
+        2324
+      ],
+      "size_px": [
+        144,
+        32
+      ],
+      "target_scene": "estate27d_west_study",
+      "target_foot_px": [
+        768,
+        1120
+      ],
+      "source_spawn_px": [
+        774,
+        2400
+      ],
+      "label": "进入西厢书房"
+    },
+    {
+      "id": "estate27d_east_door",
+      "foot_px": [
+        2296,
+        2324
+      ],
+      "size_px": [
+        144,
+        32
+      ],
+      "target_scene": "estate27d_east_bedroom",
+      "target_foot_px": [
+        768,
+        1120
+      ],
+      "source_spawn_px": [
+        2296,
+        2400
+      ],
+      "label": "进入东厢寝室"
+    }
+  ],
+  "private_garden_contract": {
+    "logical_id": "estate27d_private_rear_garden",
+    "region_id": "luoyang_estate_region_27d",
+    "domain": [
+      [
+        430,
+        128
+      ],
+      [
+        2212,
+        1336
+      ]
+    ],
+    "entry_foot_px": [
+      1536,
+      1450
+    ],
+    "return_room": "estate27d_living_hall",
+    "return_foot_px": [
+      960,
+      240
+    ],
+    "existing_public_garden_unchanged": true
+  },
+  "routes_replace_ids": [
+    "outer_inner",
+    "inner_hall",
+    "west_wing",
+    "east_wing",
+    "private_garden"
+  ],
+  "routes_additions": [
+    {
+      "id": "estate_outer_inner_axis",
+      "points_px": [
+        [
+          1536,
+          3890
+        ],
+        [
+          1536,
+          2700
+        ],
+        [
+          1536,
+          2590
+        ]
+      ]
+    },
+    {
+      "id": "estate_hall_apron",
+      "points_px": [
+        [
+          1536,
+          2700
+        ],
+        [
+          1536,
+          2140
+        ],
+        [
+          1536,
+          1984
+        ]
+      ]
+    },
+    {
+      "id": "estate_west_wing",
+      "points_px": [
+        [
+          1536,
+          2400
+        ],
+        [
+          774,
+          2400
+        ],
+        [
+          774,
+          2324
+        ]
+      ]
+    },
+    {
+      "id": "estate_east_wing",
+      "points_px": [
+        [
+          1536,
+          2400
+        ],
+        [
+          2296,
+          2400
+        ],
+        [
+          2296,
+          2324
+        ]
+      ]
+    },
+    {
+      "id": "estate_public_garden_link",
+      "points_px": [
+        [
+          1536,
+          3672
+        ],
+        [
+          2830,
+          3672
+        ],
+        [
+          2910,
+          3700
+        ]
+      ]
+    },
+    {
+      "id": "estate_kitchen_private_gate",
+      "points_px": [
+        [
+          2830,
+          3672
+        ],
+        [
+          2540,
+          3672
+        ],
+        [
+          2540,
+          3480
+        ],
+        [
+          2480,
+          3480
+        ]
+      ]
+    },
+    {
+      "id": "estate_private_garden_walk",
+      "points_px": [
+        [
+          1536,
+          1450
+        ],
+        [
+          1536,
+          1256
+        ],
+        [
+          1536,
+          520
+        ]
+      ]
+    }
+  ],
+  "migration_policy": "Eight disjoint authored source rectangles cover full3072x2048, including UV1 right/bottom via0.01 outer extension. Existing current-version exact region extension remains exact; no nearest-safe search.",
+  "scope": "Stations only. All94AC owners, plots, scales, furniture, walls and raw images unchanged.",
+  "constraints": [
+    "No new host/steward ID or dialog created.",
+    "Court keeper cannot exist in both yard and room; explicit transfer requires Source room provenance, not a duplicate NPC spawn.",
+    "No new investigation or interaction inserted; source Estate has0 interactions.",
+    "All three original portal identities preserved as mapping/provenance; hall physical Node replaced once by actual new RoomEntry.",
+    "Private rear garden is estate-only courtyard branch and is not public riverside Garden.",
+    "No engine, PNG cleanup/padding/generation or canonical write."
+  ],
+  "door_space_dispatch_distances": {
+    "minimum_required_px": 160,
+    "method": "Same-scene foot-point distance only, all actual local NPC slots included. Both source residents idle/no sweep; no body/speed changes. No engine.",
+    "rows": [
+      {
+        "id": "estate_return_market",
+        "scene": "luoyang_estate_region_27d",
+        "activation_foot_px": [
+          1536,
+          3890
+        ],
+        "nearest_npc": "luoyang_estate_kitchen_hand_20261025i",
+        "activation_distance_px": 1072.956662684938,
+        "return_foot_px": [
+          1536,
+          3810
+        ],
+        "return_distance_px": 1037.3215509185181,
+        "note": "Actual existing external portal."
+      },
+      {
+        "id": "estate_enter_mansion_hall",
+        "scene": "luoyang_estate_region_27d",
+        "activation_foot_px": [
+          1536,
+          1984
+        ],
+        "nearest_npc": "luoyang_estate_kitchen_hand_20261025i",
+        "activation_distance_px": 1685.215713195198,
+        "return_foot_px": [
+          1536,
+          2060
+        ],
+        "return_distance_px": 1622.8173033339276,
+        "note": "Mapping-only legacy ID; no second physical door after RoomEntry replacement."
+      },
+      {
+        "id": "estate_to_garden",
+        "scene": "luoyang_estate_region_27d",
+        "activation_foot_px": [
+          2910,
+          3700
+        ],
+        "nearest_npc": "luoyang_estate_kitchen_hand_20261025i",
+        "activation_distance_px": 536.0037313302959,
+        "return_foot_px": [
+          2830,
+          3700
+        ],
+        "return_distance_px": 474.236228055175,
+        "note": "Actual existing external portal."
+      },
+      {
+        "id": "estate27d_west_door",
+        "scene": "luoyang_estate_region_27d",
+        "activation_foot_px": [
+          774,
+          2324
+        ],
+        "nearest_npc": "luoyang_estate_kitchen_hand_20261025i",
+        "activation_distance_px": 2006.3828149184292,
+        "return_foot_px": [
+          774,
+          2400
+        ],
+        "return_distance_px": 1967.444027158079
+      },
+      {
+        "id": "estate27d_east_door",
+        "scene": "luoyang_estate_region_27d",
+        "activation_foot_px": [
+          2296,
+          2324
+        ],
+        "nearest_npc": "luoyang_estate_kitchen_hand_20261025i",
+        "activation_distance_px": 1071.9104440203948,
+        "return_foot_px": [
+          2296,
+          2400
+        ],
+        "return_distance_px": 997.1238639206265
+      },
+      {
+        "id": "living_hall_arrival",
+        "scene": "estate27d_living_hall",
+        "foot_px": [
+          960,
+          1260
+        ],
+        "nearest_npc": "luoyang_estate_court_keeper_20261025i",
+        "distance_px": 304.63092423455635,
+        "note": "Keeper considered only in this actual room, not projected into outdoor coordinates."
+      },
+      {
+        "id": "living_hall_exit",
+        "scene": "estate27d_living_hall",
+        "foot_px": [
+          960,
+          1312
+        ],
+        "nearest_npc": "luoyang_estate_court_keeper_20261025i",
+        "distance_px": 328.60919037665394,
+        "note": "Keeper considered only in this actual room, not projected into outdoor coordinates."
+      },
+      {
+        "id": "living_hall_rear_door",
+        "scene": "estate27d_living_hall",
+        "foot_px": [
+          960,
+          160
+        ],
+        "nearest_npc": "luoyang_estate_court_keeper_20261025i",
+        "distance_px": 1019.2153844992725,
+        "note": "Keeper considered only in this actual room, not projected into outdoor coordinates."
+      },
+      {
+        "id": "living_hall_rear_arrival",
+        "scene": "estate27d_living_hall",
+        "foot_px": [
+          960,
+          240
+        ],
+        "nearest_npc": "luoyang_estate_court_keeper_20261025i",
+        "distance_px": 942.5497334358543,
+        "note": "Keeper considered only in this actual room, not projected into outdoor coordinates."
+      }
+    ],
+    "minimum_px": 304.63092423455635
+  }
+}

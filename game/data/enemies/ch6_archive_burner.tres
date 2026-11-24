@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+enemy_id = &"ch6_archive_burner"
+display_name = "茗雾焚册客"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/ch6_mingwu_20261122/burner/ready.tres"
+battle_actor_scale = 0.9452
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/burner/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/burner/ready.tres", "res://art/sprites/battle/ch6_mingwu_20261122/burner/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/burner/ready.tres", "res://art/sprites/battle/ch6_mingwu_20261122/burner/draw.tres", "res://art/sprites/battle/ch6_mingwu_20261122/burner/strike.tres", "res://art/sprites/battle/ch6_mingwu_20261122/burner/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/burner/hit1.tres", "res://art/sprites/battle/ch6_mingwu_20261122/burner/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/ch6_mingwu_20261122/burner/kneel.tres", "res://art/sprites/battle/ch6_mingwu_20261122/burner/down.tres")
+level = 10
+max_hp = 390
+max_mp = 84
+attack = 88
+defense = 16
+speed = 27
+skill_ids = Array[StringName]([&"basic_attack", &"mingwu_saofeng", &"toxic_needle"])
+aggression = 0.72
+drop_gold_min = 42
+drop_gold_max = 68
+drop_exp = 80
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"antidote_pill", "chance":0.35, "count":1}])

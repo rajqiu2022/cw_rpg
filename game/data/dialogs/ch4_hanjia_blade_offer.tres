@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "老漕卒"
+text = "那把旧刀不是帮派信物，是守仓卒的佩刀。十八年前人失踪了，刀却在这几夜又被人拿来挑事。"
+on_end = "next:accept"
+
+[sub_resource type="Resource" id="accept"]
+script = ExtResource("2_node")
+node_id = &"accept"
+speaker = "冷孤云"
+text = "我去水则碑旁找。若刀还在，刀背铭文能替旧主人说话。"
+accept_quest = &"q_ch4_side_07_hanjia_blade"
+set_flags = Array[Dictionary]([{"key":"hanjia_blade_search_started","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch4_hanjia_blade_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("accept")])
+

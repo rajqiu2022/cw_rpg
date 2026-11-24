@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+# The positive corridor follows the newly reviewed road from the lower-left
+# trailhead through the central clearing to the upper-right village approach.
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.055, 0.345, 0.105, 0.255, 0.335, 0.235, 0.410, 0.255, 0.465, 0.220, 0.625, 0.245, 0.680, 0.345, 0.730, 0.405, 0.930, 0.395, 0.975, 0.585, 0.940, 0.760, 0.955, 0.935, 0.790, 0.965, 0.690, 0.830, 0.600, 0.895, 0.390, 0.920, 0.135, 0.865, 0.030, 0.760)])
+visual_objects = [
+	{
+		"id": "road_stone_tablet_visual",
+		"texture": "res://art/modules/prop/linxi_stone_tablet_v2.png",
+		"pos": Vector2(0.255, 0.655),
+		"scale": Vector2(0.34, 0.34),
+		"z_index": 14,
+		"collision_size": Vector2(0.045, 0.050),
+		"collision_offset": Vector2(0.0, 0.030)
+	},
+	{
+		"id": "road_supply_box_closed",
+		"texture": "res://art/modules/prop/chest_normal_closed_v1.png",
+		"pos": Vector2(0.500, 0.565),
+		"scale": Vector2(0.24, 0.24),
+		"z_index": 14,
+		"collision_size": Vector2(0.060, 0.045),
+		"collision_offset": Vector2(0.0, 0.025),
+		"interaction_action": "dialog:ch1_road_supply_box",
+		"interaction_label": "打开木箱",
+		"interaction_size": Vector2(0.115, 0.115),
+		"interaction_offset": Vector2(0.0, 0.015),
+		"prompt_offset": Vector2(-0.057, -0.095),
+		"hide_flag": "looted_road_supply_box"
+	},
+]
+blockers = []
+interactions = [
+	{
+		"id": "road_stone_read",
+		"pos": Vector2(0.255, 0.670),
+		"size": Vector2(0.105, 0.120),
+		"action": "dialog:ch1_road_stone",
+		"activation": "interact",
+		"hide_flag": "saw_stone_warning"
+	},
+	{
+		"id": "road_corpse",
+		"pos": Vector2(0.565, 0.630),
+		"size": Vector2(0.135, 0.125),
+		"action": "dialog:ch1_road_corpse",
+		"activation": "interact",
+		"hide_flag": "defeated_thug_lone"
+	}
+]
+portals = [
+	{
+		"id": "exit_to_jianghu",
+		"label": "前往江湖",
+		"pos": Vector2(0.090, 0.855),
+		"size": Vector2(0.105, 0.105),
+		"target_scene": "world_map_jianghu",
+		"target_pos": Vector2(0.220, 0.720),
+		"require_flag": "defeated_thug_lone",
+		"locked_label": "江湖路口（击退山贼后开放）"
+	},
+	{
+		"id": "exit_to_zhuwei_blocked",
+		"label": "查看村口动静",
+		"pos": Vector2(0.895, 0.105),
+		"size": Vector2(0.120, 0.130),
+		"action": "dialog:ch1_road_corpse",
+		"hide_flag": "defeated_thug_lone"
+	},
+	{
+		"id": "exit_to_zhuwei",
+		"label": "前往竹尾村",
+		"pos": Vector2(0.895, 0.105),
+		"size": Vector2(0.120, 0.130),
+		"action": "dialog:ch1_road_after_battle",
+		"require_flag": "defeated_thug_lone"
+	}
+]
+walkable_probes = [
+	{"id": "road_spawn", "pos": Vector2(0.120, 0.835)},
+	{"id": "stone_shoulder", "pos": Vector2(0.255, 0.705)},
+	{"id": "supply_chest", "pos": Vector2(0.475, 0.610)},
+	{"id": "zhuwei_approach", "pos": Vector2(0.895, 0.105)}
+]
+blocked_probes = [
+	{"id": "west_cliff", "pos": Vector2(0.020, 0.400)},
+	{"id": "east_bamboo", "pos": Vector2(0.950, 0.640)}
+]

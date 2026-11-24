@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"ch5_false_liuyun_striker"
+display_name = "伪烈云突袭手"
+portrait_path = ""
+battle_actor_status_lift = 38.0
+battle_actor_path = "res://art/sprites/battle/story_squads_20261121/striker/ready1.tres"
+battle_actor_scale = 0.9479
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/striker/ready1.tres", "res://art/sprites/battle/story_squads_20261121/striker/ready2.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/striker/ready2.tres", "res://art/sprites/battle/story_squads_20261121/striker/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/striker/ready2.tres", "res://art/sprites/battle/story_squads_20261121/striker/step.tres", "res://art/sprites/battle/story_squads_20261121/striker/attack.tres", "res://art/sprites/battle/story_squads_20261121/striker/ready1.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/striker/hit1.tres", "res://art/sprites/battle/story_squads_20261121/striker/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/story_squads_20261121/striker/kneel.tres", "res://art/sprites/battle/story_squads_20261121/striker/down.tres")
+level = 8
+max_hp = 320
+max_mp = 72
+attack = 76
+defense = 14
+speed = 23
+skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle", &"heavy_swing"])
+aggression = 0.70
+drop_gold_min = 35
+drop_gold_max = 55
+drop_exp = 62
+drop_items = Array[StringName]([])
+drop_random = Array[Dictionary]([{"item_id":"antidote_pill", "chance":0.28, "count":1}])

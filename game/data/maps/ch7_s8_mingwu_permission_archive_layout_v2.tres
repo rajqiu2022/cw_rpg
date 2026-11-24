@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536,1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.410,0.995, 0.590,0.995, 0.640,0.825, 0.810,0.710, 0.810,0.225, 0.650,0.160, 0.580,0.105, 0.420,0.105, 0.350,0.160, 0.190,0.225, 0.190,0.710, 0.360,0.825),
+	PackedVector2Array(0.235,0.260, 0.070,0.270, 0.065,0.620, 0.220,0.650, 0.350,0.535, 0.350,0.315),
+	PackedVector2Array(0.650,0.260, 0.825,0.250, 0.935,0.285, 0.935,0.625, 0.790,0.655, 0.650,0.535)
+])
+visual_objects = [
+	{"id":"scene_matte","texture":"res://build/qingfeng_inn_20261108_runtime01/stage_matte.tres","pos":Vector2(0.5,0.5),"render_size_px":Vector2(4096,2304),"z_index":-950},
+	{"id":"room_shell","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/shell_commercial_v1.png","pos":Vector2(0.5,0.463),"scale":Vector2(1.29,1.29),"z_index":-940,"rotation":0,"modulate":Color(0.77,0.82,0.79,1)},
+	{"id":"seal_room_door","texture":"res://art/modules/building/build_linxi_door_wood_a.png","pos":Vector2(0.5,0.188),"scale":Vector2(1.1,1.1),"sort_by_feet":true,"depth_sort_foot_y":0.264,"modulate":Color(0.84,0.86,0.81,1)},
+	{"id":"left_roll_cabinet","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/bookcase_v1.png","pos":Vector2(0.154,0.269),"scale":Vector2(0.168,0.168),"sort_by_feet":true,"depth_sort_foot_y":0.349,"modulate":Color(1,1,1,1)},
+	{"id":"left_closed_cabinet","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/pawn_ticket_cabinet_v1.png","pos":Vector2(0.101,0.419),"scale":Vector2(0.132,0.132),"sort_by_feet":true,"depth_sort_foot_y":0.494,"modulate":Color(1,1,1,1)},
+	{"id":"revoked_ledger_stand","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/writing_desk_v1.png","pos":Vector2(0.249,0.292),"scale":Vector2(0.124,0.124),"sort_by_feet":true,"depth_sort_foot_y":0.338,"modulate":Color(1,1,1,1)},
+	{"id":"comparison_table","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/ceremonial_desk_v1.png","pos":Vector2(0.5,0.385),"scale":Vector2(0.209,0.209),"sort_by_feet":true,"depth_sort_foot_y":0.449,"modulate":Color(1,1,1,1)},
+	{"id":"records_drawer","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/pawn_ticket_cabinet_v1.png","pos":Vector2(0.863,0.303),"scale":Vector2(0.171,0.171),"sort_by_feet":true,"depth_sort_foot_y":0.388,"modulate":Color(1,1,1,1)},
+	{"id":"right_storage_cabinet","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/wood_wardrobe_v1.png","pos":Vector2(0.904,0.451),"scale":Vector2(0.128,0.128),"sort_by_feet":true,"depth_sort_foot_y":0.53,"modulate":Color(1,1,1,1)},
+	{"id":"copyists_waiting_bench","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png","pos":Vector2(0.729,0.61),"scale":Vector2(0.112,0.112),"sort_by_feet":true,"depth_sort_foot_y":0.634,"modulate":Color(1,1,1,1)},
+	{"id":"lower_archive_crate","texture":"res://art/modules/luoyang_district_life_20261016f/stock_crate.png","pos":Vector2(0.26,0.598),"scale":Vector2(0.76,0.76),"sort_by_feet":true,"depth_sort_foot_y":0.638,"modulate":Color(1,1,1,1)},
+	{"id":"revoked_roll_page","texture":"res://art/props/interactive/interaction_letter_sealed_v1.png","pos":Vector2(0.25,0.268),"render_size_px":Vector2(36,27),"z_index":530,"hide_flag":"ch7_mingwu_revoked_roll_checked"}
+]
+blockers = [
+	{"id":"comparison_table_base","pos":Vector2(0.5,0.436),"size":Vector2(0.153,0.039),"walkability_margin":0.0},
+	{"id":"left_roll_cabinet_base","pos":Vector2(0.154,0.332),"size":Vector2(0.087,0.024),"walkability_margin":0.0},
+	{"id":"left_closed_base","pos":Vector2(0.101,0.477),"size":Vector2(0.068,0.03),"walkability_margin":0.0},
+	{"id":"revoked_stand_base","pos":Vector2(0.249,0.331),"size":Vector2(0.077,0.023),"walkability_margin":0.0},
+	{"id":"seal_drawer_base","pos":Vector2(0.863,0.373),"size":Vector2(0.091,0.03),"walkability_margin":0.0},
+	{"id":"right_storage_base","pos":Vector2(0.904,0.509),"size":Vector2(0.083,0.031),"walkability_margin":0.0},
+	{"id":"north_door_base","pos":Vector2(0.5,0.213),"size":Vector2(0.132,0.036),"walkability_margin":0.0},
+	{"id":"waiting_bench_base","pos":Vector2(0.729,0.628),"size":Vector2(0.086,0.022),"walkability_margin":0.0},
+	{"id":"archive_crate_base","pos":Vector2(0.26,0.624),"size":Vector2(0.044,0.028),"walkability_margin":0.0}
+]
+interactions = Array[Dictionary]([
+	{"id":"ch7_mingwu_revoked_access_roll", "pos":Vector2(0.245,0.370), "size":Vector2(0.120,0.110), "activation":"interact", "label":"核对内门暗号注销册", "action":"dialog:ch7_mingwu_revoked_access_roll", "visual_baked":true, "require_quest_active":"q_ch7_main_05_dead_name_live_access", "hide_flag":"ch7_mingwu_revoked_roll_checked"}
+])
+portals = Array[Dictionary]([
+	{"id":"return_to_mingwu_inner_court", "pos":Vector2(0.500,0.925), "size":Vector2(0.130,0.105), "label":"返回茗雾山庄内院", "target_scene":"ch7_s6_mingwu_inner_court", "target_pos":Vector2(0.500,0.175), "marker_rotation_degrees":180.0},
+	{"id":"enter_seal_audit_room","pos":Vector2(0.500,0.275),"size":Vector2(0.120,0.085),"label":"进入封印审验室","target_scene":"ch7_s9_mingwu_seal_audit_room","target_pos":Vector2(0.50,0.86),"require_flag":"ch7_identity_routes_opened","hide_flag":"ch7_personal_signature_inquiry_opened"},
+	{"id":"enter_seal_audit_room_patrol","pos":Vector2(0.500,0.275),"size":Vector2(0.120,0.085),"label":"进入封印审验室","target_scene":"ch7_s9_mingwu_seal_audit_room","target_pos":Vector2(0.50,0.86),"require_flag":"ch7_pulse_current_won","reveal_only_when_unlocked":true,"hide_flag":"ch7_inner_office_destroyers_defeated"},
+	{"id":"enter_seal_audit_room_open","pos":Vector2(0.500,0.275),"size":Vector2(0.120,0.085),"label":"进入封印审验室","target_scene":"ch7_s9_mingwu_seal_audit_room","target_pos":Vector2(0.50,0.86),"require_flag":"ch7_inner_office_destroyers_defeated","reveal_only_when_unlocked":true}
+])
+walkable_probes = Array[Dictionary]([
+	{"id":"permission_archive_spawn", "pos":Vector2(0.500,0.875)},
+	{"id":"inspection_floor", "pos":Vector2(0.500,0.625)},
+	{"id":"revoked_roll_front", "pos":Vector2(0.285,0.370)},
+	{"id":"seal_drawer_front", "pos":Vector2(0.720,0.400)},
+	{"id":"registrar_front", "pos":Vector2(0.500,0.275)},
+	{"id":"inner_court_return", "pos":Vector2(0.500,0.925)}
+])
+blocked_probes = [
+	{"id":"comparison_table_base","pos":Vector2(0.5,0.436)},
+	{"id":"left_roll_cabinet_base","pos":Vector2(0.154,0.332)},
+	{"id":"left_closed_base","pos":Vector2(0.101,0.477)},
+	{"id":"revoked_stand_base","pos":Vector2(0.249,0.331)},
+	{"id":"seal_drawer_base","pos":Vector2(0.863,0.373)}
+]

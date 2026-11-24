@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.055, 0.345, 0.105, 0.255, 0.335, 0.235, 0.410, 0.255, 0.465, 0.220, 0.625, 0.245, 0.680, 0.345, 0.730, 0.405, 0.930, 0.395, 0.975, 0.585, 0.940, 0.760, 0.955, 0.935, 0.790, 0.965, 0.690, 0.830, 0.600, 0.895, 0.390, 0.920, 0.135, 0.865, 0.030, 0.760)])
+visual_objects = []
+blockers = [
+	{"id": "master_house_roof", "pos": Vector2(0.220, 0.190), "size": Vector2(0.315, 0.235)},
+	{"id": "middle_house_roof", "pos": Vector2(0.500, 0.185), "size": Vector2(0.205, 0.200)},
+	{"id": "smithy_roof", "pos": Vector2(0.785, 0.245), "size": Vector2(0.285, 0.235)},
+	{"id": "smithy_anvil", "pos": Vector2(0.725, 0.375), "size": Vector2(0.075, 0.060)},
+	{"id": "lower_left_fence", "pos": Vector2(0.265, 0.695), "size": Vector2(0.285, 0.055)},
+	{"id": "lower_bamboo_edge", "pos": Vector2(0.350, 0.965), "size": Vector2(0.700, 0.070)}
+]
+interactions = [
+	{
+		"id": "stone_altar_read",
+		"pos": Vector2(0.465, 0.485),
+		"size": Vector2(0.120, 0.140),
+		"action": "dialog:ch1_tutorial_stone_altar",
+		"activation": "interact",
+		"hide_flag": "saw_stone_altar"
+	}
+]
+portals = [
+	{
+		"id": "master_house_entry",
+		"pos": Vector2(0.300, 0.360),
+		"size": Vector2(0.105, 0.080),
+		"label": "进入师傅正屋",
+		"target_scene": "linxi_master_hall",
+		"target_pos": Vector2(0.500, 0.790)
+	},
+	{
+		"id": "hero_bedroom_entry",
+		"pos": Vector2(0.515, 0.320),
+		"size": Vector2(0.095, 0.075),
+		"label": "进入卧室",
+		"target_scene": "linxi_hero_bedroom",
+		"target_pos": Vector2(0.500, 0.790)
+	},
+	{
+		"id": "exit_to_center",
+		"pos": Vector2(0.900, 0.895),
+		"size": Vector2(0.125, 0.120),
+		"label": "前往林西村中心",
+		"target_scene": "linxi_village_center",
+		"target_pos": Vector2(0.120, 0.850)
+	}
+]
+walkable_probes = [
+	{"id": "master_courtyard", "pos": Vector2(0.250, 0.340)},
+	{"id": "central_road", "pos": Vector2(0.500, 0.680)},
+	{"id": "practice_disc", "pos": Vector2(0.465, 0.485)},
+	{"id": "smithy_front", "pos": Vector2(0.800, 0.470)},
+	{"id": "village_center_exit", "pos": Vector2(0.900, 0.895)}
+]
+blocked_probes = [
+	{"id": "master_roof", "pos": Vector2(0.190, 0.115)},
+	{"id": "smithy_roof", "pos": Vector2(0.800, 0.130)}
+]

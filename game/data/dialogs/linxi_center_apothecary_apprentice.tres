@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "药铺学徒"
+portrait_path = "res://art/characters/portraits/street_expansion_v1/portrait_inn_waiter_v1.png"
+text = "苏伯让我把新晒的艾草收进铺里。山里湿气重，你若要走远路，记得备些祛湿散。"
+voice_emotion = "warm"
+choices = Array[Dictionary]([])
+give_items = Array[Dictionary]([])
+give_gold = 0
+set_flags = Array[Dictionary]([])
+accept_quest = &""
+complete_quest = &""
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"linxi_center_apothecary_apprentice"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start")])

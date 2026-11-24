@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch3_s4_forbidden_tomb_layout_v2.tres" id="99_layout"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="3_extent"]
+
+[sub_resource type="Resource" id="NativeMapExtent"]
+script = ExtResource("3_extent")
+logical_size = Vector2i(1536, 1024)
+[resource]
+script = ExtResource("1")
+scene_id = &"ch3_s4_forbidden_tomb"
+display_name = "大会后山·封禁石窟"
+streamed_background = SubResource("NativeMapExtent")
+bgm_path = "res://art/audio/bgm/bgm_cave_ominous_v4.wav"
+is_walkable = true
+map_layout = ExtResource("99_layout")
+npcs = Array[Dictionary]([{"npc_id":"ancient_tomb_guard_field", "npc_name":"古墓守卫", "pos":Vector2(0.72,0.4), "sprite_path":"res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/field_idle.tres", "portrait_path":"res://art/sprites/battle/enemy_expansion_20261112/ancient_tomb_guard/ready_01.tres", "dialog_id":"encounter_ancient_tomb_guard", "require_flag":"defeated_mingwu_shadow", "hide_flag":"defeated_ancient_tomb_guard", "scale":0.454, "conversation_base_facing":"left"}])
+player_spawn = Vector2(0.50, 0.82)
+animated_props = Array[Dictionary]([{"id":"ch3_tomb_flame_left","type":"flame","pos":Vector2(0.325,0.565),"size":Vector2(0.015,0.038),"speed":0.78,"z_index":22},{"id":"ch3_tomb_flame_right","type":"flame","pos":Vector2(0.675,0.565),"size":Vector2(0.015,0.038),"speed":0.86,"z_index":22},{"id":"ch3_tomb_flame_center","type":"flame","pos":Vector2(0.57,0.700),"size":Vector2(0.018,0.045),"speed":0.96,"z_index":23},{"id":"ch3_tomb_floor_mist","type":"mist_drift","pos":Vector2(0.50,0.66),"size":Vector2(0.66,0.13),"speed":0.34,"opacity":0.08,"count":3,"color":"#aeb3ad","z_index":12}])
+hotspots = Array[Dictionary]([
+	{"label":"截住搬运证物者", "pos_x":0.50, "pos_y":0.38, "action":"dialog:ch3_tomb_battle", "hide_flag":"defeated_mingwu_spy"},
+	{"label":"核对洛阳货箱", "pos_x":0.50, "pos_y":0.38, "action":"dialog:ch3_tomb_result", "require_flag":"defeated_mingwu_spy", "hide_flag":"chapter3_complete"},
+	{"label":"查看偏室无名灵位", "pos_x":0.30, "pos_y":0.48, "action":"dialog:ch3_forbidden_crypt_side", "hide_flag":"forbidden_tomb_explored"},
+	{"label":"返回合练场", "pos_x":0.50, "pos_y":0.86, "action":"scene:ch3_s3_faction_training"}
+])

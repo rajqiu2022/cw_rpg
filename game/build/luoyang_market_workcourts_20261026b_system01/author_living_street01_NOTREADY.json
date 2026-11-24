@@ -1,0 +1,358 @@
+{
+  "status": "BUILD_SIX_INSTANCE_MARKET_LIVING_STREET_NOT_FIELD_OR_ART_PASS",
+  "ready": false,
+  "scene_id": "ch4_s3_luoyang_market",
+  "design_size": [
+    3072,
+    2048
+  ],
+  "design": {
+    "path": "res://build/luoyang_city_finish_20261025i_art01/market_living_street_FINAL09_BUILD_ONLY.json",
+    "sha256": "07f24cc9a80879794c5f3ca0a08467fc315e9604dd0442b7ae72d82c8eb57591"
+  },
+  "assets": {
+    "grain_sack_stack_v1": {
+      "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/grain_sack_stack_v1.png",
+      "source_sha256": "696ae8db11df69d6d9bb178979c6275102725217d2c0946f3457bc333382b4c3",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_anchor": [
+        768,
+        909
+      ],
+      "true_ground_polygons": [
+        [
+          [
+            231,
+            778
+          ],
+          [
+            1307,
+            778
+          ],
+          [
+            1307,
+            911
+          ],
+          [
+            231,
+            911
+          ]
+        ]
+      ]
+    },
+    "quench_tub_v1": {
+      "texture": "res://art/modules/luoyang_assembled_20261016b/quench_tub_v1.png",
+      "source_sha256": "81e74615f03e9deefa7e2592adb271e3c7c995c0e3731c74bc68f6c17cc60ad7",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_anchor": [
+        768,
+        905
+      ],
+      "true_ground_polygons": [
+        [
+          [
+            301,
+            790
+          ],
+          [
+            438,
+            717
+          ],
+          [
+            768,
+            690
+          ],
+          [
+            1111,
+            718
+          ],
+          [
+            1235,
+            790
+          ],
+          [
+            1104,
+            872
+          ],
+          [
+            768,
+            905
+          ],
+          [
+            435,
+            870
+          ]
+        ]
+      ]
+    },
+    "stock_goods": {
+      "texture": "res://art/modules/luoyang_district_life_20261016f/stock_goods.png",
+      "source_sha256": "85cfbe6b14d6aef518d33acb3c3034e07a7b26e0d3e57dc3e9c1047452d416d0",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_anchor": [
+        768,
+        960
+      ],
+      "true_ground_polygons": [
+        [
+          [
+            95.0000227107439,
+            779.9998864462327
+          ],
+          [
+            1440.000022710744,
+            779.9998864462327
+          ],
+          [
+            1440.000022710744,
+            959.999886446233
+          ],
+          [
+            95.0000227107439,
+            959.999886446233
+          ]
+        ]
+      ]
+    },
+    "herbal_medicine_stall_v1": {
+      "texture": "res://art/modules/luoyang_district_life_20261016f/herbal_medicine_stall_v1.png",
+      "source_sha256": "aa8cc2490e5fa27aa2b4071e1ff360e87b15a8ae2af8999bd8040c9cd2da5176",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "source_anchor": [
+        768,
+        930
+      ],
+      "true_ground_polygons": [
+        [
+          [
+            290,
+            824
+          ],
+          [
+            1248,
+            824
+          ],
+          [
+            1248,
+            860
+          ],
+          [
+            1185,
+            931
+          ],
+          [
+            350,
+            931
+          ],
+          [
+            290,
+            860
+          ]
+        ]
+      ]
+    },
+    "v13_market_west_plot_wall": {
+      "texture": "res://art/maps/luoyang_enclosure_v11/ch4_s3_luoyang_market/entities/v13_market_west_plot_wall.png",
+      "source_sha256": "664cc0734eb126d8a0a0f591a276d0790d7382de18d18cc310e82e6f9dbb5bd0",
+      "source_size": [
+        640,
+        132
+      ],
+      "source_anchor": [
+        319,
+        124
+      ],
+      "true_ground_polygons": [
+        [
+          [
+            4,
+            112
+          ],
+          [
+            634,
+            112
+          ],
+          [
+            634,
+            124
+          ],
+          [
+            4,
+            124
+          ]
+        ]
+      ]
+    }
+  },
+  "placements": [
+    {
+      "id": "market09_cloth_grain_storage_sacks",
+      "asset_id": "grain_sack_stack_v1",
+      "foot": [
+        1560,
+        1350
+      ],
+      "uniform_scale": 0.09,
+      "depth_foot_y": 1350,
+      "purpose": "North cloth/grain court's stocked noncentral bay"
+    },
+    {
+      "id": "market09_herbal_rinse_tub",
+      "asset_id": "quench_tub_v1",
+      "foot": [
+        2448,
+        1350
+      ],
+      "uniform_scale": 0.085,
+      "depth_foot_y": 1350,
+      "purpose": "North medical sorting yard's noncentral wash bay"
+    },
+    {
+      "id": "market09_south_cloth_goods_awning",
+      "asset_id": "stock_goods",
+      "foot": [
+        2404,
+        1810
+      ],
+      "uniform_scale": 0.17,
+      "depth_foot_y": 1810,
+      "purpose": "South cloth/household market frontage with visible fabric, jars and boxed stock. Customers stand south around1850, not underneath a supposedly passable awning."
+    },
+    {
+      "id": "market09_south_herbal_awning",
+      "asset_id": "herbal_medicine_stall_v1",
+      "foot": [
+        2828,
+        1810
+      ],
+      "uniform_scale": 0.17,
+      "depth_foot_y": 1810,
+      "purpose": "Different existing herb trays/shelf silhouette on the other side of the estate approach; ordinary market object, not another room entrance."
+    },
+    {
+      "id": "market09_south_west_plot_back",
+      "asset_id": "v13_market_west_plot_wall",
+      "foot": [
+        2410,
+        1610
+      ],
+      "uniform_scale": 0.38,
+      "depth_foot_y": 1610,
+      "purpose": "One low back edge immediately south of public cross-street, paired with the awning below, not a barrier across the public road or central estate route."
+    },
+    {
+      "id": "market09_south_east_plot_back",
+      "asset_id": "v13_market_west_plot_wall",
+      "foot": [
+        2820,
+        1610
+      ],
+      "uniform_scale": 0.4,
+      "depth_foot_y": 1610,
+      "purpose": "Matching low plot back on the opposite side of the preserved estate144access; actual awning fronts stay south-facing."
+    }
+  ],
+  "routes": [
+    {
+      "id": "paper_stall",
+      "points": [
+        [
+          1170,
+          1468
+        ],
+        [
+          1735,
+          1468
+        ],
+        [
+          1735,
+          1378
+        ]
+      ]
+    },
+    {
+      "id": "herbal_stall",
+      "points": [
+        [
+          2197,
+          1468
+        ],
+        [
+          2685,
+          1468
+        ],
+        [
+          2685,
+          1378
+        ]
+      ]
+    },
+    {
+      "id": "cloth_gallery_center",
+      "points": [
+        [
+          1720,
+          1384
+        ],
+        [
+          1720,
+          1340
+        ]
+      ]
+    },
+    {
+      "id": "medicine_gallery_center",
+      "points": [
+        [
+          2660,
+          1384
+        ],
+        [
+          2660,
+          1340
+        ]
+      ]
+    },
+    {
+      "id": "existing_estate_access",
+      "points": [
+        [
+          2610,
+          1546.5
+        ],
+        [
+          2610,
+          1900
+        ]
+      ]
+    },
+    {
+      "id": "existing_south_cross",
+      "points": [
+        [
+          2197,
+          1468
+        ],
+        [
+          2990,
+          1468
+        ]
+      ]
+    }
+  ],
+  "original_storage_NPC_tasks_portals_unchanged": true,
+  "material_implementation_note": "Estate access uses existing shop_front_public_stone group, 7rect/28edge; preserves original four alley gutters and all original eight earth priority rects. No shader/helper algorithm change.",
+  "actualcredit": "Root publication derives content only; later one normal Market entry/motion/image is not full city ART or gameplay acceptance."
+}

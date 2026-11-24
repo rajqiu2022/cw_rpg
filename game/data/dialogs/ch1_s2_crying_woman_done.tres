@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "焦急妇人"
+text = "他正在家养伤。等他能下地了，我们再来当面道谢。"
+portrait_path = "res://art/characters/portraits/generic/portrait_zhuwei_anxious_middle_aged_woman_v1.png"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch1_s2_crying_woman_done"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+enemy_id=&"ch7_mingwu_order_burner"
+display_name="茗雾焚令手"
+battle_actor_path = "res://art/sprites/battle/ch7_ferry_office_20261122/burner/ready.tres"
+battle_actor_scale = 0.9379
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/burner/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/burner/ready.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/burner/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/burner/ready.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/burner/draw.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/burner/strike.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/burner/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/burner/hit1.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/burner/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/ch7_ferry_office_20261122/burner/kneel.tres", "res://art/sprites/battle/ch7_ferry_office_20261122/burner/down.tres")
+level=12
+max_hp=500
+max_mp=110
+attack=100
+defense=21
+speed=34
+skill_ids=Array[StringName]([&"basic_attack",&"blood_shadow_scattering_darts",&"toxic_needle"])
+aggression=0.68
+drop_gold_min=50
+drop_gold_max=75
+drop_exp=105

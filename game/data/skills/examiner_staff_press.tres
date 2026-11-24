@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+skill_id = &"examiner_staff_press"
+display_name = "考校棍·封阵"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_staff_sweep_v1.png"
+description = "考官立棍蓄势，进步扫过全队。"
+target = 1
+fixed_damage = 10
+attack_scaling = 93
+animation_id = &"examiner_staff_sweep"
+base_hit_chance = 0.93
+required_weapon_type = &"staff"
+cast_sfx_path = "res://art/audio/free/sfx_staff_whoosh_wuxia_v2.wav"
+impact_sfx_path = "res://art/audio/free/sfx_hit_body_wuxia_v2.wav"
+

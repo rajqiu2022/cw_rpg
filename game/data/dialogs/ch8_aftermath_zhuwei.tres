@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="守村人"
+portrait_path="res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text="公示传到竹尾以后，最先来的不是掌门，是当年失踪弟子的家人。他们终于知道孩子死在哪一段路，也知道谁改过名册。"
+on_end="next:people"
+[sub_resource type="Resource" id="people"]
+script=ExtResource("2")
+node_id=&"people"
+speaker="冷孤云"
+text="有人会愤怒，也有人不愿再听。别替他们规定该怎样原谅；只保证补偿、坟名和证词调阅不会再由门派一句话收回。"
+on_end="next:end"
+[sub_resource type="Resource" id="end"]
+script=ExtResource("2")
+node_id=&"end"
+speaker="守村人"
+portrait_path="res://art/characters/portraits/generic/portrait_generic_older_man_v1.png"
+text="晨市商路已经恢复，证人也没有被人堵门。大家未必信江湖规矩，却开始相信手里那份盖着不同印的抄本。"
+set_flags=Array[Dictionary]([{"key":"ch8_aftermath_zhuwei_done","value":true},{"key":"ch8_zhuwei_witnesses_safe","value":true}])
+city_outcomes=Array[Dictionary]([{"city":"zhuwei","key":"victim_families_informed","value":true},{"city":"zhuwei","key":"witnesses_safe_after_disclosure","value":true}])
+on_end="resolve_ch8_relationship_if_ready"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_aftermath_zhuwei"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("people"),SubResource("end")])

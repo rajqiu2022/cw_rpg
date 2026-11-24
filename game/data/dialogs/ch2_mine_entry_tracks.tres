@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+text = "[i]铁轨旁的泥里压着两道新拖痕。边缘粘着松脂和青黑色漆屑，正是伪令牌背面的颜色。[/i]"
+set_flags = Array[Dictionary]([{"key":"ch2_mine_tracks_examined","value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch2_mine_entry_tracks"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a")])
+

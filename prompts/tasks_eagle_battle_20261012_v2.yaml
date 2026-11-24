@@ -1,0 +1,20 @@
+# Exactly one authorized eagle correction, <=1.2 CNY additional; ROOT sole API caller.
+# No --force. MAX_RETRIES=0; --fallback-model gpt-image-2; --skip-ping.
+tasks:
+  - id: eagle_battle_atlas_20261012_v2
+    template: sprite_animal_battle_atlas_fix_4x5_20261012_v2
+    category: sprite_sheet/animal_battle_20261012
+    model: gpt-image-2
+    priority: 1
+    skip: false
+    execution_owner: producer
+    vars:
+      reference_path: "assets/raw/sprite_sheet/animal_battle_20261012/eagle_battle_atlas_20261012_v1.png"
+      animal_name: "large golden eagle"
+      animal_spec: "Preserve this golden eagle's layered dark-brown flight feathers, golden nape, hooked charcoal beak, amber eyes, yellow talons, broad wings and fanned tail. One beak, two wings, two legs; never mammalian."
+      corrections: "Fix the cropped raised wing tip in ready frame 02 and the inadequate empty separation around move/downstroke poses by scaling the WHOLE twenty-pose set uniformly smaller. Replace the standing/perched last defeat pose with a true SIDE-LYING fallen bird. Preserve the existing eagle and rendering style, not those defects."
+      ready_spec: "low hovering alert: mid wings, lifted wings with FULL tips well below the inset top, controlled downstroke entirely within the cell, mid wings return; head points left and talons tucked."
+      move_spec: "leftward flying wingbeat: high upstroke, mid-downstroke, full downstroke, sweep back into upstroke; every feather tip remains inside its cell with the required empty row gutter."
+      attack_spec: "talon dive: gather wings and tip left-down, dive with swept-back wings, extend talons for contact with beak left, open wings to recover; no wing or talon crosses the cell inset."
+      hit_spec: "head flinches left-up, wings unevenly flare while beak remains left, tail fans to balance, regain controlled flight; never turn the head to the right."
+      defeat_spec: "1 flight falters and body tilts onto its side; 2 falling bird makes SIDE contact with wings losing tension; 3 torso lies on its SIDE with head lowered and feet rotated sideways; 4 final STILL SIDE-LYING bird, head low touching the implied ground, wings tucked or limply partly spread, legs and feet SIDEWAYS not beneath the body supporting it. Final frame is NOT STANDING, NOT PERCHED, NOT SITTING, not a crouched upright bird. No rendered floor or blood."

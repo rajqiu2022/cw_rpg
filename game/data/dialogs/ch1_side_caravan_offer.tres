@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "镖局枪手"
+text = "有支小商队要走林西古道。领头的范掌柜押着蜀锦和伤药，偏偏山匪刚被打散，最容易趁商路恢复时再扑一次。我们缺一个能照应后队的人。"
+choices = Array[Dictionary]([{"text": "我回古道与商队会合", "next": "accept", "accept_quest": "q_ch1_side_06_caravan_escort"}, {"text": "先让他们再等一等", "next": "end", "decline_quest": "q_ch1_side_06_caravan_escort"}])
+on_end = "end"
+
+[sub_resource type="Resource" id="node_accept"]
+script = ExtResource("2_dnode")
+node_id = &"accept"
+speaker = "镖局枪手"
+text = "范掌柜停在旧碑往东的弯道。见到人先认货旗，别被山匪换旗诱开。"
+accept_quest = &"q_ch1_side_06_caravan_escort"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_side_caravan_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_accept")])

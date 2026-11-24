@@ -1,0 +1,89 @@
+{
+  "task_id": "luoyang_yamen_complete_wall_modules_v11b",
+  "status": "ACTUAL_GENERATED_SHORT_RUN_MODULAR_CONSUMPTION_ONLY",
+  "scope": "Real transparent2.5D wall modules, not generated complete480/320run, native/PBR, Field or formal approval",
+  "backend": "codex_builtin_imagegen",
+  "execution_owner": "producer",
+  "actual_model_identity": null,
+  "actual_tool_output_path": "C:/Users/rajqiu/.codex/generated_images/019ff02b-0e55-70f3-82bb-5e5410641bf8/exec-cbe35f06-d533-4398-a3f4-0971455d2615.png",
+  "workspace_source": "assets/raw/scene_module/luoyang_yamen_complete_walls_v11b/complete_wall_modules_v11b_candidate.png",
+  "sha256": "3d6dc3d61b1c57b810021005d6e922c45f9c83f6a3b0b281281971347d39a0e8",
+  "file_bytes": 1795467,
+  "actual_dimensions_px": [1536,1024],
+  "actual_mode": "RGBA",
+  "decoded_rgba_sha256": "66f9dfc7610d09427e8cffd49c78a9fed17001da4c5058b78130d0f9b9b5a976",
+  "prompt": {
+    "complete_text_reference": "prompts/templates/luoyang_yamen_complete_wall_modules_v11b.yaml#prompt_template",
+    "template_file_sha256": "99cccf2f0f2759769df5c51517ea8d538effe6a38d9c38edc7528e01e5aa7c2d",
+    "actual_utf8_sha256": "69dc3a46fae6e648af744eef7a93119a8d0517dd91c7677d97219742cf6c6ccb",
+    "actual_characters": 3508,
+    "actual_text_extraction": "Original YAML prompt_template unchanged, TrimEnd plus LF; producer reports this actual prompt, locally rehashed exact.",
+    "transparent_background_requested": true,
+    "intent": "edit"
+  },
+  "references": [
+    {"path":"assets/raw/scene_module/luoyang_yamen_complete_walls_v11/complete_wall_modules_v11_candidate.png","sha256":"0ebc3a53a7f29700823259c132fd31f4f48abceec0492db640f80c227ec36741","role":"Edit target, original retained unchanged"},
+    {"path":"assets/raw/scene_module/luoyang_yamen_front_v9/front_wall_v9_candidate.png","sha256":"b903c3aef333e0c3880ad0fb2fc83e131336cc381fde8d4f0fa88b59585149fb","role":"Approved material/height reference"},
+    {"path":"game/art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png","sha256":"dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221","role":"Camera/gate scale only"}
+  ],
+  "readonly_measurements": {
+    "method": "Pillow/NumPy RGBA read-only. Half-open bounds[x0,y0,x1,y1]; alpha>30 only observational, never altered. Manual semantic anchors +/-4px, not native3D recovery.",
+    "alpha_min_max": [0,254],
+    "alpha0_count": 1166377,
+    "alpha1_count": 19416,
+    "alpha255_count": 0,
+    "alpha_gt0_bounds": [0,15,1472,1010],
+    "alpha_gt30_observation_bounds": [89,17,1449,1006],
+    "border_sample_count": 5116,
+    "border_max_alpha": 1,
+    "border_nonzero_count": 1,
+    "strict_all_border_alpha0": false,
+    "background_probes_rgba": [
+      {"xy":[0,200],"rgba":[52,48,44,0]},
+      {"xy":[768,450],"rgba":[128,119,111,0]},
+      {"xy":[600,900],"rgba":[22,20,19,0]},
+      {"xy":[1200,700],"rgba":[17,17,17,0]}
+    ],
+    "background_conclusion": "Displayed gradient is RGB stored under alpha0, NOT an opaque baked background. Preserve it and all original alpha. Sparse A1 fringe remains; no background extraction, thresholding or alpha repair.",
+    "components_alpha_gt30_observation_bounds": {
+      "west_south_L":[89,17,722,513],
+      "east_south_L":[814,17,1449,513],
+      "west_north":[422,527,578,1006],
+      "east_north":[958,527,1116,1006]
+    },
+    "manual_anchors": {
+      "south_horizontal":{"ridge_y":305,"eave_y":376,"brick_top_y":462,"brick_foot_y":500,"ridge_foot_height":195},
+      "west_south_L":{"ground_axis_source_x":120,"north_end_ridge_y":23,"horizontal_arm_end_x":719,"north_to_corner_ridge_delta":282},
+      "east_south_L":{"ground_axis_source_x":1418,"north_end_ridge_y":23,"horizontal_arm_end_x":818,"north_to_corner_ridge_delta":282},
+      "west_north":{"ground_axis_source_x":468,"hall_join_ridge_y":543,"south_cap_ridge_y":826,"cap_eave_y":860,"brick_foot_y":1003,"run_source_px":283},
+      "east_north":{"ground_axis_source_x":1071,"hall_join_ridge_y":543,"south_cap_ridge_y":826,"cap_eave_y":860,"brick_foot_y":1003,"run_source_px":283}
+    }
+  },
+  "authorized_modular_route": {
+    "uniform_scale": 1.0246050246050247,
+    "derivation": "ApprovedV9 visible upright199.7979797979798 divided by actual south195sourcepx, common uniformXY for all four modules. No rotation/mirror/perspective/colour shader.",
+    "original_south_run_at_common_scale": 288.93861693861695,
+    "original_north_run_at_common_scale": 289.96322196322197,
+    "generated_complete_run_targets_met": false,
+    "route": "Producer authorizes genuine modular placement: select clean straight roof interior UV, independently place repeat segments at unchanged scale to build real480/320ground intervals. Preserve actual corner, away-facing opening termination, south-facing passage cap and north hall connector pixels. No third generation.",
+    "south_ground_windows_y": [[1200,1360],[1360,1520],[1520,1680]],
+    "north_ground_windows_y": [[620,780],[780,940]],
+    "open_passage_ground_window_y": [940,1200],
+    "feet": "World ground/sort foot explicitly authored from segment groundY, not bottom alpha. South ground1680 separately from visual brickfoot1689.5; north940 separately from visual949.5. Pivot-inclusive output canvas distinct from used alpha.",
+    "solids": "NEW authored masonry ground width36logical X, horizontal depth18logical Y; read actual masonry/end-foot approx33..36sourcepx at common scale. This is intended footprint, not a recovered native3D solid or old54/26 inheritance; source review and actual shoe Physics remain required.",
+    "known_risks": "Repeated roof phase/boundary seam, cap versus horizontal section profile, larger new whole-front tiles versus approvedV9, hall join overlap, alpha/crop/foot and actualFieldY need current GPU review. No claim these pass.",
+    "bitmap_edit": false,
+    "new_generated_length_claim": false
+  },
+  "observed_deviations": [
+    "Actual1536x1024; no desired native2x guarantee, uniform source density about0.976pixel/logicalpixel.",
+    "Original asset still too short for complete480/320runs. Modular exact-length placements are NEW geometry rather than fulfillment of generated length instructions.",
+    "North end ridge-foot177sourcepx versus195horizontal profile; wall eave/plinth and rendered apparent height must be visually checked, no equal-height proof.",
+    "Alpha maxima254 and sparse borderA1 kept, no fully opaque or clean-alpha claim."
+  ],
+  "source_bitmap_modified": false,
+  "engine_executed_by_art": false,
+  "imagegen_called_by_art": false,
+  "visual_approved": false,
+  "production_approved": false
+}

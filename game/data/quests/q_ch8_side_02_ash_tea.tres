@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_side_02_ash_tea"
+title="半枚焦茶印"
+kind=1
+desc_not_started="集结地西棚贴着一张被退回的护送药单。"
+desc_in_progress="烬茶社截走了给证人的伤药。在雾林东侧货堆找黄绳药包，再把药包和封签带回集结地西棚。"
+desc_completed="药包里层的半枚焦茶印与假领药单吻合。证人用上了原封伤药，药棚也撤下了冒名调药的旧单。"
+tracker_hint="集结地西棚 → 雾林东侧货堆 → 西棚"
+starts_in_chapter=8
+completes_in_chapter=8
+completion_triggers=Array[String](["flag_set:ch8_ash_tea_delivered"])
+progress_records=Array[Dictionary]([{"trigger":"flag_set:ch8_ash_tea_recovered","text":"已取回黄绳药包与断印，回集结地西棚交还。"}])
+reward_gold=80
+reward_exp=120
+reward_items=Array[Dictionary]([{"item_id":"cinnabar_pendant","count":1},{"item_id":"antidote_pill","count":2}])

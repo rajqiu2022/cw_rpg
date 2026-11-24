@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script=ExtResource("1")
+design_size=Vector2i(1536,1024)
+fill_viewport=true
+walkable_regions=Array[PackedVector2Array]([PackedVector2Array(0.39,0.99,0.61,0.99,0.84,0.72,0.82,0.18,0.18,0.18,0.16,0.72)])
+blockers=Array[Dictionary]([{"id":"left_drum_gears","pos":Vector2(0.16,0.42),"size":Vector2(0.16,0.34)},{"id":"right_mist_tanks","pos":Vector2(0.84,0.43),"size":Vector2(0.16,0.34)}])
+interactions=Array[Dictionary]([{"id":"disable_false_drum","pos":Vector2(0.28,0.42),"size":Vector2(0.12,0.10),"activation":"interact","label":"拆除错位鼓阵","action":"dialog:ch8_false_drum_disable","visual_baked":true,"require_quest_active":"q_ch8_main_04_drum_mist_mechanisms","hide_flag":"ch8_false_drum_disabled"},{"id":"disable_mist_vents","pos":Vector2(0.72,0.42),"size":Vector2(0.12,0.10),"activation":"interact","label":"关闭迷烟风道","action":"dialog:ch8_mist_vents_disable","visual_baked":true,"require_quest_active":"q_ch8_main_04_drum_mist_mechanisms","hide_flag":"ch8_mist_vents_disabled"}])
+portals=Array[Dictionary]([{"id":"return_to_perimeter","pos":Vector2(0.50,0.92),"size":Vector2(0.13,0.10),"label":"返回外围连营","target_scene":"ch8_s3_manor_perimeter_encampment","target_pos":Vector2(0.50,0.22)},{"id":"enter_alliance_platform","pos":Vector2(0.50,0.22),"size":Vector2(0.13,0.10),"label":"登上会盟祭台","target_scene":"ch8_s5_alliance_ceremonial_platform","target_pos":Vector2(0.50,0.86),"require_quest_completed":"q_ch8_main_04_drum_mist_mechanisms"}])
+walkable_probes=Array[Dictionary]([{"id":"spawn","pos":Vector2(0.50,0.86)},{"id":"battle","pos":Vector2(0.50,0.52)},{"id":"drum","pos":Vector2(0.30,0.42)},{"id":"mist","pos":Vector2(0.70,0.42)}])
+blocked_probes=Array[Dictionary]([{"id":"drum_gears","pos":Vector2(0.16,0.42)},{"id":"mist_tanks","pos":Vector2(0.84,0.43)}])

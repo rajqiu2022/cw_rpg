@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=7 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="会盟公示总录"
+text="按第七章既定方案，烈云、洛阳与五派先分别核验，再由行义帮监督合卷。原卷不交给任何单方带走。"
+on_end="next:facts"
+[sub_resource type="Resource" id="facts"]
+script=ExtResource("2")
+node_id=&"facts"
+speaker="冷孤云"
+text="联合会审的共同底线仍是四项：烈云误杀、茗雾亲令与死籍、薛影行动、苏雾笙止杀钟。任何一方拒认自己那一笔，都不能阻止其他副本公开。"
+on_end="next:witness"
+[sub_resource type="Resource" id="witness"]
+script=ExtResource("2")
+node_id=&"witness"
+speaker="戚云笙"
+portrait_path="res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png"
+text="证人身份分为公开名册和密封名册；密封名册必须三方同时到场才能查阅，单方调人、问话或转押一律无效。"
+on_end="next:arts"
+[sub_resource type="Resource" id="arts"]
+script=ExtResource("2")
+node_id=&"arts"
+speaker="刑樊天"
+portrait_path="res://art/characters/portrait_xingfantian_master.png"
+text="危险武学按“来源、危害、实操”拆成三册，三方各保一册。没有另两册，任何人都无法复原完整杀招。"
+on_end="next:end"
+[sub_resource type="Resource" id="end"]
+script=ExtResource("2")
+node_id=&"end"
+speaker="会盟公示总录"
+text="联合会审副本已分别落印。真相公开较慢，却不再依赖某一位盟主、庄主或官员的善意。"
+set_flags=Array[Dictionary]([{"key":"ch8_disclosure_joint_review_started","value":true},{"key":"ch8_witness_three_party_seal","value":true},{"key":"ch8_dangerous_arts_split_archive","value":true},{"key":"ch8_evidence_multi_copy","value":true},{"key":"ch8_truth_disclosure_settled","value":true}])
+method_flags=Array[Dictionary]([{"key":"ch8_truth_disclosure_method","value":"joint_split_archive"}])
+city_outcomes=Array[Dictionary]([{"city":"luoyang","key":"ch8_public_archive","value":"joint_split_archive"}])
+complete_quest=&"q_ch8_main_12_truth_disclosure"
+accept_quest=&"q_ch8_main_13_aftermath_returns"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_truth_disclosure_joint"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("facts"),SubResource("witness"),SubResource("arts"),SubResource("end")])

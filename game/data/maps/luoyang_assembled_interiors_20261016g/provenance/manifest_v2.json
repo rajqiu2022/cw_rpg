@@ -1,0 +1,643 @@
+{
+  "version": 2,
+  "id": "luoyang_interiors_assembly_20261016g",
+  "status": "28_GENERATED_SOURCE_CANDIDATES_NOT_RUNTIME_OR_FORMAL",
+  "scope": {
+    "shells": 4,
+    "furniture": 24,
+    "calls_used": 28,
+    "attempt_budget_per_asset": 1,
+    "retries_used": 0,
+    "cli_used": false,
+    "png_postprocessing_used": false,
+    "optional_yamen_not_required": true
+  },
+  "execution": {
+    "backend": "builtin_image_gen",
+    "model": null,
+    "provider": null,
+    "usage": null,
+    "cost": null
+  },
+  "preflight_path": "prompts/qa/luoyang_interiors_assembly_20261016g/preflight.json",
+  "preflight_sha256": "DB3139D39486580CECB6C247179B92F08F3AA1360EDC362BD59DDDA4FF332A43",
+  "historical_pre_generation_tasks_sha256": "5CD1F14C9BE4D801E11FB41B905D7314ED78D32DC1B2602E0385B431B71864F6",
+  "room_layouts_path": "prompts/qa/luoyang_interiors_assembly_20261016g/room_layouts_draft.json",
+  "limits": [
+    "24 furniture strict zero-alpha 10 percent margins FAIL; true RGBA and full structural extremities preserved; A1 tails/hidden RGB unmodified.",
+    "Four RGB empty shells include fixed columns/low walls; visual foreground occlusion or conservative full-projection exclusion required, not foot-base-only.",
+    "All manual anchors and base polygons are image-guided candidate proposals, not native geometry or verified Physics.",
+    "Handcart camera is diagonal 3/4 rather than frontal; use only warehouse corner subject to actual composition review.",
+    "No game source, imports, saved games or engine execution performed by ART. Source generation does not grant room runtime acceptance.",
+    "No automatic optional Yamen/new story; required 11 types must be truly bound to exterior doors by SYSTEM."
+  ],
+  "assets": [
+    {
+      "id": "shell_residential_v1",
+      "name": "双区民宅空房壳",
+      "kind": "shell",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/shell_residential_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/shell_residential_v1.meta.json",
+      "sha256": "88189e4971ece89443557c76f7762f28fe9c1740e780bfa9ebdeadfa8c034494",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_01.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/shell_residential_v1.txt",
+      "prompt_sha256": "94008C9C122352CFBE0F68E37775E7C0F932A6E2E8FDCF6BB9EA93050F81EEC7",
+      "strict_zero_alpha_10pct_margin_pass": null,
+      "batch_sha256": "2572B0FF3572D90DC12DB99FE7E6A21724B6C507F6EAA0A90624F77FA2B81D9F"
+    },
+    {
+      "id": "shell_commercial_v1",
+      "name": "长条营业空房壳",
+      "kind": "shell",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/shell_commercial_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/shell_commercial_v1.meta.json",
+      "sha256": "b5be8cd115cac86620b159191355c17a4ab31717fd0b6f46e07401f5054a3bfe",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_01.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/shell_commercial_v1.txt",
+      "prompt_sha256": "2255F7339CB11094DEC6A3226B5688088A5DBEB12A28A1E2852D5D42A7336595",
+      "strict_zero_alpha_10pct_margin_pass": null,
+      "batch_sha256": "2572B0FF3572D90DC12DB99FE7E6A21724B6C507F6EAA0A90624F77FA2B81D9F"
+    },
+    {
+      "id": "shell_inn_hall_v1",
+      "name": "客栈高厅空房壳",
+      "kind": "shell",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/shell_inn_hall_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/shell_inn_hall_v1.meta.json",
+      "sha256": "930e994cb144573ee3eccb47c23b5a5f8e3dd539c0e973535f43020d519e84fb",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_01.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/shell_inn_hall_v1.txt",
+      "prompt_sha256": "200F1EC95C4362DAFD18E431E7B8ABF1FFF52E40D279E2879AE63C6A34BC6FB8",
+      "strict_zero_alpha_10pct_margin_pass": null,
+      "batch_sha256": "2572B0FF3572D90DC12DB99FE7E6A21724B6C507F6EAA0A90624F77FA2B81D9F"
+    },
+    {
+      "id": "shell_formal_hall_v1",
+      "name": "三开间正式厅空房壳",
+      "kind": "shell",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/shell_formal_hall_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/shell_formal_hall_v1.meta.json",
+      "sha256": "b9e589ceed81bd28dd7b3d866aa931fc1f8a6e3f59e426bae94f2a384b2f879a",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGB",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_01.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/shell_formal_hall_v1.txt",
+      "prompt_sha256": "DFA2B83C95BFF8617F2ABF945EBE204E6E07C7D31FB689980D8F14017B9CAC4A",
+      "strict_zero_alpha_10pct_margin_pass": null,
+      "batch_sha256": "2572B0FF3572D90DC12DB99FE7E6A21724B6C507F6EAA0A90624F77FA2B81D9F"
+    },
+    {
+      "id": "dining_table_v1",
+      "name": "生活方桌",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/dining_table_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/dining_table_v1.meta.json",
+      "sha256": "6874cc7448d617579e5c6f358333f7d90e403b8738c7762edf5b8886261a2ae6",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_02.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/dining_table_v1.txt",
+      "prompt_sha256": "B29120529E6DE0F71F723D26603526F00045BFBE6E850F633BAFB22450A7A90C",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "FA0F49B1821BB06A2320EC41DA56953DE90B71D94BECB0FAE3E51C1C20E960DD"
+    },
+    {
+      "id": "long_bench_v1",
+      "name": "木长凳",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/long_bench_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/long_bench_v1.meta.json",
+      "sha256": "41759460141f9a6ba742d5df9d2de3fce10ba040af5a86fa8f31bd540877108e",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_02.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/long_bench_v1.txt",
+      "prompt_sha256": "6637FF87C60358273F42372F67DC636BF173DF8749E009CEED23B3795C7366F6",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "FA0F49B1821BB06A2320EC41DA56953DE90B71D94BECB0FAE3E51C1C20E960DD"
+    },
+    {
+      "id": "household_bed_v1",
+      "name": "木床卧具",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/household_bed_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/household_bed_v1.meta.json",
+      "sha256": "b0aa5fc5447a697fbb1e1365a587fc297c912559b8d40452c7d09d8bd9d41ad9",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_02.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/household_bed_v1.txt",
+      "prompt_sha256": "7CF6322A85D93E00CC197DDAAF6913BC5EF35BFD0596441A9FD4C75FF9A0E850",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "FA0F49B1821BB06A2320EC41DA56953DE90B71D94BECB0FAE3E51C1C20E960DD"
+    },
+    {
+      "id": "cooking_stove_v1",
+      "name": "民宅灶台",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/cooking_stove_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/cooking_stove_v1.meta.json",
+      "sha256": "7b5fd7dcb736ce0bc338b25e9a98c2727cef18031a4d1f38fa69a181069dd1d9",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_02.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/cooking_stove_v1.txt",
+      "prompt_sha256": "BE7D25F748510E4C71692EA3CC9795128CE4D1D5E99A1713E990CC1811F8D99B",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "FA0F49B1821BB06A2320EC41DA56953DE90B71D94BECB0FAE3E51C1C20E960DD"
+    },
+    {
+      "id": "wood_wardrobe_v1",
+      "name": "衣柜",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/wood_wardrobe_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/wood_wardrobe_v1.meta.json",
+      "sha256": "e61d230be5633e25eee8667f983ad3a88e4f6f49f8faa042272b168324e560b4",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_03.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/wood_wardrobe_v1.txt",
+      "prompt_sha256": "EC9FD65A77C7BA4403CA522102E0828FBD287D0136C60BC3339DAA61E04D607E",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "8BFDAA2D8D2D10A0BF59031FCD48B3CE0CCDF9B291469A36D8DB05BE8E4579FE"
+    },
+    {
+      "id": "writing_desk_v1",
+      "name": "文人书案",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/writing_desk_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/writing_desk_v1.meta.json",
+      "sha256": "8c1011e8c1695c68bba232730bc64d2296aed6b739cbc59ce413aed4df3c4837",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_03.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/writing_desk_v1.txt",
+      "prompt_sha256": "544B0F2245E4624479F6EAC3826896B841F7A59EB27A5BCB3397F64F376385B3",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "8BFDAA2D8D2D10A0BF59031FCD48B3CE0CCDF9B291469A36D8DB05BE8E4579FE"
+    },
+    {
+      "id": "wood_armchair_v1",
+      "name": "木靠背椅",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.meta.json",
+      "sha256": "054cf8bc4d3f8a79cfd869bdb1654be56da9fd7d23ddb73f49c6808d02cb6337",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_03.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/wood_armchair_v1.txt",
+      "prompt_sha256": "E77205684EBAF48FF6ADC9EF8CEB78B71171EB25C8B6274D857867B45D9AD546",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "8BFDAA2D8D2D10A0BF59031FCD48B3CE0CCDF9B291469A36D8DB05BE8E4579FE"
+    },
+    {
+      "id": "folding_screen_v1",
+      "name": "连折屏风",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/folding_screen_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/folding_screen_v1.meta.json",
+      "sha256": "4981acafdc4a024d52c04c086913cf24abd6dbe2286fed68804d266cad603231",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_03.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/folding_screen_v1.txt",
+      "prompt_sha256": "968CBCEF380736C7D167980EA07CF41623891073F8C11A6AF61CF95233068B8D",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "8BFDAA2D8D2D10A0BF59031FCD48B3CE0CCDF9B291469A36D8DB05BE8E4579FE"
+    },
+    {
+      "id": "bookcase_v1",
+      "name": "书架",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/bookcase_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/bookcase_v1.meta.json",
+      "sha256": "ed379da3c55a2c179b1f3dbd5de16b5aa79467878457c28505ad516e8104f842",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_04.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/bookcase_v1.txt",
+      "prompt_sha256": "BD759DA5A4B01F9E438E0B12B4FF99D8C51AD5623C7E3E5DCB7CAC4D450C9A58",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "195B0C4E262B912120307DC8F0241627DC86C547DC10E08F3261FD72FA7C4962"
+    },
+    {
+      "id": "inn_counter_v1",
+      "name": "客栈掌柜台",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/inn_counter_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/inn_counter_v1.meta.json",
+      "sha256": "5dc57864bf66a5fe84c926475928a7d6c054dd05d854129339bca026ed1b856f",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_04.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/inn_counter_v1.txt",
+      "prompt_sha256": "99C044ABC03F2BBF33F7A75B5B0665786A84BD932D596CA1DD7BD38E7ECF17F9",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "195B0C4E262B912120307DC8F0241627DC86C547DC10E08F3261FD72FA7C4962"
+    },
+    {
+      "id": "wine_tea_shelf_v1",
+      "name": "酒茶陈列架",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/wine_tea_shelf_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/wine_tea_shelf_v1.meta.json",
+      "sha256": "8d9545a37ce2a85bea508a3e69eb326b0da7d94cd080d214df5d35dfaf84275a",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_04.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/wine_tea_shelf_v1.txt",
+      "prompt_sha256": "4E0B9E4D01ED4E80B05136763ACE39DD25ADD7D665F1CC50462936AA9358C48A",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "195B0C4E262B912120307DC8F0241627DC86C547DC10E08F3261FD72FA7C4962"
+    },
+    {
+      "id": "timber_stair_v1",
+      "name": "木楼梯",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/timber_stair_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/timber_stair_v1.meta.json",
+      "sha256": "d8ed6aa26f5f84e4608077d2903582cf4aac8ecb5ebf925e0bfecbeb1e65475c",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_04.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/timber_stair_v1.txt",
+      "prompt_sha256": "498555E4B97E148A1E2F6BE4842ED5971DE7CB3941720641FF9301022F5806F7",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "195B0C4E262B912120307DC8F0241627DC86C547DC10E08F3261FD72FA7C4962"
+    },
+    {
+      "id": "cloth_roll_rack_v1",
+      "name": "布卷架",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/cloth_roll_rack_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/cloth_roll_rack_v1.meta.json",
+      "sha256": "078b1086cd2003916e73bb9c9f7a5f98d52286eabd765c609cb928e9ea84fc0e",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_05.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/cloth_roll_rack_v1.txt",
+      "prompt_sha256": "FE3AB2EF55599A0AFF74EC297CD2CEDC4D640A1DF0C79440C489F64941E3E504",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "4BAFB416F243F7DB92792E67BD511572769C2D9A42CA23DB69D6CF06062F147D"
+    },
+    {
+      "id": "cutting_table_v1",
+      "name": "裁衣台",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/cutting_table_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/cutting_table_v1.meta.json",
+      "sha256": "e87fa7c400b6fd682e9ae8a25275fb368ad1f828612594b63ebde92464f73458",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_05.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/cutting_table_v1.txt",
+      "prompt_sha256": "59E6421A6457F158E30A1876A60BFB96C3CA486823656D7353195D414B04F4A3",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "4BAFB416F243F7DB92792E67BD511572769C2D9A42CA23DB69D6CF06062F147D"
+    },
+    {
+      "id": "garment_rack_v1",
+      "name": "成衣架",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/garment_rack_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/garment_rack_v1.meta.json",
+      "sha256": "ff279aa1949676a02c84b5e8a24615d4f1570901c1f7013a62814893dc6956b6",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_05.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/garment_rack_v1.txt",
+      "prompt_sha256": "8ADFAE201A753E3D78C09B8F8AC63E4A60E431B3EBA0123746189C5B65FD92FE",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "4BAFB416F243F7DB92792E67BD511572769C2D9A42CA23DB69D6CF06062F147D"
+    },
+    {
+      "id": "pawn_counter_grille_v1",
+      "name": "当铺栅格柜台",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/pawn_counter_grille_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/pawn_counter_grille_v1.meta.json",
+      "sha256": "73bee302b3c59e8a1f0302e80aa189407c033133d175c100916bf07fadd95708",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_05.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/pawn_counter_grille_v1.txt",
+      "prompt_sha256": "389956D10836C2A41886F5180E112C65136624A1C1CCB87B4B39006CD3D62840",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "4BAFB416F243F7DB92792E67BD511572769C2D9A42CA23DB69D6CF06062F147D"
+    },
+    {
+      "id": "pawn_ticket_cabinet_v1",
+      "name": "票据柜",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/pawn_ticket_cabinet_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/pawn_ticket_cabinet_v1.meta.json",
+      "sha256": "56091452ebf5ec859a5236971888b1d7ab01495357a7c1e25bea04476c8723dc",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_06.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/pawn_ticket_cabinet_v1.txt",
+      "prompt_sha256": "51837BB509C32C118308CE939B0A86EC2BEC3C7F79F267BC29F2FFFC98E6D7C6",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "21A629BE796D2A61DED9199F1C61A710381CBA566D7A0DA3B72DAC22AA21BF1E"
+    },
+    {
+      "id": "medicine_cabinet_v1",
+      "name": "百子药柜",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/medicine_cabinet_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/medicine_cabinet_v1.meta.json",
+      "sha256": "64a4ca6eb3cf812eeaa317377b15e5db3ae48323731271fd5364ee686c397c7b",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_06.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/medicine_cabinet_v1.txt",
+      "prompt_sha256": "C06FC271D45EF2390FA55A647D42C9D769F33721A8FE017C3AEDD1605D047BF9",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "21A629BE796D2A61DED9199F1C61A710381CBA566D7A0DA3B72DAC22AA21BF1E"
+    },
+    {
+      "id": "medicine_worktable_v1",
+      "name": "制药工作台",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/medicine_worktable_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/medicine_worktable_v1.meta.json",
+      "sha256": "0e2cd37e803a79c1f51ae2b62f700664e841feef183f51c3ce0bc3355432b05d",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_06.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/medicine_worktable_v1.txt",
+      "prompt_sha256": "627C29F28AEA471F213402CC8D8DE3A5882311131CC027AE5DA3B26C6B463C83",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "21A629BE796D2A61DED9199F1C61A710381CBA566D7A0DA3B72DAC22AA21BF1E"
+    },
+    {
+      "id": "warehouse_rack_v1",
+      "name": "仓栈货架",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/warehouse_rack_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/warehouse_rack_v1.meta.json",
+      "sha256": "42cea5501f73de0d12f134f641574855c40eb0b82b44e0db637d00ec320510df",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_06.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/warehouse_rack_v1.txt",
+      "prompt_sha256": "BAD453525EA5BCBCA4C60F2539DBB7043A5CFF50F8384C48C72129CA90EF8063",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "21A629BE796D2A61DED9199F1C61A710381CBA566D7A0DA3B72DAC22AA21BF1E"
+    },
+    {
+      "id": "grain_sack_stack_v1",
+      "name": "粮袋垛",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/grain_sack_stack_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/grain_sack_stack_v1.meta.json",
+      "sha256": "696ae8db11df69d6d9bb178979c6275102725217d2c0946f3457bc333382b4c3",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_07.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/grain_sack_stack_v1.txt",
+      "prompt_sha256": "65CD752333F63F114F0F0066C27AC95F43E262E190E09F7E2C9CDE4BB31A1F9D",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "F7BD582566329A0B3B036D655981EADE08FFEFF0D4123CC52539759B65CED395"
+    },
+    {
+      "id": "wood_handcart_v1",
+      "name": "木手推车",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/wood_handcart_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/wood_handcart_v1.meta.json",
+      "sha256": "0ccd655d3a3d406130c811feb6d240646a10a20ae612811bded334b9b98bfe76",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_07.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/wood_handcart_v1.txt",
+      "prompt_sha256": "50292861D332267035B434080C7C9A90F990A40D50641AFC0F94B7D63CDD024B",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "F7BD582566329A0B3B036D655981EADE08FFEFF0D4123CC52539759B65CED395"
+    },
+    {
+      "id": "ceremonial_desk_v1",
+      "name": "衙署公案",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/ceremonial_desk_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/ceremonial_desk_v1.meta.json",
+      "sha256": "7942dfb2f201b966ba0e5b3c087c41c3facef2c03976c6175290f70e0662196a",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_07.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/ceremonial_desk_v1.txt",
+      "prompt_sha256": "F99E347777B41C1B1B65A16AAEFA9C4B6769BEB811972DCD6593EE9BB5F6E6C4",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "F7BD582566329A0B3B036D655981EADE08FFEFF0D4123CC52539759B65CED395"
+    },
+    {
+      "id": "display_cabinet_v1",
+      "name": "豪宅博古架",
+      "kind": "furniture",
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/display_cabinet_v1.png",
+      "metadata_path": "assets/raw/luoyang_interiors_assembly_20261016g/display_cabinet_v1.meta.json",
+      "sha256": "eb24ddcea90014e140ba2da5fc86bad2981fc8acd20fbed1f6aec2625ec8e955",
+      "actual_size_px": [
+        1536,
+        1024
+      ],
+      "mode": "RGBA",
+      "status": "GENERATED_SOURCE_CANDIDATE_NOT_RUNTIME_OR_FORMAL",
+      "batch_path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_07.json",
+      "prompt_path": "prompts/qa/luoyang_interiors_assembly_20261016g/prompts/display_cabinet_v1.txt",
+      "prompt_sha256": "6A9465F77B05CECE52E065E75A490BE2EFB2748893A36A8D8F42661B7C617B42",
+      "strict_zero_alpha_10pct_margin_pass": false,
+      "batch_sha256": "F7BD582566329A0B3B036D655981EADE08FFEFF0D4123CC52539759B65CED395"
+    }
+  ],
+  "supersedes_manifest_path": "assets/raw/luoyang_interiors_assembly_20261016g/manifest.json",
+  "supersedes_manifest_sha256": "680D8F4D472E9C3AFE1453303976C00B8136AD42B51F32B5D3AC4700A1BC0102",
+  "repair_note": "Original manifest all 28 batch paths erroneously used batch_00 via object identity indexOf on cloned loads. Original retained. V2 resolves unique membership from actual 7 batch assets[] and binds actual batch SHA; no image, metadata, task state or geometry changes.",
+  "batches": [
+    {
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_01.json",
+      "sha256": "2572B0FF3572D90DC12DB99FE7E6A21724B6C507F6EAA0A90624F77FA2B81D9F",
+      "asset_ids": [
+        "shell_commercial_v1",
+        "shell_formal_hall_v1",
+        "shell_inn_hall_v1",
+        "shell_residential_v1"
+      ]
+    },
+    {
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_02.json",
+      "sha256": "FA0F49B1821BB06A2320EC41DA56953DE90B71D94BECB0FAE3E51C1C20E960DD",
+      "asset_ids": [
+        "cooking_stove_v1",
+        "dining_table_v1",
+        "household_bed_v1",
+        "long_bench_v1"
+      ]
+    },
+    {
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_03.json",
+      "sha256": "8BFDAA2D8D2D10A0BF59031FCD48B3CE0CCDF9B291469A36D8DB05BE8E4579FE",
+      "asset_ids": [
+        "wood_wardrobe_v1",
+        "writing_desk_v1",
+        "wood_armchair_v1",
+        "folding_screen_v1"
+      ]
+    },
+    {
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_04.json",
+      "sha256": "195B0C4E262B912120307DC8F0241627DC86C547DC10E08F3261FD72FA7C4962",
+      "asset_ids": [
+        "bookcase_v1",
+        "inn_counter_v1",
+        "wine_tea_shelf_v1",
+        "timber_stair_v1"
+      ]
+    },
+    {
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_05.json",
+      "sha256": "4BAFB416F243F7DB92792E67BD511572769C2D9A42CA23DB69D6CF06062F147D",
+      "asset_ids": [
+        "cloth_roll_rack_v1",
+        "cutting_table_v1",
+        "garment_rack_v1",
+        "pawn_counter_grille_v1"
+      ]
+    },
+    {
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_06.json",
+      "sha256": "21A629BE796D2A61DED9199F1C61A710381CBA566D7A0DA3B72DAC22AA21BF1E",
+      "asset_ids": [
+        "pawn_ticket_cabinet_v1",
+        "medicine_cabinet_v1",
+        "medicine_worktable_v1",
+        "warehouse_rack_v1"
+      ]
+    },
+    {
+      "path": "assets/raw/luoyang_interiors_assembly_20261016g/batch_07.json",
+      "sha256": "F7BD582566329A0B3B036D655981EADE08FFEFF0D4123CC52539759B65CED395",
+      "asset_ids": [
+        "grain_sack_stack_v1",
+        "wood_handcart_v1",
+        "ceremonial_desk_v1",
+        "display_cabinet_v1"
+      ]
+    }
+  ]
+}

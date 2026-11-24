@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_06_threefold_identity_check"
+title = "三证合身"
+kind = 0
+desc_not_started = "权限归属已经明确，还需核复核封印、直接目击与死后行动轨迹。"
+desc_in_progress = "调查茗雾封印审验室与烈云夜航转运栈，完成授权、面容、时序三方核验。"
+desc_completed = "内署复核封印、旧教习直接辨认与死亡记录后的连续转运轨迹已经互相吻合，可以回聚义厅形成正式身份结论。"
+tracker_hint = "茗雾封印审验室 / 烈云夜航转运栈"
+completion_triggers = Array[String](["evidence_acquired:ev_ch7_mingwu_counterseal_chain", "testimony_heard:ts_ch7_mingwu_instructor_recognized_xueying", "evidence_acquired:ev_ch7_posthumous_route_timeline"])
+require_all_completion_triggers = true
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 100
+reward_exp = 280
+reward_items = Array[Dictionary]([])

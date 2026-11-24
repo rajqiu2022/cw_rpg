@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "purpose": "Keep generated, test-only and superseded resources out of the WeChat Web PCK without deleting source files.",
+  "categories": {
+    "generated": ["build/*", "screenshots/*"],
+    "developmentOnly": ["test/*", "tests/*", "addons/*", "addons/*/*"],
+    "archivedArt": [
+      "art/concepts/*",
+      "art/characters_backup_20260519_v2/*",
+      "art/characters_backup_20260519_131717/*",
+      "art/modules/prop/candidates/*",
+      "art/ui/battle/candidates/*",
+      "art/ui/icon/candidates/*",
+      "art/ui/cold_wuxia/*"
+    ],
+    "supersededBgm": [
+      "art/audio/bgm/*_v2.wav",
+      "art/audio/bgm/*_v3.wav",
+      "art/audio/bgm/*_v4.wav",
+      "art/audio/bgm/bgm_calm.wav",
+      "art/audio/bgm/bgm_danger.wav",
+      "art/audio/bgm/bgm_happy.wav",
+      "art/audio/bgm/bgm_sad.wav",
+      "art/audio/bgm/bgm_victory.wav"
+    ],
+    "unreferencedBackgrounds": 54
+  },
+  "rules": [
+    "Never exclude a candidate directory if a live SceneScript, EnemyDef or NPC catalogue still references a file inside it.",
+    "Background exclusions are generated from exact res:// path references in game/scripts, game/scenes and game/data.",
+    "Run the Godot chapter resource and strict editor checks after every change to this list."
+  ]
+}

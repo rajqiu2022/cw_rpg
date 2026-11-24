@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "茗雾旧教习"
+text = "复核那夜，他落印前摘过一次面巾。我教了薛影十年，不会认错那张脸。但我一个人的话，不能替你定案。"
+voice_emotion = "solemn"
+add_testimonies = Array[StringName]([&"ts_ch7_mingwu_instructor_recognized_xueying"])
+set_flags = Array[Dictionary]([{"key":"ch7_instructor_recognition_heard", "value":true}])
+on_end = "next:hero"
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "你的辨认只算一证。我还会核复核印和他死后的连续路线，三处都合上才写名字。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_mingwu_instructor_recognition"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero")])

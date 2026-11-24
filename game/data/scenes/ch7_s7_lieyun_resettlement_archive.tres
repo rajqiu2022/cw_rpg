@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch7_s7_lieyun_resettlement_archive_layout_v2.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="9_extent"]
+
+[sub_resource type="Resource" id="MapExtent"]
+script = ExtResource("9_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch7_s7_lieyun_resettlement_archive"
+display_name = "烈云分舵 · 安置档案室"
+streamed_background = SubResource("MapExtent")
+bgm_path = "res://art/audio/bgm/bgm_sect_clouds_v4.wav"
+is_walkable = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.500,0.875)
+player_visual_scale = 1.0
+npcs = Array[Dictionary]([
+	{"npc_id":"ch7_lieyun_record_keeper", "npc_name":"旧渡记档人", "pos":Vector2(0.275,0.365), "portrait_path":"res://art/characters/portraits/generic/portrait_generic_older_man_v1.png", "sprite_path":"res://art/characters/npc_zhuwei_innkeeper_v1_idle_down_25d_4f.png", "dialog_id":"ch7_lieyun_record_keeper_testimony", "require_quest_active":"q_ch7_main_05_dead_name_live_access", "hide_flag":"ch7_lieyun_posthumous_code_heard", "scale":0.90, "movement_mode":"idle"}
+])
+hotspots = Array[Dictionary]([])
+exits = Array[Dictionary]([])

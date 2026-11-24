@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "清虚道长"
+text = "新丹药力太烈。古人尝草辨性，靠的不是逞强，而是知止。你可愿替我守这一炉？"
+accept_quest = &"q_ch3_side_03_alchemy_trial"
+on_end = "next:choice"
+
+[sub_resource type="Resource" id="choice"]
+script = ExtResource("2")
+node_id = &"choice"
+speaker = "旁白"
+text = "丹香忽苦，炉火转青。此时该如何处置？"
+choices = Array[Dictionary]([
+	{"text":"撤火开窗，以清茶缓药气", "next":"success"},
+	{"text":"继续鼓风，让药性一次冲开", "next":"retry"}
+])
+
+[sub_resource type="Resource" id="retry"]
+script = ExtResource("2")
+node_id = &"retry"
+speaker = "清虚道长"
+text = "火猛则药焦。先闻香、再看烟，莫把胆气当医理。"
+on_end = "next:choice"
+
+[sub_resource type="Resource" id="success"]
+script = ExtResource("2")
+node_id = &"success"
+speaker = "清虚道长"
+text = "苦气散而回甘，正是火候。你守住了炉，也守住了分寸。"
+set_flags = Array[Dictionary]([{"key":"alchemy_trial_survived", "value":true}])
+complete_quest = &"q_ch3_side_03_alchemy_trial"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch3_alchemy_trial"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("choice"), SubResource("retry"), SubResource("success")])

@@ -1,0 +1,133 @@
+{
+	"camera": {
+		"canvas": [
+			768,
+			768
+		],
+		"look_at": [
+			0,
+			0,
+			0
+		],
+		"orthographic": true,
+		"pixels_per_meter": 102.4,
+		"position": [
+			0,
+			36,
+			36
+		],
+		"size": 7.5
+	},
+	"cases": [
+		{
+			"actual_min_drawn_vertex_ground_delta_m": 0.0,
+			"alpha_above_005_pixels": 26864,
+			"body_path": "res://build/world_map_v14_tree_hybrid_compare/hybrid_source_leaf_L0_native_branch_trunk_LOD2_body.png",
+			"case": "hybrid_source_leaf_L0_native_branch_trunk_LOD2",
+			"crown_alpha_pixels": 23449,
+			"crown_alpha_weight": 23449.0,
+			"crown_rect": [
+				267,
+				76,
+				234,
+				191
+			],
+			"ground_foot_camera_px": [
+				384.0,
+				384.0
+			],
+			"ground_shadow": {
+				"caster_off": "same shadows-only caster hidden; no visible body in either ground image",
+				"caster_on": "layer1 SHADOWS_ONLY visible",
+				"ground_cast_path": "res://build/world_map_v14_tree_hybrid_compare/ground_cast.png",
+				"ground_pixels_excluding_sourcebody_dilate_2px": 32680,
+				"light_shadow": {
+					"bias": 0.02,
+					"enabled": true,
+					"max_distance": 95.0,
+					"normal_bias": 0.08,
+					"splits": 2
+				},
+				"off_repeat_exact": true,
+				"on_repeat_exact": true,
+				"pixel_formula": "clamp((off_luma-on_luma)/max(off_luma,.05),0,.85) > .015; exclude sourcebody alpha>.02 grown2px",
+				"receiver": "native PlaneMesh up-front, standard material, castOFF",
+				"valid": true
+			},
+			"repeat_exact": true,
+			"repeat_path": "res://build/world_map_v14_tree_hybrid_compare/hybrid_source_leaf_L0_native_branch_trunk_LOD2_repeat.png",
+			"source_crown_alpha_retention": 0.99297056955325,
+			"surfaces": [
+				{
+					"index_bytes": 139380,
+					"index_sha256": "ccde9a955dad5c51104e20bbab894c71feefbda9077ea3cac6168f2325879a28",
+					"index_source": "native_generated_lod",
+					"lod_index": 2,
+					"recipe_method": "ImporterMesh.generate_lods(60,60,[])",
+					"selected_importer_lod_index": 2,
+					"selected_surface": 0,
+					"semantic": "branch",
+					"surface": 0,
+					"triangles": 11615
+				},
+				{
+					"index_bytes": 23272560,
+					"index_sha256": "af01bb2ae852ff432977c4d90a1d7848da0ba7dd8c0d681d172784ac0eb951d7",
+					"index_source": "source_lod0",
+					"lod_index": -1,
+					"recipe_method": "original source indices",
+					"selected_importer_lod_index": -1,
+					"selected_surface": 1,
+					"semantic": "source leaf cards",
+					"surface": 1,
+					"triangles": 1939380
+				},
+				{
+					"index_bytes": 42420,
+					"index_sha256": "dfadacb7070b0d4c4041a4148c8172af084a8d2cd5bcb92e8da048a2626fba12",
+					"index_source": "native_generated_lod",
+					"lod_index": 2,
+					"recipe_method": "ImporterMesh.generate_lods(60,60,[])",
+					"selected_importer_lod_index": 2,
+					"selected_surface": 2,
+					"semantic": "trunk",
+					"surface": 2,
+					"triangles": 3535
+				}
+			],
+			"triangles": 1954530,
+			"used_rect": [
+				267,
+				76,
+				234,
+				289
+			],
+			"valid": true
+		}
+	],
+	"light": {
+		"ambient": 0.54,
+		"energy": 1.05,
+		"rotation": [
+			-55,
+			-34,
+			0
+		]
+	},
+	"map_outputs_modified": false,
+	"model": {
+		"scale": 0.75,
+		"translation": [
+			-0.373875498771667,
+			0.0180778838694096,
+			-0.304475665092468
+		],
+		"yaw_degrees": 35.0
+	},
+	"not_a_visual_pass": true,
+	"only_changed": "per-surface draw indices; source arrays/materials unchanged; raw-source XZ support fixed, hybrid actual minimum draw-Y on ground",
+	"source": "res://art/external/polyhaven/tree_small_02/tree_small_02_1k.gltf",
+	"source_node": "tree_small_02_LOD0",
+	"source_sha256": "3062a709614c05b80fdc1e56583998bc3cb1027b0d52f956c8ecfb882ff8ca6d",
+	"status": "CONTROLLED_TREE_LOD_CAPTURES_VALID"
+}

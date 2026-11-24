@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.180, 0.400, 0.820, 0.400, 0.860, 0.750, 0.580, 0.750, 0.580, 0.855, 0.420, 0.855, 0.420, 0.750, 0.145, 0.750)])
+blockers = [
+	{"id": "inner_desk", "pos": Vector2(0.650, 0.385), "size": Vector2(0.170, 0.100)},
+	{"id": "inner_left_mats", "pos": Vector2(0.290, 0.585), "size": Vector2(0.150, 0.245)},
+	{"id": "inner_right_mats", "pos": Vector2(0.720, 0.585), "size": Vector2(0.145, 0.245)}
+]
+interactions = [
+	{"id": "inspect_zhao_orders", "pos": Vector2(0.500, 0.520), "size": Vector2(0.120, 0.105), "activation": "interact", "label": "查看赵无忌的密令", "action": "dialog:ch1_s3_ruin_orders", "interaction_visual_kind": "letter", "visual_render_size_px": Vector2(78, 78), "require_flag": "zhao_wuji_wounded_escape", "hide_flag": "chapter1_complete"}
+]
+portals = [
+	{"id": "ruin_return_to_outer", "pos": Vector2(0.500, 0.845), "size": Vector2(0.130, 0.085), "label": "返回城西废宅", "marker_rotation_degrees": 180.0, "target_scene": "ch1_s3_west_ruin", "target_pos": Vector2(0.600, 0.435)},
+	{"id": "ruin_to_chapter2_market", "pos": Vector2(0.500, 0.405), "size": Vector2(0.120, 0.075), "label": "经后巷返回竹尾主街", "target_scene": "ch2_s1_zhuwei_market", "target_pos": Vector2(0.248, 0.886), "require_flag": "chapter1_complete", "locked_label": "先查看赵无忌留下的密令"}
+]
+walkable_probes = [
+	{"id": "inner_spawn", "pos": Vector2(0.500, 0.720)},
+	{"id": "inner_boss", "pos": Vector2(0.500, 0.490)},
+	{"id": "inner_return", "pos": Vector2(0.500, 0.845)},
+	{"id": "inner_chapter2_exit", "pos": Vector2(0.500, 0.405)}
+]
+blocked_probes = [
+	{"id": "inner_desk", "pos": Vector2(0.650, 0.385)}
+]

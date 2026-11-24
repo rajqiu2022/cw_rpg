@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "template_status": "PENDING_ROOT_COMPLETE_INPUT_CATALOG_CPU_DERIVATION_AND_SEPARATE_GPU_APPROVAL",
+  "approved": false,
+  "scope": "V9C_VISUAL_QUALITY_PROPOSAL_FIVE_WHOLE_CAMERA_ROIS_NOT_FULL_NAV_FIELD",
+  "builder_path": "res://scripts/dev/build_world_map_v15_v9c_visual_quality_proposal.gd",
+  "builder_sha256": "bfd3ad103033aaa8700bb111fe739b984f0d5011729661688005dcdfbe981e8f",
+  "allow_full64": false,
+  "memory_budget_approved": false,
+  "maximum_CPU_ROI_pixels": 8404992,
+  "CPU_ROI_budget": {
+    "previous_pilot_pixels": 8388608,
+    "maximum_pixels": 8404992,
+    "maximum_native_canvas": [
+      3456,
+      2432
+    ],
+    "logical_tile": [
+      1536,
+      1024
+    ],
+    "logical_halo_px": 96,
+    "ssaa_scale": 2,
+    "additional_pixels": 16384,
+    "additional_RGBA_bytes": 65536,
+    "whole_CPU_Image_allowed": false
+  },
+  "input_sha256": {
+    "res://scripts/dev/build_world_map_v15_v9c_visual_quality_proposal.gd": "bfd3ad103033aaa8700bb111fe739b984f0d5011729661688005dcdfbe981e8f",
+    "res://scripts/dev/world_map_v15_v9c_visual_quality_proposal_ecology_source.gd": "9599af1cd080f0b32c90ff99158c7451b74cc3a82b6eea0fcbf30fa7782fb872",
+    "res://scripts/dev/world_map_v15_v9c_visual_quality_proposal_surface.gd": "d14e792202263186423751b030151eb2238cfa82ff00e2080ce859206f9f9627",
+    "res://scripts/dev/world_map_v15_v9c_derived_geometry_helper.gd": "f4ae092bdfa6b09fe9e2cfa40e73508f5c0ff2d43d5956d1011287fc9d91d982"
+  },
+  "derived_geometry_inputs": {},
+  "geometry_plan": {
+    "flag": "--v9c-derived-source-plan",
+    "headless_allowed": true,
+    "write_scope": "NEW timestamp build directory + absent derived_geometry child ONLY",
+    "memory_budget_approved_required": false,
+    "claims": "CPU derivation/native saved arrays/Float32 protected support/selector source audits only; no GPU/binary navigation/Physics/Field/visual credit"
+  },
+  "gpu_plan": {
+    "flag": "--v9c-visual-quality-proposal",
+    "headless_allowed": false,
+    "memory_budget_approved_required": true,
+    "required_derived_geometry_roles": [
+      "height_rf",
+      "terrain_mesh",
+      "source_topology",
+      "derivation_report"
+    ],
+    "instructions": "ROOT first runs CPU source plan then reviews actual report/three resource SHAs. A separate NEW approved GPU authorization pins all four artifacts in BOTH derived_geometry_inputs and input_sha256. Empty/PENDING/missing artifacts refuse before GPU world allocation. The CPU template/catalog is not GPU approval."
+  },
+  "catalog_authoring_seed": {
+    "path": "res://build/joint_v9b_five_visual_roi_authorization_20261004.json",
+    "sha256": "d5007a194fa1cc0363e66a27e3c543fd48442dea9be9e945d40c796c1c123451",
+    "instructions": "ROOT independently compares every current immutable dependency/body PNG/PBR/source to this actual196 catalog, retains inherited executed closure and adds current NEW4 above. Old196 scope/approval is NOT inherited. This incomplete template refuses execution."
+  },
+  "transport_proof": {
+    "path": "res://build/world_map_v15_native_texel_transfer/1791066200_2454361/result.json",
+    "sha256": "53896c2af42ce245cadee635c4b2eb7b1d2dbfbae54c6845259931fc1e668de8"
+  },
+  "scope_limit": "Explicit CPU source derivation OR one real whole-camera world, two owner debug witnesses, five visual/shadow_off ROI showcases and true byte-exact repeats. No FULL64/112/binary/Field/production credit.",
+  "baseline_196": "ActualOS0/actual owner Array works/visual FAIL. Baseline authoring and outputs remain immutable.",
+  "material_recipe": {
+    "actual_scan_ALBEDO_primary": true,
+    "official_channels": 18,
+    "furrow_period_source_logical_pixels": 8,
+    "finite_edge_source_pixels": [
+      4.59,
+      8.33
+    ],
+    "wet_pools": "opaque moist soil reflectance on existing dry RF, NOT water mesh/walk support",
+    "snow": "material deposition on actual derived RF; no screenshot shelf concealment claim"
+  },
+  "limitations": "Two north shoulders may genuinely change unprotected terrain NAV; new RF/mesh/selector require fresh eventual global/nav/Field verification. Existing legal supports/roads/doors/bridge/water boundaries are protected by the helper. Straight rivers/undeclared reed ecology are not solved or approved by this material/geometry proposal.",
+  "visual_approved": false,
+  "production_approved": false
+}

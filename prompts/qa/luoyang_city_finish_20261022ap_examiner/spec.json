@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "change_id": "luoyang-city-finish-20261022ap-examiner-portrait",
+  "asset_id": "portrait_luoyang_examiner_mature_same_sprite_20261022ap_v1",
+  "execution_backend": "builtin_image_gen",
+  "model": null,
+  "provider": null,
+  "usage": null,
+  "cost": null,
+  "mode": "generate_with_identity_reference",
+  "attempt_budget": 1,
+  "attempts_used": 0,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "transparent_background": true,
+  "intended_size_px": [
+    1024,
+    1024
+  ],
+  "output_path": "assets/raw/luoyang_city_finish_20261022ap/portrait_luoyang_examiner_mature_same_sprite_20261022ap_v1.png",
+  "prompt_path": "prompts/qa/luoyang_city_finish_20261022ap_examiner/portrait_luoyang_examiner_mature_same_sprite_20261022ap_v1.txt",
+  "task_file": "prompts/qa/luoyang_city_finish_20261022ap_examiner/tasks.yaml",
+  "template_reused": "prompts/templates/world_placeables_walk_20261022.yaml",
+  "reference": {
+    "path": "game/art/characters/street_expansion_v1/npc_wulin_examiner_idle_down_4f.png",
+    "sha256": "4021c7da99182468b4fbb2f3506288df761a6791f803d68f3cb2c973ce2a2c1b",
+    "role": "first frame identity and costume; all four are same man",
+    "must_not_crop_or_alter_reference": true
+  },
+  "consumers_observed": [
+    "game/data/scenes/ch3_s2_trial_ground.tres:wulin_examiner_trigger",
+    "game/data/scenes/ch3_s2_trial_ground.tres:spar_wulin_examiner",
+    "game/data/maps/luoyang_v3_legacy/ch4_s3_luoyang_market_scene.tres:spar_luoyang_examiner"
+  ],
+  "source_cause": "Scene NPC definitions have no dedicated portrait_path; current Field._generic_npc_portrait uses generic fallback. Same sprite is also reused by other identities; this task must not globally replace all users.",
+  "acceptance": [
+    "mature rugged45-50 same broad-shouldered examiner darkteal robe and bronze shoulder armor",
+    "original bytes retained and actual alpha0/8/64 bounds and strict10pct margin recorded",
+    "no runtime/import/canonical adoption credit",
+    "one builtin call; no local alpha cleaning/cropping/retry"
+  ],
+  "shared_task_file_write_authorized": false,
+  "production_write_authorized": false
+}
+

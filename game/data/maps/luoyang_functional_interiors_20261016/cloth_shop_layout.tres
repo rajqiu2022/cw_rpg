@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+display_at_native_size = true
+fill_viewport = true
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.11979166666666667, 0.298828125, 0.8658854166666666, 0.298828125, 0.9466145833333334, 0.7158203125, 0.6165364583333334, 0.7158203125, 0.6165364583333334, 0.93359375, 0.3841145833333333, 0.93359375, 0.3841145833333333, 0.7158203125, 0.052083333333333336, 0.7158203125)])
+blockers = [{"id": "cash_counter", "ground_polygon": PackedVector2Array(0.23111979166666666, 0.318359375, 0.4713541666666667, 0.318359375, 0.4713541666666667, 0.3740234375, 0.23111979166666666, 0.3740234375), "walkability_margin": 0.0},
+{"id": "cutting_table", "ground_polygon": PackedVector2Array(0.5930989583333334, 0.3232421875, 0.837890625, 0.3232421875, 0.837890625, 0.3896484375, 0.5930989583333334, 0.3896484375), "walkability_margin": 0.0},
+{"id": "loom", "ground_polygon": PackedVector2Array(0.12890625, 0.271484375, 0.228515625, 0.271484375, 0.228515625, 0.3330078125, 0.12890625, 0.3330078125), "walkability_margin": 0.0},
+{"id": "rear_folded_cloth_cabinet", "ground_polygon": PackedVector2Array(0.443359375, 0.22265625, 0.5481770833333334, 0.22265625, 0.5481770833333334, 0.2568359375, 0.443359375, 0.2568359375), "walkability_margin": 0.0},
+{"id": "rear_left_bolt_rack", "ground_polygon": PackedVector2Array(0.2805989583333333, 0.22265625, 0.4368489583333333, 0.22265625, 0.4368489583333333, 0.2587890625, 0.2805989583333333, 0.2587890625), "walkability_margin": 0.0},
+{"id": "rear_right_bolt_rack", "ground_polygon": PackedVector2Array(0.6126302083333334, 0.216796875, 0.7734375, 0.216796875, 0.7734375, 0.25390625, 0.6126302083333334, 0.25390625), "walkability_margin": 0.0},
+{"id": "left_front_goods", "ground_polygon": PackedVector2Array(0.041666666666666664, 0.5859375, 0.16471354166666666, 0.5859375, 0.16471354166666666, 0.7177734375, 0.041666666666666664, 0.7177734375), "walkability_margin": 0.0},
+{"id": "left_yarn_baskets", "ground_polygon": PackedVector2Array(0.053385416666666664, 0.4560546875, 0.17643229166666666, 0.4560546875, 0.17643229166666666, 0.5859375, 0.053385416666666664, 0.5859375), "walkability_margin": 0.0},
+{"id": "right_sample_cabinet", "ground_polygon": PackedVector2Array(0.8509114583333334, 0.5380859375, 0.9388020833333334, 0.5380859375, 0.9388020833333334, 0.7265625, 0.8509114583333334, 0.7265625), "walkability_margin": 0.0},
+{"id": "right_stool", "ground_polygon": PackedVector2Array(0.822265625, 0.3583984375, 0.8548177083333334, 0.3583984375, 0.8548177083333334, 0.400390625, 0.822265625, 0.400390625), "walkability_margin": 0.0}]
+portals = [{"id": "return_cloth_shop", "pos": Vector2(0.5, 0.8642578125), "size": Vector2(0.07161458333333333, 0.029296875), "target_scene": "ch4_s3_luoyang_market", "target_pos": Vector2(0.5, 0.3193359375), "auto_trigger": false, "label": "返回南市"}]
+walkable_probes = [{"id": "spawn", "pos": Vector2(0.5, 0.6640625), "source_feet": true}, {"id": "measuring_counter", "pos": Vector2(0.361328125, 0.4375), "source_feet": true}, {"id": "cutting_station", "pos": Vector2(0.70703125, 0.4716796875), "source_feet": true}, {"id": "loom_station", "pos": Vector2(0.20247395833333334, 0.396484375), "source_feet": true}, {"id": "rear_fabric_selection", "pos": Vector2(0.5130208333333334, 0.341796875), "source_feet": true}, {"id": "exit", "pos": Vector2(0.5, 0.8642578125), "source_feet": true}]
+metadata/functional_interior_author = "res://data/maps/luoyang_functional_interiors_20261016/cloth_shop_author.json"

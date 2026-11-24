@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dialog"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+text = "在下唐行舟，从洛阳一路游历到林西。方才看你走路落脚很稳，想必练过剑——我这根棍子也正愁找不到对手。"
+choices = Array[Dictionary]([{"text": "先切磋一场，以武会友", "next": "challenge"}, {"text": "今日还有事，改日再说", "next": "later"}])
+
+[sub_resource type="Resource" id="node_challenge"]
+script = ExtResource("2_node")
+node_id = &"challenge"
+speaker = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+text = "痛快！只分高下，不伤和气。让我看看林西剑路，究竟有什么门道。"
+on_end = "spar_then:tang_xingzhou_recruit:companion_tang_xingzhou_spar:唐行舟:18:4:linxi_companion_tang_xingzhou_after_spar"
+
+[sub_resource type="Resource" id="node_later"]
+script = ExtResource("2_node")
+node_id = &"later"
+speaker = "唐行舟"
+portrait_path = "res://art/characters/companions/portrait_tang_xingzhou_v2.png"
+text = "不急。我在村里再转转，你得空了便来找我。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dialog")
+dialog_id = &"linxi_companion_tang_xingzhou"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_challenge"), SubResource("node_later")])

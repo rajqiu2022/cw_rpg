@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch7_main_04_reform_and_witness"
+title = "内证初声"
+kind = 0
+desc_not_started = "外院物证已经能区分两边责任，可以进入聚义厅和茗雾内院寻找愿意署名的人。"
+desc_in_progress = "与戚云笙核对烈云公开药册的决定，并保护茗雾外院录事说出已注销通行暗号仍被使用的事实。"
+desc_completed = "戚云笙承认曾压住本盟不利药册，茗雾录事则证明有人使用已注销弟子的通行暗号调走文书。两份证词都有限，却打开了更深的身份调查。"
+tracker_hint = "烈云聚义厅 / 茗雾山庄内院"
+completion_triggers = Array[String](["testimony_heard:ts_ch7_qi_yunsheng_open_record", "testimony_heard:ts_ch7_mingwu_dead_disciple_code"])
+require_all_completion_triggers = true
+starts_in_chapter = 7
+completes_in_chapter = 7
+reward_gold = 80
+reward_exp = 240
+reward_items = Array[Dictionary]([])
+progress_records = Array[Dictionary]([{"trigger":"testimony_heard:ts_ch7_qi_yunsheng_open_record", "text":"戚云笙承认自己曾担心药册被误用而暂缓公开，并同意把烈云旧罪单独署名公示。"}, {"trigger":"testimony_heard:ts_ch7_mingwu_dead_disciple_code", "text":"茗雾录事证明调走文书者使用了一个早已注销的弟子通行暗号，但没有看清来人身份。"}])

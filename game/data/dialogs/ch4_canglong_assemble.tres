@@ -1,0 +1,41 @@
+[gd_resource type="Resource" format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/canglong_assembly_dialog.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "冷孤云"
+text = "上篇定步，中篇定息，下篇定收。三页原来不是三套招，而是同一招的三次转劲。"
+on_end = "next:learn"
+
+[sub_resource type="Resource" id="learn"]
+script = ExtResource("2_node")
+node_id = &"learn"
+speaker = "旁白"
+text = "三处断口严丝合缝。你收好全卷，依次试过步位、吐纳和收势。"
+set_flags = Array[Dictionary]([{"key":"canglong_manual_assembled","value":true}])
+accept_quest = &"q_secret_canglong_three_pages"
+complete_quest = &"q_secret_canglong_three_pages"
+on_end = "next:outcome"
+
+[sub_resource type="Resource" id="mastered"]
+script = ExtResource("2_node")
+node_id = &"mastered"
+speaker = "冷孤云"
+text = "第三次换劲正好接回起势。原来如此，藏龙三转！"
+on_end = "end"
+
+[sub_resource type="Resource" id="pending"]
+script = ExtResource("2_node")
+node_id = &"pending"
+speaker = "冷孤云"
+text = "残卷已补全，只是第二转的气息还接不上。且记下这处，待悟性长进再练。"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_script")
+dialog_id = &"ch4_canglong_assemble"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("learn"), SubResource("mastered"), SubResource("pending")])

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Skill" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/skill.gd" id="1_skill"]
+
+[resource]
+script = ExtResource("1_skill")
+skill_id = &"wudang_mianzhang"
+display_name = "武当绵掌"
+icon_path = "res://art/ui/skill/icons_semantic_v1/icon_skill_palm_wave_v1.png"
+description = "掌力若有若无，触身后才沿经络层层透入。造成内功伤害并积累内伤。"
+origin = "武当山门的基础掌路，以松肩、沉肘、不断劲为要。修习者可继续研习游身八卦掌，也可转入太极拳的引化一路。"
+kind = 0
+target = 0
+delivery = 0
+mp_cost = 6
+quality = 1
+required_insight = 4
+practice_base_cost = 8
+fixed_damage = 9
+attack_scaling = 90
+hit_count = 1
+base_hit_chance = 0.95
+animation_id = &"wudang_mianzhang"
+required_weapon_type = &"palm"
+martial_category = &"palm"
+damage_type = 1
+internal_injury_gain = 16
+school = "wudang"
+complemented_by = "wudang_xuanwu_xinjing"
+complement_bonus_scaling = 8
+complement_bonus_desc = "玄武心经使绵劲不断，内伤积累提高"
+mastery_unlock_skill = &"wudang_die_lang"

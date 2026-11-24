@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "少林行脚僧"
+text = "你扛着粮担走到坡顶，胸前一窒。照方才钟声断续的道理，这口气，该怎么走？"
+choices = Array[Dictionary]([{"text": "闭气，强行冲开", "next": "retry"}, {"text": "先落肩卸重，再徐徐吐纳", "next": "pass"}])
+
+[sub_resource type="Resource" id="retry"]
+script = ExtResource("2")
+node_id = &"retry"
+speaker = "少林行脚僧"
+text = "肩抬得越高，胸口越紧。放下担子，先听自己的呼吸；歇好了还可以再试。"
+
+[sub_resource type="Resource" id="pass"]
+script = ExtResource("2")
+node_id = &"pass"
+speaker = "少林行脚僧"
+text = "肩落了，气才有路。你肯替人护经，也肯收住这股蛮劲，这卷经书便交给你。"
+set_flags = Array[Dictionary]([{"key": "shaolin_meridian_trial_complete", "value": true}])
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"shaolin_camp_trial"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("retry"), SubResource("pass")])

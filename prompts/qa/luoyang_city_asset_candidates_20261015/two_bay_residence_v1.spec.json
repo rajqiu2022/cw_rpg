@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "status": "PREPARED_NOT_GENERATED_NOT_GAME_APPROVED",
+  "execution": {
+    "backend": "builtin_image_gen",
+    "owner": "producer",
+    "calls_authorized_here": 0,
+    "cli_allowed": false,
+    "network_runner_allowed": false,
+    "transparent_background": true,
+    "model": null,
+    "model_identity_policy": "Record the actual tool response if disclosed; never infer gpt-image-2 from the built-in tool name.",
+    "metadata_required_after_call": [
+      "actual_tool",
+      "actual_response_metadata_or_not_disclosed",
+      "actual_output_path",
+      "copied_project_candidate_path",
+      "sha256",
+      "dimensions_px",
+      "actual_alpha_observations",
+      "prompt_sha256",
+      "reference_sha256",
+      "cost_if_returned_else_null"
+    ]
+  },
+  "adoption_boundary": "No generation has run. All old PNG/import/mesh/scene/layout/navigation/source catalogs remain unchanged. New pixels cannot inherit old source/anchor/solid proofs.",
+  "post_generation_checks": [
+    "Preserve original returned image bytes and metadata; no overwrite of existing assets.",
+    "Inspect actual alpha/bounds/cropped components and visually compare at current actor scale.",
+    "Measure foot_px/foot_uv, door/boarding anchor, physical foundation polygons and any reachable opening from actual pixels; leave unknown values null before measurement.",
+    "New independent import aliases only after authorization; verify raw/imported fullRGBA and old-source preservation.",
+    "Bind a NEW candidate with its own catalog and actual key Field/Physics/input/fade proof before any formal replacement."
+  ],
+  "id": "luoyang_two_bay_courtyard_residence_20261015_v1",
+  "name": "洛阳两开间带小院民宅候选",
+  "prompt_path": "prompts/qa/luoyang_city_asset_candidates_20261015/two_bay_residence_v1.prompt.txt",
+  "candidate_output_path": "assets/raw/scene_module/luoyang_city_distinct_20261015/two_bay_residence_v1.png",
+  "references": [
+    {
+      "path": "game/art/maps/luoyang_modular_v3/source/inn_v1.png",
+      "sha256": "661BD90EBC9BF75EBB67064E80633AFD3AB7F371184E514574D667E59E2540B9",
+      "role": "city camera / material only; deliberately different residential silhouette"
+    },
+    {
+      "path": "game/art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png",
+      "sha256": "DBE22E8E6072CBFEE28FD5FB01CBC393F532DE12ED9F356E7EC269FFF5248221",
+      "role": "masonry style and legible opening only; not geometry reuse"
+    }
+  ],
+  "geometry": {
+    "foot_px": null,
+    "foot_uv": null,
+    "door_foot_px": null,
+    "door_approach_polygon_px": null,
+    "solid_polygons_px": null,
+    "orientation_target": "main facade horizontal, elevated 30 degrees, central approach unobstructed"
+  },
+  "prompt": "Use case: historical-scene\nAsset type: one transparent human-scale 2.5D residential building-and-small-courtyard module for a realistic Chinese wuxia RPG, NOT a world-map city miniature.\nPrimary request: create a distinctly residential two-bay ordinary town house with a modest private forecourt, visibly different in silhouette and use from the existing two-storey inn and open-front shops.\nInput images: Image 1 is the existing inn: use ONLY its front-facing elevated city camera, realistic roof tiles, timber/plaster detail and lighting. Do NOT duplicate its two-storey commercial facade or lantern arrangement. Image 2 is the courtyard wall-and-gate: use its masonry/roof material quality and clear ground-level opening, not its repeated wall layout.\nSubject: a single-storey two-bay modest Luoyang town residence. Broad but restrained grey tiled gable roof, pale grey-white limewashed walls with believable age, dark timber door and small lattice windows, two low entrance steps. A compact low-walled forecourt is attached at the front, with one clearly open central courtyard entrance aligned with a visible house doorway behind. Keep the central approach legible and empty. Small restrained domestic jars beside the wall are acceptable; no shop counters, awnings, goods display, signboard or public gate tower. The two-bay main house and courtyard should read as one residence, not several cloned shops.\nCamera: the current fixed orthographic city camera, approximately 30 degrees above horizontal; main facade baseline horizontal across the image, view into the forecourt from the front. Do not rotate the entire house to a 45-degree diamond isometric map view. Roof, walls and foundation must have substantial three-dimensional thickness.\nLighting/materials: soft upper-left daylight, realistic individual grey tiles, uneven lime plaster, aged timber grain, subtle wear at the stone steps. Rich readable material variation, not a uniform grey block. Restrained neutral-warm palette consistent with the referenced buildings.\nComposition: complete roof, all wall ends, foundations and steps visible, at least 10 percent truly transparent margin around the asset. Clear front threshold at the bottom of the forecourt so its actual foot anchor and entry path can be measured later. The forecourt may contain its compact architectural paving, but no large surrounding grass/road/ground rectangle or long shadow plate.\nConstraints: genuinely transparent RGBA outside this one architecture module. No people, NPCs, lettering, plaques, UI, baked arrow, watermark, checkerboard, opaque background, detached extra house, tall front wall hiding the entrance, or cropped roof. Do not paint numeric foot markers. This is a NEW candidate requiring measured alpha, foundation footprint, door foot and access path; it must NOT inherit old shop/street-row collision geometry."
+}

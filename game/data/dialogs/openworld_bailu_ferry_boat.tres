@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "渡船管事"
+text = "东海埠在离岸的岛上，陆路到不了。替船上照看一程货，便不收你船钱；海上风浪急，不要自行涉水。"
+
+choices = Array[Dictionary]([{"text":"随船前往东海埠","action":"scene:openworld_east_sea_port"},{"text":"暂不乘船","next":"end"}])
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_bailu_ferry_boat"
+nodes = Array[Resource]([SubResource("start")])

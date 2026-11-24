@@ -11,6 +11,12 @@ signal closed
 ]
 
 const SLOT_NODES := ["SlotWeapon", "SlotHead", "SlotArmor", "SlotHands", "SlotShoes", "SlotAccessory"]
+const ICON_WEAPON := preload("res://art/ui/inventory/icons/icon_sword.png")
+const ICON_HEAD := preload("res://art/ui/inventory/icons/icon_iron_helmet.png")
+const ICON_ARMOR := preload("res://art/ui/inventory/icons/icon_armor.png")
+const ICON_HANDS := preload("res://art/ui/inventory/icons/icon_leather_bracers.png")
+const ICON_SHOES := preload("res://art/ui/inventory/icons/icon_deer_leather_boots.png")
+const ICON_ACCESSORY := preload("res://art/ui/inventory/icons/icon_ring.png")
 
 
 func open() -> void:
@@ -85,6 +91,7 @@ func _refresh() -> void:
 		var eq: Equipment = Inventory.get_equipped(i)
 		if eq:
 			if icon:
+				icon.modulate.a = 1.0
 				if eq.icon_path != "" and ResourceLoader.exists(eq.icon_path):
 					icon.texture = load(eq.icon_path)
 				else:
@@ -93,7 +100,9 @@ func _refresh() -> void:
 				lbl.text = eq.display_name
 				lbl.add_theme_color_override("font_color", Color(0.85, 0.92, 0.98))
 		else:
-			if icon: icon.texture = null
+			if icon:
+				icon.texture = _default_icon(i)
+				icon.modulate.a = 0.45
 			if lbl:
 				lbl.text = ""
 				lbl.add_theme_color_override("font_color", Color(0.5, 0.6, 0.7))
@@ -121,9 +130,12 @@ func _refresh_attrs() -> void:
 
 func _default_icon(slot_idx: int) -> Texture2D:
 	match slot_idx:
-		0: return preload("res://art/ui/inventory/icons/icon_sword.png")
-		1, 2, 3, 4: return preload("res://art/ui/inventory/icons/icon_armor.png")
-		5: return preload("res://art/ui/inventory/icons/icon_ring.png")
+		Equipment.Slot.WEAPON: return ICON_WEAPON
+		Equipment.Slot.HEAD: return ICON_HEAD
+		Equipment.Slot.ARMOR: return ICON_ARMOR
+		Equipment.Slot.HANDS: return ICON_HANDS
+		Equipment.Slot.SHOES: return ICON_SHOES
+		Equipment.Slot.ACCESSORY: return ICON_ACCESSORY
 	return null
 
 

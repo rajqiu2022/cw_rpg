@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "旧案幸存者"
+text = "十八年前我替矿队送灯油，亲眼见过他们把五具尸身从北坡抬来。旗是烈云的样子，针脚却全反着。"
+voice_emotion = "weary"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "旧案幸存者"
+text = "可后来烈云旧部也信了这场嫁祸，错截一支无辜货队。你若记案，别把他们受的冤与后来犯的错混作一件事。"
+voice_emotion = "solemn"
+on_end = "next:c"
+[sub_resource type="Resource" id="c"]
+script = ExtResource("2")
+node_id = &"c"
+speaker = "冷孤云"
+text = "伪旗搬尸、误信报复，我会分开记。谁借两边旧恨灭口，也会单独追。"
+add_testimonies = Array[StringName]([&"ts_ch5_old_case_survivor"])
+set_flags = Array[Dictionary]([{"key":"ch5_old_case_survivor_heard", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_mine_survivor_testimony"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b"), SubResource("c")])

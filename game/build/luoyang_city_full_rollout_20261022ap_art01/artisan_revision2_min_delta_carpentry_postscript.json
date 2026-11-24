@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "status": "ART_LIMITED_EXISTING_ASSET_POSTSCRIPT_NOT_ENGINE_VERIFIED",
+  "parent_art_contract": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_art01/artisan_revision2_actual_art_review_and_min_delta.json",
+    "sha256": "001d836e3ad26388eb45bac4c869c3afb931866f308a7fc95d6faad18521ec02"
+  },
+  "identity_correction": {
+    "fixed_npc": {"id": "ap_quarter_life_craft_woodworker", "name": "木作伙计", "foot_px": [760, 1376]},
+    "retire_visual_props": ["ap_smith_brazier_v2", "ap_smith_anvil_v2"],
+    "keep_visual_prop": {"id": "ap_carpentry_cart_v2", "foot_px": [430, 1535]},
+    "reason": "the actual resident identity and dialogue are carpentry; a brazier and anvil would preserve the wrong trade even after replacing the western smithy shell"
+  },
+  "one_new_existing_prop": {
+    "id": "ap_carpentry_finished_timber_stair_v3",
+    "claim": "finished timber stair displayed inside the woodworking yard; it is a carpentry output, not a forge tool",
+    "texture": "res://art/modules/luoyang_assembled_interiors_20261016g/timber_stair_v1.png",
+    "sha256": "d8ed6aa26f5f84e4608077d2903582cf4aac8ecb5ebf925e0bfecbeb1e65475c",
+    "source_size_px": [1536, 1024],
+    "atlas_region_xywh_px": [539, 25, 452, 939],
+    "atlas_region_basis": "complete A>=16 object silhouette measured from the existing source; broad exterior weak backdrop is not a woodworking object and must not be rendered as a full-canvas billboard",
+    "source_ground_anchor_px_full": [719, 964],
+    "source_ground_anchor_px_region_local": [180, 939],
+    "source_ground_solids_px_region_local": [
+      {"role": "left_timber_foot", "rect": [0, 899, 68, 40]},
+      {"role": "right_timber_foot", "rect": [304, 899, 56, 40]}
+    ],
+    "world_foot_px": [840, 1360],
+    "world_visual_width_px": 110,
+    "uniform_scale": 0.243362832,
+    "projected_visual_height_px": 228.52,
+    "projected_solid_summary_world": [
+      {"role": "left_timber_foot", "approx_xywh": [796.19, 1350.27, 16.55, 9.73]},
+      {"role": "right_timber_foot", "approx_xywh": [870.18, 1350.27, 13.63, 9.73]}
+    ],
+    "clearance_intent": "keeps the smith-yard opening centered at x640..800 readable; the nearest visible foot begins about x796 but remains north of the y1430 wall and must pass the existing 875+17 route/body check"
+  },
+  "admission_boundary": {
+    "generation_used": false,
+    "source_pixels_modified": false,
+    "formal_ready": false,
+    "required_next": "System may bind this one Atlas region, remove the two forge props, and include it in the same single native 1x successor picture requested by the parent contract."
+  }
+}

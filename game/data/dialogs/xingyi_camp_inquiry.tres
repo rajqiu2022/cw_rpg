@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "行义帮粮秤人"
+text = "竹尾平船争，洛阳护活口，古峰保粮车。帮里认的是这三件实事，认全了才开掌谱。"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"xingyi_camp_inquiry"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

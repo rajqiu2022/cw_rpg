@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch4_side_10_luoshui_letter"
+title = "洛水归信"
+kind = 1
+desc_not_started = "码头把一份公开文学节录与一封未拆家书的外套混放。记货伙计请人协助核认收信者。"
+desc_in_progress = "不拆内信，核对三处线索并选定方法。待本人到码头按原约完成亲领，再回南市确认；答对不等于已领取。"
+desc_completed = "本人已在码头按原约领取家书，随后在南市确认收到。原交接条已留存，文学意境不代替现实身份，信中私事仍属于收信人。"
+tracker_hint = "洛阳 · 漕渠码头与南市"
+progress_records = Array[Dictionary]([])
+completion_triggers = Array[String]([])
+auto_accept_triggers = Array[String]([])
+require_all_completion_triggers = false
+chapter_independent = true
+starts_in_chapter = 4
+completes_in_chapter = 4
+milestone_labels = Array[String]([])
+reward_gold = 0
+reward_exp = 0
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([])
+reward_skills_by_faction = {}
+reward_skills_by_flag = {}
+metadata/culture_candidate_status = "CANDIDATE_NOT_FORMAL"
+metadata/culture_reward_status = "ZERO_PENDING_BALANCE_APPROVAL"
+metadata/culture_event_owner = "FUTURE_COORDINATOR_NOT_DIALOG_SIDE_EFFECTS"

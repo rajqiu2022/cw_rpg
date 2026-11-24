@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="会盟总录"
+text="洛阳官差守证人与官卷，行义帮开百姓撤离路，烈云主力压正门；冷孤云队伍截假令，五派只守不追。"
+set_flags=Array[Dictionary]([{"key":"ch8_allies_assigned","value":true},{"key":"ch8_role_luoyang_witness_guard","value":true},{"key":"ch8_role_yixing_evacuation","value":true}])
+complete_quest=&"q_ch8_main_05_final_alliance_roles"
+accept_quest=&"q_ch8_main_06_first_false_order"
+on_end="end"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_roles_luoyang"
+required_story_flag = &"chapter7_complete"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start")])

@@ -1,0 +1,27 @@
+id: ui_icon_atlas_4x4_v1
+description: Strict 4x4 atlas of text-free wuxia game icons.
+quality: high
+size: "1024x1024"
+
+prompt_template: |
+  {style_anchor}
+
+  Use case: stylized-concept
+  Asset type: production mobile wuxia RPG {icon_kind} icon atlas.
+  Create exactly one strict 4-column by 4-row atlas on a perfectly flat solid #FF00FF chroma-key background.
+  Each cell is an independent text-free icon source with no baked frame or quality glow.
+  No gaps of unequal size; no merged cells; no object may cross a cell boundary.
+
+  Row-major cell manifest:
+  {cell_manifest}
+
+  Each cell contains one large centered readable symbol occupying about 72 percent of the safe area,
+  with crisp isolated edges and generous safe padding for transparent extraction.
+  Use distinct silhouettes and color accents so every icon remains recognizable at 64x64 pixels.
+  Constraints: absolutely no Chinese or English text, no numbers, labels, watermark, signature, extra grid,
+  photorealistic scene, hands holding the object, repeated icon, merged composition, frame, badge or border.
+  Avoid: {negative}
+
+variables:
+  icon_kind: "skill or item"
+  cell_manifest: "sixteen numbered icon descriptions"

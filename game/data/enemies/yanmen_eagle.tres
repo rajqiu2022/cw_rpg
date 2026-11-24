@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+enemy_id = &"yanmen_eagle"
+display_name = "寒岭苍鹰"
+battle_actor_path = "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_01.png"
+battle_actor_scale = 0.92
+battle_actor_flip_h = false
+attack_sfx_path = "res://art/audio/animals/enemy_expansion_20261112/eagle_attack.wav"
+hit_sfx_path = "res://art/audio/animals/enemy_expansion_20261112/eagle_hit.wav"
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_01.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_02.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_03.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_ready_04.png")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_01.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_02.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_03.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_move_04.png")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_01.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_02.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_03.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_attack_04.png")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_01.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_02.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_03.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_hit_04.png")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_01.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_02.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_03.png", "res://art/sprites/battle/animal_v1_20261012/eagle/eagle_defeat_04.png")
+level = 8
+max_hp = 310
+max_mp = 0
+attack = 67
+defense = 12
+speed = 25
+skill_ids = Array[StringName]([&"basic_attack", &"animal_eagle_dive"])
+aggression = 0.55
+drop_gold_min = 8
+drop_gold_max = 16
+drop_exp = 62

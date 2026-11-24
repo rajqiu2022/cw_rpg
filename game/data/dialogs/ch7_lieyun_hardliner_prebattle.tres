@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "烈云强硬派巡守"
+text = "外人没有资格拿烈云的错处去换正派掌门一句好话。药册留下，刑樊天改过的原册也留下。"
+voice_emotion = "threat"
+on_end = "next:hero"
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "我不会替正派删你们的罪，也不会让你们拿另一桩罪挡住眼前的案。原册由我保管。"
+on_end = "next:fight"
+[sub_resource type="Resource" id="fight"]
+script = ExtResource("2")
+node_id = &"fight"
+speaker = "烈云封渡寻迹手"
+text = "那就先把人和册一起扣下。"
+voice_emotion = "threat"
+on_end = "battle_group_then:ch7_lieyun_hardliner_guard,ch7_lieyun_hardliner_tracker:ch7_lieyun_hardliner_victory"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_lieyun_hardliner_prebattle"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero"), SubResource("fight")])

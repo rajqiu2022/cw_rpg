@@ -1,22 +1,27 @@
 [gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
-
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1"]
 [resource]
-script = ExtResource("1_enemy")
+script = ExtResource("1")
 enemy_id = &"dragon_vein_serpent"
 display_name = "龙脉巨蟒"
-portrait_path = ""
-level = 28
-max_hp = 650
+battle_actor_path = "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/ready_01.tres"
+battle_actor_scale = 1.0
+battle_actor_flip_h = false
+attack_sfx_path = "res://art/audio/animals/enemy_expansion_20261112/serpent_attack.wav"
+hit_sfx_path = "res://art/audio/animals/enemy_expansion_20261112/serpent_hit.wav"
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/ready_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/ready_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/ready_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/ready_04.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/move_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/move_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/move_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/move_04.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/attack_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/attack_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/attack_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/attack_04.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/hit_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/hit_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/hit_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/hit_04.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/defeat_01.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/defeat_02.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/defeat_03.tres", "res://art/sprites/battle/enemy_expansion_20261112/dragon_vein_serpent/defeat_04.tres")
+level = 9
+max_hp = 480
 max_mp = 0
-attack = 55
-defense = 22
+attack = 79
+defense = 18
 speed = 18
-skill_ids = Array[StringName]([&"basic_attack", &"toxic_needle", &"heavy_swing"])
-aggression = 0.8
-drop_gold_min = 300
-drop_gold_max = 600
-drop_exp = 350
-drop_items = Array[StringName]([])
-drop_random = Array[Dictionary]([])
+skill_ids = Array[StringName]([&"basic_attack", &"animal_serpent_strike"])
+aggression = 0.64
+drop_gold_min = 9
+drop_gold_max = 18
+drop_exp = 87

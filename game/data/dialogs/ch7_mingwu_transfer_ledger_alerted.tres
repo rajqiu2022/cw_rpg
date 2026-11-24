@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "先去烈云果然惊动了这里。正文已经搬空，书架底层却卡着撕断的目录残角。"
+on_end = "next:record"
+[sub_resource type="Resource" id="record"]
+script = ExtResource("2")
+node_id = &"record"
+speaker = "冷孤云"
+text = "残号对应窄轴车、灰蜡封口和茶运支线。清理文书的人带走内容，却留下了内容曾存在的编号。"
+add_evidence = Array[StringName]([&"ev_ch7_mingwu_transfer_ledger_gap"])
+set_flags = Array[Dictionary]([{"key":"ch7_mingwu_transfer_ledger_checked", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_mingwu_transfer_ledger_alerted"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("record")])

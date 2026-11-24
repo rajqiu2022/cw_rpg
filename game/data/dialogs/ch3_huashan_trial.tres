@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = "华山剑士"
+text = "剑快便能破敌，何必先耗时运气？你若不同意，就接我这一轮快剑。"
+on_end = "next:n2"
+[sub_resource type="Resource" id="n2"]
+script = ExtResource("2_dnode")
+node_id = &"n2"
+speaker = "冷孤云"
+text = "剑若快到收不回来，破的是敌，还是自己的阵脚？"
+on_end = "battle_solo_then:wulin_examiner:ch3_huashan_complete"
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch3_huashan_trial"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("n2")])

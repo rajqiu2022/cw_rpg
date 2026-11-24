@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "老漕卒"
+text = "昨夜栈桥没有卸船。我看见两人从西北废仓方向拖东西过来，鞋底沾着白灰；河边的黑泥不会是这个样子。"
+on_end = "next:detail"
+
+[sub_resource type="Resource" id="detail"]
+script = ExtResource("2")
+node_id = &"detail"
+speaker = "老漕卒"
+text = "从货场绕过中间灯柱，沿路往西北仓栈去。门外墙脚有一道混着碎瓦的拖痕，先查那一带，别往船板上找。"
+set_flags = Array[Dictionary]([{"key":"canal_grudge_route_heard","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_canal_witness"
+entry_node_id = &"start"
+required_story_flag = &"canal_grudge_started"
+blocked_story_flag = &"canal_grudge_route_heard"
+nodes = Array[Resource]([SubResource("start"), SubResource("detail")])
+

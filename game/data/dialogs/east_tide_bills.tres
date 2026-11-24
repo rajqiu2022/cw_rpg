@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "旧船单"
+text = "芦雁号泊东棚，涨潮双索、落潮单索。乌篷号泊西栈，涨潮单索、落潮双索。"
+choices = Array[Dictionary]([{"text":"按芦雁号，查东棚。","next":"wrong"}, {"text":"按乌篷号，查西栈。","next":"right"}])
+
+[sub_resource type="Resource" id="wrong"]
+script = ExtResource("node")
+node_id = &"wrong"
+speaker = "冷孤云"
+text = "芦雁号倒是用过双股索，可等它落潮再走，已经换了单索。那时拖出来的箱篾上该只有一道深痕。"
+on_end = "next:start"
+
+[sub_resource type="Resource" id="right"]
+script = ExtResource("node")
+node_id = &"right"
+speaker = "冷孤云"
+text = "乌篷号借茶牌拖过重物，等水退到西栈才停。船单背面又记了一笔：断索挂在西栈南沿，未收。"
+set_flags = Array[Dictionary]([{"key": "tide_berth_known", "value": true}])
+add_evidence = Array[StringName]([&"ev_tide_bill"])
+
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_tide_bills"
+
+nodes = Array[ExtResource("node")]([SubResource("start"), SubResource("wrong"), SubResource("right")])

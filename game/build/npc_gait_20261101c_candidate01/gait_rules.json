@@ -1,0 +1,35 @@
+{
+  "schema": "NPC_GAIT_DISTANCE_RULES_20261101C_V1",
+  "discovery_seconds": 0.25,
+  "families": {
+    "guard": {
+      "allowed_original_speeds": [22, 24, 26],
+      "adult_height_px": 140,
+      "adult_peak_speed_px_s": 66,
+      "maximum_peak_speed_px_s": 72,
+      "cycle_distance_height_ratio": 0.82
+    },
+    "merchant": {
+      "allowed_original_speeds": [22],
+      "adult_height_px": 140,
+      "adult_peak_speed_px_s": 44,
+      "maximum_peak_speed_px_s": 56,
+      "cycle_distance_height_ratio": 0.76
+    }
+  },
+  "walk_assets": {
+    "res://art/characters/street_expansion_v2/npc_escort_guard_walk_right_8f_v1_runtime.png": {
+      "family": "guard", "frames": 8, "frame_distance_fractions": [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875]
+    },
+    "res://art/characters/luoyang_city_finish_20261025i/guard_young_bluegrey_walk4_v1_runtime160.png": {
+      "family": "guard", "frames": 4, "frame_distance_fractions": [0, 0.25, 0.5, 0.75]
+    },
+    "res://art/characters/luoyang_city_finish_20261025i/guard_veteran_ochre_walk4_v1_runtime160.png": {
+      "family": "guard", "frames": 4, "frame_distance_fractions": [0, 0.25, 0.5, 0.75]
+    },
+    "res://art/characters/street_expansion_v1/npc_street_merchant_right_walk_8f_v3_runtime.png": {
+      "family": "merchant", "frames": 8, "frame_distance_fractions": [0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875]
+    }
+  },
+  "policy": "Distance-driven existing native horizontal patrols only. No actor position, phase, origin, radius, texture, flip, process, script, physics, scene data or save writes. Uniform distance table is initial calibration, not a claim of visually verified perfect foot locking."
+}

@@ -1,0 +1,57 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 9
+design_size = Vector2i(2304, 1536)
+display_at_native_size = true
+walkable_mask_path = "res://art/navigation_masks/world_map_jianghu_walk_v9.png"
+walkable_regions = Array[PackedVector2Array]([])
+visual_objects = []
+occluders = []
+actor_fade_zones = []
+blockers = []
+interactions = []
+portals = [
+	{"id":"linxi_village", "label":"林西村", "pos":Vector2(0.175521, 0.610156), "size":Vector2(0.042, 0.050), "target_scene":"linxi_village_scrollmap", "target_pos":Vector2(0.925, 0.500)},
+	{"id":"zhuwei_village", "label":"竹尾村", "pos":Vector2(0.111979, 0.565625), "size":Vector2(0.042, 0.050), "target_scene":"ch1_s2_qingfeng", "target_pos":Vector2(0.520, 0.790)},
+	{"id":"lingyue", "label":"凌月山", "pos":Vector2(0.977083, 0.064844), "size":Vector2(0.042, 0.050), "target_scene":"ch2_s4_lingyue_gate", "target_pos":Vector2(0.110, 0.780)},
+	{"id":"huashan", "label":"华山", "pos":Vector2(0.390625, 0.078125), "size":Vector2(0.042, 0.050), "target_scene":"openworld_huashan_forecourt", "target_pos":Vector2(0.105, 0.840)},
+	{"id":"wudang", "label":"武当山", "pos":Vector2(0.643229, 0.077344), "size":Vector2(0.042, 0.050), "target_scene":"openworld_wudang_gate", "target_pos":Vector2(0.500, 0.875)},
+	{"id":"gufeng", "label":"古峰 · 建议7级", "pos":Vector2(0.189583, 0.105469), "size":Vector2(0.042, 0.050), "target_scene":"ch5_s1_relief_road", "target_pos":Vector2(0.52, 0.90)},
+	{"id":"luoyang", "label":"洛阳", "pos":Vector2(0.478646, 0.320313), "size":Vector2(0.048, 0.056), "target_scene":"ch4_s0_luoyang_gate", "target_pos":Vector2(0.500, 0.900)},
+	{"id":"lieyun_valley", "label":"烈云峡谷", "pos":Vector2(0.803646, 0.514062), "size":Vector2(0.042, 0.050), "target_scene":"ch7_s1_lieyun_valley_ferry", "target_pos":Vector2(0.500, 0.875)},
+	{"id":"mingwu", "label":"茗雾茶镇", "pos":Vector2(0.877604, 0.703125), "size":Vector2(0.042, 0.050), "target_scene":"ch7_s2_mingwu_tea_town", "target_pos":Vector2(0.500, 0.875)},
+	{"id":"bailu_ferry", "label":"白鹿渡", "pos":Vector2(0.539583, 0.522656), "size":Vector2(0.042, 0.050), "travel_mode":"ferry", "target_scene":"openworld_bailu_ferry", "target_pos":Vector2(0.420, 0.730)},
+	{"id":"qinghe_town", "label":"清河镇", "pos":Vector2(0.583333, 0.888281), "size":Vector2(0.042, 0.050), "target_scene":"openworld_qinghe_town", "target_pos":Vector2(0.30, 0.78)},
+	{"id":"yanmen_pass", "label":"雁门关 · 建议8级", "pos":Vector2(0.105729, 0.223438), "size":Vector2(0.042, 0.050), "target_scene":"openworld_yanmen_pass", "target_pos":Vector2(0.25, 0.78)},
+	{"id":"east_sea_port", "label":"东海埠", "pos":Vector2(0.980729, 0.347656), "size":Vector2(0.042, 0.050), "travel_mode":"ferry", "target_scene":"openworld_east_sea_port", "target_pos":Vector2(0.5, 0.78)}
+]
+walkable_probes = [
+	{"id":"linxi_village_gate", "pos":Vector2(0.175521, 0.610156)},
+	{"id":"zhuwei_village_gate", "pos":Vector2(0.111979, 0.565625)},
+	{"id":"gufeng_gate", "pos":Vector2(0.189583, 0.105469)},
+	{"id":"yanmen_pass_gate", "pos":Vector2(0.105729, 0.223438)},
+	{"id":"huashan_gate", "pos":Vector2(0.390625, 0.078125)},
+	{"id":"wudang_gate", "pos":Vector2(0.643229, 0.077344)},
+	{"id":"luoyang_gate", "pos":Vector2(0.478646, 0.320313)},
+	{"id":"bailu_ferry_gate", "pos":Vector2(0.539583, 0.522656)},
+	{"id":"qinghe_town_gate", "pos":Vector2(0.583333, 0.888281)},
+	{"id":"mingwu_gate", "pos":Vector2(0.877604, 0.703125)},
+	{"id":"lingyue_gate", "pos":Vector2(0.977083, 0.064844)},
+	{"id":"east_sea_port_gate", "pos":Vector2(0.980729, 0.347656)},
+	{"id":"lieyun_valley_gate", "pos":Vector2(0.803646, 0.514062)},
+	{"id":"reported_bamboo_fork", "pos":Vector2(0.878646, 0.171875)}
+]
+blocked_probes = [
+	{"id":"northwest_peak", "pos":Vector2(0.020, 0.080)},
+	{"id":"central_river", "pos":Vector2(0.500, 0.470)},
+	{"id":"luoyang_inner_roof", "pos":Vector2(0.590, 0.255)},
+	{"id":"east_water", "pos":Vector2(0.980, 0.520)},
+	{"id":"south_forest", "pos":Vector2(0.500, 0.950)},
+	{"id":"reported_west_cliff", "pos":Vector2(0.260417, 0.338281)},
+	{"id":"old_horizontal_cliff_shortcut", "pos":Vector2(0.317708, 0.341406)},
+	{"id":"east_river_shortcut", "pos":Vector2(0.919271, 0.442969)}
+]

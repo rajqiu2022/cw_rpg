@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="ash_mark"]
+script=ExtResource("2")
+node_id=&"ash_mark"
+speaker="旁白"
+text="截路人袖口原来绣着茗雾的茶枝，如今都烧去了半边，只留一片焦叶。这是叛出山庄的烬茶社。刀锋、飞针，连点烽人腰间的散镖，也都泛着同一层青光。"
+on_end="next:start"
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="茗雾截盟使"
+text="信号一响，证人路线和会盟人数都会送进山庄。你们走不到第二道门。"
+on_end="battle_group_then:ch8_mistwood_blockade_guard,ch8_mistwood_signal_burner:ch8_mistwood_victory"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_mistwood_prebattle"
+entry_node_id=&"ash_mark"
+nodes=Array[Resource]([SubResource("start"),SubResource("ash_mark")])

@@ -1,0 +1,98 @@
+{
+  "change_id": "luoyang-city-full-rollout-20261022ap",
+  "status": "ART_FINAL_COORDINATE_RETRY_SOURCE_READY_REQUIRES_SYSTEM_GEOMETRY_AND_NATIVE_REVIEW",
+  "parent_retry": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_art01/artisan_visual_successor_v2_retry1.json",
+    "sha256": "4BF44C515068A8611ED530A5E9E811F2D57584C75F60048664A1263A59C2C168"
+  },
+  "scope": "Only the east cloth-yard wall feet, its opening, the cart foot, and the resulting complete effective visual-A1 allowlist. All unlisted parent and retry1 data remain unchanged.",
+  "placement_successors": [
+    {
+      "id": "ap_cloth_wall_w1",
+      "old_foot_world": [2000, 1430],
+      "new_foot_world": [1840, 1430],
+      "world_segment_x_interval": [1760, 1920],
+      "reason": "move left of the retained cloth-worker approach corridor"
+    },
+    {
+      "id": "ap_cloth_wall_e1",
+      "old_foot_world": [2320, 1430],
+      "new_foot_world": [2160, 1430],
+      "world_segment_x_interval": [2080, 2240],
+      "reason": "begin the continuous east wall after the retained approach corridor"
+    },
+    {
+      "id": "ap_cloth_wall_e2",
+      "old_foot_world": [2480, 1430],
+      "new_foot_world": [2320, 1430],
+      "world_segment_x_interval": [2240, 2400],
+      "reason": "continue the east wall without reopening an accidental gap"
+    },
+    {
+      "id": "ap_carpentry_cart_v2",
+      "old_foot_world": [430, 1515],
+      "new_foot_world": [430, 1535],
+      "reason": "move 20px south; the conservative hull minimum becomes y=1443.02, clearing the wall solid bottom y=1430 by 13.02px"
+    }
+  ],
+  "cloth_yard_opening_successor": {
+    "old_x_interval": [2080, 2240],
+    "new_x_interval": [1920, 2080],
+    "ground_y": 1430,
+    "minimum_clear_width": 160,
+    "retained_npc_foot_world": [1990, 1376],
+    "retained_npc_approach_world": [1990, 1424],
+    "required_body_half_width": 17,
+    "strict_rule": "The approach and its full 34x24 body must pass through the opening; no wall-body overlap exception is allowed."
+  },
+  "complete_effective_visual_A1_overlap_allowlist_replaces_retry1_list": [
+    {
+      "pair": ["ap_smith_brazier_v2", "ap_smith_wall_w1"],
+      "required_depth": "prop behind foreground wall"
+    },
+    {
+      "pair": ["ap_smith_brazier_v2", "ap_smith_wall_w2"],
+      "required_depth": "prop behind foreground wall"
+    },
+    {
+      "pair": ["ap_smith_anvil_v2", "ap_smith_wall_e1"],
+      "required_depth": "prop behind foreground wall"
+    },
+    {
+      "pair": ["ap_carpentry_cart_v2", "ap_smith_wall_w1"],
+      "required_depth": "cart behind foreground wall"
+    },
+    {
+      "pair": ["ap_carpentry_cart_v2", "ap_smith_wall_w2"],
+      "required_depth": "cart behind foreground wall"
+    },
+    {
+      "pair": ["ap_cloth_rack_v2", "ap_cloth_wall_e1"],
+      "required_depth": "rack behind foreground wall"
+    },
+    {
+      "pair": ["ap_cloth_rack_v2", "ap_cloth_wall_e2"],
+      "required_depth": "rack behind foreground wall"
+    },
+    {
+      "pair": ["ap_tree_well_e_v2", "ap_cloth_wall_w1"],
+      "required_depth": "tree in front of wall",
+      "reason": "normal layered A1 foliage/wall overlap after the wall moves west; measured ground bodies remain separated"
+    }
+  ],
+  "allowlist_hard_limits": [
+    "This list replaces, rather than appends to, retry1.exact_visual_A1_overlap_allowlist.",
+    "Only complete visual A1 rectangles may overlap for these eight exact unordered pairs and required depth orders.",
+    "All projected solid rectangles and polygons, 34x24 bodies, routes, NAV, thresholds, returns and portals remain strict.",
+    "The moved cart must retain at least the measured 13.02px solid clearance from the smith wall.",
+    "The tree/wall pair does not authorize a tree-foot or tree-body overlap and does not alter either object's y-sort truth."
+  ],
+  "not_changed": [
+    "all source paths, source hashes, A1 measurements, source anchors and source solids",
+    "the four retry1 object moves other than the cart successor above",
+    "three room thresholds and route endpoints, including south [1536,1900] and return [1536,1924]",
+    "west workyard walls and opening",
+    "ground and building plan",
+    "no image generation, image processing, import, canonical write or engine run"
+  ]
+}

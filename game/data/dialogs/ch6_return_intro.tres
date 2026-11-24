@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "院门没关，石阶上却有两道新刮痕。师父从不让兵器拖过门槛。"
+accept_quest = &"q_ch6_main_01_homecoming"
+on_end = "next:master"
+
+[sub_resource type="Resource" id="master"]
+script = ExtResource("2")
+node_id = &"master"
+speaker = "刑樊天"
+text = "先别问我。两个人翻进正屋，一个往地下去了。找的是十八年前的旧册，不是银钱。"
+voice_emotion = "weary"
+on_end = "next:question"
+
+[sub_resource type="Resource" id="question"]
+script = ExtResource("2")
+node_id = &"question"
+speaker = "冷孤云"
+text = "你肩上有血，屋里还有你一直不肯让我看的册子。师父，这回不能只用一句“与你无关”打发我。"
+set_flags = Array[Dictionary]([{"key":"ch6_master_found", "value":true}])
+complete_quest = &"q_ch6_main_01_homecoming"
+accept_quest = &"q_ch6_main_02_old_residence"
+on_end = "next:answer"
+
+[sub_resource type="Resource" id="answer"]
+script = ExtResource("2")
+node_id = &"answer"
+speaker = "刑樊天"
+text = "先把原册保下来。你看见什么，回来当面问我。我不再替你挑该知道哪一段。"
+voice_emotion = "solemn"
+set_flags = Array[Dictionary]([{"key":"ch6_returned_to_linxi", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_return_intro"
+required_story_flag = &"chapter5_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("master"), SubResource("question"), SubResource("answer")])

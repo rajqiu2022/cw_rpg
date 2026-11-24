@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch7_s5_lieyun_assembly_hall_layout_v2.tres" id="2"]
+[ext_resource type="Script" path="res://scripts/domain/streamed_background_set.gd" id="9_extent"]
+
+[sub_resource type="Resource" id="MapExtent"]
+script = ExtResource("9_extent")
+logical_size = Vector2i(1536, 1024)
+
+[resource]
+script = ExtResource("1")
+scene_id = &"ch7_s5_lieyun_assembly_hall"
+display_name = "烈云分舵 · 聚义厅"
+streamed_background = SubResource("MapExtent")
+bgm_path = "res://art/audio/bgm/bgm_mountain_path_v4.wav"
+is_walkable = true
+map_layout = ExtResource("2")
+player_spawn = Vector2(0.500,0.875)
+player_visual_scale = 1.0
+npcs = Array[Dictionary]([
+	{"npc_id":"ch7_qi_yunsheng", "npc_name":"戚云笙", "pos":Vector2(0.570,0.250), "portrait_path":"res://art/characters/portraits/portrait_qi_yunsheng_ch7_v1.png", "sprite_path":"res://art/characters/npc_qi_yunsheng_idle_down_4f_v1_runtime.png", "dialog_id":"ch7_qi_yunsheng_meeting", "dialog_variants":[{"dialog_id":"ch8_aftermath_lieyun","require_quest_active":"q_ch8_main_13_aftermath_returns","hide_flags":["ch8_aftermath_lieyun_done"]},{"dialog_id":"ch7_disclosure_strategy_choice","require_quest_completed":"q_ch7_main_10_personal_authorization","hide_flags":["ch7_disclosure_strategy_resolved"]},{"dialog_id":"ch7_personal_signature_inquiry_open","require_quest_completed":"q_ch7_main_09_protect_witnesses","hide_flags":["ch7_personal_signature_inquiry_opened"]},{"dialog_id":"ch7_witness_protection_choice","require_quest_completed":"q_ch7_main_08_inner_office_authorization","hide_flags":["ch7_witness_protection_resolved"]},{"dialog_id":"ch7_authorization_routes_open","require_quest_completed":"q_ch7_main_07_confirm_xueying_identity","hide_flags":["ch7_authorization_routes_opened"]},{"dialog_id":"ch7_xueying_identity_conclusion", "require_quest_completed":"q_ch7_main_06_threefold_identity_check", "hide_flags":["ch7_xueying_identity_confirmed"]}, {"dialog_id":"ch7_identity_routes_open", "require_quest_completed":"q_ch7_main_05_dead_name_live_access", "hide_flags":["ch7_identity_routes_opened"]}, {"dialog_id":"ch7_dead_code_routes_open", "require_quest_completed":"q_ch7_main_04_reform_and_witness", "hide_flags":["ch7_dead_code_routes_opened"]}, {"dialog_id":"ch7_qi_yunsheng_after_testimony", "require_flags":["ch7_qi_reform_testimony_heard"]}], "scale":1.02, "movement_mode":"idle", "idle_frame_seconds":0.34}
+])
+hotspots = Array[Dictionary]([])
+exits = Array[Dictionary]([])

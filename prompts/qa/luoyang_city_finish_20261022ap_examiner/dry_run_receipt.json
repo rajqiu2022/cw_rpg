@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "kind": "EXISTING_GEN_ASSETS_DRY_RUN_ONLY_NOT_GENERATION",
+  "command": "python scripts/gen_assets.py --tasks-file prompts/qa/luoyang_city_finish_20261022ap_examiner/tasks.yaml --task portrait_luoyang_examiner_mature_same_sprite_20261022ap_v1 --dry-run --skip-ping",
+  "actual_exit_code": 0,
+  "actual_task_count": 1,
+  "actual_dry_run_count": 1,
+  "api_generation_calls": 0,
+  "cost": 0,
+  "checks": {
+    "one_task": true,
+    "actual_dry_run_metadata": true,
+    "rendered_prompt_exact": true,
+    "raw_absent_before_call": true,
+    "reference_sha_exact": true,
+    "one_attempt_budget": true
+  },
+  "dry_run_path": "logs/dry_run/portrait_luoyang_examiner_mature_same_sprite_20261022ap_v1.meta.json",
+  "dry_run_sha256": "6b8be6bba8f20e67477ad0a4f958657da48f84fc1eae17a8156f32b9c7070374",
+  "prompt_sha256": "0a22b5bfbb5f721af754c85e2f0b573ae637b65ad0e653fcae3489b313a29ab9",
+  "pre_generation_spec_sha256": "849a01b2b673c4a7fb34f56ddf52a7dd1fbd8c6c9100a6feb4278bc95253c64e",
+  "isolated_tasks_pre_submission_sha256": "d42934fe161830ad7a228cc162121f655f62e5039ea89de3365d5bcbc8442de0",
+  "existing_passthrough_template_sha256": "80c8d6ae603f6f036e3a5fd9bb1860fe29973231bcb5bc38cf453a363ab95e8a",
+  "notes": [
+    "CLI dry-run prints environment API default model gpt-image-2; that is NOT the actual builtin model provenance.",
+    "Template passes only asset_prompt; CLI dry-run references empty. Actual builtin invocation explicitly passed the single original sprite reference path.",
+    "Receipt records earlier observed dry-run stdout and metadata hashes; not a claim it was itself written before generation."
+  ]
+}

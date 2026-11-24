@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"wild_elite_yanmen"
+display_name = "雁门雪匪首领"
+portrait_path = "res://art/characters/story_enemies_20261109/openworld_snow_raider/portrait.tres"
+battle_actor_path = "res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_01.tres"
+battle_actor_scale = 0.92
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_01.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_02.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_03.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_04.tres")
+move_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_01.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/reaction_01.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_02.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/reaction_01.tres")
+attack_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_snow_raider/attack_01.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/attack_02.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/attack_03.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/attack_04.tres")
+hit_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_01.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/reaction_02.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/reaction_02.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/ready_01.tres")
+defeat_frame_paths = PackedStringArray("res://art/characters/story_enemies_20261109/openworld_snow_raider/reaction_02.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/reaction_03.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/reaction_04.tres", "res://art/characters/story_enemies_20261109/openworld_snow_raider/reaction_04.tres")
+level = 11
+max_hp = 517
+max_mp = 60
+attack = 86
+defense = 20
+speed = 21
+skill_ids = Array[StringName]([&"basic_attack", &"heavy_swing"])
+aggression = 0.62
+drop_gold_min = 36
+drop_gold_max = 52
+drop_exp = 78

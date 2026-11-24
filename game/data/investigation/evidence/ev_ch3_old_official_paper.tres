@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch3_old_official_paper"
+display_name = "五份旧制官纸"
+description = "大会公布的五份死者生平记录笔迹、措辞各异，纸张水印却来自十八年前停用的同一批官纸。它说明记录曾被统一誊抄，不能证明誊抄者是谁。"
+chapter = 3
+category = &"document"
+source_hint = "武林大会长案"
+related_testimony_ids = Array[StringName]([&"ts_ch3_wudang_archive_revision", &"ts_ch3_mingwu_common_artisan"])
+tags = Array[StringName]([&"old_case", &"official_paper", &"shared_source"])

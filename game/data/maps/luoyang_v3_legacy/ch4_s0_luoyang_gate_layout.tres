@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script = ExtResource("1")
+schema_version = 4
+design_size = Vector2i(2304,1536)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.285,0.995, 0.715,0.995, 0.705,0.690, 0.650,0.520, 0.596,0.405, 0.575,0.180, 0.430,0.180, 0.405,0.405, 0.350,0.520, 0.295,0.690),
+	PackedVector2Array(0.220,0.440, 0.410,0.440, 0.410,0.755, 0.220,0.755),
+	PackedVector2Array(0.590,0.620, 0.800,0.620, 0.800,0.755, 0.590,0.755)
+])
+occluders = [{"id":"south_gate_arch_foreground","depth_mode":"overlap","alpha_mask_texture_path":"res://art/masks/gate_occlusion_v1/luoyang_south_gate_foreground_mask_v1.svg","cover_polygon":PackedVector2Array(0.000,0.000, 1.000,0.000, 1.000,0.425, 0.000,0.425),"fade_region":PackedVector2Array(0.430,0.285, 0.570,0.285, 0.570,0.440, 0.430,0.440),"actor_faded_alpha":0.43,"z_index":10}]
+actor_fade_zones = []
+blockers = [
+	{"id":"left_guard_post","pos":Vector2(0.190,0.515),"size":Vector2(0.180,0.210)},
+	{"id":"right_guard_post","pos":Vector2(0.815,0.515),"size":Vector2(0.165,0.210)}
+]
+interactions = [
+	{"id":"luoyang_wanted_board","label":"查验洛阳案牍榜文","pos":Vector2(0.255,0.485),"size":Vector2(0.120,0.120),"activation":"interact","action":"dialog:ch4_case_clue","visual_baked":true,"baked_feature":"城门西侧木制通缉榜","require_flag":"chapter4_started","hide_flag":"luoyang_case_found_clue"},
+	{"id":"luoyang_repeatable_bounty_board","label":"查看洛阳府缉捕榜","pos":Vector2(0.255,0.500),"size":Vector2(0.140,0.180),"activation":"interact","action":"bounty_board:luoyang","visual_baked":true,"baked_feature":"城门西侧木制通缉榜","require_flag":"luoyang_case_found_clue","clickable":true}
+]
+portals = [
+	{"id":"enter_luoyang","label":"穿过城门 · 进入洛阳","pos":Vector2(0.500,0.430),"size":Vector2(0.150,0.095),"target_scene":"ch4_s1_luoyang_yamen","target_pos":Vector2(0.500,0.730)},
+	{"id":"return_world","label":"离开洛阳 · 江湖大地图","pos":Vector2(0.500,0.955),"size":Vector2(0.180,0.080),"action":"world_map"}
+]
+walkable_probes = [
+	{"id":"world_arrival","pos":Vector2(0.500,0.900)},
+	{"id":"avenue_mid","pos":Vector2(0.500,0.600)},
+	{"id":"wanted_board_front","pos":Vector2(0.300,0.535)},
+	{"id":"arch_threshold","pos":Vector2(0.500,0.430)},
+	{"id":"city_side","pos":Vector2(0.500,0.325)}
+]
+blocked_probes = [
+	{"id":"left_roof","pos":Vector2(0.080,0.780)},
+	{"id":"right_roof","pos":Vector2(0.920,0.780)},
+	{"id":"city_wall","pos":Vector2(0.250,0.220)}
+]

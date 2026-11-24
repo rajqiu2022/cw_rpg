@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 2
+design_size = Vector2i(1536, 1024)
+walkable_regions = Array[PackedVector2Array]([PackedVector2Array(0.185, 0.390, 0.810, 0.390, 0.855, 0.750, 0.585, 0.750, 0.585, 0.855, 0.415, 0.855, 0.415, 0.750, 0.145, 0.750)])
+blockers = [
+	{"id": "rear_weapon_rack", "pos": Vector2(0.490, 0.370), "size": Vector2(0.150, 0.120)},
+	{"id": "master_desk", "pos": Vector2(0.650, 0.385), "size": Vector2(0.160, 0.100)},
+	{"id": "left_mats", "pos": Vector2(0.290, 0.585), "size": Vector2(0.150, 0.245)},
+	{"id": "right_mats", "pos": Vector2(0.720, 0.585), "size": Vector2(0.145, 0.245)},
+	{"id": "practice_dummy", "pos": Vector2(0.820, 0.625), "size": Vector2(0.080, 0.170)}
+]
+interactions = [
+	{"id": "martial_hall_dummy", "pos": Vector2(0.745, 0.635), "size": Vector2(0.100, 0.130), "activation": "interact", "label": "查看木人桩", "action": "dialog:interior_martial_hall_dummy"}
+]
+portals = [
+	{"id": "leave_martial_hall", "pos": Vector2(0.500, 0.795), "size": Vector2(0.125, 0.075), "label": "离开武馆", "target_scene": "ch1_s0_linxi_main_walkable", "target_pos": Vector2(0.440, 0.610)}
+]
+walkable_probes = [
+	{"id": "hall_spawn", "pos": Vector2(0.500, 0.620)},
+	{"id": "hall_dummy", "pos": Vector2(0.745, 0.635)},
+	{"id": "hall_exit", "pos": Vector2(0.500, 0.795)}
+]
+blocked_probes = [
+	{"id": "hall_dummy_body", "pos": Vector2(0.820, 0.625)}
+]

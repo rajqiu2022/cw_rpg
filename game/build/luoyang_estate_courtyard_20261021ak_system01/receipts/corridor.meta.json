@@ -1,0 +1,189 @@
+{
+  "id": "corridor_v1",
+  "status": "MECHANICAL_BACKGROUND_CLEAN_AND_PADDING_COMPLETE_NOT_ART_OR_RUNTIME_ADMISSION",
+  "source": {
+    "path": "assets/raw/luoyang_estate_components_20261021aj/estate_open_corridor_four_column_v1.png",
+    "png_sha256_before_and_after": "77D9942F298FA1DBAD0ED72854DD856A1F331D9E533018C6555767B7C283CC04",
+    "rgba8_sha256": "86E0D85263D1434F2B0FC8D6274DC7A1E87A8927E35B5626BC196AA47DB4F73A",
+    "size_px": [
+      1774,
+      887
+    ],
+    "unchanged": true
+  },
+  "editable_mask": {
+    "path": "assets/processed/luoyang_estate_components_20261021ak/masks/estate_open_corridor_four_column_v1_editable_mask.png",
+    "png_sha256": "53C176D486F53A3F10DE35F0806ED4B4A40D9B33C299B61CEA74D19F10ED2536",
+    "size_px": [
+      1774,
+      887
+    ],
+    "white_means_RGBA_may_be_zeroed_only": true,
+    "protected_mask_zero_pixels_remain_source_RGBA_byte_exact": true,
+    "editable_pixels": 8080,
+    "actually_changed_pixels": 8080
+  },
+  "cleanup_policy": {
+    "kind": "weak_alpha_far_from_strong_subject",
+    "strong_alpha_min": 16,
+    "preserve_weak_edge_radius_px": 6,
+    "meaning": "only weak A1..15 pixels farther than six Chebyshev pixels from any A16 subject pixel plus hidden RGB under A0 may be zeroed; all four columns and three transparent openings stay protected"
+  },
+  "output": {
+    "path": "assets/processed/luoyang_estate_components_20261021ak/estate_open_corridor_four_column_v1_clean_padded.png",
+    "png_sha256": "A335BB05E3155A1933314525824B90EBA098BBD878F1F85D1DB60889A549388D",
+    "png_bytes": 1147293,
+    "rgba8_sha256": "7401E656545458CD098BE7E4E93051A1EE000813522E664036A2913E1F2AA916",
+    "size_px": [
+      2615,
+      975
+    ],
+    "complete_A1_bbox_exclusive": [
+      436,
+      163,
+      2179,
+      812
+    ],
+    "true_transparent_margins_left_top_right_bottom_px": [
+      436,
+      163,
+      436,
+      163
+    ],
+    "margin_fractions_left_top_right_bottom": [
+      0.16673040152963672,
+      0.1671794871794872,
+      0.16673040152963672,
+      0.1671794871794872
+    ],
+    "source_to_output_translation_px": [
+      420,
+      66
+    ],
+    "subject_resize_crop_rotate_recolor": false,
+    "transparent_canvas_reframed": true
+  },
+  "source_annotations": {
+    "ground_anchor_px": [
+      887,
+      741
+    ],
+    "door_clear_rect_px": null,
+    "solid_source_rects_px": [
+      [
+        164,
+        700,
+        124,
+        40
+      ],
+      [
+        619,
+        700,
+        116,
+        40
+      ],
+      [
+        1045,
+        700,
+        119,
+        40
+      ],
+      [
+        1484,
+        700,
+        124,
+        40
+      ]
+    ],
+    "column_foot_centers_px": [
+      [
+        222,
+        735
+      ],
+      [
+        677,
+        735
+      ],
+      [
+        1106,
+        735
+      ],
+      [
+        1550,
+        735
+      ]
+    ],
+    "annotation_scope": "A16_row735_runs_and_manual_visual_proposal_for_system_geometry_validation_not_formal_collision",
+    "open_gap_clear_vertical_landmarks_y_px": [
+      378,
+      735
+    ],
+    "open_gap_clear_height_px_conservative": 357,
+    "open_gap_world_height_at_complete_A1_width_500_px_approx": 100.96,
+    "open_gap_world_height_at_complete_A1_width_560_px_approx": 113.1,
+    "adult_clear_height_120_world_px_at_500_to_560_width_pass": false,
+    "clear_height_scope": "manual_conservative_visual_measurement_not_formal_runtime_geometry"
+  },
+  "output_annotations": {
+    "ground_anchor_px": [
+      1307,
+      807
+    ],
+    "door_clear_rect_px": null,
+    "solid_source_rects_px": [
+      [
+        584,
+        766,
+        124,
+        40
+      ],
+      [
+        1039,
+        766,
+        116,
+        40
+      ],
+      [
+        1465,
+        766,
+        119,
+        40
+      ],
+      [
+        1904,
+        766,
+        124,
+        40
+      ]
+    ],
+    "column_foot_centers_px": [
+      [
+        642,
+        801
+      ],
+      [
+        1097,
+        801
+      ],
+      [
+        1526,
+        801
+      ],
+      [
+        1970,
+        801
+      ]
+    ],
+    "open_gap_clear_vertical_landmarks_y_px": [
+      444,
+      801
+    ],
+    "open_gap_clear_height_px_conservative": 357
+  },
+  "admission": {
+    "background_cleanup_authorized_by_user": true,
+    "pixels_inside_protected_region_preserved": true,
+    "art_review_pending": true,
+    "runtime_import_or_formal_layout_authorized": false
+  }
+}

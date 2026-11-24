@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "分粮簿记着三号车少了两袋，旁边已经写上‘疑有侵吞’，却没人签押。东棚那辆车还在，先去看袋口封签，再回来把缘由写清楚。"
+accept_quest = &"q_ch5_side_01_relief_receipt"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_relief_receipt_start"
+nodes = Array[Resource]([SubResource("start")])

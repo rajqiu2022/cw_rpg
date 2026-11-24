@@ -1,0 +1,14 @@
+id: sprite_important_npc_25d_idle_atlas_v1
+description: Four-direction subtle idle atlas for an important 2.5D NPC.
+quality: medium
+size: "1024x1024"
+
+prompt_template: |
+  Create exactly one square 4 by 4 2.5D Chinese wuxia RPG idle-sprite atlas for {character_spec}. The 16 figures must be the same full-body character and preserve their costume, age, hair, expression and body proportions exactly.
+
+  Flat #ff00ff chroma-key background only. Row order: front/down, back/up, right, left. In every row, column 1 is a calm planted idle, column 2 is a tiny breath with the chest and shoulder moving less than 3 pixels, column 3 is a very slight cloth/shoulder-cloth flutter, column 4 returns smoothly to the planted pose. Feet must remain in the same exact position in all four cells: no stepping, no walking, no sliding, no pose change. Each complete body is centered with equal size and shared foot baseline.
+
+  Rendering: premium 2.5D hand-painted field sprite, warm upper-left light and cool fill, matte cloth and leather, clear restrained ink contours, readable at 160 pixels tall. No grid, text, UI, scene, floor, cast shadow, border, chibi proportions, crop, extra limb, duplicate figure or overlap.
+
+variables:
+  character_spec: ""

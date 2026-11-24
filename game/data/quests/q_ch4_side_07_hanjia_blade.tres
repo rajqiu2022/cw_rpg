@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch4_side_07_hanjia_blade"
+title = "含嘉旧刃"
+kind = 1
+desc_not_started = "含嘉仓漕工争执中，有人认出一柄旧刀属于十八年前守仓失踪的押运卒。"
+desc_in_progress = "到漕渠码头查问老漕卒，再从废弃的水则碑旁寻找旧刀的来历。"
+desc_completed = "老漕卒承认，当年同袍为保住赈粮账册沉刀于水则碑下。旧刃重见天日，背上的铭文也洗清了他私吞粮饷的污名。"
+tracker_hint = "洛阳 · 漕渠码头"
+completion_triggers = Array[String](["flag_set:hanjia_blade_recovered"])
+reward_gold = 20
+reward_exp = 40
+reward_items = Array[Dictionary]([{"item_id": "hanjia_canal_blade", "count": 1}])
+

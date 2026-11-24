@@ -1,0 +1,186 @@
+{
+  "schema": 1,
+  "ready": true,
+  "root_run_authorized": true,
+  "author": {
+    "path": "res://build/luoyang_city_finish_20261025i_source01/Temple_visible_arrival_local01_NOTREADY/author_temple_visible_portals04_NOTREADY.json",
+    "sha256": "b0a98aa162ec010b8e03b0f92da0e293880e4c8016d4c388f22a477ad6b468c3",
+    "bytes": 31461
+  },
+  "sources": {
+    "res://build/luoyang_city_finish_20261025i_source01/author_temple_source_compiled03_NOTREADY.json": "0a8ab1db61b0f8109b26c2b82921be17869278a4f02934b96c47230775e102a3",
+    "res://build/luoyang_city_finish_20261025i_source01/Temple_visible_arrival_local01_NOTREADY/author_temple_visible_portals04_NOTREADY.json": "b0a98aa162ec010b8e03b0f92da0e293880e4c8016d4c388f22a477ad6b468c3",
+    "res://build/luoyang_city_finish_20261025i_source01/temple_signed_iid_repair01/expected_Temple_natural_sources_READONLY.json": "a0c525ed72fbb2d30617c8074087bc9f20c8d5a27210afba2f879ad2730bbf8b",
+    "res://scripts/field/field_walkable_controller.gd": "7c3d6f7af98b604ced4a5cd7be53264a20b9a3b8f4b2a51f9bf58c3a686c44d7",
+    "res://scripts/city/luoyang_temple_assembly_20261016.gd": "7c24b4db16c74a9a9cf2d3d8b94944ea80cf9047825873ec3db4229da8cf4d15",
+    "res://build/luoyang_city_finish_20261025i_source01/family_visual_material_loading_repair01/closure_READY01/finish8_binding_READY.json": "26b8b652aaa73a93c3123ff4287be63d6952124a6ce9b424c27aa2a30d316ff5",
+    "res://build/luoyang_city_finish_20261025i_source01/publication11/output_ROOT_READY/109200/ch4_s4_ancient_temple/payload.bin": "2ce49190aa32825251153de17277766f05f5bfc72890b01e6d7aec9c636b8d65",
+    "res://build/luoyang_city_finish_20261025i_source01/gate_texture_repair01/market_portal_payload_ROOT_READY/output/30240/payload.bin": "5cd1a103bd2ce0e6e6936da963b82f61afdf1ef5e58c044bfa910c6730b89559",
+    "res://build/luoyang_city_finish_20261025i_source01/docks_loading08_local01_NOTREADY/ROOT_READY01/output_ROOT_READY/114200/payload.bin": "6a9448ad86c5100f47d5893290a1a90573c376c5f11f3751892f710282361108",
+    "res://build/luoyang_city_finish_20261025i_system01/Temple_visible_arrival03_NOTREADY/finish8_runtime_visible_Temple_CANDIDATE.gd": "74be6359fa36e7699b5e8ba2f3832c11241e1c1b873649590d8aac65775b5f99",
+    "res://scripts/field/exit_zone.gd": "bf0ee27eacdb592dc977e378e9e4b7fbe1c6e695f9101cd9415a303747e22bc5",
+    "res://scenes/exit_zone.tscn": "6f2c45dd86aaa8eb4d8f2250473eff5425744da2236a943d4dc4a6d42ec921f9",
+    "res://art/ui/field_hud/portal_arrow_amber_v2.png": "1c9ec8e624d5b7e93af2007c44962d780b47c02c9253bcb8c57e0dc628899e01",
+    "res://build/luoyang_city_finish_20261025i_source01/temple_signed_iid_repair01/current_377B_backup31_ROOT_ACTUAL.json": "8e8f484f0f9b0531969b4e227b5f71abd818dc4935fd568890ad79501bb76026"
+  },
+  "payloads": {
+    "ch4_s4_ancient_temple": {
+      "bytes": 28340,
+      "path": "res://build/luoyang_city_finish_20261025i_source01/publication11/output_ROOT_READY/109200/ch4_s4_ancient_temple/payload.bin",
+      "sha256": "2ce49190aa32825251153de17277766f05f5bfc72890b01e6d7aec9c636b8d65"
+    },
+    "ch4_s3_luoyang_market": {
+      "bytes": 220476,
+      "path": "res://build/luoyang_city_finish_20261025i_source01/gate_texture_repair01/market_portal_payload_ROOT_READY/output/30240/payload.bin",
+      "sha256": "5cd1a103bd2ce0e6e6936da963b82f61afdf1ef5e58c044bfa910c6730b89559"
+    },
+    "ch4_s2_canal_docks": {
+      "bytes": 262392,
+      "path": "res://build/luoyang_city_finish_20261025i_source01/docks_loading08_local01_NOTREADY/ROOT_READY01/output_ROOT_READY/114200/payload.bin",
+      "sha256": "6a9448ad86c5100f47d5893290a1a90573c376c5f11f3751892f710282361108"
+    }
+  },
+  "pairs": [
+    {
+      "temple_portal_id": "legacy_portal_6",
+      "old_source_foot": [
+        170,
+        980
+      ],
+      "new_source_foot": [
+        170,
+        926
+      ],
+      "incoming_scene": "ch4_s3_luoyang_market",
+      "incoming_portal_id": "to_ancient_temple",
+      "incoming_actual_source_foot": [
+        1170,
+        1600
+      ]
+    },
+    {
+      "temple_portal_id": "legacy_portal_7",
+      "old_source_foot": [
+        1380,
+        980
+      ],
+      "new_source_foot": [
+        1380,
+        926
+      ],
+      "incoming_scene": "ch4_s2_canal_docks",
+      "incoming_portal_id": "canal_world_ferry",
+      "incoming_actual_source_foot": [
+        2140,
+        1840
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "default_to_market_return",
+      "source_points": [
+        [
+          768,
+          737.28
+        ],
+        [
+          730,
+          926
+        ],
+        [
+          170,
+          926
+        ]
+      ]
+    },
+    {
+      "id": "default_to_docks_return",
+      "source_points": [
+        [
+          768,
+          737.28
+        ],
+        [
+          768,
+          926
+        ],
+        [
+          1380,
+          926
+        ]
+      ]
+    }
+  ],
+  "original_two_monks": [
+    {
+      "id": "temple_bell_keeper_20261018t",
+      "source_foot": [
+        600,
+        900
+      ]
+    },
+    {
+      "id": "temple_cave_keeper_20261018t",
+      "source_foot": [
+        936,
+        900
+      ]
+    }
+  ],
+  "save_absolute_paths": [
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_0.json",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_0.json.bak",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_0.json.tmp",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_1.json",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_1.json.bak",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_1.json.tmp",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_2.json",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_2.json.bak",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_2.json.tmp",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_3.json",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_3.json.bak",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_3.json.tmp",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_4.json",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_4.json.bak",
+    "C:\\Users\\rajqiu\\AppData\\Roaming\\Godot\\app_userdata\\云影侠传\\save_4.json.tmp"
+  ],
+  "original_GUI_source_snapshot": {
+    "res://scripts/field/exit_zone.gd": {
+      "sha256": "bf0ee27eacdb592dc977e378e9e4b7fbe1c6e695f9101cd9415a303747e22bc5",
+      "bytes": 5593,
+      "authority_kind": "ROOT_REQUESTED_FINITE_HUD_SOURCE_SNAPSHOT_NOT_OLD_DECLARED_RUNTIME_LEAF"
+    },
+    "res://scenes/exit_zone.tscn": {
+      "sha256": "6f2c45dd86aaa8eb4d8f2250473eff5425744da2236a943d4dc4a6d42ec921f9",
+      "bytes": 2317,
+      "authority_kind": "ROOT_REQUESTED_FINITE_HUD_SOURCE_SNAPSHOT_NOT_OLD_DECLARED_RUNTIME_LEAF"
+    },
+    "res://art/ui/field_hud/portal_arrow_amber_v2.png": {
+      "sha256": "1c9ec8e624d5b7e93af2007c44962d780b47c02c9253bcb8c57e0dc628899e01",
+      "bytes": 101676,
+      "authority_kind": "ROOT_REQUESTED_FINITE_HUD_SOURCE_SNAPSHOT_NOT_OLD_DECLARED_RUNTIME_LEAF"
+    }
+  },
+  "original_arrow_measurement": {
+    "canvas_px": [
+      300,
+      375
+    ],
+    "complete_A1_xyxy": [
+      25,
+      0,
+      280,
+      346
+    ],
+    "no_pixel_write": true
+  },
+  "original_label_declared_box": [
+    200,
+    30
+  ],
+  "original_hotspots_native_storage_unchanged_because_nonempty_layout_portals_take_precedence": true,
+  "output_root": "res://build/luoyang_city_finish_20261025i_source01/Temple_visible_arrival_local02_ROOT_READY/output_ROOT_READY/",
+  "no_old_mask_or87517_replay": true,
+  "no_canonical_writes": true
+}

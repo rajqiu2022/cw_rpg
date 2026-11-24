@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "asset_pack": "luoyang_gate_fortification_v2_a_weathered1",
+  "status": "SOURCE_AUTHORED_CAPTURE_PENDING",
+  "scope": "Final single A material-only comparison candidate. Geometry is byte-identical to passed retry1; no tower B, runtime publication, Field, gameplay or formal write.",
+  "passed_geometry_parent": {
+    "script": "game/scripts/dev/capture_luoyang_gate_light_ashlar_wall_v2_a_retry1.gd",
+    "script_sha256": "B29B70C6B77BF0938FD711515A96A9100F6655F14468EE9B15DC8C37C1CA01EB",
+    "source_contract": "game/art/modules/luoyang_gate_fortification_v2_a_retry1/source_contract.json",
+    "source_contract_sha256": "9376EC24C799E0D272B10CD10DB84C6FB3385686B49CDDBBDFF8BADDB512E788",
+    "capture_result": "game/art/modules/luoyang_gate_fortification_v2_a_retry1/capture_result.json",
+    "capture_result_sha256": "41815C493B747D55B0B85F52895B71B3F97106B35634A6F4B82586BCE649CF25",
+    "mesh": "game/art/modules/luoyang_gate_fortification_v2_a_retry1/luoyang_gate_wall_light_ashlar_straight_v2_a_retry1.res",
+    "mesh_sha256": "74C213AEB1A000441D6732D0BFA35AAB63CD40A90F64A015175C11947F457CC0",
+    "transparent_png_sha256": "523551C6D8C1F4404EE89D7B9012CEFB668EE4D3058EECE661837DF830EDA08D",
+    "actual_crop_px": [656, 280],
+    "actual_foot_anchor_px": [328.0, 272.3623046875]
+  },
+  "material_revision": {
+    "problem": "retry1 discarded source chroma and compressed rock diffuse to a weak 0.13 luma perturbation around a flat tint, producing a uniform cement/block appearance.",
+    "change": "Use actual registered rock_01 diffuse chroma/luminance together with project-original worn_bluestone_v2 cracks and cool-grey variation. Preserve light-grey average, introduce restrained warm mineral flecks and per-block tone variation, and increase real rock normal participation.",
+    "geometry_or_uv_change": false,
+    "bitmap_edit_or_stretch": false,
+    "ai_generation_or_network": false
+  },
+  "material_sources": {
+    "poly_haven_rock_01": "Existing CC0-1.0 diffuse/normal/ARM and SOURCE.json already registered by the frozen gate art contract.",
+    "worn_bluestone_v2": {
+      "path": "game/art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png",
+      "sha256": "7E9C7D892F86CED04AD3B8AD293208E05D87A01AFFFC2729804E4469F87DEB7D",
+      "import_path": "game/art/maps/luoyang_modular_v3/source/worn_bluestone_v2.png.import",
+      "import_sha256": "4F9144AE8C4FC6C17427C65647A23E29BFDCDFF96752B53BFDE8F27372C2C928",
+      "ctex_path": "game/.godot/imported/worn_bluestone_v2.png-cc6a68e14573ac0b0b51e0099de5fb19.ctex",
+      "ctex_sha256": "03BD39241C5F5B4878188E2FB64069257E2850369C711E8A2A87D48788CEE6A0",
+      "provenance_path": "game/art/maps/luoyang_modular_v3/source/generation_record.json",
+      "provenance_sha256": "55C9A621FF125B736DB2DA85350A208A08F530E81BEA1D2C11DC165CF76858C5",
+      "license_boundary": "Project-original builtin-imagegen texture recorded by the existing generation_record.json; not CC0 and not newly generated or edited."
+    }
+  },
+  "unchanged_capture_contract": {
+    "crop_width_px_inclusive": [650, 662],
+    "crop_height_px_inclusive": [274, 288],
+    "required_actual_crop_px": [656, 280],
+    "foot_anchor_distance_from_v1_max_px": 3.0,
+    "comparison_seam_tolerance_px": 0.01,
+    "wall_bitmap_scale": [1.0, 1.0],
+    "support_and_draw_bounds": "Exact retry1 support x±2.46/z±0.34375 and draw z±0.3612500131; six courses, chamfers and eleven merlons unchanged."
+  },
+  "approval_boundary": {
+    "root_visual_review_required": true,
+    "tower_B_included": false,
+    "runtime_or_formal_write": false,
+    "field_or_physics_credit": false
+  }
+}

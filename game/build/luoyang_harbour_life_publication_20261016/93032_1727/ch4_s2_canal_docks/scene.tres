@@ -1,0 +1,66 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+
+[ext_resource type="Resource" path="res://build/luoyang_harbour_life_publication_20261016/93032_1727/ch4_s2_canal_docks/layout.tres" id="1_d28mg"]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="2_vdc2j"]
+
+[resource]
+script = ExtResource("2_vdc2j")
+scene_id = &"ch4_s2_canal_docks"
+display_name = "洛阳 · 漕渠码头"
+background_path = "res://art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/ground_v14/root_ground_v14_02/floor.png"
+bgm_path = "res://art/audio/bgm/bgm_jianghu_journey_v4.wav"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("1_d28mg")
+player_spawn = Vector2(0.69661456, 0.8984375)
+player_visual_scale = 0.91
+camera_zoom = 1.05
+npcs = Array[Dictionary]([{
+"dialog_id": "ch4_canal_battle",
+"hide_flag": "defeated_luoyang_thug",
+"npc_id": "canal_endangered_porter",
+"npc_name": "失踪脚夫",
+"pos": Vector2(0.5957031, 0.5810547),
+"require_flag": "luoyang_case_found_clue",
+"scale": 0.82,
+"sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png"
+}, {
+"dialog_id": "ch4_canal_result",
+"hide_flag": "ch4_canal_witness_saved",
+"npc_id": "canal_saved_porter",
+"npc_name": "获救脚夫",
+"pos": Vector2(0.5957031, 0.5810547),
+"require_flag": "defeated_luoyang_thug",
+"scale": 0.82,
+"sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png"
+}, {
+"dialog_id": "ch4_hanjia_blade_offer",
+"hide_flag": "hanjia_blade_search_started",
+"npc_id": "canal_old_soldier",
+"npc_name": "老漕卒",
+"pos": Vector2(0.6282552, 0.4736328),
+"scale": 0.94,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"
+}, {
+"hide_flag": "canal_grudge_started",
+"interaction_action": "dialog:ch4_canal_grudge_offer",
+"npc_id": "canal_work_chief",
+"npc_name": "漕工头领",
+"pos": Vector2(0.56640625, 0.63964844),
+"scale": 0.94,
+"sprite_path": "res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png"
+}])
+metadata/luoyang_layered_revision = 3
+metadata/city_manifest_sha = "5ac079c73a9ab7716c62d7ba540d39a513be93ed17f5feef0effbd2e1ac26cdb"
+metadata/city_enclosure_manifest_sha = "b4b06110c299bf97dad8eb7134d8b0902135b37bc7c7f4952522ce6f30a5cf23"
+metadata/city_ground_manifest_sha = "aa2aba7052cb289511eb83d68e6135d96e4001c2950763bb9309e2cdbac2e744"
+metadata/city_ground_manifest_path = "res://art/maps/luoyang_enclosure_v11/ch4_s2_canal_docks/ground_v14/root_ground_v14_02/ground_capture.json"
+metadata/city_frontage_revision_author_sha = "bb92cf64f25a46f438c6e0d0641bbd8b7b99a0d1d4a9a9f4361bb5a55c5fe200"
+metadata/city_frontage_revision_runtime_status = "ROOT_APPROVED_DEFAULT_REVISION"
+metadata/city_frontage_revision_manifest_sha = "fae2b99d98499fc255c9c5607b9811fd29d6b539a2969cec0937884f29f02451"
+metadata/city_revision_runtime_binding_sha = "aa2cc1e741598a9dfc38e2c065e90c892a2795c1eb54456c745426e3a7782dac"
+metadata/city_revision_published_scene_path = "res://data/scenes/luoyang_city_revision_candidates_20261015/ch4_s2_canal_docks.tres"
+metadata/city_revision_source_scene_path = "res://data/scenes/ch4_s2_canal_docks.tres"
+metadata/city_harbour_life_author_sha_20261016 = "3a0eba1052f64f0664dff19a322c7c783f74459ffc862c0be125c7c7d6201f3e"
+metadata/harbour_parent_scene_id = "ch4_s2_canal_docks"

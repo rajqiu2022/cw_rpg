@@ -1,0 +1,62 @@
+{
+  "status": "ART_SOURCE_RAW_GROUND_CONTACT_AUTHORING_INPUT_NOT_GEOMETRY_OR_PHYSICS_PASS",
+  "coordinate_domain": "Original raw PNG pixels, before any pad or uniform world transform. Polygon arrays ordered around ground-plane perimeter; no polygon follows full roof/eave/wall-height A1.",
+  "method": "ART inspected raw lower-building pixels on true-alpha-over-neutral source-coordinate grid. Visible front/side foundation edges define the base; a hidden rear-left corner is explicitly completed parallel to the observed ground side vector. Such hidden corners are authored inference, not claimed directly visible in opaque image. Open workshop bays remain unfilled except actual post/fixture floor contacts.",
+  "previous_manual_measurements": {"path":"game/build/luoyang_city_finish_20261025i_art01/manual_building_measurements01.json","sha256":"0cee5e32ad7a81dfaf56806a08767222d3448b3576b85a81004198d47407d8b6"},
+  "modules": [
+    {
+      "id":"chinese_open_ironwork_v2",
+      "raw_path":"assets/raw/luoyang_city_finish_20261025i/chinese_open_ironwork_v2.png",
+      "raw_sha256":"ce9eb745773590cedda2ac448aa9fa6ab03af84cf50abe5a285608822b9ff475",
+      "raw_size":[1682,935],
+      "threshold_front_anchor_raw":[560,789],
+      "workbay_visual_rect":[235,456,890,746],
+      "closed_room_portal":false,
+      "ground_contacts": [
+        {"id":"open_bay_left_front_post_base","polygon":[[173,736],[225,737],[225,778],[172,774]],"evidence":"Visible stone foot under left timber post; only lower stone base, not the tall post silhouette"},
+        {"id":"open_bay_right_front_post_base","polygon":[[883,742],[940,745],[941,791],[883,787]],"evidence":"Visible stone foot at open-bay/right-room divide"},
+        {"id":"forge_ground_base","polygon":[[513,704],[709,701],[714,736],[514,742]],"evidence":"Lower rectangular brick forge footprint at rear floor; not chimney, orange fire or entire furnace facade"},
+        {"id":"tools_bench_ground_base","polygon":[[283,710],[505,703],[506,744],[284,749]],"evidence":"Workbench foot/log zone behind clear front floor; only projected lower contact band"},
+        {"id":"bellows_support_ground_base","polygon":[[729,710],[871,703],[873,741],[730,746]],"evidence":"Rear bellows/support floor zone, excluding upper bellows triangular body"},
+        {"id":"closed_right_room_ground_body","polygon":[[935,803],[1364,834],[1562,777],[1133,746]],"evidence":"Front room foundation edge and visible right-wall foot; rear-left1133,746 completed with parallel side-ground vector, not roof extent"}
+      ],
+      "protected_open_front_floor_witness_polygon":[[238,771],[870,790],[870,751],[238,745]],
+      "notes":"The front threshold/base slab is walkable decoration, not a blanket solid across the open bay. Source must independently prove actual adult footprints do not hit post or fixtures. No new interior portal added."
+    },
+    {
+      "id":"pottery_kiln_house_v2",
+      "raw_path":"assets/raw/luoyang_city_finish_20261025i/pottery_kiln_house_v2.png",
+      "raw_sha256":"6dcfd35123df03e5147411c820f6cbbc68dcab9eb8cad583763a067845cf983b",
+      "raw_size":[1558,1010],
+      "threshold_front_anchor_raw":[590,844],
+      "workbay_visual_rect":[444,535,741,827],
+      "new_portal":false,
+      "ground_contacts": [
+        {"id":"left_closed_wall_ground_body","polygon":[[250,818],[438,831],[690,722],[502,709]],"evidence":"Left front wall/base block; hidden back edge completed parallel to visible right-ground vector, not full roof A1"},
+        {"id":"right_closed_room_and_sidewall_ground_body","polygon":[[766,852],[1160,877],[1412,766],[1018,741]],"evidence":"Closed work-window room front foundation and substantial visible right sidewall base; inferred rear-left1018,741"},
+        {"id":"left_workbay_post_base","polygon":[[390,810],[440,813],[440,837],[389,834]],"evidence":"Stone foot under doorway left post"},
+        {"id":"right_workbay_post_base","polygon":[[731,826],[780,829],[781,854],[730,851]],"evidence":"Stone foot under doorway right post"},
+        {"id":"earthen_kiln_ground_base","polygon":[[637,756],[715,742],[750,776],[694,793],[634,783]],"evidence":"Earthen kiln lower contact with rear work floor; not its arched dome top"},
+        {"id":"pottery_worktable_ground_base","polygon":[[470,749],[628,744],[630,786],[470,782]],"evidence":"Rear table/rack lower leg footprint; leave foreground threshold strip clear"}
+      ],
+      "protected_open_front_floor_witness_polygon":[[445,829],[725,844],[725,797],[445,785]],
+      "notes":"These lower bases keep the main rectangular opening physically distinct from two closed side masses. Original170clear-width design is not met at old720A1width; needs explicit Source reserved-lot successor, not a smaller worker or silently weaker gate. No new enterable room implied."
+    },
+    {
+      "id":"ordinary_kitchen_rear_body_v2",
+      "raw_path":"assets/raw/luoyang_city_finish_20261025i/ordinary_kitchen_rear_body_v2.png",
+      "raw_sha256":"1f65539478c6e042bbb3726f9a281679759168589b7eb4363dc3f93c52bda935",
+      "raw_size":[1536,1024],
+      "threshold_front_anchor_raw":[800,861],
+      "closed_door_visual_rect":[721,544,880,838],
+      "new_portal":false,
+      "ground_contacts": [
+        {"id":"entire_closed_kitchen_room_ground_base","polygon":[[263,831],[1079,888],[1345,794],[529,737]],"evidence":"Visible front and right foundation foot edges define a ground-plane parallelogram; rear-left529,737 inferred parallel to side depth. Closed room body is blocked, not its entire roof/eaves/image rectangle."}
+      ],
+      "notes":"Closed plank door is visual purpose only, no arrow or fake interior destination. Adult-scale145 uses source expression145/294 with NEW606x390 cap and Source-authorized north-lot/foot revision. The raw image contains hidden alpha0 RGB haze, which is not part of ground or a true opaque background."
+    }
+  ],
+  "local_image_processing":0,
+  "Godot_or_publication_calls":0,
+  "required_next":"Source independently transforms the exact raw polygons using declared uniform source expressions and padded draw origin compensation, checks finite native f32 storage, lot/navigation/route distances and visible open-bay access; Root actual native/Field review remains required."
+}

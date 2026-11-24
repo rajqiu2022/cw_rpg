@@ -1,0 +1,457 @@
+{
+  "schema_version": 2,
+  "status": "HAND_AUTHORED_SOURCE_GEOMETRY_CANDIDATE_NOT_ENGINE_VALIDATED",
+  "id": "interior_pawnshop_v1",
+  "title": "当铺",
+  "source_image": "assets/raw/luoyang_city_expansion_20261016/interior_pawnshop_v1.png",
+  "source_sha256": "6754d60f4e0be70e3e5d0da9df050ff941c5154522c17ddf134b18c00df1ea6e",
+  "source_size_px": [
+    1536,
+    1024
+  ],
+  "coordinates": {
+    "origin": "top_left",
+    "unit": "original_source_raster_pixels",
+    "all_actor_positions": "visible_ground_feet_NOT_legacy_bodycenter",
+    "transform_applied": false,
+    "system_mapping_note": "SYSTEM alone maps source foot F through actual image cover then converts to controller body origin. Do not apply actor offset twice. All polygons below remain unscaled source pixels."
+  },
+  "floor_regions_px": [
+    [
+      [
+        212,
+        518
+      ],
+      [
+        915,
+        518
+      ],
+      [
+        915,
+        380
+      ],
+      [
+        1284,
+        380
+      ],
+      [
+        1450,
+        870
+      ],
+      [
+        945,
+        870
+      ],
+      [
+        945,
+        975
+      ],
+      [
+        591,
+        975
+      ],
+      [
+        591,
+        870
+      ],
+      [
+        83,
+        870
+      ]
+    ]
+  ],
+  "floor_scope": "Accessible primary room floor and central front threshold; black canvas and background-only rear/side spaces excluded.",
+  "furniture_bases": [
+    {
+      "id": "high_transaction_counter",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          150,
+          444
+        ],
+        [
+          861,
+          444
+        ],
+        [
+          861,
+          516
+        ],
+        [
+          150,
+          516
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "柜身落地底座。不是含栏杆/秤的整幅视觉bbox；柜后为封闭非客户区域。"
+    },
+    {
+      "id": "secure_gate_post",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          873,
+          431
+        ],
+        [
+          904,
+          431
+        ],
+        [
+          904,
+          470
+        ],
+        [
+          873,
+          470
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "开合侧门的立柱脚座，门扇高处投影不扩为整块地面。"
+    },
+    {
+      "id": "appraisal_table",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          927,
+          394
+        ],
+        [
+          1146,
+          394
+        ],
+        [
+          1146,
+          454
+        ],
+        [
+          927,
+          454
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "鉴物台四腿与桌下占地。台面高处不整块加到脚座。"
+    },
+    {
+      "id": "rear_lock_cabinet",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1157,
+          339
+        ],
+        [
+          1311,
+          339
+        ],
+        [
+          1311,
+          383
+        ],
+        [
+          1157,
+          383
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "后墙锁柜基座，在主客户地面外，不开放柜后路线。"
+    },
+    {
+      "id": "right_long_bench",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1304,
+          602
+        ],
+        [
+          1420,
+          602
+        ],
+        [
+          1442,
+          700
+        ],
+        [
+          1320,
+          700
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "右墙长凳腿部脚座，座背投影不用于地面阻挡。"
+    },
+    {
+      "id": "right_small_table",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1378,
+          721
+        ],
+        [
+          1454,
+          721
+        ],
+        [
+          1454,
+          783
+        ],
+        [
+          1378,
+          783
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "右下边几四腿基座。"
+    },
+    {
+      "id": "right_vase_and_tools",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          1414,
+          798
+        ],
+        [
+          1469,
+          798
+        ],
+        [
+          1469,
+          867
+        ],
+        [
+          1414,
+          867
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "墙边陶筒及工具桶的接地圈。"
+    },
+    {
+      "id": "left_large_jars_and_rack",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          61,
+          637
+        ],
+        [
+          163,
+          637
+        ],
+        [
+          167,
+          865
+        ],
+        [
+          61,
+          865
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "左前陶罐架组合在侧墙内缘接地，不把灯笼算为固体。"
+    },
+    {
+      "id": "left_storage_chest",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          177,
+          739
+        ],
+        [
+          281,
+          739
+        ],
+        [
+          281,
+          809
+        ],
+        [
+          177,
+          809
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "左前储物箱底座。"
+    },
+    {
+      "id": "left_tall_tool_bucket",
+      "blocking": true,
+      "ground_polygon_px": [
+        [
+          192,
+          533
+        ],
+        [
+          229,
+          533
+        ],
+        [
+          229,
+          596
+        ],
+        [
+          192,
+          596
+        ]
+      ],
+      "authority": "ART manual inspection of this exact full-resolution source; ground-contact semantics, not alpha bbox or full tall visual bbox",
+      "note": "柜侧长筒足底。"
+    }
+  ],
+  "spawn_foot_px": [
+    768,
+    780
+  ],
+  "front_exit": {
+    "id": "front_central_exit",
+    "approach_foot_px": [
+      768,
+      885
+    ],
+    "activation_polygon_px": [
+      [
+        713,
+        870
+      ],
+      [
+        823,
+        870
+      ],
+      [
+        823,
+        900
+      ],
+      [
+        713,
+        900
+      ]
+    ],
+    "return_scene_id": null,
+    "return_foot_px": null,
+    "binding_status": "PENDING_EXACT_MATCHED_EXTERNAL_DOOR"
+  },
+  "npc_slots": [],
+  "functional_points": [
+    {
+      "id": "transaction_counter",
+      "foot_px": [
+        640,
+        575
+      ],
+      "purpose": "客户在柜台正面办理当物",
+      "gameplay_action": null
+    },
+    {
+      "id": "appraisal_station",
+      "foot_px": [
+        1055,
+        520
+      ],
+      "purpose": "鉴物台正前方",
+      "gameplay_action": null
+    },
+    {
+      "id": "waiting_bench",
+      "foot_px": [
+        1225,
+        650
+      ],
+      "purpose": "长凳左前方站位",
+      "gameplay_action": null
+    }
+  ],
+  "required_routes": [
+    {
+      "id": "to_counter",
+      "feet_points_px": [
+        [
+          768,
+          780
+        ],
+        [
+          768,
+          680
+        ],
+        [
+          640,
+          575
+        ]
+      ]
+    },
+    {
+      "id": "to_appraisal",
+      "feet_points_px": [
+        [
+          768,
+          780
+        ],
+        [
+          1000,
+          730
+        ],
+        [
+          1055,
+          520
+        ]
+      ]
+    },
+    {
+      "id": "to_waiting",
+      "feet_points_px": [
+        [
+          768,
+          780
+        ],
+        [
+          1160,
+          770
+        ],
+        [
+          1225,
+          650
+        ]
+      ]
+    },
+    {
+      "id": "to_exit",
+      "feet_points_px": [
+        [
+          768,
+          780
+        ],
+        [
+          768,
+          885
+        ]
+      ]
+    }
+  ],
+  "nonblocking_ground": [
+    "rug",
+    "floor_pattern",
+    "sunlight",
+    "soft_contact_shadow"
+  ],
+  "validation_required": [
+    "Source PNG SHA/dimensions/native import fullRGBA",
+    "Exact sourcefoot-to-cover/controller mapping",
+    "Full body collision and native Physics using final actual scale",
+    "Spawn to every functional point and exit with <=4px samples",
+    "Furniture negative points collide",
+    "One exact exterior door forward/back return without conflating source foot and body center"
+  ],
+  "notes": [
+    "柜后货架、保险柜和鉴物区上部是背景叙事，默认不开放柜后。NPC若将来放柜后，需单独制作其遮挡层和工作区导航。",
+    "黑色画布外部不可走；前侧台阶仅中央门洞内开放。"
+  ],
+  "not_granted": [
+    "No Godot import/compilation/Physics or current source/door runtime acceptance",
+    "No PNG edits/crops/resizing/alpha changes",
+    "No lore/NPC/rewards/canonical source mutation"
+  ]
+}

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+quest_id = &"q_ch3_main_03_token_conspiracy"
+title = "禁地雾纹"
+kind = 0
+desc_not_started = "大会令牌的雾纹与废弃禁地中的旧印相似。"
+desc_in_progress = "进入禁地石窟，查明是谁在收集五派招式痕迹并伪造证物。"
+desc_completed = "石窟中留有运往洛阳的药粉和空白密信，幕后人正借各派名号制造冲突。"
+tracker_hint = "大会后山 · 封禁石窟"
+completion_triggers = Array[String](["flag_set:chapter3_complete"])
+reward_gold = 70
+reward_exp = 120
+reward_items = Array[Dictionary]([])

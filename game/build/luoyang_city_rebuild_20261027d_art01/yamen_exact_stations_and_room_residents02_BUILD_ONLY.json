@@ -1,0 +1,776 @@
+{
+  "schema": "27D_YAMEN_EXACT_STATIONS_AND_ROOM_RESIDENTS_V1",
+  "status": "BUILD_ONLY_SOURCE_COMPILE_REQUIRED",
+  "adoption_enabled": false,
+  "parent_art_fragment": {
+    "path": "res://build/luoyang_city_rebuild_20261027d_art01/three_regions_space_fragment01_BUILD_ONLY.json",
+    "sha256": "94AC0E251A633C36F05F725CF54672E134B2B26C75C66FB2E4FBA6261FAB3416"
+  },
+  "source_station_witness": {
+    "path": "res://build/luoyang_regions_20261027d_source01/terminal_cold_output/124012/result.json",
+    "sha256": "7605F5D966CEFF0DCD751FCDA3D43FF729CCE73D47530AE9B917C3AAB9E39E62",
+    "row": 0,
+    "overall_passed": false,
+    "yamen_terminal": {
+      "bytes": 425468,
+      "path": "res://build/luoyang_regions_20261027d_source01/terminal_cold_output/124012/ch4_s1_luoyang_yamen_terminal.bin",
+      "sha256": "287198326f64837ea87883a8a3c0866f5e59eec7cb9e4a22f5b25d1a093e8aac"
+    },
+    "actor_count": 9,
+    "portal_records": 5,
+    "external_portals_after_internal_skip": 4,
+    "interactions": 3
+  },
+  "yamen_district_patch": {
+    "logical_id": "ch4_s1_luoyang_yamen",
+    "display_name": "洛阳·府衙街",
+    "legacy_size_px": [
+      3072,
+      2048
+    ],
+    "legacy_version": 3,
+    "legacy_frame_origin": [
+      1536,
+      280
+    ],
+    "save_fallback_uv": [
+      0.5,
+      0.908203125
+    ],
+    "actors": {
+      "spar_yamen_patrol": [
+        2860,
+        1260
+      ],
+      "spar_yamen_captain": [
+        3320,
+        1190
+      ],
+      "ch8_luoyang_final_clerk": [
+        3420,
+        1510
+      ],
+      "district_life_yamen_west_patrol": [
+        1730,
+        1740
+      ],
+      "district_life_yamen_south_runner": [
+        4400,
+        1860
+      ],
+      "district_life_yamen_guard": [
+        2800,
+        1020
+      ],
+      "district_life_yamen_clerk": [
+        1050,
+        1940
+      ],
+      "district_life_yamen_petitioner": [
+        1510,
+        2040
+      ],
+      "district_life_yamen_guest": [
+        1300,
+        1720
+      ]
+    },
+    "portals": {
+      "to_city_gate": [
+        3072,
+        2160
+      ],
+      "to_south_market": [
+        3072,
+        2170
+      ],
+      "to_canal_quay": [
+        5500,
+        2110
+      ],
+      "t_enter_magistrate_hall_official_hall": [
+        3072,
+        940
+      ],
+      "finish_i_yamen_to_artisan": [
+        720,
+        970
+      ]
+    },
+    "interactions": {
+      "yamen_case_board": [
+        1300,
+        1690
+      ],
+      "hanjia_water_rule": [
+        3496,
+        1730
+      ],
+      "hanjia_rubbing": [
+        3496,
+        1730
+      ]
+    },
+    "station_transforms": [],
+    "migrations": [
+      {
+        "old_rect": [
+          [
+            0,
+            0
+          ],
+          [
+            1000,
+            2048
+          ]
+        ],
+        "target_foot_px": [
+          1850,
+          1970
+        ],
+        "reason": "27d_old_west_service_lot_reauthored_arrival"
+      },
+      {
+        "old_rect": [
+          [
+            1000,
+            0
+          ],
+          [
+            1200,
+            2048
+          ]
+        ],
+        "target_foot_px": [
+          3072,
+          1840
+        ],
+        "reason": "27d_old_civic_axis_reauthored_arrival"
+      },
+      {
+        "old_rect": [
+          [
+            2200,
+            0
+          ],
+          [
+            872,
+            2048
+          ]
+        ],
+        "target_foot_px": [
+          4300,
+          2040
+        ],
+        "reason": "27d_old_east_duty_lot_reauthored_arrival"
+      }
+    ]
+  },
+  "actor_semantics": [
+    {
+      "npc_id": "spar_yamen_patrol",
+      "role": "府衙巡捕 · 可切磋",
+      "old_foot_px": [
+        1170,
+        1000
+      ],
+      "new_foot_px": [
+        2860,
+        1260
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "availability_rule": "Keep complete original source availability/dialog/sprite/scale/action."
+    },
+    {
+      "npc_id": "spar_yamen_captain",
+      "role": "府衙都头 · 可切磋",
+      "old_foot_px": [
+        1790,
+        870
+      ],
+      "new_foot_px": [
+        3320,
+        1190
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "availability_rule": "Keep complete original source availability/dialog/sprite/scale/action."
+    },
+    {
+      "npc_id": "ch8_luoyang_final_clerk",
+      "role": "终局案卷吏",
+      "old_foot_px": [
+        1980,
+        1180
+      ],
+      "new_foot_px": [
+        3420,
+        1510
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "availability_rule": "Coordinate reservation only; keep original chapter/flags gate. ART does not make final clerk default-active."
+    },
+    {
+      "npc_id": "district_life_yamen_west_patrol",
+      "role": "值守军士",
+      "old_foot_px": [
+        1340,
+        1240
+      ],
+      "new_foot_px": [
+        1730,
+        1740
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "patrol",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 70,
+      "phase_exclusive_group": "",
+      "availability_rule": "Keep complete original source availability/dialog/sprite/scale/action."
+    },
+    {
+      "npc_id": "district_life_yamen_south_runner",
+      "role": "传递书办",
+      "old_foot_px": [
+        1710,
+        1560
+      ],
+      "new_foot_px": [
+        4400,
+        1860
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "patrol",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 70,
+      "phase_exclusive_group": "",
+      "availability_rule": "Keep complete original source availability/dialog/sprite/scale/action."
+    },
+    {
+      "npc_id": "district_life_yamen_guard",
+      "role": "候值军士",
+      "old_foot_px": [
+        1320,
+        760
+      ],
+      "new_foot_px": [
+        2800,
+        1020
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "availability_rule": "Keep complete original source availability/dialog/sprite/scale/action."
+    },
+    {
+      "npc_id": "district_life_yamen_clerk",
+      "role": "书办",
+      "old_foot_px": [
+        1130,
+        1360
+      ],
+      "new_foot_px": [
+        1050,
+        1940
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "availability_rule": "Keep complete original source availability/dialog/sprite/scale/action."
+    },
+    {
+      "npc_id": "district_life_yamen_petitioner",
+      "role": "候见乡民",
+      "old_foot_px": [
+        1750,
+        1320
+      ],
+      "new_foot_px": [
+        1510,
+        2040
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "availability_rule": "Keep complete original source availability/dialog/sprite/scale/action."
+    },
+    {
+      "npc_id": "district_life_yamen_guest",
+      "role": "候见百姓",
+      "old_foot_px": [
+        680,
+        1340
+      ],
+      "new_foot_px": [
+        1300,
+        1720
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "availability_rule": "Keep complete original source availability/dialog/sprite/scale/action."
+    }
+  ],
+  "portal_semantics": [
+    {
+      "id": "to_city_gate",
+      "old_foot_px": [
+        1536,
+        1860
+      ],
+      "new_foot_px": [
+        3072,
+        2160
+      ],
+      "target_scene": "ch4_s0_luoyang_gate",
+      "label": "返回洛阳南城门",
+      "legacy_source_uv": [
+        0.5,
+        0.908203125
+      ],
+      "door_use": "Keep original external target/flags/action."
+    },
+    {
+      "id": "to_south_market",
+      "old_foot_px": [
+        300,
+        1220
+      ],
+      "new_foot_px": [
+        3072,
+        2170
+      ],
+      "target_scene": "ch4_s3_luoyang_market",
+      "label": "前往洛阳南市",
+      "legacy_source_uv": [
+        0.09765625,
+        0.595703125
+      ],
+      "door_use": "Internal continuous boundary: no teleport portal; preserve alias/migration meaning."
+    },
+    {
+      "id": "to_canal_quay",
+      "old_foot_px": [
+        2790,
+        1350
+      ],
+      "new_foot_px": [
+        5500,
+        2110
+      ],
+      "target_scene": "ch4_s2_canal_docks",
+      "label": "前往漕渠码头",
+      "legacy_source_uv": [
+        0.908203125,
+        0.6591796875
+      ],
+      "door_use": "Keep original external target/flags/action."
+    },
+    {
+      "id": "t_enter_magistrate_hall_official_hall",
+      "old_foot_px": [
+        1536,
+        660
+      ],
+      "new_foot_px": [
+        3072,
+        940
+      ],
+      "target_scene": "luoyang_yamen_official_hall_20261018t",
+      "label": "进入府衙正堂",
+      "legacy_source_uv": [
+        0.5,
+        0.322265625
+      ],
+      "door_use": "Keep original external target/flags/action."
+    },
+    {
+      "id": "finish_i_yamen_to_artisan",
+      "old_foot_px": [
+        120,
+        700
+      ],
+      "new_foot_px": [
+        720,
+        970
+      ],
+      "target_scene": "luoyang_artisan_residential_20261022ap",
+      "label": "前往百工坊",
+      "legacy_source_uv": [
+        0.0390625,
+        0.341796875
+      ],
+      "door_use": "Keep original external target/flags/action."
+    }
+  ],
+  "portal_region_return_feet": {
+    "to_city_gate": [
+      3072,
+      2100
+    ],
+    "to_canal_quay": [
+      5420,
+      2110
+    ],
+    "t_enter_magistrate_hall_official_hall": [
+      3072,
+      1020
+    ],
+    "finish_i_yamen_to_artisan": [
+      800,
+      970
+    ]
+  },
+  "future_exclusive_actor_slots": [
+    {
+      "npc_id": "ch8_luoyang_final_clerk",
+      "foot_px": [
+        3420,
+        1510
+      ],
+      "reserve_rect": [
+        [
+          3350,
+          1440
+        ],
+        [
+          140,
+          140
+        ]
+      ],
+      "default_visibility": "SOURCE_STORY_CONDITION_ONLY"
+    }
+  ],
+  "routes_additions": [
+    {
+      "id": "yamen_gate_hall",
+      "points_px": [
+        [
+          3072,
+          2160
+        ],
+        [
+          3072,
+          2040
+        ],
+        [
+          3072,
+          1040
+        ],
+        [
+          3072,
+          940
+        ]
+      ]
+    },
+    {
+      "id": "west_case_board",
+      "points_px": [
+        [
+          3072,
+          2110
+        ],
+        [
+          1900,
+          2110
+        ],
+        [
+          1900,
+          1660
+        ],
+        [
+          1200,
+          1660
+        ],
+        [
+          1200,
+          1690
+        ]
+      ]
+    },
+    {
+      "id": "west_clerk_front",
+      "points_px": [
+        [
+          1900,
+          2110
+        ],
+        [
+          1700,
+          2075
+        ],
+        [
+          1050,
+          2075
+        ],
+        [
+          1050,
+          2045
+        ]
+      ]
+    },
+    {
+      "id": "waiting_guest_front",
+      "points_px": [
+        [
+          1700,
+          2075
+        ],
+        [
+          1700,
+          1810
+        ],
+        [
+          1300,
+          1810
+        ]
+      ]
+    },
+    {
+      "id": "west_patrol_front",
+      "points_px": [
+        [
+          1900,
+          2110
+        ],
+        [
+          1900,
+          1830
+        ],
+        [
+          1730,
+          1830
+        ]
+      ]
+    },
+    {
+      "id": "east_runner_front",
+      "points_px": [
+        [
+          4380,
+          2110
+        ],
+        [
+          4400,
+          2020
+        ],
+        [
+          4400,
+          1950
+        ]
+      ]
+    },
+    {
+      "id": "inscription_front",
+      "points_px": [
+        [
+          3072,
+          1840
+        ],
+        [
+          3350,
+          1840
+        ],
+        [
+          3350,
+          1760
+        ],
+        [
+          3496,
+          1760
+        ]
+      ]
+    },
+    {
+      "id": "west_artisan_exit",
+      "points_px": [
+        [
+          1900,
+          1660
+        ],
+        [
+          1850,
+          1660
+        ],
+        [
+          1850,
+          970
+        ],
+        [
+          720,
+          970
+        ]
+      ]
+    }
+  ],
+  "room_resident_reassignments": [
+    {
+      "room_id": "estate27d_living_hall",
+      "operation": "MOVE_EXACT_SOURCE_ACTOR_ONCE_NOT_CLONE",
+      "npc_id": "luoyang_estate_court_keeper_20261025i",
+      "source_npc_id": "luoyang_estate_court_keeper_20261025i",
+      "source_logical_id": "luoyang_estate_riverside_20261021ai",
+      "foot_px": [
+        1240,
+        1140
+      ],
+      "purpose": "Original ordinary court keeper waits beside the receiving-hall entrance; not renamed master/steward.",
+      "suppress_source_outdoor_instance": true,
+      "adoption_requires": "Complete Estate source terminal exact NPC identity + independent room compiler/runtime ready; source logical provenance/dialog/availability stays Estate.",
+      "preserve_fields": [
+        "npc_name",
+        "dialog_id",
+        "interaction_action",
+        "sprite_path",
+        "portrait_path",
+        "scale",
+        "movement_mode",
+        "availability"
+      ]
+    }
+  ],
+  "room_identity_findings": {
+    "mansion_original": "Selected mansion Scene and both mansion author original_npc_definition_raw are []; no original host/steward may be fabricated.",
+    "estate_existing_source": {
+      "path": "res://build/luoyang_city_finish_20261025i_system01/ambient18_visual_contract02_NOTREADY.json",
+      "sha256": "0A65ECD3A2A6150C1080EB86CDB31A5657331D948E9D2776BC74DB3E4336DA25"
+    },
+    "ordinary_people": "Existing court keeper can occupy living hall; kitchen hand stays at actual kitchen yard, not renamed as bedroom steward."
+  },
+  "constraints": [
+    "No owner layout, PNG, body, patrol distance, speed or original availability changes.",
+    "Nine exact actors and future slots, no catch-all station fallback.",
+    "Source performs one necessary local transformed-solid/actor-sweep check; this author data is not runtime PASS.",
+    "Three raw cleanup remains not executed."
+  ],
+  "estate_outdoor_actor_patch": {
+    "logical_id": "luoyang_estate_riverside_20261021ai",
+    "actors": {
+      "luoyang_estate_kitchen_hand_20261025i": [
+        2480,
+        3380
+      ]
+    },
+    "purpose": "Kitchen hand remains at actual kitchen/supply yard, not placed in bedroom.",
+    "court_keeper_if_room_not_ready": {
+      "npc_id": "luoyang_estate_court_keeper_20261025i",
+      "foot_px": [
+        1680,
+        2050
+      ],
+      "rule": "Temporary outdoor hall-front assignment only if room transfer is not adopted; exclusive, never a second same-ID instance."
+    }
+  },
+  "temple_actor_patch": {
+    "logical_id": "ch4_s4_ancient_temple",
+    "actors": {
+      "temple_cave_keeper_20261018t": [
+        1536,
+        420
+      ],
+      "temple_bell_keeper_20261018t": [
+        2360,
+        2990
+      ]
+    },
+    "reason": "Cave keeper stays rear cave court; bell keeper waits at sutra-house exterior forecourt, >80px from door activation. Avoid new cross-room task identity handling in this batch.",
+    "door_context": {
+      "sutra_door_foot_px": [
+        2220,
+        2914
+      ],
+      "bell_npc_distance_to_door_px": 159.298462012,
+      "interaction_approach_foot_px": [
+        2480,
+        2990
+      ]
+    },
+    "task_policy": "Same original logical Temple, actors and investigation source identities. No new quest/dialog, no indoor/outdoor duplicate."
+  },
+  "room_npc_completeness": {
+    "estate_living_hall": "One exact existing ordinary source keeper proposed inside; authoritative source transfer required, not fabricated original host.",
+    "estate_west_study": "No existing tutor identity proven. Intentionally unoccupied until a real source resident is selected; do not rename scholar/hero.",
+    "estate_east_bedroom": "No original attendant identity proven. Kitchen hand retained at kitchen, not silently renamed or copied.",
+    "temple_rooms": "Quest monks remain in their original logical Temple outdoors at meaningful cave/door forecourts this batch; no new room quest-id reassignment. Indoor furniture is real, but room-specific resident diversity is not claimed complete."
+  },
+  "finite_readonly_layout_observation": {
+    "source": "51 owner metadata true bases translated by 94AC exact plots",
+    "actor_full_sweeps_vs_bases_hits": [],
+    "route_8px_samples_vs_bases_and_actor_full_sweeps_hits": [],
+    "not_engine_test": true,
+    "not_ground_union_or_collision_proof": true
+  }
+}

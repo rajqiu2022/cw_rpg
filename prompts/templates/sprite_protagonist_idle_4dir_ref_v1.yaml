@@ -1,0 +1,18 @@
+id: sprite_protagonist_idle_4dir_ref_v1
+description: Reference-locked four-direction four-frame idle atlas.
+quality: medium
+size: "1024x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/characters/protagonist_portrait.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied portrait as the strict identity and proportion reference. Preserve the black tied hair, dark blue-grey cross-collar robe, leather chest strap, dark boots, sword, and one small grey-green double-lobed wine gourd tied at the left belt.
+
+  Create a 1024x1024 2D RPG idle sprite atlas with exactly four rows and four equal isolated cells per row. Character height is about 150px per cell, all feet share a baseline, and all cells have generous pure white separation. Row 1 faces down, row 2 faces up, row 3 faces right, row 4 faces left. Each row is a calm four-frame idle loop: frame 1 neutral, frame 2 subtle inhale and hair-tip movement, frame 3 robe-hem and weight shift, frame 4 returns smoothly toward neutral. Do not turn idle into a walking pose.
+
+  Hong Kong wuxia comic game sprite, clean ink outlines. No crop, text, grid, shadow, duplicate character, motion trail, isometric view, or cell crossing.
+  Avoid: {negative}
+
+variables: {}

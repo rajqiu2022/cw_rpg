@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch3_huashan_two_edges"
+display_name = "华山两路剑痕"
+speaker_npc_id = &"npc_huo_changkong"
+statement = "顾凌雪伤口旁同时留下快剑切痕与运气震裂。霍长空认为凶手熟悉华山两脉，却刻意不提两脉弟子当夜曾互相监视。"
+chapter = 3
+initial_credibility = 70
+related_evidence_ids = Array[StringName]([&"ev_ch3_composite_technique_marks"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch3_gufeng_crate_witness"])

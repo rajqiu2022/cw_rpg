@@ -1,0 +1,126 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/inn_room.png" id="inn_room"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/keeper_sprite.png" id="keeper_sprite"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/counter.png" id="counter"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/table.png" id="table"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/bench.png" id="bench"]
+
+[ext_resource type="Texture2D" path="res://art/modules/redrock_luoyang_standard_20261028b/shelf.png" id="shelf"]
+
+[sub_resource type="SystemFont" id="font"]
+font_names = PackedStringArray("Microsoft YaHei", "Noto Sans CJK SC")
+
+[node name="InnHall" type="Node2D"]
+
+[node name="Architecture" type="Sprite2D" parent="."]
+z_index = -10
+texture = ExtResource("inn_room")
+centered = false
+position = Vector2(-998.4,-968.5)
+scale = Vector2(1.3,1.3)
+
+[node name="Sort" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Boundary" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="FloorEdge" type="CollisionPolygon2D" parent="Boundary"]
+build_mode = 1
+polygon = PackedVector2Array(-510.9, -312, 516.1, -312, 626.6, 0, -634.4, 0)
+
+[node name="Counter" type="Node2D" parent="Sort"]
+position = Vector2(-330, -210)
+
+[node name="Art" type="Sprite2D" parent="Sort/Counter"]
+position = Vector2(-160.669456, -163.807531)
+scale = Vector2(0.209205021, 0.209205021)
+texture = ExtResource("counter")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Sort/Counter"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Sort/Counter/Body"]
+polygon = PackedVector2Array(-161.016949, -46.6101695, 161.016949, -46.6101695, 161.016949, 0, -161.016949, 0)
+
+[node name="Dining" type="Node2D" parent="Sort"]
+position = Vector2(340, -90)
+
+[node name="Art" type="Sprite2D" parent="Sort/Dining"]
+position = Vector2(-79.9479847, -97.2691805)
+scale = Vector2(0.104031209, 0.104031209)
+texture = ExtResource("table")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Sort/Dining"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Sort/Dining/Body"]
+polygon = PackedVector2Array(-59.1304348, -27.826087, 59.1304348, -27.826087, 59.1304348, 0, -59.1304348, 0)
+
+[node name="Bench" type="Node2D" parent="Sort"]
+position = Vector2(-330, -65)
+
+[node name="Art" type="Sprite2D" parent="Sort/Bench"]
+position = Vector2(-84.9778271, -87.0288248)
+scale = Vector2(0.110864745, 0.110864745)
+texture = ExtResource("bench")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Sort/Bench"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Sort/Bench/Body"]
+polygon = PackedVector2Array(-130, -28, 130, -28, 130, 0, -130, 0)
+
+[node name="Shelf" type="Node2D" parent="Sort"]
+position = Vector2(350, -265)
+
+[node name="Art" type="Sprite2D" parent="Sort/Shelf"]
+position = Vector2(-126.279343, -155.446009)
+scale = Vector2(0.164319249, 0.164319249)
+texture = ExtResource("shelf")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Sort/Shelf"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Sort/Shelf/Body"]
+polygon = PackedVector2Array(-100, -32, 100, -32, 100, 0, -100, 0)
+
+[node name="Keeper" type="Node2D" parent="Sort"]
+position = Vector2(-330, -285)
+
+[node name="Art" type="Sprite2D" parent="Sort/Keeper"]
+position = Vector2(-70.2465753, -124.60274)
+scale = Vector2(0.109589041, 0.109589041)
+texture = ExtResource("keeper_sprite")
+centered = false
+
+[node name="Body" type="StaticBody2D" parent="Sort/Keeper"]
+collision_layer = 1
+collision_mask = 0
+
+[node name="Footprint" type="CollisionPolygon2D" parent="Sort/Keeper/Body"]
+polygon = PackedVector2Array(-17.5, -12.5, 17.5, -12.5, 17.5, 12.5, -17.5, 12.5)
+
+[node name="Exit" type="Marker2D" parent="."]
+position = Vector2(0,-45)
+
+[node name="Label" type="Label" parent="Exit"]
+offset_left = -150.0
+offset_top = -15.0
+theme_override_fonts/font = SubResource("font")
+theme_override_font_sizes/font_size = 18
+text = "返回驿舍马院 · 空格"

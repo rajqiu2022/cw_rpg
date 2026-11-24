@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="script"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="node"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("node")
+node_id = &"start"
+speaker = "驿站记事"
+text = "底簿上也是这个缺了一角的戳。他拿佩刀撬箱救货，我却给他记了这笔烂账。取朱笔来，这行字该我亲手销。"
+on_end = "next:forge"
+
+[sub_resource type="Resource" id="forge"]
+script = ExtResource("node")
+node_id = &"forge"
+speaker = "驿站记事"
+text = "行栈的铁匠磨去了盐锈，露出刀根的「潮声」二字。旧镖局早已散了，我替他把刀交到你手上。"
+verify_evidence = Array[StringName]([&"ev_tide_blade"])
+set_flags = Array[Dictionary]([{"key": "tide_case_closed", "value": true}])
+
+[resource]
+script = ExtResource("script")
+dialog_id = &"east_tide_repair"
+
+nodes = Array[ExtResource("node")]([SubResource("start"), SubResource("forge")])

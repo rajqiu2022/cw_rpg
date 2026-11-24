@@ -1,0 +1,2086 @@
+{
+  "schema": "27D_MARKET_EXACT_STATIONS_V1",
+  "status": "BUILD_ONLY_NOT_REGION_RUNTIME_ADOPTED",
+  "adoption_enabled": false,
+  "parent_art_fragment": {
+    "path": "res://build/luoyang_city_rebuild_20261027d_art01/three_regions_space_fragment01_BUILD_ONLY.json",
+    "sha256": "94AC0E251A633C36F05F725CF54672E134B2B26C75C66FB2E4FBA6261FAB3416"
+  },
+  "source_terminal": {
+    "result_path": "res://build/luoyang_regions_20261027d_source01/terminal_market_residual_output/107588/result.json",
+    "result_sha256": "1CA7026AF62293667281AA95CB620B651D6FD1D277461A6B30D633339F0E5803",
+    "terminal": {
+      "bytes": 408384,
+      "path": "res://build/luoyang_regions_20261027d_source01/terminal_market_residual_output/107588/ch4_s3_luoyang_market_terminal.bin",
+      "sha256": "d847e0aa20fc15c8d018a15b41ef2334e7fd5a7373cc9ae23191a89c52cf98a4"
+    },
+    "actors": 19,
+    "portals": 12,
+    "interactions": 4,
+    "render": 57,
+    "solid": 71
+  },
+  "market_district_patch": {
+    "logical_id": "ch4_s3_luoyang_market",
+    "display_name": "洛阳·南市",
+    "legacy_size_px": [
+      3072,
+      2048
+    ],
+    "legacy_version": 3,
+    "legacy_frame_origin": [
+      1536,
+      2304
+    ],
+    "save_fallback_uv": [
+      0.380859375,
+      0.78125
+    ],
+    "actors": {
+      "spar_luoyang_shen_guard": [
+        5600,
+        4390
+      ],
+      "spar_luoyang_examiner": [
+        2730,
+        3440
+      ],
+      "spar_luoyang_blademaster": [
+        2800,
+        4240
+      ],
+      "spar_luoyang_patrol": [
+        3340,
+        3620
+      ],
+      "feng_yanqiu_ch4": [
+        5500,
+        4370
+      ],
+      "luoyang_paper_scholar": [
+        5430,
+        3010
+      ],
+      "luoyang_poetry_host": [
+        4970,
+        4380
+      ],
+      "luoyang_armorer": [
+        3830,
+        3440
+      ],
+      "luoyang_paper_artisan_20261016": [
+        5570,
+        3010
+      ],
+      "district_life_market_courier": [
+        2750,
+        3240
+      ],
+      "district_life_market_patrol": [
+        2800,
+        3660
+      ],
+      "district_life_market_broker": [
+        4270,
+        4070
+      ],
+      "district_life_market_guest": [
+        1300,
+        3800
+      ],
+      "district_life_market_buyer": [
+        2590,
+        4290
+      ],
+      "district_life_market_herb_buyer": [
+        4250,
+        4460
+      ],
+      "district_life_market_shop_attendant": [
+        5530,
+        3100
+      ],
+      "district_life_market_farmer": [
+        1900,
+        4400
+      ],
+      "district_life_market_tea_guest": [
+        1370,
+        3060
+      ],
+      "district_life_market_traveller": [
+        1450,
+        3160
+      ]
+    },
+    "portals": {
+      "to_yamen_square": [
+        3072,
+        2250
+      ],
+      "to_city_gate": [
+        500,
+        3270
+      ],
+      "to_canal_docks": [
+        5960,
+        3000
+      ],
+      "to_ancient_temple": [
+        3072,
+        4510
+      ],
+      "enter_inn_room": [
+        1000,
+        2944
+      ],
+      "enter_shop_room": [
+        3620,
+        3320
+      ],
+      "enter_north_market_front_room": [
+        2520,
+        3160
+      ],
+      "enter_market_east_ward_frontage_room": [
+        5225.13671875,
+        2832.90148925781
+      ],
+      "enter_market_northeast_rear_frontage_room": [
+        1000,
+        3656.23474121094
+      ],
+      "t_enter_market_west_ward_frontage_pawnshop": [
+        1000,
+        4534
+      ],
+      "am_market_estate_alley": [
+        5800,
+        4560
+      ],
+      "market_to_artisan": [
+        1700,
+        4560
+      ]
+    },
+    "interactions": {
+      "armory_old_record": [
+        4140,
+        3510
+      ],
+      "paper_birdseal": [
+        2105,
+        4156
+      ],
+      "zhao_medicine_parcel": [
+        3885,
+        4356
+      ],
+      "xuantong_note": [
+        2730,
+        3930
+      ]
+    },
+    "station_transforms": [],
+    "migrations": [
+      {
+        "old_rect": [
+          [
+            0,
+            0
+          ],
+          [
+            1536,
+            1100
+          ]
+        ],
+        "target_foot_px": [
+          1500,
+          3500
+        ],
+        "reason": "27d_old_northwest_shops_fixed_public_arrival"
+      },
+      {
+        "old_rect": [
+          [
+            1536,
+            0
+          ],
+          [
+            1536,
+            1100
+          ]
+        ],
+        "target_foot_px": [
+          4520,
+          3000
+        ],
+        "reason": "27d_old_northeast_shops_fixed_public_arrival"
+      },
+      {
+        "old_rect": [
+          [
+            0,
+            1100
+          ],
+          [
+            1536,
+            948
+          ]
+        ],
+        "target_foot_px": [
+          1500,
+          3960
+        ],
+        "reason": "27d_old_southwest_trades_fixed_public_arrival"
+      },
+      {
+        "old_rect": [
+          [
+            1536,
+            1100
+          ],
+          [
+            1536,
+            948
+          ]
+        ],
+        "target_foot_px": [
+          4520,
+          4560
+        ],
+        "reason": "27d_old_southeast_trades_fixed_public_arrival"
+      }
+    ]
+  },
+  "region_ground_additions": [
+    {
+      "id": "east_facing_shop_front_apron",
+      "rect": [
+        [
+          2778,
+          2304
+        ],
+        [
+          144,
+          1020
+        ]
+      ],
+      "texture_role": "shop_pavers",
+      "period_px": [
+        384,
+        256
+      ],
+      "purpose": "Complete the already-planned 144px public apron; no owner/lot/door moved."
+    },
+    {
+      "id": "west_facing_shop_front_apron",
+      "rect": [
+        [
+          3222,
+          2304
+        ],
+        [
+          144,
+          1256
+        ]
+      ],
+      "texture_role": "shop_pavers",
+      "period_px": [
+        384,
+        256
+      ],
+      "purpose": "Complete the already-planned 144px public apron; no owner/lot/door moved."
+    },
+    {
+      "id": "east_frontage_service_join",
+      "rect": [
+        [
+          4608,
+          2304
+        ],
+        [
+          144,
+          2304
+        ]
+      ],
+      "texture_role": "shop_pavers",
+      "period_px": [
+        384,
+        256
+      ],
+      "purpose": "Complete the already-planned 144px public apron; no owner/lot/door moved."
+    },
+    {
+      "id": "west_frontage_service_join",
+      "rect": [
+        [
+          1540,
+          2304
+        ],
+        [
+          144,
+          2304
+        ]
+      ],
+      "texture_role": "shop_pavers",
+      "period_px": [
+        384,
+        256
+      ],
+      "purpose": "Close existing 20px uncovered frontage-to-service-lane seam, no owner move."
+    }
+  ],
+  "actor_semantics": [
+    {
+      "npc_id": "spar_luoyang_shen_guard",
+      "role": "沈家护院总管 · 可切磋",
+      "old_foot_px": [
+        150,
+        1060
+      ],
+      "new_foot_px": [
+        5600,
+        4390
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "spar_luoyang_examiner",
+      "role": "大会考校官 · 可切磋",
+      "old_foot_px": [
+        1260,
+        840
+      ],
+      "new_foot_px": [
+        2730,
+        3440
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "spar_luoyang_blademaster",
+      "role": "流浪刀客 · 可切磋",
+      "old_foot_px": [
+        1260,
+        1480
+      ],
+      "new_foot_px": [
+        2800,
+        4240
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "spar_luoyang_patrol",
+      "role": "洛阳巡捕 · 可切磋",
+      "old_foot_px": [
+        1380,
+        1580
+      ],
+      "new_foot_px": [
+        3340,
+        3620
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "feng_yanqiu_ch4",
+      "role": "封砚秋",
+      "old_foot_px": [
+        150,
+        1190
+      ],
+      "new_foot_px": [
+        5500,
+        4370
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": false,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "luoyang_paper_scholar",
+      "role": "南市书生",
+      "old_foot_px": [
+        520,
+        1340
+      ],
+      "new_foot_px": [
+        5430,
+        3010
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "luoyang_poetry_host",
+      "role": "牡丹诗会主持",
+      "old_foot_px": [
+        1260,
+        1720
+      ],
+      "new_foot_px": [
+        4970,
+        4380
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "luoyang_armorer",
+      "role": "军械铺掌柜",
+      "old_foot_px": [
+        2860,
+        1420
+      ],
+      "new_foot_px": [
+        3830,
+        3440
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "luoyang_paper_artisan_20261016",
+      "role": "老纸匠",
+      "old_foot_px": [
+        888,
+        1340
+      ],
+      "new_foot_px": [
+        5570,
+        3010
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_courier",
+      "role": "行脚商",
+      "old_foot_px": [
+        1260,
+        1000
+      ],
+      "new_foot_px": [
+        2750,
+        3240
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "patrol",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 55,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_patrol",
+      "role": "巡街军士",
+      "old_foot_px": [
+        1610,
+        1420
+      ],
+      "new_foot_px": [
+        2800,
+        3660
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "patrol",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 70,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_broker",
+      "role": "货行商",
+      "old_foot_px": [
+        2290,
+        1660
+      ],
+      "new_foot_px": [
+        4270,
+        4070
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "patrol",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 65,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_guest",
+      "role": "过路客商",
+      "old_foot_px": [
+        1140,
+        1810
+      ],
+      "new_foot_px": [
+        1300,
+        3800
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "patrol",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 70,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_buyer",
+      "role": "采买妇人",
+      "old_foot_px": [
+        1735,
+        1420
+      ],
+      "new_foot_px": [
+        2590,
+        4290
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "culture_return_buyer",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_herb_buyer",
+      "role": "菜贩",
+      "old_foot_px": [
+        2685,
+        1420
+      ],
+      "new_foot_px": [
+        4250,
+        4460
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_shop_attendant",
+      "role": "铺中伙计",
+      "old_foot_px": [
+        1840,
+        1994
+      ],
+      "new_foot_px": [
+        5530,
+        3100
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_farmer",
+      "role": "入城乡民",
+      "old_foot_px": [
+        1280,
+        1970
+      ],
+      "new_foot_px": [
+        1900,
+        4400
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_tea_guest",
+      "role": "茶客",
+      "old_foot_px": [
+        1090,
+        780
+      ],
+      "new_foot_px": [
+        1370,
+        3060
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    },
+    {
+      "npc_id": "district_life_market_traveller",
+      "role": "行旅",
+      "old_foot_px": [
+        760,
+        800
+      ],
+      "new_foot_px": [
+        1450,
+        3160
+      ],
+      "half_body_px": [
+        17,
+        15
+      ],
+      "movement_mode": "idle",
+      "patrol_axis": [
+        1,
+        0
+      ],
+      "patrol_distance_px": 0,
+      "phase_exclusive_group": "",
+      "source_default_active": true,
+      "policy": "Preserve exact source availability, branch identity, dialog/action/visual scale; layout never makes inactive story actors permanent."
+    }
+  ],
+  "portal_region_return_feet": {
+    "to_yamen_square": [
+      3072,
+      2320
+    ],
+    "to_city_gate": [
+      580,
+      3270
+    ],
+    "to_canal_docks": [
+      5880,
+      3000
+    ],
+    "to_ancient_temple": [
+      3072,
+      4430
+    ],
+    "enter_inn_room": [
+      1000,
+      2944
+    ],
+    "enter_shop_room": [
+      3620,
+      3384
+    ],
+    "enter_north_market_front_room": [
+      2520,
+      3224
+    ],
+    "enter_market_east_ward_frontage_room": [
+      5225.136861313868,
+      2904
+    ],
+    "enter_market_northeast_rear_frontage_room": [
+      1000,
+      3724
+    ],
+    "t_enter_market_west_ward_frontage_pawnshop": [
+      1000,
+      4534
+    ],
+    "am_market_estate_alley": [
+      5720,
+      4560
+    ],
+    "market_to_artisan": [
+      1780,
+      4560
+    ]
+  },
+  "portal_owner_bindings": {
+    "enter_inn_room": "inn",
+    "enter_shop_room": "shop",
+    "enter_north_market_front_room": "north_market_front",
+    "enter_market_east_ward_frontage_room": "market_east_ward_frontage",
+    "enter_market_northeast_rear_frontage_room": "market_northeast_rear_frontage",
+    "t_enter_market_west_ward_frontage_pawnshop": "market_west_ward_frontage"
+  },
+  "portal_semantics": [
+    {
+      "id": "to_yamen_square",
+      "old_foot_px": [
+        2090,
+        160
+      ],
+      "new_foot_px": [
+        3072,
+        2250
+      ],
+      "target_scene": "ch4_s1_luoyang_yamen",
+      "label": "前往府衙外院",
+      "legacy_source_uv": [
+        0.680338561534882,
+        0.078125
+      ],
+      "policy": "Internal continuous street: compiler skips portal Node. No teleport to another square."
+    },
+    {
+      "id": "to_city_gate",
+      "old_foot_px": [
+        220,
+        1060
+      ],
+      "new_foot_px": [
+        500,
+        3270
+      ],
+      "target_scene": "ch4_s0_luoyang_gate",
+      "label": "返回洛阳南城门",
+      "legacy_source_uv": [
+        0.0716145858168602,
+        0.517578125
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "to_canal_docks",
+      "old_foot_px": [
+        3008,
+        1468
+      ],
+      "new_foot_px": [
+        5960,
+        3000
+      ],
+      "target_scene": "ch4_s2_canal_docks",
+      "label": "前往漕渠码头",
+      "legacy_source_uv": [
+        0.979166686534882,
+        0.716796875
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "to_ancient_temple",
+      "old_foot_px": [
+        1170,
+        1600
+      ],
+      "new_foot_px": [
+        3072,
+        4510
+      ],
+      "target_scene": "ch4_s4_ancient_temple",
+      "label": "出南市 · 城外古寺",
+      "legacy_source_uv": [
+        0.380859375,
+        0.78125
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "enter_inn_room",
+      "old_foot_px": [
+        540,
+        624
+      ],
+      "new_foot_px": [
+        1000,
+        2944
+      ],
+      "target_scene": "luoyang_market_inn_interior_20261015",
+      "label": "进入客栈大厅",
+      "legacy_source_uv": [
+        0.17578125,
+        0.3046875
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "enter_shop_room",
+      "old_foot_px": [
+        2750,
+        664
+      ],
+      "new_foot_px": [
+        3620,
+        3320
+      ],
+      "target_scene": "luoyang_market_shop_interior_20261015",
+      "label": "进入铁匠铺",
+      "legacy_source_uv": [
+        0.895182311534882,
+        0.32421875
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "enter_north_market_front_room",
+      "old_foot_px": [
+        1640,
+        684
+      ],
+      "new_foot_px": [
+        2520,
+        3160
+      ],
+      "target_scene": "luoyang_market_north_market_front_interior_20261015",
+      "label": "进入布庄裁缝",
+      "legacy_source_uv": [
+        0.533854186534882,
+        0.333984375
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "enter_market_east_ward_frontage_room",
+      "old_foot_px": [
+        1755.13671875,
+        1928.90148925781
+      ],
+      "new_foot_px": [
+        5225.13671875,
+        2832.90148925781
+      ],
+      "target_scene": "luoyang_market_market_east_ward_frontage_interior_20261015",
+      "label": "进入文人书斋",
+      "legacy_source_uv": [
+        0.571333587169647,
+        0.941846430301666
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "enter_market_northeast_rear_frontage_room",
+      "old_foot_px": [
+        580,
+        1212.23474121094
+      ],
+      "new_foot_px": [
+        1000,
+        3656.23474121094
+      ],
+      "target_scene": "luoyang_market_market_northeast_rear_frontage_interior_20261015",
+      "label": "进入药铺",
+      "legacy_source_uv": [
+        0.18880207836628,
+        0.591911494731903
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "t_enter_market_west_ward_frontage_pawnshop",
+      "old_foot_px": [
+        550,
+        1964
+      ],
+      "new_foot_px": [
+        1000,
+        4534
+      ],
+      "target_scene": "luoyang_functional_pawnshop_candidate_20261016",
+      "label": "进入当铺",
+      "legacy_source_uv": [
+        0.17903645336628,
+        0.958984375
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "am_market_estate_alley",
+      "old_foot_px": [
+        2610,
+        1860
+      ],
+      "new_foot_px": [
+        5800,
+        4560
+      ],
+      "target_scene": "luoyang_estate_riverside_20261021ai",
+      "label": "前往宅园",
+      "legacy_source_uv": [
+        0.849609375,
+        0.908203125
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    },
+    {
+      "id": "market_to_artisan",
+      "old_foot_px": [
+        1100,
+        1860
+      ],
+      "new_foot_px": [
+        1700,
+        4560
+      ],
+      "target_scene": "luoyang_artisan_residential_20261022ap",
+      "label": "进入百工民坊",
+      "legacy_source_uv": [
+        0.358072906732559,
+        0.908203125
+      ],
+      "policy": "Original business target/action/flags and indoor service preserved."
+    }
+  ],
+  "pending_legacy_front_placements": [
+    {
+      "owner_id": "shop",
+      "target_foot_px": [
+        3620,
+        3260
+      ],
+      "retained_original_scale": true,
+      "future_asset_id": "west_shop_residence_v1",
+      "portal_id": "enter_shop_room"
+    },
+    {
+      "owner_id": "north_market_front",
+      "target_foot_px": [
+        2520,
+        3100
+      ],
+      "retained_original_scale": true,
+      "future_asset_id": "east_shop_residence_v1",
+      "portal_id": "enter_north_market_front_room"
+    }
+  ],
+  "pending_policy": "Pure compile can retain original whole fronts at these target anchors. No raw asset adopted. Final native/import readiness retires only old physical render atomically with replacement; functional owner aliases and task references remain.",
+  "routes_additions": [
+    {
+      "id": "main_market_axis",
+      "points_px": [
+        [
+          3072,
+          2250
+        ],
+        [
+          3072,
+          4380
+        ],
+        [
+          3072,
+          4510
+        ]
+      ]
+    },
+    {
+      "id": "west_side_access",
+      "points_px": [
+        [
+          3072,
+          4560
+        ],
+        [
+          1632,
+          4560
+        ],
+        [
+          1632,
+          3090
+        ],
+        [
+          1000,
+          3090
+        ],
+        [
+          1000,
+          2944
+        ]
+      ]
+    },
+    {
+      "id": "inn_apothecary",
+      "points_px": [
+        [
+          1632,
+          3500
+        ],
+        [
+          1632,
+          3850
+        ],
+        [
+          1000,
+          3850
+        ],
+        [
+          1000,
+          3656.23474121094
+        ]
+      ]
+    },
+    {
+      "id": "pawn_approach",
+      "points_px": [
+        [
+          1632,
+          4560
+        ],
+        [
+          1000,
+          4560
+        ],
+        [
+          1000,
+          4534
+        ]
+      ]
+    },
+    {
+      "id": "cloth_shop_approach",
+      "points_px": [
+        [
+          3072,
+          3200
+        ],
+        [
+          2520,
+          3200
+        ],
+        [
+          2520,
+          3160
+        ]
+      ]
+    },
+    {
+      "id": "iron_shop_approach",
+      "points_px": [
+        [
+          3072,
+          3384
+        ],
+        [
+          3620,
+          3384
+        ],
+        [
+          3620,
+          3320
+        ]
+      ]
+    },
+    {
+      "id": "bookshop_approach",
+      "points_px": [
+        [
+          3072,
+          4560
+        ],
+        [
+          4590,
+          4560
+        ],
+        [
+          4590,
+          3000
+        ],
+        [
+          5225.13671875,
+          3000
+        ],
+        [
+          5225.13671875,
+          2832.90148925781
+        ]
+      ]
+    },
+    {
+      "id": "docks_exit",
+      "points_px": [
+        [
+          4590,
+          3000
+        ],
+        [
+          4590,
+          2960
+        ],
+        [
+          5960,
+          2960
+        ],
+        [
+          5960,
+          3000
+        ]
+      ]
+    },
+    {
+      "id": "west_city_gate_exit",
+      "points_px": [
+        [
+          1632,
+          3270
+        ],
+        [
+          500,
+          3270
+        ]
+      ]
+    },
+    {
+      "id": "artisan_exit",
+      "points_px": [
+        [
+          3072,
+          4560
+        ],
+        [
+          1700,
+          4560
+        ]
+      ]
+    },
+    {
+      "id": "estate_exit",
+      "points_px": [
+        [
+          4520,
+          4560
+        ],
+        [
+          5800,
+          4560
+        ]
+      ]
+    },
+    {
+      "id": "cloth_task_counter",
+      "points_px": [
+        [
+          3072,
+          4280
+        ],
+        [
+          2640,
+          4280
+        ],
+        [
+          2640,
+          4220
+        ],
+        [
+          2105,
+          4220
+        ],
+        [
+          2105,
+          4156
+        ]
+      ]
+    },
+    {
+      "id": "medicine_task_counter",
+      "points_px": [
+        [
+          3072,
+          4560
+        ],
+        [
+          3380,
+          4560
+        ],
+        [
+          3380,
+          4400
+        ],
+        [
+          3885,
+          4400
+        ],
+        [
+          3885,
+          4356
+        ]
+      ]
+    },
+    {
+      "id": "iron_record",
+      "points_px": [
+        [
+          3072,
+          3540
+        ],
+        [
+          4140,
+          3540
+        ],
+        [
+          4140,
+          3510
+        ]
+      ]
+    },
+    {
+      "id": "xuantong_record",
+      "points_px": [
+        [
+          3072,
+          3930
+        ],
+        [
+          2730,
+          3930
+        ]
+      ]
+    }
+  ],
+  "routes_replace_ids": [
+    "main_axis",
+    "cloth_public_entry",
+    "medicine_public_entry"
+  ],
+  "future_potential_slots": [
+    {
+      "npc_id": "feng_yanqiu_ch4",
+      "foot_px": [
+        5500,
+        4370
+      ],
+      "reserve_rect": [
+        [
+          5430,
+          4300
+        ],
+        [
+          140,
+          140
+        ]
+      ],
+      "default_active": false,
+      "rule": "Keep actual chapter conditional; no ART forced visibility."
+    },
+    {
+      "npc_id": "district_life_market_buyer",
+      "foot_px": [
+        2590,
+        4290
+      ],
+      "phase_exclusive_group": "culture_return_buyer",
+      "rule": "All original source variants share this one slot and remain mutually exclusive."
+    }
+  ],
+  "interaction_visual_bindings": [
+    {
+      "id": "armory_old_record",
+      "visual_object_id": "shop",
+      "visual_baked": true,
+      "old_area_foot_px": [
+        2320,
+        950
+      ],
+      "new_area_foot_px": [
+        4140,
+        3510
+      ],
+      "owner_old_foot_px": [
+        2750,
+        640
+      ],
+      "owner_new_foot_px": [
+        3620,
+        3260
+      ],
+      "migration_mode": "EXPLICIT_SAME_IRONSHOP_PLOT_APRON_NOT_ORIGINAL_OFFSET",
+      "reason": "Old area-to-owner offset [-430,310] rigidly copied would put record at3190,3570 in the main street. Use actual ironshop parcel, preserving owner semantics.",
+      "preserve_action": "discover_readable:luoyang_quench_record:found_luoyang_quench_record",
+      "preserve_hide_flag": "found_luoyang_quench_record",
+      "new_bitmap_evidence": "New side-building bitmap was not separately authored with a legible record prop. Do not claim this record visibly restored merely by area migration; source may retain logical owner shop across atomic visual replacement."
+    },
+    {
+      "id": "paper_birdseal",
+      "visual_object_id": "goods_stall",
+      "visual_baked": true,
+      "owner_old_foot_px": [
+        1735,
+        1308
+      ],
+      "owner_new_foot_px": [
+        2105,
+        4086
+      ],
+      "old_area_foot_px": [
+        1735,
+        1378
+      ],
+      "new_area_foot_px": [
+        2105,
+        4156
+      ],
+      "area_owner_delta_px": [
+        0,
+        70
+      ],
+      "migration_mode": "OWNER_RIGID_TRANSLATION",
+      "preserve_action": "discover_readable:zhouju_birdseal_copy:found_zhouju_birdseal_copy",
+      "preserve_hide_flag": "found_zhouju_birdseal_copy",
+      "stale_source_polygon_note": "Terminal data polygon still292..368/1240..1280 while final pos1735,1378. Normalize original polygon around its actual source center330,1260 then place at2105,4156, never apply owner delta blindly twice."
+    },
+    {
+      "id": "zhao_medicine_parcel",
+      "visual_object_id": "medicine_stall",
+      "visual_baked": true,
+      "owner_old_foot_px": [
+        2685,
+        1308
+      ],
+      "owner_new_foot_px": [
+        3885,
+        4286
+      ],
+      "old_area_foot_px": [
+        2685,
+        1378
+      ],
+      "new_area_foot_px": [
+        3885,
+        4356
+      ],
+      "area_owner_delta_px": [
+        0,
+        70
+      ],
+      "migration_mode": "OWNER_RIGID_TRANSLATION",
+      "preserve_action": "dialog:ch4_heal_veteran_offer",
+      "preserve_hide_flag": "heal_veteran_started",
+      "stale_source_polygon_note": "Terminal data polygon still672..748/1240..1280; original center710,1260 ->3885,4356. Do not reapply old25e migration."
+    },
+    {
+      "id": "xuantong_note",
+      "visual_object_id": "xuantong_note_scroll",
+      "visual_baked": true,
+      "owner_old_foot_px": [
+        2120,
+        1060
+      ],
+      "owner_new_foot_px": [
+        2730,
+        3890
+      ],
+      "old_area_foot_px": [
+        2120,
+        1100
+      ],
+      "new_area_foot_px": [
+        2730,
+        3930
+      ],
+      "area_owner_delta_px": [
+        0,
+        40
+      ],
+      "migration_mode": "OWNER_RIGID_TRANSLATION",
+      "preserve_action": "discover_readable:xuantong_scale_weave_note:found_xuantong_scale_weave_note",
+      "preserve_hide_flag": "found_xuantong_scale_weave_note",
+      "retain_original_nonblocking_low_prop": true
+    }
+  ],
+  "constraints": [
+    "No retained 94AC owner placement changed; only original two pending fronts receive their already-reserved plot anchors.",
+    "All 19 potential actor IDs preserved, including hidden chapter actor and culture phase group.",
+    "No image processing, generation, engine or canonical write.",
+    "Door and return foot minimum nearest NPC sweep-center distance must be >=160px."
+  ],
+  "dynamic_visual_policy": {
+    "source_dynamic_visual_state": {},
+    "policy": "No Market warehouse_mud_trace or new visual state synthesized. Preserve original hide/quest/require conditions and the four semantic owner links; original goods_stall/medicine_stall/xuantong_note_scroll are retained 94AC owners. Final shop replacement must retain semantic shop owner resolution, not leave dangling task visual_object_id."
+  },
+  "door_space_dispatch_distance_table": {
+    "minimum_required_px": 160,
+    "method": "Euclidean foot-point distance to full authored horizontal patrol trajectory, not initial NPC centers. All original potential slots included, including hidden actors; no engine.",
+    "inherited_yamen_patch_sha256": "79F114E0C6742FCE856142F6A4D754295ED9CB5B4E1141696FAF1D2C458C4EEA",
+    "rows": [
+      {
+        "scene": "Market",
+        "id": "to_yamen_square",
+        "internal_no_portal_node": true,
+        "activation_foot_px": [
+          3072,
+          2250
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_courier",
+          "distance_px": 1025.3726151989822,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          3072,
+          2320
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_courier",
+          "distance_px": 957.9608551501466,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "to_city_gate",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          500,
+          3270
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_tea_guest",
+          "distance_px": 894.9860334105778,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          580,
+          3270
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_tea_guest",
+          "distance_px": 817.4350127074323,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "to_canal_docks",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          5960,
+          3000
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "luoyang_paper_artisan_20261016",
+          "distance_px": 390.12818406262323,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          5880,
+          3000
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "luoyang_paper_artisan_20261016",
+          "distance_px": 310.16124838541646,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "to_ancient_temple",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          3072,
+          4510
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "spar_luoyang_blademaster",
+          "distance_px": 383.2544846443418,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          3072,
+          4430
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "spar_luoyang_blademaster",
+          "distance_px": 331.78908963376114,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "enter_inn_room",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          1000,
+          2944
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_tea_guest",
+          "distance_px": 387.7576562751534,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          1000,
+          2944
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_tea_guest",
+          "distance_px": 387.7576562751534,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "enter_shop_room",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          3620,
+          3320
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "luoyang_armorer",
+          "distance_px": 241.86773244895647,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          3620,
+          3384
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "luoyang_armorer",
+          "distance_px": 217.33844574764032,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "enter_north_market_front_room",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          2520,
+          3160
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_courier",
+          "distance_px": 192.41881404893857,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          2520,
+          3224
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_courier",
+          "distance_px": 175.72990639046048,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "enter_market_east_ward_frontage_room",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          5225.13671875,
+          2832.90148925781
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "luoyang_paper_scholar",
+          "distance_px": 270.80038129887873,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          5225.136861313868,
+          2904
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "luoyang_paper_scholar",
+          "distance_px": 230.66188586832718,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "enter_market_northeast_rear_frontage_room",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          1000,
+          3656.23474121094
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_guest",
+          "distance_px": 271.23504499729654,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          1000,
+          3724
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_guest",
+          "distance_px": 242.2312944274542,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "t_enter_market_west_ward_frontage_pawnshop",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          1000,
+          4534
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_guest",
+          "distance_px": 769.1917836274644,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          1000,
+          4534
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_guest",
+          "distance_px": 769.1917836274644,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "am_market_estate_alley",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          5800,
+          4560
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "spar_luoyang_shen_guard",
+          "distance_px": 262.48809496813374,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          5720,
+          4560
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "spar_luoyang_shen_guard",
+          "distance_px": 208.08652046684813,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Market",
+        "id": "market_to_artisan",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          1700,
+          4560
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_farmer",
+          "distance_px": 256.12496949731394,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          1780,
+          4560
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_market_farmer",
+          "distance_px": 200,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Yamen",
+        "id": "to_city_gate",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          3072,
+          2160
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "ch8_luoyang_final_clerk",
+          "distance_px": 737.2950562698763,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          3072,
+          2100
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "ch8_luoyang_final_clerk",
+          "distance_px": 684.9846713613379,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Yamen",
+        "id": "to_south_market",
+        "internal_no_portal_node": true,
+        "activation_foot_px": [
+          3072,
+          2170
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "ch8_luoyang_final_clerk",
+          "distance_px": 746.1259947220711,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": null,
+        "return_nearest_potential_actor_full_patrol_sweep": null
+      },
+      {
+        "scene": "Yamen",
+        "id": "to_canal_quay",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          5500,
+          2110
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_yamen_south_runner",
+          "distance_px": 1059.9056561788884,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          5420,
+          2110
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_yamen_south_runner",
+          "distance_px": 982.344135219425,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Yamen",
+        "id": "t_enter_magistrate_hall_official_hall",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          3072,
+          940
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_yamen_guard",
+          "distance_px": 283.52072234670965,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          3072,
+          1020
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_yamen_guard",
+          "distance_px": 272,
+          "potential_even_when_hidden": false
+        }
+      },
+      {
+        "scene": "Yamen",
+        "id": "finish_i_yamen_to_artisan",
+        "internal_no_portal_node": false,
+        "activation_foot_px": [
+          720,
+          970
+        ],
+        "activation_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_yamen_guest",
+          "distance_px": 948.1033698917012,
+          "potential_even_when_hidden": false
+        },
+        "return_foot_px": [
+          800,
+          970
+        ],
+        "return_nearest_potential_actor_full_patrol_sweep": {
+          "npc_id": "district_life_yamen_guest",
+          "distance_px": 901.3878188659974,
+          "potential_even_when_hidden": false
+        }
+      }
+    ],
+    "below_160": []
+  },
+  "finite_readonly_author_checks": {
+    "method": "JavaScript offline actual owner polygons + exact rect-union ground; routes samples at<=8px. Not Godot float32 compilation, not runtime/art acceptance.",
+    "actor_full_sweep_hits": [],
+    "portal_activation_hits": [],
+    "portal_return_hits": [],
+    "route_sample_hits": [],
+    "prior_candidate_observations_preserved": [
+      {
+        "npc": "district_life_market_courier",
+        "conflict": "lamp_0",
+        "resolution": "Only NPC reserved coordinate moved to2750,3240; no lamp or owner relocation."
+      },
+      {
+        "route": "west_side_access",
+        "conflict": "retained inn service cart",
+        "resolution": "Approach via3090 apron, not through cart at3020."
+      },
+      {
+        "route": "bookshop_approach",
+        "conflict": "herb buyer on4560 public route",
+        "resolution": "Buyer stands behind her own herbal counter at4250,4460; public road retained."
+      },
+      {
+        "route": "cloth_shop_approach",
+        "conflict": "full courier sweep at3240",
+        "resolution": "Use3200 apron horizontal, keep exact door3160 and return3224."
+      },
+      {
+        "route": "bookshop_approach",
+        "conflict": "retained stock lamp_3 near4510,4280",
+        "resolution": "Public lane center4590 bypasses the original lamp and stock_tree_3; no old prop moved."
+      }
+    ],
+    "final_route_local_check_pending": false,
+    "final_scope": "No Source compile or engine call; this is a fixed station author table, not a substitute for one real source compile."
+  },
+  "interaction_geometry_overrides": [
+    {
+      "id": "armory_old_record",
+      "city_v3_interaction_polygon_px": [
+        [
+          4102,
+          3490
+        ],
+        [
+          4178,
+          3490
+        ],
+        [
+          4178,
+          3530
+        ],
+        [
+          4102,
+          3530
+        ]
+      ],
+      "source_shape_size_px": [
+        76,
+        40
+      ],
+      "rule": "Preserve source rectangle shape at final new area foot. Existing25e moved pos without moving two raw polygon fields; this explicitly normalizes them once."
+    },
+    {
+      "id": "paper_birdseal",
+      "city_v3_interaction_polygon_px": [
+        [
+          2067,
+          4136
+        ],
+        [
+          2143,
+          4136
+        ],
+        [
+          2143,
+          4176
+        ],
+        [
+          2067,
+          4176
+        ]
+      ],
+      "source_shape_size_px": [
+        76,
+        40
+      ],
+      "rule": "Preserve source rectangle shape at final new area foot. Existing25e moved pos without moving two raw polygon fields; this explicitly normalizes them once."
+    },
+    {
+      "id": "zhao_medicine_parcel",
+      "city_v3_interaction_polygon_px": [
+        [
+          3847,
+          4336
+        ],
+        [
+          3923,
+          4336
+        ],
+        [
+          3923,
+          4376
+        ],
+        [
+          3847,
+          4376
+        ]
+      ],
+      "source_shape_size_px": [
+        76,
+        40
+      ],
+      "rule": "Preserve source rectangle shape at final new area foot. Existing25e moved pos without moving two raw polygon fields; this explicitly normalizes them once."
+    },
+    {
+      "id": "xuantong_note",
+      "city_v3_interaction_polygon_px": [
+        [
+          2692,
+          3910
+        ],
+        [
+          2768,
+          3910
+        ],
+        [
+          2768,
+          3950
+        ],
+        [
+          2692,
+          3950
+        ]
+      ],
+      "source_shape_size_px": [
+        76,
+        40
+      ],
+      "rule": "Preserve source rectangle shape at final new area foot. Existing25e moved pos without moving two raw polygon fields; this explicitly normalizes them once."
+    }
+  ]
+}

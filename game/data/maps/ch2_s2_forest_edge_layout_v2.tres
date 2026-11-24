@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+
+[resource]
+script = ExtResource("1_layout")
+schema_version = 3
+design_size = Vector2i(1536, 1024)
+display_at_native_size = false
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.0400, 0.9400, 0.0500, 0.6800, 0.1800, 0.5200, 0.3800, 0.3700, 0.6200, 0.1700, 0.9700, 0.0300, 0.9700, 0.3400, 0.7800, 0.4600, 0.5800, 0.6400, 0.3600, 0.7600, 0.1600, 0.9200)
+])
+visual_objects = [
+	{"id":"woodland_floor_0_0","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0,0),"centered":false,"render_size_px":Vector2(960,960),"z_index":-999,"modulate":Color(0.90,0.90,0.78,1)},
+	{"id":"woodland_floor_1_0","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.5,0),"centered":false,"render_size_px":Vector2(960,960),"z_index":-999,"modulate":Color(0.90,0.90,0.78,1)},
+	{"id":"woodland_floor_0_1","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0,0.75),"centered":false,"render_size_px":Vector2(960,960),"z_index":-999,"modulate":Color(0.90,0.90,0.78,1)},
+	{"id":"woodland_floor_1_1","texture":"res://art/modules/miao_recompose_20261029g/woodland_floor.png","pos":Vector2(0.5,0.75),"centered":false,"render_size_px":Vector2(960,960),"z_index":-999,"modulate":Color(0.90,0.90,0.78,1)},
+	{"id":"hunter_trail","texture":"res://art/modules/world_map_v13/road_winding_dirt_diagonal_v1.png","pos":Vector2(0.493,0.515),"scale":Vector2(0.91,0.91),"z_index":-85,"rotation":-6,"modulate":Color(0.79,0.76,0.62,0.95)},
+	{"id":"shrine_ground","texture":"res://art/modules/luoyang_shore_market_20261020ae/decal_market_cross_street_stall_wear_patch_v1.png","pos":Vector2(0.26,0.557),"scale":Vector2(0.68,0.68),"z_index":-85,"modulate":Color(0.89,0.81,0.66,0.58)},
+	{"id":"old_shrine","texture":"res://art/modules/ancient_temple_assembled_20261016/temple_hall_v1.png","pos":Vector2(0.266,0.378),"scale":Vector2(0.42,0.42),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.498,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"shrine_rubble","texture":"res://art/modules/prop/prop_ruin_rubble_pile.png","pos":Vector2(0.158,0.518),"scale":Vector2(0.28,0.28),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.543,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"shrine_altar","texture":"res://art/modules/ancient_temple_assembled_20261016/low_incense_altar_v1.png","pos":Vector2(0.31,0.508),"scale":Vector2(0.2,0.2),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.539,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"trail_marker","texture":"res://art/modules/prop/prop_zhuwei_road_sign.png","pos":Vector2(0.138,0.747),"scale":Vector2(0.26,0.26),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.795,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"hunter_rest","texture":"res://art/modules/luoyang_assembled_interiors_20261016g/long_bench_v1.png","pos":Vector2(0.52,0.661),"scale":Vector2(0.133,0.133),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.689,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"old_wall_foot","texture":"res://art/modules/ancient_temple_assembled_20261016/broken_vermilion_wall_v1.png","pos":Vector2(0.418,0.313),"scale":Vector2(0.24,0.24),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.356,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"northwest_rock","texture":"res://art/modules/huashan_map_20261029m/granite_crag.png","pos":Vector2(0.1,0.286),"scale":Vector2(0.36,0.36),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.396,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"upper_bank","texture":"res://art/modules/miao_recompose_20261029g/rock_bank.png","pos":Vector2(0.502,0.23),"scale":Vector2(0.3,0.3),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.307,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"east_bank","texture":"res://art/modules/miao_recompose_20261029g/rock_bank.png","pos":Vector2(0.908,0.382),"scale":Vector2(0.23,0.23),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.441,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"west_grove","texture":"res://art/modules/miao_town_20261029f/trees.png","pos":Vector2(0.037,0.496),"scale":Vector2(0.39,0.39),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.671,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"shrine_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.365,0.372),"scale":Vector2(0.36,0.36),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.475,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"north_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.564,0.168),"scale":Vector2(0.45,0.45),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.303,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"north_trees","texture":"res://art/modules/miao_town_20261029f/trees.png","pos":Vector2(0.771,0.16),"scale":Vector2(0.38,0.38),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.302,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"east_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.865,0.475),"scale":Vector2(0.34,0.34),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.583,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"southwest_bamboo","texture":"res://art/modules/linxi_scale_polish_20261030h/green_bamboo.png","pos":Vector2(0.219,0.872),"scale":Vector2(0.3,0.3),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.971,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"south_east_tree","texture":"res://art/modules/miao_town_20261029f/trees.png","pos":Vector2(0.66,0.753),"scale":Vector2(0.44,0.44),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.915,"modulate":Color(0.79,0.85,0.78,1)},
+	{"id":"lower_bank","texture":"res://art/modules/miao_recompose_20261029g/rock_bank.png","pos":Vector2(0.406,0.807),"scale":Vector2(0.27,0.27),"z_index":0,"sort_by_feet":true,"depth_sort_foot_y":0.877,"modulate":Color(0.79,0.85,0.78,1)}
+]
+occluders = []
+actor_fade_zones = []
+blockers = [
+	{"id":"old_shrine_base","pos":Vector2(0.266,0.482),"size":Vector2(0.247,0.065),"walkability_margin":0.0},
+	{"id":"shrine_altar_base","pos":Vector2(0.31,0.526),"size":Vector2(0.056,0.023),"walkability_margin":0.0},
+	{"id":"bench_feet","pos":Vector2(0.52,0.685),"size":Vector2(0.095,0.017),"walkability_margin":0.0},
+	{"id":"east_bank_base","pos":Vector2(0.908,0.424),"size":Vector2(0.114,0.045),"walkability_margin":0.0},
+	{"id":"trail_sign_foot","pos":Vector2(0.138,0.787),"size":Vector2(0.015,0.018),"walkability_margin":0.0}
+]
+interactions = [
+	{"id":"legacy_hotspot_1", "pos":Vector2(0.25,0.58), "size":Vector2(0.11,0.12), "action":"dialog:ch2_herb_thief_find", "activation":"interact", "label":"查探破庙旁的老猿", "require_flag":"forest_route_open", "require_quest_active":"q_ch2_side_04_herb_thief", "hide_flag":"herb_thief_evidence_found"}
+]
+portals = [
+	{"id":"legacy_portal_0", "pos":Vector2(0.70,0.46), "size":Vector2(0.13,0.14), "label":"追踪林中血迹", "target_scene":"ch2_s3_forest_ambush", "target_pos":Vector2(0.12,0.75), "require_flag":"forest_route_open"},
+	{"id":"legacy_portal_2", "pos":Vector2(0.10,0.82), "size":Vector2(0.13,0.14), "label":"返回竹尾河滩", "target_scene":"ch2_s1_zhuwei_market", "target_pos":Vector2(0.884,0.137)}
+]
+walkable_probes = [
+	{"id":"route_0", "pos":Vector2(0.4627, 0.5300)}
+]
+blocked_probes = [
+	{"id":"top_left_margin", "pos":Vector2(0.01, 0.01)},
+	{"id":"top_right_margin", "pos":Vector2(0.99, 0.01)}
+]

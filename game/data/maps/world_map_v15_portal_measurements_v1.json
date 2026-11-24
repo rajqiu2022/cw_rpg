@@ -1,0 +1,3059 @@
+{
+  "schema_version": 1,
+  "world_version": 15,
+  "status": "SOURCE_RGBA_MEASUREMENT_ONLY_NOT_PUBLISHABLE",
+  "production_approved": false,
+  "runtime_eligible": false,
+  "root_source_threshold_review": {
+    "status": "SOURCE_THRESHOLD_DIRECTION_PASS",
+    "reviewer": "root",
+    "review_date": "2026-10-03",
+    "reviewed_measurement_sha256": "7769EF344D766CFA5C1F7973926DD245196643810FAD27CBC2D232D5D9CAB9D1",
+    "scope": "Actual original source images: front stair, fence gap, land-side platform and gorge mouth identity/direction only. Not navigation, solid/passage polygons, input, Field or alpha-composite quality approval.",
+    "source_bindings": [
+      {
+        "id": "yanmen_pass",
+        "source": "res://art/modules/world_map_v13/landmark_yanmen_pass_v1.png",
+        "source_sha256": "5E1C0DCC645175F82FC46D891E26A094ACBF64135A608950D166D04143D9D218"
+      },
+      {
+        "id": "huashan",
+        "source": "res://art/maps/world_map_v15/entities/sect_huashan_compound_v1.png",
+        "source_sha256": "38856D5837532C818A8CF2993BB83DD2A9AC6A53C0E3BEE73FE64D39A35AB5D0"
+      },
+      {
+        "id": "luoyang",
+        "source": "res://art/modules/world_map_v13/landmark_luoyang_city_v1.png",
+        "source_sha256": "0557A3B0C5B79E85AA718821C1827B31667E8A38057E0B56B176F2D56ED96854"
+      },
+      {
+        "id": "bianzhou",
+        "source": "res://art/modules/world_map_v13/city_walled_compound_proto_v1.png",
+        "source_sha256": "F73EFAB30B1629C805AC78E803371E46D7538111A52D30288B57760BC25A3E17"
+      },
+      {
+        "id": "gufeng",
+        "source": "res://art/maps/world_map_v15/entities/sect_gufeng_compound_v2.png",
+        "source_sha256": "D13E9D8C3BD418D04D8FA7E2D3F1F3E65BF8174E27721B1E1E0BF8BC896EEB3D"
+      },
+      {
+        "id": "linxi_village",
+        "source": "res://art/modules/world_map_v13/landmark_linxi_village_v1.png",
+        "source_sha256": "010CC622F0BC30A53AD6B15401505FE59D85BCB7928971F260702C359C60CBE7"
+      },
+      {
+        "id": "qinghe_town",
+        "source": "res://art/modules/world_map_v13/landmark_qinghe_town_v1.png",
+        "source_sha256": "69CB9C41C7B3A1403A6716B2EB10DC072EC76F6C6A1C7983674CCB35C3C2D9DE"
+      },
+      {
+        "id": "zhuwei_village",
+        "source": "res://art/modules/world_map_v13/landmark_zhuwei_village_v1.png",
+        "source_sha256": "92DDF4D0AB30550EE6F5D7517257C2DB2BC03B636568AD050447CC9A43665FB0"
+      },
+      {
+        "id": "wudang",
+        "source": "res://art/maps/world_map_v15/entities/sect_wudang_compound_v1.png",
+        "source_sha256": "0CF39BB9D6979B152903402128CA05E9838C3A41DDAD9FFCE2BAF43BFF26C7E8"
+      },
+      {
+        "id": "xiangzhou",
+        "source": "res://art/modules/world_map_v13/landmark_xiangzhou_city_v1.png",
+        "source_sha256": "0C580B50539F53188B002B8B95837061D04ED05A73C141C6E7A545809F190B2D"
+      },
+      {
+        "id": "jinling",
+        "source": "res://art/modules/world_map_v13/city_jinling_river_v1.png",
+        "source_sha256": "4A4CEA49ECA9AF9B81EE763758A8C6D25C69B76F4D5813C575FA05232F7C0755"
+      },
+      {
+        "id": "bailu_ferry",
+        "source": "res://art/modules/world_map_v13/landmark_bailu_ferry_v1.png",
+        "source_sha256": "49842BB82C79C386FD51DB483EBFAAE6F58BCCA650387B112C74891C1C3075E1"
+      },
+      {
+        "id": "east_sea_port",
+        "source": "res://art/modules/world_map_v13/landmark_east_sea_port_v1.png",
+        "source_sha256": "D3193ECBA1F28E7CB71E787D4A0BBF31C640BD4F300DEF51512991859825EDD1"
+      },
+      {
+        "id": "mingwu",
+        "source": "res://art/maps/world_map_v15/entities/sect_mingwu_compound_v2.png",
+        "source_sha256": "06111C60195AFD77B989B4230D416464C5FD51F237F04FC03456E142D915E947"
+      },
+      {
+        "id": "lingyue",
+        "source": "res://art/maps/world_map_v15/entities/sect_lingyue_compound_v2.png",
+        "source_sha256": "F606865BC66FF57202C72C05A15A61F65C85E3787E4013B29FAB3B043A6AC6CE"
+      },
+      {
+        "id": "lieyun_valley",
+        "source": "res://art/modules/world_map_v13/landmark_lieyun_gorge_v1.png",
+        "source_sha256": "2447BE85686C9B65E2EDCB3C6376FB2DA68B9127D02D4F3BA5464FDA87920A85"
+      }
+    ],
+    "unresolved_alpha_quality": "Lingyue transparent edges show red/yellow fragments; final thumbnail composite requires separate review. Original RGBA remains unchanged."
+  },
+  "inventory": {
+    "current_total": 16,
+    "new_sect_compounds": 5,
+    "legacy_landmarks": 11,
+    "preexisting_complete_semantics_ids": [
+      "gufeng",
+      "lingyue",
+      "mingwu"
+    ],
+    "preexisting_semantics_missing_count": 13,
+    "preexisting_preview_only_door_pixels": [
+      "huashan",
+      "wudang"
+    ]
+  },
+  "geography_binding": {
+    "source_path": "res://scripts/dev/world_map_v15_source_geography_v4.gd",
+    "source_sha256": "04D410AFEA9DD395EE5CE997075804B25559E854D11B0A3A78ACD5B646D88A0A",
+    "forecast_path": "res://build/world_map_v15_geography_v4/result.json",
+    "forecast_sha256": "B944A63C70B2348F820EFAF573AF05D0330DF533B3D322EEAD331A0A08BE9FA1",
+    "world_size_px": [
+      12288,
+      8192
+    ]
+  },
+  "measurement": {
+    "inspector": "system subagent actual view_image review; root approval is separate",
+    "decoder": "System.Drawing.Bitmap.GetPixel on unchanged original RGBA",
+    "sampling": "nearest integer rounded away from zero, matching positive Godot round",
+    "full17_radius_runtime_px": [
+      10,
+      6
+    ],
+    "alpha_rejection_below_byte": 128,
+    "alpha_is_not_navigation": true,
+    "image_modified": false
+  },
+  "transform": {
+    "centered": true,
+    "rotation": 0,
+    "render_scale": "uniform render_width/source_width",
+    "source_uv": "source_pixel/source_size",
+    "center_formula": "forecast_door_world - (source_doorstep_uv - [0.5,0.5]) * render_size_px",
+    "click_formula": "planned_sprite_center_px + (source_click_px/source_size_px - [0.5,0.5]) * render_size_px",
+    "projection_formula": "[XZ.x, XZ.y - actual_forecast_height_m * 102.4 * sqrt(0.5)]",
+    "projection_evidence": "Existing geography-v4 CPU forecast only; no final RF/mesh/camera or world PNG has been exported. planned_* are not runtime verified positions.",
+    "interaction_rule": "Space and entity click must share the same measured visible threshold polygon and full17 nav/solids guard; arrows/labels are presentation offsets only. Polygon/solids intentionally null pending authoring and Field proof."
+  },
+  "landmarks": [
+    {
+      "source_doorstep_uv": [
+        0.46875,
+        0.7763671875
+      ],
+      "threshold_kind": "open_gate",
+      "forecast_height_m": 1.06314277648926,
+      "source_doorstep_px": [
+        720,
+        795
+      ],
+      "source_sha256": "5E1C0DCC645175F82FC46D891E26A094ACBF64135A608950D166D04143D9D218",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            720,
+            795
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            745,
+            795
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            743,
+            801
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            738,
+            806
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            729,
+            809
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            720,
+            810
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            711,
+            809
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            702,
+            806
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            697,
+            801
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            695,
+            795
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            697,
+            789
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            702,
+            784
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            711,
+            781
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            720,
+            780
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            729,
+            781
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            738,
+            784
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            743,
+            789
+          ]
+        }
+      ],
+      "id": "yanmen_pass",
+      "planned_world_door_foot_px": [
+        3000,
+        623.020263671875
+      ],
+      "target_scene": "openworld_yanmen_pass",
+      "source_click_px": [
+        725,
+        750
+      ],
+      "source_click_alpha_byte": 253,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        3000,
+        700
+      ],
+      "source_full17_min_alpha": 252,
+      "source": "res://art/modules/world_map_v13/landmark_yanmen_pass_v1.png",
+      "render_size_px": [
+        620,
+        413.3333333333333
+      ],
+      "planned_sprite_center_px": [
+        3019.375,
+        508.7884928385417
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_yanmen_pass",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_yanmen_pass.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.244140625,
+        0.07605227828025818
+      ],
+      "planned_world_click_px": [
+        3002.0182291666665,
+        604.856201171875
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.4986979166666667,
+        0.8994140625
+      ],
+      "threshold_kind": "open_gate",
+      "forecast_height_m": 1.34468269348145,
+      "source_doorstep_px": [
+        766,
+        921
+      ],
+      "source_sha256": "38856D5837532C818A8CF2993BB83DD2A9AC6A53C0E3BEE73FE64D39A35AB5D0",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            766,
+            921
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            791,
+            921
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            789,
+            927
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            784,
+            932
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            775,
+            935
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            766,
+            936
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            757,
+            935
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            748,
+            932
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            743,
+            927
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            741,
+            921
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            743,
+            915
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            748,
+            910
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            757,
+            907
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            766,
+            906
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            775,
+            907
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            784,
+            910
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            789,
+            915
+          ]
+        }
+      ],
+      "id": "huashan",
+      "planned_world_door_foot_px": [
+        700,
+        2202.63452148438
+      ],
+      "target_scene": "openworld_huashan_forecourt",
+      "source_click_px": [
+        765,
+        850
+      ],
+      "source_click_alpha_byte": 253,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        700,
+        2300
+      ],
+      "source_full17_min_alpha": 253,
+      "source": "res://art/maps/world_map_v15/entities/sect_huashan_compound_v1.png",
+      "render_size_px": [
+        620,
+        413.3333333333333
+      ],
+      "planned_sprite_center_px": [
+        700.8072916666666,
+        2037.5433756510467
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_huashan",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/sect_huashan_compound_v1.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.056966145833333336,
+        0.26887628436088623
+      ],
+      "planned_world_click_px": [
+        699.5963541666666,
+        2173.9756673177135
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.5,
+        0.810546875
+      ],
+      "threshold_kind": "open_gate",
+      "forecast_height_m": 0.0760812312364578,
+      "source_doorstep_px": [
+        768,
+        830
+      ],
+      "source_sha256": "0557A3B0C5B79E85AA718821C1827B31667E8A38057E0B56B176F2D56ED96854",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            768,
+            830
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            789,
+            830
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            788,
+            835
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            783,
+            839
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            776,
+            842
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            768,
+            843
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            760,
+            842
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            753,
+            839
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            748,
+            835
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            747,
+            830
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            748,
+            825
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            753,
+            821
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            760,
+            818
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            768,
+            817
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            776,
+            818
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            783,
+            821
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            788,
+            825
+          ]
+        }
+      ],
+      "id": "luoyang",
+      "planned_world_door_foot_px": [
+        4000,
+        2594.4912109375
+      ],
+      "target_scene": "ch4_s0_luoyang_gate",
+      "source_click_px": [
+        768,
+        750
+      ],
+      "source_click_alpha_byte": 250,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        4000,
+        2600
+      ],
+      "source_full17_min_alpha": 252,
+      "source": "res://art/modules/world_map_v13/landmark_luoyang_city_v1.png",
+      "render_size_px": [
+        720,
+        480
+      ],
+      "planned_sprite_center_px": [
+        4000,
+        2445.4287109375
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_luoyang",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_luoyang.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.3255208333333333,
+        0.31671035289764404
+      ],
+      "planned_world_click_px": [
+        4000,
+        2556.9912109375
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.4752604166666667,
+        0.7861328125
+      ],
+      "threshold_kind": "closed_gate_front_step",
+      "forecast_height_m": 0.0431189611554146,
+      "source_doorstep_px": [
+        730,
+        805
+      ],
+      "source_sha256": "F73EFAB30B1629C805AC78E803371E46D7538111A52D30288B57760BC25A3E17",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            730,
+            805
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            751,
+            805
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            750,
+            810
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            745,
+            814
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            738,
+            817
+          ]
+        },
+        {
+          "alpha_byte": 246,
+          "pixel": [
+            730,
+            818
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            722,
+            817
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            715,
+            814
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            710,
+            810
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            709,
+            805
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            710,
+            800
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            715,
+            796
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            722,
+            793
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            730,
+            792
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            738,
+            793
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            745,
+            796
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            750,
+            800
+          ]
+        }
+      ],
+      "id": "bianzhou",
+      "planned_world_door_foot_px": [
+        7600,
+        2196.8779296875
+      ],
+      "target_scene": "openworld_bianzhou_city",
+      "source_click_px": [
+        740,
+        740
+      ],
+      "source_click_alpha_byte": 253,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        7600,
+        2200
+      ],
+      "source_full17_min_alpha": 246,
+      "source": "res://art/modules/world_map_v13/city_walled_compound_proto_v1.png",
+      "render_size_px": [
+        720,
+        480
+      ],
+      "planned_sprite_center_px": [
+        7617.8125,
+        2059.5341796875
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_bianzhou",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_bianzhou.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.6184895833333334,
+        0.26817357540130615
+      ],
+      "planned_world_click_px": [
+        7604.6875,
+        2166.4091796875
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Closed gate leaves remain solid. Entry interaction belongs on the visible front stair; do not require crossing the closed leaves."
+    },
+    {
+      "source_doorstep_uv": [
+        0.5143229166666666,
+        0.908203125
+      ],
+      "threshold_kind": "open_gate",
+      "forecast_height_m": 0.533770084381104,
+      "source_doorstep_px": [
+        790,
+        930
+      ],
+      "source_sha256": "D13E9D8C3BD418D04D8FA7E2D3F1F3E65BF8174E27721B1E1E0BF8BC896EEB3D",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            790,
+            930
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            815,
+            930
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            813,
+            936
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            808,
+            941
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            799,
+            944
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            790,
+            945
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            781,
+            944
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            772,
+            941
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            767,
+            936
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            765,
+            930
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            767,
+            924
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            772,
+            919
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            781,
+            916
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            790,
+            915
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            799,
+            916
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            808,
+            919
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            813,
+            924
+          ]
+        }
+      ],
+      "id": "gufeng",
+      "planned_world_door_foot_px": [
+        10900,
+        1161.35095214844
+      ],
+      "target_scene": "ch5_s1_relief_road",
+      "source_click_px": [
+        790,
+        815
+      ],
+      "source_click_alpha_byte": 252,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        10900,
+        1200
+      ],
+      "source_full17_min_alpha": 251,
+      "source": "res://art/maps/world_map_v15/entities/sect_gufeng_compound_v2.png",
+      "render_size_px": [
+        620,
+        413.3333333333333
+      ],
+      "planned_sprite_center_px": [
+        10891.119791666666,
+        992.6269938151067
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_gufeng",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/sect_gufeng_compound_v2.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.8870442708333334,
+        0.14176647365093262
+      ],
+      "planned_world_click_px": [
+        10900,
+        1114.9316813151067
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.498046875,
+        0.8740234375
+      ],
+      "threshold_kind": "fence_gap",
+      "forecast_height_m": 0.122922219336033,
+      "source_doorstep_px": [
+        765,
+        895
+      ],
+      "source_sha256": "010CC622F0BC30A53AD6B15401505FE59D85BCB7928971F260702C359C60CBE7",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            765,
+            895
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            800,
+            895
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            797,
+            903
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            790,
+            910
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            778,
+            914
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            765,
+            916
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            752,
+            914
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            740,
+            910
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            733,
+            903
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            730,
+            895
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            733,
+            887
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            740,
+            880
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            752,
+            876
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            765,
+            874
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            778,
+            876
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            790,
+            880
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            797,
+            887
+          ]
+        }
+      ],
+      "id": "linxi_village",
+      "planned_world_door_foot_px": [
+        2600,
+        3991.09936523438
+      ],
+      "target_scene": "linxi_village_scrollmap",
+      "source_click_px": [
+        750,
+        875
+      ],
+      "source_click_alpha_byte": 252,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        2600,
+        4000
+      ],
+      "source_full17_min_alpha": 251,
+      "source": "res://art/modules/world_map_v13/landmark_linxi_village_v1.png",
+      "render_size_px": [
+        440,
+        293.3333333333333
+      ],
+      "planned_sprite_center_px": [
+        2600.859375,
+        3881.3858235677135
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_linxi_village",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_linxi_village.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.21158854166666666,
+        0.4871947467327124
+      ],
+      "planned_world_click_px": [
+        2595.703125,
+        3985.3701985677135
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.4166666666666667,
+        0.8544921875
+      ],
+      "threshold_kind": "front_dry_steps",
+      "forecast_height_m": 0.0534409433603287,
+      "source_doorstep_px": [
+        640,
+        875
+      ],
+      "source_sha256": "69CB9C41C7B3A1403A6716B2EB10DC072EC76F6C6A1C7983674CCB35C3C2D9DE",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            640,
+            875
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            673,
+            875
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            671,
+            883
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            664,
+            889
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            653,
+            894
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            640,
+            895
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            627,
+            894
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            616,
+            889
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            609,
+            883
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            607,
+            875
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            609,
+            867
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            616,
+            861
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            627,
+            856
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            640,
+            855
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            653,
+            856
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            664,
+            861
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            671,
+            867
+          ]
+        }
+      ],
+      "id": "qinghe_town",
+      "planned_world_door_foot_px": [
+        4700,
+        4396.13037109375
+      ],
+      "target_scene": "openworld_qinghe_town",
+      "source_click_px": [
+        680,
+        790
+      ],
+      "source_click_alpha_byte": 252,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        4700,
+        4400
+      ],
+      "source_full17_min_alpha": 252,
+      "source": "res://art/modules/world_map_v13/landmark_qinghe_town_v1.png",
+      "render_size_px": [
+        460,
+        306.6666666666667
+      ],
+      "planned_sprite_center_px": [
+        4738.333333333333,
+        4287.41943359375
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_qinghe_town",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_qinghe_town.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.3824869791666667,
+        0.536637008190155
+      ],
+      "planned_world_click_px": [
+        4711.979166666666,
+        4370.674641927083
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.5013020833333334,
+        0.87890625
+      ],
+      "threshold_kind": "fence_gap",
+      "forecast_height_m": 0.0471076183021069,
+      "source_doorstep_px": [
+        770,
+        900
+      ],
+      "source_sha256": "92DDF4D0AB30550EE6F5D7517257C2DB2BC03B636568AD050447CC9A43665FB0",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            770,
+            900
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            805,
+            900
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            802,
+            908
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            795,
+            915
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            783,
+            919
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            770,
+            921
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            757,
+            919
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            745,
+            915
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            738,
+            908
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            735,
+            900
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            738,
+            892
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            745,
+            885
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            757,
+            881
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            770,
+            879
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            783,
+            881
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            795,
+            885
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            802,
+            892
+          ]
+        }
+      ],
+      "id": "zhuwei_village",
+      "planned_world_door_foot_px": [
+        6500,
+        4696.5888671875
+      ],
+      "target_scene": "ch1_s2_qingfeng",
+      "source_click_px": [
+        765,
+        850
+      ],
+      "source_click_alpha_byte": 251,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        6500,
+        4700
+      ],
+      "source_full17_min_alpha": 252,
+      "source": "res://art/modules/world_map_v13/landmark_zhuwei_village_v1.png",
+      "render_size_px": [
+        440,
+        293.3333333333333
+      ],
+      "planned_sprite_center_px": [
+        6499.427083333333,
+        4585.443033854167
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_zhuwei_village",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_zhuwei_village.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.5289713541666666,
+        0.5733140707015991
+      ],
+      "planned_world_click_px": [
+        6498.567708333333,
+        4682.265950520834
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.5003518648838846,
+        0.931345980126468
+      ],
+      "threshold_kind": "open_gate",
+      "forecast_height_m": 0.169815838336945,
+      "source_doorstep_px": [
+        711,
+        1031
+      ],
+      "source_sha256": "0CF39BB9D6979B152903402128CA05E9838C3A41DDAD9FFCE2BAF43BFF26C7E8",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            711,
+            1031
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            734,
+            1031
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            732,
+            1036
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            727,
+            1041
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            720,
+            1044
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            711,
+            1045
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            702,
+            1044
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            695,
+            1041
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            690,
+            1036
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            688,
+            1031
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            690,
+            1026
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            695,
+            1021
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            702,
+            1018
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            711,
+            1017
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            720,
+            1018
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            727,
+            1021
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            732,
+            1026
+          ]
+        }
+      ],
+      "id": "wudang",
+      "planned_world_door_foot_px": [
+        1400,
+        5587.7041015625
+      ],
+      "target_scene": "openworld_wudang_gate",
+      "source_click_px": [
+        711,
+        965
+      ],
+      "source_click_alpha_byte": 253,
+      "source_size_px": [
+        1421,
+        1107
+      ],
+      "planned_source_XZ_foot_px": [
+        1400,
+        5600
+      ],
+      "source_full17_min_alpha": 251,
+      "source": "res://art/maps/world_map_v15/entities/sect_wudang_compound_v1.png",
+      "render_size_px": [
+        620,
+        482.9978888106967
+      ],
+      "planned_sprite_center_px": [
+        1399.7818437719916,
+        5379.364903814435
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_wudang",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/sect_wudang_compound_v1.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.11393229166666667,
+        0.6820927858352661
+      ],
+      "planned_world_click_px": [
+        1400,
+        5558.907479465385
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.5045572916666666,
+        0.8544921875
+      ],
+      "threshold_kind": "open_gate",
+      "forecast_height_m": 0.0558853000402451,
+      "source_doorstep_px": [
+        775,
+        875
+      ],
+      "source_sha256": "0C580B50539F53188B002B8B95837061D04ED05A73C141C6E7A545809F190B2D",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            775,
+            875
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            796,
+            875
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            795,
+            880
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            790,
+            884
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            783,
+            887
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            775,
+            888
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            767,
+            887
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            760,
+            884
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            755,
+            880
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            754,
+            875
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            755,
+            870
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            760,
+            866
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            767,
+            863
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            775,
+            862
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            783,
+            863
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            790,
+            866
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            795,
+            870
+          ]
+        }
+      ],
+      "id": "xiangzhou",
+      "planned_world_door_foot_px": [
+        4800,
+        5995.95361328125
+      ],
+      "target_scene": "openworld_xiangzhou_city",
+      "source_click_px": [
+        778,
+        780
+      ],
+      "source_click_alpha_byte": 252,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        4800,
+        6000
+      ],
+      "source_full17_min_alpha": 252,
+      "source": "res://art/modules/world_map_v13/landmark_xiangzhou_city_v1.png",
+      "render_size_px": [
+        720,
+        480
+      ],
+      "planned_sprite_center_px": [
+        4796.71875,
+        5825.79736328125
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_xiangzhou",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_xiangzhou.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.390625,
+        0.7319279313087463
+      ],
+      "planned_world_click_px": [
+        4801.40625,
+        5951.42236328125
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.4949053857350801,
+        0.9344978165938864
+      ],
+      "threshold_kind": "closed_gate_front_step",
+      "forecast_height_m": 0.109192591160536,
+      "source_doorstep_px": [
+        680,
+        1070
+      ],
+      "source_sha256": "4A4CEA49ECA9AF9B81EE763758A8C6D25C69B76F4D5813C575FA05232F7C0755",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            680,
+            1070
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            699,
+            1070
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            698,
+            1074
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            693,
+            1078
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            687,
+            1081
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            680,
+            1081
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            673,
+            1081
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            667,
+            1078
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            662,
+            1074
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            661,
+            1070
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            662,
+            1066
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            667,
+            1062
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            673,
+            1059
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            680,
+            1059
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            687,
+            1059
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            693,
+            1062
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            698,
+            1066
+          ]
+        }
+      ],
+      "id": "jinling",
+      "planned_world_door_foot_px": [
+        8100,
+        6492.09375
+      ],
+      "target_scene": "openworld_jinling_city",
+      "source_click_px": [
+        680,
+        990
+      ],
+      "source_click_alpha_byte": 253,
+      "source_size_px": [
+        1374,
+        1145
+      ],
+      "planned_source_XZ_foot_px": [
+        8100,
+        6500
+      ],
+      "source_full17_min_alpha": 252,
+      "source": "res://art/modules/world_map_v13/city_jinling_river_v1.png",
+      "render_size_px": [
+        720,
+        600
+      ],
+      "planned_sprite_center_px": [
+        8103.668122270742,
+        6231.395060043668
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_jinling",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_jinling.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.6591796875,
+        0.7924919128417969
+      ],
+      "planned_world_click_px": [
+        8100,
+        6450.172352620088
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Closed gate leaves remain solid. Entry interaction belongs on the visible front stair; do not require crossing the closed leaves."
+    },
+    {
+      "source_doorstep_uv": [
+        0.46875,
+        0.9033203125
+      ],
+      "threshold_kind": "dry_landing_to_deck",
+      "forecast_height_m": 0.112095277756453,
+      "source_doorstep_px": [
+        720,
+        925
+      ],
+      "source_sha256": "49842BB82C79C386FD51DB483EBFAAE6F58BCCA650387B112C74891C1C3075E1",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            720,
+            925
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            750,
+            925
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            747,
+            932
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            741,
+            938
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            731,
+            941
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            720,
+            943
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            709,
+            941
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            699,
+            938
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            693,
+            932
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            690,
+            925
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            693,
+            918
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            699,
+            912
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            709,
+            909
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            720,
+            907
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            731,
+            909
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            741,
+            912
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            747,
+            918
+          ]
+        }
+      ],
+      "id": "bailu_ferry",
+      "planned_world_door_foot_px": [
+        9300,
+        4291.88330078125
+      ],
+      "target_scene": "openworld_bailu_ferry",
+      "source_click_px": [
+        730,
+        865
+      ],
+      "source_click_alpha_byte": 252,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        9300,
+        4300
+      ],
+      "source_full17_min_alpha": 252,
+      "source": "res://art/modules/world_map_v13/landmark_bailu_ferry_v1.png",
+      "render_size_px": [
+        520,
+        346.6666666666667
+      ],
+      "planned_sprite_center_px": [
+        9316.25,
+        4152.065592447917
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_bailu_ferry",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_bailu_ferry.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.7568359375,
+        0.5239115357398987
+      ],
+      "planned_world_click_px": [
+        9303.385416666666,
+        4271.57080078125
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.390625,
+        0.48828125
+      ],
+      "threshold_kind": "gate_front_deck",
+      "forecast_height_m": 0.1773711591959,
+      "source_doorstep_px": [
+        600,
+        500
+      ],
+      "source_sha256": "D3193ECBA1F28E7CB71E787D4A0BBF31C640BD4F300DEF51512991859825EDD1",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            600,
+            500
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            627,
+            500
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            625,
+            506
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            619,
+            512
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            610,
+            515
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            600,
+            516
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            590,
+            515
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            581,
+            512
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            575,
+            506
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            573,
+            500
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            575,
+            494
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            581,
+            488
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            590,
+            485
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            600,
+            484
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            610,
+            485
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            619,
+            488
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            625,
+            494
+          ]
+        }
+      ],
+      "id": "east_sea_port",
+      "planned_world_door_foot_px": [
+        11700,
+        3407.15698242188
+      ],
+      "target_scene": "openworld_east_sea_port",
+      "source_click_px": [
+        510,
+        405
+      ],
+      "source_click_alpha_byte": 252,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        11700,
+        3420
+      ],
+      "source_full17_min_alpha": 252,
+      "source": "res://art/modules/world_map_v13/landmark_east_sea_port_v1.png",
+      "render_size_px": [
+        560,
+        373.3333333333333
+      ],
+      "planned_sprite_center_px": [
+        11761.25,
+        3411.53198242188
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_east_sea_port",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_east_sea_port.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.9521484375,
+        0.4159127175807959
+      ],
+      "planned_world_click_px": [
+        11667.1875,
+        3372.5215657552135
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Gate-front deck is inside the original composition, not the distant bottom-right pier end. Native deck/land support and approach are still unverified."
+    },
+    {
+      "source_doorstep_uv": [
+        0.5007278020378457,
+        0.8655021834061135
+      ],
+      "threshold_kind": "open_gate",
+      "forecast_height_m": 0.0743717215955257,
+      "source_doorstep_px": [
+        688,
+        991
+      ],
+      "source_sha256": "06111C60195AFD77B989B4230D416464C5FD51F237F04FC03456E142D915E947",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            688,
+            991
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            713,
+            991
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            711,
+            997
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            705,
+            1001
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            697,
+            1005
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            688,
+            1006
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            679,
+            1005
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            671,
+            1001
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            665,
+            997
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            663,
+            991
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            665,
+            985
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            671,
+            981
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            679,
+            977
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            688,
+            976
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            697,
+            977
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            705,
+            981
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            711,
+            985
+          ]
+        }
+      ],
+      "id": "mingwu",
+      "planned_world_door_foot_px": [
+        11100,
+        7894.61474609375
+      ],
+      "target_scene": "ch7_s2_mingwu_tea_town",
+      "source_click_px": [
+        688,
+        880
+      ],
+      "source_click_alpha_byte": 253,
+      "source_size_px": [
+        1374,
+        1145
+      ],
+      "planned_source_XZ_foot_px": [
+        11100,
+        7900
+      ],
+      "source_full17_min_alpha": 251,
+      "source": "res://art/maps/world_map_v15/entities/sect_mingwu_compound_v2.png",
+      "render_size_px": [
+        560,
+        466.66666666666663
+      ],
+      "planned_sprite_center_px": [
+        11099.592430858806,
+        7724.04706050423
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_mingwu",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/sect_mingwu_compound_v2.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.9033203125,
+        0.9636980891227722
+      ],
+      "planned_world_click_px": [
+        11100,
+        7849.374571421261
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.47027439024390244,
+        0.9216013344453712
+      ],
+      "threshold_kind": "open_gate",
+      "forecast_height_m": 0.266137398779392,
+      "source_doorstep_px": [
+        617,
+        1105
+      ],
+      "source_sha256": "F606865BC66FF57202C72C05A15A61F65C85E3787E4013B29FAB3B043A6AC6CE",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            617,
+            1105
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            638,
+            1105
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            637,
+            1110
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            632,
+            1114
+          ]
+        },
+        {
+          "alpha_byte": 250,
+          "pixel": [
+            625,
+            1117
+          ]
+        },
+        {
+          "alpha_byte": 250,
+          "pixel": [
+            617,
+            1118
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            609,
+            1117
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            602,
+            1114
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            597,
+            1110
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            596,
+            1105
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            597,
+            1100
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            602,
+            1096
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            609,
+            1093
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            617,
+            1092
+          ]
+        },
+        {
+          "alpha_byte": 253,
+          "pixel": [
+            625,
+            1093
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            632,
+            1096
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            637,
+            1100
+          ]
+        }
+      ],
+      "id": "lingyue",
+      "planned_world_door_foot_px": [
+        11500,
+        4530.7294921875
+      ],
+      "target_scene": "ch2_s4_lingyue_gate",
+      "source_click_px": [
+        617,
+        965
+      ],
+      "source_click_alpha_byte": 252,
+      "source_size_px": [
+        1312,
+        1199
+      ],
+      "planned_source_XZ_foot_px": [
+        11500,
+        4550
+      ],
+      "source_full17_min_alpha": 250,
+      "source": "res://art/maps/world_map_v15/entities/sect_lingyue_compound_v2.png",
+      "render_size_px": [
+        620,
+        566.6006097560976
+      ],
+      "planned_sprite_center_px": [
+        11518.42987804878,
+        4291.849919016769
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_lingyue",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/sect_lingyue_compound_v2.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.9358723958333334,
+        0.5530675649642944
+      ],
+      "planned_world_click_px": [
+        11500,
+        4464.570955602135
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Visible threshold selected from the original source; source alpha only, no navigation or wall clearance claim."
+    },
+    {
+      "source_doorstep_uv": [
+        0.4947916666666667,
+        0.908203125
+      ],
+      "threshold_kind": "trail_mouth",
+      "forecast_height_m": 0.156244494020939,
+      "source_doorstep_px": [
+        760,
+        930
+      ],
+      "source_sha256": "2447BE85686C9B65E2EDCB3C6376FB2DA68B9127D02D4F3BA5464FDA87920A85",
+      "source_full17_alpha_samples": [
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            760,
+            930
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            787,
+            930
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            785,
+            936
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            779,
+            942
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            770,
+            945
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            760,
+            946
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            750,
+            945
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            741,
+            942
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            735,
+            936
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            733,
+            930
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            735,
+            924
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            741,
+            918
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            750,
+            915
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            760,
+            914
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            770,
+            915
+          ]
+        },
+        {
+          "alpha_byte": 252,
+          "pixel": [
+            779,
+            918
+          ]
+        },
+        {
+          "alpha_byte": 251,
+          "pixel": [
+            785,
+            924
+          ]
+        }
+      ],
+      "id": "lieyun_valley",
+      "planned_world_door_foot_px": [
+        10200,
+        7488.6865234375
+      ],
+      "target_scene": "ch7_s1_lieyun_valley_ferry",
+      "source_click_px": [
+        760,
+        895
+      ],
+      "source_click_alpha_byte": 252,
+      "source_size_px": [
+        1536,
+        1024
+      ],
+      "planned_source_XZ_foot_px": [
+        10200,
+        7500
+      ],
+      "source_full17_min_alpha": 251,
+      "source": "res://art/modules/world_map_v13/landmark_lieyun_gorge_v1.png",
+      "render_size_px": [
+        560,
+        373.3333333333333
+      ],
+      "planned_sprite_center_px": [
+        10202.916666666666,
+        7336.290690104167
+      ],
+      "status": "SYSTEM_ACTUAL_RGBA_THRESHOLD_MEASURED_REQUIRES_ROOT_REVIEW",
+      "compound_id": "compound_lieyun_valley",
+      "runtime_texture": "res://art/maps/world_map_v15/entities/landmark_lieyun_valley.png",
+      "doorstep_visual_review_status": "PENDING_ROOT_REVIEW",
+      "world_navigation_full17_status": "NOT_RUN",
+      "world_solid_passage_status": "PENDING_MEASURED_PHYSICS",
+      "normal_space_and_mouse_status": "NOT_RUN",
+      "runtime_eligible": false,
+      "planned_portal_pos": [
+        0.830078125,
+        0.9141463041305542
+      ],
+      "planned_world_click_px": [
+        10200,
+        7475.926106770834
+      ],
+      "interaction_polygon_px": null,
+      "solid_polygons_px": null,
+      "notes": "Natural trail mouth, not an invented building door. Root must confirm entrance identity; original trail alpha does not prove navigable ground."
+    }
+  ]
+}

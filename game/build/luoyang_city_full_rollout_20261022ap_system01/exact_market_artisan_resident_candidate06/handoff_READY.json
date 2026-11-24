@@ -1,0 +1,56 @@
+{
+  "status": "NEW_BUILD_ONLY_ROOT_AUTHORIZED_EXACT_FOUR_JSON_FOOT_FIELDS",
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate06/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "60cf6de154dbf07546e0a59e941af392a442b71178af59eb7cdca5da1eeab0eb",
+    "bytes": 109394
+  },
+  "parent": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/exact_market_artisan_resident_candidate05/Router_exact_market_artisan_resident_READY.gd",
+    "sha256": "c670bb2a7bb7d1abd8d1aba26987454fda4ef7eed4de8da5728e41077911086d"
+  },
+  "whole_byte_inverse": true,
+  "old": "\tif forward.get(\"source_foot\")!=[1100,1860] or forward.get(\"target_foot\")!=[2816,1740] or backward.get(\"source_foot\")!=[2816,1740] or backward.get(\"target_foot\")!=[1100,1860]: return {}\n",
+  "new": "\t# JSON stores numeric array components as floats. Validate only these four\n\t# fixed author feet structurally, then compare exact native Vector2 values.\n\tfor row: Dictionary in [forward,backward]:\n\t\tfor key: String in [\"source_foot\",\"target_foot\"]:\n\t\t\tvar pair: Variant=row.get(key)\n\t\t\tif not pair is Array or pair.size()!=2: return {}\n\t\t\tfor scalar: Variant in pair:\n\t\t\t\tif typeof(scalar) not in [TYPE_INT,TYPE_FLOAT] or not is_finite(float(scalar)): return {}\n\tif Vector2(forward.source_foot[0],forward.source_foot[1])!=Vector2(1100,1860) or Vector2(forward.target_foot[0],forward.target_foot[1])!=Vector2(2816,1740) or Vector2(backward.source_foot[0],backward.source_foot[1])!=Vector2(2816,1740) or Vector2(backward.target_foot[0],backward.target_foot[1])!=Vector2(1100,1860): return {}\n",
+  "cause": "JSON.parse_string numeric Array values are floats; comparing nested numeric Arrays against integer literals can refuse an otherwise exact frozen author header. This only normalizes the comparison representation of four already-hash-bound route feet.",
+  "finite_keys": [
+    "forward.source_foot",
+    "forward.target_foot",
+    "backward.source_foot",
+    "backward.target_foot"
+  ],
+  "exact_values": [
+    [
+      1100,
+      1860
+    ],
+    [
+      2816,
+      1740
+    ],
+    [
+      2816,
+      1740
+    ],
+    [
+      1100,
+      1860
+    ]
+  ],
+  "guards": [
+    "Array only",
+    "exactly2 components",
+    "each scalar TYPE_INT or TYPE_FLOAT only, bool/string rejected",
+    "finite each component",
+    "exact native Vector2 equality, no epsilon/nearest/observed-current authority"
+  ],
+  "preserved": [
+    "all route IDs/kind/source/target uniqueness and header hash",
+    "all portal/body/NAV/position values",
+    "fresh full Market SHA and original identity/metadata",
+    "paired-memory success tail",
+    "all other route branches"
+  ],
+  "runtime_credit": false,
+  "engine_or_canonical_write": false
+}

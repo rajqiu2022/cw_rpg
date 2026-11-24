@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "canonicalSources": [
+    "docs/world-bible.md",
+    "docs/narrative-open-world-revision-v1.md",
+    "docs/content-production-polish-framework-v1.md",
+    "docs/open-world-early-travel-v1.md"
+  ],
+  "chapters": [
+    {
+      "number": 1,
+      "title": "林西村下山",
+      "caseName": "血字无名",
+      "subtitle": "少年第一次把剑带出师门，也第一次发现江湖留下的痕迹会说谎。",
+      "objective": "完成师门授艺，从林西村下山，在山道与竹尾村外围追查异常货路，并发现旧案抄本中被刮去的第六名同行者。",
+      "chapterQuestion": "山道散兵、失踪货物与城西废宅之间，究竟是谁在借江湖名号转运秘密物资？",
+      "implementation": "implemented",
+      "regions": ["林西村", "村外山道", "竹尾村", "后山密林", "城西废宅"],
+      "mainSceneIds": ["linxi_tutorial", "linxi_village_center", "ch1_s1_road", "ch1_s2_qingfeng", "ch1_s3_zhuwei_forest", "ch1_s4_zhuwei_beast_cave", "ch1_s3_west_ruin", "ch1_s3_ruin_inner"],
+      "characters": [
+        {"name": "冷孤云", "role": "主角；从师门学剑后正式下山"},
+        {"name": "刑樊天", "role": "师父；传授二式与吐纳法，要求主角先学会自保"},
+        {"name": "杜青衫", "role": "林西铁匠；交付下山佩剑"},
+        {"name": "竹尾守村人", "role": "汇总村内三份消息，指出后山异常"},
+        {"name": "赵无忌", "role": "废宅首领；掌握转运货单的下游线索"}
+      ],
+      "playerActions": ["晨练与试招", "领取林西铁剑", "调查山道血迹与尸体", "向竹尾村民核对消息", "追踪后山兽迹", "在废宅值守册发现被刮去的第六行", "潜入城西废宅并击败赵无忌"],
+      "mainQuestIds": [
+        "q_ch1_main_get_sword",
+        "q_ch1_main_road",
+        "q_ch1_main_return_master",
+        "q_ch1_main_training",
+        "q_ch1_main_zhuwei",
+        "q_ch1_main_village_inquiry",
+        "q_ch1_main_zhuwei_wilds",
+        "q_ch1_main_west_ruin_trace",
+        "q_ch1_main_west_ruin"
+      ],
+      "legacyQuestIds": ["q_ch1_main_01_thug", "q_ch1_main_02_qingfeng", "q_ch1_side_yuewuxing"],
+      "choiceNote": "本章以教学与调查为主，没有改变长期世界状态的主线二选一；玩家可自由安排村内问询与支线探索顺序。",
+      "choices": [],
+      "sources": ["game/data/chapters/chapter_1_content_plan.tres", "docs/chapter-1-battle-pacing-v1.md", "docs/chapter-1-character-identity-audit-v1.md", "docs/chapter-1-side-quest-triage-v1.md", "game/data/investigation/evidence/ev_ch1_erased_sixth_companion.tres", "game/data/dialogs/ch1_s3_ruin_watch_roster.tres", "game/data/scenes/linxi_tutorial.tres", "game/data/scenes/ch1_s1_road.tres", "game/data/scenes/ch1_s2_qingfeng.tres", "game/data/scenes/ch1_s3_west_ruin.tres"]
+    },
+    {
+      "number": 2,
+      "title": "竹尾风波",
+      "caseName": "竹尾疑云",
+      "subtitle": "互相矛盾的证词把失踪案引向密林，第一位同行者也在此与主角并肩。",
+      "objective": "在竹尾晨市核对失踪弟子的线索，进入密林救出悦无姮，追查伪造令牌的来源并前往凌月山门复命。",
+      "chapterQuestion": "伏击者为什么故意留下崭新的烈云盟令牌，而他们的步法与毒烟却处处对不上？",
+      "implementation": "implemented",
+      "regions": ["竹尾村晨市", "北林边缘", "密林伏击地", "山寨洞窟", "凌月山门"],
+      "mainSceneIds": ["ch2_s1_zhuwei_market", "ch2_s2_forest_edge", "ch2_s3_forest_ambush", "ch2_s5_bandit_cave", "ch2_s6_river_camp", "ch2_s4_lingyue_gate"],
+      "characters": [
+        {"name": "悦无姮", "role": "凌月弟子；与主角共同核验伪令牌，成为首位主线同行者"},
+        {"name": "凌月受伤弟子", "role": "失踪案与密林伏击的直接见证者"},
+        {"name": "竹尾货郎", "role": "提供失踪时段与去向证词"},
+        {"name": "竹尾药铺掌柜", "role": "辨认毒烟原料与可疑买家"},
+        {"name": "凌霜", "role": "凌月掌门；在山门听取调查结果并引向武林大会"}
+      ],
+      "playerActions": ["在晨市核对三组证词", "追踪北林脚印", "击退密林伏击者", "辨认伪造令牌", "搜查山寨洞窟", "护送悦无姮回凌月山门"],
+      "mainQuestIds": ["q_ch2_main_01_investigate", "q_ch2_main_02_rescue_yue", "q_ch2_main_03_trace_hideout", "q_ch2_main_04_report_lingyue"],
+      "choiceNote": "两条路线都会汇流到旧矿洞调查，差异保留在证词、证物和悦无姮信任中，不会卡死主线。",
+      "choices": [
+        {
+          "title": "救人还是追信使",
+          "prompt": "林外还有被绑村民，东边信使正带着文书逃走，只能先顾一头。",
+          "dialogId": "ch2_rescue_victory",
+          "nodeId": "n4",
+          "options": [
+            {"text": "先救村民，让证人活着开口", "impact": "取得获救村民证词；悦无姮信任 +8；记录“先救人”；证人存活。"},
+            {"text": "由悦无姮护送伤者，我去截信使", "impact": "取得信使残卷；悦无姮信任 +2；记录“先追信使”；证人仍由悦无姮保住。"}
+          ],
+          "converges": "两路在安置伤者后汇流，下一站都是旧矿洞与山寨洞窟。"
+        }
+      ],
+      "sources": ["game/data/chapters/chapter_2_content_plan.tres", "game/data/dialogs/ch2_rescue_victory.tres"]
+    },
+    {
+      "number": 3,
+      "title": "入派抉择",
+      "caseName": "会盟无真言",
+      "subtitle": "五派都愿意开门，却各自只讲述对自己有利的旧案版本。",
+      "objective": "参加武林大会，核验会盟证据，在五派师承与江湖自修之间确定道路，完成对应考校与禁地追踪。",
+      "chapterQuestion": "五派提供的证词为何彼此冲突，而伪令牌又为何能准确模仿各派旧物？",
+      "implementation": "implemented",
+      "regions": ["武林会馆", "大会试炼场", "五派驻地", "同门合练场", "禁地古冢"],
+      "mainSceneIds": ["ch3_s1_wulin_assembly", "ch3_s2_trial_ground", "ch3_s3_faction_training", "ch3_s4_forbidden_tomb"],
+      "characters": [
+        {"name": "玄真道长", "role": "武当代表；提供旧掌印与档案路线"},
+        {"name": "霍长空", "role": "华山代表；提供伤势记录与剑气之争路线"},
+        {"name": "古疆雷", "role": "古峰代表；提供脚夫与押运路线"},
+        {"name": "凌霜", "role": "凌月掌门；提供白晚晴遗物路线"},
+        {"name": "苏雾笙", "role": "茗雾庄主；提供影廊与暗器路线"},
+        {"name": "悦无姮", "role": "同行伙伴；见证主角选择师承或江湖自修"}
+      ],
+      "playerActions": ["参加大会验案", "通过资格考校", "选择五派师承或江湖自修", "学习门派或江湖根基武学", "完成合练或散修考校", "追踪禁地雾纹"],
+      "mainQuestIds": ["q_ch3_main_00_assembly_clues", "q_ch3_main_01_join_faction", "q_ch3_main_02_faction_training", "q_ch3_main_03_token_conspiracy"],
+      "branchQuestIds": ["q_ch3_wudang_investigate", "q_ch3_huashan_unity", "q_ch3_gufeng_drink", "q_ch3_lingyue_clue", "q_ch3_mingwu_shadow", "q_ch3_wanderer_investigate"],
+      "choiceNote": "道路只能选择一次：五派提供稳定传承与专属任务，无门派提供自由组合与江湖奇遇；六路都可完成主线。",
+      "choices": [
+        {
+          "title": "五派或江湖自修",
+          "prompt": "五派各有所长，你也可以不拜山门，以江湖客身份继续追查。道路一经确认，不可随意更改。",
+          "dialogId": "ch3_faction_choice",
+          "nodeId": "start",
+          "options": [
+            {"text": "武当：剑掌兼修", "impact": "武当信任 +15；开放掌印与档案调查；剑法和拳掌可同时学习，每门独立消耗历练。"},
+            {"text": "华山：百变剑路", "impact": "华山信任 +15；开放伤势记录；单体破势与群体剑阵均可收集。"},
+            {"text": "古峰：重刀破阵", "impact": "古峰信任 +15；开放脚夫证词；接取重甲刀阵考校。"},
+            {"text": "凌月：轻身长棍", "impact": "凌月信任 +15；开放白晚晴遗物；接取点扫棍路调查。"},
+            {"text": "茗雾：身法暗器", "impact": "茗雾信任 +15；开放影廊；接取庄内暗线调查。"},
+            {"text": "不入门派：江湖自修", "impact": "不增加门派信任；独立核对五派证词并通过散修考校，再自选一种江湖根基。"}
+          ],
+          "converges": "五条门派线与一条散修线分别完成调查和考校，随后共同汇入禁地追踪与洛阳派遣主线。"
+        }
+      ],
+      "sources": ["game/data/chapters/chapter_3_content_plan.tres", "game/data/dialogs/ch3_faction_choice.tres"]
+    },
+    {
+      "number": 4,
+      "title": "洛阳奇遇",
+      "caseName": "洛阳双案",
+      "subtitle": "一桩眼前的漕运命案，牵出十八年前被人动过手脚的押运名册。",
+      "objective": "在府衙、街市与码头交叉验证验状、药粉和货单，保住关键证人，追入古寺地道。",
+      "chapterQuestion": "谁在不断制造“烈云盟所为”的表象，又为什么急着抹去十八年前押运队的一页名册？",
+      "implementation": "implemented",
+      "regions": ["洛阳府衙", "洛阳街市", "漕渠码头", "古寺", "寺下地道"],
+      "mainSceneIds": ["ch4_s1_luoyang_yamen", "ch4_s3_luoyang_market", "ch4_s2_canal_docks", "ch4_s4_ancient_temple", "ch4_s5_temple_tunnel"],
+      "characters": [
+        {"name": "赵思颖", "role": "医者与验伤者；证明死亡时间和药粉来源被人伪造"},
+        {"name": "流行追月", "role": "浪侠；与主角比武结识并参与古寺调查"},
+        {"name": "洛阳府尹", "role": "提供卷宗与合法调查入口"},
+        {"name": "失踪脚夫", "role": "掌握原始货单与夜间转运证词"},
+        {"name": "左明远", "role": "纸张与旧官纸线索的中间人"},
+        {"name": "冒名首领", "role": "古寺地道的假旗号操盘者"}
+      ],
+      "playerActions": ["查阅府衙卷宗", "请赵思颖复核验状", "在街市追查纸张与药粉", "保护漕渠脚夫", "追捕携文书信使", "调查古寺栽赃布置", "攻入寺下地道"],
+      "mainQuestIds": ["q_ch4_main_01_luoyang_case", "q_ch4_main_03_canal_witness", "q_ch4_main_02_ancient_temple", "q_ch4_main_04_tunnel_mastermind"],
+      "designGap": "古寺任务资源仍写有“流行追月参与调查”，与当前唐行舟、沈青禾伙伴体系的最终同行配置尚需统一；网页按现有任务文本展示并显式保留此差异。",
+      "choiceNote": "救人与追凶都能保留主线，但会形成不同的证据结构、赵思颖关系事件与洛阳城市结果。",
+      "choices": [
+        {
+          "title": "保活证还是截信使",
+          "prompt": "脚夫内伤拖不得，东岸信使却正带着余下文书逃走，主角与赵思颖必须立刻分工。",
+          "dialogId": "ch4_canal_result",
+          "nodeId": "b",
+          "options": [
+            {"text": "留下救治脚夫，先保住活证", "impact": "取得夜间转运证词；赵思颖信任 +8；解锁共同救治事件；脚夫存活并可赴府衙作证。"},
+            {"text": "由你施救，我去截住信使", "impact": "取得完整残卷与信使口供；赵思颖信任 +3；解锁分头行动事件；信使被捕。"}
+          ],
+          "converges": "人证或文书最终都指向古寺；两路在府衙交接后汇流到古寺地道。"
+        }
+      ],
+      "sources": ["game/data/chapters/chapter_4_content_plan.tres", "game/data/dialogs/ch4_canal_result.tres"]
+    },
+    {
+      "number": 5,
+      "combatNotes": ["护住车队后，向护粮营地的古峰护粮守卫打听「雪路三哨」。从营地西南口回赈粮路，找翻车旁的劫粮哨。再过营地上雪岭，到坡上找截路哨，最后到废弃矿道入口里侧找坑道哨。", "胜三场回营交差，必得玄铁重甲、60 两银子、260 经验和 260 可用阅历。重甲提供 17 防御和 3 筋骨，可与雪岭主线赠送的金刚斩马刀同时装备。用阅历修习断雪回锋或寒岭守元诀，再经矿道去伪旗哨站。", "同一份 16 级统领战前存档，每组五战。蓝刀配一重刀招、只换断岳刀、断岳刀配刀招、心法与历练重甲均为五胜。主角战中最低气血的中位数分别为 161、374、433。断岳刀是提前放入对照副本的后期装备。"],
+      "title": "古峰残雪",
+      "caseName": "烈云旧债",
+      "subtitle": "被污名的一方并非全然无辜，被信任的一方也未必说完真话。",
+      "objective": "穿过各方围堵进入古峰与雪岭，辨认伪装袭击者，查清烈云盟与十八年前旧案的真实关系。",
+      "chapterQuestion": "烈云盟若没有杀害五名弟子，为何其强硬派又确实留下了以毒复仇的血债？",
+      "implementation": "implemented",
+      "regions": ["古峰赈粮路", "护粮营地", "雪岭关", "废弃矿道", "伪旗营地"],
+      "characters": [
+        {"name": "古疆雷", "role": "古峰掌门；组织守山与赈粮防线"},
+        {"name": "流行追月", "role": "与主角共同驰援古峰"},
+        {"name": "烈云旧案幸存者", "role": "证明烈云未杀五名弟子，也见证强硬派误杀旧罪"},
+        {"name": "伪旗统领", "role": "冒名袭击与矿道灭口的现场统领；受伤被擒后交出割去落款的密令"},
+        {"name": "戚云笙", "role": "烈云改革派的关键联系人；后续是否合作取决于玩家处理盟内罪责的态度"}
+      ],
+      "playerActions": ["守卫赈粮车队", "找护粮守卫打听雪路三哨，清哨领玄铁重甲", "查验反针伪旗", "突破雪岭封锁", "探索废弃矿道", "保护旧案幸存者", "查验淬毒兵刃", "击败伪旗统领", "决定证据公开次序"],
+      "mainQuestIds": ["q_ch5_main_01_relief_route", "q_ch5_main_02_grain_convoy", "q_ch5_main_03_snow_pass", "q_ch5_main_04_mine_survivor", "q_ch5_main_05_false_banner_outpost", "q_ch5_main_06_disclosure_choice"],
+      "mainSceneIds": ["ch5_s1_relief_road", "ch5_s2_grain_convoy_camp", "ch5_s3_snow_pass", "ch5_s4_abandoned_mine", "ch5_s5_false_banner_outpost"],
+      "legacyQuestIds": ["q_ch5_main_01_gufeng_defense", "q_ch5_main_02_meet_linghu"],
+      "battleAnchorIds": ["relief_road_ambush", "grain_convoy_defense", "snow_pass_blockade", "mine_witness_hunt", "false_banner_captain"],
+      "implementedStages": ["古峰赈粮路双人拦截", "护粮营地三人防卫", "查验急制烈云破旗", "突破雪岭双人封锁", "进入废弃矿道击退灭口人", "取得旧案幸存者证词", "查验伪旗营地淬毒兵刃", "击败伪旗统领三人编队", "选择旧债与栽赃证据的公开次序"],
+      "plannedStages": [],
+      "choiceNote": "两种公开次序都会保存伪旗栽赃与烈云误报复两条责任，不以简单善恶值结算；选择会写入方法、阵营、伙伴与古峰地区结果，供第七章读取。",
+      "choices": [
+        {
+          "title": "何时公开烈云罪证",
+          "prompt": "已确认烈云盟未杀五名弟子，却也查到其强硬派曾经用毒杀错人。",
+          "dialogId": "ch5_disclosure_choice",
+          "nodeId": "start",
+          "options": [
+            {"text": "先公开已证实的栽赃链，未证实部分注明保留", "impact": "古峰立即拆除伪旗并公布赈粮与灭口证据；烈云旧债另卷保存，最终发令者仍需继续追查。"},
+            {"text": "先安置证人、补齐责任链，再让双方共同公示", "impact": "矿道证人与旧案材料先被转移保护；公开稍晚，但为烈云改革派共同作证保留空间。"}
+          ],
+          "converges": "两路都继续追查真正操盘者，但第七章的烈云警戒、证人位置与合作条件不同。"
+        }
+      ],
+      "sources": ["docs/narrative-open-world-revision-v1.md", "game/data/chapters/chapter_5_content_plan.tres", "game/data/dialogs/ch5_disclosure_choice.tres"]
+    },
+    {
+      "number": 6,
+      "title": "归村问师",
+      "caseName": "改证之人",
+      "subtitle": "师父确实改过证词；问题不再是他是否隐瞒，而是保护能否替代当事人的选择。",
+      "objective": "回到林西村调查师父旧居和地下档案，重走十八年前押运路线，与刑樊天对质，并在古道客栈取得戚云笙留书。",
+      "chapterQuestion": "刑樊天隐瞒真相是在保护冷孤云，还是在替他决定一生该知道什么？",
+      "implementation": "implemented",
+      "regions": ["林西村", "刑樊天旧居", "地下档案室", "旧押运路线", "村外古道"],
+      "characters": [
+        {"name": "刑樊天", "role": "师父；承认茗雾旧身份与改证行为"},
+        {"name": "冷孤云", "role": "必须重新定义师徒信任与自己的调查方式"},
+        {"name": "戚云笙", "role": "留下烈云玉佩与手书，引主角前往烈云分舵"},
+        {"name": "茗雾追兵", "role": "试图夺回旧档案并灭口"}
+      ],
+      "playerActions": ["回村探师", "击退茗雾追兵", "搜查地下档案", "与刑樊天对质", "重走旧押运路线", "解读戚云笙留信"],
+      "mainQuestIds": ["q_ch6_main_01_homecoming", "q_ch6_main_02_old_residence", "q_ch6_main_03_underground_archive", "q_ch6_main_04_old_convoy_route", "q_ch6_main_05_master_confrontation", "q_ch6_main_06_ancient_road_letter"],
+      "mainSceneIds": ["linxi_tutorial", "linxi_master_hall", "ch6_s3_underground_archive", "ch6_s4_baishui_convoy_route", "ch6_s5_ancient_road_inn"],
+      "legacyQuestIds": ["q_ch6_main_01_return_home", "q_ch6_main_02_confront_master", "q_ch6_side_01_qi_letter"],
+      "implementedStages": ["回访林西村与师父旧居", "击退追索档案者", "进入地下档案室", "核对父辈名册与改证笔迹", "重走白水驿旧押运路线", "击退旧路截证者", "与刑樊天正式对质", "选择师徒关系与作证方式", "在古道客栈取得戚云笙留书与黑玉佩", "完成第六章阶段结算并开放第七章调查方向"],
+      "plannedStages": [],
+      "optionalBacklog": ["嵩山涤脉禅关与行义帮义约等章中支路待单独核验"],
+      "choiceNote": "三种师徒态度都已写入持久旗标并汇流到古道客栈；不会封锁戚云笙留书或第七章入口，也不以简单善恶值判定。",
+      "choices": [
+        {
+          "title": "如何面对师父的隐瞒",
+          "prompt": "刑樊天承认自己改过证词，并以“保护你”为理由拒绝让冷孤云自行选择。",
+          "dialogId": "ch6_master_confrontation",
+          "nodeId": "choice",
+          "options": [
+            {"text": "我可以原谅，但你必须公开作证", "impact": "写入公开作证路线；刑樊天承诺重写并署名自己改过的记录。"},
+            {"text": "这条路我自己查，你只需把知道的交出来", "impact": "写入独立调查路线；刑樊天只在暗处提供旧路与封蜡信息。"},
+            {"text": "先避开追兵，我从别处补齐证词", "impact": "写入先行避险路线；后续必须由其他证人与物证补齐责任链。"}
+          ],
+          "converges": "三路都会前往烈云分舵；刑樊天在第八章的出场方式与师徒和解节奏不同。"
+        }
+      ],
+      "sources": ["docs/narrative-open-world-revision-v1.md", "game/data/chapters/chapter_6_content_plan.tres", "game/data/dialogs/ch6_qiyun_letter.tres"]
+    },
+    {
+      "number": 7,
+      "title": "两盟一局",
+      "caseName": "双线求证",
+      "subtitle": "两盟都握着部分真相，调查顺序本身会改变另一方的防备。",
+      "objective": "深入烈云峡谷与茗雾外院，确认薛影身份，争取两方内部证人与改革派。",
+      "chapterQuestion": "在证据尚未完整时，冷孤云该先公开指控、继续冒险搜证，还是拿证物交换活人？",
+      "implementation": "implemented",
+      "regions": ["烈云峡谷", "烈云分舵", "茗雾茶镇", "山庄外院", "旧案祭地"],
+      "characters": [
+        {"name": "戚云笙", "role": "烈云盟主之女；正式邀请主角查看被隐去的证据"},
+        {"name": "戚云上", "role": "烈云盟主；决定是否公开盟内旧罪"},
+        {"name": "令狐封", "role": "身份暴露后可成为有限合作的内部证人"},
+        {"name": "薛影", "role": "旧案受害者也是灭口凶手"},
+        {"name": "悦无姮", "role": "代表门派死者与幸存弟子的立场"},
+        {"name": "赵思颖", "role": "负责验证伤势、毒理与死亡时间"}
+      ],
+      "playerActions": ["选择先查烈云或茗雾", "争取内部证人", "核验旧案祭地", "决定令狐封是否作证", "组织三方证据会审"],
+      "mainQuestIds": ["q_ch7_main_01_choose_first_route", "q_ch7_main_02_compare_two_fronts", "q_ch7_main_03_outer_wards", "q_ch7_main_04_reform_and_witness", "q_ch7_main_05_dead_name_live_access", "q_ch7_main_06_threefold_identity_check", "q_ch7_main_07_confirm_xueying_identity", "q_ch7_main_08_inner_office_authorization", "q_ch7_main_09_protect_witnesses", "q_ch7_main_10_personal_authorization", "q_ch7_main_11_disclosure_strategy"],
+      "mainSceneIds": ["ch7_s1_lieyun_valley_ferry", "ch7_s2_mingwu_tea_town", "ch7_s3_lieyun_outpost_outer_ward", "ch7_s4_mingwu_manor_outer_court", "ch7_s5_lieyun_assembly_hall", "ch7_s6_mingwu_inner_court", "ch7_s7_lieyun_resettlement_archive", "ch7_s8_mingwu_permission_archive", "ch7_s9_mingwu_seal_audit_room", "ch7_s10_lieyun_night_transfer_station"],
+      "legacyQuestIds": ["q_ch7_main_01_infiltrate_lieyun", "q_ch7_main_02_truth_revealed", "q_ch7_side_01_linghu_betrayal", "q_ch7_side_02_cipher_message", "q_ch7_side_03_proving_ground", "q_ch7_side_04_red_robe_memory"],
+      "implementedStages": ["在江湖大地图选择首个调查方向", "抵达烈云峡谷旧渡并核验黑玉佩通行边界", "抵达茗雾茶镇并观察外院文书收紧", "以持久旗标记录先后顺序及另一侧警戒变化", "进入烈云分舵外区查阅隔离药册", "击退企图扣押原册的烈云强硬派", "进入茗雾山庄外院取得缺页转运簿", "以两份物证区分烈云旧罪与五派弟子案责任", "在聚义厅与戚云笙正式会面并取得公开药册证言", "在茗雾内院保护录事说出已注销弟子暗号仍被使用", "在茗雾权限档案房确认暗号登记在薛影名下", "在烈云安置档案室取得薛影死亡记录后权限仍被调用的副签证言", "把登记归属与实际使用者严格分开", "比对内署双重复核封印", "取得旧教习直接辨认薛影的证言", "重建死亡记录后的连续行动轨迹", "以授权、目击、时序三证确认实际使用者为薛影本人"],
+      "plannedStages": [],
+      "choiceNote": "两处都能调查。先后顺序改变另一侧的警戒，证人安置影响第八章撤离，章末选定的公开策略延续到会盟公示。",
+      "choices": [
+        {
+          "title": "先查哪一方",
+          "prompt": "烈云盟与茗雾山庄都可先行调查，但先去一方会惊动另一方。",
+          "dialogId": "ch7_route_choice",
+          "nodeId": "choice",
+          "options": [
+            {"text": "先去烈云峡谷，核对戚云笙的邀请", "impact": "茗雾茶镇提前收紧外院文书；清理痕迹本身会成为可核对的变化。"},
+            {"text": "先查茗雾茶镇，追封蜡与换车线索", "impact": "烈云旧渡增加一道原册核验；外渡仍开放，不会永久封路。"}
+          ],
+          "converges": "两地最终都必须完成，但证人位置、潜入路线和遭遇战组合不同。"
+        },
+        {
+          "title": "证人安置在哪里",
+          "prompt": "决定谁带走内院录事和旧教习。第八章会盟时，护送人会随他们登上祭台。",
+          "dialogId": "ch7_witness_protection_choice",
+          "nodeId": "choice",
+          "options": [
+            {
+              "text": "分开转移：一人交行义帮，一人留烈云暗线",
+              "impact": "两人分路转移。到会盟祭台，行义帮护送人跟着录事，烈云暗哨守着旧教习。"
+            },
+            {
+              "text": "公开留在烈云：由聚义厅共同署名保护",
+              "impact": "烈云公开署名，证人去向随之暴露。祭台上两人并立，由烈云明哨守护。"
+            },
+            {
+              "text": "交洛阳府衙：以官面卷宗冻结转移命令",
+              "impact": "交府衙看管，证词送达时间推迟。会盟时两人在祭台后排，由洛阳官差看护人证和官卷。"
+            }
+          ],
+          "converges": "三种安排均继续追查亲令，选择记入存档。"
+        },
+        {
+          "title": "如何使用未完整证据",
+          "prompt": "现有证据足以引发震动，却还不足以解释全部责任。",
+          "dialogId": "ch7_disclosure_strategy_choice",
+          "nodeId": "choice",
+          "options": [
+            {"text": "立即完整公开，由各方同时承担责任", "impact": "公开速度最快，各方立刻担责，但证人位置也更容易暴露。"},
+            {"text": "先公开可核验核心，继续保护证人", "impact": "保留已确认事实并隐去证人去向，后续分阶段追加证据。"},
+            {"text": "交烈云、洛阳与五派联合封存会审", "impact": "建立多方副本防止单方删改，公开速度较慢。"}
+          ],
+          "converges": "三路都进入最终会盟，但参战伙伴、存活证人与可公开证据总量不同。"
+        }
+      ],
+      "sources": ["docs/narrative-open-world-revision-v1.md", "game/data/chapters/chapter_7_content_plan.tres", "game/data/dialogs/ch7_route_choice.tres", "game/data/dialogs/ch7_qi_yunsheng_meeting.tres", "game/data/dialogs/ch7_mingwu_revoked_access_roll.tres"]
+    },
+    {
+      "number": 8,
+      "combatNotes": ["苏雾笙按这条路线实到的 24–25 级校准，敌方基础等级固定为 25。见他托盏蓄势、头顶出现「壶雨封脉 · 防御避毒」，让来得及行动的角色防御。架住茶雨可卸去八成伤害并挡毒，随后抢攻。", "破绽期间追击增伤 45%，同时获得装备与心法招式威力加成的攻击另有 35% 出招加成。可尝试烬河断岳刀、断雪回锋和寒岭守元诀。", "PC 同档各五战，队伍以满血满内力开战，24 级和先战薛影到达的 25 级结果一致：蓝刀低配 0 胜，只换断岳刀 3 胜，断岳刀配十重刀招与心法且防蓄势 5 胜。相同完整搭配硬吃壶雨 0 胜，蓝刀带完整武学并应对蓄势 1 胜。全程不吃药，队友为沈青禾、唐行舟。"],
+      "title": "雾散之后",
+      "caseName": "终局公示",
+      "subtitle": "终局不是只打败一个人，而是阻止仇杀，并决定真实罪行该如何被江湖记住。",
+      "objective": "阻止苏雾笙利用会盟制造大规模仇杀，根据证据、阵营信任和证人存活决定最终敌人与参战伙伴，并处理旧案公开。",
+      "chapterQuestion": "公开全部真相会伤害许多仍活着的人；隐去一部分，又是否只是重复刑樊天当年的错误？",
+      "implementation": "implemented",
+      "regions": ["茗雾山庄外围", "雾林", "山庄主厅", "最终会盟地", "各城市结局回访", "林西村师徒院落"],
+      "characters": [
+        {"name": "苏雾笙", "role": "最终操盘者；试图以真实旧罪为极端手段辩护"},
+        {"name": "薛影", "role": "凶手与旧案受害者；其伏法、作证或死战取决于此前救人与证据"},
+        {"name": "刑樊天", "role": "根据师徒关系公开作证、暗中相助或独自破局"},
+        {"name": "悦无姮", "role": "代表并肩江湖与门派改革的结局方向"},
+        {"name": "赵思颖", "role": "代表救人、医理与承担代价的结局方向"},
+        {"name": "戚云笙", "role": "代表烈云改革、忠诚与公开本盟责任的结局方向"},
+        {"name": "令狐封", "role": "可作证、归隐或在此前冲突中失去行动能力"}
+      ],
+      "playerActions": ["组织终局盟友", "保护存活证人", "阻止会盟仇杀", "决定薛影的处置与作证方式", "执行第七章选定的公示策略", "回访城市查看长期结果", "回林西村向刑樊天复命并开放师门终境突破"],
+      "mainQuestIds": ["q_ch8_main_01_alliance_muster", "q_ch8_main_02_mistwood_blockade", "q_ch8_main_03_false_order_matrix", "q_ch8_main_04_drum_mist_mechanisms", "q_ch8_main_05_final_alliance_roles", "q_ch8_main_06_first_false_order", "q_ch8_main_07_su_first_confrontation", "q_ch8_main_08_su_xueying_authorization", "q_ch8_main_09_final_evacuation", "q_ch8_main_10_xueying_resolution", "q_ch8_main_11_su_final_order", "q_ch8_main_12_truth_disclosure", "q_ch8_main_13_aftermath_returns"],
+      "mainSceneIds": ["ch8_s1_alliance_staging_ground", "ch8_s2_mistwood_blockade", "ch8_s3_manor_perimeter_encampment", "ch8_s4_alliance_mechanism_gallery", "ch8_s5_alliance_ceremonial_platform", "ch8_s6_mingwu_main_hall", "ch8_s7_mingwu_rear_sanctum"],
+      "legacyQuestIds": ["q_ch8_main_01_mingwu_siege", "q_ch8_main_02_xueying_duel", "q_ch8_main_03_final_boss"],
+      "implementedStages": ["会盟集结与长期路线承接", "突破雾林封锁与假令矩阵", "拆除鼓阵迷烟并分配终局角色", "在祭台按第七章方案保护两名证人，听五派验令，拦下传使与护令客后对质苏雾笙", "在主厅拆明苏雾笙对薛影的私人命令链", "按第七章见证方案完成终战前撤离", "在后殿决定薛影伏法、作证或死战", "在后殿听苏雾笙托盏蓄势，防住壶雨封脉，趁破绽追击并停止最后假令", "按第七章既定策略公示旧案并归档危险武学", "回访洛阳、烈云和竹尾结算城市余波", "按长期信任与共同事件结算伙伴关系或独行", "回林西向刑樊天复命并开放师门终境突破"],
+      "plannedStages": [],
+      "choiceNote": "终局依据长期证据、阵营信任、存活证人与伙伴关系组合，不用最后一道选择覆盖此前行为；旧版固定围攻和固定 Boss 任务仅保留为兼容资源。",
+      "choices": [
+        {
+          "title": "如何处置薛影",
+          "prompt": "证据和撤离条件满足后，可在后殿当面对质。",
+          "dialogId": "ch8_xueying_resolution_choice",
+          "nodeId": "choice",
+          "options": [
+            {
+              "text": "放下针套，随洛阳与五派共审伏法",
+              "impact": "交洛阳与五派共审。"
+            },
+            {
+              "text": "活着把每道亲令说完，由三方共同核验",
+              "impact": "留下活证，由三方核验亲令。"
+            },
+            {
+              "text": "若你仍把最后一令当作自己的命，就来死战",
+              "impact": "进入薛影决战，战后走死战结果。"
+            }
+          ],
+          "converges": "处理结果改变苏雾笙开战前的对白。"
+        },
+        {
+          "title": "悦无姮的关系尾声",
+          "prompt": "长期同行记录选中悦无姮时，主角决定是否继续同行。",
+          "dialogId": "ch8_relationship_yuewuheng",
+          "nodeId": "choice",
+          "options": [
+            {
+              "text": "此案已结，下一段路仍可双剑同行",
+              "impact": "两人继续双剑同行。"
+            },
+            {
+              "text": "各守自己的路，仍以江湖故交相见",
+              "impact": "选择独行，保留彼此的情谊。"
+            }
+          ],
+          "converges": "完成关系尾声后回林西复命。没有合适人选时进入独行尾声。"
+        },
+        {
+          "title": "赵思颖的关系尾声",
+          "prompt": "长期同行记录选中赵思颖时，主角决定是否继续同行。",
+          "dialogId": "ch8_relationship_zhao_siying",
+          "nodeId": "choice",
+          "options": [
+            {
+              "text": "与你沿驿路行医，也继续替无名者查案",
+              "impact": "两人沿驿路行医、为无名者查案。"
+            },
+            {
+              "text": "各守自己的路，仍在需要时彼此相助",
+              "impact": "选择独行，保留彼此的情谊。"
+            }
+          ],
+          "converges": "完成关系尾声后回林西复命。没有合适人选时进入独行尾声。"
+        },
+        {
+          "title": "戚云笙的关系尾声",
+          "prompt": "长期同行记录选中戚云笙时，主角决定是否继续同行。",
+          "dialogId": "ch8_relationship_qi_yunsheng",
+          "nodeId": "choice",
+          "options": [
+            {
+              "text": "先与你完成烈云改革，再携酒走更远的路",
+              "impact": "先协助烈云改革，约定此后同行。"
+            },
+            {
+              "text": "尊重彼此选择，各自完成尚未走完的路",
+              "impact": "选择独行，保留彼此的情谊。"
+            }
+          ],
+          "converges": "完成关系尾声后回林西复命。没有合适人选时进入独行尾声。"
+        }
+      ],
+      "sources": ["docs/narrative-open-world-revision-v1.md", "game/data/chapters/chapter_8_content_plan.tres", "game/data/dialogs/ch8_truth_disclosure_full.tres", "game/data/dialogs/ch8_aftermath_luoyang.tres", "game/data/dialogs/ch8_linxi_final_return.tres"]
+    }
+  ]
+}

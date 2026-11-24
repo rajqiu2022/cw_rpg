@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "旁白"
+text = "矿道里没有采掘声，只有水轮空转。中央地面留着新靴印，左右作业间却各亮着一盏矿灯。"
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "唐行舟"
+text = "右边有人翻过账桌，左边有人躲着。先挡住追兵，别让他们把两处一起灭干净。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch5_mine_intro"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

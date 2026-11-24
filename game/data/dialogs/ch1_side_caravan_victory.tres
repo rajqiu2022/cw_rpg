@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]两名山匪见同伴倒下，不敢再追。商队重新系紧货绳，沿古道缓缓驶向竹尾村。[/i]"
+on_end = "next:thanks"
+
+[sub_resource type="Resource" id="node_thanks"]
+script = ExtResource("2_dnode")
+node_id = &"thanks"
+speaker = "范掌柜"
+text = "这趟货能平安过去，村里的伤药就不会断。我会把酬钱和货样交给村里的镖局枪手。回竹尾村后找他就能领到。"
+set_flags = Array[Dictionary]([{"key": "caravan_escort_done", "value": true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_side_caravan_victory"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_thanks")])

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scn"]
+[ext_resource type="Resource" path="res://data/maps/linxi_south_classroom_layout_v1.tres" id="2_map"]
+
+[resource]
+script = ExtResource("1_scn")
+scene_id = &"linxi_south_scholar_house"
+display_name = "林西村南坊 · 私塾"
+background_path = "res://art/backgrounds/bg_linxi_south_classroom_25d_v1.png"
+bgm_path = "res://art/audio/bgm/bgm_village_day_v4.wav"
+is_walkable = true
+map_layout = ExtResource("2_map")
+player_spawn = Vector2(0.560, 0.760)
+player_visual_scale = 1.18

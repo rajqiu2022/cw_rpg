@@ -1,0 +1,22 @@
+tasks:
+  - id: sprite_yuewuheng_battle_attack_v1
+    template: sprite_yuewuheng_battle_action_v1
+    category: sprite/battle-action/yuewuheng
+    priority: 1
+    model: gpt-image-2
+    vars:
+      action: "攻击：右脚向前踏出，长剑由右上向左下挥斩，身体前倾，衣摆沿攻击方向扬起。"
+  - id: sprite_yuewuheng_battle_hurt_v1
+    template: sprite_yuewuheng_battle_action_v1
+    category: sprite/battle-reaction/yuewuheng
+    priority: 1
+    model: gpt-image-2
+    vars:
+      action: "受击：身体向左后方退半步，肩部后仰，剑尖下沉但仍握剑，衣摆轻微向后摆动，保持站立。"
+  - id: sprite_yuewuheng_battle_defeat_v1
+    template: sprite_yuewuheng_battle_action_v1
+    category: sprite/battle-reaction/yuewuheng
+    priority: 1
+    model: gpt-image-2
+    vars:
+      action: "倒地：侧身倒下，长剑在手边，衣袍自然铺开，完整人物轮廓留在画面内，不要血迹。"

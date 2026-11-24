@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch4_forgery_workshop"
+display_name = "古寺伪造工坊"
+description = "地道里同时存有五派纹样印版、未做旧腰牌、药粉和多种笔迹样本。工坊证明有人系统地伪造身份，却不能单独证明幕后组织。"
+chapter = 4
+category = &"physical"
+source_hint = "城外古寺地道"
+related_testimony_ids = Array[StringName]([&"ts_ch4_fake_leader_partial_confession"])
+tags = Array[StringName]([&"forgery", &"five_factions", &"workshop"])

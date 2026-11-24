@@ -1,0 +1,47 @@
+{
+  "status": "BUILD_ONLY_EXACT_OVERRIDE_NOT_IMPORTED_NOT_ENGINE_CHECKED_NOT_SOURCE_CLOSED",
+  "parent": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_finish_candidates01_retry1/Field_hero_visual_only_READY.gd",
+    "sha256": "c089d5c3473159a50b1a58803f599fb93cdf30f517d8b88589922b6c87cd2d3f"
+  },
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_system01/Field_hero_exact_examiner_portrait_candidate_READY.gd",
+    "sha256": "a148154e8db886f508755ab91e7852c6ebe1e168a44d17badad9f3cc267499df"
+  },
+  "portrait_finite_authority": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_root01/portrait_ui_finite_admission_READY.json",
+    "sha256": "d2c8470d07e834771954f8b7e2dd64ebcbeec859a417e737d29d7d9a6f47d016"
+  },
+  "future_media": {
+    "path": "res://art/portraits/luoyang_city_finish_20261022ap/examiner_mature_v1.png",
+    "sha256": "4fba998b313e66b60f62804ea8968b25742dc5825a76921743265e6a26031dcc",
+    "native_size": [
+      1254,
+      1254
+    ],
+    "full_canvas_unchanged": true,
+    "exists_now": false,
+    "import_status": "ROOT_UNIQUE_THREE_LEAF_ISOLATION_PENDING"
+  },
+  "identity": {
+    "only_scene": "ch4_s3_luoyang_market",
+    "only_npc_id": "spar_luoyang_examiner",
+    "unchanged_action": "spar:luoyang_examiner:wulin_examiner:大会考校官:24:6",
+    "not_affected": [
+      "spar_wulin_examiner trial retest",
+      "feng_yanqiu_ch4",
+      "otherNPCs",
+      "world sprite/scale/body/animation",
+      "dialog text/choice/spar rewards"
+    ]
+  },
+  "priority": "Set exact npc.portrait_path after existing NPC_CATALOG defaults; runtime spar preface sets that actor portrait as DialogPlayer default. Invite/ready nodes have no explicit portrait and speaker empty, so default portrait applies; explicit authored portraits on unrelated nodes keep original priority.",
+  "UI_fit": "Existing dialogue portrait TextureRect stretch_mode5 uses aspect-centered contain; no raw crop/alpha cleanup/expansion included. Root actual UI fit still required.",
+  "wholebyte_inverse_to_C089": true,
+  "exact_hunk": {
+    "before": "\t\tif _current_scene != null:\n\t\t\tnpc.sprite_scale *= _current_scene.npc_visual_scale",
+    "after": "\t\t# Exact existing Luoyang examiner only, after catalog portrait priority.\n\t\t# Full1254 canvas is UI-contained; no world sprite or spar payload change.\n\t\tif _current_scene.scene_id == &\"ch4_s3_luoyang_market\" and npc.npc_id == \"spar_luoyang_examiner\":\n\t\t\tnpc.portrait_path = \"res://art/portraits/luoyang_city_finish_20261022ap/examiner_mature_v1.png\"\n\t\tif _current_scene != null:\n\t\t\tnpc.sprite_scale *= _current_scene.npc_visual_scale"
+  },
+  "hero_1_12_eight_scene_delta_inherited_unchanged": true,
+  "no_canonical_media_import_engine_native_sourceclosure_write": true
+}

@@ -1,0 +1,28 @@
+# Isolated single-asset task file. CLI permitted only with --dry-run; actual generation is builtin.
+tasks:
+  - id: portrait_luoyang_examiner_mature_same_sprite_20261022ap_v1
+    template: world_placeables_walk_20261022
+    category: luoyang_city_finish_20261022ap
+    priority: 1
+    skip: true
+    execution_backend: builtin_image_gen
+    model: null
+    status: GENERATED_RAW_CANDIDATE_MARGIN_AND_SIZE_FAIL_NOT_RUNTIME_READY
+    attempts_used: 1
+    attempt_budget: 1
+    retries_allowed: false
+    cli_fallback_allowed: false
+    builtin_reference_path: game/art/characters/street_expansion_v1/npc_wulin_examiner_idle_down_4f.png
+    vars:
+      asset_prompt: |-
+        Use case: stylized-concept
+        Asset type: a single dialogue bust portrait for a Chinese wuxia RPG, square transparent RGBA image.
+        Input images: Image 1 is the existing four-frame idle sprite sheet of ONE examiner character. Use the first/leftmost frame as identity and costume reference. The other frames are the same man breathing, NOT different people. Do not reproduce the sheet.
+        Primary request: make one clear head-and-chest portrait of this SAME sturdy middle-aged Chinese martial-arts examiner, about 45-50 years old, with a rugged square face, broad jaw, thick dark eyebrows, weathered tan/deeper skin, black hair tied in a high practical topknot, short sideburns and a little restrained moustache/stubble. He is a strong broad-shouldered adult, not a handsome young generic villager.
+        Costume invariants: preserve the sprite's deep dark teal-green crossed-collar martial robe, dark outer vest/armor, and dark antique gold/bronze rounded layered shoulder guards. Match the visible collar and shoulder construction; keep materials worn and grounded, not bright royal gold. Do not redesign his role or dress him as a court scholar, monk or modern soldier.
+        Style/medium: semi-realistic Hong Kong wuxia-comic painted illustration, solid mature facial structure, confident brushwork and restrained contour accents. Not a photograph, not a glossy 3D render, not anime, not an internet-beauty face. Portrait detailing may be finer than the small sprite but must read as the same mature strong man.
+        Composition/framing: 1024x1024 square. One single bust, slight three-quarter turn toward screen-left like the first sprite, stern but composed appraising expression. Complete topknot, scalp, neck, both shoulder guards and outer shoulder silhouettes fully inside the canvas. Clearly show the face. Keep the entire painted bust including its lower chest cutoff inside the central 78 percent of the image, with at least 10 percent truly transparent margin on ALL FOUR sides. Leave space below the finished bust, do not cut it against the image border. No hands or weapon are needed.
+        Lighting/mood: readable soft directional daylight, balanced face illumination, subdued deep teal, bronze and natural warm skin. No dark vignette, smoke, halo or backdrop.
+        Scene/backdrop: genuinely transparent empty alpha background, not black, white, a gradient, parchment, a checkerboard, scenery or a UI frame.
+        Avoid: young delicate face, beauty retouching, long loose hair, huge beard, exaggerated anger, new scars, royal crown, spear/sword/extra weapon, duplicate people, full body, animation cells, text, signature, labels, watermark, dialogue panel or decorative frame.
+

@@ -1,0 +1,19 @@
+id: scene_ch1_road_panorama_panel_v1
+description: Native-resolution scrollable bamboo mountain road panel.
+quality: high
+size: "1536x1024"
+
+reference_images:
+  - "F:/Code/RPG_GAME/game/art/backgrounds/bg_ch1_s1_road_release_v1.png"
+require_reference_images: true
+
+prompt_template: |
+  Use the supplied image only as the strict art-style reference for a Chinese wuxia 2.5D RPG mountain road: high three-quarter view, clear ink contours, sunlit bamboo, ochre rock faces, warm upper-right light, cool bamboo shadows, readable broad dirt path. Do not reuse its exact composition.
+
+  Create ONE native 1536x1024 panorama panel for the {{panel_role}} of a two-panel horizontally scrollable road map. Required layout: {{composition}}
+
+  This is gameplay scenery, not concept art. Keep the main road continuously walkable and at least 220 pixels wide. The seam edge needs dense bamboo, a rock wall, or a shaded path transition. No characters, NPCs, animals, corpse, stone stele, chest, text, readable signs, UI, watermark, baked portal arrows, or oversized foreground cliffs that cover the traversable route.
+
+variables:
+  panel_role: "required"
+  composition: "required"

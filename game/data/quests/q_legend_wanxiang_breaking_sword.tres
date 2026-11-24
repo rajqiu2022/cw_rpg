@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_legend_wanxiang_breaking_sword"
+title = "孤云归式"
+kind = 1
+desc_not_started = "竹尾晨市有个替茗雾派抄录旧谱的青年，正在核对三柄断剑上彼此矛盾的磨痕。"
+desc_in_progress = "与封砚秋数次重逢，解开断剑、回锋残图、洛阳试痕和茗雾原目录的谜题；刑樊天也无法跨过第九重，答案或许藏在他师父留于林西的旧书中。"
+desc_completed = "封砚秋保下的原目录让刑樊天想起地下档案室里的旧木匣。匣中《孤云残解》证实：林西剑法原名孤云九式，第十重不是新招，而是让九处换力首尾相接。"
+tracker_hint = "江湖各地 · 与封砚秋追查孤云残解"
+completion_triggers = Array[String](["flag_set:guyun_feng_first_met", "flag_set:guyun_returning_diagram_solved", "flag_set:guyun_luoyang_notches_solved", "flag_set:guyun_mingwu_catalog_preserved", "flag_set:guyun_master_recollection_done", "flag_set:guyun_master_book_read"])
+auto_accept_triggers = Array[String](["flag_set:guyun_feng_first_met"])
+require_all_completion_triggers = true
+starts_in_chapter = 2
+completes_in_chapter = 8
+milestone_labels = Array[String](["竹尾晨市·读出三柄断剑的共同磨痕", "武林大会·复原回锋残图的换力次序", "洛阳旧市·辨明三类兵器留下的试痕", "茗雾外院·保下缺页原目录", "林西师徒院·与刑樊天追忆师门旧匣", "地下档案室·读完《孤云残解》"])
+reward_gold = 0
+reward_exp = 240
+reward_items = Array[Dictionary]([])
+reward_skills = Array[StringName]([])

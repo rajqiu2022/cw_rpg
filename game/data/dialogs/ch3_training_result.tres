@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="a"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "合练教习"
+text = "你没有被人数牵着走。大会证物里的步法却恰恰相反，像是把五派招式硬拼在一起。"
+add_evidence = Array[StringName]([&"ev_ch3_composite_technique_marks"])
+on_end = "next:b"
+[sub_resource type="Resource" id="b"]
+script = ExtResource("2")
+node_id = &"b"
+speaker = "冷孤云"
+text = "附近若有人练这种拼凑招式，必会留下大量废弃兵器和试招痕迹。禁地石窟值得查。"
+verify_evidence = Array[StringName]([&"ev_ch3_composite_technique_marks"])
+set_flags = Array[Dictionary]([{"key":"ch3_training_complete","value":true}])
+complete_quest = &"q_ch3_main_02_faction_training"
+accept_quest = &"q_ch3_main_03_token_conspiracy"
+on_end = "scene:ch3_s4_forbidden_tomb"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch3_training_result"
+required_story_flag = &"chapter2_complete"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("a"), SubResource("b")])

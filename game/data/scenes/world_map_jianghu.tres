@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1_scene"]
+[ext_resource type="Resource" path="res://data/dialogs/ch7_route_choice.tres" id="2_dialog"]
+[ext_resource type="Resource" path="res://build/world_coast_20261031h_system01/world_v16_layout02.tres" id="3_layout"]
+[ext_resource type="Resource" path="res://build/world_coast_20261031h_system01/world_v16_stream02.tres" id="4_stream"]
+
+[resource]
+script = ExtResource("1_scene")
+scene_id = &"world_map_jianghu"
+display_name = "江湖行旅图"
+background_path = "res://art/maps/world_coast_20261031h/candidate02/overview.png"
+streamed_background = ExtResource("4_stream")
+bgm_path = "res://art/audio/bgm/bgm_jianghu_journey_v4.wav"
+on_enter_dialog = ExtResource("2_dialog")
+on_enter_require_flag = &"chapter6_complete"
+on_enter_once_flag = &"seen_ch7_route_choice"
+is_walkable = true
+map_layout = ExtResource("3_layout")
+player_spawn = Vector2(0.21158855, 0.48719475)
+player_visual_scale = 0.754
+camera_zoom = 1.25
+metadata/coordinate_space_version = 16
+metadata/geography_revision = "world_coast_20261031h"

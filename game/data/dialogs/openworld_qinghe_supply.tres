@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "行旅货郎"
+text = "一路往北可到雪关，往东可找渡口搭船。路上刀匪不认你的师门，也不管你下山几日；先备些药，贵重兵器拿到便是自己的本事。"
+
+choices = Array[Dictionary]([{"text":"看看补给与兵器","action":"shop:wulin_trade_hall"},{"text":"继续赶路","next":"end"}])
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_qinghe_supply"
+nodes = Array[Resource]([SubResource("start")])

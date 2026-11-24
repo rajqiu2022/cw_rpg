@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "旁白"
+text = "石壁水槽里压着一枚旧铜钱。暗缝中的浮木随水位升降，恰好托着铜钱叩石。"
+on_end = "next:clue"
+[sub_resource type="Resource" id="clue"]
+script = ExtResource("2")
+node_id = &"clue"
+speaker = "冷孤云"
+text = "不是显灵。水涨，浮木托钱叩石；水退，铜钱落回暗槽。先把机关原样记下，再回去说明。"
+set_flags = Array[Dictionary]([{"key":"longmen_mystery_investigated_20261018t", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"luoyang_layout_quest_20261018t/longmen_investigate"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("clue")])

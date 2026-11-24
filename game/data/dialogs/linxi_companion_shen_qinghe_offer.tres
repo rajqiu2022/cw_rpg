@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dialog"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_node"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_node")
+node_id = &"start"
+speaker = "沈青禾"
+portrait_path = "res://art/characters/companions/portrait_shen_qinghe_v1.png"
+text = "还要我问第二遍？小时候你替我挡过野狗，我也替你瞒过多少次闯祸。如今真出了事，别想再丢下我一个人逞英雄。我的剑能自保，青木护元诀也能照应伤势。"
+voice_emotion = "angry"
+choices = Array[Dictionary]([{"text": "青禾，和我一起走", "next": "joined"}, {"text": "此行危险，再给我一点时间", "next": "later"}])
+
+[sub_resource type="Resource" id="node_joined"]
+script = ExtResource("2_node")
+node_id = &"joined"
+speaker = "沈青禾"
+portrait_path = "res://art/characters/companions/portrait_shen_qinghe_v1.png"
+text = "这才像话。路上彼此照看；你要是又把事情全扛在自己身上，我可不会跟你客气。"
+voice_emotion = "happy"
+give_items = Array[Dictionary]([{"id": "linxi_iron_sword", "count": 1}])
+set_flags = Array[Dictionary]([{"key": "companion_shen_qinghe_joined", "value": true}])
+on_end = "end"
+
+[sub_resource type="Resource" id="node_later"]
+script = ExtResource("2_node")
+node_id = &"later"
+speaker = "沈青禾"
+portrait_path = "res://art/characters/companions/portrait_shen_qinghe_v1.png"
+text = "行，你慢慢想。可别等事情闹大了，才想起回来找我。"
+voice_emotion = "angry"
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dialog")
+dialog_id = &"linxi_companion_shen_qinghe_offer"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_joined"), SubResource("node_later")])

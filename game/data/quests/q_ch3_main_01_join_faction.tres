@@ -5,11 +5,12 @@
 [resource]
 script = ExtResource("1_qdef")
 quest_id = &"q_ch3_main_01_join_faction"
-title = "入派抉择"
+title = "江湖道路"
 kind = 0
-desc_not_started = "武林大会召开，五派齐聚商议大弟子被杀事件。茗雾山庄以"也是受害者"身份出席。"
-desc_in_progress = "各派当场考校江湖晚辈——你需要在五派中选择其一加入。"
-desc_completed = "你已选择门派。从此，你的武功、师承、江湖关系都将围绕这一选择展开。"
+desc_not_started = "武林大会召开，五派齐聚商议大弟子被杀事件。茗雾山庄以「也是受害者」的身份出席。"
+desc_in_progress = "各派当场考校江湖晚辈——你可以选择加入一派，也可以坚持无门派自修。"
+desc_completed = "你已确认自己的江湖道路。无论师承门派还是独行自修，追查真相的选择仍在你手中。"
+tracker_hint = "武林大会 · 考校场"
 completion_triggers = Array[String](["flag_set:joined_faction"])
 reward_gold = 50
 reward_exp = 40

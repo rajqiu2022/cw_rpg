@@ -1,0 +1,38 @@
+id: luoyang_yamen_complete_wall_modules_v11b
+description: One targeted edit correcting complete wall-run length and common section in a balanced 2x2 atlas.
+backend: codex_builtin_imagegen
+model: builtin
+execution_owner: producer
+intent: edit
+background: transparent
+transparent_background: true
+reference_images:
+  - assets/raw/scene_module/luoyang_yamen_complete_walls_v11/complete_wall_modules_v11_candidate.png
+  - assets/raw/scene_module/luoyang_yamen_front_v9/front_wall_v9_candidate.png
+  - game/art/maps/luoyang_modular_v3/source/courtyard_wall_gate_v3.png
+reference_sha256:
+  - 0ebc3a53a7f29700823259c132fd31f4f48abceec0492db640f80c227ec36741
+  - b903c3aef333e0c3880ad0fb2fc83e131336cc381fde8d4f0fa88b59585149fb
+  - dbe22e8e6072cbfee28fd5fb01cbc393f532de12ed9f356e7ec269fff5248221
+require_reference_images: true
+scope: TARGETED_ENCLOSURE_LENGTH_CORRECTION_NOT_ADOPTED
+components_grid:
+  top_row: [west_south_L, east_south_L]
+  bottom_row: [west_north, east_north]
+prompt_template: |
+  Use case: precise-object-edit
+  Asset type: ONE transparent RGBA architectural atlas, FOUR separate complete courtyard-wall modules, arranged in a balanced TWO-BY-TWO grid rather than one squeezed horizontal row.
+
+  Image 1 is the edit target. Change ONLY the insufficient north-south construction lengths and reconcile one common wall/roof cross-section. Keep its aged grey barrel/pan tiles, tile detail, weathered off-white plaster, grey-brick base, handed curved corners, full horizontal arms, camera and upper-left/front daylight. Image 2 is the approved material and relative wall-height reference; Image 3 only confirms camera and gate-relative scale. Do not generate a gate, hall or any reference ground.
+
+  All four modules have ONE pixels-per-metre and the SAME physical section. Let H mean the complete upright ridge-to-brick-foot height of a horizontal wall, about200 game logical pixels. Keep the horizontal-arm construction and height. All south-facing passage end faces and roof sections belong to this same wall family, not shorter miniature walls. Do not squash thickness, tiles, bricks or height to fit the canvas. Give the atlas enough height and transparent spacing; NOT a very wide3:1 strip.
+
+  Top LEFT: southwest L, its complete horizontal arm extends EAST/right about2.5H to the future gate post, without a decorative end pillar. Its continuously curved corner turns NORTH/up-screen. REBUILD its north-going ridge as a genuinely long run: the projected ground distance from the SOUTH corner turn to the NORTH side-passage opening is at least2.4H. Top RIGHT: separately lit southeast L, full horizontal arm WEST/left, same2.5H arm and at least2.4H NORTH-going run. Keep the entire straight-arm/curved-roof connection inside each component, coherent tile size with no pasted-cap tangent seam.
+
+  Bottom LEFT: west-north wall with at least1.6H of true north-south projected ground length, complete narrow SOUTH-facing plaster/brick passage end cap, and its short NORTH-end hall join extending EAST/right about0.32H. Bottom RIGHT: separately lit east-north wall with the same1.6H run and SOUTH end cap, short NORTH-end hall join WEST/left. Do not draw a hall or bridge these separate components together.
+
+  Measure longitudinal length ALONG the ridge between corresponding corner/opening or opening/hall ground stations. Upright wall height below a roof is NOT part of that run. The rejected image has only about1.3–1.5H south runs: they must become visibly almost twice as long while wall height stays fixed. North runs also need their full1.6H. Longer clean interiors may be selected at unchanged uniform scale later. No repeated end caps inside a run, no image stretch, no fake length obtained from total silhouette bounding-box height.
+
+  Fixed parallel orthographic camera: directly SOUTH looking NORTH, yawZERO, elevation30degrees. North-south ridges vertical on screen, east-west ridges and brick courses horizontal. Longitudinal broad wall faces remain edge-on, never broad diagonal facades. Retain real narrow coping thickness. West/east lighting must not be mirrored. Match the same tile pitch and eave/plinth proportions on every module.
+
+  True transparent background, complete crisp silhouettes, ample clear margins between all FOUR modules and canvas edges. Preserve detailed materials; do not recolour or add noise. No ground, cast ground shadow, gate, hall, props, scenery, text, labels, dimensions, watermark, black backdrop or checkerboard. Deliver this ONE targeted edited atlas only.

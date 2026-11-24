@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+
+[ext_resource type="Resource" path="res://data/maps/ch4_s1_luoyang_yamen_layout_v3.tres" id="1_peg8k"]
+[ext_resource type="Resource" path="res://data/dialogs/ch4_yamen_intro.tres" id="2_2goc1"]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="3_hjrv7"]
+
+[resource]
+script = ExtResource("3_hjrv7")
+scene_id = &"ch4_s1_luoyang_yamen"
+display_name = "洛阳 · 府衙外院"
+background_path = "res://art/maps/luoyang_modular_v3_wall_street_proposal/root_wall_v5/ch4_s1_luoyang_yamen/floor.png"
+bgm_path = "res://art/audio/bgm/bgm_city_ceremony_v4.wav"
+on_enter_dialog = ExtResource("2_2goc1")
+on_enter_require_flag = &"chapter3_complete"
+on_enter_once_flag = &"seen_ch4_yamen"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("1_peg8k")
+player_spawn = Vector2(0.5, 0.9082031)
+player_visual_scale = 0.91
+camera_zoom = 1.05
+npcs = Array[Dictionary]([{
+"interaction_action": "spar:yamen_patrol:luoyang_patrol:府衙巡捕:30:7",
+"npc_id": "spar_yamen_patrol",
+"npc_name": "府衙巡捕 · 可切磋",
+"pos": Vector2(0.38085938, 0.48828125),
+"scale": 0.96,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"
+}, {
+"conversation_base_facing": "left",
+"interaction_action": "spar:yamen_captain:boss_luoyang_captain:府衙都头:42:10",
+"npc_id": "spar_yamen_captain",
+"npc_name": "府衙都头 · 可切磋",
+"pos": Vector2(0.5826823, 0.4248047),
+"require_flag": "luoyang_case_found_clue",
+"scale": 0.82,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_wulin_examiner_idle_down_4f.png"
+}, {
+"dialog_id": "ch8_aftermath_luoyang",
+"hide_flag": "ch8_aftermath_luoyang_done",
+"npc_id": "ch8_luoyang_final_clerk",
+"npc_name": "终局案卷吏",
+"pos": Vector2(0.64453125, 0.5761719),
+"require_quest_active": "q_ch8_main_13_aftermath_returns",
+"scale": 0.82,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png"
+}])
+metadata/luoyang_layered_revision = 3
+metadata/city_manifest_sha = "b7bfdd920ba69858b70c9cf77c5d3b65161f14032ae3eb0e1f5f5f0b04385315"

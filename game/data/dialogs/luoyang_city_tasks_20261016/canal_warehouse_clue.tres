@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "这道拖痕里确有白灰和碎瓦。痕迹从仓门往外延伸，不是从栈桥运进来。"
+on_end = "next:detail"
+
+[sub_resource type="Resource" id="detail"]
+script = ExtResource("2")
+node_id = &"detail"
+speaker = "冷孤云"
+text = "墙脚石缝夹着沾泥的纸角，下面还有一截断绳。小心翻查，应该能核对货物来处。"
+set_flags = Array[Dictionary]([{"key":"canal_grudge_warehouse_located","value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch4_city_tasks_20261016_canal_warehouse_clue"
+entry_node_id = &"start"
+required_story_flag = &"canal_grudge_route_heard"
+blocked_story_flag = &"canal_grudge_warehouse_located"
+nodes = Array[Resource]([SubResource("start"), SubResource("detail")])
+

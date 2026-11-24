@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3shop_qingfeng"]
+[gd_scene load_steps=7 format=3 uid="uid://b3shop_qingfeng"]
 
 [ext_resource type="Script" path="res://scripts/ui/shop_ui.gd" id="1_shop"]
+[ext_resource type="Texture2D" path="res://art/ui/shop/ui_shop_panel_quest_style_v2.png" id="2_panel"]
+[ext_resource type="Texture2D" path="res://art/ui/inventory/buttons/btn_x_normal.png" id="3_x_normal"]
+[ext_resource type="Texture2D" path="res://art/ui/inventory/buttons/btn_x_hover.png" id="4_x_hover"]
+[ext_resource type="Texture2D" path="res://art/ui/inventory/buttons/btn_x_pressed.png" id="5_x_pressed"]
+[ext_resource type="Texture2D" path="res://art/ui/shop/shop_trade_confirm_panel_v1.png" id="6_confirm_panel"]
 
 [node name="Shop" type="Control"]
 layout_mode = 3
@@ -16,86 +21,282 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.08, 0.06, 0.05, 0.92)
+color = Color(0.015, 0.022, 0.028, 0.76)
 
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="Panel" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -500.0
-offset_top = -340.0
-offset_right = 500.0
-offset_bottom = 340.0
+offset_left = -690.0
+offset_top = -460.0
+offset_right = 690.0
+offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Body" type="VBoxContainer" parent="Panel"]
-layout_mode = 2
-theme_override_constants/separation = 14
+[node name="PanelArt" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("2_panel")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="HeaderRow" type="HBoxContainer" parent="Panel/Body"]
-layout_mode = 2
-theme_override_constants/separation = 18
+[node name="Content" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = 302.0
+offset_right = 1322.0
+offset_bottom = 738.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
 
-[node name="ShopName" type="Label" parent="Panel/Body/HeaderRow"]
-unique_name_in_owner = true
+[node name="Tabs" type="TabContainer" parent="Panel/Content"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "—"
-theme_override_font_sizes/font_size = 26
+tabs_visible = false
+current_tab = 0
 
-[node name="GoldLabel" type="Label" parent="Panel/Body/HeaderRow"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "金 0"
-theme_override_font_sizes/font_size = 22
-horizontal_alignment = 2
-
-[node name="Greeting" type="Label" parent="Panel/Body"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "—"
-autowrap_mode = 3
-theme_override_font_sizes/font_size = 16
-
-[node name="Tabs" type="TabContainer" parent="Panel/Body"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 18
-
-[node name="买入" type="ScrollContainer" parent="Panel/Body/Tabs"]
+[node name="买入" type="ScrollContainer" parent="Panel/Content/Tabs"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="BuyList" type="VBoxContainer" parent="Panel/Body/Tabs/买入"]
+[node name="BuyList" type="VBoxContainer" parent="Panel/Content/Tabs/买入"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="卖出" type="ScrollContainer" parent="Panel/Body/Tabs"]
+[node name="卖出" type="ScrollContainer" parent="Panel/Content/Tabs"]
 visible = false
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="SellList" type="VBoxContainer" parent="Panel/Body/Tabs/卖出"]
+[node name="SellList" type="VBoxContainer" parent="Panel/Content/Tabs/卖出"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="Footer" type="HBoxContainer" parent="Panel/Body"]
-layout_mode = 2
-alignment = 2
-
-[node name="CloseBtn" type="Button" parent="Panel/Body/Footer"]
+[node name="ShopName" type="Label" parent="Panel"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(140, 44)
+layout_mode = 0
+offset_left = 410.0
+offset_top = 48.0
+offset_right = 970.0
+offset_bottom = 126.0
+text = "林西药铺"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoldLabel" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1082.0
+offset_top = 72.0
+offset_right = 1228.0
+offset_bottom = 112.0
+text = "金 0"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Greeting" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 720.0
+offset_top = 151.0
+offset_right = 1218.0
+offset_bottom = 193.0
+text = "—"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Summary" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 82.0
+offset_top = 216.0
+offset_right = 470.0
+offset_bottom = 248.0
+horizontal_alignment = 0
+vertical_alignment = 1
+text = "库存 0 · 可回收 0"
+
+[node name="LastAction" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1006.0
+offset_top = 216.0
+offset_right = 1268.0
+offset_bottom = 248.0
+text = "请择物交易"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BuyTabButton" type="TextureButton" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 105.0
+offset_top = 125.0
+offset_right = 405.0
+offset_bottom = 219.0
+toggle_mode = true
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SellTabButton" type="TextureButton" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 405.0
+offset_top = 125.0
+offset_right = 705.0
+offset_bottom = 219.0
+toggle_mode = true
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="CloseBtn" type="TextureButton" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1263.0
+offset_top = 73.0
+offset_right = 1309.0
+offset_bottom = 119.0
+texture_normal = ExtResource("3_x_normal")
+texture_pressed = ExtResource("5_x_pressed")
+texture_hover = ExtResource("4_x_hover")
+ignore_texture_size = false
+
+[node name="TableHeader" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 252.0
+offset_right = 1302.0
+offset_bottom = 296.0
+theme_override_constants/separation = 18
+
+[node name="NameHeader" type="Label" parent="Panel/TableHeader"]
+custom_minimum_size = Vector2(320, 44)
 layout_mode = 2
-text = "关闭 (Esc)"
-theme_override_font_sizes/font_size = 18
+text = "名字"
+vertical_alignment = 1
+
+[node name="DescriptionHeader" type="Label" parent="Panel/TableHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "描述"
+vertical_alignment = 1
+
+[node name="QuantityHeader" type="Label" parent="Panel/TableHeader"]
+custom_minimum_size = Vector2(230, 44)
+layout_mode = 2
+text = "数量"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TradeTotal" type="Label" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 852.0
+offset_top = 754.0
+offset_right = 1088.0
+offset_bottom = 804.0
+text = "交易金额：0 金"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ConfirmTradeButton" type="Button" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1134.0
+offset_top = 759.0
+offset_right = 1282.0
+offset_bottom = 799.0
+text = "确定"
+
+[node name="TradeConfirmOverlay" type="Control" parent="Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="Panel/TradeConfirmOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.01, 0.015, 0.02, 0.72)
+
+[node name="Dialog" type="TextureRect" parent="Panel/TradeConfirmOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -380.0
+offset_top = -152.0
+offset_right = 380.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_confirm_panel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Margin" type="MarginContainer" parent="Panel/TradeConfirmOverlay/Dialog"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 62
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 62
+theme_override_constants/margin_bottom = 32
+
+[node name="VBox" type="VBoxContainer" parent="Panel/TradeConfirmOverlay/Dialog/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ConfirmPrompt" type="Label" parent="Panel/TradeConfirmOverlay/Dialog/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "确认交易？"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buttons" type="HBoxContainer" parent="Panel/TradeConfirmOverlay/Dialog/Margin/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 28
+
+[node name="CancelTradeButton" type="Button" parent="Panel/TradeConfirmOverlay/Dialog/Margin/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 46)
+layout_mode = 2
+text = "取消"
+
+[node name="AcceptTradeButton" type="Button" parent="Panel/TradeConfirmOverlay/Dialog/Margin/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(190, 46)
+layout_mode = 2
+text = "确定"

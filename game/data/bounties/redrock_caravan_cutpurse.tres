@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="BountyDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/bounty_def.gd" id="1"]
+[resource]
+script = ExtResource("1")
+bounty_id = &"redrock_caravan_cutpurse"
+display_name = "割囊宋八"
+title = "盗驼队银袋"
+description = "赤岩商队在西口被割了行囊。有人见宋八带着印有商号的银袋，沿官道往中原旧驿去了。"
+board_city = &"redrock"
+recommended_min_level = 4
+recommended_max_level = 6
+enemy_ids = Array[StringName]([&"warrant_redrock_caravan_cutpurse"])
+locations = Array[Dictionary]([{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 废马棚外","pos":Vector2(0.7,0.54)},{"scene_id":&"openworld_bianzhou_old_post","label":"中原旧驿 · 南来官道","pos":Vector2(0.49,0.71)}])
+reward_reputation = 12
+reward_training = 20
+reward_exp = 45
+reward_gold = 72
+field_sprite_path = "res://art/characters/npc_qi_yunsheng_idle_down_4f_v1_runtime.png"

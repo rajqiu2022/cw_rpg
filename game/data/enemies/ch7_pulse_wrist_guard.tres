@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="EnemyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/enemy_def.gd" id="1_enemy"]
+
+[resource]
+script = ExtResource("1_enemy")
+enemy_id = &"ch7_pulse_wrist_guard"
+display_name = "内院点腕巡守"
+portrait_path = ""
+battle_actor_path = "res://art/sprites/battle/tomb_docks_20261122/shadow/ready.tres"
+battle_actor_scale = 0.9310
+battle_actor_use_exact_scale = true
+battle_actor_flip_h = false
+ready_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/shadow/ready.tres")
+move_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/shadow/ready.tres", "res://art/sprites/battle/tomb_docks_20261122/shadow/step.tres")
+attack_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/shadow/ready.tres", "res://art/sprites/battle/tomb_docks_20261122/shadow/draw.tres", "res://art/sprites/battle/tomb_docks_20261122/shadow/strike.tres", "res://art/sprites/battle/tomb_docks_20261122/shadow/ready.tres")
+hit_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/shadow/hit1.tres", "res://art/sprites/battle/tomb_docks_20261122/shadow/hit2.tres")
+defeat_frame_paths = PackedStringArray("res://art/sprites/battle/tomb_docks_20261122/shadow/kneel.tres", "res://art/sprites/battle/tomb_docks_20261122/shadow/down.tres")
+level = 19
+max_hp = 370
+max_mp = 100
+attack = 63
+defense = 22
+speed = 55
+skill_ids = Array[StringName]([&"ch7_wrist_tap"])
+aggression = 1.0
+drop_gold_min = 12
+drop_gold_max = 12
+drop_exp = 45

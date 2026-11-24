@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "刑樊天"
+text = "你已经选了自己的查法，就别再被我的沉默牵着走。去古道看看那枚火漆，回来时我们再核对各自拿到的证词。"
+voice_emotion = "solemn"
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_master_after_choice"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start")])

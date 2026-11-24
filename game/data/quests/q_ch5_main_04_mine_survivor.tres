@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_qdef"]
+
+[resource]
+script = ExtResource("1_qdef")
+quest_id = &"q_ch5_main_04_mine_survivor"
+title = "矿灯未熄"
+kind = 0
+desc_not_started = "追兵先一步闯入废弃矿道，显然想让某位旧案知情者永远闭口。"
+desc_in_progress = "击退矿道追兵，再与藏在旧作业间的幸存者核对十八年前的搬尸路线。"
+desc_completed = "幸存者证明旧案既有伪旗嫁祸，也有烈云旧部误信复仇。冷孤云将两层责任分别记入卷宗。"
+tracker_hint = "古峰 · 废弃矿道"
+completion_triggers = Array[String](["testimony_heard:ts_ch5_old_case_survivor"])
+reward_gold = 110
+reward_exp = 175
+reward_skills = Array[StringName]([&"cold_ridge_guard_breath"])
+progress_records = Array[Dictionary]([{"trigger":"flag_set:ch5_mine_hunters_defeated", "text":"灭口者已被击退，旧作业间仍有一盏矿灯亮着。"}, {"trigger":"testimony_heard:ts_ch5_old_case_survivor", "text":"幸存者证词把伪旗搬尸与烈云误报复区分为两段事件。"}])

@@ -1,0 +1,63 @@
+{
+  "status": "NEW_A1_SHADER_ENV_CANDIDATES_NOT_PARSED_RENDERED_STAGED",
+  "parent_ENV_sha256": "a751dbd4ce014abd2e808d7c9a947dc0e4a314d4b42930a6392a1d6eb7c20a7d",
+  "candidate_ENV_sha256": "3a66fdf24746c715ee02b50501d661820b4f607a2ca4ec0328188bd8ff0b6836",
+  "parent_stone_shader_sha256": "411bceeec31d10025ff17e21e36b416054425e916e04ee39e91038b709acda83",
+  "stone_shader_sha256": "675dd44ef545e0a19687f7c6d86de00d0d44dfacde247c570198764458133213",
+  "grass_shader_sha256": "1bc73ea4f676b2f6a77e00e71edc04fb1a983f9d58bc2ee7a66592e39c6c5fba",
+  "exact_hunks": [
+    {
+      "label": "Stone shader path only",
+      "before": "res://build/luoyang_city_full_rollout_20261022ap_system01/visual_transition_successor02_retry2/artisan_ground_union_exterior_READY.gdshader",
+      "after": "res://build/luoyang_city_full_rollout_20261022ap_system01/artisan_a1_material_epoch01/stone_union_contrast_candidate.gdshader"
+    },
+    {
+      "label": "Stone shader pin only",
+      "before": "411bceeec31d10025ff17e21e36b416054425e916e04ee39e91038b709acda83",
+      "after": "675dd44ef545e0a19687f7c6d86de00d0d44dfacde247c570198764458133213"
+    },
+    {
+      "label": "New Artisan-only grass source constants",
+      "before": "const EXAMINER_SOURCES=",
+      "after": "const ARTISAN_GRASS_SHADER=\"res://build/luoyang_city_full_rollout_20261022ap_system01/artisan_a1_material_epoch01/grass_saturation_candidate.gdshader\"\nconst ARTISAN_GRASS_SHADER_SHA=\"1bc73ea4f676b2f6a77e00e71edc04fb1a983f9d58bc2ee7a66592e39c6c5fba\"\nconst EXAMINER_SOURCES="
+    },
+    {
+      "label": "OnlyArtisan source_paths adds grass shader",
+      "before": "\tif id==&\"luoyang_artisan_residential_20261022ap\": out[ARTISAN_UNION_SHADER]=true",
+      "after": "\tif id==&\"luoyang_artisan_residential_20261022ap\": out[ARTISAN_UNION_SHADER]=true;out[ARTISAN_GRASS_SHADER]=true"
+    },
+    {
+      "label": "OnlyArtisan source_pins adds grass shader",
+      "before": "\tif scene.scene_id==&\"luoyang_artisan_residential_20261022ap\": source_pins[ARTISAN_UNION_SHADER]=ARTISAN_UNION_SHADER_SHA",
+      "after": "\tif scene.scene_id==&\"luoyang_artisan_residential_20261022ap\": source_pins[ARTISAN_UNION_SHADER]=ARTISAN_UNION_SHADER_SHA;source_pins[ARTISAN_GRASS_SHADER]=ARTISAN_GRASS_SHADER_SHA"
+    },
+    {
+      "label": "Load exact grass shader without new texture or author",
+      "before": "\tif shader==null or shader.resource_path!=ARTISAN_UNION_SHADER: return fail(\"AP_UNION_EXACT_SHADER\")",
+      "after": "\tif shader==null or shader.resource_path!=ARTISAN_UNION_SHADER: return fail(\"AP_UNION_EXACT_SHADER\")\n\tvar grass_shader: Shader=ResourceLoader.load(ARTISAN_GRASS_SHADER) as Shader\n\tif grass_shader==null or grass_shader.resource_path!=ARTISAN_GRASS_SHADER: return fail(\"AP_ARTISAN_EXACT_GRASS_SHADER\")"
+    },
+    {
+      "label": "Exact original24grass fixed grid; no native data writes",
+      "before": "\tif not owner.call(): return fail(\"AP_UNION_CANCELLED_BEFORE_ATTACH\")",
+      "after": "\tvar stone_count: int=prepared.size()\n\tif stone_count!=62: return fail(\"AP_A1_EXACT_STONE_TILE_COUNT\")\n\tvar grass_count: int=0\n\tfor yi: int in 4:\n\t\tfor xi: int in 6:\n\t\t\tvar wanted: String=\"SceneObject_ap_artisan_grass_base_v2_%d_%d\"%[xi,yi]\n\t\t\tvar found: Array[Sprite2D]=[]\n\t\t\tfor child: Node in visual.get_children():\n\t\t\t\tif child is Sprite2D and String(child.name)==wanted: found.append(child as Sprite2D)\n\t\t\tif found.size()!=1: return fail(\"AP_A1_EXACT_GRASS_TILE\",wanted)\n\t\t\tvar sprite: Sprite2D=found[0]\n\t\t\tvar expected: Vector2=(Vector2(xi*512+256,yi*512+256)/SIZE)*SIZE\n\t\t\tif sprite.texture==null or sprite.texture.resource_path!=\"res://art/external/polyhaven/world_terrain_v14_ninth/grass_ground/grass_ground_diff_2k.jpg\" or sprite.texture.get_size()!=Vector2(2048,2048) or not sprite.centered or sprite.position!=expected or sprite.scale!=Vector2(.25,.25) or sprite.rotation!=0.0 or sprite.z_index!=-30 or sprite.material!=null: return fail(\"AP_A1_NATIVE_GRASS_TRANSFORM\",wanted)\n\t\t\tvar material:=ShaderMaterial.new();material.shader=grass_shader\n\t\t\tmaterial.set_shader_parameter(\"ap_grass_saturation\",0.58)\n\t\t\tprepared.append({\"sprite\":sprite,\"material\":material,\"kind\":\"grass\"});grass_count+=1\n\tif grass_count!=24: return fail(\"AP_A1_EXACT_GRASS_TILE_COUNT\")\n\tif not owner.call(): return fail(\"AP_UNION_CANCELLED_BEFORE_ATTACH\")"
+    },
+    {
+      "label": "Accurate perkind metadata; original stone alpha receipt retained",
+      "before": "\t\tsprite.set_meta(\"ap_union_exterior_transition\",{\"segment_count\":32,\"feather_world\":32.0,\"core_opacity\":1.0,\"native_transform_and_texture_unchanged\":true,\"no_tile_or_interior_section_seams\":true})",
+      "after": "\t\tif row.get(\"kind\", \"stone\")==\"grass\":\n\t\t\tsprite.set_meta(\"ap_artisan_material_a1\",{\"kind\":\"grass\",\"saturation\":0.58,\"alpha_unchanged\":true,\"native_transform_and_texture_unchanged\":true})\n\t\telse:\n\t\t\tsprite.set_meta(\"ap_union_exterior_transition\",{\"segment_count\":32,\"feather_world\":32.0,\"core_opacity\":1.0,\"native_transform_and_texture_unchanged\":true,\"no_tile_or_interior_section_seams\":true})\n\t\t\tsprite.set_meta(\"ap_artisan_material_a1\",{\"kind\":\"stone\",\"contrast\":0.45,\"tone\":Color(.53,.55,.52,1),\"alpha_union_unchanged\":true,\"native_transform_and_texture_unchanged\":true})"
+    },
+    {
+      "label": "Keep native_tile_count62, explicitly report24grass material only",
+      "before": "return {\"ok\":true,\"native_tile_count\":prepared.size(),\"source_sections\":9,",
+      "after": "return {\"ok\":true,\"native_tile_count\":stone_count,\"grass_material_tile_count\":grass_count,\"source_sections\":9,"
+    }
+  ],
+  "wholebyte_inverse": true,
+  "original62tile_specifications_and32segments_bytes_unchanged": true,
+  "stone32px_alpha_formula_unchanged": true,
+  "native_layout_record_mask_routes_NPC_touched": false,
+  "formal_files_unchanged": true,
+  "engine_calls": 0,
+  "PNG_processing_calls": 0,
+  "A2_expansion": false
+}

@@ -1,0 +1,42 @@
+{
+  "change_id": "luoyang-market-frontage-20261020af",
+  "task_id": "luoyang_market_frontage_20261020af_apothecary_single_entry_v1",
+  "asset_role": "independent_apothecary_facade",
+  "execution_backend": "builtin_image_gen",
+  "execution_mode": "generate",
+  "transparent_background": true,
+  "model": null,
+  "provider": null,
+  "cost": null,
+  "attempt_budget": 1,
+  "attempts_used": 1,
+  "retries_allowed": false,
+  "cli_fallback_allowed": false,
+  "network_fallback_allowed": false,
+  "status": "GENERATED_ONCE_REJECTED_RATIO_AND_MARGIN_PRESERVED_RAW",
+  "prompt_path": "prompts/luoyang_market_frontage_20261020af/facade_luoyang_apothecary_single_entry_v1.txt",
+  "prompt_sha256": "152A5E0475F85DC027919CE3530DA09C5CC98129259BD98D55C2BD822D2D7C08",
+  "reference_images": [
+    {
+      "path": "game/art/maps/luoyang_market_enrichment_v2/textures/street_row.png",
+      "sha256": "C012D6D3698A8CE00D3F3F32202614A1D2743DC5773C53E5521FD99821DA0303",
+      "use": "camera, material scale and weathering only; do not copy its three-bay layout"
+    }
+  ],
+  "raw_output_path": "assets/raw/luoyang_market_frontage_20261020af/facade_luoyang_apothecary_single_entry_v1.png",
+  "generation_contract": {
+    "one_complete_asset": true,
+    "principal_entrance_count": 1,
+    "genuine_transparent_margin_each_side_min_fraction": 0.10,
+    "forbidden": ["people", "trees", "ground_plate", "broad_shadow_plate", "neighboring_building", "text", "arrows", "ui", "checkerboard"]
+  },
+  "post_generation_measurement": {
+    "preserve_returned_bytes_exactly": true,
+    "measure_actual_canvas_and_alpha_bounds": true,
+    "measure_source_door_top_and_threshold": true,
+    "later_runtime_width_target_px": 380,
+    "later_runtime_door_clear_height_px_range": [120, 150],
+    "uniform_scale_only": true,
+    "formal_or_runtime_admission": false
+  }
+}

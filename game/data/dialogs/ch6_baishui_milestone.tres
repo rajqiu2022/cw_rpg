@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = ""
+text = "碑面风化得厉害，仍能辨出“林西十二里、白水旧驿”几个字。侧边一道新凿痕正试图抹去驿站编号。"
+on_end = "next:hero"
+
+[sub_resource type="Resource" id="hero"]
+script = ExtResource("2")
+node_id = &"hero"
+speaker = "冷孤云"
+text = "十二里正合原册最后一次交接时辰。碑脚旁的窄辙往东，断在翻车的阴面。车也许只是坏在路边；得贴近轮轴，看看是不是换过车。"
+set_flags = Array[Dictionary]([{"key":"ch6_baishui_milestone_checked", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch6_baishui_milestone"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("hero")])

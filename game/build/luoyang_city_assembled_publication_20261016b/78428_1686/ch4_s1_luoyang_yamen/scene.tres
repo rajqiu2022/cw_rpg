@@ -1,0 +1,56 @@
+[gd_resource type="Resource" script_class="SceneScript" format=3]
+
+[ext_resource type="Resource" path="res://build/luoyang_city_assembled_publication_20261016b/78428_1686/ch4_s1_luoyang_yamen/layout.tres" id="1_sgs5w"]
+[ext_resource type="Resource" path="res://data/dialogs/ch4_yamen_intro.tres" id="2_yxxtk"]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="3_civkj"]
+
+[resource]
+script = ExtResource("3_civkj")
+scene_id = &"ch4_s1_luoyang_yamen"
+display_name = "洛阳 · 府衙外院"
+background_path = "res://art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/ground_v14/root_ground_v14_02/floor.png"
+bgm_path = "res://art/audio/bgm/bgm_city_ceremony_v4.wav"
+on_enter_dialog = ExtResource("2_yxxtk")
+on_enter_require_flag = &"chapter3_complete"
+on_enter_once_flag = &"seen_ch4_yamen"
+is_walkable = true
+actor_positions_are_feet = true
+is_settlement = true
+map_layout = ExtResource("1_sgs5w")
+player_spawn = Vector2(0.5, 0.9082031)
+player_visual_scale = 0.91
+camera_zoom = 1.05
+npcs = Array[Dictionary]([{
+"interaction_action": "spar:yamen_patrol:luoyang_patrol:府衙巡捕:30:7",
+"npc_id": "spar_yamen_patrol",
+"npc_name": "府衙巡捕 · 可切磋",
+"pos": Vector2(0.38085938, 0.48828125),
+"scale": 0.96,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_escort_guard_idle_down_4f_v2_runtime.png"
+}, {
+"conversation_base_facing": "left",
+"interaction_action": "spar:yamen_captain:boss_luoyang_captain:府衙都头:42:10",
+"npc_id": "spar_yamen_captain",
+"npc_name": "府衙都头 · 可切磋",
+"pos": Vector2(0.5826823, 0.4248047),
+"require_flag": "luoyang_case_found_clue",
+"scale": 0.82,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_wulin_examiner_idle_down_4f.png"
+}, {
+"dialog_id": "ch8_aftermath_luoyang",
+"hide_flag": "ch8_aftermath_luoyang_done",
+"npc_id": "ch8_luoyang_final_clerk",
+"npc_name": "终局案卷吏",
+"pos": Vector2(0.64453125, 0.5761719),
+"require_quest_active": "q_ch8_main_13_aftermath_returns",
+"scale": 0.82,
+"sprite_path": "res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png"
+}])
+metadata/luoyang_layered_revision = 3
+metadata/city_manifest_sha = "b7bfdd920ba69858b70c9cf77c5d3b65161f14032ae3eb0e1f5f5f0b04385315"
+metadata/city_enclosure_manifest_sha = "2e1f562c429aabc89ebd38f044192e0f8dd71738147cb51b5fba4f9d6b7b50d4"
+metadata/city_ground_manifest_sha = "1fd971708ac0375e557749f8175b804ac58d71409e717e7be88cab7eb78e181f"
+metadata/city_ground_manifest_path = "res://art/maps/luoyang_enclosure_v11/ch4_s1_luoyang_yamen/ground_v14/root_ground_v14_02/ground_capture.json"
+metadata/city_assembled_author_sha_20261016b = "c38c1e2a59cba1f12ae5cd11dfe6c74c3dea38fe151abedbe0835cdad0aad28b"
+metadata/city_assembled_parent_scene_path = "res://data/scenes/ch4_s1_luoyang_yamen.tres"
+metadata/city_assembled_status = "CANDIDATE_NOT_FORMAL"

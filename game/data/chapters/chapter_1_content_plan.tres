@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ChapterContentPlan" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/chapter_content_plan.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+chapter = 1
+title = "林西村下山"
+main_scene_ids = Array[StringName]([&"linxi_tutorial", &"linxi_village_center", &"ch1_s1_road", &"ch1_s2_qingfeng", &"ch1_s3_zhuwei_forest", &"ch1_s4_zhuwei_beast_cave", &"ch1_s3_west_ruin", &"ch1_s3_ruin_inner"])
+main_quest_ids = Array[StringName]([&"q_ch1_main_get_sword", &"q_ch1_main_road", &"q_ch1_main_return_master", &"q_ch1_main_training", &"q_ch1_main_zhuwei", &"q_ch1_main_village_inquiry", &"q_ch1_main_zhuwei_wilds", &"q_ch1_main_west_ruin_trace", &"q_ch1_main_west_ruin"])
+side_quest_ids = Array[StringName]([&"q_ch1_side_01_rescue_husband", &"q_ch1_side_02_cliff_herb", &"q_ch1_side_03_stone_inscription", &"q_ch1_side_06_caravan_escort", &"q_ch1_side_08_mountain_patrol", &"q_ch1_side_09_martial_hall", &"q_ch1_side_10_bandit_cave", &"q_ch1_side_11_old_ledger", &"q_ch1_side_12_forest_medicine"])
+side_quest_decisions = Array[Dictionary]([
+	{"quest_id":"q_ch1_side_02_cliff_herb", "decision":"implemented", "target_chapter":1, "replacement_id":"", "reason":"林西药师与村外山道已有承载，接入采集与回访链；奖励下调为第一章补给。"},
+	{"quest_id":"q_ch1_side_04_tiger_hunt", "decision":"migrate", "target_chapter":5, "replacement_id":"", "reason":"需要独立虎类敌人与雪岭狩猎地图，避免重复第一章猛兽和头狼战。"},
+	{"quest_id":"q_ch1_side_05_ancestral_theft", "decision":"merge", "target_chapter":6, "replacement_id":"q_ch6_side_02_home_belongings", "reason":"并入返乡旧居调查；现有祠堂、废窑与赤琼佩奖励均和第六章旧居遗物重复。"},
+	{"quest_id":"q_ch1_side_07_village_duel", "decision":"merge", "target_chapter":1, "replacement_id":"q_ch1_side_09_martial_hall", "reason":"并入武馆试剑；避免与唐行舟切磋及武馆挑战重复设置第三场早期试剑。"}
+])
+leveling_scene_ids = Array[StringName]([&"ch1_s1_road", &"ch1_s3_zhuwei_forest"])
+story_battle_groups = Array[Dictionary]([
+	{"id":"road_ambush", "enemy_ids":[&"thug_lone"], "pacing_role":"tutorial", "required":true, "recommended_level_min":1, "recommended_level_max":1, "target_turns_min":3, "target_turns_max":4, "purpose":"教学普通攻击、招式、防御和胜利结算", "rest_after":"回林西村向师傅复命", "reward_role":"路引、经验与师门授艺入口"},
+	{"id":"forest_beast", "enemy_ids":[&"linxi_wild_beast", &"zhuwei_pack_wolf"], "pacing_role":"field_check", "required":true, "recommended_level_min":2, "recommended_level_max":2, "target_turns_min":4, "target_turns_max":6, "purpose":"首次强制双目标战，检验目标切换、铁剑与基础补给", "rest_after":"可返回竹尾村药铺休整", "reward_role":"开放后山洞窟"},
+	{"id":"cave_alpha_wolf", "enemy_ids":[&"zhuwei_cave_wolf", &"zhuwei_pack_wolf", &"zhuwei_pack_wolf"], "pacing_role":"elite_adaptive", "required":true, "recommended_level_min":2, "recommended_level_max":3, "target_turns_min":6, "target_turns_max":8, "purpose":"头狼按队伍规模召集0至2只野狼，检验群体招式、流血与持续作战资源", "rest_after":"洞窟宝箱或返回竹尾村", "reward_role":"运货记录与后续废宅路线"},
+	{"id":"ruin_outer_guard", "enemy_ids":[&"zhuwei_bandit", &"zhuwei_bandit"], "pacing_role":"gatekeeper", "required":true, "recommended_level_min":3, "recommended_level_max":3, "target_turns_min":5, "target_turns_max":7, "purpose":"废宅双守卫，检验进入Boss区前的稳定输出和集火顺序", "rest_after":"可随时返回竹尾村补给", "reward_role":"开放货箱、值守册与内堂"},
+	{"id":"caravan_road_ambush", "enemy_ids":[&"bandit_mountain", &"bandit_mountain"], "pacing_role":"optional_team", "required":false, "recommended_level_min":2, "recommended_level_max":3, "target_turns_min":4, "target_turns_max":6, "purpose":"首次双目标战，鼓励使用群体招式与目标切换", "rest_after":"向范掌柜确认平安后，回竹尾村找镖局枪手领赏", "reward_role":"蜀锦、药材、伤药与额外经验"},
+	{"id":"zhao_wuji_showdown", "enemy_ids":[&"boss_zhao_wuji", &"zhuwei_bandit", &"zhuwei_bandit"], "pacing_role":"boss_adaptive", "required":true, "recommended_level_min":3, "recommended_level_max":4, "target_turns_min":7, "target_turns_max":10, "purpose":"赵无忌按队伍规模带0至2名护卫；章末检验资源管理、集火顺序、群体刀势和暗器威胁", "rest_after":"章节结算自动存档，主角保留重伤状态", "reward_role":"转运密令、河滩线索与第二章入口"}
+])
+estimated_main_minutes = 60
+estimated_completionist_minutes = 150

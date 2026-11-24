@@ -1,0 +1,22 @@
+id: sprite_protagonist_walk_master_atlas_v1
+description: One-pass protagonist exploration atlas, four directions by eight walking phases.
+quality: medium
+size: "1024x1024"
+
+prompt_template: |
+  Create one production 2D RPG sprite atlas, exactly 1024x1024 pixels.
+  This must be one consistent character across the whole atlas: Leng Guyun, a young Chinese wuxia swordsman with black hair tied behind, a worn grey-white cross-collar robe and white inner layer, dark trousers, short dark boots, a dark belt, one sheathed sword on his right hip, and one small grey-green flask on his left hip. No headscarf, forehead band, red hair ribbon, second flask, text, watermark, or visual effect.
+
+  Layout is mandatory: four horizontal rows and eight equal columns, forming exactly 32 isolated sprite cells. Each cell is 128 pixels wide by 256 pixels high. Leave clean white separation between every cell. Each cell contains exactly one complete small full-body character, about 100 pixels tall, bottom-aligned to the same baseline inside its row. No body part, robe hem, hair, weapon, or foot may enter another cell.
+
+  Row 1: facing down toward camera, walk cycle phases 1 to 8 left to right.
+  Row 2: facing up away from camera, walk cycle phases 1 to 8 left to right.
+  Row 3: facing right in strict orthographic side view, walk cycle phases 1 to 8 left to right.
+  Row 4: facing left in strict orthographic side view, walk cycle phases 1 to 8 left to right.
+  For every row: phase 1 is left-foot contact, phase 3 is passing, phase 5 is right-foot contact, phase 7 is passing, and phases 2,4,6,8 are smooth in-betweens. Head, torso, belt, sword, and flask must remain visually stable; motion comes only from alternating legs, arms, robe hem, and hair tip.
+
+  Style: polished 1990s Hong Kong wuxia comic game sprite, clean dark ink outlines, hand-painted cool grey and white colors, readable at small scale. Pure #FFFFFF background only: no floor, shadow, scenery, grid lines, extra characters, duplicate poses, portrait composition, isometric perspective, or animation trails.
+
+  Avoid: {negative}
+
+variables: {}

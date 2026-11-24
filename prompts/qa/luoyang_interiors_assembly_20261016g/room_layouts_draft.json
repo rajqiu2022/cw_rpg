@@ -1,0 +1,1089 @@
+{
+  "version": 1,
+  "status": "DRAFT_ROLE_LAYOUTS_NOT_GAME_DATA_OR_GENERATION_ACCEPTANCE",
+  "scope": "11 required distinct functional types using actual existing IDs (excluding disabled SW); optional 12th yamen is not a completion prerequisite and requires explicit new ID and door. NW guest / NE herbal roles Root approved; preserve original NPC / quest / exterior return semantics.",
+  "source_canvas_px": [
+    1536,
+    1024
+  ],
+  "worldsize_policy": "SYSTEM retainsactualcover/body contracts; document target2496/2560 not silentlyimplemented by art. Sourcefloors derive actualempty shells, not allbackgroundpixels.",
+  "actor_policy": "Newphysicalfeet true/34x24world/childoffset0; neverdouble legacy42. Lowfurnitureopaque+playerframe-local.46ghost; highcabinet/screenexplicit.55fade onlyactualpixeloverlap.",
+  "rooms": [
+    {
+      "type_id": "smithy",
+      "name": "铁匠工坊",
+      "scene_id": "luoyang_market_shop_interior_20261015",
+      "current_definition_status": "EXISTING_FORMAL_ASSEMBLED",
+      "shell_id": "EXISTING_shell_v1",
+      "landmark": "炉/砧/淬火的热作三角",
+      "circulation": "原门→中央搬运线→可绕砧台；成品架在右后，原铁匠站位保留",
+      "furniture_groups": [
+        {
+          "zone": "后左热作",
+          "assets": [
+            "EXISTING_forge_v1",
+            "EXISTING_bellows_v1"
+          ]
+        },
+        {
+          "zone": "中左工位",
+          "assets": [
+            "EXISTING_anvil_stump_v1",
+            "EXISTING_workbench_v1"
+          ]
+        },
+        {
+          "zone": "右边冷作/成品",
+          "assets": [
+            "EXISTING_quench_tub_v1",
+            "EXISTING_weapon_rack_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "真实6独立生产件",
+        "热作/冷作动线",
+        "石地工业空shell"
+      ],
+      "retained_external_binding": {
+        "building_id": "shop",
+        "city_id": "ch4_s3_luoyang_market",
+        "configured_return_foot_px": [
+          2320,
+          874
+        ],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_functional_interiors_20261016/smithy_room.tres",
+        "old_legacy_indoor_exit": {
+          "portal_id": "return_shop_door",
+          "pos": [
+            0.5,
+            0.845
+          ],
+          "size": [
+            0.13,
+            0.075
+          ],
+          "auto_trigger": false
+        },
+        "old_legacy_spawn_uv": [
+          0.5,
+          0.625
+        ],
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_functional_interiors_20261016/smithy_room.tres",
+        "original_npc_definition_raw": "[{\"npc_id\": \"luoyang_functional_smithy_20261016\", \"npc_name\": \"铁匠师傅\", \"pos\": Vector2(0.431640625, 0.4375), \"source_foot_px\": Vector2(663, 448), \"sprite_path\": \"res://art/characters/npc_linxi_farmer_idle_down_25d_4f_v1_runtime.png\", \"portrait_path\": \"res://art/characters/portraits/portrait_linxi_farmer_v1.png\", \"dialog_id\": \"luoyang_distinct_rooms_20261016/smith_daily\", \"movement_mode\": \"idle\", \"scale\": 1.0}]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [
+          [
+            663,
+            448
+          ]
+        ],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [],
+      "shell_asset_contract": null
+    },
+    {
+      "type_id": "small_home",
+      "name": "普通民宅",
+      "scene_id": "luoyang_market_market_west_ward_frontage_interior_20261015",
+      "current_definition_status": "EXISTING_OPEN_ID_PENDING_ASSEMBLED_REPLACEMENT",
+      "shell_id": "shell_residential_v1",
+      "landmark": "灶台与饭桌而非巨厅",
+      "circulation": "入口前堂→饭桌两侧→后右寝区；灶前独立安全站区",
+      "furniture_groups": [
+        {
+          "zone": "左侧生活灶",
+          "assets": [
+            "cooking_stove_v1"
+          ]
+        },
+        {
+          "zone": "前中餐叙",
+          "assets": [
+            "dining_table_v1",
+            "long_bench_v1"
+          ]
+        },
+        {
+          "zone": "后右寝区",
+          "assets": [
+            "household_bed_v1",
+            "wood_wardrobe_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "起居/寝区两区",
+        "左厨右床不对称",
+        "低密度家用家具"
+      ],
+      "retained_external_binding": {
+        "building_id": "market_west_ward_frontage",
+        "city_id": "ch4_s3_luoyang_market",
+        "configured_return_foot_px": [
+          510,
+          1504
+        ],
+        "live_room_override": "res://build/luoyang_city_assembled_publication_20261016b/78428_1686/ch4_s3_luoyang_market/market_west_ward_frontage_room.tres",
+        "old_definition_path": "res://data/scenes/luoyang_home_candidates_20261015/market_west_ward_frontage_room.tres",
+        "old_legacy_indoor_exit": {
+          "portal_id": "return_market_west_ward_frontage_door",
+          "pos": [
+            0.5,
+            0.845
+          ],
+          "size": [
+            0.13,
+            0.075
+          ],
+          "auto_trigger": false
+        },
+        "old_legacy_spawn_uv": [
+          0.5,
+          0.65
+        ],
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_home_candidates_20261015/market_west_ward_frontage_room.tres",
+        "original_npc_definition_raw": "[]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/cooking_stove_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/dining_table_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/long_bench_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/household_bed_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_wardrobe_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_residential_v1.meta.json"
+    },
+    {
+      "type_id": "market_counter",
+      "name": "一般档口",
+      "scene_id": "luoyang_market_southeast_market_front_interior_20261015",
+      "current_definition_status": "EXISTING_OPEN_ID_PENDING_ASSEMBLED_REPLACEMENT",
+      "shell_id": "shell_commercial_v1",
+      "landmark": "前方短柜与侧后备货架，非卧室或大宅",
+      "circulation": "前门→横向候客带→柜前服务点，侧边留完整备货回路；不穿柜/钻架",
+      "furniture_groups": [
+        {
+          "zone": "前侧服务",
+          "assets": [
+            "inn_counter_v1"
+          ]
+        },
+        {
+          "zone": "侧后备货",
+          "assets": [
+            "warehouse_rack_v1",
+            "EXISTING_quay_crate_2010"
+          ]
+        },
+        {
+          "zone": "侧角记账",
+          "assets": [
+            "writing_desk_v1",
+            "wood_armchair_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "浅营业带与侧向备货线",
+        "无床/灶/寝区，不是大宅换皮",
+        "短柜+货架区别布庄与药铺专用陈列"
+      ],
+      "retained_external_binding": {
+        "building_id": "southeast_market_front",
+        "city_id": "ch4_s3_luoyang_market",
+        "configured_return_foot_px": [
+          2680,
+          1724
+        ],
+        "live_room_override": "res://build/luoyang_city_assembled_publication_20261016b/78428_1686/ch4_s3_luoyang_market/southeast_market_front_room.tres",
+        "old_definition_path": "res://data/scenes/luoyang_home_candidates_20261015/southeast_market_front_room.tres",
+        "old_legacy_indoor_exit": {
+          "portal_id": "return_southeast_market_front_door",
+          "pos": [
+            0.5,
+            0.845
+          ],
+          "size": [
+            0.13,
+            0.075
+          ],
+          "auto_trigger": false
+        },
+        "old_legacy_spawn_uv": [
+          0.5,
+          0.625
+        ],
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_home_candidates_20261015/southeast_market_front_room.tres",
+        "original_npc_definition_raw": "[]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/inn_counter_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/warehouse_rack_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/writing_desk_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_commercial_v1.meta.json"
+    },
+    {
+      "type_id": "scholar_study",
+      "name": "文人书斋",
+      "scene_id": "luoyang_market_market_east_ward_frontage_interior_20261015",
+      "current_definition_status": "EXISTING_OPEN_ID_PENDING_ASSEMBLED_REPLACEMENT",
+      "shell_id": "shell_formal_hall_v1",
+      "landmark": "后壁书架与侧向采光书案",
+      "circulation": "入口直留中央读书空地→右后书案，书架成L型背景而非床区",
+      "furniture_groups": [
+        {
+          "zone": "后壁",
+          "assets": [
+            "bookcase_v1"
+          ]
+        },
+        {
+          "zone": "右后书写",
+          "assets": [
+            "writing_desk_v1",
+            "wood_armchair_v1"
+          ]
+        },
+        {
+          "zone": "左侧安静角",
+          "assets": [
+            "folding_screen_v1",
+            "wood_armchair_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "纸书材质地标",
+        "侧向工作而非仪式中轴",
+        "两静区与中央留白"
+      ],
+      "retained_external_binding": {
+        "building_id": "market_east_ward_frontage",
+        "city_id": "ch4_s3_luoyang_market",
+        "configured_return_foot_px": [
+          2550,
+          1284
+        ],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_home_candidates_20261015/market_east_ward_frontage_room.tres",
+        "old_legacy_indoor_exit": {
+          "portal_id": "return_market_east_ward_frontage_door",
+          "pos": [
+            0.5,
+            0.845
+          ],
+          "size": [
+            0.13,
+            0.075
+          ],
+          "auto_trigger": false
+        },
+        "old_legacy_spawn_uv": [
+          0.5,
+          0.625
+        ],
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_home_candidates_20261015/market_east_ward_frontage_room.tres",
+        "original_npc_definition_raw": "[]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/bookcase_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/writing_desk_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/folding_screen_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_formal_hall_v1.meta.json"
+    },
+    {
+      "type_id": "inn_hall",
+      "name": "客栈大厅",
+      "scene_id": "luoyang_market_inn_interior_20261015",
+      "current_definition_status": "EXISTING_OPEN_ID_PENDING_ASSEMBLED_REPLACEMENT",
+      "shell_id": "shell_inn_hall_v1",
+      "landmark": "侧掌柜台/酒茶架/后侧楼梯",
+      "circulation": "入口→中央双桌环路→左掌柜；右后留楼梯前安全平台，楼梯不自动新传送",
+      "furniture_groups": [
+        {
+          "zone": "左侧迎客",
+          "assets": [
+            "inn_counter_v1",
+            "wine_tea_shelf_v1"
+          ]
+        },
+        {
+          "zone": "前中用餐",
+          "assets": [
+            "dining_table_v1",
+            "long_bench_v1"
+          ]
+        },
+        {
+          "zone": "右后",
+          "assets": [
+            "timber_stair_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "高厅上部gallery",
+        "多桌可环绕动线",
+        "住宿接待而非独宅"
+      ],
+      "retained_external_binding": {
+        "building_id": "inn",
+        "city_id": "ch4_s3_luoyang_market",
+        "configured_return_foot_px": [
+          735,
+          854
+        ],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_home_candidates_20261015/inn_room.tres",
+        "old_legacy_indoor_exit": {
+          "portal_id": "return_inn_door",
+          "pos": [
+            0.5,
+            0.795
+          ],
+          "size": [
+            0.125,
+            0.075
+          ],
+          "auto_trigger": false
+        },
+        "old_legacy_spawn_uv": [
+          0.5,
+          0.59
+        ],
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_home_candidates_20261015/inn_room.tres",
+        "original_npc_definition_raw": "[]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/inn_counter_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wine_tea_shelf_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/dining_table_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/long_bench_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/timber_stair_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_inn_hall_v1.meta.json"
+    },
+    {
+      "type_id": "guest_room",
+      "name": "客房",
+      "scene_id": "luoyang_market_market_northwest_rear_frontage_interior_20261015",
+      "current_definition_status": "EXISTING_OPEN_ID_PENDING_ASSEMBLED_REPLACEMENT",
+      "shell_id": "shell_residential_v1",
+      "landmark": "一张床与行李衣柜",
+      "circulation": "入口→短侧通道→床前/窗边茶桌；不使用灶/营业柜台",
+      "furniture_groups": [
+        {
+          "zone": "左后床",
+          "assets": [
+            "household_bed_v1"
+          ]
+        },
+        {
+          "zone": "右后行李",
+          "assets": [
+            "wood_wardrobe_v1"
+          ]
+        },
+        {
+          "zone": "前右休息",
+          "assets": [
+            "dining_table_v1",
+            "wood_armchair_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "紧凑休息而非前堂社交",
+        "无灶无店台",
+        "床为首视线焦点"
+      ],
+      "retained_external_binding": {
+        "building_id": "market_northwest_rear_frontage",
+        "city_id": "ch4_s3_luoyang_market",
+        "configured_return_foot_px": [
+          620,
+          524
+        ],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_home_candidates_20261015/market_northwest_rear_frontage_room.tres",
+        "old_legacy_indoor_exit": {
+          "portal_id": "return_market_northwest_rear_frontage_door",
+          "pos": [
+            0.5,
+            0.845
+          ],
+          "size": [
+            0.13,
+            0.075
+          ],
+          "auto_trigger": false
+        },
+        "old_legacy_spawn_uv": [
+          0.5,
+          0.65
+        ],
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_home_candidates_20261015/market_northwest_rear_frontage_room.tres",
+        "original_npc_definition_raw": "[]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/household_bed_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_wardrobe_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/dining_table_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_residential_v1.meta.json"
+    },
+    {
+      "type_id": "herbal_shop",
+      "name": "药铺",
+      "scene_id": "luoyang_market_market_northeast_rear_frontage_interior_20261015",
+      "current_definition_status": "EXISTING_OPEN_ID_PENDING_ASSEMBLED_REPLACEMENT",
+      "shell_id": "shell_commercial_v1",
+      "landmark": "百子药柜与制药工作台",
+      "circulation": "入口近诊桌→中央问诊→侧方抓药加工，后柜前留独立药工带",
+      "furniture_groups": [
+        {
+          "zone": "后壁",
+          "assets": [
+            "medicine_cabinet_v1"
+          ]
+        },
+        {
+          "zone": "侧前诊台",
+          "assets": [
+            "dining_table_v1",
+            "wood_armchair_v1",
+            "long_bench_v1"
+          ]
+        },
+        {
+          "zone": "右后制药",
+          "assets": [
+            "medicine_worktable_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "药柜方抽屉可辨",
+        "问诊/加工分区",
+        "独立工作台不用街面屋顶药摊冒内景"
+      ],
+      "retained_external_binding": {
+        "building_id": "market_northeast_rear_frontage",
+        "city_id": "ch4_s3_luoyang_market",
+        "configured_return_foot_px": [
+          2530,
+          524
+        ],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_home_candidates_20261015/market_northeast_rear_frontage_room.tres",
+        "old_legacy_indoor_exit": {
+          "portal_id": "return_market_northeast_rear_frontage_door",
+          "pos": [
+            0.5,
+            0.845
+          ],
+          "size": [
+            0.13,
+            0.075
+          ],
+          "auto_trigger": false
+        },
+        "old_legacy_spawn_uv": [
+          0.5,
+          0.65
+        ],
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_home_candidates_20261015/market_northeast_rear_frontage_room.tres",
+        "original_npc_definition_raw": "[]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/medicine_cabinet_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/dining_table_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/long_bench_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/medicine_worktable_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_commercial_v1.meta.json"
+    },
+    {
+      "type_id": "cloth_shop",
+      "name": "布庄裁缝",
+      "scene_id": "luoyang_market_north_market_front_interior_20261015",
+      "current_definition_status": "EXISTING_OPEN_ID_PENDING_ASSEMBLED_REPLACEMENT",
+      "shell_id": "shell_commercial_v1",
+      "landmark": "布卷/裁衣台/成衣架",
+      "circulation": "入口选布→中侧裁衣台可环绕→试衣屏风→原伙计站1220,470",
+      "furniture_groups": [
+        {
+          "zone": "后左选布",
+          "assets": [
+            "cloth_roll_rack_v1"
+          ]
+        },
+        {
+          "zone": "中左裁衣",
+          "assets": [
+            "cutting_table_v1"
+          ]
+        },
+        {
+          "zone": "后右试衣",
+          "assets": [
+            "garment_rack_v1",
+            "folding_screen_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "软织物配色",
+        "中部作业环路",
+        "后右试衣屏风"
+      ],
+      "retained_external_binding": {
+        "building_id": "north_market_front",
+        "city_id": "ch4_s3_luoyang_market",
+        "configured_return_foot_px": [
+          1536,
+          654
+        ],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_functional_interiors_20261016/cloth_shop_room.tres",
+        "old_legacy_indoor_exit": {
+          "portal_id": "return_north_market_front_door",
+          "pos": [
+            0.5,
+            0.845
+          ],
+          "size": [
+            0.13,
+            0.075
+          ],
+          "auto_trigger": false
+        },
+        "old_legacy_spawn_uv": [
+          0.5,
+          0.625
+        ],
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_functional_interiors_20261016/cloth_shop_room.tres",
+        "original_npc_definition_raw": "[{\"npc_id\": \"luoyang_functional_cloth_shop_20261016\", \"npc_name\": \"布庄伙计\", \"pos\": Vector2(0.7942708333333334, 0.458984375), \"source_foot_px\": Vector2(1220, 470), \"sprite_path\": \"res://art/characters/npc_zhuwei_inn_waiter_idle_down_25d_4f_v2_runtime.png\", \"portrait_path\": \"res://art/characters/portraits/street_expansion_v1/portrait_inn_waiter_v1.png\", \"dialog_id\": \"luoyang_distinct_rooms_20261016/cloth_daily\", \"movement_mode\": \"idle\", \"scale\": 1.0}]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [
+          [
+            1220,
+            470
+          ]
+        ],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/cloth_roll_rack_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/cutting_table_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/garment_rack_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/folding_screen_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_commercial_v1.meta.json"
+    },
+    {
+      "type_id": "pawnshop",
+      "name": "当铺",
+      "scene_id": "luoyang_functional_pawnshop_candidate_20261016",
+      "current_definition_status": "DEFINED_DISABLED_CANDIDATE",
+      "shell_id": "shell_commercial_v1",
+      "landmark": "栅格高柜与封闭票据柜",
+      "circulation": "入口→横向候客带→服务窗前；侧边折返到鉴物桌，不能穿柜进后库",
+      "furniture_groups": [
+        {
+          "zone": "中后柜线",
+          "assets": [
+            "pawn_counter_grille_v1"
+          ]
+        },
+        {
+          "zone": "后库",
+          "assets": [
+            "pawn_ticket_cabinet_v1",
+            "EXISTING_quay_crate_2010"
+          ]
+        },
+        {
+          "zone": "前侧鉴物",
+          "assets": [
+            "dining_table_v1",
+            "wood_armchair_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "有服务边界非开放卖货",
+        "栅格与长条票据抽屉",
+        "前厅/后库两域"
+      ],
+      "retained_external_binding": {
+        "building_id": "",
+        "city_id": "",
+        "configured_return_foot_px": [],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_functional_interiors_20261016/pawnshop_room.tres",
+        "old_legacy_indoor_exit": null,
+        "old_legacy_spawn_uv": null,
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_functional_interiors_20261016/pawnshop_room.tres",
+        "original_npc_definition_raw": "[]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/pawn_counter_grille_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/pawn_ticket_cabinet_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/dining_table_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_commercial_v1.meta.json"
+    },
+    {
+      "type_id": "warehouse",
+      "name": "码头仓房",
+      "scene_id": "luoyang_canal_warehouse_interior_20261016",
+      "current_definition_status": "DEFINED_DISABLED_CANDIDATE",
+      "shell_id": "EXISTING_shell_v1",
+      "landmark": "货架粮垛围出贯通装卸线",
+      "circulation": "宽门→中央直穿装卸线→两侧货架回环，右侧账桌保原1050,430站位",
+      "furniture_groups": [
+        {
+          "zone": "两侧堆存",
+          "assets": [
+            "warehouse_rack_v1",
+            "grain_sack_stack_v1",
+            "EXISTING_quay_crate_2010"
+          ]
+        },
+        {
+          "zone": "左前运载",
+          "assets": [
+            "wood_handcart_v1"
+          ]
+        },
+        {
+          "zone": "右后记货",
+          "assets": [
+            "writing_desk_v1",
+            "wood_armchair_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "重货架/麻袋材质",
+        "宽装卸线而非厅堂中轴",
+        "无床/酒台/宫式屏风"
+      ],
+      "retained_external_binding": {
+        "building_id": "north_canal_warehouse",
+        "city_id": "ch4_s2_canal_docks",
+        "configured_return_foot_px": [
+          754,
+          610
+        ],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_functional_interiors_20261016/warehouse_room.tres",
+        "old_legacy_indoor_exit": null,
+        "old_legacy_spawn_uv": null,
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_functional_interiors_20261016/warehouse_room.tres",
+        "original_npc_definition_raw": "[{\"npc_id\": \"luoyang_functional_warehouse_20261016\", \"npc_name\": \"仓房账房\", \"pos\": Vector2(0.68359375, 0.419921875), \"source_foot_px\": Vector2(1050, 430), \"sprite_path\": \"res://art/characters/street_expansion_v1/npc_street_merchant_idle_down_4f_v3_runtime.png\", \"portrait_path\": \"res://art/characters/portraits/street_expansion_v1/portrait_street_merchant_v1.png\", \"dialog_id\": \"luoyang_distinct_rooms_20261016/warehouse_daily\", \"movement_mode\": \"idle\", \"scale\": 1.0}]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [
+          [
+            1050,
+            430
+          ]
+        ],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/warehouse_rack_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/grain_sack_stack_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_handcart_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/writing_desk_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.meta.json"
+      ],
+      "shell_asset_contract": null
+    },
+    {
+      "type_id": "mansion_reception",
+      "name": "富家豪宅会客厅",
+      "scene_id": "luoyang_functional_mansion_candidate_20261016",
+      "current_definition_status": "DEFINED_DISABLED_CANDIDATE",
+      "shell_id": "shell_formal_hall_v1",
+      "landmark": "影屏后的礼仪会客与博古架",
+      "circulation": "前门屏风左右分流→中央正席→两侧书/赏物区；入口不撞影屏",
+      "furniture_groups": [
+        {
+          "zone": "入口后影屏",
+          "assets": [
+            "folding_screen_v1"
+          ]
+        },
+        {
+          "zone": "后中正席",
+          "assets": [
+            "ceremonial_desk_v1",
+            "wood_armchair_v1"
+          ]
+        },
+        {
+          "zone": "侧厅陈列",
+          "assets": [
+            "display_cabinet_v1",
+            "writing_desk_v1",
+            "wood_armchair_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "屏风双路入厅",
+        "陈设密度与对称秩序",
+        "博古器物区别衙署档案"
+      ],
+      "retained_external_binding": {
+        "building_id": "",
+        "city_id": "",
+        "configured_return_foot_px": [],
+        "live_room_override": null,
+        "old_definition_path": "res://data/scenes/luoyang_functional_interiors_20261016/mansion_reception_room.tres",
+        "old_legacy_indoor_exit": null,
+        "old_legacy_spawn_uv": null,
+        "return_policy": "Original target city, exact configured return and actual rememberedarrival retained; no door enabling or externalbuilding relabel by ART."
+      },
+      "npc_policy": {
+        "source_scene_anchor_record": "game/data/scenes/luoyang_functional_interiors_20261016/mansion_reception_room.tres",
+        "original_npc_definition_raw": "[]",
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": true,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/folding_screen_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/ceremonial_desk_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/wood_armchair_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/display_cabinet_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/writing_desk_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_formal_hall_v1.meta.json"
+    },
+    {
+      "type_id": "yamen_hall",
+      "name": "衙署内堂",
+      "scene_id": null,
+      "current_definition_status": "NEW_ID_AND_EXTERNAL_DOOR_REQUIRED",
+      "shell_id": "shell_formal_hall_v1",
+      "landmark": "后中公案/堂屏与两侧衙役位",
+      "circulation": "门→宽220world中轴→公案前听事；侧文书带与候问凳不占中轴",
+      "furniture_groups": [
+        {
+          "zone": "后中审事",
+          "assets": [
+            "ceremonial_desk_v1",
+            "folding_screen_v1"
+          ]
+        },
+        {
+          "zone": "侧文书",
+          "assets": [
+            "bookcase_v1",
+            "writing_desk_v1"
+          ]
+        },
+        {
+          "zone": "候问/守卫",
+          "assets": [
+            "long_bench_v1",
+            "EXISTING_weapon_rack_v1"
+          ]
+        }
+      ],
+      "distinctness_axes": [
+        "宽仪式中轴",
+        "公案/兵架而非博古器",
+        "候问与文书侧带"
+      ],
+      "retained_external_binding": null,
+      "npc_policy": {
+        "source_scene_anchor_record": null,
+        "original_npc_definition_raw": null,
+        "new_npc_or_story_authorized": false,
+        "fixed_source_feet": [],
+        "notes": "Retain actual NPCid/dialog/flag/action/portrait; unknown positions remain unassigned. Legacybodycenter→newfeet conversion handled explicitly by SYSTEM, never add/subtract42 twice."
+      },
+      "new_geometry": {
+        "actor_positions_are_feet": true,
+        "native_body_world_px": [
+          34,
+          24
+        ],
+        "collision_child_offset_px": [
+          0,
+          0
+        ],
+        "spawn_foot_px": null,
+        "exit_foot_px": null,
+        "solid_polygons_px": null,
+        "status": "SOURCE_COMPONENTS_GENERATED; PLACEMENT_AND_PHYSICS_PENDING_SYSTEM_ACTUAL_CALIBRATION"
+      },
+      "required_this_milestone": false,
+      "assembled_asset_contracts": [
+        "assets/raw/luoyang_interiors_assembly_20261016g/ceremonial_desk_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/folding_screen_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/bookcase_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/writing_desk_v1.meta.json",
+        "assets/raw/luoyang_interiors_assembly_20261016g/long_bench_v1.meta.json"
+      ],
+      "shell_asset_contract": "assets/raw/luoyang_interiors_assembly_20261016g/shell_formal_hall_v1.meta.json"
+    }
+  ],
+  "excluded": [
+    {
+      "scene_id": "luoyang_market_southwest_market_front_interior_20261015",
+      "status": "ExistingfakecentrepostdoorDISABLED; noauto-enable or count as12th functionalroom",
+      "definition_path": "res://data/scenes/luoyang_home_candidates_20261015/southwest_market_front_room.tres"
+    }
+  ],
+  "source_oracle_paths": [
+    "game/data/maps/luoyang_home_candidates_20261015/home_author.json",
+    "game/data/maps/luoyang_functional_interiors_20261016/registry.json",
+    "game/data/maps/luoyang_city_assembled_20261016b/runtime_bindings.json",
+    "game/data/maps/luoyang_assembled_rooms_20261016b/smithy_author.json"
+  ],
+  "required_type_count": 11,
+  "optional_type_count": 1,
+  "fixed_shell_geometry_policy": "Four RGB shells bake fixed walls and columns, not independent furniture. Use shell-specific conservative floor regions / front wall top cutoff and separate doorway landing. Fixed pillar base alone is insufficient: reuse real foreground depth/occlusion or conservatively prohibit full visual projection plus actor envelope; gallery is not a walkable new storey."
+}

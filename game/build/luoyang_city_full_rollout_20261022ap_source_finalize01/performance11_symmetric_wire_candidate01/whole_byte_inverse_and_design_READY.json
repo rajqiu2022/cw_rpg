@@ -1,0 +1,46 @@
+{
+  "status": "BUILD_ONLY_B_SYMMETRIC_RECORD_SUCCESS_PATH_NOT_PARSED_OR_RUN",
+  "parent": {
+    "path": "res://scripts/city/luoyang_precomputed_bundle_20261018r.gd",
+    "sha256": "77dfc4987f21fa280c526cf62cb6c94316a40c4236fb1005761408859a0b8c16"
+  },
+  "candidate": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance11_symmetric_wire_candidate01/Bundle_symmetric_record_wire_READY.gd",
+    "sha256": "71231a35e8026dd6269038d7b991a80f25b0667e45fab0772075fe89d930ac57"
+  },
+  "whole_byte_inverse": true,
+  "hunks": [
+    {
+      "old": "static func restore_parent_record(scene: SceneScript,current: Dictionary,expected: Dictionary) -> Dictionary:\n",
+      "new": "static func _strict_record_json_equal(left: Variant,right: Variant,depth: int=0) -> bool:\n\t# Success only: finite JSON-domain whole-tree strict equality. At the\n\t# conservative depth boundary, leave the original wire predicate in charge.\n\tif depth>=64 or typeof(left)!=typeof(right): return false\n\tif left is Dictionary:\n\t\tif left.size()!=right.size(): return false\n\t\tfor key: Variant in right:\n\t\t\tif typeof(key)!=TYPE_STRING: return false\n\t\tfor key: Variant in left:\n\t\t\tif typeof(key)!=TYPE_STRING or not right.has(key) or not _strict_record_json_equal(left[key],right[key],depth+1): return false\n\t\treturn true\n\tif left is Array:\n\t\tif left.size()!=right.size(): return false\n\t\tfor index: int in left.size():\n\t\t\tif not _strict_record_json_equal(left[index],right[index],depth+1): return false\n\t\treturn true\n\tmatch typeof(left):\n\t\tTYPE_NIL,TYPE_BOOL,TYPE_STRING,TYPE_INT: return left==right\n\t\tTYPE_FLOAT: return is_finite(left) and is_finite(right) and left==right\n\treturn false\nstatic func _symmetric_record_wire_equal(left: Variant,right: Variant) -> bool:\n\t# Equivalent JSON trees produce the same sorted/full-precision JSON input\n\t# to both parses. This is NOT a one-sided round-trip stability assertion.\n\tif _strict_record_json_equal(left,right): return true\n\treturn equal(_wire(left),_wire(right))\nstatic func restore_parent_record(scene: SceneScript,current: Dictionary,expected: Dictionary) -> Dictionary:\n"
+    },
+    {
+      "old": "if not equal(_wire(current),_wire(child)) or not equal(_wire(prior),_wire(expected)): return {}",
+      "new": "if not _symmetric_record_wire_equal(current,child) or not _symmetric_record_wire_equal(prior,expected): return {}"
+    }
+  ],
+  "diff": {
+    "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance11_symmetric_wire_candidate01/complete_vs_B77DFC.diff",
+    "sha256": "affe5fd7415285b4c6068e1af59abea38e573c5523d753b2d64a1e6751a58865"
+  },
+  "design_proof": [
+    "Strict success visits every Dictionary key and Array slot with identical typeof and values, rejects nonString keys on both sides, objects, vectors, packed arrays, nonfinite floats and depth>=64.",
+    "Two admitted equal typed JSON trees feed identical sorted full_precision JSON to the two original parses, hence equal(_wire(left),_wire(right)) is true. No one-sided JSON round-trip property is inferred.",
+    "If fast predicate fails for any reason, the original equal(_wire(left),_wire(right)) is executed unchanged, including all old accepted/rejected non-domain cases.",
+    "Only the two symmetric predicates at final restore_parent_record gate use this helper. Existing short-circuit order, all copies, owner/whole_bound, source-FIRST/FINAL, other APIs and DT asymmetric final comparison remain unchanged.",
+    "No cache, receipt, native, geometry or metadata DAG produced; expected benefit is unmeasured until separately Root-approved pure-record comparison."
+  ],
+  "comparison_draft": {
+    "key": {
+      "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance11_symmetric_wire_candidate01/test_pure_record_comparison_PENDING_ROOT.gd",
+      "sha256": "c25f6c5dcf8474999e9de4e2388dec94f0767b07724eabf10cb2aebe4df85123"
+    },
+    "fixture": {
+      "path": "res://build/luoyang_city_full_rollout_20261022ap_source_finalize01/performance11_symmetric_wire_candidate01/pure_record_comparison_fixture_PENDING_ROOT.json",
+      "sha256": "621ca879dafc115c1f1b7d6029b7543dd5bfe0b2d1816cdf8fc79a7005f63321"
+    },
+    "ready": false
+  },
+  "code_runtime_or_parse_executions": 0,
+  "formal_writes": 0
+}

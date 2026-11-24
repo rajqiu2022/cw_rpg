@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1_dscr"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2_dnode"]
+
+[sub_resource type="Resource" id="node_start"]
+script = ExtResource("2_dnode")
+node_id = &"start"
+speaker = ""
+text = "[i]临崖石缝间伏着一簇矮藤。叶背泛青，茎上沾着山雾凝成的水珠。[/i]"
+on_end = "next:collect"
+
+[sub_resource type="Resource" id="node_collect"]
+script = ExtResource("2_dnode")
+node_id = &"collect"
+speaker = "冷孤云"
+portrait_path = "res://art/characters/protagonist_portrait.png"
+text = "断口辛香，和苏伯说的一样。只取近根一段，余下的还能继续长。"
+set_flags = Array[Dictionary]([{"key":"cliff_herb_collected", "value":true}])
+on_end = "end"
+
+[resource]
+script = ExtResource("1_dscr")
+dialog_id = &"ch1_cliff_herb_collect"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("node_start"), SubResource("node_collect")])

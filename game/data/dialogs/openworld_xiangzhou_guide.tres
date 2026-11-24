@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=5 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "襄州守备"
+text = "襄州扼南北水陆，城西校场有缉捕榜。矿谷近来悍匪出没，六级以下最好先在中原多练几趟。"
+choices = Array[Dictionary]([{"text":"榜亭在何处？","next":"board_location"},{"text":"我记下了","next":"end"}])
+[sub_resource type="Resource" id="board_location"]
+script = ExtResource("2")
+node_id = &"board_location"
+speaker = "襄州守备"
+text = "校场南沿的木榜亭便是。靠近榜文亲自查阅，合适的案子可直接揭榜。"
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"openworld_xiangzhou_guide"
+nodes = Array[Resource]([SubResource("start"), SubResource("board_location")])

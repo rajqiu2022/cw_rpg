@@ -6,18 +6,20 @@
 [sub_resource type="Resource" id="node_a"]
 script = ExtResource("2_dnode")
 node_id = &"start"
-speaker = "哭泣女子"
-portrait_path = ""
+speaker = "焦急妇人"
+portrait_path = "res://art/characters/portraits/generic/portrait_zhuwei_anxious_middle_aged_woman_v1.png"
 text = "公子……公子救命！\n我夫君三天前被一伙黑衣人掳走，到现在没回来——\n他们往城西去了。"
 choices = Array[Dictionary]([
 	{
-		"text": "我帮你（接受营救任务）",
+		"text": "我帮你",
 		"next": "accept",
+		"accept_quest": "q_ch1_side_01_rescue_husband",
 		"set_flag": {"accepted_rescue_husband": true}
 	},
 	{
-		"text": "莫管闲事",
+		"text": "暂且不接",
 		"next": "end",
+		"decline_quest": "q_ch1_side_01_rescue_husband",
 		"set_flag": {}
 	}
 ])

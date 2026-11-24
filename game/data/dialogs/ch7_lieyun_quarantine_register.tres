@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script = ExtResource("2")
+node_id = &"start"
+speaker = "冷孤云"
+text = "药册没有替烈云遮丑：强硬派曾误认一支旧货队，用麻脉毒封渡，害死了与旧案无关的人。"
+on_end = "next:distinguish"
+[sub_resource type="Resource" id="distinguish"]
+script = ExtResource("2")
+node_id = &"distinguish"
+speaker = "冷孤云"
+text = "日期却晚于五派弟子案。烈云确实欠过血债，但这份药册不能拿来顶替另一桩命案的凶证。"
+add_evidence = Array[StringName]([&"ev_ch7_lieyun_quarantine_formula"])
+set_flags = Array[Dictionary]([{"key":"ch7_lieyun_registry_checked", "value":true}])
+on_end = "end"
+[resource]
+script = ExtResource("1")
+dialog_id = &"ch7_lieyun_quarantine_register"
+entry_node_id = &"start"
+nodes = Array[Resource]([SubResource("start"), SubResource("distinguish")])

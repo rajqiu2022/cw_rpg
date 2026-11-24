@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EvidenceDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/evidence_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+evidence_id = &"ev_ch3_composite_technique_marks"
+display_name = "拼合招式痕迹"
+description = "合练复盘证明，大会证物上的步法、兵器落点和收势分别取自不同门派，彼此无法组成一套能实战运转的武功。"
+chapter = 3
+category = &"martial_trace"
+source_hint = "五派营地合练场"
+related_testimony_ids = Array[StringName]([&"ts_ch3_huashan_two_edges", &"ts_ch3_gufeng_crate_witness", &"ts_ch3_lingyue_stitch_order"])
+tags = Array[StringName]([&"composite", &"imitation", &"five_factions"])

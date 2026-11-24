@@ -31,6 +31,15 @@ assets/previews/
 # 跑批 / 探活临时输出
 ping_resp.json
 reports/
+.tools/wechat/
+game/build/wechat_trial/
+game/build/wechat_web/
+game/build/wechat_stage/
+game/build/wechat_stage_manifest.json
+game/build/wechat_transform_config.json
+game/build/world_map_v13_cc0_ground_lab.png*
+game/build/world_map_v13_native_coast_slice_v1.png*
+game/build/world_map_v13_native_coast_walk_v1.png*
 
 # 后处理临时
 *.tmp
@@ -41,6 +50,8 @@ reports/
 .import/
 export.cfg
 export_presets.cfg
+!game/export_presets.cfg
+export_credentials.cfg
 *.translation
 
 # IDE
@@ -62,3 +73,10 @@ tools/agent_hub/*.sqlite3
 desktop.ini
 $RECYCLE.BIN/
 images/cosbrowser*
+
+# 本机浏览器会话、实测存档与 Windows 发行成品
+/scripts/.pw_*_profile/
+/toutiao_cookies.json
+/dist/YunYing*/
+/.tmp/
+/.tools/

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="SceneScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/scene_script.gd" id="1"]
+[ext_resource type="Resource" path="res://data/maps/ch8_s7_mingwu_rear_sanctum_layout_v1.tres" id="2"]
+[ext_resource type="Resource" path="res://data/dialogs/ch8_rear_sanctum_intro.tres" id="3"]
+[resource]
+script=ExtResource("1")
+scene_id=&"ch8_s7_mingwu_rear_sanctum"
+display_name="茗雾山庄 · 后殿"
+background_path="res://art/backgrounds/bg_ch8_mingwu_rear_sanctum_gameplay_v1.png"
+bgm_path="res://art/audio/bgm/bgm_cave_ominous_v4.wav"
+on_enter_dialog=ExtResource("3")
+on_enter_once_flag=&"seen_ch8_rear_sanctum_intro"
+is_walkable=true
+map_layout=ExtResource("2")
+player_spawn=Vector2(0.50,0.86)
+animated_props=Array[Dictionary]([{"id":"ch8_sanctum_entry_lantern_left","type":"glow","pos":Vector2(0.447,0.858),"size":Vector2(0.038,0.055),"speed":0.66,"color":"#ffb24d","z_index":17},{"id":"ch8_sanctum_entry_lantern_right","type":"glow","pos":Vector2(0.553,0.858),"size":Vector2(0.038,0.055),"speed":0.74,"color":"#ffb24d","z_index":17},{"id":"ch8_sanctum_desk_lantern","type":"glow","pos":Vector2(0.167,0.588),"size":Vector2(0.034,0.050),"speed":0.61,"color":"#ffb76a","z_index":17},{"id":"ch8_sanctum_bell_lantern","type":"glow","pos":Vector2(0.741,0.600),"size":Vector2(0.034,0.050),"speed":0.69,"color":"#ffb76a","z_index":17}])
+npcs=Array[Dictionary]([{"npc_id":"ch8_xueying_final_resolution","npc_name":"薛影","pos":Vector2(0.50,0.43),"portrait_path":"res://art/characters/portraits/portrait_xueying_ch8_v1.png","sprite_path":"res://art/characters/portraits/portrait_xueying_ch8_v1.png","dialog_id":"ch8_xueying_forced_battle","dialog_variants":[{"dialog_id":"ch8_xueying_resolution_choice","require_flags":["ch8_su_xueying_authorization_exposed","ch8_xueying_personal_orders_testified","ch8_final_evacuation_complete"]}],"require_quest_active":"q_ch8_main_10_xueying_resolution","hide_flag":"ch8_xueying_resolution_done","scale":0.15},{"npc_id":"ch8_su_wusheng_final","npc_name":"苏雾笙","pos":Vector2(0.67,0.43),"portrait_path":"res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png","sprite_path":"res://art/characters/portraits/portrait_su_wusheng_ch8_v1.png","dialog_id":"ch8_su_final_prelude_dead","dialog_variants":[{"dialog_id":"ch8_su_final_prelude_mingwu","require_flags":["joined_mingwu"]},{"dialog_id":"ch8_su_final_prelude_testify","require_flags":["ch8_xueying_outcome_testify"]},{"dialog_id":"ch8_su_final_prelude_surrender","require_flags":["ch8_xueying_outcome_surrender"]}],"require_quest_active":"q_ch8_main_11_su_final_order","hide_flag":"ch8_su_final_defeated","scale":0.15}])

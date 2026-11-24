@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1_layout"]
+[resource]
+script = ExtResource("1_layout")
+schema_version = 5
+design_size = Vector2i(3072, 2048)
+display_at_native_size = true
+walkable_regions = Array[PackedVector2Array]([
+	PackedVector2Array(0.120,0.815, 0.185,0.285, 0.815,0.285, 0.880,0.815),
+	PackedVector2Array(0.335,1.000, 0.665,1.000, 0.650,0.760, 0.350,0.760),
+	PackedVector2Array(0.395,0.330, 0.605,0.330, 0.590,0.080, 0.410,0.080)
+])
+occluders = Array[Dictionary]([{"id":"west_weapon_racks","depth_mode":"y_sort","depth_y":0.665,"cover_polygon":PackedVector2Array(0.105,0.335, 0.190,0.335, 0.190,0.680, 0.105,0.680),"z_index":18},{"id":"east_weapon_racks","depth_mode":"y_sort","depth_y":0.665,"cover_polygon":PackedVector2Array(0.810,0.335, 0.895,0.335, 0.895,0.680, 0.810,0.680),"z_index":18}])
+blockers = Array[Dictionary]([{"id":"west_weapon_racks","pos":Vector2(0.147,0.535),"size":Vector2(0.075,0.280)},{"id":"east_weapon_racks","pos":Vector2(0.853,0.535),"size":Vector2(0.075,0.280)}])
+portals = Array[Dictionary]([
+	{"id":"return_huashan_gate","label":"返回华山山门","pos":Vector2(0.500,0.930),"size":Vector2(0.165,0.075),"target_scene":"openworld_huashan_forecourt","target_pos":Vector2(0.500,0.225),"marker_rotation_degrees":180.0},
+	{"id":"to_huashan_waterfall","label":"前往观瀑剑台","pos":Vector2(0.500,0.105),"size":Vector2(0.145,0.070),"target_scene":"openworld_huashan_waterfall_terrace","target_pos":Vector2(0.440,0.860)}
+])
+walkable_probes = Array[Dictionary]([{"id":"lower_steps","pos":Vector2(0.500,0.900)},{"id":"terrace_south","pos":Vector2(0.500,0.720)},{"id":"terrace_center","pos":Vector2(0.500,0.525)},{"id":"terrace_west","pos":Vector2(0.245,0.500)},{"id":"terrace_east","pos":Vector2(0.755,0.500)},{"id":"upper_steps","pos":Vector2(0.500,0.120)}])
+blocked_probes = Array[Dictionary]([{"id":"west_cloud","pos":Vector2(0.045,0.500)},{"id":"east_cloud","pos":Vector2(0.955,0.500)},{"id":"northwest_mountain","pos":Vector2(0.120,0.100)}])

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1_quest"]
+
+[resource]
+script = ExtResource("1_quest")
+quest_id = &"q_ch1_side_08_mountain_patrol"
+title = "山道清匪"
+kind = 1
+desc_not_started = "竹尾村的商路被山匪盯上了。"
+desc_in_progress = "在林西村外山道击退山匪，然后回竹尾村主街向护商镖师回报。"
+desc_completed = "商路暂时恢复了安宁，镖师会把消息带回竹尾村。"
+progress_records = Array[Dictionary]([{"trigger": "flag_set:mountain_patrol_bandits_repelled", "text": "接下委托后已击退截道山匪，回竹尾村主街向护商镖师报信。", "tracker_hint": "竹尾村 · 护商镖师"}])
+reward_gold = 28
+reward_exp = 30
+reward_items = Array[Dictionary]([{ "item_id": "healing_salve", "count": 2 }, { "item_id": "antidote_pill", "count": 1 }])
+tracker_hint = "林西村外 · 山道"

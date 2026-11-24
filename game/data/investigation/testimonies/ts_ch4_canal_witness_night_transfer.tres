@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TestimonyDef" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/domain/testimony_def.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+testimony_id = &"ts_ch4_canal_witness_night_transfer"
+display_name = "脚夫的夜运口供"
+speaker_npc_id = &"npc_luoyang_canal_porter"
+statement = "获救脚夫供称货物在半夜三次换船，最后由穿杂色短衣的人送往古寺；领头者刻意让旁人看见烈云盟暗号。"
+chapter = 4
+initial_credibility = 70
+related_evidence_ids = Array[StringName]([&"ev_ch4_canal_original_manifest"])
+contradicts_testimony_ids = Array[StringName]([&"ts_ch4_captured_courier_orders"])

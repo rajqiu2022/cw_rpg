@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="DialogScript" load_steps=4 format=3]
+[ext_resource type="Script" path="res://scripts/domain/dialog_script.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/domain/dialog_node.gd" id="2"]
+[sub_resource type="Resource" id="start"]
+script=ExtResource("2")
+node_id=&"start"
+speaker="薛影"
+portrait_path="res://art/characters/portraits/portrait_xueying_ch8_v1.png"
+text="没有完整亲令，没有活着的证人，你拿什么保证我放下针套以后，名字不会再被谁删掉一次？"
+on_end="next:battle"
+[sub_resource type="Resource" id="battle"]
+script=ExtResource("2")
+node_id=&"battle"
+speaker="旁白"
+text="证据与救人条件不足，薛影重新扣紧针套，扑向止杀钟的杠杆。此路只剩死战。"
+set_flags=Array[Dictionary]([{"key":"ch8_xueying_choice_dead_battle","value":true},{"key":"ch8_xueying_forced_battle","value":true}])
+on_end="battle_group_then:ch8_xueying_last_guard:ch8_xueying_battle_victory"
+[resource]
+script=ExtResource("1")
+dialog_id=&"ch8_xueying_forced_battle"
+entry_node_id=&"start"
+nodes=Array[Resource]([SubResource("start"),SubResource("battle")])

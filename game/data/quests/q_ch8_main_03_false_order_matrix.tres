@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="QuestDef" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/quest_def.gd" id="1"]
+[resource]
+script=ExtResource("1")
+quest_id=&"q_ch8_main_03_false_order_matrix"
+title="三旗互杀局"
+kind=0
+desc_not_started="雾林信号已断，山庄外围连营仍保存会盟行动布置。"
+desc_in_progress="进入外围连营，查验三套互相矛盾的旗令、鼓点与烟筒。"
+desc_completed="苏雾笙准备以三套假旗令、错位鼓点和迷烟，让各派误以为对方先动手。具体布局已确认，机关廊仍待拆除。"
+tracker_hint="茗雾山庄 · 外围连营"
+completion_triggers=Array[String](["flag_set:ch8_false_order_matrix_checked"])
+starts_in_chapter=8
+completes_in_chapter=8
+reward_gold=80
+reward_exp=220

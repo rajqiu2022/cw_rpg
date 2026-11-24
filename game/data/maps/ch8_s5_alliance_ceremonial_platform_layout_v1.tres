@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WalkableMapLayout" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/domain/walkable_map_layout.gd" id="1"]
+[resource]
+script=ExtResource("1")
+design_size=Vector2i(1536,1024)
+fill_viewport=true
+walkable_regions=Array[PackedVector2Array]([PackedVector2Array(0.38,0.99,0.62,0.99,0.86,0.72,0.78,0.16,0.22,0.16,0.14,0.72)])
+portals=Array[Dictionary]([{"id":"return_to_mechanism_gallery","pos":Vector2(0.50,0.92),"size":Vector2(0.13,0.10),"label":"返回会盟机关廊","target_scene":"ch8_s4_alliance_mechanism_gallery","target_pos":Vector2(0.50,0.22)},{"id":"enter_mingwu_main_hall","pos":Vector2(0.50,0.18),"size":Vector2(0.14,0.10),"label":"进入茗雾主厅","target_scene":"ch8_s6_mingwu_main_hall","target_pos":Vector2(0.50,0.86),"require_quest_completed":"q_ch8_main_07_su_first_confrontation"}])
+walkable_probes=Array[Dictionary]([{"id":"spawn","pos":Vector2(0.50,0.86)},{"id":"platform","pos":Vector2(0.50,0.52)},{"id":"delegates","pos":Vector2(0.28,0.40)},{"id":"courier_lane","pos":Vector2(0.72,0.40)}])
